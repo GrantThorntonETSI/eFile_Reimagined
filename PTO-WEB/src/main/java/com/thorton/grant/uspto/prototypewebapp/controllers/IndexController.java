@@ -11,7 +11,7 @@ public class IndexController {
     public String index(){
         // get owner info
         System.out.println("#############################################################");
-        return "public/index";
+        return "public/index2";
     }
 
 

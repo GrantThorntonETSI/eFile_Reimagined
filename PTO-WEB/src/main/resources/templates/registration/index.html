@@ -9,24 +9,24 @@
 
 <!-- End Navbar -->
 <div class="content" >
-    <div class="container-fluid" >
+    <div class="container-fluid" style="position: relative; top:100px;">
 
             <div class="col-md-14" >
-                <div class="form-container" style="display:none; max-height:3000px;  margin-bottom: 300px; background-image: linear-gradient(whitesmoke, white); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; border-top-left-radius: 20px; border-top-right-radius: 20px;">
+                <div class="form-container" style="display:none; position: relative;top:10%; max-height:3000px; color: whitesmoke;   margin-bottom: 100px; background-image: linear-gradient(#383A3C, #383A3C); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; border-top-left-radius: 20px; border-top-right-radius: 20px;">
                     <div style="position: relative;top:26px; margin-left: 40px;">
-                        <h1><b>New User Account</b></h1>
+                        <h4><b style="color: whitesmoke">New User Account</b></h4>
                     </div>
-                    <div class=" card-header-rose card-header-text">
+                    <div class=" card-header-rose card-header-text" style="margin-top: 20px;" >
 
                         <div class="card-text">
 
-                            <h5 class="card-title"><b>Account Details</b></h5>
+                            <h5 class="card-title"><b style="color: whitesmoke">Account Details</b></h5>
                         </div>
                     </div>
-                    <div class="card-body ">
-                        <form method="post" action="/newUser" class="form-horizontal" th:object="${userCredentialsDTO}">
+                    <div class="card-body" style=" margin-top: 20px;">
+                        <form method="post" style="" action="/newUser" class="form-horizontal" th:object="${userCredentialsDTO}">
 
-                            <div class="row">
+                            <div class="row"  style="position: relative; top:10%;">
                                 <label class="col-sm-2 col-form-label">E-Mail <r>*</r></label>
                                 <div class="col-sm-6">
 
@@ -58,10 +58,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                        <div class="card-text">
-                            <h5 class="card-title"><b>Owner Details</b></h5>
-                        </div>
 
                             <div class="row">
                                 <label class="col-sm-2 col-form-label">First Name</label>
@@ -95,6 +91,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <select  class="form-control" name="suffix"  style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                                            <option value=""><b></b></option>
                                             <option value="mr"><b>Mr</b></option>
                                             <option value="mrs"><b>Mrs</b></option>
                                             <option value="ms"><b>ms</b></option>
@@ -104,45 +101,24 @@
                             </div>
 
                         <div class="card-text">
-                            <h5 class="card-title"><b>Correspondant Details</b></h5>
+                            <h5 class="card-title"><b style="color: whitesmoke">Account View Preference</b></h5>
                         </div>
 
+
                             <div class="row">
-                                <label class="col-sm-2 col-form-label">Address</label>
+                                <label class="col-sm-2 col-form-label">View</label>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <input type="text" name="address" class="form-control" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                                        <select  class="form-control" name="suffix"  style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                                            <option value="Guided View"><b>Guided View</b></option>
+                                            <option value="Experienced View"><b>Experienced View</b></option>
+
+                                        </select>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <label class="col-sm-2 col-form-label">City</label>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <input type="text" name="city" class="form-control" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="row">
-                                <label class="col-sm-2 col-form-label">Country</label>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <input type="text" name="country" class="form-control" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <label class="col-sm-2 col-form-label">Phone</label>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <input type="text" name="phone" class="form-control" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                                        <span class="help-block">Your phone number won't be disclosed anywhere </span>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="row">
                                 <label class="col-sm-2 col-form-label">disclaimer</label>
                                 <div class="col-sm-3">

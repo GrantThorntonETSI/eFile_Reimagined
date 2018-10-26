@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  th:replace="~{fragments/layout :: layout (~{::body},'home')}">
+<head>
+    <meta charset="UTF-8">
+    <title>USPTO Trademarks e-File</title>
+
+
+</head>
+<body>
+
+<main class="main-box"><a class="sr-only skip-target" href="javascript:void(0);" id="skip-nav-content" tabindex="-1">Main content</a><app-aria-live><div aria-atomic="true" aria-live="polite" class="sr-only"><p></p></div></app-aria-live><!----><router-outlet></router-outlet><ng-component><router-outlet></router-outlet><ng-component><router-outlet></router-outlet><app-welcome><div class="public-page"><div class="welcome"><article><section class="sso-welcome-bg"><h1 class="sso-heading">Your new <br> eFile reimagined <br>account </h1><p class="sso-sub-heading">  USPTO Trademarks office is working to replace the form based filing system with intutitive widgets and guided wizard based filing workflows. This initiative is designed to simplify the Trademark filing and respondant process, and aims to greatly reduce complexity and deliver a superior seemless user experience while maintain the highest level of industry standards in security. </p><p class="sso-sub-heading"> The new uspto.gov accounts are designed for individuals, not groups or organizations. Future updates will add the ability for organizations to share information between colleagues. </p><div class="sso-welcome-signup"><a href="/create-account">Sign up<span> for a USPTO.gov account</span></a></div></section></article><article><section class="sso-card welcome-page-card"><h2>Sign up</h2><hr><div class="sso-card-body"><img alt="" class="sso-card-icon" src="resources/webapp-ui-app/assets/images/icon_signup.gif"><p>Create your new uspto.gov account and discover new USPTO systems you can personalize and new fee payment tools.</p><p>Please <a href="http://usptoglobalsignon.ideascale.com" target="_blank" onmousedown="dataLayer.push({'event': 'eventTracker', 'eventCat': 'Outbound Links', 'eventAct':'Click', 'eventLbl': 'usptoglobalsignon.ideascale.com/', 'eventVal': 0, 'nonInteraction': 0});">vote, comment, and share ideas</a> about our the new account and its features, and tell us what you would like to see in the future.</p><a class="sso-link account" href="/create-account">Create an account</a></div><div class="sso-card-body sso-signin"><h3>Already have an account?</h3><button class="btn btn-default pull-right" data-backdrop="static" data-keyboard="false" data-target="#siw-modal-widget" data-toggle="modal" type="button">Sign in</button></div></section><section class="sso-card welcome-page-card"><h2>We want your input</h2><hr><div class="sso-card-body"><img alt="" class="sso-card-icon" src="resources/webapp-ui-app/assets/images/icon_discussion.gif"><p>We are looking for your suggestions on ways we can improve.</p><p>By joining the community you will be able to submit, vote, and comment on the ideas shared.</p><a class="sso-link join" href="http://usptoglobalsignon.ideascale.com" role="button" target="_blank" onmousedown="dataLayer.push({'event': 'eventTracker', 'eventCat': 'Outbound Links', 'eventAct':'Click', 'eventLbl': 'usptoglobalsignon.ideascale.com/', 'eventVal': 0, 'nonInteraction': 0});">Join the discussion</a></div></section><section class="sso-card welcome-page-card"><h2>Learn more</h2><hr><div class=" sso-card-body"><img alt="" class="sso-card-icon" src="resources/webapp-ui-app/assets/images/icon_subscriptions.gif"><p>Find answers to frequently asked questions about the features and benefits of a new USPTO.gov account</p><a class="sso-link learn" href="http://www.uspto.gov/learning-and-resources/account-faqs" role="button" target="_blank">Frequently asked questions</a></div></section></article><article style="width: 100%;"><section class="legal-section"><div class="sso-privacy"><div class="warning">************WARNING***WARNING***WARNING************ </div><p style="color: rgb(112, 112, 112);"> This is a United States Patent and Trademark Office (USPTO) computer system, which may be accessed and used only for official Government business by authorized personnel. Unauthorized access, actions, use, modification, or disclosure of the data contained herein or in transit to/from this system constitutes a violation of the Computer Fraud and Abuse Act, Pub. L. No. 99-474, codified at 18 U.S.C. §1030, state criminal and civil laws, and may subject violators to criminal, civil, and/or administrative action and penalties. Regardless of geographic location, authorized use of this system must comply with USPTO policy, as documented in the USPTO AAO 202-737 (Limited Personal Use of Government Equipment), AAO 212-4 (Information Technology Security Policy) and the USPTO Rules of the Road. Unauthorized use or actions exceeding authorized use of USPTO systems will be investigated, and, when appropriate, official sanctions will be imposed. All data contained on USPTO computer systems is owned by the USPTO, and may be monitored, intercepted, recorded, read, copied, captured, and disclosed in any manner by authorized personnel. THERE IS NO RIGHT OF PRIVACY IN THIS SYSTEM. System personnel may give to law enforcement officials, for investigation and prosecution, any potential evidence of crime found on USPTO computer systems. USE OF THIS SYSTEM BY ANY USER, AUTHORIZED OR UNAUTHORIZED, CONSTITUTES CONSENT TO THIS MONITORING, INTERCEPTION, RECORDING, READING, COPYING, CAPTURING, AND DISCLOSURE. Suspected access violations or policy infractions should be reported to the USPTO Service Desk at (571) 272-9000. </p></div></section></article></div></div></app-welcome></ng-component></ng-component></main>
+
+
+
+
+<!--update password modal -->
+<div id="sign-in-modal" class="modal fade modal-lg" role="dialog" tabindex="-1" >
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">USPTO.gov eFile Reimagined log in </h4>
+            </div>
+            <div class="modal-body">
+
+
+                <form th:action="@{/login}" method="post" class="form form-check-input form-control-sm"  >
+                    <div class="card card-login" style="margin: auto; background-color: whitesmoke; min-height: 150px; margin-left: 200px;  max-width: 40%;   border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;"  >
+                        <div class=" card-header-blue text-center" style="padding-top: 10px;position:relative;top: 20px; right:-30%;">
+                            <b class="card-title" style=""><a style="font-size: x-small;margin-top: 50px;" href="/registration">New User</a></b>
+                        </div>
+
+                        <div class="card-body " style="padding-top: 20px;position:relative;top: 20px;">
+                            <span class="card-description" style="position: relative; right:-35%;"><b>Existing User</b></span>
+
+                            <span class="bmd-form-group" style="position: relative; top:-10%;" >
+                                  <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" style="margin:auto; position:relative; left:40%; right:40%;">
+                                        <span class="glyphicon glyphicon-user"></span>
+                                      </span>
+                                    </div>
+                                    <input style="margin: auto; position:relative; left:40%; right:40%; border-top-right-radius: 20px; border-top-left-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;" type="email" class="form-control" name="username" placeholder="Email...">
+                                  </div>
+                                </span>
+                            <span class="bmd-form-group" style="margin:auto;">
+                                  <div class="input-group" >
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" style="margin:auto; position:relative; left:40%; right :40%;">
+                                        <span class="glyphicon glyphicon-lock"></span>
+                                      </span>
+                                    </div>
+                                    <input  style="margin:auto; position:relative; left:40%; border-top-right-radius: 20px; border-top-left-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;" type="password" class="form-control" name="password" placeholder="Password...">
+                                  </div>
+                                </span>
+                        </div>
+                        <div class="card-footer justify-content-center" style="padding-top: 20px; padding-bottom:50px; position:relative;top: 10px;">
+
+                            <div class="form-group" ><button style="position:relative; left:30%; right:30%; size:auto; background-color: #546E8C;  border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;" class="btn" type="submit" value="Sign In"><span class="glyphicon glyphicon-log-in" ></span><b> &nbsp;&nbsp;&nbsp;&nbsp;    Sign In&nbsp;</b></button></div>
+
+                            <!-- Login Form -->
+                            <div  style="color: red; position: relative; top:20%; right:-22%;" th:if="${param.error}">
+                                <b>Invalid username and password.</b>
+                            </div>
+                            <div  style="color: green; position: relative; top:20%; right:-22%;" th:if="${param.logout}">
+                                You have been logged out.
+                            </div>
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </form>
+
+            </div>
+            <div class="modal-footer">
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end of update password modal -->
+
+</body>
+</html>
