@@ -135,6 +135,84 @@
 
 
 </div>
+
+<!--update password modal -->
+<div id="sign-in-modal" class="modal fade modal-lg" role="dialog" tabindex="-1"  >
+    <div class="modal-dialog" >
+
+        <!-- Modal content-->
+        <div class="modal-content" style="border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+            <div class="modal-header" style="background-color: #383A3C; color: whitesmoke; border-top-left-radius: 20px; border-top-right-radius: 20px;">
+                <button type="button" class="close" data-dismiss="modal" style="color: whitesmoke;">&times;</button>
+                <h4 class="modal-title" style="color: whitesmoke;"><b>USPTO.gov | eFile <i>Reimagined</i></b> </h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="container-fluid" >
+                    <form th:action="@{/login}" method="post" class="form form-check-input form-control-sm"  >
+                        <div class="card card-login" style="margin: auto; color: whitesmoke; background-color: #383A3C; min-height: 250px; margin-left: 200px;  max-width: 52%;   border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;"  >
+                            <div class=" card-header-blue text-center" style="padding-top: 10px;position:relative;top: 20px; right:-30%;">
+                                <b class="card-title" style=""><a style="font-size: x-small;margin-top: 50px;" href="/registration">New User</a></b>
+                            </div>
+
+                            <div class="card-body " style="padding-top: 20px;position:relative;top: 20px;  min-height: 200px;">
+                                <span class="card-description" style="position: relative; right:-35%;"><b>Existing User</b></span>
+
+                                <span class="bmd-form-group" style="position: relative; top:-10%;" >
+                                  <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" style="margin:auto; position:relative; left:40%; right:40%;">
+                                        <span class="glyphicon glyphicon-user"></span>
+                                      </span>
+                                    </div>
+                                    <input style="margin: auto; position:relative; left:40%; right:40%; border-top-right-radius: 20px; border-top-left-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;" type="email" class="form-control" name="username" placeholder="Email...">
+                                  </div>
+                                </span>
+                                <span class="bmd-form-group" style="margin:auto;">
+                                  <div class="input-group" >
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" style="margin:auto; position:relative; left:40%; right :40%;">
+                                        <span class="glyphicon glyphicon-lock"></span>
+                                      </span>
+                                    </div>
+                                    <input  style="margin:auto; position:relative; left:40%; border-top-right-radius: 20px; border-top-left-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;" type="password" class="form-control" name="password" placeholder="Password...">
+                                  </div>
+                                </span>
+                            </div>
+                            <div class="card-footer justify-content-center" style="padding-top: 20px; padding-bottom:50px; background-color: #383A3C; position:relative;top: 10px;  border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+
+                                <div class="form-group" ><button style="position:relative; left:30%; right:30%; size:auto; background-color: #004c97;  border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;" class="btn" type="submit" value="Sign In"><span class="glyphicon glyphicon-log-in" ></span><b> &nbsp;&nbsp;&nbsp;&nbsp;    Sign In&nbsp;</b></button></div>
+
+                                <!-- Login Form -->
+                                <div  style="color: red; position: relative; top:20%; right:-22%;" th:if="${param.error}">
+                                    <b>Invalid username and password.</b>
+                                </div>
+                                <div  style="color: green; position: relative; top:20%; right:-22%;" th:if="${param.logout}">
+                                    You have been logged out.
+                                </div>
+
+
+                            </div>
+
+
+
+                        </div>
+
+
+
+                    </form>
+                </div>
+
+            </div>
+            <div class="modal-footer" style=" color: whitesmoke; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end of update password modal -->
 </body>
 <footer><div class="container-fluid"><div class="row"><div class="uspto-footer-top col-sm-12"><div class="uspto-footer-logo col-sm-10"><a class="logo" href="http://www.uspto.gov/" target="_blank" title="United States Patent and Trademark Office"><span class="sr-only">United States Patent and Trademark Office</span></a></div><div class="uspto-footer-watermark col-sm-2" title="United States Patent and Trademark Office"><span class="sr-only">United States Patent and Trademark Office</span></div></div><div class="uspto-footer-middle col-sm-12"><div class="navbar-header"><button class="navbar-toggle collapsed visible-xs" data-target="#navbar-collapse-topic" data-toggle="collapse" type="button"> Browse By Topic <span class="icon icon-sort-desc icon-inverse"></span></button></div><div class="uspto-footer-column col-sm-3 navbar-collapse collapse" id="navbar-collapse-topic"><span class="uspto-footer-column-hdg hidden-xs">Browse By Topic</span><ul><li><a href="http://www.uspto.gov/patent" target="_blank">Patents</a></li><li><a href="http://www.uspto.gov/trademark" target="_blank">Trademarks</a></li><li><a href="http://www.uspto.gov/learning-resources" target="_blank">Learning &amp; Resources</a></li><li><a href="http://www.uspto.gov/about-us" target="_blank">About the USPTO</a></li><li><a href="http://www.uspto.gov/learning-and-resources/glossary" target="_blank">Glossary</a></li><li><a href="http://www.uspto.gov/careers" target="_blank">Careers</a></li><li><a href="http://www.uspto.gov/about-us/contact-us" target="_blank">Contact Us</a></li></ul></div><div class="navbar-header"><button class="navbar-toggle collapsed visible-xs" data-target="#navbar-collapse-about" data-toggle="collapse" type="button"> About This Site <span class="icon icon-sort-desc icon-inverse"></span></button></div><div class="uspto-footer-column col-sm-3 navbar-collapse collapse" id="navbar-collapse-about"><span class="uspto-footer-column-hdg hidden-xs">About This Site</span><ul><li><a href="http://www.uspto.gov/using-usptogov/accessibility-uspto-website" target="_blank">Accessibility</a></li><li><a href="http://www.uspto.gov/privacy-policy" target="_blank">Privacy Policy</a></li><li><a href="http://www.uspto.gov/terms-use-uspto-website">Terms of Use</a></li><li><a href="http://www.uspto.gov/about-us/security" target="_blank">Security</a></li><li><a href="http://www.uspto.gov/blog/ebiz/ " target="_blank">Systems Status</a></li><li><a href="http://www.uspto.gov/sitemap" target="_blank">Site Map</a></li></ul></div><div class="navbar-header"><button class="navbar-toggle collapsed visible-xs" data-target="#navbar-collapse-uspto" data-toggle="collapse" type="button"> USPTO Background <span class="icon icon-sort-desc icon-inverse"></span></button></div><div class="uspto-footer-column col-sm-3 navbar-collapse collapse" id="navbar-collapse-uspto"><span class="uspto-footer-column-hdg hidden-xs">USPTO Background</span><ul><li><a href="http://www.uspto.gov/about-us/performance-and-planning/federal-activities-inventory-reform-fair-act" target="_blank">Federal Activity Inventory Reform Act (FAIR)</a></li><li><a href="http://www.uspto.gov/about-us/performance-and-planning" target="_blank">Performance and Planning</a></li><li><a href="http://www.uspto.gov/learning-and-resources/ip-policy/electronic-freedom-information-act-e-foia" target="_blank">Freedom of Information Act</a></li><li><a href="http://www.uspto.gov/learning-and-resources/information-quality-guidelines" target="_blank">Information Quality Guidelines</a></li></ul></div><div class="navbar-header"><button class="navbar-toggle collapsed visible-xs" data-target="#navbar-collapse-federal" data-toggle="collapse" type="button"> Federal Government <span class="icon icon-sort-desc icon-inverse"></span></button></div><div class="uspto-footer-column col-sm-3 navbar-collapse collapse" id="navbar-collapse-federal"><span class="uspto-footer-column-hdg hidden-xs">Federal Government</span><ul><li><a href="http://www.regulations.gov" target="_blank" onmousedown="dataLayer.push({'event': 'eventTracker', 'eventCat': 'Outbound Links', 'eventAct':'Click', 'eventLbl': 'regulations.gov/', 'eventVal': 0, 'nonInteraction': 0});">Regulations.gov &nbsp;<span class="icon icon-external-link icon-inverse"><span class="sr-only"> (link is external)</span></span></a></li><li><a href="http://www.stopfakes.gov" target="_blank" onmousedown="dataLayer.push({'event': 'eventTracker', 'eventCat': 'Outbound Links', 'eventAct':'Click', 'eventLbl': 'stopfakes.gov/', 'eventVal': 0, 'nonInteraction': 0});">StopFakes.gov &nbsp;<span class="icon icon-external-link icon-inverse"><span class="sr-only"> (link is external)</span></span></a></li><li><a href="http://www.usa.gov" target="_blank" onmousedown="dataLayer.push({'event': 'eventTracker', 'eventCat': 'Outbound Links', 'eventAct':'Click', 'eventLbl': 'usa.gov/', 'eventVal': 0, 'nonInteraction': 0});">USA.gov &nbsp;<span class="icon icon-external-link icon-inverse"><span class="sr-only"> (link is external)</span></span></a></li><li><a href="http://www.commerce.gov" target="_blank" onmousedown="dataLayer.push({'event': 'eventTracker', 'eventCat': 'Outbound Links', 'eventAct':'Click', 'eventLbl': 'commerce.gov/', 'eventVal': 0, 'nonInteraction': 0});">Department of Commerce &nbsp;<span class="icon icon-external-link icon-inverse"><span class="sr-only"> (link is external)</span></span></a></li><li><a href="http://www.uspto.gov/learning-and-resources/ip-policy/enforcement/strategy-targeting-organized-piracy-stop" target="_blank">Strategy Targeting Organized Piracy</a></li></ul></div></div></div></div></footer>
 
