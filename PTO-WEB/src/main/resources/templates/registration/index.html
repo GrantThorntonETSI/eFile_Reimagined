@@ -27,7 +27,7 @@
                         <form method="post" style="" action="/newUser" class="form-horizontal" th:object="${userCredentialsDTO}">
 
                             <div class="row"  style="position: relative; top:10%;">
-                                <label class="col-sm-2 col-form-label">E-Mail <r>*</r></label>
+                                <label class="col-sm-2 col-form-label">E-Mail <b style="color: red">*</b></label>
                                 <div class="col-sm-6">
 
                                     <div class="form-group">
@@ -40,7 +40,7 @@
                             </div>
 
                             <div class="row">
-                                <label class="col-sm-2 col-form-label">Password *</label>
+                                <label class="col-sm-2 col-form-label">Password <b style="color: red">*</b></label>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <input type="text"  th:field="*{password}" id="password" placeholder="Password" class="form-control" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;" th:required>
@@ -51,7 +51,7 @@
                             </div>
 
                             <div class="row">
-                                <label class="col-sm-2 col-form-label">Confirm *</label>
+                                <label class="col-sm-2 col-form-label">Confirm <b style="color: red">*</b></label>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <input type="text" th:field="*{matchingPassword}" id="password" placeholder="Password" class="form-control" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;" th:required>
@@ -60,7 +60,7 @@
                             </div>
 
                             <div class="row">
-                                <label class="col-sm-2 col-form-label">First Name</label>
+                                <label class="col-sm-2 col-form-label">First Name <b style="color: red">*</b></label>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <input type="text" name="firstName" class="form-control" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
@@ -78,7 +78,7 @@
 
 
                             <div class="row">
-                                <label class="col-sm-2 col-form-label">Last Name</label>
+                                <label class="col-sm-2 col-form-label">Last Name <b style="color: red">*</b></label>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <input type="text" name="lastName" class="form-control" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
@@ -103,7 +103,10 @@
                         <div class="card-text">
                             <h5 class="card-title"><b style="color: whitesmoke">Account View Preference</b></h5>
                         </div>
+                            <div class="row" style="position: relative; left:10px; margin-bottom: 15px;">
 
+                                <b style="color: red">*</b>  <b>Select application View for new applications: </b>
+                            </div>
 
                             <div class="row">
                                 <label class="col-sm-2 col-form-label">View</label>
@@ -133,11 +136,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" style="margin-bottom: auto;">
+                            <div class="row" style="margin-bottom: 20px;">
                                 <label class="col-sm-2 col-form-label">Register</label>
                                 <div class="col-sm-3">
                                     <div class="form-group">
-                                        <button style="position:relative; left:30%; min-width: 300px; background-color: #546E8C; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;" class="btn btn-default btn- registrationSubmit" type="submit" value="Register" disabled><span class="glyphicon glyphicon-log-in" disabled="true"></span> &nbsp;&nbsp;Register&nbsp;</button>
+                                        <button style="position:relative; left:30%; min-width: 300px; background-color: #084A95; color: whitesmoke; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;" class="btn btn-default btn- registrationSubmit" type="submit" value="Register" disabled><span class="glyphicon glyphicon-log-in" disabled="true"></span> &nbsp;&nbsp;submit&nbsp;</button>
                                     </div>
                                 </div>
                             </div>
