@@ -38,6 +38,9 @@ public class UserPersonalData extends BaseEntity {
         @Column(name="city")
         private String city;
 
+        @Column(name = "primary_Phonenumber")
+        private String primaryPhonenumber;
+
         @Column(name="phoneNumber")
         private String[] phoneNumber;
 
@@ -148,45 +151,57 @@ public class UserPersonalData extends BaseEntity {
             this.alertnateEmail = alertnateEmail;
         }
 
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            UserPersonalData that = (UserPersonalData) o;
-            return Objects.equals(firstName, that.firstName) &&
-                    Objects.equals(lastName, that.lastName) &&
-                    Objects.equals(midlleName, that.midlleName) &&
-                    Objects.equals(title, that.title) &&
-                    Objects.equals(suffix, that.suffix) &&
-                    Objects.equals(address, that.address) &&
-                    Objects.equals(city, that.city) &&
-                    Arrays.equals(phoneNumber, that.phoneNumber) &&
-                    Objects.equals(email, that.email) &&
-                    Objects.equals(alertnateEmail, that.alertnateEmail) &&
-                    Objects.equals(userCredentials, that.userCredentials);
+        public String getPrimaryPhonenumber() {
+            return primaryPhonenumber;
         }
 
-        @Override
-        public int hashCode() {
-            int result = Objects.hash(firstName, lastName, midlleName, title, suffix, address, city, email, alertnateEmail, userCredentials);
-            result = 31 * result + Arrays.hashCode(phoneNumber);
-            return result;
+        public void setPrimaryPhonenumber(String primaryPhonenumber) {
+            this.primaryPhonenumber = primaryPhonenumber;
         }
 
-        @Override
-        public String toString() {
-            return "UserPersonalData{" +
-                    "firstName='" + firstName + '\'' +
-                    ", lastName='" + lastName + '\'' +
-                    ", midlleName='" + midlleName + '\'' +
-                    ", title='" + title + '\'' +
-                    ", suffix='" + suffix + '\'' +
-                    ", address='" + address + '\'' +
-                    ", city='" + city + '\'' +
-                    ", phoneNumber=" + Arrays.toString(phoneNumber) +
-                    ", email='" + email + '\'' +
-                    ", alertnateEmail='" + alertnateEmail + '\'' +
-                    ", userCredentials=" + userCredentials +
-                    '}';
-        }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserPersonalData that = (UserPersonalData) o;
+        return Objects.equals(firstName, that.firstName) &&
+                Objects.equals(lastName, that.lastName) &&
+                Objects.equals(midlleName, that.midlleName) &&
+                Objects.equals(title, that.title) &&
+                Objects.equals(suffix, that.suffix) &&
+                Objects.equals(address, that.address) &&
+                Objects.equals(city, that.city) &&
+                Objects.equals(primaryPhonenumber, that.primaryPhonenumber) &&
+                Arrays.equals(phoneNumber, that.phoneNumber) &&
+                Objects.equals(email, that.email) &&
+                Objects.equals(alertnateEmail, that.alertnateEmail) &&
+                Objects.equals(userCredentials, that.userCredentials);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(firstName, lastName, midlleName, title, suffix, address, city, primaryPhonenumber, email, alertnateEmail, userCredentials);
+        result = 31 * result + Arrays.hashCode(phoneNumber);
+        return result;
+    }
+
+
+    @Override
+    public String toString() {
+        return "UserPersonalData{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", midlleName='" + midlleName + '\'' +
+                ", title='" + title + '\'' +
+                ", suffix='" + suffix + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", primaryPhonenumber='" + primaryPhonenumber + '\'' +
+                ", phoneNumber=" + Arrays.toString(phoneNumber) +
+                ", email='" + email + '\'' +
+                ", alertnateEmail='" + alertnateEmail + '\'' +
+                ", userCredentials=" + userCredentials +
+                '}';
+    }
 }

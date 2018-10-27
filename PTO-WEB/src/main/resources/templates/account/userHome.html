@@ -610,7 +610,7 @@
                             <label class="col-sm-2 col-form-label" style="position: relative; left:10px;">Phone</label>
                             <div class="col-sm-4" style="position: relative; left:-70px;">
                                 <div class="form-group">
-                                    <input type="text" name="phone" class="form-control" th:value="${user.telephone}" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                                    <input type="text" name="phone" class="form-control" th:value="${user.primaryPhonenumber}" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
 
                                 </div>
                             </div>
@@ -908,6 +908,8 @@
 
                     $('.circle-loader').fadeOut(100);
                     $('.x-mark').fadeIn(500);
+
+                    alert(data);
                     // set message to div area ...fields can not be left null
                     $(".validationMsgArea span").text("You can not leave any fields empty.");
                     $(".validationMsgArea span").css('color','red');
