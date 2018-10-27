@@ -14,7 +14,8 @@ public class TradeMark extends BaseEntity {
     private String PTOtradeMarkID;
     private String description;
 
-    private Blob trademarkImage;
+    private String trademarkImage_awsS3Path;
+
 
     @ManyToOne
     private PTOUser trademarkOwner;
@@ -35,13 +36,15 @@ public class TradeMark extends BaseEntity {
         this.description = description;
     }
 
-    public Blob getTrademarkImage() {
-        return trademarkImage;
+    public String getTrademarkImage_awsS3Path() {
+        return trademarkImage_awsS3Path;
     }
 
-    public void setTrademarkImage(Blob trademarkImage) {
-        this.trademarkImage = trademarkImage;
+    public void setTrademarkImage_awsS3Path(String trademarkImage_awsS3Path) {
+        this.trademarkImage_awsS3Path = trademarkImage_awsS3Path;
     }
+
+
 
     public PTOUser getTrademarkOwner() {
         return trademarkOwner;

@@ -20,14 +20,14 @@ public class UserCredentials  {
     @Column(name="user_credentials_id")
     private Long id;
 
-    @Column(name = "username")
+    @Column(name = "username") // firstInitialLastName +userCredId
     //@NotEmpty(message = "*Please provide your name")
     // store email value as username
     private String username;
 
     @Column(name = "password")
     @Length(min = 5, message = "*Your password must have at least 5 characters")
-    @NotEmpty(message = "*Please provide your password")
+
     private String password;
     private String passwordConfirm;
 
@@ -42,6 +42,9 @@ public class UserCredentials  {
 
     @Column(name="active")
     private int active;
+
+    @Column(name="completed_profile")
+    private boolean completedProfile;
 
     @OneToOne(mappedBy = "userCredentials")
     private UserPersonalData userPersonalData;
@@ -111,19 +114,27 @@ public class UserCredentials  {
         this.userPersonalData = userPersonalData;
     }
 
+    public boolean isCompletedProfile() {
+        return completedProfile;
+    }
+
+    public void setCompletedProfile(boolean completedProfile) {
+        this.completedProfile = completedProfile;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserCredentials that = (UserCredentials) o;
-        return Objects.equals(email, that.email);
+        return Objects.equals(username, that.username) &&
+                Objects.equals(password, that.password) &&
+                Objects.equals(email, that.email);
     }
-
-
 
     @Override
     public int hashCode() {
-        return Objects.hash(email);
+        return Objects.hash(username, password, email);
     }
 
     @Override
@@ -134,8 +145,9 @@ public class UserCredentials  {
                 ", password='" + password + '\'' +
                 ", passwordConfirm='" + passwordConfirm + '\'' +
                 ", email='" + email + '\'' +
-                ", user_roles=" + userRoles +
+                ", userRoles=" + userRoles +
                 ", active=" + active +
+                ", completedProfile=" + completedProfile +
                 ", userPersonalData=" + userPersonalData +
                 '}';
     }
