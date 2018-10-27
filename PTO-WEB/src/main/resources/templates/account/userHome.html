@@ -880,7 +880,7 @@
 
 
             $.ajax({
-                url: "http://localhost:8080/account/user/email/update/"+currentPW+"/"+newPW,
+                url: "https://localhost:8080/account/user/email/update/"+currentPW+"/"+newPW,
                 type: 'GET',
                 success: function(data){
 
@@ -909,7 +909,7 @@
                     $('.circle-loader').fadeOut(100);
                     $('.x-mark').fadeIn(500);
 
-                    alert(data);
+                    console.log(data);
                     // set message to div area ...fields can not be left null
                     $(".validationMsgArea span").text("You can not leave any fields empty.");
                     $(".validationMsgArea span").css('color','red');
