@@ -43,7 +43,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         PTOUser1.setLastName("Zhang");
         PTOUser1.setAddress("1115 Reserve Champion Drive");
         PTOUser1.setCity("Rockville");
-        PTOUser1.setTelephone("571-839-3730");
+        PTOUser1.setPhoneNumber(new String[] {"571-839-3730"});
 
         // set username, password, email and role
         UserCredentials ownerCreds = new UserCredentials();
