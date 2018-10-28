@@ -1,14 +1,11 @@
 package com.thorton.grant.uspto.prototypewebapp.service.registratrion;
 
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.IUserService;
-import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
-import com.thorton.grant.uspto.prototypewebapp.service.registratrion.OnRegistrationCompleteEvent;
+import com.thorton.grant.uspto.prototypewebapp.service.mail.gmail.GmailJavaMailSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
-import org.springframework.context.MessageSource;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
@@ -21,13 +18,14 @@ public class RegistrationListener implements
 
     // private final MessageSource messages;
 
-    //private final JavaMailSender mailSender;
+    private final GmailJavaMailSenderService mailSender;
 
     @Autowired
-    public RegistrationListener(IUserService service) {
+    public RegistrationListener(IUserService service, GmailJavaMailSenderService mailSender) {
         this.service = service;
         //this.mailSender = mailSender;
         //this.messages = messages;
+        this.mailSender = mailSender;
     }
 
     @Override
@@ -55,6 +53,8 @@ public class RegistrationListener implements
         SimpleMailMessage email = new SimpleMailMessage();
         email.setTo(recipientAddress);
         email.setSubject(subject);
+
+        mailSender.sendEmailverificationLink("http://localhost:8080"+confirmationUrl,recipientAddress);
         //email.setText(message + " rn" + "http://localhost:8080" + confirmationUrl);
         //mailSender.send(email);
     }

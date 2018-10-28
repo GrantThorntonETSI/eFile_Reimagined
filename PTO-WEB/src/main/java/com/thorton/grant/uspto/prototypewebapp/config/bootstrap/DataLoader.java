@@ -53,7 +53,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         ownerCreds.setUsername("zhangl");
         ownerCreds.setPassword(bCryptPasswordEncoder.encode("xxxxx"));
         ownerCreds.setPasswordConfirm(bCryptPasswordEncoder.encode("xxxxx"));
-        ownerCreds.setEmail("lzhang421@gmail.com");
+        ownerCreds.setEmail("lzhang422@gmail.com");
         ownerCreds.setActive(1);
 
         UserRole userRole = new UserRole();
