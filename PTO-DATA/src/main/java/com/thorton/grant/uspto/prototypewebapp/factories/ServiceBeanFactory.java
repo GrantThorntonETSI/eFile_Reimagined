@@ -1,6 +1,6 @@
 package com.thorton.grant.uspto.prototypewebapp.factories;
 
-import com.thorton.grant.uspto.prototypewebapp.interfaces.PTOUserService;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserRoleService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.registration.VerificationTokenService;
@@ -15,14 +15,14 @@ public class ServiceBeanFactory {
     private final VerificationTokenService verificationTokenService;
 
 
-    public ServiceBeanFactory(com.thorton.grant.uspto.prototypewebapp.interfaces.PTOUserService PTOUserService, UserCredentialsService userCredentialsService, UserRoleService userRoleService, VerificationTokenService verificationTokenService) {
+    public ServiceBeanFactory(com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService PTOUserService, UserCredentialsService userCredentialsService, UserRoleService userRoleService, VerificationTokenService verificationTokenService) {
         this.PTOUserService = PTOUserService;
         this.userCredentialsService = userCredentialsService;
         this.userRoleService = userRoleService;
         this.verificationTokenService = verificationTokenService;
     }
 
-    public com.thorton.grant.uspto.prototypewebapp.interfaces.PTOUserService getPTOUserService() {
+    public com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService getPTOUserService() {
         return PTOUserService;
     }
 

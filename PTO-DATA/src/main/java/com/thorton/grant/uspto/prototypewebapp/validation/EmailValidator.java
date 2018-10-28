@@ -1,4 +1,4 @@
-package com.thorton.grant.uspto.prototypewebapp.factories;
+package com.thorton.grant.uspto.prototypewebapp.validation;
 
 import com.thorton.grant.uspto.prototypewebapp.interfaces.registration.ValidEmail;
 

@@ -1,12 +1,10 @@
 package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO;
 
-import com.thorton.grant.uspto.prototypewebapp.model.entities.BaseEntity;
-import com.thorton.grant.uspto.prototypewebapp.model.entities.PTOUser;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.base.BaseEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.sql.Blob;
 
 
 @Entity

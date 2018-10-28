@@ -1,7 +1,7 @@
 package com.thorton.grant.uspto.prototypewebapp.model.entities.security;
 
 
-import com.thorton.grant.uspto.prototypewebapp.model.entities.UserPersonalData;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.UserPersonalData;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;

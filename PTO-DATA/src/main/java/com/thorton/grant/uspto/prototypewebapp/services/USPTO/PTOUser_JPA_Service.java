@@ -1,8 +1,8 @@
-package com.thorton.grant.uspto.prototypewebapp.services;
+package com.thorton.grant.uspto.prototypewebapp.services.USPTO;
 
-import com.thorton.grant.uspto.prototypewebapp.interfaces.PTOUserService;
-import com.thorton.grant.uspto.prototypewebapp.model.entities.PTOUser;
-import com.thorton.grant.uspto.prototypewebapp.repositories.jpa.PTOUserRepository;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.PTOUser;
+import com.thorton.grant.uspto.prototypewebapp.repositories.jpa.USPTO.PTOUserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;

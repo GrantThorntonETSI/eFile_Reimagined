@@ -1,7 +1,5 @@
-package com.thorton.grant.uspto.prototypewebapp.model.entities;
+package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO;
 
-
-import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.TradeMark;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -11,7 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "PTOUsers")
-public class PTOUser extends  UserPersonalData{
+public class PTOUser extends UserPersonalData {
 
 
     @OneToMany(mappedBy = "trademarkOwner")

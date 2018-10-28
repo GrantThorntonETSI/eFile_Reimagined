@@ -1,11 +1,11 @@
 package com.thorton.grant.uspto.prototypewebapp.service.registratrion;
 
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.IUserService;
-import com.thorton.grant.uspto.prototypewebapp.interfaces.PTOUserService;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserRoleService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.RegistrationDTO;
-import com.thorton.grant.uspto.prototypewebapp.model.entities.PTOUser;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserRole;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.VerificationToken;

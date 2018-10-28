@@ -1,10 +1,10 @@
 package com.thorton.grant.uspto.prototypewebapp.config.bootstrap;
 
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
-import com.thorton.grant.uspto.prototypewebapp.interfaces.PTOUserService;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserRoleService;
-import com.thorton.grant.uspto.prototypewebapp.model.entities.PTOUser;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserRole;
 import org.springframework.context.ApplicationListener;

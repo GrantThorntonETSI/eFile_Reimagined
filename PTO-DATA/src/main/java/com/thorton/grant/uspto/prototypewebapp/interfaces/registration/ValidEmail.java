@@ -2,7 +2,7 @@ package com.thorton.grant.uspto.prototypewebapp.interfaces.registration;
 
 
 
-import com.thorton.grant.uspto.prototypewebapp.factories.EmailValidator;
+import com.thorton.grant.uspto.prototypewebapp.validation.EmailValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

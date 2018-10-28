@@ -1,5 +1,6 @@
-package com.thorton.grant.uspto.prototypewebapp.model.entities;
+package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO;
 
+import com.thorton.grant.uspto.prototypewebapp.model.entities.base.BaseEntity;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 
 import javax.persistence.*;

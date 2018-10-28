@@ -1,4 +1,4 @@
-package com.thorton.grant.uspto.prototypewebapp.model.entities;
+package com.thorton.grant.uspto.prototypewebapp.model.entities.base;
 
 import lombok.Getter;
 import lombok.Setter;

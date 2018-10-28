@@ -1,4 +1,4 @@
-package com.thorton.grant.uspto.prototypewebapp.service.rest;
+package com.thorton.grant.uspto.prototypewebapp.service.REST;
 
 
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;

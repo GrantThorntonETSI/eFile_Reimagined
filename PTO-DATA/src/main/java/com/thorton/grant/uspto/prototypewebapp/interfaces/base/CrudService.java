@@ -1,4 +1,4 @@
-package com.thorton.grant.uspto.prototypewebapp.interfaces;
+package com.thorton.grant.uspto.prototypewebapp.interfaces.base;
 
 import java.util.Optional;
 import java.util.Set;
