@@ -1,6 +1,6 @@
 package com.thorton.grant.uspto.prototypewebapp.config.security;
 
-import com.thorton.grant.uspto.prototypewebapp.service.USPTOUserDetailsService;
+import com.thorton.grant.uspto.prototypewebapp.service.authentication.USPTOUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

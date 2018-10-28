@@ -1,7 +1,6 @@
 package com.thorton.grant.uspto.prototypewebapp.model.entities;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 
 import javax.persistence.*;
 import java.util.Arrays;

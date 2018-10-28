@@ -1,6 +1,8 @@
 package com.thorton.grant.uspto.prototypewebapp.model.entities;
 
 
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.TradeMark;
+
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;

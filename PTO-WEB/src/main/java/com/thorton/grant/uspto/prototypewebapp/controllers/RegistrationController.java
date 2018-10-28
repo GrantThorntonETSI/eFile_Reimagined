@@ -1,9 +1,9 @@
 package com.thorton.grant.uspto.prototypewebapp.controllers;
 
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.RegistrationDTO;
-import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.UserCredentialsDTO;
-import com.thorton.grant.uspto.prototypewebapp.model.entities.UserCredentials;
-import com.thorton.grant.uspto.prototypewebapp.service.UserRegistrationService;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
+import com.thorton.grant.uspto.prototypewebapp.service.registratrion.OnRegistrationCompleteEvent;
+import com.thorton.grant.uspto.prototypewebapp.service.registratrion.UserRegistrationService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -18,7 +18,6 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Email;
 
 @Controller
 public class RegistrationController {

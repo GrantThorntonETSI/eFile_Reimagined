@@ -1,7 +1,7 @@
 package com.thorton.grant.uspto.prototypewebapp.model.entities.DTO;
 
 
-import com.thorton.grant.uspto.prototypewebapp.interfaces.PasswordMatches;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.registration.PasswordMatches;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;

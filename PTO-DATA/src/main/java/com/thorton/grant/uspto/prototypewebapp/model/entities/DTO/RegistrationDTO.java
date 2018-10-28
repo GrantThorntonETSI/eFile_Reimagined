@@ -1,7 +1,5 @@
 package com.thorton.grant.uspto.prototypewebapp.model.entities.DTO;
 
-import com.thorton.grant.uspto.prototypewebapp.interfaces.ValidEmail;
-
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -9,7 +7,7 @@ import javax.validation.constraints.NotNull;
 
 
 public class RegistrationDTO {
-    @ValidEmail
+
     @NotNull
     @NotEmpty
     private String email;

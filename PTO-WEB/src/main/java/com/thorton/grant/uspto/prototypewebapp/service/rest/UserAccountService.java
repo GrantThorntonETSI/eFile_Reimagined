@@ -2,11 +2,10 @@ package com.thorton.grant.uspto.prototypewebapp.service.rest;
 
 
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
-import com.thorton.grant.uspto.prototypewebapp.interfaces.UserCredentialsService;
-import com.thorton.grant.uspto.prototypewebapp.model.entities.UserCredentials;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
