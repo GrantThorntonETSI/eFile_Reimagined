@@ -41,8 +41,9 @@
                                         <span>
 
                                            <input type="email" th:field="*{email}"  id="email" placeholder="Email" class="form-control" style="margin:auto; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;"  th:required>
-                                        <p th:each="error : ${#fields.errors('email')}"
-                                           th:text="${error}">Validation error</p>
+
+                                       <b style="color: red"> <p th:each="error : ${#fields.errors('email')}"
+                                              th:text="${error}">Validation error</p></b>
                                         </span>
 
                                     </div>
@@ -65,8 +66,8 @@
                                     <div class="form-group">
                                         <span>
                                             <input type="text" th:field="*{firstName}"  name="firstName" class="form-control" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                                             <p th:each="error : ${#fields.errors('firstName')}"
-                                                th:text="${error}">Validation error</p>
+                                           <b style="color: red">   <p th:each="error : ${#fields.errors('firstName')}"
+                                                                       th:text="${error}">Validation error</p></b>
 
                                         </span>
 
@@ -111,8 +112,8 @@
                                     <div class="form-group">
                                         <span>
                                          <input type="text" th:field="*{lastName}" name="lastName" class="form-control" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                                            <p th:each="error : ${#fields.errors('lastName')}"
-                                               th:text="${error}">Validation error</p>
+                                           <b style="color: red">  <p th:each="error : ${#fields.errors('lastName')}"
+                                                                      th:text="${error}">Validation error</p></b>
                                         </span>
                                     </div>
                                 </div>
@@ -173,7 +174,8 @@
 
 
                                         </div>
-
+                                        <b style="color: red"> <p th:each="error : ${#fields.errors('lastName')}"
+                                                                  th:text="${error}">Validation error</p></b>
 
                                     </div>
                                 </div>

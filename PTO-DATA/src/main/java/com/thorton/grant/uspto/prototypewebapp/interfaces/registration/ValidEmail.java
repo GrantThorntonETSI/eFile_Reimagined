@@ -1,6 +1,8 @@
 package com.thorton.grant.uspto.prototypewebapp.interfaces.registration;
 
-import org.hibernate.validator.internal.constraintvalidators.bv.EmailValidator;
+
+
+import com.thorton.grant.uspto.prototypewebapp.factories.EmailValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

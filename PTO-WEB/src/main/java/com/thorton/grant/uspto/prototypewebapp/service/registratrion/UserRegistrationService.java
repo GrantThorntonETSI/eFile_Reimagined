@@ -69,6 +69,8 @@ public class UserRegistrationService implements IUserService {
     }
 
     private boolean emailExist(String email) {
+
+        System.out.println("########################checking if user exists#######################");
         UserCredentials user = userCredentialsService.findByEmail(email);
         if (user != null) {
             return true;
@@ -80,7 +82,7 @@ public class UserRegistrationService implements IUserService {
     @Override
     public void createVerificationToken(UserCredentials userCredentials, String token) {
 
-        System.out.println("creating token for "+token);
+        System.out.println("creating token for "+userCredentials.getEmail()+"+++++"+token);
 
     }
 

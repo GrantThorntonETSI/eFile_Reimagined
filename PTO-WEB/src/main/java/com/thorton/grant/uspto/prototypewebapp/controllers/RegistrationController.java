@@ -79,7 +79,7 @@ public class RegistrationController {
         if (!result.hasErrors()) {
             // account will be created, but no password, and not active
             // also no address or telephone information will be saved here
-            //registered = createUserAccount(accountDto, result);
+            registered = createUserAccount(accountDto, result);
             // generate email token
 
             //////////////////////////////////////////////////////////////////////////////////////
