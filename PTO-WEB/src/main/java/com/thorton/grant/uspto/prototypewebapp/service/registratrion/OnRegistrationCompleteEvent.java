@@ -20,7 +20,7 @@ public class OnRegistrationCompleteEvent extends ApplicationEvent {
         this.locale = locale;
         this.appUrl = appUrl;
 
-        System.out.println("$$$$$$$$$$$$$$$$$$$$$OnRegistrationCompleteEvent$$$$$$$$$$$$$$$$$$$$$$$$");
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$OnlineRegistrationCompleteEvent$$$$$$$$$$$$$$$$$$$$$$$$");
     }
 
     public String getAppUrl() {

@@ -32,7 +32,7 @@ public class RegistrationController {
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String showForm(WebRequest request, Model model){
 
-        System.out.print("get process for registration .......");
+        System.out.print("registration show form pre-binding.......");
         // get values from newUser form
         // assign a use_role to new user
         // save new user data into User table
@@ -49,6 +49,9 @@ public class RegistrationController {
 
     }
 
+
+
+
     @Autowired
     ApplicationEventPublisher eventPublisher;
     @RequestMapping(value = "/newUser", method = RequestMethod.POST)
@@ -58,31 +61,31 @@ public class RegistrationController {
             WebRequest request,
             Errors errors) {
 
-        System.out.print("post process for registration .......");
+        System.out.print("post process for registration .......form result binded to DTO object");
         System.out.println("DTO capture output: ");
         System.out.println();
         System.out.println("####################################################################");
         System.out.println(accountDto.getEmail());
         System.out.println(accountDto.getFirstName());
         System.out.println(accountDto.getLastName());
-        //System.out.println(accountDto.getPassword());
-
-        //System.out.println(accountDto.getPhoneNumber());
         System.out.println("####################################################################");
 
 
 
-
-
-
+        ////////////////////////////////
+        // main authentication logic
+        ///////////////////////////////
          UserCredentials  registered = new UserCredentials() ;
         if (!result.hasErrors()) {
             // account will be created, but no password, and not active
-            // also no address or telephone infomration will be saved here
+            // also no address or telephone information will be saved here
             //registered = createUserAccount(accountDto, result);
             // generate email token
 
-            // do something
+            //////////////////////////////////////////////////////////////////////////////////////
+            // nothing to do here, we publish custom registration event.
+            // token creation/storage and email notifications are generated in registration event
+            //////////////////////////////////////////////////////////////////////////////////////
         }
         if (registered == null) {
             result.rejectValue("email", "message.regError");
@@ -104,6 +107,9 @@ public class RegistrationController {
                 return new ModelAndView("emailError", "user", accountDto);
             }
 
+            //////////////////////////////////////////////////////////////////////////////////////
+            // after registration event, return user to check email activation link page
+            //////////////////////////////////////////////////////////////////////////////////////
             return new ModelAndView("registration/regConfirm", "user",accountDto);
         }
 

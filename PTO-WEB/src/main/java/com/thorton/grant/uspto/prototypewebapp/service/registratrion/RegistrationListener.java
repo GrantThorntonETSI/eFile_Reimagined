@@ -18,15 +18,15 @@ public class RegistrationListener implements
 
     private final IUserService service;
 
-    private final MessageSource messages;
+   // private final MessageSource messages;
 
-    private final JavaMailSender mailSender;
+    //private final JavaMailSender mailSender;
 
     @Autowired
-    public RegistrationListener(IUserService service, JavaMailSender mailSender, MessageSource messages) {
+    public RegistrationListener(IUserService service) {
         this.service = service;
-        this.mailSender = mailSender;
-        this.messages = messages;
+        //this.mailSender = mailSender;
+        //this.messages = messages;
     }
 
     @Override
