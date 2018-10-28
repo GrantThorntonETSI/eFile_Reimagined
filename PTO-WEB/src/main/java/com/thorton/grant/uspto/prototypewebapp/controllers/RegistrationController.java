@@ -1,8 +1,12 @@
 package com.thorton.grant.uspto.prototypewebapp.controllers;
 
+import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.RegistrationDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.UserCredentialsDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.UserCredentials;
 import com.thorton.grant.uspto.prototypewebapp.service.UserRegistrationService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +18,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
 
 @Controller
 public class RegistrationController {
@@ -36,8 +41,8 @@ public class RegistrationController {
         // create owner object
         // copy over name info and user id/email
         // add owner object to model as attribute
-        UserCredentialsDTO userCredentialsDTO = new UserCredentialsDTO();
-        model.addAttribute("userCredentialsDTO", userCredentialsDTO);
+        RegistrationDTO registrationDTO = new RegistrationDTO();
+        model.addAttribute("userCredentialsDTO", registrationDTO);
 
 
         return "registration/index";
@@ -45,10 +50,11 @@ public class RegistrationController {
 
     }
 
-
+    @Autowired
+    ApplicationEventPublisher eventPublisher;
     @RequestMapping(value = "/newUser", method = RequestMethod.POST)
     public ModelAndView registerUserAccount(
-            @ModelAttribute("userCredentialsDTO") @Valid UserCredentialsDTO accountDto,
+            @ModelAttribute("userCredentialsDTO") @Valid RegistrationDTO accountDto,
             BindingResult result,
             WebRequest request,
             Errors errors) {
@@ -60,9 +66,9 @@ public class RegistrationController {
         System.out.println(accountDto.getEmail());
         System.out.println(accountDto.getFirstName());
         System.out.println(accountDto.getLastName());
-        System.out.println(accountDto.getPassword());
+        //System.out.println(accountDto.getPassword());
 
-        System.out.println(accountDto.getPhoneNumber());
+        //System.out.println(accountDto.getPhoneNumber());
         System.out.println("####################################################################");
 
 
@@ -72,7 +78,12 @@ public class RegistrationController {
 
          UserCredentials  registered = new UserCredentials() ;
         if (!result.hasErrors()) {
-            registered = createUserAccount(accountDto, result);
+            // account will be created, but no password, and not active
+            // also no address or telephone infomration will be saved here
+            //registered = createUserAccount(accountDto, result);
+            // generate email token
+
+            // do something
         }
         if (registered == null) {
             result.rejectValue("email", "message.regError");
@@ -85,17 +96,26 @@ public class RegistrationController {
         else {
             //return new ModelAndView("/account/userHome", "users", accountDto);
             // new users needs to log in. will need to verify email before activation.
+           // no errors ...send user to email verification notifcation page
+            try {
+                String appUrl = request.getContextPath();
+                eventPublisher.publishEvent(new OnRegistrationCompleteEvent
+                        (registered, request.getLocale(), appUrl));
+            } catch (Exception me) {
+                return new ModelAndView("emailError", "user", accountDto);
+            }
 
-            return new ModelAndView("login", "user",accountDto);
+            return new ModelAndView("registration/regConfirm", "user",accountDto);
         }
 
 
 
     }
-    private UserCredentials createUserAccount(UserCredentialsDTO accountDto, BindingResult result) {
+    private UserCredentials createUserAccount(RegistrationDTO accountDto, BindingResult result) {
         UserCredentials registered = null;
 
-        registered = service.registerNewUserAccount(accountDto);
+
+            registered = service.registerNewUserAccount(accountDto);
 
         return registered;
     }

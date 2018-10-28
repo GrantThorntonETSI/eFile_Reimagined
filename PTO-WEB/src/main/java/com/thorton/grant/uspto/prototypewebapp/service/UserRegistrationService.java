@@ -4,12 +4,14 @@ import com.thorton.grant.uspto.prototypewebapp.interfaces.IUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.UserCredentialsService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.UserRoleService;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.RegistrationDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.UserCredentialsDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.UserCredentials;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.UserRole;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -31,8 +33,14 @@ public class UserRegistrationService implements IUserService {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
+    @Transactional
     @Override
-    public UserCredentials registerNewUserAccount(UserCredentialsDTO accountDto) {
+    public UserCredentials registerNewUserAccount(RegistrationDTO accountDto)  {
+
+        if(emailExist(accountDto.getEmail())){
+            return null;
+        } // check of existing account, return null if account exists
+
 
         UserCredentials newUserCredentials = new UserCredentials();
         PTOUser newUser = new PTOUser();
@@ -46,11 +54,11 @@ public class UserRegistrationService implements IUserService {
         ptoUserService.save(newUser);
 
         newUserCredentials.setEmail(accountDto.getEmail());
-        newUserCredentials.setPassword(bCryptPasswordEncoder.encode(accountDto.getPassword()));
-        newUserCredentials.setPasswordConfirm(bCryptPasswordEncoder.encode(accountDto.getMatchingPassword()));
+       // newUserCredentials.setPassword(bCryptPasswordEncoder.encode(accountDto.getPassword()));
+        //newUserCredentials.setPasswordConfirm(bCryptPasswordEncoder.encode(accountDto.getMatchingPassword()));
         newUserCredentials.setUserRoles(new HashSet<UserRole>(Arrays.asList(defaultRole)));
         newUserCredentials.setUserPersonalData(newUser);
-        newUserCredentials.setActive(1);
+        ////newUserCredentials.setActive(1);
 
         userCredentialsService.save(newUserCredentials);
 
@@ -59,4 +67,13 @@ public class UserRegistrationService implements IUserService {
 
         return newUserCredentials;
     }
+
+    private boolean emailExist(String email) {
+        UserCredentials user = userCredentialsService.findByEmail(email);
+        if (user != null) {
+            return true;
+        }
+        return false;
+    }
+
 }

@@ -64,7 +64,10 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <span>
-                                            <input type="text" name="firstName" class="form-control" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                                            <input type="text" th:field="*{firstName}"  name="firstName" class="form-control" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                                             <p th:each="error : ${#fields.errors('firstName')}"
+                                                th:text="${error}">Validation error</p>
+
                                         </span>
 
                                     </div>
@@ -107,7 +110,9 @@
 
                                     <div class="form-group">
                                         <span>
-                                         <input type="text" name="lastName" class="form-control" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                                         <input type="text" th:field="*{lastName}" name="lastName" class="form-control" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                                            <p th:each="error : ${#fields.errors('lastName')}"
+                                               th:text="${error}">Validation error</p>
                                         </span>
                                     </div>
                                 </div>
@@ -155,7 +160,7 @@
 
                                            <div class="row">
                                                 <span>
-                                                    <input type="radio" name="view-type" value="Guided User View"><b>Guided User View</b>
+                                                    <input type="radio" th:field="*{viewType}"  name="viewType" value="Guided User View"><b>Guided User View</b>
                                                 </span>
 
                                            </div>
@@ -163,7 +168,7 @@
                                         <div class="row">
                                             <span>
 
-                                                <input type="radio" name="view-type" value="Experienced User View"><b>Experienced User View</b>
+                                                <input type="radio" th:field="*{viewType}" name="viewType" value="Experienced User View"><b>Experienced User View</b>
                                             </span>
 
 

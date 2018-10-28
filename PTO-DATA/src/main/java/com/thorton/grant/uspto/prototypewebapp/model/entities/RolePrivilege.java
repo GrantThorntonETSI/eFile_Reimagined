@@ -3,6 +3,7 @@ package com.thorton.grant.uspto.prototypewebapp.model.entities;
 
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -16,7 +17,7 @@ public class RolePrivilege  {
     private String name;
 
     @ManyToMany(mappedBy = "rolePrivileges")
-    private Set<UserRole> userRoles;
+    private List<UserRole> userRoles;
 
     public Long getId() {
         return id;
@@ -34,11 +35,11 @@ public class RolePrivilege  {
         this.name = name;
     }
 
-    public Set<UserRole> getUserRoles() {
+    public List<UserRole> getUserRoles() {
         return userRoles;
     }
 
-    public void setUserRoles(Set<UserRole> userRoles) {
+    public void setUserRoles(List<UserRole> userRoles) {
         this.userRoles = userRoles;
     }
 

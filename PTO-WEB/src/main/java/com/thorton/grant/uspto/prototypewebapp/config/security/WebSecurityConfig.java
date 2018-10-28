@@ -1,5 +1,7 @@
 package com.thorton.grant.uspto.prototypewebapp.config.security;
 
+import com.thorton.grant.uspto.prototypewebapp.service.USPTOUserDetailsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -31,17 +33,21 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
         this.dataSource = dataSource;
     }
 
-
+    @Autowired
+    private USPTOUserDetailsService usptoUserDetailsService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
-        auth.
+        auth.userDetailsService(usptoUserDetailsService);
+
+        /*
                 jdbcAuthentication()
                 .usersByUsernameQuery(userQuery)
                 .authoritiesByUsernameQuery(roleQuery)
                 .dataSource(dataSource)
                 .passwordEncoder(bCryptPasswordEncoder);
+                */
     }
 
 

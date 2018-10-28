@@ -1,11 +1,13 @@
 package com.thorton.grant.uspto.prototypewebapp.model.entities.DTO;
 
 
+import com.thorton.grant.uspto.prototypewebapp.interfaces.PasswordMatches;
+
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 
-
+@PasswordMatches
 public class UserCredentialsDTO {
 
 

@@ -7,6 +7,8 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -94,8 +96,14 @@ public class UserCredentials  {
         return userRoles;
     }
 
-    public void setUserRoles(Set<UserRole> user_roles) {
-        this.userRoles = user_roles;
+    public List<String> getUserRolesStrings() {
+        List<String>  role_list = new ArrayList<>();
+        userRoles.forEach(userRole -> role_list.add(userRole.getRoleName()));
+        return role_list;
+    }
+
+    public void setUserRoles(Set<UserRole> userRoles) {
+        this.userRoles = userRoles;
     }
 
     public int getActive() {
