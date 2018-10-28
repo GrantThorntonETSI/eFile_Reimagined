@@ -18,7 +18,7 @@ public class RegistrationListener implements
 
     private final IUserService service;
 
-   // private final MessageSource messages;
+    // private final MessageSource messages;
 
     //private final JavaMailSender mailSender;
 
@@ -47,6 +47,8 @@ public class RegistrationListener implements
         String confirmationUrl
                 = event.getAppUrl() + "/regitrationConfirm.html?token=" + token;
       //  String message = messages.getMessage("message.regSucc", null, event.getLocale());
+
+        System.out.println("email verification link: "+confirmationUrl);
 
         SimpleMailMessage email = new SimpleMailMessage();
         email.setTo(recipientAddress);

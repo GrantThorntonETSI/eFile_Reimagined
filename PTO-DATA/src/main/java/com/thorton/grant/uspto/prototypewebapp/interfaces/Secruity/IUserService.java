@@ -4,6 +4,10 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.RegistrationDT
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.VerificationToken;
 
+/////////////////////////////////////////
+// use identity utility class interface
+/////////////////////////////////////////
+
 public interface IUserService {
     UserCredentials registerNewUserAccount( RegistrationDTO accountDto);
     void createVerificationToken(UserCredentials userCredentials, String token);
