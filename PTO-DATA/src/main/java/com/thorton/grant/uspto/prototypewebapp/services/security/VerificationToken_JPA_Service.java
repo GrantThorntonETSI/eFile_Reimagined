@@ -48,4 +48,9 @@ public class VerificationToken_JPA_Service implements VerificationTokenService {
     public void deleteById(Long id) {
                 verificationTokenRepository.deleteById(id);
     }
+
+    @Override
+    public VerificationToken findByVerificationToken(String verificationToken) {
+        return verificationTokenRepository.findByToken(verificationToken);
+    }
 }

@@ -4,6 +4,7 @@ import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.IUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserRoleService;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.registration.VerificationTokenService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.RegistrationDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
@@ -25,12 +26,14 @@ public class UserRegistrationService implements IUserService {
     private final UserCredentialsService userCredentialsService;
     private final UserRoleService userRoleService;
     private final  BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final VerificationTokenService verificationTokenService;
 
-    public UserRegistrationService(PTOUserService ptoUserService, UserCredentialsService userCredentialsService, UserRoleService userRoleService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public UserRegistrationService(PTOUserService ptoUserService, UserCredentialsService userCredentialsService, UserRoleService userRoleService, BCryptPasswordEncoder bCryptPasswordEncoder, VerificationTokenService verificationTokenService) {
         this.ptoUserService = ptoUserService;
         this.userCredentialsService = userCredentialsService;
         this.userRoleService = userRoleService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.verificationTokenService = verificationTokenService;
     }
 
     @Transactional
@@ -59,7 +62,7 @@ public class UserRegistrationService implements IUserService {
         newUserCredentials.setUserRoles(new HashSet<UserRole>(Arrays.asList(defaultRole)));
         newUserCredentials.setUserPersonalData(newUser);
         ////newUserCredentials.setActive(1);
-
+        newUserCredentials.setUsername(newUser.getFirstName()+"."+newUser.getLastName());
         userCredentialsService.save(newUserCredentials);
 
 
@@ -84,20 +87,24 @@ public class UserRegistrationService implements IUserService {
 
         System.out.println("creating token for "+userCredentials.getEmail()+"+++++"+token);
 
+        VerificationToken myToken = new VerificationToken(token, userCredentials);
+        verificationTokenService.save(myToken);
+
     }
 
     @Override
-    public UserCredentials getUser(String verificationToken) {
-        return null;
+    public UserCredentials getUserCredential(String verificationToken) {
+        return verificationTokenService.findByVerificationToken(verificationToken).getNewCredential();
     }
 
     @Override
-    public void saveRegisteredUser(UserCredentials userCredentials) {
+    public void saveRegisteredUserCredential(UserCredentials userCredentials) {
+        userCredentialsService.save(userCredentials);
 
     }
 
     @Override
     public VerificationToken getVerificationToken(String VerificationToken) {
-        return null;
+        return verificationTokenService.findByVerificationToken(VerificationToken);
     }
 }

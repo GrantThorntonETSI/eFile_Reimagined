@@ -16,7 +16,13 @@ public class VerificationToken {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    public VerificationToken() {
+    }
 
+    public VerificationToken(String token, UserCredentials newCredential) {
+        this.token = token;
+        this.newCredential = newCredential;
+    }
 
     private String token;
 
@@ -78,6 +84,10 @@ public class VerificationToken {
     }
 // calculate expiration date
 
+
+    public Date getExpiredTime(){
+        return calculateExpDate(24*60);
+    }
     private Date calculateExpDate(int expTimeInMinutes){
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Timestamp(calendar.getTime().getTime()));

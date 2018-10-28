@@ -1,7 +1,9 @@
 package com.thorton.grant.uspto.prototypewebapp.controllers;
 
+import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.IUserService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.RegistrationDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.security.VerificationToken;
 import com.thorton.grant.uspto.prototypewebapp.service.registratrion.OnRegistrationCompleteEvent;
 import com.thorton.grant.uspto.prototypewebapp.service.registratrion.UserRegistrationService;
 
@@ -14,10 +16,13 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.Calendar;
+import java.util.Locale;
 
 @Controller
 public class RegistrationController {
@@ -119,9 +124,13 @@ public class RegistrationController {
     private UserCredentials createUserAccount(RegistrationDTO accountDto, BindingResult result) {
         UserCredentials registered = null;
 
-
+            // this creates an account that requires email verifcation
             registered = service.registerNewUserAccount(accountDto);
 
         return registered;
     }
+
+
+
+
 }

@@ -5,6 +5,8 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.security.Verificat
 
 public interface VerificationTokenService extends CrudService<VerificationToken, Long> {
 
+    VerificationToken findByVerificationToken(String verificationToken);
+
 
 
 }

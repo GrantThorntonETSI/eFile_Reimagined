@@ -1,6 +1,7 @@
 package com.thorton.grant.uspto.prototypewebapp.service.registratrion;
 
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.IUserService;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 import com.thorton.grant.uspto.prototypewebapp.service.registratrion.OnRegistrationCompleteEvent;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,13 +40,14 @@ public class RegistrationListener implements
 
 
         UserCredentials userCredentials = event.getUserCredentials();
+
         String token = UUID.randomUUID().toString();
         service.createVerificationToken(userCredentials, token);
 
         String recipientAddress = userCredentials.getEmail();
         String subject = "Registration Confirmation";
         String confirmationUrl
-                = event.getAppUrl() + "/regitrationConfirm.html?token=" + token;
+                = event.getAppUrl() + "/registrationConfirm/?token=" + token;
       //  String message = messages.getMessage("message.regSucc", null, event.getLocale());
 
         System.out.println("email verification link: "+confirmationUrl);

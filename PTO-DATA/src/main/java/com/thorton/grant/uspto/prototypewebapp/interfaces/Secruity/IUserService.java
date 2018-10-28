@@ -11,9 +11,9 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.security.Verificat
 public interface IUserService {
     UserCredentials registerNewUserAccount( RegistrationDTO accountDto);
     void createVerificationToken(UserCredentials userCredentials, String token);
-    UserCredentials getUser(String verificationToken);
+    UserCredentials getUserCredential(String verificationToken);
 
-    void saveRegisteredUser(UserCredentials userCredentials);
+    void saveRegisteredUserCredential(UserCredentials userCredentials);
 
     VerificationToken getVerificationToken(String VerificationToken);
 
