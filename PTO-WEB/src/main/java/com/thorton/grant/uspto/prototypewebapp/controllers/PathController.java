@@ -11,7 +11,9 @@ public class PathController {
     public String index(){
         // get owner info
         System.out.println("#############################################################");
-        return "public/index2";
+        //return "public/index2";
+
+        return "registrationConfirm/VerificationEmail";
     }
 
 
