@@ -54,8 +54,18 @@ public class RegistrationListener implements
         email.setTo(recipientAddress);
         email.setSubject(subject);
 
-        mailSender.sendEmailverificationLink("http://localhost:8080"+confirmationUrl,recipientAddress);
+
         //email.setText(message + " rn" + "http://localhost:8080" + confirmationUrl);
+        // make send email call none blocking
+        new Thread(new Runnable() {
+            public void run()
+            {
+
+                // perform any operation
+                mailSender.sendEmailverificationLink("http://localhost:8080"+confirmationUrl,recipientAddress);
+                System.out.println("ACCOUNT ACITVATION EMAIL SENT!");
+            }
+        }).start();
         //mailSender.send(email);
     }
 }
