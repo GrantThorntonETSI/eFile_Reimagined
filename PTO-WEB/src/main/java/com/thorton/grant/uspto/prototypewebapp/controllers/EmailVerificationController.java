@@ -126,7 +126,7 @@ public class EmailVerificationController {
 
 
 
-        return "/login";
+        return "login";
 
 
     }

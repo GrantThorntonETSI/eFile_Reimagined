@@ -9,39 +9,48 @@
 
 <!-- End Navbar -->
 <div class="content" style="display: none;" >
-    <div class="container-fluid" >
+    <div class="container-fluid"  >
 
-        <div class="col-md-13" >
+        <div class="col-sm-16" >
             <div class="form-container base-page" style="">
                 <div style="position: relative;top:26px; margin-left: 40px;">
                     <h1><b style="opacity: 1; mix-blend-mode: normal; color: rgb(0, 0, 0); font-size: 36px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; text-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1.16667px; width: 597px; height: 41px; transform: rotate(0deg) translate(37px, 138px) rotate(0deg);">User Account</b></h1>
                 </div>
                 <div class=" card-header-rose card-header-text">
 
-                    <div class="card-text" style="position: relative; left:-9.4%; right:10%;">
+                    <div class="card-text" >
 
                         <h5 class="card-title"><b>Sign In</b></h5>
                     </div>
-                    <!--<svg version="1.2" class="ng-element" style="position: relative; left:-10%; right:10%; top:-265px; opacity: 1; mix-blend-mode: normal; min-width: 750px; height: 13px; transform: rotate(0deg) translate(6px, 240px) rotate(0deg);"><line x1="0" y1="6.5" x2="760" y2="6.5" stroke="#003264" stroke-width="3" stroke-linecap="" stroke-dasharray=""></line></svg>-->
-
-                   <hr style="height:3px; position:relative; top:-20px; left:-8.1%;">
+                    <hr style="height:3px; position:relative; top:-20px; left:-11.8%; max-width: 80.5%">
 
 
                 </div>
 
-                        <div class="row" style="position: relative; left:20%; right:20%;">
-                            <label class="small" style="margin-top: 10px;"><b>E-Mail Address</b></label>
+                        <div class="row" style="margin-left:15px;">
+
+
+
                             <div class="col-sm-4">
 
                                 <div class="form-group">
-                                    <input type="email"   id="emailuser" placeholder="Email" class="form-control" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;"  th:value="${user.email}" disabled>
+                                    <label class="small" style="margin-top: 10px;"><b>E-Mail Address</b></label>
+                                    <input type="email"   id="emailuser" placeholder="Email" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  th:value="${user.email}" disabled>
 
 
                                 </div>
                             </div>
+
+
+
+
                         </div>
+
+                <!-- row 1 -->
                         <div class="row" style="margin-left:15px;">
-                            <div class="col-sm-5">
+
+                            <!-- column 1 row 1 -->
+                            <div class="col-sm-4">
 
 
                                 <div class="card card-menu" style="position:relative; top:20px; height:auto;  border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;"  >
@@ -71,8 +80,8 @@
 
 
                             </div> <!-- end of column 1 element in row -->
-
-                            <div class="col-sm-6">
+                            <!-- column 2 row 1 -->
+                            <div class="col-sm-4">
 
                                 <div class="card card-menu" style="position:relative; top:20px; border-color: gray; height:auto;   max-width:80%;  border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;"  >
 
@@ -100,15 +109,10 @@
                                 </div>
 
                             </div>
+                            <!-- column 3 row 1 -->
+                            <div class="col-sm-4">
 
-
-
-
-                        </div>
-                        <div class="row" style="margin-left:15px; margin-top: 20px;">
-                            <div class="col-sm-6">
-
-                                <div class="card card-menu" style="position:relative; top:20px; border-color: gray; height:auto;   max-width:80%;  border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;"  >
+                                <div class="card card-menu" style="position:relative; top:20px; border-color: gray; height:auto; left:-50px;  max-width:80%;  border-top-left-radius: 5px;  border-top-right-radius: 5px;"  >
 
 
                                     <div class="card-header card-header-blue text-center" style="">
@@ -135,10 +139,18 @@
 
                             </div>
 
+
+
+
+                        </div>
+                        <div class="row" style="margin-left:15px; margin-top: 20px;">
+
+
                         </div>
                         <div class="card-text">
                             <h5 class="card-title"><b>Two-Step Authentication</b></h5>
                         </div>
+                        <hr style="height:3px; position:relative; top:-20px; left:-11.8%; max-width: 80.5%">
                         <div class="row">
 
                             <div class="col-sm-10">
@@ -226,6 +238,7 @@
                         <div class="card-text">
                             <h5 class="card-title"><b>Personal Information</b></h5>
                         </div>
+                        <hr style="height:3px; position:relative; top:-20px; left:-11.8%; max-width: 80.5%">
 
                         <div class="row" style="position: relative; left:-30px;">
                             <label class="col-sm-2 col-form-label">First Name</label>

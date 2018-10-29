@@ -62,7 +62,7 @@ public class RegistrationListener implements
             {
 
                 // perform any operation
-                mailSender.sendEmailverificationLink("http://localhost:8080"+confirmationUrl,recipientAddress);
+                mailSender.sendEmailverificationLink("http://18.221.138.198:8080"+confirmationUrl,recipientAddress);
                 System.out.println("ACCOUNT ACITVATION EMAIL SENT!");
             }
         }).start();
