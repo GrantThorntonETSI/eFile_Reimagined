@@ -112,17 +112,17 @@ public class EmailVerificationController {
             Errors errors){
 
 
-         String account = getAccount_email();
-         System.out.println("saving passoword for account : "+account);
+             String account = getAccount_email();
+             System.out.println("saving password for account : "+account);
 
+             String token = getAccount_token();
+             VerificationToken verificationToken = service.getVerificationToken(token);
+             UserCredentials userCredentials = verificationToken.getNewCredential();
+             userCredentials.setPassword(bCryptPasswordEncoder.encode(passwordSetDTO.getPassword()));
+             userCredentials.setPasswordConfirm(bCryptPasswordEncoder.encode(passwordSetDTO.getPassword()));
+             // password matches confirms checked with js on previous page
+             service.saveRegisteredUserCredential(userCredentials);
 
-        // get values from newUser form
-        // assign a use_role to new user
-        // save new user data into User table
-
-        // create owner object
-        // copy over name info and user id/email
-        // add owner object to model as attribute
 
 
 
