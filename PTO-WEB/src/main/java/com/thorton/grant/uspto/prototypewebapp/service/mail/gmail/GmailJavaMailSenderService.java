@@ -47,7 +47,7 @@ public class GmailJavaMailSenderService extends JavaMailSenderBase {
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(address));
             message.setSubject("USPTO.gov eFile Reimagined account activation");
-            message.setText("Dear User please click on teh following link to activate your new USPTO.gove efile account." +
+            message.setText("Dear User please click on the following link to activate your new USPTO.gove efile account." +
                     "\n\n "+link);
 
             Transport.send(message);

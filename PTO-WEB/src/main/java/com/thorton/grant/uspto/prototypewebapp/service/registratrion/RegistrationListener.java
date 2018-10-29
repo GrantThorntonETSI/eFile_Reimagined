@@ -46,7 +46,7 @@ public class RegistrationListener implements
         String subject = "Registration Confirmation";
         String confirmationUrl
                 = event.getAppUrl() + "/registrationConfirm/?token=" + token;
-      //  String message = messages.getMessage("message.regSucc", null, event.getLocale());
+       //  String message = messages.getMessage("message.regSucc", null, event.getLocale());
 
         System.out.println("email verification link: "+confirmationUrl);
 

@@ -19,9 +19,15 @@
 
                         <h5 class="card-title"><b style="color: whitesmoke">Account Details</b></h5>
                     </div>
+                    <div class="row">
+                        <span>
+                            <h3 STYLE="color: whitesmoke; position:relative; right: -10%;"> <b>YOUR ACCOUNT IS NOW ACTIVATED. SET YOUR PASSWORD TO COMPLETE REGISTRATION.</b></h3>
+                        </span>
+
+                    </div>
                 </div>
                 <div class="card-body" style=" margin-top: 20px;">
-                    <form method="post" style="" action="/CompleteRegistration" class="form-horizontal" >
+                    <form method="post" style="" action="/CompleteRegistration" class="form-horizontal" th:object="${passwordSetDTO}">
 
 
                         <div class="row" style="position: relative; right:-18%;">
@@ -37,14 +43,16 @@
                                 <div class="form-group">
                                         <span>
 
-                                           <input type="password"  id="password" placeholder="password" class="form-control" style="margin:auto; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;"  th:required>
-
+                                           <input type="password"  th:field="*{password}"  id="password" placeholder="password" class="form-control" style="margin:auto; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;"  th:required>
+                                             <b style="color: red"> <p th:each="error : ${#fields.errors('password')}"
+                                                                       th:text="${error}">Validation error</p></b>
 
                                         </span>
 
                                 </div>
                             </div>
                         </div>
+
 
 
 
@@ -61,9 +69,10 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                         <span>
-                                            <input type="text"   name="password-confirm" class="form-control" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                                            <input type="password"   th:field="*{password_confirm}" name="password-confirm" class="form-control" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
 
-
+                                                 <b style="color: red"> <p th:each="error : ${#fields.errors('password_confirm')}"
+                                                                           th:text="${error}">Validation error</p></b>
                                         </span>
 
                                 </div>

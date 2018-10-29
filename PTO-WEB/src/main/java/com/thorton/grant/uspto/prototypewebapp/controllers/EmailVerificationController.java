@@ -1,17 +1,19 @@
 package com.thorton.grant.uspto.prototypewebapp.controllers;
 
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.IUserService;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.PasswordSetDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.VerificationToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
+import javax.validation.Valid;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -25,6 +27,31 @@ public class EmailVerificationController {
     @Autowired
     private IUserService service;
 
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    public EmailVerificationController(BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
+
+    private String account_email;
+    private String account_token;
+
+    public String getAccount_email() {
+        return account_email;
+    }
+
+    public void setAccount_email(String account_email) {
+        this.account_email = account_email;
+    }
+
+    public String getAccount_token() {
+        return account_token;
+    }
+
+    public void setAccount_token(String account_token) {
+        this.account_token = account_token;
+    }
+
     @RequestMapping(value = "/registrationConfirm", method = RequestMethod.GET)
     public String confirmRegistration
             (WebRequest request, Model model, @RequestParam("token") String token) {
@@ -36,7 +63,7 @@ public class EmailVerificationController {
         if (verificationToken == null) {
             String message = "auth.message.invalidToken";
             model.addAttribute("message", message);
-            //return "redirect:/badUser.html";
+
             return "registrationConfirm/badUser";
         }
 
@@ -45,13 +72,62 @@ public class EmailVerificationController {
         if ((verificationToken.getExpiredTime().getTime() - cal.getTime().getTime()) <= 0) {
             String messageValue = "token has expired";
             model.addAttribute("message", messageValue);
-            //return " redirect:/badUser.html";
+
             return "registrationConfirm/badUser";
         }
 
+        //////////////////////////////////////////////////////////////////////////
+        // activates account
+        //////////////////////////////////////////////////////////////////////////
         userCredentials.setActive(1);
+
         service.saveRegisteredUserCredential(userCredentials);
-        //return "redirect:/activate.html";
+        System.out.println ("account : " +userCredentials.getEmail() + "  is now active. user still need to set account password.");
+        ///////////////////////////////////////////////////////////////////////////
+        // persists user data locally to this servlet
+        ///////////////////////////////////////////////////////////////////////////
+        setAccount_email(userCredentials.getEmail());
+        setAccount_token(token);
+        //////////////////////////////////////////////////////////////////////////
+        // these two values will be reset every time this work flow is accessed
+        //////////////////////////////////////////////////////////////////////////
+
+        //////////////////////////////////////////////////////////////////////////
+        // create DTO object and bind it to form on the next view
+        //////////////////////////////////////////////////////////////////////////
+        PasswordSetDTO passwordSetDTO = new PasswordSetDTO();
+        model.addAttribute("passwordSetDTO", passwordSetDTO);
+
         return "registrationConfirm/activate";
+    }
+
+
+
+    @RequestMapping(value = "/CompleteRegistration", method = RequestMethod.POST)
+    public String savePassword(
+            Model model,
+            @ModelAttribute("passwordSetDTO") @Valid PasswordSetDTO passwordSetDTO,
+            BindingResult result,
+            WebRequest request,
+            Errors errors){
+
+
+         String account = getAccount_email();
+         System.out.println("saving passoword for account : "+account);
+
+
+        // get values from newUser form
+        // assign a use_role to new user
+        // save new user data into User table
+
+        // create owner object
+        // copy over name info and user id/email
+        // add owner object to model as attribute
+
+
+
+        return "/login";
+
+
     }
 }
