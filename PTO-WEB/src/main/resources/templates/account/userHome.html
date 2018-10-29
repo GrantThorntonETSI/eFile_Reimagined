@@ -8,7 +8,7 @@
 <body>
 
 <!-- End Navbar -->
-<div class="content" >
+<div class="content" style="display: none;" >
     <div class="container-fluid" >
 
         <div class="col-md-13" >
@@ -852,10 +852,10 @@
 
 <script>
     $(document).ready(function() {
-        $('.form-container').hide();
+
         setTimeout(function() {
             // after 1000 ms we add the class animated to the login/register card
-            $('.form-container').fadeIn(500);
+            $('.content').fadeIn(500);
         }, 500);
 
 

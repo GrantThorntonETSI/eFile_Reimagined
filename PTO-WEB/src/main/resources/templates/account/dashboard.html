@@ -8,7 +8,7 @@
 <body>
 
 <!-- End Navbar -->
-<div class="content" style="position: relative; top:-10%;background-color: black;  border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-top-left-radius: 20px;" >
+<div class="content" style=" display:none; position: relative; top:-10%;background-color: black;  border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-top-left-radius: 20px;" >
     <div class="container-fluid">
 
         <div class="row page-header" style="background-color: black;" >
@@ -235,10 +235,10 @@ function openTab(tabName) {
 <script>
     $(document).ready(function() {
 
-        $('.main-page').hide();
+
         setTimeout(function() {
             // after 1000 ms we add the class animated to the login/register card
-            $('.main-page').fadeIn(500);
+            $('.content').fadeIn(500);
         }, 500);
 
 

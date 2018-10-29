@@ -8,11 +8,11 @@
 <body>
 
 <!-- End Navbar -->
-<div class="content" >
+<div class="content" style="display: none;" >
     <div class="container-fluid" style="position: relative; top:100px;">
 
             <div class="col-md-14" >
-                <div class="form-container" style="display:none; position: relative;top:10%; max-height:3000px; color: whitesmoke;   margin-bottom: 100px; background-image: linear-gradient(#383A3C, #383A3C); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; border-top-left-radius: 20px; border-top-right-radius: 20px;">
+                <div class="form-container" style=" position: relative;top:10%; max-height:3000px; color: whitesmoke;   margin-bottom: 100px; background-image: linear-gradient(#383A3C, #383A3C); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; border-top-left-radius: 20px; border-top-right-radius: 20px;">
                     <div style="position: relative;top:26px; margin-left: 40px;">
                         <h4><b style="color: whitesmoke">New User Account</b></h4>
                     </div>
@@ -206,10 +206,10 @@
 
 <script>
     $(document).ready(function() {
-        $('.form-container').hide();
+        //$('.content').hide();
         setTimeout(function() {
             // after 1000 ms we add the class animated to the login/register card
-            $('.form-container').fadeIn('slow');
+            $('.content').fadeIn('slow');
         }, 600);
 
         

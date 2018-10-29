@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"  th:replace="~{fragments/layout :: layout (~{::body},'about')}" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'about')}"
+      xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<div class="content" >
+<div class="content" style="display: none;">
     <div class="container-fluid" style="position: relative; top:100px;">
 
         <div class="col-md-14" >
-            <div class="form-container" style="display:none; position: relative;top:10%; max-height:3000px; color: whitesmoke;   margin-bottom: 100px; background-image: linear-gradient(#383A3C, #383A3C); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; border-top-left-radius: 20px; border-top-right-radius: 20px;">
+            <div class="form-container" style=" position: relative;top:10%; max-height:3000px; color: whitesmoke;   margin-bottom: 100px; background-image: linear-gradient(#383A3C, #383A3C); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; border-top-left-radius: 20px; border-top-right-radius: 20px;">
                 <div style="position: relative;top:26px; margin-left: 40px;">
                     <h4><b style="color: whitesmoke">Set User Account Password</b></h4>
                 </div>
@@ -21,7 +22,7 @@
                     </div>
                     <div class="row">
                         <span>
-                            <h3 STYLE="color: whitesmoke; position:relative; right: -10%;"> <b>YOUR ACCOUNT IS NOW ACTIVATED. SET YOUR PASSWORD TO COMPLETE REGISTRATION.</b></h3>
+                            <h3 STYLE="color: whitesmoke; position:relative; right: -10%;"> <b>YOUR ACCOUNT IS NOW ACTIVATED. </br> SET YOUR PASSWORD TO COMPLETE REGISTRATION.</b></h3>
                         </span>
 
                     </div>
@@ -109,10 +110,10 @@
 
 <script>
         $(document).ready(function() {
-            $('.form-container').hide();
+           // $('.content').hide();
             setTimeout(function() {
                 // after 600 ms we add the class animated to the login/register card
-                $('.form-container').fadeIn('slow');
+                $('.content').fadeIn('slow');
             }, 600);
 
 
