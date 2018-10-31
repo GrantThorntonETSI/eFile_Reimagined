@@ -64,7 +64,7 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .anonymous()
-                .authorities("")
+
                 .and()
 
                 .formLogin()
