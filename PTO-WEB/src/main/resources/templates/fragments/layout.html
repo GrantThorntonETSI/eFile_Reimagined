@@ -25,7 +25,7 @@
 </head>
 
 <body>
-<div >
+<div id="page-body">
     <header class="navbar-fixed-top" id="global-header" role="banner">
         <div class="uspto-header-top">
             <nav class="nav navbar">
@@ -142,7 +142,7 @@
     <div class="modal-dialog" >
 
         <!-- Modal content-->
-        <div class="modal-content" style="max-width:580px; max-height: 900px; background-color: #004c97; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+        <div class="modal-content" style="max-width:580px; max-height: 900px; background-color: rgb(246, 246, 246); border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
             <div class="modal-header" style="background-color: #383A3C; color: whitesmoke; border-top-left-radius: 20px; border-top-right-radius: 20px;">
                 <button type="button" class="close" data-dismiss="modal" style="color: whitesmoke;">&times;</button>
                 <h4 class="modal-title" style="color: whitesmoke;"><b>USPTO.gov | eFile <i>Reimagined</i></b> </h4>
@@ -151,7 +151,7 @@
 
                 <div class="container-fluid" >
                     <form th:action="@{/login}" method="post" class="form form-check-input form-control-sm"  >
-                        <div class="card card-login" style="margin: auto; color: #383A3C; background-color: whitesmoke; min-height: 250px; margin-left: 20px;  max-width: 90%;   border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"  >
+                        <div class="card card-login" style="margin: auto; color: #383A3C; background-color: white; min-height: 250px; margin-left: 20px;  max-width: 90%;   border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"  >
                             <div class=" card-header-blue text-center" style="padding-top: 10px;position:relative;top: 20px; right:-30%;">
                                 <b class="card-title" style=""><a style="font-size: x-small;margin-top: 50px;" href="/registration">New User?</a></b>
                             </div>
@@ -180,7 +180,7 @@
                                   </div>
                                 </span>
                             </div>
-                            <div class="card-footer justify-content-center" style="padding-top: 20px; padding-bottom:50px; margin-bottom: 10px; background-color: whitesmoke; border-top: none; position:relative;top: 12px;  border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                            <div class="card-footer justify-content-center" style="padding-top: 20px; padding-bottom:50px; margin-bottom: 10px; background-color: white; border-top: none; position:relative;top: 12px;  border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
 
 
 
@@ -207,9 +207,9 @@
                 </div>
 
             </div>
-            <div class="modal-footer" style="  background-color: #004c97; color: whitesmoke; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+            <div class="modal-footer" style="  background-color: rgb(246, 246, 246); color: whitesmoke; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
 
-                <hr style="height: 15px; min-width: 580px; background-color: #383A3C; position: relative; left:-15px; top:-33px;">
+
 
 
             </div>
@@ -218,8 +218,63 @@
     </div>
 </div>
 <!-- end of login modal -->
+<script>
+    $(document).ready(function() {
+
+        setTimeout(function() {
+            // after 1000 ms we add the class animated to the login/register card
+            $('.content').fadeIn(500);
+        }, 500);
+
+
+        ///////////////////////////////////////////////////////////////////////////////////////////
+        // password modal update actions
+        // passowrd update on click
+        ////////////////////////////////////////////////////////////////////////////////////////////
+
+        $('#webPolicy').click( function () {
+
+            $('#web-policy-card').fadeIn();
+
+        });
+
+
+        $(function() {
+            $('*').click(function(e) {
+                if(e.target.id != 'webPolicy')   {
+                    $('#web-policy-card').fadeOut();
+                }
+            });
+        });
+
+
+
+
+        //////////////////////////////////////////////////////////////////////////
+
+    });
+</script>
 </body>
+
+<div>
+    <div class="row">
+        <div class="card-body" id="web-policy-card" style=" display:none; margin-top:10px; margin-right:10px; margin-left:10px; position:relative;top: -477px; right:-525px; min-height: 300px; max-width: 670px; background-color: #323232; opacity: 1; mix-blend-mode: normal; font-variant: normal; color: rgb(255, 255, 255); font-size: 12px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; width: 612px; height: 173px; transform: rotate(0deg) translate(17px, 496px) rotate(0deg);">
+
+
+                    <span class="bmd-form-group" style="margin-top: 10px;" >
+                        <p style="max-height: 10px;">&nbsp;&nbsp;</p>
+                        <p style="margin-top: 15px; margin-left: 15px; margin-right: 15px;">This is a United States Patent and Trademark Office (USPTO) computer system, which may be accessed and used only for official Government business by authorized personnel. Unauthorized access, actions, use, modification, or disclosure of the data contained herein or in transit to/from this system constitutes a violation of the Computer Fraud and Abuse Act, Pub. L. No. 99-474, codified at 18 U.S.C. §1030, state criminal and civil laws, and may subject violators to criminal, civil, and/or administrative action and penalties. Regardless of geographic location, authorized use of this system must comply with USPTO policy, as documented in the USPTO AAO 202-737 (Limited Personal Use of Government Equipment), AAO 212-4 (Information Technology Security Policy) and the USPTO Rules of the Road. Unauthorized use or actions exceeding authorized use of USPTO systems will be investigated, and, when appropriate, official sanctions will be imposed. All data contained on USPTO computer systems is owned by the USPTO, and may be monitored, intercepted, recorded, read, copied, captured, and disclosed in any manner by authorized personnel. THERE IS NO RIGHT OF PRIVACY IN THIS SYSTEM. System personnel may give to law enforcement officials, for investigation and prosecution, any potential evidence of crime found on USPTO computer systems. USE OF THIS SYSTEM BY ANY USER, AUTHORIZED OR UNAUTHORIZED, CONSTITUTES CONSENT TO THIS MONITORING, INTERCEPTION, RECORDING, READING, COPYING, CAPTURING, AND DISCLOSURE. Suspected access violations or policy infractions should be reported to the USPTO Service Desk at (571) 272-9000.</p>
+
+                    </span>
+
+        </div>
+
+    </div>
+</div>
+
+
 <footer>
+
     <div class="container-fluid">
         <div class="row">
             <div class="uspto-footer-top col-sm-8">
@@ -235,7 +290,7 @@
             </div>
 
             <div class="col-sm-4">
-                <span><p style=" position:relative; top:-712px; left:-550px; min-width: 200px; opacity: 1; mix-blend-mode: normal; font-variant: normal; color: rgb(255, 255, 255); font-size: 18px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; width: 108px; height: 18px; transform: rotate(0deg) translate(63px, 749px) rotate(0deg);">Website Policy</p></span>
+                <span id="webPolicy"><p  style=" position:relative; top:-712px; left:-550px; min-width: 200px; opacity: 1; mix-blend-mode: normal; font-variant: normal; color: rgb(255, 255, 255); font-size: 18px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; width: 108px; height: 18px; transform: rotate(0deg) translate(63px, 749px) rotate(0deg);">Website Policy</p></span>
 
             </div>
 
@@ -245,8 +300,17 @@
             </div>
 
 
+
+
+
         </div>
+
+
+
     </div>
 </footer>
+
+
+
 
 </html>
