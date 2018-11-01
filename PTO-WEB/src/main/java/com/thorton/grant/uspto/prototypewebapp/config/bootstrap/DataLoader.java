@@ -39,18 +39,22 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
 
 
         PTOUser PTOUser1 = new PTOUser();
-        PTOUser1.setFirstName("Li");
-        PTOUser1.setLastName("Zhang");
+        PTOUser1.setFirstName("test");
+        PTOUser1.setLastName("user");
         PTOUser1.setAddress("1115 Reserve Champion Drive");
         PTOUser1.setCity("Rockville");
+        PTOUser1.setState("Maryland");
+        PTOUser1.setZipcode("20850");
+        PTOUser1.setCountry("United States");
         PTOUser1.setPrimaryPhonenumber("571-839-3730");
+        PTOUser1.setProfileComplete(true);
 
         // set username, password, email and role
         UserCredentials ownerCreds = new UserCredentials();
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         // follow the same convention from the save method and save role for test user 1
 
-        ownerCreds.setUsername("zhangl");
+        ownerCreds.setUsername("test.user");
         ownerCreds.setPassword(bCryptPasswordEncoder.encode("xxxxx"));
         ownerCreds.setPasswordConfirm(bCryptPasswordEncoder.encode("xxxxx"));
         ownerCreds.setEmail("lzhang422@gmail.com");
@@ -70,38 +74,38 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         myPTOUserService.save(PTOUser1);
         userRoleService.save(userRole);
         userCredentialsService.save(ownerCreds);
-       // userRoleService.save(userRole);
+        // userRoleService.save(userRole);
 
 
 
         // now add objects to repository, owner and user
 
-/*
+        /*
 
-        Privilege readPrivilege
-                = createPrivilegeIfNotFound("READ_PRIVILEGE");
-        Privilege writePrivilege
-                = createPrivilegeIfNotFound("WRITE_PRIVILEGE");
+                Privilege readPrivilege
+                        = createPrivilegeIfNotFound("READ_PRIVILEGE");
+                Privilege writePrivilege
+                        = createPrivilegeIfNotFound("WRITE_PRIVILEGE");
 
-        HashSet<Privilege>   adminPrivileges= new HashSet<Privilege>(Arrays.asList(
-                readPrivilege, writePrivilege));
-        createRoleIfNotFound("ROLE_ADMIN", adminPrivileges);
-        createRoleIfNotFound("ROLE_USER", new HashSet<Privilege>(Arrays.asList(readPrivilege)));
+                HashSet<Privilege>   adminPrivileges= new HashSet<Privilege>(Arrays.asList(
+                        readPrivilege, writePrivilege));
+                createRoleIfNotFound("ROLE_ADMIN", adminPrivileges);
+                createRoleIfNotFound("ROLE_USER", new HashSet<Privilege>(Arrays.asList(readPrivilege)));
 
-        Role adminRole = myRoleService.findByRole("ROLE_ADMIN");
-        User user = new User();
-        //user.setFirstName("Test");
-        //user.setLastName("Test");
-        user.setUsername("test_user");
-        user.setPassword(bCryptPasswordEncoder.encode("test123"));
-        user.setEmail("test@test.com");
-        user.setRoles( new HashSet<Role>(Arrays.asList(adminRole)));
-        user.setActive(1);
-        myUsersService.save(user);
+                Role adminRole = myRoleService.findByRole("ROLE_ADMIN");
+                User user = new User();
+                //user.setFirstName("Test");
+                //user.setLastName("Test");
+                user.setUsername("test_user");
+                user.setPassword(bCryptPasswordEncoder.encode("test123"));
+                user.setEmail("test@test.com");
+                user.setRoles( new HashSet<Role>(Arrays.asList(adminRole)));
+                user.setActive(1);
+                myUsersService.save(user);
 
 
 
-*/
+        */
 
 
 

@@ -41,13 +41,18 @@ public class UserPersonalData extends BaseEntity {
         @Column(name="state")
         private String  state;
 
+        @Column(name="zipcode")
+        private String  zipcode;
+
+        @Column(name="country")
+        private String  country;
 
         @Column(name = "primary_Phonenumber")
         private String primaryPhonenumber;
 
 
         @Column(name =  "profile_complete" )
-        private boolean profileComplete;
+        private boolean profileComplete = false;
 
         @Column(name="phoneNumber")
         private String[] phoneNumber;
@@ -67,153 +72,183 @@ public class UserPersonalData extends BaseEntity {
         @OneToOne(cascade = CascadeType.ALL)
         private UserCredentials userCredentials ;
 
-        public String getFirstName() {
-            return firstName;
-        }
+    public String getFirstName() {
+        return firstName;
+    }
 
-        public void setFirstName(String firstName) {
-            this.firstName = firstName;
-        }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-        public String getLastName() {
-            return lastName;
-        }
+    public String getLastName() {
+        return lastName;
+    }
 
-        public void setLastName(String lastName) {
-            this.lastName = lastName;
-        }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-        public String getMidlleName() {
-            return midlleName;
-        }
+    public String getMidlleName() {
+        return midlleName;
+    }
 
-        public void setMidlleName(String midlleName) {
-            this.midlleName = midlleName;
-        }
+    public void setMidlleName(String midlleName) {
+        this.midlleName = midlleName;
+    }
 
-        public String getTitle() {
-            return title;
-        }
+    public String getTitle() {
+        return title;
+    }
 
-        public void setTitle(String title) {
-            this.title = title;
-        }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-        public String getSuffix() {
-            return suffix;
-        }
+    public String getSuffix() {
+        return suffix;
+    }
 
-        public void setSuffix(String suffix) {
-            this.suffix = suffix;
-        }
+    public void setSuffix(String suffix) {
+        this.suffix = suffix;
+    }
 
-        public String getAddress() {
-            return address;
-        }
+    public String getAddress() {
+        return address;
+    }
 
-        public void setAddress(String address) {
-            this.address = address;
-        }
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-        public String getCity() {
-            return city;
-        }
+    public String getCity() {
+        return city;
+    }
 
-        public void setCity(String city) {
-            this.city = city;
-        }
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-        public String getState() {
-            return state;
-        }
+    public String getState() {
+        return state;
+    }
 
-        public void setState(String state) {
-            this.state = state;
-        }
+    public void setState(String state) {
+        this.state = state;
+    }
 
-        public String getPrimaryPhonenumber() {
-            return primaryPhonenumber;
-        }
+    public String getZipcode() {
+        return zipcode;
+    }
 
-        public void setPrimaryPhonenumber(String primaryPhonenumber) {
-            this.primaryPhonenumber = primaryPhonenumber;
-        }
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
 
-        public String[] getPhoneNumber() {
-            return phoneNumber;
-        }
+    public String getCountry() {
+        return country;
+    }
 
-        public void setPhoneNumber(String[] phoneNumber) {
-            this.phoneNumber = phoneNumber;
-        }
+    public void setCountry(String country) {
+        this.country = country;
+    }
 
-        public String getEmail() {
-            return email;
-        }
+    public String getPrimaryPhonenumber() {
+        return primaryPhonenumber;
+    }
 
-        public void setEmail(String email) {
-            this.email = email;
-        }
+    public void setPrimaryPhonenumber(String primaryPhonenumber) {
+        this.primaryPhonenumber = primaryPhonenumber;
+    }
 
-        public String getAlertnateEmail() {
-            return alertnateEmail;
-        }
+    public boolean isProfileComplete() {
+        return profileComplete;
+    }
 
-        public void setAlertnateEmail(String alertnateEmail) {
-            this.alertnateEmail = alertnateEmail;
-        }
+    public void setProfileComplete(boolean profileComplete) {
+        this.profileComplete = profileComplete;
+    }
 
-        public UserCredentials getUserCredentials() {
-            return userCredentials;
-        }
+    public String[] getPhoneNumber() {
+        return phoneNumber;
+    }
 
-        public void setUserCredentials(UserCredentials userCredentials) {
-            this.userCredentials = userCredentials;
-        }
+    public void setPhoneNumber(String[] phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            UserPersonalData that = (UserPersonalData) o;
-            return Objects.equals(firstName, that.firstName) &&
-                    Objects.equals(lastName, that.lastName) &&
-                    Objects.equals(midlleName, that.midlleName) &&
-                    Objects.equals(title, that.title) &&
-                    Objects.equals(suffix, that.suffix) &&
-                    Objects.equals(address, that.address) &&
-                    Objects.equals(city, that.city) &&
-                    Objects.equals(state, that.state) &&
-                    Objects.equals(primaryPhonenumber, that.primaryPhonenumber) &&
-                    Arrays.equals(phoneNumber, that.phoneNumber) &&
-                    Objects.equals(email, that.email) &&
-                    Objects.equals(alertnateEmail, that.alertnateEmail) &&
-                    Objects.equals(userCredentials, that.userCredentials);
-        }
+    public String getEmail() {
+        return email;
+    }
 
-        @Override
-        public int hashCode() {
-            int result = Objects.hash(firstName, lastName, midlleName, title, suffix, address, city, state, primaryPhonenumber, email, alertnateEmail, userCredentials);
-            result = 31 * result + Arrays.hashCode(phoneNumber);
-            return result;
-        }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-        @Override
-        public String toString() {
-            return "UserPersonalData{" +
-                    "firstName='" + firstName + '\'' +
-                    ", lastName='" + lastName + '\'' +
-                    ", midlleName='" + midlleName + '\'' +
-                    ", title='" + title + '\'' +
-                    ", suffix='" + suffix + '\'' +
-                    ", address='" + address + '\'' +
-                    ", city='" + city + '\'' +
-                    ", state='" + state + '\'' +
-                    ", primaryPhonenumber='" + primaryPhonenumber + '\'' +
-                    ", phoneNumber=" + Arrays.toString(phoneNumber) +
-                    ", email='" + email + '\'' +
-                    ", alertnateEmail='" + alertnateEmail + '\'' +
-                    ", userCredentials=" + userCredentials +
-                    '}';
-        }
+    public String getAlertnateEmail() {
+        return alertnateEmail;
+    }
+
+    public void setAlertnateEmail(String alertnateEmail) {
+        this.alertnateEmail = alertnateEmail;
+    }
+
+    public UserCredentials getUserCredentials() {
+        return userCredentials;
+    }
+
+    public void setUserCredentials(UserCredentials userCredentials) {
+        this.userCredentials = userCredentials;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserPersonalData that = (UserPersonalData) o;
+        return profileComplete == that.profileComplete &&
+                Objects.equals(firstName, that.firstName) &&
+                Objects.equals(lastName, that.lastName) &&
+                Objects.equals(midlleName, that.midlleName) &&
+                Objects.equals(title, that.title) &&
+                Objects.equals(suffix, that.suffix) &&
+                Objects.equals(address, that.address) &&
+                Objects.equals(city, that.city) &&
+                Objects.equals(state, that.state) &&
+                Objects.equals(zipcode, that.zipcode) &&
+                Objects.equals(country, that.country) &&
+                Objects.equals(primaryPhonenumber, that.primaryPhonenumber) &&
+                Arrays.equals(phoneNumber, that.phoneNumber) &&
+                Objects.equals(email, that.email) &&
+                Objects.equals(alertnateEmail, that.alertnateEmail) &&
+                Objects.equals(userCredentials, that.userCredentials);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(firstName, lastName, midlleName, title, suffix, address, city, state, zipcode, country, primaryPhonenumber, profileComplete, email, alertnateEmail, userCredentials);
+        result = 31 * result + Arrays.hashCode(phoneNumber);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "UserPersonalData{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", midlleName='" + midlleName + '\'' +
+                ", title='" + title + '\'' +
+                ", suffix='" + suffix + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zipcode='" + zipcode + '\'' +
+                ", country='" + country + '\'' +
+                ", primaryPhonenumber='" + primaryPhonenumber + '\'' +
+                ", profileComplete=" + profileComplete +
+                ", phoneNumber=" + Arrays.toString(phoneNumber) +
+                ", email='" + email + '\'' +
+                ", alertnateEmail='" + alertnateEmail + '\'' +
+                ", userCredentials=" + userCredentials +
+                '}';
+    }
 }

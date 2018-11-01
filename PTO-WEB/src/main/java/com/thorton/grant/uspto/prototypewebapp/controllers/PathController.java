@@ -48,10 +48,17 @@ public class PathController {
         model.addAttribute("user", ptoUser);
         model.addAttribute("account",credentials);
 
+        if(ptoUser.isProfileComplete()){
+              return "account/dashboard";
+        }
+        else {
+            return "account/userHome";
+        }
 
 
 
-        return "";
+
+
 
 
     }
