@@ -53,10 +53,31 @@ public class OwnerController {
 
 
     @RequestMapping({"/accounts/dashboard"})
-    public String dashboard(){
+    public String dashboard(Model model){
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        System.out.println("logged in user email :"+authentication.getPrincipal());
+        System.out.println("logged in user name: "+authentication.getName());
+        PTOUserService  ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
 
 
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+
+        if(ptoUser.isProfileComplete() == false){
+            model.addAttribute("message", "Please Complete your Personal and Contact Information First.");
+            return "account/userHome";
+        }
         return "account/dashboard";
+
     }
 
 
