@@ -2,6 +2,8 @@ package com.thorton.grant.uspto.prototypewebapp.controllers;
 
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.IUserService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.PasswordSetDTO;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.RegistrationDTO;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.UserCredentialsDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.VerificationToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,18 +64,22 @@ public class EmailVerificationController {
         VerificationToken verificationToken = service.getVerificationToken(token);
         if (verificationToken == null) {
             String message = "auth.message.invalidToken";
+            RegistrationDTO registrationDTO = new RegistrationDTO();
+            model.addAttribute("userCredentialsDTO", registrationDTO);
             model.addAttribute("message", message);
 
-            return "registrationConfirm/badUser";
+            return "registration/index";
         }
 
         UserCredentials userCredentials = verificationToken.getNewCredential();
         Calendar cal = Calendar.getInstance();
         if ((verificationToken.getExpiredTime().getTime() - cal.getTime().getTime()) <= 0) {
             String messageValue = "token has expired";
+            RegistrationDTO registrationDTO = new RegistrationDTO();
+            model.addAttribute("userCredentialsDTO", registrationDTO);
             model.addAttribute("message", messageValue);
 
-            return "registrationConfirm/badUser";
+            return "registration/index";
         }
 
         //////////////////////////////////////////////////////////////////////////
