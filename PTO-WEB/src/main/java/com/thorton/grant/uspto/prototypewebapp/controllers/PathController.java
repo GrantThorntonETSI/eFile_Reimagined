@@ -1,11 +1,25 @@
 package com.thorton.grant.uspto.prototypewebapp.controllers;
 
+import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.PTOUser;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
 public class PathController {
+
+    private final ServiceBeanFactory serviceBeanFactory;
+
+    public PathController(ServiceBeanFactory serviceBeanFactory) {
+        this.serviceBeanFactory = serviceBeanFactory;
+    }
 
     @RequestMapping({"", "/","/index","/index.html", "/home"})
     public String index(){
@@ -16,6 +30,32 @@ public class PathController {
 
         //return "registrationConfirm/VerificationEmail";
     }
+
+
+    // login intercept
+    @RequestMapping({"/verifyAddress"})
+    public String verifyAddress(Model model){
+
+        // get access credentials
+        // get email and get PTOUser object from repository
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+
+
+
+
+        return "";
+
+
+    }
+
 
 
     @RequestMapping({"/aboutUs"})

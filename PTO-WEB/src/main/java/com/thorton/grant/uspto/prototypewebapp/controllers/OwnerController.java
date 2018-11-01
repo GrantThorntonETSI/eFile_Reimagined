@@ -45,6 +45,8 @@ public class OwnerController {
         model.addAttribute("account",credentials);
 
 
+        // check if user have address information set.
+
 
         return "account/userHome";
     }
