@@ -161,8 +161,8 @@
                             <div class="col-sm-10">
                                 <div class="form-group" style="margin-left: 25px;">
                                     <p style="position: relative; left:-3%;">Some sections of uspto.gov requires a two-step authentication to confirm your identity. this provides an extra layer of security </p>
-                                    <P style="position: relative; left:-19%;">to your account by requiring you to enter a random generated authentication code.</p>
-                                    <p style="position: relative; left:-27.5%;"><b>Select the default of your second level of authentication</b></p>
+                                    <P style="position: relative; left:-3%;">to your account by requiring you to enter a random generated authentication code.</p>
+                                    <p style="position: relative; left:-3%;"><b>Select the default of your second level of authentication</b></p>
                                 </div>
                             </div>
                         </div>
@@ -215,7 +215,7 @@
                                             <span class="bmd-form-group">
 
                                             </span>
-                                            <button  style="position:relative; top: -13px; float:right; margin-right: 15px;  min-width: 100px;background-color: #004c97; color:whitesmoke;border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;" class="btn" type="button" value="Sign In"><span class="glyphicon glyphicon-log-in" ></span><b>&nbsp;&nbsp;&nbsp;&nbsp; Enable and Set Up&nbsp;</b></button></div>
+                                            <button  style="position:relative; top: 10px; float:right; margin-right: 15px;  min-width: 100px;background-color: #004c97; color:whitesmoke;border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;" class="btn" type="button" value="Sign In"><span class="glyphicon glyphicon-log-in" ></span><b>&nbsp;&nbsp;&nbsp;&nbsp; Enable and Set Up&nbsp;</b></button></div>
 
                                        </div>
 
@@ -1323,7 +1323,7 @@
 
 
             $.ajax({
-                url: "http://efile-reimagined.com/REST/apiGateway/user/update/pw/"+currentPW+"/"+newPW,
+                url: "http://localhost:8080/REST/apiGateway/user/update/pw/"+currentPW+"/"+newPW,
                 type: 'GET',
                 success: function(data){
 
@@ -1419,7 +1419,7 @@
             //alert(field_value);
 
             $.ajax({
-                url: "http://efile-reimagined.com/REST/apiGateway/user/update/"+field_name_prefix+"/"+field_value,
+                url: "http://localhost:8080/REST/apiGateway/user/update/"+field_name_prefix+"/"+field_value,
                 type: 'GET',
                 success: function(data){
 
@@ -1514,7 +1514,7 @@
         // check if profile complete
 
         $.ajax({
-            url: "http://efile-reimagined.com/REST/apiGateway/user/complete/",
+            url: "http://localhost:8080/REST/apiGateway/user/complete/",
             type: 'GET',
             success: function(data){
 

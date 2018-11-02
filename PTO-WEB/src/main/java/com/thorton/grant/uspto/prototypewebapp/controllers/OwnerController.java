@@ -52,6 +52,33 @@ public class OwnerController {
     }
 
 
+    @RequestMapping({"/accounts/Home"})
+    public String landingPageLoggedIn(Model model){
+
+        // retireve owner using email from the credentials ..
+        // add find by email methods to both personal data and credentails cass
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+
+        PTOUserService  ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+
+
+        // check if user have address information set.
+
+
+        return "account/home";
+    }
+
+
+
     @RequestMapping({"/accounts/dashboard"})
     public String dashboard(Model model){
 
