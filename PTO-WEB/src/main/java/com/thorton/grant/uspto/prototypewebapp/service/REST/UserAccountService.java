@@ -2,8 +2,12 @@ package com.thorton.grant.uspto.prototypewebapp.service.REST;
 
 
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.IUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.RegistrationDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.security.VerificationToken;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -25,12 +29,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
 @Service
 public class UserAccountService {
+
+    //@Autowired
+    //private IUserService service;
 
     private final ServiceBeanFactory serviceBeanFactory;
 
@@ -53,11 +61,37 @@ public class UserAccountService {
 
 
     @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
-    @RequestMapping(method = GET, value="/REST/apiGateway/user/update/pw/{password1}/{password2}")
+    @RequestMapping(method = GET, value="/REST/apiGateway/user/update/pw/{password1}/{password2}/{token}")
     @ResponseBody
-    ResponseEntity<String> updateUserPassword(@PathVariable String password1, @PathVariable String password2){
+    ResponseEntity<String> updateUserPassword(@PathVariable String password1, @PathVariable String password2, @PathVariable String token){
 
 
+
+
+        // verify token before preceding
+/*
+        VerificationToken verificationToken = service.getVerificationToken(token);
+        if (verificationToken == null) {
+            String message = "INVALID ACCESS TOKEN.";
+            HttpHeaders responseHeader = new HttpHeaders ();
+            ArrayList<String> headersAllowed = new ArrayList<String>();
+            responseHeader.setAccessControlAllowHeaders(headersAllowed);
+            return ResponseEntity.badRequest().headers(responseHeader).body(message) ;
+        }
+
+
+        Calendar cal = Calendar.getInstance();
+        if ((verificationToken.getExpiredTime().getTime() - cal.getTime().getTime()) <= 0) {
+            String message = "EXPIRED ACCESS TOKEN.";
+            HttpHeaders responseHeader = new HttpHeaders ();
+            ArrayList<String> headersAllowed = new ArrayList<String>();
+            responseHeader.setAccessControlAllowHeaders(headersAllowed);
+            return ResponseEntity.badRequest().headers(responseHeader).body(message) ;
+        }
+
+
+        UserCredentials userCredentials = verificationToken.getNewCredential();
+*/
 
         // retrieve current userName from spring security
 
@@ -66,15 +100,19 @@ public class UserAccountService {
         // set status code based on if that matched
 
         // if matched. update password for credentials object
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        //UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+
         UserCredentials userCredentials = userCredentialsService.findByEmail(email);
+
+
+
+
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         boolean pwMatched = bCryptPasswordEncoder.matches(password1, userCredentials.getPassword());
-        //String storedPw = authentication.getPrincipal().toString();
 
         String statusCode = "200";
         String responseMsg;
@@ -103,10 +141,6 @@ public class UserAccountService {
         }
 
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
-        System.out.println(password1);
-        //UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
-        //userCredentialsService.findByEmail(email);
-
         HttpHeaders responseHeader = new HttpHeaders ();
         //responseHeader.set("Access-Control-Allow-Origin", "http://18.221.138.198:8080");
         responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
@@ -114,9 +148,7 @@ public class UserAccountService {
         headersAllowed.add("Access-Control-Allow-Origin");
         responseHeader.setAccessControlAllowHeaders(headersAllowed);
         ArrayList<String> methAllowed = new ArrayList<String>();
-        //methAllowed.add("GET");
-        //methAllowed.add("POST");
-        //responseHeader.setAccessControlAllowMethods(methAllowed);
+
         System.out.println("response header : "+responseHeader.getAccessControlAllowOrigin());
 
 

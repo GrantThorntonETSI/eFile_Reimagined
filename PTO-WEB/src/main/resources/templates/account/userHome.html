@@ -710,7 +710,7 @@
 
             <div class="col-sm-1">
                 <div class="circle-loader-state" style="display: none; position: relative; top:20px;">
-                    <div class="checkmark draw" style="position: relative; bottom: -10px;"></div>
+                    <div class="checkmark draw state-checkmark" style="position: relative; bottom: -10px;"></div>
                 </div>
 
                 <p><button id="toggle-state" style="display: none;" type="button" class="btn btn-success">Toggle Completed</button></p>
@@ -1051,11 +1051,44 @@
         // contact information 'State' auto save ////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////
         $('#state').focusout( function () {
-           // alert($(this).val());
-            $('.circle-loader-state').fadeIn(100);
-            // now we need to create an java back end service that saves this value.
-            // also add validation on the html  similar to password save
-            $('#toggle-state').delay(1000).click();
+
+
+            // alert($(this).val()); // test value capture
+            // animation rendering control
+            if($('.state-checkmark').css('display') == 'block'){
+
+
+
+                $('.circle-loader-state').fadeOut(100);
+                // now we need to create an java back end service that saves this value.
+                // also add validation on the html  similar to password save
+                $('#toggle-state').delay(100).click();
+
+                // alert($(this).val());
+                $('.circle-loader-state').fadeIn(100);
+                // now we need to create an java back end service that saves this value.
+                // also add validation on the html  similar to password save
+                $('#toggle-state').delay(1000).click();
+
+
+            }
+            else {
+
+                $('.circle-loader-state').fadeIn(100);
+                // now we need to create an java back end service that saves this value.
+                // also add validation on the html  similar to password save
+                $('#toggle-state').delay(1000).click();
+
+            }
+            // send state, and token to server
+            // token will be generated in the controller and added to the view
+            // similar to how access token works ...a token is tied to a user
+            // access token will be passed in through model
+            //
+            // var tokenValue = '${token}';  // token is the model attribute name
+
+
+
 
 
         });
