@@ -214,6 +214,37 @@ public class UserAccountService {
         if(userAccountField.equals("State")){
               ptoUser.setState(param); // sets new state code
         }
+
+        // check if all required fields are set
+        boolean profileSet = true;
+        if(ptoUser.getAddress() == null || ptoUser.getAddress().equals("")){
+            profileSet = false;
+        }
+        System.out.println(profileSet);
+        if(ptoUser.getCity() == null || ptoUser.getCity().equals("")){
+            profileSet = false;
+        }
+        System.out.println(profileSet);
+
+        if(ptoUser.getState() == null || ptoUser.getState().equals("")){
+            profileSet = false;
+        }
+        System.out.println(profileSet);
+
+        if(ptoUser.getZipcode() == null || ptoUser.getZipcode().equals("")){
+            profileSet = false;
+        }
+        System.out.println(profileSet);
+
+        if(ptoUser.getPrimaryPhonenumber() == null || ptoUser.getPrimaryPhonenumber().equals("")){
+            profileSet = false;
+        }
+        System.out.println(profileSet);
+
+        ptoUser.setProfileComplete(profileSet);
+
+
+
         ptoUserService.save(ptoUser);
 
 
@@ -221,6 +252,94 @@ public class UserAccountService {
 
         String statusCode = "200";
         String responseMsg = userAccountField+" has been saved.";
+        responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
+        HttpHeaders responseHeader = new HttpHeaders ();
+        responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
+        ArrayList<String> headersAllowed = new ArrayList<String>();
+        headersAllowed.add("Access-Control-Allow-Origin");
+        responseHeader.setAccessControlAllowHeaders(headersAllowed);
+        ArrayList<String> methAllowed = new ArrayList<String>();
+
+        System.out.println("response header : "+responseHeader.getAccessControlAllowOrigin());
+
+
+        return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+
+    }
+
+
+
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/user/complete/")
+    @ResponseBody
+    ResponseEntity<String> checkProfileComplete(){
+        // verify token before preceding
+/*
+        VerificationToken verificationToken = service.getVerificationToken(token);
+        if (verificationToken == null) {
+            String message = "INVALID ACCESS TOKEN.";
+            HttpHeaders responseHeader = new HttpHeaders ();
+            ArrayList<String> headersAllowed = new ArrayList<String>();
+            responseHeader.setAccessControlAllowHeaders(headersAllowed);
+            return ResponseEntity.badRequest().headers(responseHeader).body(message) ;
+        }
+
+
+        Calendar cal = Calendar.getInstance();
+        if ((verificationToken.getExpiredTime().getTime() - cal.getTime().getTime()) <= 0) {
+            String message = "EXPIRED ACCESS TOKEN.";
+            HttpHeaders responseHeader = new HttpHeaders ();
+            ArrayList<String> headersAllowed = new ArrayList<String>();
+            responseHeader.setAccessControlAllowHeaders(headersAllowed);
+            return ResponseEntity.badRequest().headers(responseHeader).body(message) ;
+        }
+
+
+        UserCredentials userCredentials = verificationToken.getNewCredential();
+*/
+
+        // retrieve current userName from spring security
+
+        // check if current password matches what is stored
+
+        // set status code based on if that matched
+
+        // if matched. update password for credentials object
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();
+
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+
+
+
+
+        PTOUser ptoUser = ptoUserService.findByEmail(email);
+
+       if(ptoUser.isProfileComplete() == false){
+
+           String statusCode = "444";
+           String responseMsg = "User Profile required information is not complete.";
+           responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
+           HttpHeaders responseHeader = new HttpHeaders ();
+           //responseHeader.set("Access-Control-Allow-Origin", "http://18.221.138.198:8080");
+           responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
+           ArrayList<String> headersAllowed = new ArrayList<String>();
+           headersAllowed.add("Access-Control-Allow-Origin");
+           responseHeader.setAccessControlAllowHeaders(headersAllowed);
+           ArrayList<String> methAllowed = new ArrayList<String>();
+
+           System.out.println("response header : "+responseHeader.getAccessControlAllowOrigin());
+
+
+           return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+
+       }
+
+
+
+        String statusCode = "200";
+        String responseMsg = "User Profile required information is  complete.";
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();
         //responseHeader.set("Access-Control-Allow-Origin", "http://18.221.138.198:8080");
@@ -236,6 +355,7 @@ public class UserAccountService {
         return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
 
     }
+
 
     @WebFilter("/REST/apiGateway*")
     public class AddResponseHeaderFilter implements Filter {

@@ -1109,6 +1109,8 @@
                             $('#toggle-state').delay(1000).click();
                         }
 
+
+
                     }
                     else{
                         //$('.circle-loader').fadeOut(100);
@@ -1128,11 +1130,15 @@
                     //$(".validationMsgArea span").text("You can not leave any fields empty.");
                     //$(".validationMsgArea span").css('color','red');
                 }
+
             });
 
 
 
-
+            setTimeout(function() {
+                // after 1000 ms we add the class animated to the login/register card
+                checkProfileComplete();
+            }, 500);
 
         });
 
@@ -1140,7 +1146,50 @@
         // end of contact information 'State' auto save ////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
 
+function checkProfileComplete() {
 
+
+    // check if profile complete
+
+    $.ajax({
+        url: "http://localhost:8080/REST/apiGateway/user/complete/",
+        type: 'GET',
+        success: function(data){
+
+            // parse out status msg:
+            var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+            var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+            if(s_code.trim() == "200"){
+                //if(data.contains("status: 200")){
+                // show confirmation check mark on form
+                //$('#toggle').delay(1000).click();
+
+                alert(s_msg);
+                // remove error banner
+
+            }
+            else {
+                alert(s_msg);
+            }
+
+        },
+        error: function(data) {
+
+            //$('.circle-loader').fadeOut(100);
+            //$('.x-mark').fadeIn(500);
+
+            console.log(data);
+            // set message to div area ...fields can not be left null
+            //$(".validationMsgArea span").text("You can not leave any fields empty.");
+            //$(".validationMsgArea span").css('color','red');
+        }
+    });
+
+
+
+}
 
 
 
@@ -1202,6 +1251,9 @@
                     $(".validationMsgArea span").css('color','red');
                 }
             });
+
+
+
 
 
 
