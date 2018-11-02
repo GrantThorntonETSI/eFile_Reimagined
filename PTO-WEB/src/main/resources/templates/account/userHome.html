@@ -1053,39 +1053,74 @@
         $('#state').focusout( function () {
 
 
-            // alert($(this).val()); // test value capture
-            // animation rendering control
-            if($('.state-checkmark').css('display') == 'block'){
 
-
-
-                $('.circle-loader-state').fadeOut(100);
-                // now we need to create an java back end service that saves this value.
-                // also add validation on the html  similar to password save
-                $('#toggle-state').delay(100).click();
-
-                // alert($(this).val());
-                $('.circle-loader-state').fadeIn(100);
-                // now we need to create an java back end service that saves this value.
-                // also add validation on the html  similar to password save
-                $('#toggle-state').delay(1000).click();
-
-
-            }
-            else {
-
-                $('.circle-loader-state').fadeIn(100);
-                // now we need to create an java back end service that saves this value.
-                // also add validation on the html  similar to password save
-                $('#toggle-state').delay(1000).click();
-
-            }
             // send state, and token to server
             // token will be generated in the controller and added to the view
             // similar to how access token works ...a token is tied to a user
             // access token will be passed in through model
             //
             // var tokenValue = '${token}';  // token is the model attribute name
+            // we are not using secured tokens for the prototype
+            // we will secure it by adding ssl and https support
+
+            var state = $(this).val();
+            $.ajax({
+                url: "http://localhost:8080/REST/apiGateway/user/update/state/"+state,
+                type: 'GET',
+                success: function(data){
+
+                    // parse out status msg:
+                    var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                    var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                    if(s_code.trim() == "200"){
+                        //if(data.contains("status: 200")){
+                        // show confirmation check mark on form
+                        //$('#toggle').delay(1000).click();
+                        //$(".validationMsgArea span").text(s_msg);
+                        //$(".validationMsgArea span").css('color','green');
+
+                        // animation rendering control
+                        if($('.state-checkmark').css('display') == 'block'){
+                            $('.circle-loader-state').fadeOut(100);
+                            // now we need to create an java back end service that saves this value.
+                            // also add validation on the html  similar to password save
+                            $('#toggle-state').delay(100).click();
+
+                            // alert($(this).val());
+                            $('.circle-loader-state').fadeIn(100);
+                            // now we need to create an java back end service that saves this value.
+                            // also add validation on the html  similar to password save
+                            $('#toggle-state').delay(1000).click();
+                        }
+                        else {
+                            $('.circle-loader-state').fadeIn(100);
+                            // now we need to create an java back end service that saves this value.
+                            // also add validation on the html  similar to password save
+                            $('#toggle-state').delay(1000).click();
+                        }
+
+                    }
+                    else{
+                        //$('.circle-loader').fadeOut(100);
+                        //$('.x-mark').fadeIn(500);
+                        //$(".validationMsgArea span").text(s_msg);
+                        //$(".validationMsgArea span").css('color','red');
+                    }
+
+                },
+                error: function(data) {
+
+                    //$('.circle-loader').fadeOut(100);
+                    //$('.x-mark').fadeIn(500);
+
+                    console.log(data);
+                    // set message to div area ...fields can not be left null
+                    //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                    //$(".validationMsgArea span").css('color','red');
+                }
+            });
 
 
 

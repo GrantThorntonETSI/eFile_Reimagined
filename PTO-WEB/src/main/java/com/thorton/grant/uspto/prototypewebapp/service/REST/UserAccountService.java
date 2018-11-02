@@ -4,7 +4,9 @@ package com.thorton.grant.uspto.prototypewebapp.service.REST;
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.IUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.RegistrationDTO;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.VerificationToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,9 +63,9 @@ public class UserAccountService {
 
 
     @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
-    @RequestMapping(method = GET, value="/REST/apiGateway/user/update/pw/{password1}/{password2}/{token}")
+    @RequestMapping(method = GET, value="/REST/apiGateway/user/update/pw/{password1}/{password2}")
     @ResponseBody
-    ResponseEntity<String> updateUserPassword(@PathVariable String password1, @PathVariable String password2, @PathVariable String token){
+    ResponseEntity<String> updateUserPassword(@PathVariable String password1, @PathVariable String password2){
 
 
 
@@ -153,6 +155,85 @@ public class UserAccountService {
 
 
        return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+
+    }
+
+
+
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/user/update/{userAccountField}/{param}")
+    @ResponseBody
+    ResponseEntity<String> updateUserAccountInfo(@PathVariable String userAccountField , @PathVariable String param){
+
+
+
+
+        // verify token before preceding
+/*
+        VerificationToken verificationToken = service.getVerificationToken(token);
+        if (verificationToken == null) {
+            String message = "INVALID ACCESS TOKEN.";
+            HttpHeaders responseHeader = new HttpHeaders ();
+            ArrayList<String> headersAllowed = new ArrayList<String>();
+            responseHeader.setAccessControlAllowHeaders(headersAllowed);
+            return ResponseEntity.badRequest().headers(responseHeader).body(message) ;
+        }
+
+
+        Calendar cal = Calendar.getInstance();
+        if ((verificationToken.getExpiredTime().getTime() - cal.getTime().getTime()) <= 0) {
+            String message = "EXPIRED ACCESS TOKEN.";
+            HttpHeaders responseHeader = new HttpHeaders ();
+            ArrayList<String> headersAllowed = new ArrayList<String>();
+            responseHeader.setAccessControlAllowHeaders(headersAllowed);
+            return ResponseEntity.badRequest().headers(responseHeader).body(message) ;
+        }
+
+
+        UserCredentials userCredentials = verificationToken.getNewCredential();
+*/
+
+        // retrieve current userName from spring security
+
+        // check if current password matches what is stored
+
+        // set status code based on if that matched
+
+        // if matched. update password for credentials object
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+
+
+
+        UserCredentials userCredentials = userCredentialsService.findByEmail(email);
+        PTOUser ptoUser = ptoUserService.findByEmail(email);
+
+        if(userAccountField.equals("state")){
+              ptoUser.setState(param); // sets new state code
+        }
+        ptoUserService.save(ptoUser);
+
+
+
+
+        String statusCode = "200";
+        String responseMsg = userAccountField+" has been saved.";
+        responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
+        HttpHeaders responseHeader = new HttpHeaders ();
+        //responseHeader.set("Access-Control-Allow-Origin", "http://18.221.138.198:8080");
+        responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
+        ArrayList<String> headersAllowed = new ArrayList<String>();
+        headersAllowed.add("Access-Control-Allow-Origin");
+        responseHeader.setAccessControlAllowHeaders(headersAllowed);
+        ArrayList<String> methAllowed = new ArrayList<String>();
+
+        System.out.println("response header : "+responseHeader.getAccessControlAllowOrigin());
+
+
+        return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
 
     }
 
