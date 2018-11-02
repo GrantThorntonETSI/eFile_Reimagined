@@ -642,6 +642,32 @@
                     </div>
                 </div>
 
+                <div class="col-sm-1">
+                    <div class="circle-loader-city" style="display: none; position: relative; top:20px;">
+                        <div class="checkmark draw city-checkmark" style="position: relative; bottom: -10px;"></div>
+                    </div>
+
+                    <p><button id="toggle-city" style="display: none;" type="button" class="btn btn-success">Toggle Completed</button></p>
+                </div>
+                <div class="col-sm-1">
+                    <div  class="x-mark-city" style="position: relative; top:-15%; display: none; ">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                            <circle class="path circle" fill="none" stroke="#DC143C" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
+                            <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3"/>
+                            <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2"/>
+                        </svg>
+                    </div>
+
+
+                </div>
+
+
+                <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                    <div class="form-group cityFieldMsgArea" style="position: relative; left:-15%;">
+                        <b><span></span></b>
+                    </div>
+                </div>
+
             </div>
 
         <div class="row" style="margin-left:15px;">
@@ -1071,76 +1097,9 @@
             // var tokenValue = '${token}';  // token is the model attribute name
             // we are not using secured tokens for the prototype
             // we will secure it by adding ssl and https support
-
-            var state = $(this).val();
-
-            $.ajax({
-                url: "http://localhost:8080/REST/apiGateway/user/update/State/"+state,
-                type: 'GET',
-                success: function(data){
-
-                    // parse out status msg:
-                    var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
-
-                    var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
-
-                    if(s_code.trim() == "200"){
-                        //if(data.contains("status: 200")){
-                        // show confirmation check mark on form
-                        //$('#toggle').delay(1000).click();
-                        $(".stateFieldMsgArea span").text(s_msg);
-                        $(".stateFieldMsgArea span").css('color','green');
-
-                        // animation rendering control
-                        if($('.state-checkmark').css('display') == 'block'){
-                            $('.circle-loader-state').fadeOut(100);
-                            // now we need to create an java back end service that saves this value.
-                            // also add validation on the html  similar to password save
-                            $('#toggle-state').delay(100).click();
-
-                            // alert($(this).val());
-                            $('.circle-loader-state').fadeIn(100);
-                            // now we need to create an java back end service that saves this value.
-                            // also add validation on the html  similar to password save
-                            $('#toggle-state').delay(1000).click();
-                        }
-                        else {
-                            $('.circle-loader-state').fadeIn(100);
-                            // now we need to create an java back end service that saves this value.
-                            // also add validation on the html  similar to password save
-                            $('#toggle-state').delay(1000).click();
-                        }
-
-
-
-                    }
-                    else{
-                        //$('.circle-loader').fadeOut(100);
-                        //$('.x-mark').fadeIn(500);
-                        //$(".validationMsgArea span").text(s_msg);
-                        //$(".validationMsgArea span").css('color','red');
-                    }
-
-                },
-                error: function(data) {
-
-                    //$('.circle-loader').fadeOut(100);
-                    //$('.x-mark').fadeIn(500);
-
-                    console.log(data);
-                    // set message to div area ...fields can not be left null
-                    //$(".validationMsgArea span").text("You can not leave any fields empty.");
-                    //$(".validationMsgArea span").css('color','red');
-                }
-
-            });
-
-
-
-            setTimeout(function() {
-                // after 1000 ms we add the class animated to the login/register card
-                checkProfileComplete();
-            }, 500);
+            //
+            var field_value = $(this).val();
+            saveContactInfo("State", field_value);
 
         });
 
@@ -1261,7 +1220,116 @@
 
 
 
+
+
+
+
+
+    function saveContactInfo(field_name_prefix, field_value) {
+
+
+
+
+
+            alert(field_name_prefix);
+            // send state, and token to server
+            // token will be generated in the controller and added to the view
+            // similar to how access token works ...a token is tied to a user
+            // access token will be passed in through model
+            //
+            // var tokenValue = '${token}';  // token is the model attribute name
+            // we are not using secured tokens for the prototype
+            // we will secure it by adding ssl and https support
+
+            //var field_value = $(this).val();
+            alert(field_value);
+
+            $.ajax({
+                url: "http://localhost:8080/REST/apiGateway/user/update/"+field_name_prefix+"/"+field_value,
+                type: 'GET',
+                success: function(data){
+
+                    // parse out status msg:
+                    var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                    var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                    if(s_code.trim() == "200"){
+                        //if(data.contains("status: 200")){
+                        // show confirmation check mark on form
+                        //$('#toggle').delay(1000).click();
+
+                        $("."+field_name_prefix.toLowerCase()+"FieldMsgArea span").text(s_msg);
+                        $("."+field_name_prefix.toLowerCase()+"FieldMsgArea span").css('color','green');
+
+                        // animation rendering control
+                        //if($('.state-checkmark').css('display') == 'block'){
+                        if($( "."+field_name_prefix.toLowerCase()+'-checkmark').css('display') == 'block'){
+                                $('.circle-loader-'+field_name_prefix.toLowerCase()).fadeOut(100);
+                                // now we need to create an java back end service that saves this value.
+                                // also add validation on the html  similar to password save
+                                $('#toggle-'+field_name_prefix.toLowerCase()).delay(100).click();
+
+                                // alert($(this).val());
+                                $('.circle-loader-'+field_name_prefix.toLowerCase()).fadeIn(100);
+                                // now we need to create an java back end service that saves this value.
+                                // also add validation on the html  similar to password save
+                                $('#toggle-state').delay(1000).click();
+                        }
+                        else {
+                                $('.circle-loader-'+field_name_prefix.toLowerCase()).fadeIn(100);
+                                // now we need to create an java back end service that saves this value.
+                                // also add validation on the html  similar to password save
+                                $('#toggle-'+field_name_prefix.toLowerCase()).delay(1000).click();
+                        }
+
+
+
+
+                    }
+                    else{
+                        //$('.circle-loader').fadeOut(100);
+                        //$('.x-mark').fadeIn(500);
+                        //$(".validationMsgArea span").text(s_msg);
+                        //$(".validationMsgArea span").css('color','red');
+                    }
+
+                },
+                error: function(data) {
+
+                    //$('.circle-loader').fadeOut(100);
+                    //$('.x-mark').fadeIn(500);
+
+                    console.log(data);
+                    // set message to div area ...fields can not be left null
+                    //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                    //$(".validationMsgArea span").css('color','red');
+                }
+
+            });
+
+
+
+            setTimeout(function() {
+                // after 1000 ms we add the class animated to the login/register card
+                checkProfileComplete();
+            }, 500);
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////
+        // end of contact information 'State' auto save ////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+
+
+    }
+
+
+    /////////////////////////////////////////////////////////////////////////////
     // helper functions
+    /////////////////////////////////////////////////////////////////////////////
+    // checks if current user's profile is complete, then updates page accordingly
+    /////////////////////////////////////////////////////////////////////////////
     function checkProfileComplete() {
 
 
