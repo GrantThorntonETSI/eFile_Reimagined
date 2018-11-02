@@ -651,6 +651,7 @@
                 <div class="form-group">
                     <label class="small" style="margin-top: 10px;"><b>State</b></label>
                     <select  class="form-control custom-select" name="State" th:field="*{user.state}" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                        <option  value="none"></option>
                         <option  value="AL">Alabama</option>
                         <option  value="AK">Alaska</option>
                         <option value="AZ">Arizona</option>
@@ -1072,6 +1073,9 @@
             // we will secure it by adding ssl and https support
 
             var state = $(this).val();
+            if(state == ""){
+                return;
+            }
             $.ajax({
                 url: "http://localhost:8080/REST/apiGateway/user/update/State/"+state,
                 type: 'GET',

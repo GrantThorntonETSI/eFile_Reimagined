@@ -43,7 +43,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         PTOUser1.setLastName("user");
         PTOUser1.setAddress("1115 Reserve Champion Drive");
         PTOUser1.setCity("Rockville");
-        PTOUser1.setState("MD");
+        //PTOUser1.setState("MD");
         PTOUser1.setZipcode("20850");
         PTOUser1.setCountry("X1"); // country code for united states
         PTOUser1.setPrimaryPhonenumber("571-839-3730");
