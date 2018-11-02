@@ -1073,9 +1073,7 @@
             // we will secure it by adding ssl and https support
 
             var state = $(this).val();
-            if(state == ""){
-                return;
-            }
+
             $.ajax({
                 url: "http://localhost:8080/REST/apiGateway/user/update/State/"+state,
                 type: 'GET',
@@ -1285,10 +1283,13 @@
                     //$('#toggle').delay(1000).click();
 
                     //alert(s_msg);
-                    $('.contextual-alert').css('display', 'none');
+
                     // set messege to screen
                     $(".banner-message span").text(s_msg);
                     $(".banner-message span").css('color','green');
+                    $(".banner-message span").focus();
+                    $('.contextual-alert').fadeOut();
+                    //$('.contextual-alert').css('display', 'none');
 
                 }
                 else {
