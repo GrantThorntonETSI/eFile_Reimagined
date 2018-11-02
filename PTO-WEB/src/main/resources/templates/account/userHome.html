@@ -770,8 +770,27 @@
 
                 <div class="form-group">
                     <label class="small" style="margin-top: 10px;"><b>Zipcode *</b></label>
-                    <input type="text" name="zipcode" class="form-control" th:value="${user.zipcode}"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                    <input type="text" id="zipcode" name="Zipcode" class="form-control" th:value="${user.zipcode}"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
+                </div>
+            </div>
+
+
+            <div class="col-sm-1">
+                <div class="zipcode-animation" style="display: none; position: relative; top:20px;">
+                    <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
+                </div>
+
+
+            </div>
+            <div class="col-sm-1">
+
+            </div>
+
+
+            <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                <div class="form-group zipcodeFieldMsgArea" style="position: relative; left:-15%;">
+                    <b><span></span></b>
                 </div>
             </div>
 
@@ -1133,6 +1152,32 @@
         // end of contact information 'State' auto save ////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
 
+        /////////////////////////////////////////////////////////////////////////////////
+        // contact information 'Zipcode' auto save ////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////
+        $('#zipcode').focusout( function () {
+
+
+
+            // send state, and token to server
+            // token will be generated in the controller and added to the view
+            // similar to how access token works ...a token is tied to a user
+            // access token will be passed in through model
+            //
+            // var tokenValue = '${token}';  // token is the model attribute name
+            // we are not using secured tokens for the prototype
+            // we will secure it by adding ssl and https support
+            //
+            var field_value = $(this).val();
+            saveContactInfo("Zipcode", field_value);
+
+        });
+
+        ////////////////////////////////////////////////////////////////////////////////
+        // end of contact information 'Zipcode' auto save ////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+
+
 
 
 
@@ -1290,26 +1335,26 @@
 
                         // animation rendering control
                         //if($('.state-checkmark').css('display') == 'block'){
-                        if($( "."+field_name_prefix.toLowerCase()+"-checkmark").css('display') == 'block'){
+                        if($( "."+field_name_prefix.toLowerCase()+"-animation").css('display') == 'block'){
 
-
-                                $('.circle-loader-'+field_name_prefix.toLowerCase()).fadeOut(100);
+                        alert("!!!!!!!!!!!");
+                                $("."+field_name_prefix.toLowerCase()+"-animation").fadeOut(100);
                                 // now we need to create an java back end service that saves this value.
                                 // also add validation on the html  similar to password save
-                                $('#toggle-'+field_name_prefix.toLowerCase()).delay(100).click();
+                                //$('#toggle-'+field_name_prefix.toLowerCase()).delay(100).click();
 
                                 // alert($(this).val());
-                                $('.circle-loader-'+field_name_prefix.toLowerCase()).fadeIn(100);
+                                $("."+field_name_prefix.toLowerCase()+"-animation").fadeIn(1000);
                                 // now we need to create an java back end service that saves this value.
                                 // also add validation on the html  similar to password save
-                                $('#toggle-'+ield_name_prefix.toLowerCase()).delay(1000).click();
+                                //$("."+field_name_prefix.toLowerCase()+"-animation").delay(1000).click();
                         }
                         else {
-
-                                $('.circle-loader-'+field_name_prefix.toLowerCase()).fadeIn(100);
+                        alert("###############");
+                                $("."+field_name_prefix.toLowerCase()+"-animation").fadeIn(1000);
                                 // now we need to create an java back end service that saves this value.
                                 // also add validation on the html  similar to password save
-                                $('#toggle-'+field_name_prefix.toLowerCase()).delay(1000).click();
+                                //$('#toggle-'+field_name_prefix.toLowerCase()).delay(1000).click();
                         }
 
 
