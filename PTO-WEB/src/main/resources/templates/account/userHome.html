@@ -1029,24 +1029,18 @@
                                     </div>
 
                                     <div class="col-sm-1">
-                                            <div class="circle-loader" style="display: none;">
-                                                <div class="checkmark draw"></div>
-                                            </div>
-
-                                            <p><button id="toggle" style="display: none" type="button" class="btn btn-success">Toggle Completed</button></p>
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <div  class="x-mark" style="position: relative; top:-15%; display: none;">
-                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
-                                                <circle class="path circle" fill="none" stroke="#DC143C" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
-                                                <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3"/>
-                                                <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2"/>
-                                            </svg>
+                                        <div class="password-animation-success" style="display: none; position: relative; top:-10px;">
+                                            <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
                                         </div>
 
 
                                     </div>
+                                    <div class="col-sm-1">
+                                        <div class="password-animation-failure" style="display: none; position: relative; top:-10px;">
+                                            <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: red">error</i></span></div>
+                                        </div>
 
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6">
@@ -1173,10 +1167,10 @@
 
         $('.updatePasswordButton').click( function () {
 
-            $('.circle-loader').css('display','none');
-            $('.x-mark').css('display','none');
+            //$('.circle-loader').css('display','none');
+            //$('.x-mark').css('display','none');
 
-            $('.circle-loader').fadeIn(100);
+            //$('.circle-loader').fadeIn(100);
 
             // get input from modal form input
             var currentPW;
@@ -1199,22 +1193,23 @@
                     if(s_code.trim() == "200"){
                     //if(data.contains("status: 200")){
                     // show confirmation check mark on form
-                        $('#toggle').delay(1000).click();
-                        $(".validationMsgArea span").text(s_msg);
+                        $('.password-animation-success').fadeIn(500);
+                        $(".validationMsgArea span").fadeIn().text(s_msg);
                         $(".validationMsgArea span").css('color','green');
                     }
                     else{
-                        $('.circle-loader').fadeOut(100);
-                        $('.x-mark').fadeIn(500);
-                        $(".validationMsgArea span").text(s_msg);
+                        //$('.circle-loader').fadeOut(100);
+                        $('.password-animation-failure').fadeIn(500);
+
+                        $(".validationMsgArea span").fadeIn().text(s_msg);
                         $(".validationMsgArea span").css('color','red');
                     }
 
                 },
                 error: function(data) {
 
-                    $('.circle-loader').fadeOut(100);
-                    $('.x-mark').fadeIn(500);
+                    //$('.circle-loader').fadeOut(100);
+                    $('.password-animation-failure').fadeIn(500);
 
                     console.log(data);
                     // set message to div area ...fields can not be left null
