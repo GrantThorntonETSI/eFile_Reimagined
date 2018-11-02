@@ -1296,8 +1296,8 @@
 
         $('.updatePasswordButton').click( function () {
 
-            //$('.circle-loader').css('display','none');
-            //$('.x-mark').css('display','none');
+            $('.password-animation-success').fadeOut();
+            $('.password-animation-failure').fadeOut();
 
             //$('.circle-loader').fadeIn(100);
 
@@ -1356,31 +1356,15 @@
 
         // animate success check mark
 
-        $('#toggle').click(function() {
-            $('.circle-loader').toggleClass('load-complete');
-            $('.checkmark').toggle();
-        });
 
-        $('#toggle-state').click(function() {
-            $('.circle-loader-state').toggleClass('load-complete');
-            $('.checkmark').toggle();
-        });
 
         // on password modal close
         $('#updatePassword').on('hidden.bs.modal', function () {
             // do something…
-
+            $('.password-animation-success').fadeOut();
+            $('.password-animation-failure').fadeOut();
             // check if x-mark is loaded
-            if ($('.x-mark').css('display') == 'block') {
-                $('.x-mark').css('display', 'none');
-            }
-            else {
 
-                $('.circle-loader').css('display', 'none');
-
-                $('#toggle').click(); // reset spinner to default active state
-            }
-            // clear text area
             $(".validationMsgArea span").text(" ");
 
             // clear user passwords
@@ -1422,7 +1406,7 @@
             //alert(field_value);
 
             $.ajax({
-                url: "http://localhost:8080/REST/apiGateway/user/update/"+field_name_prefix+"/"+field_value,
+                url: "http://efile-reimagined.com/REST/apiGateway/user/update/"+field_name_prefix+"/"+field_value,
                 type: 'GET',
                 success: function(data){
 
@@ -1516,7 +1500,7 @@
         // check if profile complete
 
         $.ajax({
-            url: "http://localhost:8080/REST/apiGateway/user/complete/",
+            url: "http://efile-reimagined.com/REST/apiGateway/user/complete/",
             type: 'GET',
             success: function(data){
 
