@@ -842,12 +842,32 @@
                                 </select>
                             </div>
                             <div class="col-sm-3">
-                                <input type="text" name="phone" class="form-control"  th:value="${user.primaryPhonenumber}" style="min-width: 275px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                <input type="text" id="phone" name="Phone" class="form-control"  th:value="${user.primaryPhonenumber}" style="min-width: 275px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                             </div>
                         </div>
 
                     </div>
                 </div>
+
+
+                <div class="col-sm-1">
+                    <div class="phone-animation" style="display: none; position: relative; top:25px; left:-195px;">
+                        <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
+                    </div>
+
+
+                </div>
+                <div class="col-sm-1">
+
+                </div>
+
+
+                <div class="col-sm-4" style="position: relative; bottom:-15px; left:-120px;">
+                    <div class="form-group phoneFieldMsgArea" style="position: relative; left:-35%; top:25px;">
+                        <b><span></span></b>
+                    </div>
+                </div>
+
 
             </div>
 
@@ -1208,12 +1228,12 @@
         });
 
         ////////////////////////////////////////////////////////////////////////////////
-        // end of contact information 'Address1' auto save ////////////////////////////////
+        // end of contact information 'Address1' auto save /////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
 
 
         /////////////////////////////////////////////////////////////////////////////////
-        // contact information 'Address1' auto save /////////////////////////////////////
+        // contact information 'Country' auto save //////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////
         $('#country').focusout( function () {
 
@@ -1230,6 +1250,31 @@
             //
             var field_value = $(this).val();
             saveContactInfo("Country", field_value);
+
+        });
+
+        ////////////////////////////////////////////////////////////////////////////////
+        // end of contact information 'Country' auto save //////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+
+        /////////////////////////////////////////////////////////////////////////////////
+        // contact information 'phone' auto save ///////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////
+        $('#phone').focusout( function () {
+
+
+
+            // send state, and token to server
+            // token will be generated in the controller and added to the view
+            // similar to how access token works ...a token is tied to a user
+            // access token will be passed in through model
+            //
+            // var tokenValue = '${token}';  // token is the model attribute name
+            // we are not using secured tokens for the prototype
+            // we will secure it by adding ssl and https support
+            //
+            var field_value = $(this).val();
+            saveContactInfo("Phone", field_value);
 
         });
 

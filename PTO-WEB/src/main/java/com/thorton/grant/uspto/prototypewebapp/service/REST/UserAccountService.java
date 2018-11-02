@@ -203,32 +203,36 @@ public class UserAccountService {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
-        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        //UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
         PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
 
 
 
-        UserCredentials userCredentials = userCredentialsService.findByEmail(email);
+        //UserCredentials userCredentials = userCredentialsService.findByEmail(email);
         PTOUser ptoUser = ptoUserService.findByEmail(email);
 
         if(userAccountField.equals("State")){
-              ptoUser.setState(param); // sets new state code
+              ptoUser.setState(param); // sets state code
         }
 
         if(userAccountField.equals("City")){
-            ptoUser.setCity(param); // sets new state code
+            ptoUser.setCity(param);
         }
 
         if(userAccountField.equals("Zipcode")){
-            ptoUser.setZipcode(param); // sets new state code
+            ptoUser.setZipcode(param);
         }
 
         if(userAccountField.equals("Address")){
-            ptoUser.setAddress(param); // sets new state code
+            ptoUser.setAddress(param);
         }
 
         if(userAccountField.equals("Country")){
-            ptoUser.setCountry(param); // sets new state code
+            ptoUser.setCountry(param); // sets country code
+        }
+
+        if(userAccountField.equals("Phone")){
+            ptoUser.setPrimaryPhonenumber(param);
         }
 
 
