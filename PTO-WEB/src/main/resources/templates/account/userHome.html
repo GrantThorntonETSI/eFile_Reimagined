@@ -12,10 +12,10 @@
     <div class="container-fluid"  >
 
         <div class="col-sm-16" >
-            <div class="form-container base-page" style="">
+            <div class="form-container base-page" style="position: relative; top:20px;">
                 <div class="row">
                     <div class="col-sm-6">
-                        <div style="position: relative; top:40px; margin-left: 40px; margin-bottom: 20px; margin-top: 20px; min-height: 90px;">
+                        <div style="position: relative; top:50px; margin-left: 40px; margin-bottom: 5px; margin-top: 20px; min-height: 90px;">
                             <h1><b style="opacity: 1; mix-blend-mode: normal; color: rgb(0, 0, 0); font-size: 36px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; text-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1.16667px; width: 597px; height: 41px; transform: rotate(0deg) translate(37px, 138px) rotate(0deg);">User Account</b></h1>
                         </div>
                     </div>
@@ -25,6 +25,18 @@
                         </div>
                     </div>
                 </div>
+
+
+              <div class="row" style="margin-left:15px;">
+                  <div class="col-sm-3">
+
+
+                      <div style="position: relative; top:20px; left:-10px; margin-left: 10px; margin-bottom: 20px; margin-top: 20px; min-height: 80px; min-width: 400px;" th:if="${user.isProfileComplete() == false}">
+                          <div class="contextual-alert clearfix sso-alert-warning form-control-width-lg"><p class="contextual-msg" role="alert" tabindex="-1" id="app-account-activate-alert-message"><span class="pull-left msg-text"><span class="glyphicon glyphicon-alert" ></span><span>You have an incomplete profile. Please complete the required fields to continue.</span><!----><!----></span><!----><button aria-label="Close alert" class="close" type="button"><span aria-hidden="true">×</span></button></p><!----></div>
+                      </div>
+                  </div>
+              </div>
+
                 <div class=" card-header-rose card-header-text" >
 
                     <div class="card-text" >
@@ -705,6 +717,25 @@
                 </div>
             </div>
 
+            <div class="col-sm-1">
+                <div class="circle-loader-state" style="display: none; position: relative; top:10px;">
+                    <div class="checkmark draw"></div>
+                </div>
+
+                <p><button id="toggle-state" style="display: none;" type="button" class="btn btn-success">Toggle Completed</button></p>
+            </div>
+            <div class="col-sm-1">
+                <div  class="x-mark-state" style="position: relative; top:-15%; display: none; ">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                        <circle class="path circle" fill="none" stroke="#DC143C" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
+                        <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3"/>
+                        <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2"/>
+                    </svg>
+                </div>
+
+
+            </div>
+
         </div>
 
         <div class="row" style="margin-left:15px;">
@@ -1025,6 +1056,29 @@
         }, 500);
 
 
+        /////////////////////////////////////////////////////////////////////////////////
+        // contact information 'State' auto save ////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////
+        $('#state').focusout( function () {
+           // alert($(this).val());
+            $('.circle-loader-state').fadeIn(100);
+            // now we need to create an java back end service that saves this value.
+            // also add validation on the html  similar to password save
+            $('#toggle-state').delay(1000).click();
+
+
+        });
+
+        ////////////////////////////////////////////////////////////////////////////////
+        // end of contact information 'State' auto save ////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
         ///////////////////////////////////////////////////////////////////////////////////////////
         // password modal update actions
         // passowrd update on click
@@ -1093,6 +1147,11 @@
             $('.checkmark').toggle();
         });
 
+        $('#toggle-state').click(function() {
+            $('.circle-loader-state').toggleClass('load-complete');
+            $('.checkmark').toggle();
+        });
+
         // on password modal close
         $('#updatePassword').on('hidden.bs.modal', function () {
             // do something…
@@ -1116,6 +1175,7 @@
 
 
         })
+        /////////////////////////////////////////////////////////////////////////
         // password modal actions complete
        //////////////////////////////////////////////////////////////////////////
 

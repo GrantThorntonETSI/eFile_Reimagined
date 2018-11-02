@@ -100,7 +100,7 @@ public class GmailJavaMailSenderService extends JavaMailSenderBase {
                     "<p>You created a <a href=\"https://"+link+"\" target=\"_blank\">\n" +
                     "uspto.gov</a> account using <span class=\"txt-blue\">"+address+"</span>.</p>\n" +
                     "<p></p>\n" +
-                    "<div class=\"btn btn-primary\"><a href=\"https://protect-us.mimecast.com/s/qBBgCVOQBLIjKN5Rtzu1fI?domain=account.uspto.gov\" target=\"_blank\">Activate account</a></div>\n" +
+                    "<div class=\"btn btn-primary\"><a href=\""+link+"\" target=\"_blank\">Activate account</a></div>\n" +
                     "<p></p>\n" +
                     "<p>If the button does not work then copy and paste the URL into your web browser.</p>\n" +
                     "<p><span class=\"txt-blue\"><a href=\""+link+"\" target=\"_blank\">"+link+"</a></span></p>\n" +

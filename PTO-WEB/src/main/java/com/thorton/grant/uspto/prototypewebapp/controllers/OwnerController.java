@@ -73,7 +73,7 @@ public class OwnerController {
         model.addAttribute("account",credentials);
 
         if(ptoUser.isProfileComplete() == false){
-            model.addAttribute("message", "Please Complete your Personal and Contact Information First.");
+            model.addAttribute("message", "Please Complete your Contact Information First.");
             return "account/userHome";
         }
         return "account/dashboard";
