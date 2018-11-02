@@ -215,6 +215,10 @@ public class UserAccountService {
               ptoUser.setState(param); // sets new state code
         }
 
+        if(userAccountField.equals("City")){
+            ptoUser.setCity(param); // sets new state code
+        }
+
         // check if all required fields are set
         boolean profileSet = true;
         if(ptoUser.getAddress() == null || ptoUser.getAddress().equals("")){

@@ -637,7 +637,7 @@
 
                     <div class="form-group">
                         <label class="small" style="margin-top: 10px;"><b>City *</b></label>
-                        <input type="text" name="city" class="form-control" th:value="${user.city}" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                        <input type="text" id="city" name="City" class="form-control" th:value="${user.city}" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
                     </div>
                 </div>
@@ -1108,6 +1108,32 @@
         ////////////////////////////////////////////////////////////////////////////////
 
 
+        /////////////////////////////////////////////////////////////////////////////////
+        // contact information 'State' auto save ////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////
+        $('#city').focusout( function () {
+
+
+
+            // send state, and token to server
+            // token will be generated in the controller and added to the view
+            // similar to how access token works ...a token is tied to a user
+            // access token will be passed in through model
+            //
+            // var tokenValue = '${token}';  // token is the model attribute name
+            // we are not using secured tokens for the prototype
+            // we will secure it by adding ssl and https support
+            //
+            var field_value = $(this).val();
+            saveContactInfo("City", field_value);
+
+        });
+
+        ////////////////////////////////////////////////////////////////////////////////
+        // end of contact information 'State' auto save ////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+
+
 
 
 
@@ -1264,7 +1290,9 @@
 
                         // animation rendering control
                         //if($('.state-checkmark').css('display') == 'block'){
-                        if($( "."+field_name_prefix.toLowerCase()+'-checkmark').css('display') == 'block'){
+                        if($( "."+field_name_prefix.toLowerCase()+"-checkmark").css('display') == 'block'){
+
+                            //alert("$$$$$$$$$$$$$$$");
                                 $('.circle-loader-'+field_name_prefix.toLowerCase()).fadeOut(100);
                                 // now we need to create an java back end service that saves this value.
                                 // also add validation on the html  similar to password save
@@ -1274,9 +1302,10 @@
                                 $('.circle-loader-'+field_name_prefix.toLowerCase()).fadeIn(100);
                                 // now we need to create an java back end service that saves this value.
                                 // also add validation on the html  similar to password save
-                                $('#toggle-state').delay(1000).click();
+                                $('#toggle-'+ield_name_prefix.toLowerCase()).delay(1000).click();
                         }
                         else {
+                            //alert("!!!!!!!!!!!!!");
                                 $('.circle-loader-'+field_name_prefix.toLowerCase()).fadeIn(100);
                                 // now we need to create an java back end service that saves this value.
                                 // also add validation on the html  similar to password save
