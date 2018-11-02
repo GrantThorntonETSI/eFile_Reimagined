@@ -227,41 +227,45 @@ public class UserAccountService {
             ptoUser.setAddress(param); // sets new state code
         }
 
+        if(userAccountField.equals("Country")){
+            ptoUser.setCountry(param); // sets new state code
+        }
+
+
+        ////////////////////////////////////////////////
         // check if all required fields are set
+        ///////////////////////////////////////////////
         boolean profileSet = true;
         if(ptoUser.getAddress() == null || ptoUser.getAddress().equals("")){
             profileSet = false;
         }
-        System.out.println(profileSet);
         if(ptoUser.getCity() == null || ptoUser.getCity().equals("")){
             profileSet = false;
         }
-        System.out.println(profileSet);
-
         if(ptoUser.getState() == null || ptoUser.getState().equals("")){
             profileSet = false;
         }
-        System.out.println(profileSet);
-
         if(ptoUser.getZipcode() == null || ptoUser.getZipcode().equals("")){
             profileSet = false;
         }
-        System.out.println(profileSet);
-
         if(ptoUser.getPrimaryPhonenumber() == null || ptoUser.getPrimaryPhonenumber().equals("")){
             profileSet = false;
         }
-        System.out.println(profileSet);
+        ////////////////////////////////////////////////
+        /// end profile check
+        ////////////////////////////////////////////////
 
+
+        ////////////////////////////////////////////////
+        // set ProfileComplete status and save user data
+        ////////////////////////////////////////////////
         ptoUser.setProfileComplete(profileSet);
-
-
-
         ptoUserService.save(ptoUser);
 
 
-
-
+        ////////////////////////////////////////////////
+        // start generating response
+        ////////////////////////////////////////////////
         String statusCode = "200";
         String responseMsg = userAccountField+" has been saved.";
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";

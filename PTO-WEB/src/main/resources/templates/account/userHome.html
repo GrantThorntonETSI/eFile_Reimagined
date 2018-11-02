@@ -342,7 +342,7 @@
 
                     <div class="form-group">
                         <label class="small" style="margin-top: 10px;"><b>Country *</b></label>
-                        <select class="form-control custom-select"  name="country" th:field="*{user.country}"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                        <select class="form-control custom-select" id="country" name="country" th:field="*{user.country}"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                             <option value="none"></option>
                             <option value="X1">UNITED STATES OF AMERICA</option>
                             <option value="B2">AFGHANISTAN</option>
@@ -585,6 +585,23 @@
                             <option value="XX">UNKNOWN</option>
                         </select>
 
+                    </div>
+                </div>
+
+                <div class="col-sm-1">
+                    <div class="country-animation" style="display: none; position: relative; top:20px;">
+                        <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
+                    </div>
+
+
+                </div>
+                <div class="col-sm-1">
+
+                </div>
+
+                <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                    <div class="form-group countryFieldMsgArea" style="position: relative; left:-15%;">
+                        <b><span></span></b>
                     </div>
                 </div>
 
@@ -1191,6 +1208,32 @@
         });
 
         ////////////////////////////////////////////////////////////////////////////////
+        // end of contact information 'Address1' auto save ////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+
+
+        /////////////////////////////////////////////////////////////////////////////////
+        // contact information 'Address1' auto save /////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////
+        $('#country').focusout( function () {
+
+
+
+            // send state, and token to server
+            // token will be generated in the controller and added to the view
+            // similar to how access token works ...a token is tied to a user
+            // access token will be passed in through model
+            //
+            // var tokenValue = '${token}';  // token is the model attribute name
+            // we are not using secured tokens for the prototype
+            // we will secure it by adding ssl and https support
+            //
+            var field_value = $(this).val();
+            saveContactInfo("Country", field_value);
+
+        });
+
+        ////////////////////////////////////////////////////////////////////////////////
         // end of contact information 'State' auto save ////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
 
@@ -1355,7 +1398,7 @@
                         //if($('.state-checkmark').css('display') == 'block'){
                         if($( "."+field_name_prefix.toLowerCase()+"-animation").css('display') == 'block'){
 
-                        alert("!!!!!!!!!!!");
+
                                 $("."+field_name_prefix.toLowerCase()+"-animation").fadeOut(100);
                                 // now we need to create an java back end service that saves this value.
                                 // also add validation on the html  similar to password save
@@ -1368,7 +1411,7 @@
                                 //$("."+field_name_prefix.toLowerCase()+"-animation").delay(1000).click();
                         }
                         else {
-                        alert("###############");
+
                                 $("."+field_name_prefix.toLowerCase()+"-animation").fadeIn(1000);
                                 // now we need to create an java back end service that saves this value.
                                 // also add validation on the html  similar to password save
