@@ -223,6 +223,10 @@ public class UserAccountService {
             ptoUser.setZipcode(param); // sets new state code
         }
 
+        if(userAccountField.equals("Address")){
+            ptoUser.setAddress(param); // sets new state code
+        }
+
         // check if all required fields are set
         boolean profileSet = true;
         if(ptoUser.getAddress() == null || ptoUser.getAddress().equals("")){
