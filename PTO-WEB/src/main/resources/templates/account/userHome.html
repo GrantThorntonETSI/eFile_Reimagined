@@ -260,7 +260,7 @@
 
                     <div class="form-group">
                         <label class="small" style="margin-top: 10px;"><b>Title</b></label>
-                        <input type="text"   id="title" placeholder="title" class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  >
+                        <input type="text"   id="title" placeholder="" class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  >
 
 
                     </div>
@@ -289,7 +289,7 @@
 
                             <div class="form-group">
                                 <label class="small" style="margin-top: 10px;"><b>Middle Name</b></label>
-                                <input type="text"   id="middleName" placeholder="middleName" class="form-control" th:value="${user.midlleName}" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  >
+                                <input type="text"   id="middleName" placeholder="" class="form-control" th:value="${user.midlleName}" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  >
 
 
                             </div>
@@ -1147,6 +1147,7 @@
             // we will secure it by adding ssl and https support
             //
             $('.state-animation').fadeOut();
+            $('.stateFieldMsgArea').fadeOut();
             var field_value = $(this).val();
             saveContactInfo("State", field_value);
 
@@ -1175,6 +1176,7 @@
             //
 
             $('.city-animation').fadeOut();
+            $('.cityFieldMsgArea').fadeOut();
             var field_value = $(this).val();
             saveContactInfo("City", field_value);
 
@@ -1201,6 +1203,7 @@
             // we will secure it by adding ssl and https support
             //
             $('.zipcode-animation').fadeOut();
+            $('.zipcodeFieldMsgArea').fadeOut();
             var field_value = $(this).val();
             saveContactInfo("Zipcode", field_value);
 
@@ -1227,6 +1230,7 @@
             // we will secure it by adding ssl and https support
             //
             $('.address-animation').fadeOut();
+            $('.addressFieldMsgArea').fadeOut();
             var field_value = $(this).val();
             saveContactInfo("Address", field_value);
 
@@ -1254,6 +1258,7 @@
             // we will secure it by adding ssl and https support
             //
             $('.country-animation').fadeOut();
+            $('.countryFieldMsgArea').fadeOut();
             var field_value = $(this).val();
             saveContactInfo("Country", field_value);
 
@@ -1280,6 +1285,8 @@
             // we will secure it by adding ssl and https support
             //
             $('.phone-animation').fadeOut();
+            $('.phoneFieldMsgArea').fadeOut();
+
             var field_value = $(this).val();
             saveContactInfo("Phone", field_value);
 
@@ -1426,6 +1433,7 @@
                         //if(data.contains("status: 200")){
                         // show confirmation check mark on form
                         //$('#toggle').delay(1000).click();
+                        $("."+field_name_prefix.toLowerCase()+"FieldMsgArea").fadeIn();
 
                         $("."+field_name_prefix.toLowerCase()+"FieldMsgArea span").text(s_msg);
                         $("."+field_name_prefix.toLowerCase()+"FieldMsgArea span").css('color','green');
