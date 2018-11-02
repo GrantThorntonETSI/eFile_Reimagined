@@ -211,7 +211,7 @@ public class UserAccountService {
         UserCredentials userCredentials = userCredentialsService.findByEmail(email);
         PTOUser ptoUser = ptoUserService.findByEmail(email);
 
-        if(userAccountField.equals("state")){
+        if(userAccountField.equals("State")){
               ptoUser.setState(param); // sets new state code
         }
         ptoUserService.save(ptoUser);

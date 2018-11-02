@@ -727,6 +727,14 @@
 
             </div>
 
+
+            <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                <div class="form-group stateFieldMsgArea" style="position: relative; left:-15%;">
+                    <b><span></span></b>
+                </div>
+            </div>
+
+
         </div>
 
         <div class="row" style="margin-left:15px;">
@@ -1065,7 +1073,7 @@
 
             var state = $(this).val();
             $.ajax({
-                url: "http://localhost:8080/REST/apiGateway/user/update/state/"+state,
+                url: "http://localhost:8080/REST/apiGateway/user/update/State/"+state,
                 type: 'GET',
                 success: function(data){
 
@@ -1078,8 +1086,8 @@
                         //if(data.contains("status: 200")){
                         // show confirmation check mark on form
                         //$('#toggle').delay(1000).click();
-                        //$(".validationMsgArea span").text(s_msg);
-                        //$(".validationMsgArea span").css('color','green');
+                        $(".stateFieldMsgArea span").text(s_msg);
+                        $(".stateFieldMsgArea span").css('color','green');
 
                         // animation rendering control
                         if($('.state-checkmark').css('display') == 'block'){
