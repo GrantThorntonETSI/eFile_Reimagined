@@ -20,6 +20,29 @@ public class BaseTrademarkApplication {
 
     // could have an lawyer as well
 
+    ////////////////////////////////////////////////////////
+    // stage 1 save point flags
+    ////////////////////////////////////////////////////////
+    private boolean isAttorneyFiling;
+    private boolean isForeignEnityFiling;
+    private String currentStage;
+    private String lastViewModel;
+
+    public String getCurrentStage() {
+        return currentStage;
+    }
+
+    public void setCurrentStage(String currentStage) {
+        this.currentStage = currentStage;
+    }
+
+    public String getLastViewModel() {
+        return lastViewModel;
+    }
+
+    public void setLastViewModel(String lastViewModel) {
+        this.lastViewModel = lastViewModel;
+    }
 
     // need to have 5 stages (some info is stored for each stage)
 
@@ -40,10 +63,6 @@ public class BaseTrademarkApplication {
     @ManyToOne
     private PTOUser ptoUser;
 
-
-
-
-
     ////////////////////////////////////////////////////////
     // sub ordinate objects
     ////////////////////////////////////////////////////////
@@ -60,20 +79,12 @@ public class BaseTrademarkApplication {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "application")
     @Nullable
-    private Set<Lawyer> additionalLawyers;
+    private Set<Lawyer> availableLawyers;
 
 
     // can be a lawyer or owner ???
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "trademarkApplication")
     private Owner owner;
-
-    ////////////////////////////////////////////////////////
-    // stage 1 save point flags
-    ////////////////////////////////////////////////////////
-    boolean isAttorneyFiling;
-
-
-    boolean isForeignEnityFiling;
 
 
     /////////////////////////////////////////////////////////////////////
@@ -106,14 +117,7 @@ public class BaseTrademarkApplication {
         this.primaryLawyer = primaryLawyer;
     }
 
-    @Nullable
-    public Set<Lawyer> getAdditionalLawyers() {
-        return additionalLawyers;
-    }
 
-    public void setAdditionalLawyers(@Nullable Set<Lawyer> additionalLawyers) {
-        this.additionalLawyers = additionalLawyers;
-    }
 
     public Owner getOwner() {
         return owner;
@@ -163,6 +167,15 @@ public class BaseTrademarkApplication {
     // application
 
 
+    @Nullable
+    public Set<Lawyer> getAvailableLawyers() {
+        return availableLawyers;
+    }
+
+    public void setAvailableLawyers(@Nullable Set<Lawyer> availableLawyers) {
+        this.availableLawyers = availableLawyers;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -170,9 +183,11 @@ public class BaseTrademarkApplication {
         BaseTrademarkApplication that = (BaseTrademarkApplication) o;
         return isAttorneyFiling == that.isAttorneyFiling &&
                 isForeignEnityFiling == that.isForeignEnityFiling &&
+                Objects.equals(currentStage, that.currentStage) &&
+                Objects.equals(lastViewModel, that.lastViewModel) &&
                 Objects.equals(ptoUser, that.ptoUser) &&
                 Objects.equals(primaryLawyer, that.primaryLawyer) &&
-                Objects.equals(additionalLawyers, that.additionalLawyers) &&
+                Objects.equals(availableLawyers, that.availableLawyers) &&
                 Objects.equals(owner, that.owner) &&
                 Objects.equals(tradeMark, that.tradeMark) &&
                 Objects.equals(actions, that.actions);
@@ -180,19 +195,21 @@ public class BaseTrademarkApplication {
 
     @Override
     public int hashCode() {
-        return Objects.hash(ptoUser, primaryLawyer, additionalLawyers, owner, isAttorneyFiling, isForeignEnityFiling, tradeMark, actions);
+        return Objects.hash(isAttorneyFiling, isForeignEnityFiling, currentStage, lastViewModel, ptoUser, primaryLawyer, availableLawyers, owner, tradeMark, actions);
     }
 
 
     @Override
     public String toString() {
         return "BaseTrademarkApplication{" +
-                "ptoUser=" + ptoUser +
-                ", primaryLawyer=" + primaryLawyer +
-                ", additionalLawyers=" + additionalLawyers +
-                ", owner=" + owner +
-                ", isAttorneyFiling=" + isAttorneyFiling +
+                "isAttorneyFiling=" + isAttorneyFiling +
                 ", isForeignEnityFiling=" + isForeignEnityFiling +
+                ", currentStage='" + currentStage + '\'' +
+                ", lastViewModel='" + lastViewModel + '\'' +
+                ", ptoUser=" + ptoUser +
+                ", primaryLawyer=" + primaryLawyer +
+                ", availableLawyers=" + availableLawyers +
+                ", owner=" + owner +
                 ", tradeMark=" + tradeMark +
                 ", actions=" + actions +
                 '}';
