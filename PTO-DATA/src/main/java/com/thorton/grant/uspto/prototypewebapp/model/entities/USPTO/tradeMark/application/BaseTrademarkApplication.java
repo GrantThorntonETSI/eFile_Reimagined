@@ -9,6 +9,7 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.Set;
 
 
@@ -34,37 +35,127 @@ public class BaseTrademarkApplication {
     ////////////////////////////////////////////////////////
     // modeling
     ////////////////////////////////////////////////////////
-    // owning entity - or parent entity
+    //  parent entity
     ////////////////////////////////////////////////////////
-    @OneToOne
+    @ManyToOne
     private PTOUser ptoUser;
+
+
+
+
+
     ////////////////////////////////////////////////////////
     // sub ordinate objects
     ////////////////////////////////////////////////////////
+    // set these details in stage
     // lawyer is the subordinate object here
-    @OneToOne
+
+    /////////////////////////////////////////////////////////////////////
+    // stage 1
+    /////////////////////////////////////////////////////////////////////
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "primaryConsole")
+    @Nullable
     private Lawyer primaryLawyer;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "application")
+    @Nullable
     private Set<Lawyer> additionalLawyers;
 
 
     // can be a lawyer or owner ???
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "trademarkApplication")
     private Owner owner;
 
+    ////////////////////////////////////////////////////////
+    // stage 1 save point flags
+    ////////////////////////////////////////////////////////
+    boolean isAttorneyFiling;
 
-    @OneToOne
+
+    boolean isForeignEnityFiling;
+
+
+    /////////////////////////////////////////////////////////////////////
+    // stage 2
+    /////////////////////////////////////////////////////////////////////
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "initialFilingInfo")
     @Nullable
     private TradeMark tradeMark;
 
 
-    @OneToMany
+    @OneToMany(cascade =  CascadeType.ALL, mappedBy = "trademarkApplication")
     @Nullable
     private Set<OfficeActions> actions;
     ////////////////////////////////////////////////////////
 
+    public PTOUser getPtoUser() {
+        return ptoUser;
+    }
 
+    public void setPtoUser(PTOUser ptoUser) {
+        this.ptoUser = ptoUser;
+    }
+
+    @Nullable
+    public Lawyer getPrimaryLawyer() {
+        return primaryLawyer;
+    }
+
+    public void setPrimaryLawyer(@Nullable Lawyer primaryLawyer) {
+        this.primaryLawyer = primaryLawyer;
+    }
+
+    @Nullable
+    public Set<Lawyer> getAdditionalLawyers() {
+        return additionalLawyers;
+    }
+
+    public void setAdditionalLawyers(@Nullable Set<Lawyer> additionalLawyers) {
+        this.additionalLawyers = additionalLawyers;
+    }
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
+    }
+
+    public boolean isAttorneyFiling() {
+        return isAttorneyFiling;
+    }
+
+    public void setAttorneyFiling(boolean attorneyFiling) {
+        isAttorneyFiling = attorneyFiling;
+    }
+
+    public boolean isForeignEnityFiling() {
+        return isForeignEnityFiling;
+    }
+
+    public void setForeignEnityFiling(boolean foreignEnityFiling) {
+        isForeignEnityFiling = foreignEnityFiling;
+    }
+
+    @Nullable
+    public TradeMark getTradeMark() {
+        return tradeMark;
+    }
+
+    public void setTradeMark(@Nullable TradeMark tradeMark) {
+        this.tradeMark = tradeMark;
+    }
+
+    @Nullable
+    public Set<OfficeActions> getActions() {
+        return actions;
+    }
+
+    public void setActions(@Nullable Set<OfficeActions> actions) {
+        this.actions = actions;
+    }
 
 
     // need a public method that returns the next View and DTO object needed for the view
@@ -72,13 +163,38 @@ public class BaseTrademarkApplication {
     // application
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BaseTrademarkApplication that = (BaseTrademarkApplication) o;
+        return isAttorneyFiling == that.isAttorneyFiling &&
+                isForeignEnityFiling == that.isForeignEnityFiling &&
+                Objects.equals(ptoUser, that.ptoUser) &&
+                Objects.equals(primaryLawyer, that.primaryLawyer) &&
+                Objects.equals(additionalLawyers, that.additionalLawyers) &&
+                Objects.equals(owner, that.owner) &&
+                Objects.equals(tradeMark, that.tradeMark) &&
+                Objects.equals(actions, that.actions);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ptoUser, primaryLawyer, additionalLawyers, owner, isAttorneyFiling, isForeignEnityFiling, tradeMark, actions);
+    }
 
 
-
-
-
-
-
-
-
+    @Override
+    public String toString() {
+        return "BaseTrademarkApplication{" +
+                "ptoUser=" + ptoUser +
+                ", primaryLawyer=" + primaryLawyer +
+                ", additionalLawyers=" + additionalLawyers +
+                ", owner=" + owner +
+                ", isAttorneyFiling=" + isAttorneyFiling +
+                ", isForeignEnityFiling=" + isForeignEnityFiling +
+                ", tradeMark=" + tradeMark +
+                ", actions=" + actions +
+                '}';
+    }
 }

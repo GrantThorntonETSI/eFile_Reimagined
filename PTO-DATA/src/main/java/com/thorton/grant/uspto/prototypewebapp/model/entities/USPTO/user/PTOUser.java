@@ -1,6 +1,7 @@
 package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user;
 
 
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.TradeMark;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 
@@ -15,6 +16,14 @@ public class PTOUser extends UserPersonalData {
 
     @OneToMany(mappedBy = "trademarkOwner")
     private Set<TradeMark> userTrademarks;
+
+
+
+    /////////////////////////////////////////////////////////
+    // owning object i.e  ptoUser owns trademark applications
+    /////////////////////////////////////////////////////////
+    @OneToMany(cascade = CascadeType.ALL,  mappedBy = "ptoUser")
+    private Set<BaseTrademarkApplication> myApplications;
 
 
 
