@@ -61,7 +61,7 @@ public class BaseTrademarkApplication {
     //  parent entity
     ////////////////////////////////////////////////////////
     @ManyToOne
-    private PTOUser ptoUser;
+     private PTOUser ptoUser;
 
     ////////////////////////////////////////////////////////
     // sub ordinate objects
