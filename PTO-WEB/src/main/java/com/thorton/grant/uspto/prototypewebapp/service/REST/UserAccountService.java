@@ -2,27 +2,18 @@ package com.thorton.grant.uspto.prototypewebapp.service.REST;
 
 
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
-import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.IUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
-import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.RegistrationDTO;
-import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.PTOUser;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
-import com.thorton.grant.uspto.prototypewebapp.model.entities.security.VerificationToken;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 
 import javax.servlet.*;
@@ -31,7 +22,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 

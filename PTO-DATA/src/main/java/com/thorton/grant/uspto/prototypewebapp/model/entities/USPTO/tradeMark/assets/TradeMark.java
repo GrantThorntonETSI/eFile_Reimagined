@@ -1,5 +1,6 @@
-package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO;
+package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets;
 
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.base.BaseEntity;
 
 import javax.persistence.Entity;

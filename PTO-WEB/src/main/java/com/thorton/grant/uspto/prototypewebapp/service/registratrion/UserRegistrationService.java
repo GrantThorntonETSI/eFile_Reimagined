@@ -6,7 +6,7 @@ import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentia
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserRoleService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.registration.VerificationTokenService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.RegistrationDTO;
-import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.PTOUser;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserRole;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.VerificationToken;

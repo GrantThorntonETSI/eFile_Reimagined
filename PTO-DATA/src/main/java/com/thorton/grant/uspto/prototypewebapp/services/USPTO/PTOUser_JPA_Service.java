@@ -1,7 +1,7 @@
 package com.thorton.grant.uspto.prototypewebapp.services.USPTO;
 
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
-import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.PTOUser;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.repositories.jpa.USPTO.PTOUserRepository;
 import org.springframework.stereotype.Service;
 

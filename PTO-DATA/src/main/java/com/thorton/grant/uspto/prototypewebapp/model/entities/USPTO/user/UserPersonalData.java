@@ -1,4 +1,4 @@
-package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO;
+package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user;
 
 import com.thorton.grant.uspto.prototypewebapp.model.entities.base.BaseEntity;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
