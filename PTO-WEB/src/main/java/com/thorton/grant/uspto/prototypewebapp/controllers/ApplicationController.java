@@ -42,6 +42,10 @@ public class ApplicationController {
 
 
         // check if user have address information set.
+        // also add possible attorney DTO for hidden part of the form
+
+
+        // we are actually just gonna hit next and got to add owner from econtacts as new proseee
 
 
         return "application/index";
