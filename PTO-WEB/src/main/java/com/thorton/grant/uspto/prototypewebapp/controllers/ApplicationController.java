@@ -48,7 +48,7 @@ public class ApplicationController {
         // we are actually just gonna hit next and got to add owner from econtacts as new proseee
 
 
-        return "application/index";
+        return "application/AttorneyStart";
     }
 
 
