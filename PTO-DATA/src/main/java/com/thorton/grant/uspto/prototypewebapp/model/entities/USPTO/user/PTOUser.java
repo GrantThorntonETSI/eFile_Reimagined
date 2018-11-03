@@ -2,10 +2,9 @@ package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user;
 
 
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.TradeMark;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
 
@@ -19,13 +18,34 @@ public class PTOUser extends UserPersonalData {
 
 
 
+    @Column(name =  "profile_complete" )
+    private boolean profileComplete = false;
 
     public Set<TradeMark> getUserTrademarks() {
         return userTrademarks;
     }
 
-    public void setUserTrademarks(Set<TradeMark> userTrademarks) {
-        this.userTrademarks = userTrademarks;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private UserCredentials userCredentials ;
+
+
+    public boolean isProfileComplete() {
+        return profileComplete;
+    }
+
+    public void setProfileComplete(boolean profileComplete) {
+        this.profileComplete = profileComplete;
+    }
+
+
+    public UserCredentials getUserCredentials() {
+        return userCredentials;
+    }
+
+
+    public void setUserCredentials(UserCredentials userCredentials) {
+        this.userCredentials = userCredentials;
     }
 
 
@@ -33,20 +53,14 @@ public class PTOUser extends UserPersonalData {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
         PTOUser ptoUser = (PTOUser) o;
-        return Objects.equals(userTrademarks, ptoUser.userTrademarks);
+        return profileComplete == ptoUser.profileComplete &&
+                Objects.equals(userTrademarks, ptoUser.userTrademarks) &&
+                Objects.equals(userCredentials, ptoUser.userCredentials);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), userTrademarks);
-    }
-
-    @Override
-    public String toString() {
-        return "PTOUser{" +
-                "userTrademarks=" + userTrademarks +
-                '}';
+        return Objects.hash(userTrademarks, profileComplete, userCredentials);
     }
 }

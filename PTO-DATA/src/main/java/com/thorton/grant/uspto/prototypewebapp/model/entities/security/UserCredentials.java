@@ -1,6 +1,7 @@
 package com.thorton.grant.uspto.prototypewebapp.model.entities.security;
 
 
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.UserPersonalData;
 import org.hibernate.validator.constraints.Length;
 
@@ -50,7 +51,7 @@ public class UserCredentials  {
     private boolean completedProfile;
 
     @OneToOne(mappedBy = "userCredentials")
-    private UserPersonalData userPersonalData;
+    private PTOUser userPersonalData;
 
     //@OneToOne(mappedBy = "")
     //private VerificationToken securityToken;
@@ -118,11 +119,11 @@ public class UserCredentials  {
         this.active = active;
     }
 
-    public UserPersonalData getUserPersonalData() {
+    public PTOUser getUserPersonalData() {
         return userPersonalData;
     }
 
-    public void setUserPersonalData(UserPersonalData userPersonalData) {
+    public void setUserPersonalData(PTOUser userPersonalData) {
         this.userPersonalData = userPersonalData;
     }
 
