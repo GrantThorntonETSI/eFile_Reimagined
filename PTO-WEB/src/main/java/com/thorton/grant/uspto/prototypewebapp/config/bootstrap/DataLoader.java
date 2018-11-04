@@ -5,6 +5,7 @@ import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserRoleService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.asset.TradeMarkService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Component;
 import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Set;
 
 @Component
 public class DataLoader implements ApplicationListener<ContextRefreshedEvent>         {
@@ -82,7 +84,14 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         PTOUser1.setEmail(ownerCreds.getEmail());
         // let us create an application and add it to PTOUser1
 
+
+        /////////////////////////////////////////////////////////////////////////////
         BaseTrademarkApplication trademarkApplication = new BaseTrademarkApplication();
+        trademarkApplication.setPtoUser(PTOUser1);
+        Set<BaseTrademarkApplication> trademarkApplications = new HashSet<>();
+        trademarkApplications.add(trademarkApplication);
+        PTOUser1.addApplication(trademarkApplication);
+        //////////////////////////////////////////////////////////////////
 
         /////////////////////////////////////////////////////////////////////////////////
         // add a method to PTOUser to just add one application
@@ -91,6 +100,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         myPTOUserService.save(PTOUser1);
         userRoleService.save(userRole);
         userCredentialsService.save(ownerCreds);
+        tradeMarkApplicationService.save(trademarkApplication);
         // userRoleService.save(userRole);
 
 

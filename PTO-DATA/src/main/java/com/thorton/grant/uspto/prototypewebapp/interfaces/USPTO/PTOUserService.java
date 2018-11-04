@@ -10,9 +10,6 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser
 public interface PTOUserService extends CrudService<PTOUser, Long> {
 
      PTOUser findByEmail(String email);
-     BaseTrademarkApplication addApplication(BaseTrademarkApplication newApplication);
-     Lawyer addLawyer(Lawyer newLawyer);
-     TradeMark addTradeMark(TradeMark newTrademar);
 
 
 

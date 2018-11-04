@@ -10,12 +10,13 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.base.BaseEntity;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 
 @Entity
-public class BaseTrademarkApplication extends BaseEntity {
+public class BaseTrademarkApplication  {
 
     // need to have an owner
 
@@ -24,6 +25,12 @@ public class BaseTrademarkApplication extends BaseEntity {
     ////////////////////////////////////////////////////////
     // stage 1 save point flags
     ////////////////////////////////////////////////////////
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+
+
     private boolean isAttorneyFiling;
     private boolean isForeignEnityFiling;
     private String currentStage;
@@ -94,6 +101,7 @@ public class BaseTrademarkApplication extends BaseEntity {
 
 
     // can be a lawyer or owner ???
+    @Nullable
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "trademarkApplication")
     private Owner owner;
 
@@ -187,27 +195,18 @@ public class BaseTrademarkApplication extends BaseEntity {
         this.availableLawyers = availableLawyers;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BaseTrademarkApplication that = (BaseTrademarkApplication) o;
-        return isAttorneyFiling == that.isAttorneyFiling &&
-                isForeignEnityFiling == that.isForeignEnityFiling &&
-                Objects.equals(currentStage, that.currentStage) &&
-                Objects.equals(lastViewModel, that.lastViewModel) &&
-                Objects.equals(ownerEmail, that.ownerEmail) &&
-                Objects.equals(ptoUser, that.ptoUser) &&
-                Objects.equals(primaryLawyer, that.primaryLawyer) &&
-                Objects.equals(availableLawyers, that.availableLawyers) &&
-                Objects.equals(owner, that.owner) &&
-                Objects.equals(tradeMark, that.tradeMark) &&
-                Objects.equals(actions, that.actions);
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(isAttorneyFiling, isForeignEnityFiling, currentStage, lastViewModel, ownerEmail, ptoUser, primaryLawyer, availableLawyers, owner, tradeMark, actions);
+        return Objects.hash(id);
     }
 
     @Override

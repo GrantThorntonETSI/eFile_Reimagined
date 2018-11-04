@@ -7,6 +7,7 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.as
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -14,12 +15,20 @@ import java.util.Set;
 @Table(name = "PTOUsers")
 public class PTOUser extends UserPersonalData {
 
+    public PTOUser() {
+        myTrademarks = new HashSet<>();
+        myApplications = new HashSet<>();
+        myLawyers = new HashSet<>();
+    }
+
+    /////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////
 
     @OneToMany(mappedBy = "trademarkOwner")
-    private Set<TradeMark> userTrademarks;
+    private Set<TradeMark> myTrademarks;
 
 
-    @OneToMany(cascade = CascadeType.ALL,  mappedBy = "ptoUser")
+    @OneToMany( cascade = CascadeType.ALL, mappedBy = "ptoUser")
     private Set<BaseTrademarkApplication> myApplications;
     /////////////////////////////////////////////////////////
     // owning object i.e  ptoUser owns trademark applications
@@ -38,12 +47,36 @@ public class PTOUser extends UserPersonalData {
     /////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////
 
-    public Set<TradeMark> getUserTrademarks() {
-        return userTrademarks;
+
+
+    public BaseTrademarkApplication addApplication(BaseTrademarkApplication newApplication){
+
+            myApplications.add(newApplication);
+        return  newApplication;
     }
 
-    public void setUserTrademarks(Set<TradeMark> userTrademarks) {
-        this.userTrademarks = userTrademarks;
+
+    public Lawyer addLawyer(Lawyer newLawyer){
+
+           myLawyers.add(newLawyer);
+        return newLawyer;
+    }
+
+
+    public TradeMark addTradeMark(TradeMark newTrademark){
+
+          myTrademarks.add(newTrademark);
+        return  newTrademark;
+    }
+    ///////////////////////////////////////////////////////////
+
+
+    public Set<TradeMark> getMyTrademarks() {
+        return myTrademarks;
+    }
+
+    public void setMyTrademarks(Set<TradeMark> myTrademarks) {
+        this.myTrademarks = myTrademarks;
     }
 
     public Set<BaseTrademarkApplication> getMyApplications() {
@@ -84,22 +117,18 @@ public class PTOUser extends UserPersonalData {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         PTOUser ptoUser = (PTOUser) o;
-        return profileComplete == ptoUser.profileComplete &&
-                Objects.equals(userTrademarks, ptoUser.userTrademarks) &&
-                Objects.equals(myApplications, ptoUser.myApplications) &&
-                Objects.equals(myLawyers, ptoUser.myLawyers) &&
-                Objects.equals(userCredentials, ptoUser.userCredentials);
+        return Objects.equals(userCredentials, ptoUser.userCredentials);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), userTrademarks, myApplications, myLawyers, profileComplete, userCredentials);
+        return Objects.hash(super.hashCode(), userCredentials);
     }
 
     @Override
     public String toString() {
         return "PTOUser{" +
-                "userTrademarks=" + userTrademarks +
+                "myTrademarks=" + myTrademarks +
                 ", myApplications=" + myApplications +
                 ", myLawyers=" + myLawyers +
                 ", profileComplete=" + profileComplete +

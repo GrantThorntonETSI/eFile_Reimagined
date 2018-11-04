@@ -62,18 +62,4 @@ public class PTOUser_JPA_Service implements PTOUserService {
     }
 
 
-    @Override
-    public BaseTrademarkApplication addApplication(BaseTrademarkApplication newApplication) {
-        return null;
-    }
-
-    @Override
-    public Lawyer addLawyer(Lawyer newLawyer) {
-        return null;
-    }
-
-    @Override
-    public TradeMark addTradeMark(TradeMark newTrademar) {
-        return null;
-    }
 }
