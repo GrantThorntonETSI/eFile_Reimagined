@@ -2,7 +2,7 @@ package com.thorton.grant.uspto.prototypewebapp.services.USPTO;
 
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.TradeMarkService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.TradeMark;
-import com.thorton.grant.uspto.prototypewebapp.repositories.jpa.USPTO.TradeMarkRepository;
+import com.thorton.grant.uspto.prototypewebapp.repositories.jpa.USPTO.tradeMark.asset.TradeMarkRepository;
 
 import java.util.HashSet;
 import java.util.Optional;

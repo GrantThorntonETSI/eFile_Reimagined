@@ -1,7 +1,8 @@
 package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user;
 
 
-import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.BaseTrademarkApplication;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.TradeMark;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 
@@ -24,6 +25,9 @@ public class PTOUser extends UserPersonalData {
     /////////////////////////////////////////////////////////
     @OneToMany(cascade = CascadeType.ALL,  mappedBy = "ptoUser")
     private Set<BaseTrademarkApplication> myApplications;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
+    private Set<Lawyer> myLawyers;
 
     public void setUserTrademarks(Set<TradeMark> userTrademarks) {
         this.userTrademarks = userTrademarks;
@@ -67,6 +71,14 @@ public class PTOUser extends UserPersonalData {
         this.userCredentials = userCredentials;
     }
 
+    public Set<Lawyer> getMyLawyers() {
+        return myLawyers;
+    }
+
+    public void setMyLawyers(Set<Lawyer> myLawyers) {
+        this.myLawyers = myLawyers;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -76,12 +88,13 @@ public class PTOUser extends UserPersonalData {
         return profileComplete == ptoUser.profileComplete &&
                 Objects.equals(userTrademarks, ptoUser.userTrademarks) &&
                 Objects.equals(myApplications, ptoUser.myApplications) &&
+                Objects.equals(myLawyers, ptoUser.myLawyers) &&
                 Objects.equals(userCredentials, ptoUser.userCredentials);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), userTrademarks, myApplications, profileComplete, userCredentials);
+        return Objects.hash(super.hashCode(), userTrademarks, myApplications, myLawyers, profileComplete, userCredentials);
     }
 
     @Override
@@ -89,6 +102,7 @@ public class PTOUser extends UserPersonalData {
         return "PTOUser{" +
                 "userTrademarks=" + userTrademarks +
                 ", myApplications=" + myApplications +
+                ", myLawyers=" + myLawyers +
                 ", profileComplete=" + profileComplete +
                 ", userCredentials=" + userCredentials +
                 '}';

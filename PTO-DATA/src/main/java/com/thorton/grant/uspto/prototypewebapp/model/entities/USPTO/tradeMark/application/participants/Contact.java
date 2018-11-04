@@ -1,14 +1,13 @@
 package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants;
 
 
-import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.UserPersonalData;
 
 import javax.persistence.Entity;
 
 import java.util.Date;
 import java.util.Objects;
-import java.util.Set;
+
 
 
 @Entity

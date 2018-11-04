@@ -1,7 +1,8 @@
 package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants;
 
 
-import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.BaseTrademarkApplication;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -23,6 +24,17 @@ public class Lawyer extends Contact {
     @ManyToOne
     private BaseTrademarkApplication poolMember;
 
+
+    @ManyToOne
+    private PTOUser client;
+
+    public PTOUser getClient() {
+        return client;
+    }
+
+    public void setClient(PTOUser client) {
+        this.client = client;
+    }
 
     public boolean isPrimary() {
         return isPrimary;
@@ -92,14 +104,14 @@ public class Lawyer extends Contact {
                 Objects.equals(barLicense, lawyer.barLicense) &&
                 Objects.equals(barJurisdiction, lawyer.barJurisdiction) &&
                 Objects.equals(primaryConsole, lawyer.primaryConsole) &&
-                Objects.equals(poolMember, lawyer.poolMember);
+                Objects.equals(poolMember, lawyer.poolMember) &&
+                Objects.equals(client, lawyer.client);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), isPrimary, validBarAssociation, lawFirmName, barLicense, barJurisdiction, primaryConsole, poolMember);
+        return Objects.hash(super.hashCode(), isPrimary, validBarAssociation, lawFirmName, barLicense, barJurisdiction, primaryConsole, poolMember, client);
     }
-
 
     @Override
     public String toString() {
@@ -111,6 +123,7 @@ public class Lawyer extends Contact {
                 ", barJurisdiction='" + barJurisdiction + '\'' +
                 ", primaryConsole=" + primaryConsole +
                 ", poolMember=" + poolMember +
+                ", client=" + client +
                 '}';
     }
 }

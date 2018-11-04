@@ -1,6 +1,6 @@
 package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants;
 
-import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.BaseTrademarkApplication;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;

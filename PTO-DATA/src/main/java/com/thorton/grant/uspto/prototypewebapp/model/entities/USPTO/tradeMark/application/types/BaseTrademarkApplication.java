@@ -1,4 +1,4 @@
-package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application;
+package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types;
 
 
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.OfficeActions;
@@ -28,6 +28,16 @@ public class BaseTrademarkApplication extends BaseEntity {
     private boolean isForeignEnityFiling;
     private String currentStage;
     private String lastViewModel;
+
+    private String ownerEmail;
+
+    public String getOwnerEmail() {
+        return ownerEmail;
+    }
+
+    public void setOwnerEmail(String ownerEmail) {
+        this.ownerEmail = ownerEmail;
+    }
 
     public String getCurrentStage() {
         return currentStage;
@@ -186,6 +196,7 @@ public class BaseTrademarkApplication extends BaseEntity {
                 isForeignEnityFiling == that.isForeignEnityFiling &&
                 Objects.equals(currentStage, that.currentStage) &&
                 Objects.equals(lastViewModel, that.lastViewModel) &&
+                Objects.equals(ownerEmail, that.ownerEmail) &&
                 Objects.equals(ptoUser, that.ptoUser) &&
                 Objects.equals(primaryLawyer, that.primaryLawyer) &&
                 Objects.equals(availableLawyers, that.availableLawyers) &&
@@ -196,9 +207,8 @@ public class BaseTrademarkApplication extends BaseEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(isAttorneyFiling, isForeignEnityFiling, currentStage, lastViewModel, ptoUser, primaryLawyer, availableLawyers, owner, tradeMark, actions);
+        return Objects.hash(isAttorneyFiling, isForeignEnityFiling, currentStage, lastViewModel, ownerEmail, ptoUser, primaryLawyer, availableLawyers, owner, tradeMark, actions);
     }
-
 
     @Override
     public String toString() {
@@ -207,6 +217,7 @@ public class BaseTrademarkApplication extends BaseEntity {
                 ", isForeignEnityFiling=" + isForeignEnityFiling +
                 ", currentStage='" + currentStage + '\'' +
                 ", lastViewModel='" + lastViewModel + '\'' +
+                ", ownerEmail='" + ownerEmail + '\'' +
                 ", ptoUser=" + ptoUser +
                 ", primaryLawyer=" + primaryLawyer +
                 ", availableLawyers=" + availableLawyers +
