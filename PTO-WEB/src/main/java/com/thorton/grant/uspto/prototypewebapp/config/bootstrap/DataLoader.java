@@ -105,15 +105,34 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         Lawyer newLawyer = new Lawyer();
         newLawyer.setClient(PTOUser1);
         newLawyer.setLawFirmName("Grant Thornton, LLC");
-        newLawyer.setPoolMember(trademarkApplication);
+        //newLawyer.setPoolMember(trademarkApplication);
         newLawyer.setBarLicense("DC234567889");
         newLawyer.setBarJurisdiction("DC");
         newLawyer.setFirstName("test");
         newLawyer.setLastName("lawyer");
         newLawyer.setEmail("li.zhang@us.gt.com");
         PTOUser1.addLawyer(newLawyer);
-        trademarkApplication.setAvailableLawyers(PTOUser1.getMyLawyers());
-        trademarkApplication.setPrimaryLawyer(PTOUser1.getMyLawyers().iterator().next());
+
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        // we need a copy constructor ...so that trademark Application lawyers are not the same ones
+        // saved by PTOUser ...
+        // as this will allow PTOUser to delete the application with out deleting his/hers lawyers.
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        // application also needs a better id for find ...build internal id. as user.email+trademark_name???
+        //Lawyer appPrimaryConsole = new Lawyer(PTOUser1.getMyLawyers().iterator().next());
+
+
+        //trademarkApplication.setAvailableLawyers(PTOUser1.getMyLawyers());
+
+        trademarkApplication.copyAvailableLawyers(PTOUser1.getMyLawyers());
+        // o
+
+
+
+        trademarkApplication.setPrimaryLawyer(trademarkApplication.getAvailableLawyers().iterator().next());
+        trademarkApplication.getPrimaryLawyer().setPoolMember(trademarkApplication);
+        trademarkApplication.getPrimaryLawyer().setPrimaryCase(trademarkApplication);
         trademarkApplication.setOwnerEmail(PTOUser1.getEmail());
 
         Owner owner = new Owner();
@@ -137,7 +156,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         // userRoleService.save(userRole);
         tradeMarkApplicationService.save(trademarkApplication);
         trademarkApplication.setTrademarkName("my_first_trademark");
-        trademarkApplication.setApplicationInternalID(trademarkApplication.getTrademarkName());
+        trademarkApplication.setApplicationInternalID(trademarkApplication.getTrademarkName()+trademarkApplication.getOwnerEmail());
         tradeMarkApplicationService.save(trademarkApplication);
 
 

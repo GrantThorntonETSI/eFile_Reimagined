@@ -17,9 +17,23 @@ public class Lawyer extends Contact {
     private String barLicense;
     private String barJurisdiction;
 
+    public Lawyer() {
+    }
+
+    // object copy constructor
+    public Lawyer(Lawyer lawyer) {
+        this.setEmail(lawyer.getEmail());
+        this.setFirstName(lawyer.getFirstName());
+        this.setLastName(lawyer.getLastName());
+        this.setLawFirmName(lawyer.getLawFirmName());
+        this.setBarLicense(lawyer.getBarLicense());
+        this.setBarJurisdiction(lawyer.getBarJurisdiction());
+        this.setClient(lawyer.getClient());
+        this.setPrimary(lawyer.isPrimary());
+    }
 
     @OneToOne
-    private BaseTrademarkApplication primaryConsole;
+    private BaseTrademarkApplication primaryCase;
 
     @ManyToOne
     private BaseTrademarkApplication poolMember;
@@ -76,12 +90,12 @@ public class Lawyer extends Contact {
         this.barJurisdiction = barJurisdiction;
     }
 
-    public BaseTrademarkApplication getPrimaryConsole() {
-        return primaryConsole;
+    public BaseTrademarkApplication getPrimaryCase() {
+        return primaryCase;
     }
 
-    public void setPrimaryConsole(BaseTrademarkApplication primaryConsole) {
-        this.primaryConsole = primaryConsole;
+    public void setPrimaryCase(BaseTrademarkApplication primaryCase) {
+        this.primaryCase = primaryCase;
     }
 
     public BaseTrademarkApplication getPoolMember() {
@@ -116,7 +130,7 @@ public class Lawyer extends Contact {
                 ", lawFirmName='" + lawFirmName + '\'' +
                 ", barLicense='" + barLicense + '\'' +
                 ", barJurisdiction='" + barJurisdiction + '\'' +
-                ", primaryConsole=" + primaryConsole +
+                ", primaryCase=" + primaryCase +
                 ", poolMember=" + poolMember +
                 ", client=" + client +
                 '}';

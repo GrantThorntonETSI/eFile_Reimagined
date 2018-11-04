@@ -6,4 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface BaseTradeMarkApplicationRepository extends CrudRepository<BaseTrademarkApplication, Long> {
 
     BaseTrademarkApplication findByOwnerEmail(String email);
+    BaseTrademarkApplication findByTrademarkName(String tradeMarkname);
 }

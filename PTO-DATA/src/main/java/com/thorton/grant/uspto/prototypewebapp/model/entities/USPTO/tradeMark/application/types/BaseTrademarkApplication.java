@@ -11,6 +11,7 @@ import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
 
@@ -21,6 +22,11 @@ public class BaseTrademarkApplication  {
     // need to have an owner
 
     // could have an lawyer as well
+
+    public BaseTrademarkApplication() {
+        availableLawyers = new HashSet<>();
+        actions = new HashSet<>();
+    }
 
     ////////////////////////////////////////////////////////
     // stage 1 save point flags
@@ -187,8 +193,21 @@ public class BaseTrademarkApplication  {
     }
 
     public void setAvailableLawyers(@Nullable Set<Lawyer> availableLawyers) {
+
         this.availableLawyers = availableLawyers;
+
     }
+
+    public void copyAvailableLawyers(Set<Lawyer> availableLawyers){
+        //this.availableLawyers.clear();
+
+        //availableLawyers = new HashSet<Lawyer>(availableLawyers);
+       // availableLawyers.forEach(availableLawyer -> availableLawyers.add(new Lawyer(availableLawyer)));
+
+       this.availableLawyers.add(new Lawyer(availableLawyers.iterator().next() ));
+
+    }
+
 
     public String getTrademarkName() {
         return trademarkName;
@@ -203,7 +222,7 @@ public class BaseTrademarkApplication  {
     }
 
     public void setApplicationInternalID(String applicationInternalID) {
-        this.applicationInternalID = applicationInternalID+id;
+        this.applicationInternalID = applicationInternalID;
     }
 
     @Override

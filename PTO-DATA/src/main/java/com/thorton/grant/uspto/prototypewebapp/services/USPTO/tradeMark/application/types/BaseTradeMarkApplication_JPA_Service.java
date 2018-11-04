@@ -54,4 +54,9 @@ public class BaseTradeMarkApplication_JPA_Service implements BaseTradeMarkApplic
         baseTradeMarkApplicationRepository.deleteById(id);
 
     }
+
+    @Override
+    public BaseTrademarkApplication findByTrademarkName(String name) {
+        return baseTradeMarkApplicationRepository.findByTrademarkName(name);
+    }
 }
