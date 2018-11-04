@@ -96,30 +96,27 @@ public class BaseTrademarkApplication  {
     // stage 1
     /////////////////////////////////////////////////////////////////////
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "primaryConsole")
-
+    @OneToOne(cascade = CascadeType.ALL)
     private Lawyer primaryLawyer;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "poolMember")
-    @Nullable
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<Lawyer> availableLawyers;
 
 
     // can be a lawyer or owner ???
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "trademarkApplication")
+    @OneToOne(cascade = CascadeType.ALL)
     private Owner owner;
 
 
     /////////////////////////////////////////////////////////////////////
     // stage 2
     /////////////////////////////////////////////////////////////////////
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "initialFilingInfo")
+    @OneToOne(cascade = CascadeType.ALL)
     private TradeMark tradeMark;
 
 
-    @OneToMany(cascade =  CascadeType.ALL, mappedBy = "trademarkApplication")
-    @Nullable
+    @OneToMany(cascade =  CascadeType.ALL)
     private Set<OfficeActions> actions;
     ////////////////////////////////////////////////////////
 
@@ -131,7 +128,6 @@ public class BaseTrademarkApplication  {
         this.ptoUser = ptoUser;
     }
 
-    @Nullable
     public Lawyer getPrimaryLawyer() {
         return primaryLawyer;
     }
@@ -166,7 +162,7 @@ public class BaseTrademarkApplication  {
         isForeignEnityFiling = foreignEnityFiling;
     }
 
-    @Nullable
+
     public TradeMark getTradeMark() {
         return tradeMark;
     }
@@ -175,7 +171,7 @@ public class BaseTrademarkApplication  {
         this.tradeMark = tradeMark;
     }
 
-    @Nullable
+
     public Set<OfficeActions> getActions() {
         return actions;
     }

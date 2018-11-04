@@ -4,6 +4,9 @@ package com.thorton.grant.uspto.prototypewebapp.controllers;
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 import org.springframework.security.core.Authentication;
@@ -98,7 +101,14 @@ public class UserAccountController {
 
 
         // find user's trademark applications
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByEmail(authentication.getName());
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@User Account Controller@@@@@@@@@@@@@@@@@@@@@@@@@");
+        System.out.println("user : "+authentication.getName());
 
+        Lawyer lawyer = baseTrademarkApplication.getPrimaryLawyer();
+
+        System.out.println("primary lawer law firm: "+lawyer.getLawFirmName());
         // add it to model as attribute
         // or do we prebuild the data tables array here and add it as an object ???
 

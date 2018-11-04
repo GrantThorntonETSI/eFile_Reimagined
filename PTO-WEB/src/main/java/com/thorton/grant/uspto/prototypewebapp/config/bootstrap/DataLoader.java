@@ -95,6 +95,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         trademarkApplication.setLastViewModel("application/OwnerStart");
 
 
+
         // tradeMark application needs an internal id that ties to the ptoUser ...
         // or examine how is application tied to the ptoUser
 
@@ -111,7 +112,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         newLawyer.setEmail("li.zhang@us.gt.com");
         PTOUser1.addLawyer(newLawyer);
         trademarkApplication.setAvailableLawyers(PTOUser1.getMyLawyers());
-        trademarkApplication.setPrimaryLawyer(newLawyer);
+        trademarkApplication.setPrimaryLawyer(PTOUser1.getMyLawyers().iterator().next());
+        trademarkApplication.setOwnerEmail(PTOUser1.getEmail());
 
         /////////////////////////////////////////////////////////////////////////////////
         // add a method to PTOUser to just add one application
