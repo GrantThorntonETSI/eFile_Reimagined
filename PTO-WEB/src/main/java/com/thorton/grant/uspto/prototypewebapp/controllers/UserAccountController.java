@@ -96,8 +96,15 @@ public class UserAccountController {
         model.addAttribute("account",credentials);
 
 
-        model.addAttribute("user", ptoUser);
-        model.addAttribute("account",credentials);
+
+        // find user's trademark applications
+
+        // add it to model as attribute
+        // or do we prebuild the data tables array here and add it as an object ???
+
+
+
+
 
         if(ptoUser.isProfileComplete() == false){
             model.addAttribute("message", "Please Complete your Contact Information First.");
