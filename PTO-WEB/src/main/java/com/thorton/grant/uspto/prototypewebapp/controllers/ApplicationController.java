@@ -50,7 +50,6 @@ public class ApplicationController {
 
         return "application/AttorneyStart";
 
-        //return "application/OwnerStart";
     }
 
 
