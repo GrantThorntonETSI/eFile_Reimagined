@@ -8,6 +8,7 @@ import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.applic
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.asset.TradeMarkService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
@@ -115,6 +116,16 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         trademarkApplication.setPrimaryLawyer(PTOUser1.getMyLawyers().iterator().next());
         trademarkApplication.setOwnerEmail(PTOUser1.getEmail());
 
+        Owner owner = new Owner();
+        owner.setOwnerType("individual");
+        owner.setEmail(PTOUser1.getEmail());
+        owner.setAddress(PTOUser1.getAddress());
+        owner.setFirstName(PTOUser1.getFirstName());
+        owner.setLastName(PTOUser1.getLastName());
+        owner.setCity(PTOUser1.getCity());
+        owner.setState(PTOUser1.getState());
+
+        trademarkApplication.setOwner(owner);
         /////////////////////////////////////////////////////////////////////////////////
         // add a method to PTOUser to just add one application
         /////////////////////////////////////////////////////////////////////////////////

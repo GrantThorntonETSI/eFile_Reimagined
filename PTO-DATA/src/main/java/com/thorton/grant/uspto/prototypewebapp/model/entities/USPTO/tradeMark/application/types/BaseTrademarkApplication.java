@@ -28,11 +28,6 @@ public class BaseTrademarkApplication  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-
-
-
-
     private String trademarkName;
     private String applicationInternalID;
 
