@@ -19,15 +19,28 @@ public class PTOUser extends UserPersonalData {
     private Set<TradeMark> userTrademarks;
 
 
-
+    @OneToMany(cascade = CascadeType.ALL,  mappedBy = "ptoUser")
+    private Set<BaseTrademarkApplication> myApplications;
     /////////////////////////////////////////////////////////
     // owning object i.e  ptoUser owns trademark applications
     /////////////////////////////////////////////////////////
-    @OneToMany(cascade = CascadeType.ALL,  mappedBy = "ptoUser")
-    private Set<BaseTrademarkApplication> myApplications;
+
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
     private Set<Lawyer> myLawyers;
+
+    @Column(name =  "profile_complete" )
+    private boolean profileComplete = false;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private UserCredentials userCredentials ;
+
+    /////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////
+
+    public Set<TradeMark> getUserTrademarks() {
+        return userTrademarks;
+    }
 
     public void setUserTrademarks(Set<TradeMark> userTrademarks) {
         this.userTrademarks = userTrademarks;
@@ -41,17 +54,13 @@ public class PTOUser extends UserPersonalData {
         this.myApplications = myApplications;
     }
 
-    @Column(name =  "profile_complete" )
-    private boolean profileComplete = false;
-
-    public Set<TradeMark> getUserTrademarks() {
-        return userTrademarks;
+    public Set<Lawyer> getMyLawyers() {
+        return myLawyers;
     }
 
-
-    @OneToOne(cascade = CascadeType.ALL)
-    private UserCredentials userCredentials ;
-
+    public void setMyLawyers(Set<Lawyer> myLawyers) {
+        this.myLawyers = myLawyers;
+    }
 
     public boolean isProfileComplete() {
         return profileComplete;
@@ -61,22 +70,12 @@ public class PTOUser extends UserPersonalData {
         this.profileComplete = profileComplete;
     }
 
-
     public UserCredentials getUserCredentials() {
         return userCredentials;
     }
 
-
     public void setUserCredentials(UserCredentials userCredentials) {
         this.userCredentials = userCredentials;
-    }
-
-    public Set<Lawyer> getMyLawyers() {
-        return myLawyers;
-    }
-
-    public void setMyLawyers(Set<Lawyer> myLawyers) {
-        this.myLawyers = myLawyers;
     }
 
     @Override

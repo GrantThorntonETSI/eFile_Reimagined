@@ -3,11 +3,14 @@ package com.thorton.grant.uspto.prototypewebapp.services.USPTO.tradeMark.applica
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.repositories.jpa.USPTO.tradeMark.application.types.BaseTradeMarkApplicationRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+
+@Service
 public class BaseTradeMarkApplication_JPA_Service implements BaseTradeMarkApplicationService {
 
 

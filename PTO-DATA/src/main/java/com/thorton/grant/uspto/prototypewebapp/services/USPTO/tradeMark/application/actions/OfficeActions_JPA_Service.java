@@ -3,11 +3,14 @@ package com.thorton.grant.uspto.prototypewebapp.services.USPTO.tradeMark.applica
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.actions.OfficeActionsService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.OfficeActions;
 import com.thorton.grant.uspto.prototypewebapp.repositories.jpa.USPTO.tradeMark.application.actions.OfficeActionsRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+
+@Service
 public class OfficeActions_JPA_Service implements OfficeActionsService {
 
     private  final OfficeActionsRepository officeActionsRepository;
