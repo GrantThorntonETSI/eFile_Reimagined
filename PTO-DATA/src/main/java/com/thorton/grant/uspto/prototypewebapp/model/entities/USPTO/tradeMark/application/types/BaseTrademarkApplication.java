@@ -31,6 +31,11 @@ public class BaseTrademarkApplication  {
 
 
 
+
+
+    private String trademarkName;
+    private String applicationInternalID;
+
     private boolean isAttorneyFiling;
     private boolean isForeignEnityFiling;
     private String currentStage;
@@ -92,7 +97,7 @@ public class BaseTrademarkApplication  {
     /////////////////////////////////////////////////////////////////////
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "primaryConsole")
-    @Nullable
+
     private Lawyer primaryLawyer;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "poolMember")
@@ -101,7 +106,7 @@ public class BaseTrademarkApplication  {
 
 
     // can be a lawyer or owner ???
-    @Nullable
+
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "trademarkApplication")
     private Owner owner;
 
@@ -110,7 +115,6 @@ public class BaseTrademarkApplication  {
     // stage 2
     /////////////////////////////////////////////////////////////////////
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "initialFilingInfo")
-    @Nullable
     private TradeMark tradeMark;
 
 
@@ -186,7 +190,7 @@ public class BaseTrademarkApplication  {
     // application
 
 
-    @Nullable
+
     public Set<Lawyer> getAvailableLawyers() {
         return availableLawyers;
     }
@@ -195,6 +199,21 @@ public class BaseTrademarkApplication  {
         this.availableLawyers = availableLawyers;
     }
 
+    public String getTrademarkName() {
+        return trademarkName;
+    }
+
+    public void setTrademarkName(String trademarkName) {
+        this.trademarkName = trademarkName;
+    }
+
+    public String getApplicationInternalID() {
+        return applicationInternalID;
+    }
+
+    public void setApplicationInternalID(String applicationInternalID) {
+        this.applicationInternalID = applicationInternalID+id;
+    }
 
     @Override
     public boolean equals(Object o) {

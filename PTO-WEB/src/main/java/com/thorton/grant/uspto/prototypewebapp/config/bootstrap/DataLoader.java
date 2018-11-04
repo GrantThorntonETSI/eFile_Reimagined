@@ -106,9 +106,13 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         newLawyer.setPoolMember(trademarkApplication);
         newLawyer.setBarLicense("DC234567889");
         newLawyer.setBarJurisdiction("DC");
+        newLawyer.setFirstName("test");
+        newLawyer.setLastName("lawyer");
+        newLawyer.setEmail("li.zhang@us.gt.com");
         PTOUser1.addLawyer(newLawyer);
         trademarkApplication.setAvailableLawyers(PTOUser1.getMyLawyers());
         trademarkApplication.setPrimaryLawyer(newLawyer);
+
         /////////////////////////////////////////////////////////////////////////////////
         // add a method to PTOUser to just add one application
         /////////////////////////////////////////////////////////////////////////////////
@@ -116,10 +120,12 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         myPTOUserService.save(PTOUser1);
         userRoleService.save(userRole);
         userCredentialsService.save(ownerCreds);
-        tradeMarkApplicationService.save(trademarkApplication);
         lawyerService.save(newLawyer);
         // userRoleService.save(userRole);
-
+        tradeMarkApplicationService.save(trademarkApplication);
+        trademarkApplication.setTrademarkName("my_first_trademark");
+        trademarkApplication.setApplicationInternalID(trademarkApplication.getTrademarkName());
+        tradeMarkApplicationService.save(trademarkApplication);
 
 
         // now add objects to repository, owner and user
@@ -150,8 +156,9 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
 
 
         */
-
-
+System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+        Lawyer myLawerTEST = trademarkApplication.getPrimaryLawyer();
+        System.out.println("trademark application: "+trademarkApplication.getApplicationInternalID()+  " represented by law firm :"+myLawerTEST.getLawFirmName());
 
 
     }
