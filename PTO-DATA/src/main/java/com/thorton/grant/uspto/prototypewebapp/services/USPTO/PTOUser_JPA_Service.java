@@ -1,6 +1,9 @@
 package com.thorton.grant.uspto.prototypewebapp.services.USPTO;
 
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.TradeMark;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.repositories.jpa.USPTO.PTOUserRepository;
 import org.springframework.stereotype.Service;
@@ -59,5 +62,18 @@ public class PTOUser_JPA_Service implements PTOUserService {
     }
 
 
+    @Override
+    public BaseTrademarkApplication addApplication(BaseTrademarkApplication newApplication) {
+        return null;
+    }
 
+    @Override
+    public Lawyer addLawyer(Lawyer newLawyer) {
+        return null;
+    }
+
+    @Override
+    public TradeMark addTradeMark(TradeMark newTrademar) {
+        return null;
+    }
 }

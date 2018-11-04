@@ -6,4 +6,5 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.ap
 public interface BaseTradeMarkApplicationService extends CrudService<BaseTrademarkApplication, Long> {
 
     BaseTrademarkApplication findByEmail(String email);
+
 }

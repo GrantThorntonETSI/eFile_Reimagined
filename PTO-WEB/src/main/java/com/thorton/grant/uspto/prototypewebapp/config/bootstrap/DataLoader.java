@@ -4,6 +4,8 @@ import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserRoleService;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserRole;
@@ -29,13 +31,14 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
     @Transactional
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
 
-
+        ////////////////////////////////////////////////////////////////////////////////
+        // inject services from factory
+        ////////////////////////////////////////////////////////////////////////////////
         PTOUserService myPTOUserService = serviceBeanFactory.getPTOUserService();
-
-
         UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
-
         UserRoleService userRoleService = serviceBeanFactory.getUserRoleService();
+        BaseTradeMarkApplicationService tradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        ////////////////////////////////////////////////////////////////////////////////
 
 
         PTOUser PTOUser1 = new PTOUser();
@@ -48,11 +51,14 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         PTOUser1.setCountry("X1"); // country code for united states
         PTOUser1.setPrimaryPhonenumber("571-839-3730");
         PTOUser1.setProfileComplete(true);
-
+        /////////////////////////////////////////////////////////////////////////////////
         // set username, password, email and role
+        /////////////////////////////////////////////////////////////////////////////////
         UserCredentials ownerCreds = new UserCredentials();
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        /////////////////////////////////////////////////////////////////////////////////
         // follow the same convention from the save method and save role for test user 1
+        /////////////////////////////////////////////////////////////////////////////////
 
         ownerCreds.setUsername("test.user");
         ownerCreds.setPassword(bCryptPasswordEncoder.encode("xxxxx"));
@@ -64,13 +70,24 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         userRole.setRoleName("ROLE_ADMIN");
         //myRoleService.save(userRole);
         ownerCreds.setUserRoles(new HashSet<UserRole>(Arrays.asList(userRole)));
+        //////////////////////////////////////////////////////////////////////////////////
         // set credentails to active
-
+        //////////////////////////////////////////////////////////////////////////////////
         ownerCreds.setActive(1);
+        //////////////////////////////////////////////////////////////////////////////////
         // create bi-directional relationship between credentials and owner
+        //////////////////////////////////////////////////////////////////////////////////
         ownerCreds.setUserPersonalData(PTOUser1);
         PTOUser1.setUserCredentials(ownerCreds);
         PTOUser1.setEmail(ownerCreds.getEmail());
+        // let us create an application and add it to PTOUser1
+
+        BaseTrademarkApplication trademarkApplication = new BaseTrademarkApplication();
+
+        /////////////////////////////////////////////////////////////////////////////////
+        // add a method to PTOUser to just add one application
+        /////////////////////////////////////////////////////////////////////////////////
+
         myPTOUserService.save(PTOUser1);
         userRoleService.save(userRole);
         userCredentialsService.save(ownerCreds);
