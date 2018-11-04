@@ -30,12 +30,12 @@ public class Owner extends Contact{
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Owner owner = (Owner) o;
-        return Objects.equals(ownerType, owner.ownerType);
+        return Objects.equals(trademarkApplication, owner.trademarkApplication);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), ownerType);
+        return Objects.hash(super.hashCode(), trademarkApplication);
     }
 
     @Override

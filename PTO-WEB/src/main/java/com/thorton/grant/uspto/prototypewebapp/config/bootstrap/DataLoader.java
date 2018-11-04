@@ -4,8 +4,10 @@ import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserRoleService;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.participants.LawyerService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.asset.TradeMarkService;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
@@ -40,6 +42,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
         UserRoleService userRoleService = serviceBeanFactory.getUserRoleService();
         BaseTradeMarkApplicationService tradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        LawyerService lawyerService = serviceBeanFactory.getLawyerService();
+
         ////////////////////////////////////////////////////////////////////////////////
 
 
@@ -88,11 +92,23 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         /////////////////////////////////////////////////////////////////////////////
         BaseTrademarkApplication trademarkApplication = new BaseTrademarkApplication();
         trademarkApplication.setPtoUser(PTOUser1);
-        Set<BaseTrademarkApplication> trademarkApplications = new HashSet<>();
-        trademarkApplications.add(trademarkApplication);
+        trademarkApplication.setLastViewModel("application/OwnerStart");
+
+
+        // tradeMark application needs an internal id that ties to the ptoUser ...
+        // or examine how is application tied to the ptoUser
+
         PTOUser1.addApplication(trademarkApplication);
         //////////////////////////////////////////////////////////////////
-
+        Lawyer newLawyer = new Lawyer();
+        newLawyer.setClient(PTOUser1);
+        newLawyer.setLawFirmName("Grant Thornton, LLC");
+        newLawyer.setPoolMember(trademarkApplication);
+        newLawyer.setBarLicense("DC234567889");
+        newLawyer.setBarJurisdiction("DC");
+        PTOUser1.addLawyer(newLawyer);
+        trademarkApplication.setAvailableLawyers(PTOUser1.getMyLawyers());
+        trademarkApplication.setPrimaryLawyer(newLawyer);
         /////////////////////////////////////////////////////////////////////////////////
         // add a method to PTOUser to just add one application
         /////////////////////////////////////////////////////////////////////////////////
@@ -101,6 +117,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         userRoleService.save(userRole);
         userCredentialsService.save(ownerCreds);
         tradeMarkApplicationService.save(trademarkApplication);
+        lawyerService.save(newLawyer);
         // userRoleService.save(userRole);
 
 

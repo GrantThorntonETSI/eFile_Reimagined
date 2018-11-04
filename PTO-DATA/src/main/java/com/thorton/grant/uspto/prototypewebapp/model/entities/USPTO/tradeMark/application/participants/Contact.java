@@ -47,6 +47,7 @@ public class Contact  extends UserPersonalData {
         this.preferredContactMethod = preferredContactMethod;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
