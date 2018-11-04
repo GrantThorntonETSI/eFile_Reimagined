@@ -12,6 +12,7 @@ public class RolePrivilege  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "privilege_id")
     private Long id;
     private String name;
 

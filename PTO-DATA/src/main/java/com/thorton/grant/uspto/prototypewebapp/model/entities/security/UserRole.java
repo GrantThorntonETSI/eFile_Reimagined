@@ -28,9 +28,9 @@ public class UserRole {
 
     @ManyToMany
     @JoinTable(
-            name = "role_prvileges",
+            name = "user_role_role_privileges",
             joinColumns = @JoinColumn(name = "user_role_id"),
-            inverseJoinColumns = @JoinColumn(name = "privilege_id", referencedColumnName = "id")
+            inverseJoinColumns = @JoinColumn(name = "privilege_id")
     )
     private Set<RolePrivilege> rolePrivileges;
 
