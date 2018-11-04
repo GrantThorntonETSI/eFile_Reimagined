@@ -1,7 +1,9 @@
 package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants;
 
 
-import javax.persistence.Entity;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.BaseTrademarkApplication;
+
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -13,6 +15,13 @@ public class Lawyer extends Contact {
     private String lawFirmName;
     private String barLicense;
     private String barJurisdiction;
+
+
+    @OneToOne
+    private BaseTrademarkApplication primaryConsole;
+
+    @ManyToOne
+    private BaseTrademarkApplication poolMember;
 
 
     public boolean isPrimary() {
@@ -55,6 +64,22 @@ public class Lawyer extends Contact {
         this.barJurisdiction = barJurisdiction;
     }
 
+    public BaseTrademarkApplication getPrimaryConsole() {
+        return primaryConsole;
+    }
+
+    public void setPrimaryConsole(BaseTrademarkApplication primaryConsole) {
+        this.primaryConsole = primaryConsole;
+    }
+
+    public BaseTrademarkApplication getPoolMember() {
+        return poolMember;
+    }
+
+    public void setPoolMember(BaseTrademarkApplication poolMember) {
+        this.poolMember = poolMember;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -65,12 +90,14 @@ public class Lawyer extends Contact {
                 validBarAssociation == lawyer.validBarAssociation &&
                 Objects.equals(lawFirmName, lawyer.lawFirmName) &&
                 Objects.equals(barLicense, lawyer.barLicense) &&
-                Objects.equals(barJurisdiction, lawyer.barJurisdiction);
+                Objects.equals(barJurisdiction, lawyer.barJurisdiction) &&
+                Objects.equals(primaryConsole, lawyer.primaryConsole) &&
+                Objects.equals(poolMember, lawyer.poolMember);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), isPrimary, validBarAssociation, lawFirmName, barLicense, barJurisdiction);
+        return Objects.hash(super.hashCode(), isPrimary, validBarAssociation, lawFirmName, barLicense, barJurisdiction, primaryConsole, poolMember);
     }
 
 
@@ -82,6 +109,8 @@ public class Lawyer extends Contact {
                 ", lawFirmName='" + lawFirmName + '\'' +
                 ", barLicense='" + barLicense + '\'' +
                 ", barJurisdiction='" + barJurisdiction + '\'' +
+                ", primaryConsole=" + primaryConsole +
+                ", poolMember=" + poolMember +
                 '}';
     }
 }

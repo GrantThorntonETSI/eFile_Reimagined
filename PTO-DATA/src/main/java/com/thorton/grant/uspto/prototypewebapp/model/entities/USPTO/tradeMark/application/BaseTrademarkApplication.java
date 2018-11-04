@@ -6,6 +6,7 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.ap
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.TradeMark;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.base.BaseEntity;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
@@ -14,7 +15,7 @@ import java.util.Set;
 
 
 @Entity
-public class BaseTrademarkApplication {
+public class BaseTrademarkApplication extends BaseEntity {
 
     // need to have an owner
 
@@ -61,7 +62,7 @@ public class BaseTrademarkApplication {
     //  parent entity
     ////////////////////////////////////////////////////////
     @ManyToOne
-     private PTOUser ptoUser;
+    private PTOUser ptoUser;
 
     ////////////////////////////////////////////////////////
     // sub ordinate objects
@@ -77,7 +78,7 @@ public class BaseTrademarkApplication {
     @Nullable
     private Lawyer primaryLawyer;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "application")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "poolMember")
     @Nullable
     private Set<Lawyer> availableLawyers;
 

@@ -17,7 +17,7 @@ public class OfficeActions extends BaseEntity {
     private String oficeActionCode;
 
     @OneToOne
-    private BaseTrademarkApplication application;
+    private BaseTrademarkApplication trademarkApplication;
 
 
 
@@ -38,14 +38,14 @@ public class OfficeActions extends BaseEntity {
         this.oficeActionCode = oficeActionCode;
     }
 
-
-    public BaseTrademarkApplication getApplication() {
-        return application;
+    public BaseTrademarkApplication getTrademarkApplication() {
+        return trademarkApplication;
     }
 
-    public void setApplication(BaseTrademarkApplication application) {
-        this.application = application;
+    public void setTrademarkApplication(BaseTrademarkApplication trademarkApplication) {
+        this.trademarkApplication = trademarkApplication;
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -54,12 +54,12 @@ public class OfficeActions extends BaseEntity {
         OfficeActions that = (OfficeActions) o;
         return Objects.equals(officeAction, that.officeAction) &&
                 Objects.equals(oficeActionCode, that.oficeActionCode) &&
-                Objects.equals(application, that.application);
+                Objects.equals(trademarkApplication, that.trademarkApplication);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(officeAction, oficeActionCode, application);
+        return Objects.hash(officeAction, oficeActionCode, trademarkApplication);
     }
 
 
@@ -68,7 +68,7 @@ public class OfficeActions extends BaseEntity {
         return "OfficeActions{" +
                 "officeAction='" + officeAction + '\'' +
                 ", oficeActionCode='" + oficeActionCode + '\'' +
-                ", application=" + application +
+                ", trademarkApplication=" + trademarkApplication +
                 '}';
     }
 }

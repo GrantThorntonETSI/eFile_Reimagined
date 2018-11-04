@@ -1,11 +1,18 @@
 package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants;
 
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.BaseTrademarkApplication;
+
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import java.util.Objects;
 
 @Entity
 public class Owner extends Contact{
 
+
+
+    @OneToOne
+    private BaseTrademarkApplication trademarkApplication;
 
     private String ownerType;
 

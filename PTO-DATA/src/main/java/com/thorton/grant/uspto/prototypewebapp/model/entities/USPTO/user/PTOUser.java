@@ -25,7 +25,17 @@ public class PTOUser extends UserPersonalData {
     @OneToMany(cascade = CascadeType.ALL,  mappedBy = "ptoUser")
     private Set<BaseTrademarkApplication> myApplications;
 
+    public void setUserTrademarks(Set<TradeMark> userTrademarks) {
+        this.userTrademarks = userTrademarks;
+    }
 
+    public Set<BaseTrademarkApplication> getMyApplications() {
+        return myApplications;
+    }
+
+    public void setMyApplications(Set<BaseTrademarkApplication> myApplications) {
+        this.myApplications = myApplications;
+    }
 
     @Column(name =  "profile_complete" )
     private boolean profileComplete = false;
@@ -57,19 +67,30 @@ public class PTOUser extends UserPersonalData {
         this.userCredentials = userCredentials;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         PTOUser ptoUser = (PTOUser) o;
         return profileComplete == ptoUser.profileComplete &&
                 Objects.equals(userTrademarks, ptoUser.userTrademarks) &&
+                Objects.equals(myApplications, ptoUser.myApplications) &&
                 Objects.equals(userCredentials, ptoUser.userCredentials);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userTrademarks, profileComplete, userCredentials);
+        return Objects.hash(super.hashCode(), userTrademarks, myApplications, profileComplete, userCredentials);
+    }
+
+    @Override
+    public String toString() {
+        return "PTOUser{" +
+                "userTrademarks=" + userTrademarks +
+                ", myApplications=" + myApplications +
+                ", profileComplete=" + profileComplete +
+                ", userCredentials=" + userCredentials +
+                '}';
     }
 }
