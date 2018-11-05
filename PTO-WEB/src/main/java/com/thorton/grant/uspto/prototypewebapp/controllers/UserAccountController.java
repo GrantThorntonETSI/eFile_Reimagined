@@ -14,6 +14,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.WebRequest;
 
 import java.util.HashSet;
 
@@ -141,6 +144,42 @@ public class UserAccountController {
         }
         return "account/dashboard";
         //return baseTrademarkApplication.getLastViewModel();
+
+    }
+
+
+    @RequestMapping(value = "/application/continueApplication", method = RequestMethod.GET)
+    public String continueApplication
+            (WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
+
+        String applcationLookupID = trademarkInternalID;
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!continue Application!!!!!!!!!!!!!!!!!");
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+        //HashSet<BaseTrademarkApplication> baseTrademarkApplications = new HashSet<BaseTrademarkApplication>(ptoUser.getMyApplications());
+
+        //////////////////////////////////////////////////////////////////////////
+        // retrieve trade mark using internal id
+        // add trademark to the model
+        // and return the the view that trademark object has saved.
+        //////////////////////////////////////////////////////////////////////////
+
+        model.addAttribute("trademarkApplication", baseTrademarkApplication);
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        PTOUserService  ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+
+
+
+
+        return baseTrademarkApplication.getLastViewModel();
 
     }
 

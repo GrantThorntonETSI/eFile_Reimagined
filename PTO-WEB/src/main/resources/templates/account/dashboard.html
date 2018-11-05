@@ -270,7 +270,6 @@
 
     $(document).ready(function() {
 
-        //alert(applicatoinID);
 
 
         setTimeout(function() {
@@ -363,22 +362,15 @@
             $('#trademarksFrame').prop('src',$(this).next().val() );
         });
 
+        var hrefVal = '<a href="/application/continueApplication/?trademarkID='+applicatoinID+'">application</a>';
+        //alert(hrefVal);
 
-         filingsTable.row.add([ "", "<a href='/application/continuteApplication'+applicatoinID>application</a>", "N/A", "Li Zhang", "filing started", "<a href=\"#mark-preview-modal\" data-toggle=\"modal\" data-target=\"#mark-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit trademarks-view\"><i class=\"material-icons\">dvr</i></a>\n" +
+         filingsTable.row.add([ "", hrefVal, "N/A", "Li Zhang", "filing started", "<a href=\"#mark-preview-modal\" data-toggle=\"modal\" data-target=\"#mark-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit trademarks-view\"><i class=\"material-icons\">dvr</i></a>\n" +
          "                                                <input style=\"display: none;\" value=\"../resources/data_images/vakker.png\">" ]).draw();
         // make this jquery expression more generic
 
 
-    // wait .5 seconds then add a row to the top of the table
 
-
-        //var newRow = /''${newFilingTableRow}'\';
-
-        //var newRow  = /*[[${newFilingTableRow}]]*/ 'default';
-        //console.log(message);
-
-        //alert(newRow);
-        //filingsTable.row.add(newRow);
     });
 
 </script>
