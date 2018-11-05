@@ -130,7 +130,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
 
 
 
-        trademarkApplication.setPrimaryLawyer(trademarkApplication.getAvailableLawyers().iterator().next());
+        trademarkApplication.setPrimaryLawyer( trademarkApplication.getAvailableLawyers().iterator().next());
         trademarkApplication.getPrimaryLawyer().setPoolMember(trademarkApplication);
         trademarkApplication.getPrimaryLawyer().setPrimaryCase(trademarkApplication);
         trademarkApplication.setOwnerEmail(PTOUser1.getEmail());
@@ -161,6 +161,30 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         trademarkApplication.setApplicationInternalID(trademarkApplication.getTrademarkName()+trademarkApplication.getId()+trademarkApplication.getOwnerEmail());
         tradeMarkApplicationService.save(trademarkApplication);
 
+
+
+        // delete test
+        //lawyerService.delete(trademarkApplication.getPrimaryLawyer());
+        //lawyerService.delete(trademarkApplication.getAvailableLawyers().iterator().next());
+/*
+
+delete test completed and passed.
+
+        HashSet<Lawyer> lawyers = new HashSet<Lawyer>(trademarkApplication.getAvailableLawyers());
+        Lawyer primaryLawyer = trademarkApplication.getPrimaryLawyer();
+        trademarkApplication.setOwner(null);
+        trademarkApplication.setPrimaryLawyer(null);
+        trademarkApplication.setAvailableLawyers(null);
+        tradeMarkApplicationService.save(trademarkApplication);
+
+
+
+        //lawyerService.delete(primaryLawyer);
+        lawyerService.delete(lawyers.iterator().next());
+        PTOUser1.setMyApplications(null);
+        tradeMarkApplicationService.delete(trademarkApplication);
+
+        */
 
         // now add objects to repository, owner and user
 

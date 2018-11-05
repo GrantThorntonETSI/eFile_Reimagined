@@ -98,15 +98,18 @@ public class BaseTrademarkApplication  {
     /////////////////////////////////////////////////////////////////////
 
     @OneToOne(cascade = CascadeType.ALL)
+    @Nullable
     private Lawyer primaryLawyer;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @Nullable
     private Set<Lawyer> availableLawyers;
 
 
     // can be a lawyer or owner ???
 
     @OneToOne(cascade = CascadeType.ALL)
+    @Nullable
     private Owner owner;
 
 
@@ -114,10 +117,12 @@ public class BaseTrademarkApplication  {
     // stage 2
     /////////////////////////////////////////////////////////////////////
     @OneToOne(cascade = CascadeType.ALL)
+    @Nullable
     private TradeMark tradeMark;
 
 
     @OneToMany(cascade =  CascadeType.ALL)
+    @Nullable
     private Set<OfficeActions> actions;
     ////////////////////////////////////////////////////////
 
