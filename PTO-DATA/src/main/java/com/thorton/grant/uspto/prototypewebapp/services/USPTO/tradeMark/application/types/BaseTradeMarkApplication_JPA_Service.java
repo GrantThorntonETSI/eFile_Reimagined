@@ -56,7 +56,7 @@ public class BaseTradeMarkApplication_JPA_Service implements BaseTradeMarkApplic
     }
 
     @Override
-    public BaseTrademarkApplication findByTrademarkName(String name) {
-        return baseTradeMarkApplicationRepository.findByTrademarkName(name);
+    public BaseTrademarkApplication findByInternalID(String id) {
+        return baseTradeMarkApplicationRepository.findByApplicationInternalID(id);
     }
 }

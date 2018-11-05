@@ -182,11 +182,6 @@ public class BaseTrademarkApplication  {
     }
 
 
-    // need a public method that returns the next View and DTO object needed for the view
-    // we need some type of mapping, of a list of views and DTO objects associated with each stage of the
-    // application
-
-
 
     public Set<Lawyer> getAvailableLawyers() {
         return availableLawyers;
@@ -198,13 +193,20 @@ public class BaseTrademarkApplication  {
 
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public void copyAvailableLawyers(Set<Lawyer> availableLawyers){
-        //this.availableLawyers.clear();
 
-        //availableLawyers = new HashSet<Lawyer>(availableLawyers);
-       // availableLawyers.forEach(availableLawyer -> availableLawyers.add(new Lawyer(availableLawyer)));
+        for(Iterator<Lawyer> iter = availableLawyers.iterator(); iter.hasNext(); ) {
+           this.availableLawyers.add(new Lawyer( iter.next() ));
+        }
 
-       this.availableLawyers.add(new Lawyer(availableLawyers.iterator().next() ));
+
+
+
+
 
     }
 

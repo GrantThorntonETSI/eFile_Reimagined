@@ -15,6 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.HashSet;
+
 @Controller
 public class UserAccountController {
 
@@ -101,8 +103,10 @@ public class UserAccountController {
 
 
         // find user's trademark applications
-        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
-        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByEmail(authentication.getName());
+        //BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        //BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByEmail(authentication.getName());
+        //HashSet<BaseTrademarkApplication> baseTrademarkApplications = new HashSet<BaseTrademarkApplication>(ptoUser.getMyApplications());
+        BaseTrademarkApplication baseTrademarkApplication = ptoUser.getMyApplications().iterator().next();
         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@User Account Controller@@@@@@@@@@@@@@@@@@@@@@@@@");
         System.out.println("user : "+authentication.getName());
 

@@ -100,7 +100,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         // tradeMark application needs an internal id that ties to the ptoUser ...
         // or examine how is application tied to the ptoUser
 
-        PTOUser1.addApplication(trademarkApplication);
+        //PTOUser1.addApplication(trademarkApplication);
         //////////////////////////////////////////////////////////////////
         Lawyer newLawyer = new Lawyer();
         newLawyer.setClient(PTOUser1);
@@ -126,7 +126,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         //trademarkApplication.setAvailableLawyers(PTOUser1.getMyLawyers());
 
         trademarkApplication.copyAvailableLawyers(PTOUser1.getMyLawyers());
-        // o
+        //
 
 
 
@@ -149,6 +149,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         // add a method to PTOUser to just add one application
         /////////////////////////////////////////////////////////////////////////////////
 
+
+        PTOUser1.addApplication(trademarkApplication);
         myPTOUserService.save(PTOUser1);
         userRoleService.save(userRole);
         userCredentialsService.save(ownerCreds);
@@ -156,7 +158,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         // userRoleService.save(userRole);
         tradeMarkApplicationService.save(trademarkApplication);
         trademarkApplication.setTrademarkName("my_first_trademark");
-        trademarkApplication.setApplicationInternalID(trademarkApplication.getTrademarkName()+trademarkApplication.getOwnerEmail());
+        trademarkApplication.setApplicationInternalID(trademarkApplication.getTrademarkName()+trademarkApplication.getId()+trademarkApplication.getOwnerEmail());
         tradeMarkApplicationService.save(trademarkApplication);
 
 
@@ -189,8 +191,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
 
         */
 System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-        Lawyer myLawerTEST = trademarkApplication.getPrimaryLawyer();
-        System.out.println("trademark application: "+trademarkApplication.getApplicationInternalID()+  " represented by law firm :"+myLawerTEST.getLawFirmName());
+       // Lawyer myLawerTEST = trademarkApplication.getPrimaryLawyer();
+//        System.out.println("trademark application: "+trademarkApplication.getApplicationInternalID()+  " represented by law firm :"+myLawerTEST.getLawFirmName());
 
 
     }

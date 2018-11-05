@@ -7,6 +7,6 @@ public interface BaseTradeMarkApplicationService extends CrudService<BaseTradema
 
     BaseTrademarkApplication findByEmail(String email);
 
-    BaseTrademarkApplication findByTrademarkName(String name);
+    BaseTrademarkApplication findByInternalID(String id);
 
 }

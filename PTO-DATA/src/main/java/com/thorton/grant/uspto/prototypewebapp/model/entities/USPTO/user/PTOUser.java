@@ -24,18 +24,18 @@ public class PTOUser extends UserPersonalData {
     /////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////
 
-    @OneToMany(mappedBy = "trademarkOwner")
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<TradeMark> myTrademarks;
 
 
-    @OneToMany( cascade = CascadeType.ALL, mappedBy = "ptoUser")
+    @OneToMany( cascade = CascadeType.ALL)
     private Set<BaseTrademarkApplication> myApplications;
     /////////////////////////////////////////////////////////
     // owning object i.e  ptoUser owns trademark applications
     /////////////////////////////////////////////////////////
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<Lawyer> myLawyers;
 
     @Column(name =  "profile_complete" )
@@ -46,6 +46,8 @@ public class PTOUser extends UserPersonalData {
 
     /////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////
+
+
 
 
 

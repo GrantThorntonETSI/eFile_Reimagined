@@ -112,14 +112,19 @@ public class Lawyer extends Contact {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Lawyer lawyer = (Lawyer) o;
-        return Objects.equals(lawFirmName, lawyer.lawFirmName) &&
+        return isPrimary == lawyer.isPrimary &&
+                validBarAssociation == lawyer.validBarAssociation &&
+                Objects.equals(lawFirmName, lawyer.lawFirmName) &&
                 Objects.equals(barLicense, lawyer.barLicense) &&
-                Objects.equals(barJurisdiction, lawyer.barJurisdiction);
+                Objects.equals(barJurisdiction, lawyer.barJurisdiction) &&
+                Objects.equals(primaryCase, lawyer.primaryCase) &&
+                Objects.equals(poolMember, lawyer.poolMember) &&
+                Objects.equals(client, lawyer.client);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), lawFirmName, barLicense, barJurisdiction);
+        return Objects.hash(super.hashCode(), validBarAssociation, lawFirmName, barLicense, barJurisdiction, primaryCase, poolMember, client);
     }
 
     @Override

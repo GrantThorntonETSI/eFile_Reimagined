@@ -54,4 +54,6 @@ public class Lawyer_JPA_Service implements LawyerService {
     public Lawyer findByEmail(String email) {
         return lawyerRepository.findByEmail(email);
     }
+
+
 }
