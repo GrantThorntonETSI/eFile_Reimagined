@@ -133,6 +133,8 @@ public class UserAccountController {
         System.out.println("1111111111111111111111"+applicationDataTableRow);
         model.addAttribute("newFilingTableRow", applicationDataTableRow );
 
+        model.addAttribute("trademarkApplication", baseTrademarkApplication);
+
         if(ptoUser.isProfileComplete() == false){
             model.addAttribute("message", "Please Complete your Contact Information First.");
             return "account/userHome";
