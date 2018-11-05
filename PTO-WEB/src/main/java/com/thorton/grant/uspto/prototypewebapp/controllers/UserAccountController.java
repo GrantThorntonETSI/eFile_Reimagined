@@ -115,7 +115,10 @@ public class UserAccountController {
         System.out.println("primary lawer law firm: "+lawyer.getLawFirmName());
         // add it to model as attribute
         // or do we prebuild the data tables array here and add it as an object ???
-
+        ////////////////////////////////////////////////////////////////////////////
+        //do we just build the array object that datatables needs ???
+        /// do  static datatables push on user dash board
+        ////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -125,6 +128,7 @@ public class UserAccountController {
             return "account/userHome";
         }
         return "account/dashboard";
+        //return baseTrademarkApplication.getLastViewModel();
 
     }
 
