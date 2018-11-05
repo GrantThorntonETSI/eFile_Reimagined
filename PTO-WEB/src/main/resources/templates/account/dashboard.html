@@ -249,20 +249,23 @@
     <!-- end trademark image priview modal -->
 
 
+    <script th:inline="javascript">
+
+        /*<![CDATA[*/
+
+        var email = /*[[${user.email}]]*/ 'User Name';
+
+
+        alert(email);
+
+
+
+        /*]]>*/
+    </script>
 
     <script>
-function openTab(tabName) {
-        var i;
-        var x = document.getElementsByClassName("base-page");
-        for (i = 0; i < x.length; i++) {
-          x[i].style.display = "none";
-        }
-        document.getElementById(tabName).style.display = "block";
-}
-</script>
 
 
-<script>
     $(document).ready(function() {
 
 
@@ -323,7 +326,7 @@ function openTab(tabName) {
             "                                                <input style=\"display: none;\" value=\"../resources/data_images/jum.png\">" ],
             [ "2343555", "2343555", "Vakker", "Bao Kun", "REPORT COMPLETED SUSPENSION CHECK - CASE STILL SUSPENDED. ", "<a href=\"#mark-preview-modal\" data-toggle=\"modal\" data-target=\"#mark-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit trademarks-view\"><i class=\"material-icons\">dvr</i></a>\n" +
             "                                                <input style=\"display: none;\" value=\"../resources/data_images/vakker.png\">" ]
-,
+
 
 
 
@@ -332,7 +335,7 @@ function openTab(tabName) {
             ];
 
         // generate data tables for filings
-        $('#example').DataTable( {
+        var filingsTable = $('#example').DataTable( {
             data: dataSet,
             "iDisplayLength": 5,
             columns: [
@@ -357,13 +360,23 @@ function openTab(tabName) {
         });
 
 
-
+         filingsTable.row.add([ "", "<a href='/application/continuteApplication'>application</a>", "N/A", "Li Zhang", "filing started", "<a href=\"#mark-preview-modal\" data-toggle=\"modal\" data-target=\"#mark-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit trademarks-view\"><i class=\"material-icons\">dvr</i></a>\n" +
+         "                                                <input style=\"display: none;\" value=\"../resources/data_images/vakker.png\">" ]).draw();
         // make this jquery expression more generic
 
 
-        // wait .5 seconds then add a row to the top of the table
+    // wait .5 seconds then add a row to the top of the table
 
+
+        //var newRow = /''${newFilingTableRow}'\';
+
+        //var newRow  = /*[[${newFilingTableRow}]]*/ 'default';
+        //console.log(message);
+
+        //alert(newRow);
+        //filingsTable.row.add(newRow);
     });
+
 </script>
 
 </body>

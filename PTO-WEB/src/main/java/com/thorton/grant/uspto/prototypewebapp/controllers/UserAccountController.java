@@ -84,7 +84,7 @@ public class UserAccountController {
 
 
 
-    @RequestMapping({"/accounts/dashboard"})
+    @RequestMapping({"/accounts/dashboard","accounts/dashboard"})
     public String dashboard(Model model){
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -120,8 +120,18 @@ public class UserAccountController {
         /// do  static datatables push on user dash board
         ////////////////////////////////////////////////////////////////////////////
 
+        // build string array
+        String[]  applicationDataTableRow = new String[5];
+        applicationDataTableRow[0] = "";
+        applicationDataTableRow[1] = "<a href='/application/continue/" +baseTrademarkApplication.getApplicationInternalID()+ "'>Goto Application</a>";
+        applicationDataTableRow[2] = baseTrademarkApplication.getOwner().getFirstName() + " "+baseTrademarkApplication.getOwner().getLastName();
+        applicationDataTableRow[3] = baseTrademarkApplication.getCurrentStage();
+        applicationDataTableRow[4] = "";
 
 
+
+        System.out.println("1111111111111111111111"+applicationDataTableRow);
+        model.addAttribute("newFilingTableRow", applicationDataTableRow );
 
         if(ptoUser.isProfileComplete() == false){
             model.addAttribute("message", "Please Complete your Contact Information First.");
