@@ -260,7 +260,9 @@
 
         var applicatoinID = /*[[${trademarkApplication.applicationInternalID}]]*/ 'User Name';
 
+        var tableRows = /*[[${newFilingTableRow.myApplicationIDs}]]*/ 'User Name';
 
+        //alert(tableRows);
 
         /*]]>*/
     </script>
@@ -289,7 +291,11 @@
 
         }, 500);
 
-
+        //var json = JSON.parse("${newFilingTableRow}");
+        //$.each(json, function (index, item) {
+        //    alert(item);
+            //alert(item.optA);
+        //});
 
         var dataSet = [
 
@@ -362,14 +368,16 @@
             $('#trademarksFrame').prop('src',$(this).next().val() );
         });
 
-        var hrefVal = '<a href="/application/continueApplication/?trademarkID='+applicatoinID+'">application</a>';
+
         //alert(hrefVal);
+        for(a =0; a <tableRows.length; a++) {
 
-         filingsTable.row.add([ "", hrefVal, "N/A", "Li Zhang", "filing started", "<a href=\"#mark-preview-modal\" data-toggle=\"modal\" data-target=\"#mark-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit trademarks-view\"><i class=\"material-icons\">dvr</i></a>\n" +
-         "                                                <input style=\"display: none;\" value=\"../resources/data_images/vakker.png\">" ]).draw();
-        // make this jquery expression more generic
+            var hrefVal = '<a href="/application/continueApplication/?trademarkID='+tableRows[a]+'">application</a>';
+            filingsTable.row.add(["", hrefVal, "N/A", "Li Zhang", "filing started", "<a href=\"#mark-preview-modal\" data-toggle=\"modal\" data-target=\"#mark-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit trademarks-view\"><i class=\"material-icons\">dvr</i></a>\n" +
+            "                                                <input style=\"display: none;\" value=\"../resources/data_images/vakker.png\">"]).draw();
+            // make this jquery expression more generic
 
-
+        }
 
     });
 

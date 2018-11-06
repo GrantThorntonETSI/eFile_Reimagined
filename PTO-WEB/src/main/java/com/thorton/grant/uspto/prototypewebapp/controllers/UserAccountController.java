@@ -5,10 +5,13 @@ import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.TradeMarkApplicationsInternalIDDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
+
+import org.json.JSONArray;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -106,11 +109,10 @@ public class UserAccountController {
         model.addAttribute("account",credentials);
 
 
-
+        ////////////////////////////////////////////////////////////////////////////////////////////////
         // find user's trademark applications
-        //BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
-        //BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByEmail(authentication.getName());
-        //HashSet<BaseTrademarkApplication> baseTrademarkApplications = new HashSet<BaseTrademarkApplication>(ptoUser.getMyApplications());
+        // iterate over myTrademarks and get their internal ids into an array list
+        ////////////////////////////////////////////////////////////////////////////////////////////////
 
         BaseTrademarkApplication baseTrademarkApplication = null;
         ArrayList<String> userfilingTableRowsID = new ArrayList<>();
@@ -125,18 +127,34 @@ public class UserAccountController {
             Lawyer lawyer = baseTrademarkApplication.getPrimaryLawyer();
 
             System.out.println("primary lawer law firm: "+lawyer.getLawFirmName());
-            userfilingTableRowsID.add( "<a href='/application/continue/" +baseTrademarkApplication.getApplicationInternalID()+ "'>Goto Application</a>");
+            userfilingTableRowsID.add(  baseTrademarkApplication.getApplicationInternalID());
 
         }
 
-        model.addAttribute("newFilingTableRow", userfilingTableRowsID);
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        // convert array list to json and add it to model
+        // we need to build the new datatable rows using our array list of internal ids
+        //////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        //model.addAttribute("newFilingTableRow", userfilingTableRowsID);
+
+
+        TradeMarkApplicationsInternalIDDTO tradeMarkApplicationsInternalIDDTO = new TradeMarkApplicationsInternalIDDTO();
+        tradeMarkApplicationsInternalIDDTO.setMyApplicationIDs(userfilingTableRowsID);
+        model.addAttribute("newFilingTableRow", tradeMarkApplicationsInternalIDDTO);
 
         model.addAttribute("trademarkApplication", baseTrademarkApplication);
 
-        if(ptoUser.isProfileComplete() == false){
+
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        if(ptoUser.isProfileComplete() == false){ // redirect back to userAccounts if profile is not complete yet
             model.addAttribute("message", "Please Complete your Contact Information First.");
             return "account/userHome";
         }
+        //////////////////////////////////////////////////////////////////////////////////////////////
 
         return "account/dashboard";
         //return baseTrademarkApplication.getLastViewModel();
