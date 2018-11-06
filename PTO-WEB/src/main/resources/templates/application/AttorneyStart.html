@@ -8,6 +8,14 @@
 <body>
 
 <!-- End Navbar -->
+
+
+<script>
+
+//var host= "http://18.222.23.153:8080";
+var host= "http://localhost:8080";
+
+</script>
 <div class="content" style="display: none; background-color: white; min-height: 1000px; min-width: 1200px; position: relative; bottom: -10%;" >
     <div class="container-fluid"  >
 
@@ -249,10 +257,18 @@
 </div>
 
 
+<script>
+
+var prevLinkURL = host+"/accounts/dashboard";
+var nextLinkURL = host+"/application/OwnerStart";
+
+</script>
+
+
 
 <div class="row navigation-row" style="position: relative; top:-900px;">
     <div class="col-sm-2">
-        <button  class="ng-element el-button font-S-Arial-n4 interactive" data-id="f1327068a29144d5a370279becb90fd2" style=" opacity: 1; mix-blend-mode: normal; border-color: rgb(221, 221, 221); background-color: rgb(55, 69, 120); background-image: none; color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center; border-width: 0px; border-radius: 4px; border-style: solid; background-size: auto; background-repeat: repeat; background-position: center center; font-size: 14px; font-style: normal; width: 120px; height: 30px; transform: rotate(0deg) translate(53px, 824px) rotate(0deg);"><a style="color: white; text-decoration: none;" href="http://localhost:8080/accounts/dashboard">Previous</a></button>
+        <button  class="ng-element el-button font-S-Arial-n4 interactive" data-id="f1327068a29144d5a370279becb90fd2" style=" opacity: 1; mix-blend-mode: normal; border-color: rgb(221, 221, 221); background-color: rgb(55, 69, 120); background-image: none; color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center; border-width: 0px; border-radius: 4px; border-style: solid; background-size: auto; background-repeat: repeat; background-position: center center; font-size: 14px; font-style: normal; width: 120px; height: 30px; transform: rotate(0deg) translate(53px, 824px) rotate(0deg);"><a id="prevLink" style="color: white; text-decoration: none;" href="">Previous</a></button>
     </div>
     <div class="col-sm-2">
     </div>
@@ -289,13 +305,15 @@
             $('.content').fadeIn(500);
         }, 500);
 
+        $('#prevLink').attr("href",prevLinkURL);
+
 
         // on no click ... enable next button by adding "http://localhost:8080/application/OwnerStart"
         // to its href propperty
         $('#attorneyFillingFalse').click( function () {
             $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
 
-            $('#nextLink').attr("href","http://localhost:8080/application/OwnerStart" );
+            $('#nextLink').attr("href", nextLinkURL );
         });
 
 

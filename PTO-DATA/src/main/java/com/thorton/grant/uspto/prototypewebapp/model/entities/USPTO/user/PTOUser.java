@@ -46,10 +46,15 @@ public class PTOUser extends UserPersonalData {
 
     /////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////
+    private String continuationURL = null;
 
+    public String getContinuationURL() {
+        return continuationURL;
+    }
 
-
-
+    public void setContinuationURL(String continuationURL) {
+        this.continuationURL = continuationURL;
+    }
 
     public BaseTrademarkApplication addApplication(BaseTrademarkApplication newApplication){
 

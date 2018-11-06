@@ -159,6 +159,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         tradeMarkApplicationService.save(trademarkApplication);
         trademarkApplication.setTrademarkName("my_first_trademark");
         trademarkApplication.setApplicationInternalID(trademarkApplication.getTrademarkName()+trademarkApplication.getId()+trademarkApplication.getOwnerEmail());
+
         tradeMarkApplicationService.save(trademarkApplication);
 
 

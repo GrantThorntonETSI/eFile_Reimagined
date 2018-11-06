@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 
 @Controller
 public class UserAccountController {
@@ -109,32 +111,25 @@ public class UserAccountController {
         //BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         //BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByEmail(authentication.getName());
         //HashSet<BaseTrademarkApplication> baseTrademarkApplications = new HashSet<BaseTrademarkApplication>(ptoUser.getMyApplications());
-        BaseTrademarkApplication baseTrademarkApplication = ptoUser.getMyApplications().iterator().next();
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@User Account Controller@@@@@@@@@@@@@@@@@@@@@@@@@");
-        System.out.println("user : "+authentication.getName());
 
-        Lawyer lawyer = baseTrademarkApplication.getPrimaryLawyer();
+        BaseTrademarkApplication baseTrademarkApplication = null;
+        ArrayList<String> userfilingTableRowsID = new ArrayList<>();
 
-        System.out.println("primary lawer law firm: "+lawyer.getLawFirmName());
-        // add it to model as attribute
-        // or do we prebuild the data tables array here and add it as an object ???
-        ////////////////////////////////////////////////////////////////////////////
-        //do we just build the array object that datatables needs ???
-        /// do  static datatables push on user dash board
-        ////////////////////////////////////////////////////////////////////////////
-
-        // build string array
-        String[]  applicationDataTableRow = new String[5];
-        applicationDataTableRow[0] = "";
-        applicationDataTableRow[1] = "<a href='/application/continue/" +baseTrademarkApplication.getApplicationInternalID()+ "'>Goto Application</a>";
-        applicationDataTableRow[2] = baseTrademarkApplication.getOwner().getFirstName() + " "+baseTrademarkApplication.getOwner().getLastName();
-        applicationDataTableRow[3] = baseTrademarkApplication.getCurrentStage();
-        applicationDataTableRow[4] = "";
+        for(Iterator<BaseTrademarkApplication> iter = ptoUser.getMyApplications().iterator(); iter.hasNext(); ) {
 
 
+            baseTrademarkApplication = iter.next();
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@User Account Controller@@@@@@@@@@@@@@@@@@@@@@@@@");
+            System.out.println("user : "+authentication.getName());
 
-        System.out.println("1111111111111111111111"+applicationDataTableRow);
-        model.addAttribute("newFilingTableRow", applicationDataTableRow );
+            Lawyer lawyer = baseTrademarkApplication.getPrimaryLawyer();
+
+            System.out.println("primary lawer law firm: "+lawyer.getLawFirmName());
+            userfilingTableRowsID.add( "<a href='/application/continue/" +baseTrademarkApplication.getApplicationInternalID()+ "'>Goto Application</a>");
+
+        }
+
+        model.addAttribute("newFilingTableRow", userfilingTableRowsID);
 
         model.addAttribute("trademarkApplication", baseTrademarkApplication);
 
@@ -142,46 +137,12 @@ public class UserAccountController {
             model.addAttribute("message", "Please Complete your Contact Information First.");
             return "account/userHome";
         }
+
         return "account/dashboard";
         //return baseTrademarkApplication.getLastViewModel();
 
     }
 
-
-    @RequestMapping(value = "/application/continueApplication", method = RequestMethod.GET)
-    public String continueApplication
-            (WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
-
-        String applcationLookupID = trademarkInternalID;
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!continue Application!!!!!!!!!!!!!!!!!");
-        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
-        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
-        //HashSet<BaseTrademarkApplication> baseTrademarkApplications = new HashSet<BaseTrademarkApplication>(ptoUser.getMyApplications());
-
-        //////////////////////////////////////////////////////////////////////////
-        // retrieve trade mark using internal id
-        // add trademark to the model
-        // and return the the view that trademark object has saved.
-        //////////////////////////////////////////////////////////////////////////
-
-        model.addAttribute("trademarkApplication", baseTrademarkApplication);
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        PTOUserService  ptoUserService = serviceBeanFactory.getPTOUserService();
-        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
-        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
-        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
-
-        model.addAttribute("user", ptoUser);
-        model.addAttribute("account",credentials);
-
-
-
-
-        return baseTrademarkApplication.getLastViewModel();
-
-    }
 
 
 
