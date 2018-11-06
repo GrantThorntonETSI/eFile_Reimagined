@@ -517,7 +517,7 @@
             </div> <!-- <div class="international-entity" > -->
 
 
-            <div class="domestic-entity">
+            <div class="domestic-entity" style="display: none;">
 
                 <div class="row" style="position: relative; top:-700px; left:-40px; ">
                     <div id="TextElement3c22541d249c4ccdbef101d00bf9c27b2" class="ng-element el-text-2 empty-line-hack font-S-Arial-n4" data-id="e663302ac1054b3abb7536d7052cff99" style="opacity: 1; mix-blend-mode: normal; font-variant: normal; color: rgb(0, 0, 0); font-size: 16px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; width: 300px; height: 18px; transform: rotate(0deg) translate(149px, 472px) rotate(0deg);"><p>Please select the entity type:</p></div>
@@ -527,7 +527,20 @@
                 <div class="row" style="position: relative; top:-200px; right:-110px; ">
                     <!--default drop down -->
 
-                    <div class="ng-element el-select-list-wrapper interactive" data-id="ee94012159ae4a90a3b1ebfc76ec8034" style="opacity: 1; width: 222px; min-height: 70px; transform: rotate(0deg) translate(-177px, -505px) translate(177px, 505px) rotate(0deg);"><select id="domestic-entity-dropdown" class="ng-element el-select-list font-S-Arial-n4" style=" min-height:35px; mix-blend-mode: normal; color: rgb(0, 0, 0); border-width: 1px; border-color: rgb(200, 200, 200); border-style: solid; border-radius: 5px; font-size: 16px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; text-align-last: left; box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px 0px inset;" disabled><option value="id-1">Individual</option><option value="id8472334">Sole Proprietorship</option><option value="id5372354">Corporation</option><option value="id1502363">Limited Liability Company</option><option value="id4112402">Partnership</option><option value="id6092414">Limited Partnership</option><option value="id4882434">Joint Venture</option><option value="id5032448">Trust</option><option value="id5872454">Estate</option></select></div>
+                    <div   style="opacity: 1; width: 222px; min-height: 70px; transform: rotate(0deg) translate(-177px, -505px) translate(177px, 505px) rotate(0deg);">
+                        <select id="domestic-entity-dropdown" class="domestic-entity-dropdown" style="min-height:35px; mix-blend-mode: normal; color: rgb(0, 0, 0); border-width: 1px; border-color: rgb(200, 200, 200); border-style: solid; border-radius: 5px; font-size: 16px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; text-align-last: left; box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px 0px inset;" >
+                            <option value="#"></option>
+                            <option value="http://localhost:8080/application/owner/Ind/info">Individual</option>
+                            <option value="http://localhost:8080/application/owner/sol-prop/info">Sole Proprietorship</option>
+                            <option value="http://localhost:8080/application/owner/corp/info">Corporation</option>
+                            <option value="http://localhost:8080/application/owner/llc/info">Limited Liability Company</option>
+                            <option value="http://localhost:8080/application/owner/part/info">Partnership</option>
+                            <option value="http://localhost:8080/application/owner/llp/info">Limited Partnership</option>
+                            <option value="http://localhost:8080/application/owner/joint/info">Joint Venture</option>
+                            <option value="http://localhost:8080/application/owner/trust/info">Trust</option>
+                            <option value="http://localhost:8080/application/owner/estate/info">Estate</option>
+                        </select>
+                    </div>
 
                 </div>
             </div>
@@ -557,7 +570,7 @@
         <div class="col-sm-2">
         </div>
         <div class="col-sm-2" style="position:relative; left:-50px;">
-            <button class="ng-element el-button font-S-Arial-n4 interactive" data-id="f1327068a29144d5a370279becb90fd2" style="opacity: 1; mix-blend-mode: normal; border-color: rgb(221, 221, 221); background-color: rgb(55, 69, 120); background-image: none; color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center; border-width: 0px; border-radius: 4px; border-style: solid; background-size: auto; background-repeat: repeat; background-position: center center; font-size: 14px; font-style: normal; width: 120px; height: 30px; transform: rotate(0deg) translate(53px, 824px) rotate(0deg);"><a style="color: white; text-decoration: none;" href="http://localhost:8080/application/owner/info" disabled="false" >Next</a></button>
+            <button class="ng-element el-button font-S-Arial-n4 interactive next-button" data-id="f1327068a29144d5a370279becb90fd2" style="opacity: 1; mix-blend-mode: normal; border-color: rgb(221, 221, 221); background-color: rgb(128,128,128); background-image: none; color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center; border-width: 0px; border-radius: 4px; border-style: solid; background-size: auto; background-repeat: repeat; background-position: center center; font-size: 14px; font-style: normal; width: 120px; height: 30px; transform: rotate(0deg) translate(53px, 824px) rotate(0deg);"><a id="nextLink" style="color: white; text-decoration: none;" disabled="false" >Next</a></button>
 
         </div>
 
@@ -579,6 +592,9 @@
 
 
 <script>
+
+
+    // next link url to enable  for u.s individual href="http://localhost:8080/application/owner/info"
     $(document).ready(function() {
 
         setTimeout(function() {
@@ -587,6 +603,9 @@
         }, 500);
 
 
+        //////////////////////////////////////////
+        // show drop downs
+        //////////////////////////////////////////
 
         $('#usEntityTrue').click( function () {
 
@@ -623,8 +642,33 @@
         });
 
         ////////////////////////////////////////////////////
-        // enable next button on fields completion
+        // enable next button on select drop down completion
         ////////////////////////////////////////////////////
+
+
+
+        $('#domestic-entity-dropdown').change( function () {
+
+            $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
+
+
+            // set next link to select option link value
+            $('#nextLink').attr("href",this.value );
+
+        });
+
+/*
+////////////////////////////////////////
+// if elements were dynamicaliy created
+////////////////////////////////////////
+        $(document).on('change','#domestic-entity-dropdown',function(){
+            $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
+
+            $('#nextLink').attr("href","http://localhost:8080/application/OwnerStart" );
+
+        });
+
+*/
 
     });
 
