@@ -116,11 +116,8 @@ public class UserAccountController {
 
             baseTrademarkApplication = iter.next();
             System.out.println("@@@@@@@@@@@@@@@@@@@@@@@User Account Controller@@@@@@@@@@@@@@@@@@@@@@@@@");
-            System.out.println("user : "+authentication.getName());
+            System.out.println("internal : "+baseTrademarkApplication.getApplicationInternalID());
 
-            Lawyer lawyer = baseTrademarkApplication.getPrimaryLawyer();
-
-            System.out.println("primary lawer law firm: "+lawyer.getLawFirmName());
             userfilingTableRowsID.add(  baseTrademarkApplication.getApplicationInternalID());
 
         }
@@ -136,7 +133,6 @@ public class UserAccountController {
         model.addAttribute("newFilingTableRow", tradeMarkApplicationsInternalIDDTO);
 
         //model.addAttribute("trademarkApplication", baseTrademarkApplication);
-
 
         //////////////////////////////////////////////////////////////////////////////////////////////
         if(ptoUser.isProfileComplete() == false){ // redirect back to userAccounts if profile is not complete yet

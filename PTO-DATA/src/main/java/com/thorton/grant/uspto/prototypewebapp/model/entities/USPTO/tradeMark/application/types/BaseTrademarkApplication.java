@@ -36,7 +36,7 @@ public class BaseTrademarkApplication  {
     private Long id;
     private String trademarkName;
     private String applicationInternalID;
-
+    private boolean isAttorneySet = false;
     private boolean isAttorneyFiling;
     private boolean isForeignEnityFiling;
     private String currentStage;
@@ -230,6 +230,14 @@ public class BaseTrademarkApplication  {
 
     public void setApplicationInternalID(String applicationInternalID) {
         this.applicationInternalID = applicationInternalID;
+    }
+
+    public boolean isAttorneySet() {
+        return isAttorneySet;
+    }
+
+    public void setAttorneySet(boolean attorneySet) {
+        isAttorneySet = attorneySet;
     }
 
     @Override

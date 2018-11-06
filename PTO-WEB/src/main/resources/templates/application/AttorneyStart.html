@@ -231,25 +231,73 @@ var host= "http://localhost:8080";
 
            </div>
 
-            <div class="row" style="position: relative; top:-130px; right:-120px; ">
-                <div class="col-sm-1">
-                    <input type="radio" name="isAttorneyFiling" id="attorneyFilingTrue">
+            <div th:if="${baseTrademarkApplication.isAttorneySet() == false}">
+
+                    <div class="row" style="position: relative; top:-130px; right:-120px; ">
+                        <div class="col-sm-1">
+
+                            <input type="radio" name="isAttorneyFiling" id="attorneyFilingTrue">
+
+                        </div>
+                        <div class="col-sm-2" style="position: relative; left:-75px;">
+                            Yes
+                        </div>
+
+                    </div>
+                    <div class="row" style="position: relative; top:-130px; right:-120px;">
+                        <div class="col-sm-1">
+
+                                <input type="radio" name="isAttorneyFiling" id="attorneyFillingFalse">
+
+                        </div>
+                        <div class="col-sm-2" style="position: relative; left:-75px;">
+                            No
+                        </div>
+                    </div>
+
+        </div>
+            <div th:if="${baseTrademarkApplication.isAttorneySet() == true}">
+
+                <div class="row" style="position: relative; top:-130px; right:-120px;" th:if="${baseTrademarkApplication.isAttorneyFiling() == true}" >
+                    <div class="col-sm-1">
+
+                        <input type="radio" name="isAttorneyFiling" id="attorneyFilingTrue" checked>
+
+                    </div>
+                    <div class="col-sm-2" style="position: relative; left:-75px;">
+                        Yes
+                    </div>
+                    <div class="col-sm-1">
+
+                        <input type="radio" name="isAttorneyFiling" id="attorneyFillingFalse">
+
+                    </div>
+                    <div class="col-sm-2" style="position: relative; left:-75px;">
+                        Yes
+                    </div>
+
                 </div>
-                <div class="col-sm-2" style="position: relative; left:-75px;">
-                    Yes
+                <div class="row"  th:if="${baseTrademarkApplication.isAttorneyFiling() == false}" style="position: relative; top:-130px; right:-120px;">
+
+                    <div class="col-sm-1">
+
+                        <input type="radio" name="isAttorneyFiling" id="attorneyFilingTrue">
+
+                    </div>
+                    <div class="col-sm-2" style="position: relative; left:-75px;">
+                        Yes
+                    </div>
+                    <div class="col-sm-1">
+
+                        <input type="radio" name="isAttorneyFiling" id="attorneyFillingFalse"checked>
+
+                    </div>
+                    <div class="col-sm-2" style="position: relative; left:-75px;">
+                        No
+                    </div>
                 </div>
 
             </div>
-            <div class="row" style="position: relative; top:-130px; right:-120px;">
-                <div class="col-sm-1">
-                    <input type="radio" name="isAttorneyFiling" id="attorneyFillingFalse">
-                </div>
-                <div class="col-sm-2" style="position: relative; left:-75px;">
-                    No
-                </div>
-            </div>
-
-
 
 
         </div>
@@ -310,6 +358,22 @@ var nextLinkURL = host+"/application/OwnerStart";
 
         // on no click ... enable next button by adding "http://localhost:8080/application/OwnerStart"
         // to its href propperty
+
+
+        // check if attorneyFillingFalse is set
+        if ($('#attorneyFillingFalse').is(':checked') == true){
+
+            $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
+
+            $('#nextLink').attr("href", nextLinkURL );
+
+            $('#attorneyFillingFalse').prop("disabled", true);
+            $('#attorneyFilingTrue').prop("disabled", true);
+
+        }
+
+
+
         $('#attorneyFillingFalse').click( function () {
             $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
 
