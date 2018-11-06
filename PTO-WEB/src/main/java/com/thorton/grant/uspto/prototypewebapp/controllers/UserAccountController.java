@@ -4,25 +4,19 @@ package com.thorton.grant.uspto.prototypewebapp.controllers;
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
-import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
-import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.TradeMarkApplicationsInternalIDDTO;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.TradeMarkApplicationsInternalIDDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 
-import org.json.JSONArray;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.context.request.WebRequest;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
 
 @Controller
@@ -131,11 +125,6 @@ public class UserAccountController {
 
         }
 
-        //////////////////////////////////////////////////////////////////////////////////////////////
-        // convert array list to json and add it to model
-        // we need to build the new datatable rows using our array list of internal ids
-        //////////////////////////////////////////////////////////////////////////////////////////////
-
 
 
         //////////////////////////////////////////////////////////////////////////////////////////////
@@ -146,7 +135,7 @@ public class UserAccountController {
         tradeMarkApplicationsInternalIDDTO.setMyApplicationIDs(userfilingTableRowsID);
         model.addAttribute("newFilingTableRow", tradeMarkApplicationsInternalIDDTO);
 
-        model.addAttribute("trademarkApplication", baseTrademarkApplication);
+        //model.addAttribute("trademarkApplication", baseTrademarkApplication);
 
 
         //////////////////////////////////////////////////////////////////////////////////////////////

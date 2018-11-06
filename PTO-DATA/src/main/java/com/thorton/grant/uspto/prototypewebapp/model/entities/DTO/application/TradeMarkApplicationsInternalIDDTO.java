@@ -1,4 +1,4 @@
-package com.thorton.grant.uspto.prototypewebapp.model.entities.DTO;
+package com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application;
 
 import java.util.ArrayList;
 
