@@ -1,8 +1,11 @@
 package com.thorton.grant.uspto.prototypewebapp.service.REST;
 
 
+import com.fasterxml.jackson.databind.ser.Serializers;
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -31,9 +34,12 @@ public class ApplicationService {
     ResponseEntity<String> updateApplicationFields(@PathVariable String applicationField , @PathVariable String param, @PathVariable String appInternalID){
 
 
-
-
-        // verify token before preceding
+    System.out.println("############################################################");
+    System.out.println(applicationField);
+    System.out.println(param);
+    System.out.println(appInternalID);
+    System.out.println("############################################################");
+            // verify token before preceding
 /*
         VerificationToken verificationToken = service.getVerificationToken(token);
         if (verificationToken == null) {
@@ -68,11 +74,53 @@ public class ApplicationService {
         // verify authentication is valid before moving on ....
         // have to have a valid session
 
+        if(ptoUser == null){
+            ////////////////////////////////////////////////
+            // start generating response
+            ////////////////////////////////////////////////
+            String statusCode = "404";
+            String responseMsg = applicationField+" has not been saved. invalid user session.";
+            responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
+            HttpHeaders responseHeader = new HttpHeaders ();
+            responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
+            ArrayList<String> headersAllowed = new ArrayList<String>();
+            headersAllowed.add("Access-Control-Allow-Origin");
+            responseHeader.setAccessControlAllowHeaders(headersAllowed);
+            ArrayList<String> methAllowed = new ArrayList<String>();
 
+            System.out.println("response header : "+responseHeader.getAccessControlAllowOrigin());
+
+
+            return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+
+        }
         // retrieve application using passed internal id
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+        String appFieldReadable = "";
 
 
+        if(applicationField.equals("set-lawer-options-value")){
+            // ptoUser.setState(param); // sets state code
+            if(param.equals("no")){
 
+                baseTrademarkApplication.setAttorneySet(true);
+                baseTrademarkApplication.setAttorneyFiling(false);
+
+            }
+            else {
+                baseTrademarkApplication.setAttorneySet(true);
+                baseTrademarkApplication.setAttorneyFiling(true);
+
+            }
+
+            baseTradeMarkApplicationService.save(baseTrademarkApplication);
+            appFieldReadable = "Attorney Option. ";
+        }
+
+        if(applicationField.equals("set-lawer-option")){
+            // ptoUser.setState(param); // sets state code
+        }
 
 
         if(applicationField.equals("owner-state")){
@@ -105,7 +153,7 @@ public class ApplicationService {
         // start generating response
         ////////////////////////////////////////////////
         String statusCode = "200";
-        String responseMsg = applicationField+" has been saved.";
+        String responseMsg = appFieldReadable+" has been saved.";
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();
         responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
