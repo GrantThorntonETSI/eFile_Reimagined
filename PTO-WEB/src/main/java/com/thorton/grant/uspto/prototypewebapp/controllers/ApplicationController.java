@@ -35,8 +35,8 @@ public class ApplicationController {
 
     @Transactional
     @RequestMapping({"/application/start","application/start"})
-    public String applicationStart(Model model){
-
+    public String applicationStart
+        (WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
 
         // create a new application and tie it to user then save it to repository
         // create attorneyDTO + to model
@@ -74,6 +74,7 @@ public class ApplicationController {
          // fileds needed for internalID -- ...id is manually set, we should create a setID function ..
          // so that we don't have to manually type it out all the time
          ////////////////////////////////////////////////////////////////////////////////////////////
+        if(trademarkInternalID.equals("new")) {
 
             System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
             BaseTrademarkApplication trademarkApplication = new BaseTrademarkApplication();
@@ -89,7 +90,7 @@ public class ApplicationController {
             // tradeMark application needs an internal id that ties to the ptoUser ...
             // or examine how is application tied to the ptoUser
             //////////////////////////////////////////////////////////////////
-           // Lawyer newLawyer = new Lawyer();
+            // Lawyer newLawyer = new Lawyer();
 
 
             ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -116,19 +117,25 @@ public class ApplicationController {
             /////////////////////////////////////////////////////////////////////////////////
 
 
-
-
-           // baseTradeMarkApplicationService.save(trademarkApplication);
+            // baseTradeMarkApplicationService.save(trademarkApplication);
 
 
             baseTradeMarkApplicationService.save(trademarkApplication);
             trademarkApplication.setTrademarkName("my_first_trademark");
-            trademarkApplication.setApplicationInternalID(trademarkApplication.getTrademarkName()+trademarkApplication.getId()+trademarkApplication.getOwnerEmail());
+            trademarkApplication.setApplicationInternalID(trademarkApplication.getTrademarkName() + trademarkApplication.getId() + trademarkApplication.getOwnerEmail());
             ptoUser.addApplication(trademarkApplication); // adds to myApplications Collection
             ptoUserService.save(ptoUser);
 
             model.addAttribute("baseTrademarkApplication", trademarkApplication);
+        }
+        else{
+            // loadd baseTradeMarkapplication by internal id and add to model
+            BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
 
+            model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
+
+        }
 
         // this is only set during LoadContinueUrl ..and load the fling  object with continue url
         ////////////////////////////////////////////////////////////////////////////////////////////
@@ -156,7 +163,7 @@ public class ApplicationController {
 
     // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
     @RequestMapping({"/application/OwnerStart"})
-    public String ownerStart(Model model){
+    public String ownerStart (WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
 
         // create a new application and tie it to user then save it to repository
         // create attorneyDTO + to model
@@ -170,8 +177,14 @@ public class ApplicationController {
         UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
         UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
 
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+
         model.addAttribute("user", ptoUser);
         model.addAttribute("account",credentials);
+
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
 
 
