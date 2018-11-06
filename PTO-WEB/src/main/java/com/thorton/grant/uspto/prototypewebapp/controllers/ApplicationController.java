@@ -99,9 +99,6 @@ public class ApplicationController {
             ///////////////////////////////////////////////////////////////////////////////////////////////
             // application also needs a better id for find ...build internal id. as user.email+trademark_name???
             //Lawyer appPrimaryConsole = new Lawyer(PTOUser1.getMyLawyers().iterator().next());
-
-
-
             trademarkApplication.setOwnerEmail(ptoUser.getEmail());
 
             Owner owner = new Owner();
@@ -122,12 +119,12 @@ public class ApplicationController {
 
 
            // baseTradeMarkApplicationService.save(trademarkApplication);
+
+
+            baseTradeMarkApplicationService.save(trademarkApplication);
             trademarkApplication.setTrademarkName("my_first_trademark");
             trademarkApplication.setApplicationInternalID(trademarkApplication.getTrademarkName()+trademarkApplication.getId()+trademarkApplication.getOwnerEmail());
-
-            //baseTradeMarkApplicationService.save(trademarkApplication);
-
-            ptoUser.addApplication(trademarkApplication);
+            ptoUser.addApplication(trademarkApplication); // adds to myApplications Collection
             ptoUserService.save(ptoUser);
 
             model.addAttribute("baseTrademarkApplication", trademarkApplication);
