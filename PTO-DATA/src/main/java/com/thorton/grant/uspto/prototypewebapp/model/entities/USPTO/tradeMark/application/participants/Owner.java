@@ -26,20 +26,20 @@ public class Owner extends Contact{
         this.trademarkApplication = trademarkApplication;
     }
 
-    public String getOwnersubType() {
-        return ownersubType;
-    }
-
-    public void setOwnersubType(String ownersubType) {
-        this.ownersubType = ownersubType;
-    }
-
     public String getOwnerType() {
         return ownerType;
     }
 
     public void setOwnerType(String ownerType) {
         this.ownerType = ownerType;
+    }
+
+    public String getOwnersubType() {
+        return ownersubType;
+    }
+
+    public void setOwnersubType(String ownersubType) {
+        this.ownersubType = ownersubType;
     }
 
     @Override
