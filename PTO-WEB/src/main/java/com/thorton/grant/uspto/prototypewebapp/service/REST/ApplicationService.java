@@ -149,39 +149,6 @@ public class ApplicationService {
 
 
 
-
-
-
-
-
-
-
-        if(applicationField.equals("owner-state")){
-           // ptoUser.setState(param); // sets state code
-        }
-
-        if(applicationField.equals("owner-city")){
-            //ptoUser.setCity(param);
-        }
-
-        if(applicationField.equals("owner-zipcode")){
-            //ptoUser.setZipcode(param);
-        }
-
-        if(applicationField.equals("owner-address")){
-            //ptoUser.setAddress(param);
-        }
-
-        if(applicationField.equals("owner-country")){
-            //ptoUser.setCountry(param); // sets country code
-        }
-
-        if(applicationField.equals("own-Phone")){
-            //ptoUser.setPrimaryPhonenumber(param);
-        }
-
-
-
         ////////////////////////////////////////////////
         // start generating response
         ////////////////////////////////////////////////
@@ -258,6 +225,25 @@ public class ApplicationService {
             baseTradeMarkApplicationService.save(baseTrademarkApplication);
             appFieldReadable = "Owner First Name. ";
         }
+
+        if(applicationField.equals("last-name")){
+            baseTrademarkApplication.getOwner().setLastName(param);
+
+            baseTrademarkApplication.setLastViewModel("application/owner/individual/ownerInfo");
+            baseTradeMarkApplicationService.save(baseTrademarkApplication);
+            appFieldReadable = "Owner Last Name. ";
+        }
+
+        if(applicationField.equals("owner-citizenship")){
+            baseTrademarkApplication.getOwner().setCountry(param);
+
+            baseTrademarkApplication.setLastViewModel("application/owner/individual/ownerInfo");
+            baseTradeMarkApplicationService.save(baseTrademarkApplication);
+            appFieldReadable = "Owner Citizenship. ";
+        }
+
+
+
 
 
 

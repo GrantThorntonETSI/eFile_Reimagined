@@ -292,7 +292,7 @@
                     </div>
 
                     <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                        <div class="form-group middleNameFieldMsgArea" style="position: relative; left:-15%;">
+                        <div class="form-group middle-nameFieldMsgArea" style="position: relative; left:-15%;">
                             <b><span></span></b>
                         </div>
                     </div>
@@ -314,15 +314,15 @@
 
                     <div class="form-group">
                         <span>
-                            <input type="text"  name="lastName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                            <input type="text" id="last-name" name="lastName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
                         </span>
                     </div>
 
                 </div>
 
-                <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                    <div class="form-group lastNameFieldMsgArea" style="position: relative; left:-15%;">
+                <div class="col-sm-4" style="position: relative; bottom:-5px; right:-80px;">
+                    <div class="form-group last-nameFieldMsgArea" style="position: relative; left:-15%;">
                         <b><span></span></b>
                     </div>
                 </div>
@@ -352,7 +352,7 @@
 
                     </div>
                 </div>
-                <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                <div class="col-sm-4" style="position: relative;bottom:-5px; right:-80px;">
                     <div class="form-group suffixFieldMsgArea" style="position: relative; left:-15%;">
                         <b><span></span></b>
                     </div>
@@ -383,7 +383,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                <div class="col-sm-4" style="position: relative; bottom:-5px; right:-80px;">
                     <div class="form-group nameTypeFieldMsgArea" style="position: relative; left:-15%;">
                         <b><span></span></b>
                     </div>
@@ -399,7 +399,7 @@
                 <div class="col-sm-3">
                     <div class="form-group">
                                         <span>
-                                            <select  class="form-control" name="suffix"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                            <select  id="owner-citizenship"  class="form-control" name="suffix"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
                                                 <option value="X1">UNITED STATES OF AMERICA</option>
                                                 <option value="B2">AFGHANISTAN</option>
@@ -645,8 +645,8 @@
                     </div>
                 </div>
 
-                <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                    <div class="form-group countryFieldMsgArea" style="position: relative; left:-15%;">
+                <div class="col-sm-4" style="position: relative; bottom:-5px; right:-80px;">
+                    <div class="form-group owner-citizenshipFieldMsgArea" style="position: relative; left:-15%;">
                         <b><span></span></b>
                     </div>
                 </div>
@@ -1347,6 +1347,8 @@
         /////////////////////////////////////////////////////////////////////////////////
         // contact information 'State' auto save ////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////
+
+
         $('#first-name').focusout( function () {
 
 
@@ -1368,6 +1370,56 @@
             saveProjectOwnerInfo("first-name", field_value, appInternalID);
 
         });
+
+
+        $('#last-name').focusout( function () {
+
+
+
+            // send state, and token to server
+            // token will be generated in the controller and added to the view
+            // similar to how access token works ...a token is tied to a user
+            // access token will be passed in through model
+            //
+            // var tokenValue = '${token}';  // token is the model attribute name
+            // we are not using secured tokens for the prototype
+            // we will secure it by adding ssl and https support
+            //
+            //$('.state-animation').fadeOut();
+
+            var field_value = $(this).val();
+
+            //alert(field_value);
+            saveProjectOwnerInfo("last-name", field_value, appInternalID);
+
+        });
+
+        $('#owner-citizenship').focusout( function () {
+
+
+
+            // send state, and token to server
+            // token will be generated in the controller and added to the view
+            // similar to how access token works ...a token is tied to a user
+            // access token will be passed in through model
+            //
+            // var tokenValue = '${token}';  // token is the model attribute name
+            // we are not using secured tokens for the prototype
+            // we will secure it by adding ssl and https support
+            //
+            //$('.state-animation').fadeOut();
+
+            var field_value = $(this).val();
+
+            alert(field_value);
+            saveProjectOwnerInfo("owner-citizenship", field_value, appInternalID);
+
+
+
+        });
+
+
+
 
 
         /////////////////////////////////////////////////////
