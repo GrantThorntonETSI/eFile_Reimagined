@@ -236,7 +236,9 @@
 
             <div class="row" style="position: relative; top:-240px; right:-120px; ">
                 <div class="col-sm-1">
-                    <input type="radio" name="isForeignEntity" id="usEntityTrue">
+                    <input type="radio" name="isForeignEntity" id="usEntityTrue"  th:if="${baseTrademarkApplication.owner.getOwnerType() == 'US'}" checked>
+                    <input type="radio" name="isForeignEntity" id="usEntityTrue" th:if="${baseTrademarkApplication.owner.getOwnerType() != 'US'}">
+
                 </div>
                 <div class="col-sm-2" style="position: relative; left:-75px;">
                     U.S. Entity
@@ -539,11 +541,11 @@
                     <!--default drop down -->
 
                     <div   style="opacity: 1; width: 222px; min-height: 70px; transform: rotate(0deg) translate(-177px, -505px) translate(177px, 505px) rotate(0deg);">
-                        <select id="domestic-entity-dropdown" class="domestic-entity-dropdown" style="min-height:35px; mix-blend-mode: normal; color: rgb(0, 0, 0); border-width: 1px; border-color: rgb(200, 200, 200); border-style: solid; border-radius: 5px; font-size: 16px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; text-align-last: left; box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px 0px inset;" >
+                        <select id="domestic-entity-dropdown" class="domestic-entity-dropdown"  style="min-height:35px; mix-blend-mode: normal; color: rgb(0, 0, 0); border-width: 1px; border-color: rgb(200, 200, 200); border-style: solid; border-radius: 5px; font-size: 16px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; text-align-last: left; box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px 0px inset;" >
                             <option value="#"></option>
 
 
-                            <option id="ind" value="http://localhost:8080/application/owner/Ind/info?Individual">Individual</option>
+                            <option id="ind" value="Individual">Individual</option>
                             <option value="http://localhost:8080/application/owner/sol-prop/info?Sole Proprietorship">Sole Proprietorship</option>
                             <option value="http://localhost:8080/application/owner/corp/info">Corporation</option>
                             <option value="http://localhost:8080/application/owner/llc/info">Limited Liability Company</option>
@@ -600,6 +602,8 @@
     var prevLinkURL = host+"/application/start/?trademarkID="+appInternalID;
     var nextLinkURL = host+"/application/owner/Ind/info/?trademarkID="+appInternalID;
 
+    var individualPrefix = host+"/application/owner/Ind/info";
+
 </script>
 
 
@@ -646,6 +650,33 @@
             // after 1000 ms we add the class animated to the login/register card
             $('.content').fadeIn(500);
         }, 500);
+
+
+        // check if already check
+
+        // check if attorneyFillingFalse is set
+        if ($('#usEntityTrue').is(':checked') == true){
+
+            $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
+
+            $('#nextLink').attr("href", nextLinkURL );
+
+            //$('#attorneyFillingFalse').prop("disabled", true);  // do we disable here ???
+            //$('#attorneyFilingTrue').prop("disabled", true);
+            $('.international-entity').fadeOut();
+
+            setTimeout(function() {
+                // after 1000 ms we add the class animated to the login/register card
+                $('.domestic-entity').fadeIn();
+            }, 500);
+
+
+            $('#domestic-entity-dropdown').prop('disabled', false);
+
+        }
+
+
+
 
 
         //////////////////////////////////////////
@@ -700,13 +731,19 @@
 
             var parseStr = this.value;
 
-            var start = parseStr.indexOf('?');
+           // var start = parseStr.indexOf('?');
 
-            var link_prefix = parseStr.substring(0,start);
-            var subtype_val = parseStr.substring(start+1, parseStr.length);
-
+            //var link_prefix = parseStr.substring(0,start);
+            //var subtype_val = parseStr.substring(start+1, parseStr.length);
+             var subtype_val = parseStr;
+             var link_prefix=""
+             if(subtype_val == "Individual"){
+                 link_prefix=individualPrefix;
+             }
 
             saveProjectInfo("set-Owner-entity-types", "US"+"+"+subtype_val, appInternalID); // static from radio buttton
+
+
 
 
             $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
