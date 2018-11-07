@@ -197,13 +197,13 @@ public class ApplicationController {
 
 
 
-        return baseTrademarkApplication.getLastViewModel();
+        return "application/OwnerStart";
     }
 
 
     // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
     @RequestMapping({"/application/owner/Ind/info"})
-    public String ownerInfo(Model model){
+    public String ownerInfo(WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
 
         // create a new application and tie it to user then save it to repository
         // create attorneyDTO + to model
@@ -218,7 +218,9 @@ public class ApplicationController {
 
         model.addAttribute("user", ptoUser);
         model.addAttribute("account",credentials);
-
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
 
         return "application/owner/individual/ownerInfo";

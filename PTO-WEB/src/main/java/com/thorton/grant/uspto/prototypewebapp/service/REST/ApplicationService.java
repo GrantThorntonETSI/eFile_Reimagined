@@ -138,6 +138,8 @@ public class ApplicationService {
                 owner.setOwnerType(entity_type);
                 owner.setOwnersubType(sub_type);
                 baseTrademarkApplication.setOwner(owner);
+
+                baseTrademarkApplication.setLastViewModel("application/owner/individual/ownerInfo");
                 baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
                 appFieldReadable = "Entity Types. ";

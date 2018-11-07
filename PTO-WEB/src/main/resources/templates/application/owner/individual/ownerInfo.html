@@ -1163,9 +1163,26 @@
     </div>
 </div>
 
+
+    <!--load model attribute for Jquery consumption  -->
+    <script th:inline="javascript">
+
+        /*<![CDATA[*/
+
+
+        var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
+
+        //alert(tableRows);
+
+        /*]]>*/
+    </script>
+
+
+
+
     <script>
 
-        var prevLinkURL = host+"/application/OwnerStart";
+        var prevLinkURL = host+"/application/OwnerStart/?trademarkID="+appInternalID;
         var nextLinkURL = host+"";
 
     </script>
