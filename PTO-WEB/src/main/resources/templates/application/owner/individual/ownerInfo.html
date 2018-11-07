@@ -227,7 +227,7 @@
 
                 <div class="card-text">
 
-                    <h5 class="card-title"><b style="color: black; color: rgb(0, 0, 0); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">Owner Name Information</b><i class="material-icons" style="position: relative; top:8px; right:-25px;">error_outline</i></h5>
+                    <h5 class="card-title"><b style="color: black; color: rgb(0, 0, 0); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">Owner Name Information</b><a  style="text-decoration: none;" data-toggle="tooltip" title="If the owner only have one name, insert the words First Name Unavailable (FNU) in the first name field and the name to be entered in the surename field."><i class="material-icons" style="position: relative; top:8px; right:-25px;">error_outline</i></a></h5>
 
                 </div>
                 <hr style="height:3px; position:relative; top:-20px; left:-11.5%; max-width: 80.1%">
@@ -253,7 +253,7 @@
                 <div class="col-sm-3">
                     <div class="form-group">
                         <span>
-                            <input type="text" id="first-name"  name="firstName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                            <input type="text" id="first-name" th:value="${baseTrademarkApplication.owner.firstName}" name="firstName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
 
                         </span>
@@ -314,7 +314,7 @@
 
                     <div class="form-group">
                         <span>
-                            <input type="text" id="last-name" name="lastName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                            <input type="text" id="last-name" th:value="${baseTrademarkApplication.owner.lastName}" name="lastName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
                         </span>
                     </div>
@@ -399,7 +399,7 @@
                 <div class="col-sm-3">
                     <div class="form-group">
                                         <span>
-                                            <select  id="owner-citizenship"  class="form-control" name="suffix"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                            <select  id="owner-citizenship"  class="form-control" name="suffix" th:field="${baseTrademarkApplication.owner.country}"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
                                                 <option value="X1">UNITED STATES OF AMERICA</option>
                                                 <option value="B2">AFGHANISTAN</option>
@@ -1334,10 +1334,20 @@
 <script>
     $(document).ready(function() {
 
+        ///////////////////////////////////////////////////////////////////////////////
+        // initial page load
+        ///////////////////////////////////////////////////////////////////////////////
         setTimeout(function() {
             // after 1000 ms we add the class animated to the login/register card
             $('.content').fadeIn(500);
         }, 500);
+
+        // initialize hover text on Owner Name Information
+        $('[data-toggle="tooltip"]').tooltip();
+
+
+
+
 
         ////////////////////////////////////////////////////
         // auto save jquery section
