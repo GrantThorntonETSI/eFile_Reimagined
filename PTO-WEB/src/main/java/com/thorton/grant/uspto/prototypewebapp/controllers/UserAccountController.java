@@ -10,6 +10,7 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.ap
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 
+import org.hibernate.mapping.Collection;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 @Controller
@@ -110,7 +112,9 @@ public class UserAccountController {
 
         BaseTrademarkApplication baseTrademarkApplication = null;
         ArrayList<String> userfilingTableRowsID = new ArrayList<>();
-
+        ArrayList<String> userfilingTableRowsowneName = new ArrayList<>();
+        ArrayList<String> userfilingTableRowsStatus = new ArrayList<>();
+        ArrayList<String> userfilingTableRoowsTMname = new ArrayList<>();
         for(Iterator<BaseTrademarkApplication> iter = ptoUser.getMyApplications().iterator(); iter.hasNext(); ) {
 
 
@@ -119,8 +123,16 @@ public class UserAccountController {
             System.out.println("internal : "+baseTrademarkApplication.getApplicationInternalID());
 
             userfilingTableRowsID.add(  baseTrademarkApplication.getApplicationInternalID());
+            userfilingTableRowsowneName.add(baseTrademarkApplication.getOwner().getFirstName()+" "+baseTrademarkApplication.getOwner().getLastName());
+            userfilingTableRowsStatus.add("NEW Filing Application.");
+            userfilingTableRoowsTMname.add(baseTrademarkApplication.getTrademarkName());
 
         }
+        Collections.reverse(userfilingTableRowsID);
+        Collections.reverse(userfilingTableRowsowneName);
+        Collections.reverse(userfilingTableRowsStatus);
+        Collections.reverse(userfilingTableRoowsTMname);
+
 
 
 
@@ -130,6 +142,9 @@ public class UserAccountController {
 
         TradeMarkApplicationsInternalIDDTO tradeMarkApplicationsInternalIDDTO = new TradeMarkApplicationsInternalIDDTO();
         tradeMarkApplicationsInternalIDDTO.setMyApplicationIDs(userfilingTableRowsID);
+        tradeMarkApplicationsInternalIDDTO.setMyApplicationOwners(userfilingTableRowsowneName);
+        tradeMarkApplicationsInternalIDDTO.setMyApplicationStatues(userfilingTableRowsStatus);
+        tradeMarkApplicationsInternalIDDTO.setMyApplicationTMname(userfilingTableRoowsTMname);
         model.addAttribute("newFilingTableRow", tradeMarkApplicationsInternalIDDTO);
 
         //model.addAttribute("trademarkApplication", baseTrademarkApplication);

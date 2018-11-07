@@ -1,7 +1,6 @@
 package com.thorton.grant.uspto.prototypewebapp.service.REST;
 
 
-import com.fasterxml.jackson.databind.ser.Serializers;
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
@@ -23,6 +22,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class ApplicationService {
 
     private final ServiceBeanFactory serviceBeanFactory;
+    private static int appCounter =0;
 
     public ApplicationService(ServiceBeanFactory serviceBeanFactory) {
         this.serviceBeanFactory = serviceBeanFactory;

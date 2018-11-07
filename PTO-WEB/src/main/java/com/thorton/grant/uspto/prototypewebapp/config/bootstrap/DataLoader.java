@@ -95,8 +95,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         trademarkApplication.setPtoUser(PTOUser1);
 
         //trademarkApplication.setLastViewModel("application/owner/individual/ownerInfo");
-        //trademarkApplication.setLastViewModel("application/OwnerStart");
-        trademarkApplication.setLastViewModel("application/AttorneyStart");
+        trademarkApplication.setLastViewModel("application/OwnerStart");
+        //trademarkApplication.setLastViewModel("application/AttorneyStart");
         trademarkApplication.setAttorneySet(true);
         trademarkApplication.setAttorneyFiling(false);
 
@@ -160,7 +160,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         userCredentialsService.save(ownerCreds);
         lawyerService.save(newLawyer);
         tradeMarkApplicationService.save(trademarkApplication);
-        trademarkApplication.setTrademarkName("my_first_trademark");
+        trademarkApplication.setTrademarkName("TM_application_test_user");
         trademarkApplication.setApplicationInternalID(trademarkApplication.getTrademarkName()+trademarkApplication.getId()+trademarkApplication.getOwnerEmail());
 
         tradeMarkApplicationService.save(trademarkApplication);

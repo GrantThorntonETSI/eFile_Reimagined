@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
 
+import java.util.UUID;
+
 @Controller
 public class ApplicationController {
 
@@ -29,6 +31,8 @@ public class ApplicationController {
     public ApplicationController(ServiceBeanFactory serviceBeanFactory) {
         this.serviceBeanFactory = serviceBeanFactory;
     }
+
+    private static int counter = 0;
 
 
     private boolean continuation = false;
@@ -76,6 +80,9 @@ public class ApplicationController {
          ////////////////////////////////////////////////////////////////////////////////////////////
         if(trademarkInternalID.equals("new")) {
 
+
+
+            // new application creation will need to be refactored into its own function later
             System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
             BaseTrademarkApplication trademarkApplication = new BaseTrademarkApplication();
             //trademarkApplication.setPtoUser(ptoUser);
@@ -122,7 +129,10 @@ public class ApplicationController {
 
             baseTradeMarkApplicationService.save(trademarkApplication);
             trademarkApplication.setTrademarkName("my_first_trademark");
-            trademarkApplication.setApplicationInternalID(trademarkApplication.getTrademarkName() + trademarkApplication.getId() + trademarkApplication.getOwnerEmail());
+            trademarkApplication.setApplicationInternalID(UUID.randomUUID().toString());
+            counter++;
+            trademarkApplication.setTrademarkName("TM-application-"+counter);
+
             ptoUser.addApplication(trademarkApplication); // adds to myApplications Collection
             ptoUserService.save(ptoUser);
 
