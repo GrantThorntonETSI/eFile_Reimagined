@@ -201,4 +201,116 @@ public class ApplicationService {
         return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
 
     }
+
+
+
+
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/application/owner/update/{applicationField}/{param}/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> updateApplicationOwner(@PathVariable String applicationField , @PathVariable String param, @PathVariable String appInternalID){
+
+
+         System.out.println("############################################################");
+         System.out.println(applicationField);
+         System.out.println(param);
+         System.out.println(appInternalID);
+         System.out.println("############################################################");
+         // verify token before preceding
+
+
+         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+         String email = authentication.getName();
+         //UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+         PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+         //UserCredentials userCredentials = userCredentialsService.findByEmail(email);
+         PTOUser ptoUser = ptoUserService.findByEmail(email);// ?? we may not need to save this
+         // verify authentication is valid before moving on ....
+         // have to have a valid session
+
+        if(ptoUser == null || param == ""){
+            ////////////////////////////////////////////////
+            // start generating response
+            ////////////////////////////////////////////////
+            String statusCode = "404";
+            String responseMsg = applicationField+" has not been saved. invalid user session.";
+            responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
+            HttpHeaders responseHeader = new HttpHeaders ();
+            responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
+            ArrayList<String> headersAllowed = new ArrayList<String>();
+            headersAllowed.add("Access-Control-Allow-Origin");
+            responseHeader.setAccessControlAllowHeaders(headersAllowed);
+            ArrayList<String> methAllowed = new ArrayList<String>();
+
+            return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+
+        }
+        // retrieve application using passed internal id
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+        String appFieldReadable = "";
+
+        // page 3 fields
+        if(applicationField.equals("first-name")){
+            baseTrademarkApplication.getOwner().setFirstName(param);
+
+            baseTrademarkApplication.setLastViewModel("application/owner/individual/ownerInfo");
+            baseTradeMarkApplicationService.save(baseTrademarkApplication);
+            appFieldReadable = "Owner First Name. ";
+        }
+
+
+
+
+
+
+
+
+
+
+        if(applicationField.equals("owner-state")){
+            // ptoUser.setState(param); // sets state code
+        }
+
+        if(applicationField.equals("owner-city")){
+            //ptoUser.setCity(param);
+        }
+
+        if(applicationField.equals("owner-zipcode")){
+            //ptoUser.setZipcode(param);
+        }
+
+        if(applicationField.equals("owner-address")){
+            //ptoUser.setAddress(param);
+        }
+
+        if(applicationField.equals("owner-country")){
+            //ptoUser.setCountry(param); // sets country code
+        }
+
+        if(applicationField.equals("own-Phone")){
+            //ptoUser.setPrimaryPhonenumber(param);
+        }
+
+
+
+        ////////////////////////////////////////////////
+        // start generating response
+        ////////////////////////////////////////////////
+        String statusCode = "200";
+        String responseMsg = appFieldReadable+" has been saved.";
+        responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
+        HttpHeaders responseHeader = new HttpHeaders ();
+        responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
+        ArrayList<String> headersAllowed = new ArrayList<String>();
+        headersAllowed.add("Access-Control-Allow-Origin");
+        responseHeader.setAccessControlAllowHeaders(headersAllowed);
+        ArrayList<String> methAllowed = new ArrayList<String>();
+
+        System.out.println("response header : "+responseHeader.getAccessControlAllowOrigin());
+
+
+        return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+
+    }
 }
