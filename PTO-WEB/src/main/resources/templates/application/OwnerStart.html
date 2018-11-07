@@ -251,7 +251,14 @@
                     Foreign Entity
                 </div>
             </div>
+            <div class="row" style="position: relative; top:-130px; right:-120px;">
+                <div class="col-sm-6">
+                    <div class="form-group set-Owner-entity-typesFieldMsgArea" style="position: relative; left:30%;">
+                        <b><span></span></b>
+                    </div>
+                </div>
 
+            </div>
 
 
             <div class="international-entity" style="display: none;">
@@ -534,8 +541,10 @@
                     <div   style="opacity: 1; width: 222px; min-height: 70px; transform: rotate(0deg) translate(-177px, -505px) translate(177px, 505px) rotate(0deg);">
                         <select id="domestic-entity-dropdown" class="domestic-entity-dropdown" style="min-height:35px; mix-blend-mode: normal; color: rgb(0, 0, 0); border-width: 1px; border-color: rgb(200, 200, 200); border-style: solid; border-radius: 5px; font-size: 16px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; text-align-last: left; box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px 0px inset;" >
                             <option value="#"></option>
-                            <option id="ind" value="http://localhost:8080/application/owner/Ind/info">Individual</option>
-                            <option value="http://localhost:8080/application/owner/sol-prop/info">Sole Proprietorship</option>
+
+
+                            <option id="ind" value="http://localhost:8080/application/owner/Ind/info?Individual">Individual</option>
+                            <option value="http://localhost:8080/application/owner/sol-prop/info?Sole Proprietorship">Sole Proprietorship</option>
                             <option value="http://localhost:8080/application/owner/corp/info">Corporation</option>
                             <option value="http://localhost:8080/application/owner/llc/info">Limited Liability Company</option>
                             <option value="http://localhost:8080/application/owner/part/info">Partnership</option>
@@ -556,6 +565,15 @@
 
 
 
+
+        </div>
+
+        <div class="row" style="position: relative; top:-160px; right:-220px;">
+            <div class="col-sm-6">
+                <div class="form-group FieldMsgArea" style="position: relative; left:30%;">
+                    <b><span></span></b>
+                </div>
+            </div>
 
         </div>
     </div>
@@ -580,7 +598,7 @@
 <script>
 
     var prevLinkURL = host+"/application/start/?trademarkID="+appInternalID;
-    var nextLinkURL = host+"/application/owner/Ind/info";
+    var nextLinkURL = host+"/application/owner/Ind/info/?trademarkID="+appInternalID;
 
 </script>
 
@@ -676,32 +694,135 @@
 
 
         $('#prevLink').attr("href",prevLinkURL);
-        $('#ind').attr("value", nextLinkURL);
+
 
         $('#domestic-entity-dropdown').change( function () {
+
+            var parseStr = this.value;
+
+            var start = parseStr.indexOf('?');
+
+            var link_prefix = parseStr.substring(0,start);
+            var subtype_val = parseStr.substring(start+1, parseStr.length);
+
+
+            saveProjectInfo("set-Owner-entity-types", "US"+"+"+subtype_val, appInternalID); // static from radio buttton
+
 
             $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
 
 
             // set next link to select option link value
-            $('#nextLink').attr("href",this.value );
+            $('#nextLink').attr("href",link_prefix+"/?trademarkID="+appInternalID );
 
         });
 
-/*
-////////////////////////////////////////
-// if elements were dynamicaliy created
-////////////////////////////////////////
-        $(document).on('change','#domestic-entity-dropdown',function(){
-            $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
-
-            $('#nextLink').attr("href","http://localhost:8080/application/OwnerStart" );
-
-        });
-
-*/
 
     });
+
+
+
+
+    function saveProjectInfo(field_name_prefix, field_value, applicaiton_internal_id) {
+
+
+
+
+
+        //alert(field_name_prefix);
+        // send state, and token to server
+        // token will be generated in the controller and added to the view
+        // similar to how access token works ...a token is tied to a user
+        // access token will be passed in through model
+        //
+        // var tokenValue = '${token}';  // token is the model attribute name
+        // we are not using secured tokens for the prototype
+        // we will secure it by adding ssl and https support
+
+        //var field_value = $(this).val();
+        //alert(field_value);
+
+        $.ajax({
+            url: "http://localhost:8080/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
+            type: 'GET',
+            success: function(data){
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                if(s_code.trim() == "200"){
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+
+
+                    $(".FieldMsgArea span").text(s_msg);
+                    $(".FieldMsgArea span").css('color','green');
+                    $(".FieldMsgArea").fadeIn('slow');
+                    // animation rendering control
+                    //if($('.state-checkmark').css('display') == 'block'){
+                    if($( "."+field_name_prefix.toLowerCase()+"-animation").css('display') == 'block'){
+
+
+                        $("."+field_name_prefix.toLowerCase()+"-animation").fadeOut(100);
+                        // now we need to create an java back end service that saves this value.
+                        // also add validation on the html  similar to password save
+                        //$('#toggle-'+field_name_prefix.toLowerCase()).delay(100).click();
+
+                        // alert($(this).val());
+                        $("."+field_name_prefix.toLowerCase()+"-animation").fadeIn(1000);
+                        // now we need to create an java back end service that saves this value.
+                        // also add validation on the html  similar to password save
+                        //$("."+field_name_prefix.toLowerCase()+"-animation").delay(1000).click();
+                    }
+                    else {
+
+                        $("."+field_name_prefix.toLowerCase()+"-animation").fadeIn(1000);
+                        // now we need to create an java back end service that saves this value.
+                        // also add validation on the html  similar to password save
+                        //$('#toggle-'+field_name_prefix.toLowerCase()).delay(1000).click();
+                    }
+
+
+
+
+                }
+                else{
+                    //$('.circle-loader').fadeOut(100);
+                    //$('.x-mark').fadeIn(500);
+                    //$(".validationMsgArea span").text(s_msg);
+                    //$(".validationMsgArea span").css('color','red');
+                }
+
+            },
+            error: function(data) {
+
+                //$('.circle-loader').fadeOut(100);
+                //$('.x-mark').fadeIn(500);
+
+                console.log(data);
+                // set message to div area ...fields can not be left null
+                //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                //$(".validationMsgArea span").css('color','red');
+            }
+
+        });
+
+
+
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////
+        // end of contact information 'State' auto save ////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+
+
+    }
+
+
 
 </script>
 

@@ -4,6 +4,7 @@ package com.thorton.grant.uspto.prototypewebapp.service.REST;
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import org.springframework.http.HttpHeaders;
@@ -13,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.Console;
 import java.util.ArrayList;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -99,8 +101,8 @@ public class ApplicationService {
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
         String appFieldReadable = "";
 
-
-        if(applicationField.equals("set-lawer-options-value")){
+        // page 1 fields
+        if(applicationField.equals("set-lawyer-options-value")){
             // ptoUser.setState(param); // sets state code
             if(param.equals("no")){
 
@@ -118,9 +120,38 @@ public class ApplicationService {
             appFieldReadable = "Attorney Option. ";
         }
 
-        if(applicationField.equals("set-lawer-option")){
+
+        // page two fields
+        if(applicationField.equals("set-Owner-entity-types")){
+            // parse params
+            int start = param.indexOf("+");
+            String entity_type = param.substring(0,start);
+            String sub_type = param.substring(start+1);
+
+            System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+            System.out.println(entity_type);
+            System.out.println(sub_type);
+
+
+            if(entity_type.equals("US")){
+                Owner owner = baseTrademarkApplication.getOwner();
+                owner.setOwnerType(entity_type);
+                owner.setOwnersubType(sub_type);
+                baseTrademarkApplication.setOwner(owner);
+                baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+                appFieldReadable = "Entity Types. ";
+            }
             // ptoUser.setState(param); // sets state code
         }
+
+
+
+
+
+
+
+
 
 
         if(applicationField.equals("owner-state")){

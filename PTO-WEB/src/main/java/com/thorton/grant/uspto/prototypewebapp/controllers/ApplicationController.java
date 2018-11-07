@@ -87,9 +87,9 @@ public class ApplicationController {
             BaseTrademarkApplication trademarkApplication = new BaseTrademarkApplication();
             //trademarkApplication.setPtoUser(ptoUser);
 
-            //trademarkApplication.setLastViewModel("application/owner/individual/ownerInfo");
+            trademarkApplication.setLastViewModel("application/owner/individual/ownerInfo");
             //trademarkApplication.setLastViewModel("application/OwnerStart");
-            trademarkApplication.setLastViewModel("application/AttorneyStart");
+           // trademarkApplication.setLastViewModel("application/AttorneyStart");
             trademarkApplication.setAttorneySet(false);
             trademarkApplication.setAttorneyFiling(false);
 
