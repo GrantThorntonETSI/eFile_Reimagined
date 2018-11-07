@@ -131,6 +131,7 @@ public class ApplicationController {
         else{
             // loadd baseTradeMarkapplication by internal id and add to model
             BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+           // baseTrademarkApplication.setLastViewModel("application/AttorneyStart");
 
             model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
@@ -178,17 +179,15 @@ public class ApplicationController {
         UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
 
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
-
         model.addAttribute("user", ptoUser);
         model.addAttribute("account",credentials);
 
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
-
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
 
 
-        return "application/OwnerStart";
+        return baseTrademarkApplication.getLastViewModel();
     }
 
 
