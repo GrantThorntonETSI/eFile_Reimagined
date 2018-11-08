@@ -32,7 +32,7 @@ public class ApplicationController {
         this.serviceBeanFactory = serviceBeanFactory;
     }
 
-    private static int counter = 0;
+    private static long counter = 0;
 
 
     private boolean continuation = false;
