@@ -63,7 +63,7 @@ public class GmailJavaMailSenderService extends JavaMailSenderBase {
                     "            body {\n" +
                     "                font-family: \"Segoe UI\", \"Helvetica Neue\", Tahoma, Arial, sans-serif;\n" +
                     "                font-size: 13px;\n" +
-                    "            }\n" +
+                    "           zoom:80%; }\n" +
                     "            h1 {\n" +
                     "                font-size: 24px;\n" +
                     "                font-weight: 400;\n" +
