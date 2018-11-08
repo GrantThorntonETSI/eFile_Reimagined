@@ -2,6 +2,8 @@ input.form-control-sm[type="search"] {
 
   position: relative;
   top:10%;
+  left:-5%;
+
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   border-top-right-radius: 5px;
@@ -11,10 +13,16 @@ select.form-control-sm{
   position: relative;
   top:10%;
   right:-20px;
+  min-width: 100px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
+
+}
+
+.dataTables-length {
+  min-width: 250px;
 
 }
 
@@ -27,9 +35,14 @@ ul.pagination:first-child a  {
 
 }
 
+ul.pagination > li {
+  position: relative;
+  left: -10px;
+}
+
 #example_wrapper{
   position: relative;
-  margin-right: 15px;
+
 }
 
 thead:first-child  tr[role=row]{
@@ -44,12 +57,19 @@ thead:first-child  tr[role=row]{
 
 
 // styling for tab menu items on dashboard
+.paginate-button{
+  position:relative ;
+  left:-20px;
+
+}
 
 .tablinks{
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
+  position:relative ;
+  left:-20px;
 
 }
 

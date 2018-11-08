@@ -45,7 +45,7 @@
                         <div class="card-header card-header-primary card-header-icon" style="margin-bottom: 10px;">
 
                             <div class="row" style="  position: relative; left:2.0%; width:100%">
-                                <div class="col-sm-4">
+                                <div class="col-sm-4" style="position: relative; top:10px;">
                                     <h3 class="card-title"><b>FILINGS/APPLICATIONS</b> </h3>
                                 </div>
                                 <div class="col-sm-2" style="position: relative;right:-30%;">
@@ -54,12 +54,12 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="toolbar" style="width: 120%;" >
+                            <div class="toolbar" style="position: relative; left:10px;" cellpadding="5" >
                                 <!--        Here you can write extra buttons/actions for the toolbar      -->
                             </div>
 
                             <div class="">
-                                <table id="example" class="display  table-no-bordered table-hover" width="100%" style="margin-right: 8px; margin-left: 8px;"></table>
+                                <table id="example" class="display  table-no-bordered table-hover" cellpadding="3" style="margin-right: 5px; margin-left: 8px;"></table>
                             </div>
                         </div>
                         <!-- end content-->
@@ -79,7 +79,7 @@
                                     <h4 class="card-title"><b>UP COMING ACTION DUE</b></h4>
                                 </div>
                                 <div class="col-sm-2" style="position: relative;right:-35%;">
-                                    <div class="form-group" ><select style=" position: relative; right: -10%; margin-top: 10px;  border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;" class="select-search-dropdown-btn select-collection-btn" type="button" value="30 days">
+                                    <div class="form-group" ><select style=" position: relative; right: -10%; margin-top: 10px;  border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;" class="select-search-dropdown-btn select-collection-btn custom-select"  value="30 days">
                                         <option>30 Days</option>
                                         <option>60 Days</option>
                                         <option>120 Days</option>
@@ -346,7 +346,7 @@
         // generate data tables for filings
         var filingsTable = $('#example').DataTable( {
             data: dataSet,
-            "iDisplayLength": 5,
+
             columns: [
                 { title: "Serial ID" },
                 { title: "Registration ID" },
