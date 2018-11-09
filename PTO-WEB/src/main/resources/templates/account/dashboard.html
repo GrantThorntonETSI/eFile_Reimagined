@@ -59,7 +59,7 @@
                             </div>
 
                             <div class="">
-                                <table id="example" class="display  table-no-bordered table-hover" cellpadding="3" style="margin-right: 5px; margin-left: 8px;"></table>
+                                <table id="example" class=" table-no-bordered table-hover" cellpadding="3" style="margin-right: 5px; margin-left: 8px;"></table>
                             </div>
                         </div>
                         <!-- end content-->
@@ -255,8 +255,6 @@
 
 
         var tableRowIDs = /*[[${newFilingTableRow.myApplicationIDs}]]*/ 'User Name';
-
-
         var tableRowOwners = /*[[${newFilingTableRow.myApplicationOwners}]]*/ 'User Name';
 
         var tableRowStatuses = /*[[${newFilingTableRow.myApplicationStatues}]]*/ 'User Name';
@@ -297,6 +295,16 @@
             //alert(item.optA);
         //});
 
+
+
+
+
+
+
+
+
+
+
         var dataSet = [
 
             [ "2765315", "2345678", "Coca Cola", "Coca Cola Corp", "PUBLISHED FOR OPPOSITION", "<a href=\"#mark-preview-modal\" data-toggle=\"modal\" data-target=\"#mark-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit trademarks-view\"><i class=\"material-icons\">dvr</i></a>\n" +
@@ -331,13 +339,10 @@
             "                                                <input style=\"display: none;\" value=\"../resources/data_images/tesla-tm.jpg\">" ],
             [ "3477866", "3477866", "Tesla", "Tesla Inc", "REGISTERED", "<a href=\"#mark-preview-modal\" data-toggle=\"modal\" data-target=\"#mark-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit trademarks-view\"><i class=\"material-icons\">dvr</i></a>\n" +
             "                                                <input style=\"display: none;\" value=\"../resources/data_images/tesla-tm.jpg\">" ],
-            [ "4455666", "4455666", "Jump SHOES&STREEWEAR", "antonio cirillo DBA gui.mar.lab.srls", "Draft", "<a href=\"#mark-preview-modal\" data-toggle=\"modal\" data-target=\"#mark-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit trademarks-view\"><i class=\"material-icons\">dvr</i></a>\n" +
+            [ "4455666", "4455666", "Jump SHOES", "antonio cirillo DBA gui.mar.lab", "Draft", "<a href=\"#mark-preview-modal\" data-toggle=\"modal\" data-target=\"#mark-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit trademarks-view\"><i class=\"material-icons\">dvr</i></a>\n" +
             "                                                <input style=\"display: none;\" value=\"../resources/data_images/jum.png\">" ],
             [ "2343555", "2343555", "Vakker", "Bao Kun", "REPORT COMPLETED SUSPENSION CHECK - CASE STILL SUSPENDED. ", "<a href=\"#mark-preview-modal\" data-toggle=\"modal\" data-target=\"#mark-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit trademarks-view\"><i class=\"material-icons\">dvr</i></a>\n" +
             "                                                <input style=\"display: none;\" value=\"../resources/data_images/vakker.png\">" ]
-
-
-
 
 
 
@@ -346,7 +351,7 @@
         // generate data tables for filings
         var filingsTable = $('#example').DataTable( {
             data: dataSet,
-            "dom": '<"top"if<"clear">>rt<"bottom"ip<"clear">>',
+            "dom": '<"top"f<"clear">>rt<"bottom"ip<"clear">>',
             columns: [
                 { title: "Serial ID" },
                 { title: "Registration ID" },
@@ -370,7 +375,7 @@
 
 
         //alert(hrefVal);
-        for(a =0; a <tableRowIDs.length; a++) {
+        for(var a =0; a <tableRowIDs.length; a++) {
 
             var hrefVal = '<a href="/application/continueApplication/?trademarkID='+tableRowIDs[a]+'">'+tableRowTMnames[a]+'</a>';
             filingsTable.row.add(["", hrefVal, "N/A", tableRowOwners[a], tableRowStatuses[a], "<a href=\"#mark-preview-modal\" data-toggle=\"modal\" data-target=\"#mark-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit trademarks-view\"><i class=\"material-icons\">dvr</i></a>\n" +
