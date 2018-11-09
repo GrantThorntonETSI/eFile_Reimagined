@@ -1,6 +1,7 @@
 package com.thorton.grant.uspto.prototypewebapp.service.REST;
 
 
+import com.thorton.grant.uspto.prototypewebapp.config.host.bean.endPoint.HostBean;
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
@@ -34,12 +35,17 @@ public class UserAccountService {
 
     private final ServiceBeanFactory serviceBeanFactory;
 
-    public UserAccountService(ServiceBeanFactory serviceBeanFactory) {
+    /////////////////////////////////////////////////////////////////////////////////////////
+    // based on the profile  ...we should be able
+    // to inject the correct bean mapped to the correct host file here
+    ////////////////////////////////////////////////////////////////////////////////////////
+    private final  HostBean hostBean;
+
+
+    public UserAccountService(ServiceBeanFactory serviceBeanFactory, HostBean hostBean) {
         this.serviceBeanFactory = serviceBeanFactory;
+        this.hostBean = hostBean;
     }
-
-
-
 
     // will add request headers for security in the next update
     @RequestMapping(value = "/rest/api/test", headers = "key=val", method = GET)
@@ -52,7 +58,7 @@ public class UserAccountService {
 
 
 
-    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com", "http://18.223.126.237:8080"})
     @RequestMapping(method = GET, value="/REST/apiGateway/user/update/pw/{password1}/{password2}")
     @ResponseBody
     ResponseEntity<String> updateUserPassword(@PathVariable String password1, @PathVariable String password2){
@@ -134,8 +140,8 @@ public class UserAccountService {
 
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();
-        //responseHeader.set("Access-Control-Allow-Origin", "http://18.221.138.198:8080");
-        responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
+        responseHeader.set("Access-Control-Allow-Origin", "http://18.223.126.237:8080");
+        //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
         ArrayList<String> headersAllowed = new ArrayList<String>();
         headersAllowed.add("Access-Control-Allow-Origin");
         responseHeader.setAccessControlAllowHeaders(headersAllowed);
@@ -150,7 +156,7 @@ public class UserAccountService {
 
 
 
-    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com", "http://18.223.126.237:8080"})
     @RequestMapping(method = GET, value="/REST/apiGateway/user/update/{userAccountField}/{param}")
     @ResponseBody
     ResponseEntity<String> updateUserAccountInfo(@PathVariable String userAccountField , @PathVariable String param){
@@ -264,7 +270,8 @@ public class UserAccountService {
         String responseMsg = userAccountField+" has been saved.";
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();
-        responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
+        //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
+        responseHeader.setAccessControlAllowOrigin("http://18.223.126.237:8080");
         ArrayList<String> headersAllowed = new ArrayList<String>();
         headersAllowed.add("Access-Control-Allow-Origin");
         responseHeader.setAccessControlAllowHeaders(headersAllowed);
@@ -279,7 +286,7 @@ public class UserAccountService {
 
 
 
-    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com", "http://18.223.126.237:8080"})
     @RequestMapping(method = GET, value="/REST/apiGateway/user/complete/")
     @ResponseBody
     ResponseEntity<String> checkProfileComplete(){
@@ -332,8 +339,8 @@ public class UserAccountService {
            String responseMsg = "User Profile required information is not complete.";
            responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
            HttpHeaders responseHeader = new HttpHeaders ();
-           //responseHeader.set("Access-Control-Allow-Origin", "http://18.221.138.198:8080");
-           responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
+           responseHeader.set("Access-Control-Allow-Origin", "http://18.223.126.237:8080");
+           //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
            ArrayList<String> headersAllowed = new ArrayList<String>();
            headersAllowed.add("Access-Control-Allow-Origin");
            responseHeader.setAccessControlAllowHeaders(headersAllowed);
@@ -352,8 +359,8 @@ public class UserAccountService {
         String responseMsg = "User Profile required information is  complete.";
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();
-        //responseHeader.set("Access-Control-Allow-Origin", "http://18.221.138.198:8080");
-        responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
+        responseHeader.set("Access-Control-Allow-Origin", "http://18.223.126.237:8080");
+        //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
         ArrayList<String> headersAllowed = new ArrayList<String>();
         headersAllowed.add("Access-Control-Allow-Origin");
         responseHeader.setAccessControlAllowHeaders(headersAllowed);
@@ -374,8 +381,11 @@ public class UserAccountService {
         public void doFilter(ServletRequest request, ServletResponse response,
                              FilterChain chain) throws IOException, ServletException {
             HttpServletResponse httpServletResponse = (HttpServletResponse) response;
+            //httpServletResponse.setHeader(
+             //       "Access-Control-Allow-Origin", "http://efile-reimagined.com");
+
             httpServletResponse.setHeader(
-                    "Access-Control-Allow-Origin", "http://efile-reimagined.com");
+                    "Access-Control-Allow-Origin", "http://18.223.126.237:8080");
             chain.doFilter(request, response);
         }
 

@@ -1,6 +1,7 @@
 package com.thorton.grant.uspto.prototypewebapp.controllers;
 
 
+import com.thorton.grant.uspto.prototypewebapp.config.host.bean.endPoint.HostBean;
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
@@ -27,15 +28,23 @@ import java.util.UUID;
 public class ApplicationController {
 
     private final  ServiceBeanFactory serviceBeanFactory;
-
-    public ApplicationController(ServiceBeanFactory serviceBeanFactory) {
-        this.serviceBeanFactory = serviceBeanFactory;
-    }
-
     private static long counter = 3000000;
 
 
-    private boolean continuation = false;
+    /////////////////////////////////////////////////////////////////////////////////////////
+    // based on the profile  ...we should be able
+    // to inject the correct bean mapped to the correct host file here
+    ////////////////////////////////////////////////////////////////////////////////////////
+    private final HostBean hostBean;
+
+
+
+    public ApplicationController(ServiceBeanFactory serviceBeanFactory, HostBean hostBean) {
+        this.serviceBeanFactory = serviceBeanFactory;
+        this.hostBean = hostBean;
+    }
+
+    //private boolean continuation = false;
 
     @Transactional
     @RequestMapping({"/application/start","application/start"})
@@ -66,21 +75,7 @@ public class ApplicationController {
         // myTradeMarks on the dashboard
         /////////////////////////////////////////////////////////////////////////////////////////////
 
-
-         ////////////////////////////////////////////////////////////////////////////////////////////
-         // this is a new filing application
-         // create filing application object
-         // probably don't need DTO object, since the next page is just a radio button
-         // simply add newFilingApplicaton ...as we will need its internal id for REST API updates
-         ///////////////////////////////////////////////////////////////////////////////////////////
-         // populate essential application intializaton data from PTOUser
-         ///////////////////////////////////////////////////////////////////////////////////////////
-         // fileds needed for internalID -- ...id is manually set, we should create a setID function ..
-         // so that we don't have to manually type it out all the time
-         ////////////////////////////////////////////////////////////////////////////////////////////
         if(trademarkInternalID.equals("new")) {
-
-
 
             // new application creation will need to be refactored into its own function later
             System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
@@ -92,13 +87,6 @@ public class ApplicationController {
            // trademarkApplication.setLastViewModel("application/AttorneyStart");
             trademarkApplication.setAttorneySet(false);
             trademarkApplication.setAttorneyFiling(false);
-
-
-            // tradeMark application needs an internal id that ties to the ptoUser ...
-            // or examine how is application tied to the ptoUser
-            //////////////////////////////////////////////////////////////////
-            // Lawyer newLawyer = new Lawyer();
-
 
             ///////////////////////////////////////////////////////////////////////////////////////////////
             // we need a copy constructor ...so that trademark Application lawyers are not the same ones
@@ -139,7 +127,8 @@ public class ApplicationController {
             model.addAttribute("baseTrademarkApplication", trademarkApplication);
         }
         else{
-            // loadd baseTradeMarkapplication by internal id and add to model
+            // existing trade  mark application
+            // loaded baseTradeMarkapplication by internal id and add to model
             BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
            // baseTrademarkApplication.setLastViewModel("application/AttorneyStart");
 
@@ -147,24 +136,6 @@ public class ApplicationController {
 
 
         }
-
-        // this is only set during LoadContinueUrl ..and load the fling  object with continue url
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        // when do we unset this ..we unset it as soon as we process the boolean in this method
-        // make sure this call is none blocking
-        ////////////////////////////////////////////////////////////////////////////////////////////
-
-
-        //////////////////////////////////////////////////////////////////////////////////////////////
-        // if not set, we create a new Filing object and add it to the model and pass it to the view
-        //////////////////////////////////////////////////////////////////////////////////////////////
-
-
-        // check if user have address information set.
-        // also add possible attorney DTO for hidden part of the form
-
-
-        // we are actually just gonna hit next and got to add owner from econtacts as new proseee
 
 
         return "application/AttorneyStart";
@@ -258,7 +229,7 @@ public class ApplicationController {
         ptoUser.setContinuationURL(trademarkInternalID);
         ptoUserService.save(ptoUser);
         //////////////////////////////////////////////////////
-        continuation = true;
+        //continuation = true;
 
         model.addAttribute("user", ptoUser);
         model.addAttribute("account",credentials);

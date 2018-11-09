@@ -1,6 +1,7 @@
 package com.thorton.grant.uspto.prototypewebapp.service.REST;
 
 
+import com.thorton.grant.uspto.prototypewebapp.config.host.bean.endPoint.HostBean;
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
@@ -24,13 +25,19 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class ApplicationService {
 
     private final ServiceBeanFactory serviceBeanFactory;
-    private static int appCounter =0;
 
-    public ApplicationService(ServiceBeanFactory serviceBeanFactory) {
+    /////////////////////////////////////////////////////////////////////////////////////////
+    // based on the profile  ...we should be able
+    // to inject the correct bean mapped to the correct host file here
+    ////////////////////////////////////////////////////////////////////////////////////////
+    private final HostBean hostBean;
+
+    public ApplicationService(ServiceBeanFactory serviceBeanFactory, HostBean hostBean) {
         this.serviceBeanFactory = serviceBeanFactory;
+        this.hostBean = hostBean;
     }
 
-    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com", "http://18.223.126.237:8080"})
     @RequestMapping(method = GET, value="/REST/apiGateway/application/update/{applicationField}/{param}/{appInternalID}")
     @ResponseBody
     ResponseEntity<String> updateApplicationFields(@PathVariable String applicationField , @PathVariable String param, @PathVariable String appInternalID){
@@ -84,7 +91,8 @@ public class ApplicationService {
             String responseMsg = applicationField+" has not been saved. invalid user session.";
             responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
             HttpHeaders responseHeader = new HttpHeaders ();
-            responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
+            //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
+            responseHeader.setAccessControlAllowOrigin("http://18.223.126.237:8080");
             ArrayList<String> headersAllowed = new ArrayList<String>();
             headersAllowed.add("Access-Control-Allow-Origin");
             responseHeader.setAccessControlAllowHeaders(headersAllowed);
@@ -156,7 +164,8 @@ public class ApplicationService {
         String responseMsg = appFieldReadable+" has been saved.";
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();
-        responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
+        //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
+        responseHeader.setAccessControlAllowOrigin("http://18.223.126.237:8080");
         ArrayList<String> headersAllowed = new ArrayList<String>();
         headersAllowed.add("Access-Control-Allow-Origin");
         responseHeader.setAccessControlAllowHeaders(headersAllowed);
@@ -172,7 +181,7 @@ public class ApplicationService {
 
 
 
-    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com", "http://18.223.126.237:8080"})
     @RequestMapping(method = GET, value="/REST/apiGateway/application/owner/update/{applicationField}/{param}/{appInternalID}")
     @ResponseBody
     ResponseEntity<String> updateApplicationOwner(@PathVariable String applicationField , @PathVariable String param, @PathVariable String appInternalID){
@@ -203,7 +212,8 @@ public class ApplicationService {
             String responseMsg = applicationField+" has not been saved. invalid user session.";
             responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
             HttpHeaders responseHeader = new HttpHeaders ();
-            responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
+            //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
+            responseHeader.setAccessControlAllowOrigin("http://18.223.126.237:8080");
             ArrayList<String> headersAllowed = new ArrayList<String>();
             headersAllowed.add("Access-Control-Allow-Origin");
             responseHeader.setAccessControlAllowHeaders(headersAllowed);
@@ -287,7 +297,9 @@ public class ApplicationService {
         String responseMsg = appFieldReadable+" has been saved.";
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();
-        responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
+        //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
+
+        responseHeader.setAccessControlAllowOrigin("http://18.223.126.237:8080");
         ArrayList<String> headersAllowed = new ArrayList<String>();
         headersAllowed.add("Access-Control-Allow-Origin");
         responseHeader.setAccessControlAllowHeaders(headersAllowed);

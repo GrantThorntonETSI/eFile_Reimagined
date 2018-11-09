@@ -1,5 +1,7 @@
 package com.thorton.grant.uspto.prototypewebapp.service.registratrion;
 
+import com.thorton.grant.uspto.prototypewebapp.config.host.bean.endPoint.HostBean;
+import com.thorton.grant.uspto.prototypewebapp.config.host.bean.endPoint.ServerHostConfig;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.IUserService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 import com.thorton.grant.uspto.prototypewebapp.service.mail.gmail.GmailJavaMailSenderService;
@@ -16,16 +18,23 @@ public class RegistrationListener implements
 
     private final IUserService service;
 
+    /////////////////////////////////////////////////////////////////////////////////////////
+    // based on the profile  ...we should be able
+    // to inject the correct bean mapped to the correct host file here
+    ////////////////////////////////////////////////////////////////////////////////////////
     // private final MessageSource messages;
+    private final HostBean hostBean;
+
 
     private final GmailJavaMailSenderService mailSender;
 
     @Autowired
-    public RegistrationListener(IUserService service, GmailJavaMailSenderService mailSender) {
+    public RegistrationListener(IUserService service, GmailJavaMailSenderService mailSender, HostBean hostBean) {
         this.service = service;
         //this.mailSender = mailSender;
         //this.messages = messages;
         this.mailSender = mailSender;
+        this.hostBean = hostBean;
     }
 
     @Override
@@ -62,7 +71,8 @@ public class RegistrationListener implements
             {
 
                 // perform any operation
-                mailSender.sendEmailverificationLink("http://efile-reimagined.com"+confirmationUrl,recipientAddress);
+                //mailSender.sendEmailverificationLink("http://efile-reimagined.com"+confirmationUrl,recipientAddress);
+                mailSender.sendEmailverificationLink("http://18.223.126.237:8080"+confirmationUrl,recipientAddress);
                 System.out.println("ACCOUNT ACITVATION EMAIL SENT!");
             }
         }).start();
