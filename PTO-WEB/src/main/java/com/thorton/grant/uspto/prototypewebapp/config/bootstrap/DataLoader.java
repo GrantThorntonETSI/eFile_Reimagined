@@ -160,7 +160,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         userCredentialsService.save(ownerCreds);
         lawyerService.save(newLawyer);
         tradeMarkApplicationService.save(trademarkApplication);
-        trademarkApplication.setTrademarkName("TM_application-test");
+        trademarkApplication.setTrademarkName("3000000");
         trademarkApplication.setApplicationInternalID(trademarkApplication.getTrademarkName()+trademarkApplication.getId());
 
         tradeMarkApplicationService.save(trademarkApplication);

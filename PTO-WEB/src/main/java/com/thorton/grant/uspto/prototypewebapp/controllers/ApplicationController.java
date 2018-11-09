@@ -32,7 +32,7 @@ public class ApplicationController {
         this.serviceBeanFactory = serviceBeanFactory;
     }
 
-    private static long counter = 0;
+    private static long counter = 3000000;
 
 
     private boolean continuation = false;
@@ -131,7 +131,7 @@ public class ApplicationController {
             trademarkApplication.setTrademarkName("my_first_trademark");
             trademarkApplication.setApplicationInternalID(UUID.randomUUID().toString());
             counter++;
-            trademarkApplication.setTrademarkName("TM-application-"+counter);
+            trademarkApplication.setTrademarkName(""+counter);
 
             ptoUser.addApplication(trademarkApplication); // adds to myApplications Collection
             ptoUserService.save(ptoUser);

@@ -142,7 +142,7 @@ public class ApplicationService {
                 baseTrademarkApplication.setLastViewModel("application/owner/individual/ownerInfo");
                 baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
-                appFieldReadable = "Entity Types. ";
+                appFieldReadable = "Entity Type. ";
             }
             // ptoUser.setState(param); // sets state code
         }
