@@ -9,8 +9,8 @@
 
 <script>
 
-    //var host= "http://localhost:8080";
-    var host= "http://efile-reimagined.com";
+    var host= "http://localhost:8080";
+    //var host= "http://efile-reimagined.com";
 </script>
 <!-- End Navbar -->
 <div class="content" style="display: none; background-color: white; min-height: 1000px; min-width: 1200px; position: relative; bottom: -10%;" >
@@ -250,7 +250,7 @@
 
                 <div class="card-text">
 
-                    <h5 class="card-title"><b>Entity Type</b><a  style="text-decoration: none;" data-toggle="tooltip" title="Indicate the applicant's entity type by selecting on one of the options that appears in this section, e.g., 'individual,'  'corporation,' 'partnership.' Next, enter the corresponding information requested in the space, which will appear once the specific entity type is selected
+                    <h5 class="card-title"><b class="entity-type">Entity Type</b><a  style=" min-width:500px; text-decoration: none;" data-toggle="tooltip" data-placement="right" title="Indicate the applicant's entity type by selecting on one of the options that appears in this section, e.g., 'individual,'  'corporation,' 'partnership.' Next, enter the corresponding information requested in the space, which will appear once the specific entity type is selected
 
                         Individual - Person - Enter the individual applicant's country of citizenship.
 
@@ -707,10 +707,11 @@
             $('.content').fadeIn(500);
         }, 500);
 
-
-        // check if already check
-
+        /////////////////////////////////////////////////////////////
+        // check if  radio button already check
+        /////////////////////////////////////////////////////////////
         // check if attorneyFillingFalse is set
+        /////////////////////////////////////////////////////////////
         if ($('#usEntityTrue').is(':checked') == true){
 
             $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
@@ -730,7 +731,12 @@
             $('#domestic-entity-dropdown').prop('disabled', false);
 
         }
+         /////////////////////////////////////////////////////////////
 
+         //////////////////////////////////////////////////////////////
+         // show tooltip
+         //////////////////////////////////////////////////////////////
+         $('[data-toggle="tooltip"]').tooltip();
 
 
 

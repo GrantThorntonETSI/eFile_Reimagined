@@ -166,7 +166,7 @@
 
                             <div class="row" style="position: relative; right:-20%; margin-bottom: 15px;">
 
-                                <b style="color: red">*</b>  <b>Select application View for new applications: </b><i class="material-icons">info</i>
+                                <b style="color: red">*</b>  <b>Select application View for new applications: </b><a  style="text-decoration: none;" data-toggle="tooltip" data-placement="right"      title="Guided User view guides the applicant through the process with questions and videos. While the Experienced User view minimizes the extra assistance. "><i  style="position: relative; bottom: -5px;"  class="material-icons">error_outline</i></a>
                             </div>
 
                             <div class="row" style="position: relative; right: -7%;">
@@ -292,6 +292,10 @@
             // after 1000 ms we add the class animated to the login/register card
             $('.content').fadeIn('slow');
         }, 600);
+        //////////////////////////////////////////////////////////////
+        // show tooltip
+        //////////////////////////////////////////////////////////////
+        $('[data-toggle="tooltip"]').tooltip();
 
 
 

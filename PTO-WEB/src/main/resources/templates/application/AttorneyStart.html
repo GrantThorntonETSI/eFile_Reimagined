@@ -12,8 +12,8 @@
 
 <script>
 
-  //var host= "http://localhost:8080";
-  var host= "http://efile-reimagined.com";
+  var host= "http://localhost:8080";
+  //var host= "http://efile-reimagined.com";
 </script>
 <div class="content" style="display: none; background-color: white; min-height: 1000px; min-width: 1200px; position: relative; bottom: -10%;" >
     <div class="container-fluid"  >
@@ -412,14 +412,17 @@ var nextLinkURL = host+"/application/OwnerStart/?trademarkID="+appInternalID;
             $('.content').fadeIn(500);
         }, 500);
 
+         ////////////////////////////////////////
+        // set previous liink
+        /////////////////////////////////////////
         $('#prevLink').attr("href",prevLinkURL);
 
 
-        // on no click ... enable next button by adding "http://localhost:8080/application/OwnerStart"
-        // to its href propperty
 
 
+        //////////////////////////////////////////////////////////////
         // check if attorneyFillingFalse is set
+        /////////////////////////////////////////////////////////////
         if ($('#attorneyFillingFalse').is(':checked') == true){
 
             $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
