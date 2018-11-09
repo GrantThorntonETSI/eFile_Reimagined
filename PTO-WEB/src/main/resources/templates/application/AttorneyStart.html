@@ -336,7 +336,7 @@
 
                 <div class="row" style="position: relative; top:-430px; right:-220px;">
                     <div class="col-sm-6">
-                        <div class="form-group set-lawyer-options-valueFieldMsgArea" style="position: relative; left:30%;">
+                        <div class="form-group set-lawyer-options-valueFieldMsgArea" style="display:none; position: relative; left:30%;">
                             <b><span></span></b>
                         </div>
                     </div>
@@ -494,7 +494,7 @@ var nextLinkURL = host+"/application/OwnerStart/?trademarkID="+appInternalID;
 
                     $("."+field_name_prefix.toLowerCase()+"FieldMsgArea span").text(s_msg);
                     $("."+field_name_prefix.toLowerCase()+"FieldMsgArea span").css('color','green');
-                    $("."+field_name_prefix.toLowerCase()+"FieldMsgArea").fadeIn('slow');
+                    $("."+field_name_prefix.toLowerCase()+"FieldMsgArea").fadeIn(1000);
                     // animation rendering control
                     //if($('.state-checkmark').css('display') == 'block'){
                     if($( "."+field_name_prefix.toLowerCase()+"-animation").css('display') == 'block'){

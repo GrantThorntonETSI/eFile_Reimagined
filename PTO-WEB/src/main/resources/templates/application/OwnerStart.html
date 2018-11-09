@@ -621,7 +621,7 @@
 
         <div class="row" style="position: relative; top:-570px; right:-220px;">
             <div class="col-sm-6">
-                <div class="form-group FieldMsgArea" style="position: relative; left:30%;">
+                <div class="form-group FieldMsgArea" style="display:none; position: relative; left:30%;">
                     <b><span></span></b>
                 </div>
             </div>
@@ -852,7 +852,7 @@
 
                     $(".FieldMsgArea span").text(s_msg);
                     $(".FieldMsgArea span").css('color','green');
-                    $(".FieldMsgArea").fadeIn('slow');
+                    $(".FieldMsgArea").fadeIn(1000);
                     // animation rendering control
                     //if($('.state-checkmark').css('display') == 'block'){
                     if($( "."+field_name_prefix.toLowerCase()+"-animation").css('display') == 'block'){
