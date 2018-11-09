@@ -37,7 +37,7 @@ public class ApplicationService {
         this.hostBean = hostBean;
     }
 
-    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com", "http://18.223.126.237:8080"})
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
     @RequestMapping(method = GET, value="/REST/apiGateway/application/update/{applicationField}/{param}/{appInternalID}")
     @ResponseBody
     ResponseEntity<String> updateApplicationFields(@PathVariable String applicationField , @PathVariable String param, @PathVariable String appInternalID){
@@ -92,7 +92,7 @@ public class ApplicationService {
             responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
             HttpHeaders responseHeader = new HttpHeaders ();
             //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
-            responseHeader.setAccessControlAllowOrigin("http://18.223.126.237:8080");
+            responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+":"+hostBean.getPort());
             ArrayList<String> headersAllowed = new ArrayList<String>();
             headersAllowed.add("Access-Control-Allow-Origin");
             responseHeader.setAccessControlAllowHeaders(headersAllowed);
@@ -165,7 +165,7 @@ public class ApplicationService {
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();
         //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
-        responseHeader.setAccessControlAllowOrigin("http://18.223.126.237:8080");
+        responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+":"+hostBean.getPort());
         ArrayList<String> headersAllowed = new ArrayList<String>();
         headersAllowed.add("Access-Control-Allow-Origin");
         responseHeader.setAccessControlAllowHeaders(headersAllowed);
@@ -181,7 +181,7 @@ public class ApplicationService {
 
 
 
-    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com", "http://18.223.126.237:8080"})
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
     @RequestMapping(method = GET, value="/REST/apiGateway/application/owner/update/{applicationField}/{param}/{appInternalID}")
     @ResponseBody
     ResponseEntity<String> updateApplicationOwner(@PathVariable String applicationField , @PathVariable String param, @PathVariable String appInternalID){
@@ -213,7 +213,7 @@ public class ApplicationService {
             responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
             HttpHeaders responseHeader = new HttpHeaders ();
             //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
-            responseHeader.setAccessControlAllowOrigin("http://18.223.126.237:8080");
+            responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+":"+hostBean.getPort());
             ArrayList<String> headersAllowed = new ArrayList<String>();
             headersAllowed.add("Access-Control-Allow-Origin");
             responseHeader.setAccessControlAllowHeaders(headersAllowed);
@@ -299,7 +299,7 @@ public class ApplicationService {
         HttpHeaders responseHeader = new HttpHeaders ();
         //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
 
-        responseHeader.setAccessControlAllowOrigin("http://18.223.126.237:8080");
+        responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+":"+hostBean.getPort());
         ArrayList<String> headersAllowed = new ArrayList<String>();
         headersAllowed.add("Access-Control-Allow-Origin");
         responseHeader.setAccessControlAllowHeaders(headersAllowed);

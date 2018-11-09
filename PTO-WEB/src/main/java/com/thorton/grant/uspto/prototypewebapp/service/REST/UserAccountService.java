@@ -7,6 +7,7 @@ import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentia
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
+import org.aspectj.apache.bcel.classfile.ConstantString;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -39,14 +40,23 @@ public class UserAccountService {
     // based on the profile  ...we should be able
     // to inject the correct bean mapped to the correct host file here
     ////////////////////////////////////////////////////////////////////////////////////////
-    private final  HostBean hostBean;
+    private final HostBean hostBean;
+
+
+
+
 
 
     public UserAccountService(ServiceBeanFactory serviceBeanFactory, HostBean hostBean) {
         this.serviceBeanFactory = serviceBeanFactory;
         this.hostBean = hostBean;
+
+
     }
 
+    //////////////////////////////////////////////////////////////////////////////////
+    // header test
+    //////////////////////////////////////////////////////////////////////////////////
     // will add request headers for security in the next update
     @RequestMapping(value = "/rest/api/test", headers = "key=val", method = GET)
     @ResponseBody
@@ -156,7 +166,7 @@ public class UserAccountService {
 
 
 
-    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com", "http://18.223.126.237:8080"})
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
     @RequestMapping(method = GET, value="/REST/apiGateway/user/update/{userAccountField}/{param}")
     @ResponseBody
     ResponseEntity<String> updateUserAccountInfo(@PathVariable String userAccountField , @PathVariable String param){
@@ -271,7 +281,7 @@ public class UserAccountService {
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();
         //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
-        responseHeader.setAccessControlAllowOrigin("http://18.223.126.237:8080");
+        responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+":"+hostBean.getPort());
         ArrayList<String> headersAllowed = new ArrayList<String>();
         headersAllowed.add("Access-Control-Allow-Origin");
         responseHeader.setAccessControlAllowHeaders(headersAllowed);
@@ -286,7 +296,7 @@ public class UserAccountService {
 
 
 
-    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com", "http://18.223.126.237:8080"})
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
     @RequestMapping(method = GET, value="/REST/apiGateway/user/complete/")
     @ResponseBody
     ResponseEntity<String> checkProfileComplete(){
@@ -339,7 +349,7 @@ public class UserAccountService {
            String responseMsg = "User Profile required information is not complete.";
            responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
            HttpHeaders responseHeader = new HttpHeaders ();
-           responseHeader.set("Access-Control-Allow-Origin", "http://18.223.126.237:8080");
+           responseHeader.set("Access-Control-Allow-Origin", hostBean.getHost()+":"+hostBean.getPort());
            //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
            ArrayList<String> headersAllowed = new ArrayList<String>();
            headersAllowed.add("Access-Control-Allow-Origin");
@@ -359,7 +369,7 @@ public class UserAccountService {
         String responseMsg = "User Profile required information is  complete.";
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();
-        responseHeader.set("Access-Control-Allow-Origin", "http://18.223.126.237:8080");
+        responseHeader.set("Access-Control-Allow-Origin", hostBean.getHost()+":"+hostBean.getPort());
         //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
         ArrayList<String> headersAllowed = new ArrayList<String>();
         headersAllowed.add("Access-Control-Allow-Origin");
@@ -385,7 +395,7 @@ public class UserAccountService {
              //       "Access-Control-Allow-Origin", "http://efile-reimagined.com");
 
             httpServletResponse.setHeader(
-                    "Access-Control-Allow-Origin", "http://18.223.126.237:8080");
+                    "Access-Control-Allow-Origin", hostBean.getHost()+":"+hostBean.getPort());
             chain.doFilter(request, response);
         }
 

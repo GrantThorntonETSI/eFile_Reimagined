@@ -125,6 +125,8 @@ public class ApplicationController {
             ptoUserService.save(ptoUser);
 
             model.addAttribute("baseTrademarkApplication", trademarkApplication);
+
+
         }
         else{
             // existing trade  mark application
@@ -137,7 +139,7 @@ public class ApplicationController {
 
         }
 
-
+        model.addAttribute("hostBean", hostBean);
         return "application/AttorneyStart";
 
     }
@@ -166,7 +168,7 @@ public class ApplicationController {
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
-
+        model.addAttribute("hostBean", hostBean);
 
         return "application/OwnerStart";
     }
@@ -193,7 +195,7 @@ public class ApplicationController {
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
-
+        model.addAttribute("hostBean", hostBean);
         return "application/owner/individual/ownerInfo";
     }
 
@@ -235,7 +237,7 @@ public class ApplicationController {
         model.addAttribute("account",credentials);
 
 
-
+        model.addAttribute("hostBean", hostBean);
 
         return baseTrademarkApplication.getLastViewModel();
 
