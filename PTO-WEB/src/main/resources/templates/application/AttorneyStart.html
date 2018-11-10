@@ -9,7 +9,7 @@
 
 <!-- End Navbar -->
 
-<div class="content" style="display: none; background-color: white; min-height: 1000px; min-width: 1200px; position: relative; bottom: -10%;" >
+<div class="content" style="display: none; background-color: white; min-height: 400px; min-width: 1200px; position: relative; bottom: -10%;" >
     <div class="container-fluid"  >
 
         <div class="col-sm-12" >
@@ -337,6 +337,26 @@
 
                 </div>
 
+            <div class="row" style="position: relative; top:-430px; right:-120px;">
+
+                <div class="col-sm-6">
+
+                    <div class="card-body">
+                        <div class="toolbar" style="position: relative; left:10px;" cellpadding="5" >
+                            <!--        Here you can write extra buttons/actions for the toolbar      -->
+                        </div>
+
+                        <div class="contacts-Table">
+                            <table id="example" class="table-no-bordered table-hover" cellpadding="3" style="margin-right: 5px; margin-left: 8px;"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
 
         </div>
     </div>
@@ -369,7 +389,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
 
 
-<div class="row navigation-row" style="position: relative; top:-900px;">
+<div class="row navigation-row" style="position: relative; top:-1000px;">
     <div class="col-sm-2">
         <button  class="ng-element el-button font-S-Arial-n4 interactive" data-id="f1327068a29144d5a370279becb90fd2" style=" opacity: 1; mix-blend-mode: normal; border-color: rgb(221, 221, 221); background-color: rgb(55, 69, 120); background-image: none; color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center; border-width: 0px; border-radius: 4px; border-style: solid; background-size: auto; background-repeat: repeat; background-position: center center; font-size: 14px; font-style: normal; width: 120px; height: 30px; transform: rotate(0deg) translate(53px, 824px) rotate(0deg);"><a id="prevLink" style="color: white; text-decoration: none;" href="">Previous</a></button>
     </div>
@@ -447,6 +467,55 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
             $('#nextLink').attr("href", nextLinkURL );
         });
+
+
+
+
+
+        ////////////////////////////////////////////////////////////////////
+        // loading contact info
+        /////////////////////////////////////////////////////////////////////
+
+        var dataSet = [
+
+            [ "<a href=\"#mark-preview-modal\" data-toggle=\"modal\" data-target=\"#mark-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit trademarks-view\"><i class=\"material-icons\">dvr</i></a>\n" +
+            "                                                <input style=\"display: none;\" value=\"../resources/data_images/coca-cola-tm.jpg\">", "Coca Cola", "Coca Cola Corp", "PUBLISHED FOR OPPOSITION"  ],
+            [  "<a href=\"#mark-preview-modal\" data-toggle=\"modal\" data-target=\"#mark-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit trademarks-view\"><i class=\"material-icons\">dvr</i></a>\n" +
+            "                                                <input style=\"display: none;\" value=\"../resources/data_images/apple-tm-2.png\">" ,"Apple", "Apple Inc", "REGISTERED" ],
+            [ "<a href=\"#mark-preview-modal\" data-toggle=\"modal\" data-target=\"#mark-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit trademarks-view\"><i class=\"material-icons\">dvr</i></a>\n" +
+            "                                                <input style=\"display: none;\" value=\"../resources/data_images/burbery-tm-1.jpg\">" ,"Burberry Knight Horse", "Coach Lmt", "REGISTERED" ],
+
+
+
+
+            ["<a href=\"#mark-preview-modal\" data-toggle=\"modal\" data-target=\"#mark-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit trademarks-view\"><i class=\"material-icons\">dvr</i></a>\n" +
+            "                                                <input style=\"display: none;\" value=\"../resources/data_images/vakker.png\">" ,"Vakker", "Bao Kun", "REPORT COMPLETED SUSPENSION CHECK - CASE STILL SUSPENDED. "  ]
+
+
+
+        ];
+
+        // generate data tables for filings
+        var filingsTable = $('#example').DataTable( {
+            data: dataSet,
+            "dom": '<"top"f<"clear">>rt<"bottom"p<"clear">>',
+            columns: [
+                { title: "" },
+                { title: "Name" },
+                { title: "Email" },
+                { title: "Firm" }
+
+            ]
+        } );
+
+
+
+
+
+
+
+
+
 
 
     });
