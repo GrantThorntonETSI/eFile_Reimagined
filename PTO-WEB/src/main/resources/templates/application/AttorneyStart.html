@@ -337,7 +337,7 @@
 
                 </div>
 
-            <div class="row" style="position: relative; top:-430px; right:-120px;">
+            <div class="row" style="position: relative; top:-390px; right:-120px;">
 
                 <div class="col-sm-6">
 
@@ -347,7 +347,7 @@
                         </div>
 
                         <div class="contacts-Table">
-                            <table id="example" class="table-no-bordered table-hover" cellpadding="3" style="margin-right: 5px; margin-left: 8px;"></table>
+                            <table id="contacts" class="table-no-bordered table-hover" cellpadding="3" style="margin-right: 5px; margin-left: 8px;"></table>
                         </div>
                     </div>
                 </div>
@@ -478,32 +478,28 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
         var dataSet = [
 
-            [ "<a href=\"#mark-preview-modal\" data-toggle=\"modal\" data-target=\"#mark-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit trademarks-view\"><i class=\"material-icons\">dvr</i></a>\n" +
-            "                                                <input style=\"display: none;\" value=\"../resources/data_images/coca-cola-tm.jpg\">", "Coca Cola", "Coca Cola Corp", "PUBLISHED FOR OPPOSITION"  ],
-            [  "<a href=\"#mark-preview-modal\" data-toggle=\"modal\" data-target=\"#mark-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit trademarks-view\"><i class=\"material-icons\">dvr</i></a>\n" +
-            "                                                <input style=\"display: none;\" value=\"../resources/data_images/apple-tm-2.png\">" ,"Apple", "Apple Inc", "REGISTERED" ],
-            [ "<a href=\"#mark-preview-modal\" data-toggle=\"modal\" data-target=\"#mark-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit trademarks-view\"><i class=\"material-icons\">dvr</i></a>\n" +
-            "                                                <input style=\"display: none;\" value=\"../resources/data_images/burbery-tm-1.jpg\">" ,"Burberry Knight Horse", "Coach Lmt", "REGISTERED" ],
 
 
 
 
-            ["<a href=\"#mark-preview-modal\" data-toggle=\"modal\" data-target=\"#mark-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit trademarks-view\"><i class=\"material-icons\">dvr</i></a>\n" +
-            "                                                <input style=\"display: none;\" value=\"../resources/data_images/vakker.png\">" ,"Vakker", "Bao Kun", "REPORT COMPLETED SUSPENSION CHECK - CASE STILL SUSPENDED. "  ]
+            ["<input class=\"\" type='checkbox'>", "Aaron Attorney", "Aaron.Attorney@email.com", "Grant Thornton", "<i class=\"material-icons\">swap_horiz</i>"],
+            ["<input class=\"\" type='checkbox'>", "Bryan Attorney", "Bryan.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
+            ["<input class=\"\" type='checkbox'>", "Bryan Attorney", "Bryan.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"]
 
 
 
         ];
 
         // generate data tables for filings
-        var filingsTable = $('#example').DataTable( {
+        var filingsTable = $('#contacts').DataTable( {
             data: dataSet,
             "dom": '<"top"f<"clear">>rt<"bottom"p<"clear">>',
             columns: [
-                { title: "" },
+                { title: "Select" },
                 { title: "Name" },
                 { title: "Email" },
-                { title: "Firm" }
+                { title: "Firm" },
+                { title: "Add" }
 
             ]
         } );

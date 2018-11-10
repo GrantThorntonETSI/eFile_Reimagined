@@ -59,7 +59,7 @@
                             </div>
 
                             <div class="">
-                                <table id="example" class=" table-no-bordered table-hover" cellpadding="3" style="margin-right: 5px; margin-left: 8px;"></table>
+                                <table id="filings-applications-table" class=" table-no-bordered table-hover" cellpadding="3" style="margin-right: 5px; margin-left: 8px;"></table>
                             </div>
                         </div>
                         <!-- end content-->
@@ -79,10 +79,10 @@
                                     <h4 class="card-title" style="position: relative; top:10px;"><b>UP COMING ACTION DUE</b></h4>
                                 </div>
                                 <div class="col-sm-2" style="position: relative;right:-27%;">
-                                    <div class="form-group" ><select style=" min-height: 30px; min-width: 150px; position: relative; right: -10%; margin-top: 10px;  border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;" class="select-search-dropdown-btn select-collection-btn custom-select"  value="30 days">
-                                        <option>30 Days</option>
-                                        <option>60 Days</option>
-                                        <option>120 Days</option>
+                                    <div class="form-group" ><select style=" min-height: 30px; min-width: 150px; position: relative; right: -10%; margin-top: 10px;  border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;" class="select-search-dropdown-btn select-collection-btn custom-select"  value="Within 30 days">
+                                        <option>Within 30 Days</option>
+                                        <option>Within 60 Days</option>
+                                        <option>within 120 Days</option>
                                     </select>
 
                                 </div>
@@ -349,7 +349,7 @@
             ];
 
         // generate data tables for filings
-        var filingsTable = $('#example').DataTable( {
+        var filingsTable = $('#filings-applications-table').DataTable( {
             data: dataSet,
             "dom": '<"top"f<"clear">>rt<"bottom"ip<"clear">>',
             columns: [
