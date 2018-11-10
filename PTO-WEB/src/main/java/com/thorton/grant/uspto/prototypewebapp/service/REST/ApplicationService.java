@@ -120,14 +120,16 @@ public class ApplicationService {
 
                 baseTrademarkApplication.setAttorneySet(true);
                 baseTrademarkApplication.setAttorneyFiling(false);
+                baseTrademarkApplication.setLastViewModel("application/OwnerStart");
 
             }
             else {
                 baseTrademarkApplication.setAttorneySet(true);
                 baseTrademarkApplication.setAttorneyFiling(true);
+                baseTrademarkApplication.setLastViewModel("application/AttorneyStart");
 
             }
-            baseTrademarkApplication.setLastViewModel("application/OwnerStart");
+
             baseTradeMarkApplicationService.save(baseTrademarkApplication);
             appFieldReadable = "Attorney Option. ";
         }

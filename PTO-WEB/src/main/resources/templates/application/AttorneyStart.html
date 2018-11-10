@@ -277,11 +277,12 @@
                 </div>
                 <div th:if="${baseTrademarkApplication.isAttorneySet() == true}">
 
-                    <div class="row" style="position: relative; top:-130px; right:-120px;" th:if="${baseTrademarkApplication.isAttorneyFiling() == true}" >
-                        <div class="row" style="position: relative; top:-430px; right:-120px; ">
+                    <div class="row" style="position: relative; top:-130px; right:-120px;" >
+                        <div class="row" style="position: relative; top:-300px; right:-120px; ">
                             <div class="col-sm-1">
 
-                                <input type="radio" name="isAttorneyFiling" id="attorneyFilingTrue" checked>
+                                <input type="radio"   th:if="${baseTrademarkApplication.isAttorneyFiling() == true}" name="isAttorneyFiling" id="attorneyFilingTrue" checked>
+                                <input type="radio"   th:if="${baseTrademarkApplication.isAttorneyFiling() == false}" name="isAttorneyFiling" id="attorneyFilingTrue" >
 
                             </div>
                             <div class="col-sm-2" style="position: relative; left:-75px;">
@@ -289,10 +290,11 @@
                             </div>
 
                         </div>
-                        <div class="row" style="position: relative; top:-130px; right:-120px;">
+                        <div class="row" style="position: relative; top:-300px; right:-120px;">
                             <div class="col-sm-1">
 
-                                <input type="radio" name="isAttorneyFiling" id="attorneyFillingFalse">
+                                <input type="radio" th:if="${baseTrademarkApplication.isAttorneyFiling() == true}" name="isAttorneyFiling" id="attorneyFillingFalse">
+                                <input type="radio" th:if="${baseTrademarkApplication.isAttorneyFiling() == false}" name="isAttorneyFiling" id="attorneyFillingFalse" checked>
 
                             </div>
                             <div class="col-sm-2" style="position: relative; left:-75px;">
@@ -301,30 +303,7 @@
                         </div>
 
                     </div>
-                    <div class="row"  th:if="${baseTrademarkApplication.isAttorneyFiling() == false}" style="position: relative; top:-10px; right:-20px;">
 
-                        <div class="row" style="position: relative; top:-430px; right:-120px; ">
-                            <div class="col-sm-1">
-
-                                <input type="radio" name="isAttorneyFiling" id="attorneyFilingTrue">
-
-                            </div>
-                            <div class="col-sm-2" style="position: relative; left:-75px;">
-                                Yes
-                            </div>
-
-                        </div>
-                        <div class="row" style="position: relative; top:-430px; right:-120px;">
-                            <div class="col-sm-1">
-
-                                <input type="radio" name="isAttorneyFiling" id="attorneyFillingFalse"checked>
-
-                            </div>
-                            <div class="col-sm-2" style="position: relative; left:-75px;">
-                                No
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
 
@@ -337,7 +316,7 @@
 
                 </div>
 
-            <div class="row" style="position: relative; top:-390px; right:-120px;">
+            <div class="row" id="contacts-ui" style=" display:none; position: relative; top:-390px; right:-120px;">
 
                 <div class="col-sm-6">
 
@@ -445,13 +424,33 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
             $('#nextLink').attr("href", nextLinkURL );
 
-            $('#attorneyFillingFalse').prop("disabled", true);
-            $('#attorneyFilingTrue').prop("disabled", true);
+           // $('#attorneyFillingFalse').prop("disabled", true);
+           // $('#attorneyFilingTrue').prop("disabled", true);
+
+        }
+        /////////////////////////////////////////////////////////////
+        // check if attorneyFilingTrue is set
+        /////////////////////////////////////////////////////////////
+        if ($('#attorneyFilingTrue').is(':checked') == true){
+
+           // $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
+
+            //$('#nextLink').attr("href", nextLinkURL );
+
+           // $('#attorneyFillingFalse').prop("disabled", true);
+           // $('#attorneyFilingTrue').prop("disabled", true);
+            $('#contacts-ui').fadeIn(1000);
 
         }
 
 
 
+
+
+
+        /////////////////////////////////////////////////////////////
+        // action listeners on radio buttons
+        ////////////////////////////////////////////////////////////
         $('#attorneyFillingFalse').click( function () {
 
             // call back end update ...
@@ -467,6 +466,28 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
             $('#nextLink').attr("href", nextLinkURL );
         });
+        ////////////////////////////////////////////////////////////////
+
+        $('#attorneyFilingTrue').click( function () {
+
+            //alert("!!!!!!!!!!");
+
+            // call back end update ...
+            // signal uppate occurred
+            // wait for the confirm message first.
+            saveProjectInfo("set-lawyer-options-value", "yes", appInternalID);
+
+            setTimeout(function() {
+            }, 2500);
+
+
+            $('#contacts-ui').fadeIn(1000);
+
+
+
+        });
+        /////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////
 
 
 
@@ -484,7 +505,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
             ["<input class=\"\" type='checkbox'>", "Aaron Attorney", "Aaron.Attorney@email.com", "Grant Thornton", "<i class=\"material-icons\">swap_horiz</i>"],
             ["<input class=\"\" type='checkbox'>", "Bryan Attorney", "Bryan.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
-            ["<input class=\"\" type='checkbox'>", "Bryan Attorney", "Bryan.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"]
+            ["<input class=\"\" type='checkbox'>", "Cris Attorney", "Cris.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"]
 
 
 
