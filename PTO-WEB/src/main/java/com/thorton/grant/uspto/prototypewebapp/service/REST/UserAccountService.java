@@ -151,7 +151,7 @@ public class UserAccountService {
 
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();
-        responseHeader.set("Access-Control-Allow-Origin", hostBean.getHost()+":"+hostBean.getPort());
+        responseHeader.set("Access-Control-Allow-Origin", hostBean.getHost()+hostBean.getPort());
         //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
         ArrayList<String> headersAllowed = new ArrayList<String>();
         headersAllowed.add("Access-Control-Allow-Origin");
@@ -282,7 +282,7 @@ public class UserAccountService {
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();
         //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
-        responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+":"+hostBean.getPort());
+        responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
         ArrayList<String> headersAllowed = new ArrayList<String>();
         headersAllowed.add("Access-Control-Allow-Origin");
         responseHeader.setAccessControlAllowHeaders(headersAllowed);
@@ -350,7 +350,7 @@ public class UserAccountService {
            String responseMsg = "User Profile required information is not complete.";
            responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
            HttpHeaders responseHeader = new HttpHeaders ();
-           responseHeader.set("Access-Control-Allow-Origin", hostBean.getHost()+":"+hostBean.getPort());
+           responseHeader.set("Access-Control-Allow-Origin", hostBean.getHost()+hostBean.getPort());
            //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
            ArrayList<String> headersAllowed = new ArrayList<String>();
            headersAllowed.add("Access-Control-Allow-Origin");
@@ -370,7 +370,7 @@ public class UserAccountService {
         String responseMsg = "User Profile required information is  complete.";
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();
-        responseHeader.set("Access-Control-Allow-Origin", hostBean.getHost()+":"+hostBean.getPort());
+        responseHeader.set("Access-Control-Allow-Origin", hostBean.getHost()+hostBean.getPort());
         //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
         ArrayList<String> headersAllowed = new ArrayList<String>();
         headersAllowed.add("Access-Control-Allow-Origin");
@@ -396,7 +396,7 @@ public class UserAccountService {
              //       "Access-Control-Allow-Origin", "http://efile-reimagined.com");
 
             httpServletResponse.setHeader(
-                    "Access-Control-Allow-Origin", hostBean.getHost()+":"+hostBean.getPort());
+                    "Access-Control-Allow-Origin", hostBean.getHost()+hostBean.getPort());
             chain.doFilter(request, response);
         }
 

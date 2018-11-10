@@ -75,7 +75,7 @@ public class RegistrationListener implements
 
                 // perform any operation
                 //mailSender.sendEmailverificationLink("http://efile-reimagined.com"+confirmationUrl,recipientAddress);
-                mailSender.sendEmailverificationLink(hostBean.getHost()+":"+hostBean.getPort()+confirmationUrl,recipientAddress);
+                mailSender.sendEmailverificationLink(hostBean.getHost()+hostBean.getPort()+confirmationUrl,recipientAddress);
                 System.out.println("ACCOUNT ACITVATION EMAIL SENT!");
             }
         }).start();

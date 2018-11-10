@@ -96,7 +96,7 @@ public class ApplicationService {
             responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
             HttpHeaders responseHeader = new HttpHeaders ();
             //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
-            responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+":"+hostBean.getPort());
+            responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
             ArrayList<String> headersAllowed = new ArrayList<String>();
             headersAllowed.add("Access-Control-Allow-Origin");
             responseHeader.setAccessControlAllowHeaders(headersAllowed);
@@ -169,7 +169,7 @@ public class ApplicationService {
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();
         //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
-        responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+":"+hostBean.getPort());
+        responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
         ArrayList<String> headersAllowed = new ArrayList<String>();
         headersAllowed.add("Access-Control-Allow-Origin");
         responseHeader.setAccessControlAllowHeaders(headersAllowed);
@@ -217,7 +217,7 @@ public class ApplicationService {
             responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
             HttpHeaders responseHeader = new HttpHeaders ();
             //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
-            responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+":"+hostBean.getPort());
+            responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
             ArrayList<String> headersAllowed = new ArrayList<String>();
             headersAllowed.add("Access-Control-Allow-Origin");
             responseHeader.setAccessControlAllowHeaders(headersAllowed);
@@ -303,7 +303,7 @@ public class ApplicationService {
         HttpHeaders responseHeader = new HttpHeaders ();
         //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
 
-        responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+":"+hostBean.getPort());
+        responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
         ArrayList<String> headersAllowed = new ArrayList<String>();
         headersAllowed.add("Access-Control-Allow-Origin");
         responseHeader.setAccessControlAllowHeaders(headersAllowed);
