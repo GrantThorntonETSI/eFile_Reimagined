@@ -325,10 +325,23 @@
                             <!--        Here you can write extra buttons/actions for the toolbar      -->
                         </div>
 
-                        <div class="contacts-Table">
-                            <table id="contacts" class="table-no-bordered table-hover" cellpadding="3" style="margin-right: 5px; margin-left: 8px;"></table>
+                        <div class="contacts-Table" style="border: black; border-width: 2px; border: solid; padding: 20px; min-height: 420px;">
+                            <table id="contacts" class="table-no-bordered table-hover" cellpadding="3" style="margin-right: 5px; margin-top: 10px; margin-bottom: 10px; margin-left: 8px;"></table>
                         </div>
                     </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="card-body">
+                        <div class="toolbar" style="position: relative; left:10px;" cellpadding="5" >
+                            <!--        Here you can write extra buttons/actions for the toolbar      -->
+                        </div>
+
+                        <div class="selected-Attorneys-Table" style="border: black; border-width: 2px; border: solid; padding: 20px; min-height: 420px;">
+                            <table id="selected-attorneys" class="table-no-bordered table-hover" cellpadding="3" style="margin-right: 5px; margin-top: 10px; margin-bottom: 10px; margin-left: 8px;"></table>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -478,10 +491,11 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
             saveProjectInfo("set-lawyer-options-value", "yes", appInternalID);
 
             setTimeout(function() {
-            }, 2500);
+                $('#contacts-ui').fadeIn(1000);
+            }, 1500);
 
 
-            $('#contacts-ui').fadeIn(1000);
+
 
 
 
@@ -505,6 +519,9 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
             ["<input class=\"\" type='checkbox'>", "Aaron Attorney", "Aaron.Attorney@email.com", "Grant Thornton", "<i class=\"material-icons\">swap_horiz</i>"],
             ["<input class=\"\" type='checkbox'>", "Bryan Attorney", "Bryan.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
+            ["<input class=\"\" type='checkbox'>", "Casey Attorney", "Casey.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
+            ["<input class=\"\" type='checkbox'>", "Melissa Attorney", "Melilssa.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
+            ["<input class=\"\" type='checkbox'>", "Nicole Attorney", "Nicole.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
             ["<input class=\"\" type='checkbox'>", "Cris Attorney", "Cris.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"]
 
 
@@ -514,6 +531,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
         // generate data tables for filings
         var filingsTable = $('#contacts').DataTable( {
             data: dataSet,
+            "pageLength": 5,
             "dom": '<"top"f<"clear">>rt<"bottom"p<"clear">>',
             columns: [
                 { title: "Select" },
@@ -524,6 +542,32 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
             ]
         } );
+
+        var dataSet2 = [
+
+
+
+
+
+            [ "Aaron Attorney" ,  "<i class=\"material-icons\">remove_circle</i>"],
+            ["Bryan Attorney","<i class=\"material-icons\">remove_circle</i>"],
+            [ "Cris Attorney","<i class=\"material-icons\">remove_circle</i>"]
+
+
+
+        ];
+
+        // generate data tables for filings
+        var filingsTable = $('#selected-attorneys').DataTable( {
+            data: dataSet2,
+            "dom": '<"top"<"clear">>rt<"bottom"<"clear">>',
+            columns: [
+                { title: "Selected Contacts" },
+                { title: "" }
+
+            ]
+        } );
+
 
 
 
