@@ -1323,7 +1323,7 @@
 
 
             $.ajax({
-                url: "../REST/apiGateway/user/update/pw/"+currentPW+"/"+newPW,
+                url: "../../REST/apiGateway/user/update/pw/"+currentPW+"/"+newPW,
                 type: 'GET',
                 success: function(data){
 
@@ -1419,7 +1419,7 @@
             //alert(field_value);
 
             $.ajax({
-                url: "../REST/apiGateway/user/update/"+field_name_prefix+"/"+field_value,
+                url: "../../REST/apiGateway/user/update/"+field_name_prefix+"/"+field_value,
                 type: 'GET',
                 success: function(data){
 
@@ -1514,7 +1514,8 @@
         // check if profile complete
 
         $.ajax({
-            url: "http://efile-reimagined.com/REST/apiGateway/user/complete/",
+            //url: "http://efile-reimagined.com/REST/apiGateway/user/complete/",
+            url: "../../REST/apiGateway/user/complete/",
             type: 'GET',
             success: function(data){
 

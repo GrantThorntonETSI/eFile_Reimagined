@@ -42,8 +42,6 @@ public class UserAccountService {
     // to inject the correct bean mapped to the correct host file here
     ////////////////////////////////////////////////////////////////////////////////////////
     private final HostBean hostBean;
-
-
     private final ApplicationContext appContext;
 
 
@@ -71,7 +69,7 @@ public class UserAccountService {
 
 
 
-    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com", "http://18.223.126.237:8080"})
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
     @RequestMapping(method = GET, value="/REST/apiGateway/user/update/pw/{password1}/{password2}")
     @ResponseBody
     ResponseEntity<String> updateUserPassword(@PathVariable String password1, @PathVariable String password2){
@@ -153,7 +151,7 @@ public class UserAccountService {
 
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();
-        responseHeader.set("Access-Control-Allow-Origin", "http://18.223.126.237:8080");
+        responseHeader.set("Access-Control-Allow-Origin", hostBean.getHost()+":"+hostBean.getPort());
         //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
         ArrayList<String> headersAllowed = new ArrayList<String>();
         headersAllowed.add("Access-Control-Allow-Origin");

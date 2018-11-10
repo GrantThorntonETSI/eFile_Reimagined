@@ -1,5 +1,4 @@
-package com.thorton.grant.uspto.prototypewebapp.config.host.bean.local;
-
+package com.thorton.grant.uspto.prototypewebapp.config.host.bean.aws.demo;
 
 import com.thorton.grant.uspto.prototypewebapp.config.host.bean.endPoint.HostBean;
 import com.thorton.grant.uspto.prototypewebapp.config.host.bean.endPoint.ServerHostConfig;
@@ -10,11 +9,11 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
-
+@Profile("AWSdemo")
 @Configuration
-@Profile("local")
-@PropertySource("classpath:server-host-local.properties")
-public class LocalHostConfig implements ServerHostConfig {
+@PropertySource("classpath:server-host-AWS-prod1.properties")
+public class AWSdemoHostConfig implements ServerHostConfig {
+
 
 
 
@@ -42,16 +41,15 @@ public class LocalHostConfig implements ServerHostConfig {
     }
 
 
-     @Bean
-     public HostBean hostBean(){
-          HostBean hostBean = new HostBean();
+    @Bean
+    public HostBean hostBean(){
+        HostBean hostBean = new HostBean();
 
-          hostBean.setHost(host);
-          hostBean.setPort(port);
-
-          System.out.println("###########################DEPENDENDCY INDJECTION FOOR HOSTBEAN CLASS################");
-          return  hostBean;
-     }
+        hostBean.setHost(host);
+        hostBean.setPort(port);
+        System.out.println("!!!!!!!!!!!!!!!HostBean DI for AWS DEMO Host!!!!!!!!!!!!!!!!!");
+        return  hostBean;
+    }
 
     @Bean
     public static PropertySourcesPlaceholderConfigurer properties (){
@@ -61,7 +59,6 @@ public class LocalHostConfig implements ServerHostConfig {
         return  propertySourcesPlaceholderConfigurer;
 
     }
-
 
 
 }
