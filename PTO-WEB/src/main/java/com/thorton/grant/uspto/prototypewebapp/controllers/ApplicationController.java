@@ -12,6 +12,8 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.ap
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -38,10 +40,14 @@ public class ApplicationController {
     private final HostBean hostBean;
 
 
+    private final ApplicationContext appContext;
 
-    public ApplicationController(ServiceBeanFactory serviceBeanFactory, HostBean hostBean) {
+    public ApplicationController(ServiceBeanFactory serviceBeanFactory, ApplicationContext appContext) {
         this.serviceBeanFactory = serviceBeanFactory;
-        this.hostBean = hostBean;
+        this.appContext = appContext;
+
+        this.hostBean = (HostBean) appContext.getBean(HostBean.class);
+
     }
 
     //private boolean continuation = false;

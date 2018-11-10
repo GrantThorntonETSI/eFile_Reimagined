@@ -8,6 +8,7 @@ import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 import org.aspectj.apache.bcel.classfile.ConstantString;
+import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -43,13 +44,15 @@ public class UserAccountService {
     private final HostBean hostBean;
 
 
+    private final ApplicationContext appContext;
 
 
 
 
-    public UserAccountService(ServiceBeanFactory serviceBeanFactory, HostBean hostBean) {
+    public UserAccountService(ServiceBeanFactory serviceBeanFactory,ApplicationContext appContext) {
         this.serviceBeanFactory = serviceBeanFactory;
-        this.hostBean = hostBean;
+        this.appContext = appContext;
+        this.hostBean = (HostBean) appContext.getBean(HostBean.class);
 
 
     }

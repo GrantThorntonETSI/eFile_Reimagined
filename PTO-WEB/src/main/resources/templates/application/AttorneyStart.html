@@ -9,12 +9,6 @@
 
 <!-- End Navbar -->
 
-
-<script>
-
-  var host= "http://localhost:8080";
-  //var host= "http://efile-reimagined.com";
-</script>
 <div class="content" style="display: none; background-color: white; min-height: 1000px; min-width: 1200px; position: relative; bottom: -10%;" >
     <div class="container-fluid"  >
 
@@ -356,7 +350,9 @@
 
 
     var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
-
+    var host_name= /*[[${hostBean.host}]]*/ 'User Name';
+    var host_port= /*[[${hostBean.port}]]*/ 'User Name';
+    var host = host_name+":"+host_port;
     //alert(tableRows);
 
     /*]]>*/
@@ -366,8 +362,8 @@
 
 <script>
 
-var prevLinkURL = host+"/accounts/dashboard";
-var nextLinkURL = host+"/application/OwnerStart/?trademarkID="+appInternalID;
+var prevLinkURL = "../../accounts/dashboard";
+var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
 </script>
 
@@ -477,7 +473,8 @@ var nextLinkURL = host+"/application/OwnerStart/?trademarkID="+appInternalID;
         //alert(field_value);
 
         $.ajax({
-            url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
+            //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
+            url: "../../REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
             type: 'GET',
             success: function(data){
 

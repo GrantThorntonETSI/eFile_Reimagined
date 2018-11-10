@@ -12,7 +12,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 
 @Configuration
-@Profile("local")
+//@Profile("local")
 @PropertySource("classpath:server-host-local.properties")
 public class LocalHostConfig implements ServerHostConfig {
 
@@ -21,7 +21,7 @@ public class LocalHostConfig implements ServerHostConfig {
     @Value("${uspto.host}")
     private String host;
 
-    @Value("{uspto.port}")
+    @Value("${uspto.port}")
     private String port;
 
 
@@ -43,12 +43,13 @@ public class LocalHostConfig implements ServerHostConfig {
 
 
      @Bean
-     public HostBean createHostBean(){
+     public HostBean hostBean(){
           HostBean hostBean = new HostBean();
 
           hostBean.setHost(host);
           hostBean.setPort(port);
 
+          System.out.println("###########################DEPENDENDCY INDJECTION FOOR HOSTBEAN CLASS################");
           return  hostBean;
      }
 

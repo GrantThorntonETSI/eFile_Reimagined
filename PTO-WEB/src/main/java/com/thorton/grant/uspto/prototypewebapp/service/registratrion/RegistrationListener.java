@@ -6,6 +6,7 @@ import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.IUserService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 import com.thorton.grant.uspto.prototypewebapp.service.mail.gmail.GmailJavaMailSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Component;
@@ -23,18 +24,20 @@ public class RegistrationListener implements
     // to inject the correct bean mapped to the correct host file here
     ////////////////////////////////////////////////////////////////////////////////////////
     // private final MessageSource messages;
-    private final HostBean hostBean;
+    private  final HostBean hostBean;
+    private final ApplicationContext appContext;
 
 
     private final GmailJavaMailSenderService mailSender;
 
     @Autowired
-    public RegistrationListener(IUserService service, GmailJavaMailSenderService mailSender, HostBean hostBean) {
+    public RegistrationListener(IUserService service, GmailJavaMailSenderService mailSender, ApplicationContext appContext) {
         this.service = service;
         //this.mailSender = mailSender;
         //this.messages = messages;
         this.mailSender = mailSender;
-        this.hostBean = hostBean;
+        this.appContext = appContext;
+        this.hostBean = (HostBean) appContext.getBean(HostBean.class);
     }
 
     @Override

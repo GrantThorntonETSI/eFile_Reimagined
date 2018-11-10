@@ -1,5 +1,6 @@
 package com.thorton.grant.uspto.prototypewebapp.config.host.bean.endPoint;
 
+
 public class HostBean {
 
 

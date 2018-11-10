@@ -8,6 +8,7 @@ import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.applic
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
+import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -31,10 +32,13 @@ public class ApplicationService {
     // to inject the correct bean mapped to the correct host file here
     ////////////////////////////////////////////////////////////////////////////////////////
     private final HostBean hostBean;
+    private final ApplicationContext appContext;
 
-    public ApplicationService(ServiceBeanFactory serviceBeanFactory, HostBean hostBean) {
+
+    public ApplicationService(ServiceBeanFactory serviceBeanFactory,ApplicationContext appContext ) {
         this.serviceBeanFactory = serviceBeanFactory;
-        this.hostBean = hostBean;
+        this.appContext = appContext;
+        this.hostBean = (HostBean) appContext.getBean(HostBean.class);
     }
 
     @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
