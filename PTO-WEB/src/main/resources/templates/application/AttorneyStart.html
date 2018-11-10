@@ -318,34 +318,39 @@
 
             <div class="row" id="contacts-ui" style=" display:none; position: relative; top:-390px; right:-120px;">
 
-                <div class="col-sm-6">
+                <div class="col-sm-12">
 
                     <div class="card-body">
-                        <div class="toolbar" style="position: relative; left:10px;" cellpadding="5" >
-                            <!--        Here you can write extra buttons/actions for the toolbar      -->
-                        </div>
 
-                        <div class="contacts-Table" style="border: black; border-width: 2px; border: solid; padding: 20px; min-height: 420px;">
-                            <table id="contacts" class="table-no-bordered table-hover" cellpadding="3" style="margin-right: 5px; margin-top: 10px; margin-bottom: 10px; margin-left: 8px;"></table>
-                        </div>
-                    </div>
-                </div>
+                            <div class="col-sm-6">
 
-                <div class="col-sm-3">
-                    <div class="card-body">
-                        <div class="toolbar" style="position: relative; left:10px;" cellpadding="5" >
-                            <!--        Here you can write extra buttons/actions for the toolbar      -->
-                        </div>
+                                <div class="card-body">
+                                    <div class="toolbar" style="position: relative; left:10px;" cellpadding="5" >
+                                        <!--        Here you can write extra buttons/actions for the toolbar      -->
+                                    </div>
 
-                        <div class="selected-Attorneys-Table" style="border: black; border-width: 2px; border: solid; padding: 20px; min-height: 420px;">
-                            <table id="selected-attorneys" class="table-no-bordered table-hover" cellpadding="3" style="margin-right: 5px; margin-top: 10px; margin-bottom: 10px; margin-left: 8px;"></table>
+                                    <div class="contacts-Table" style="border: black; border-width: 2px; border: solid; padding: 20px; min-height: 420px;">
+                                        <table id="contacts" class="table-no-bordered table-hover" cellpadding="3" style="margin-right: 5px; margin-top: 10px; margin-bottom: 10px; margin-left: 8px;"></table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3" style="position: relative; left:-20px;">
+                                <div class="card-body">
+                                    <div class="toolbar" style="position: relative; left:10px;" cellpadding="5" >
+                                        <!--        Here you can write extra buttons/actions for the toolbar      -->
+                                    </div>
+
+                                    <div class="selected-Attorneys-Table" style="border: black; border-width: 2px; border: solid; padding: 20px; min-height: 420px;">
+                                        <table id="selected-attorneys" class="table-no-bordered table-hover" cellpadding="3" style="margin-right: 5px; margin-top: 10px; margin-bottom: 10px; margin-left: 8px;"></table>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
-                    </div>
 
                 </div>
             </div>
-
-
 
 
 
@@ -452,7 +457,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
            $('#attorneyFillingFalse').prop("disabled", true);
             $('#attorneyFilingTrue').prop("disabled", true);
-            $('#contacts-ui').fadeIn(1000);
+            $('#contacts-ui').fadeIn(2000);
 
         }
 
@@ -491,7 +496,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
             saveProjectInfo("set-lawyer-options-value", "yes", appInternalID);
 
             setTimeout(function() {
-                $('#contacts-ui').fadeIn(1000);
+                $('#contacts-ui').fadeIn(2000);
             }, 1500);
 
 
