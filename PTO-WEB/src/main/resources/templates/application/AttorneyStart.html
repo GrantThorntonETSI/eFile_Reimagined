@@ -537,12 +537,12 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
 
 
-            ["<input class=\"\" type='checkbox'>", "Aaron Attorney", "Aaron.Attorney@email.com", "Grant Thornton", "<i class=\"material-icons\">swap_horiz</i>"],
-            ["<input class=\"\" type='checkbox'>", "Bryan Attorney", "Bryan.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
-            ["<input class=\"\" type='checkbox'>", "Casey Attorney", "Casey.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
-            ["<input class=\"\" type='checkbox'>", "Melissa Attorney", "Melilssa.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
-            ["<input class=\"\" type='checkbox'>", "Nicole Attorney", "Nicole.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
-            ["<input class=\"\" type='checkbox'>", "Cris Attorney", "Cris.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"]
+            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Aaron Attorney", "Aaron.Attorney@email.com", "Grant Thornton", "<i class=\"material-icons\">swap_horiz</i>"],
+            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Bryan Attorney", "Bryan.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
+            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Casey Attorney", "Casey.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
+            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Melissa Attorney", "Melilssa.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
+            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Nicole Attorney", "Nicole.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
+            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Cris Attorney", "Cris.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"]
 
 
 
@@ -571,15 +571,22 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
             [ "Aaron Attorney" ,  "<i class=\"material-icons\">remove_circle</i>"],
             ["Bryan Attorney","<i class=\"material-icons\">remove_circle</i>"],
-            [ "Cris Attorney","<i class=\"material-icons\">remove_circle</i>"]
+            [ "Cris Attorney","<i class=\"material-icons\">remove_circle</i>"],
+            [ "Mellisa Attorney","<i class=\"material-icons\">remove_circle</i>"]
 
 
 
         ];
 
+        var dataSet3 = [
+
+            [ "" ,  ""]
+
+        ];
+
         // generate data tables for filings
         var filingsTable = $('#selected-attorneys').DataTable( {
-            data: dataSet2,
+            data: dataSet3,
             "dom": '<"top"<"clear">>rt<"bottom"<"clear">>',
             columns: [
                 { title: "Selected Contacts" },
