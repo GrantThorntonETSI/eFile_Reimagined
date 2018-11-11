@@ -590,7 +590,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
         ];
 
         // generate data tables for filings
-        var filingsTable = $('#selected-attorneys').DataTable( {
+        var selectedTable = $('#selected-attorneys').DataTable( {
             data: dataSet3,
             "dom": '<"top"<"clear">>rt<"bottom"<"clear">>',
             columns: [
@@ -600,10 +600,41 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
             ]
         } );
 
-
-        // update tables placeholder text
-
+        ////////////////////////////////////////////////////////
+        // update contacts table placeholder text
+        ////////////////////////////////////////////////////////
         $('#contacts_filter > label > input').prop('placeholder', 'Search From Contacts');
+
+        /////////////////////////////////////////////////////////
+        // add action listeners to contacts table check boxes
+        /////////////////////////////////////////////////////////
+        // load trademarks image url to modal
+        var contacts_counter =2;
+        $('#contacts').on('click', 'input.contacts-checkbox', function () {
+
+            //alert("!!!!!!");
+            //alert($(this).parent().next().html());
+            //alert($(this).parent().next().next().html());
+
+            // save contact from contact list to application lawyer pool using contact email and maybe firm name
+            // create push row using conact name and add to selected contacts table
+
+            var newRow = [$(this).parent().next().html(),"<i class=\"material-icons\">remove_circle</i>"];
+            selectedTable.row.add(newRow).draw();
+            $('#selected-attorneys tr').eq(contacts_counter).addClass('highlight');
+            contacts_counter++;
+            // add new row effects to signal new row addedd
+
+
+            // then implement the reverse relation ship to delete
+
+
+            // print out the email value on the same row ...i.e select the next sibling
+
+        });
+
+        //////////////////////////////////////////////////////////
+
 
 
 
