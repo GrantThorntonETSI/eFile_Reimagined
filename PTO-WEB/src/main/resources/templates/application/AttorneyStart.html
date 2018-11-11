@@ -608,14 +608,13 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
         /////////////////////////////////////////////////////////
         // add action listeners to contacts table check boxes
         /////////////////////////////////////////////////////////
-        // load trademarks image url to modal
         var contacts_counter =2;
         $('#contacts').on('click', 'input.contacts-checkbox', function () {
 
 
             // save contact from contact list to application lawyer pool using contact email and maybe firm name
             // create push row using contact name and add to selected contacts table
-            $(this).prop("checked", true);
+            $(this).prop("disabled", true);
             var newRow = [$(this).parent().next().html(),"<i class=\"material-icons\">remove_circle</i>"];
             selectedTable.row.add(newRow).draw();
             $('#selected-attorneys tr').eq(contacts_counter).addClass('highlight');
