@@ -11,10 +11,13 @@ import java.util.Objects;
 public class Lawyer extends Contact {
 
     private boolean isPrimary;
-    private boolean validBarAssociation;
+    private boolean validBarAssociation; // affiliation
 
     private String lawFirmName;
     private String barLicense;
+
+    private String docketNumber;
+
     private String barJurisdiction;
 
     public Lawyer() {
@@ -106,17 +109,23 @@ public class Lawyer extends Contact {
         this.poolMember = poolMember;
     }
 
+    public String getDocketNumber() {
+        return docketNumber;
+    }
+
+    public void setDocketNumber(String docketNumber) {
+        this.docketNumber = docketNumber;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Lawyer lawyer = (Lawyer) o;
-        return isPrimary == lawyer.isPrimary &&
-                validBarAssociation == lawyer.validBarAssociation &&
-                Objects.equals(lawFirmName, lawyer.lawFirmName) &&
+        return Objects.equals(lawFirmName, lawyer.lawFirmName) &&
                 Objects.equals(barLicense, lawyer.barLicense) &&
-                Objects.equals(barJurisdiction, lawyer.barJurisdiction) &&
+                Objects.equals(docketNumber, lawyer.docketNumber) &&
                 Objects.equals(primaryCase, lawyer.primaryCase) &&
                 Objects.equals(poolMember, lawyer.poolMember) &&
                 Objects.equals(client, lawyer.client);
@@ -124,7 +133,7 @@ public class Lawyer extends Contact {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), validBarAssociation, lawFirmName, barLicense, barJurisdiction, primaryCase, poolMember, client);
+        return Objects.hash(super.hashCode(), lawFirmName, barLicense, docketNumber, primaryCase, poolMember, client);
     }
 
     @Override
@@ -134,6 +143,7 @@ public class Lawyer extends Contact {
                 ", validBarAssociation=" + validBarAssociation +
                 ", lawFirmName='" + lawFirmName + '\'' +
                 ", barLicense='" + barLicense + '\'' +
+                ", docketNumber='" + docketNumber + '\'' +
                 ", barJurisdiction='" + barJurisdiction + '\'' +
                 ", primaryCase=" + primaryCase +
                 ", poolMember=" + poolMember +
