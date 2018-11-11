@@ -331,7 +331,7 @@
                                                 <!--        Here you can write extra buttons/actions for the toolbar      -->
                                             </div>
 
-                                            <div class="contacts-Table" style="border: rgb(235,235,235);  border-width: 1px; border: solid; padding: 20px; min-height: 420px;">
+                                            <div class="contacts-Table" style="border: rgb(235,235,235);  border-width: 1px; border: solid; padding: 20px; min-height: 420px; max-height: 420px;">
                                                 <table id="contacts" class="table-no-bordered table-hover" cellpadding="3" style="margin-right: 5px; margin-top: 10px; margin-bottom: 10px; margin-left: 8px;"></table>
                                             </div>
                                         </div>
@@ -343,7 +343,7 @@
                                                 <!--        Here you can write extra buttons/actions for the toolbar      -->
                                             </div>
 
-                                            <div class="selected-Attorneys-Table" style="border: rgb(235,235,235); border-width: 1px; border: solid; padding: 20px; min-height: 420px;">
+                                            <div class="selected-Attorneys-Table" style="border: rgb(235,235,235); border-width: 1px; border: solid; padding: 20px; min-height: 420px; max-height: 420px;">
                                                 <table id="selected-attorneys" class="table-no-bordered table-hover" cellpadding="3" style="margin-right: 5px; margin-top: 10px; margin-bottom: 10px; margin-left: 8px;"></table>
                                             </div>
                                         </div>
@@ -552,6 +552,11 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
         var filingsTable = $('#contacts').DataTable( {
             data: dataSet,
             "pageLength": 5,
+            "oLanguage": {
+
+                "sSearch": "<i style=\"position: relative; top:10px; right:-180px; \"  class=\"material-icons\">search</i>"
+
+            },
             "dom": '<"top"f<"clear">>rt<"bottom"p<"clear">>',
             columns: [
                 { title: "Select" },
