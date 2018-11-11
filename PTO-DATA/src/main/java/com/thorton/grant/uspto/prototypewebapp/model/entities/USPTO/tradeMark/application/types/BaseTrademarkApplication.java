@@ -48,36 +48,6 @@ public class BaseTrademarkApplication  {
         return ownerEmail;
     }
 
-    public void setOwnerEmail(String ownerEmail) {
-        this.ownerEmail = ownerEmail;
-    }
-
-    public String getCurrentStage() {
-        return currentStage;
-    }
-
-    public void setCurrentStage(String currentStage) {
-        this.currentStage = currentStage;
-    }
-
-    public String getLastViewModel() {
-        return lastViewModel;
-    }
-
-    public void setLastViewModel(String lastViewModel) {
-        this.lastViewModel = lastViewModel;
-    }
-
-    // need to have 5 stages (some info is stored for each stage)
-
-    // need to know what the next view and DTO object is needed (write a function for this)
-    // controller will call this method to know what to return to the client
-
-    // stage 1
-    // what info do we need for each stage ???
-    // we need to define join table
-    // pto user is the owning object
-    //stage 2
 
     ////////////////////////////////////////////////////////
     // modeling
@@ -143,6 +113,26 @@ public class BaseTrademarkApplication  {
     }
 
 
+    public Set<Lawyer> getAvailableLawyers() {
+        return availableLawyers;
+    }
+
+    public void setAvailableLawyers(@Nullable Set<Lawyer> availableLawyers) {
+
+        this.availableLawyers = availableLawyers;
+
+    }
+
+    public void addAvailableLawyer(Lawyer lawyer){
+        availableLawyers.add(lawyer);
+
+    }
+    public void removeAvailableLawyer(Lawyer lawyer){
+        availableLawyers.remove(lawyer);
+
+    }
+
+
 
     public Owner getOwner() {
         return owner;
@@ -188,16 +178,6 @@ public class BaseTrademarkApplication  {
 
 
 
-    public Set<Lawyer> getAvailableLawyers() {
-        return availableLawyers;
-    }
-
-    public void setAvailableLawyers(@Nullable Set<Lawyer> availableLawyers) {
-
-        this.availableLawyers = availableLawyers;
-
-    }
-
     public Long getId() {
         return id;
     }
@@ -207,11 +187,6 @@ public class BaseTrademarkApplication  {
         for(Iterator<Lawyer> iter = availableLawyers.iterator(); iter.hasNext(); ) {
            this.availableLawyers.add(new Lawyer( iter.next() ));
         }
-
-
-
-
-
 
     }
 
@@ -238,6 +213,27 @@ public class BaseTrademarkApplication  {
 
     public void setAttorneySet(boolean attorneySet) {
         isAttorneySet = attorneySet;
+    }
+
+
+    public String getCurrentStage() {
+        return currentStage;
+    }
+
+    public void setCurrentStage(String currentStage) {
+        this.currentStage = currentStage;
+    }
+
+    public String getLastViewModel() {
+        return lastViewModel;
+    }
+
+    public void setLastViewModel(String lastViewModel) {
+        this.lastViewModel = lastViewModel;
+    }
+
+    public void setOwnerEmail(String ownerEmail) {
+        this.ownerEmail = ownerEmail;
     }
 
     @Override

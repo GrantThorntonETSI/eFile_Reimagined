@@ -111,6 +111,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         newLawyer.setLawFirmName("Grant Thornton, LLC");
         //newLawyer.setPoolMember(trademarkApplication);
         newLawyer.setBarLicense("DC234567889");
+        newLawyer.setDocketNumber("100000000111");
         newLawyer.setBarJurisdiction("DC");
         newLawyer.setFirstName("test");
         newLawyer.setLastName("lawyer");

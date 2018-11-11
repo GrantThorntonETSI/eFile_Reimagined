@@ -69,6 +69,11 @@ public class PTOUser extends UserPersonalData {
         return newLawyer;
     }
 
+    public void removeLawyer(Lawyer lawyer){
+        myLawyers.remove(lawyer);
+
+    }
+
 
     public TradeMark addTradeMark(TradeMark newTrademark){
 
