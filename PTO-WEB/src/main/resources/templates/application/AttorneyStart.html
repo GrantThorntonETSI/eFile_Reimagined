@@ -618,7 +618,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
             // save contact from contact list to application lawyer pool using contact email and maybe firm name
             // create push row using conact name and add to selected contacts table
-
+            $(this).prop("checked", true);
             var newRow = [$(this).parent().next().html(),"<i class=\"material-icons\">remove_circle</i>"];
             selectedTable.row.add(newRow).draw();
             $('#selected-attorneys tr').eq(contacts_counter).addClass('highlight');
@@ -633,8 +633,41 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
         });
 
-        //////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////
+        // add action listeners to selected-contacts table check boxes
+        //////////////////////////////////////////////////////////////
+        $('#selected-attorneys').on('click', 'i.material-icons', function () {
 
+
+            //alert($(this).parent().next().next().html());
+            var contacts_target = $(this).parent().prev().html();
+
+            // uncheck contacts check box
+            $('#contacts td').each(function () {
+
+                if($(this).html() == contacts_target){
+
+                    $(this).prev().html("<input class=\"contacts-checkbox\" type=\"checkbox\">");
+
+                }
+
+            });
+            // update contacts added counter
+            contacts_counter--;
+            // pop current row ...
+            selectedTable.row($(this).parents('tr')).remove().draw();
+
+            // call back end and remove contact via email from the application lawyer pool
+
+
+        });
+
+
+
+
+
+        //////////////////////////////////////////////////////////////
 
 
 
