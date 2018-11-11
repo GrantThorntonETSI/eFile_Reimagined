@@ -615,6 +615,8 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
             // save contact from contact list to application lawyer pool using contact email and maybe firm name
             // create push row using contact name and add to selected contacts table
             $(this).prop("disabled", true);
+            $(this).css("background-color", 'rgb(52,152,219)');
+            $(this).css("color", 'rgb(255,255,255)');
             var newRow = [$(this).parent().next().html(),"<i class=\"material-icons\">remove_circle</i>"];
             selectedTable.row.add(newRow).draw();
             $('#selected-attorneys tr').eq(contacts_counter).addClass('highlight');
