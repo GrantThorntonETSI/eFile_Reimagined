@@ -1061,7 +1061,24 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
                                             <div class="form-group">
                                                 <label class="small" style="margin-top: 10px;"><b style="color: red;">*</b><b>E-Mail Address</b></label>
-                                                <input type="text" name="attorney-email" class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                                <input id="attorney-email" type="text" name="attorney-email" class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <div class="attornery-email-animation" style="display: none; position: relative; top:20px;">
+                                                <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-sm-1">
+
+                                        </div>
+
+
+                                        <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                                            <div class="form-group attorney-emailFieldMsgArea" style="display: none; position: relative; left:-18%; top:5px;">
+                                                <b><span></span></b>
                                             </div>
                                         </div>
 
@@ -1484,13 +1501,32 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
 
         });
-
-
-
-
-
         //////////////////////////////////////////////////////////////
+        // on modal open set focus to email field :
+        // // this will trigger the creation of a
+        // // new available contact for the user on field complete
+        //////////////////////////////////////////////////////////////
+        $('#addNewAttorneyModal').on('shown.bs.modal', function (e) {
+               // check if email address set
+               // if not ..set focus ...
+            //if($('#attorney-email').is(":empty")) {
+            if($('#attorney-email').val()== '') {
+                $('#attorney-email').focus();
+                //$('#attorney-email').select();
 
+                setTimeout(function () {
+                    $(".attorney-emailFieldMsgArea span").text("Please Complete Email Field FIRST!");
+                    $(".attorney-emailFieldMsgArea span").css('color', 'red');
+                    $(".attorney-emailFieldMsgArea").fadeIn(1000);
+                }, 500);
+
+            }
+
+
+
+
+
+        })
 
 
 
