@@ -456,13 +456,14 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
 <!-- start add new Attorney Modal -->
 <div id="addNewAttorneyModal" class="modal fade modal-lg" role="dialog" tabindex="-1" style="max-width: 1200px;">
-    <div class="modal-dialog" style="max-width: 1200px;">
+    <div class="modal-dialog" style="min-width: 1200px;">
 
         <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">e-File Add New Attorney</h4>
+        <div class="modal-content"  style="max-width: 1200px;">
+            <div class="modal-header" style="max-width: 1200px;background-color: rgb(217, 217, 214);">
+                <button type="button" class="close" data-dismiss="modal" style="position: relative; left:-30%;">&times;</button>
+                <h4 class="modal-title"><b>e-File Add New Attorney</b></h4>
+
             </div>
             <div class="modal-body">
                         <div class="content" style="display: none; background-color: white;" >
@@ -546,7 +547,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
                                             <div class="form-group">
                                                 <label class="small" style="margin-top: 10px;"><b>Suffix</b></label>
-                                                <select  class="form-control" name="suffix"  style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                                                <select  class="form-control" name="suffix"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                                     <option value="mr"><b>Mr</b></option>
                                                     <option value="mrs"><b>Mrs</b></option>
                                                     <option value="ms"><b>ms</b></option>
@@ -556,6 +557,20 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
                                         </div>
 
                                     </div>
+
+                                        <div class="row" style="margin-left:15px;">
+
+                                            <div class="col-sm-4">
+
+                                                <div class="form-group">
+                                                    <label class="small" style="margin-top: 10px;"><b>Firm</b></label>
+                                                    <input type="text"   id="firmName" placeholder="Law Firm Name" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  >
+
+
+                                                </div>
+                                            </div>
+
+                                        </div>
 
 
 
@@ -570,7 +585,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
                                         <div class="col-sm-4">
 
                                             <div class="form-group">
-                                                <label class="small" style="margin-top: 10px;"><b>Country *</b></label>
+                                                <label class="small" style="margin-top: 10px;"><b>Country/US Territory</b></label>
                                                 <select class="form-control custom-select" id="country" name="country"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                                     <option value="none"></option>
                                                     <option value="X1">UNITED STATES OF AMERICA</option>
@@ -841,7 +856,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
                                         <div class="col-sm-4">
 
                                             <div class="form-group">
-                                                <label class="small" style="margin-top: 10px;"><b>Address1 *</b></label>
+                                                <label class="small" style="margin-top: 10px;"><b>Address1 </b></label>
                                                 <input id="address1" type="text" name="address" class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
                                             </div>
@@ -898,7 +913,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
                                         <div class="col-sm-4">
 
                                             <div class="form-group">
-                                                <label class="small" style="margin-top: 10px;"><b>City *</b></label>
+                                                <label class="small" style="margin-top: 10px;"><b>City </b></label>
                                                 <input type="text" id="city" name="City" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
                                             </div>
@@ -928,7 +943,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
                                         <div class="col-sm-4">
 
                                             <div class="form-group">
-                                                <label class="small" style="margin-top: 10px;"><b>State *</b></label>
+                                                <label class="small" style="margin-top: 10px;"><b>State </b></label>
                                                 <select  class="form-control custom-select" name="State"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                                     <option  value="none"></option>
                                                     <option  value="AL">Alabama</option>
@@ -1013,7 +1028,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
                                         <div class="col-sm-4">
 
                                             <div class="form-group">
-                                                <label class="small" style="margin-top: 10px;"><b>Zipcode *</b></label>
+                                                <label class="small" style="margin-top: 10px;"><b>Zipcode </b></label>
                                                 <input type="text" id="zipcode" name="Zipcode" class="form-control"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
                                             </div>
@@ -1045,8 +1060,8 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
                                         <div class="col-sm-4">
 
                                             <div class="form-group">
-                                                <label class="small" style="margin-top: 10px;"><b>Alternate E-Mail Address</b></label>
-                                                <input type="text" name="alternate-email" class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                                <label class="small" style="margin-top: 10px;"><b style="color: red;">*</b><b>E-Mail Address</b></label>
+                                                <input type="text" name="attorney-email" class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                             </div>
                                         </div>
 
@@ -1060,7 +1075,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
                                         <div class="col-sm-6">
 
                                             <div class="form-group">
-                                                <label class="small" style="margin-top: 10px;"><b>Phone Number *</b></label>
+                                                <label class="small" style="margin-top: 10px;"><b>Phone Number </b></label>
                                                 <div class="row">
                                                     <div class="col-sm-2">
                                                         <select  class="form-control" name="phone-type"  value="Type" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
@@ -1116,14 +1131,84 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
                                             <div class="form-group">
 
-                                                <div class="form-group" ><button type="button" data-toggle="modal" data-target="#addPhoneNumber"  style=" position:relative; top: -20px; margin-right: 15px; margin-top: 10px; max-height:30px;  min-width: 370px; color:whitesmoke; background-color: #004c97; border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;" class="btn"  value="Update Password"><span class="glyphicon glyphicon-log-in" ></span><b>&nbsp;&nbsp;&nbsp;&nbsp;Add Additional Phone Number&nbsp;</b></button></div>
+                                                <div class="form-group" ><button type="button" data-toggle="modal" data-target="#addPhoneNumber"  style=" position:relative; top: -20px; margin-right: 15px; margin-top: 10px; max-height:30px;  min-width: 370px; color:whitesmoke; background-color: rgb(52, 152, 219); border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;" class="btn"  value="add phone number"><span class="glyphicon glyphicon-log-in" ></span><b>&nbsp;&nbsp;&nbsp;&nbsp;Add Additional Phone Number&nbsp;</b></button></div>
                                             </div>
                                         </div>
 
                                     </div>
 
+                                    <div class="card-text">
 
-                                    </form>
+                                        <h5 class="card-title"><b style="color: rgb(56, 56, 56); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">Docket or Reference Number</b></h5>
+                                    </div>
+                                    <hr style="height:3px; position:relative; top:-20px; left:-11.55%; max-width: 80.1%">
+                                    <div class="row" style="margin-left:15px; position: relative; top:-20px;">
+
+                                        <div class="col-sm-4">
+
+                                            <div class="form-group">
+                                                <label class="small" style="margin-top: 10px;"><b>If applicable, enter the attorney docket or reference number. </b></label>
+                                                <input type="text" id="docket-id" name="docket-id" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-1">
+                                            <div class="city-animation" style="display: none; position: relative; top:20px;">
+                                                <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-sm-1">
+
+                                        </div>
+
+                                        <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                                            <div class="form-group docket-idFieldMsgArea" style="position: relative; left:-15%;">
+                                                <b><span></span></b>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row" style="margin-left:15px; position: relative; top:10px;">
+
+                                        <div class="col-sm-4">
+
+                                            <div class="form-group">
+
+                                                <div class="form-group" ><button type="button" data-toggle="modal" data-target="#addDocketModal"  style=" position:relative; top: -20px; margin-right: 15px; margin-top: 10px; max-height:30px;  min-width: 370px; color:whitesmoke; background-color: rgb(52, 152, 219); border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;" class="btn"  value="add docket id"><span class="glyphicon glyphicon-log-in" ></span><b>&nbsp;&nbsp;&nbsp;&nbsp;Add Additional Docket Number&nbsp;</b></button></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                        <div class="card-text">
+
+                                            <h5 class="card-title"><b style="color: rgb(56, 56, 56); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">Affilliation Information</b></h5>
+                                        </div>
+                                        <hr style="height:3px; position:relative; top:-20px; left:-11.55%; max-width: 80.1%">
+
+                                        <div class="row" style="margin-left:15px; position: relative; top:-20px;">
+
+                                            <div class="col-sm-4">
+
+                                                <div class="form-group">
+                                                    <label class="small" style="margin-top: 10px;"><b>Affiliation</b></label>
+                                                    <select  class="form-control" name="affiliation"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                                        <option value="none"><b>select</b></option>
+                                                        <option value="us"><b>U.S Attorney in good standing</b></option>
+                                                        <option value="ca"><b>Canadian agent or attorney </b></option>
+
+                                                    </select>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                        </form>
                                 </div>
                             </div>
                         </div>
@@ -1132,11 +1217,25 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
                     </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer" style="background-color: rgb(217, 217, 214);">
                 <div class="form-group">
-                    <button type="button" class="disclaimerDenyButton" data-dismiss="modal"><span class="glyphicon glyphicon-thumbs-down" disabled="true"></span> &nbsp;&nbsp;<b>Cancel</b>&nbsp;</button>
-                    <button type="button" class="disclaimerAcceptButton" data-dismiss="modal"><span class="glyphicon glyphicon-thumbs-up" disabled="true"></span> &nbsp;&nbsp;<b>Add</b>&nbsp;</button>
 
+                    <div class="row" style="position: relative; top:-15px; right:-30px;">
+                        <div class="col-sm-4" style="position: relative; right: -10px;">
+
+                        </div>
+
+
+                        <div class="col-sm-2">
+                        </div>
+                        <div class="col-sm-2"  style="position: relative; right: -25px;">
+                            <span class="btn-sm btn" data-dismiss="modal"  style=" padding:5px; min-width:120px; color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><b>Confirm</b></span>
+
+                        </div>
+
+
+
+                    </div>
                 </div>
             </div>
 
