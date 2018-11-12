@@ -455,14 +455,14 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
 
 <!-- start add new Attorney Modal -->
-<div id="addNewAttorneyModal" class="modal fade modal-lg" role="dialog" tabindex="-1" style="max-width: 1200px;">
+<div id="addNewAttorneyModal" class="modal fade modal-lg" role="dialog"  tabindex="-1" style="max-width: 1200px;">
     <div class="modal-dialog" style="min-width: 1200px;">
 
         <!-- Modal content-->
         <div class="modal-content"  style="max-width: 1200px;">
             <div class="modal-header" style="max-width: 1200px;background-color: rgb(217, 217, 214);">
                 <!-- will enable this once required fields are entered  data-dismiss="modal" -->
-                <button type="button" id="modal-header-close"disabled="true" class="close" style="position: relative; left:-30%;">&times;</button>
+                <button type="button" id="modal-header-close" disabled="true" class="close" style="position: relative; left:-30%;">&times;</button>
                 <h4 class="modal-title"><b>e-File Add New Attorney</b></h4>
 
             </div>
@@ -1426,8 +1426,6 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
 
             ["<input class=\"contacts-checkbox\" type='checkbox'>", "Aaron Attorney", "Aaron.Attorney@email.com", "Grant Thornton", "<i class=\"material-icons\">swap_horiz</i>"],
-            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Bryan Attorney", "Bryan.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
-            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Casey Attorney", "Casey.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
             ["<input class=\"contacts-checkbox\" type='checkbox'>", "Melissa Attorney", "Melilssa.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
             ["<input class=\"contacts-checkbox\" type='checkbox'>", "Nicole Attorney", "Nicole.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
             ["<input class=\"contacts-checkbox\" type='checkbox'>", "Cris Attorney", "Cris.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"]
@@ -1437,7 +1435,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
         ];
 
         // generate data tables for filings
-        var filingsTable = $('#contacts').DataTable( {
+        var contactsTable = $('#contacts').DataTable( {
             data: dataSet,
             "pageLength": 5,
             "oLanguage": {
@@ -1823,18 +1821,28 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
             var field_value = $(this).val();
 
             if(field_value != "") {
-                var email = $('#attorney-email').val();
 
+                var email = $('#attorney-email').val();
+                var first_name = $('#attorney-first-name').val();
+                var last_name = $('#attorney-last-name').val();
+                var law_firm = $('#attorney-lawfirm-name').val();
                 saveContactInfo(email, "attorney-lawfirm-name", field_value);
 
                 ///////////////////////////////////////////////////////////////////
                 // set focus and message for the next field
                 ///////////////////////////////////////////////////////////////////
 
-                // unlock confirm buttons
+                // unlock confirm buttons ??? unlock after phone number
                 // enable close button in modal header
 
                 // create contacts table row
+                // we need first name, last name, law firm, and email
+                // get it directly with jquery
+                var newRow = ["<input class=\"contacts-checkbox\" type='checkbox'>",first_name+" "+last_name, email, law_firm, "<i class=\"material-icons\">swap_horiz</i>"];
+                contactsTable.row.add(newRow).draw();
+
+
+
                 // push contacts table row and redraw()
 
                 // set focus to country
