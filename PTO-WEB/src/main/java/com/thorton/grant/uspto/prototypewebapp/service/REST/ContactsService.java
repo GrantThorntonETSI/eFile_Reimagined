@@ -53,7 +53,7 @@ public class ContactsService {
     @ResponseBody
     ResponseEntity<String> createContact(@PathVariable String contact_email ){
 
-        String appFieldReadable = "Contact";
+        String appFieldReadable = "Contact Email";
         ////////////////////////////////////////////////////////////////////////////////////////////////
         // check for valid security session ...as new contacts are added for PTOUser with valid sessions
         ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -178,15 +178,18 @@ public class ContactsService {
         Lawyer lawyer = ptoUser.findContactByEmail(contact_email);
 
 
-        if(contact_field_name == "attorney-first-name"){
+        if(contact_field_name.equals("attorney-first-name")){
             lawyer.setFirstName(contact_field_value);
+            appFieldReadable = "Contact First Name ";
 
         }
-        if(contact_field_name == "attorney-last-name"){
+        if(contact_field_name.equals("attorney-last-name")){
             lawyer.setLastName(contact_field_value);
+            appFieldReadable = "Contact Last Name ";
         }
-        if(contact_field_name == "attorney-lawfirm-name" ){
+        if(contact_field_name.equals("attorney-lawfirm-name" )){
             lawyer.setLawFirmName(contact_field_value);
+            appFieldReadable = "Contact Law Firm Name ";
 
         }
 

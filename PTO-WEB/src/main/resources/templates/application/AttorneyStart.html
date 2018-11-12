@@ -1805,6 +1805,58 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
         });
 
+        /////////////////////////////////////////////////////////////////////////////////
+        // contact information 'attorney-lawfirm-name' auto save ////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////
+        $('#attorney-lawfirm-name').focusout( function () {
+            // send state, and token to servercv
+            // token will be generated in the controller and added to the view
+            // similar to how access token works ...a token is tied to a user
+            // access token will be passed in through model
+            //
+            // var tokenValue = '${token}';  // token is the model attribute name
+            // we are not using secured tokens for the prototype
+            // we will secure it by adding ssl and https support
+            //
+            //$('.state-animation').fadeOut();
+
+            var field_value = $(this).val();
+
+            if(field_value != "") {
+                var email = $('#attorney-email').val();
+
+                saveContactInfo(email, "attorney-lawfirm-name", field_value);
+
+                ///////////////////////////////////////////////////////////////////
+                // set focus and message for the next field
+                ///////////////////////////////////////////////////////////////////
+
+                // unlock confirm buttons
+                // enable close button in modal header
+
+                // create contacts table row
+                // push contacts table row and redraw()
+
+                // set focus to country
+                // and notify user to fill in information below.
+
+
+
+            }
+            else{
+                $(".attorney-lawfirm-nameFieldMsgArea").fadeOut();
+                setTimeout(function () {
+                    $(".attorney-lawfirm-nameFieldMsgArea span").text("Last Name Filed can not be empty!!");
+                    $(".attorney-lawfirm-nameFieldMsgArea span").css('color', 'red');
+                    $(".attorney-lawfirm-nameFieldMsgArea").fadeIn(1000);
+                }, 500);
+
+            }
+
+
+
+        });
+
 
 
 
