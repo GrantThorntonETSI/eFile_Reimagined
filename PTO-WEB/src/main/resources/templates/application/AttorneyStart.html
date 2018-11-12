@@ -1476,6 +1476,33 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
             if(checkBoxState.indexOf("disabled") != -1){ // if not checked
                     // do nothing ..contact already selected
+
+
+                 // acquire search key ..i.e  attorney name
+                var contacts_target = $(this).parent().prev().prev().prev().html();
+
+                // got through selected table and if matches target .. remove row
+                //
+                $('#selected-attorneys td').each(function () {
+
+                    if($(this).html() == contacts_target){
+
+                        selectedTable.row($(this).parents('tr')).remove().draw()
+                    }
+
+                });
+                ////////////////////////////////////////////////////////
+                // update contacts added counter
+                ////////////////////////////////////////////////////////
+                contacts_counter--;
+                ////////////////////////////////////////////////////////
+                // un check check box
+                ////////////////////////////////////////////////////////
+                $(this).parent().prev().prev().prev().prev().html("<input class=\"contacts-checkbox\" type=\"checkbox\">");
+
+
+
+
             }
             else{
 
