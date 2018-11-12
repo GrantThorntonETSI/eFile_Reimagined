@@ -79,10 +79,11 @@ public class PTOUser extends UserPersonalData {
         Lawyer lawyer = null;
         for(Iterator<Lawyer> iter = myLawyers.iterator(); iter.hasNext(); ) {
             //this.availableLawyers.add(new Lawyer( iter.next() ));
-            Lawyer current = iter.next();
-            if(current.getEmail() == email){
-                lawyer = current;
 
+            Lawyer current = iter.next();
+
+            if(current.getEmail().equals(email)){
+                lawyer = current;
             }
         }
        return lawyer;

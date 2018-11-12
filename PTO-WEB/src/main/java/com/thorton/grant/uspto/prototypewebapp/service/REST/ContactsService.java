@@ -101,8 +101,6 @@ public class ContactsService {
 
 
         ptoUserService.save(ptoUser);
-        LawyerService lawyerService = serviceBeanFactory.getLawyerService();
-        lawyerService.save(newLawyer);
 
         ////////////////////////////////////////////////
         // start generating response
@@ -126,7 +124,7 @@ public class ContactsService {
 
 
     @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
-    @RequestMapping(method = GET, value="/REST/apiGateway/contacts/add/{contact_email}/{contact_field_name}/{contact_field_value}")
+    @RequestMapping(method = GET, value="/REST/apiGateway/contacts/update/{contact_email}/{contact_field_name}/{contact_field_value}")
     @ResponseBody
     ResponseEntity<String> updateContact(@PathVariable String contact_email,@PathVariable String contact_field_name, @PathVariable String contact_field_value ){
 

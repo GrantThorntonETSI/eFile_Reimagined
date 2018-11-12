@@ -1649,7 +1649,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         /////////////////////////////////////////////////////////////////////////////////
-        // contact information 'State' auto save ////////////////////////////////////////
+        // contact information 'email' auto save ////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////
         $('#attorney-email').focusout( function () {
                   // send state, and token to server
@@ -1712,18 +1712,54 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
 
         });
+        // end of auto save email
+
+        /////////////////////////////////////////////////////////////////////////////////
+        // contact information 'email' auto save ////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////
+        $('#attorney-first-name').focusout( function () {
+            // send state, and token to servercv
+            // token will be generated in the controller and added to the view
+            // similar to how access token works ...a token is tied to a user
+            // access token will be passed in through model
+            //
+            // var tokenValue = '${token}';  // token is the model attribute name
+            // we are not using secured tokens for the prototype
+            // we will secure it by adding ssl and https support
+            //
+            //$('.state-animation').fadeOut();
+
+            var field_value = $(this).val();
+            var email = $('#attorney-email').val();
+
+            saveContactInfo( email, "attorney-first-name", field_value);
+
+            ///////////////////////////////////////////////////////////////////
+            // set focus and message for the next field
+            ///////////////////////////////////////////////////////////////////
+            setTimeout(function () {
+                $('#attorney-last-name').focus();
+            }, 1500);
+
+            setTimeout(function () {
+                $(".attorney-last-nameFieldMsgArea span").text("Please Complete Last Name Field next.");
+                $(".attorney-last-nameFieldMsgArea span").css('color', 'red');
+                $(".attorney-last-nameFieldMsgArea").fadeIn(1000);
+            }, 2500);
+
+
+
+        });
 
 
 
 
 
 
-
-
-    });
-
-
-
+    });  // end of document ready ()
+/////////////////////////////////////////////////////
+// aJAX
+/////////////////////////////////////////////////////
     function saveProjectInfo(field_name_prefix, field_value, applicaiton_internal_id) {
 
 
