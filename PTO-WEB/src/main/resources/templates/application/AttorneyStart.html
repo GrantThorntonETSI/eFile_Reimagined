@@ -907,7 +907,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
                                             <div class="form-group">
                                                 <label class="small" style="margin-top: 10px;"><b>Address1 </b></label>
-                                                <input id="address1" type="text" name="address" class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                                <input id="attorney-address1" type="text" name="address" class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
                                             </div>
                                         </div>
@@ -924,7 +924,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
                                         </div>
 
                                         <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                                            <div class="form-group addressFieldMsgArea" style="position: relative; left:-15%;">
+                                            <div class="form-group attorney-address1FieldMsgArea" style="position: relative; left:-15%;">
                                                 <b><span></span></b>
                                             </div>
                                         </div>
@@ -1929,14 +1929,14 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
                 // set focus to country
                 // and notify user to fill in information below.
                 setTimeout(function () {
-                  //  $('#attorney-country').focus();
+                   $('#attorney-address1').focus();
                 }, 1500);
-                //$(".attorney-countryFieldMsgArea").fadeOut();
+                $(".attorney-address1FieldMsgArea").fadeOut();
                 setTimeout(function () {
 
-                   // $(".attorney-countryFieldMsgArea span").text("Please Complete Country Field next.");
-                   // $(".attorney-countryFieldMsgArea span").css('color', 'red');
-                   // $(".attorney-countryFieldMsgArea").fadeIn(1000);
+                   $(".attorney-address1FieldMsgArea span").text("Please Complete Address Field next.");
+                   $(".attorney-address1FieldMsgArea span").css('color', 'red');
+                   $(".attorney-address1FieldMsgArea").fadeIn(1000);
                 }, 2500);
 
 
