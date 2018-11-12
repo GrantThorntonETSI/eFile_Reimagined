@@ -198,6 +198,14 @@ public class ContactsService {
             appFieldReadable = "Contact Country  ";
 
         }
+        if(contact_field_name.equals("attorney-address1" )){
+            lawyer.setAddress(contact_field_value);
+            appFieldReadable = "Contact Street Address  ";
+
+        }
+
+
+
 
 
 
