@@ -8,6 +8,7 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCrede
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
 
@@ -72,6 +73,19 @@ public class PTOUser extends UserPersonalData {
     public void removeLawyer(Lawyer lawyer){
         myLawyers.remove(lawyer);
 
+    }
+
+    public Lawyer findContactByEmail(String email){
+        Lawyer lawyer = null;
+        for(Iterator<Lawyer> iter = myLawyers.iterator(); iter.hasNext(); ) {
+            //this.availableLawyers.add(new Lawyer( iter.next() ));
+            Lawyer current = iter.next();
+            if(current.getEmail() == email){
+                lawyer = current;
+
+            }
+        }
+       return lawyer;
     }
 
 
