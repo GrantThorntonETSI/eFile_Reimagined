@@ -123,4 +123,89 @@ public class ContactsService {
 
         return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
     }
+
+
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/contacts/add/{contact_email}/{contact_field_name}/{contact_field_value}")
+    @ResponseBody
+    ResponseEntity<String> updateContact(@PathVariable String contact_email,@PathVariable String contact_field_name, @PathVariable String contact_field_value ){
+
+        String appFieldReadable = "Contact";
+        ////////////////////////////////////////////////////////////////////////////////////////////////
+        // check for valid security session ...as new contacts are added for PTOUser with valid sessions
+        ////////////////////////////////////////////////////////////////////////////////////////////////
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();
+        //UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        //UserCredentials userCredentials = userCredentialsService.findByEmail(email);
+        PTOUser ptoUser = ptoUserService.findByEmail(email);// ?? we may not need to save this
+        // verify authentication is valid before moving on ....
+        // have to have a valid session
+
+        if(ptoUser == null){ // can probably put this in a function
+
+            String statusCodes = "404";
+            String responseMsgs = appFieldReadable+" has not been saved. invalid user session.";
+            responseMsgs = "{status:" + statusCodes +" } { msg:"+responseMsgs+" }";
+            HttpHeaders responseHeader = new HttpHeaders ();
+            responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
+            ArrayList<String> headersAllowed = new ArrayList<String>();
+            headersAllowed.add("Access-Control-Allow-Origin");
+            responseHeader.setAccessControlAllowHeaders(headersAllowed);
+            ArrayList<String> methAllowed = new ArrayList<String>();
+
+            return ResponseEntity.ok().headers(responseHeader).body(responseMsgs);
+
+        }
+        Lawyer lawyer = ptoUser.findContactByEmail(contact_email);
+
+
+        if(contact_field_name == "attorney-first-name"){
+            lawyer.setFirstName(contact_field_value);
+
+        }
+        if(contact_field_name == "attorney-last-name"){
+            lawyer.setLastName(contact_field_value);
+        }
+        if(contact_field_name == "attorney-lawfirm-name" ){
+            lawyer.setLawFirmName(contact_field_value);
+
+        }
+
+
+
+
+
+
+
+
+
+
+        ptoUserService.save(ptoUser);
+        LawyerService lawyerService = serviceBeanFactory.getLawyerService();
+        lawyerService.save(lawyer);
+
+        ////////////////////////////////////////////////
+        // start generating response
+        ////////////////////////////////////////////////
+        String statusCode = "200";
+        String responseMsg = appFieldReadable+" has been saved.";
+        responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
+        HttpHeaders responseHeader = new HttpHeaders ();
+        //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
+        responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
+        ArrayList<String> headersAllowed = new ArrayList<String>();
+        headersAllowed.add("Access-Control-Allow-Origin");
+        responseHeader.setAccessControlAllowHeaders(headersAllowed);
+        ArrayList<String> methAllowed = new ArrayList<String>();
+
+        System.out.println("response header : "+responseHeader.getAccessControlAllowOrigin());
+
+
+        return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+    }
+
+
+
 }
