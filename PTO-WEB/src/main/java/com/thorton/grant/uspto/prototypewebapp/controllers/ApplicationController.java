@@ -7,6 +7,7 @@ import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentia
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.participants.OwnerService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.ContactsDisplayDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
@@ -24,6 +25,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.UUID;
 
 @Controller
@@ -72,6 +76,37 @@ public class ApplicationController {
         model.addAttribute("user", ptoUser);
         model.addAttribute("account",credentials);
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        // add contacts display info to model
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        ArrayList<String> contactNames = new ArrayList<>();
+        ArrayList<String> contactEmails = new ArrayList<>();
+        ArrayList<String> contactFirms = new ArrayList<>();
+        Lawyer lawyer = null;
+
+        for(Iterator<Lawyer> iter = ptoUser.getMyLawyers().iterator(); iter.hasNext(); ) {
+
+
+            lawyer = iter.next();
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@Application Controller@@@@@@@@@@@@@@@@@@@@@@@@@");
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@Attorney Start@@@@@@@@@@@@@@@@@@@@@@@@@");
+
+            contactNames.add(lawyer.getFirstName()+" "+lawyer.getLastName());
+            contactEmails.add(lawyer.getEmail());
+            contactFirms.add(lawyer.getLawFirmName());
+
+        }
+        Collections.reverse(contactNames);
+        Collections.reverse(contactEmails);
+        Collections.reverse(contactFirms);
+        ContactsDisplayDTO contactsDisplayDTO = new ContactsDisplayDTO();
+        contactsDisplayDTO.setContactNames(contactNames);
+        contactsDisplayDTO.setContactEmails(contactEmails);
+        contactsDisplayDTO.setContactFirms(contactFirms);
+
+        model.addAttribute("myContacts", contactsDisplayDTO);
 
         /////////////////////////////////////////////////////////////////////////////////////////////
         // create new check
@@ -244,6 +279,37 @@ public class ApplicationController {
 
 
         model.addAttribute("hostBean", hostBean);
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        // add contacts display info to model
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        ArrayList<String> contactNames = new ArrayList<>();
+        ArrayList<String> contactEmails = new ArrayList<>();
+        ArrayList<String> contactFirms = new ArrayList<>();
+        Lawyer lawyer = null;
+
+        for(Iterator<Lawyer> iter = ptoUser.getMyLawyers().iterator(); iter.hasNext(); ) {
+
+
+            lawyer = iter.next();
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@Application Controller@@@@@@@@@@@@@@@@@@@@@@@@@");
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@Attorney Start@@@@@@@@@@@@@@@@@@@@@@@@@");
+
+            contactNames.add(lawyer.getFirstName()+" "+lawyer.getLastName());
+            contactEmails.add(lawyer.getEmail());
+            contactFirms.add(lawyer.getLawFirmName());
+
+        }
+        Collections.reverse(contactNames);
+        Collections.reverse(contactEmails);
+        Collections.reverse(contactFirms);
+        ContactsDisplayDTO contactsDisplayDTO = new ContactsDisplayDTO();
+        contactsDisplayDTO.setContactNames(contactNames);
+        contactsDisplayDTO.setContactEmails(contactEmails);
+        contactsDisplayDTO.setContactFirms(contactFirms);
+
+        model.addAttribute("myContacts", contactsDisplayDTO);
+
 
         return baseTrademarkApplication.getLastViewModel();
 
