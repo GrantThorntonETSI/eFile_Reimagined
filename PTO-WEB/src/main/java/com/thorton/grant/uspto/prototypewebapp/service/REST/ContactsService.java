@@ -216,6 +216,12 @@ public class ContactsService {
 
         }
 
+        if(contact_field_name.equals("attorney-zipcode" )){
+            lawyer.setZipcode(contact_field_value);
+            appFieldReadable = "Contact Zipcode  ";
+
+        }
+
 
 
 

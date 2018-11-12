@@ -1153,7 +1153,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
                                                         </select>
                                                     </div>
                                                     <div class="col-sm-3">
-                                                        <input type="text" id="phone" name="Phone" class="form-control"   style="min-width: 275px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                                        <input type="text" id="attorney-phone" name="Phone" class="form-control"   style="min-width: 275px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                                     </div>
                                                 </div>
 
@@ -1174,7 +1174,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
 
                                         <div class="col-sm-4" style="position: relative; bottom:-15px; left:-120px;">
-                                            <div class="form-group phoneFieldMsgArea" style="position: relative; left:-35%; top:25px;">
+                                            <div class="form-group attorney-phoneFieldMsgArea" style="position: relative; left:-35%; top:25px;">
                                                 <b><span></span></b>
                                             </div>
                                         </div>
@@ -1664,7 +1664,8 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
         });
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // on email field focus out
+        // AUTO SAVE jQUERY EVENTS
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // validate email
         // make ajax call to create lawyer object and add to user
         // also make name and firm name mandatory  (need that to build ui elements)
@@ -1715,7 +1716,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
                 $(".attorney-emailFieldMsgArea").fadeOut();
                 setTimeout(function () {
-                    $(".attorney-emailFieldMsgArea span").text("Email Filed can not be empty!!");
+                    $(".attorney-emailFieldMsgArea span").text("Email Field can not be empty!!");
                     $(".attorney-emailFieldMsgArea span").css('color', 'red');
                     $(".attorney-emailFieldMsgArea").fadeIn(1000);
                 }, 500);
@@ -1766,7 +1767,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
             else {
                 $(".attorney-first-nameFieldMsgArea").fadeOut();
                 setTimeout(function () {
-                    $(".attorney-first-nameFieldMsgArea span").text("First Name Filed can not be empty!!");
+                    $(".attorney-first-nameFieldMsgArea span").text("First Name Field can not be empty!!");
                     $(".attorney-first-nameFieldMsgAreaspan").css('color', 'red');
                     $(".attorney-first-nameFieldMsgArea").fadeIn(1000);
                 }, 500);
@@ -1817,7 +1818,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
             else{
                 $(".attorney-last-nameFieldMsgArea").fadeOut();
                 setTimeout(function () {
-                    $(".attorney-last-nameFieldMsgArea span").text("Last Name Filed can not be empty!!");
+                    $(".attorney-last-nameFieldMsgArea span").text("Last Name Field can not be empty!!");
                     $(".attorney-last-nameFieldMsgAreaspan").css('color', 'red');
                     $(".attorney-last-nameFieldMsgArea").fadeIn(1000);
                 }, 500);
@@ -1886,7 +1887,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
             else{
                 $(".attorney-lawfirm-nameFieldMsgArea").fadeOut();
                 setTimeout(function () {
-                    $(".attorney-lawfirm-nameFieldMsgArea span").text("Last Name Filed can not be empty!!");
+                    $(".attorney-lawfirm-nameFieldMsgArea span").text("Last Name Field can not be empty!!");
                     $(".attorney-lawfirm-nameFieldMsgArea span").css('color', 'red');
                     $(".attorney-lawfirm-nameFieldMsgArea").fadeIn(1000);
                 }, 500);
@@ -1944,7 +1945,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
             else{
                 $(".attorney-countryFieldMsgArea").fadeOut();
                 setTimeout(function () {
-                    $(".attorney-countryFieldMsgArea span").text("Attorney Country Filed can not be empty!!");
+                    $(".attorney-countryFieldMsgArea span").text("Attorney Country Field can not be empty!!");
                     $(".attorney-countryFieldMsgArea span").css('color', 'red');
                     $(".attorney-countryFieldMsgArea").fadeIn(1000);
                 }, 500);
@@ -2002,7 +2003,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
             else{
                 $(".attorney-address1FieldMsgArea").fadeOut();
                 setTimeout(function () {
-                    $(".attorney-address1FieldMsgArea span").text("Attorney Address Filed can not be empty!!");
+                    $(".attorney-address1FieldMsgArea span").text("Attorney Address Field can not be empty!!");
                     $(".attorney-address1FieldMsgArea span").css('color', 'red');
                     $(".attorney-address1FieldMsgArea").fadeIn(1000);
                 }, 500);
@@ -2060,7 +2061,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
             else{
                 $(".attorney-cityFieldMsgArea").fadeOut();
                 setTimeout(function () {
-                    $(".attorney-cityFieldMsgArea span").text("Attorney City Filed can not be empty!!");
+                    $(".attorney-cityFieldMsgArea span").text("Attorney City Field can not be empty!!");
                     $(".attorney-cityFieldMsgArea span").css('color', 'red');
                     $(".attorney-cityFieldMsgArea").fadeIn(1000);
                 }, 500);
@@ -2074,7 +2075,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
 
         /////////////////////////////////////////////////////////////////////////////////
-        // contact information 'attorney-city' auto save ////////////////////////////////////////
+        // contact information 'attorney-state' auto save ////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////
         $('#attorney-state').focusout( function () {
             // send state, and token to server
@@ -2120,9 +2121,67 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
             else{
                 $(".attorney-stateFieldMsgArea").fadeOut();
                 setTimeout(function () {
-                    $(".attorney-stateFieldMsgArea span").text("Attorney State Filed can not be empty!!");
+                    $(".attorney-stateFieldMsgArea span").text("Attorney State Field can not be empty!!");
                     $(".attorney-stateFieldMsgArea span").css('color', 'red');
                     $(".attorney-stateFieldMsgArea").fadeIn(1000);
+                }, 500);
+
+            }
+
+
+
+        });
+
+        /////////////////////////////////////////////////////////////////////////////////
+        // contact information 'attorney-state' auto save ////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////
+        $('#attorney-zipcode').focusout( function () {
+            // send state, and token to server
+            // token will be generated in the controller and added to the view
+            // similar to how access token works ...a token is tied to a user
+            // access token will be passed in through model
+            //
+            // var tokenValue = '${token}';  // token is the model attribute name
+            // we are not using secured tokens for the prototype
+            // we will secure it by adding ssl and https support
+            //
+            //$('.state-animation').fadeOut();
+
+            var field_value = $(this).val();
+
+            if(field_value != "") {
+
+                var email = $('#attorney-email').val();
+
+                saveContactInfo(email, "attorney-zipcode", field_value);
+
+                ///////////////////////////////////////////////////////////////////
+                // set focus and message for the next field
+                ///////////////////////////////////////////////////////////////////
+
+                // push contacts table row and redraw()
+
+                // set focus to country
+                // and notify user to fill in information below.
+                setTimeout(function () {
+                    $('#attorney-phone').focus();
+                }, 1500);
+                $(".attorney-phoneFieldMsgArea").fadeOut();
+                setTimeout(function () {
+
+                    $(".attorney-phoneFieldMsgArea span").text("Please Complete Phone number Field next.");
+                    $(".attorney-phoneFieldMsgArea span").css('color', 'red');
+                    $(".attorney-phoneFieldMsgArea").fadeIn(1000);
+                }, 2500);
+
+
+            }
+            else{
+                $(".attorney-zipcodeFieldMsgArea").fadeOut();
+                setTimeout(function () {
+                    $(".attorney-zipcodeFieldMsgArea span").text("Attorney Zipcode Field can not be empty!!");
+                    $(".attorney-zipcodeFieldMsgArea span").css('color', 'red');
+                    $(".attorney-zipcodeFieldMsgArea").fadeIn(1000);
                 }, 500);
 
             }
