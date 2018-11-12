@@ -49,7 +49,7 @@ public class ContactsService {
 
 
     @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
-    @RequestMapping(method = GET, value="/REST/apiGateway/contact/add/{contact_email}")
+    @RequestMapping(method = GET, value="/REST/apiGateway/contacts/add/{contact_email}")
     @ResponseBody
     ResponseEntity<String> createContact(@PathVariable String contact_email ){
 
@@ -84,6 +84,9 @@ public class ContactsService {
 
         // create Lawyer object and add it to PTOUser and save
 
+        // ?? check if contact already exists ???
+
+
         Lawyer newLawyer = new Lawyer();
         newLawyer.setClient(ptoUser);
         //newLawyer.setLawFirmName("Grant Thornton, LLC");
@@ -93,7 +96,7 @@ public class ContactsService {
         //newLawyer.setBarJurisdiction("DC");
         //newLawyer.setFirstName("test");
         //newLawyer.setLastName("lawyer");
-        newLawyer.setEmail("li.zhang@us.gt.com");
+        newLawyer.setEmail(contact_email);
         ptoUser.addLawyer(newLawyer);
 
 
