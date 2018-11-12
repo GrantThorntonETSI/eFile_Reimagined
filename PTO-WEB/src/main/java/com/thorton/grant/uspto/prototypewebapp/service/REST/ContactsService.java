@@ -204,6 +204,12 @@ public class ContactsService {
 
         }
 
+        if(contact_field_name.equals("attorney-city" )){
+            lawyer.setCity(contact_field_value);
+            appFieldReadable = "Contact City  ";
+
+        }
+
 
 
 
