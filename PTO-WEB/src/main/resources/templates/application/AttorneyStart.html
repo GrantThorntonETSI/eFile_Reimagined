@@ -1692,7 +1692,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
                 $(".attorney-emailFieldMsgArea").fadeOut();
                 setTimeout(function () {
-                    $(".attorney-emailFieldMsgArea span").text("Email Filed can no be empty!!");
+                    $(".attorney-emailFieldMsgArea span").text("Email Filed can not be empty!!");
                     $(".attorney-emailFieldMsgArea span").css('color', 'red');
                     $(".attorney-emailFieldMsgArea").fadeIn(1000);
                 }, 500);
@@ -1719,22 +1719,36 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
             //$('.state-animation').fadeOut();
 
             var field_value = $(this).val();
-            var email = $('#attorney-email').val();
 
-            saveContactInfo( email, "attorney-first-name", field_value);
 
-            ///////////////////////////////////////////////////////////////////
-            // set focus and message for the next field
-            ///////////////////////////////////////////////////////////////////
-            setTimeout(function () {
-                $('#attorney-last-name').focus();
-            }, 1500);
-            $(".attorney-last-nameFieldMsgArea").fadeOut();
-            setTimeout(function () {
-                $(".attorney-last-nameFieldMsgArea span").text("Please Complete Last Name Field next.");
-                $(".attorney-last-nameFieldMsgArea span").css('color', 'red');
-                $(".attorney-last-nameFieldMsgArea").fadeIn(1000);
-            }, 2500);
+            if(field_value != "") {
+                var email = $('#attorney-email').val();
+
+                saveContactInfo(email, "attorney-first-name", field_value);
+
+                ///////////////////////////////////////////////////////////////////
+                // set focus and message for the next field
+                ///////////////////////////////////////////////////////////////////
+                setTimeout(function () {
+                    $('#attorney-last-name').focus();
+                }, 1500);
+                $(".attorney-last-nameFieldMsgArea").fadeOut();
+                setTimeout(function () {
+                    $(".attorney-last-nameFieldMsgArea span").text("Please Complete Last Name Field next.");
+                    $(".attorney-last-nameFieldMsgArea span").css('color', 'red');
+                    $(".attorney-last-nameFieldMsgArea").fadeIn(1000);
+                }, 2500);
+
+            }
+            else {
+                $(".attorney-first-nameFieldMsgArea").fadeOut();
+                setTimeout(function () {
+                    $(".attorney-first-nameFieldMsgArea span").text("First Name Filed can not be empty!!");
+                    $(".attorney-first-nameFieldMsgAreaspan").css('color', 'red');
+                    $(".attorney-first-nameFieldMsgArea").fadeIn(1000);
+                }, 500);
+
+            }
 
 
 
@@ -1756,23 +1770,36 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
             //$('.state-animation').fadeOut();
 
             var field_value = $(this).val();
-            var email = $('#attorney-email').val();
 
-            saveContactInfo( email, "attorney-last-name", field_value);
+            if(field_value != "") {
+                var email = $('#attorney-email').val();
 
-            ///////////////////////////////////////////////////////////////////
-            // set focus and message for the next field
-            ///////////////////////////////////////////////////////////////////
-            setTimeout(function () {
-                $('#attorney-lawfirm-name').focus();
-            }, 1500);
-            $(".attorney-lawfirm-nameFieldMsgArea").fadeOut();
-            setTimeout(function () {
+                saveContactInfo(email, "attorney-last-name", field_value);
 
-                $(".attorney-lawfirm-nameFieldMsgArea span").text("Please Complete Law Firm name Field next.");
-                $(".attorney-lawfirm-nameFieldMsgArea span").css('color', 'red');
-                $(".attorney-lawfirm-nameFieldMsgArea").fadeIn(1000);
-            }, 2500);
+                ///////////////////////////////////////////////////////////////////
+                // set focus and message for the next field
+                ///////////////////////////////////////////////////////////////////
+                setTimeout(function () {
+                    $('#attorney-lawfirm-name').focus();
+                }, 1500);
+                $(".attorney-lawfirm-nameFieldMsgArea").fadeOut();
+                setTimeout(function () {
+
+                    $(".attorney-lawfirm-nameFieldMsgArea span").text("Please Complete Law Firm name Field next.");
+                    $(".attorney-lawfirm-nameFieldMsgArea span").css('color', 'red');
+                    $(".attorney-lawfirm-nameFieldMsgArea").fadeIn(1000);
+                }, 2500);
+
+            }
+            else{
+                $(".attorney-last-nameFieldMsgArea").fadeOut();
+                setTimeout(function () {
+                    $(".attorney-last-nameFieldMsgArea span").text("Last Name Filed can not be empty!!");
+                    $(".attorney-last-nameFieldMsgAreaspan").css('color', 'red');
+                    $(".attorney-last-nameFieldMsgArea").fadeIn(1000);
+                }, 500);
+
+            }
 
 
 
