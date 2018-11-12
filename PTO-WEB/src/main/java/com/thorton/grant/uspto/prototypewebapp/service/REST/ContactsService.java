@@ -193,6 +193,12 @@ public class ContactsService {
 
         }
 
+        if(contact_field_name.equals("attorney-country" )){
+            lawyer.setCountry(contact_field_value);
+            appFieldReadable = "Contact Country  ";
+
+        }
+
 
 
 
