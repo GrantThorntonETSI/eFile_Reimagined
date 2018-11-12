@@ -67,7 +67,7 @@ public class ContactsService {
         // have to have a valid session
 
         if(ptoUser == null){ // can probably put this in a function
-
+            System.out.println("3333333333333333333333333333333333333333333333333333");
              String statusCode = "404";
              String responseMsg = appFieldReadable+" has not been saved. invalid user session.";
              responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
@@ -85,6 +85,25 @@ public class ContactsService {
         // create Lawyer object and add it to PTOUser and save
 
         // ?? check if contact already exists ???
+
+        Lawyer lawyer = ptoUser.findContactByEmail(contact_email);
+        if(lawyer != null){
+
+
+            System.out.println("11111111111111111111111111111111111111111111111");
+            System.out.println("2222222222222222222222222222222222222222222222222");
+            String statusCode = "404";
+            String responseMsg = appFieldReadable+" has not been saved. Contact email exists..";
+            responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
+            HttpHeaders responseHeader = new HttpHeaders ();
+            responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
+            ArrayList<String> headersAllowed = new ArrayList<String>();
+            headersAllowed.add("Access-Control-Allow-Origin");
+            responseHeader.setAccessControlAllowHeaders(headersAllowed);
+            ArrayList<String> methAllowed = new ArrayList<String>();
+
+            return ResponseEntity.ok().headers(responseHeader).body(responseMsg);
+        }
 
 
         Lawyer newLawyer = new Lawyer();

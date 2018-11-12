@@ -1619,7 +1619,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
         // // this will trigger the creation of a
         // // new available contact for the user on field complete
         //////////////////////////////////////////////////////////////
-        $('#addNewAttorneyModal').on('shown.bs.modal', function (e) {
+        $('#addNewAttorneyModal').on('shown.bs.modal', function () {
                // check if email address set
                // if not ..set focus ...
             //if($('#attorney-email').is(":empty")) {
@@ -1669,20 +1669,9 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
             if(field_value != ""){
 
                 if(field_value.indexOf('@') > -1 && (field_value.indexOf(".com") > -1 || field_value.indexOf(".gov") > -1 || field_value.indexOf(".net") > -1 || field_value.indexOf(".lib") > -1) ){
-                    createContact( field_value);
-                    $(this).prop('disabled', true);
-                    ///////////////////////////////////////////////////////////////////
-                    // set focus and message for the next field
-                    ///////////////////////////////////////////////////////////////////
-                    setTimeout(function () {
-                        $('#attorney-first-name').focus();
-                    }, 1500);
-                    $(".attorney-first-nameFieldMsgArea").fadeOut();
-                    setTimeout(function () {
-                        $(".attorney-first-nameFieldMsgArea span").text("Please Complete First Name Field!");
-                        $(".attorney-first-nameFieldMsgArea span").css('color', 'red');
-                        $(".attorney-first-nameFieldMsgArea").fadeIn(1000);
-                    }, 2500);
+                    var status = createContact( field_value);
+
+
 
 
 
@@ -1817,6 +1806,8 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
         //var field_value = $(this).val();
         //alert(field_value);
 
+
+
         $.ajax({
             //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
             url: "../../REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
@@ -1911,6 +1902,8 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
         //var field_value = $(this).val();
         //alert(field_value);
+
+        var return_code="";
         var field_name_prefix = "attorney-email";
         $.ajax({
             //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
@@ -1922,7 +1915,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
                 var s_code = data.substring(data.indexOf("status:") + 7, data.indexOf("status:") + 4 + 7);
 
                 var s_msg = data.substring(data.indexOf("msg:") + 4, data.length - 2);
-
+                return_code = s_code.trim();
                 if (s_code.trim() == "200") {
 
                     $("." + field_name_prefix.toLowerCase() + "FieldMsgArea").fadeOut();
@@ -1932,6 +1925,22 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
                         $("." + field_name_prefix.toLowerCase() + "FieldMsgArea span").css('color', 'green');
                         $("." + field_name_prefix.toLowerCase() + "FieldMsgArea").fadeIn(1000);
                     }, 500);
+
+
+                    $('#attorney-email').prop('disabled', true);
+                    ///////////////////////////////////////////////////////////////////
+                    // set focus and message for the next field
+                    ///////////////////////////////////////////////////////////////////
+                    setTimeout(function () {
+                        $('#attorney-first-name').focus();
+                    }, 1500);
+                    $(".attorney-first-nameFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+                        $(".attorney-first-nameFieldMsgArea span").text("Please Complete First Name Field!");
+                        $(".attorney-first-nameFieldMsgArea span").css('color', 'red');
+                        $(".attorney-first-nameFieldMsgArea").fadeIn(1000);
+                    }, 2500);
+
 
                     // animation rendering control
                     //if($('.state-checkmark').css('display') == 'block'){
@@ -1962,9 +1971,16 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
                 else {
                     //$('.circle-loader').fadeOut(100);
                     //$('.x-mark').fadeIn(500);
-                    //$(".validationMsgArea span").text(s_msg);
-                    //$(".validationMsgArea span").css('color','red');
+                    $("." + field_name_prefix.toLowerCase() + "FieldMsgArea").fadeOut();
+
+                    setTimeout(function() {
+                        $("." + field_name_prefix.toLowerCase() + "FieldMsgArea span").text(s_msg);
+                        $("." + field_name_prefix.toLowerCase() + "FieldMsgArea span").css('color', 'red');
+                        $("." + field_name_prefix.toLowerCase() + "FieldMsgArea").fadeIn(1000);
+                    }, 500);
                 }
+
+
 
             },
             error: function (data) {
@@ -1978,7 +1994,11 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
                 //$(".validationMsgArea span").css('color','red');
             }
 
+
+
         });
+
+        return return_code;
 
     }
     // end of function
