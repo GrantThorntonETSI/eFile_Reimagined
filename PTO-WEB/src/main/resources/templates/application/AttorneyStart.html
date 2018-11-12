@@ -1431,7 +1431,10 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
         // loading contact info
         /////////////////////////////////////////////////////////////////////
 
-        var dataSet = [
+        //////////////////////////////////////////////////////////////////////////
+        // static test data
+        //////////////////////////////////////////////////////////////////////////
+        var testdataSet = [
 
             ["<input class=\"contacts-checkbox\" type='checkbox'>", "Aaron Attorney", "Aaron.Attorney@email.com", "Grant Thornton", "<i class=\"material-icons\">swap_horiz</i>"],
             ["<input class=\"contacts-checkbox\" type='checkbox'>", "Melissa Attorney", "Melilssa.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
@@ -1443,14 +1446,14 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
 
 
-        var dataSet2 = [
+        var testdataSet2 = [
             [ "Aaron Attorney" ,  "<i class=\"material-icons\">remove_circle</i>"],
             ["Bryan Attorney","<i class=\"material-icons\">remove_circle</i>"],
             [ "Cris Attorney","<i class=\"material-icons\">remove_circle</i>"],
             [ "Mellisa Attorney","<i class=\"material-icons\">remove_circle</i>"]
 
         ];
-
+        /////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -1894,6 +1897,64 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
         });
 
+        /////////////////////////////////////////////////////////////////////////////////
+        // contact information 'attorney-country' auto save ////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////
+        $('#attorney-country').focusout( function () {
+            // send state, and token to server
+            // token will be generated in the controller and added to the view
+            // similar to how access token works ...a token is tied to a user
+            // access token will be passed in through model
+            //
+            // var tokenValue = '${token}';  // token is the model attribute name
+            // we are not using secured tokens for the prototype
+            // we will secure it by adding ssl and https support
+            //
+            //$('.state-animation').fadeOut();
+
+            var field_value = $(this).val();
+
+            if(field_value != "") {
+
+                var email = $('#attorney-email').val();
+
+                saveContactInfo(email, "attorney-country", field_value);
+
+                ///////////////////////////////////////////////////////////////////
+                // set focus and message for the next field
+                ///////////////////////////////////////////////////////////////////
+
+                // push contacts table row and redraw()
+
+                // set focus to country
+                // and notify user to fill in information below.
+                setTimeout(function () {
+                  //  $('#attorney-country').focus();
+                }, 1500);
+                //$(".attorney-countryFieldMsgArea").fadeOut();
+                setTimeout(function () {
+
+                   // $(".attorney-countryFieldMsgArea span").text("Please Complete Country Field next.");
+                   // $(".attorney-countryFieldMsgArea span").css('color', 'red');
+                   // $(".attorney-countryFieldMsgArea").fadeIn(1000);
+                }, 2500);
+
+
+            }
+            else{
+                $(".attorney-lawfirm-nameFieldMsgArea").fadeOut();
+                setTimeout(function () {
+                    $(".attorney-countryFieldMsgArea span").text("Attorney Country Filed can not be empty!!");
+                    $(".attorney-countryFieldMsgArea span").css('color', 'red');
+                    $(".attorney-countryFieldMsgArea").fadeIn(1000);
+                }, 500);
+
+            }
+
+
+
+        });
+
 
 
 
@@ -1903,7 +1964,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 /////////////////////////////////////////////////////
 // aJAX
 /////////////////////////////////////////////////////
-    function saveProjectInfo(field_name_prefix, field_value, applicaiton_internal_id) {
+    function saveProjectInfo(field_name_prefix, field_value, application_internal_id) {
 
 
 
@@ -1926,7 +1987,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
         $.ajax({
             //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
-            url: "../../REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
+            url: "../../REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+application_internal_id,
             type: 'GET',
             success: function(data){
 
