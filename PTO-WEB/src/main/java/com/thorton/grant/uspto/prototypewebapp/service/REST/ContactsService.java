@@ -67,9 +67,7 @@ public class ContactsService {
         // have to have a valid session
 
         if(ptoUser == null){ // can probably put this in a function
-            ////////////////////////////////////////////////
-            // start generating response
-            ////////////////////////////////////////////////
+
              String statusCode = "404";
              String responseMsg = appFieldReadable+" has not been saved. invalid user session.";
              responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
