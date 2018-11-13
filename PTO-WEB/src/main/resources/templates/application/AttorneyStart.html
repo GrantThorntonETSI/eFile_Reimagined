@@ -393,30 +393,6 @@
 </div>
 
 
-<!--load model attribute for Jquery consumption  -->
-<script th:inline="javascript">
-
-    /*<![CDATA[*/
-
-
-    var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
-    var host_name= /*[[${hostBean.host}]]*/ 'User Name';
-    var host_port= /*[[${hostBean.port}]]*/ 'User Name';
-    var host = host_name+":"+host_port;
-    //alert(tableRows);
-
-    /*]]>*/
-</script>
-
-
-
-<script>
-
-var prevLinkURL = "../../accounts/dashboard";
-var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
-
-</script>
-
 
 
 <div class="row navigation-row" style="position: relative; top:-1000px;">
@@ -1313,6 +1289,32 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
     <!-- end of add New Attorney modal -->
 
+    <!--load data from model -->
+
+    <!--load model attribute for Jquery consumption  -->
+    <script th:inline="javascript">
+
+        /*<![CDATA[*/
+
+
+        var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
+        var host_name= /*[[${hostBean.host}]]*/ 'User Name';
+        var host_port= /*[[${hostBean.port}]]*/ 'User Name';
+        var host = host_name+":"+host_port;
+        //alert(tableRows);
+
+        /*]]>*/
+    </script>
+
+
+
+    <script>
+
+        var prevLinkURL = "../../accounts/dashboard";
+        var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
+
+    </script>
+
     <!--load model attribute for Jquery consumption  -->
     <script th:inline="javascript">
 
@@ -1324,11 +1326,6 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
         /*]]>*/
     </script>
-
-
-
-
-
 
     <script>
     $(document).ready(function() {
@@ -1344,10 +1341,6 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
         // set previous link
         /////////////////////////////////////////
         $('#prevLink').attr("href",prevLinkURL);
-
-
-
-
 
         //////////////////////////////////////////////////////////////
         // check if attorneyFillingFalse is set
@@ -1367,11 +1360,6 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
             $('#contacts-ui').fadeIn(2000);
 
         }
-
-
-
-
-
 
         /////////////////////////////////////////////////////////////
         // action listeners on radio buttons
@@ -1394,22 +1382,16 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
         ////////////////////////////////////////////////////////////////
 
         $('#attorneyFilingTrue').click( function () {
-
-            //alert("!!!!!!!!!!");
-
+            ////////////////////////////////////////////////////////////
             // call back end update ...
             // signal uppate occurred
             // wait for the confirm message first.
+            ////////////////////////////////////////////////////////////
             saveProjectInfo("set-lawyer-options-value", "yes", appInternalID);
 
             setTimeout(function() {
                 $('#contacts-ui').fadeIn(2000);
             }, 1500);
-
-
-
-
-
 
         });
         /////////////////////////////////////////////////////////////////
@@ -1448,10 +1430,10 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
         var dataSet1 = [ ["","","","",""] ];
 
         //////////////////////////////////////////////////////////////////////////////
-        // intitalize contacts table with empty values
+        // initialize contacts table with empty values
         //////////////////////////////////////////////////////////////////////////////
         var contactsTable = $('#contacts').DataTable( {
-            data: dataSet1,
+            data: testdataSet,
             "pageLength": 5,
             "scrollY": "250px",
             "oLanguage": {
@@ -1493,17 +1475,12 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
         // that keeps the data tables view port height constant
         /////////////////////////////////////////////////////////////////////////////////////////////////
         $('.dataTables_scrollBody').css('overflow',  'hidden');
-
-
-
-
         var dataSet3 = [
-
             [ "" , ""]
-
         ];
-
+        //////////////////////////////////////////////////////////////////////////////////////////////////
         // generate data tables for filings
+        //////////////////////////////////////////////////////////////////////////////////////////////////
         var selectedTable = $('#selected-attorneys').DataTable( {
             data: dataSet3,
             "dom": '<"top"<"clear">>rt<"bottom"<"clear">>',
@@ -1517,18 +1494,29 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
         ////////////////////////////////////////////////////////
         // update contacts table placeholder text
         ////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
         $('#contacts_filter > label > input').prop('placeholder', 'Search From Contacts');
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //ACTION LISTERNER FOR SAVING CONTACTS TO PROJECT CONTACTS POOL
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         /////////////////////////////////////////////////////////
         // add action listeners to contacts table check boxes + add widget
+        // these are the actions that will trigger saving contacts
+        // to project's lawyer pool
         /////////////////////////////////////////////////////////
         var contacts_counter =2;
         $('#contacts').on('click', 'input.contacts-checkbox', function () {
 
-
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////
             // save contact from contact list to application lawyer pool using contact email and maybe firm name
             // create push row using contact name and add to selected contacts table
-
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////
             $(this).prop("disabled", true);
 
             $(this).css("background-color", 'rgb(52,152,219)');
@@ -1546,6 +1534,25 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
             /////////////////////////////////////////////////////////////////////////////////
             // call back end and add contact via email from the application lawyer pool
             /////////////////////////////////////////////////////////////////////////////////
+            // required parameters for back end interactions
+            // 1. contact email   // get contact email from sibling TD field
+            // 2. project id ??? how are we going to get that ???
+            // 3. load project id as java script variable like our other pages
+            /////////////////////////////////////////////////////////////////////////////////
+            var contact_email = $(this).parent().next().next().html();
+            var project_id = appInternalID;
+
+            //alert(contact_email);
+            //alert(project_id);
+
+            addContact2Application(contact_email, project_id);
+
+
+
+
+
+
+
 
 
         });
@@ -2302,6 +2309,10 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
 
 
+
+
+
+
     });  // end of document ready ()
 /////////////////////////////////////////////////////
 // aJAX
@@ -2621,6 +2632,92 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+
+
+    function addContact2Application(contact_email, project_ID) {
+
+        //////////////////////////////////////////////////////////////////////////////////////
+        // we need REST controller of finding a contact by its email
+        // this needs to be implemented on the PTOUser object
+        //////////////////////////////////////////////////////////////////////////////////////
+
+        $.ajax({
+            //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
+            url: "../../REST/apiGateway/application/contacts/add/"+contact_email+"/"+contact_field_name,
+            type: 'GET',
+            success: function(data){
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                if(s_code.trim() == "200"){
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $("."+contact_field_name.toLowerCase()+"FieldMsgArea").fadeOut();
+                    $("."+contact_field_name.toLowerCase()+"FieldMsgArea span").text(s_msg);
+                    $("."+contact_field_name.toLowerCase()+"FieldMsgArea span").css('color','green');
+                    $("."+contact_field_name.toLowerCase()+"FieldMsgArea").fadeIn(1000);
+
+                    setTimeout(function () {
+
+                        $("."+contact_field_name.toLowerCase()+"FieldMsgArea").fadeOut(1000);
+                    }, 5500);
+
+                    // animation rendering control
+                    //if($('.state-checkmark').css('display') == 'block'){
+                    if($( "."+contact_field_name.toLowerCase()+"-animation").css('display') == 'block'){
+
+
+                        $("."+contact_field_name.toLowerCase()+"-animation").fadeOut(100);
+                        // now we need to create an java back end service that saves this value.
+                        // also add validation on the html  similar to password save
+                        //$('#toggle-'+field_name_prefix.toLowerCase()).delay(100).click();
+
+                        // alert($(this).val());
+                        $("."+contact_field_name.toLowerCase()+"-animation").fadeIn(1000);
+                        // now we need to create an java back end service that saves this value.
+                        // also add validation on the html  similar to password save
+                        //$("."+field_name_prefix.toLowerCase()+"-animation").delay(1000).click();
+                    }
+                    else {
+
+                        $("."+contact_field_name.toLowerCase()+"-animation").fadeIn(1000);
+                        // now we need to create an java back end service that saves this value.
+                        // also add validation on the html  similar to password save
+                        //$('#toggle-'+field_name_prefix.toLowerCase()).delay(1000).click();
+                    }
+
+
+
+
+                }
+                else{
+                    //$('.circle-loader').fadeOut(100);
+                    //$('.x-mark').fadeIn(500);
+                    //$(".validationMsgArea span").text(s_msg);
+                    //$(".validationMsgArea span").css('color','red');
+                }
+
+            },
+            error: function(data) {
+
+                //$('.circle-loader').fadeOut(100);
+                //$('.x-mark').fadeIn(500);
+
+                console.log(data);
+                // set message to div area ...fields can not be left null
+                //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                //$(".validationMsgArea span").css('color','red');
+            }
+
+        });
+
+    } // end of function
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
