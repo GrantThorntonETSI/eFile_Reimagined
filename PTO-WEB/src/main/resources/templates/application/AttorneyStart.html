@@ -1444,9 +1444,6 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
         ];
 
-
-
-
         var testdataSet2 = [
             [ "Aaron Attorney" ,  "<i class=\"material-icons\">remove_circle</i>"],
             ["Bryan Attorney","<i class=\"material-icons\">remove_circle</i>"],
@@ -1456,12 +1453,11 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
         ];
         /////////////////////////////////////////////////////////////////////////////
 
-
-
         var dataSet1 = [ ["","","","",""] ];
 
-
-        // generate data tables for filings
+        //////////////////////////////////////////////////////////////////////////////
+        // intitalize contacts table with empty values
+        //////////////////////////////////////////////////////////////////////////////
         var contactsTable = $('#contacts').DataTable( {
             data: testdataSet,
             "pageLength": 5,
@@ -1485,8 +1481,9 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
 
 
-
-
+        ////////////////////////////////////////////////////////////////////////////////
+        // initialize empty Contacts table with user's contacts
+        ////////////////////////////////////////////////////////////////////////////////
 
         for(var a =0; a <contactNames.length; a++) {
 
@@ -1499,28 +1496,17 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
             // make this jquery expression more generic
 
         }
-
-
-        // set overflow hidden
+        ////////////////////////////////////////////////////////////////////////////////////////////////
+        // set overflow hidden for horizontal scroll bar created by y-scroll options on data tables
+        // that keeps the data tables view port height constant
+        /////////////////////////////////////////////////////////////////////////////////////////////////
         $('.dataTables_scrollBody').css('overflow',  'hidden');
-
-
-
-
-
-
 
         var dataSet3 = [
 
             [ "" , ""]
 
         ];
-
-
-
-
-
-
 
         // generate data tables for filings
         var selectedTable = $('#selected-attorneys').DataTable( {
