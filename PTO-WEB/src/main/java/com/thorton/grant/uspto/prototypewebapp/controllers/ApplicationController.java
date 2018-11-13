@@ -8,6 +8,7 @@ import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.participants.OwnerService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.ContactsDisplayDTO;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.SelectedContactsDisplayDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
@@ -25,10 +26,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.UUID;
+import java.util.*;
 
 @Controller
 public class ApplicationController {
@@ -99,11 +97,16 @@ public class ApplicationController {
             System.out.println("@@@@@@@@@@@@@@@@@@@@@@@Application Controller@@@@@@@@@@@@@@@@@@@@@@@@@");
             System.out.println("@@@@@@@@@@@@@@@@@@@@@@@Attorney Start@@@@@@@@@@@@@@@@@@@@@@@@@");
 
+            System.out.println("1111111111111111111111111111111111111111111111111111");
+
+
             contactNames.add(lawyer.getFirstName()+" "+lawyer.getLastName());
             contactEmails.add(lawyer.getEmail());
             contactFirms.add(lawyer.getLawFirmName());
 
         }
+
+        System.out.println("222222222222222222222222222222222222222222222222");
         Collections.reverse(contactNames);
         Collections.reverse(contactEmails);
         Collections.reverse(contactFirms);
@@ -116,9 +119,46 @@ public class ApplicationController {
         ////////////////////////////////////////////////////////////////////////////////////////////
         // add selected contacts display info to model
         ////////////////////////////////////////////////////////////////////////////////////////////
+        ArrayList<String> selectedContactNames = new ArrayList<>();
+
+        Lawyer selected_lawyer = null;
+        System.out.println("3333333333333333333333333333333333333333333333333333333333333");
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+        Set<Lawyer> applicationLawyerPool = baseTrademarkApplication.getAvailableLawyers();
+
+        if(applicationLawyerPool != null){
+            for(Iterator<Lawyer> iterSelectedContacts = baseTrademarkApplication.getAvailableLawyers().iterator(); iterSelectedContacts.hasNext(); ) {
+                selected_lawyer = iterSelectedContacts.next();
+                selectedContactNames.add(selected_lawyer.getFirstName()+" "+selected_lawyer.getLastName());
+
+            }
+            Collections.reverse(selectedContactNames);
+            /////////////////////////////////////////////////////////////////////////////////////////////
+            // we need a DTO for passing data to view layer
+            /////////////////////////////////////////////////////////////////////////////////////////////
+            SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
+            selectedContactsDisplayDTO.setSelectedNames(selectedContactNames);
+            model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
+
+
+            System.out.println("SELECTED CONTACT LIST : "+selectedContactsDisplayDTO.getSelectedNames());
 
 
 
+        }
+        else{
+            // if there are no one in the application available pool ..
+            // simply add empty value.
+
+            SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
+            selectedContactNames.add("");
+            selectedContactsDisplayDTO.setSelectedNames(selectedContactNames);
+            model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
+
+            System.out.println("SELECTED CONTACT LIST : "+selectedContactsDisplayDTO.getSelectedNames());
+
+
+        }
 
 
 
@@ -184,9 +224,16 @@ public class ApplicationController {
 
         }
         else{
+
+            ////////////////////////////////////////////////////////////////////////////
             // existing trade  mark application
+            ////////////////////////////////////////////////////////////////////////////
             // loaded baseTradeMarkapplication by internal id and add to model
-            BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+            ////////////////////////////////////////////////////////////////////////////
+            // BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+            // we are already setting this value in the begging for selected contacts rendering
+            /////////////////////////////////////////////////////////////////////////////
+
            // baseTrademarkApplication.setLastViewModel("application/AttorneyStart");
 
             model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
