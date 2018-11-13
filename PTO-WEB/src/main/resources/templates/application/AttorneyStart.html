@@ -252,7 +252,7 @@
 
                     <div th:if="${baseTrademarkApplication.isAttorneySet() == false}">
 
-                            <div class="row" style="position: relative; top:-430px; right:-120px; ">
+                            <div class="row" style="position: relative; top:-430px; right:-120px; z-index:200;">
                                 <div class="col-sm-1">
 
                                     <input type="radio" name="isAttorneyFiling" id="attorneyFilingTrue">
@@ -277,7 +277,7 @@
                 </div>
                 <div th:if="${baseTrademarkApplication.isAttorneySet() == true}">
 
-                    <div class="row" style="position: relative; top:-130px; right:-120px;" >
+                    <div class="row" style="position: relative; top:-130px; right:-120px; z-index:200;" >
                         <div class="row" style="position: relative; top:-300px; right:-120px; ">
                             <div class="col-sm-1">
 
@@ -1341,13 +1341,11 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
         }, 500);
 
          ////////////////////////////////////////
-        // set previous liink
+        // set previous link
         /////////////////////////////////////////
         $('#prevLink').attr("href",prevLinkURL);
 
-        // disable modal close button
-        $('#addAttorneyConfirm').prop("disabled", true);
-        $('#modal-header-close').prop("disabled", true);
+
 
 
 
@@ -1357,11 +1355,8 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
         if ($('#attorneyFillingFalse').is(':checked') == true){
 
             $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
-
             $('#nextLink').attr("href", nextLinkURL );
 
-            $('#attorneyFillingFalse').prop("disabled", true);
-            $('#attorneyFilingTrue').prop("disabled", true);
 
         }
         /////////////////////////////////////////////////////////////
@@ -1369,12 +1364,6 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
         /////////////////////////////////////////////////////////////
         if ($('#attorneyFilingTrue').is(':checked') == true){
 
-           // $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
-
-            //$('#nextLink').attr("href", nextLinkURL );
-
-           $('#attorneyFillingFalse').prop("disabled", true);
-            $('#attorneyFilingTrue').prop("disabled", true);
             $('#contacts-ui').fadeIn(2000);
 
         }
@@ -1659,6 +1648,13 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
         $('#addNewAttorneyModal').on('shown.bs.modal', function () {
                // check if email address set
                // if not ..set focus ...
+            //////////////////////////////////////////////////////////////
+            // disable modal close button
+            //////////////////////////////////////////////////////////////
+            $('#addAttorneyConfirm').prop("disabled", true);
+            $('#modal-header-close').prop("disabled", true);
+
+
             //if($('#attorney-email').is(":empty")) {
             if($('#attorney-email').val()== '') {
                 $('#attorney-email').focus();
@@ -1670,6 +1666,8 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
                     $(".attorney-emailFieldMsgArea").fadeIn(1000);
                 }, 500);
 
+
+
             }
 
 
@@ -1677,6 +1675,29 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
 
         });
+        /////////////////////////////////////////////////////////////////////////
+        // modal clean up
+        /////////////////////////////////////////////////////////////////////////
+        $('#addNewAttorneyModal').on('hidden.bs.modal', function () {
+
+            // reset all fields
+            $('#attorney-first-name').val("");
+            $('#attorney-last-name').val("");
+            $('#attorney-lawfirm-name').val("");
+            $('#attorney-country').val("");
+            $('#attorney-address1').val("");
+            $('#attorney-city').val("");
+            $('#attorney-state').val("");
+            $('#attorney-zipcode').val("");
+            $('#attorney-phone').val("");
+            $('#attorney-email').val("");
+
+
+        });
+        /////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////
+
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // AUTO SAVE jQUERY EVENTS
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2231,11 +2252,10 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
                 // set focus and message for the next field
                 ///////////////////////////////////////////////////////////////////
 
+                //////////////////////////////////////////////////////////////////
                 // set focus to confirm button // probably doesn't need to do that
                 // check if the 5 minimal required fields are set,
-
-                alert($('#attorney-email').val());
-
+                ///////////////////////////////////////////////////////////////////
                 if($('#attorney-email').val() != "" && $('#attorney-first-name').val() != "" && $('#attorney-last-name').val()!="" && $('#attorney-lawfirm-name').val() != ""){
 
 
@@ -2260,6 +2280,19 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
 
         });
+
+
+
+        // do clean up on modal close
+
+        // reset all fields
+
+        // all text notification should go away by itself
+
+
+
+
+
 
 
 
@@ -2425,6 +2458,11 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
                         $(".attorney-first-nameFieldMsgArea").fadeIn(1000);
                     }, 2500);
 
+                    setTimeout(function () {
+
+                        $("." + field_name_prefix.toLowerCase() + "FieldMsgArea").fadeOut(1000);
+                    }, 1500);
+
 
                     // animation rendering control
                     //if($('.state-checkmark').css('display') == 'block'){
@@ -2521,6 +2559,12 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
                     $("."+contact_field_name.toLowerCase()+"FieldMsgArea span").text(s_msg);
                     $("."+contact_field_name.toLowerCase()+"FieldMsgArea span").css('color','green');
                     $("."+contact_field_name.toLowerCase()+"FieldMsgArea").fadeIn(1000);
+
+                    setTimeout(function () {
+
+                        $("."+contact_field_name.toLowerCase()+"FieldMsgArea").fadeOut(1000);
+                    }, 5500);
+
                     // animation rendering control
                     //if($('.state-checkmark').css('display') == 'block'){
                     if($( "."+contact_field_name.toLowerCase()+"-animation").css('display') == 'block'){
