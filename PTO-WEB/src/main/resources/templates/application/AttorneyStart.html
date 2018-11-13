@@ -2640,12 +2640,15 @@
         // we need REST controller of finding a contact by its email
         // this needs to be implemented on the PTOUser object
         //////////////////////////////////////////////////////////////////////////////////////
-
+        var contact_field_name = "application-contact-add-confirm";
         $.ajax({
             //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
-            url: "../../REST/apiGateway/application/contacts/add/"+contact_email+"/"+contact_field_name,
+            url: "../../REST/apiGateway/application/contacts/add/"+contact_email+"/"+project_ID,
+
             type: 'GET',
             success: function(data){
+
+
 
                 // parse out status msg:
                 var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);

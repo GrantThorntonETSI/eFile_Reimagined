@@ -130,14 +130,14 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
 
         //trademarkApplication.setAvailableLawyers(PTOUser1.getMyLawyers());
 
-        trademarkApplication.copyAvailableLawyers(PTOUser1.getMyLawyers());
+        //trademarkApplication.copyAvailableLawyers(PTOUser1.getMyLawyers());
         //
 
 
 
-        trademarkApplication.setPrimaryLawyer( trademarkApplication.getAvailableLawyers().iterator().next());
-        trademarkApplication.getPrimaryLawyer().setPoolMember(trademarkApplication);
-        trademarkApplication.getPrimaryLawyer().setPrimaryCase(trademarkApplication);
+        //trademarkApplication.setPrimaryLawyer( trademarkApplication.getAvailableLawyers().iterator().next());
+        //trademarkApplication.getPrimaryLawyer().setPoolMember(trademarkApplication);
+        //trademarkApplication.getPrimaryLawyer().setPrimaryCase(trademarkApplication);
         trademarkApplication.setOwnerEmail(PTOUser1.getEmail());
 
         Owner owner = new Owner();
