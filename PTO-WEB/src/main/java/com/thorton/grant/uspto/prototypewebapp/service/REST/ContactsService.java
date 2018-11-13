@@ -222,6 +222,12 @@ public class ContactsService {
 
         }
 
+        if(contact_field_name.equals("attorney-phone" )){
+            lawyer.setPrimaryPhonenumber(contact_field_value);
+            appFieldReadable = "Contact Phone number ";
+
+        }
+
 
 
 

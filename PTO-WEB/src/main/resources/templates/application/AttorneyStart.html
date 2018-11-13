@@ -1439,6 +1439,7 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
             ["<input class=\"contacts-checkbox\" type='checkbox'>", "Aaron Attorney", "Aaron.Attorney@email.com", "Grant Thornton", "<i class=\"material-icons\">swap_horiz</i>"],
             ["<input class=\"contacts-checkbox\" type='checkbox'>", "Melissa Attorney", "Melilssa.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
             ["<input class=\"contacts-checkbox\" type='checkbox'>", "Nicole Attorney", "Nicole.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
+            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Helen Attorney", "Helen.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
             ["<input class=\"contacts-checkbox\" type='checkbox'>", "Cris Attorney", "Cris.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"]
 
         ];
@@ -1462,8 +1463,9 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
         // generate data tables for filings
         var contactsTable = $('#contacts').DataTable( {
-            data: dataSet1,
+            data: testdataSet,
             "pageLength": 5,
+            "scrollY": "250px",
             "oLanguage": {
 
                 "sSearch": "<i style=\"position: relative; top:10px; right:-205px; \"  class=\"material-icons\">search</i>"
@@ -1481,6 +1483,11 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
         } );
 
 
+
+
+
+
+
         for(var a =0; a <contactNames.length; a++) {
 
             var col1 = "<input class=\"contacts-checkbox\" type='checkbox'>";
@@ -1494,11 +1501,26 @@ var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
         }
 
 
+        // set overflow hidden
+        $('.dataTables_scrollBody').css('overflow',  'hidden');
+
+
+
+
+
+
+
         var dataSet3 = [
 
             [ "" , ""]
 
         ];
+
+
+
+
+
+
 
         // generate data tables for filings
         var selectedTable = $('#selected-attorneys').DataTable( {
