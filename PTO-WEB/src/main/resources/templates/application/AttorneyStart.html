@@ -1365,12 +1365,15 @@
         // action listeners on radio buttons
         ////////////////////////////////////////////////////////////
         $('#attorneyFillingFalse').click( function () {
-
+            ////////////////////////////////////////////////////////
             // call back end update ...
-            // signal upate occurred
-
+            ////////////////////////////////////////////////////////
 
             saveProjectInfo("set-lawyer-options-value", "no", appInternalID);
+            setTimeout(function() {
+                $('#contacts-ui').fadeOut(2000);
+            }, 1500);
+            // check there are contacts ...those should get dropped???
 
             //////////////////////////////////////////////////////////
             // enable next link
