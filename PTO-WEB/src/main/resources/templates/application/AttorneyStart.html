@@ -1623,6 +1623,8 @@
                 // un check check box
                 ////////////////////////////////////////////////////////
                 $(this).parent().prev().prev().prev().prev().html("<input class=\"contacts-checkbox\" type=\"checkbox\">");
+                var contact_email = $(this).parent().prev().prev().html();
+                removeContact2Application(contact_email, appInternalID);
 
             }
             else{
