@@ -1370,6 +1370,38 @@
             ////////////////////////////////////////////////////////
 
             saveProjectInfo("set-lawyer-options-value", "no", appInternalID);
+            ////////////////////////////////////////////////////////
+            // remove any selected contacts from application object
+            ////////////////////////////////////////////////////////
+            $('#contacts td').each(function () {
+                if($(this).html().indexOf("disabled") > -1){
+                    ////////////////////////////////////////////////
+                    // get contact email ...
+                    // use appInternalID and call contact remove
+                    ////////////////////////////////////////////////
+                    var contact_email = $(this).next().next().html();
+                    var contact_name = $(this).next().html();
+                    removeContact2Application(contact_email, appInternalID);
+                    ////////////////////////////////////////////////////////////////////////
+                    // remove from selected table
+                    ////////////////////////////////////////////////////////////////////////
+                    $('#selected-attorneys td').each(function () {
+                        if($(this).html() === contact_name){
+                            selectedTable.row($(this).parents('tr')).remove().draw()
+                        }
+                    });
+                    ////////////////////////////////////////////////////////////////////////
+                    // redraw check box on current element
+                    ////////////////////////////////////////////////////////////////////////
+                    $(this).html("<input class=\"contacts-checkbox\" type=\"checkbox\">");
+
+
+
+
+                }
+
+            });
+
             setTimeout(function() {
                 $('#contacts-ui').fadeOut(2000);
             }, 1500);
@@ -1614,7 +1646,7 @@
                 // got through selected table and if matches target .. remove row
                 //
                 $('#selected-attorneys td').each(function () {
-                    if($(this).html() == contacts_target){
+                    if($(this).html() === contacts_target){
                         selectedTable.row($(this).parents('tr')).remove().draw()
                     }
                 });
@@ -1677,7 +1709,7 @@
              //////////////////////////////////////////////////////////
             var contact_email ="";
             $('#contacts td').each(function () {
-                if($(this).html() == contacts_target){
+                if($(this).html() === contacts_target){
                     $(this).prev().html("<input class=\"contacts-checkbox\" type=\"checkbox\">");
                     contact_email = $(this).next().html();
                 }
@@ -1721,7 +1753,7 @@
 
 
             //if($('#attorney-email').is(":empty")) {
-            if($('#attorney-email').val()== '') {
+            if($('#attorney-email').val()=== '') {
                 $('#attorney-email').focus();
                 //$('#attorney-email').select();
 
