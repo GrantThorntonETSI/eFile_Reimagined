@@ -88,11 +88,13 @@ public class PathController {
         UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
         /////////////////////////////////////////////////////////////////////
         // generate token + send email with token
+        // link to current user and store in token store
         // add token DTO to model
         /////////////////////////////////////////////////////////////////////
 
-        TwoFactorDTO twoFactorDTO = new TwoFactorDTO();
 
+
+        TwoFactorDTO twoFactorDTO = new TwoFactorDTO();
         model.addAttribute("twoFactorDTO", twoFactorDTO);
 
 
@@ -120,8 +122,7 @@ public class PathController {
 
 
         // get token from twoFactorDTO
-
-        // if token exists ...
+        // if token exists ...(check token store)
         //
         //
         // forward user to  /verifyAddress
