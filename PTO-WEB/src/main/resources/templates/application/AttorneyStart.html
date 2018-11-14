@@ -1330,6 +1330,8 @@
     <script>
     $(document).ready(function() {
 
+        var contacts_counter =2;
+
         setTimeout(function() {
             // after 1000 ms we add the class animated to the login/register card
             $('.content').fadeIn(500);
@@ -1365,7 +1367,7 @@
         $('#attorneyFillingFalse').click( function () {
 
             // call back end update ...
-            // signal uppate occurred
+            // signal upate occurred
 
 
             saveProjectInfo("set-lawyer-options-value", "no", appInternalID);
@@ -1489,6 +1491,15 @@
             ]
         } );
 
+        for(var a =0; a < selectedContactNames.length; a++) {
+
+            var newRow = [ selectedContactNames[a],"<i class=\"material-icons\">remove_circle</i>"];
+            selectedTable.row.add(newRow).draw();
+            $('#selected-attorneys tr').eq(contacts_counter).addClass('highlight');
+            contacts_counter++;
+
+        }
+
         ////////////////////////////////////////////////////////
         // update contacts table placeholder text
         ////////////////////////////////////////////////////////
@@ -1508,7 +1519,7 @@
         // these are the actions that will trigger saving contacts
         // to project's lawyer pool
         /////////////////////////////////////////////////////////
-        var contacts_counter =2;
+
         $('#contacts').on('click', 'input.contacts-checkbox', function () {
 
             //////////////////////////////////////////////////////////////////////////////////////////////////////////
