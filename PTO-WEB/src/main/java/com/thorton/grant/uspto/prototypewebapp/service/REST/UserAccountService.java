@@ -242,6 +242,15 @@ public class UserAccountService {
             ptoUser.setPrimaryPhonenumber(param);
         }
 
+        if(userAccountField.equals("TwoFactorEmail")){
+            if(param.equals("true")){
+                ptoUser.setUseTwoFactorAuthentication(true);
+            }
+            else {
+                ptoUser.setUseTwoFactorAuthentication(false);
+            }
+        }
+
 
         ////////////////////////////////////////////////
         // check if all required fields are set
