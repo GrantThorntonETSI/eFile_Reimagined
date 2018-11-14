@@ -78,12 +78,6 @@ public class PathController {
             return "forward:accounts/userHome";
         }
 
-
-
-
-
-
-
     }
 
 
@@ -104,8 +98,9 @@ public class PathController {
         // link to current user and store in token store
         // add token DTO to model
         /////////////////////////////////////////////////////////////////////
-        Random random = new Random();
 
+
+        Random random = new Random();
         String token =  Long.toString(100000 + Math.round(random.nextDouble() * 900000));
 
         System.out.println("genearated random token for user: "+token);

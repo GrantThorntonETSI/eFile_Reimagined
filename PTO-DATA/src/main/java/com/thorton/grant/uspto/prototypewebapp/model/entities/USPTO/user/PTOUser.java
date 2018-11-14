@@ -45,6 +45,11 @@ public class PTOUser extends UserPersonalData {
     @OneToOne(cascade = CascadeType.ALL)
     private UserCredentials userCredentials ;
 
+
+    private boolean useTwoFactorAuthentication;
+
+
+
     /////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////
     private String continuationURL = null;
@@ -136,6 +141,14 @@ public class PTOUser extends UserPersonalData {
 
     public void setUserCredentials(UserCredentials userCredentials) {
         this.userCredentials = userCredentials;
+    }
+
+    public boolean isUseTwoFactorAuthentication() {
+        return useTwoFactorAuthentication;
+    }
+
+    public void setUseTwoFactorAuthentication(boolean useTwoFactorAuthentication) {
+        this.useTwoFactorAuthentication = useTwoFactorAuthentication;
     }
 
     @Override
