@@ -1636,8 +1636,15 @@
                 ////////////////////////////////////////////////////////
                 // update contacts added counter
                 ////////////////////////////////////////////////////////
-
                 contacts_counter++;
+                var contact_email = $(this).parent().prev().prev().html();
+                var project_id = appInternalID;
+
+                //alert(contact_email);
+                //alert(project_id);
+
+                addContact2Application(contact_email, project_id);
+
 
             }
 
