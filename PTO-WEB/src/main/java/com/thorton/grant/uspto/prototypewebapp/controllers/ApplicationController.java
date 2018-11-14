@@ -97,7 +97,7 @@ public class ApplicationController {
             System.out.println("@@@@@@@@@@@@@@@@@@@@@@@Application Controller@@@@@@@@@@@@@@@@@@@@@@@@@");
             System.out.println("@@@@@@@@@@@@@@@@@@@@@@@Attorney Start@@@@@@@@@@@@@@@@@@@@@@@@@");
 
-            System.out.println("1111111111111111111111111111111111111111111111111111");
+            System.out.println("111111111111111111111111111111111111111111111111111111111111111");
 
 
             contactNames.add(lawyer.getFirstName()+" "+lawyer.getLastName());
@@ -106,7 +106,7 @@ public class ApplicationController {
 
         }
 
-        System.out.println("222222222222222222222222222222222222222222222222");
+        System.out.println("222222222222222222222222222222222222222222222222322222222222222");
         Collections.reverse(contactNames);
         Collections.reverse(contactEmails);
         Collections.reverse(contactFirms);
@@ -370,6 +370,48 @@ public class ApplicationController {
         contactsDisplayDTO.setContactFirms(contactFirms);
 
         model.addAttribute("myContacts", contactsDisplayDTO);
+
+        ArrayList<String> selectedContactNames = new ArrayList<>();
+
+        Lawyer selected_lawyer = null;
+        System.out.println("3333333333333333333333333333333333333333333333333333333333333");
+       // BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+        Set<Lawyer> applicationLawyerPool = baseTrademarkApplication.getAvailableLawyers();
+
+        if(applicationLawyerPool != null){
+            for(Iterator<Lawyer> iterSelectedContacts = baseTrademarkApplication.getAvailableLawyers().iterator(); iterSelectedContacts.hasNext(); ) {
+                selected_lawyer = iterSelectedContacts.next();
+                selectedContactNames.add(selected_lawyer.getFirstName()+" "+selected_lawyer.getLastName());
+
+            }
+            Collections.reverse(selectedContactNames);
+            /////////////////////////////////////////////////////////////////////////////////////////////
+            // we need a DTO for passing data to view layer
+            /////////////////////////////////////////////////////////////////////////////////////////////
+            SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
+            selectedContactsDisplayDTO.setSelectedNames(selectedContactNames);
+            model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
+
+
+            System.out.println("SELECTED CONTACT LIST : "+selectedContactsDisplayDTO.getSelectedNames());
+
+
+
+        }
+        else{
+            // if there are no one in the application available pool ..
+            // simply add empty value.
+
+            SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
+            selectedContactNames.add("");
+            selectedContactsDisplayDTO.setSelectedNames(selectedContactNames);
+            model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
+
+            System.out.println("CONTINUATION!!! SELECTED CONTACT LIST : "+selectedContactsDisplayDTO.getSelectedNames());
+
+
+        }
+
 
 
         return baseTrademarkApplication.getLastViewModel();
