@@ -1,5 +1,6 @@
 package com.thorton.grant.uspto.prototypewebapp.factories;
 
+import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.AuthenticationTokenService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserRoleService;
@@ -24,9 +25,10 @@ public class ServiceBeanFactory {
     private final OfficeActionsService officeActionsService;
     private final TradeMarkService tradeMarkService;
     private final BaseTradeMarkApplicationService baseTradeMarkApplicationService;
+    private final AuthenticationTokenService authenticationTokenService;
 
 
-    public ServiceBeanFactory(com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService PTOUserService, UserCredentialsService userCredentialsService, UserRoleService userRoleService, VerificationTokenService verificationTokenService, LawyerService lawyerService, OwnerService ownerService, OfficeActionsService officeActionsService, TradeMarkService tradeMarkService, BaseTradeMarkApplicationService baseTradeMarkApplicationService) {
+    public ServiceBeanFactory(com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService PTOUserService, UserCredentialsService userCredentialsService, UserRoleService userRoleService, VerificationTokenService verificationTokenService, LawyerService lawyerService, OwnerService ownerService, OfficeActionsService officeActionsService, TradeMarkService tradeMarkService, BaseTradeMarkApplicationService baseTradeMarkApplicationService, AuthenticationTokenService authenticationTokenService) {
         this.PTOUserService = PTOUserService;
         this.userCredentialsService = userCredentialsService;
         this.userRoleService = userRoleService;
@@ -36,6 +38,7 @@ public class ServiceBeanFactory {
         this.officeActionsService = officeActionsService;
         this.tradeMarkService = tradeMarkService;
         this.baseTradeMarkApplicationService = baseTradeMarkApplicationService;
+        this.authenticationTokenService = authenticationTokenService;
     }
 
     public com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService getPTOUserService() {
@@ -72,5 +75,9 @@ public class ServiceBeanFactory {
 
     public BaseTradeMarkApplicationService getBaseTradeMarkApplicationService() {
         return baseTradeMarkApplicationService;
+    }
+
+    public AuthenticationTokenService getAuthenticationTokenService() {
+        return authenticationTokenService;
     }
 }

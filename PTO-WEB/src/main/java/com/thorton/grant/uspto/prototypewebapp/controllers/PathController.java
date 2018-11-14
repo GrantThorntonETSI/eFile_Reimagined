@@ -1,13 +1,18 @@
 package com.thorton.grant.uspto.prototypewebapp.controllers;
 
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.AuthenticationTokenService;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.IUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.PasswordSetDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.TwoFactorDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.security.AuthenticationToken;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.VerificationToken;
+import com.thorton.grant.uspto.prototypewebapp.service.mail.gmail.GmailJavaMailSenderService;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -20,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.WebRequest;
 
 import javax.validation.Valid;
+import java.util.Random;
+import java.util.UUID;
 
 
 @Controller
@@ -27,8 +34,14 @@ public class PathController {
 
     private final ServiceBeanFactory serviceBeanFactory;
 
-    public PathController(ServiceBeanFactory serviceBeanFactory) {
+    private final IUserService service;
+
+    private final GmailJavaMailSenderService mailSender;
+
+    public PathController(ServiceBeanFactory serviceBeanFactory, IUserService service, GmailJavaMailSenderService mailSender) {
         this.serviceBeanFactory = serviceBeanFactory;
+        this.service = service;
+        this.mailSender = mailSender;
     }
 
     @RequestMapping({"", "/","/index","/index.html", "/home"})
@@ -91,7 +104,36 @@ public class PathController {
         // link to current user and store in token store
         // add token DTO to model
         /////////////////////////////////////////////////////////////////////
+        Random random = new Random();
 
+        String token =  Long.toString(100000 + Math.round(random.nextDouble() * 900000));
+
+        System.out.println("genearated random token for user: "+token);
+        service.createAuthenticationToken(credentials, token);
+
+
+        String recipientAddress = credentials.getEmail();
+        String subject = "Two-factor Authentication Code";
+        String authToken = token;
+
+
+        SimpleMailMessage email = new SimpleMailMessage();
+        email.setTo(recipientAddress);
+        email.setSubject(subject);
+
+
+        //email.setText(message + " rn" + "http://localhost:8080" + confirmationUrl);
+        // make send email call none blocking
+        new Thread(new Runnable() {
+            public void run()
+            {
+
+                // perform any operation
+                //mailSender.sendEmailverificationLink("http://efile-reimagined.com"+confirmationUrl,recipientAddress);
+                mailSender.sendAuthenticationToken(token, recipientAddress);
+                System.out.println("ACCOUNT ACITVATION EMAIL SENT!");
+            }
+        }).start();
 
 
         TwoFactorDTO twoFactorDTO = new TwoFactorDTO();
@@ -121,18 +163,30 @@ public class PathController {
 
 
 
+
+        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+        System.out.println("token value : "+twoFactorDTO.getToken());
+        AuthenticationTokenService authenticationTokenService = serviceBeanFactory.getAuthenticationTokenService();
+        AuthenticationToken token =authenticationTokenService.findByToken(twoFactorDTO.getToken());
+        ///////////////////////////////////////////////
         // get token from twoFactorDTO
         // if token exists ...(check token store)
-        //
-        //
+        ///////////////////////////////////////////////
         // forward user to  /verifyAddress
+        ///////////////////////////////////////////////
 
 
+       if( token != null) {
 
 
-
-
-        return "forward:/verifyAddress";
+           return "forward:/verifyAddress";
+       }
+       else {
+           ////////////////////////////////////////////////////////////////
+           // probably need to add a message that says bad 2 factor token
+           ////////////////////////////////////////////////////////////////
+           return "/login";
+       }
 
 
     }

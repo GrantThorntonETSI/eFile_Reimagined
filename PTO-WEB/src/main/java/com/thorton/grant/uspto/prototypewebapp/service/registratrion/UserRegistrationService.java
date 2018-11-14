@@ -1,5 +1,6 @@
 package com.thorton.grant.uspto.prototypewebapp.service.registratrion;
 
+import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.AuthenticationTokenService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.IUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
@@ -7,6 +8,7 @@ import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserRoleServi
 import com.thorton.grant.uspto.prototypewebapp.interfaces.registration.VerificationTokenService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.RegistrationDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.security.AuthenticationToken;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserRole;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.VerificationToken;
@@ -27,13 +29,15 @@ public class UserRegistrationService implements IUserService {
     private final UserRoleService userRoleService;
     private final  BCryptPasswordEncoder bCryptPasswordEncoder;
     private final VerificationTokenService verificationTokenService;
+    private final AuthenticationTokenService authenticationTokenService;
 
-    public UserRegistrationService(PTOUserService ptoUserService, UserCredentialsService userCredentialsService, UserRoleService userRoleService, BCryptPasswordEncoder bCryptPasswordEncoder, VerificationTokenService verificationTokenService) {
+    public UserRegistrationService(PTOUserService ptoUserService, UserCredentialsService userCredentialsService, UserRoleService userRoleService, BCryptPasswordEncoder bCryptPasswordEncoder, VerificationTokenService verificationTokenService, AuthenticationTokenService authenticationTokenService) {
         this.ptoUserService = ptoUserService;
         this.userCredentialsService = userCredentialsService;
         this.userRoleService = userRoleService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.verificationTokenService = verificationTokenService;
+        this.authenticationTokenService = authenticationTokenService;
     }
 
     @Transactional
@@ -106,5 +110,21 @@ public class UserRegistrationService implements IUserService {
     @Override
     public VerificationToken getVerificationToken(String VerificationToken) {
         return verificationTokenService.findByVerificationToken(VerificationToken);
+    }
+
+
+    @Override
+    public void createAuthenticationToken(UserCredentials userCredentials, String token) {
+
+        System.out.println("creating auth token for "+userCredentials.getEmail()+"+++++"+token);
+
+        AuthenticationToken myToken = new AuthenticationToken(token, userCredentials);
+        authenticationTokenService.save(myToken);
+
+    }
+
+    @Override
+    public AuthenticationToken getAuthenticationToken(String token) {
+        return authenticationTokenService.findByToken(token);
     }
 }
