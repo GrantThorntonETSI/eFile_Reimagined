@@ -1433,7 +1433,7 @@
         // initialize contacts table with empty values
         //////////////////////////////////////////////////////////////////////////////
         var contactsTable = $('#contacts').DataTable( {
-            data: testdataSet,
+            data: dataSet1,
             "pageLength": 5,
             "scrollY": "250px",
             "oLanguage": {
@@ -1482,6 +1482,9 @@
                 var col4 = contactFirms[a];
                 var col5 = "<i class=\"material-icons\">swap_horiz</i>";
                 contactsTable.row.add([col1, col2, col3, col4, col5]).draw();
+                //contactsTable.row.add(row).draw(false);
+                //contactsTable.order([1, 'asc']).draw();
+                //contactsTable.page('last').draw(false);
                 // make this jquery expression more generic
             }
             else {
@@ -1491,6 +1494,9 @@
                 var col4 = contactFirms[a];
                 var col5 = "<i class=\"material-icons\">swap_horiz</i>";
                 contactsTable.row.add([col1, col2, col3, col4, col5]).draw();
+                //contactsTable.row.add(row).draw(false);
+                //contactsTable.order([1, 'asc']).draw();
+                //contactsTable.page('last').draw(false);
 
             }
 
@@ -1605,12 +1611,9 @@
                 // got through selected table and if matches target .. remove row
                 //
                 $('#selected-attorneys td').each(function () {
-
                     if($(this).html() == contacts_target){
-
                         selectedTable.row($(this).parents('tr')).remove().draw()
                     }
-
                 });
                 ////////////////////////////////////////////////////////
                 // update contacts added counter
@@ -1620,9 +1623,6 @@
                 // un check check box
                 ////////////////////////////////////////////////////////
                 $(this).parent().prev().prev().prev().prev().html("<input class=\"contacts-checkbox\" type=\"checkbox\">");
-
-
-
 
             }
             else{
@@ -1662,24 +1662,23 @@
         //////////////////////////////////////////////////////////////
         $('#selected-attorneys').on('click', 'i.material-icons', function () {
 
-
-            //alert($(this).parent().next().next().html());
+            //////////////////////////////////////////////////////////
+            // get selected row key i.e contact name
+            //////////////////////////////////////////////////////////
             var contacts_target = $(this).parent().prev().html();
 
-            // uncheck contacts check box
+             /////////////////////////////////////////////////////////
+             // uncheck contacts check box from the user contact list
+             //////////////////////////////////////////////////////////
+            var contact_email ="";
             $('#contacts td').each(function () {
-
                 if($(this).html() == contacts_target){
-
                     $(this).prev().html("<input class=\"contacts-checkbox\" type=\"checkbox\">");
-
+                    contact_email = $(this).next().html();
                 }
 
             });
-            ////////////////////////////////////////////////////////
-            // update contacts added counter
-            ////////////////////////////////////////////////////////
-            contacts_counter--;
+
             ////////////////////////////////////////////////////////
             // pop current row ...
             ////////////////////////////////////////////////////////
@@ -1687,9 +1686,20 @@
             /////////////////////////////////////////////////////////////////////////////////
             // call back end and remove contact via email from the application lawyer pool
             /////////////////////////////////////////////////////////////////////////////////
-
-
+            ////////////////////////////////////////////////////////
+            // update contacts added counter
+            ////////////////////////////////////////////////////////
+            contacts_counter--;
+            // call back end services to remove contact from application object
+            removeContact2Application(contact_email, appInternalID);
         });
+        ////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
         //////////////////////////////////////////////////////////////
         // on modal open set focus to email field :
         // // this will trigger the creation of a
@@ -2764,6 +2774,94 @@
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+
+    function removeContact2Application(contact_email, project_ID) {
+
+        //////////////////////////////////////////////////////////////////////////////////////
+        // we need REST controller of finding a contact by its email
+        // this needs to be implemented on the PTOUser object
+        //////////////////////////////////////////////////////////////////////////////////////
+        var contact_field_name = "application-contact-add-confirm";
+        $.ajax({
+            //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
+            url: "../../REST/apiGateway/application/contacts/delete/"+contact_email+"/"+project_ID,
+
+            type: 'GET',
+            success: function(data){
+
+
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                if(s_code.trim() == "200"){
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $("."+contact_field_name.toLowerCase()+"FieldMsgArea").fadeOut();
+                    $("."+contact_field_name.toLowerCase()+"FieldMsgArea span").text(s_msg);
+                    $("."+contact_field_name.toLowerCase()+"FieldMsgArea span").css('color','green');
+                    $("."+contact_field_name.toLowerCase()+"FieldMsgArea").fadeIn(1000);
+
+                    setTimeout(function () {
+
+                        $("."+contact_field_name.toLowerCase()+"FieldMsgArea").fadeOut(1000);
+                    }, 5500);
+
+                    // animation rendering control
+                    //if($('.state-checkmark').css('display') == 'block'){
+                    if($( "."+contact_field_name.toLowerCase()+"-animation").css('display') == 'block'){
+
+
+                        $("."+contact_field_name.toLowerCase()+"-animation").fadeOut(100);
+                        // now we need to create an java back end service that saves this value.
+                        // also add validation on the html  similar to password save
+                        //$('#toggle-'+field_name_prefix.toLowerCase()).delay(100).click();
+
+                        // alert($(this).val());
+                        $("."+contact_field_name.toLowerCase()+"-animation").fadeIn(1000);
+                        // now we need to create an java back end service that saves this value.
+                        // also add validation on the html  similar to password save
+                        //$("."+field_name_prefix.toLowerCase()+"-animation").delay(1000).click();
+                    }
+                    else {
+
+                        $("."+contact_field_name.toLowerCase()+"-animation").fadeIn(1000);
+                        // now we need to create an java back end service that saves this value.
+                        // also add validation on the html  similar to password save
+                        //$('#toggle-'+field_name_prefix.toLowerCase()).delay(1000).click();
+                    }
+
+
+
+
+                }
+                else{
+                    //$('.circle-loader').fadeOut(100);
+                    //$('.x-mark').fadeIn(500);
+                    //$(".validationMsgArea span").text(s_msg);
+                    //$(".validationMsgArea span").css('color','red');
+                }
+
+            },
+            error: function(data) {
+
+                //$('.circle-loader').fadeOut(100);
+                //$('.x-mark').fadeIn(500);
+
+                console.log(data);
+                // set message to div area ...fields can not be left null
+                //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                //$(".validationMsgArea span").css('color','red');
+            }
+
+        });
+
+    } // end of function
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     </script>
