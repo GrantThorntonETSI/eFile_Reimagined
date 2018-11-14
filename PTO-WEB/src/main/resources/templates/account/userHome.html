@@ -156,7 +156,7 @@
                             <h5 class="card-title"><b>Two-Step Authentication</b></h5>
                         </div>
                         <hr style="height:3px; position:relative; top:-20px; left:-11.55%; max-width: 80.3%">
-                        <div class="row">
+                        <div class="row" style="position: relative; right:-30px;">
 
                             <div class="col-sm-10">
                                 <div class="form-group" style="margin-left: 25px;">
@@ -177,7 +177,8 @@
 
 
                                        <div class="card-header card-header-blue " style="background-color: rgb(217, 217, 214); ;">
-                                           <input  style="position: relative; left:1%;" type="radio" name="two-factor" id="emailAuthenticator">
+                                           <input   th:if="${user.isUseTwoFactorAuthentication() == true}" style="position: relative; left:1%;" type="radio" name="two-factor" id="emailAuthenticator" checked>
+                                           <input   th:if="${user.isUseTwoFactorAuthentication() == false}" style="position: relative; left:1%;" type="radio" name="two-factor" id="emailAuthenticator">
                                            <b class="card-title" style="position: relative; left:1%;">Email</b>
 
                                        </div>
@@ -204,7 +205,7 @@
 
 
                                        <div class="card-header card-header-blue " style="background-color: rgb(217, 217, 214);">
-                                           <input  style="position: relative; left:1%;" type="radio" name="two-factor" id="googleAuthentidcator">
+                                           <input  style="position: relative; left:1%;"   type="radio" name="two-factor" id="googleAuthentidcator">
                                            <b class="card-title" style="position: relative; left:1%;" > Code Generator (Mobile App)</b>
                                        </div>
 
