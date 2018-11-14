@@ -46,7 +46,7 @@ public class PTOUser extends UserPersonalData {
     private UserCredentials userCredentials ;
 
 
-    private boolean useTwoFactorAuthentication;
+    private boolean useTwoFactorAuthentication = false;
 
 
 

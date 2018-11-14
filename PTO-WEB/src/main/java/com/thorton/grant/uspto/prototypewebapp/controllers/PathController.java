@@ -83,7 +83,7 @@ public class PathController {
 
     // login intercept
     @RequestMapping({"/2FactorAuth"})
-    public String twofactorAuth(Model model){
+    public String twofactorAuth(Model model) {
 
         // get access credentials
         // get email and get PTOUser object from repository
@@ -99,48 +99,55 @@ public class PathController {
         // add token DTO to model
         /////////////////////////////////////////////////////////////////////
 
-
-        Random random = new Random();
-        String token =  Long.toString(100000 + Math.round(random.nextDouble() * 900000));
-
-        System.out.println("genearated random token for user: "+token);
-        service.createAuthenticationToken(credentials, token);
+        String viewName="";
+        if (ptoUser.isUseTwoFactorAuthentication() == true) {
 
 
-        String recipientAddress = credentials.getEmail();
-        String subject = "Two-factor Authentication Code";
-        String authToken = token;
+            Random random = new Random();
+            String token = Long.toString(100000 + Math.round(random.nextDouble() * 900000));
+
+            System.out.println("genearated random token for user: " + token);
+            service.createAuthenticationToken(credentials, token);
 
 
-        SimpleMailMessage email = new SimpleMailMessage();
-        email.setTo(recipientAddress);
-        email.setSubject(subject);
+            String recipientAddress = credentials.getEmail();
+            String subject = "Two-factor Authentication Code";
+            String authToken = token;
 
 
-        //email.setText(message + " rn" + "http://localhost:8080" + confirmationUrl);
-        // make send email call none blocking
-        new Thread(new Runnable() {
-            public void run()
-            {
-
-                // perform any operation
-                //mailSender.sendEmailverificationLink("http://efile-reimagined.com"+confirmationUrl,recipientAddress);
-                mailSender.sendAuthenticationToken(token, recipientAddress);
-                System.out.println("ACCOUNT ACITVATION EMAIL SENT!");
-            }
-        }).start();
+            SimpleMailMessage email = new SimpleMailMessage();
+            email.setTo(recipientAddress);
+            email.setSubject(subject);
 
 
-        TwoFactorDTO twoFactorDTO = new TwoFactorDTO();
-        model.addAttribute("twoFactorDTO", twoFactorDTO);
+            //email.setText(message + " rn" + "http://localhost:8080" + confirmationUrl);
+            // make send email call none blocking
+            new Thread(new Runnable() {
+                public void run() {
+
+                    // perform any operation
+                    //mailSender.sendEmailverificationLink("http://efile-reimagined.com"+confirmationUrl,recipientAddress);
+                    mailSender.sendAuthenticationToken(token, recipientAddress);
+                    System.out.println("ACCOUNT ACITVATION EMAIL SENT!");
+                }
+            }).start();
 
 
+            TwoFactorDTO twoFactorDTO = new TwoFactorDTO();
+            model.addAttribute("twoFactorDTO", twoFactorDTO);
+            viewName = "2factorAuth";
+
+       }
+       else{
+           viewName="forward:/verifyAddress";
+
+        }
 
 
         model.addAttribute("user", ptoUser);
         model.addAttribute("account",credentials);
 
-        return "2factorAuth";
+        return viewName;
 
     }
 
