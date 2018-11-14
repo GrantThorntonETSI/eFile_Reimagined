@@ -51,7 +51,6 @@ public class RegistrationController {
 
         return "registration/index";
 
-
     }
 
 

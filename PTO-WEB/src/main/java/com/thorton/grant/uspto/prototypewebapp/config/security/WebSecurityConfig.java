@@ -68,7 +68,7 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                 .and()
 
                 .formLogin()
-                .loginPage("/login").successForwardUrl("/verifyAddress")
+                .loginPage("/login").successForwardUrl("/2FactorAuth")
                 .permitAll()
                 .and()
                 .logout()
