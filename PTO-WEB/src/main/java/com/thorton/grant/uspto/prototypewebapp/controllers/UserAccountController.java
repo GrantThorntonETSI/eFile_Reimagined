@@ -124,7 +124,7 @@ public class UserAccountController {
 
             userfilingTableRowsID.add(  baseTrademarkApplication.getApplicationInternalID());
             userfilingTableRowsowneName.add(baseTrademarkApplication.getOwner().getFirstName()+" "+baseTrademarkApplication.getOwner().getLastName());
-            userfilingTableRowsStatus.add("NEW Filing Application.");
+            userfilingTableRowsStatus.add("Draft");
             userfilingTableRoowsTMname.add(baseTrademarkApplication.getTrademarkName());
 
         }
