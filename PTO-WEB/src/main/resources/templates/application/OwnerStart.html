@@ -848,10 +848,13 @@
                     // show confirmation check mark on form
                     //$('#toggle').delay(1000).click();
 
-
-                    $(".FieldMsgArea span").text(s_msg);
-                    $(".FieldMsgArea span").css('color','green');
-                    $(".FieldMsgArea").fadeIn(1000);
+                    // add time stamp from server side
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function() {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
                     // animation rendering control
                     //if($('.state-checkmark').css('display') == 'block'){
                     if($( "."+field_name_prefix.toLowerCase()+"-animation").css('display') == 'block'){
