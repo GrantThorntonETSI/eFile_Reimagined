@@ -42,7 +42,7 @@
                 <div class="col-sm-4" style="margin-bottom: 120px; top:20%; left:0.6%;">
                     <!-- normal tables for announcements-->
                     <div class="card base-page main-page" id="filings" style="display:none;">
-                        <div class="card-header card-header-primary card-header-icon" style="margin-bottom: 10px;">
+                        <div class="card-header card-header-primary card-header-icon" style="margin-bottom: 10px; background-color: white;">
 
                             <div class="row" style="  position: relative; left:2.0%; width:100%">
                                 <div class="col-sm-4" style="position: relative; top:10px;">
@@ -59,7 +59,7 @@
                             </div>
 
                             <div class="" style="padding: 20px;">
-                                <table id="filings-applications-table" class=" table-no-bordered table-hover" cellpadding="3" style="margin-right: 5px; margin-left: 8px;"></table>
+                                <table id="filings-applications-table" class=" table-no-bordered table-hover" cellpadding="3" style=""></table>
                             </div>
                         </div>
                         <!-- end content-->
@@ -68,14 +68,14 @@
                 </div>
                 <!--end of row 1 column 2 -->
 
-                <div class="col-sm-5" style="margin-bottom: 120px; top:20%; left:0.6%; ">
+                <div class="col-sm-6" style="margin-bottom: 120px; top:20%; left:0.6%; ">
                     <!--data tables for user actions  -->
                     <!--data tables for filings/applications -->
                     <div class="card base-page" id="actions" style="">
                         <div class="card-header card-header-primary card-header-icon">
 
                             <div class="row" style=" position: relative; left:2.2%;">
-                                <div class="col-sm-5">
+                                <div class="col-sm-6">
                                     <h4 class="card-title" style="position: relative; top:10px;"><b>UP COMING ACTION DUE</b></h4>
                                 </div>
                                 <div class="col-sm-2" style="position: relative;right:-27%;">
@@ -93,14 +93,15 @@
                                 <!--        Here you can write extra buttons/actions for the toolbar      -->
                             </div>
                             <div class="material-datatables">
-                                <table id="datatablesTrademarks" class="table  table-no-bordered table-hover" cellspacing="0" width="60%" style="width:100%; ">
+                                <table id="datatablesTrademarks" class="table  table-no-bordered table-hover" cellspacing="0" style="width:100%; ">
                                     <thead>
                                     <tr>
-                                        <th>Serial ID</th>
-                                        <th >Registration ID</th>
-                                        <th>Mark Text</th>
+                                        <th>Serial#</th>
+                                        <th >Registration#</th>
+                                        <th>Mark</th>
                                         <th>Owner</th>
                                         <th>Due Date</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -110,49 +111,59 @@
                                     <tr>
                                         <td>87541256</td>
                                         <td>N/a</td>
-                                        <td>VAKKER</td>
+                                        <td><a href="#mark-preview-modal" data-toggle="modal" data-target="#mark-preview-modal" class="btn btn-link btn-warning btn-just-icon edit trademarks-view"><i class="material-icons">dvr</i></a>
+                                                                                            <input style="display: none;" value="../resources/data_images/vakker.png"></td>
                                         <td>BAO KUN</td>
                                         <td>12/3/2018</td>
+                                        <td>Abandoned</td>
                                         <td class="text-right">
 
-                                            <a href="#mark-preview-modal"   data-toggle="modal" data-target="#action-preview-modal" class="btn btn-link btn-warning btn-just-icon edit trademarks-view"><i class="material-icons">stars</i></a>
-                                            <input style="display: none;" value="../resources/data_images/vakker.png">
+                                            <a href="#mark-preview-modal"  style="max-width: 70px;"  data-toggle="modal" data-target="#action-preview-modal" class="btn btn-link btn-warning btn-just-icon edit trademarks-view">File a Petition<br>  to Review</a>
+
                                         </td>
+
                                     </tr>
                                     <tr>
                                         <td>87663325</td>
                                         <td>87663325</td>
-                                        <td>ZERO BLOG THIRTY</td>
+                                        <td><a href="#mark-preview-modal" data-toggle="modal" data-target="#mark-preview-modal" class="btn btn-link btn-warning btn-just-icon edit trademarks-view"><i class="material-icons">dvr</i></a>
+                                            <input style="display: none;" value="../resources/data_images/zero30.jpg"></td>
                                         <td>Barstool Sports, Inc</td>
                                         <td>1/13/2019</td>
-                                        <td class="text-right">
+                                        <td>Non-Final Action Issued</td>
+                                        <td class="text-right" style="max-width: 50px;">
 
-                                            <a href="#mark-preview-modal" data-toggle="modal" data-target="#action-preview-modal" class="btn btn-link btn-warning btn-just-icon edit trademarks-view"><i class="material-icons">stars</i></a>
-                                            <input style="display: none;" value="../resources/data_images/zero30.jpg">
+                                            <a href="#mark-preview-modal"  style="max-width: 50px;" data-toggle="modal" data-target="#action-preview-modal" class="btn btn-link btn-warning btn-just-icon edit trademarks-view">Respond to <br>  Office Actions</a>
+
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>87653515</td>
                                         <td>N/A</td>
-                                        <td>SMART CONNECTED SECURE</td>
-                                        <td>Microchip Technology Incorporated</td>
+                                        <td><a href="#mark-preview-modal" data-toggle="modal" data-target="#mark-preview-modal" class="btn btn-link btn-warning btn-just-icon edit trademarks-view"><i class="material-icons">dvr</i></a>
+                                            <input style="display: none;" value="../resources/data_images/nike-tm.jpg"></td>
+                                        <td>Nike. Inc</td>
                                         <td>1/27/2020</td>
-                                        <td class="text-right">
+                                        <td>Appeal Actions Non-Final.</td>
+                                        <td class="text-right" style="max-width: 50px;">
 
-                                            <a href="#mark-preview-modal" data-toggle="modal" data-target="#action-preview-modal" class="btn btn-link btn-warning btn-just-icon edit trademarks-view"><i class="material-icons">stars</i></a>
-                                            <input style="display: none;" value="../resources/data_images/micro-technology-inc.png">
+                                            <a href="#mark-preview-modal"  style="max-width: 50px;" data-toggle="modal" data-target="#action-preview-modal" class="btn btn-link btn-warning btn-just-icon edit trademarks-view">Respond to <br> Office Actions</a>
+
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>87452125</td>
                                         <td>N/A</td>
-                                        <td>JUMP SHOES & STREETWEAR</td>
+                                        <td><a href="#mark-preview-modal" data-toggle="modal" data-target="#mark-preview-modal" class="btn btn-link btn-warning btn-just-icon edit trademarks-view"><i class="material-icons">dvr</i></a>
+                                            <input style="display: none;" value="../resources/data_images/jump.png"></td>
+
                                         <td>antonio cirillo, DBA gui.ar.lab.srls</td>
                                         <td>11/11/2018</td>
-                                        <td class="text-right">
+                                        <td>Abandoned</td>
+                                        <td class="text-right" style="max-width: 50px;">
 
-                                            <a href="#mark-preview-modal" data-toggle="modal" data-target="#action-preview-modal" class="btn btn-link btn-warning btn-just-icon edit trademarks-view"><i class="material-icons">stars</i></a>
-                                            <input style="display: none;" value="../resources/data_images/coca-cola-tm.jpg">
+                                            <a href="#mark-preview-modal"  style="max-width: 50px;" data-toggle="modal" data-target="#action-preview-modal" class="btn btn-link btn-warning btn-just-icon edit trademarks-view">File a Petition<br> to Review</a>
+
                                         </td>
                                     </tr>
 
@@ -397,8 +408,8 @@
             data: dataSet,
             "dom": '<"top"f<"clear">>rt<"bottom"ip<"clear">>',
             columns: [
-                { title: "Serial ID" },
-                { title: "Registration ID" },
+                { title: "Serial#" },
+                { title: "Registration#" },
                 { title: "Mark" },
                 { title: "Owner" },
                 { title: "Status" }
