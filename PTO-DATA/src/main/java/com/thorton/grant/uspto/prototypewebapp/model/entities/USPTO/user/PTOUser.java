@@ -47,6 +47,7 @@ public class PTOUser extends UserPersonalData {
 
 
     private boolean useTwoFactorAuthentication = false;
+    private String twoFactorAuthType = "email";
 
 
 
@@ -149,6 +150,14 @@ public class PTOUser extends UserPersonalData {
 
     public void setUseTwoFactorAuthentication(boolean useTwoFactorAuthentication) {
         this.useTwoFactorAuthentication = useTwoFactorAuthentication;
+    }
+
+    public String getTwoFactorAuthType() {
+        return twoFactorAuthType;
+    }
+
+    public void setTwoFactorAuthType(String twoFactorAuthType) {
+        this.twoFactorAuthType = twoFactorAuthType;
     }
 
     @Override

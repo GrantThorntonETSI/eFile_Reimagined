@@ -244,10 +244,13 @@ public class UserAccountService {
 
         if(userAccountField.equals("TwoFactorEmail")){
             if(param.equals("true")){
+
                 ptoUser.setUseTwoFactorAuthentication(true);
+                ptoUser.setTwoFactorAuthType("email");
             }
             else {
                 ptoUser.setUseTwoFactorAuthentication(false);
+                ptoUser.setTwoFactorAuthType("");
             }
         }
 

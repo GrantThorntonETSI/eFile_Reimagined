@@ -237,7 +237,11 @@
 
                                 <div class="form-group">
                                     <div class="row">
-                                        <span style="position: relative; bottom:-2px; left:5px;"><input type="checkbox" id="useTwoFactor" name="useTwoFactor"></span>&nbsp;&nbsp;<span style="opacity: 1; mix-blend-mode: normal; text-align: left; color: rgb(0, 0, 0); font-size: 16px; font-weight: normal; font-style: normal; text-decoration: none; width: 612px; height: 17px; transform: rotate(0deg) translate(62px, 882px) rotate(0deg);">I want to use the two-step authentication method every time I sign in.</span>
+                                        <span style="position: relative; bottom:-2px; left:5px;">
+                                            <input type="checkbox"  th:if="${user.isUseTwoFactorAuthentication() == true}"id="useTwoFactor" name="useTwoFactor" checked>
+                                             <input type="checkbox"  th:if="${user.isUseTwoFactorAuthentication() == false}"id="useTwoFactor" name="useTwoFactor">
+
+                                        </span>&nbsp;&nbsp;<span style="opacity: 1; mix-blend-mode: normal; text-align: left; color: rgb(0, 0, 0); font-size: 16px; font-weight: normal; font-style: normal; text-decoration: none; width: 612px; height: 17px; transform: rotate(0deg) translate(62px, 882px) rotate(0deg);">I want to use the two-step authentication method every time I sign in.</span>
                                     </div>
 
 
@@ -1134,18 +1138,26 @@
 
         // save two factor authentication
 
-        $('#emailAuthenticator').click( function () {
-
+        //$('#emailAuthenticator').click( function () {
+        $('#useTwoFactor').click( function () {
             // call save contacts on use two factor email
 
             if($(this).is(":checked")){
 
                 saveContactInfo("TwoFactorEmail", "true");
+
+                $('#emailAuthenticator').prop("checked", true);
+
             }
             else{
 
                 saveContactInfo("TwoFactorEmail", "false");
+                $('#emailAuthenticator').prop("checked", false);
+
+
             }
+
+
 
 
         });
