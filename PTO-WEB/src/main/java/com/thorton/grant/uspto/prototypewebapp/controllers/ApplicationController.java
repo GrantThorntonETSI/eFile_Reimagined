@@ -75,65 +75,6 @@ public class ApplicationController {
         // add contacts display info to model
         ////////////////////////////////////////////////////////////////////////////////////////////
 
-        //////////////////////////////////////////////////////////////////////////
-        // add relationship (i.e grey out the correspondant contacts table)
-        // we can do this when rendering the contacts table rows ...
-        // do a check and insert different HTML for the row
-        //////////////////////////////////////////////////////////////////////////
-        ArrayList<String> contactNames = new ArrayList<>();
-        ArrayList<String> contactEmails = new ArrayList<>();
-        ArrayList<String> contactFirms = new ArrayList<>();
-        Lawyer lawyer = null;
-
-        for(Iterator<Lawyer> iter = ptoUser.getMyLawyers().iterator(); iter.hasNext(); ) {
-            lawyer = iter.next();
-            contactNames.add(lawyer.getFirstName()+" "+lawyer.getLastName());
-            contactEmails.add(lawyer.getEmail());
-            contactFirms.add(lawyer.getLawFirmName());
-
-        }
-        Collections.reverse(contactNames);
-        Collections.reverse(contactEmails);
-        Collections.reverse(contactFirms);
-        ContactsDisplayDTO contactsDisplayDTO = new ContactsDisplayDTO();
-        contactsDisplayDTO.setContactNames(contactNames);
-        contactsDisplayDTO.setContactEmails(contactEmails);
-        contactsDisplayDTO.setContactFirms(contactFirms);
-
-        model.addAttribute("myContacts", contactsDisplayDTO);
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        // add selected contacts display info to model
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        ArrayList<String> selectedContactNames = new ArrayList<>();
-        Lawyer selected_lawyer = null;
-        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
-        Set<Lawyer> applicationLawyerPool = baseTrademarkApplication.getAvailableLawyers();
-
-        if(applicationLawyerPool != null){
-            for(Iterator<Lawyer> iterSelectedContacts = baseTrademarkApplication.getAvailableLawyers().iterator(); iterSelectedContacts.hasNext(); ) {
-                selected_lawyer = iterSelectedContacts.next();
-                selectedContactNames.add(selected_lawyer.getFirstName()+" "+selected_lawyer.getLastName());
-
-            }
-            Collections.reverse(selectedContactNames);
-            /////////////////////////////////////////////////////////////////////////////////////////////
-            // we need a DTO for passing data to view layer
-            /////////////////////////////////////////////////////////////////////////////////////////////
-            SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
-            selectedContactsDisplayDTO.setSelectedNames(selectedContactNames);
-            model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
-
-        }
-        else{
-            // if there are no one in the application available pool ..
-            // simply add empty value.
-
-            SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
-            selectedContactNames.add("");
-            selectedContactsDisplayDTO.setSelectedNames(selectedContactNames);
-            model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
-        }
-
 
 
         /////////////////////////////////////////////////////////////////////////////////////////////
@@ -185,6 +126,19 @@ public class ApplicationController {
             ptoUser.addApplication(trademarkApplication); // adds to myApplications Collection
             ptoUserService.save(ptoUser);
             model.addAttribute("baseTrademarkApplication", trademarkApplication);
+            ContactsDisplayDTO contactsDisplayDTO = new ContactsDisplayDTO();
+
+            ArrayList<String> contactNames = new ArrayList<>();
+            ArrayList<String> contactEmails = new ArrayList<>();
+            ArrayList<String> contactFirms = new ArrayList<>();
+            contactsDisplayDTO.setContactNames(contactNames);
+            contactsDisplayDTO.setContactEmails(contactEmails);
+            contactsDisplayDTO.setContactFirms(contactFirms);
+
+            SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
+            selectedContactsDisplayDTO.setSelectedNames(contactNames);
+            model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
+            model.addAttribute("myContacts", contactsDisplayDTO);
 
 
         }
@@ -198,8 +152,68 @@ public class ApplicationController {
             // BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
             // we are already setting this value in the begging for selected contacts rendering
             /////////////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////
+            // add relationship (i.e grey out the correspondant contacts table)
+            // we can do this when rendering the contacts table rows ...
+            // do a check and insert different HTML for the row
+            //////////////////////////////////////////////////////////////////////////
+            ArrayList<String> contactNames = new ArrayList<>();
+            ArrayList<String> contactEmails = new ArrayList<>();
+            ArrayList<String> contactFirms = new ArrayList<>();
+            Lawyer lawyer = null;
 
-           // baseTrademarkApplication.setLastViewModel("application/AttorneyStart");
+            for(Iterator<Lawyer> iter = ptoUser.getMyLawyers().iterator(); iter.hasNext(); ) {
+                lawyer = iter.next();
+                contactNames.add(lawyer.getFirstName()+" "+lawyer.getLastName());
+                contactEmails.add(lawyer.getEmail());
+                contactFirms.add(lawyer.getLawFirmName());
+
+            }
+            Collections.reverse(contactNames);
+            Collections.reverse(contactEmails);
+            Collections.reverse(contactFirms);
+            ContactsDisplayDTO contactsDisplayDTO = new ContactsDisplayDTO();
+            contactsDisplayDTO.setContactNames(contactNames);
+            contactsDisplayDTO.setContactEmails(contactEmails);
+            contactsDisplayDTO.setContactFirms(contactFirms);
+
+            model.addAttribute("myContacts", contactsDisplayDTO);
+            ////////////////////////////////////////////////////////////////////////////////////////////
+            // add selected contacts display info to model
+            ////////////////////////////////////////////////////////////////////////////////////////////
+            ArrayList<String> selectedContactNames = new ArrayList<>();
+            Lawyer selected_lawyer = null;
+            BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+            Set<Lawyer> applicationLawyerPool = baseTrademarkApplication.getAvailableLawyers();
+
+            if(applicationLawyerPool != null){
+                for(Iterator<Lawyer> iterSelectedContacts = baseTrademarkApplication.getAvailableLawyers().iterator(); iterSelectedContacts.hasNext(); ) {
+                    selected_lawyer = iterSelectedContacts.next();
+                    selectedContactNames.add(selected_lawyer.getFirstName()+" "+selected_lawyer.getLastName());
+
+                }
+                Collections.reverse(selectedContactNames);
+                /////////////////////////////////////////////////////////////////////////////////////////////
+                // we need a DTO for passing data to view layer
+                /////////////////////////////////////////////////////////////////////////////////////////////
+                SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
+                selectedContactsDisplayDTO.setSelectedNames(selectedContactNames);
+                model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
+
+            }
+            else{
+                // if there are no one in the application available pool ..
+                // simply add empty value.
+
+                SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
+                selectedContactNames.add("");
+                selectedContactsDisplayDTO.setSelectedNames(selectedContactNames);
+                model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
+            }
+
+
+
+            // baseTrademarkApplication.setLastViewModel("application/AttorneyStart");
 
             model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
