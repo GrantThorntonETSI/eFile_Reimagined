@@ -2542,14 +2542,12 @@
                 return_code = s_code.trim();
                 if (s_code.trim() == "200") {
 
-                    $("." + field_name_prefix.toLowerCase() + "FieldMsgArea").fadeOut();
-
+                    $(".autoSaveMessageArea span").fadeOut(500);
                     setTimeout(function() {
-                        $("." + field_name_prefix.toLowerCase() + "FieldMsgArea span").text(s_msg);
-                        $("." + field_name_prefix.toLowerCase() + "FieldMsgArea span").css('color', 'green');
-                        $("." + field_name_prefix.toLowerCase() + "FieldMsgArea").fadeIn(1000);
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
                     }, 500);
-
 
                     $('#attorney-email').prop('disabled', true);
                     ///////////////////////////////////////////////////////////////////
@@ -2753,40 +2751,12 @@
                     //if(data.contains("status: 200")){
                     // show confirmation check mark on form
                     //$('#toggle').delay(1000).click();
-                    $("."+contact_field_name.toLowerCase()+"FieldMsgArea").fadeOut();
-                    $("."+contact_field_name.toLowerCase()+"FieldMsgArea span").text(s_msg);
-                    $("."+contact_field_name.toLowerCase()+"FieldMsgArea span").css('color','green');
-                    $("."+contact_field_name.toLowerCase()+"FieldMsgArea").fadeIn(1000);
-
-                    setTimeout(function () {
-
-                        $("."+contact_field_name.toLowerCase()+"FieldMsgArea").fadeOut(1000);
-                    }, 5500);
-
-                    // animation rendering control
-                    //if($('.state-checkmark').css('display') == 'block'){
-                    if($( "."+contact_field_name.toLowerCase()+"-animation").css('display') == 'block'){
-
-
-                        $("."+contact_field_name.toLowerCase()+"-animation").fadeOut(100);
-                        // now we need to create an java back end service that saves this value.
-                        // also add validation on the html  similar to password save
-                        //$('#toggle-'+field_name_prefix.toLowerCase()).delay(100).click();
-
-                        // alert($(this).val());
-                        $("."+contact_field_name.toLowerCase()+"-animation").fadeIn(1000);
-                        // now we need to create an java back end service that saves this value.
-                        // also add validation on the html  similar to password save
-                        //$("."+field_name_prefix.toLowerCase()+"-animation").delay(1000).click();
-                    }
-                    else {
-
-                        $("."+contact_field_name.toLowerCase()+"-animation").fadeIn(1000);
-                        // now we need to create an java back end service that saves this value.
-                        // also add validation on the html  similar to password save
-                        //$('#toggle-'+field_name_prefix.toLowerCase()).delay(1000).click();
-                    }
-
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function() {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
 
 
 
@@ -2843,39 +2813,13 @@
                     //if(data.contains("status: 200")){
                     // show confirmation check mark on form
                     //$('#toggle').delay(1000).click();
-                    $("."+contact_field_name.toLowerCase()+"FieldMsgArea").fadeOut();
-                    $("."+contact_field_name.toLowerCase()+"FieldMsgArea span").text(s_msg);
-                    $("."+contact_field_name.toLowerCase()+"FieldMsgArea span").css('color','green');
-                    $("."+contact_field_name.toLowerCase()+"FieldMsgArea").fadeIn(1000);
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function() {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
 
-                    setTimeout(function () {
-
-                        $("."+contact_field_name.toLowerCase()+"FieldMsgArea").fadeOut(1000);
-                    }, 5500);
-
-                    // animation rendering control
-                    //if($('.state-checkmark').css('display') == 'block'){
-                    if($( "."+contact_field_name.toLowerCase()+"-animation").css('display') == 'block'){
-
-
-                        $("."+contact_field_name.toLowerCase()+"-animation").fadeOut(100);
-                        // now we need to create an java back end service that saves this value.
-                        // also add validation on the html  similar to password save
-                        //$('#toggle-'+field_name_prefix.toLowerCase()).delay(100).click();
-
-                        // alert($(this).val());
-                        $("."+contact_field_name.toLowerCase()+"-animation").fadeIn(1000);
-                        // now we need to create an java back end service that saves this value.
-                        // also add validation on the html  similar to password save
-                        //$("."+field_name_prefix.toLowerCase()+"-animation").delay(1000).click();
-                    }
-                    else {
-
-                        $("."+contact_field_name.toLowerCase()+"-animation").fadeIn(1000);
-                        // now we need to create an java back end service that saves this value.
-                        // also add validation on the html  similar to password save
-                        //$('#toggle-'+field_name_prefix.toLowerCase()).delay(1000).click();
-                    }
 
 
 
