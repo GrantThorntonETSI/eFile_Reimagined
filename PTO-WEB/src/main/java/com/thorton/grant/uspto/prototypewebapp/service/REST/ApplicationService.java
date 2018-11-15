@@ -123,7 +123,7 @@ public class ApplicationService {
 
                 baseTrademarkApplication.setAttorneySet(true);
                 baseTrademarkApplication.setAttorneyFiling(false);
-                baseTrademarkApplication.setLastViewModel("application/OwnerStart");
+                baseTrademarkApplication.setLastViewModel("application/AttorneyStart");
 
             }
             else {
