@@ -1,0 +1,2857 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layoutSession :: layout (~{::body},'user')}" xmlns="http://www.w3.org/1999/html">
+<head >
+    <meta charset="UTF-8">
+    <title>Owner Information</title>
+</head>
+<body>
+
+<!-- End Navbar -->
+
+<div class="content" style="display: none; background-color: white; min-height: 400px; min-width: 1200px; position: relative; bottom: -10%;" >
+    <div class="container-fluid"  >
+
+        <div class="col-sm-12" >
+            <div class="form-container base-page" style="position: relative; top:-80px;">
+
+
+                <div class="application-banner">
+                    <!--row 1  -->
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:20px;  left:-55px; margin-left: 10px; margin-bottom: 5px; z-index: 999;">
+                                <svg version="1.2" preserveAspectRatio="none" class="ng-element" viewBox="0 0 127.11863708496094 49.15254211425781" style= "overflow: visible; width: 137.119px; height: 49.1525px; opacity: 1; mix-blend-mode: normal; transform: rotate(0deg) translate(89.8248px, 151.531px) rotate(0deg);"><defs></defs><g style="transform: translate(-102.825px, -179.379px);"><path d="M102.82484151549 179.37852891825 C102.82484151549 179.37852891825 102.82484151549 228.53107129113 102.82484151549 228.53107129113 C102.82484151549 228.53107129113 211.29941778668 228.53107129113 211.29941778668 228.53107129113 C211.29941778668 228.53107129113 229.94348558329 204.80225773181 229.94348558329 204.80225773181 C229.94348558329 204.80225773181 211.29941778668 179.37852891825 211.29941778668 179.37852891825 C211.29941778668 179.37852891825 102.82484151549 179.37852891825 102.82484151549 179.37852891825 Z" style="stroke: rgb(102, 102, 102); stroke-width: 1; stroke-linecap: butt; stroke-linejoin: miter; fill: rgb(0, 50, 100);"></path><path d="M102.82484151549 179.37852891825 C102.82484151549 179.37852891825 102.82484151549 228.53107129113 102.82484151549 228.53107129113 C102.82484151549 228.53107129113 211.29941778668 228.53107129113 211.29941778668 228.53107129113 C211.29941778668 228.53107129113 229.94348558329 204.80225773181 229.94348558329 204.80225773181 C229.94348558329 204.80225773181 211.29941778668 179.37852891825 211.29941778668 179.37852891825 C211.29941778668 179.37852891825 102.82484151549 179.37852891825 102.82484151549 179.37852891825 Z" fill="none" stroke="transparent" stroke-width="8"></path></g></svg>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:20px; left:-230px; margin-left:10px; margin-bottom: 5px;  z-index: 888;">
+                                <svg version="1.2" preserveAspectRatio="none" class="ng-element" viewBox="0 0 127.11863708496094 49.15254211425781" style="overflow: visible; width: 137.119px; height: 49.1525px; opacity: 1; mix-blend-mode: normal; transform: rotate(0deg) translate(185px, 151.153px) rotate(0deg);"><defs></defs><g style="transform: translate(-102.825px, -179.379px);"><path d="M102.82484151549 179.37852891825 C102.82484151549 179.37852891825 102.82484151549 228.53107129113 102.82484151549 228.53107129113 C102.82484151549 228.53107129113 211.29941778668 228.53107129113 211.29941778668 228.53107129113 C211.29941778668 228.53107129113 229.94348558329 204.80225773181 229.94348558329 204.80225773181 C229.94348558329 204.80225773181 211.29941778668 179.37852891825 211.29941778668 179.37852891825 C211.29941778668 179.37852891825 102.82484151549 179.37852891825 102.82484151549 179.37852891825 Z" style="stroke: rgba(102, 102, 102, 0.33); stroke-width: 1; stroke-linecap: butt; stroke-linejoin: miter; fill: rgb(235, 235, 235);"></path><path d="M102.82484151549 179.37852891825 C102.82484151549 179.37852891825 102.82484151549 228.53107129113 102.82484151549 228.53107129113 C102.82484151549 228.53107129113 211.29941778668 228.53107129113 211.29941778668 228.53107129113 C211.29941778668 228.53107129113 229.94348558329 204.80225773181 229.94348558329 204.80225773181 C229.94348558329 204.80225773181 211.29941778668 179.37852891825 211.29941778668 179.37852891825 C211.29941778668 179.37852891825 102.82484151549 179.37852891825 102.82484151549 179.37852891825 Z" fill="none" stroke="transparent" stroke-width="8"></path></g></svg>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:20px; left:-415px; margin-left: 10px; margin-bottom: 5px;  z-index: 777;">
+                                <svg version="1.2" preserveAspectRatio="none" class="ng-element" viewBox="0 0 127.11863708496094 49.15254211425781" style="overflow: visible; width: 137.119px; height: 49.1525px; opacity: 1; mix-blend-mode: normal; transform: rotate(0deg) translate(289px, 151.153px) rotate(0deg);"><defs></defs><g style="transform: translate(-102.825px, -179.379px);"><path d="M102.82484151549 179.37852891825 C102.82484151549 179.37852891825 102.82484151549 228.53107129113 102.82484151549 228.53107129113 C102.82484151549 228.53107129113 211.29941778668 228.53107129113 211.29941778668 228.53107129113 C211.29941778668 228.53107129113 229.94348558329 204.80225773181 229.94348558329 204.80225773181 C229.94348558329 204.80225773181 211.29941778668 179.37852891825 211.29941778668 179.37852891825 C211.29941778668 179.37852891825 102.82484151549 179.37852891825 102.82484151549 179.37852891825 Z" style="stroke: rgba(102, 102, 102, 0.33); stroke-width: 1; stroke-linecap: butt; stroke-linejoin: miter; fill: rgb(235, 235, 235);"></path><path d="M102.82484151549 179.37852891825 C102.82484151549 179.37852891825 102.82484151549 228.53107129113 102.82484151549 228.53107129113 C102.82484151549 228.53107129113 211.29941778668 228.53107129113 211.29941778668 228.53107129113 C211.29941778668 228.53107129113 229.94348558329 204.80225773181 229.94348558329 204.80225773181 C229.94348558329 204.80225773181 211.29941778668 179.37852891825 211.29941778668 179.37852891825 C211.29941778668 179.37852891825 102.82484151549 179.37852891825 102.82484151549 179.37852891825 Z" fill="none" stroke="transparent" stroke-width="8"></path></g></svg>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:20px; left:-610px;margin-left: 10px; margin-bottom: 5px;   z-index: 666;">
+                                <svg version="1.2" preserveAspectRatio="none" class="ng-element" viewBox="0 0 127.11863708496094 49.15254211425781" style="overflow: visible; width: 137.119px; height: 49.1525px; opacity: 1; mix-blend-mode: normal; transform: rotate(0deg) translate(388px, 151.153px) rotate(0deg);"><defs></defs><g style="transform: translate(-102.825px, -179.379px);"><path d="M102.82484151549 179.37852891825 C102.82484151549 179.37852891825 102.82484151549 228.53107129113 102.82484151549 228.53107129113 C102.82484151549 228.53107129113 211.29941778668 228.53107129113 211.29941778668 228.53107129113 C211.29941778668 228.53107129113 229.94348558329 204.80225773181 229.94348558329 204.80225773181 C229.94348558329 204.80225773181 211.29941778668 179.37852891825 211.29941778668 179.37852891825 C211.29941778668 179.37852891825 102.82484151549 179.37852891825 102.82484151549 179.37852891825 Z" style="stroke: rgba(102, 102, 102, 0.33); stroke-width: 1; stroke-linecap: butt; stroke-linejoin: miter; fill: rgb(235, 235, 235);"></path><path d="M102.82484151549 179.37852891825 C102.82484151549 179.37852891825 102.82484151549 228.53107129113 102.82484151549 228.53107129113 C102.82484151549 228.53107129113 211.29941778668 228.53107129113 211.29941778668 228.53107129113 C211.29941778668 228.53107129113 229.94348558329 204.80225773181 229.94348558329 204.80225773181 C229.94348558329 204.80225773181 211.29941778668 179.37852891825 211.29941778668 179.37852891825 C211.29941778668 179.37852891825 102.82484151549 179.37852891825 102.82484151549 179.37852891825 Z" fill="none" stroke="transparent" stroke-width="8"></path></g></svg>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:20px; left:-690px;margin-left: 10px; margin-bottom: 5px;   z-index: 555;">
+                                <svg version="1.2" preserveAspectRatio="none" class="ng-element" viewBox="0 0 127.11863708496094 49.15254211425781" style="overflow: visible; width: 137.119px; height: 49.1525px; opacity: 1; mix-blend-mode: normal; transform: rotate(0deg) translate(388px, 151.153px) rotate(0deg);"><defs></defs><g style="transform: translate(-102.825px, -179.379px);"><path d="M102.82484151549 179.37852891825 C102.82484151549 179.37852891825 102.82484151549 228.53107129113 102.82484151549 228.53107129113 C102.82484151549 228.53107129113 211.29941778668 228.53107129113 211.29941778668 228.53107129113 C211.29941778668 228.53107129113 229.94348558329 204.80225773181 229.94348558329 204.80225773181 C229.94348558329 204.80225773181 211.29941778668 179.37852891825 211.29941778668 179.37852891825 C211.29941778668 179.37852891825 102.82484151549 179.37852891825 102.82484151549 179.37852891825 Z" style="stroke: rgba(102, 102, 102, 0.33); stroke-width: 1; stroke-linecap: butt; stroke-linejoin: miter; fill: rgb(235, 235, 235);"></path><path d="M102.82484151549 179.37852891825 C102.82484151549 179.37852891825 102.82484151549 228.53107129113 102.82484151549 228.53107129113 C102.82484151549 228.53107129113 211.29941778668 228.53107129113 211.29941778668 228.53107129113 C211.29941778668 228.53107129113 229.94348558329 204.80225773181 229.94348558329 204.80225773181 C229.94348558329 204.80225773181 211.29941778668 179.37852891825 211.29941778668 179.37852891825 C211.29941778668 179.37852891825 102.82484151549 179.37852891825 102.82484151549 179.37852891825 Z" fill="none" stroke="transparent" stroke-width="8"></path></g></svg>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:-28.9px;left:-1030px;margin-left: 15px;margin-bottom: 5px;   z-index: 444;">
+                                <svg version="1.2" preserveAspectRatio="none" class="ng-element" viewBox="0 0 138.11863708496 49.152542114258" style="overflow: visible; width: 148.119px; height: 49.1525px; opacity: 1; mix-blend-mode: normal; transform: rotate(0deg) translate(610.39px, 200.153px) rotate(180deg);"><defs></defs><g style="transform: translate(-111.731px, -179.379px);"><path d="M111.73093015069 179.37852891825 C111.73093015069 179.37852891825 111.73093015069 228.53107129113 111.73093015069 228.53107129113 C111.73093015069 228.53107129113 229.6009421619 228.53107129113 229.6009421619 228.53107129113 C229.6009421619 228.53107129113 249.85985047633 204.80225773181 249.85985047633 204.80225773181 C249.85985047633 204.80225773181 229.6009421619 179.37852891825 229.6009421619 179.37852891825 C229.6009421619 179.37852891825 111.73093015069 179.37852891825 111.73093015069 179.37852891825 Z" style="stroke: rgba(102, 102, 102, 0.33); stroke-width: 1; stroke-linecap: butt; stroke-linejoin: miter; fill: rgb(235, 235, 235);"></path><path d="M111.73093015069 179.37852891825 C111.73093015069 179.37852891825 111.73093015069 228.53107129113 111.73093015069 228.53107129113 C111.73093015069 228.53107129113 229.6009421619 228.53107129113 229.6009421619 228.53107129113 C229.6009421619 228.53107129113 249.85985047633 204.80225773181 249.85985047633 204.80225773181 C249.85985047633 204.80225773181 229.6009421619 179.37852891825 229.6009421619 179.37852891825 C229.6009421619 179.37852891825 111.73093015069 179.37852891825 111.73093015069 179.37852891825 Z" fill="none" stroke="transparent" stroke-width="8"></path></g></svg>
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:129px; left:-100px;margin-left: 10px; margin-bottom: 5px; margin-top: 20px; min-height: 90px;">
+
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+
+                    <!--row 2  -->
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:-155px;  left:-55px; margin-left: 10px; z-index: 999;">
+                                <div id="TextElement6d892a2e229840518080563c08130767" class="ng-element el-text-2 empty-line-hack font-S-Verdana-n4" data-id="c2f83c9bdb3b4f19b0908d5cd78b582c" style="opacity: 1;  mix-blend-mode: normal; color: rgb(255, 255, 255); font-size: 32px; font-weight: normal; font-style: normal; text-decoration: none; text-align: center; width: 48px; height: 38px; transform: rotate(0deg) translate(88px, 156px) rotate(0deg);"><p>1</p></div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:-155px; left:-230px; margin-left:10px; margin-bottom: 5px;   z-index: 888;">
+                                <div id="TextElement2e48d2950eee4de18045cbcb548f702e" class="ng-element el-text-2 empty-line-hack font-S-Verdana-n4" data-id="f5ee8cd3745a4e00be3461cc64c7ac1d" style="opacity: 1; mix-blend-mode: normal; color: rgba(0, 0, 0, 0.33); font-size: 32px; font-weight: normal; font-style: normal; text-decoration: none; text-align: center; width: 48px; height: 38px; transform: rotate(0deg) translate(201px, 155px) rotate(0deg);"><p>2</p></div>
+
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:-155px; left:-410px; margin-left: 10px; margin-bottom: 5px;  z-index: 777;">
+                                <div id="TextElement1e97617741f44bf8881b6e0f6a74fdbf" class="ng-element el-text-2 empty-line-hack font-S-Verdana-n4" data-id="e1888a82538041efb5af409785d46369" style="opacity: 1; mix-blend-mode: normal; color: rgba(0, 0, 0, 0.33); font-size: 32px; font-weight: normal; font-style: normal; text-decoration: none; text-align: center; width: 48px; height: 38px; transform: rotate(0deg) translate(300px, 155px) rotate(0deg);"><p>3</p></div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:-155px; left:-595px;margin-left: 10px; margin-bottom: 5px;  z-index: 666;">
+                                <div id="TextElement9e4766e8944e491b8b55cabdeaadc09f" class="ng-element el-text-2 empty-line-hack font-S-Verdana-n4" data-id="1b9b5f60443240f9898e822be84cfd58" style="opacity: 1; mix-blend-mode: normal; color: rgba(0, 0, 0, 0.33); font-size: 32px; font-weight: normal; font-style: normal; text-decoration: none; text-align: center; width: 48px; height: 38px; transform: rotate(0deg) translate(406px, 153px) rotate(0deg);"><p>4</p></div>
+
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:-155px;left:-790px;margin-left: 10px;margin-bottom: 5px;  min-height: 90px; z-index: 555;">
+                                <div id="TextElement3a2c0bfb53c449b4aab3ad8c138024c2" class="ng-element el-text-2 empty-line-hack font-S-Verdana-n4" data-id="717f1208d4a14a82accc0d637d0da19e" style="opacity: 1; mix-blend-mode: normal; color: rgba(0, 0, 0, 0.33); font-size: 32px; font-weight: normal; font-style: normal; text-decoration: none; text-align: center; width: 48px; height: 38px; transform: rotate(0deg) translate(503px, 155px) rotate(0deg);"><p>5</p></div>
+
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:-155px;left:-870px;margin-left: 10px;margin-bottom: 5px;  min-height: 90px; z-index: 555;">
+                                <div id="TextElement3a2c0bfb53c449b4aab3ad8c138024c" class="ng-element el-text-2 empty-line-hack font-S-Verdana-n4" data-id="717f1208d4a14a82accc0d637d0da19e" style="opacity: 1; mix-blend-mode: normal; color: rgba(0, 0, 0, 0.33); font-size: 32px; font-weight: normal; font-style: normal; text-decoration: none; text-align: center; width: 48px; height: 38px; transform: rotate(0deg) translate(503px, 155px) rotate(0deg);"><p>6</p></div>
+
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:520px; left:-100px;margin-left: 10px; margin-bottom: 5px; margin-top: 20px; min-height: 90px;">
+
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+
+
+                    <!--row 3 -->
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:-365px;  left:-55px; margin-left: 10px; z-index: 999;">
+                                <div id="TextElementc8fd3c78493d4522a4c00459ee1f4332" class="ng-element el-text-2 empty-line-hack font-S-Verdana-n4" data-id="6fff875b409246a6a2ed90b9e5fe1988" style="opacity: 1; mix-blend-mode: normal; color: rgb(255, 255, 255); font-size: 12px; font-weight: normal; font-style: normal; text-decoration: none; text-align: center; width: 80px; height: 29px; transform: rotate(0deg) translate(122px, 162px) rotate(0deg);"><p>Your <br>Details</p></div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:-365px; left:-225px; margin-left:10px; margin-bottom: 5px;   z-index: 888;">
+                                <div id="TextElement3c74801059a94f70bc4a7f406f454696" class="ng-element el-text-2 empty-line-hack font-S-Verdana-n4" data-id="c2e6e747f8cd4a7a84377e743b291255" style="opacity: 1; mix-blend-mode: normal; color: rgba(0, 0, 0, 0.33); font-size: 12px; font-weight: normal; font-style: normal; text-decoration: none; text-align: center; width: 99px; height: 29px; transform: rotate(0deg) translate(218px, 161px) rotate(0deg);"><p>Trademark <br> Details</p></div>
+
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:-365px; left:-410px; margin-left: 10px; margin-bottom: 5px;  z-index: 777;">
+                                <div id="TextElementfe88a6a2b32a49a8b751e85cf74929bc" class="ng-element el-text-2 empty-line-hack font-S-Verdana-n4" data-id="b2ad90d0f29c4e6db90beceb50fe1930" style="opacity: 1; mix-blend-mode: normal; color: rgba(0, 0, 0, 0.33); font-size: 12px; font-weight: normal; font-style: normal; text-decoration: none; text-align: center; width: 99px; height: 29px; transform: rotate(0deg) translate(318px, 161px) rotate(0deg);"><p>Goods and <br> Services</p></div>
+
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:-365px; left:-600px;margin-left: 10px; margin-bottom: 5px;  z-index: 666;">
+
+                                <div id="TextElement8bfded2c2ca14c40a45c55c1394608e1" class="ng-element el-text-2 empty-line-hack font-S-Verdana-n4" data-id="c6270536a48c457a8cd331052f6c2976" style="opacity: 1; mix-blend-mode: normal; color: rgba(0, 0, 0, 0.33); font-size: 12px; font-weight: normal; font-style: normal; text-decoration: none; text-align: center; width: 99px; height: 14px; transform: rotate(0deg) translate(422px, 169px) rotate(0deg);"><p>Basis</p></div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:-365px;left:-790px;margin-left: 10px;margin-bottom: 5px;  min-height: 90px; z-index: 555;">
+                                <div id="TextElemented1ccf853e144beab34a590ec3655ef" class="ng-element el-text-2 empty-line-hack font-S-Verdana-n4" data-id="e862a731ed0348c7ae94bd0dbd8f4920" style="opacity: 1; mix-blend-mode: normal; color: rgba(0, 0, 0, 0.33); font-size: 12px; font-weight: normal; font-style: normal; text-decoration: none; text-align: center; width: 99px; height: 29px; transform: rotate(0deg) translate(521px, 160px) rotate(0deg);"><p>Additional<br>Information</p></div>
+
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:-365px;left:-875px;margin-left: 10px;margin-bottom: 5px;  min-height: 90px; z-index: 555;">
+                                <div id="TextElemented1ccf853e144beab34a590ec3655eff" class="ng-element el-text-2 empty-line-hack font-S-Verdana-n4" data-id="e862a731ed0348c7ae94bd0dbd8f4920" style="opacity: 1; mix-blend-mode: normal; color: rgba(0, 0, 0, 0.33); font-size: 12px; font-weight: normal; font-style: normal; text-decoration: none; text-align: center; width: 99px; height: 29px; transform: rotate(0deg) translate(521px, 160px) rotate(0deg);"><p>Confirm<br> and Pay</p></div>
+
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:520px; left:-100px;margin-left: 10px; margin-bottom: 5px; margin-top: 20px; min-height: 90px;">
+
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+
+                </div>  <!-- end of banner -->
+
+            </div>
+
+            <!--end of main banner section -->
+
+            <div class="row" style="position: relative; top: -450px;">
+                <div class="col-md-6">
+                    <div style="position: relative; top:-10px; margin-left: 35px; margin-bottom: 5px; margin-top: 10px; min-height: 90px;">
+                        <h1><b style="opacity: 1; mix-blend-mode: normal; color: rgb(0, 0, 0); font-size: 36px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; text-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1.16667px; width: 597px; height: 41px; transform: rotate(0deg) translate(37px, 138px) rotate(0deg);">Attorney Information</b></h1>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="banner-message"  style="position: relative;top:-55px; right:-320px; margin-left: 40px; margin-bottom: 50px; ">
+
+                        <p>
+                            <select class="btn" style="background-color: rgb(235, 235, 235); min-width: 245px; color: black; min-height: 50px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px; max-width: 222px; " type="" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2"><i style="position: relative; left: -20px; top:10px;" class="material-icons">expand_more</i><b>&nbsp;&nbsp;&nbsp; Total Fee&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  $225</b>
+                                <option disabled selected><b>Total Fee      $225</b></option>
+                                <option disabled><b>Basic Fee      $225</b></option>
+                                <option disabled><b>Extra Class Fee  $0</b></option>
+                                <option disabled><b>Total Classes      1</b></option>
+                            </select>
+                        <hr style="height:3px;   position:relative; top:-20px;  left:0px; background-color: #004c97;margin-bottom: 0px;border-bottom-left-radius: 2px;border-bottom-right-radius: 2px;border-top-left-radius: 2px;border-top-right-radius: 2px;">
+                        </p>
+
+
+                    </div>
+                </div>
+            </div>  <!-- end of main content row 1 -->
+
+
+
+            <div class="row" style="position: relative; top:-800px; left:-40px;">
+                <div id="TextElement6e71467aaa974416a5a471de8eefac7f" class="ng-element el-text-2 empty-line-hack font-S-Arial-n4" data-id="b590058300be4c13b83464e1b38543e5" style="opacity: 1; mix-blend-mode: normal; font-variant: normal; color: rgb(0, 0, 0); font-size: 18px; font-weight: bold; font-style: normal; text-decoration: none; text-align: left; width: 466px; height: 21px; transform: rotate(0deg) translate(154px, 325px) rotate(0deg);"><p>Is an Attorney filing this application?</p></div>
+
+            </div>
+
+            <div th:if="${baseTrademarkApplication.isAttorneySet() == false}">
+
+                <div class="row" style="position: relative; top:-430px; right:-120px; z-index:200;">
+                    <div class="col-sm-1">
+
+                        <input type="radio" name="isAttorneyFiling" id="attorneyFilingTrue">
+
+                    </div>
+                    <div class="col-sm-2" style="position: relative; left:-75px;">
+                        Yes
+                    </div>
+
+                </div>
+                <div class="row" style="position: relative; top:-430px; right:-120px;">
+                    <div class="col-sm-1">
+
+                        <input type="radio" name="isAttorneyFiling" id="attorneyFillingFalse">
+
+                    </div>
+                    <div class="col-sm-2" style="position: relative; left:-75px;">
+                        No
+                    </div>
+                </div>
+
+            </div>
+            <div th:if="${baseTrademarkApplication.isAttorneySet() == true}">
+
+                <div class="row" style="position: relative; top:-130px; right:-120px; z-index:200;" >
+                    <div class="row" style="position: relative; top:-300px; right:-120px; ">
+                        <div class="col-sm-1">
+
+                            <input type="radio"   th:if="${baseTrademarkApplication.isAttorneyFiling() == true}" name="isAttorneyFiling" id="attorneyFilingTrue" checked>
+                            <input type="radio"   th:if="${baseTrademarkApplication.isAttorneyFiling() == false}" name="isAttorneyFiling" id="attorneyFilingTrue" >
+
+                        </div>
+                        <div class="col-sm-2" style="position: relative; left:-75px;">
+                            Yes
+                        </div>
+
+                    </div>
+                    <div class="row" style="position: relative; top:-300px; right:-120px;">
+                        <div class="col-sm-1">
+
+                            <input type="radio" th:if="${baseTrademarkApplication.isAttorneyFiling() == true}" name="isAttorneyFiling" id="attorneyFillingFalse">
+                            <input type="radio" th:if="${baseTrademarkApplication.isAttorneyFiling() == false}" name="isAttorneyFiling" id="attorneyFillingFalse" checked>
+
+                        </div>
+                        <div class="col-sm-2" style="position: relative; left:-75px;">
+                            No
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="row" style="position: relative; top:-430px; right:-220px;">
+                <div class="col-sm-6">
+                    <div class="form-group set-lawyer-options-valueFieldMsgArea" style="display:none; position: relative; left:30%;">
+                        <b><span></span></b>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row" id="contacts-ui" style=" display:none; position: relative; top:-390px; right:-120px;">
+
+                <div class="row">
+
+                    <div class="col-sm-12">
+
+                        <div class="card-body">
+
+                            <div class="col-sm-6">
+
+                                <div class="card-body">
+                                    <div class="toolbar" style="position: relative; left:10px;" cellpadding="5" >
+                                        <!--        Here you can write extra buttons/actions for the toolbar      -->
+                                    </div>
+
+                                    <div class="contacts-Table" style="border: rgb(235,235,235);  border-width: 1px; border: solid; padding: 20px; min-height: 420px; max-height: 420px;">
+                                        <table id="contacts" class="table-no-bordered table-hover" cellpadding="3" style="min-width:530px;margin-right: 5px; margin-top: 10px; margin-bottom: 10px; margin-left: 8px;"></table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3" style="position: relative; left:-20px;">
+                                <div class="card-body">
+                                    <div class="toolbar" style="position: relative; left:10px;" cellpadding="5" >
+                                        <!--        Here you can write extra buttons/actions for the toolbar      -->
+                                    </div>
+
+                                    <div class="selected-Attorneys-Table" style="border: rgb(235,235,235); border-width: 1px; border: solid; padding: 20px; min-height: 420px; max-height: 420px;">
+                                        <table id="selected-attorneys" class="table-no-bordered table-hover" cellpadding="3" style="border-spacing: 0 3px; margin-right: 5px; margin-top: 10px; margin-bottom: 10px; margin-left: 8px;"></table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <div class="row" style="position: relative; top:-10px; right:-8px; ">
+                    <div class="col-md-9">
+                        <div class="card-footer" style="background-color: rgb(235,235,235);  border: rgb(235,235,235);  border-width: 1px; border: solid;  min-height: 100px; max-width: 852px; ">
+                            <div class="row" style="position: relative; ">
+                                <div class="col-sm-4" style="position: relative; right: -10px;">
+                                    <span class="btn-sm btn" data-target="#addNewAttorneyModal" data-toggle="modal"  style=" padding:5px; min-width:150px; color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><b>Add New Attorney</b></span>
+                                </div>
+                                <div class="col-sm-2">
+                                </div>
+                                <div class="col-sm-2">
+                                </div>
+                                <div class="col-sm-2">
+                                </div>
+                                <div class="col-sm-2"  style="position: relative; right: -15px;">
+                                    <span class="btn-sm btn" data-target="#addNewAttorneyModal" data-toggle="modal"  style=" padding:5px; min-width:100px; color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><b>Next</b></span>
+
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row navigation-row" style="position: relative; top:-200px; right:-50px; ">
+    <div class="col-sm-2">
+        <span class="btn btn-md prev-button"  style=" border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; background-color: rgb(55, 69, 120);  color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center;    font-size: 14px; font-style: normal; width: 120px; height: 30px;"><a id="prevLink" style="color: white; text-decoration: none;" href="">Previous</a></span>
+    </div>
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-2" style="position:relative; left:-30px;">
+            <span class="btn btn-md next-button"  style=" border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; background-color: rgb(128,128,128); background-image: none; color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center;   font-size: 14px; font-style: normal; width: 120px; height: 30px;"><a id="nextLink" style="color: white; text-decoration: none;" >Next</a><span>
+
+    </div>
+
+
+
+</div>
+
+
+
+</div>
+<!-- end of main content-->
+
+
+
+
+
+
+
+
+
+
+<!-- start add new Attorney Modal -->
+<div id="addNewAttorneyModal" class="modal fade modal-lg" role="dialog"  tabindex="-1" style="max-width: 1200px;">
+    <div class="modal-dialog" style="min-width: 1200px;">
+
+        <!-- Modal content-->
+        <div class="modal-content"  style="max-width: 1200px;">
+            <div class="modal-header" style="max-width: 1200px;background-color: rgb(217, 217, 214);">
+                <!-- will enable this once required fields are entered  data-dismiss="modal" -->
+                <button type="button" id="modal-header-close"  data-dismiss="modal" class="close" style="position: relative; left:-30%;">&times;</button>
+                <h4 class="modal-title"><b>e-File Add New Attorney</b></h4>
+
+            </div>
+            <div class="modal-body">
+                <div class="content" style="display: none; background-color: white;" >
+                    <div class="container-fluid"  >
+
+                        <div class="col-sm-16" >
+                            <div class="form-container base-page" style="position: relative; top:20px;">
+
+
+
+
+
+
+
+                                <div class="card-text">
+                                    <h5 class="card-title"><b>Attorney Information</b></h5>
+                                </div>
+                                <hr style="height:3px; position:relative; top:-20px; left:-11.55%; max-width: 80.3%">
+
+
+                                <div class="row" style="margin-left:15px;">
+
+                                    <div class="col-sm-4">
+
+                                        <div class="form-group">
+                                            <label class="small" style="margin-top: 10px;"><b>Title</b></label>
+                                            <input type="text"   id="title" placeholder="" class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  >
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row" style="margin-left:15px;">
+
+                                    <div class="col-sm-4">
+
+                                        <div class="form-group">
+                                            <label class="small" style="margin-top: 10px;"><b>First Name</b></label>
+                                            <input type="text"   id="attorney-first-name" placeholder="first name" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  >
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-1">
+                                        <div class="city-animation" style="display: none; position: relative; top:20px;">
+                                            <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-sm-1">
+
+                                    </div>
+
+                                    <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                                        <div class="form-group attorney-first-nameFieldMsgArea" style="position: relative; left:-15%;">
+                                            <b><span></span></b>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row" style="margin-left:15px;">
+
+                                    <div class="col-sm-4">
+
+                                        <div class="form-group">
+                                            <label class="small" style="margin-top: 10px;"><b>Middle Name</b></label>
+                                            <input type="text"   id="Attorney Middle Name" placeholder="" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  >
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row" style="margin-left:15px;">
+
+                                    <div class="col-sm-4">
+
+                                        <div class="form-group">
+                                            <label class="small" style="margin-top: 10px;"><b>Last Name</b></label>
+                                            <input type="text"   id="attorney-last-name" placeholder="Attorney Last Name" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  >
+
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <div class="city-animation" style="display: none; position: relative; top:20px;">
+                                            <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-sm-1">
+
+                                    </div>
+
+                                    <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                                        <div class="form-group attorney-last-nameFieldMsgArea" style="position: relative; left:-15%;">
+                                            <b><span></span></b>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row" style="margin-left:15px;">
+
+                                    <div class="col-sm-4">
+
+                                        <div class="form-group">
+                                            <label class="small" style="margin-top: 10px;"><b>Suffix</b></label>
+                                            <select  class="form-control" name="suffix"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                                <option value="mr"><b>Mr</b></option>
+                                                <option value="mrs"><b>Mrs</b></option>
+                                                <option value="ms"><b>ms</b></option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row" style="margin-left:15px;">
+
+                                    <div class="col-sm-4">
+
+                                        <div class="form-group">
+                                            <label class="small" style="margin-top: 10px;"><b>Firm</b></label>
+                                            <input type="text"   id="attorney-lawfirm-name" placeholder="Law Firm Name" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  >
+
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <div class="city-animation" style="display: none; position: relative; top:20px;">
+                                            <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-sm-1">
+
+                                    </div>
+
+                                    <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                                        <div class="form-group attorney-lawfirm-nameFieldMsgArea" style="position: relative; left:-15%;">
+                                            <b><span></span></b>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+                                <div class="card-text">
+
+                                    <h5 class="card-title"><b style="color: rgb(56, 56, 56); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">Attorney Address Information</b></h5>
+                                </div>
+                                <hr style="height:3px; position:relative; top:-20px; left:-11.55%; max-width: 80.1%">
+
+                                <div class="row" style="margin-left:15px;">
+
+                                    <div class="col-sm-4">
+
+                                        <div class="form-group">
+                                            <label class="small" style="margin-top: 10px;"><b>Country/US Territory</b></label>
+                                            <select class="form-control custom-select" id="attorney-country" name="country"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                                <option value="none"></option>
+                                                <option value="X1">UNITED STATES OF AMERICA</option>
+                                                <option value="B2">AFGHANISTAN</option>
+                                                <option value="B3">ALBANIA</option>
+                                                <option value="B4">ALGERIA</option>
+                                                <option value="B5">AMERICAN SAMOA</option>
+                                                <option value="B6">ANDORRA</option>
+                                                <option value="B7">ANGOLA</option>
+                                                <option value="1A">ANGUILLA</option>
+                                                <option value="B8">ANTARCTICA</option>
+                                                <option value="B9">ANTIGUA AND BARBUDA</option>
+                                                <option value="C1">ARGENTINA</option>
+                                                <option value="1B">ARMENIA</option>
+                                                <option value="1C">ARUBA</option>
+                                                <option value="C3">AUSTRALIA</option>
+                                                <option value="C4">AUSTRIA</option>
+                                                <option value="1D">AZERBAIJAN</option>
+                                                <option value="C5">BAHAMAS</option>
+                                                <option value="C6">BAHRAIN</option>
+                                                <option value="C7">BANGLADESH</option>
+                                                <option value="C8">BARBADOS</option>
+                                                <option value="1F">BELARUS</option>
+                                                <option value="C9">BELGIUM</option>
+                                                <option value="D1">BELIZE</option>
+                                                <option value="G6">BENIN</option>
+                                                <option value="D0">BERMUDA</option>
+                                                <option value="D2">BHUTAN</option>
+                                                <option value="D3">BOLIVIA</option>
+                                                <option value="1E">BOSNIA AND HERZEGOVINA</option>
+                                                <option value="B1">BOTSWANA</option>
+                                                <option value="D4">BOUVET ISLAND</option>
+                                                <option value="D5">BRAZIL</option>
+                                                <option value="D6">BRITISH INDIAN OCEAN TERRITORY</option>
+                                                <option value="D9">BRUNEI DARUSSALAM</option>
+                                                <option value="E0">BULGARIA</option>
+                                                <option value="X2">BURKINA FASO</option>
+                                                <option value="E2">BURUNDI</option>
+                                                <option value="E3">CAMBODIA</option>
+                                                <option value="E4">CAMEROON</option>
+                                                <option value="E8">CAPE VERDE</option>
+                                                <option value="E9">CAYMAN ISLANDS</option>
+                                                <option value="F0">CENTRAL AFRICAN REPUBLIC</option>
+                                                <option value="F2">CHAD</option>
+                                                <option value="F3">CHILE</option>
+                                                <option value="F4">CHINA</option>
+                                                <option value="F6">CHRISTMAS ISLAND</option>
+                                                <option value="F7">COCOS (KEELING) ISLANDS</option>
+                                                <option value="F8">COLOMBIA</option>
+                                                <option value="F9">COMOROS</option>
+                                                <option value="G0">CONGO</option>
+                                                <option value="Y3">CONGO, THE DEMOCRATIC REPUBLIC OF THE</option>
+                                                <option value="G1">COOK ISLANDS</option>
+                                                <option value="G2">COSTA RICA</option>
+                                                <option value="L7">COTE D'IVOIRE</option>
+                                                <option value="1M">CROATIA</option>
+                                                <option value="G3">CUBA</option>
+                                                <option value="G4">CYPRUS</option>
+                                                <option value="2N">CZECH REPUBLIC</option>
+                                                <option value="G7">DENMARK</option>
+                                                <option value="1G">DJIBOUTI</option>
+                                                <option value="G9">DOMINICA</option>
+                                                <option value="G8">DOMINICAN REPUBLIC</option>
+                                                <option value="2F">EAST TIMOR</option>
+                                                <option value="H1">ECUADOR</option>
+                                                <option value="H2">EGYPT</option>
+                                                <option value="H3">EL SALVADOR</option>
+                                                <option value="H4">EQUATORIAL GUINEA</option>
+                                                <option value="1J">ERITREA</option>
+                                                <option value="1H">ESTONIA</option>
+                                                <option value="H5">ETHIOPIA</option>
+                                                <option value="H7">FALKLAND ISLANDS (MALVINAS)</option>
+                                                <option value="H6">FAROE ISLANDS</option>
+                                                <option value="H8">FIJI</option>
+                                                <option value="H9">FINLAND</option>
+                                                <option value="I0">FRANCE</option>
+                                                <option value="I3">FRENCH GUIANA</option>
+                                                <option value="I4">FRENCH POLYNESIA</option>
+                                                <option value="2C">FRENCH SOUTHERN TERRITORIES</option>
+                                                <option value="I5">GABON</option>
+                                                <option value="I6">GAMBIA</option>
+                                                <option value="2Q">GEORGIA</option>
+                                                <option value="2M">GERMANY</option>
+                                                <option value="J0">GHANA</option>
+                                                <option value="J1">GIBRALTAR</option>
+                                                <option value="J3">GREECE</option>
+                                                <option value="J4">GREENLAND</option>
+                                                <option value="J5">GRENADA</option>
+                                                <option value="J6">GUADELOUPE</option>
+                                                <option value="GU">GUAM</option>
+                                                <option value="J8">GUATEMALA</option>
+                                                <option value="J9">GUINEA</option>
+                                                <option value="S0">GUINEA-BISSAU</option>
+                                                <option value="K0">GUYANA</option>
+                                                <option value="K1">HAITI</option>
+                                                <option value="K4">HEARD ISLAND AND MCDONALD ISLANDS</option>
+                                                <option value="X4">HOLY SEE (VATICAN CITY STATE)</option>
+                                                <option value="K2">HONDURAS</option>
+                                                <option value="K3">HONG KONG</option>
+                                                <option value="K5">HUNGARY</option>
+                                                <option value="K6">ICELAND</option>
+                                                <option value="K7">INDIA</option>
+                                                <option value="K8">INDONESIA</option>
+                                                <option value="K9">IRAN, ISLAMIC REPUBLIC OF</option>
+                                                <option value="L0">IRAQ</option>
+                                                <option value="L2">IRELAND</option>
+                                                <option value="L3">ISRAEL</option>
+                                                <option value="L6">ITALY</option>
+                                                <option value="L8">JAMAICA</option>
+                                                <option value="M0">JAPAN</option>
+                                                <option value="M2">JORDAN</option>
+                                                <option value="1P">KAZAKSTAN</option>
+                                                <option value="M3">KENYA</option>
+                                                <option value="J2">KIRIBATI</option>
+                                                <option value="M4">KOREA, DEMOCRATIC PEOPLE'S REPUBLIC OF</option>
+                                                <option value="M5">KOREA, REPUBLIC OF</option>
+                                                <option value="M6">KUWAIT</option>
+                                                <option value="1N">KYRGYZSTAN</option>
+                                                <option value="M7">LAO PEOPLE'S DEMOCRATIC REPUBLIC</option>
+                                                <option value="1R">LATVIA</option>
+                                                <option value="M8">LEBANON</option>
+                                                <option value="M9">LESOTHO</option>
+                                                <option value="N0">LIBERIA</option>
+                                                <option value="N1">LIBYAN ARAB JAMAHIRIYA</option>
+                                                <option value="N2">LIECHTENSTEIN</option>
+                                                <option value="1Q">LITHUANIA</option>
+                                                <option value="N4">LUXEMBOURG</option>
+                                                <option value="N5">MACAU</option>
+                                                <option value="1U">MACEDONIA, FORMER YUGOSLAV REP. OF</option>
+                                                <option value="N6">MADAGASCAR</option>
+                                                <option value="N7">MALAWI</option>
+                                                <option value="N8">MALAYSIA</option>
+                                                <option value="N9">MALDIVES</option>
+                                                <option value="O0">MALI</option>
+                                                <option value="O1">MALTA</option>
+                                                <option value="1T">MARSHALL ISLANDS</option>
+                                                <option value="O2">MARTINIQUE</option>
+                                                <option value="O3">MAURITANIA</option>
+                                                <option value="O4">MAURITIUS</option>
+                                                <option value="2P">MAYOTTE</option>
+                                                <option value="O5">MEXICO</option>
+                                                <option value="1K">MICRONESIA, FEDERATED STATES OF</option>
+                                                <option value="1S">MOLDOVA, REPUBLIC OF</option>
+                                                <option value="O9">MONACO</option>
+                                                <option value="P0">MONGOLIA</option>
+                                                <option value="P1">MONTSERRAT</option>
+                                                <option value="P2">MOROCCO</option>
+                                                <option value="P3">MOZAMBIQUE</option>
+                                                <option value="E1">MYANMAR</option>
+                                                <option value="T6">NAMIBIA</option>
+                                                <option value="P5">NAURU</option>
+                                                <option value="P6">NEPAL</option>
+                                                <option value="P7">NETHERLANDS</option>
+                                                <option value="P8">NETHERLANDS ANTILLES</option>
+                                                <option value="1W">NEW CALEDONIA</option>
+                                                <option value="Q2">NEW ZEALAND</option>
+                                                <option value="Q3">NICARAGUA</option>
+                                                <option value="Q4">NIGER</option>
+                                                <option value="Q5">NIGERIA</option>
+                                                <option value="Q6">NIUE</option>
+                                                <option value="Q7">NORFOLK ISLAND</option>
+                                                <option value="1V">NORTHERN MARIANA ISLANDS</option>
+                                                <option value="Q8">NORWAY</option>
+                                                <option value="P4">OMAN</option>
+                                                <option value="R0">PAKISTAN</option>
+                                                <option value="1Y">PALAU</option>
+                                                <option value="1X">PALESTINIAN TERRITORY, OCCUPIED</option>
+                                                <option value="R1">PANAMA</option>
+                                                <option value="R2">PAPUA NEW GUINEA</option>
+                                                <option value="R4">PARAGUAY</option>
+                                                <option value="R5">PERU</option>
+                                                <option value="R6">PHILIPPINES</option>
+                                                <option value="R8">PITCAIRN</option>
+                                                <option value="R9">POLAND</option>
+                                                <option value="S1">PORTUGAL</option>
+                                                <option value="PR">PUERTO RICO</option>
+                                                <option value="S3">QATAR</option>
+                                                <option value="S4">REUNION</option>
+                                                <option value="S5">ROMANIA</option>
+                                                <option value="1Z">RUSSIAN FEDERATION</option>
+                                                <option value="S6">RWANDA</option>
+                                                <option value="U8">SAINT HELENA</option>
+                                                <option value="U7">SAINT KITTS AND NEVIS</option>
+                                                <option value="U9">SAINT LUCIA</option>
+                                                <option value="V0">SAINT PIERRE AND MIQUELON</option>
+                                                <option value="V1">SAINT VINCENT AND THE GRENADINES</option>
+                                                <option value="Y0">SAMOA</option>
+                                                <option value="S8">SAN MARINO</option>
+                                                <option value="S9">SAO TOME AND PRINCIPE</option>
+                                                <option value="T0">SAUDI ARABIA</option>
+                                                <option value="T1">SENEGAL</option>
+                                                <option value="T2">SEYCHELLES </option>
+                                                <option value="T8">SIERRA LEONE</option>
+                                                <option value="U0">SINGAPORE</option>
+                                                <option value="2B">SLOVAKIA</option>
+                                                <option value="2A">SLOVENIA</option>
+                                                <option value="D7">SOLOMON ISLANDS</option>
+                                                <option value="U1">SOMALIA</option>
+                                                <option value="T3">SOUTH AFRICA</option>
+                                                <option value="1L">SOUTH GEORGIA/SO. SANDWICH ISLANDS</option>
+                                                <option value="U3">SPAIN</option>
+                                                <option value="F1">SRI LANKA</option>
+                                                <option value="V2">SUDAN</option>
+                                                <option value="V3">SURINAME</option>
+                                                <option value="L9">SVALBARD AND JAN MAYEN</option>
+                                                <option value="V6">SWAZILAND</option>
+                                                <option value="V7">SWEDEN</option>
+                                                <option value="V8">SWITZERLAND</option>
+                                                <option value="V9">SYRIAN ARAB REPUBLIC</option>
+                                                <option value="F5">TAIWAN</option>
+                                                <option value="2D">TAJIKISTAN</option>
+                                                <option value="W0">TANZANIA, UNITED REPUBLIC OF</option>
+                                                <option value="W1">THAILAND</option>
+                                                <option value="W2">TOGO</option>
+                                                <option value="W3">TOKELAU</option>
+                                                <option value="W4">TONGA</option>
+                                                <option value="W5">TRINIDAD AND TOBAGO</option>
+                                                <option value="W6">TUNISIA</option>
+                                                <option value="W8">TURKEY</option>
+                                                <option value="2E">TURKMENISTAN</option>
+                                                <option value="W7">TURKS AND CAICOS ISLANDS</option>
+                                                <option value="2G">TUVALU</option>
+                                                <option value="W9">UGANDA</option>
+                                                <option value="2H">UKRAINE</option>
+                                                <option value="C0">UNITED ARAB EMIRATES</option>
+                                                <option value="X0">UNITED KINGDOM</option>
+                                                <option value="2J">UNITED STATES MINOR OUTLYING ISLANDS</option>
+                                                <option value="X3">URUGUAY</option>
+                                                <option value="2K">UZBEKISTAN</option>
+                                                <option value="2L">VANUATU</option>
+                                                <option value="X5">VENEZUELA</option>
+                                                <option value="Q1">VIET NAM</option>
+                                                <option value="D8">VIRGIN ISLANDS, BRITISH</option>
+                                                <option value="VI">VIRGIN ISLANDS, U.S.</option>
+                                                <option value="X8">WALLIS AND FUTUNA</option>
+                                                <option value="U5">WESTERN SAHARA</option>
+                                                <option value="T7">YEMEN</option>
+                                                <option value="Y2">YUGOSLAVIA</option>
+                                                <option value="Y4">ZAMBIA</option>
+                                                <option value="Y5">ZIMBABWE</option>
+                                                <option value="XX">UNKNOWN</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-1">
+                                        <div class="country-animation" style="display: none; position: relative; top:20px;">
+                                            <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-sm-1">
+
+                                    </div>
+
+                                    <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                                        <div class="form-group attorney-countryFieldMsgArea" style="position: relative; left:-15%;">
+                                            <b><span></span></b>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row" style="margin-left:15px;">
+
+                                    <div class="col-sm-4">
+
+                                        <div class="form-group">
+                                            <label class="small" style="margin-top: 10px;"><b>Address1 </b></label>
+                                            <input id="attorney-address1" type="text" name="address" class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-1">
+                                        <div class="address-animation" style="display: none; position: relative; top:20px;">
+                                            <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-sm-1">
+
+                                    </div>
+
+                                    <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                                        <div class="form-group attorney-address1FieldMsgArea" style="position: relative; left:-15%;">
+                                            <b><span></span></b>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row" style="margin-left:15px;">
+
+                                    <div class="col-sm-4">
+
+                                        <div class="form-group">
+                                            <label class="small" style="margin-top: 10px;"><b>Address2</b></label>
+                                            <input type="text" name="address2" class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row" style="margin-left:15px;">
+
+                                    <div class="col-sm-4">
+
+                                        <div class="form-group">
+                                            <label class="small" style="margin-top: 10px;"><b>Address3</b></label>
+                                            <input type="text" name="address3" class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row" style="margin-left:15px;">
+
+                                    <div class="col-sm-4">
+
+                                        <div class="form-group">
+                                            <label class="small" style="margin-top: 10px;"><b>City </b></label>
+                                            <input type="text" id="attorney-city" name="City" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-1">
+                                        <div class="city-animation" style="display: none; position: relative; top:20px;">
+                                            <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-sm-1">
+
+                                    </div>
+
+                                    <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                                        <div class="form-group attorney-cityFieldMsgArea" style="position: relative; left:-15%;">
+                                            <b><span></span></b>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row" style="margin-left:15px;">
+
+                                    <div class="col-sm-4">
+
+                                        <div class="form-group">
+                                            <label class="small" style="margin-top: 10px;"><b>State </b></label>
+                                            <select  class="form-control custom-select" id="attorney-state"  name="attorney-state" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                                <option  value="none"></option>
+                                                <option  value="AL">Alabama</option>
+                                                <option  value="AK">Alaska</option>
+                                                <option value="AZ">Arizona</option>
+                                                <option value="AR">Arkansas</option>
+                                                <option value="CA">California</option>
+                                                <option value="CO">Colorado</option>
+                                                <option value="CT">Connecticut</option>
+                                                <option value="DE">Delaware</option>
+                                                <option value="DC">District of Columbia</option>
+                                                <option value="FL">Florida</option>
+                                                <option value="GA">Georgia</option>
+                                                <option value="HI">Hawaii</option>
+                                                <option value="ID">Idaho</option>
+                                                <option value="IL">Illinois</option>
+                                                <option value="IN">Indiana</option>
+                                                <option value="IA">Iowa</option>
+                                                <option value="KS">Kansas</option>
+                                                <option value="KY">Kentucky</option>
+                                                <option value="LA">Louisiana</option>
+                                                <option value="ME">Maine</option>
+                                                <option value="MD">Maryland</option>
+                                                <option value="MA">Massachusetts</option>
+                                                <option value="MI">Michigan</option>
+                                                <option value="MN">Minnesota</option>
+                                                <option value="MS">Mississippi</option>
+                                                <option value="MO">Missouri</option>
+                                                <option value="MT">Montana</option>
+                                                <option value="NE">Nebraska</option>
+                                                <option value="NV">Nevada</option>
+                                                <option value="NH">New Hampshire</option>
+                                                <option value="NJ">New Jersey</option>
+                                                <option value="NM">New Mexico</option>
+                                                <option value="NY">New York</option>
+                                                <option value="NC">North Carolina</option>
+                                                <option value="ND">North Dakota</option>
+                                                <option value="OH">Ohio</option>
+                                                <option value="OK">Oklahoma</option>
+                                                <option value="OR">Oregon</option>
+                                                <option value="PA">Pennsylvania</option>
+                                                <option value="RI">Rhode Island</option>
+                                                <option value="SC">South Carolina</option>
+                                                <option value="SD">South Dakota</option>
+                                                <option value="TN">Tennessee</option>
+                                                <option value="TX">Texas</option>
+                                                <option value="UT">Utah</option>
+                                                <option value="VT">Vermont</option>
+                                                <option value="VA">Virginia</option>
+                                                <option value="WA">Washington</option>
+                                                <option value="WV">West Virginia</option>
+                                                <option value="WI">Wisconsin</option>
+                                                <option value="WY">Wyoming</option>
+
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-1">
+                                        <div class="state-animation" style="display: none; position: relative; top:20px;">
+                                            <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-sm-1">
+
+                                    </div>
+
+                                    <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                                        <div class="form-group attorney-stateFieldMsgArea" style="position: relative; left:-15%;">
+                                            <b><span></span></b>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="row" style="margin-left:15px;">
+
+                                    <div class="col-sm-4">
+
+                                        <div class="form-group">
+                                            <label class="small" style="margin-top: 10px;"><b>Zipcode </b></label>
+                                            <input type="text" id="attorney-zipcode" name="Zipcode" class="form-control"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-sm-1">
+                                        <div class="zipcode-animation" style="display: none; position: relative; top:20px;">
+                                            <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-sm-1">
+
+                                    </div>
+
+
+                                    <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                                        <div class="form-group attorney-zipcodeFieldMsgArea" style="position: relative; left:-15%;">
+                                            <b><span></span></b>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row" style="margin-left:15px;">
+
+                                    <div class="col-sm-4">
+
+                                        <div class="form-group">
+                                            <label class="small" style="margin-top: 10px;"><b style="color: red;">*</b><b>E-Mail Address</b></label>
+                                            <input id="attorney-email" type="text" name="attorney-email" class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <div class="attornery-email-animation" style="display: none; position: relative; top:20px;">
+                                            <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-sm-1">
+
+                                    </div>
+
+
+                                    <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                                        <div class="form-group attorney-emailFieldMsgArea" style="display: none; position: relative; left:-18%; top:5px;">
+                                            <b><span></span></b>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+
+                                <div class="row" style="margin-left:15px;">
+
+                                    <div class="col-sm-6">
+
+                                        <div class="form-group">
+                                            <label class="small" style="margin-top: 10px;"><b>Phone Number </b></label>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <select  class="form-control" name="phone-type"  value="Type" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                                        <option value="cell"><b>Cell</b></option>
+                                                        <option value="home"><b>Home</b></option>
+                                                        <option value="work"><b>Work</b></option>
+                                                        <option value="fax"><b>Fax</b></option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <input type="text" id="attorney-phone" name="Phone" class="form-control"   style="min-width: 275px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-sm-1">
+                                        <div class="phone-animation" style="display: none; position: relative; top:25px; left:-195px;">
+                                            <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-sm-1">
+
+                                    </div>
+
+
+                                    <div class="col-sm-4" style="position: relative; bottom:-15px; left:-120px;">
+                                        <div class="form-group attorney-phoneFieldMsgArea" style="position: relative; left:-35%; top:25px;">
+                                            <b><span></span></b>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+
+
+
+
+                                <div class="row" style="position: relative; left:-30px; margin-bottom: 30px;">
+
+
+                                </div>
+
+                                <div class="row" style="margin-left:15px;">
+
+                                    <div class="col-sm-4">
+
+                                        <div class="form-group">
+
+                                            <div class="form-group" ><button type="button" data-toggle="modal" data-target="#addPhoneNumber"  style=" position:relative; top: -20px; margin-right: 15px; margin-top: 10px; max-height:30px;  min-width: 370px; color:whitesmoke; background-color: rgb(52, 152, 219); border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;" class="btn"  value="add phone number"><span class="glyphicon glyphicon-log-in" ></span><b>&nbsp;&nbsp;&nbsp;&nbsp;Add Additional Phone Number&nbsp;</b></button></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="card-text">
+
+                                    <h5 class="card-title"><b style="color: rgb(56, 56, 56); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">Docket or Reference Number</b></h5>
+                                </div>
+                                <hr style="height:3px; position:relative; top:-20px; left:-11.55%; max-width: 80.1%">
+                                <div class="row" style="margin-left:15px; position: relative; top:-20px;">
+
+                                    <div class="col-sm-4">
+
+                                        <div class="form-group">
+                                            <label class="small" style="margin-top: 10px;"><b>If applicable, enter the attorney docket or reference number. </b></label>
+                                            <input type="text" id="docket-id" name="docket-id" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-1">
+                                        <div class="city-animation" style="display: none; position: relative; top:20px;">
+                                            <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-sm-1">
+
+                                    </div>
+
+                                    <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                                        <div class="form-group docket-idFieldMsgArea" style="position: relative; left:-15%;">
+                                            <b><span></span></b>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row" style="margin-left:15px; position: relative; top:10px;">
+
+                                    <div class="col-sm-4">
+
+                                        <div class="form-group">
+
+                                            <div class="form-group" ><button type="button" data-toggle="modal" data-target="#addDocketModal"  style=" position:relative; top: -20px; margin-right: 15px; margin-top: 10px; max-height:30px;  min-width: 370px; color:whitesmoke; background-color: rgb(52, 152, 219); border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;" class="btn"  value="add docket id"><span class="glyphicon glyphicon-log-in" ></span><b>&nbsp;&nbsp;&nbsp;&nbsp;Add Additional Docket Number&nbsp;</b></button></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="card-text">
+
+                                    <h5 class="card-title"><b style="color: rgb(56, 56, 56); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">Affilliation Information</b></h5>
+                                </div>
+                                <hr style="height:3px; position:relative; top:-20px; left:-11.55%; max-width: 80.1%">
+
+                                <div class="row" style="margin-left:15px; position: relative; top:-20px;">
+
+                                    <div class="col-sm-4">
+
+                                        <div class="form-group">
+                                            <label class="small" style="margin-top: 10px;"><b>Affiliation</b></label>
+                                            <select  class="form-control" name="affiliation"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                                <option value="none"><b>select</b></option>
+                                                <option value="us"><b>U.S Attorney in good standing</b></option>
+                                                <option value="ca"><b>Canadian agent or attorney </b></option>
+
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="modal-footer" style="background-color: rgb(217, 217, 214);">
+                <div class="form-group">
+
+                    <div class="row" style="position: relative; top:-15px; right:-30px;">
+                        <div class="col-sm-4" style="position: relative; right: -10px;">
+
+                        </div>
+
+
+                        <div class="col-sm-2">
+                        </div>
+                        <div class="col-sm-2"  style="position: relative; right: -25px;">
+
+                            <!-- add this  back  data-dismiss="modal"  after  required fields are completed .... and also remove disabled=="true"  -->
+                            <button id="addAttorneyConfirm" class=" btn-sm btn"  data-dismiss="modal"   style=" padding:5px; min-width:120px; color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><b>Confirm</b></button>
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- end of add New Attorney modal -->
+
+    <!--load data from model -->
+
+    <!--load model attribute for Jquery consumption  -->
+    <script th:inline="javascript">
+
+        /*<![CDATA[*/
+
+
+        var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
+        var host_name= /*[[${hostBean.host}]]*/ 'User Name';
+        var host_port= /*[[${hostBean.port}]]*/ 'User Name';
+        var host = host_name+":"+host_port;
+
+
+        /*]]>*/
+    </script>
+
+
+
+    <script>
+
+        var prevLinkURL = "../../accounts/dashboard";
+        var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
+
+    </script>
+
+    <!--load model attribute for Jquery consumption  -->
+    <script th:inline="javascript">
+
+        /*<![CDATA[*/
+
+        var contactNames = /*[[${myContacts.ContactNames}]]*/ 'User Name';
+        var contactEmails = /*[[${myContacts.ContactEmails}]]*/ 'User Name';
+        var contactFirms = /*[[${myContacts.ContactFirms}]]*/ 'User Name';
+        var selectedContactNames = /*[[${selectedContacts.selectedNames}]]*/ 'User Name';
+        /*]]>*/
+    </script>
+
+    <script>
+        $(document).ready(function() {
+
+            var contacts_counter =2;
+
+            setTimeout(function() {
+                // after 1000 ms we add the class animated to the login/register card
+                $('.content').fadeIn(500);
+            }, 500);
+
+            ////////////////////////////////////////
+            // set previous link
+            /////////////////////////////////////////
+            $('#prevLink').attr("href",prevLinkURL);
+
+            //////////////////////////////////////////////////////////////
+            // check if attorneyFillingFalse is set
+            /////////////////////////////////////////////////////////////
+            if ($('#attorneyFillingFalse').is(':checked') == true){
+
+                $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
+                $('#nextLink').attr("href", nextLinkURL );
+
+
+            }
+            /////////////////////////////////////////////////////////////
+            // check if attorneyFilingTrue is set
+            /////////////////////////////////////////////////////////////
+            if ($('#attorneyFilingTrue').is(':checked') == true){
+
+                $('#contacts-ui').fadeIn(2000);
+
+            }
+
+            /////////////////////////////////////////////////////////////
+            // action listeners on radio buttons
+            ////////////////////////////////////////////////////////////
+            $('#attorneyFillingFalse').click( function () {
+                ////////////////////////////////////////////////////////
+                // call back end update ...
+                ////////////////////////////////////////////////////////
+
+                saveProjectInfo("set-lawyer-options-value", "no", appInternalID);
+                ////////////////////////////////////////////////////////
+                // remove any selected contacts from application object
+                ////////////////////////////////////////////////////////
+                $('#contacts td').each(function () {
+                    if($(this).html().indexOf("disabled") > -1){
+                        ////////////////////////////////////////////////
+                        // get contact email ...
+                        // use appInternalID and call contact remove
+                        ////////////////////////////////////////////////
+                        var contact_email = $(this).next().next().html();
+                        var contact_name = $(this).next().html();
+                        removeContact2Application(contact_email, appInternalID);
+                        ////////////////////////////////////////////////////////////////////////
+                        // remove from selected table
+                        ////////////////////////////////////////////////////////////////////////
+                        $('#selected-attorneys td').each(function () {
+                            if($(this).html() === contact_name){
+                                selectedTable.row($(this).parents('tr')).remove().draw()
+                            }
+                        });
+                        ////////////////////////////////////////////////////////////////////////
+                        // redraw check box on current element
+                        ////////////////////////////////////////////////////////////////////////
+                        $(this).html("<input class=\"contacts-checkbox\" type=\"checkbox\">");
+
+
+
+
+                    }
+
+                });
+
+                setTimeout(function() {
+                    $('#contacts-ui').fadeOut(2000);
+                }, 1500);
+                // check there are contacts ...those should get dropped???
+
+                //////////////////////////////////////////////////////////
+                // enable next link
+                //////////////////////////////////////////////////////////
+                $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
+
+                $('#nextLink').attr("href", nextLinkURL );
+            });
+            ////////////////////////////////////////////////////////////////
+
+            $('#attorneyFilingTrue').click( function () {
+                ////////////////////////////////////////////////////////////
+                // call back end update ...
+                // signal uppate occurred
+                // wait for the confirm message first.
+                ////////////////////////////////////////////////////////////
+                saveProjectInfo("set-lawyer-options-value", "yes", appInternalID);
+
+                setTimeout(function() {
+                    $('#contacts-ui').fadeIn(2000);
+                }, 1500);
+
+            });
+            /////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////
+
+
+
+
+
+            ////////////////////////////////////////////////////////////////////
+            // loading contact info
+            /////////////////////////////////////////////////////////////////////
+
+            //////////////////////////////////////////////////////////////////////////
+            // static test data
+            //////////////////////////////////////////////////////////////////////////
+            var testdataSet = [
+
+                ["<input class=\"contacts-checkbox\" type='checkbox'>", "Aaron Attorney", "Aaron.Attorney@email.com", "Grant Thornton", "<i class=\"material-icons\">swap_horiz</i>"],
+                ["<input class=\"contacts-checkbox\" type='checkbox'>", "Melissa Attorney", "Melilssa.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
+                ["<input class=\"contacts-checkbox\" type='checkbox'>", "Nicole Attorney", "Nicole.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
+                ["<input class=\"contacts-checkbox\" type='checkbox'>", "Helen Attorney", "Helen.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
+                ["<input class=\"contacts-checkbox\" type='checkbox'>", "Cris Attorney", "Cris.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"]
+
+            ];
+
+            var testdataSet2 = [
+                [ "Aaron Attorney" ,  "<i class=\"material-icons\">remove_circle</i>"],
+                ["Bryan Attorney","<i class=\"material-icons\">remove_circle</i>"],
+                [ "Cris Attorney","<i class=\"material-icons\">remove_circle</i>"],
+                [ "Mellisa Attorney","<i class=\"material-icons\">remove_circle</i>"]
+
+            ];
+            /////////////////////////////////////////////////////////////////////////////
+
+            var dataSet1 = [ ["","","","",""] ];
+
+            //////////////////////////////////////////////////////////////////////////////
+            // initialize contacts table with empty values
+            //////////////////////////////////////////////////////////////////////////////
+            var contactsTable = $('#contacts').DataTable( {
+                data: dataSet1,
+                "pageLength": 5,
+                "scrollY": "250px",
+                "oLanguage": {
+
+                    "sSearch": "<i style=\"position: relative; top:10px; right:-205px; \"  class=\"material-icons\">search</i>"
+
+                },
+                "dom": '<"top"f<"clear">>rt<"bottom"p<"clear">>',
+                columns: [
+                    { title: "" },
+                    { title: "Name" },
+                    { title: "Email" },
+                    { title: "Firm" },
+                    { title: "" }
+
+                ]
+            } );
+
+
+
+
+            ////////////////////////////////////////////////////////////////////////////////
+            // initialize empty Contacts table with user's contacts
+            ////////////////////////////////////////////////////////////////////////////////
+
+            for(var a =0; a <contactNames.length; a++) {
+                ///////////////////////////////////////////////////////////////////////////
+                // check each name against selected names ...if in selected lis ...
+                // add row with check box selected and disabled
+                ///////////////////////////////////////////////////////////////////////////
+                var  isChecked = false;
+
+                for(var b =0; b < selectedContactNames.length; b++){
+
+
+
+                    if(contactNames[a] ===  selectedContactNames[b]){
+                        isChecked = true;
+                    }
+                }
+
+                if(isChecked === false) {
+                    var col1 = "<input class=\"contacts-checkbox\" type='checkbox'>";
+                    var col2 = contactNames[a];
+                    var col3 = contactEmails[a];
+                    var col4 = contactFirms[a];
+                    var col5 = "<i class=\"material-icons\">swap_horiz</i>";
+                    contactsTable.row.add([col1, col2, col3, col4, col5]).draw();
+                    //contactsTable.row.add(row).draw(false);
+                    //contactsTable.order([1, 'asc']).draw();
+                    //contactsTable.page('last').draw(false);
+                    // make this jquery expression more generic
+                }
+                else {
+                    var col1 = "<input class=\"contacts-checkbox\" disabled=\"true\" checked=\"true\" type='checkbox'>";
+                    var col2 = contactNames[a];
+                    var col3 = contactEmails[a];
+                    var col4 = contactFirms[a];
+                    var col5 = "<i class=\"material-icons\">swap_horiz</i>";
+                    contactsTable.row.add([col1, col2, col3, col4, col5]).draw();
+                    //contactsTable.row.add(row).draw(false);
+                    //contactsTable.order([1, 'asc']).draw();
+                    //contactsTable.page('last').draw(false);
+
+                }
+
+            }
+            ////////////////////////////////////////////////////////////////////////////////////////////////
+            // set overflow hidden for horizontal scroll bar created by y-scroll options on data tables
+            // that keeps the data tables view port height constant
+            /////////////////////////////////////////////////////////////////////////////////////////////////
+            $('.dataTables_scrollBody').css('overflow',  'hidden');
+            var dataSet3 = [
+                [ "" , ""]
+            ];
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+            // generate data tables for filings
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+            var selectedTable = $('#selected-attorneys').DataTable( {
+                data: dataSet3,
+                "dom": '<"top"<"clear">>rt<"bottom"<"clear">>',
+                columns: [
+                    { title: "Selected Contacts" },
+                    { title: "" }
+
+                ]
+            } );
+
+            for(var a =0; a < selectedContactNames.length; a++) {
+
+                var newRow = [ selectedContactNames[a],"<i class=\"material-icons\">remove_circle</i>"];
+                selectedTable.row.add(newRow).draw();
+                $('#selected-attorneys tr').eq(contacts_counter).addClass('highlight');
+                contacts_counter++;
+
+            }
+
+            ////////////////////////////////////////////////////////
+            // update contacts table placeholder text
+            ////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            $('#contacts_filter > label > input').prop('placeholder', 'Search From Contacts');
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //ACTION LISTERNER FOR SAVING CONTACTS TO PROJECT CONTACTS POOL
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            /////////////////////////////////////////////////////////
+            // add action listeners to contacts table check boxes + add widget
+            // these are the actions that will trigger saving contacts
+            // to project's lawyer pool
+            /////////////////////////////////////////////////////////
+
+            $('#contacts').on('click', 'input.contacts-checkbox', function () {
+
+                //////////////////////////////////////////////////////////////////////////////////////////////////////////
+                // save contact from contact list to application lawyer pool using contact email and maybe firm name
+                // create push row using contact name and add to selected contacts table
+                //////////////////////////////////////////////////////////////////////////////////////////////////////////
+                $(this).prop("disabled", true);
+
+                $(this).css("background-color", 'rgb(52,152,219)');
+                $(this).css("color", 'rgb(255,255,255)');
+
+                var newRow = [$(this).parent().next().html(),"<i class=\"material-icons\">remove_circle</i>"];
+                selectedTable.row.add(newRow).draw();
+
+
+                $('#selected-attorneys tr').eq(contacts_counter).addClass('highlight');
+                ////////////////////////////////////////////////////////
+                // update contacts added counter
+                ////////////////////////////////////////////////////////
+                contacts_counter++;
+                /////////////////////////////////////////////////////////////////////////////////
+                // call back end and add contact via email from the application lawyer pool
+                /////////////////////////////////////////////////////////////////////////////////
+                // required parameters for back end interactions
+                // 1. contact email   // get contact email from sibling TD field
+                // 2. project id ??? how are we going to get that ???
+                // 3. load project id as java script variable like our other pages
+                /////////////////////////////////////////////////////////////////////////////////
+                var contact_email = $(this).parent().next().next().html();
+                var project_id = appInternalID;
+
+                //alert(contact_email);
+                //alert(project_id);
+
+                addContact2Application(contact_email, project_id);
+
+
+
+
+
+
+
+
+
+            });
+
+            $('#contacts').on('click', 'i.material-icons', function () {
+
+                var checkBoxState = $(this).parent().prev().prev().prev().prev().html();
+
+                if(checkBoxState.indexOf("disabled") != -1){ // if not checked
+                    // do nothing ..contact already selected
+
+
+                    // acquire search key ..i.e  attorney name
+                    var contacts_target = $(this).parent().prev().prev().prev().html();
+
+                    // got through selected table and if matches target .. remove row
+                    //
+                    $('#selected-attorneys td').each(function () {
+                        if($(this).html() === contacts_target){
+                            selectedTable.row($(this).parents('tr')).remove().draw()
+                        }
+                    });
+                    ////////////////////////////////////////////////////////
+                    // update contacts added counter
+                    ////////////////////////////////////////////////////////
+                    contacts_counter--;
+                    ////////////////////////////////////////////////////////
+                    // un check check box
+                    ////////////////////////////////////////////////////////
+                    $(this).parent().prev().prev().prev().prev().html("<input class=\"contacts-checkbox\" type=\"checkbox\">");
+                    var contact_email = $(this).parent().prev().prev().html();
+                    removeContact2Application(contact_email, appInternalID);
+
+                }
+                else{
+
+                    // checked ... push to selected contacts and update counter
+                    var newRow = [$(this).parent().prev().prev().prev().html(),"<i class=\"material-icons\">remove_circle</i>"];
+                    $(this).parent().prev().prev().prev().prev().html("<input class=\"contacts-checkbox\" type=\"checkbox\"  checked=\"true\" disabled=\"true\"> ");
+
+                    selectedTable.row.add(newRow).draw();
+                    $('#selected-attorneys tr').eq(contacts_counter).addClass('highlight');
+                    ////////////////////////////////////////////////////////
+                    // update contacts added counter
+                    ////////////////////////////////////////////////////////
+                    contacts_counter++;
+                    var contact_email = $(this).parent().prev().prev().html();
+                    var project_id = appInternalID;
+
+                    //alert(contact_email);
+                    //alert(project_id);
+
+                    addContact2Application(contact_email, project_id);
+
+
+                }
+
+
+                /////////////////////////////////////////////////////////////////////////////////
+                // call back end and add contact via email from the application lawyer pool
+                /////////////////////////////////////////////////////////////////////////////////
+
+
+            });
+
+            //////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////
+            // add action listeners to selected-contacts table check boxes
+            //////////////////////////////////////////////////////////////
+            $('#selected-attorneys').on('click', 'i.material-icons', function () {
+
+                //////////////////////////////////////////////////////////
+                // get selected row key i.e contact name
+                //////////////////////////////////////////////////////////
+                var contacts_target = $(this).parent().prev().html();
+
+                /////////////////////////////////////////////////////////
+                // uncheck contacts check box from the user contact list
+                //////////////////////////////////////////////////////////
+                var contact_email ="";
+                $('#contacts td').each(function () {
+                    if($(this).html() === contacts_target){
+                        $(this).prev().html("<input class=\"contacts-checkbox\" type=\"checkbox\">");
+                        contact_email = $(this).next().html();
+                    }
+
+                });
+
+                ////////////////////////////////////////////////////////
+                // pop current row ...
+                ////////////////////////////////////////////////////////
+                selectedTable.row($(this).parents('tr')).remove().draw();
+                /////////////////////////////////////////////////////////////////////////////////
+                // call back end and remove contact via email from the application lawyer pool
+                /////////////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////
+                // update contacts added counter
+                ////////////////////////////////////////////////////////
+                contacts_counter--;
+                // call back end services to remove contact from application object
+                removeContact2Application(contact_email, appInternalID);
+            });
+            ////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+            //////////////////////////////////////////////////////////////
+            // on modal open set focus to email field :
+            // // this will trigger the creation of a
+            // // new available contact for the user on field complete
+            //////////////////////////////////////////////////////////////
+            $('#addNewAttorneyModal').on('shown.bs.modal', function () {
+                // check if email address set
+                // if not ..set focus ...
+                //////////////////////////////////////////////////////////////
+                // disable modal close button
+                //////////////////////////////////////////////////////////////
+                $('#addAttorneyConfirm').prop("disabled", true);
+                $('#modal-header-close').prop("disabled", true);
+
+
+                //if($('#attorney-email').is(":empty")) {
+                if($('#attorney-email').val()=== '') {
+                    $('#attorney-email').focus();
+                    //$('#attorney-email').select();
+
+                    setTimeout(function () {
+                        $(".attorney-emailFieldMsgArea span").text("Please Complete Email Field FIRST!");
+                        $(".attorney-emailFieldMsgArea span").css('color', 'red');
+                        $(".attorney-emailFieldMsgArea").fadeIn(1000);
+                    }, 500);
+
+
+
+                }
+
+
+
+
+
+            });
+            /////////////////////////////////////////////////////////////////////////
+            // modal clean up
+            /////////////////////////////////////////////////////////////////////////
+            $('#addNewAttorneyModal').on('hidden.bs.modal', function () {
+
+                // reset all fields
+                $('#attorney-first-name').val("");
+                $('#attorney-last-name').val("");
+                $('#attorney-lawfirm-name').val("");
+                $('#attorney-country').val("");
+                $('#attorney-address1').val("");
+                $('#attorney-city').val("");
+                $('#attorney-state').val("");
+                $('#attorney-zipcode').val("");
+                $('#attorney-phone').val("");
+                $('#attorney-email').val("");
+
+
+            });
+            /////////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////
+
+
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // AUTO SAVE jQUERY EVENTS
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // validate email
+            // make ajax call to create lawyer object and add to user
+            // also make name and firm name mandatory  (need that to build ui elements)
+            // make sure we have a functionality on user to find contact by email
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            /////////////////////////////////////////////////////////////////////////////////
+            // contact information 'email' auto save ////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////
+            $('#attorney-email').focusout( function () {
+                // send state, and token to server
+                // token will be generated in the controller and added to the view
+                // similar to how access token works ...a token is tied to a user
+                // access token will be passed in through model
+                //
+                // var tokenValue = '${token}';  // token is the model attribute name
+                // we are not using secured tokens for the prototype
+                // we will secure it by adding ssl and https support
+                //
+                //$('.state-animation').fadeOut();
+
+                var field_value = $(this).val();
+
+
+                if(field_value != ""){
+
+                    if(field_value.indexOf('@') > -1 && (field_value.indexOf(".com") > -1 || field_value.indexOf(".gov") > -1 || field_value.indexOf(".net") > -1 || field_value.indexOf(".lib") > -1) ){
+                        var status = createContact( field_value);
+
+
+
+
+
+                    }
+                    else{
+                        $(".attorney-emailFieldMsgArea").fadeOut();
+                        setTimeout(function () {
+                            $(".attorney-emailFieldMsgArea span").text("Email Filed has to be an valid email address!!!");
+                            $(".attorney-emailFieldMsgArea span").css('color', 'red');
+                            $(".attorney-emailFieldMsgArea").fadeIn(1000);
+                        }, 500);
+
+                    }
+
+                }
+                else{
+
+
+                    $(".attorney-emailFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+                        $(".attorney-emailFieldMsgArea span").text("Email Field can not be empty!!");
+                        $(".attorney-emailFieldMsgArea span").css('color', 'red');
+                        $(".attorney-emailFieldMsgArea").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+            });
+            // end of auto save email
+
+            /////////////////////////////////////////////////////////////////////////////////
+            // contact information 'attorney-first-name' auto save ////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////
+            $('#attorney-first-name').focusout( function () {
+                // send state, and token to servercv
+                // token will be generated in the controller and added to the view
+                // similar to how access token works ...a token is tied to a user
+                // access token will be passed in through model
+                //
+                // var tokenValue = '${token}';  // token is the model attribute name
+                // we are not using secured tokens for the prototype
+                // we will secure it by adding ssl and https support
+                //
+                //$('.state-animation').fadeOut();
+
+                var field_value = $(this).val();
+
+
+                if(field_value != "") {
+                    var email = $('#attorney-email').val();
+
+                    saveContactInfo(email, "attorney-first-name", field_value);
+
+                    ///////////////////////////////////////////////////////////////////
+                    // set focus and message for the next field
+                    ///////////////////////////////////////////////////////////////////
+                    setTimeout(function () {
+                        $('#attorney-last-name').focus();
+                    }, 1500);
+                    $(".attorney-last-nameFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+                        $(".attorney-last-nameFieldMsgArea span").text("Please Complete Last Name Field next.");
+                        $(".attorney-last-nameFieldMsgArea span").css('color', 'red');
+                        $(".attorney-last-nameFieldMsgArea").fadeIn(1000);
+                    }, 2500);
+
+                }
+                else {
+                    $(".attorney-first-nameFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+                        $(".attorney-first-nameFieldMsgArea span").text("First Name Field can not be empty!!");
+                        $(".attorney-first-nameFieldMsgAreaspan").css('color', 'red');
+                        $(".attorney-first-nameFieldMsgArea").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+
+            });
+
+            /////////////////////////////////////////////////////////////////////////////////
+            // contact information 'attorney-last-name' auto save ////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////
+            $('#attorney-last-name').focusout( function () {
+                // send state, and token to servercv
+                // token will be generated in the controller and added to the view
+                // similar to how access token works ...a token is tied to a user
+                // access token will be passed in through model
+                //
+                // var tokenValue = '${token}';  // token is the model attribute name
+                // we are not using secured tokens for the prototype
+                // we will secure it by adding ssl and https support
+                //
+                //$('.state-animation').fadeOut();
+
+                var field_value = $(this).val();
+
+                if(field_value != "") {
+                    var email = $('#attorney-email').val();
+
+                    saveContactInfo(email, "attorney-last-name", field_value);
+
+                    ///////////////////////////////////////////////////////////////////
+                    // set focus and message for the next field
+                    ///////////////////////////////////////////////////////////////////
+                    setTimeout(function () {
+                        $('#attorney-lawfirm-name').focus();
+                    }, 1500);
+                    $(".attorney-lawfirm-nameFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+
+                        $(".attorney-lawfirm-nameFieldMsgArea span").text("Please Complete Law Firm name Field next.");
+                        $(".attorney-lawfirm-nameFieldMsgArea span").css('color', 'red');
+                        $(".attorney-lawfirm-nameFieldMsgArea").fadeIn(1000);
+                    }, 2500);
+
+                }
+                else{
+                    $(".attorney-last-nameFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+                        $(".attorney-last-nameFieldMsgArea span").text("Last Name Field can not be empty!!");
+                        $(".attorney-last-nameFieldMsgAreaspan").css('color', 'red');
+                        $(".attorney-last-nameFieldMsgArea").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+
+            });
+
+            /////////////////////////////////////////////////////////////////////////////////
+            // contact information 'attorney-lawfirm-name' auto save ////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////
+            $('#attorney-lawfirm-name').focusout( function () {
+                // send state, and token to servercv
+                // token will be generated in the controller and added to the view
+                // similar to how access token works ...a token is tied to a user
+                // access token will be passed in through model
+                //
+                // var tokenValue = '${token}';  // token is the model attribute name
+                // we are not using secured tokens for the prototype
+                // we will secure it by adding ssl and https support
+                //
+                //$('.state-animation').fadeOut();
+
+                var field_value = $(this).val();
+
+                if(field_value != "") {
+
+                    var email = $('#attorney-email').val();
+                    var first_name = $('#attorney-first-name').val();
+                    var last_name = $('#attorney-last-name').val();
+                    var law_firm = $('#attorney-lawfirm-name').val();
+                    saveContactInfo(email, "attorney-lawfirm-name", field_value);
+
+                    ///////////////////////////////////////////////////////////////////
+                    // set focus and message for the next field
+                    ///////////////////////////////////////////////////////////////////
+
+                    // unlock confirm buttons ??? unlock after phone number
+                    // enable close button in modal header
+
+                    // create contacts table row
+                    // we need first name, last name, law firm, and email
+                    // get it directly with jquery
+                    var newRow = ["<input class=\"contacts-checkbox\" type='checkbox'>",first_name+" "+last_name, email, law_firm, "<i class=\"material-icons\">swap_horiz</i>"];
+                    contactsTable.row.add(newRow).draw();
+
+                    // push contacts table row and redraw()
+
+                    // set focus to country
+                    // and notify user to fill in information below.
+                    setTimeout(function () {
+                        $('#attorney-country').focus();
+                    }, 1500);
+                    $(".attorney-countryFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+
+                        $(".attorney-countryFieldMsgArea span").text("Please Complete Country Field next.");
+                        $(".attorney-countryFieldMsgArea span").css('color', 'red');
+                        $(".attorney-countryFieldMsgArea").fadeIn(1000);
+                    }, 2500);
+
+
+                }
+                else{
+                    $(".attorney-lawfirm-nameFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+                        $(".attorney-lawfirm-nameFieldMsgArea span").text("Last Name Field can not be empty!!");
+                        $(".attorney-lawfirm-nameFieldMsgArea span").css('color', 'red');
+                        $(".attorney-lawfirm-nameFieldMsgArea").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+
+            });
+
+            /////////////////////////////////////////////////////////////////////////////////
+            // contact information 'attorney-country' auto save ////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////
+            $('#attorney-country').focusout( function () {
+                // send state, and token to server
+                // token will be generated in the controller and added to the view
+                // similar to how access token works ...a token is tied to a user
+                // access token will be passed in through model
+                //
+                // var tokenValue = '${token}';  // token is the model attribute name
+                // we are not using secured tokens for the prototype
+                // we will secure it by adding ssl and https support
+                //
+                //$('.state-animation').fadeOut();
+
+                var field_value = $(this).val();
+
+                if(field_value != "") {
+
+                    var email = $('#attorney-email').val();
+
+                    saveContactInfo(email, "attorney-country", field_value);
+
+                    ///////////////////////////////////////////////////////////////////
+                    // set focus and message for the next field
+                    ///////////////////////////////////////////////////////////////////
+
+                    // push contacts table row and redraw()
+
+                    // set focus to country
+                    // and notify user to fill in information below.
+                    setTimeout(function () {
+                        $('#attorney-address1').focus();
+                    }, 1500);
+                    $(".attorney-address1FieldMsgArea").fadeOut();
+                    setTimeout(function () {
+
+                        $(".attorney-address1FieldMsgArea span").text("Please Complete Address Field next.");
+                        $(".attorney-address1FieldMsgArea span").css('color', 'red');
+                        $(".attorney-address1FieldMsgArea").fadeIn(1000);
+                    }, 2500);
+
+
+                }
+                else{
+                    $(".attorney-countryFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+                        $(".attorney-countryFieldMsgArea span").text("Attorney Country Field can not be empty!!");
+                        $(".attorney-countryFieldMsgArea span").css('color', 'red');
+                        $(".attorney-countryFieldMsgArea").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+
+            });
+
+            /////////////////////////////////////////////////////////////////////////////////
+            // contact information 'attorney-address1' auto save ////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////
+            $('#attorney-address1').focusout( function () {
+                // send state, and token to server
+                // token will be generated in the controller and added to the view
+                // similar to how access token works ...a token is tied to a user
+                // access token will be passed in through model
+                //
+                // var tokenValue = '${token}';  // token is the model attribute name
+                // we are not using secured tokens for the prototype
+                // we will secure it by adding ssl and https support
+                //
+                //$('.state-animation').fadeOut();
+
+                var field_value = $(this).val();
+
+                if(field_value != "") {
+
+                    var email = $('#attorney-email').val();
+
+                    saveContactInfo(email, "attorney-address1", field_value);
+
+                    ///////////////////////////////////////////////////////////////////
+                    // set focus and message for the next field
+                    ///////////////////////////////////////////////////////////////////
+
+                    // push contacts table row and redraw()
+
+                    // set focus to country
+                    // and notify user to fill in information below.
+                    setTimeout(function () {
+                        $('#attorney-city').focus();
+                    }, 1500);
+                    $(".attorney-cityFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+
+                        $(".attorney-cityFieldMsgArea span").text("Please Complete City Field next.");
+                        $(".attorney-cityFieldMsgArea span").css('color', 'red');
+                        $(".attorney-cityFieldMsgArea").fadeIn(1000);
+                    }, 2500);
+
+
+                }
+                else{
+                    $(".attorney-address1FieldMsgArea").fadeOut();
+                    setTimeout(function () {
+                        $(".attorney-address1FieldMsgArea span").text("Attorney Address Field can not be empty!!");
+                        $(".attorney-address1FieldMsgArea span").css('color', 'red');
+                        $(".attorney-address1FieldMsgArea").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+
+            });
+
+            /////////////////////////////////////////////////////////////////////////////////
+            // contact information 'attorney-city' auto save ////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////
+            $('#attorney-city').focusout( function () {
+                // send state, and token to server
+                // token will be generated in the controller and added to the view
+                // similar to how access token works ...a token is tied to a user
+                // access token will be passed in through model
+                //
+                // var tokenValue = '${token}';  // token is the model attribute name
+                // we are not using secured tokens for the prototype
+                // we will secure it by adding ssl and https support
+                //
+                //$('.state-animation').fadeOut();
+
+                var field_value = $(this).val();
+
+                if(field_value != "") {
+
+                    var email = $('#attorney-email').val();
+
+                    saveContactInfo(email, "attorney-city", field_value);
+
+                    ///////////////////////////////////////////////////////////////////
+                    // set focus and message for the next field
+                    ///////////////////////////////////////////////////////////////////
+
+                    // push contacts table row and redraw()
+
+                    // set focus to country
+                    // and notify user to fill in information below.
+                    setTimeout(function () {
+                        $('#attorney-state').focus();
+                    }, 1500);
+                    $(".attorney-stateFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+
+                        $(".attorney-stateFieldMsgArea span").text("Please Complete State Field next.");
+                        $(".attorney-stateFieldMsgArea span").css('color', 'red');
+                        $(".attorney-stateFieldMsgArea").fadeIn(1000);
+                    }, 2500);
+
+
+                }
+                else{
+                    $(".attorney-cityFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+                        $(".attorney-cityFieldMsgArea span").text("Attorney City Field can not be empty!!");
+                        $(".attorney-cityFieldMsgArea span").css('color', 'red');
+                        $(".attorney-cityFieldMsgArea").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+
+            });
+
+
+
+            /////////////////////////////////////////////////////////////////////////////////
+            // contact information 'attorney-state' auto save ////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////
+            $('#attorney-state').focusout( function () {
+                // send state, and token to server
+                // token will be generated in the controller and added to the view
+                // similar to how access token works ...a token is tied to a user
+                // access token will be passed in through model
+                //
+                // var tokenValue = '${token}';  // token is the model attribute name
+                // we are not using secured tokens for the prototype
+                // we will secure it by adding ssl and https support
+                //
+                //$('.state-animation').fadeOut();
+
+                var field_value = $(this).val();
+
+                if(field_value != "") {
+
+                    var email = $('#attorney-email').val();
+
+                    saveContactInfo(email, "attorney-state", field_value);
+
+                    ///////////////////////////////////////////////////////////////////
+                    // set focus and message for the next field
+                    ///////////////////////////////////////////////////////////////////
+
+                    // push contacts table row and redraw()
+
+                    // set focus to country
+                    // and notify user to fill in information below.
+                    setTimeout(function () {
+                        $('#attorney-zipcode').focus();
+                    }, 1500);
+                    $(".attorney-zipcodeFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+
+                        $(".attorney-zipcodeFieldMsgArea span").text("Please Complete Zipcode Field next.");
+                        $(".attorney-zipcodeFieldMsgArea span").css('color', 'red');
+                        $(".attorney-zipcodeFieldMsgArea").fadeIn(1000);
+                    }, 2500);
+
+
+                }
+                else{
+                    $(".attorney-stateFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+                        $(".attorney-stateFieldMsgArea span").text("Attorney State Field can not be empty!!");
+                        $(".attorney-stateFieldMsgArea span").css('color', 'red');
+                        $(".attorney-stateFieldMsgArea ").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+
+            });
+
+            /////////////////////////////////////////////////////////////////////////////////
+            // contact information 'attorney-zipcode' auto save ////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////
+            $('#attorney-zipcode').focusout( function () {
+                // send state, and token to server
+                // token will be generated in the controller and added to the view
+                // similar to how access token works ...a token is tied to a user
+                // access token will be passed in through model
+                //
+                // var tokenValue = '${token}';  // token is the model attribute name
+                // we are not using secured tokens for the prototype
+                // we will secure it by adding ssl and https support
+                //
+                //$('.state-animation').fadeOut();
+
+                var field_value = $(this).val();
+
+                if(field_value != "") {
+
+                    var email = $('#attorney-email').val();
+
+                    saveContactInfo(email, "attorney-zipcode", field_value);
+
+                    ///////////////////////////////////////////////////////////////////
+                    // set focus and message for the next field
+                    ///////////////////////////////////////////////////////////////////
+
+                    // push contacts table row and redraw()
+
+                    // set focus to country
+                    // and notify user to fill in information below.
+                    setTimeout(function () {
+                        $('#attorney-phone').focus();
+                    }, 1500);
+                    $(".attorney-phoneFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+
+                        $(".attorney-phoneFieldMsgArea span").text("Please Complete Phone number Field next.");
+                        $(".attorney-phoneFieldMsgArea span").css('color', 'red');
+                        $(".attorney-phoneFieldMsgArea").fadeIn(1000);
+                    }, 2500);
+
+
+                }
+                else{
+                    $(".attorney-zipcodeFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+                        $(".attorney-zipcodeFieldMsgArea span").text("Attorney Zipcode Field can not be empty!!");
+                        $(".attorney-zipcodeFieldMsgArea span").css('color', 'red');
+                        $(".attorney-zipcodeFieldMsgArea").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+
+            });
+
+            /////////////////////////////////////////////////////////////////////////////////
+            // contact information 'attorney-phone' auto save ////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////
+            $('#attorney-phone').focusout( function () {
+                // send state, and token to server
+                // token will be generated in the controller and added to the view
+                // similar to how access token works ...a token is tied to a user
+                // access token will be passed in through model
+                //
+                // var tokenValue = '${token}';  // token is the model attribute name
+                // we are not using secured tokens for the prototype
+                // we will secure it by adding ssl and https support
+                //
+                //$('.state-animation').fadeOut();
+
+                var field_value = $(this).val();
+
+                if(field_value != "") {
+
+                    var email = $('#attorney-email').val();
+
+                    saveContactInfo(email, "attorney-phone", field_value);
+
+                    ///////////////////////////////////////////////////////////////////
+                    // set focus and message for the next field
+                    ///////////////////////////////////////////////////////////////////
+
+                    //////////////////////////////////////////////////////////////////
+                    // set focus to confirm button // probably doesn't need to do that
+                    // check if the 5 minimal required fields are set,
+                    ///////////////////////////////////////////////////////////////////
+                    if($('#attorney-email').val() != "" && $('#attorney-first-name').val() != "" && $('#attorney-last-name').val()!="" && $('#attorney-lawfirm-name').val() != ""){
+
+
+                        $('#addAttorneyConfirm').prop("disabled", false);
+                        $('#modal-header-close').prop("disabled", false);
+
+
+                    }
+                    // if so ..unlock
+                    // unlock confirm button and close button in modal header
+                }
+                else{
+                    $(".attorney-phoneFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+                        $(".attorney-phoneFieldMsgArea span").text("Attorney Phone number Field can not be empty!!");
+                        $(".attorney-phoneFieldMsgArea span").css('color', 'red');
+                        $(".attorney-phoneFieldMsgArea").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+
+            });
+
+
+
+            // do clean up on modal close
+
+            // reset all fields
+
+            // all text notification should go away by itself
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        });  // end of document ready ()
+        /////////////////////////////////////////////////////
+        // aJAX
+        /////////////////////////////////////////////////////
+        function saveProjectInfo(field_name_prefix, field_value, application_internal_id) {
+
+
+
+
+
+            //alert(field_name_prefix);
+            // send state, and token to server
+            // token will be generated in the controller and added to the view
+            // similar to how access token works ...a token is tied to a user
+            // access token will be passed in through model
+            //
+            // var tokenValue = '${token}';  // token is the model attribute name
+            // we are not using secured tokens for the prototype
+            // we will secure it by adding ssl and https support
+
+            //var field_value = $(this).val();
+            //alert(field_value);
+
+
+
+            $.ajax({
+                //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
+                url: "../../REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+application_internal_id,
+                type: 'GET',
+                success: function(data){
+
+                    // parse out status msg:
+                    var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                    var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                    if(s_code.trim() == "200"){
+                        //if(data.contains("status: 200")){
+                        // show confirmation check mark on form
+                        //$('#toggle').delay(1000).click();
+
+
+                        // add time stamp from server side
+                        $(".autoSaveMessageArea span").fadeOut(500);
+                        setTimeout(function() {
+                            // after 1000 ms we add the class animated to the login/register card
+                            $(".autoSaveMessageArea span").text(s_msg);
+                            $(".autoSaveMessageArea span").fadeIn(1000);
+                        }, 500);
+
+
+                        // animation rendering control
+                        //if($('.state-checkmark').css('display') == 'block'){
+                        if($( "."+field_name_prefix.toLowerCase()+"-animation").css('display') == 'block'){
+
+
+                            $("."+field_name_prefix.toLowerCase()+"-animation").fadeOut(100);
+                            // now we need to create an java back end service that saves this value.
+                            // also add validation on the html  similar to password save
+                            //$('#toggle-'+field_name_prefix.toLowerCase()).delay(100).click();
+
+                            // alert($(this).val());
+                            $("."+field_name_prefix.toLowerCase()+"-animation").fadeIn(1000);
+                            // now we need to create an java back end service that saves this value.
+                            // also add validation on the html  similar to password save
+                            //$("."+field_name_prefix.toLowerCase()+"-animation").delay(1000).click();
+                        }
+                        else {
+
+                            $("."+field_name_prefix.toLowerCase()+"-animation").fadeIn(1000);
+                            // now we need to create an java back end service that saves this value.
+                            // also add validation on the html  similar to password save
+                            //$('#toggle-'+field_name_prefix.toLowerCase()).delay(1000).click();
+                        }
+
+
+
+
+                    }
+                    else{
+                        //$('.circle-loader').fadeOut(100);
+                        //$('.x-mark').fadeIn(500);
+                        //$(".validationMsgArea span").text(s_msg);
+                        //$(".validationMsgArea span").css('color','red');
+                    }
+
+                },
+                error: function(data) {
+
+                    //$('.circle-loader').fadeOut(100);
+                    //$('.x-mark').fadeIn(500);
+
+                    console.log(data);
+                    // set message to div area ...fields can not be left null
+                    //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                    //$(".validationMsgArea span").css('color','red');
+                }
+
+            });
+
+        } // end of function
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+        function createContact(email) {
+
+
+
+
+
+            //alert(field_name_prefix);
+            // send state, and token to server
+            // token will be generated in the controller and added to the view
+            // similar to how access token works ...a token is tied to a user
+            // access token will be passed in through model
+            //
+            // var tokenValue = '${token}';  // token is the model attribute name
+            // we are not using secured tokens for the prototype
+            // we will secure it by adding ssl and https support
+
+            //var field_value = $(this).val();
+            //alert(field_value);
+
+            var return_code="";
+            var field_name_prefix = "attorney-email";
+            $.ajax({
+                //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
+                url: "../../REST/apiGateway/contacts/add/" + email,
+                type: 'GET',
+                success: function (data) {
+
+                    // parse out status msg:
+                    var s_code = data.substring(data.indexOf("status:") + 7, data.indexOf("status:") + 4 + 7);
+
+                    var s_msg = data.substring(data.indexOf("msg:") + 4, data.length - 2);
+                    return_code = s_code.trim();
+                    if (s_code.trim() == "200") {
+
+                        $(".autoSaveMessageArea span").fadeOut(500);
+                        setTimeout(function() {
+                            // after 1000 ms we add the class animated to the login/register card
+                            $(".autoSaveMessageArea span").text(s_msg);
+                            $(".autoSaveMessageArea span").fadeIn(1000);
+                        }, 500);
+
+                        $('#attorney-email').prop('disabled', true);
+                        ///////////////////////////////////////////////////////////////////
+                        // set focus and message for the next field
+                        ///////////////////////////////////////////////////////////////////
+                        setTimeout(function () {
+                            $('#attorney-first-name').focus();
+                        }, 1500);
+                        $(".attorney-first-nameFieldMsgArea").fadeOut();
+                        setTimeout(function () {
+                            $(".attorney-first-nameFieldMsgArea span").text("Please Complete First Name Field!");
+                            $(".attorney-first-nameFieldMsgArea span").css('color', 'red');
+                            $(".attorney-first-nameFieldMsgArea").fadeIn(1000);
+                        }, 2500);
+
+                        setTimeout(function () {
+
+                            $("." + field_name_prefix.toLowerCase() + "FieldMsgArea").fadeOut(1000);
+                        }, 1500);
+
+
+                        // animation rendering control
+                        //if($('.state-checkmark').css('display') == 'block'){
+                        if ($("." + field_name_prefix.toLowerCase() + "-animation").css('display') == 'block') {
+
+
+                            $("." + field_name_prefix.toLowerCase() + "-animation").fadeOut(100);
+                            // now we need to create an java back end service that saves this value.
+                            // also add validation on the html  similar to password save
+                            //$('#toggle-'+field_name_prefix.toLowerCase()).delay(100).click();
+
+                            // alert($(this).val());
+                            $("." + field_name_prefix.toLowerCase() + "-animation").fadeIn(1000);
+                            // now we need to create an java back end service that saves this value.
+                            // also add validation on the html  similar to password save
+                            //$("."+field_name_prefix.toLowerCase()+"-animation").delay(1000).click();
+                        }
+                        else {
+
+                            $("." + field_name_prefix.toLowerCase() + "-animation").fadeIn(1000);
+                            // now we need to create an java back end service that saves this value.
+                            // also add validation on the html  similar to password save
+                            //$('#toggle-'+field_name_prefix.toLowerCase()).delay(1000).click();
+                        }
+
+
+                    }
+                    else {
+                        //$('.circle-loader').fadeOut(100);
+                        //$('.x-mark').fadeIn(500);
+                        $("." + field_name_prefix.toLowerCase() + "FieldMsgArea").fadeOut();
+
+                        setTimeout(function() {
+                            $("." + field_name_prefix.toLowerCase() + "FieldMsgArea span").text(s_msg);
+                            $("." + field_name_prefix.toLowerCase() + "FieldMsgArea span").css('color', 'red');
+                            $("." + field_name_prefix.toLowerCase() + "FieldMsgArea").fadeIn(1000);
+                        }, 500);
+                    }
+
+
+
+                },
+                error: function (data) {
+
+                    //$('.circle-loader').fadeOut(100);
+                    //$('.x-mark').fadeIn(500);
+
+                    console.log(data);
+                    // set message to div area ...fields can not be left null
+                    //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                    //$(".validationMsgArea span").css('color','red');
+                }
+
+
+
+            });
+
+            return return_code;
+
+        }
+        // end of function
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        function saveContactInfo(contact_email, contact_field_name, contact_field_value) {
+
+            //////////////////////////////////////////////////////////////////////////////////////
+            // we need REST controller of finding a contact by its email
+            // this needs to be implemented on the PTOUser object
+            //////////////////////////////////////////////////////////////////////////////////////
+
+
+
+            //var field_value = $(this).val();
+            //alert(field_value);
+
+            $.ajax({
+                //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
+                url: "../../REST/apiGateway/contacts/update/"+contact_email+"/"+contact_field_name+"/"+contact_field_value,
+                type: 'GET',
+                success: function(data){
+
+                    // parse out status msg:
+                    var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                    var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                    if(s_code.trim() == "200"){
+                        //if(data.contains("status: 200")){
+                        // show confirmation check mark on form
+                        //$('#toggle').delay(1000).click();
+                        $("."+contact_field_name.toLowerCase()+"FieldMsgArea").fadeOut();
+
+                        $("."+contact_field_name.toLowerCase()+"FieldMsgArea span").text(s_msg);
+                        $("."+contact_field_name.toLowerCase()+"FieldMsgArea span").css('color','green');
+                        $("."+contact_field_name.toLowerCase()+"FieldMsgArea").fadeIn(1000);
+
+                        setTimeout(function () {
+
+                            $("."+contact_field_name.toLowerCase()+"FieldMsgArea").fadeOut(1000);
+                        }, 5500);
+
+                        // animation rendering control
+                        //if($('.state-checkmark').css('display') == 'block'){
+                        if($( "."+contact_field_name.toLowerCase()+"-animation").css('display') == 'block'){
+
+
+                            $("."+contact_field_name.toLowerCase()+"-animation").fadeOut(100);
+                            // now we need to create an java back end service that saves this value.
+                            // also add validation on the html  similar to password save
+                            //$('#toggle-'+field_name_prefix.toLowerCase()).delay(100).click();
+
+                            // alert($(this).val());
+                            $("."+contact_field_name.toLowerCase()+"-animation").fadeIn(1000);
+                            // now we need to create an java back end service that saves this value.
+                            // also add validation on the html  similar to password save
+                            //$("."+field_name_prefix.toLowerCase()+"-animation").delay(1000).click();
+                        }
+                        else {
+
+                            $("."+contact_field_name.toLowerCase()+"-animation").fadeIn(1000);
+                            // now we need to create an java back end service that saves this value.
+                            // also add validation on the html  similar to password save
+                            //$('#toggle-'+field_name_prefix.toLowerCase()).delay(1000).click();
+                        }
+
+
+
+
+                    }
+                    else{
+                        //$('.circle-loader').fadeOut(100);
+                        //$('.x-mark').fadeIn(500);
+                        //$(".validationMsgArea span").text(s_msg);
+                        //$(".validationMsgArea span").css('color','red');
+                    }
+
+                },
+                error: function(data) {
+
+                    //$('.circle-loader').fadeOut(100);
+                    //$('.x-mark').fadeIn(500);
+
+                    console.log(data);
+                    // set message to div area ...fields can not be left null
+                    //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                    //$(".validationMsgArea span").css('color','red');
+                }
+
+            });
+
+        } // end of function
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+        function addContact2Application(contact_email, project_ID) {
+
+            //////////////////////////////////////////////////////////////////////////////////////
+            // we need REST controller of finding a contact by its email
+            // this needs to be implemented on the PTOUser object
+            //////////////////////////////////////////////////////////////////////////////////////
+            var contact_field_name = "application-contact-add-confirm";
+            $.ajax({
+                //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
+                url: "../../REST/apiGateway/application/contacts/add/"+contact_email+"/"+project_ID,
+
+                type: 'GET',
+                success: function(data){
+
+
+
+                    // parse out status msg:
+                    var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                    var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                    if(s_code.trim() == "200"){
+                        //if(data.contains("status: 200")){
+                        // show confirmation check mark on form
+                        //$('#toggle').delay(1000).click();
+                        $(".autoSaveMessageArea span").fadeOut(500);
+                        setTimeout(function() {
+                            // after 1000 ms we add the class animated to the login/register card
+                            $(".autoSaveMessageArea span").text(s_msg);
+                            $(".autoSaveMessageArea span").fadeIn(1000);
+                        }, 500);
+
+
+
+                    }
+                    else{
+                        //$('.circle-loader').fadeOut(100);
+                        //$('.x-mark').fadeIn(500);
+                        //$(".validationMsgArea span").text(s_msg);
+                        //$(".validationMsgArea span").css('color','red');
+                    }
+
+                },
+                error: function(data) {
+
+                    //$('.circle-loader').fadeOut(100);
+                    //$('.x-mark').fadeIn(500);
+
+                    console.log(data);
+                    // set message to div area ...fields can not be left null
+                    //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                    //$(".validationMsgArea span").css('color','red');
+                }
+
+            });
+
+        } // end of function
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+        function removeContact2Application(contact_email, project_ID) {
+
+            //////////////////////////////////////////////////////////////////////////////////////
+            // we need REST controller of finding a contact by its email
+            // this needs to be implemented on the PTOUser object
+            //////////////////////////////////////////////////////////////////////////////////////
+            var contact_field_name = "application-contact-add-confirm";
+            $.ajax({
+                //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
+                url: "../../REST/apiGateway/application/contacts/delete/"+contact_email+"/"+project_ID,
+
+                type: 'GET',
+                success: function(data){
+
+
+
+                    // parse out status msg:
+                    var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                    var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                    if(s_code.trim() == "200"){
+                        //if(data.contains("status: 200")){
+                        // show confirmation check mark on form
+                        //$('#toggle').delay(1000).click();
+                        $(".autoSaveMessageArea span").fadeOut(500);
+                        setTimeout(function() {
+                            // after 1000 ms we add the class animated to the login/register card
+                            $(".autoSaveMessageArea span").text(s_msg);
+                            $(".autoSaveMessageArea span").fadeIn(1000);
+                        }, 500);
+
+
+
+
+
+                    }
+                    else{
+                        //$('.circle-loader').fadeOut(100);
+                        //$('.x-mark').fadeIn(500);
+                        //$(".validationMsgArea span").text(s_msg);
+                        //$(".validationMsgArea span").css('color','red');
+                    }
+
+                },
+                error: function(data) {
+
+                    //$('.circle-loader').fadeOut(100);
+                    //$('.x-mark').fadeIn(500);
+
+                    console.log(data);
+                    // set message to div area ...fields can not be left null
+                    //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                    //$(".validationMsgArea span").css('color','red');
+                }
+
+            });
+
+        } // end of function
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    </script>
+
+</body>
+</html>

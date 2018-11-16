@@ -128,7 +128,7 @@ public class PathController {
                     // perform any operation
                     //mailSender.sendEmailverificationLink("http://efile-reimagined.com"+confirmationUrl,recipientAddress);
                     mailSender.sendAuthenticationToken(token, recipientAddress);
-                    System.out.println("ACCOUNT ACITVATION EMAIL SENT!");
+
                 }
             }).start();
 
@@ -187,7 +187,7 @@ public class PathController {
            ////////////////////////////////////////////////////////////////
            // probably need to add a message that says bad 2 factor token
            ////////////////////////////////////////////////////////////////
-           return "/login";
+           return "login";
        }
 
 
