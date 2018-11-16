@@ -465,7 +465,8 @@ public class ApplicationService {
         // start generating response
         ////////////////////////////////////////////////
         String statusCode = "200";
-        String responseMsg = "Contact with email address :"+contact_email+" has been saved.";
+        String responseMsg = "Contact with email address :"+contact_email+" has been added to the Application.";
+
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();
         //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
@@ -566,7 +567,7 @@ public class ApplicationService {
         // start generating response
         ////////////////////////////////////////////////
         String statusCode = "200";
-        String responseMsg = "Contact with email address :"+contact_email+" has been removed from the application.";
+        String responseMsg = "Contact with email address :"+contact_email+" has been removed from the Application";
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();
         //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
