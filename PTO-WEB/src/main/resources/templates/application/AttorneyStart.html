@@ -370,7 +370,7 @@
                                 </div>
                                 <div class="col-sm-2"  style="position: relative; right: -15px;">
                                     <!--this link will be activated when a user add a contact to the selected Pool for the application -->
-                                    <span class="btn-sm btn"   style=" padding:5px; min-width:100px; color: white; background-color: background-color: rgb(128,128,128); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><b><a id="AttorneySetLink" style="color: white; text-decoration: none;" >Next</a></b></span>
+                                    <span class="btn-sm btn"   style=" padding:5px; min-width:100px; color: white;  background-color: rgb(128,128,128); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><b><a id="AttorneySetLink" style="color: white; text-decoration: none;" >Next</a></b></span>
 
                                 </div>
 
@@ -1331,8 +1331,6 @@
     <script>
     $(document).ready(function() {
 
-        var contacts_counter =2;
-
         setTimeout(function() {
             // after 1000 ms we add the class animated to the login/register card
             $('.content').fadeIn(500);
@@ -1543,14 +1541,22 @@
         /////////////////////////////////////////////////////////////////////////////////////////////////
         $('.dataTables_scrollBody').css('overflow',  'hidden');
         var dataSet3 = [
-            [ "" , ""]
+
         ];
         //////////////////////////////////////////////////////////////////////////////////////////////////
         // generate data tables for filings
         //////////////////////////////////////////////////////////////////////////////////////////////////
         var selectedTable = $('#selected-attorneys').DataTable( {
+            "createdRow": function ( row, data, index ) {
+
+                if(data != ""){
+                    $(row).addClass( 'highlight' );
+                }
+
+            },
             data: dataSet3,
             "dom": '<"top"<"clear">>rt<"bottom"<"clear">>',
+
             columns: [
                 { title: "Selected Contacts" },
                 { title: "" }
@@ -1558,12 +1564,15 @@
             ]
         } );
 
+
         for(var a =0; a < selectedContactNames.length; a++) {
 
-            var newRow = [ selectedContactNames[a],"<i class=\"material-icons\">remove_circle</i>"];
-            selectedTable.row.add(newRow).draw();
-            $('#selected-attorneys tr').eq(contacts_counter).addClass('highlight');
-            contacts_counter++;
+
+            if (selectedContactNames[a] != "") {
+
+                var newRow = [selectedContactNames[a], "<i class=\"material-icons\">remove_circle</i>"];
+                selectedTable.row.add(newRow).draw();
+            }
 
         }
 
@@ -1602,11 +1611,11 @@
             selectedTable.row.add(newRow).draw();
 
 
-            $('#selected-attorneys tr').eq(contacts_counter).addClass('highlight');
+            //$('#selected-attorneys tr').eq(contacts_counter).addClass('highlight');
             ////////////////////////////////////////////////////////
             // update contacts added counter
             ////////////////////////////////////////////////////////
-            contacts_counter++;
+            //contacts_counter++;
             /////////////////////////////////////////////////////////////////////////////////
             // call back end and add contact via email from the application lawyer pool
             /////////////////////////////////////////////////////////////////////////////////
@@ -1618,18 +1627,7 @@
             var contact_email = $(this).parent().next().next().html();
             var project_id = appInternalID;
 
-            //alert(contact_email);
-            //alert(project_id);
-
             addContact2Application(contact_email, project_id);
-
-
-
-
-
-
-
-
 
         });
 
@@ -1651,10 +1649,7 @@
                         selectedTable.row($(this).parents('tr')).remove().draw()
                     }
                 });
-                ////////////////////////////////////////////////////////
-                // update contacts added counter
-                ////////////////////////////////////////////////////////
-                contacts_counter--;
+
                 ////////////////////////////////////////////////////////
                 // un check check box
                 ////////////////////////////////////////////////////////
@@ -1670,11 +1665,8 @@
                 $(this).parent().prev().prev().prev().prev().html("<input class=\"contacts-checkbox\" type=\"checkbox\"  checked=\"true\" disabled=\"true\"> ");
 
                 selectedTable.row.add(newRow).draw();
-                $('#selected-attorneys tr').eq(contacts_counter).addClass('highlight');
-                ////////////////////////////////////////////////////////
-                // update contacts added counter
-                ////////////////////////////////////////////////////////
-                contacts_counter++;
+                // $('#selected-attorneys tr').eq(contacts_counter).addClass('highlight');
+
                 var contact_email = $(this).parent().prev().prev().html();
                 var project_id = appInternalID;
 
@@ -1693,6 +1685,7 @@
 
 
         });
+
 
         //////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////
@@ -1724,10 +1717,7 @@
             /////////////////////////////////////////////////////////////////////////////////
             // call back end and remove contact via email from the application lawyer pool
             /////////////////////////////////////////////////////////////////////////////////
-            ////////////////////////////////////////////////////////
-            // update contacts added counter
-            ////////////////////////////////////////////////////////
-            contacts_counter--;
+
             // call back end services to remove contact from application object
             removeContact2Application(contact_email, appInternalID);
         });

@@ -328,6 +328,7 @@ public class ApplicationController {
 
             // set empty selected contacts for thymeleaf
             ArrayList<String> scontactNames = new ArrayList<>();
+            scontactNames.add("");
             selectedContactsDisplayDTO.setSelectedNames(scontactNames);
             model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
 
