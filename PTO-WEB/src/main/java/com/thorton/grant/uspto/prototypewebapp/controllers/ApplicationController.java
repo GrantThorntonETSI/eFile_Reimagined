@@ -85,11 +85,36 @@ public class ApplicationController {
         // myTradeMarks on the dashboard
         /////////////////////////////////////////////////////////////////////////////////////////////
 
+        /////////////////////////////////////////////
+        // load my contacts list for thyemleaf
+        /////////////////////////////////////////////
+        ArrayList<String> contactNames = new ArrayList<>();
+        ArrayList<String> contactEmails = new ArrayList<>();
+        ArrayList<String> contactFirms = new ArrayList<>();
+        Lawyer lawyer = null;
+
+        for(Iterator<Lawyer> iter = ptoUser.getMyLawyers().iterator(); iter.hasNext(); ) {
+            lawyer = iter.next();
+            contactNames.add(lawyer.getFirstName()+" "+lawyer.getLastName());
+            contactEmails.add(lawyer.getEmail());
+            contactFirms.add(lawyer.getLawFirmName());
+
+        }
+        Collections.reverse(contactNames);
+        Collections.reverse(contactEmails);
+        Collections.reverse(contactFirms);
+        ContactsDisplayDTO contactsDisplayDTO = new ContactsDisplayDTO();
+        contactsDisplayDTO.setContactNames(contactNames);
+        contactsDisplayDTO.setContactEmails(contactEmails);
+        contactsDisplayDTO.setContactFirms(contactFirms);
+        model.addAttribute("myContacts", contactsDisplayDTO);
+        SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
+        System.out.println("9999999999999999999999999999999999999999999999999999999999999999999999999999");
+
+
         if(trademarkInternalID.equals("new")) {
-
+            System.out.println("88888888888888888888888888888888888888888888888888888888888");
             BaseTrademarkApplication trademarkApplication = new BaseTrademarkApplication();
-            //trademarkApplication.setPtoUser(ptoUser);
-
             //trademarkApplication.setLastViewModel("application/owner/individual/ownerInfo");
             //trademarkApplication.setLastViewModel("application/OwnerStart");
             trademarkApplication.setLastViewModel("application/AttorneyStart");
@@ -126,24 +151,18 @@ public class ApplicationController {
             ptoUser.addApplication(trademarkApplication); // adds to myApplications Collection
             ptoUserService.save(ptoUser);
             model.addAttribute("baseTrademarkApplication", trademarkApplication);
-            ContactsDisplayDTO contactsDisplayDTO = new ContactsDisplayDTO();
 
-            ArrayList<String> contactNames = new ArrayList<>();
-            ArrayList<String> contactEmails = new ArrayList<>();
-            ArrayList<String> contactFirms = new ArrayList<>();
-            contactsDisplayDTO.setContactNames(contactNames);
-            contactsDisplayDTO.setContactEmails(contactEmails);
-            contactsDisplayDTO.setContactFirms(contactFirms);
 
-            SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
-            selectedContactsDisplayDTO.setSelectedNames(contactNames);
+            // set empty selected contacts for thymeleaf
+            ArrayList<String> scontactNames = new ArrayList<>();
+            selectedContactsDisplayDTO.setSelectedNames(scontactNames);
             model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
-            model.addAttribute("myContacts", contactsDisplayDTO);
+
 
 
         }
         else{
-
+            System.out.println("77777777777777777777777777777777777777777777777777");
             ////////////////////////////////////////////////////////////////////////////
             // existing trade  mark application
             ////////////////////////////////////////////////////////////////////////////
@@ -157,27 +176,7 @@ public class ApplicationController {
             // we can do this when rendering the contacts table rows ...
             // do a check and insert different HTML for the row
             //////////////////////////////////////////////////////////////////////////
-            ArrayList<String> contactNames = new ArrayList<>();
-            ArrayList<String> contactEmails = new ArrayList<>();
-            ArrayList<String> contactFirms = new ArrayList<>();
-            Lawyer lawyer = null;
 
-            for(Iterator<Lawyer> iter = ptoUser.getMyLawyers().iterator(); iter.hasNext(); ) {
-                lawyer = iter.next();
-                contactNames.add(lawyer.getFirstName()+" "+lawyer.getLastName());
-                contactEmails.add(lawyer.getEmail());
-                contactFirms.add(lawyer.getLawFirmName());
-
-            }
-            Collections.reverse(contactNames);
-            Collections.reverse(contactEmails);
-            Collections.reverse(contactFirms);
-            ContactsDisplayDTO contactsDisplayDTO = new ContactsDisplayDTO();
-            contactsDisplayDTO.setContactNames(contactNames);
-            contactsDisplayDTO.setContactEmails(contactEmails);
-            contactsDisplayDTO.setContactFirms(contactFirms);
-
-            model.addAttribute("myContacts", contactsDisplayDTO);
             ////////////////////////////////////////////////////////////////////////////////////////////
             // add selected contacts display info to model
             ////////////////////////////////////////////////////////////////////////////////////////////
@@ -196,7 +195,7 @@ public class ApplicationController {
                 /////////////////////////////////////////////////////////////////////////////////////////////
                 // we need a DTO for passing data to view layer
                 /////////////////////////////////////////////////////////////////////////////////////////////
-                SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
+
                 selectedContactsDisplayDTO.setSelectedNames(selectedContactNames);
                 model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
 
@@ -205,7 +204,6 @@ public class ApplicationController {
                 // if there are no one in the application available pool ..
                 // simply add empty value.
 
-                SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
                 selectedContactNames.add("");
                 selectedContactsDisplayDTO.setSelectedNames(selectedContactNames);
                 model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
