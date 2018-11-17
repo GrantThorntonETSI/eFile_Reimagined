@@ -370,7 +370,7 @@
                                 </div>
                                 <div class="col-sm-2"  style="position: relative; right: -15px;">
                                     <!--this link will be activated when a user add a contact to the selected Pool for the application -->
-                                    <span class="btn-sm btn"   style=" padding:5px; min-width:100px; color: white;  background-color: rgb(128,128,128); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><b><a id="AttorneySetLink" style="color: white; text-decoration: none;" >Next</a></b></span>
+                                    <span class="btn-sm btn"  id="next-link-widget" style=" padding:5px; min-width:100px; color: white;  background-color: rgb(128,128,128); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><b><a id="AttorneySetLink" style="color: white; text-decoration: none;" >Next</a></b></span>
 
                                 </div>
 
@@ -1314,6 +1314,8 @@
         var prevLinkURL = "../../accounts/dashboard";
         var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
+        var nextLinkURLwidget = "../../application/AttorneySet/?trademarkID="+appInternalID;
+
     </script>
 
     <!--load model attribute for Jquery consumption  -->
@@ -1553,6 +1555,12 @@
                     $(row).addClass( 'highlight' );
                 }
 
+
+
+            },
+
+            "rowCallback": function( row, data ) {
+                // event works
             },
             data: dataSet3,
             "dom": '<"top"<"clear">>rt<"bottom"<"clear">>',
@@ -1572,6 +1580,7 @@
 
                 var newRow = [selectedContactNames[a], "<i class=\"material-icons\">remove_circle</i>"];
                 selectedTable.row.add(newRow).draw();
+                enableNextWidgetLink();
             }
 
         }
@@ -1604,8 +1613,6 @@
             //////////////////////////////////////////////////////////////////////////////////////////////////////////
             $(this).prop("disabled", true);
 
-            $(this).css("background-color", 'rgb(52,152,219)');
-            $(this).css("color", 'rgb(255,255,255)');
 
             var newRow = [$(this).parent().next().html(),"<i class=\"material-icons\">remove_circle</i>"];
             selectedTable.row.add(newRow).draw();
@@ -1628,6 +1635,14 @@
             var project_id = appInternalID;
 
             addContact2Application(contact_email, project_id);
+            /////////////////////////////////////////////////////////////////////////////////
+            // enable next button
+            // and inject next link
+            /////////////////////////////////////////////////////////////////////////////////
+            enableNextWidgetLink();
+
+
+
 
         });
 
@@ -1656,6 +1671,7 @@
                 $(this).parent().prev().prev().prev().prev().html("<input class=\"contacts-checkbox\" type=\"checkbox\">");
                 var contact_email = $(this).parent().prev().prev().html();
                 removeContact2Application(contact_email, appInternalID);
+                disableNextWidgetLink();
 
             }
             else{
@@ -1674,6 +1690,7 @@
                 //alert(project_id);
 
                 addContact2Application(contact_email, project_id);
+                enableNextWidgetLink();
 
 
             }
@@ -1720,6 +1737,14 @@
 
             // call back end services to remove contact from application object
             removeContact2Application(contact_email, appInternalID);
+            /////////////////////////////////////////////////////////////////////////////////
+            // check selected table count ...if null ... disable next button
+            // doesn't make sense to set attorneys until you selected them
+            /////////////////////////////////////////////////////////////////////////////////
+
+            if ( ! selectedTable.data().any() ) {
+                disableNextWidgetLink();
+            }
         });
         ////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////
@@ -2840,6 +2865,16 @@
     } // end of function
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        function enableNextWidgetLink() {
+            $('#AttorneySetLink').prop("href", nextLinkURLwidget);
+            $('#next-link-widget').css("background-color", "rgb(52, 152, 219)");
+
+        }
+        function disableNextWidgetLink() {
+            $('#AttorneySetLink').prop("href", "");
+            $('#next-link-widget').css("background-color", "rgb(128, 128, 128)");
+
+        }
 
 
     </script>
