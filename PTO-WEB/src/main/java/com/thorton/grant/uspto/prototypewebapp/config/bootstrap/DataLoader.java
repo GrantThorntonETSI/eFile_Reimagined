@@ -112,10 +112,17 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         //newLawyer.setPoolMember(trademarkApplication);
         newLawyer.setBarLicense("DC234567889");
         newLawyer.setDocketNumber("100000000111");
-        newLawyer.setBarJurisdiction("DC");
+        newLawyer.setBarJurisdiction("Washington DC Bar Association");
         newLawyer.setFirstName("test");
         newLawyer.setLastName("lawyer");
         newLawyer.setEmail("li.zhang@us.gt.com");
+        newLawyer.setAddress("333 Carlyle Ave");
+        newLawyer.setCity("Alexandria");
+        newLawyer.setState("VA");
+        newLawyer.setZipcode("22222");
+        newLawyer.setPrimaryPhonenumber("333-333-3333");
+
+
         PTOUser1.addLawyer(newLawyer);
 
 

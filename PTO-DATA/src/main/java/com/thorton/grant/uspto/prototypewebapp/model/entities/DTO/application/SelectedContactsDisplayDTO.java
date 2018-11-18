@@ -7,6 +7,8 @@ public class SelectedContactsDisplayDTO {
     private ArrayList<String> selectedNames;
 
 
+
+
     public ArrayList<String> getSelectedNames() {
         return selectedNames;
     }

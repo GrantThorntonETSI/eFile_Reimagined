@@ -267,6 +267,9 @@
 
                         <div class="accordion" id="accordionExample" style="position: relative; right:-10px; margin-top: 30px;">
 
+
+
+                            <th:block th:each="lawyer : ${lawyerPool}">
                                <!--item 1 -->
                                 <div class="card" id="contact" style="max-width: 850px; background-color: white; ">
                                     <div class="card-header" id="headingTwo"  style="background-color: white;">
@@ -279,16 +282,16 @@
                                             </div>
                                             <div class="col-sm-3">
 
-                                                <b style="position: relative; bottom: -5px; left:-25px;">Attorney Name</b>
+                                                <b style="position: relative; bottom: -5px; left:-25px;" th:text="${lawyer.firstName}+' '+${lawyer.lastName}">Attorney Name</b>
 
                                             </div>
 
                                             <div class="col-sm-3">
-                                                <b style="position: relative; bottom: -5px; left:-25px;"> Attorney@Email.com</b>
+                                                <b style="position: relative; bottom: -5px; left:-25px;" th:text="${lawyer.email}"> Attorney@Email.com</b>
                                             </div>
 
                                             <div class="col-sm-3">
-                                                <b style="position: relative; bottom: -5px; left:-25px;"> Attorney Firm, LLC </b>
+                                                <b style="position: relative; bottom: -5px; left:-25px;" th:text="${lawyer.getLawFirmName()}"> Attorney Firm, LLC </b>
                                             </div>
                                             <div class="col-sm-1">
                                                 <i class="material-icons">clear</i>
@@ -310,7 +313,7 @@
                                         <div id="collapseTwoAddress" class="collapse" aria-labelledby="headingTwoAddress" data-parent="#accordionExample" style="max-width: 850px;">
                                             <div class="card-body">
 
-                                                <span style="position: relative; right:-30px;"> 1115 Reserve Champion Drive, Rockville MD 20850</span>
+                                                <span style="position: relative; right:-30px;" th:text="${lawyer.address}+' '+${lawyer.city}+', '+${lawyer.state}+' '+${lawyer.zipcode}"> 1115 Reserve Champion Drive, Rockville MD 20850</span>
 
                                             </div>
                                         </div>
@@ -324,14 +327,14 @@
                                             <div id="collapseTwoAffliation" class="collapse" aria-labelledby="headingTwoAffiliation" data-parent="#accordionExample" style="max-width: 850px;">
                                                 <div class="card-body">
 
-                                                    <span style="position: relative; right:-30px;">Washington Dc Bar Association. Maryland Bar Association.</span>
+                                                    <span style="position: relative; right:-30px;"  th:text="${lawyer.barJurisdiction}">Washington Dc Bar Association. Maryland Bar Association.</span>
 
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="row" style="position: relative; right:-137px; margin-top: 10px;">
-                                            <b>Docket Number:</b> <input type="text" style="border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;">
+                                            <b>Docket Number:</b> <input type="text" style="border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;"  th:value="${lawyer.docketNumber}" >
 
                                         </div>
 
@@ -340,78 +343,7 @@
 
                                 <!-- end of item 1 -->
 
-                            <!--item 2 -->
-                            <div class="card" id="contact3" style="max-width: 850px; background-color: white;">
-                                <div class="card-header" id="headingThree"  style="background-color: white;">
-                                    <div class="row">
-                                        <div class="col-sm-1">
-                                            <input style="position: relative; bottom: -5px;"  type="radio" name="primaryAttorney" >
-                                        </div>
-                                        <div class="col-sm-1">
-                                            <i class="material-icons collapsed" data-toggle="collapse" data-target="#collapseThree"  aria-expanded="false" aria-controls="collapseThree" style="position: relative; bottom:-5px; left:-20px;">import_export</i>
-                                        </div>
-                                        <div class="col-sm-3">
-
-                                            <b style="position: relative; bottom: -5px; left:-25px;">Attorney Name</b>
-
-                                        </div>
-
-                                        <div class="col-sm-3">
-                                            <b style="position: relative; bottom: -5px; left:-25px;"> Attorney@Email.com</b>
-                                        </div>
-
-                                        <div class="col-sm-3">
-                                            <b style="position: relative; bottom: -5px; left:-25px;"> Attorney Firm, LLC </b>
-                                        </div>
-                                        <div class="col-sm-1">
-                                            <i class="material-icons">clear</i>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample" style="max-width: 850px;  margin-bottom: 10px;">
-                                <div class="card-body">
-
-                                    <div class="row" style="position: relative; right:-110px;">
-                                        <span class="collapsed"  data-toggle="collapse" data-target="#collapseThreeAddress" aria-expanded="false" aria-controls="collapseThreeAddress">
-                                            <i class="material-icons">keyboard_arrow_right</i><b style="position: relative; top:-7px;"> Address Information</b>
-                                        </span>
-
-                                        <div id="collapseThreeAddress" class="collapse" aria-labelledby="headingThreeAddress" data-parent="#accordionExample" style="max-width: 850px;">
-                                            <div class="card-body">
-
-                                                <span style="position: relative; right:-30px;"> 1115 Reserve Champion Drive, Rockville MD 20850</span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row" style="position: relative; right:-110px;">
-                                            <span class="collapsed"  data-toggle="collapse" data-target="#collapseThreeAffliation" aria-expanded="false" aria-controls="collapseThreeAffiliation">
-                                                <i class="material-icons">keyboard_arrow_right</i> <b style="position: relative; top:-7px;">Affiliation </b>
-                                            </span>
-
-                                        <div id="collapseThreeAffliation" class="collapse" aria-labelledby="headingThreeAffiliation" data-parent="#accordionExample" style="max-width: 850px;">
-                                            <div class="card-body">
-
-                                                <span style="position: relative; right:-30px;">Washington Dc Bar Association. Maryland Bar Association.</span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row" style="position: relative; right:-137px; margin-top: 10px;">
-                                        <b>Docket Number:</b> <input type="text" style="border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;">
-
-                                    </div>
-
-                                </div> <!-- end of outter card body -->
-                            </div> <!--end of collapse two -->
-
-                            <!-- end of item 2 -->
+                            </th:block>
 
 
 

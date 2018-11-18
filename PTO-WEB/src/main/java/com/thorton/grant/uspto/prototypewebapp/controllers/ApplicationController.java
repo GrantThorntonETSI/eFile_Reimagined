@@ -331,6 +331,7 @@ public class ApplicationController {
             scontactNames.add("");
             selectedContactsDisplayDTO.setSelectedNames(scontactNames);
             model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
+            model.addAttribute("lawyerPool", trademarkApplication.getAvailableLawyers());
 
 
 
@@ -388,9 +389,12 @@ public class ApplicationController {
             // baseTrademarkApplication.setLastViewModel("application/AttorneyStart");
 
             model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+            model.addAttribute("lawyerPool", baseTrademarkApplication.getAvailableLawyers());
 
 
         }
+
+
 
         model.addAttribute("hostBean", hostBean);
         return "application/AttorneySet";

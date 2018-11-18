@@ -433,6 +433,8 @@ public class ApplicationService {
             application_lawyer.setZipcode(lawyer.getZipcode());
             application_lawyer.setPrimaryPhonenumber(lawyer.getPrimaryPhonenumber());
             application_lawyer.setEmail(lawyer.getEmail());
+            application_lawyer.setState(lawyer.getState());
+            application_lawyer.setDocketNumber(lawyer.getDocketNumber());
             //////////////////////////////////////////////////////////////////
             // copy over contact's professional info
             //////////////////////////////////////////////////////////////////
