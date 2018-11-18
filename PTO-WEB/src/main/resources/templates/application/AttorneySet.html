@@ -1357,6 +1357,18 @@
             // check each radio button in accordian..
             // if any is checked .. enable confirm and next buttons
             /////////////////////////////////////////////////
+            $('#accordionExample input').each(function () {
+                //alert("##############")
+                if($(this).is(':checked')){
+                   // alert("!!!!!!!!!!!!!!!!")
+                   // confirm link only activated oin new primary set
+                    $('#next-link-application').css("background-color", "rgb(55, 69, 120)");
+                    $('#nextLink').attr("href", nextLinkURL);
+
+
+                }
+
+            });
 
 
 
