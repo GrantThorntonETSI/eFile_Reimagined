@@ -1370,7 +1370,7 @@
             // call back end update ...
             ////////////////////////////////////////////////////////
 
-            saveProjectInfo("set-lawyer-options-value", "no", appInternalID);
+
             ////////////////////////////////////////////////////////
             // remove any selected contacts from application object
             ////////////////////////////////////////////////////////
@@ -1403,17 +1403,25 @@
 
             });
 
+
+
+            // call set attorney options ...for project
+
+
             setTimeout(function() {
+                saveProjectInfo("set-lawyer-options-value", "no", appInternalID);
                 $('#contacts-ui').fadeOut(2000);
             }, 1500);
             // check there are contacts ...those should get dropped???
 
             //////////////////////////////////////////////////////////
-            // enable next link
+            // enable next link and clean up widget links
             //////////////////////////////////////////////////////////
-            $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
+            $('.next-button').css("background-color","rgb(55, 69, 120)" );
 
             $('#nextLink').attr("href", nextLinkURL );
+            $('#AttorneySetLink').attr("href", "");
+            $('#next-link-widget').css("background-color", "rgb(128, 128, 128)" );
         });
         ////////////////////////////////////////////////////////////////
 

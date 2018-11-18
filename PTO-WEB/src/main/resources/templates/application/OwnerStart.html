@@ -634,6 +634,7 @@
 
 
     var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
+    var attorneyOpt = /*[[${baseTrademarkApplication.isAttorneyFiling()}]]*/ 'User Name';
     var host_name= /*[[${hostBean.host}]]*/ 'User Name';
     var host_port= /*[[${hostBean.port}]]*/ 'User Name';
 
@@ -647,6 +648,9 @@
 <script>
 
     var prevLinkURL = "../../application/AttorneySet/?trademarkID="+appInternalID;
+
+    var prevLinkURLAttorneyFalse = "../../application/start/?trademarkID="+appInternalID;
+
     var nextLinkURL = "../../application/owner/Ind/info/?trademarkID="+appInternalID;
 
     var individualPrefix = "../../application/owner/Ind/info";
@@ -777,8 +781,14 @@
         ////////////////////////////////////////////////////
 
 
-        $('#prevLink').attr("href",prevLinkURL);
 
+        // check which prev-link to check
+        if(attorneyOpt == false){
+            $('#prevLink').attr("href",prevLinkURLAttorneyFalse);
+        }
+        else {
+            $('#prevLink').attr("href",prevLinkURL);
+        }
 
         $('#domestic-entity-dropdown').change( function () {
 

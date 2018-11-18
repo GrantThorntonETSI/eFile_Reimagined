@@ -121,19 +121,22 @@ public class ApplicationService {
             // ptoUser.setState(param); // sets state code
             if(param.equals("no")){
 
+                System.out.println("7777777777777777777777777777777777777777777777");
+
                 baseTrademarkApplication.setAttorneySet(true);
                 baseTrademarkApplication.setAttorneyFiling(false);
                 baseTrademarkApplication.setLastViewModel("application/AttorneyStart");
+                baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
             }
             else {
                 baseTrademarkApplication.setAttorneySet(true);
                 baseTrademarkApplication.setAttorneyFiling(true);
                 baseTrademarkApplication.setLastViewModel("application/AttorneyStart");
-
+                baseTradeMarkApplicationService.save(baseTrademarkApplication);
             }
 
-            baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
             appFieldReadable = "Attorney Option. ";
         }
 
@@ -546,10 +549,17 @@ public class ApplicationService {
          */
         // check if contact email is in application lawyer pool ..if so, remove
         Lawyer delLawyer;
+
         for(Iterator<Lawyer> iter = baseTrademarkApplication.getAvailableLawyers().iterator(); iter.hasNext(); ) {
             //delLawyer = null;
             delLawyer = iter.next();
             if(delLawyer.getEmail().equals(contact_email)){
+
+                if(baseTrademarkApplication.getAvailableLawyers().size() == 1){
+                    baseTrademarkApplication.setLastViewModel("application/AttorneyStart");
+                    //baseTrademarkApplication.setAttorneyFiling(false);
+
+                }
                 if(delLawyer.isPrimary()){
                         baseTrademarkApplication.setPrimaryLawyer(null);
                         delLawyer.setPrimary(false);
@@ -559,8 +569,10 @@ public class ApplicationService {
                 else {
                     baseTrademarkApplication.removeAvailableLawyer(delLawyer);
                 }
+
             }
         }
+
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
