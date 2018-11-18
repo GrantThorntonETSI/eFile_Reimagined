@@ -644,6 +644,7 @@ public class ApplicationService {
        if(primaryAttorney != null){
            baseTrademarkApplication.setPrimaryLawyer(primaryAttorney);
            primaryAttorney.setPrimary(true);
+           baseTrademarkApplication.setLastViewModel("application/AttorneySet");
            baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
        }

@@ -543,6 +543,8 @@ public class ApplicationController {
             model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
         }
 
+        model.addAttribute("lawyerPool", baseTrademarkApplication.getAvailableLawyers());
+
         return baseTrademarkApplication.getLastViewModel();
 
     }
