@@ -228,6 +228,19 @@ public class ContactsService {
 
         }
 
+        if(contact_field_name.equals("docket-id" )){
+            lawyer.setDocketNumber(contact_field_value);
+            appFieldReadable = "Contact Docket number ";
+
+        }
+
+        if(contact_field_name.equals("attorney-bar-standing" )){
+            lawyer.setBarJurisdiction(contact_field_value);
+            appFieldReadable = "Contact Affiliation ";
+
+        }
+
+
 
 
 

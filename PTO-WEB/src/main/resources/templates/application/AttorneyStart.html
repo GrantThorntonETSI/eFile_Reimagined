@@ -1239,10 +1239,10 @@
 
                                                 <div class="form-group">
                                                     <label class="small" style="margin-top: 10px;"><b>Affiliation</b></label>
-                                                    <select  class="form-control" name="affiliation"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                                    <select  class="form-control" id="attorney-bar-standing" name="affiliation"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                                         <option value="none"><b>select</b></option>
-                                                        <option value="us"><b>U.S Attorney in good standing</b></option>
-                                                        <option value="ca"><b>Canadian agent or attorney </b></option>
+                                                        <option value="U.S Attorney in good standing"><b>U.S Attorney in good standing</b></option>
+                                                        <option value="Canadian agent or attorney"><b>Canadian agent or attorney </b></option>
 
                                                     </select>
 
@@ -2393,6 +2393,100 @@
 
 
         });
+
+
+
+        /////////////////////////////////////////////////////////////////////////////////
+        // contact information 'docket-id' auto save ////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////
+        $('#docket-id').focusout( function () {
+            // send state, and token to server
+            // token will be generated in the controller and added to the view
+            // similar to how access token works ...a token is tied to a user
+            // access token will be passed in through model
+            //
+            // var tokenValue = '${token}';  // token is the model attribute name
+            // we are not using secured tokens for the prototype
+            // we will secure it by adding ssl and https support
+            //
+            //$('.state-animation').fadeOut();
+
+            var field_value = $(this).val();
+
+            if(field_value != "") {
+
+                var email = $('#attorney-email').val();
+
+                saveContactInfo(email, "docket-id", field_value);
+
+                ///////////////////////////////////////////////////////////////////
+                // set focus and message for the next field
+                ///////////////////////////////////////////////////////////////////
+
+                //////////////////////////////////////////////////////////////////
+                // set focus to confirm button // probably doesn't need to do that
+                // check if the 5 minimal required fields are set,
+                ///////////////////////////////////////////////////////////////////
+
+                // if so ..unlock
+                // unlock confirm button and close button in modal header
+            }
+            else{
+
+
+            }
+
+
+
+        });
+
+
+        /////////////////////////////////////////////////////////////////////////////////
+        // contact information 'docket-id' auto save ////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////
+        $('#attorney-bar-standing').focusout( function () {
+            // send state, and token to server
+            // token will be generated in the controller and added to the view
+            // similar to how access token works ...a token is tied to a user
+            // access token will be passed in through model
+            //
+            // var tokenValue = '${token}';  // token is the model attribute name
+            // we are not using secured tokens for the prototype
+            // we will secure it by adding ssl and https support
+            //
+            //$('.state-animation').fadeOut();
+
+            var field_value = $(this).val();
+
+
+            if(field_value != "") {
+
+                var email = $('#attorney-email').val();
+
+                saveContactInfo(email, "attorney-bar-standing", field_value);
+
+                ///////////////////////////////////////////////////////////////////
+                // set focus and message for the next field
+                ///////////////////////////////////////////////////////////////////
+
+                //////////////////////////////////////////////////////////////////
+                // set focus to confirm button // probably doesn't need to do that
+                // check if the 5 minimal required fields are set,
+                ///////////////////////////////////////////////////////////////////
+
+                // if so ..unlock
+                // unlock confirm button and close button in modal header
+            }
+            else{
+
+
+            }
+
+
+
+        });
+
+
 
 
 
