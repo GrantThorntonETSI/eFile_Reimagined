@@ -278,7 +278,7 @@
                                                 <input style="position: relative; bottom: -5px;"  type="radio" name="primaryAttorney" >
                                             </div>
                                             <div class="col-sm-1">
-                                                <i class="material-icons collapsed" data-toggle="collapse" data-target="#collapseTwo"  aria-expanded="false" aria-controls="collapseTwo" style="position: relative; bottom:-5px; left:-20px;">import_export</i>
+                                                <i class="material-icons collapsed" data-toggle="collapse" th:attr="data-target='#'+${lawyer.firstName}+${lawyer.lastName}"  aria-expanded="false" aria-controls="collapseTwo" style="position: relative; bottom:-5px; left:-20px;">import_export</i>
                                             </div>
                                             <div class="col-sm-3">
 
@@ -302,15 +302,15 @@
                                     </div>
                                 </div>
 
-                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample" style="max-width: 850px; margin-bottom: 10px;">
+                                <div  th:attr="id=${lawyer.firstName}+${lawyer.lastName}"  class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample" style="max-width: 850px; margin-bottom: 10px;">
                                     <div class="card-body">
 
                                       <div class="row" style="position: relative; right:-110px;">
-                                        <span class="collapsed"  data-toggle="collapse" data-target="#collapseTwoAddress" aria-expanded="false" aria-controls="collapseTwoAddress">
+                                        <span class="collapsed"  data-toggle="collapse"  th:attr="data-target='#'+${lawyer.lastName}+${lawyer.firstName}+'1'" aria-expanded="false" aria-controls="collapseTwoAddress">
                                             <i class="material-icons">keyboard_arrow_right</i><b style="position: relative; top:-7px;"> Address Information</b>
                                         </span>
 
-                                        <div id="collapseTwoAddress" class="collapse" aria-labelledby="headingTwoAddress" data-parent="#accordionExample" style="max-width: 850px;">
+                                        <div th:attr="id=${lawyer.lastName}+${lawyer.firstName}+'1'" class="collapse" aria-labelledby="headingTwoAddress" data-parent="#accordionExample" style="max-width: 850px;">
                                             <div class="card-body">
 
                                                 <span style="position: relative; right:-30px;" th:text="${lawyer.address}+' '+${lawyer.city}+', '+${lawyer.state}+' '+${lawyer.zipcode}"> 1115 Reserve Champion Drive, Rockville MD 20850</span>
@@ -320,11 +320,11 @@
                                       </div>
 
                                         <div class="row" style="position: relative; right:-110px;">
-                                            <span class="collapsed"  data-toggle="collapse" data-target="#collapseTwoAffliation" aria-expanded="false" aria-controls="collapseTwoAffiliation">
+                                            <span class="collapsed"  data-toggle="collapse" th:attr="data-target='#'+${lawyer.lastName}+${lawyer.firstName}+'2'" aria-expanded="false" aria-controls="collapseTwoAffiliation">
                                                 <i class="material-icons">keyboard_arrow_right</i> <b style="position: relative; top:-7px;">Affiliation </b>
                                             </span>
 
-                                            <div id="collapseTwoAffliation" class="collapse" aria-labelledby="headingTwoAffiliation" data-parent="#accordionExample" style="max-width: 850px;">
+                                            <div th:attr="id=${lawyer.lastName}+${lawyer.firstName}+'2'" class="collapse" aria-labelledby="headingTwoAffiliation" data-parent="#accordionExample" style="max-width: 850px;">
                                                 <div class="card-body">
 
                                                     <span style="position: relative; right:-30px;"  th:text="${lawyer.barJurisdiction}">Washington Dc Bar Association. Maryland Bar Association.</span>
