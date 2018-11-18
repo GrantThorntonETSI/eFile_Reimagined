@@ -131,7 +131,17 @@ public class BaseTrademarkApplication  {
         availableLawyers.remove(lawyer);
 
     }
+    public Lawyer findContactByEmail(String email){
+        Lawyer lawyer = null;
+        for(Iterator<Lawyer> iter = availableLawyers.iterator(); iter.hasNext(); ) {
+             Lawyer current = iter.next();
 
+            if(current.getEmail().equals(email)){
+                lawyer = current;
+            }
+        }
+        return lawyer;
+    }
 
 
     public Owner getOwner() {

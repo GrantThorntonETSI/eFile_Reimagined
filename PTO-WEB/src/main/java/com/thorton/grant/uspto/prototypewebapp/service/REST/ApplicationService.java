@@ -589,4 +589,107 @@ public class ApplicationService {
 
 
 
+
+
+
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/application/Attorney/Primary/set/{contact_email}/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> setApplicationPrimaryAttorney(@PathVariable String contact_email , @PathVariable String appInternalID){
+
+
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();
+        //UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        //UserCredentials userCredentials = userCredentialsService.findByEmail(email);
+        PTOUser ptoUser = ptoUserService.findByEmail(email);// ?? we may not need to save this
+        // verify authentication is valid before moving on ....
+        // have to have a valid session
+
+        if(ptoUser == null || contact_email == ""){
+            ////////////////////////////////////////////////
+            // start generating response
+            ////////////////////////////////////////////////
+            String statusCode = "404";
+            String responseMsg = "Contact with email address :"+contact_email+ "has not been set as Primary Attorney. invalid user session.";
+            responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
+            HttpHeaders responseHeader = new HttpHeaders ();
+            //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
+            responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
+            ArrayList<String> headersAllowed = new ArrayList<String>();
+            headersAllowed.add("Access-Control-Allow-Origin");
+            responseHeader.setAccessControlAllowHeaders(headersAllowed);
+            ArrayList<String> methAllowed = new ArrayList<String>();
+
+            return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+
+        }
+        //////////////////////////////////////////////////////////
+        // retrieve application using passed internal id
+        //////////////////////////////////////////////////////////
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+        //////////////////////////////////////////////////////////
+        // find contact via email from PTOUser
+        // create a copy of the contact object
+        // add the copy of the contact to the application object
+        // save application object
+        ///////////////////////////////////////////////////////////
+
+
+       Lawyer primaryAttorney = baseTrademarkApplication.findContactByEmail(contact_email);
+
+       if(primaryAttorney != null){
+           baseTrademarkApplication.setPrimaryLawyer(primaryAttorney);
+           baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+       }
+       else{
+           // error
+           String statusCode = "404";
+           String responseMsg = "Contact with email address :"+contact_email+ " has not been set as Primary Attorney. invalid contact email.";
+           responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
+           HttpHeaders responseHeader = new HttpHeaders ();
+           responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
+           ArrayList<String> headersAllowed = new ArrayList<String>();
+           headersAllowed.add("Access-Control-Allow-Origin");
+           responseHeader.setAccessControlAllowHeaders(headersAllowed);
+           ArrayList<String> methAllowed = new ArrayList<String>();
+
+           return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+       }
+
+
+
+
+
+
+
+
+
+
+
+        ////////////////////////////////////////////////
+        // start generating response
+        ////////////////////////////////////////////////
+        String statusCode = "200";
+        String responseMsg = "Contact with email address :"+contact_email+"  have been set as Primary Attorney";
+        responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
+        HttpHeaders responseHeader = new HttpHeaders ();
+        responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
+        ArrayList<String> headersAllowed = new ArrayList<String>();
+        headersAllowed.add("Access-Control-Allow-Origin");
+        responseHeader.setAccessControlAllowHeaders(headersAllowed);
+        ArrayList<String> methAllowed = new ArrayList<String>();
+
+        System.out.println("response header : "+responseHeader.getAccessControlAllowOrigin());
+
+
+        return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+
+    }
+
+
 }
