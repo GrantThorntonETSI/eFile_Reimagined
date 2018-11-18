@@ -275,7 +275,7 @@
                                     <div class="card-header" id="headingTwo"  style="background-color: white;">
                                         <div class="row">
                                             <div class="col-sm-1">
-                                                <input style="position: relative; bottom: -5px;"  type="radio" name="primaryAttorney" >
+                                                <input class="primaryLawyer" style="position: relative; bottom: -5px;"  type="radio" name="primaryAttorney" >
                                             </div>
                                             <div class="col-sm-1">
                                                 <i class="material-icons collapsed" data-toggle="collapse" th:attr="data-target='#'+${lawyer.firstName}+${lawyer.lastName}"  aria-expanded="false" aria-controls="collapseTwo" style="position: relative; bottom:-5px; left:-20px;">import_export</i>
@@ -1374,7 +1374,11 @@
 
 
 
+            $('#accordionExample').on('click', 'input.primaryLawyer', function () {
 
+                alert("!!!!!!!!!!!!!!");
+
+            });
 
 
 
