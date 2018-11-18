@@ -642,6 +642,11 @@ public class ApplicationService {
        Lawyer primaryAttorney = baseTrademarkApplication.findContactByEmail(contact_email);
 
        if(primaryAttorney != null){
+           // unset existing if there is one ...
+           Lawyer currentPrimary = baseTrademarkApplication.getPrimaryLawyer();
+           if(currentPrimary != null){
+               currentPrimary.setPrimary(false);
+           }
            baseTrademarkApplication.setPrimaryLawyer(primaryAttorney);
            primaryAttorney.setPrimary(true);
            baseTrademarkApplication.setLastViewModel("application/AttorneySet");
