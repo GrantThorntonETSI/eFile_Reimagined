@@ -536,23 +536,33 @@ public class ApplicationService {
         ///////////////////////////////////////////////////////////
 
         // check if lawyer is set as primary ...if so, remove that first
-         Lawyer delLawyer = baseTrademarkApplication.getPrimaryLawyer();
+        /* Lawyer delLawyer = baseTrademarkApplication.getPrimaryLawyer();
          if(delLawyer != null){
              if(delLawyer.getEmail().equals(contact_email)){
                  baseTrademarkApplication.setPrimaryLawyer(null);
              }
 
          } // else primary is not set and nothing to do there
+         */
         // check if contact email is in application lawyer pool ..if so, remove
+        Lawyer delLawyer;
         for(Iterator<Lawyer> iter = baseTrademarkApplication.getAvailableLawyers().iterator(); iter.hasNext(); ) {
-            delLawyer = null;
+            //delLawyer = null;
             delLawyer = iter.next();
             if(delLawyer.getEmail().equals(contact_email)){
+                if(delLawyer.isPrimary()){
+                        baseTrademarkApplication.setPrimaryLawyer(null);
+                        delLawyer.setPrimary(false);
+                        baseTrademarkApplication.removeAvailableLawyer(delLawyer);
 
-                baseTrademarkApplication.removeAvailableLawyer(delLawyer);
-
+                }
+                else {
+                    baseTrademarkApplication.removeAvailableLawyer(delLawyer);
+                }
             }
         }
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
 
 
