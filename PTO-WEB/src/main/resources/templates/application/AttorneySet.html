@@ -275,7 +275,8 @@
                                     <div class="card-header" id="headingTwo"  style="background-color: white;">
                                         <div class="row">
                                             <div class="col-sm-1">
-                                                <input class="primaryLawyer" style="position: relative; bottom: -5px;"  type="radio" name="primaryAttorney" >
+                                                <input  th:if="${lawyer.isPrimary() == true}" class="primaryLawyer" style="position: relative; bottom: -5px;"  type="radio" name="primaryAttorney" checked>
+                                                <input  th:if="${lawyer.isPrimary() == false}" class="primaryLawyer" style="position: relative; bottom: -5px;"  type="radio" name="primaryAttorney" >
                                             </div>
                                             <div class="col-sm-1">
                                                 <i class="material-icons collapsed" data-toggle="collapse" th:attr="data-target='#'+${lawyer.firstName}+${lawyer.lastName}"  aria-expanded="false" aria-controls="collapseTwo" style="position: relative; bottom:-5px; left:-20px;">import_export</i>
@@ -1352,24 +1353,10 @@
             /////////////////////////////////////////
             $('#prevLink').attr("href",prevLinkURL);
 
-            //////////////////////////////////////////////////////////////
-            // check if attorneyFillingFalse is set
-            /////////////////////////////////////////////////////////////
-            if ($('#attorneyFillingFalse').is(':checked') == true){
-
-                $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
-                $('#nextLink').attr("href", nextLinkURL );
-
-
-            }
-            /////////////////////////////////////////////////////////////
-            // check if attorneyFilingTrue is set
-            /////////////////////////////////////////////////////////////
-            if ($('#attorneyFilingTrue').is(':checked') == true){
-
-                $('#contacts-ui').fadeIn(2000);
-
-            }
+            /////////////////////////////////////////////////
+            // check each radio button in accordian..
+            // if any is checked .. enable confirm and next buttons
+            /////////////////////////////////////////////////
 
 
 

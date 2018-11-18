@@ -643,6 +643,7 @@ public class ApplicationService {
 
        if(primaryAttorney != null){
            baseTrademarkApplication.setPrimaryLawyer(primaryAttorney);
+           primaryAttorney.setPrimary(true);
            baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
        }
