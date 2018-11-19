@@ -1956,8 +1956,16 @@
 
 
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // we need to update this functionality
+    // re-design
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     function createContact(email) {
 
+          ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+          // REST URI:
+          // REST/apiGateway/contacts/add/{email}/{title}/{first-name}/{last-name}/{middle-name}{firm-name}/{attorney-country}/{attorney-address}/{attorney-city}/{attorney-state}/{attorney-zipcode}/{attorney-primary-phone}/{attorney-docet}/{attorney-affiliation}
+          ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -1978,7 +1986,7 @@
         var return_code="";
         var field_name_prefix = "attorney-email";
         $.ajax({
-            //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
+            //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+application_internal_id,
             url: "../../REST/apiGateway/contacts/add/" + email,
             type: 'GET',
             success: function (data) {
