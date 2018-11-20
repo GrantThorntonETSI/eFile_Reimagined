@@ -54,7 +54,7 @@ public class ContactsService {
     @ResponseBody
     ResponseEntity<String> createContact(@PathVariable String contact_email){
 
-        String appFieldReadable = "Contact Email";
+        String appFieldReadable = "New Contact";
         ////////////////////////////////////////////////////////////////////////////////////////////////
         // check for valid security session ...as new contacts are added for PTOUser with valid sessions
         ////////////////////////////////////////////////////////////////////////////////////////////////

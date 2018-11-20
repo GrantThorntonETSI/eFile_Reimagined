@@ -1272,7 +1272,7 @@
 
                         <div class="col-sm-2">
 
-                                <div class="form-group attorney-saveMsgArea" style="position: relative; left:-15%;">
+                                <div class="form-group attorney-saveMsgArea" style="position: relative; left:-15%; bottom:-10px;">
                                     <b><span></span></b>
                                 </div>
 
@@ -1822,12 +1822,18 @@
 
             var attorney_email = $('#attorney-email').val();
             createContact(attorney_email);
-
-
-
-
-
-
+            ///////////////////////////////////////////////////////////////////
+            // $('#attorney-email').prop('disabled', true);
+            ///////////////////////////////////////////////////////////////////
+            // get all of the other fields from the modal ....
+            ////////////////////////////////////////////////////////////////////
+            // insert new contact into contacts table
+            ////////////////////////////////////////////////////////////////////
+            var attorney_first_name = $('#attorney-first-name').val();
+            var attorney_last_name = $('#attorney-last-name').val();
+            var attorney_lawfirm_name =$('#attorney-lawfirm-name').val();
+            var newRow = ["<input class=\"contacts-checkbox\" type='checkbox'>",attorney_first_name+" "+attorney_last_name, attorney_email, attorney_lawfirm_name, "<i class=\"material-icons\">swap_horiz</i>"];
+           contactsTable.row.add(newRow).draw();
 
         });
 
@@ -2537,29 +2543,6 @@
 
 
 
-
-
-        // do clean up on modal close
-
-        // reset all fields
-
-        // all text notification should go away by itself
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     });  // end of document ready ()
 /////////////////////////////////////////////////////
 // aJAX
@@ -2706,6 +2689,7 @@
                     setTimeout(function() {
                         // after 1000 ms we add the class animated to the login/register card
                         $(".attorney-saveMsgArea span").text(s_msg);
+                        $(".attorney-saveMsgArea span").css('color', 'white');
                         $(".attorney-saveMsgArea span").fadeIn(1000);
                     }, 1000);
 
@@ -2817,6 +2801,7 @@
 
 
 
+
                     // animation rendering control
                     //if($('.state-checkmark').css('display') == 'block'){
                     if ($(".attorney-saveMsgArea"+ "-animation").css('display') == 'block') {
@@ -2897,16 +2882,7 @@
                     //if(data.contains("status: 200")){
                     // show confirmation check mark on form
                     //$('#toggle').delay(1000).click();
-                    $("."+contact_field_name.toLowerCase()+"FieldMsgArea").fadeOut();
 
-                    $("."+contact_field_name.toLowerCase()+"FieldMsgArea span").text(s_msg);
-                    $("."+contact_field_name.toLowerCase()+"FieldMsgArea span").css('color','green');
-                    $("."+contact_field_name.toLowerCase()+"FieldMsgArea").fadeIn(1000);
-
-                    setTimeout(function () {
-
-                        $("."+contact_field_name.toLowerCase()+"FieldMsgArea").fadeOut(1000);
-                    }, 5500);
 
                     // animation rendering control
                     //if($('.state-checkmark').css('display') == 'block'){
