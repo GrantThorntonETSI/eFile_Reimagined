@@ -1846,12 +1846,13 @@
             //$('.state-animation').fadeOut();
 
             var field_value = $(this).val();
+            alert("!!!!!!");
 
 
             if(field_value != ""){
 
                 if(field_value.indexOf('@') > -1 && (field_value.indexOf(".com") > -1 || field_value.indexOf(".gov") > -1 || field_value.indexOf(".net") > -1 || field_value.indexOf(".lib") > -1) ){
-                    var status = createContact( field_value);
+                    createContact( field_value);
 
 
 
@@ -2647,15 +2648,19 @@
         //var field_value = $(this).val();
         //alert(field_value);
 
+        alert(email);
+
         var return_code="";
         var field_name_prefix = "attorney-email";
         $.ajax({
             //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
-            url: "../../REST/apiGateway/contacts/add/" + email,
+            url: "../../REST/apiGateway/contacts/lawyer/add/"+ email,
             type: 'GET',
             success: function (data) {
 
                 // parse out status msg:
+
+                alert(data);
                 var s_code = data.substring(data.indexOf("status:") + 7, data.indexOf("status:") + 4 + 7);
 
                 var s_msg = data.substring(data.indexOf("msg:") + 4, data.length - 2);
@@ -2718,6 +2723,8 @@
                 else {
                     //$('.circle-loader').fadeOut(100);
                     //$('.x-mark').fadeIn(500);
+
+                    alert(s_msg);
                     $("." + field_name_prefix.toLowerCase() + "FieldMsgArea").fadeOut();
 
                     setTimeout(function() {
@@ -2734,7 +2741,7 @@
 
                 //$('.circle-loader').fadeOut(100);
                 //$('.x-mark').fadeIn(500);
-
+                alert(data);
                 console.log(data);
                 // set message to div area ...fields can not be left null
                 //$(".validationMsgArea span").text("You can not leave any fields empty.");

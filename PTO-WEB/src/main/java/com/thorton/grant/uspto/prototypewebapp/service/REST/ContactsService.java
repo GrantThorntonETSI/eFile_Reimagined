@@ -49,10 +49,10 @@ public class ContactsService {
 
 
     @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
-    @RequestMapping(method = GET, value="/REST/apiGateway/application/contacts/lawyer/add/{appInternalID}/{contact_email}/{title}/{first_name}/{last_name}/{middle_name}{firm_name}/{attorney_country}/{attorney_address}/{attorney_city}/{attorney_state}/{attorney_zipcode}/{attorney_primary_phone}/{attorney_docket_num}/{attorney_affiliation}")
+    @RequestMapping(method = GET, value="/REST/apiGateway/contacts/lawyer/add/{contact_email}")
 
     @ResponseBody
-    ResponseEntity<String> createContact(@PathVariable String contact_email, @PathVariable String title, @PathVariable String first_name, @PathVariable String last_name, @PathVariable String middle_name, @PathVariable String firm_name, @PathVariable  String attorney_country, @PathVariable String attorney_address, @PathVariable String attorney_city, @PathVariable String attorney_state, @PathVariable String attorney_zipcode, @PathVariable String attorney_primary_phone, @PathVariable String attorney_docket_num, @PathVariable String attorney_affiliation ){
+    ResponseEntity<String> createContact(@PathVariable String contact_email){
 
         String appFieldReadable = "Contact Email";
         ////////////////////////////////////////////////////////////////////////////////////////////////
