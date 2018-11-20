@@ -1960,11 +1960,11 @@
     // we need to update this functionality
     // re-design
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    function createContact(email) {
+    function createContact(email,title, first_name, last_name, middle_name, firm_name, attorney_country, attorney_address, attorney_city, attorney_state, attorney_zipcode, attorney_primary_phone, attorney_docket_num, atttorney_affiliation) {
 
           ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
           // REST URI:
-          // REST/apiGateway/contacts/add/{email}/{title}/{first-name}/{last-name}/{middle-name}{firm-name}/{attorney-country}/{attorney-address}/{attorney-city}/{attorney-state}/{attorney-zipcode}/{attorney-primary-phone}/{attorney-docet}/{attorney-affiliation}
+          // REST/apiGateway/contacts/lawyer/add/{email}/{title}/{first-name}/{last-name}/{middle-name}{firm-name}/{attorney-country}/{attorney-address}/{attorney-city}/{attorney-state}/{attorney-zipcode}/{attorney-primary-phone}/{attorney-docet}/{attorney-affiliation}
           ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -1983,11 +1983,12 @@
         //var field_value = $(this).val();
         //alert(field_value);
 
+
         var return_code="";
         var field_name_prefix = "attorney-email";
         $.ajax({
             //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+application_internal_id,
-            url: "../../REST/apiGateway/contacts/add/" + email,
+            url: "../../REST/apiGateway/contacts/add/"+appInternalID+"/"+email+"/"+first_name+"/"+middle_name+"/"+last_name+"/"+firm_name+"/"+attorney_country+"/"+attorney_address+"/"+attorney_city+"/"+attorney_state+"/"+attorney_zipcode+"/"+attorney_primary_phone+"/"+attorney_docket_num+"/"+atttorney_affiliation,
             type: 'GET',
             success: function (data) {
 
