@@ -1271,6 +1271,11 @@
 
 
                         <div class="col-sm-2">
+
+                                <div class="form-group attorney-saveMsgArea" style="position: relative; left:-15%;">
+                                    <b><span></span></b>
+                                </div>
+
                         </div>
                         <div class="col-sm-2"  style="position: relative; right: -25px;">
 
@@ -1799,12 +1804,34 @@
         /////////////////////////////////////////////////////////////////////////
         $('#addNewAttorneyModal').on('hidden.bs.modal', function () {
 
+        });
+        /////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////
+
+        /////////////////////////////////////////////////////////////////////////
+        // add new attorney modal save
+        /////////////////////////////////////////////////////////////////////////
+
+        $('#addAttorneyConfirm').click( function () {
+
+            /////////////////////////////////////////////////////////////////////
+            // save contact email
+            // in contact email succedes ...save all of the other fields....
+            // get variables
+            //////////////////////////////////////////////////////////////////////
+
+            var attorney_email = $('#attorney-email').val();
+            createContact(attorney_email);
+
+
+
+
 
 
 
         });
-        /////////////////////////////////////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////
+
+
 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2475,7 +2502,9 @@
             // we will secure it by adding ssl and https support
             //
             //$('.state-animation').fadeOut();
+            checkUnlockConfirm();
 
+            /*
             var field_value = $(this).val();
 
 
@@ -2500,7 +2529,7 @@
             else{
 
 
-            }
+            }*/
 
 
 
@@ -2643,8 +2672,8 @@
 
 
 
-
-        //alert(field_name_prefix);
+        /////////////////////////////////////////////////////////////////////////////////
+        // alert(field_name_prefix);
         // send state, and token to server
         // token will be generated in the controller and added to the view
         // similar to how access token works ...a token is tied to a user
@@ -2653,14 +2682,12 @@
         // var tokenValue = '${token}';  // token is the model attribute name
         // we are not using secured tokens for the prototype
         // we will secure it by adding ssl and https support
-
-        //var field_value = $(this).val();
-        //alert(field_value);
-
-        alert(email);
+        /////////////////////////////////////////////////////////////////////////////////
 
         var return_code="";
         var field_name_prefix = "attorney-email";
+
+
         $.ajax({
             //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
             url: "../../REST/apiGateway/contacts/lawyer/add/"+ email,
@@ -2676,52 +2703,71 @@
                 return_code = s_code.trim();
                 if (s_code.trim() == "200") {
 
-                    $(".autoSaveMessageArea span").fadeOut(500);
+                    $(".attorney-saveMsgArea span").fadeOut(500);
                     setTimeout(function() {
                         // after 1000 ms we add the class animated to the login/register card
-                        $(".autoSaveMessageArea span").text(s_msg);
-                        $(".autoSaveMessageArea span").fadeIn(1000);
+                        $(".attorney-saveMsgArea span").text(s_msg);
+                        $(".attorney-saveMsgArea span").fadeIn(1000);
                     }, 500);
 
-                    $('#attorney-email').prop('disabled', true);
                     ///////////////////////////////////////////////////////////////////
-                    // set focus and message for the next field
+                    // $('#attorney-email').prop('disabled', true);
                     ///////////////////////////////////////////////////////////////////
-                    setTimeout(function () {
-                        $('#attorney-first-name').focus();
-                    }, 1500);
-                    $(".attorney-first-nameFieldMsgArea").fadeOut();
-                    setTimeout(function () {
-                        $(".attorney-first-nameFieldMsgArea span").text("Please Complete First Name Field!");
-                        $(".attorney-first-nameFieldMsgArea span").css('color', 'red');
-                        $(".attorney-first-nameFieldMsgArea").fadeIn(1000);
-                    }, 2500);
+                    // get all of the other fields from the modal ....
+                    ////////////////////////////////////////////////////////////////////
+                    // reset all fields
+                    var attorney_first_name = $('#attorney-first-name').val();
+                    if(attorney_first_name != ""){
+                        saveContactInfo(email, "attorney-first-name", attorney_first_name);
 
-                    setTimeout(function () {
+                    }
+                    var attorney_last_name = $('#attorney-last-name').val();
+                    if(attorney_last_name != ""){
+                        saveContactInfo(email, "attorney-last-name", attorney_last_name);
 
-                        $("." + field_name_prefix.toLowerCase() + "FieldMsgArea").fadeOut(1000);
-                    }, 1500);
+                    }
+
+
+                    var attorney_lawfirm_name =$('#attorney-lawfirm-name').val();
+                    var attorney_country = $('#attorney-country').val();
+                    var attorney_address = $('#attorney-address1').val();
+                    var attorney_city = $('#attorney-city').val();
+                    var attorney_state = $('#attorney-state').val();
+                    var attorney_zipcode = $('#attorney-zipcode').val();
+                    var attorney_primary_phone = $('#attorney-phone').val();
+                    var attorney_email = $('#attorney-email').val();
+                    var attorney_docket_num = $('#docket-id').val();
+                    var attorney_bar_standing = $('#attorney-bar-standing').val();
+
+
+
+
+
+
+
+
+
 
 
                     // animation rendering control
                     //if($('.state-checkmark').css('display') == 'block'){
-                    if ($("." + field_name_prefix.toLowerCase() + "-animation").css('display') == 'block') {
+                    if ($(".attorney-saveMsgArea"+ "-animation").css('display') == 'block') {
 
 
-                        $("." + field_name_prefix.toLowerCase() + "-animation").fadeOut(100);
+                        $(".attorney-saveMsgArea"+ "-animation").fadeOut(100);
                         // now we need to create an java back end service that saves this value.
                         // also add validation on the html  similar to password save
                         //$('#toggle-'+field_name_prefix.toLowerCase()).delay(100).click();
 
                         // alert($(this).val());
-                        $("." + field_name_prefix.toLowerCase() + "-animation").fadeIn(1000);
+                        $(".attorney-saveMsgArea"+ "-animation").fadeIn(1000);
                         // now we need to create an java back end service that saves this value.
                         // also add validation on the html  similar to password save
                         //$("."+field_name_prefix.toLowerCase()+"-animation").delay(1000).click();
                     }
                     else {
 
-                        $("." + field_name_prefix.toLowerCase() + "-animation").fadeIn(1000);
+                        $(".attorney-saveMsgArea"+ "-animation").fadeIn(1000);
                         // now we need to create an java back end service that saves this value.
                         // also add validation on the html  similar to password save
                         //$('#toggle-'+field_name_prefix.toLowerCase()).delay(1000).click();
@@ -2730,16 +2776,13 @@
 
                 }
                 else {
-                    //$('.circle-loader').fadeOut(100);
-                    //$('.x-mark').fadeIn(500);
 
-                    alert(s_msg);
-                    $("." + field_name_prefix.toLowerCase() + "FieldMsgArea").fadeOut();
+                    $(".attorney-saveMsgArea").fadeOut();
 
                     setTimeout(function() {
-                        $("." + field_name_prefix.toLowerCase() + "FieldMsgArea span").text(s_msg);
-                        $("." + field_name_prefix.toLowerCase() + "FieldMsgArea span").css('color', 'red');
-                        $("." + field_name_prefix.toLowerCase() + "FieldMsgArea").fadeIn(1000);
+                        $(".attorney-saveMsgArea span").text(s_msg);
+                        $(".attorney-saveMsgArea span").css('color', 'red');
+                        $(".attorney-saveMsgArea").fadeIn(1000);
                     }, 500);
                 }
 
@@ -2747,14 +2790,7 @@
 
             },
             error: function (data) {
-
-                //$('.circle-loader').fadeOut(100);
-                //$('.x-mark').fadeIn(500);
-                alert(data);
                 console.log(data);
-                // set message to div area ...fields can not be left null
-                //$(".validationMsgArea span").text("You can not leave any fields empty.");
-                //$(".validationMsgArea span").css('color','red');
             }
 
 
@@ -2774,8 +2810,6 @@
         // we need REST controller of finding a contact by its email
         // this needs to be implemented on the PTOUser object
         //////////////////////////////////////////////////////////////////////////////////////
-
-
 
         //var field_value = $(this).val();
         //alert(field_value);
@@ -2829,9 +2863,6 @@
                         // also add validation on the html  similar to password save
                         //$('#toggle-'+field_name_prefix.toLowerCase()).delay(1000).click();
                     }
-
-
-
 
                 }
                 else{
