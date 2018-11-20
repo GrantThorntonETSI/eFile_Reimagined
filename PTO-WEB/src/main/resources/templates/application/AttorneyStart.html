@@ -1275,7 +1275,7 @@
                         <div class="col-sm-2"  style="position: relative; right: -25px;">
 
                             <!-- add this  back  data-dismiss="modal"  after  required fields are completed .... and also remove disabled=="true"  -->
-                            <button id="addAttorneyConfirm" class=" btn-sm btn"  data-dismiss="modal"   style=" padding:5px; min-width:120px; color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><b>Confirm</b></button>
+                            <button id="addAttorneyConfirm" class=" btn-sm btn"    style=" padding:5px; min-width:120px; color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><b>Confirm</b></button>
 
                         </div>
 
@@ -1776,31 +1776,6 @@
             //$('#modal-header-close').prop("disabled", true);
 
 
-            //if($('#attorney-email').is(":empty")) {
-            if($('#attorney-email').val()=== '') {
-                $('#attorney-email').focus();
-                //$('#attorney-email').select();
-
-                setTimeout(function () {
-                    $(".attorney-emailFieldMsgArea span").text("Please Complete Email Field FIRST!");
-                    $(".attorney-emailFieldMsgArea span").css('color', 'red');
-                    $(".attorney-emailFieldMsgArea").fadeIn(1000);
-                }, 500);
-
-
-
-            }
-
-
-
-
-
-        });
-        /////////////////////////////////////////////////////////////////////////
-        // modal clean up
-        /////////////////////////////////////////////////////////////////////////
-        $('#addNewAttorneyModal').on('hidden.bs.modal', function () {
-
             // reset all fields
             $('#attorney-first-name').val("");
             $('#attorney-last-name').val("");
@@ -1814,6 +1789,17 @@
             $('#attorney-email').val("");
             $('#docket-id').val("");
             $('#attorney-bar-standing').val("");
+
+
+
+
+        });
+        /////////////////////////////////////////////////////////////////////////
+        // modal clean up
+        /////////////////////////////////////////////////////////////////////////
+        $('#addNewAttorneyModal').on('hidden.bs.modal', function () {
+
+
 
 
         });
@@ -1845,8 +1831,10 @@
             //
             //$('.state-animation').fadeOut();
 
+            checkUnlockConfirm();
+            /*
             var field_value = $(this).val();
-            alert("!!!!!!");
+
 
 
             if(field_value != ""){
@@ -1880,7 +1868,7 @@
                     $(".attorney-emailFieldMsgArea").fadeIn(1000);
                 }, 500);
 
-            }
+            }*/
 
 
         });
@@ -1900,6 +1888,10 @@
             // we will secure it by adding ssl and https support
             //
             //$('.state-animation').fadeOut();
+
+            checkUnlockConfirm();
+
+            /*
 
             var field_value = $(this).val();
 
@@ -1931,7 +1923,7 @@
                     $(".attorney-first-nameFieldMsgArea").fadeIn(1000);
                 }, 500);
 
-            }
+            }*/
 
 
 
@@ -1951,6 +1943,9 @@
             // we will secure it by adding ssl and https support
             //
             //$('.state-animation').fadeOut();
+
+            checkUnlockConfirm();
+            /*
 
             var field_value = $(this).val();
 
@@ -1982,7 +1977,7 @@
                     $(".attorney-last-nameFieldMsgArea").fadeIn(1000);
                 }, 500);
 
-            }
+            }*/
 
 
 
@@ -2002,6 +1997,10 @@
             // we will secure it by adding ssl and https support
             //
             //$('.state-animation').fadeOut();
+
+            checkUnlockConfirm();
+
+            /*
 
             var field_value = $(this).val();
 
@@ -2051,7 +2050,7 @@
                     $(".attorney-lawfirm-nameFieldMsgArea").fadeIn(1000);
                 }, 500);
 
-            }
+            }*/
 
 
 
@@ -2071,6 +2070,10 @@
             // we will secure it by adding ssl and https support
             //
             //$('.state-animation').fadeOut();
+
+            checkUnlockConfirm();
+
+            /*
 
             var field_value = $(this).val();
 
@@ -2109,7 +2112,7 @@
                     $(".attorney-countryFieldMsgArea").fadeIn(1000);
                 }, 500);
 
-            }
+            }*/
 
 
 
@@ -2130,6 +2133,8 @@
             //
             //$('.state-animation').fadeOut();
 
+            checkUnlockConfirm();
+            /*
             var field_value = $(this).val();
 
             if(field_value != "") {
@@ -2167,7 +2172,7 @@
                     $(".attorney-address1FieldMsgArea").fadeIn(1000);
                 }, 500);
 
-            }
+            }*/
 
 
 
@@ -2187,6 +2192,10 @@
             // we will secure it by adding ssl and https support
             //
             //$('.state-animation').fadeOut();
+
+            checkUnlockConfirm();
+
+            /*
 
             var field_value = $(this).val();
 
@@ -2225,7 +2234,7 @@
                     $(".attorney-cityFieldMsgArea").fadeIn(1000);
                 }, 500);
 
-            }
+            }*/
 
 
 
@@ -2247,6 +2256,9 @@
             // we will secure it by adding ssl and https support
             //
             //$('.state-animation').fadeOut();
+
+            checkUnlockConfirm();
+            /*
 
             var field_value = $(this).val();
 
@@ -2285,7 +2297,7 @@
                     $(".attorney-stateFieldMsgArea ").fadeIn(1000);
                 }, 500);
 
-            }
+            }*/
 
 
 
@@ -2305,7 +2317,8 @@
             // we will secure it by adding ssl and https support
             //
             //$('.state-animation').fadeOut();
-
+            checkUnlockConfirm();
+            /*
             var field_value = $(this).val();
 
             if(field_value != "") {
@@ -2343,7 +2356,7 @@
                     $(".attorney-zipcodeFieldMsgArea").fadeIn(1000);
                 }, 500);
 
-            }
+            }*/
 
 
 
@@ -2363,7 +2376,8 @@
             // we will secure it by adding ssl and https support
             //
             //$('.state-animation').fadeOut();
-
+            checkUnlockConfirm();
+            /*
             var field_value = $(this).val();
 
             if(field_value != "") {
@@ -2380,14 +2394,7 @@
                 // set focus to confirm button // probably doesn't need to do that
                 // check if the 5 minimal required fields are set,
                 ///////////////////////////////////////////////////////////////////
-                if($('#attorney-email').val() != "" && $('#attorney-first-name').val() != "" && $('#attorney-last-name').val()!="" && $('#attorney-lawfirm-name').val() != ""){
 
-
-                    $('#addAttorneyConfirm').prop("disabled", false);
-                    $('#modal-header-close').prop("disabled", false);
-
-
-                }
                 // if so ..unlock
                 // unlock confirm button and close button in modal header
             }
@@ -2399,7 +2406,7 @@
                     $(".attorney-phoneFieldMsgArea").fadeIn(1000);
                 }, 500);
 
-            }
+            }*/
 
 
 
@@ -2422,6 +2429,8 @@
             //
             //$('.state-animation').fadeOut();
 
+            checkUnlockConfirm();
+            /*
             var field_value = $(this).val();
 
             if(field_value != "") {
@@ -2445,7 +2454,7 @@
             else{
 
 
-            }
+            }*/
 
 
 
@@ -2986,6 +2995,23 @@
             $('#next-link-widget').css("background-color", "rgb(128, 128, 128)");
 
         }
+
+
+
+        function checkUnlockConfirm(){
+
+            if($('#attorney-email').val() != "" && $('#attorney-first-name').val() != "" && $('#attorney-last-name').val()!="" && $('#attorney-lawfirm-name').val() != "" && $('#attorney-phone').val() != ""){
+
+
+                $('#addAttorneyConfirm').prop("disabled", false);
+                //$('#modal-header-close').prop("disabled", false);
+
+
+            }
+
+        }
+
+
 
 
     </script>
