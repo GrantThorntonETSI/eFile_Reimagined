@@ -514,7 +514,7 @@
 
                                             <div class="form-group">
                                                 <label class="small" style="margin-top: 10px;"><b>Middle Name</b></label>
-                                                <input type="text"   id="Attorney Middle Name" placeholder="" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  >
+                                                <input type="text"   id="attorney-middle-name" placeholder="" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  >
 
 
                                             </div>
@@ -1443,8 +1443,6 @@
 
 
 
-
-
         ////////////////////////////////////////////////////////////////////
         // loading contact info
         /////////////////////////////////////////////////////////////////////
@@ -1772,17 +1770,29 @@
             //////////////////////////////////////////////////////////////
             // disable modal close button
             //////////////////////////////////////////////////////////////
-            $('#addAttorneyConfirm').prop("disabled", true);
+            //$('#addAttorneyConfirm').prop("disabled", true);
             //$('#modal-header-close').prop("disabled", true);
 
-
-
-
-
-
-
-
         });
+
+        // new attorney save
+        $('#addAttorneyConfirm').click( function () {
+            ////////////////////////////////////////////////////////////
+            // call back end update ...
+            // signal uppate occurred
+            // wait for the confirm message first.
+            ////////////////////////////////////////////////////////////
+            var first_name = $('#attorney-first-name').val();
+            alert(first_name);
+            var last_name =  $('#attorney-last-name').val();
+            var middle_name = $('#attorney-middle-name').val();
+            var firm_name = $('#attorney-lawfirm-name').val();
+        });
+        /////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////
+
+
+
         /////////////////////////////////////////////////////////////////////////
         // modal clean up
         /////////////////////////////////////////////////////////////////////////

@@ -313,9 +313,9 @@ public class ApplicationService {
     }
 
     @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
-    @RequestMapping(method = GET, value="/REST/apiGateway/application/contacts/lawyer/add/{appInternalID}/{contact_email}/{title}/{first-name}/{last-name}/{middle-name}{firm-name}/{attorney-country}/{attorney-address}/{attorney-city}/{attorney-state}/{attorney-zipcode}/{attorney-primary-phone}/{attorney-docet}/{attorney-affiliation}")
+    @RequestMapping(method = GET, value="/REST/apiGateway/application/contacts/add/{contact_email}/{appInternalID}")
     @ResponseBody
-    ResponseEntity<String> updateApplicationAddContactsPool(@PathVariable String appInternalID, @PathVariable String contact_email  ){
+    ResponseEntity<String> updateApplicationAddContactsPool(@PathVariable String contact_email , @PathVariable String appInternalID){
 
 
 
