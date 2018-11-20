@@ -2696,7 +2696,6 @@
 
                 // parse out status msg:
 
-                alert(data);
                 var s_code = data.substring(data.indexOf("status:") + 7, data.indexOf("status:") + 4 + 7);
 
                 var s_msg = data.substring(data.indexOf("msg:") + 4, data.length - 2);
@@ -2708,7 +2707,7 @@
                         // after 1000 ms we add the class animated to the login/register card
                         $(".attorney-saveMsgArea span").text(s_msg);
                         $(".attorney-saveMsgArea span").fadeIn(1000);
-                    }, 500);
+                    }, 1000);
 
                     ///////////////////////////////////////////////////////////////////
                     // $('#attorney-email').prop('disabled', true);
@@ -2718,26 +2717,95 @@
                     // reset all fields
                     var attorney_first_name = $('#attorney-first-name').val();
                     if(attorney_first_name != ""){
-                        saveContactInfo(email, "attorney-first-name", attorney_first_name);
+
+                        setTimeout(function() {
+                            saveContactInfo(email, "attorney-first-name", attorney_first_name);
+                        }, 50);
 
                     }
                     var attorney_last_name = $('#attorney-last-name').val();
                     if(attorney_last_name != ""){
-                        saveContactInfo(email, "attorney-last-name", attorney_last_name);
+                        setTimeout(function() {
+                            saveContactInfo(email, "attorney-last-name", attorney_last_name);
+                        },100);
 
                     }
 
 
                     var attorney_lawfirm_name =$('#attorney-lawfirm-name').val();
+                    if(attorney_lawfirm_name != ""){
+                        setTimeout(function() {
+
+                            saveContactInfo(email, "attorney-lawfirm-name", attorney_lawfirm_name);
+                        },200);
+
+                    }
+
+
                     var attorney_country = $('#attorney-country').val();
+                    if(attorney_country != ""){
+
+                        setTimeout(function() {
+                            saveContactInfo(email, "attorney-country", attorney_country);
+                        },250);
+
+                    }
                     var attorney_address = $('#attorney-address1').val();
+                    if(attorney_address != ""){
+
+                        setTimeout(function() {
+                            saveContactInfo(email, "attorney-address1", attorney_address);
+                        },300);
+
+                    }
+
+
+
                     var attorney_city = $('#attorney-city').val();
+                    if(attorney_city != ""){
+                        setTimeout(function() {
+                            saveContactInfo(email, "attorney-city", attorney_city);
+                        },350);
+
+                    }
                     var attorney_state = $('#attorney-state').val();
+                    if(attorney_state != ""){
+
+                        setTimeout(function() {
+                            saveContactInfo(email, "attorney-state", attorney_state);
+                        }, 400);
+
+                    }
+
                     var attorney_zipcode = $('#attorney-zipcode').val();
+                    if(attorney_zipcode != ""){
+                        setTimeout(function() {
+                            saveContactInfo(email, "attorney-zipcode", attorney_zipcode);
+                        }, 450);
+
+                    }
                     var attorney_primary_phone = $('#attorney-phone').val();
-                    var attorney_email = $('#attorney-email').val();
+                    if(attorney_primary_phone != ""){
+                        setTimeout(function() {
+                            saveContactInfo(email, "attorney-phone", attorney_primary_phone);
+                        }, 500);
+
+                    }
+
                     var attorney_docket_num = $('#docket-id').val();
+                    if(attorney_docket_num  != ""){
+                        setTimeout(function() {
+                            saveContactInfo(email, "docket-id", attorney_docket_num);
+                        },550);
+
+                    }
                     var attorney_bar_standing = $('#attorney-bar-standing').val();
+                    if(attorney_bar_standing  != ""){
+                        setTimeout(function() {
+                            saveContactInfo(email, "attorney-bar-standing", attorney_bar_standing);
+                        },600);
+
+                    }
 
 
 
