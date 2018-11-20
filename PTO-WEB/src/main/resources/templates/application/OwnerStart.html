@@ -651,7 +651,7 @@
                         <div class="card-footer" style="background-color: rgb(235,235,235);  border: rgb(235,235,235);  border-width: 1px; border: solid;  min-height: 100px; max-width: 852px; ">
                             <div class="row" style="position: relative; ">
                                 <div class="col-sm-4" style="position: relative; right: -10px;">
-                                    <span class="btn-sm btn" data-target="#addNewAttorneyModal" data-toggle="modal"  style=" padding:5px; min-width:150px; color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><b>Add New Attorney</b></span>
+                                    <span class="btn-sm btn" data-target="#addNewOwnerModal" data-toggle="modal"  style=" padding:5px; min-width:150px; color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><b>Add New Attorney</b></span>
                                 </div>
                                 <div class="col-sm-2">
                                 </div>
@@ -765,7 +765,7 @@
 
 
 <!-- start add new Attorney Modal -->
-<div id="addNewAttorneyModal" class="modal fade modal-lg" role="dialog"  tabindex="-1" style="max-width: 1200px;">
+<div id="addNewOwnerModal" class="modal fade modal-lg" role="dialog"  tabindex="-1" style="max-width: 1200px;">
     <div class="modal-dialog" style="min-width: 1200px;">
 
         <!-- Modal content-->
@@ -776,7 +776,7 @@
                 <h4 class="modal-title"><b>e-File Add New Attorney</b></h4>
 
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="addNewOwnerModalBody">
                 <div class="content" style="display: none; background-color: white;" >
                     <div class="container-fluid"  >
 
@@ -1052,6 +1052,19 @@
         } );
 
 
+
+        ////////////////////////////////////////////////////////////////
+        // load correspoinding owner form into modal on open
+        ////////////////////////////////////////////////////////////////
+        $('#addNewOwnerModal').on('shown.bs.modal', function () {
+
+            $.post("../../application/owner/Ind/info/?trademarkID=30000001", function(data){
+
+                $("#addNewOwnerModalBody").html(data).fadeIn();
+
+            });
+
+        });
 
 
 
