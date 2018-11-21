@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
+<html lang="en" xmlns:th="http://www.thymeleaf.org" />
 
 <head >
     <meta charset="UTF-8">
@@ -46,7 +46,7 @@
                 <div class="col-sm-3">
                     <div class="form-group">
                         <span>
-                            <input type="text" id="first-name" th:value="${baseTrademarkApplication.owner.firstName}" name="firstName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                            <input type="text" id="first-name" th:value="${user.firstName}" name="firstName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
 
                         </span>
@@ -107,7 +107,7 @@
 
                     <div class="form-group">
                         <span>
-                            <input type="text" id="last-name" th:value="${baseTrademarkApplication.owner.lastName}" name="lastName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                            <input type="text" id="last-name" th:value="${user.lastName}" name="lastName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
                         </span>
                     </div>
@@ -750,7 +750,7 @@
                         <div class="col-sm-3">
                             <div class="form-group">
                                     <span>
-                                        <input type="text"   name="Address1" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                        <input type="text"  th:value="${user.address}"  name="Address1" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                     </span>
 
                             </div>
@@ -841,7 +841,7 @@
 
                             <div class="form-group">
                                         <span>
-                                         <input type="text"  name="City" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                         <input type="text" th:value="${user.city}"  name="City" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
                                         </span>
                             </div>
@@ -867,7 +867,7 @@
                         <div class="col-sm-3">
 
                             <div class="form-group">
-                                <select  class="form-control custom-select" name="State" th:field="*{user.state}" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                <select  class="form-control custom-select" name="State" th:value="${user.state}"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                     <option  value="none"></option>
                                     <option  value="AL">Alabama</option>
                                     <option  value="AK">Alaska</option>
@@ -1156,7 +1156,7 @@
             var field_value = $(this).val();
 
             //alert(field_value);
-            saveProjectOwnerInfo("first-name", field_value, appInternalID);
+            //saveProjectOwnerInfo("first-name", field_value, appInternalID);
 
         });
 
@@ -1179,7 +1179,7 @@
             var field_value = $(this).val();
 
             //alert(field_value);
-            saveProjectOwnerInfo("last-name", field_value, appInternalID);
+            //saveProjectOwnerInfo("last-name", field_value, appInternalID);
 
         });
 
@@ -1200,7 +1200,7 @@
 
             var field_value = $(this).val();
 
-            saveProjectOwnerInfo("owner-citizenship", field_value, appInternalID);
+            //saveProjectOwnerInfo("owner-citizenship", field_value, appInternalID);
 
 
 

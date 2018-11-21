@@ -154,10 +154,13 @@ public class ApplicationService {
 
 
             if(entity_type.equals("US")){
-                Owner owner = baseTrademarkApplication.getOwner();
-                owner.setOwnerType(entity_type);
-                owner.setOwnersubType(sub_type);
-                baseTrademarkApplication.setOwner(owner);
+               // Owner owner = baseTrademarkApplication.getOwner();
+                //owner.setOwnerType(entity_type);
+                //owner.setOwnersubType(sub_type);
+                //baseTrademarkApplication.setOwner(owner);
+
+                baseTrademarkApplication.setOwnerType(entity_type);
+                baseTrademarkApplication.setOwnerSubType(sub_type);
 
                 baseTrademarkApplication.setLastViewModel("application/owner/individual/ownerInfo");
                 baseTradeMarkApplicationService.save(baseTrademarkApplication);

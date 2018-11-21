@@ -98,6 +98,27 @@ public class BaseTrademarkApplication  {
     private Set<OfficeActions> actions;
     ////////////////////////////////////////////////////////
 
+
+    private String ownerType;
+
+    private String ownerSubType;
+
+    public String getOwnerType() {
+        return ownerType;
+    }
+
+    public void setOwnerType(String ownerType) {
+        this.ownerType = ownerType;
+    }
+
+    public String getOwnerSubType() {
+        return ownerSubType;
+    }
+
+    public void setOwnerSubType(String ownerSubType) {
+        this.ownerSubType = ownerSubType;
+    }
+
     public PTOUser getPtoUser() {
         return ptoUser;
     }

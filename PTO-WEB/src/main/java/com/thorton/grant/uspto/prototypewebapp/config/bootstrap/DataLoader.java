@@ -147,16 +147,16 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         //trademarkApplication.getPrimaryLawyer().setPrimaryCase(trademarkApplication);
         trademarkApplication.setOwnerEmail(PTOUser1.getEmail());
 
-        Owner owner = new Owner();
-        owner.setOwnerType("individual");
-        owner.setEmail(PTOUser1.getEmail());
-        owner.setAddress(PTOUser1.getAddress());
-        owner.setFirstName(PTOUser1.getFirstName());
-        owner.setLastName(PTOUser1.getLastName());
-        owner.setCity(PTOUser1.getCity());
-        owner.setState(PTOUser1.getState());
+        //Owner owner = new Owner();
+        //owner.setOwnerType("individual");
+        //owner.setEmail(PTOUser1.getEmail());
+        //owner.setAddress(PTOUser1.getAddress());
+        //owner.setFirstName(PTOUser1.getFirstName());
+        //owner.setLastName(PTOUser1.getLastName());
+        // owner.setCity(PTOUser1.getCity());
+        //owner.setState(PTOUser1.getState());
 
-        trademarkApplication.setOwner(owner);
+        //trademarkApplication.setOwner(owner);
         /////////////////////////////////////////////////////////////////////////////////
         // add a method to PTOUser to just add one application
         /////////////////////////////////////////////////////////////////////////////////

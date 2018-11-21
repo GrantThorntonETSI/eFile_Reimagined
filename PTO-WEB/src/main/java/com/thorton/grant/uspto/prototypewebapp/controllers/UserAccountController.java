@@ -123,7 +123,7 @@ public class UserAccountController {
             System.out.println("internal : "+baseTrademarkApplication.getApplicationInternalID());
 
             userfilingTableRowsID.add(  baseTrademarkApplication.getApplicationInternalID());
-            userfilingTableRowsowneName.add(baseTrademarkApplication.getOwner().getFirstName()+" "+baseTrademarkApplication.getOwner().getLastName());
+            userfilingTableRowsowneName.add(ptoUser.getFirstName()+" "+ptoUser.getLastName());
             userfilingTableRowsStatus.add("Draft");
             userfilingTableRoowsTMname.add(baseTrademarkApplication.getTrademarkName());
 
