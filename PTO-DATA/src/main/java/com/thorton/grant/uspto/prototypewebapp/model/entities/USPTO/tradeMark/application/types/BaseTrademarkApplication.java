@@ -80,7 +80,9 @@ public class BaseTrademarkApplication  {
 
     @OneToOne(cascade = CascadeType.ALL)
     @Nullable
-    private Owner owner;
+    private Owner owner; // default owner   PTO user
+
+
 
 
     /////////////////////////////////////////////////////////////////////
