@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{fragments/layoutSession :: layout (~{::body},'user')}" xmlns="http://www.w3.org/1999/html">
+      th:replace="~{fragments/layoutSession :: layout (~{::body},'user')}" >
 <head >
     <meta charset="UTF-8">
     <title>Owner Information</title>
@@ -458,10 +458,11 @@
                         <div class="col-sm-2"  style="position: relative; right: -25px;">
 
                             <!-- add this  back  data-dismiss="modal"  after  required fields are completed .... and also remove disabled=="true"  -->
-                            <button id="addOwnerConfirm" class=" btn-sm btn"    style=" padding:5px; min-width:120px; color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><b>Confirm</b></button>
+
 
                         </div>
 
+                    </form>
 
 
                     </div>
@@ -503,6 +504,7 @@ $('#addOwnerConfirm').click(function () {
     var first_name = $('#first-name').val();
 
     alert(first_name);
+
 
 });
 
