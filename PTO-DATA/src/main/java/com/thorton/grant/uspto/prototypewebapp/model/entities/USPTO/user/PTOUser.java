@@ -1,6 +1,7 @@
 package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user;
 
 
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.TradeMark;
@@ -20,6 +21,7 @@ public class PTOUser extends UserPersonalData {
         myTrademarks = new HashSet<>();
         myApplications = new HashSet<>();
         myLawyers = new HashSet<>();
+        myOwners = new HashSet<>();
     }
 
     /////////////////////////////////////////////////////////
@@ -38,6 +40,9 @@ public class PTOUser extends UserPersonalData {
 
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Lawyer> myLawyers;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Owner> myOwners;
 
     @Column(name =  "profile_complete" )
     private boolean profileComplete = false;
@@ -81,7 +86,7 @@ public class PTOUser extends UserPersonalData {
 
     }
 
-    public Lawyer findContactByEmail(String email){
+    public Lawyer findLawyerContactByEmail(String email){
         Lawyer lawyer = null;
         for(Iterator<Lawyer> iter = myLawyers.iterator(); iter.hasNext(); ) {
             //this.availableLawyers.add(new Lawyer( iter.next() ));
@@ -95,6 +100,39 @@ public class PTOUser extends UserPersonalData {
        return lawyer;
     }
 
+    public  Owner findOwnerContactByEmail(String email){
+        Owner owner = null;
+        for(Iterator<Owner> iter = myOwners.iterator(); iter.hasNext(); ) {
+            //this.availableLawyers.add(new Lawyer( iter.next() ));
+
+            Owner current = iter.next();
+
+            if(current.getEmail().equals(email)){
+                owner = current;
+            }
+        }
+        return owner;
+    }
+
+
+    public Owner addOwner(Owner newOwner){
+        this.myOwners.add(newOwner);
+
+        return newOwner;
+
+    }
+    public void removeOwner(Owner owner){
+        this.myOwners.remove(owner);
+    }
+
+
+    public Set<Owner> getMyOwners() {
+        return myOwners;
+    }
+
+    public void setMyOwners(Set<Owner> myOwners) {
+        this.myOwners = myOwners;
+    }
 
     public TradeMark addTradeMark(TradeMark newTrademark){
 

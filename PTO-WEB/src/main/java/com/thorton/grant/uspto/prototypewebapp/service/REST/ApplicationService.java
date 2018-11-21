@@ -360,7 +360,7 @@ public class ApplicationService {
 
 
 
-        Lawyer lawyer = ptoUser.findContactByEmail(contact_email);
+        Lawyer lawyer = ptoUser.findLawyerContactByEmail(contact_email);
         /////////////////////////////////////////////////////////////////
         // check if contact is already in the pool ...
         // if already in pool, simply do nothing

@@ -87,7 +87,7 @@ public class ContactsService {
 
         // ?? check if contact already exists ???
 
-        Lawyer lawyer = ptoUser.findContactByEmail(contact_email);
+        Lawyer lawyer = ptoUser.findLawyerContactByEmail(contact_email);
         if(lawyer != null){
 
 
@@ -176,7 +176,7 @@ public class ContactsService {
             return ResponseEntity.ok().headers(responseHeader).body(responseMsgs);
 
         }
-        Lawyer lawyer = ptoUser.findContactByEmail(contact_email);
+        Lawyer lawyer = ptoUser.findLawyerContactByEmail(contact_email);
 
 
         if(contact_field_name.equals("attorney-first-name")){
