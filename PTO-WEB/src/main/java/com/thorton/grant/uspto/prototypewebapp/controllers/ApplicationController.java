@@ -433,7 +433,7 @@ public class ApplicationController {
 
 
     // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
-    @RequestMapping({"/application/owner/entity/select"})
+    @RequestMapping({"/owner/entity/"})
     public String ownerEntity(WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
 
         // create a new application and tie it to user then save it to repository

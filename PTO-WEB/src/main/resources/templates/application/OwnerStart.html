@@ -299,7 +299,7 @@
                         <div class="card-footer" style="background-color: rgb(235,235,235);  border: rgb(235,235,235);  border-width: 1px; border: solid;  min-height: 100px; max-width: 852px; ">
                             <div class="row" style="position: relative; ">
                                 <div class="col-sm-4" style="position: relative; right: -10px;">
-                                    <span class="btn-sm btn" data-target="#addNewOwnerModal" data-toggle="modal"  style=" padding:5px; min-width:150px; color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><b>Add New Owner</b></span>
+                                    <span class="btn-sm btn"   style=" padding:5px; min-width:150px; color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><b><a id="addNewOwnerLink" style="color: white;">Add New Owner</a></b></span>
                                 </div>
                                 <div class="col-sm-2">
                                 </div>
@@ -372,9 +372,8 @@
 
     var prevLinkURLAttorneyFalse = "../../application/start/?trademarkID="+appInternalID;
 
-    var nextLinkURL = "../../application/owner/Ind/info/?trademarkID="+appInternalID;
 
-    var individualPrefix = "../../application/owner/Ind/info";
+    var newOwnerLink = "../../owner/entity/?trademarkID="+appInternalID;
 
 </script>
 
@@ -519,6 +518,9 @@
         else {
             $('#prevLink').attr("href",prevLinkURL);
         }
+
+
+        $('#addNewOwnerLink').attr("href",newOwnerLink);
 
 
         // load datables for owner contacts
