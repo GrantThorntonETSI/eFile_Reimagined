@@ -46,7 +46,7 @@
                 <div class="col-sm-3">
                     <div class="form-group">
                         <span>
-                            <input type="text" id="first-name" th:value="${user.firstName}" name="firstName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                            <input type="text" id="first-name" th:value="${user.firstName}"   th:field="*{firstName}"   name="firstName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
 
                         </span>
@@ -78,7 +78,7 @@
                     <div class="col-sm-3">
                         <div class="form-group">
                             <span>
-                              <input type="text" name="middleName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                              <input type="text"   th:field="*{middleName}"  name="middleName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                             </span>
                         </div>
 
@@ -107,7 +107,7 @@
 
                     <div class="form-group">
                         <span>
-                            <input type="text" id="last-name" th:value="${user.lastName}" name="lastName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                            <input type="text" id="last-name" th:value="${user.lastName}"    th:field="*{lastName}" name="lastName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
                         </span>
                     </div>
@@ -134,7 +134,7 @@
                 <div class="col-sm-3">
                     <div class="form-group">
                         <span>
-                            <select  class="form-control" name="suffix"  style="font-family:Impact; font-weight: bold;   border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                            <select  class="form-control" name="suffix"    th:field="*{suffix}"  style="font-family:Impact; font-weight: bold;   border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                 <option value=""><b></b></option>
                                 <option value="mr"><b>Mr</b></option>
                                 <option value="mrs"><b>Mrs</b></option>

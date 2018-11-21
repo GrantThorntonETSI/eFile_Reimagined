@@ -10,6 +10,7 @@ import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.applic
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.RegistrationDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.ContactsDisplayDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.SelectedContactsDisplayDTO;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.form.NewOwnerContactFormDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
@@ -475,8 +476,8 @@ public class ApplicationController {
 
         model.addAttribute("hostBean", hostBean);
 
-        RegistrationDTO registrationDTO = new RegistrationDTO();
-        model.addAttribute("addNewOwnerContactFormDTO", registrationDTO);
+        NewOwnerContactFormDTO newOwnerContactFormDTO = new NewOwnerContactFormDTO();
+        model.addAttribute("addNewOwnerContactFormDTO", newOwnerContactFormDTO);
 
 
         return "application/owner/individual/ownerInfo";
