@@ -27,6 +27,8 @@ public class Owner extends Contact{
 
     private String ownersubType;
 
+    private String webSiteURL;
+
     public BaseTrademarkApplication getTrademarkApplication() {
         return trademarkApplication;
     }
@@ -56,6 +58,14 @@ public class Owner extends Contact{
 
     public void setClient(PTOUser client) {
         this.client = client;
+    }
+
+    public String getWebSiteURL() {
+        return webSiteURL;
+    }
+
+    public void setWebSiteURL(String webSiteURL) {
+        this.webSiteURL = webSiteURL;
     }
 
     @Override
