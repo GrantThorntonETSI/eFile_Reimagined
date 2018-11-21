@@ -299,7 +299,7 @@
                         <div class="card-footer" style="background-color: rgb(235,235,235);  border: rgb(235,235,235);  border-width: 1px; border: solid;  min-height: 100px; max-width: 852px; ">
                             <div class="row" style="position: relative; ">
                                 <div class="col-sm-4" style="position: relative; right: -10px;">
-                                    <span class="btn-sm btn"   style=" padding:5px; min-width:150px; color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><b><a id="addNewOwnerLink" style="color: white;">Add New Owner</a></b></span>
+                                    <span class="btn-sm btn"  data-target="#addNewOwnerModal" data-toggle="modal" style=" padding:5px; min-width:150px; color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><b><a id="addNewOwnerLink" style="color: white;">Add New Owner</a></b></span>
                                 </div>
                                 <div class="col-sm-2">
                                 </div>
@@ -420,7 +420,7 @@
             <div class="modal-header" style="max-width: 1200px;background-color: rgb(217, 217, 214);">
                 <!-- will enable this once required fields are entered  data-dismiss="modal" -->
                 <button type="button" id="modal-header-close"  data-dismiss="modal" class="close" style="position: relative; left:-30%;">&times;</button>
-                <h4 class="modal-title"><b>e-File Add New Attorney</b></h4>
+                <h4 class="modal-title"><b>e-File Add New Owner</b></h4>
 
             </div>
             <div class="modal-body" id="addNewOwnerModalBody">
@@ -520,7 +520,7 @@
         }
 
 
-        $('#addNewOwnerLink').attr("href",newOwnerLink);
+        //$('#addNewOwnerLink').attr("href",newOwnerLink);
 
 
         // load datables for owner contacts
@@ -620,7 +620,7 @@
         ////////////////////////////////////////////////////////////////
         $('#addNewOwnerModal').on('shown.bs.modal', function () {
 
-            $.post("../../application/owner/entity/select/?trademarkID=30000001", function(data){
+            $.post("../../owner/entity/?trademarkID="+appInternalID, function(data){
 
                 $("#addNewOwnerModalBody").html(data).fadeIn();
 
