@@ -32,6 +32,16 @@ private String ownerWebSite;
 
 private String ownerPhone;
 
+private String appInternalID;
+
+    public String getAppInternalID() {
+        return appInternalID;
+    }
+
+    public void setAppInternalID(String appInternalID) {
+        this.appInternalID = appInternalID;
+    }
+
     public String getFirstName() {
         return firstName;
     }

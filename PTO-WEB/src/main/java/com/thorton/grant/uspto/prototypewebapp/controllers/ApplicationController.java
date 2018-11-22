@@ -499,6 +499,8 @@ public class ApplicationController {
         System.out.println("owner add module !!!!!!!!");
         System.out.println("11111111111111111111111111111111111111111111");
 
+        System.out.println("app inernal id: "+newOwnerContactFormDTO.getAppInternalID());
+
         // create a new application and tie it to user then save it to repository
         // create attorneyDTO + to model
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -510,7 +512,7 @@ public class ApplicationController {
         model.addAttribute("user", ptoUser);
         model.addAttribute("account",credentials);
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
-        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID("");
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(newOwnerContactFormDTO.getAppInternalID());
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
         model.addAttribute("hostBean", hostBean);
