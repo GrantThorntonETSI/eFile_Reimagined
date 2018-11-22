@@ -581,23 +581,20 @@
             $('#domestic-entity-dropdown').change( function () {
 
                 var parseStr = this.value;
-
                 // var start = parseStr.indexOf('?');
-
                 //var link_prefix = parseStr.substring(0,start);
                 //var subtype_val = parseStr.substring(start+1, parseStr.length);
                 var subtype_val = parseStr;
                 var link_prefix=""
                 if(subtype_val == "Individual"){
+                    /////////////////////////////////////
+                    // load form us domestic individual
+                    /////////////////////////////////////
                     $.post(ownerDomIndvFormURL, function(data){
-
                         $("#ownerEntityForm").html(data).fadeIn();
-
                     });
                 }
-
                 //saveProjectInfo("set-Owner-entity-types", "US"+"+"+subtype_val, appInternalID); // static from radio buttton
-
             });
 
 
