@@ -23,11 +23,15 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
 
+import javax.validation.Valid;
 import java.util.*;
 
 @Controller
@@ -482,6 +486,46 @@ public class ApplicationController {
 
         return "application/owner/individual/ownerInfo";
     }
+
+    // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
+    @RequestMapping(value = "/owner/add", method = RequestMethod.POST)
+    public String addOwnerContact( Model model,
+                                   @ModelAttribute("addNewOwnerContactFormDTO") @Valid NewOwnerContactFormDTO newOwnerContactFormDTO,
+                                   WebRequest request,
+                                   BindingResult result,
+                                   Errors errors) {
+
+        System.out.println("11111111111111111111111111111111111111111111");
+        System.out.println("owner add module !!!!!!!!");
+        System.out.println("11111111111111111111111111111111111111111111");
+
+        // create a new application and tie it to user then save it to repository
+        // create attorneyDTO + to model
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID("");
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
+        model.addAttribute("hostBean", hostBean);
+
+        //newOwnerContactFormDTO = new NewOwnerContactFormDTO();
+        //model.addAttribute("addNewOwnerContactFormDTO", newOwnerContactFormDTO);
+
+        //return to owner widget
+
+        return "application/OwnerStart";
+    }
+
+
+
+
 
 
     @Transactional

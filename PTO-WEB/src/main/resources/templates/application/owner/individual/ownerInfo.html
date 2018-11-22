@@ -28,7 +28,7 @@
                 <hr style="height:3px; position:relative; top:-20px; left:-11.5%; max-width: 80.1%">
             </div>
 
-    <form method="post" style="" id="addNewOwnerForm" action="/newOwner" class="form-horizontal"  th:object="${addNewOwnerContactFormDTO}">
+    <form method="post" style="" id="addNewOwnerForm" action="/owner/add"  class="form-horizontal"  th:object="${addNewOwnerContactFormDTO}">
 
             <!--start of first name field -->
 
@@ -1094,6 +1094,8 @@
 
         var prevLinkURL = "../../../../application/OwnerStart/?trademarkID="+appInternalID;
 
+        var formActionURL ="/owner/add";
+
         var nextLinkURL = "";
 
     </script>
@@ -1234,6 +1236,8 @@
         }
 
         $('#prevLink').attr("href",prevLinkURL);
+
+        //$('#addOwnerConfirm').attr("action", formActionURL);
 
 
 
