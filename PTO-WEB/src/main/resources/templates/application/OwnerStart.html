@@ -666,6 +666,7 @@
                 var contact_email = $(this).parent().prev().prev().html();
                 //removeContact2Application(contact_email, appInternalID);
                // disableNextWidgetLink();
+                // call back end service to remove owner from application
 
             }
             else{
@@ -674,11 +675,32 @@
                 var newRow = [$(this).parent().prev().prev().prev().html(),"<i class=\"material-icons\">remove_circle</i>"];
                 $(this).parent().prev().prev().prev().prev().html("<input class=\"contacts-checkbox\" type=\"checkbox\"  checked=\"true\" disabled=\"true\"> ");
 
-                selectedTable.row.add(newRow).draw();
+                // we need to get the removed email
+                var uncheck_target;
+                // there can only be one owner selected ..
+                $('#selected-owners td').each(function () {
+                    uncheck_target = $(this).html();
+                    return false;
+                });
+                //alert(uncheck_target);
+                $('#contacts td').each(function () {
+                    if($(this).html() === uncheck_target){
+                        $(this).prev().html("<input class=\"contacts-checkbox\" type=\"checkbox\">");
+                    }
+                });
+
+                //var contacts_target = $(this).parent().prev().prev().prev().html();
+                selectedTable.clear().draw();
                 // $('#selected-attorneys tr').eq(contacts_counter).addClass('highlight');
+                selectedTable.row.add(newRow).draw();
+
+
+
 
                 var contact_email = $(this).parent().prev().prev().html();
                 var project_id = appInternalID;
+                // call back end actions to remove previous owner and add new owner
+
 
 
 
