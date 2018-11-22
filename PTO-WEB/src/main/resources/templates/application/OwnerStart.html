@@ -283,7 +283,7 @@
                                     </div>
 
                                     <div class="selected-Attorneys-Table" style="border: rgb(235,235,235); border-width: 1px; border: solid; padding: 20px; min-height: 420px; max-height: 420px;">
-                                        <table id="selected-attorneys" class="table-no-bordered table-hover" cellpadding="3" style="border-spacing: 0 3px; margin-right: 5px; margin-top: 10px; margin-bottom: 10px; margin-left: 8px;"></table>
+                                        <table id="selected-owners" class="table-no-bordered table-hover" cellpadding="3" style="border-spacing: 0 3px; margin-right: 5px; margin-top: 10px; margin-bottom: 10px; margin-left: 8px;"></table>
                                     </div>
                                 </div>
 
@@ -541,11 +541,11 @@ $('#addOwnerConfirm').click(function () {
         //////////////////////////////////////////////////////////////////////////
         var testdataSet = [
 
-            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Aaron Attorney", "Aaron.Attorney@email.com", "Grant Thornton", "<i class=\"material-icons\">swap_horiz</i>"],
-            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Melissa Attorney", "Melilssa.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
-            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Nicole Attorney", "Nicole.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
-            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Helen Attorney", "Helen.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
-            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Cris Attorney", "Cris.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"]
+            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Aaron Owner", "Aaron.Attorney@email.com", "Individual", "<i class=\"material-icons\">swap_horiz</i>"],
+            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Melissa Owner", "Melilssa.Attorney@email.com", "Individual","<i class=\"material-icons\">swap_horiz</i>"],
+            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Nicole Owner", "Nicole.Attorney@email.com", "Individual","<i class=\"material-icons\">swap_horiz</i>"],
+            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Helen Owner", "Helen.Attorney@email.com", "Individual","<i class=\"material-icons\">swap_horiz</i>"],
+            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Cris Owner", "Cris.Attorney@email.com", "Individual","<i class=\"material-icons\">swap_horiz</i>"]
 
         ];
 
@@ -564,7 +564,7 @@ $('#addOwnerConfirm').click(function () {
         // initialize contacts table with empty values
         //////////////////////////////////////////////////////////////////////////////
         var contactsTable = $('#contacts').DataTable( {
-            data: dataSet1,
+            data: testdataSet,
             "pageLength": 5,
             "scrollY": "250px",
             "oLanguage": {
@@ -590,6 +590,65 @@ $('#addOwnerConfirm').click(function () {
         $('.dataTables_scrollBody').css('overflow',  'hidden');
 
 
+
+        $('#contacts').on('click', 'i.material-icons', function () {
+
+            var checkBoxState = $(this).parent().prev().prev().prev().prev().html();
+
+            if(checkBoxState.indexOf("disabled") != -1){ // if not checked
+                // do nothing ..contact already selected
+
+
+                // acquire search key ..i.e  attorney name
+                var contacts_target = $(this).parent().prev().prev().prev().html();
+
+                // got through selected table and if matches target .. remove row
+                //
+                $('#selected-attorneys td').each(function () {
+                    if($(this).html() === contacts_target){
+                        selectedTable.row($(this).parents('tr')).remove().draw()
+                    }
+                });
+
+                ////////////////////////////////////////////////////////
+                // un check check box
+                ////////////////////////////////////////////////////////
+                $(this).parent().prev().prev().prev().prev().html("<input class=\"contacts-checkbox\" type=\"checkbox\">");
+                var contact_email = $(this).parent().prev().prev().html();
+                //removeContact2Application(contact_email, appInternalID);
+               // disableNextWidgetLink();
+
+            }
+            else{
+
+                // checked ... push to selected contacts and update counter
+                var newRow = [$(this).parent().prev().prev().prev().html(),"<i class=\"material-icons\">remove_circle</i>"];
+                $(this).parent().prev().prev().prev().prev().html("<input class=\"contacts-checkbox\" type=\"checkbox\"  checked=\"true\" disabled=\"true\"> ");
+
+                selectedTable.row.add(newRow).draw();
+                // $('#selected-attorneys tr').eq(contacts_counter).addClass('highlight');
+
+                var contact_email = $(this).parent().prev().prev().html();
+                var project_id = appInternalID;
+
+
+
+               // addContact2Application(contact_email, project_id);
+                //enableNextWidgetLink();
+
+
+            }
+
+
+            /////////////////////////////////////////////////////////////////////////////////
+            // call back end and add contact via email from the application lawyer pool
+            /////////////////////////////////////////////////////////////////////////////////
+
+
+        });
+
+
+
         ////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////
         // load sected owner datatable
@@ -600,7 +659,7 @@ $('#addOwnerConfirm').click(function () {
         //////////////////////////////////////////////////////////////////////////////////////////////////
         // generate data tables for filings
         //////////////////////////////////////////////////////////////////////////////////////////////////
-        var selectedTable = $('#selected-attorneys').DataTable( {
+        var selectedTable = $('#selected-owners').DataTable( {
             "createdRow": function ( row, data, index ) {
 
                 if(data != ""){
@@ -623,6 +682,52 @@ $('#addOwnerConfirm').click(function () {
 
             ]
         } );
+
+
+        //////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////
+        // add action listeners to selected-contacts table check boxes
+        //////////////////////////////////////////////////////////////
+        $('#selected-owners').on('click', 'i.material-icons', function () {
+
+            //////////////////////////////////////////////////////////
+            // get selected row key i.e contact name
+            //////////////////////////////////////////////////////////
+            var contacts_target = $(this).parent().prev().html();
+
+            /////////////////////////////////////////////////////////
+            // uncheck contacts check box from the user contact list
+            //////////////////////////////////////////////////////////
+            var contact_email ="";
+            $('#contacts td').each(function () {
+                if($(this).html() === contacts_target){
+                    $(this).prev().html("<input class=\"contacts-checkbox\" type=\"checkbox\">");
+                    contact_email = $(this).next().html();
+                }
+
+            });
+
+            ////////////////////////////////////////////////////////
+            // pop current row ...
+            ////////////////////////////////////////////////////////
+            selectedTable.row($(this).parents('tr')).remove().draw();
+            /////////////////////////////////////////////////////////////////////////////////
+            // call back end and remove contact via email from the application lawyer pool
+            /////////////////////////////////////////////////////////////////////////////////
+
+            // call back end services to remove contact from application object
+            //removeContact2Application(contact_email, appInternalID);
+            /////////////////////////////////////////////////////////////////////////////////
+            // check selected table count ...if null ... disable next button
+            // doesn't make sense to set attorneys until you selected them
+            /////////////////////////////////////////////////////////////////////////////////
+
+            if ( ! selectedTable.data().any() ) {
+                //disableNextWidgetLink();
+            }
+        });
+        ////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////
 
 
 
