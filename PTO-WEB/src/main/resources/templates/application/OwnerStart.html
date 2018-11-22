@@ -640,6 +640,16 @@ $('#addOwnerConfirm').click(function () {
         });
 
 
+        $('#addNewOwnerModal').on('hidden.bs.modal', function () {
+
+            // clean up dynamically loaded html
+            $("#addNewOwnerModalBody").html("").fadeIn();
+
+            $("#ownerEntityForm").html("").fadeIn();
+
+        });
+
+
 
     }); // end of document ready()
 

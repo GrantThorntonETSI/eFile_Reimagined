@@ -46,7 +46,7 @@
                 <div class="col-sm-3">
                     <div class="form-group">
                         <span>
-                            <input type="text" id="first-name" th:value="${user.firstName}"   th:field="*{firstName}"   name="firstName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                            <input type="text" id="first-name"   th:field="*{firstName}"   name="firstName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
 
 
                         </span>
@@ -107,7 +107,7 @@
 
                     <div class="form-group">
                         <span>
-                            <input type="text" id="last-name" th:value="${user.lastName}"    th:field="*{lastName}" name="lastName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                            <input type="text" id="last-name"    th:field="*{lastName}" name="lastName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
 
                         </span>
                     </div>
@@ -477,7 +477,7 @@
                     <div class="col-sm-3">
                         <div class="form-group">
                                         <span>
-                                             <select   th:field="*{OwnerAddressCountry}"  class="form-control" name="suffix"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                             <select   th:field="*{OwnerAddressCountry}"  class="form-control" name="suffix"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
 
                                                     <option value="X1">UNITED STATES OF AMERICA</option>
                                                     <option value="B2">AFGHANISTAN</option>
@@ -750,7 +750,7 @@
                         <div class="col-sm-3">
                             <div class="form-group">
                                     <span>
-                                        <input type="text"  th:field="*{ownerAddress1}"  th:value="${user.address}"  name="Address1" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                        <input type="text"  th:field="*{ownerAddress1}"    name="Address1" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
                                     </span>
 
                             </div>
@@ -841,7 +841,7 @@
 
                             <div class="form-group">
                                         <span>
-                                         <input type="text" th:field="*{ownerCity}"   th:value="${user.city}"  name="City" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                         <input type="text" th:field="*{ownerCity}"   th:value="${user.city}"  name="City" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
 
                                         </span>
                             </div>
@@ -981,7 +981,7 @@
                     <div class="col-sm-3">
                         <div class="form-group">
                                 <span>
-                                    <input type="email" name="email" th:field="*{ownerEmail}"  placeholder="" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                    <input type="email" name="email" th:field="*{ownerEmail}"  placeholder="" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
                                 </span>
                         </div>
                     </div>

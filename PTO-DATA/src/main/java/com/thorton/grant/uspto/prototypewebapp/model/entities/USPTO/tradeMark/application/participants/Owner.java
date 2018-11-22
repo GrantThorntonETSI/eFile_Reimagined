@@ -25,9 +25,20 @@ public class Owner extends Contact{
 
     private String ownerType;
 
+    private String ownerEnityType;
+
     private String ownersubType;
 
     private String webSiteURL;
+
+    private String CitizenShip;
+
+    private String  address1;
+
+    private String address2;
+
+    private String address3;
+
 
     public BaseTrademarkApplication getTrademarkApplication() {
         return trademarkApplication;
@@ -66,6 +77,46 @@ public class Owner extends Contact{
 
     public void setWebSiteURL(String webSiteURL) {
         this.webSiteURL = webSiteURL;
+    }
+
+    public String getOwnerEnityType() {
+        return ownerEnityType;
+    }
+
+    public void setOwnerEnityType(String ownerEnityType) {
+        this.ownerEnityType = ownerEnityType;
+    }
+
+    public String getCitizenShip() {
+        return CitizenShip;
+    }
+
+    public void setCitizenShip(String citizenShip) {
+        CitizenShip = citizenShip;
+    }
+
+    public String getAddress1() {
+        return address1;
+    }
+
+    public void setAddress1(String address1) {
+        this.address1 = address1;
+    }
+
+    public String getAddress2() {
+        return address2;
+    }
+
+    public void setAddress2(String address2) {
+        this.address2 = address2;
+    }
+
+    public String getAddress3() {
+        return address3;
+    }
+
+    public void setAddress3(String address3) {
+        this.address3 = address3;
     }
 
     @Override

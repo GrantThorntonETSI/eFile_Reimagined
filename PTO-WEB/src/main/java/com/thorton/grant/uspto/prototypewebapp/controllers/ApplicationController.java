@@ -115,11 +115,11 @@ public class ApplicationController {
         contactsDisplayDTO.setContactFirms(contactFirms);
         model.addAttribute("myContacts", contactsDisplayDTO);
         SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
-        System.out.println("9999999999999999999999999999999999999999999999999999999999999999999999999999");
+
 
 
         if(trademarkInternalID.equals("new")) {
-            System.out.println("88888888888888888888888888888888888888888888888888888888888");
+
             BaseTrademarkApplication trademarkApplication = new BaseTrademarkApplication();
             //trademarkApplication.setLastViewModel("application/owner/individual/ownerInfo");
             //trademarkApplication.setLastViewModel("application/OwnerStart");
@@ -168,7 +168,7 @@ public class ApplicationController {
 
         }
         else{
-            System.out.println("77777777777777777777777777777777777777777777777777");
+
             ////////////////////////////////////////////////////////////////////////////
             // existing trade  mark application
             ////////////////////////////////////////////////////////////////////////////
@@ -509,18 +509,73 @@ public class ApplicationController {
         UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
         UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
 
-        model.addAttribute("user", ptoUser);
-        model.addAttribute("account",credentials);
+
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(newOwnerContactFormDTO.getAppInternalID());
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
+        ////////////////////////////////////////////////////////////////////////
+        //add new owner contact business logic
+        ////////////////////////////////////////////////////////////////////////
+        // create owner ...and set it to PTO user ..then save PTO user object and add it to model
+        Owner owner = new Owner();
+        owner.setOwnerEnityType(baseTrademarkApplication.getOwnerType());
+        owner.setOwnersubType(baseTrademarkApplication.getOwnerSubType());
+        baseTrademarkApplication.setOwnerSubType(null);
+        baseTrademarkApplication.setOwnerType(null);
+        // transfer and reset owner type and subtype
+        owner.setFirstName(newOwnerContactFormDTO.getFirstName());
+        owner.setLastName(newOwnerContactFormDTO.getLastName());
+        if(newOwnerContactFormDTO.getMiddleName() != ""){
+            owner.setMidlleName(newOwnerContactFormDTO.getMiddleName());
+        }
+        if(newOwnerContactFormDTO.getSuffix() != ""){
+            owner.setSuffix(newOwnerContactFormDTO.getSuffix());
+        }
+        if(newOwnerContactFormDTO.getOwnerType() != ""){
+          owner.setOwnerType(newOwnerContactFormDTO.getOwnerType());
+        }
+        if(newOwnerContactFormDTO.getOwnerCitizenShip()!= ""){
+            owner.setCitizenShip(newOwnerContactFormDTO.getOwnerCitizenShip());
+        }
+        owner.setCountry(newOwnerContactFormDTO.getOwnerAddressCountry());
+        owner.setAddress1(newOwnerContactFormDTO.getOwnerAddress1());
+        if(newOwnerContactFormDTO.getOwnerAddress2() != ""){
+            owner.setAddress2(newOwnerContactFormDTO.getOwnerAddress2());
+        }
+        if(newOwnerContactFormDTO.getOwnerAddress3() != ""){
+            owner.setAddress3(newOwnerContactFormDTO.getOwnerAddress3());
+        }
+
+        owner.setCity(newOwnerContactFormDTO.getOwnerCity());
+
+        if(newOwnerContactFormDTO.getOwnerState() != ""){
+            owner.setState(newOwnerContactFormDTO.getOwnerState());
+        }
+        if(newOwnerContactFormDTO.getOwnerZipcode() != ""){
+            owner.setZipcode(newOwnerContactFormDTO.getOwnerZipcode());
+        }
+        if(newOwnerContactFormDTO.getOwnerEmail() != ""){
+            owner.setEmail(newOwnerContactFormDTO.getOwnerEmail());
+        }
+        if(newOwnerContactFormDTO.getOwnerWebSite() != ""){
+            owner.setWebSiteURL(newOwnerContactFormDTO.getOwnerWebSite());
+        }
+        if(newOwnerContactFormDTO.getOwnerPhone() != ""){
+            owner.setPrimaryPhonenumber(newOwnerContactFormDTO.getOwnerPhone());
+        }
+        owner.setClient(ptoUser);
+        ptoUser.addOwner(owner);
+        ptoUserService.save(ptoUser);
+
+        // reset application entity type and subtype
+        // transfer those entity type and subtype to the new owner object
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
         model.addAttribute("hostBean", hostBean);
 
-        //newOwnerContactFormDTO = new NewOwnerContactFormDTO();
-        //model.addAttribute("addNewOwnerContactFormDTO", newOwnerContactFormDTO);
 
-        //return to owner widget
+
 
         return "application/OwnerStart";
     }
@@ -620,6 +675,10 @@ public class ApplicationController {
         }
 
         model.addAttribute("lawyerPool", baseTrademarkApplication.getAvailableLawyers());
+        NewOwnerContactFormDTO newOwnerContactFormDTO = new NewOwnerContactFormDTO();
+        model.addAttribute("addNewOwnerContactFormDTO", newOwnerContactFormDTO);
+
+        System.out.println("las view model : "+baseTrademarkApplication.getLastViewModel());
 
         return baseTrademarkApplication.getLastViewModel();
 
