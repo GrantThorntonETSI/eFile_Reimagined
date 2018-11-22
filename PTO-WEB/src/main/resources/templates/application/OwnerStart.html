@@ -359,6 +359,14 @@
     var host_name= /*[[${hostBean.host}]]*/ 'User Name';
     var host_port= /*[[${hostBean.port}]]*/ 'User Name';
 
+
+
+    var contactNames = /*[[${myOwnerContacts.ContactNames}]]*/ 'User Name';
+    var contactEmails = /*[[${myOwnerContacts.ContactEmails}]]*/ 'User Name';
+    var contactTypes = /*[[${myOwnerContacts.contactEntitySubType}]]*/ 'User Name';
+
+
+
     var host = host_name+":"+host_port;
     //alert(tableRows);
 
@@ -498,15 +506,7 @@
 
          $('[data-toggle="tooltip"]').tooltip();
 
-$('#addOwnerConfirm').click(function () {
 
-    alert("!!!!!!!!!!!!!!");
-    var first_name = $('#first-name').val();
-
-    alert(first_name);
-
-
-});
 
 
 
@@ -588,6 +588,55 @@ $('#addOwnerConfirm').click(function () {
         // that keeps the data tables view port height constant
         /////////////////////////////////////////////////////////////////////////////////////////////////
         $('.dataTables_scrollBody').css('overflow',  'hidden');
+
+
+        // load owner contacts from server
+        for(var a =0; a <contactNames.length; a++) {
+            ///////////////////////////////////////////////////////////////////////////
+            // check each name against selected names ...if in selected lis ...
+            // add row with check box selected and disabled
+            ///////////////////////////////////////////////////////////////////////////
+            var  isChecked = false;
+            /*
+                        for(var b =0; b < selectedContactNames.length; b++){
+
+
+
+                            if(contactNames[a] ===  selectedContactNames[b]){
+                                isChecked = true;
+                            }
+                        }
+            */
+            if(isChecked === false) {
+                var col1 = "<input class=\"contacts-checkbox\" type='checkbox'>";
+                var col2 = contactNames[a];
+                var col3 = contactEmails[a];
+                var col4 = contactTypes[a];
+                var col5 = "<i class=\"material-icons\">swap_horiz</i>";
+                contactsTable.row.add([col1, col2, col3, col4, col5]).draw();
+                //contactsTable.row.add(row).draw(false);
+                //contactsTable.order([1, 'asc']).draw();
+                //contactsTable.page('last').draw(false);
+                // make this jquery expression more generic
+            }
+            else {
+                var col1 = "<input class=\"contacts-checkbox\" disabled=\"true\" checked=\"true\" type='checkbox'>";
+                var col2 = contactNames[a];
+                var col3 = contactEmails[a];
+                var col4 = contactFirms[a];
+                var col5 = "<i class=\"material-icons\">swap_horiz</i>";
+                contactsTable.row.add([col1, col2, col3, col4, col5]).draw();
+                //contactsTable.row.add(row).draw(false);
+                //contactsTable.order([1, 'asc']).draw();
+                //contactsTable.page('last').draw(false);
+
+            }
+
+        }
+
+
+
+
 
 
 

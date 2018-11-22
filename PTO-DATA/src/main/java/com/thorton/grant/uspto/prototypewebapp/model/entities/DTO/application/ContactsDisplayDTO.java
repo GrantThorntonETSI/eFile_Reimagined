@@ -11,14 +11,14 @@ public class ContactsDisplayDTO {
 
     private ArrayList<String> contactFirms;
 
-    private ArrayList<String> contactEnitySubType;
+    private ArrayList<String> contactEntitySubType;
 
-    public ArrayList<String> getContactEnitySubType() {
-        return contactEnitySubType;
+    public ArrayList<String> getContactEntitySubType() {
+        return contactEntitySubType;
     }
 
-    public void setContactEnitySubType(ArrayList<String> contactEnitySubType) {
-        this.contactEnitySubType = contactEnitySubType;
+    public void setContactEntitySubType(ArrayList<String> contactEntitySubType) {
+        this.contactEntitySubType = contactEntitySubType;
     }
 
     public ArrayList<String> getContactNames() {

@@ -454,8 +454,8 @@ public class ApplicationController {
         ContactsDisplayDTO contactsDisplayDTO = new ContactsDisplayDTO();
         contactsDisplayDTO.setContactNames(contactNames);
         contactsDisplayDTO.setContactEmails(contactEmails);
-        contactsDisplayDTO.setContactEnitySubType(contactSubTypes);
-        model.addAttribute("myContacts", contactsDisplayDTO);
+        contactsDisplayDTO.setContactEntitySubType(contactSubTypes);
+        model.addAttribute("myOwnerContacts", contactsDisplayDTO);
 
 
         return "application/OwnerStart";
@@ -620,8 +620,8 @@ public class ApplicationController {
         ContactsDisplayDTO contactsDisplayDTO = new ContactsDisplayDTO();
         contactsDisplayDTO.setContactNames(contactNames);
         contactsDisplayDTO.setContactEmails(contactEmails);
-        contactsDisplayDTO.setContactEnitySubType(contactSubTypes);
-        model.addAttribute("myContacts", contactsDisplayDTO);
+        contactsDisplayDTO.setContactEntitySubType(contactSubTypes);
+        model.addAttribute("myOwnerContacts", contactsDisplayDTO);
 
 
 
@@ -726,6 +726,28 @@ public class ApplicationController {
         model.addAttribute("lawyerPool", baseTrademarkApplication.getAvailableLawyers());
         NewOwnerContactFormDTO newOwnerContactFormDTO = new NewOwnerContactFormDTO();
         model.addAttribute("addNewOwnerContactFormDTO", newOwnerContactFormDTO);
+
+        ArrayList<String> ownerContactNames = new ArrayList<>();
+        ArrayList<String> ownerContactEmails = new ArrayList<>();
+        ArrayList<String> ownerContactSubTypes = new ArrayList<>();
+        Owner owner1 = null;
+
+        for(Iterator<Owner> iter = ptoUser.getMyOwners().iterator(); iter.hasNext(); ) {
+            owner1 = iter.next();
+            ownerContactNames.add(owner1.getFirstName()+" "+owner1.getLastName());
+            ownerContactEmails.add(owner1.getEmail());
+            ownerContactSubTypes.add(owner1.getOwnersubType());
+
+        }
+        Collections.reverse(ownerContactNames);
+        Collections.reverse(ownerContactEmails);
+        Collections.reverse(ownerContactSubTypes);
+        ContactsDisplayDTO ownerContactsDisplayDTO = new ContactsDisplayDTO();
+        ownerContactsDisplayDTO.setContactNames(ownerContactNames);
+        ownerContactsDisplayDTO.setContactEmails(ownerContactEmails);
+        ownerContactsDisplayDTO.setContactEntitySubType(ownerContactSubTypes);
+        model.addAttribute("myOwnerContacts", ownerContactsDisplayDTO);
+
 
         System.out.println("las view model : "+baseTrademarkApplication.getLastViewModel());
 
