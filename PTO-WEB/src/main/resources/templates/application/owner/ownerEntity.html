@@ -440,7 +440,6 @@
 
 
     var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
-    var attorneyOpt = /*[[${baseTrademarkApplication.isAttorneyFiling()}]]*/ 'User Name';
     var host_name= /*[[${hostBean.host}]]*/ 'User Name';
     var host_port= /*[[${hostBean.port}]]*/ 'User Name';
 
@@ -453,13 +452,9 @@
 
 <script>
 
-    var prevLinkURL = "../../application/AttorneySet/?trademarkID="+appInternalID;
-
-    var prevLinkURLAttorneyFalse = "../../application/start/?trademarkID="+appInternalID;
-
-    var nextLinkURL = "../../application/owner/Ind/info/?trademarkID="+appInternalID;
-
     var individualPrefix = "../../application/owner/Ind/info";
+
+    var ownerFormURL = "../../application/owner/Ind/info/?trademarkID="+appInternalID;
 
 </script>
 
@@ -498,7 +493,7 @@
 
                 $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
 
-                $('#nextLink').attr("href", nextLinkURL );
+
 
                 //$('#attorneyFillingFalse').prop("disabled", true);  // do we disable here ???
                 //$('#attorneyFilingTrue').prop("disabled", true);
@@ -572,14 +567,6 @@
 
 
 
-            // check which prev-link to check
-            if(attorneyOpt == false){
-                $('#prevLink').attr("href",prevLinkURLAttorneyFalse);
-            }
-            else {
-                $('#prevLink').attr("href",prevLinkURL);
-            }
-
 
 
 
@@ -599,7 +586,7 @@
 
                 saveProjectInfo("set-Owner-entity-types", "US"+"+"+subtype_val, appInternalID); // static from radio buttton
 
-                $.post("../../application/owner/Ind/info/?trademarkID=30000001", function(data){
+                $.post(ownerFormURL, function(data){
 
                     $("#ownerEntityForm").html(data).fadeIn();
 
@@ -607,11 +594,6 @@
 
 
 
-                $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
-
-
-                // set next link to select option link value
-                $('#nextLink').attr("href",link_prefix+"/?trademarkID="+appInternalID );
 
             });
 
