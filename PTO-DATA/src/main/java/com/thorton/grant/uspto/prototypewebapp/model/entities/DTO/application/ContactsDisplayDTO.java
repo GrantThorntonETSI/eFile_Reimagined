@@ -11,6 +11,16 @@ public class ContactsDisplayDTO {
 
     private ArrayList<String> contactFirms;
 
+    private ArrayList<String> contactEnitySubType;
+
+    public ArrayList<String> getContactEnitySubType() {
+        return contactEnitySubType;
+    }
+
+    public void setContactEnitySubType(ArrayList<String> contactEnitySubType) {
+        this.contactEnitySubType = contactEnitySubType;
+    }
+
     public ArrayList<String> getContactNames() {
         return contactNames;
     }

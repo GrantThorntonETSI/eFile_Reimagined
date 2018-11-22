@@ -433,6 +433,30 @@ public class ApplicationController {
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
         model.addAttribute("hostBean", hostBean);
+        /////////////////////////////////////////////
+        // load my contacts list for thyemleaf
+        /////////////////////////////////////////////
+        ArrayList<String> contactNames = new ArrayList<>();
+        ArrayList<String> contactEmails = new ArrayList<>();
+        ArrayList<String> contactSubTypes = new ArrayList<>();
+        Owner owner1 = null;
+
+        for(Iterator<Owner> iter = ptoUser.getMyOwners().iterator(); iter.hasNext(); ) {
+            owner1 = iter.next();
+            contactNames.add(owner1.getFirstName()+" "+owner1.getLastName());
+            contactEmails.add(owner1.getEmail());
+            contactSubTypes.add(owner1.getOwnersubType());
+
+        }
+        Collections.reverse(contactNames);
+        Collections.reverse(contactEmails);
+        Collections.reverse(contactSubTypes);
+        ContactsDisplayDTO contactsDisplayDTO = new ContactsDisplayDTO();
+        contactsDisplayDTO.setContactNames(contactNames);
+        contactsDisplayDTO.setContactEmails(contactEmails);
+        contactsDisplayDTO.setContactEnitySubType(contactSubTypes);
+        model.addAttribute("myContacts", contactsDisplayDTO);
+
 
         return "application/OwnerStart";
     }
@@ -573,6 +597,31 @@ public class ApplicationController {
         model.addAttribute("account",credentials);
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
         model.addAttribute("hostBean", hostBean);
+
+
+        /////////////////////////////////////////////
+        // load my contacts list for thyemleaf
+        /////////////////////////////////////////////
+        ArrayList<String> contactNames = new ArrayList<>();
+        ArrayList<String> contactEmails = new ArrayList<>();
+        ArrayList<String> contactSubTypes = new ArrayList<>();
+        Owner owner1 = null;
+
+        for(Iterator<Owner> iter = ptoUser.getMyOwners().iterator(); iter.hasNext(); ) {
+            owner1 = iter.next();
+            contactNames.add(owner1.getFirstName()+" "+owner1.getLastName());
+            contactEmails.add(owner1.getEmail());
+            contactSubTypes.add(owner1.getOwnersubType());
+
+        }
+        Collections.reverse(contactNames);
+        Collections.reverse(contactEmails);
+        Collections.reverse(contactSubTypes);
+        ContactsDisplayDTO contactsDisplayDTO = new ContactsDisplayDTO();
+        contactsDisplayDTO.setContactNames(contactNames);
+        contactsDisplayDTO.setContactEmails(contactEmails);
+        contactsDisplayDTO.setContactEnitySubType(contactSubTypes);
+        model.addAttribute("myContacts", contactsDisplayDTO);
 
 
 
