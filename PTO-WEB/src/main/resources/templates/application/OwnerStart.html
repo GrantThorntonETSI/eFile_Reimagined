@@ -634,6 +634,67 @@
 
         }
 
+        /////////////////////////////
+        // contatcs dataload end
+        ////////////////////////////
+
+        $('#contacts').on('click', 'input.contacts-checkbox', function () {
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // save contact from contact list to application lawyer pool using contact email and maybe firm name
+            // create push row using contact name and add to selected contacts table
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////
+            $(this).prop("disabled", true);
+
+
+            var newRow = [$(this).parent().next().html(),"<i class=\"material-icons\">remove_circle</i>"];
+            //selectedTable.row.add(newRow).draw();
+            var uncheck_target;
+            // there can only be one owner selected ..
+            $('#selected-owners td').each(function () {
+                uncheck_target = $(this).html();
+                return false;
+            });
+            //alert(uncheck_target);
+            $('#contacts td').each(function () {
+                if($(this).html() === uncheck_target){
+                    $(this).prev().html("<input class=\"contacts-checkbox\" type=\"checkbox\">");
+                }
+            });
+
+            //var contacts_target = $(this).parent().prev().prev().prev().html();
+            selectedTable.clear().draw();
+            // $('#selected-attorneys tr').eq(contacts_counter).addClass('highlight');
+            selectedTable.row.add(newRow).draw();
+
+            //$('#selected-attorneys tr').eq(contacts_counter).addClass('highlight');
+            ////////////////////////////////////////////////////////
+            // update contacts added counter
+            ////////////////////////////////////////////////////////
+            //contacts_counter++;
+            /////////////////////////////////////////////////////////////////////////////////
+            // call back end and add contact via email from the application lawyer pool
+            /////////////////////////////////////////////////////////////////////////////////
+            // required parameters for back end interactions
+            // 1. contact email   // get contact email from sibling TD field
+            // 2. project id ??? how are we going to get that ???
+            // 3. load project id as java script variable like our other pages
+            /////////////////////////////////////////////////////////////////////////////////
+            var contact_email = $(this).parent().next().next().html();
+            var project_id = appInternalID;
+
+            //addContact2Application(contact_email, project_id);
+            /////////////////////////////////////////////////////////////////////////////////
+            // enable next button
+            // and inject next link
+            /////////////////////////////////////////////////////////////////////////////////
+            //enableNextWidgetLink();
+
+
+
+
+        });
+
 
 
 
