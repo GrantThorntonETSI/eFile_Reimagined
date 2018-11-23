@@ -46,61 +46,6 @@ public class ApplicationService {
     @ResponseBody
     ResponseEntity<String> updateApplicationFields(@PathVariable String applicationField , @PathVariable String param, @PathVariable String appInternalID){
 
-    /*
-        VerificationToken verificationToken = service.getVerificationToken(token);
-        if (verificationToken == null) {
-            String message = "INVALID ACCESS TOKEN.";
-            HttpHeaders responseHeader = new HttpHeaders ();
-            ArrayList<String> headersAllowed = new ArrayList<String>();
-            responseHeader.setAccessControlAllowHeaders(headersAllowed);
-            return ResponseEntity.badRequest().headers(responseHeader).body(message) ;
-        }
-
-
-        Calendar cal = Calendar.getInstance();
-        if ((verificationToken.getExpiredTime().getTime() - cal.getTime().getTime()) <= 0) {
-            String message = "EXPIRED ACCESS TOKEN.";
-            HttpHeaders responseHeader = new HttpHeaders ();
-            ArrayList<String> headersAllowed = new ArrayList<String>();
-            responseHeader.setAccessControlAllowHeaders(headersAllowed);
-            return ResponseEntity.badRequest().headers(responseHeader).body(message) ;
-        }
-
-
-        UserCredentials userCredentials = verificationToken.getNewCredential();
-    */
-
-    /*
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String email = authentication.getName();
-        //UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
-        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
-        //UserCredentials userCredentials = userCredentialsService.findByEmail(email);
-        PTOUser ptoUser = ptoUserService.findByEmail(email);// ?? we may not need to save this
-        // verify authentication is valid before moving on ....
-        // have to have a valid session
-
-        if(ptoUser == null){
-            ////////////////////////////////////////////////
-            // start generating response
-            ////////////////////////////////////////////////
-            String statusCode = "404";
-            String responseMsg = applicationField+" has not been saved. invalid user session.";
-            responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
-            HttpHeaders responseHeader = new HttpHeaders ();
-            //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
-            responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
-            ArrayList<String> headersAllowed = new ArrayList<String>();
-            headersAllowed.add("Access-Control-Allow-Origin");
-            responseHeader.setAccessControlAllowHeaders(headersAllowed);
-            ArrayList<String> methAllowed = new ArrayList<String>();
-
-            System.out.println("response header : "+responseHeader.getAccessControlAllowOrigin());
-
-
-            return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
-
-        }*/
 
         if(verifyValidUserSession("xxx") == false){
 
