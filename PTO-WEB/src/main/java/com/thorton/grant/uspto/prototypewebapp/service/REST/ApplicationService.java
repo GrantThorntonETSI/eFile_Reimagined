@@ -334,14 +334,12 @@ public class ApplicationService {
     @ResponseBody
     ResponseEntity<String> updateApplicationAddContactsPool(@PathVariable String contact_email , @PathVariable String appInternalID){
 
-
-
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
+        /*
 
-        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
 
-        PTOUser ptoUser = ptoUserService.findByEmail(email);// ?? we may not need to save this
+
         // verify authentication is valid before moving on ....
         // have to have a valid session
 
@@ -362,7 +360,14 @@ public class ApplicationService {
 
             return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
 
+        }*/
+        if(verifyValidUserSession(contact_email) == false){
+            return buildResponseEnity(contact_email,"404", "Contact with email address", "has not been added to the application, invalid user session.");
+
         }
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+
+        PTOUser ptoUser = ptoUserService.findByEmail(email);//
         //////////////////////////////////////////////////////////
         // retrieve application using passed internal id
         //////////////////////////////////////////////////////////
