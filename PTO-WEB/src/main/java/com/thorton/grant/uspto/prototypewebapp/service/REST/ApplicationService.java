@@ -49,14 +49,7 @@ public class ApplicationService {
     @ResponseBody
     ResponseEntity<String> updateApplicationFields(@PathVariable String applicationField , @PathVariable String param, @PathVariable String appInternalID){
 
-
-    System.out.println("############################################################");
-    System.out.println(applicationField);
-    System.out.println(param);
-    System.out.println(appInternalID);
-    System.out.println("############################################################");
-            // verify token before preceding
-/*
+    /*
         VerificationToken verificationToken = service.getVerificationToken(token);
         if (verificationToken == null) {
             String message = "INVALID ACCESS TOKEN.";
@@ -78,9 +71,9 @@ public class ApplicationService {
 
 
         UserCredentials userCredentials = verificationToken.getNewCredential();
-*/
+    */
 
-
+    /*
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
         //UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
@@ -110,7 +103,13 @@ public class ApplicationService {
 
             return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
 
+        }*/
+
+        if(verifyValidUserSession("xxx") == false){
+            return buildResponseEnity(applicationField,"404", "", "has not been saved. invalid user session.");
+
         }
+
         // retrieve application using passed internal id
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
