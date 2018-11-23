@@ -338,9 +338,9 @@ public class ApplicationService {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
-        //UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+
         PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
-        //UserCredentials userCredentials = userCredentialsService.findByEmail(email);
+
         PTOUser ptoUser = ptoUserService.findByEmail(email);// ?? we may not need to save this
         // verify authentication is valid before moving on ....
         // have to have a valid session
@@ -637,7 +637,7 @@ public class ApplicationService {
     ResponseEntity<String> setApplicationPrimaryAttorney(@PathVariable String contact_email , @PathVariable String appInternalID){
 
 
-
+        /*
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
         //UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
@@ -665,6 +665,18 @@ public class ApplicationService {
             return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
 
         }
+        */
+        if(verifyValidUserSession(contact_email) == false){
+            return buildResponseEnity(contact_email,"404", "Contact with email address", "has not been set as Primary Attorney. invalid user session.");
+
+        }
+
+
+        System.out.println("55555555555555555555555555555555555555555555555555555555555555555555555555555555555555");
+        System.out.println("55555555555555555555555555555555555555555555555555555555555555555555555555555555555555");
+        System.out.println("55555555555555555555555555555555555555555555555555555555555555555555555555555555555555");
+
+
         //////////////////////////////////////////////////////////
         // retrieve application using passed internal id
         //////////////////////////////////////////////////////////
@@ -736,6 +748,48 @@ public class ApplicationService {
         return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
 
     }
+
+
+    boolean verifyValidUserSession(String contact_email){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(email);// ?? we may not need to save this
+
+
+        if(ptoUser == null || contact_email == ""){
+
+            return false;
+
+        }
+        else {
+            return true;
+        }
+
+    }
+
+    ResponseEntity<String> buildResponseEnity(String contact_email, String status_code, String response_prefix, String response_main){
+
+        //String statusCode = "404";
+        String statusCode = status_code;
+        //String responseMsg = "Contact with email address :"+contact_email+ "has not been set as Primary Attorney. invalid user session.";
+        String responseMsg = response_prefix+" : "+contact_email+" "+response_main;
+        responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
+        HttpHeaders responseHeader = new HttpHeaders ();
+        responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
+        ArrayList<String> headersAllowed = new ArrayList<String>();
+        headersAllowed.add("Access-Control-Allow-Origin");
+        responseHeader.setAccessControlAllowHeaders(headersAllowed);
+        ArrayList<String> methAllowed = new ArrayList<String>();
+
+        return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+
+
+
+    }
+
+
+
 
 
 }
