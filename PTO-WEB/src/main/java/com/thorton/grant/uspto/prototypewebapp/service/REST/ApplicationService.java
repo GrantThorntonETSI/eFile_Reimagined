@@ -515,7 +515,7 @@ public class ApplicationService {
     ResponseEntity<String> updateApplicationRemoveContactsPool(@PathVariable String contact_email , @PathVariable String appInternalID){
 
 
-
+        /*
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
         //UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
@@ -541,6 +541,11 @@ public class ApplicationService {
             ArrayList<String> methAllowed = new ArrayList<String>();
 
             return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+
+        }
+        */
+        if(verifyValidUserSession(contact_email) == false){
+            return buildResponseEnity(contact_email,"404", "Contact with email address", "has not been deleted, invalid user session.");
 
         }
         //////////////////////////////////////////////////////////
