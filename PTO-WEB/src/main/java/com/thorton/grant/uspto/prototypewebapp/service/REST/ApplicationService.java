@@ -102,7 +102,9 @@ public class ApplicationService {
         }*/
 
         if(verifyValidUserSession("xxx") == false){
-            return buildResponseEnity(applicationField,"404", "", "has not been saved. invalid user session.");
+
+            String responseMsg = applicationField+" has not been saved. invalid user session.";
+            return buildResponseEnity("404", responseMsg );
 
         }
 
@@ -169,6 +171,7 @@ public class ApplicationService {
         ////////////////////////////////////////////////
         // start generating response
         ////////////////////////////////////////////////
+        /*
         String statusCode = "200";
         String responseMsg = appFieldReadable+" has been saved.";
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
@@ -181,10 +184,11 @@ public class ApplicationService {
         ArrayList<String> methAllowed = new ArrayList<String>();
 
         System.out.println("response header : "+responseHeader.getAccessControlAllowOrigin());
+        */
+        String responseMsg = appFieldReadable+" has been saved.";
 
-
-        return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
-
+        //return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+        return buildResponseEnity("200", responseMsg);
     }
 
 
@@ -226,7 +230,8 @@ public class ApplicationService {
 
         }*/
         if(verifyValidUserSession("xxx") == false){
-            return buildResponseEnity(applicationField,"404", "", "has not been saved. invalid user session.");
+            String responseMsg = applicationField+" has not been saved. invalid user session.";
+            return buildResponseEnity("404", responseMsg);
 
         }
 
@@ -353,7 +358,8 @@ public class ApplicationService {
 
         }*/
         if(verifyValidUserSession(contact_email) == false){
-            return buildResponseEnity(contact_email,"404", "Contact with email address", "has not been added to the application, invalid user session.");
+            String responseMsg = "Contact with email address :"+contact_email+ " has not been saved. invalid user session.";
+            return buildResponseEnity("404", responseMsg);
 
         }
         PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
@@ -535,7 +541,8 @@ public class ApplicationService {
         }
         */
         if(verifyValidUserSession(contact_email) == false){
-            return buildResponseEnity(contact_email,"404", "Contact with email address", "has not been deleted, invalid user session.");
+            String responseMsg = "Contact with email address :"+contact_email+ " has not been saved. invalid user session.";
+            return buildResponseEnity("404", responseMsg);
 
         }
         //////////////////////////////////////////////////////////
@@ -651,7 +658,9 @@ public class ApplicationService {
         }
         */
         if(verifyValidUserSession(contact_email) == false){
-            return buildResponseEnity(contact_email,"404", "Contact with email address", "has not been set as Primary Attorney. invalid user session.");
+
+            String responseMsg = "Contact with email address :"+contact_email+ "has not been set as Primary Attorney. invalid user session.";
+            return buildResponseEnity("404", responseMsg);
 
         }
 
@@ -754,12 +763,12 @@ public class ApplicationService {
 
     }
 
-    ResponseEntity<String> buildResponseEnity(String contact_email, String status_code, String response_prefix, String response_main){
+    ResponseEntity<String> buildResponseEnity(String status_code, String response_main){
 
         //String statusCode = "404";
         String statusCode = status_code;
         //String responseMsg = "Contact with email address :"+contact_email+ "has not been set as Primary Attorney. invalid user session.";
-        String responseMsg = response_prefix+" : "+contact_email+" "+response_main;
+        String responseMsg = response_main;
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();
         responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
