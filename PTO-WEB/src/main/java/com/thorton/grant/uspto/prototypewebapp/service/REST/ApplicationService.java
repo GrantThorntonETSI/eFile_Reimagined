@@ -295,6 +295,7 @@ public class ApplicationService {
         ////////////////////////////////////////////////
         // start generating response
         ////////////////////////////////////////////////
+        /*
         String statusCode = "200";
         String responseMsg = appFieldReadable+" has been saved.";
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
@@ -308,9 +309,9 @@ public class ApplicationService {
         ArrayList<String> methAllowed = new ArrayList<String>();
 
         System.out.println("response header : "+responseHeader.getAccessControlAllowOrigin());
-
-
-        return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+        */
+        String responseMsg = appFieldReadable+" has been saved.";
+        return buildResponseEnity("200", responseMsg);
 
     }
 
@@ -482,8 +483,8 @@ public class ApplicationService {
         ////////////////////////////////////////////////
         // start generating response
         ////////////////////////////////////////////////
-        String statusCode = "200";
-        String responseMsg = "Contact with email address :"+contact_email+" has been added to the Application.";
+        /*String statusCode = "200";
+
 
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();
@@ -496,9 +497,11 @@ public class ApplicationService {
         ArrayList<String> methAllowed = new ArrayList<String>();
 
         System.out.println("response header : "+responseHeader.getAccessControlAllowOrigin());
+        */
 
+        String responseMsg = "Contact with email address :"+contact_email+" has been added to the Application.";
 
-        return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+        return buildResponseEnity("200", responseMsg);
 
     }
 
@@ -598,8 +601,9 @@ public class ApplicationService {
         ////////////////////////////////////////////////
         // start generating response
         ////////////////////////////////////////////////
+        /*
         String statusCode = "200";
-        String responseMsg = "Contact with email address :"+contact_email+" has been removed from the Application";
+
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();
         //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
@@ -611,9 +615,9 @@ public class ApplicationService {
         ArrayList<String> methAllowed = new ArrayList<String>();
 
         System.out.println("response header : "+responseHeader.getAccessControlAllowOrigin());
-
-
-        return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+        */
+        String responseMsg = "Contact with email address :"+contact_email+" has been removed from the Application";
+        return buildResponseEnity("200", responseMsg);
 
     }
 
@@ -664,19 +668,11 @@ public class ApplicationService {
 
         }
 
-
-        System.out.println("55555555555555555555555555555555555555555555555555555555555555555555555555555555555555");
-        System.out.println("55555555555555555555555555555555555555555555555555555555555555555555555555555555555555");
-        System.out.println("55555555555555555555555555555555555555555555555555555555555555555555555555555555555555");
-
-
         //////////////////////////////////////////////////////////
         // retrieve application using passed internal id
         //////////////////////////////////////////////////////////
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
-
-
         //////////////////////////////////////////////////////////
         // find contact via email from PTOUser
         // create a copy of the contact object
@@ -701,8 +697,9 @@ public class ApplicationService {
        }
        else{
            // error
+           /*
            String statusCode = "404";
-           String responseMsg = "Contact with email address :"+contact_email+ " has not been set as Primary Attorney. invalid contact email.";
+
            responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
            HttpHeaders responseHeader = new HttpHeaders ();
            responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
@@ -711,24 +708,19 @@ public class ApplicationService {
            responseHeader.setAccessControlAllowHeaders(headersAllowed);
            ArrayList<String> methAllowed = new ArrayList<String>();
 
-           return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+
+           */
+           String responseMsg = "Contact with email address :"+contact_email+ " has not been set as Primary Attorney. invalid contact email.";
+           //return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+           return buildResponseEnity("404", responseMsg);
        }
-
-
-
-
-
-
-
-
-
-
 
         ////////////////////////////////////////////////
         // start generating response
         ////////////////////////////////////////////////
+        /*
         String statusCode = "200";
-        String responseMsg = "Contact with email address :"+contact_email+"  have been set as Primary Attorney";
+
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();
         responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
@@ -738,11 +730,15 @@ public class ApplicationService {
         ArrayList<String> methAllowed = new ArrayList<String>();
 
         System.out.println("response header : "+responseHeader.getAccessControlAllowOrigin());
-
-
-        return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+        */
+        String responseMsg = "Contact with email address :"+contact_email+"  have been set as Primary Attorney";
+        return buildResponseEnity("200", responseMsg);
 
     }
+
+    ////////////////////////////////////////////////
+    // helper functions
+    ////////////////////////////////////////////////
 
 
     boolean verifyValidUserSession(String contact_email){
@@ -750,8 +746,6 @@ public class ApplicationService {
         String email = authentication.getName();
         PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
         PTOUser ptoUser = ptoUserService.findByEmail(email);// ?? we may not need to save this
-
-
         if(ptoUser == null || contact_email == ""){
 
             return false;
@@ -762,7 +756,7 @@ public class ApplicationService {
         }
 
     }
-
+    ////////////////////////////////////////////////
     ResponseEntity<String> buildResponseEnity(String status_code, String response_main){
 
         //String statusCode = "404";
@@ -782,7 +776,7 @@ public class ApplicationService {
 
 
     }
-
+    ////////////////////////////////////////////////
 
 
 
