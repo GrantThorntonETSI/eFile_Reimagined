@@ -169,11 +169,6 @@ public class ApplicationService {
             // ptoUser.setState(param); // sets state code
         }
 
-
-        // add
-
-
-
         ////////////////////////////////////////////////
         // start generating response
         ////////////////////////////////////////////////
@@ -481,12 +476,6 @@ public class ApplicationService {
             // save application object  and check database and confirm values
         }
 
-
-
-
-
-
-
         ////////////////////////////////////////////////
         // start generating response
         ////////////////////////////////////////////////
@@ -601,17 +590,6 @@ public class ApplicationService {
 
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
-
-
-
-
-
-
-
-
-
-
-
 
         ////////////////////////////////////////////////
         // start generating response
