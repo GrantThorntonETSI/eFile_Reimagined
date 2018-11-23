@@ -118,9 +118,6 @@ public class ApplicationService {
         if(applicationField.equals("set-lawyer-options-value")){
             // ptoUser.setState(param); // sets state code
             if(param.equals("no")){
-
-                System.out.println("7777777777777777777777777777777777777777777777");
-
                 baseTrademarkApplication.setAttorneySet(true);
                 baseTrademarkApplication.setAttorneyFiling(false);
                 baseTrademarkApplication.setLastViewModel("application/AttorneyStart");
@@ -146,16 +143,7 @@ public class ApplicationService {
             String entity_type = param.substring(0,start);
             String sub_type = param.substring(start+1);
 
-            System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-            System.out.println(entity_type);
-            System.out.println(sub_type);
-
-
             if(entity_type.equals("US")){
-               // Owner owner = baseTrademarkApplication.getOwner();
-                //owner.setOwnerType(entity_type);
-                //owner.setOwnersubType(sub_type);
-                //baseTrademarkApplication.setOwner(owner);
 
                 baseTrademarkApplication.setOwnerType(entity_type);
                 baseTrademarkApplication.setOwnerSubType(sub_type);
@@ -168,23 +156,6 @@ public class ApplicationService {
             // ptoUser.setState(param); // sets state code
         }
 
-        ////////////////////////////////////////////////
-        // start generating response
-        ////////////////////////////////////////////////
-        /*
-        String statusCode = "200";
-        String responseMsg = appFieldReadable+" has been saved.";
-        responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
-        HttpHeaders responseHeader = new HttpHeaders ();
-        //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
-        responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
-        ArrayList<String> headersAllowed = new ArrayList<String>();
-        headersAllowed.add("Access-Control-Allow-Origin");
-        responseHeader.setAccessControlAllowHeaders(headersAllowed);
-        ArrayList<String> methAllowed = new ArrayList<String>();
-
-        System.out.println("response header : "+responseHeader.getAccessControlAllowOrigin());
-        */
         String responseMsg = appFieldReadable+" has been saved.";
 
         //return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
@@ -201,34 +172,6 @@ public class ApplicationService {
 
          // verify token before preceding
 
-        /*
-         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-         String email = authentication.getName();
-         //UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
-         PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
-         //UserCredentials userCredentials = userCredentialsService.findByEmail(email);
-         PTOUser ptoUser = ptoUserService.findByEmail(email);// ?? we may not need to save this
-         // verify authentication is valid before moving on ....
-         // have to have a valid session
-
-        if(ptoUser == null || param == ""){
-            ////////////////////////////////////////////////
-            // start generating response
-            ////////////////////////////////////////////////
-            String statusCode = "404";
-            String responseMsg = applicationField+" has not been saved. invalid user session.";
-            responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
-            HttpHeaders responseHeader = new HttpHeaders ();
-            //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
-            responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
-            ArrayList<String> headersAllowed = new ArrayList<String>();
-            headersAllowed.add("Access-Control-Allow-Origin");
-            responseHeader.setAccessControlAllowHeaders(headersAllowed);
-            ArrayList<String> methAllowed = new ArrayList<String>();
-
-            return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
-
-        }*/
         if(verifyValidUserSession("xxx") == false){
             String responseMsg = applicationField+" has not been saved. invalid user session.";
             return buildResponseEnity("404", responseMsg);
@@ -295,21 +238,7 @@ public class ApplicationService {
         ////////////////////////////////////////////////
         // start generating response
         ////////////////////////////////////////////////
-        /*
-        String statusCode = "200";
-        String responseMsg = appFieldReadable+" has been saved.";
-        responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
-        HttpHeaders responseHeader = new HttpHeaders ();
-        //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
 
-        responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
-        ArrayList<String> headersAllowed = new ArrayList<String>();
-        headersAllowed.add("Access-Control-Allow-Origin");
-        responseHeader.setAccessControlAllowHeaders(headersAllowed);
-        ArrayList<String> methAllowed = new ArrayList<String>();
-
-        System.out.println("response header : "+responseHeader.getAccessControlAllowOrigin());
-        */
         String responseMsg = appFieldReadable+" has been saved.";
         return buildResponseEnity("200", responseMsg);
 
@@ -333,31 +262,10 @@ public class ApplicationService {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
-        /*
-
-
 
         // verify authentication is valid before moving on ....
         // have to have a valid session
 
-        if(ptoUser == null || contact_email == ""){
-            ////////////////////////////////////////////////
-            // start generating response
-            ////////////////////////////////////////////////
-            String statusCode = "404";
-            String responseMsg = "Contact with email address :"+contact_email+ " has not been saved. invalid user session.";
-            responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
-            HttpHeaders responseHeader = new HttpHeaders ();
-            //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
-            responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
-            ArrayList<String> headersAllowed = new ArrayList<String>();
-            headersAllowed.add("Access-Control-Allow-Origin");
-            responseHeader.setAccessControlAllowHeaders(headersAllowed);
-            ArrayList<String> methAllowed = new ArrayList<String>();
-
-            return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
-
-        }*/
         if(verifyValidUserSession(contact_email) == false){
             String responseMsg = "Contact with email address :"+contact_email+ " has not been saved. invalid user session.";
             return buildResponseEnity("404", responseMsg);
@@ -483,21 +391,6 @@ public class ApplicationService {
         ////////////////////////////////////////////////
         // start generating response
         ////////////////////////////////////////////////
-        /*String statusCode = "200";
-
-
-        responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
-        HttpHeaders responseHeader = new HttpHeaders ();
-        //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
-
-        responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
-        ArrayList<String> headersAllowed = new ArrayList<String>();
-        headersAllowed.add("Access-Control-Allow-Origin");
-        responseHeader.setAccessControlAllowHeaders(headersAllowed);
-        ArrayList<String> methAllowed = new ArrayList<String>();
-
-        System.out.println("response header : "+responseHeader.getAccessControlAllowOrigin());
-        */
 
         String responseMsg = "Contact with email address :"+contact_email+" has been added to the Application.";
 
@@ -514,35 +407,6 @@ public class ApplicationService {
     ResponseEntity<String> updateApplicationRemoveContactsPool(@PathVariable String contact_email , @PathVariable String appInternalID){
 
 
-        /*
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String email = authentication.getName();
-        //UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
-        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
-        //UserCredentials userCredentials = userCredentialsService.findByEmail(email);
-        PTOUser ptoUser = ptoUserService.findByEmail(email);// ?? we may not need to save this
-        // verify authentication is valid before moving on ....
-        // have to have a valid session
-
-        if(ptoUser == null || contact_email == ""){
-            ////////////////////////////////////////////////
-            // start generating response
-            ////////////////////////////////////////////////
-            String statusCode = "404";
-            String responseMsg = "Contact with email address :"+contact_email+ " has not been saved. invalid user session.";
-            responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
-            HttpHeaders responseHeader = new HttpHeaders ();
-            //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
-            responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
-            ArrayList<String> headersAllowed = new ArrayList<String>();
-            headersAllowed.add("Access-Control-Allow-Origin");
-            responseHeader.setAccessControlAllowHeaders(headersAllowed);
-            ArrayList<String> methAllowed = new ArrayList<String>();
-
-            return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
-
-        }
-        */
         if(verifyValidUserSession(contact_email) == false){
             String responseMsg = "Contact with email address :"+contact_email+ " has not been saved. invalid user session.";
             return buildResponseEnity("404", responseMsg);
@@ -560,16 +424,6 @@ public class ApplicationService {
         // save application object
         ///////////////////////////////////////////////////////////
 
-        // check if lawyer is set as primary ...if so, remove that first
-        /* Lawyer delLawyer = baseTrademarkApplication.getPrimaryLawyer();
-         if(delLawyer != null){
-             if(delLawyer.getEmail().equals(contact_email)){
-                 baseTrademarkApplication.setPrimaryLawyer(null);
-             }
-
-         } // else primary is not set and nothing to do there
-         */
-        // check if contact email is in application lawyer pool ..if so, remove
         Lawyer delLawyer;
 
         for(Iterator<Lawyer> iter = baseTrademarkApplication.getAvailableLawyers().iterator(); iter.hasNext(); ) {
@@ -601,21 +455,7 @@ public class ApplicationService {
         ////////////////////////////////////////////////
         // start generating response
         ////////////////////////////////////////////////
-        /*
-        String statusCode = "200";
 
-        responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
-        HttpHeaders responseHeader = new HttpHeaders ();
-        //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
-
-        responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
-        ArrayList<String> headersAllowed = new ArrayList<String>();
-        headersAllowed.add("Access-Control-Allow-Origin");
-        responseHeader.setAccessControlAllowHeaders(headersAllowed);
-        ArrayList<String> methAllowed = new ArrayList<String>();
-
-        System.out.println("response header : "+responseHeader.getAccessControlAllowOrigin());
-        */
         String responseMsg = "Contact with email address :"+contact_email+" has been removed from the Application";
         return buildResponseEnity("200", responseMsg);
 
@@ -631,36 +471,6 @@ public class ApplicationService {
     @ResponseBody
     ResponseEntity<String> setApplicationPrimaryAttorney(@PathVariable String contact_email , @PathVariable String appInternalID){
 
-
-        /*
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String email = authentication.getName();
-        //UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
-        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
-        //UserCredentials userCredentials = userCredentialsService.findByEmail(email);
-        PTOUser ptoUser = ptoUserService.findByEmail(email);// ?? we may not need to save this
-        // verify authentication is valid before moving on ....
-        // have to have a valid session
-
-        if(ptoUser == null || contact_email == ""){
-            ////////////////////////////////////////////////
-            // start generating response
-            ////////////////////////////////////////////////
-            String statusCode = "404";
-            String responseMsg = "Contact with email address :"+contact_email+ "has not been set as Primary Attorney. invalid user session.";
-            responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
-            HttpHeaders responseHeader = new HttpHeaders ();
-            //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
-            responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
-            ArrayList<String> headersAllowed = new ArrayList<String>();
-            headersAllowed.add("Access-Control-Allow-Origin");
-            responseHeader.setAccessControlAllowHeaders(headersAllowed);
-            ArrayList<String> methAllowed = new ArrayList<String>();
-
-            return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
-
-        }
-        */
         if(verifyValidUserSession(contact_email) == false){
 
             String responseMsg = "Contact with email address :"+contact_email+ "has not been set as Primary Attorney. invalid user session.";
@@ -697,19 +507,7 @@ public class ApplicationService {
        }
        else{
            // error
-           /*
-           String statusCode = "404";
 
-           responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
-           HttpHeaders responseHeader = new HttpHeaders ();
-           responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
-           ArrayList<String> headersAllowed = new ArrayList<String>();
-           headersAllowed.add("Access-Control-Allow-Origin");
-           responseHeader.setAccessControlAllowHeaders(headersAllowed);
-           ArrayList<String> methAllowed = new ArrayList<String>();
-
-
-           */
            String responseMsg = "Contact with email address :"+contact_email+ " has not been set as Primary Attorney. invalid contact email.";
            //return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
            return buildResponseEnity("404", responseMsg);
@@ -718,19 +516,7 @@ public class ApplicationService {
         ////////////////////////////////////////////////
         // start generating response
         ////////////////////////////////////////////////
-        /*
-        String statusCode = "200";
 
-        responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
-        HttpHeaders responseHeader = new HttpHeaders ();
-        responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
-        ArrayList<String> headersAllowed = new ArrayList<String>();
-        headersAllowed.add("Access-Control-Allow-Origin");
-        responseHeader.setAccessControlAllowHeaders(headersAllowed);
-        ArrayList<String> methAllowed = new ArrayList<String>();
-
-        System.out.println("response header : "+responseHeader.getAccessControlAllowOrigin());
-        */
         String responseMsg = "Contact with email address :"+contact_email+"  have been set as Primary Attorney";
         return buildResponseEnity("200", responseMsg);
 
