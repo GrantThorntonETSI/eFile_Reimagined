@@ -6,10 +6,10 @@ import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
-import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
+
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
-import org.springframework.context.ApplicationContext;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -17,8 +17,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -30,18 +28,16 @@ public class ApplicationService {
 
     private final ServiceBeanFactory serviceBeanFactory;
 
+
     /////////////////////////////////////////////////////////////////////////////////////////
     // based on the profile  ...we should be able
     // to inject the correct bean mapped to the correct host file here
     ////////////////////////////////////////////////////////////////////////////////////////
     private final HostBean hostBean;
-    private final ApplicationContext appContext;
 
-
-    public ApplicationService(ServiceBeanFactory serviceBeanFactory,ApplicationContext appContext ) {
+    public ApplicationService(ServiceBeanFactory serviceBeanFactory, HostBean hostBean) {
         this.serviceBeanFactory = serviceBeanFactory;
-        this.appContext = appContext;
-        this.hostBean = (HostBean) appContext.getBean(HostBean.class);
+        this.hostBean = hostBean;
     }
 
     @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
@@ -111,9 +107,10 @@ public class ApplicationService {
         }
 
         // retrieve application using passed internal id
+        //BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+        String appFieldReadable = "";
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
-        String appFieldReadable = "";
 
         // page 1 fields
         if(applicationField.equals("set-lawyer-options-value")){
@@ -669,6 +666,8 @@ public class ApplicationService {
         //////////////////////////////////////////////////////////
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+
+
         //////////////////////////////////////////////////////////
         // find contact via email from PTOUser
         // create a copy of the contact object
