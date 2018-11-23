@@ -7,6 +7,7 @@ import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 
@@ -526,7 +527,9 @@ public class ApplicationService {
     // helper functions
     ////////////////////////////////////////////////
 
-
+    ////////////////////////////////////////////////
+    // verify user session is valid
+    ////////////////////////////////////////////////
     boolean verifyValidUserSession(String contact_email){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
@@ -542,6 +545,10 @@ public class ApplicationService {
         }
 
     }
+    ////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////
+    // build response enity for REST API
     ////////////////////////////////////////////////
     ResponseEntity<String> buildResponseEnity(String status_code, String response_main){
 
@@ -563,6 +570,30 @@ public class ApplicationService {
 
     }
     ////////////////////////////////////////////////
+
+
+    ////////////////////////////////////////////////
+    // create copy of lawyer object
+    ////////////////////////////////////////////////
+    Lawyer createLawyerCopy(Lawyer lawyer){
+
+
+        Lawyer lawyerCopy = null;
+        return lawyerCopy;
+    }
+
+    ////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////
+    // create copy of owner object
+    ////////////////////////////////////////////////
+    Owner creaateOwnerCopy( Owner owner){
+
+        Owner ownerCopy = null;
+        return  ownerCopy;
+    }
+    ////////////////////////////////////////////////
+
 
 
 
