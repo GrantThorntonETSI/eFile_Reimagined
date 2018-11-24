@@ -20,33 +20,34 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
 @Service
-public class ContactsService {
+public class ContactsService extends  BaseRESTapiService {
 
-
+    /////////////////////////////////////////////////////////////////////////////////////////
     // REST methods
     // add contact  param: lawyer-email
     // update contact info  param1: lawyer-field-name  parma2: lawyer-field-value
+    /////////////////////////////////////////////////////////////////////////////////////////
+
+
+    /////////////////////////////////////////////////////////////////////////////////////////
+    // need to refactor attorney creation using form
+    // these REST servies can still be used for auto save on contact update module
+    /////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 
-    private final ServiceBeanFactory serviceBeanFactory;
+
 
     /////////////////////////////////////////////////////////////////////////////////////////
     // based on the profile  ...we should be able
     // to inject the correct bean mapped to the correct host file here
     ////////////////////////////////////////////////////////////////////////////////////////
-    private final HostBean hostBean;
-    private final ApplicationContext appContext;
 
 
-    public ContactsService(ServiceBeanFactory serviceBeanFactory,  ApplicationContext appContext) {
-        this.serviceBeanFactory = serviceBeanFactory;
-        this.appContext = appContext;
-        this.hostBean = (HostBean) appContext.getBean(HostBean.class);
+    public ContactsService(ServiceBeanFactory serviceBeanFactory, HostBean hostBean) {
+        super(serviceBeanFactory, hostBean);
     }
-
-
 
     @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
     @RequestMapping(method = GET, value="/REST/apiGateway/contacts/lawyer/add/{contact_email}")
@@ -60,10 +61,12 @@ public class ContactsService {
         ////////////////////////////////////////////////////////////////////////////////////////////////
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
+        /*
+
         //UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
-        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+
         //UserCredentials userCredentials = userCredentialsService.findByEmail(email);
-        PTOUser ptoUser = ptoUserService.findByEmail(email);// ?? we may not need to save this
+
         // verify authentication is valid before moving on ....
         // have to have a valid session
 
@@ -73,7 +76,7 @@ public class ContactsService {
              String responseMsg = appFieldReadable+" has not been saved. invalid user session.";
              responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
              HttpHeaders responseHeader = new HttpHeaders ();
-             responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
+             responseHeader.setAccessControlAllowOrigin(getHostBean().getHost()+getHostBean().getPort());
              ArrayList<String> headersAllowed = new ArrayList<String>();
              headersAllowed.add("Access-Control-Allow-Origin");
              responseHeader.setAccessControlAllowHeaders(headersAllowed);
@@ -81,10 +84,17 @@ public class ContactsService {
 
             return ResponseEntity.ok().headers(responseHeader).body(responseMsg);
 
+        }*/
+
+        if(verifyValidUserSession("xxx") == false){
+
+            String responseMsg = appFieldReadable+" has not been saved. invalid user session.";
+            return buildResponseEnity("404", responseMsg );
+
         }
-
+        PTOUserService ptoUserService = getServiceBeanFactory().getPTOUserService();
         // create Lawyer object and add it to PTOUser and save
-
+        PTOUser ptoUser = ptoUserService.findByEmail(email);// ?? we may not need to save this
         // ?? check if contact already exists ???
 
         Lawyer lawyer = ptoUser.findLawyerContactByEmail(contact_email);
@@ -97,7 +107,7 @@ public class ContactsService {
             String responseMsg = appFieldReadable+" has not been saved. Contact email exists..";
             responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
             HttpHeaders responseHeader = new HttpHeaders ();
-            responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
+            responseHeader.setAccessControlAllowOrigin(getHostBean().getHost()+getHostBean().getPort());
             ArrayList<String> headersAllowed = new ArrayList<String>();
             headersAllowed.add("Access-Control-Allow-Origin");
             responseHeader.setAccessControlAllowHeaders(headersAllowed);
@@ -130,7 +140,7 @@ public class ContactsService {
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();
         //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
-        responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
+        responseHeader.setAccessControlAllowOrigin(getHostBean().getHost()+getHostBean().getPort());
         ArrayList<String> headersAllowed = new ArrayList<String>();
         headersAllowed.add("Access-Control-Allow-Origin");
         responseHeader.setAccessControlAllowHeaders(headersAllowed);
@@ -155,7 +165,7 @@ public class ContactsService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
         //UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
-        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUserService ptoUserService = getServiceBeanFactory().getPTOUserService();
         //UserCredentials userCredentials = userCredentialsService.findByEmail(email);
         PTOUser ptoUser = ptoUserService.findByEmail(email);// ?? we may not need to save this
         // verify authentication is valid before moving on ....
@@ -167,7 +177,7 @@ public class ContactsService {
             String responseMsgs = appFieldReadable+" has not been saved. invalid user session.";
             responseMsgs = "{status:" + statusCodes +" } { msg:"+responseMsgs+" }";
             HttpHeaders responseHeader = new HttpHeaders ();
-            responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
+            responseHeader.setAccessControlAllowOrigin(getHostBean().getHost()+getHostBean().getPort());
             ArrayList<String> headersAllowed = new ArrayList<String>();
             headersAllowed.add("Access-Control-Allow-Origin");
             responseHeader.setAccessControlAllowHeaders(headersAllowed);
@@ -255,7 +265,7 @@ public class ContactsService {
 
 
         ptoUserService.save(ptoUser);
-        LawyerService lawyerService = serviceBeanFactory.getLawyerService();
+        LawyerService lawyerService = getServiceBeanFactory().getLawyerService();
         lawyerService.save(lawyer);
 
         ////////////////////////////////////////////////
@@ -266,7 +276,7 @@ public class ContactsService {
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();
         //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
-        responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
+        responseHeader.setAccessControlAllowOrigin(getHostBean().getHost()+getHostBean().getPort());
         ArrayList<String> headersAllowed = new ArrayList<String>();
         headersAllowed.add("Access-Control-Allow-Origin");
         responseHeader.setAccessControlAllowHeaders(headersAllowed);

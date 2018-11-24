@@ -11,14 +11,12 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.ap
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
