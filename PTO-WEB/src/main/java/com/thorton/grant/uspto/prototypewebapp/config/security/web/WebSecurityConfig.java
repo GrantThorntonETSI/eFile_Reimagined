@@ -52,13 +52,13 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                 // custom authentication provider
                 /////////////////////////////////////////////////////////////
                 // this provider right now lets every one in ..
-                //auth.authenticationProvider(usptoCustomAuthenticationProvider);
+                auth.authenticationProvider(usptoCustomAuthenticationProvider);
                 /////////////////////////////////////////////////////////////
-                final DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-                daoAuthenticationProvider.setUserDetailsService(usptoUserDetailsService);
+                //final DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+                //daoAuthenticationProvider.setUserDetailsService(usptoUserDetailsService);
 
                 // uses both DAO and custom provider
-                auth.authenticationProvider(usptoCustomAuthenticationProvider).authenticationProvider(daoAuthenticationProvider);
+                //auth.authenticationProvider(usptoCustomAuthenticationProvider).authenticationProvider(daoAuthenticationProvider);
                 /////////////////////////////////////////////////////////////
                 // DAO authentication provider
                 /////////////////////////////////////////////////////////////
@@ -75,6 +75,9 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                 .dataSource(dataSource)
                 .passwordEncoder(bCryptPasswordEncoder);
                 */
+
+                 // not sure if we need a authenticatoin manger, as the default can take a list of custom identity providers
+
     }
 
 

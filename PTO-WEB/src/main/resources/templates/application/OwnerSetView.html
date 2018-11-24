@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layoutSession :: layout (~{::body},'user')}" xmlns="http://www.w3.org/1999/html">
+<head >
+    <meta charset="UTF-8">
+    <title>Owner Information</title>
+</head>
+<body>
+
+<!-- End Navbar -->
+
+<div class="content" style="display: none; background-color: white; min-height: 400px; min-width: 1200px; position: relative; bottom: -10%;" >
+    <div class="container-fluid"  >
+
+        <div class="col-sm-12" >
+            <div class="form-container base-page" style="position: relative; top:-80px;">
+
+
+                <div class="application-banner">
+                    <!--row 1  -->
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:20px;  left:-55px; margin-left: 10px; margin-bottom: 5px; z-index: 999;">
+                                <svg version="1.2" preserveAspectRatio="none" class="ng-element" viewBox="0 0 127.11863708496094 49.15254211425781" style= "overflow: visible; width: 137.119px; height: 49.1525px; opacity: 1; mix-blend-mode: normal; transform: rotate(0deg) translate(89.8248px, 151.531px) rotate(0deg);"><defs></defs><g style="transform: translate(-102.825px, -179.379px);"><path d="M102.82484151549 179.37852891825 C102.82484151549 179.37852891825 102.82484151549 228.53107129113 102.82484151549 228.53107129113 C102.82484151549 228.53107129113 211.29941778668 228.53107129113 211.29941778668 228.53107129113 C211.29941778668 228.53107129113 229.94348558329 204.80225773181 229.94348558329 204.80225773181 C229.94348558329 204.80225773181 211.29941778668 179.37852891825 211.29941778668 179.37852891825 C211.29941778668 179.37852891825 102.82484151549 179.37852891825 102.82484151549 179.37852891825 Z" style="stroke: rgb(102, 102, 102); stroke-width: 1; stroke-linecap: butt; stroke-linejoin: miter; fill: rgb(0, 50, 100);"></path><path d="M102.82484151549 179.37852891825 C102.82484151549 179.37852891825 102.82484151549 228.53107129113 102.82484151549 228.53107129113 C102.82484151549 228.53107129113 211.29941778668 228.53107129113 211.29941778668 228.53107129113 C211.29941778668 228.53107129113 229.94348558329 204.80225773181 229.94348558329 204.80225773181 C229.94348558329 204.80225773181 211.29941778668 179.37852891825 211.29941778668 179.37852891825 C211.29941778668 179.37852891825 102.82484151549 179.37852891825 102.82484151549 179.37852891825 Z" fill="none" stroke="transparent" stroke-width="8"></path></g></svg>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:20px; left:-230px; margin-left:10px; margin-bottom: 5px;  z-index: 888;">
+                                <svg version="1.2" preserveAspectRatio="none" class="ng-element" viewBox="0 0 127.11863708496094 49.15254211425781" style="overflow: visible; width: 137.119px; height: 49.1525px; opacity: 1; mix-blend-mode: normal; transform: rotate(0deg) translate(185px, 151.153px) rotate(0deg);"><defs></defs><g style="transform: translate(-102.825px, -179.379px);"><path d="M102.82484151549 179.37852891825 C102.82484151549 179.37852891825 102.82484151549 228.53107129113 102.82484151549 228.53107129113 C102.82484151549 228.53107129113 211.29941778668 228.53107129113 211.29941778668 228.53107129113 C211.29941778668 228.53107129113 229.94348558329 204.80225773181 229.94348558329 204.80225773181 C229.94348558329 204.80225773181 211.29941778668 179.37852891825 211.29941778668 179.37852891825 C211.29941778668 179.37852891825 102.82484151549 179.37852891825 102.82484151549 179.37852891825 Z" style="stroke: rgba(102, 102, 102, 0.33); stroke-width: 1; stroke-linecap: butt; stroke-linejoin: miter; fill: rgb(235, 235, 235);"></path><path d="M102.82484151549 179.37852891825 C102.82484151549 179.37852891825 102.82484151549 228.53107129113 102.82484151549 228.53107129113 C102.82484151549 228.53107129113 211.29941778668 228.53107129113 211.29941778668 228.53107129113 C211.29941778668 228.53107129113 229.94348558329 204.80225773181 229.94348558329 204.80225773181 C229.94348558329 204.80225773181 211.29941778668 179.37852891825 211.29941778668 179.37852891825 C211.29941778668 179.37852891825 102.82484151549 179.37852891825 102.82484151549 179.37852891825 Z" fill="none" stroke="transparent" stroke-width="8"></path></g></svg>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:20px; left:-415px; margin-left: 10px; margin-bottom: 5px;  z-index: 777;">
+                                <svg version="1.2" preserveAspectRatio="none" class="ng-element" viewBox="0 0 127.11863708496094 49.15254211425781" style="overflow: visible; width: 137.119px; height: 49.1525px; opacity: 1; mix-blend-mode: normal; transform: rotate(0deg) translate(289px, 151.153px) rotate(0deg);"><defs></defs><g style="transform: translate(-102.825px, -179.379px);"><path d="M102.82484151549 179.37852891825 C102.82484151549 179.37852891825 102.82484151549 228.53107129113 102.82484151549 228.53107129113 C102.82484151549 228.53107129113 211.29941778668 228.53107129113 211.29941778668 228.53107129113 C211.29941778668 228.53107129113 229.94348558329 204.80225773181 229.94348558329 204.80225773181 C229.94348558329 204.80225773181 211.29941778668 179.37852891825 211.29941778668 179.37852891825 C211.29941778668 179.37852891825 102.82484151549 179.37852891825 102.82484151549 179.37852891825 Z" style="stroke: rgba(102, 102, 102, 0.33); stroke-width: 1; stroke-linecap: butt; stroke-linejoin: miter; fill: rgb(235, 235, 235);"></path><path d="M102.82484151549 179.37852891825 C102.82484151549 179.37852891825 102.82484151549 228.53107129113 102.82484151549 228.53107129113 C102.82484151549 228.53107129113 211.29941778668 228.53107129113 211.29941778668 228.53107129113 C211.29941778668 228.53107129113 229.94348558329 204.80225773181 229.94348558329 204.80225773181 C229.94348558329 204.80225773181 211.29941778668 179.37852891825 211.29941778668 179.37852891825 C211.29941778668 179.37852891825 102.82484151549 179.37852891825 102.82484151549 179.37852891825 Z" fill="none" stroke="transparent" stroke-width="8"></path></g></svg>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:20px; left:-610px;margin-left: 10px; margin-bottom: 5px;   z-index: 666;">
+                                <svg version="1.2" preserveAspectRatio="none" class="ng-element" viewBox="0 0 127.11863708496094 49.15254211425781" style="overflow: visible; width: 137.119px; height: 49.1525px; opacity: 1; mix-blend-mode: normal; transform: rotate(0deg) translate(388px, 151.153px) rotate(0deg);"><defs></defs><g style="transform: translate(-102.825px, -179.379px);"><path d="M102.82484151549 179.37852891825 C102.82484151549 179.37852891825 102.82484151549 228.53107129113 102.82484151549 228.53107129113 C102.82484151549 228.53107129113 211.29941778668 228.53107129113 211.29941778668 228.53107129113 C211.29941778668 228.53107129113 229.94348558329 204.80225773181 229.94348558329 204.80225773181 C229.94348558329 204.80225773181 211.29941778668 179.37852891825 211.29941778668 179.37852891825 C211.29941778668 179.37852891825 102.82484151549 179.37852891825 102.82484151549 179.37852891825 Z" style="stroke: rgba(102, 102, 102, 0.33); stroke-width: 1; stroke-linecap: butt; stroke-linejoin: miter; fill: rgb(235, 235, 235);"></path><path d="M102.82484151549 179.37852891825 C102.82484151549 179.37852891825 102.82484151549 228.53107129113 102.82484151549 228.53107129113 C102.82484151549 228.53107129113 211.29941778668 228.53107129113 211.29941778668 228.53107129113 C211.29941778668 228.53107129113 229.94348558329 204.80225773181 229.94348558329 204.80225773181 C229.94348558329 204.80225773181 211.29941778668 179.37852891825 211.29941778668 179.37852891825 C211.29941778668 179.37852891825 102.82484151549 179.37852891825 102.82484151549 179.37852891825 Z" fill="none" stroke="transparent" stroke-width="8"></path></g></svg>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:20px; left:-690px;margin-left: 10px; margin-bottom: 5px;   z-index: 555;">
+                                <svg version="1.2" preserveAspectRatio="none" class="ng-element" viewBox="0 0 127.11863708496094 49.15254211425781" style="overflow: visible; width: 137.119px; height: 49.1525px; opacity: 1; mix-blend-mode: normal; transform: rotate(0deg) translate(388px, 151.153px) rotate(0deg);"><defs></defs><g style="transform: translate(-102.825px, -179.379px);"><path d="M102.82484151549 179.37852891825 C102.82484151549 179.37852891825 102.82484151549 228.53107129113 102.82484151549 228.53107129113 C102.82484151549 228.53107129113 211.29941778668 228.53107129113 211.29941778668 228.53107129113 C211.29941778668 228.53107129113 229.94348558329 204.80225773181 229.94348558329 204.80225773181 C229.94348558329 204.80225773181 211.29941778668 179.37852891825 211.29941778668 179.37852891825 C211.29941778668 179.37852891825 102.82484151549 179.37852891825 102.82484151549 179.37852891825 Z" style="stroke: rgba(102, 102, 102, 0.33); stroke-width: 1; stroke-linecap: butt; stroke-linejoin: miter; fill: rgb(235, 235, 235);"></path><path d="M102.82484151549 179.37852891825 C102.82484151549 179.37852891825 102.82484151549 228.53107129113 102.82484151549 228.53107129113 C102.82484151549 228.53107129113 211.29941778668 228.53107129113 211.29941778668 228.53107129113 C211.29941778668 228.53107129113 229.94348558329 204.80225773181 229.94348558329 204.80225773181 C229.94348558329 204.80225773181 211.29941778668 179.37852891825 211.29941778668 179.37852891825 C211.29941778668 179.37852891825 102.82484151549 179.37852891825 102.82484151549 179.37852891825 Z" fill="none" stroke="transparent" stroke-width="8"></path></g></svg>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:-28.9px;left:-1030px;margin-left: 15px;margin-bottom: 5px;   z-index: 444;">
+                                <svg version="1.2" preserveAspectRatio="none" class="ng-element" viewBox="0 0 138.11863708496 49.152542114258" style="overflow: visible; width: 148.119px; height: 49.1525px; opacity: 1; mix-blend-mode: normal; transform: rotate(0deg) translate(610.39px, 200.153px) rotate(180deg);"><defs></defs><g style="transform: translate(-111.731px, -179.379px);"><path d="M111.73093015069 179.37852891825 C111.73093015069 179.37852891825 111.73093015069 228.53107129113 111.73093015069 228.53107129113 C111.73093015069 228.53107129113 229.6009421619 228.53107129113 229.6009421619 228.53107129113 C229.6009421619 228.53107129113 249.85985047633 204.80225773181 249.85985047633 204.80225773181 C249.85985047633 204.80225773181 229.6009421619 179.37852891825 229.6009421619 179.37852891825 C229.6009421619 179.37852891825 111.73093015069 179.37852891825 111.73093015069 179.37852891825 Z" style="stroke: rgba(102, 102, 102, 0.33); stroke-width: 1; stroke-linecap: butt; stroke-linejoin: miter; fill: rgb(235, 235, 235);"></path><path d="M111.73093015069 179.37852891825 C111.73093015069 179.37852891825 111.73093015069 228.53107129113 111.73093015069 228.53107129113 C111.73093015069 228.53107129113 229.6009421619 228.53107129113 229.6009421619 228.53107129113 C229.6009421619 228.53107129113 249.85985047633 204.80225773181 249.85985047633 204.80225773181 C249.85985047633 204.80225773181 229.6009421619 179.37852891825 229.6009421619 179.37852891825 C229.6009421619 179.37852891825 111.73093015069 179.37852891825 111.73093015069 179.37852891825 Z" fill="none" stroke="transparent" stroke-width="8"></path></g></svg>
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:129px; left:-100px;margin-left: 10px; margin-bottom: 5px; margin-top: 20px; min-height: 90px;">
+
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+
+                    <!--row 2  -->
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:-155px;  left:-55px; margin-left: 10px; z-index: 999;">
+                                <div id="TextElement6d892a2e229840518080563c08130767" class="ng-element el-text-2 empty-line-hack font-S-Verdana-n4" data-id="c2f83c9bdb3b4f19b0908d5cd78b582c" style="opacity: 1;  mix-blend-mode: normal; color: rgb(255, 255, 255); font-size: 32px; font-weight: normal; font-style: normal; text-decoration: none; text-align: center; width: 48px; height: 38px; transform: rotate(0deg) translate(88px, 156px) rotate(0deg);"><p>1</p></div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:-155px; left:-230px; margin-left:10px; margin-bottom: 5px;   z-index: 888;">
+                                <div id="TextElement2e48d2950eee4de18045cbcb548f702e" class="ng-element el-text-2 empty-line-hack font-S-Verdana-n4" data-id="f5ee8cd3745a4e00be3461cc64c7ac1d" style="opacity: 1; mix-blend-mode: normal; color: rgba(0, 0, 0, 0.33); font-size: 32px; font-weight: normal; font-style: normal; text-decoration: none; text-align: center; width: 48px; height: 38px; transform: rotate(0deg) translate(201px, 155px) rotate(0deg);"><p>2</p></div>
+
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:-155px; left:-410px; margin-left: 10px; margin-bottom: 5px;  z-index: 777;">
+                                <div id="TextElement1e97617741f44bf8881b6e0f6a74fdbf" class="ng-element el-text-2 empty-line-hack font-S-Verdana-n4" data-id="e1888a82538041efb5af409785d46369" style="opacity: 1; mix-blend-mode: normal; color: rgba(0, 0, 0, 0.33); font-size: 32px; font-weight: normal; font-style: normal; text-decoration: none; text-align: center; width: 48px; height: 38px; transform: rotate(0deg) translate(300px, 155px) rotate(0deg);"><p>3</p></div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:-155px; left:-595px;margin-left: 10px; margin-bottom: 5px;  z-index: 666;">
+                                <div id="TextElement9e4766e8944e491b8b55cabdeaadc09f" class="ng-element el-text-2 empty-line-hack font-S-Verdana-n4" data-id="1b9b5f60443240f9898e822be84cfd58" style="opacity: 1; mix-blend-mode: normal; color: rgba(0, 0, 0, 0.33); font-size: 32px; font-weight: normal; font-style: normal; text-decoration: none; text-align: center; width: 48px; height: 38px; transform: rotate(0deg) translate(406px, 153px) rotate(0deg);"><p>4</p></div>
+
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:-155px;left:-790px;margin-left: 10px;margin-bottom: 5px;  min-height: 90px; z-index: 555;">
+                                <div id="TextElement3a2c0bfb53c449b4aab3ad8c138024c2" class="ng-element el-text-2 empty-line-hack font-S-Verdana-n4" data-id="717f1208d4a14a82accc0d637d0da19e" style="opacity: 1; mix-blend-mode: normal; color: rgba(0, 0, 0, 0.33); font-size: 32px; font-weight: normal; font-style: normal; text-decoration: none; text-align: center; width: 48px; height: 38px; transform: rotate(0deg) translate(503px, 155px) rotate(0deg);"><p>5</p></div>
+
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:-155px;left:-870px;margin-left: 10px;margin-bottom: 5px;  min-height: 90px; z-index: 555;">
+                                <div id="TextElement3a2c0bfb53c449b4aab3ad8c138024c" class="ng-element el-text-2 empty-line-hack font-S-Verdana-n4" data-id="717f1208d4a14a82accc0d637d0da19e" style="opacity: 1; mix-blend-mode: normal; color: rgba(0, 0, 0, 0.33); font-size: 32px; font-weight: normal; font-style: normal; text-decoration: none; text-align: center; width: 48px; height: 38px; transform: rotate(0deg) translate(503px, 155px) rotate(0deg);"><p>6</p></div>
+
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:520px; left:-100px;margin-left: 10px; margin-bottom: 5px; margin-top: 20px; min-height: 90px;">
+
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+
+
+                    <!--row 3 -->
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:-365px;  left:-55px; margin-left: 10px; z-index: 999;">
+                                <div id="TextElementc8fd3c78493d4522a4c00459ee1f4332" class="ng-element el-text-2 empty-line-hack font-S-Verdana-n4" data-id="6fff875b409246a6a2ed90b9e5fe1988" style="opacity: 1; mix-blend-mode: normal; color: rgb(255, 255, 255); font-size: 12px; font-weight: normal; font-style: normal; text-decoration: none; text-align: center; width: 80px; height: 29px; transform: rotate(0deg) translate(122px, 162px) rotate(0deg);"><p>Your <br>Details</p></div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:-365px; left:-225px; margin-left:10px; margin-bottom: 5px;   z-index: 888;">
+                                <div id="TextElement3c74801059a94f70bc4a7f406f454696" class="ng-element el-text-2 empty-line-hack font-S-Verdana-n4" data-id="c2e6e747f8cd4a7a84377e743b291255" style="opacity: 1; mix-blend-mode: normal; color: rgba(0, 0, 0, 0.33); font-size: 12px; font-weight: normal; font-style: normal; text-decoration: none; text-align: center; width: 99px; height: 29px; transform: rotate(0deg) translate(218px, 161px) rotate(0deg);"><p>Trademark <br> Details</p></div>
+
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:-365px; left:-410px; margin-left: 10px; margin-bottom: 5px;  z-index: 777;">
+                                <div id="TextElementfe88a6a2b32a49a8b751e85cf74929bc" class="ng-element el-text-2 empty-line-hack font-S-Verdana-n4" data-id="b2ad90d0f29c4e6db90beceb50fe1930" style="opacity: 1; mix-blend-mode: normal; color: rgba(0, 0, 0, 0.33); font-size: 12px; font-weight: normal; font-style: normal; text-decoration: none; text-align: center; width: 99px; height: 29px; transform: rotate(0deg) translate(318px, 161px) rotate(0deg);"><p>Goods and <br> Services</p></div>
+
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:-365px; left:-600px;margin-left: 10px; margin-bottom: 5px;  z-index: 666;">
+
+                                <div id="TextElement8bfded2c2ca14c40a45c55c1394608e1" class="ng-element el-text-2 empty-line-hack font-S-Verdana-n4" data-id="c6270536a48c457a8cd331052f6c2976" style="opacity: 1; mix-blend-mode: normal; color: rgba(0, 0, 0, 0.33); font-size: 12px; font-weight: normal; font-style: normal; text-decoration: none; text-align: center; width: 99px; height: 14px; transform: rotate(0deg) translate(422px, 169px) rotate(0deg);"><p>Basis</p></div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:-365px;left:-790px;margin-left: 10px;margin-bottom: 5px;  min-height: 90px; z-index: 555;">
+                                <div id="TextElemented1ccf853e144beab34a590ec3655ef" class="ng-element el-text-2 empty-line-hack font-S-Verdana-n4" data-id="e862a731ed0348c7ae94bd0dbd8f4920" style="opacity: 1; mix-blend-mode: normal; color: rgba(0, 0, 0, 0.33); font-size: 12px; font-weight: normal; font-style: normal; text-decoration: none; text-align: center; width: 99px; height: 29px; transform: rotate(0deg) translate(521px, 160px) rotate(0deg);"><p>Additional<br>Information</p></div>
+
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:-365px;left:-875px;margin-left: 10px;margin-bottom: 5px;  min-height: 90px; z-index: 555;">
+                                <div id="TextElemented1ccf853e144beab34a590ec3655eff" class="ng-element el-text-2 empty-line-hack font-S-Verdana-n4" data-id="e862a731ed0348c7ae94bd0dbd8f4920" style="opacity: 1; mix-blend-mode: normal; color: rgba(0, 0, 0, 0.33); font-size: 12px; font-weight: normal; font-style: normal; text-decoration: none; text-align: center; width: 99px; height: 29px; transform: rotate(0deg) translate(521px, 160px) rotate(0deg);"><p>Confirm<br> and Pay</p></div>
+
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div style="position: relative; top:520px; left:-100px;margin-left: 10px; margin-bottom: 5px; margin-top: 20px; min-height: 90px;">
+
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+
+                </div>  <!-- end of banner -->
+
+            </div>
+
+            <!--end of main banner section -->
+
+            <div class="row" style="position: relative; top: -450px;">
+                <div class="col-md-6">
+                    <div style="position: relative; top:-10px; margin-left: 35px; margin-bottom: 5px; margin-top: 10px; min-height: 90px;">
+                        <h1><b style="opacity: 1; mix-blend-mode: normal; color: rgb(0, 0, 0); font-size: 36px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; text-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1.16667px; width: 597px; height: 41px; transform: rotate(0deg) translate(37px, 138px) rotate(0deg);">Attorney Information</b></h1>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="banner-message"  style="position: relative;top:-55px; right:-320px; margin-left: 40px; margin-bottom: 50px; ">
+
+                        <p>
+                            <select class="btn" style="background-color: rgb(235, 235, 235); min-width: 245px; color: black; min-height: 50px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px; max-width: 222px; " type="" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2"><i style="position: relative; left: -20px; top:10px;" class="material-icons">expand_more</i><b>&nbsp;&nbsp;&nbsp; Total Fee&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  $225</b>
+                                <option disabled selected><b>Total Fee      $225</b></option>
+                                <option disabled><b>Basic Fee      $225</b></option>
+                                <option disabled><b>Extra Class Fee  $0</b></option>
+                                <option disabled><b>Total Classes      1</b></option>
+                            </select>
+                        <hr style="height:3px;   position:relative; top:-20px;  left:0px; background-color: #004c97;margin-bottom: 0px;border-bottom-left-radius: 2px;border-bottom-right-radius: 2px;border-top-left-radius: 2px;border-top-right-radius: 2px;">
+                        </p>
+
+
+                    </div>
+                </div>
+            </div>  <!-- end of main content row 1 -->
+
+
+
+
+
+            <div class="row" style="position: relative; top:-430px; right:-220px;">
+                <div class="col-sm-6">
+                    <div class="form-group set-lawyer-options-valueFieldMsgArea" style="display:none; position: relative; left:30%;">
+                        <b><span></span></b>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+            <div class="row" id="contacts-ui" style=" display: none; position: relative; top:-450px; right:-120px;">
+
+                <div class="row" style="">
+                    <h5><b>Select one of the following attorneys to be the primary attorney.</b></h5>
+                </div>
+
+                <div class="accordion" id="accordionExample" style="position: relative; right:-10px; margin-top: 30px;">
+
+
+<!--only one owner to display -->
+                        <!--item 1 -->
+                        <div class="card" id="contact" style="max-width: 850px; background-color: white; ">
+                            <div class="card-header" id="headingTwo"  style="background-color: white;">
+                                <div class="row">
+                                    <div class="col-sm-1">
+                                        <input  class="primaryOwner" style="position: relative; bottom: -5px;"  type="radio" name="primaryAttorney" checked>
+
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <i class="material-icons collapsed" data-toggle="collapse" th:attr="data-target='#'+${}+${baseTrademarkApplication.owner.lastName}"  aria-expanded="false" aria-controls="collapseTwo" style="position: relative; bottom:-5px; left:-20px;">import_export</i>
+                                    </div>
+                                    <div class="col-sm-3">
+
+                                        <b style="position: relative; bottom: -5px; left:-25px;" th:text="${baseTrademarkApplication.owner.firstName}+' '+${baseTrademarkApplication.owner.lastName}">Attorney Name</b>
+
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <b style="position: relative; bottom: -5px; left:-25px;" th:text="${baseTrademarkApplication.owner.email}"> Attorney@Email.com</b>
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <b style="position: relative; bottom: -5px; left:-25px;" th:text="${baseTrademarkApplication.owner.getOwnersubType()}"> Attorney Firm, LLC </b>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <i class="material-icons" style="position: relative; bottom: -3px;">remove_circle</i>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div  th:attr="id=${baseTrademarkApplication.owner.firstName}+${baseTrademarkApplication.owner.lastName}"  class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample" style="max-width: 850px; margin-bottom: 10px;">
+                            <div class="card-body">baseTrademarkApplication.owner.firstName
+
+                                <div class="row" style="position: relative; right:-110px;">
+                                        <span class="collapsed"  data-toggle="collapse"  th:attr="data-target='#'+${baseTrademarkApplication.owner.lastName}+${baseTrademarkApplication.owner.firstName}+'1'" aria-expanded="false" aria-controls="collapseTwoAddress">
+                                            <i class="material-icons">keyboard_arrow_right</i><b style="position: relative; top:-7px;"> Address Information</b>
+                                        </span>
+
+                                    <div th:attr="id=${baseTrademarkApplication.owner.lastName}+${baseTrademarkApplication.owner.firstName}+'1'" class="collapse" aria-labelledby="headingTwoAddress" data-parent="#accordionExample" style="max-width: 850px;">
+                                        <div class="card-body">
+
+                                            <span style="position: relative; right:-30px;" th:text="${baseTrademarkApplication.owner.address}+' '+${baseTrademarkApplication.owner.city}+', '+${baseTrademarkApplication.owner.state}+' '+${baseTrademarkApplication.owner.zipcode}"> 1115 Reserve Champion Drive, Rockville MD 20850</span>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="position: relative; right:-110px;">
+                                            <span class="collapsed"  data-toggle="collapse" th:attr="data-target='#'+${baseTrademarkApplication.owner.lastName}+${baseTrademarkApplication.owner.firstName}+'2'" aria-expanded="false" aria-controls="collapseTwoAffiliation">
+                                                <i class="material-icons">keyboard_arrow_right</i> <b style="position: relative; top:-7px;">Website URL</b>
+                                            </span>
+
+                                    <div th:attr="id=${baseTrademarkApplication.owner.lastName}+${baseTrademarkApplication.owner.firstName}+'2'" class="collapse" aria-labelledby="headingTwoAffiliation" data-parent="#accordionExample" style="max-width: 850px;">
+                                        <div class="card-body">
+
+                                            <span style="position: relative; right:-30px;"  th:text="${baseTrademarkApplication.owner.webSiteURL}">Washington Dc Bar Association. Maryland Bar Association.</span>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="position: relative; right:-137px; margin-top: 10px;">
+                                    <b>Phone Number:</b> <input type="text" style="border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;"  th:value="${baseTrademarkApplication.owner.primaryPhonenumber}" >
+
+                                </div>
+
+                            </div> <!-- end of outter card body -->
+                        </div> <!--end of collapse two -->
+
+                        <!-- end of item 1 -->
+
+
+
+
+
+
+
+                </div> <!~- end of accordian -->
+
+
+                <div class="row" style="position: relative; top:30px; ">
+                </div>
+
+                <div class="row" style="position: relative; top:-10px; right:-8px;">
+                    <div class="col-md-9">
+                        <div class="card-footer" style="background-color: rgb(235,235,235);  border: rgb(235,235,235);  border-width: 1px; border: solid;  min-height: 100px; max-width: 852px; ">
+                            <div class="row" style="position: relative; ">
+                                <div class="col-sm-4" style="position: relative; right: -10px;">
+                                    <span class="btn-sm btn" data-target="#addNewAttorneyModal" data-toggle="modal"  style=" padding:5px; min-width:150px; color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><b>Add New Attorney</b></span>
+                                </div>
+                                <div class="col-sm-2">
+                                </div>
+                                <div class="col-sm-2">
+                                </div>
+                                <div class="col-sm-2">
+                                </div>
+                                <div class="col-sm-2"  style="position: relative; right: -15px;">
+                                    <span class="btn-sm btn"  id="confirm-link-widget"  style=" padding:5px; min-width:100px; color: white; background-color: rgb(128, 128, 128); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><b>Confirm</b></span>
+
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row navigation-row" style="position: relative; top:-200px; right:-50px; ">
+    <div class="col-sm-2">
+        <span class="btn btn-md prev-button"  id="prev-link-application"  style=" border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; background-color: rgb(55, 69, 120);  color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center;    font-size: 14px; font-style: normal; width: 120px; height: 30px;"><a id="prevLink" style="color: white; text-decoration: none;" href="">Previous</a></span>
+    </div>
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-2" style="position:relative; left:-30px;">
+            <span class="btn btn-md next-button"  id="next-link-application" style=" border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; background-color: rgb(128,128,128); background-image: none; color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center;   font-size: 14px; font-style: normal; width: 120px; height: 30px;"><a id="nextLink" style="color: white; text-decoration: none;" >Next</a><span>
+
+    </div>
+
+
+
+</div>
+
+
+
+</div>
+<!-- end of main content-->
+
+
+
+
+<!-- start add new Attorney Modal -->
+<div id="addNewAttorneyModal" class="modal fade modal-lg" role="dialog"  tabindex="-1" style="max-width: 1200px;">
+    <div class="modal-dialog" style="min-width: 1200px;">
+
+        <!-- Modal content-->
+        <div class="modal-content"  style="max-width: 1200px; max-height: 2000px;">
+
+            <div class="modal-body" id="addNewAttorneyModalBody" style="max-height: 3000px;">
+                <div class="content" style="display: none; background-color: white; max-height: 3000px;"  >
+                    <div class="container-fluid"  >
+
+                        <div class="col-sm-16" >
+                            <div class="form-container base-page" style="position: relative; top:-20px;">
+
+                                <div class="container-fluid" id="attorneyEntityForm" style="position: relative; bottom:-200px; max-width: 1300px;left:-10px; margin-bottom: 20px;">
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="modal-footer" style="background-color: rgb(217, 217, 214);">
+                <div class="form-group">
+
+                    <div class="row" style="position: relative; top:-15px; right:-30px;">
+                        <div class="col-sm-4" style="position: relative; right: -10px;">
+
+                        </div>
+
+
+                        <div class="col-sm-2">
+
+                            <div class="form-group attorney-saveMsgArea" style="position: relative; left:-15%; bottom:-10px;">
+                                <b><span></span></b>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-2"  style="position: relative; right: -25px;">
+
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- end of add New Attorney modal -->
+
+
+
+    <!--load data from model -->
+
+    <!--load model attribute for Jquery consumption  -->
+    <script th:inline="javascript">
+
+        /*<![CDATA[*/
+
+
+        var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
+        var host_name= /*[[${hostBean.host}]]*/ 'User Name';
+        var host_port= /*[[${hostBean.port}]]*/ 'User Name';
+        var host = host_name+":"+host_port;
+
+
+        /*]]>*/
+    </script>
+
+
+
+    <script>
+
+        var prevLinkURL = "../../application/start/?trademarkID="+appInternalID;
+        var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
+        var attorneyDomFormURL = "../../application/attorney/attorneyInfo/?trademarkID="+appInternalID;
+
+    </script>
+
+    <!--load model attribute for Jquery consumption  -->
+    <script th:inline="javascript">
+
+        /*<![CDATA[*/
+
+        //var contactNames = /*[[${myContacts.ContactNames}]]*/ 'User Name';
+        //var contactEmails = /*[[${myContacts.ContactEmails}]]*/ 'User Name';
+        //var contactFirms = /*[[${myContacts.ContactFirms}]]*/ 'User Name';
+        //var selectedContactNames = /*[[${selectedContacts.selectedNames}]]*/ 'User Name';
+        //  selectd contact address
+        //  selectd contact affliation
+        //  selectd contact Docket number
+
+
+
+
+        /*]]>*/
+    </script>
+
+    <script>
+        $(document).ready(function() {
+
+            setTimeout(function() {
+                // after 1000 ms we add the class animated to the login/register card
+                $('.content').fadeIn(500);
+            }, 500);
+
+            setTimeout(function() {
+                // after 1000 ms we add the class animated to the login/register card
+                $('#contacts-ui').fadeIn(500);
+            }, 500);
+
+            ////////////////////////////////////////
+            // set previous link
+            /////////////////////////////////////////
+            $('#prevLink').attr("href",prevLinkURL);
+
+            /////////////////////////////////////////////////
+            // check each radio button in accordian..
+            // if any is checked .. enable confirm and next buttons
+            /////////////////////////////////////////////////
+            $('#accordionExample input').each(function () {
+                //alert("##############")
+                if($(this).is(':checked')){
+                    // alert("!!!!!!!!!!!!!!!!")
+                    // confirm link only activated oin new primary set
+                    $('#next-link-application').css("background-color", "rgb(55, 69, 120)");
+                    $('#nextLink').attr("href", nextLinkURL);
+
+
+                }
+
+            });
+
+
+
+
+            $('#accordionExample').on('click', 'input.primaryLawyer', function () {
+
+                var field_value =  $(this).parent().next().next().next().children().html();
+
+
+                if(field_value != "") {
+                    // set email to confirm button property
+                    $('#confirm-link-widget').attr("primary-attorney-email", field_value);
+
+                }
+                enableConfirmWidgetLink();
+            });
+            $('#confirm-link-widget').click( function () {
+                // alert("!!!!!!!!!!!!!");
+                //alert($(this).attr("primary-attorney-email"));
+                var contact_email = $(this).attr("primary-attorney-email");
+                setPrimaryAttorneyApplication(contact_email, appInternalID);
+                // enable next link ..
+                // enable next url ...
+                $('#nextLink').attr("href", nextLinkURL);
+                $('#next-link-application').css("background-color", "rgb(55, 69, 120)");
+
+
+
+            });
+
+
+            //////////////////////////////////////////////////////////////
+            // on modal open set focus to email field :
+            // // this will trigger the creation of a
+            // // new available contact for the user on field complete
+            //////////////////////////////////////////////////////////////
+            $('#addNewAttorneyModal').on('shown.bs.modal', function () {
+                // check if email address set
+                $.post(attorneyDomFormURL, function(data){
+                    $("#attorneyEntityForm").html(data).fadeIn();
+                });
+
+
+
+
+
+            });
+            /////////////////////////////////////////////////////////////////////////
+            // modal clean up
+            /////////////////////////////////////////////////////////////////////////
+            $('#addNewAttorneyModal').on('hidden.bs.modal', function () {
+
+                // reset all fields
+                $('#attorney-first-name').val("");
+                $('#attorney-last-name').val("");
+                $('#attorney-lawfirm-name').val("");
+                $('#attorney-country').val("");
+                $('#attorney-address1').val("");
+                $('#attorney-city').val("");
+                $('#attorney-state').val("");
+                $('#attorney-zipcode').val("");
+                $('#attorney-phone').val("");
+                $('#attorney-email').val("");
+
+
+            });
+            /////////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////
+
+
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // AUTO SAVE jQUERY EVENTS
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // validate email
+            // make ajax call to create lawyer object and add to user
+            // also make name and firm name mandatory  (need that to build ui elements)
+            // make sure we have a functionality on user to find contact by email
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            /////////////////////////////////////////////////////////////////////////////////
+            // contact information 'email' auto save ////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////
+            $('#attorney-email').focusout( function () {
+                // send state, and token to server
+                // token will be generated in the controller and added to the view
+                // similar to how access token works ...a token is tied to a user
+                // access token will be passed in through model
+                //
+                // var tokenValue = '${token}';  // token is the model attribute name
+                // we are not using secured tokens for the prototype
+                // we will secure it by adding ssl and https support
+                //
+                //$('.state-animation').fadeOut();
+
+                var field_value = $(this).val();
+
+
+                if(field_value != ""){
+
+                    if(field_value.indexOf('@') > -1 && (field_value.indexOf(".com") > -1 || field_value.indexOf(".gov") > -1 || field_value.indexOf(".net") > -1 || field_value.indexOf(".lib") > -1) ){
+                        var status = createContact( field_value);
+
+
+
+
+
+                    }
+                    else{
+                        $(".attorney-emailFieldMsgArea").fadeOut();
+                        setTimeout(function () {
+                            $(".attorney-emailFieldMsgArea span").text("Email Filed has to be an valid email address!!!");
+                            $(".attorney-emailFieldMsgArea span").css('color', 'red');
+                            $(".attorney-emailFieldMsgArea").fadeIn(1000);
+                        }, 500);
+
+                    }
+
+                }
+                else{
+
+
+                    $(".attorney-emailFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+                        $(".attorney-emailFieldMsgArea span").text("Email Field can not be empty!!");
+                        $(".attorney-emailFieldMsgArea span").css('color', 'red');
+                        $(".attorney-emailFieldMsgArea").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+            });
+            // end of auto save email
+
+            /////////////////////////////////////////////////////////////////////////////////
+            // contact information 'attorney-first-name' auto save ////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////
+            $('#attorney-first-name').focusout( function () {
+                // send state, and token to servercv
+                // token will be generated in the controller and added to the view
+                // similar to how access token works ...a token is tied to a user
+                // access token will be passed in through model
+                //
+                // var tokenValue = '${token}';  // token is the model attribute name
+                // we are not using secured tokens for the prototype
+                // we will secure it by adding ssl and https support
+                //
+                //$('.state-animation').fadeOut();
+
+                var field_value = $(this).val();
+
+
+                if(field_value != "") {
+                    var email = $('#attorney-email').val();
+
+                    saveContactInfo(email, "attorney-first-name", field_value);
+
+                    ///////////////////////////////////////////////////////////////////
+                    // set focus and message for the next field
+                    ///////////////////////////////////////////////////////////////////
+                    setTimeout(function () {
+                        $('#attorney-last-name').focus();
+                    }, 1500);
+                    $(".attorney-last-nameFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+                        $(".attorney-last-nameFieldMsgArea span").text("Please Complete Last Name Field next.");
+                        $(".attorney-last-nameFieldMsgArea span").css('color', 'red');
+                        $(".attorney-last-nameFieldMsgArea").fadeIn(1000);
+                    }, 2500);
+
+                }
+                else {
+                    $(".attorney-first-nameFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+                        $(".attorney-first-nameFieldMsgArea span").text("First Name Field can not be empty!!");
+                        $(".attorney-first-nameFieldMsgAreaspan").css('color', 'red');
+                        $(".attorney-first-nameFieldMsgArea").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+
+            });
+
+            /////////////////////////////////////////////////////////////////////////////////
+            // contact information 'attorney-last-name' auto save ////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////
+            $('#attorney-last-name').focusout( function () {
+                // send state, and token to servercv
+                // token will be generated in the controller and added to the view
+                // similar to how access token works ...a token is tied to a user
+                // access token will be passed in through model
+                //
+                // var tokenValue = '${token}';  // token is the model attribute name
+                // we are not using secured tokens for the prototype
+                // we will secure it by adding ssl and https support
+                //
+                //$('.state-animation').fadeOut();
+
+                var field_value = $(this).val();
+
+                if(field_value != "") {
+                    var email = $('#attorney-email').val();
+
+                    saveContactInfo(email, "attorney-last-name", field_value);
+
+                    ///////////////////////////////////////////////////////////////////
+                    // set focus and message for the next field
+                    ///////////////////////////////////////////////////////////////////
+                    setTimeout(function () {
+                        $('#attorney-lawfirm-name').focus();
+                    }, 1500);
+                    $(".attorney-lawfirm-nameFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+
+                        $(".attorney-lawfirm-nameFieldMsgArea span").text("Please Complete Law Firm name Field next.");
+                        $(".attorney-lawfirm-nameFieldMsgArea span").css('color', 'red');
+                        $(".attorney-lawfirm-nameFieldMsgArea").fadeIn(1000);
+                    }, 2500);
+
+                }
+                else{
+                    $(".attorney-last-nameFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+                        $(".attorney-last-nameFieldMsgArea span").text("Last Name Field can not be empty!!");
+                        $(".attorney-last-nameFieldMsgAreaspan").css('color', 'red');
+                        $(".attorney-last-nameFieldMsgArea").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+
+            });
+
+            /////////////////////////////////////////////////////////////////////////////////
+            // contact information 'attorney-lawfirm-name' auto save ////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////
+            $('#attorney-lawfirm-name').focusout( function () {
+                // send state, and token to servercv
+                // token will be generated in the controller and added to the view
+                // similar to how access token works ...a token is tied to a user
+                // access token will be passed in through model
+                //
+                // var tokenValue = '${token}';  // token is the model attribute name
+                // we are not using secured tokens for the prototype
+                // we will secure it by adding ssl and https support
+                //
+                //$('.state-animation').fadeOut();
+
+                var field_value = $(this).val();
+
+                if(field_value != "") {
+
+                    var email = $('#attorney-email').val();
+                    var first_name = $('#attorney-first-name').val();
+                    var last_name = $('#attorney-last-name').val();
+                    var law_firm = $('#attorney-lawfirm-name').val();
+                    saveContactInfo(email, "attorney-lawfirm-name", field_value);
+
+                    ///////////////////////////////////////////////////////////////////
+                    // set focus and message for the next field
+                    ///////////////////////////////////////////////////////////////////
+
+                    // unlock confirm buttons ??? unlock after phone number
+                    // enable close button in modal header
+
+                    // create contacts table row
+                    // we need first name, last name, law firm, and email
+                    // get it directly with jquery
+                    var newRow = ["<input class=\"contacts-checkbox\" type='checkbox'>",first_name+" "+last_name, email, law_firm, "<i class=\"material-icons\">swap_horiz</i>"];
+                    contactsTable.row.add(newRow).draw();
+
+                    // push contacts table row and redraw()
+
+                    // set focus to country
+                    // and notify user to fill in information below.
+                    setTimeout(function () {
+                        $('#attorney-country').focus();
+                    }, 1500);
+                    $(".attorney-countryFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+
+                        $(".attorney-countryFieldMsgArea span").text("Please Complete Country Field next.");
+                        $(".attorney-countryFieldMsgArea span").css('color', 'red');
+                        $(".attorney-countryFieldMsgArea").fadeIn(1000);
+                    }, 2500);
+
+
+                }
+                else{
+                    $(".attorney-lawfirm-nameFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+                        $(".attorney-lawfirm-nameFieldMsgArea span").text("Last Name Field can not be empty!!");
+                        $(".attorney-lawfirm-nameFieldMsgArea span").css('color', 'red');
+                        $(".attorney-lawfirm-nameFieldMsgArea").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+
+            });
+
+            /////////////////////////////////////////////////////////////////////////////////
+            // contact information 'attorney-country' auto save ////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////
+            $('#attorney-country').focusout( function () {
+                // send state, and token to server
+                // token will be generated in the controller and added to the view
+                // similar to how access token works ...a token is tied to a user
+                // access token will be passed in through model
+                //
+                // var tokenValue = '${token}';  // token is the model attribute name
+                // we are not using secured tokens for the prototype
+                // we will secure it by adding ssl and https support
+                //
+                //$('.state-animation').fadeOut();
+
+                var field_value = $(this).val();
+
+                if(field_value != "") {
+
+                    var email = $('#attorney-email').val();
+
+                    saveContactInfo(email, "attorney-country", field_value);
+
+                    ///////////////////////////////////////////////////////////////////
+                    // set focus and message for the next field
+                    ///////////////////////////////////////////////////////////////////
+
+                    // push contacts table row and redraw()
+
+                    // set focus to country
+                    // and notify user to fill in information below.
+                    setTimeout(function () {
+                        $('#attorney-address1').focus();
+                    }, 1500);
+                    $(".attorney-address1FieldMsgArea").fadeOut();
+                    setTimeout(function () {
+
+                        $(".attorney-address1FieldMsgArea span").text("Please Complete Address Field next.");
+                        $(".attorney-address1FieldMsgArea span").css('color', 'red');
+                        $(".attorney-address1FieldMsgArea").fadeIn(1000);
+                    }, 2500);
+
+
+                }
+                else{
+                    $(".attorney-countryFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+                        $(".attorney-countryFieldMsgArea span").text("Attorney Country Field can not be empty!!");
+                        $(".attorney-countryFieldMsgArea span").css('color', 'red');
+                        $(".attorney-countryFieldMsgArea").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+
+            });
+
+            /////////////////////////////////////////////////////////////////////////////////
+            // contact information 'attorney-address1' auto save ////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////
+            $('#attorney-address1').focusout( function () {
+                // send state, and token to server
+                // token will be generated in the controller and added to the view
+                // similar to how access token works ...a token is tied to a user
+                // access token will be passed in through model
+                //
+                // var tokenValue = '${token}';  // token is the model attribute name
+                // we are not using secured tokens for the prototype
+                // we will secure it by adding ssl and https support
+                //
+                //$('.state-animation').fadeOut();
+
+                var field_value = $(this).val();
+
+                if(field_value != "") {
+
+                    var email = $('#attorney-email').val();
+
+                    saveContactInfo(email, "attorney-address1", field_value);
+
+                    ///////////////////////////////////////////////////////////////////
+                    // set focus and message for the next field
+                    ///////////////////////////////////////////////////////////////////
+
+                    // push contacts table row and redraw()
+
+                    // set focus to country
+                    // and notify user to fill in information below.
+                    setTimeout(function () {
+                        $('#attorney-city').focus();
+                    }, 1500);
+                    $(".attorney-cityFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+
+                        $(".attorney-cityFieldMsgArea span").text("Please Complete City Field next.");
+                        $(".attorney-cityFieldMsgArea span").css('color', 'red');
+                        $(".attorney-cityFieldMsgArea").fadeIn(1000);
+                    }, 2500);
+
+
+                }
+                else{
+                    $(".attorney-address1FieldMsgArea").fadeOut();
+                    setTimeout(function () {
+                        $(".attorney-address1FieldMsgArea span").text("Attorney Address Field can not be empty!!");
+                        $(".attorney-address1FieldMsgArea span").css('color', 'red');
+                        $(".attorney-address1FieldMsgArea").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+
+            });
+
+            /////////////////////////////////////////////////////////////////////////////////
+            // contact information 'attorney-city' auto save ////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////
+            $('#attorney-city').focusout( function () {
+                // send state, and token to server
+                // token will be generated in the controller and added to the view
+                // similar to how access token works ...a token is tied to a user
+                // access token will be passed in through model
+                //
+                // var tokenValue = '${token}';  // token is the model attribute name
+                // we are not using secured tokens for the prototype
+                // we will secure it by adding ssl and https support
+                //
+                //$('.state-animation').fadeOut();
+
+                var field_value = $(this).val();
+
+                if(field_value != "") {
+
+                    var email = $('#attorney-email').val();
+
+                    saveContactInfo(email, "attorney-city", field_value);
+
+                    ///////////////////////////////////////////////////////////////////
+                    // set focus and message for the next field
+                    ///////////////////////////////////////////////////////////////////
+
+                    // push contacts table row and redraw()
+
+                    // set focus to country
+                    // and notify user to fill in information below.
+                    setTimeout(function () {
+                        $('#attorney-state').focus();
+                    }, 1500);
+                    $(".attorney-stateFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+
+                        $(".attorney-stateFieldMsgArea span").text("Please Complete State Field next.");
+                        $(".attorney-stateFieldMsgArea span").css('color', 'red');
+                        $(".attorney-stateFieldMsgArea").fadeIn(1000);
+                    }, 2500);
+
+
+                }
+                else{
+                    $(".attorney-cityFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+                        $(".attorney-cityFieldMsgArea span").text("Attorney City Field can not be empty!!");
+                        $(".attorney-cityFieldMsgArea span").css('color', 'red');
+                        $(".attorney-cityFieldMsgArea").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+
+            });
+
+
+
+            /////////////////////////////////////////////////////////////////////////////////
+            // contact information 'attorney-state' auto save ////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////
+            $('#attorney-state').focusout( function () {
+                // send state, and token to server
+                // token will be generated in the controller and added to the view
+                // similar to how access token works ...a token is tied to a user
+                // access token will be passed in through model
+                //
+                // var tokenValue = '${token}';  // token is the model attribute name
+                // we are not using secured tokens for the prototype
+                // we will secure it by adding ssl and https support
+                //
+                //$('.state-animation').fadeOut();
+
+                var field_value = $(this).val();
+
+                if(field_value != "") {
+
+                    var email = $('#attorney-email').val();
+
+                    saveContactInfo(email, "attorney-state", field_value);
+
+                    ///////////////////////////////////////////////////////////////////
+                    // set focus and message for the next field
+                    ///////////////////////////////////////////////////////////////////
+
+                    // push contacts table row and redraw()
+
+                    // set focus to country
+                    // and notify user to fill in information below.
+                    setTimeout(function () {
+                        $('#attorney-zipcode').focus();
+                    }, 1500);
+                    $(".attorney-zipcodeFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+
+                        $(".attorney-zipcodeFieldMsgArea span").text("Please Complete Zipcode Field next.");
+                        $(".attorney-zipcodeFieldMsgArea span").css('color', 'red');
+                        $(".attorney-zipcodeFieldMsgArea").fadeIn(1000);
+                    }, 2500);
+
+
+                }
+                else{
+                    $(".attorney-stateFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+                        $(".attorney-stateFieldMsgArea span").text("Attorney State Field can not be empty!!");
+                        $(".attorney-stateFieldMsgArea span").css('color', 'red');
+                        $(".attorney-stateFieldMsgArea ").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+
+            });
+
+            /////////////////////////////////////////////////////////////////////////////////
+            // contact information 'attorney-zipcode' auto save ////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////
+            $('#attorney-zipcode').focusout( function () {
+                // send state, and token to server
+                // token will be generated in the controller and added to the view
+                // similar to how access token works ...a token is tied to a user
+                // access token will be passed in through model
+                //
+                // var tokenValue = '${token}';  // token is the model attribute name
+                // we are not using secured tokens for the prototype
+                // we will secure it by adding ssl and https support
+                //
+                //$('.state-animation').fadeOut();
+
+                var field_value = $(this).val();
+
+                if(field_value != "") {
+
+                    var email = $('#attorney-email').val();
+
+                    saveContactInfo(email, "attorney-zipcode", field_value);
+
+                    ///////////////////////////////////////////////////////////////////
+                    // set focus and message for the next field
+                    ///////////////////////////////////////////////////////////////////
+
+                    // push contacts table row and redraw()
+
+                    // set focus to country
+                    // and notify user to fill in information below.
+                    setTimeout(function () {
+                        $('#attorney-phone').focus();
+                    }, 1500);
+                    $(".attorney-phoneFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+
+                        $(".attorney-phoneFieldMsgArea span").text("Please Complete Phone number Field next.");
+                        $(".attorney-phoneFieldMsgArea span").css('color', 'red');
+                        $(".attorney-phoneFieldMsgArea").fadeIn(1000);
+                    }, 2500);
+
+
+                }
+                else{
+                    $(".attorney-zipcodeFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+                        $(".attorney-zipcodeFieldMsgArea span").text("Attorney Zipcode Field can not be empty!!");
+                        $(".attorney-zipcodeFieldMsgArea span").css('color', 'red');
+                        $(".attorney-zipcodeFieldMsgArea").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+
+            });
+
+            /////////////////////////////////////////////////////////////////////////////////
+            // contact information 'attorney-phone' auto save ////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////
+            $('#attorney-phone').focusout( function () {
+                // send state, and token to server
+                // token will be generated in the controller and added to the view
+                // similar to how access token works ...a token is tied to a user
+                // access token will be passed in through model
+                //
+                // var tokenValue = '${token}';  // token is the model attribute name
+                // we are not using secured tokens for the prototype
+                // we will secure it by adding ssl and https support
+                //
+                //$('.state-animation').fadeOut();
+
+                var field_value = $(this).val();
+
+                if(field_value != "") {
+
+                    var email = $('#attorney-email').val();
+
+                    saveContactInfo(email, "attorney-phone", field_value);
+
+                    ///////////////////////////////////////////////////////////////////
+                    // set focus and message for the next field
+                    ///////////////////////////////////////////////////////////////////
+
+                    //////////////////////////////////////////////////////////////////
+                    // set focus to confirm button // probably doesn't need to do that
+                    // check if the 5 minimal required fields are set,
+                    ///////////////////////////////////////////////////////////////////
+                    if($('#attorney-email').val() != "" && $('#attorney-first-name').val() != "" && $('#attorney-last-name').val()!="" && $('#attorney-lawfirm-name').val() != ""){
+
+
+                        $('#addAttorneyConfirm').prop("disabled", false);
+                        $('#modal-header-close').prop("disabled", false);
+
+
+                    }
+                    // if so ..unlock
+                    // unlock confirm button and close button in modal header
+                }
+                else{
+                    $(".attorney-phoneFieldMsgArea").fadeOut();
+                    setTimeout(function () {
+                        $(".attorney-phoneFieldMsgArea span").text("Attorney Phone number Field can not be empty!!");
+                        $(".attorney-phoneFieldMsgArea span").css('color', 'red');
+                        $(".attorney-phoneFieldMsgArea").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+
+            });
+
+
+
+            // do clean up on modal close
+
+            // reset all fields
+
+            // all text notification should go away by itself
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        });  // end of document ready ()
+        /////////////////////////////////////////////////////
+        // aJAX
+        /////////////////////////////////////////////////////
+
+
+
+
+        function createContact(email) {
+
+
+
+
+
+            //alert(field_name_prefix);
+            // send state, and token to server
+            // token will be generated in the controller and added to the view
+            // similar to how access token works ...a token is tied to a user
+            // access token will be passed in through model
+            //
+            // var tokenValue = '${token}';  // token is the model attribute name
+            // we are not using secured tokens for the prototype
+            // we will secure it by adding ssl and https support
+
+            //var field_value = $(this).val();
+            //alert(field_value);
+
+            var return_code="";
+            var field_name_prefix = "attorney-email";
+            $.ajax({
+                //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
+                url: "../../REST/apiGateway/contacts/add/" + email,
+                type: 'GET',
+                success: function (data) {
+
+                    // parse out status msg:
+                    var s_code = data.substring(data.indexOf("status:") + 7, data.indexOf("status:") + 4 + 7);
+
+                    var s_msg = data.substring(data.indexOf("msg:") + 4, data.length - 2);
+                    return_code = s_code.trim();
+                    if (s_code.trim() == "200") {
+
+                        $(".autoSaveMessageArea span").fadeOut(500);
+                        setTimeout(function() {
+                            // after 1000 ms we add the class animated to the login/register card
+                            $(".autoSaveMessageArea span").text(s_msg);
+                            $(".autoSaveMessageArea span").fadeIn(1000);
+                        }, 500);
+
+                        $('#attorney-email').prop('disabled', true);
+                        ///////////////////////////////////////////////////////////////////
+                        // set focus and message for the next field
+                        ///////////////////////////////////////////////////////////////////
+                        setTimeout(function () {
+                            $('#attorney-first-name').focus();
+                        }, 1500);
+                        $(".attorney-first-nameFieldMsgArea").fadeOut();
+                        setTimeout(function () {
+                            $(".attorney-first-nameFieldMsgArea span").text("Please Complete First Name Field!");
+                            $(".attorney-first-nameFieldMsgArea span").css('color', 'red');
+                            $(".attorney-first-nameFieldMsgArea").fadeIn(1000);
+                        }, 2500);
+
+                        setTimeout(function () {
+
+                            $("." + field_name_prefix.toLowerCase() + "FieldMsgArea").fadeOut(1000);
+                        }, 1500);
+
+
+                        // animation rendering control
+                        //if($('.state-checkmark').css('display') == 'block'){
+                        if ($("." + field_name_prefix.toLowerCase() + "-animation").css('display') == 'block') {
+
+
+                            $("." + field_name_prefix.toLowerCase() + "-animation").fadeOut(100);
+                            // now we need to create an java back end service that saves this value.
+                            // also add validation on the html  similar to password save
+                            //$('#toggle-'+field_name_prefix.toLowerCase()).delay(100).click();
+
+                            // alert($(this).val());
+                            $("." + field_name_prefix.toLowerCase() + "-animation").fadeIn(1000);
+                            // now we need to create an java back end service that saves this value.
+                            // also add validation on the html  similar to password save
+                            //$("."+field_name_prefix.toLowerCase()+"-animation").delay(1000).click();
+                        }
+                        else {
+
+                            $("." + field_name_prefix.toLowerCase() + "-animation").fadeIn(1000);
+                            // now we need to create an java back end service that saves this value.
+                            // also add validation on the html  similar to password save
+                            //$('#toggle-'+field_name_prefix.toLowerCase()).delay(1000).click();
+                        }
+
+
+                    }
+                    else {
+                        //$('.circle-loader').fadeOut(100);
+                        //$('.x-mark').fadeIn(500);
+                        $("." + field_name_prefix.toLowerCase() + "FieldMsgArea").fadeOut();
+
+                        setTimeout(function() {
+                            $("." + field_name_prefix.toLowerCase() + "FieldMsgArea span").text(s_msg);
+                            $("." + field_name_prefix.toLowerCase() + "FieldMsgArea span").css('color', 'red');
+                            $("." + field_name_prefix.toLowerCase() + "FieldMsgArea").fadeIn(1000);
+                        }, 500);
+                    }
+
+
+
+                },
+                error: function (data) {
+
+                    //$('.circle-loader').fadeOut(100);
+                    //$('.x-mark').fadeIn(500);
+
+                    console.log(data);
+                    // set message to div area ...fields can not be left null
+                    //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                    //$(".validationMsgArea span").css('color','red');
+                }
+
+
+
+            });
+
+            return return_code;
+
+        }
+        // end of function
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        function saveContactInfo(contact_email, contact_field_name, contact_field_value) {
+
+            //////////////////////////////////////////////////////////////////////////////////////
+            // we need REST controller of finding a contact by its email
+            // this needs to be implemented on the PTOUser object
+            //////////////////////////////////////////////////////////////////////////////////////
+
+
+
+            //var field_value = $(this).val();
+            //alert(field_value);
+
+            $.ajax({
+                //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
+                url: "../../REST/apiGateway/contacts/update/"+contact_email+"/"+contact_field_name+"/"+contact_field_value,
+                type: 'GET',
+                success: function(data){
+
+                    // parse out status msg:
+                    var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                    var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                    if(s_code.trim() == "200"){
+                        //if(data.contains("status: 200")){
+                        // show confirmation check mark on form
+                        //$('#toggle').delay(1000).click();
+                        $("."+contact_field_name.toLowerCase()+"FieldMsgArea").fadeOut();
+
+                        $("."+contact_field_name.toLowerCase()+"FieldMsgArea span").text(s_msg);
+                        $("."+contact_field_name.toLowerCase()+"FieldMsgArea span").css('color','green');
+                        $("."+contact_field_name.toLowerCase()+"FieldMsgArea").fadeIn(1000);
+
+                        setTimeout(function () {
+
+                            $("."+contact_field_name.toLowerCase()+"FieldMsgArea").fadeOut(1000);
+                        }, 5500);
+
+                        // animation rendering control
+                        //if($('.state-checkmark').css('display') == 'block'){
+                        if($( "."+contact_field_name.toLowerCase()+"-animation").css('display') == 'block'){
+
+
+                            $("."+contact_field_name.toLowerCase()+"-animation").fadeOut(100);
+                            // now we need to create an java back end service that saves this value.
+                            // also add validation on the html  similar to password save
+                            //$('#toggle-'+field_name_prefix.toLowerCase()).delay(100).click();
+
+                            // alert($(this).val());
+                            $("."+contact_field_name.toLowerCase()+"-animation").fadeIn(1000);
+                            // now we need to create an java back end service that saves this value.
+                            // also add validation on the html  similar to password save
+                            //$("."+field_name_prefix.toLowerCase()+"-animation").delay(1000).click();
+                        }
+                        else {
+
+                            $("."+contact_field_name.toLowerCase()+"-animation").fadeIn(1000);
+                            // now we need to create an java back end service that saves this value.
+                            // also add validation on the html  similar to password save
+                            //$('#toggle-'+field_name_prefix.toLowerCase()).delay(1000).click();
+                        }
+
+
+
+
+                    }
+                    else{
+                        //$('.circle-loader').fadeOut(100);
+                        //$('.x-mark').fadeIn(500);
+                        //$(".validationMsgArea span").text(s_msg);
+                        //$(".validationMsgArea span").css('color','red');
+                    }
+
+                },
+                error: function(data) {
+
+                    //$('.circle-loader').fadeOut(100);
+                    //$('.x-mark').fadeIn(500);
+
+                    console.log(data);
+                    // set message to div area ...fields can not be left null
+                    //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                    //$(".validationMsgArea span").css('color','red');
+                }
+
+            });
+
+        } // end of function
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        function setPrimaryAttorneyApplication(contact_email, project_ID) {
+
+            //////////////////////////////////////////////////////////////////////////////////////
+            // we need REST controller of finding a contact by its email
+            // this needs to be implemented on the PTOUser object
+            //////////////////////////////////////////////////////////////////////////////////////
+            var contact_field_name = "application-contact-add-confirm";
+            $.ajax({
+                //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
+                url: "../../REST/apiGateway/application/Attorney/Primary/set/"+contact_email+"/"+project_ID,
+
+                type: 'GET',
+                success: function(data){
+
+
+
+                    // parse out status msg:
+                    var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                    var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                    if(s_code.trim() == "200"){
+                        //if(data.contains("status: 200")){
+                        // show confirmation check mark on form
+                        //$('#toggle').delay(1000).click();
+                        $(".autoSaveMessageArea span").fadeOut(500);
+                        setTimeout(function() {
+                            // after 1000 ms we add the class animated to the login/register card
+                            $(".autoSaveMessageArea span").text(s_msg);
+                            $(".autoSaveMessageArea span").fadeIn(1000);
+                        }, 500);
+
+
+
+
+
+                    }
+                    else{
+                        //$('.circle-loader').fadeOut(100);
+                        //$('.x-mark').fadeIn(500);
+                        //$(".validationMsgArea span").text(s_msg);
+                        //$(".validationMsgArea span").css('color','red');
+                    }
+
+                },
+                error: function(data) {
+
+                    //$('.circle-loader').fadeOut(100);
+                    //$('.x-mark').fadeIn(500);
+
+                    console.log(data);
+                    // set message to div area ...fields can not be left null
+                    //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                    //$(".validationMsgArea span").css('color','red');
+                }
+
+            });
+
+        } // end of function
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+        function enableConfirmWidgetLink() {
+            //$('#AttorneySetLink').prop("href", nextLinkURLwidget);
+            $('#confirm-link-widget').css("background-color", "rgb(52, 152, 219)");
+
+        }
+        function disableConfirmWidgetLink() {
+            //$('#AttorneySetLink').prop("href", "");
+            $('#confirm-link-widget').css("background-color", "rgb(128, 128, 128)");
+
+        }
+
+
+
+
+
+    </script>
+
+</body>
+</html>

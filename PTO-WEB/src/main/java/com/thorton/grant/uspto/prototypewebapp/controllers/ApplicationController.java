@@ -665,6 +665,56 @@ public class ApplicationController {
     }
 
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+    // controller for AttorneySet page
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+    @Transactional
+    @RequestMapping({"/application/OwnerSetView","application/OwnerSetView"})
+    public String applicationOwnerView
+    (WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
+
+        // create a new application and tie it to user then save it to repository
+        // create attorneyDTO + to model
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication  baseTrademarkApplication= baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        // add contacts display info to model
+        ////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        // create new check
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        // check if user has LoadContinueUrl set ...
+        // in the web url that triggers, you get that from an iteration of
+        // myTradeMarks on the dashboard
+        /////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
+
+        model.addAttribute("hostBean", hostBean);
+        return "application/OwnerSetView";
+
+    }
+
+
+
+
 
     // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
     @RequestMapping(value = "/attorney/add", method = RequestMethod.POST)
