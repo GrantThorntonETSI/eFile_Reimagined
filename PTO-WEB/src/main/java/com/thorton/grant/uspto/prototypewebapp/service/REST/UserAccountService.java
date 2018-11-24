@@ -29,25 +29,21 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
 @Service
-public class UserAccountService {
+public class UserAccountService extends BaseRESTapiService {
 
     //@Autowired
     //private IUserService service;
-
-    private final ServiceBeanFactory serviceBeanFactory;
-
 
     /////////////////////////////////////////////////////////////////////////////////////////
     // based on the profile  ...we should be able
     // to inject the correct bean mapped to the correct host file here
     ////////////////////////////////////////////////////////////////////////////////////////
-    private final HostBean hostBean;
+
     //private final ApplicationContext appContext;
 
 
     public UserAccountService(ServiceBeanFactory serviceBeanFactory, HostBean hostBean) {
-        this.serviceBeanFactory = serviceBeanFactory;
-        this.hostBean = hostBean;
+        super(serviceBeanFactory, hostBean);
     }
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -108,7 +104,7 @@ public class UserAccountService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
         //UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentialsService userCredentialsService = getServiceBeanFactory().getUserCredentialsService();
 
         UserCredentials userCredentials = userCredentialsService.findByEmail(email);
 
@@ -146,7 +142,7 @@ public class UserAccountService {
 
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();
-        responseHeader.set("Access-Control-Allow-Origin", hostBean.getHost()+hostBean.getPort());
+        responseHeader.set("Access-Control-Allow-Origin", getHostBean().getHost()+getHostBean().getPort());
         //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
         ArrayList<String> headersAllowed = new ArrayList<String>();
         headersAllowed.add("Access-Control-Allow-Origin");
@@ -206,7 +202,7 @@ public class UserAccountService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
         //UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
-        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUserService ptoUserService = getServiceBeanFactory().getPTOUserService();
 
 
 
@@ -289,7 +285,7 @@ public class UserAccountService {
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();
         //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
-        responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
+        responseHeader.setAccessControlAllowOrigin(getHostBean().getHost()+getHostBean().getPort());
         ArrayList<String> headersAllowed = new ArrayList<String>();
         headersAllowed.add("Access-Control-Allow-Origin");
         responseHeader.setAccessControlAllowHeaders(headersAllowed);
@@ -344,7 +340,7 @@ public class UserAccountService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
 
-        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUserService ptoUserService = getServiceBeanFactory().getPTOUserService();
 
 
 
@@ -357,7 +353,7 @@ public class UserAccountService {
            String responseMsg = "User Profile required information is not complete.";
            responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
            HttpHeaders responseHeader = new HttpHeaders ();
-           responseHeader.set("Access-Control-Allow-Origin", hostBean.getHost()+hostBean.getPort());
+           responseHeader.set("Access-Control-Allow-Origin", getHostBean().getHost()+getHostBean().getPort());
            //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
            ArrayList<String> headersAllowed = new ArrayList<String>();
            headersAllowed.add("Access-Control-Allow-Origin");
@@ -377,7 +373,7 @@ public class UserAccountService {
         String responseMsg = "User Profile required information is  complete.";
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();
-        responseHeader.set("Access-Control-Allow-Origin", hostBean.getHost()+hostBean.getPort());
+        responseHeader.set("Access-Control-Allow-Origin",getHostBean().getHost()+getHostBean().getPort());
         //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
         ArrayList<String> headersAllowed = new ArrayList<String>();
         headersAllowed.add("Access-Control-Allow-Origin");
@@ -403,7 +399,7 @@ public class UserAccountService {
              //       "Access-Control-Allow-Origin", "http://efile-reimagined.com");
 
             httpServletResponse.setHeader(
-                    "Access-Control-Allow-Origin", hostBean.getHost()+hostBean.getPort());
+                    "Access-Control-Allow-Origin", getHostBean().getHost()+getHostBean().getPort());
             chain.doFilter(request, response);
         }
 
