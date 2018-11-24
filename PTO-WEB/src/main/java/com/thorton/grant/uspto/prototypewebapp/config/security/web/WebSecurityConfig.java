@@ -5,6 +5,7 @@ import com.thorton.grant.uspto.prototypewebapp.service.authentication.userDetail
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -43,24 +44,26 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 
 
     @Override
+    @Autowired
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
-
 
                 /////////////////////////////////////////////////////////////
                 // custom authentication provider
                 /////////////////////////////////////////////////////////////
-                auth.authenticationProvider(usptoCustomAuthenticationProvider);
+                // this provider right now lets every one in ..
+                //auth.authenticationProvider(usptoCustomAuthenticationProvider);
                 /////////////////////////////////////////////////////////////
+                final DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+                daoAuthenticationProvider.setUserDetailsService(usptoUserDetailsService);
 
-
+                // uses both DAO and custom provider
+                auth.authenticationProvider(usptoCustomAuthenticationProvider).authenticationProvider(daoAuthenticationProvider);
                 /////////////////////////////////////////////////////////////
                 // DAO authentication provider
                 /////////////////////////////////////////////////////////////
                 //auth.userDetailsService(usptoUserDetailsService);
                 /////////////////////////////////////////////////////////////
-
-
 
                 /////////////////////////////////////////////////////////////
                 // JDBC custom query authentication
@@ -117,7 +120,6 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 
     // in memory user and roles
     // we will replace this with a database version
-
     // also we will do one with oAuth (web Identity management service)
 
 
