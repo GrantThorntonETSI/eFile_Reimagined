@@ -13,8 +13,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
@@ -100,7 +98,7 @@ public class ContactsService extends  BaseRESTapiService {
 
 
     @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
-    @RequestMapping(method = GET, value="/REST/apiGateway/contacts/update/{contact_email}/{contact_field_name}/{contact_field_value}")
+    @RequestMapping(method = GET, value="/REST/apiGateway/contacts/attorney/update/{contact_email}/{contact_field_name}/{contact_field_value}")
     @ResponseBody
     ResponseEntity<String> updateContact(@PathVariable String contact_email,@PathVariable String contact_field_name, @PathVariable String contact_field_value ){
 

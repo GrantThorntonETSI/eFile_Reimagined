@@ -2703,14 +2703,14 @@
                     if(attorney_first_name != ""){
 
                         setTimeout(function() {
-                            saveContactInfo(email, "attorney-first-name", attorney_first_name);
+                            saveAttorneyContactInfo(email, "attorney-first-name", attorney_first_name);
                         }, 50);
 
                     }
                     var attorney_last_name = $('#attorney-last-name').val();
                     if(attorney_last_name != ""){
                         setTimeout(function() {
-                            saveContactInfo(email, "attorney-last-name", attorney_last_name);
+                            saveAttorneyContactInfo(email, "attorney-last-name", attorney_last_name);
                         },100);
 
                     }
@@ -2720,7 +2720,7 @@
                     if(attorney_lawfirm_name != ""){
                         setTimeout(function() {
 
-                            saveContactInfo(email, "attorney-lawfirm-name", attorney_lawfirm_name);
+                            saveAttorneyContactInfo(email, "attorney-lawfirm-name", attorney_lawfirm_name);
                         },200);
 
                     }
@@ -2730,7 +2730,7 @@
                     if(attorney_country != ""){
 
                         setTimeout(function() {
-                            saveContactInfo(email, "attorney-country", attorney_country);
+                            saveAttorneyContactInfo(email, "attorney-country", attorney_country);
                         },250);
 
                     }
@@ -2738,7 +2738,7 @@
                     if(attorney_address != ""){
 
                         setTimeout(function() {
-                            saveContactInfo(email, "attorney-address1", attorney_address);
+                            saveAttorneyContactInfo(email, "attorney-address1", attorney_address);
                         },300);
 
                     }
@@ -2748,7 +2748,7 @@
                     var attorney_city = $('#attorney-city').val();
                     if(attorney_city != ""){
                         setTimeout(function() {
-                            saveContactInfo(email, "attorney-city", attorney_city);
+                            saveAttorneyContactInfo(email, "attorney-city", attorney_city);
                         },350);
 
                     }
@@ -2756,7 +2756,7 @@
                     if(attorney_state != ""){
 
                         setTimeout(function() {
-                            saveContactInfo(email, "attorney-state", attorney_state);
+                            saveAttorneyContactInfo(email, "attorney-state", attorney_state);
                         }, 400);
 
                     }
@@ -2764,14 +2764,14 @@
                     var attorney_zipcode = $('#attorney-zipcode').val();
                     if(attorney_zipcode != ""){
                         setTimeout(function() {
-                            saveContactInfo(email, "attorney-zipcode", attorney_zipcode);
+                            saveAttorneyContactInfo(email, "attorney-zipcode", attorney_zipcode);
                         }, 450);
 
                     }
                     var attorney_primary_phone = $('#attorney-phone').val();
                     if(attorney_primary_phone != ""){
                         setTimeout(function() {
-                            saveContactInfo(email, "attorney-phone", attorney_primary_phone);
+                            saveAttorneyContactInfo(email, "attorney-phone", attorney_primary_phone);
                         }, 500);
 
                     }
@@ -2779,26 +2779,17 @@
                     var attorney_docket_num = $('#docket-id').val();
                     if(attorney_docket_num  != ""){
                         setTimeout(function() {
-                            saveContactInfo(email, "docket-id", attorney_docket_num);
+                            saveAttorneyContactInfo(email, "docket-id", attorney_docket_num);
                         },550);
 
                     }
                     var attorney_bar_standing = $('#attorney-bar-standing').val();
                     if(attorney_bar_standing  != ""){
                         setTimeout(function() {
-                            saveContactInfo(email, "attorney-bar-standing", attorney_bar_standing);
+                            saveAttorneyContactInfo(email, "attorney-bar-standing", attorney_bar_standing);
                         },600);
 
                     }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2857,7 +2848,12 @@
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    function saveContactInfo(contact_email, contact_field_name, contact_field_value) {
+
+    /////////////////////////////////////////////////////////////////////////
+    // this can be later used to update attorney contact on edit page
+    /////////////////////////////////////////////////////////////////////////
+
+    function saveAttorneyContactInfo(contact_email, contact_field_name, contact_field_value) {
 
         //////////////////////////////////////////////////////////////////////////////////////
         // we need REST controller of finding a contact by its email
@@ -2869,7 +2865,7 @@
 
         $.ajax({
             //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
-            url: "../../REST/apiGateway/contacts/update/"+contact_email+"/"+contact_field_name+"/"+contact_field_value,
+            url: "../../REST/apiGateway/contacts/attorney/update/"+contact_email+"/"+contact_field_name+"/"+contact_field_value,
             type: 'GET',
             success: function(data){
 
@@ -2946,7 +2942,7 @@
         var contact_field_name = "application-contact-add-confirm";
         $.ajax({
             //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
-            url: "../../REST/apiGateway/application/contacts/add/"+contact_email+"/"+project_ID,
+            url: "../../REST/apiGateway/application/contacts/attorney/add/"+contact_email+"/"+project_ID,
 
             type: 'GET',
             success: function(data){
@@ -3008,7 +3004,7 @@
         var contact_field_name = "application-contact-add-confirm";
         $.ajax({
             //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
-            url: "../../REST/apiGateway/application/contacts/delete/"+contact_email+"/"+project_ID,
+            url: "../../REST/apiGateway/application/contacts/attorney/delete/"+contact_email+"/"+project_ID,
 
             type: 'GET',
             success: function(data){

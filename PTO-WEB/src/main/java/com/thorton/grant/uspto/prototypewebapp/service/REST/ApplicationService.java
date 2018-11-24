@@ -191,7 +191,7 @@ public class ApplicationService  extends  BaseRESTapiService{
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
-    @RequestMapping(method = GET, value="/REST/apiGateway/application/contacts/add/{contact_email}/{appInternalID}")
+    @RequestMapping(method = GET, value="/REST/apiGateway/application/contacts/attorney/add/{contact_email}/{appInternalID}")
     @ResponseBody
     ResponseEntity<String> updateApplicationAddContactsPool(@PathVariable String contact_email , @PathVariable String appInternalID){
 
@@ -289,7 +289,7 @@ public class ApplicationService  extends  BaseRESTapiService{
 
 
     @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
-    @RequestMapping(method = GET, value="/REST/apiGateway/application/contacts/delete/{contact_email}/{appInternalID}")
+    @RequestMapping(method = GET, value="/REST/apiGateway/application/contacts/attorney/delete/{contact_email}/{appInternalID}")
     @ResponseBody
     ResponseEntity<String> updateApplicationRemoveContactsPool(@PathVariable String contact_email , @PathVariable String appInternalID){
 
