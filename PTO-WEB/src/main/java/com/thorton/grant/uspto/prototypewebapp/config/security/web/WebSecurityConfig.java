@@ -73,19 +73,6 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(bCryptPasswordEncoder);
                 */
     }
-    /*
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth)
-            throws Exception {
-
-
-        /////////////////////////////////////////////////////////////
-        // custom authentication provider
-        /////////////////////////////////////////////////////////////
-        auth.authenticationProvider(usptoCustomAuthenticationProvider);
-        /////////////////////////////////////////////////////////////
-    }
-*/
 
 
 
