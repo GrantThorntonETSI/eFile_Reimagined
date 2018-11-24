@@ -10,6 +10,7 @@ import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.applic
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.RegistrationDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.ContactsDisplayDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.SelectedContactsDisplayDTO;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.form.NewAttorneyContactFormDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.form.NewOwnerContactFormDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
@@ -408,6 +409,35 @@ public class ApplicationController {
     }
 
 
+    // show form for attorney add module ... this page is loaded into modal
+    @RequestMapping({"/application/attorney/attorneyInfo"})
+    public String attorneyContactshowFormInfo(WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
+
+        // create a new application and tie it to user then save it to repository
+        // create attorneyDTO + to model
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
+        model.addAttribute("hostBean", hostBean);
+
+        NewAttorneyContactFormDTO attorneyContactFormDTO = new NewAttorneyContactFormDTO();
+        model.addAttribute("addNewAttorneyContactFormDTO", attorneyContactFormDTO);
+
+
+        return "application/owner/individual/ownerInfo";
+    }
+
+
+
 
 
 
@@ -483,6 +513,9 @@ public class ApplicationController {
         model.addAttribute("hostBean", hostBean);
         return "application/owner/ownerEntity";
     }
+
+
+
 
     // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
     @RequestMapping({"/application/owner/Ind/info"})
