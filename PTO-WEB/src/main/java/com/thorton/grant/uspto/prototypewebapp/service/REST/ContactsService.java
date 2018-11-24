@@ -34,11 +34,6 @@ public class ContactsService extends  BaseRESTapiService {
     // these REST servies can still be used for auto save on contact update module
     /////////////////////////////////////////////////////////////////////////////////////////
 
-
-
-
-
-
     /////////////////////////////////////////////////////////////////////////////////////////
     // based on the profile  ...we should be able
     // to inject the correct bean mapped to the correct host file here
@@ -61,30 +56,6 @@ public class ContactsService extends  BaseRESTapiService {
         ////////////////////////////////////////////////////////////////////////////////////////////////
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
-        /*
-
-        //UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
-
-        //UserCredentials userCredentials = userCredentialsService.findByEmail(email);
-
-        // verify authentication is valid before moving on ....
-        // have to have a valid session
-
-        if(ptoUser == null){ // can probably put this in a function
-            System.out.println("3333333333333333333333333333333333333333333333333333");
-             String statusCode = "404";
-             String responseMsg = appFieldReadable+" has not been saved. invalid user session.";
-             responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
-             HttpHeaders responseHeader = new HttpHeaders ();
-             responseHeader.setAccessControlAllowOrigin(getHostBean().getHost()+getHostBean().getPort());
-             ArrayList<String> headersAllowed = new ArrayList<String>();
-             headersAllowed.add("Access-Control-Allow-Origin");
-             responseHeader.setAccessControlAllowHeaders(headersAllowed);
-             ArrayList<String> methAllowed = new ArrayList<String>();
-
-            return ResponseEntity.ok().headers(responseHeader).body(responseMsg);
-
-        }*/
 
         if(verifyValidUserSession("xxx") == false){
 
@@ -100,20 +71,8 @@ public class ContactsService extends  BaseRESTapiService {
         Lawyer lawyer = ptoUser.findLawyerContactByEmail(contact_email);
         if(lawyer != null){
 
-
-            System.out.println("11111111111111111111111111111111111111111111111");
-            System.out.println("2222222222222222222222222222222222222222222222222");
-            String statusCode = "404";
             String responseMsg = appFieldReadable+" has not been saved. Contact email exists..";
-            responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
-            HttpHeaders responseHeader = new HttpHeaders ();
-            responseHeader.setAccessControlAllowOrigin(getHostBean().getHost()+getHostBean().getPort());
-            ArrayList<String> headersAllowed = new ArrayList<String>();
-            headersAllowed.add("Access-Control-Allow-Origin");
-            responseHeader.setAccessControlAllowHeaders(headersAllowed);
-            ArrayList<String> methAllowed = new ArrayList<String>();
-
-            return ResponseEntity.ok().headers(responseHeader).body(responseMsg);
+            return buildResponseEnity("404", responseMsg );
         }
 
 
@@ -135,21 +94,9 @@ public class ContactsService extends  BaseRESTapiService {
         ////////////////////////////////////////////////
         // start generating response
         ////////////////////////////////////////////////
-        String statusCode = "200";
+
         String responseMsg = appFieldReadable+" has been saved.";
-        responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
-        HttpHeaders responseHeader = new HttpHeaders ();
-        //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
-        responseHeader.setAccessControlAllowOrigin(getHostBean().getHost()+getHostBean().getPort());
-        ArrayList<String> headersAllowed = new ArrayList<String>();
-        headersAllowed.add("Access-Control-Allow-Origin");
-        responseHeader.setAccessControlAllowHeaders(headersAllowed);
-        ArrayList<String> methAllowed = new ArrayList<String>();
-
-        System.out.println("response header : "+responseHeader.getAccessControlAllowOrigin());
-
-
-        return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+        return buildResponseEnity("200", responseMsg );
     }
 
 
@@ -172,18 +119,8 @@ public class ContactsService extends  BaseRESTapiService {
         // have to have a valid session
 
         if(ptoUser == null){ // can probably put this in a function
-
-            String statusCodes = "404";
             String responseMsgs = appFieldReadable+" has not been saved. invalid user session.";
-            responseMsgs = "{status:" + statusCodes +" } { msg:"+responseMsgs+" }";
-            HttpHeaders responseHeader = new HttpHeaders ();
-            responseHeader.setAccessControlAllowOrigin(getHostBean().getHost()+getHostBean().getPort());
-            ArrayList<String> headersAllowed = new ArrayList<String>();
-            headersAllowed.add("Access-Control-Allow-Origin");
-            responseHeader.setAccessControlAllowHeaders(headersAllowed);
-            ArrayList<String> methAllowed = new ArrayList<String>();
-
-            return ResponseEntity.ok().headers(responseHeader).body(responseMsgs);
+            return buildResponseEnity("404", responseMsgs);
 
         }
         Lawyer lawyer = ptoUser.findLawyerContactByEmail(contact_email);
@@ -252,18 +189,6 @@ public class ContactsService extends  BaseRESTapiService {
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         ptoUserService.save(ptoUser);
         LawyerService lawyerService = getServiceBeanFactory().getLawyerService();
         lawyerService.save(lawyer);
@@ -271,21 +196,9 @@ public class ContactsService extends  BaseRESTapiService {
         ////////////////////////////////////////////////
         // start generating response
         ////////////////////////////////////////////////
-        String statusCode = "200";
+
         String responseMsg = appFieldReadable+" has been saved.";
-        responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
-        HttpHeaders responseHeader = new HttpHeaders ();
-        //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
-        responseHeader.setAccessControlAllowOrigin(getHostBean().getHost()+getHostBean().getPort());
-        ArrayList<String> headersAllowed = new ArrayList<String>();
-        headersAllowed.add("Access-Control-Allow-Origin");
-        responseHeader.setAccessControlAllowHeaders(headersAllowed);
-        ArrayList<String> methAllowed = new ArrayList<String>();
-
-        System.out.println("response header : "+responseHeader.getAccessControlAllowOrigin());
-
-
-        return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+        return buildResponseEnity("200", responseMsg);
     }
 
 
