@@ -7,6 +7,7 @@ import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentia
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.PasswordSetDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.TwoFactorDTO;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.serverMessage.ServerMessageDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.AuthenticationToken;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
@@ -15,6 +16,7 @@ import com.thorton.grant.uspto.prototypewebapp.service.mail.gmail.GmailJavaMailS
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,7 +25,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.Random;
 import java.util.UUID;
@@ -161,7 +166,10 @@ public class PathController {
             @ModelAttribute("twoFactorDTO") @Valid TwoFactorDTO twoFactorDTO,
             BindingResult result,
             WebRequest request,
-            Errors errors){
+            HttpServletRequest requesthttp,
+            HttpServletResponse response,
+            Errors errors,
+            RedirectAttributes redirectAttributes){
 
 
 
@@ -189,12 +197,38 @@ public class PathController {
            ////////////////////////////////////////////////////////////////
            // add message
 
+           //ServerMessageDTO serverMessageDTO = new ServerMessageDTO();
+           //serverMessageDTO.setError("Invalid Two Factor Authentication Code.");
 
-           return "redirect:/logout";
+           String server_message = "Invalid Two Factor Authentication Code.";
+           //redirectAttributes.addFlashAttribute("message",server_message );
+           model.addAttribute("message", server_message);
+
+           Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+           if (auth != null){
+               new SecurityContextLogoutHandler().logout(requesthttp, response, auth);
+           }
+           //return "redirect:/logout";
+           return "/login";
        }
 
 
     }
+
+
+    // login intercept
+    @RequestMapping({"/logoutConfirm"})
+    public String logoutConfirm(Model model) {
+
+
+        String server_message = "You have Successfully logged out.";
+        //redirectAttributes.addFlashAttribute("message",server_message );
+        model.addAttribute("message", server_message);
+
+        return "/login";
+
+    }
+
 
 
 
