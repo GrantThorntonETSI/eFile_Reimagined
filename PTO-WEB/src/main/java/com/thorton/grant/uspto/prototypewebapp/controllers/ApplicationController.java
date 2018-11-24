@@ -579,6 +579,8 @@ public class ApplicationController {
         owner.setOwnersubType(baseTrademarkApplication.getOwnerSubType());
         baseTrademarkApplication.setOwnerSubType(null);
         baseTrademarkApplication.setOwnerType(null);
+
+        System.out.println("OWNER SUB TYPE : "+owner.getOwnersubType());
         // transfer and reset owner type and subtype
         owner.setFirstName(newOwnerContactFormDTO.getFirstName());
         owner.setLastName(newOwnerContactFormDTO.getLastName());
