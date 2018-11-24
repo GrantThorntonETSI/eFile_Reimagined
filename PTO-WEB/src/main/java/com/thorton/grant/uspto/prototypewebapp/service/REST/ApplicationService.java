@@ -25,20 +25,11 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
 @Service
-public class ApplicationService {
+public class ApplicationService  extends  BaseRESTapiService{
 
-    private final ServiceBeanFactory serviceBeanFactory;
-
-
-    /////////////////////////////////////////////////////////////////////////////////////////
-    // based on the profile  ...we should be able
-    // to inject the correct bean mapped to the correct host file here
-    ////////////////////////////////////////////////////////////////////////////////////////
-    private final HostBean hostBean;
 
     public ApplicationService(ServiceBeanFactory serviceBeanFactory, HostBean hostBean) {
-        this.serviceBeanFactory = serviceBeanFactory;
-        this.hostBean = hostBean;
+        super(serviceBeanFactory, hostBean);
     }
 
     @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
@@ -57,7 +48,7 @@ public class ApplicationService {
         // retrieve application using passed internal id
         //BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
         String appFieldReadable = "";
-        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
 
         // page 1 fields
@@ -126,7 +117,7 @@ public class ApplicationService {
 
 
         // retrieve application using passed internal id
-        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
         String appFieldReadable = "";
 
@@ -217,13 +208,13 @@ public class ApplicationService {
             return buildResponseEnity("404", responseMsg);
 
         }
-        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUserService ptoUserService = getServiceBeanFactory().getPTOUserService();
 
         PTOUser ptoUser = ptoUserService.findByEmail(email);//
         //////////////////////////////////////////////////////////
         // retrieve application using passed internal id
         //////////////////////////////////////////////////////////
-        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
         //////////////////////////////////////////////////////////
         // find contact via email from PTOUser
@@ -313,7 +304,7 @@ public class ApplicationService {
         //////////////////////////////////////////////////////////
         // retrieve application using passed internal id
         //////////////////////////////////////////////////////////
-        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
         //////////////////////////////////////////////////////////
         // find contact via email from PTOUser
@@ -379,7 +370,7 @@ public class ApplicationService {
         //////////////////////////////////////////////////////////
         // retrieve application using passed internal id
         //////////////////////////////////////////////////////////
-        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
         //////////////////////////////////////////////////////////
         // find contact via email from PTOUser
@@ -424,49 +415,6 @@ public class ApplicationService {
     // helper functions
     ////////////////////////////////////////////////
 
-    ////////////////////////////////////////////////
-    // verify user session is valid
-    ////////////////////////////////////////////////
-    boolean verifyValidUserSession(String contact_email){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String email = authentication.getName();
-        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
-        PTOUser ptoUser = ptoUserService.findByEmail(email);// ?? we may not need to save this
-        if(ptoUser == null || contact_email == ""){
-
-            return false;
-
-        }
-        else {
-            return true;
-        }
-
-    }
-    ////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////
-    // build response enity for REST API
-    ////////////////////////////////////////////////
-    ResponseEntity<String> buildResponseEnity(String status_code, String response_main){
-
-        //String statusCode = "404";
-        String statusCode = status_code;
-        //String responseMsg = "Contact with email address :"+contact_email+ "has not been set as Primary Attorney. invalid user session.";
-        String responseMsg = response_main;
-        responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
-        HttpHeaders responseHeader = new HttpHeaders ();
-        responseHeader.setAccessControlAllowOrigin(hostBean.getHost()+hostBean.getPort());
-        ArrayList<String> headersAllowed = new ArrayList<String>();
-        headersAllowed.add("Access-Control-Allow-Origin");
-        responseHeader.setAccessControlAllowHeaders(headersAllowed);
-        ArrayList<String> methAllowed = new ArrayList<String>();
-
-        return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
-
-
-
-    }
-    ////////////////////////////////////////////////
 
 
     ////////////////////////////////////////////////
@@ -484,6 +432,7 @@ public class ApplicationService {
         application_lawyer.setCountry(lawyer.getCountry());
         application_lawyer.setAddress(lawyer.getAddress());
         application_lawyer.setCity(lawyer.getCity());
+        application_lawyer.setState(lawyer.getState());
         application_lawyer.setZipcode(lawyer.getZipcode());
         application_lawyer.setPrimaryPhonenumber(lawyer.getPrimaryPhonenumber());
         application_lawyer.setEmail(lawyer.getEmail());
