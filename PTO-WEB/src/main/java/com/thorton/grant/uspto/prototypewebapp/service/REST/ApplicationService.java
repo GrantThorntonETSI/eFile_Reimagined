@@ -418,7 +418,7 @@ public class ApplicationService  extends  BaseRESTapiService{
     ResponseEntity<String> setApplicationOwner(@PathVariable String contact_email , @PathVariable String appInternalID){
 
         if(verifyValidUserSession("xxx") == false){
-            String responseMsg = "Contact with email address :"+contact_email+ "has not been set as Primary Attorney. invalid user session.";
+            String responseMsg = "Contact with email address :"+contact_email+ "has not been set as Primary Owner. invalid user session.";
             return buildResponseEnity("404", responseMsg);
         }
 
@@ -462,7 +462,7 @@ public class ApplicationService  extends  BaseRESTapiService{
     ResponseEntity<String> removeApplicationOwner(@PathVariable String contact_email , @PathVariable String appInternalID){
 
         if(verifyValidUserSession("xxx") == false){
-            String responseMsg = "Contact with email address :"+contact_email+ "has not been set as Primary Attorney. invalid user session.";
+            String responseMsg = "Contact with email address :"+contact_email+ "has not been set as Primary Owner. invalid user session.";
             return buildResponseEnity("404", responseMsg);
         }
 
