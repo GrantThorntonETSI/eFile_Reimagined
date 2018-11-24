@@ -23,7 +23,7 @@
                     </div>
                     <hr style="height:3px; position:relative; top:-20px; left:-11.55%; max-width: 80.3%">
 
-                <form method="post" style="" id="addNewAttorneyForm" action="/attorney/add"  class="form-horizontal" >
+                <form method="post" style="" id="addNewAttorneyForm" action="/attorney/add"  class="form-horizontal"   th:object="${addNewAttorneyContactFormDTO}"  >
                     <div class="row" style="margin-left:15px;">
 
                         <div class="col-sm-4">
@@ -44,7 +44,7 @@
 
                             <div class="form-group">
                                 <label class="small" style="margin-top: 10px;"><b style="color: red;">*</b><b>First Name</b></label>
-                                <input type="text"   id="attorney-first-name" placeholder="first name" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  >
+                                <input type="text"   id="attorney-first-name" th:field="*{firstName}"   placeholder="first name" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  >
 
 
                             </div>
@@ -76,7 +76,7 @@
 
                             <div class="form-group">
                                 <label class="small" style="margin-top: 10px;"><b>Middle Name</b></label>
-                                <input type="text"   id="Attorney Middle Name" placeholder="" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  >
+                                <input type="text"  th:field="*{middleName}"    id="Attorney Middle Name" placeholder="" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  >
 
 
                             </div>
@@ -90,7 +90,7 @@
 
                             <div class="form-group">
                                 <label class="small" style="margin-top: 10px;"><b style="color: red;">*</b><b>Last Name</b></label>
-                                <input type="text"   id="attorney-last-name" placeholder="Attorney Last Name" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  >
+                                <input type="text"  th:field="*{lastName}"   id="attorney-last-name" placeholder="Attorney Last Name" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  >
 
 
                             </div>
@@ -120,7 +120,7 @@
 
                             <div class="form-group">
                                 <label class="small" style="margin-top: 10px;"><b>Suffix</b></label>
-                                <select  class="form-control" name="suffix"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                <select   th:field="*{suffix}"    class="form-control" name="suffix"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                     <option value="mr"><b>Mr</b></option>
                                     <option value="mrs"><b>Mrs</b></option>
                                     <option value="ms"><b>ms</b></option>
@@ -137,7 +137,7 @@
 
                             <div class="form-group">
                                 <label class="small" style="margin-top: 10px;"><b style="color: red;">*</b><b>Firm</b></label>
-                                <input type="text"   id="attorney-lawfirm-name" placeholder="Law Firm Name" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  >
+                                <input type="text"  th:field="*{lawFirmName}"    id="attorney-lawfirm-name" placeholder="Law Firm Name" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  >
 
 
                             </div>
@@ -175,7 +175,7 @@
 
                             <div class="form-group">
                                 <label class="small" style="margin-top: 10px;"><b>Country/US Territory</b></label>
-                                <select class="form-control custom-select" id="attorney-country" name="country"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                <select class="form-control custom-select" th:field="*{attorneyAddressCountry}"   id="attorney-country" name="country"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                     <option value="none"></option>
                                     <option value="X1">UNITED STATES OF AMERICA</option>
                                     <option value="B2">AFGHANISTAN</option>
@@ -446,7 +446,7 @@
 
                             <div class="form-group">
                                 <label class="small" style="margin-top: 10px;"><b>Address1 </b></label>
-                                <input id="attorney-address1" type="text" name="address" class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                <input id="attorney-address1" th:field="*{attorneyAddress1}"   type="text" name="address" class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
                             </div>
                         </div>
@@ -476,7 +476,7 @@
 
                             <div class="form-group">
                                 <label class="small" style="margin-top: 10px;"><b>Address2</b></label>
-                                <input type="text" name="address2" class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                <input type="text" th:field="*{attorneyAddress2}"  name="address2" class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
                             </div>
                         </div>
@@ -490,7 +490,7 @@
 
                             <div class="form-group">
                                 <label class="small" style="margin-top: 10px;"><b>Address3</b></label>
-                                <input type="text" name="address3" class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                <input type="text" th:field="*{attorneyAddress3}"  name="address3" class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
                             </div>
                         </div>
@@ -503,7 +503,7 @@
 
                             <div class="form-group">
                                 <label class="small" style="margin-top: 10px;"><b>City </b></label>
-                                <input type="text" id="attorney-city" name="City" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                <input type="text" th:field="*{attorneyCity}"  id="attorney-city" name="City" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
                             </div>
                         </div>
@@ -533,7 +533,7 @@
 
                             <div class="form-group">
                                 <label class="small" style="margin-top: 10px;"><b>State </b></label>
-                                <select  class="form-control custom-select" id="attorney-state"  name="attorney-state" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                <select  class="form-control custom-select" th:field="*{attorneyState}"  id="attorney-state"  name="attorney-state" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                     <option  value="none"></option>
                                     <option  value="AL">Alabama</option>
                                     <option  value="AK">Alaska</option>
@@ -618,7 +618,7 @@
 
                             <div class="form-group">
                                 <label class="small" style="margin-top: 10px;"><b>Zipcode </b></label>
-                                <input type="text" id="attorney-zipcode" name="Zipcode" class="form-control"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                <input type="text" id="attorney-zipcode" th:field="*{attorneyZipcode}"  name="Zipcode" class="form-control"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
                             </div>
                         </div>
@@ -650,7 +650,7 @@
 
                             <div class="form-group">
                                 <label class="small" style="margin-top: 10px;"><b style="color: red;">*</b><b>E-Mail Address</b></label>
-                                <input id="attorney-email" type="text" name="attorney-email" class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                <input id="attorney-email" type="text" name="attorney-email" th:field="*{attorneyEmail}"  class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                             </div>
                         </div>
                         <div class="col-sm-1">
@@ -692,7 +692,7 @@
                                         </select>
                                     </div>
                                     <div class="col-sm-3">
-                                        <input type="text" id="attorney-phone" name="Phone" class="form-control"   style="min-width: 275px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                        <input type="text" id="attorney-phone" th:field="*{attorneyPhone}"  name="Phone" class="form-control"   style="min-width: 275px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                     </div>
                                 </div>
 
@@ -754,7 +754,7 @@
 
                             <div class="form-group">
                                 <label class="small" style="margin-top: 10px;"><b>If applicable, enter the attorney docket or reference number. </b></label>
-                                <input type="text" id="docket-id" name="docket-id" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                <input type="text" id="docket-id" th:field="*{attorneyDocketNumber}"  name="docket-id" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
                             </div>
                         </div>
@@ -801,7 +801,7 @@
 
                             <div class="form-group">
                                 <label class="small" style="margin-top: 10px;"><b>Affiliation</b></label>
-                                <select  class="form-control" id="attorney-bar-standing" name="affiliation"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                <select  class="form-control" id="attorney-bar-standing"  th:field="*{attorneyAffiliation}"  name="affiliation"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                     <option value="none"><b>select</b></option>
                                     <option value="U.S Attorney in good standing"><b>U.S Attorney in good standing</b></option>
                                     <option value="Canadian agent or attorney"><b>Canadian agent or attorney </b></option>
