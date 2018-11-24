@@ -728,6 +728,7 @@ public class ApplicationController {
 
         if(newAttorneyContactFormDTO.getAttorneyAddress1() != ""){
             lawyer.setAddress1(newAttorneyContactFormDTO.getAttorneyAddress1());
+            lawyer.setAddress(newAttorneyContactFormDTO.getAttorneyAddress1());
         }
 
         if(newAttorneyContactFormDTO.getAttorneyAddress2() != ""){

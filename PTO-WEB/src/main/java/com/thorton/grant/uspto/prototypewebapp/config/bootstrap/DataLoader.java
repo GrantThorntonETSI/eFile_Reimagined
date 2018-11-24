@@ -117,6 +117,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         newLawyer.setLastName("lawyer");
         newLawyer.setEmail("li.zhang@us.gt.com");
         newLawyer.setAddress("333 Carlyle Ave");
+        newLawyer.setAddress1("333 Carlyle Ave");
         newLawyer.setCity("Alexandria");
         newLawyer.setState("VA");
         newLawyer.setZipcode("22222");
