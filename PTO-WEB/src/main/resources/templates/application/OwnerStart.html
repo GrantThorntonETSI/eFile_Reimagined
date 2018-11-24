@@ -309,7 +309,7 @@
                                 </div>
                                 <div class="col-sm-2"  style="position: relative; right: -15px;">
                                     <!--this link will be activated when a user add a contact to the selected Pool for the application -->
-                                    <span class="btn-sm btn"  id="next-link-widget" style=" padding:5px; min-width:100px; color: white;  background-color: rgb(128,128,128); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><b><a id="AttorneySetLink" style="color: white; text-decoration: none;" >Next</a></b></span>
+                                    <span class="btn-sm btn"  id="next-link-widget" style=" padding:5px; min-width:100px; color: white;  background-color: rgb(128,128,128); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><b><a id="OwnerSetViewLink" style="color: white; text-decoration: none;" >Next</a></b></span>
 
                                 </div>
 
@@ -382,6 +382,8 @@
 
 
     var newOwnerLink = "../../owner/entity/?trademarkID="+appInternalID;
+
+    var owerSetViewLink = "../../application/OwnerSetView/?trademarkID="+appInternalID;
 
 </script>
 
@@ -530,6 +532,8 @@
             $('#prevLink').attr("href",prevLinkURL);
         }
 
+
+        $('#OwnerSetViewLink').attr("href", owerSetViewLink);
 
         //$('#addNewOwnerLink').attr("href",newOwnerLink);
 

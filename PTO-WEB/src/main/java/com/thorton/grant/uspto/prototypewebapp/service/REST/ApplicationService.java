@@ -438,13 +438,14 @@ public class ApplicationService  extends  BaseRESTapiService{
         Owner owner = baseTrademarkApplication.getOwner();
         if(owner != null){ // unset previous owner
             baseTrademarkApplication.setOwner(null);
-        }
-
+       }
         // create copy of new owner and add to the application
-        Owner newOwner = creaateOwnerCopy(ptoUser.findOwnerContactByEmail(contact_email));
-
-
+        Owner newOwner = creaateOwnerCopy(ptoUser.findOwnerContactByEmail(contact_email), ptoUser, baseTrademarkApplication);
         baseTrademarkApplication.setOwner(newOwner);
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+
+
 
         // set owner
 
@@ -537,10 +538,48 @@ public class ApplicationService  extends  BaseRESTapiService{
     ////////////////////////////////////////////////
     // create copy of owner object
     ////////////////////////////////////////////////
-    Owner creaateOwnerCopy( Owner owner){
+    Owner creaateOwnerCopy( Owner owner, PTOUser ptoUser, BaseTrademarkApplication baseTrademarkApplication){
 
-        Owner ownerCopy = null;
-        return  ownerCopy;
+        Owner application_owner = new Owner();
+        /////////////////////////////////////////////////////////////////
+        // copy over contact's lawyer's personal info
+        /////////////////////////////////////////////////////////////////
+        application_owner.setFirstName(owner.getFirstName());
+        application_owner.setLastName(owner.getLastName());
+        application_owner.setMidlleName(owner.getMidlleName());
+        application_owner.setCountry(owner.getCountry());
+        application_owner.setAddress(owner.getAddress());
+        application_owner.setAddress1(owner.getAddress1());
+        application_owner.setAddress2(owner.getAddress2());
+        application_owner.setAddress3(owner.getAddress3());
+
+
+        application_owner.setCity(owner.getCity());
+        application_owner.setState(owner.getState());
+        application_owner.setZipcode(owner.getZipcode());
+        application_owner.setPrimaryPhonenumber(owner.getPrimaryPhonenumber());
+        application_owner.setEmail(owner.getEmail());
+        //////////////////////////////////////////////////////////////////
+        // copy over contact's professional info
+        //////////////////////////////////////////////////////////////////
+        application_owner.setOwnerEnityType(owner.getOwnerEnityType());
+        application_owner.setOwnersubType(owner.getOwnersubType());
+        application_owner.setOwnersubType(owner.getOwnersubType());
+        application_owner.setWebSiteURL(owner.getWebSiteURL());
+
+
+
+
+
+        ///////////////////////////////////////////////////////////////////
+        // copy over contact's owner info  --->sets clientID to ptoUser
+        ///////////////////////////////////////////////////////////////////
+        application_owner.setClient(ptoUser);
+        ///////////////////////////////////////////////////////////////////
+        // set lawyer's pool ID ---> sets application's internal id as pool id
+        ///////////////////////////////////////////////////////////////////
+        application_owner.setTrademarkApplication(baseTrademarkApplication);
+        return application_owner;
     }
     ////////////////////////////////////////////////
 

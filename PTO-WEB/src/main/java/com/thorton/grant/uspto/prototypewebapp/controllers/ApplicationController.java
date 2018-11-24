@@ -598,6 +598,8 @@ public class ApplicationController {
         }
         owner.setCountry(newOwnerContactFormDTO.getOwnerAddressCountry());
         owner.setAddress1(newOwnerContactFormDTO.getOwnerAddress1());
+        owner.setAddress(newOwnerContactFormDTO.getOwnerAddress1());
+        // set both address and address1
         if(newOwnerContactFormDTO.getOwnerAddress2() != ""){
             owner.setAddress2(newOwnerContactFormDTO.getOwnerAddress2());
         }
@@ -684,7 +686,7 @@ public class ApplicationController {
         model.addAttribute("user", ptoUser);
         model.addAttribute("account",credentials);
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
-        BaseTrademarkApplication  baseTrademarkApplication= baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+        BaseTrademarkApplication  baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         // add contacts display info to model
@@ -705,6 +707,19 @@ public class ApplicationController {
 
 
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
+        System.out.println("222222222222222222222222222222222222222222222222222222222222222222222");
+        System.out.println("222222222222222222222222222222222222222222222222222222222222222222222");
+        Owner owner = baseTrademarkApplication.getOwner();
+          if(owner == null){
+              System.out.println("OWNER is null!!!!!!!!!!!!!!!!!!");
+          }else {
+              System.out.println("owner first name : "+owner.getFirstName());
+          }
+
+
+        System.out.println("222222222222222222222222222222222222222222222222222222222222222222222");
+        System.out.println("222222222222222222222222222222222222222222222222222222222222222222222");
 
 
         model.addAttribute("hostBean", hostBean);
