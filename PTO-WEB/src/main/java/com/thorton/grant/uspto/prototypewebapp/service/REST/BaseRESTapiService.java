@@ -77,4 +77,14 @@ public class BaseRESTapiService {
     }
     ////////////////////////////////////////////////
 
+    PTOUser getCurrentPTOuser(){
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();
+        PTOUserService ptoUserService = getServiceBeanFactory().getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(email);
+
+        return ptoUser;
+    }
+
 }

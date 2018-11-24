@@ -8,7 +8,6 @@ import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,7 +22,6 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -66,41 +64,6 @@ public class UserAccountService extends BaseRESTapiService {
     ResponseEntity<String> updateUserPassword(@PathVariable String password1, @PathVariable String password2){
 
 
-
-
-        // verify token before preceding
-/*
-        VerificationToken verificationToken = service.getVerificationToken(token);
-        if (verificationToken == null) {
-            String message = "INVALID ACCESS TOKEN.";
-            HttpHeaders responseHeader = new HttpHeaders ();
-            ArrayList<String> headersAllowed = new ArrayList<String>();
-            responseHeader.setAccessControlAllowHeaders(headersAllowed);
-            return ResponseEntity.badRequest().headers(responseHeader).body(message) ;
-        }
-
-
-        Calendar cal = Calendar.getInstance();
-        if ((verificationToken.getExpiredTime().getTime() - cal.getTime().getTime()) <= 0) {
-            String message = "EXPIRED ACCESS TOKEN.";
-            HttpHeaders responseHeader = new HttpHeaders ();
-            ArrayList<String> headersAllowed = new ArrayList<String>();
-            responseHeader.setAccessControlAllowHeaders(headersAllowed);
-            return ResponseEntity.badRequest().headers(responseHeader).body(message) ;
-        }
-
-
-        UserCredentials userCredentials = verificationToken.getNewCredential();
-*/
-
-        // retrieve current userName from spring security
-
-        // check if current password matches what is stored
-
-        // set status code based on if that matched
-
-        // if matched. update password for credentials object
-
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
         //UserDetails userDetails = (UserDetails) authentication.getPrincipal();
@@ -140,19 +103,7 @@ public class UserAccountService extends BaseRESTapiService {
             }
         }
 
-        responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
-        HttpHeaders responseHeader = new HttpHeaders ();
-        responseHeader.set("Access-Control-Allow-Origin", getHostBean().getHost()+getHostBean().getPort());
-        //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
-        ArrayList<String> headersAllowed = new ArrayList<String>();
-        headersAllowed.add("Access-Control-Allow-Origin");
-        responseHeader.setAccessControlAllowHeaders(headersAllowed);
-        ArrayList<String> methAllowed = new ArrayList<String>();
-
-        System.out.println("response header : "+responseHeader.getAccessControlAllowOrigin());
-
-
-       return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+      return buildResponseEnity(statusCode, responseMsg );
 
     }
 
@@ -164,50 +115,8 @@ public class UserAccountService extends BaseRESTapiService {
     ResponseEntity<String> updateUserAccountInfo(@PathVariable String userAccountField , @PathVariable String param){
 
 
-
-
-        // verify token before preceding
-/*
-        VerificationToken verificationToken = service.getVerificationToken(token);
-        if (verificationToken == null) {
-            String message = "INVALID ACCESS TOKEN.";
-            HttpHeaders responseHeader = new HttpHeaders ();
-            ArrayList<String> headersAllowed = new ArrayList<String>();
-            responseHeader.setAccessControlAllowHeaders(headersAllowed);
-            return ResponseEntity.badRequest().headers(responseHeader).body(message) ;
-        }
-
-
-        Calendar cal = Calendar.getInstance();
-        if ((verificationToken.getExpiredTime().getTime() - cal.getTime().getTime()) <= 0) {
-            String message = "EXPIRED ACCESS TOKEN.";
-            HttpHeaders responseHeader = new HttpHeaders ();
-            ArrayList<String> headersAllowed = new ArrayList<String>();
-            responseHeader.setAccessControlAllowHeaders(headersAllowed);
-            return ResponseEntity.badRequest().headers(responseHeader).body(message) ;
-        }
-
-
-        UserCredentials userCredentials = verificationToken.getNewCredential();
-*/
-
-        // retrieve current userName from spring security
-
-        // check if current password matches what is stored
-
-        // set status code based on if that matched
-
-        // if matched. update password for credentials object
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String email = authentication.getName();
-        //UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
         PTOUserService ptoUserService = getServiceBeanFactory().getPTOUserService();
-
-
-
-        //UserCredentials userCredentials = userCredentialsService.findByEmail(email);
-        PTOUser ptoUser = ptoUserService.findByEmail(email);
+        PTOUser ptoUser = getCurrentPTOuser();
 
         if(userAccountField.equals("State")){
               ptoUser.setState(param); // sets state code
@@ -282,19 +191,8 @@ public class UserAccountService extends BaseRESTapiService {
         ////////////////////////////////////////////////
         String statusCode = "200";
         String responseMsg = userAccountField+" has been saved.";
-        responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
-        HttpHeaders responseHeader = new HttpHeaders ();
-        //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
-        responseHeader.setAccessControlAllowOrigin(getHostBean().getHost()+getHostBean().getPort());
-        ArrayList<String> headersAllowed = new ArrayList<String>();
-        headersAllowed.add("Access-Control-Allow-Origin");
-        responseHeader.setAccessControlAllowHeaders(headersAllowed);
-        ArrayList<String> methAllowed = new ArrayList<String>();
 
-        System.out.println("response header : "+responseHeader.getAccessControlAllowOrigin());
-
-
-        return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+        return buildResponseEnity(statusCode, responseMsg );
 
     }
 
@@ -304,66 +202,15 @@ public class UserAccountService extends BaseRESTapiService {
     @RequestMapping(method = GET, value="/REST/apiGateway/user/complete/")
     @ResponseBody
     ResponseEntity<String> checkProfileComplete(){
-        // verify token before preceding
-/*
-        VerificationToken verificationToken = service.getVerificationToken(token);
-        if (verificationToken == null) {
-            String message = "INVALID ACCESS TOKEN.";
-            HttpHeaders responseHeader = new HttpHeaders ();
-            ArrayList<String> headersAllowed = new ArrayList<String>();
-            responseHeader.setAccessControlAllowHeaders(headersAllowed);
-            return ResponseEntity.badRequest().headers(responseHeader).body(message) ;
-        }
 
-
-        Calendar cal = Calendar.getInstance();
-        if ((verificationToken.getExpiredTime().getTime() - cal.getTime().getTime()) <= 0) {
-            String message = "EXPIRED ACCESS TOKEN.";
-            HttpHeaders responseHeader = new HttpHeaders ();
-            ArrayList<String> headersAllowed = new ArrayList<String>();
-            responseHeader.setAccessControlAllowHeaders(headersAllowed);
-            return ResponseEntity.badRequest().headers(responseHeader).body(message) ;
-        }
-
-
-        UserCredentials userCredentials = verificationToken.getNewCredential();
-*/
-
-        // retrieve current userName from spring security
-
-        // check if current password matches what is stored
-
-        // set status code based on if that matched
-
-        // if matched. update password for credentials object
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String email = authentication.getName();
-
-        PTOUserService ptoUserService = getServiceBeanFactory().getPTOUserService();
-
-
-
-
-        PTOUser ptoUser = ptoUserService.findByEmail(email);
+        PTOUser ptoUser = getCurrentPTOuser();
 
        if(ptoUser.isProfileComplete() == false){
 
            String statusCode = "444";
            String responseMsg = "User Profile required information is not complete.";
-           responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
-           HttpHeaders responseHeader = new HttpHeaders ();
-           responseHeader.set("Access-Control-Allow-Origin", getHostBean().getHost()+getHostBean().getPort());
-           //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
-           ArrayList<String> headersAllowed = new ArrayList<String>();
-           headersAllowed.add("Access-Control-Allow-Origin");
-           responseHeader.setAccessControlAllowHeaders(headersAllowed);
-           ArrayList<String> methAllowed = new ArrayList<String>();
 
-           System.out.println("response header : "+responseHeader.getAccessControlAllowOrigin());
-
-
-           return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+           return buildResponseEnity(statusCode, responseMsg );
 
        }
 
@@ -371,19 +218,8 @@ public class UserAccountService extends BaseRESTapiService {
 
         String statusCode = "200";
         String responseMsg = "User Profile required information is  complete.";
-        responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
-        HttpHeaders responseHeader = new HttpHeaders ();
-        responseHeader.set("Access-Control-Allow-Origin",getHostBean().getHost()+getHostBean().getPort());
-        //responseHeader.setAccessControlAllowOrigin("http://efile-reimagined.com");
-        ArrayList<String> headersAllowed = new ArrayList<String>();
-        headersAllowed.add("Access-Control-Allow-Origin");
-        responseHeader.setAccessControlAllowHeaders(headersAllowed);
-        ArrayList<String> methAllowed = new ArrayList<String>();
 
-        System.out.println("response header : "+responseHeader.getAccessControlAllowOrigin());
-
-
-        return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+      return buildResponseEnity(statusCode, responseMsg );
 
     }
 
@@ -395,9 +231,6 @@ public class UserAccountService extends BaseRESTapiService {
         public void doFilter(ServletRequest request, ServletResponse response,
                              FilterChain chain) throws IOException, ServletException {
             HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-            //httpServletResponse.setHeader(
-             //       "Access-Control-Allow-Origin", "http://efile-reimagined.com");
-
             httpServletResponse.setHeader(
                     "Access-Control-Allow-Origin", getHostBean().getHost()+getHostBean().getPort());
             chain.doFilter(request, response);
