@@ -433,7 +433,7 @@ public class ApplicationController {
         model.addAttribute("addNewAttorneyContactFormDTO", attorneyContactFormDTO);
 
 
-        return "application/owner/individual/ownerInfo";
+        return "application/attorney/attorneyInfo";
     }
 
 
