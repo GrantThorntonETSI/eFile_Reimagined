@@ -1,7 +1,6 @@
 package com.thorton.grant.uspto.prototypewebapp.service.registratrion;
 
 import com.thorton.grant.uspto.prototypewebapp.config.host.bean.endPoint.HostBean;
-import com.thorton.grant.uspto.prototypewebapp.config.host.bean.endPoint.ServerHostConfig;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.IUserService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 import com.thorton.grant.uspto.prototypewebapp.service.mail.gmail.GmailJavaMailSenderService;
