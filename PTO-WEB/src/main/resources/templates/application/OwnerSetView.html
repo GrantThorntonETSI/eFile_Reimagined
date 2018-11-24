@@ -222,7 +222,7 @@
             <div class="row" style="position: relative; top: -450px;">
                 <div class="col-md-6">
                     <div style="position: relative; top:-10px; margin-left: 35px; margin-bottom: 5px; margin-top: 10px; min-height: 90px;">
-                        <h1><b style="opacity: 1; mix-blend-mode: normal; color: rgb(0, 0, 0); font-size: 36px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; text-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1.16667px; width: 597px; height: 41px; transform: rotate(0deg) translate(37px, 138px) rotate(0deg);">Attorney Information</b></h1>
+                        <h1><b style="opacity: 1; mix-blend-mode: normal; color: rgb(0, 0, 0); font-size: 36px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; text-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1.16667px; width: 597px; height: 41px; transform: rotate(0deg) translate(37px, 138px) rotate(0deg);">Owner Information</b></h1>
                     </div>
                 </div>
                 <div class="col-sm-3">
@@ -262,7 +262,7 @@
             <div class="row" id="contacts-ui" style=" display: none; position: relative; top:-450px; right:-120px;">
 
                 <div class="row" style="">
-                    <h5><b>Select one of the following attorneys to be the primary attorney.</b></h5>
+                    <h5><b>Trademark Application Owner Details</b></h5>
                 </div>
 
                 <div class="accordion" id="accordionExample" style="position: relative; right:-10px; margin-top: 30px;">
@@ -360,7 +360,7 @@
                         <div class="card-footer" style="background-color: rgb(235,235,235);  border: rgb(235,235,235);  border-width: 1px; border: solid;  min-height: 100px; max-width: 852px; ">
                             <div class="row" style="position: relative; ">
                                 <div class="col-sm-4" style="position: relative; right: -10px;">
-                                    <span class="btn-sm btn" data-target="#addNewAttorneyModal" data-toggle="modal"  style=" padding:5px; min-width:150px; color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><b>Add New Attorney</b></span>
+                                    <span class="btn-sm btn" data-target="#addNewOwnerModal" data-toggle="modal"  style=" padding:5px; min-width:150px; color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><b>Add New Attorney</b></span>
                                 </div>
                                 <div class="col-sm-2">
                                 </div>
@@ -369,7 +369,7 @@
                                 <div class="col-sm-2">
                                 </div>
                                 <div class="col-sm-2"  style="position: relative; right: -15px;">
-                                    <span class="btn-sm btn"  id="confirm-link-widget"  style=" padding:5px; min-width:100px; color: white; background-color: rgb(128, 128, 128); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><b>Confirm</b></span>
+
 
                                 </div>
 
@@ -424,24 +424,25 @@
 
 
 
-<!-- start add new Attorney Modal -->
-<div id="addNewAttorneyModal" class="modal fade modal-lg" role="dialog"  tabindex="-1" style="max-width: 1200px;">
+
+<!-- start add new Owner Modal -->
+<div id="addNewOwnerModal" class="modal fade modal-lg" role="dialog"  tabindex="-1" style="max-width: 1200px;">
     <div class="modal-dialog" style="min-width: 1200px;">
 
         <!-- Modal content-->
-        <div class="modal-content"  style="max-width: 1200px; max-height: 2000px;">
+        <div class="modal-content"  style="max-width: 1200px;">
+            <div class="modal-header" style="max-width: 1200px;background-color: rgb(217, 217, 214);">
+                <!-- will enable this once required fields are entered  data-dismiss="modal" -->
+                <button type="button" id="modal-header-close"  data-dismiss="modal" class="close" style="position: relative; left:-30%;">&times;</button>
+                <h4 class="modal-title"><b>e-File Add New Owner</b></h4>
 
-            <div class="modal-body" id="addNewAttorneyModalBody" style="max-height: 3000px;">
-                <div class="content" style="display: none; background-color: white; max-height: 3000px;"  >
+            </div>
+            <div class="modal-body" id="addNewOwnerModalBody">
+                <div class="content" style="display: none; background-color: white;" >
                     <div class="container-fluid"  >
 
                         <div class="col-sm-16" >
-                            <div class="form-container base-page" style="position: relative; top:-20px;">
-
-                                <div class="container-fluid" id="attorneyEntityForm" style="position: relative; bottom:-200px; max-width: 1300px;left:-10px; margin-bottom: 20px;">
-
-
-                                </div>
+                            <div class="form-container base-page" style="position: relative; top:20px;">
 
 
                             </div>
@@ -470,9 +471,12 @@
                         </div>
                         <div class="col-sm-2"  style="position: relative; right: -25px;">
 
+                            <!-- add this  back  data-dismiss="modal"  after  required fields are completed .... and also remove disabled=="true"  -->
+
 
                         </div>
 
+                        </form>
 
 
                     </div>
@@ -482,7 +486,8 @@
         </div>
     </div>
 
-    <!-- end of add New Attorney modal -->
+    <!-- end of add New Owner  modal -->
+
 
 
 
@@ -507,9 +512,9 @@
 
     <script>
 
-        var prevLinkURL = "../../application/start/?trademarkID="+appInternalID;
-        var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
-        var attorneyDomFormURL = "../../application/attorney/attorneyInfo/?trademarkID="+appInternalID;
+        var prevLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
+        var nextLinkURL = "#";
+        var newOwnerLink = "../../owner/entity/?trademarkID="+appInternalID;
 
     </script>
 
@@ -590,7 +595,31 @@
             /////////////////////////////////////////////////////////////////////////
 
 
+            /////////////////////////////////////////////////////////////////////////
+            // add new owner
+            /////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////
+            // load correspoinding owner form into modal on open
+            ////////////////////////////////////////////////////////////////
+            $('#addNewOwnerModal').on('shown.bs.modal', function () {
 
+                $.post(newOwnerLink, function(data){
+
+                    $("#addNewOwnerModalBody").html(data).fadeIn();
+
+                });
+
+            });
+
+
+            $('#addNewOwnerModal').on('hidden.bs.modal', function () {
+
+                // clean up dynamically loaded html
+                $("#addNewOwnerModalBody").html("").fadeIn();
+
+                $("#ownerEntityForm").html("").fadeIn();
+
+            });
 
 
 
