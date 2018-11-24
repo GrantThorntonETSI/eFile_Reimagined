@@ -256,31 +256,6 @@ public class ApplicationService {
                 /////////////////////////////////////////////////////////////////
                 // copy over contact's lawyer's personal info
                 /////////////////////////////////////////////////////////////////
-                /*
-                application_lawyer.setFirstName(lawyer.getFirstName());
-                application_lawyer.setLastName(lawyer.getLastName());
-                application_lawyer.setCountry(lawyer.getCountry());
-                application_lawyer.setAddress(lawyer.getAddress());
-                application_lawyer.setCity(lawyer.getCity());
-                application_lawyer.setZipcode(lawyer.getZipcode());
-                application_lawyer.setPrimaryPhonenumber(lawyer.getPrimaryPhonenumber());
-                application_lawyer.setEmail(lawyer.getEmail());
-                //////////////////////////////////////////////////////////////////
-                // copy over contact's professional info
-                //////////////////////////////////////////////////////////////////
-                application_lawyer.setBarJurisdiction(lawyer.getBarJurisdiction());
-                application_lawyer.setBarLicense(lawyer.getBarLicense());
-                application_lawyer.setValidBarAssociation(lawyer.isValidBarAssociation());
-                application_lawyer.setLawFirmName(lawyer.getLawFirmName());
-                ///////////////////////////////////////////////////////////////////
-                // copy over contact's owner info  --->sets clientID to ptoUser
-                ///////////////////////////////////////////////////////////////////
-                application_lawyer.setClient(ptoUser);
-                ///////////////////////////////////////////////////////////////////
-                // set lawyer's pool ID ---> sets application's internal id as pool id
-                ///////////////////////////////////////////////////////////////////
-                application_lawyer.setPoolMember(baseTrademarkApplication);
-                */
                 baseTrademarkApplication.addAvailableLawyer(application_lawyer);
 
 
@@ -304,33 +279,6 @@ public class ApplicationService {
             /////////////////////////////////////////////////////////////////
             // copy over contact's lawyer's personal info
             /////////////////////////////////////////////////////////////////
-            /*
-            application_lawyer.setFirstName(lawyer.getFirstName());
-            application_lawyer.setLastName(lawyer.getLastName());
-            application_lawyer.setCountry(lawyer.getCountry());
-            application_lawyer.setAddress(lawyer.getAddress());
-            application_lawyer.setCity(lawyer.getCity());
-            application_lawyer.setZipcode(lawyer.getZipcode());
-            application_lawyer.setPrimaryPhonenumber(lawyer.getPrimaryPhonenumber());
-            application_lawyer.setEmail(lawyer.getEmail());
-            application_lawyer.setState(lawyer.getState());
-            application_lawyer.setDocketNumber(lawyer.getDocketNumber());
-            //////////////////////////////////////////////////////////////////
-            // copy over contact's professional info
-            //////////////////////////////////////////////////////////////////
-            application_lawyer.setBarJurisdiction(lawyer.getBarJurisdiction());
-            application_lawyer.setBarLicense(lawyer.getBarLicense());
-            application_lawyer.setValidBarAssociation(lawyer.isValidBarAssociation());
-            application_lawyer.setLawFirmName(lawyer.getLawFirmName());
-            ///////////////////////////////////////////////////////////////////
-            // copy over contact's owner info  --->sets clientID to ptoUser
-            ///////////////////////////////////////////////////////////////////
-            application_lawyer.setClient(ptoUser);
-            ///////////////////////////////////////////////////////////////////
-            // set lawyer's pool ID ---> sets application's internal id as pool id
-            ///////////////////////////////////////////////////////////////////
-            application_lawyer.setPoolMember(baseTrademarkApplication);
-            */
             baseTrademarkApplication.addAvailableLawyer(application_lawyer);
 
 
