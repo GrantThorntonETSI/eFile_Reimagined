@@ -843,7 +843,7 @@
         ////////////////////////////////////////////////////////////////
         $('#addNewOwnerModal').on('shown.bs.modal', function () {
 
-            $.post("../../owner/entity/?trademarkID="+appInternalID, function(data){
+            $.post(newOwnerLink, function(data){
 
                 $("#addNewOwnerModalBody").html(data).fadeIn();
 
