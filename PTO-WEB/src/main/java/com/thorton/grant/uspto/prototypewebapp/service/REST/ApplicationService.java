@@ -408,6 +408,86 @@ public class ApplicationService  extends  BaseRESTapiService{
         return buildResponseEnity("200", responseMsg);
 
     }
+    ////////////////////////////////////////////////////////////////////////////
+
+
+
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/application/owner/set/{contact_email}/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> setApplicationOwner(@PathVariable String contact_email , @PathVariable String appInternalID){
+
+        if(verifyValidUserSession("xxx") == false){
+            String responseMsg = "Contact with email address :"+contact_email+ "has not been set as Primary Attorney. invalid user session.";
+            return buildResponseEnity("404", responseMsg);
+        }
+
+        //////////////////////////////////////////////////////////
+        // retrieve application using passed internal id
+        //////////////////////////////////////////////////////////
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+        PTOUser ptoUser = getCurrentPTOuser();
+        //////////////////////////////////////////////////////////
+        // find contact via email from PTOUser
+        // create a copy of the contact object
+        // add the copy of the contact to the application object
+        // save application object
+        ///////////////////////////////////////////////////////////
+        // check if owner already set
+        Owner owner = baseTrademarkApplication.getOwner();
+        if(owner != null){ // unset previous owner
+            baseTrademarkApplication.setOwner(null);
+        }
+
+        // create copy of new owner and add to the application
+        Owner newOwner = creaateOwnerCopy(ptoUser.findOwnerContactByEmail(contact_email));
+
+
+        baseTrademarkApplication.setOwner(newOwner);
+
+        // set owner
+
+
+
+        String responseMsg = "Contact with email address :"+contact_email+"  have been set as Primary Owner.";
+        return buildResponseEnity("200", responseMsg);
+
+    }
+
+
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/application/owner/delete/{contact_email}/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> removeApplicationOwner(@PathVariable String contact_email , @PathVariable String appInternalID){
+
+        if(verifyValidUserSession("xxx") == false){
+            String responseMsg = "Contact with email address :"+contact_email+ "has not been set as Primary Attorney. invalid user session.";
+            return buildResponseEnity("404", responseMsg);
+        }
+
+        //////////////////////////////////////////////////////////
+        // retrieve application using passed internal id
+        //////////////////////////////////////////////////////////
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+        //////////////////////////////////////////////////////////
+        // find contact via email from PTOUser
+        // create a copy of the contact object
+        // add the copy of the contact to the application object
+        // save application object
+        ///////////////////////////////////////////////////////////
+        // check if owner already set
+        Owner owner = baseTrademarkApplication.getOwner();
+        if(owner != null){ // unset previous owner
+            baseTrademarkApplication.setOwner(null);
+        }
+
+        String responseMsg = "Contact with email address :"+contact_email+"  have been removed as Primary Owner.";
+        return buildResponseEnity("200", responseMsg);
+
+    }
+
 
     ////////////////////////////////////////////////
     // helper functions
