@@ -187,7 +187,10 @@ public class PathController {
            ////////////////////////////////////////////////////////////////
            // probably need to add a message that says bad 2 factor token
            ////////////////////////////////////////////////////////////////
-           return "login";
+           // add message
+
+
+           return "redirect:/logout";
        }
 
 
