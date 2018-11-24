@@ -1,4 +1,4 @@
-package com.thorton.grant.uspto.prototypewebapp.service.authentication;
+package com.thorton.grant.uspto.prototypewebapp.service.authentication.userDetails;
 
 
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;

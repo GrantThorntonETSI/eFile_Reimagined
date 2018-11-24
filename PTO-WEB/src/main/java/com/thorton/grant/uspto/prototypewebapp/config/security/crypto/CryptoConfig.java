@@ -1,4 +1,4 @@
-package com.thorton.grant.uspto.prototypewebapp.config.security;
+package com.thorton.grant.uspto.prototypewebapp.config.security.crypto;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

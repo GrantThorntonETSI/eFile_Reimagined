@@ -1,6 +1,7 @@
-package com.thorton.grant.uspto.prototypewebapp.config.security;
+package com.thorton.grant.uspto.prototypewebapp.config.security.web;
 
-import com.thorton.grant.uspto.prototypewebapp.service.authentication.USPTOUserDetailsService;
+import com.thorton.grant.uspto.prototypewebapp.config.security.authProviders.USPTOCustomAuthenticationProvider;
+import com.thorton.grant.uspto.prototypewebapp.service.authentication.userDetails.USPTOUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -28,20 +29,43 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
     // the data source will be auto injected by spring
     private final DataSource dataSource;
 
-    public WebSecurityConfig(BCryptPasswordEncoder bCryptPasswordEncoder, DataSource dataSource) {
+    public WebSecurityConfig(BCryptPasswordEncoder bCryptPasswordEncoder, DataSource dataSource, USPTOCustomAuthenticationProvider usptoCustomAuthenticationProvider) {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.dataSource = dataSource;
+        this.usptoCustomAuthenticationProvider = usptoCustomAuthenticationProvider;
     }
 
     @Autowired
     private USPTOUserDetailsService usptoUserDetailsService;
 
+
+    private final USPTOCustomAuthenticationProvider usptoCustomAuthenticationProvider;
+
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
-        auth.userDetailsService(usptoUserDetailsService);
 
-        /*
+
+                /////////////////////////////////////////////////////////////
+                // custom authentication provider
+                /////////////////////////////////////////////////////////////
+                auth.authenticationProvider(usptoCustomAuthenticationProvider);
+                /////////////////////////////////////////////////////////////
+
+
+                /////////////////////////////////////////////////////////////
+                // DAO authentication provider
+                /////////////////////////////////////////////////////////////
+                //auth.userDetailsService(usptoUserDetailsService);
+                /////////////////////////////////////////////////////////////
+
+
+
+                /////////////////////////////////////////////////////////////
+                // JDBC custom query authentication
+                /////////////////////////////////////////////////////////////
+                 /*
                 jdbcAuthentication()
                 .usersByUsernameQuery(userQuery)
                 .authoritiesByUsernameQuery(roleQuery)
@@ -49,6 +73,23 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(bCryptPasswordEncoder);
                 */
     }
+    /*
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth)
+            throws Exception {
+
+
+        /////////////////////////////////////////////////////////////
+        // custom authentication provider
+        /////////////////////////////////////////////////////////////
+        auth.authenticationProvider(usptoCustomAuthenticationProvider);
+        /////////////////////////////////////////////////////////////
+    }
+*/
+
+
+
+
 
 
     @Override
