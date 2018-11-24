@@ -109,12 +109,8 @@ public class ContactsService extends  BaseRESTapiService {
         ////////////////////////////////////////////////////////////////////////////////////////////////
         // check for valid security session ...as new contacts are added for PTOUser with valid sessions
         ////////////////////////////////////////////////////////////////////////////////////////////////
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String email = authentication.getName();
-        //UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
         PTOUserService ptoUserService = getServiceBeanFactory().getPTOUserService();
-        //UserCredentials userCredentials = userCredentialsService.findByEmail(email);
-        PTOUser ptoUser = ptoUserService.findByEmail(email);// ?? we may not need to save this
+        PTOUser ptoUser = getCurrentPTOuser();
         // verify authentication is valid before moving on ....
         // have to have a valid session
 
