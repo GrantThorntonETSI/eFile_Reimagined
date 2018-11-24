@@ -533,7 +533,7 @@
         }
 
 
-        $('#OwnerSetViewLink').attr("href", owerSetViewLink);
+
 
         //$('#addNewOwnerLink').attr("href",newOwnerLink);
 
@@ -673,7 +673,8 @@
             // enable next button
             // and inject next link
             /////////////////////////////////////////////////////////////////////////////////
-            //enableNextWidgetLink();
+
+            enableNextWidgetLink();
 
 
 
@@ -716,6 +717,8 @@
 
                 removeOwner4pplication(contact_email, appInternalID);
 
+                disableNextWidgetLink();
+
             }
             else{
 
@@ -748,6 +751,8 @@
                 var contact_email = $(this).parent().prev().prev().html();
                 // call back end actions to remove previous owner and add new owner
                 setOwner4pplication(contact_email, appInternalID);
+
+                enableNextWidgetLink();
 
 
             }
@@ -835,6 +840,7 @@
             // doesn't make sense to set attorneys until you selected them
             /////////////////////////////////////////////////////////////////////////////////
             removeOwner4pplication(contact_email,appInternalID);
+            disableNextWidgetLink();
 
         });
         ////////////////////////////////////////////////////////////////////////////////////////
@@ -986,6 +992,16 @@
 
     } // end of function
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    function enableNextWidgetLink() {
+        $('#OwnerSetViewLink').prop("href", owerSetViewLink);
+        $('#next-link-widget').css("background-color", "rgb(52, 152, 219)");
+
+    }
+    function disableNextWidgetLink() {
+        $('#OwnerSetViewLink').prop("href", "");
+        $('#next-link-widget').css("background-color", "rgb(128, 128, 128)");
+
+    }
 
 
 
