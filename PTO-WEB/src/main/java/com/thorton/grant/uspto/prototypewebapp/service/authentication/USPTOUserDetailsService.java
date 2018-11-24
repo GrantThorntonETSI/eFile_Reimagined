@@ -21,7 +21,10 @@ public class USPTOUserDetailsService implements UserDetailsService {
 
     @Autowired
     private UserCredentialsService userCredentialsService;
-    //
+
+    ///////////////////////////////////////////////////////////////////////////////
+    // this method is what spring security calls to evaluate use credentials
+    ///////////////////////////////////////////////////////////////////////////////
     public UserDetails loadUserByUsername(String email)
             throws UsernameNotFoundException {
 
