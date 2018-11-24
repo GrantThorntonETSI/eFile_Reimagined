@@ -536,26 +536,7 @@
 
         // load datables for owner contacts
         ///////////////////////////////////////////////////////////
-        //////////////////////////////////////////////////////////////////////////
-        // static test data
-        //////////////////////////////////////////////////////////////////////////
-        var testdataSet = [
 
-            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Aaron Owner", "Aaron.Attorney@email.com", "Individual", "<i class=\"material-icons\">swap_horiz</i>"],
-            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Melissa Owner", "Melilssa.Attorney@email.com", "Individual","<i class=\"material-icons\">swap_horiz</i>"],
-            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Nicole Owner", "Nicole.Attorney@email.com", "Individual","<i class=\"material-icons\">swap_horiz</i>"],
-            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Helen Owner", "Helen.Attorney@email.com", "Individual","<i class=\"material-icons\">swap_horiz</i>"],
-            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Cris Owner", "Cris.Attorney@email.com", "Individual","<i class=\"material-icons\">swap_horiz</i>"]
-
-        ];
-
-        var testdataSet2 = [
-            [ "Aaron Attorney" ,  "<i class=\"material-icons\">remove_circle</i>"],
-            ["Bryan Attorney","<i class=\"material-icons\">remove_circle</i>"],
-            [ "Cris Attorney","<i class=\"material-icons\">remove_circle</i>"],
-            [ "Mellisa Attorney","<i class=\"material-icons\">remove_circle</i>"]
-
-        ];
         /////////////////////////////////////////////////////////////////////////////
 
         var dataSet1 = [  ];
@@ -564,7 +545,7 @@
         // initialize contacts table with empty values
         //////////////////////////////////////////////////////////////////////////////
         var contactsTable = $('#contacts').DataTable( {
-            data: testdataSet,
+            data: dataSet1,
             "pageLength": 5,
             "scrollY": "250px",
             "oLanguage": {
