@@ -810,7 +810,7 @@
 
                             <div class="form-group">
                                 <label class="small" style="margin-top: 10px;"><b>Affiliation</b></label>
-                                <select  class="form-control" id="attorney-bar-standing"  th:field="*{attorneyAffiliation}"  name="affiliation"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                <select  class="form-control" id="attorney-bar-standing"  th:field="*{attorneyAffiliation}"  name="affiliation"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                     <option value="none"><b>select</b></option>
                                     <option value="U.S Attorney in good standing"><b>U.S Attorney in good standing</b></option>
                                     <option value="Canadian agent or attorney"><b>Canadian agent or attorney </b></option>
@@ -820,6 +820,11 @@
                             </div>
                         </div>
 
+                    </div>
+
+
+                    <div class="row" style="position: relative; display: none; top:-120px;left:-5%;">
+                        <input id="appInternalIDForm" type="text" th:field="*{appInternalID}"   class="form-control"   style=" border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                     </div>
 
                     <div class="row" style="position: relative;  top:-30px; right:-650px;">
