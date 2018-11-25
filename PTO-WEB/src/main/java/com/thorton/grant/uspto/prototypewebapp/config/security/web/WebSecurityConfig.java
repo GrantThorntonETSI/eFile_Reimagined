@@ -2,10 +2,13 @@ package com.thorton.grant.uspto.prototypewebapp.config.security.web;
 
 import com.thorton.grant.uspto.prototypewebapp.config.security.authProviders.USPTOCustomAuthenticationProvider;
 import com.thorton.grant.uspto.prototypewebapp.service.authentication.userDetails.USPTOUserDetailsService;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -135,6 +138,7 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                 .ignoring()
                 .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**","/documents/**");
     }
+
 
 
 }
