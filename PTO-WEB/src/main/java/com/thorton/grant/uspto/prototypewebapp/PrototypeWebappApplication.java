@@ -14,6 +14,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+import java.util.ArrayList;
+
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = "com.thorton.grant.uspto")
 @EntityScan(basePackages = "com.thorton.grant.uspto")
@@ -38,7 +40,13 @@ public class PrototypeWebappApplication {
                 context.addConstraint(securityConstraint);
             }
         };
-        tomcat.addAdditionalTomcatConnectors(redirectConnector());
+
+        ArrayList<Connector> redirectConnectors = new ArrayList<>();
+        redirectConnectors.add(redirectConnector80());
+       // redirectConnectors.add(redirectConnector443());
+        Connector [] customConnectors = redirectConnectors.toArray(new Connector[]{});
+
+        tomcat.addAdditionalTomcatConnectors(customConnectors);
         return tomcat;
     }
 
@@ -46,10 +54,19 @@ public class PrototypeWebappApplication {
     private int serverPortHttps;
 
 
-    private Connector redirectConnector() {
+    private Connector redirectConnector80() {
         Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
         connector.setScheme("http");
         connector.setPort(80);
+        connector.setSecure(false);
+        connector.setRedirectPort(serverPortHttps);
+        return connector;
+    }
+
+    private Connector redirectConnector443() {
+        Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
+        connector.setScheme("https");
+        connector.setPort(443);
         connector.setSecure(false);
         connector.setRedirectPort(serverPortHttps);
         return connector;
