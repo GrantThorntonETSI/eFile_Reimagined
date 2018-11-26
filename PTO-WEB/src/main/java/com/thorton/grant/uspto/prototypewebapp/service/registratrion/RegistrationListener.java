@@ -32,8 +32,6 @@ public class RegistrationListener implements
     @Autowired
     public RegistrationListener(IUserService service, GmailJavaMailSenderService mailSender, ApplicationContext appContext) {
         this.service = service;
-        //this.mailSender = mailSender;
-        //this.messages = messages;
         this.mailSender = mailSender;
         this.appContext = appContext;
         this.hostBean = (HostBean) appContext.getBean(HostBean.class);
@@ -74,7 +72,7 @@ public class RegistrationListener implements
 
                 // perform any operation
                 //mailSender.sendEmailverificationLink("http://efile-reimagined.com"+confirmationUrl,recipientAddress);
-                mailSender.sendEmailverificationLink(hostBean.getHost()+hostBean.getPort()+confirmationUrl,recipientAddress);
+                mailSender.sendEmailverificationLink(hostBean.getHost()+confirmationUrl,recipientAddress);
                 System.out.println("ACCOUNT ACITVATION EMAIL SENT!");
             }
         }).start();

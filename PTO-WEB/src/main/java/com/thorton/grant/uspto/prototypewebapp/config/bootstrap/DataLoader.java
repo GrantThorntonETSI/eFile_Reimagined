@@ -175,62 +175,13 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         tradeMarkApplicationService.save(trademarkApplication);
 
 
-
-        // delete test
-        //lawyerService.delete(trademarkApplication.getPrimaryLawyer());
-        //lawyerService.delete(trademarkApplication.getAvailableLawyers().iterator().next());
-/*
-
-delete test completed and passed.
-
-        HashSet<Lawyer> lawyers = new HashSet<Lawyer>(trademarkApplication.getAvailableLawyers());
-        Lawyer primaryLawyer = trademarkApplication.getPrimaryLawyer();
-        trademarkApplication.setOwner(null);
-        trademarkApplication.setPrimaryLawyer(null);
-        trademarkApplication.setAvailableLawyers(null);
-        tradeMarkApplicationService.save(trademarkApplication);
-
-
-
-        //lawyerService.delete(primaryLawyer);
-        lawyerService.delete(lawyers.iterator().next());
-        PTOUser1.setMyApplications(null);
-        tradeMarkApplicationService.delete(trademarkApplication);
-
-        */
-
-        // now add objects to repository, owner and user
-
-        /*
-
-                Privilege readPrivilege
-                        = createPrivilegeIfNotFound("READ_PRIVILEGE");
-                Privilege writePrivilege
-                        = createPrivilegeIfNotFound("WRITE_PRIVILEGE");
-
-                HashSet<Privilege>   adminPrivileges= new HashSet<Privilege>(Arrays.asList(
-                        readPrivilege, writePrivilege));
-                createRoleIfNotFound("ROLE_ADMIN", adminPrivileges);
-                createRoleIfNotFound("ROLE_USER", new HashSet<Privilege>(Arrays.asList(readPrivilege)));
-
-                Role adminRole = myRoleService.findByRole("ROLE_ADMIN");
-                User user = new User();
-                //user.setFirstName("Test");
-                //user.setLastName("Test");
-                user.setUsername("test_user");
-                user.setPassword(bCryptPasswordEncoder.encode("test123"));
-                user.setEmail("test@test.com");
-                user.setRoles( new HashSet<Role>(Arrays.asList(adminRole)));
-                user.setActive(1);
-                myUsersService.save(user);
-
-
-
-        */
-System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-       // Lawyer myLawerTEST = trademarkApplication.getPrimaryLawyer();
-//        System.out.println("trademark application: "+trademarkApplication.getApplicationInternalID()+  " represented by law firm :"+myLawerTEST.getLawFirmName());
-
-
     }
+
+    ///////////////////////////////////////////////////
+    // create helper function add user
+    //////////////////////////////////////////////////
+
+
+
+
 }
