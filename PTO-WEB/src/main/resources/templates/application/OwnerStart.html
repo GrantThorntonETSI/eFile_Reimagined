@@ -365,6 +365,8 @@
     var contactEmails = /*[[${myOwnerContacts.ContactEmails}]]*/ 'User Name';
     var contactTypes = /*[[${myOwnerContacts.contactEntitySubType}]]*/ 'User Name';
 
+    var selectedContactNames = /*[[${selectedContacts.selectedNames}]]*/ 'User Name';
+
 
 
     var host = host_name+":"+host_port;
@@ -582,16 +584,15 @@
             // add row with check box selected and disabled
             ///////////////////////////////////////////////////////////////////////////
             var  isChecked = false;
-            /*
-                        for(var b =0; b < selectedContactNames.length; b++){
+
+            for(var b =0; b < selectedContactNames.length; b++){
 
 
+                if(contactNames[a] ===  selectedContactNames[b]){
+                    isChecked = true;
+                }
+            }
 
-                            if(contactNames[a] ===  selectedContactNames[b]){
-                                isChecked = true;
-                            }
-                        }
-            */
             if(isChecked === false) {
                 var col1 = "<input class=\"contacts-checkbox\" type='checkbox'>";
                 var col2 = contactNames[a];
@@ -608,7 +609,7 @@
                 var col1 = "<input class=\"contacts-checkbox\" disabled=\"true\" checked=\"true\" type='checkbox'>";
                 var col2 = contactNames[a];
                 var col3 = contactEmails[a];
-                var col4 = contactFirms[a];
+                var col4 = contactTypes[a];
                 var col5 = "<i class=\"material-icons\">swap_horiz</i>";
                 contactsTable.row.add([col1, col2, col3, col4, col5]).draw();
                 //contactsTable.row.add(row).draw(false);
@@ -666,13 +667,14 @@
             // 3. load project id as java script variable like our other pages
             /////////////////////////////////////////////////////////////////////////////////
             var contact_email = $(this).parent().next().next().html();
-            var project_id = appInternalID;
+            // var project_id = appInternalID;
 
             //addContact2Application(contact_email, project_id);
             /////////////////////////////////////////////////////////////////////////////////
             // enable next button
             // and inject next link
             /////////////////////////////////////////////////////////////////////////////////
+            setOwner4pplication(contact_email, appInternalID);
 
             enableNextWidgetLink();
 
@@ -769,7 +771,7 @@
 
         ////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////
-        // load sected owner datatable
+        // load selected owner datatable
         ////////////////////////////////////////////////////////////////////////////////////////////////
         var dataSet3 = [
 
