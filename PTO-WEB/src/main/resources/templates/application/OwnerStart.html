@@ -804,6 +804,20 @@
         } );
 
 
+        // load selected owners
+        for(var a =0; a < selectedContactNames.length; a++) {
+
+
+            if (selectedContactNames[a] != "") {
+
+                var newRow = [selectedContactNames[a], "<i class=\"material-icons\">remove_circle</i>"];
+                selectedTable.row.add(newRow).draw();
+                enableNextWidgetLink();
+            }
+
+        }
+
+
         //////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////
         // add action listeners to selected-contacts table check boxes
