@@ -157,24 +157,6 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         //Owner owner = new Owner();
         //owner.setOwnerType("individual");
         //owner.setEmail(PTOUser1.getEmail());
@@ -202,23 +184,36 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         tradeMarkApplicationService.save(trademarkApplication);
 
 
+        // create another user
+
+        createUser("Jackie", "Babos", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Jackie.Babos@us.gt.com","12345");
+        createUser("Jacob", "Goldstein", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Jacob.Goldstein@us.gt.com","12345");
+
+
+        createUser("Lynn", "Stanikmas", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "lstanikams@gmail.com","12345");
+
+        createUser("Avo", "Reed", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Avo.Reid@us.gt.com","12345");
+
+        createUser("Tina", "Donbeck", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "tina.donbeck@uspto.gov","12345");
+
+
     }
 
-    ///////////////////////////////////////////////////
+    //////////////////////////////////////////////////
     // create helper function add user
     //////////////////////////////////////////////////
-     public void createUser(String firstName, String lastName, String address, String city, String state, String zipcode, String Country, String phone, String email, String password){
+     public void createUser(String firstName, String lastName, String address, String city, String state, String zipcode, String country, String phone, String email, String password){
 
 
          PTOUser PTOUser1 = new PTOUser();
-         PTOUser1.setFirstName("test");
-         PTOUser1.setLastName("user");
-         PTOUser1.setAddress("1115 Reserve Champion Drive");
-         PTOUser1.setCity("Rockville");
-         PTOUser1.setState("MD");
-         PTOUser1.setZipcode("20850");
-         PTOUser1.setCountry("X1"); // country code for united states
-         PTOUser1.setPrimaryPhonenumber("571-839-3730");
+         PTOUser1.setFirstName(firstName);
+         PTOUser1.setLastName(lastName);
+         PTOUser1.setAddress(address);
+         PTOUser1.setCity(city);
+         PTOUser1.setState(state);
+         PTOUser1.setZipcode(zipcode);
+         PTOUser1.setCountry(country); // country code for united states
+         PTOUser1.setPrimaryPhonenumber(phone);
          PTOUser1.setProfileComplete(true);
          /////////////////////////////////////////////////////////////////////////////////
          // set username, password, email and role
@@ -229,14 +224,14 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
          // follow the same convention from the save method and save role for test user 1
          /////////////////////////////////////////////////////////////////////////////////
 
-         ownerCreds.setUsername("test.user");
-         ownerCreds.setPassword(bCryptPasswordEncoder.encode("xxxxx"));
-         ownerCreds.setPasswordConfirm(bCryptPasswordEncoder.encode("xxxxx"));
-         ownerCreds.setEmail("lzhang421@gmail.com");
+         ownerCreds.setUsername(firstName+"."+lastName);
+         ownerCreds.setPassword(bCryptPasswordEncoder.encode(password));
+         ownerCreds.setPasswordConfirm(bCryptPasswordEncoder.encode(password));
+         ownerCreds.setEmail(email);
          ownerCreds.setActive(1);
 
          UserRole userRole = new UserRole();
-         userRole.setRoleName("ROLE_ADMIN");
+         userRole.setRoleName("ROLE_USER");
          //myRoleService.save(userRole);
          ownerCreds.setUserRoles(new HashSet<UserRole>(Arrays.asList(userRole)));
          //////////////////////////////////////////////////////////////////////////////////
@@ -249,6 +244,15 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
          ownerCreds.setUserPersonalData(PTOUser1);
          PTOUser1.setUserCredentials(ownerCreds);
          PTOUser1.setEmail(ownerCreds.getEmail());
+
+         PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+         ptoUserService.save(PTOUser1);
+         UserRoleService  userRoleService = serviceBeanFactory.getUserRoleService();
+         userRoleService.save(userRole);
+
+         UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+         userCredentialsService.save(ownerCreds);
+
      }
 
 
