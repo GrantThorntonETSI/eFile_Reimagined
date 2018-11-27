@@ -3,16 +3,18 @@ package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.a
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Owner extends Contact{
 
+    public Owner() {
 
+        partners = new HashSet<>();
+    }
 
     @OneToOne
     private BaseTrademarkApplication trademarkApplication;
@@ -20,6 +22,10 @@ public class Owner extends Contact{
 
     @ManyToOne
     private PTOUser client;
+
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Partner> partners;
 
 
 
@@ -118,6 +124,33 @@ public class Owner extends Contact{
     public void setAddress3(String address3) {
         this.address3 = address3;
     }
+
+
+    public Set<Partner> getPartners() {
+        return partners;
+    }
+
+    public void setPartners(Set<Partner> partners) {
+        this.partners = partners;
+    }
+
+
+    public Partner addPartner(Partner newPartner){
+        partners.add(newPartner);
+
+        return newPartner;
+
+    }
+
+    public void deletePartner(Partner partner){
+        partners.remove(partner);
+
+    }
+
+
+
+
+
 
     @Override
     public boolean equals(Object o) {

@@ -5,10 +5,12 @@ import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserRoleService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.participants.LawyerService;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.participants.OwnerService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.asset.TradeMarkService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Partner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
@@ -132,21 +134,46 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         // saved by PTOUser ...
         // as this will allow PTOUser to delete the application with out deleting his/hers lawyers.
         ///////////////////////////////////////////////////////////////////////////////////////////////
-        // application also needs a better id for find ...build internal id. as user.email+trademark_name???
-        //Lawyer appPrimaryConsole = new Lawyer(PTOUser1.getMyLawyers().iterator().next());
 
-
-        //trademarkApplication.setAvailableLawyers(PTOUser1.getMyLawyers());
-
-        //trademarkApplication.copyAvailableLawyers(PTOUser1.getMyLawyers());
-        //
-
-
-
-        //trademarkApplication.setPrimaryLawyer( trademarkApplication.getAvailableLawyers().iterator().next());
-        //trademarkApplication.getPrimaryLawyer().setPoolMember(trademarkApplication);
-        //trademarkApplication.getPrimaryLawyer().setPrimaryCase(trademarkApplication);
         trademarkApplication.setOwnerEmail(PTOUser1.getEmail());
+        Owner testOwner = new Owner();
+        testOwner.setClient(PTOUser1);
+        testOwner.setAddress1(PTOUser1.getAddress());
+        testOwner.setAddress(PTOUser1.getAddress());
+        testOwner.setFirstName(PTOUser1.getFirstName());
+        testOwner.setLastName(PTOUser1.getLastName());
+        testOwner.setCitizenShip(PTOUser1.getCountry());
+        testOwner.setOwnerEnityType("US");
+        testOwner.setOwnersubType("Individual");
+        Partner testPartner = new Partner();
+        testPartner.setPartnerLastName("ike");
+        testPartner.setPartnerFirstName("mike");
+        testPartner.setPartnerCitizenship(PTOUser1.getCountry());
+        testOwner.addPartner(testPartner);
+
+        OwnerService ownerService = serviceBeanFactory.getOwnerService();
+
+        ownerService.save(testOwner);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         //Owner owner = new Owner();
         //owner.setOwnerType("individual");

@@ -2,9 +2,17 @@ package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.a
 
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Partner {
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
   private String partnerName;
   private String partnerEntityType;
@@ -84,4 +92,7 @@ public class Partner {
     public void setGetOrganizationState(String getOrganizationState) {
         this.getOrganizationState = getOrganizationState;
     }
+
+
+
 }
