@@ -135,25 +135,25 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         // as this will allow PTOUser to delete the application with out deleting his/hers lawyers.
         ///////////////////////////////////////////////////////////////////////////////////////////////
 
-        trademarkApplication.setOwnerEmail(PTOUser1.getEmail());
-        Owner testOwner = new Owner();
-        testOwner.setClient(PTOUser1);
-        testOwner.setAddress1(PTOUser1.getAddress());
-        testOwner.setAddress(PTOUser1.getAddress());
-        testOwner.setFirstName(PTOUser1.getFirstName());
-        testOwner.setLastName(PTOUser1.getLastName());
-        testOwner.setCitizenShip(PTOUser1.getCountry());
-        testOwner.setOwnerEnityType("US");
-        testOwner.setOwnersubType("Individual");
-        Partner testPartner = new Partner();
-        testPartner.setPartnerLastName("ike");
-        testPartner.setPartnerFirstName("mike");
-        testPartner.setPartnerCitizenship(PTOUser1.getCountry());
-        testOwner.addPartner(testPartner);
+        //trademarkApplication.setOwnerEmail(PTOUser1.getEmail());
+        //Owner testOwner = new Owner();
+        //testOwner.setClient(PTOUser1);
+        //testOwner.setAddress1(PTOUser1.getAddress());
+       // testOwner.setAddress(PTOUser1.getAddress());
+        //testOwner.setFirstName(PTOUser1.getFirstName());
+        //testOwner.setLastName(PTOUser1.getLastName());
+        //testOwner.setCitizenShip(PTOUser1.getCountry());
+        //testOwner.setOwnerEnityType("US");
+        //testOwner.setOwnersubType("Individual");
+        //Partner testPartner = new Partner();
+       // testPartner.setPartnerLastName("ike");
+         //testPartner.setPartnerFirstName("mike");
+        //testPartner.setPartnerCitizenship(PTOUser1.getCountry());
+        //testOwner.addPartner(testPartner);
 
-        OwnerService ownerService = serviceBeanFactory.getOwnerService();
+       // OwnerService ownerService = serviceBeanFactory.getOwnerService();
 
-        ownerService.save(testOwner);
+        //ownerService.save(testOwner);
 
 
 
@@ -186,15 +186,15 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
 
         // create another user
 
-        createUser("Jackie", "Babos", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Jackie.Babos@us.gt.com","12345");
-        createUser("Jacob", "Goldstein", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Jacob.Goldstein@us.gt.com","12345");
+        //createUser("Jackie", "Babos", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Jackie.Babos@us.gt.com","12345");
+        //createUser("Jacob", "Goldstein", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Jacob.Goldstein@us.gt.com","12345");
 
 
-        createUser("Lynn", "Stanikmas", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "lstanikams@gmail.com","12345");
+        //createUser("Lynn", "Stanikmas", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "lstanikams@gmail.com","12345");
 
-        createUser("Avo", "Reed", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Avo.Reid@us.gt.com","12345");
+        //createUser("Avo", "Reed", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Avo.Reid@us.gt.com","12345");
 
-        createUser("Tina", "Donbeck", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "tina.donbeck@uspto.gov","12345");
+        //createUser("Tina", "Donbeck", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "tina.donbeck@uspto.gov","12345");
 
 
     }

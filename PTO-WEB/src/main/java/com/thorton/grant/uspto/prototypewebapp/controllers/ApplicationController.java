@@ -137,16 +137,16 @@ public class ApplicationController {
             //Lawyer appPrimaryConsole = new Lawyer(PTOUser1.getMyLawyers().iterator().next());
             trademarkApplication.setOwnerEmail(ptoUser.getEmail());
 
-            Owner owner = new Owner();
-            owner.setOwnerType("individual");
-            owner.setEmail(ptoUser.getEmail());
-            owner.setAddress(ptoUser.getAddress());
-            owner.setFirstName(ptoUser.getFirstName());
-            owner.setLastName(ptoUser.getLastName());
-            owner.setCity(ptoUser.getCity());
-            owner.setState(ptoUser.getState());
+            //Owner owner = new Owner();
+           // owner.setOwnerType("individual");
+           // owner.setEmail(ptoUser.getEmail());
+           // owner.setAddress(ptoUser.getAddress());
+           // owner.setFirstName(ptoUser.getFirstName());
+           // owner.setLastName(ptoUser.getLastName());
+           // owner.setCity(ptoUser.getCity());
+           // owner.setState(ptoUser.getState());
 
-            trademarkApplication.setOwner(owner);
+           // trademarkApplication.setOwner(owner);
             /////////////////////////////////////////////////////////////////////////////////
             // add a method to PTOUser to just add one application
             /////////////////////////////////////////////////////////////////////////////////
@@ -310,16 +310,16 @@ public class ApplicationController {
             //Lawyer appPrimaryConsole = new Lawyer(PTOUser1.getMyLawyers().iterator().next());
             trademarkApplication.setOwnerEmail(ptoUser.getEmail());
 
-            Owner owner = new Owner();
-            owner.setOwnerType("individual");
-            owner.setEmail(ptoUser.getEmail());
-            owner.setAddress(ptoUser.getAddress());
-            owner.setFirstName(ptoUser.getFirstName());
-            owner.setLastName(ptoUser.getLastName());
-            owner.setCity(ptoUser.getCity());
-            owner.setState(ptoUser.getState());
+            //Owner owner = new Owner();
+            //owner.setOwnerType("individual");
+            //owner.setEmail(ptoUser.getEmail());
+            //owner.setAddress(ptoUser.getAddress());
+            //owner.setFirstName(ptoUser.getFirstName());
+            //owner.setLastName(ptoUser.getLastName());
+            //owner.setCity(ptoUser.getCity());
+            //owner.setState(ptoUser.getState());
 
-            trademarkApplication.setOwner(owner);
+            //trademarkApplication.setOwner(owner);
             /////////////////////////////////////////////////////////////////////////////////
             // add a method to PTOUser to just add one application
             /////////////////////////////////////////////////////////////////////////////////
@@ -696,7 +696,7 @@ public class ApplicationController {
         }
         else{
 
-            System.out.println("");
+
             ownerContactNames.add("");
         }
 
