@@ -488,6 +488,28 @@ public class ApplicationController {
         model.addAttribute("myOwnerContacts", contactsDisplayDTO);
 
 
+        ///////////////////////////////////////////////////////////////
+        // set selected owner contacts ...
+        // since there is just one owner ...
+        // just set it and test for null
+        ///////////////////////////////////////////////////////////////
+
+        ArrayList<String> ownerContactNames = new ArrayList<>();
+        Owner applicationOwner = baseTrademarkApplication.getOwner();
+
+        System.out.println("");
+        if(applicationOwner != null){
+            System.out.println("setting selected owner name for owner : "+applicationOwner.getLastName());
+            ownerContactNames.add( applicationOwner.getFirstName() + " "+applicationOwner.getLastName());
+        }
+        else{
+            ownerContactNames.add("");
+        }
+
+        SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
+        selectedContactsDisplayDTO.setSelectedNames(ownerContactNames);
+        model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
+
         return "application/OwnerStart";
     }
 
@@ -627,6 +649,7 @@ public class ApplicationController {
         owner.setClient(ptoUser);
         ptoUser.addOwner(owner);
         ptoUserService.save(ptoUser);
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
         // reset application entity type and subtype
         // transfer those entity type and subtype to the new owner object
@@ -659,6 +682,27 @@ public class ApplicationController {
         contactsDisplayDTO.setContactEmails(contactEmails);
         contactsDisplayDTO.setContactEntitySubType(contactSubTypes);
         model.addAttribute("myOwnerContacts", contactsDisplayDTO);
+
+
+        ArrayList<String> ownerContactNames = new ArrayList<>();
+        Owner applicationOwner = baseTrademarkApplication.getOwner();
+
+        // we probably do not need to hit the database for this...
+        //  build it with owner object
+
+        if(applicationOwner != null){
+
+            ownerContactNames.add( applicationOwner.getFirstName() + " "+applicationOwner.getLastName());
+        }
+        else{
+
+            System.out.println("");
+            ownerContactNames.add("");
+        }
+
+        SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
+        selectedContactsDisplayDTO.setSelectedNames(ownerContactNames);
+        model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
 
 
 

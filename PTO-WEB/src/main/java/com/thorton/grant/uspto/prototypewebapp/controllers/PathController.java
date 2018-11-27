@@ -225,7 +225,7 @@ public class PathController {
         //redirectAttributes.addFlashAttribute("message",server_message );
         model.addAttribute("message", server_message);
 
-        return "/login";
+        return "login";
 
     }
 
