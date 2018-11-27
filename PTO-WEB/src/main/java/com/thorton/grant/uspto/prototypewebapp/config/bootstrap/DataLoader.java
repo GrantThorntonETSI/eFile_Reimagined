@@ -207,7 +207,49 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
     ///////////////////////////////////////////////////
     // create helper function add user
     //////////////////////////////////////////////////
+     public void createUser(String firstName, String lastName, String address, String city, String state, String zipcode, String Country, String phone, String email, String password){
 
+
+         PTOUser PTOUser1 = new PTOUser();
+         PTOUser1.setFirstName("test");
+         PTOUser1.setLastName("user");
+         PTOUser1.setAddress("1115 Reserve Champion Drive");
+         PTOUser1.setCity("Rockville");
+         PTOUser1.setState("MD");
+         PTOUser1.setZipcode("20850");
+         PTOUser1.setCountry("X1"); // country code for united states
+         PTOUser1.setPrimaryPhonenumber("571-839-3730");
+         PTOUser1.setProfileComplete(true);
+         /////////////////////////////////////////////////////////////////////////////////
+         // set username, password, email and role
+         /////////////////////////////////////////////////////////////////////////////////
+         UserCredentials ownerCreds = new UserCredentials();
+         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+         /////////////////////////////////////////////////////////////////////////////////
+         // follow the same convention from the save method and save role for test user 1
+         /////////////////////////////////////////////////////////////////////////////////
+
+         ownerCreds.setUsername("test.user");
+         ownerCreds.setPassword(bCryptPasswordEncoder.encode("xxxxx"));
+         ownerCreds.setPasswordConfirm(bCryptPasswordEncoder.encode("xxxxx"));
+         ownerCreds.setEmail("lzhang421@gmail.com");
+         ownerCreds.setActive(1);
+
+         UserRole userRole = new UserRole();
+         userRole.setRoleName("ROLE_ADMIN");
+         //myRoleService.save(userRole);
+         ownerCreds.setUserRoles(new HashSet<UserRole>(Arrays.asList(userRole)));
+         //////////////////////////////////////////////////////////////////////////////////
+         // set credentails to active
+         //////////////////////////////////////////////////////////////////////////////////
+         ownerCreds.setActive(1);
+         //////////////////////////////////////////////////////////////////////////////////
+         // create bi-directional relationship between credentials and owner
+         //////////////////////////////////////////////////////////////////////////////////
+         ownerCreds.setUserPersonalData(PTOUser1);
+         PTOUser1.setUserCredentials(ownerCreds);
+         PTOUser1.setEmail(ownerCreds.getEmail());
+     }
 
 
 
