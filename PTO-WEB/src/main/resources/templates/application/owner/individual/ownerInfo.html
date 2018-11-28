@@ -1098,18 +1098,6 @@
 
 
 
-    <script>
-
-        var prevLinkURL = "../../../../application/OwnerStart/?trademarkID="+appInternalID;
-
-        var formActionURL ="/owner/add";
-
-        var nextLinkURL = "";
-
-    </script>
-
-
-
 </div>
 
 
@@ -1128,7 +1116,7 @@
         ///////////////////////////////////////////////////////////////////////////////
         // initial page load
         ///////////////////////////////////////////////////////////////////////////////
-        setTimeout(function() {
+        setTimeout(function () {
             // after 1000 ms we add the class animated to the login/register card
             $('.content').fadeIn(500);
         }, 500);
@@ -1143,172 +1131,9 @@
         $('#appInternalIDForm').val(appInternalID);
 
 
-
-        ////////////////////////////////////////////////////
-        // set server specific link urls
-        // set links for traversal buttons
-        ////////////////////////////////////////////////////
-        //alert(window.location.href);
-
-        var urlCheck = window.location.href;
-        if(urlCheck.includes("continueApplication")){
-            prevLinkURL = prevLinkURL.substring(6, prevLinkURL.length);
-        }
-
-        $('#prevLink').attr("href",prevLinkURL);
-
-        //$('#addOwnerConfirm').attr("action", formActionURL);
-
-
-
-        ///////////////////////////////////////////////////
-        // radio button interactions
-        ///////////////////////////////////////////////////
-        $('#usEntityTrue').click( function () {
-
-            // enable us. entity type drop down
-
-            $('.international-entity').fadeOut();
-
-            setTimeout(function() {
-                // after 1000 ms we add the class animated to the login/register card
-                $('.domestic-entity').fadeIn();
-            }, 500);
-
-
-            $('#domestic-entity-dropdown').prop('disabled', false);
-
-
-        });
-
-
-        $('#foreginEntityTrue').click( function () {
-            //////////////////////////////////////////////
-            // set display to none for usEntity
-            /////////////////////////////////////////////
-            $('.domestic-entity').fadeOut();
-
-            setTimeout(function() {
-                // after 1000 ms we add the class animated to the login/register card
-                $('.international-entity').fadeIn();
-            }, 500);
-
-            // set display to block for foreignEntity
-
-        });
-
-        ////////////////////////////////////////////////////
-        // enable next button on fields completion
-        ////////////////////////////////////////////////////
-
     });
 
 </script>
 
-
-<script>
-
-    function saveProjectOwnerInfo(field_name_prefix, field_value, application_internal_id) {
-
-
-
-
-
-        //alert(field_name_prefix);
-        // send state, and token to server
-        // token will be generated in the controller and added to the view
-        // similar to how access token works ...a token is tied to a user
-        // access token will be passed in through model
-        //
-        // var tokenValue = '${token}';  // token is the model attribute name
-        // we are not using secured tokens for the prototype
-        // we will secure it by adding ssl and https support
-
-        //var field_value = $(this).val();
-        //alert(field_value);
-
-        $.ajax({
-            //url: host+"/REST/apiGateway/application/owner/update/"+field_name_prefix+"/"+field_value+"/"+application_internal_id,
-            url: "../../../../REST/apiGateway/application/owner/update/"+field_name_prefix+"/"+field_value+"/"+application_internal_id,
-            type: 'GET',
-            success: function(data){
-
-                // parse out status msg:
-                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
-
-                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
-
-                if(s_code.trim() == "200"){
-                    //if(data.contains("status: 200")){
-                    // show confirmation check mark on form
-                    //$('#toggle').delay(1000).click();
-
-                    $(".autoSaveMessageArea span").fadeOut(500);
-                    setTimeout(function() {
-                        // after 1000 ms we add the class animated to the login/register card
-                        $(".autoSaveMessageArea span").text(s_msg);
-                        $(".autoSaveMessageArea span").fadeIn(1000);
-                    }, 500);
-                    // animation rendering control
-                    //if($('.state-checkmark').css('display') == 'block'){
-                    if($( "."+field_name_prefix.toLowerCase()+"-animation").css('display') == 'block'){
-
-
-                        $("."+field_name_prefix.toLowerCase()+"-animation").fadeOut(100);
-                        // now we need to create an java back end service that saves this value.
-                        // also add validation on the html  similar to password save
-                        //$('#toggle-'+field_name_prefix.toLowerCase()).delay(100).click();
-
-                        // alert($(this).val());
-                        $("."+field_name_prefix.toLowerCase()+"-animation").fadeIn(1000);
-                        // now we need to create an java back end service that saves this value.
-                        // also add validation on the html  similar to password save
-                        //$("."+field_name_prefix.toLowerCase()+"-animation").delay(1000).click();
-                    }
-                    else {
-
-                        $("."+field_name_prefix.toLowerCase()+"-animation").fadeIn(1000);
-                        // now we need to create an java back end service that saves this value.
-                        // also add validation on the html  similar to password save
-                        //$('#toggle-'+field_name_prefix.toLowerCase()).delay(1000).click();
-                    }
-
-
-
-
-                }
-                else{
-                    //$('.circle-loader').fadeOut(100);
-                    //$('.x-mark').fadeIn(500);
-                    //$(".validationMsgArea span").text(s_msg);
-                    //$(".validationMsgArea span").css('color','red');
-                }
-
-            },
-            error: function(data) {
-
-                //$('.circle-loader').fadeOut(100);
-                //$('.x-mark').fadeIn(500);
-
-                console.log(data);
-                // set message to div area ...fields can not be left null
-                //$(".validationMsgArea span").text("You can not leave any fields empty.");
-                //$(".validationMsgArea span").css('color','red');
-            }
-
-        });
-
-
-
-
-
-
-        ////////////////////////////////////////////////////////////////////////////////
-        // end of contact information 'State' auto save ////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////
-
-
-    }
-</script>
 </body>
 </html>
