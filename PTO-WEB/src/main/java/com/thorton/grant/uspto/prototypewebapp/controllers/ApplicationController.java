@@ -12,6 +12,7 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.Co
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.SelectedContactsDisplayDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.form.NewAttorneyContactFormDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.form.NewOwnerContactFormDTO;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.form.partnerDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Partner;
@@ -834,7 +835,7 @@ public class ApplicationController {
         model.addAttribute("hostBean", hostBean);
 
         NewOwnerContactFormDTO newOwnerContactFormDTO = new NewOwnerContactFormDTO();
-        Partner partner = new Partner();
+        partnerDTO partner = new partnerDTO();
         newOwnerContactFormDTO.addPartner(partner);
 
 

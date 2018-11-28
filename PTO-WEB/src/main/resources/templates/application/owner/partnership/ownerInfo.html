@@ -165,7 +165,7 @@
 
 
 
-                    <div id="individual-partner-entity" style="display: none; margin-top: 10px;">
+                    <div id="individual-partner-entity" style="display: none; margin-top: 10px;" th:each="partner, itemStat : *{partnerDTOs}" >
 
 
                         <div class="row" style="position: relative; top:-190px;  right:-7%;">
@@ -181,7 +181,7 @@
                             <div class="col-sm-3">
                                 <div class="form-group">
                         <span>
-                            <input type="text" id="first-name"  name="firstName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                            <input type="text" id="first-name" th:field="*{partnerDTOs[__${itemStat.index}__].firstName}" name="firstName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
 
 
                         </span>
@@ -208,12 +208,12 @@
                             </span>
 
                         </div>
-                        <div class="row" style="position: relative; top:-190px;; right:-8%;">
+                        <div class="row" style="position: relative; top:-190px; right:-8%;">
 
                             <div class="col-sm-3">
                                 <div class="form-group">
                             <span>
-                              <input type="text"    name="middleName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                              <input type="text"  th:field="*{partnerDTOs[__${itemStat.index}__].middleName}"  name="middleName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                             </span>
                                 </div>
 
@@ -242,7 +242,7 @@
 
                                 <div class="form-group">
                                     <span>
-                                        <input type="text" id="last-name"  name="lastName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                                        <input type="text" th:field="*{partnerDTOs[__${itemStat.index}__].lastName}" id="last-name"  name="lastName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
 
                                     </span>
                                 </div>
@@ -268,7 +268,7 @@
                             <div class="col-sm-3">
                                 <div class="form-group">
                         <span>
-                            <select  class="form-control" name="suffix" style="  border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                            <select  class="form-control" th:field="*{partnerDTOs[__${itemStat.index}__].suffix}" name="suffix" style="  border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                 <option value=""></option>
                                 <option value="mr">Mr</option>
                                 <option value="mrs">Mrs</option>
@@ -291,7 +291,7 @@
                             <div class="col-sm-3">
                                 <div class="form-group">
                                         <span>
-                                            <select  id="owner-citizenship"  class="form-control" name="suffix"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                            <select   th:field="*{partnerDTOs[__${itemStat.index}__].citizenShip}" id="owner-citizenship"  class="form-control" name="owner-citizenship"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
                                                 <option value="X1">UNITED STATES OF AMERICA</option>
                                                 <option value="B2">AFGHANISTAN</option>
