@@ -45,6 +45,15 @@ public class Owner extends Contact{
 
     private String address3;
 
+    ///////////////////////////////////////////
+    // sole proprietorship
+    ///////////////////////////////////////////
+    private String ownerName;
+
+    private String ownerAdditionalName;
+
+    private String ownerOrganizationState;
+
 
     public BaseTrademarkApplication getTrademarkApplication() {
         return trademarkApplication;
@@ -147,10 +156,29 @@ public class Owner extends Contact{
 
     }
 
+    public String getOwnerName() {
+        return ownerName;
+    }
 
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
+    }
 
+    public String getOwnerAdditionalName() {
+        return ownerAdditionalName;
+    }
 
+    public void setOwnerAdditionalName(String ownerAdditionalName) {
+        this.ownerAdditionalName = ownerAdditionalName;
+    }
 
+    public String getOwnerOrganizationState() {
+        return ownerOrganizationState;
+    }
+
+    public void setOwnerOrganizationState(String ownerOrganizationState) {
+        this.ownerOrganizationState = ownerOrganizationState;
+    }
 
     @Override
     public boolean equals(Object o) {

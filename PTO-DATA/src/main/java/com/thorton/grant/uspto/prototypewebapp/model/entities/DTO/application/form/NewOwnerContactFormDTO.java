@@ -32,6 +32,23 @@ private String ownerWebSite;
 
 private String ownerPhone;
 
+
+
+
+//////////////////////////////////////////////
+// owner sole proprietorship
+//////////////////////////////////////////////
+
+private String ownerName;
+
+private String ownerAdditionalName; // this is basically a enum
+
+private String ownerOrganizationState;
+
+
+
+
+
 private String appInternalID;
 
     public String getAppInternalID() {
@@ -168,5 +185,29 @@ private String appInternalID;
 
     public void setOwnerPhone(String ownerPhone) {
         this.ownerPhone = ownerPhone;
+    }
+
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
+    }
+
+    public String getOwnerAdditionalName() {
+        return ownerAdditionalName;
+    }
+
+    public void setOwnerAdditionalName(String ownerAdditionalName) {
+        this.ownerAdditionalName = ownerAdditionalName;
+    }
+
+    public String getOwnerOrganizationState() {
+        return ownerOrganizationState;
+    }
+
+    public void setOwnerOrganizationState(String ownerOrganizationState) {
+        this.ownerOrganizationState = ownerOrganizationState;
     }
 }
