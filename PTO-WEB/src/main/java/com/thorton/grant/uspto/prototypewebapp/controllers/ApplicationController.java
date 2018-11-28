@@ -646,6 +646,22 @@ public class ApplicationController {
         if(newOwnerContactFormDTO.getOwnerPhone() != ""){
             owner.setPrimaryPhonenumber(newOwnerContactFormDTO.getOwnerPhone());
         }
+
+        // set new fields that are specific to sole Proprietorship
+        // should be 3 fields
+        // check for null then add
+        if(newOwnerContactFormDTO.getOwnerName() != ""){
+            owner.setOwnerName(newOwnerContactFormDTO.getOwnerName());
+        }
+
+        if(newOwnerContactFormDTO.getOwnerAdditionalName() !=  ""){
+            owner.setOwnerAdditionalName(newOwnerContactFormDTO.getOwnerAdditionalName());
+        }
+        if(newOwnerContactFormDTO.getOwnerOrganizationState() != ""){
+            owner.setOwnerOrganizationState(newOwnerContactFormDTO.getOwnerOrganizationState());
+        }
+
+
         owner.setClient(ptoUser);
         ptoUser.addOwner(owner);
         ptoUserService.save(ptoUser);
