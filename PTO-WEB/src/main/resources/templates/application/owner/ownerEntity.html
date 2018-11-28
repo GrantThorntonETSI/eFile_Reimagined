@@ -442,6 +442,7 @@
 
     var ownerDomIndvFormURL = "../../application/owner/Ind/info/?trademarkID="+appInternalID;
     var ownerDomUSSolPFormURL = "../../application/owner/us/solp/?trademarkID="+appInternalID;
+    var ownerDomUScorpFormURL = "../../application/owner/us/corp/?trademarkID="+appInternalID;
 
 </script>
 
@@ -567,12 +568,7 @@
 
             $('#domestic-entity-dropdown').change( function () {
 
-                var parseStr = this.value;
-                // var start = parseStr.indexOf('?');
-                //var link_prefix = parseStr.substring(0,start);
-                //var subtype_val = parseStr.substring(start+1, parseStr.length);
-                var subtype_val = parseStr;
-                var link_prefix=""
+                var subtype_val = this.value;
                 if(subtype_val == "Individual"){
                     /////////////////////////////////////
                     // load form us domestic individual
@@ -586,6 +582,15 @@
                     // load form us domestic individual
                     /////////////////////////////////////
                     $.post(ownerDomUSSolPFormURL, function(data){
+                        $("#ownerEntityForm").html(data).fadeIn();
+                    });
+                }
+
+                if(subtype_val == "Corporation"){
+                    /////////////////////////////////////
+                    // load form us domestic individual
+                    /////////////////////////////////////
+                    $.post(ownerDomUScorpFormURL, function(data){
                         $("#ownerEntityForm").html(data).fadeIn();
                     });
                 }
