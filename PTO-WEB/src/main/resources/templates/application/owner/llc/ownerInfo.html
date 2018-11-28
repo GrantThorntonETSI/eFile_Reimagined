@@ -36,7 +36,7 @@
 
                         <div class="col-sm-3">
                             <label for="ownername"><b style="color: red">&#42;</b>Owner Name</label>
-                            <input type="text" class="form-control rounded-borders" id="ownername" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                            <input type="text" class="form-control rounded-borders" id="ownername"  th:field="*{ownerName}" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
                         </div>
                     </div>
 
@@ -73,7 +73,7 @@
                     </div>
                     <div class="row" style="position: relative; top:-190px; right:-85px;">
                         <div class="col-sm-3">
-                            <label><b style="color: red">&#42;</b>State of Incorporation</label>
+                            <label><b style="color: red">&#42;</b>State Where Legally Organized</label>
                             <select  class="form-control" name="State" th:field="*{ownerState}"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" >
                                 <option  value="none"></option>
                                 <option  value="AL">Alabama</option>

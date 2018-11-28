@@ -55,6 +55,9 @@ public class Owner extends Contact{
     private String ownerOrganizationState;
 
 
+    private String ownerDisplayname;
+
+
     public BaseTrademarkApplication getTrademarkApplication() {
         return trademarkApplication;
     }
@@ -178,6 +181,14 @@ public class Owner extends Contact{
 
     public void setOwnerOrganizationState(String ownerOrganizationState) {
         this.ownerOrganizationState = ownerOrganizationState;
+    }
+
+    public String getOwnerDisplayname() {
+        return ownerDisplayname;
+    }
+
+    public void setOwnerDisplayname(String ownerDisplayname) {
+        this.ownerDisplayname = ownerDisplayname;
     }
 
     @Override

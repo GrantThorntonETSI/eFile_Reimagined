@@ -604,8 +604,14 @@ public class ApplicationController {
 
         System.out.println("OWNER SUB TYPE : "+owner.getOwnersubType());
         // transfer and reset owner type and subtype
-        owner.setFirstName(newOwnerContactFormDTO.getFirstName());
-        owner.setLastName(newOwnerContactFormDTO.getLastName());
+
+        if(newOwnerContactFormDTO.getFirstName()== ""){
+            owner.setOwnerDisplayname(newOwnerContactFormDTO.getFirstName()+ " "+newOwnerContactFormDTO.getLastName());
+            owner.setFirstName(newOwnerContactFormDTO.getFirstName());
+        }
+        if(newOwnerContactFormDTO.getLastName()== "") {
+            owner.setLastName(newOwnerContactFormDTO.getLastName());
+        }
         if(newOwnerContactFormDTO.getMiddleName() != ""){
             owner.setMidlleName(newOwnerContactFormDTO.getMiddleName());
         }
@@ -652,6 +658,7 @@ public class ApplicationController {
         // check for null then add
         if(newOwnerContactFormDTO.getOwnerName() != ""){
             owner.setOwnerName(newOwnerContactFormDTO.getOwnerName());
+            owner.setOwnerDisplayname(newOwnerContactFormDTO.getOwnerName());
         }
 
         if(newOwnerContactFormDTO.getOwnerAdditionalName() !=  ""){
@@ -660,6 +667,8 @@ public class ApplicationController {
         if(newOwnerContactFormDTO.getOwnerOrganizationState() != ""){
             owner.setOwnerOrganizationState(newOwnerContactFormDTO.getOwnerOrganizationState());
         }
+
+
 
 
         owner.setClient(ptoUser);
@@ -685,7 +694,7 @@ public class ApplicationController {
 
         for(Iterator<Owner> iter = ptoUser.getMyOwners().iterator(); iter.hasNext(); ) {
             owner1 = iter.next();
-            contactNames.add(owner1.getFirstName()+" "+owner1.getLastName());
+            contactNames.add(owner.getOwnerDisplayname());
             contactEmails.add(owner1.getEmail());
             contactSubTypes.add(owner1.getOwnersubType());
 
@@ -708,7 +717,7 @@ public class ApplicationController {
 
         if(applicationOwner != null){
 
-            ownerContactNames.add( applicationOwner.getFirstName() + " "+applicationOwner.getLastName());
+            ownerContactNames.add( applicationOwner.getOwnerDisplayname());
         }
         else{
 
