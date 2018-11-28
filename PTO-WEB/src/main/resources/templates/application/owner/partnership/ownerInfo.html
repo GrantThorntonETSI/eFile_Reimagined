@@ -3,7 +3,7 @@
 
 <head >
     <meta charset="UTF-8">
-    <title>Owner Information - Corporation</title>
+    <title>Owner Information - Partnership</title>
 </head>
 <body>
 
@@ -36,7 +36,7 @@
 
                         <div class="col-sm-3">
                             <label for="ownername"><b style="color: red">&#42;</b>Owner Name</label>
-                            <input type="text" class="form-control rounded-borders" id="ownername" th:field="*{ownerName}"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                            <input type="text" class="form-control rounded-borders" id="ownername"  th:field="*{ownerName}" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
                         </div>
                     </div>
 
@@ -73,7 +73,7 @@
                     </div>
                     <div class="row" style="position: relative; top:-190px; right:-85px;">
                         <div class="col-sm-3">
-                            <label><b style="color: red">&#42;</b>State of Incorporation</label>
+                            <label><b style="color: red">&#42;</b>State Where Legally Organized</label>
                             <select  class="form-control" name="State" th:field="*{ownerState}"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" >
                                 <option  value="none"></option>
                                 <option  value="AL">Alabama</option>
@@ -134,8 +134,45 @@
                     </div>
 
 
+                    <div class=" card-header-rose card-header-text" style="margin-top: 20px; position: relative; top:-190px; left:-20px; " >
+
+                        <div class="card-text">
+
+                            <h5 class="card-title"><b style="color: black; color: rgb(0, 0, 0); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">General Partners</b></h5>
+
+                        </div>
+                        <hr style="height:3px; position:relative; top:-20px; left:-11.5%; max-width: 80.1%">
+                    </div>
+                    <div class="row" style="position: relative; top:-190px; right:-85px;">
+                        <div class="col-sm-3">
+                            <label><b style="color: red">&#42;</b>Select Entity Type</label>
+
+                            <span>
+                                <select  class="form-control" name="nameType"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                     <option id="opt-domestic-ind" value="Individual"  >Individual</option>
+
+                                    <option id="opt-domestic-soleP" value="Sole Proprietorship" >Sole Proprietorship</option>
+
+                                    <option id="opt-domestic-corp" value="Corporation">Corporation</option>
+
+                                    <option id="opt-domestic-llc" value="Limited Liability Company" >Limited Liability Company</option>
+
+                                    <option  id="opt-domestic-part" value="Partnership" >Partnership</option>
 
 
+                                    <option id="opt-domestic-llp" value="Limited Partnership" >Limited Partnership</option>
+
+                                    <option id="opt-domestic-jvc" value="Joint Venture">Joint Venture</option>
+
+                                    <option id="opt-domestic-trt" value="Trust">Trust</option>
+
+                                    <option id="opt-domestic-est" value="Estate">Estate</option>
+
+                                </select>
+                            </span>
+
+                        </div>
+                    </div>
 
 
 
@@ -152,6 +189,7 @@
                         </div>
                         <hr style="height:3px; position:relative; top:-20px; left:-11.5%; max-width: 80.1%">
                     </div>
+
 
 
 
@@ -789,9 +827,6 @@
 
 
 
-
-
-
 </div>
 
 
@@ -829,6 +864,28 @@
 
 
         ////////////////////////////////////////////////////
+        // auto save jquery section
+        ////////////////////////////////////////////////////
+
+
+
+
+
+
+        /////////////////////////////////////////////////////
+        // end of auto save
+        /////////////////////////////////////////////////////
+
+
+
+
+
+        ////////////////////////////////////////////////////
+        // set server specific link urls
+        // set links for traversal buttons
+        ////////////////////////////////////////////////////
+        //alert(window.location.href);
+
 
     });
 

@@ -445,6 +445,8 @@
     var ownerDomUScorpFormURL = "../../application/owner/us/corp/?trademarkID="+appInternalID;
     var ownerDomUSllcFormURL = "../../application/owner/us/llc/?trademarkID="+appInternalID;
 
+    var ownerDomUSpartnershipFormURL = "../../application/owner/us/partnership/?trademarkID="+appInternalID;
+
 
 
 
@@ -603,10 +605,20 @@
                     /////////////////////////////////////
                     // load form us domestic individual
                     /////////////////////////////////////
-                    $.post(ownerDomUScorpFormURL, function(data){
+                    $.post(ownerDomUSllcFormURL, function(data){
                         $("#ownerEntityForm").html(data).fadeIn();
                     });
                 }
+                if(subtype_val == "Partnership"){
+                    /////////////////////////////////////
+                    // load form us domestic individual
+                    /////////////////////////////////////
+                    $.post(ownerDomUSpartnershipFormURL, function(data){
+                        $("#ownerEntityForm").html(data).fadeIn();
+                    });
+                }
+
+
                 saveProjectInfo("set-Owner-entity-types", "US"+"+"+subtype_val, appInternalID); // static from radio buttton
             });
 
