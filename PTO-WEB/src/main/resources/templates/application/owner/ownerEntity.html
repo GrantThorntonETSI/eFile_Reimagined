@@ -357,38 +357,24 @@
                     <div   style="opacity: 1; width: 222px; min-height: 70px; transform: rotate(0deg) translate(-177px, -505px) translate(177px, 505px) rotate(0deg);">
                         <select id="domestic-entity-dropdown" class="domestic-entity-dropdown"  style="min-height:35px; mix-blend-mode: normal; color: rgb(0, 0, 0); border-width: 1px; border-color: rgb(200, 200, 200); border-style: solid; border-radius: 5px; font-size: 16px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; text-align-last: left; box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px 0px inset;" >
                             <option value="#"></option>
-                            <option id="opt-domestic-ind" value="Individual" th:if="${baseTrademarkApplication.ownerSubType != 'Individual'}" >Individual</option>
-                            <option id="opt-domestic-ind"  value="Individual" th:if="${baseTrademarkApplication.ownerSubType == 'Individual'}"  selected>Individual</option>
+                            <option id="opt-domestic-ind" value="Individual"  >Individual</option>
 
-                            <option id="opt-domestic-soleP"  value="Sole Proprietorship" th:if="${baseTrademarkApplication.ownerSubType == 'Sole Proprietorship'}" selected>Sole Proprietorship</option>
-                            <option id="opt-domestic-soleP" value="Sole Proprietorship" th:if="${baseTrademarkApplication.ownerSubType != 'Sole Proprietorship'}">Sole Proprietorship</option>
+                            <option id="opt-domestic-soleP" value="Sole Proprietorship" >Sole Proprietorship</option>
 
+                            <option id="opt-domestic-corp" value="Corporation">Corporation</option>
 
+                            <option id="opt-domestic-llc" value="Limited Liability Company" >Limited Liability Company</option>
 
-                            <option id="opt-domestic-corp" value="Corporation" th:if="${baseTrademarkApplication.ownerSubType == 'Corporation'}" selected>Corporation</option>
-                            <option id="opt-domestic-corp" value="Corporation" th:if="${baseTrademarkApplication.ownerSubType != 'Corporation'}">Corporation</option>
-
-                            <option  id="opt-domestic-llc"  value="Limited Liability Company" th:if="${baseTrademarkApplication.ownerSubType == 'Limited Liability Company'}" selected>Limited Liability Company</option>
-                            <option id="opt-domestic-llc" value="Limited Liability Company" th:if="${baseTrademarkApplication.ownerSubType != 'Limited Liability Company'}">Limited Liability Company</option>
+                            <option  id="opt-domestic-part" value="Partnership" >Partnership</option>
 
 
-                            <option id="opt-domestic-part" value="Partnership" th:if="${baseTrademarkApplication.ownerSubType == 'Partnership'}" selected>Partnership</option>
-                            <option  id="opt-domestic-part" value="Partnership" th:if="${baseTrademarkApplication.ownerSubType != 'Partnership'}">Partnership</option>
+                            <option id="opt-domestic-llp" value="Limited Partnership" >Limited Partnership</option>
 
+                            <option id="opt-domestic-jvc" value="Joint Venture">Joint Venture</option>
 
-                            <option id="opt-domestic-llp" value="Limited Partnership" th:if="${baseTrademarkApplication.ownerSubType == 'Limited Partnership'}" selected>Limited Partnership</option>
-                            <option id="opt-domestic-llp" value="Limited Partnership" th:if="${baseTrademarkApplication.ownerSubType != 'Limited Partnership'}">Limited Partnership</option>
+                            <option id="opt-domestic-trt" value="Trust">Trust</option>
 
-
-                            <option id="opt-domestic-jvc" value="Joint Venture" th:if="${baseTrademarkApplication.ownerSubType == 'Joint Venture'}" selected>Joint Venture</option>
-                            <option id="opt-domestic-jvc" value="Joint Venture" th:if="${baseTrademarkApplication.ownerSubType != 'Joint Venture'}">Joint Venture</option>
-
-                            <option id="opt-domestic-trt" value="Trust" th:if="${baseTrademarkApplication.ownerSubType == 'Trust'}" selected>Trust</option>
-                            <option id="opt-domestic-trt" value="Trust" th:if="${baseTrademarkApplication.ownerSubType != 'Trust'}">Trust</option>
-
-
-                            <option id="opt-domestic-est" value="Estate" th:if="${baseTrademarkApplication.ownerSubType == 'Estate'}" selected>Estate</option>
-                            <option id="opt-domestic-est" value="Estate" th:if="${baseTrademarkApplication.ownerSubType != 'Estate'}">Estate</option>
+                            <option id="opt-domestic-est" value="Estate">Estate</option>
                         </select>
                     </div>
 
