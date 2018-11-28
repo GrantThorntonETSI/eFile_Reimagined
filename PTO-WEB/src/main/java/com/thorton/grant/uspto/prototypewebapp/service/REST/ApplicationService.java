@@ -4,6 +4,8 @@ package com.thorton.grant.uspto.prototypewebapp.service.REST;
 import com.thorton.grant.uspto.prototypewebapp.config.host.bean.endPoint.HostBean;
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.participants.LawyerService;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.participants.OwnerService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 
@@ -304,6 +306,7 @@ public class ApplicationService  extends  BaseRESTapiService{
         //////////////////////////////////////////////////////////
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+        LawyerService lawyerService = getServiceBeanFactory().getLawyerService();
         //////////////////////////////////////////////////////////
         // find contact via email from PTOUser
         // create a copy of the contact object
@@ -332,6 +335,7 @@ public class ApplicationService  extends  BaseRESTapiService{
                 else {
                     baseTrademarkApplication.removeAvailableLawyer(delLawyer);
                 }
+                lawyerService.delete(delLawyer);
 
             }
         }
@@ -472,6 +476,7 @@ public class ApplicationService  extends  BaseRESTapiService{
         //////////////////////////////////////////////////////////
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+        OwnerService ownerService = getServiceBeanFactory().getOwnerService();
         //////////////////////////////////////////////////////////
         // find contact via email from PTOUser
         // create a copy of the contact object
@@ -482,6 +487,7 @@ public class ApplicationService  extends  BaseRESTapiService{
         Owner owner = baseTrademarkApplication.getOwner();
         if(owner != null){ // unset previous owner
             baseTrademarkApplication.setOwner(null);
+            ownerService.delete(owner);
         }
 
         String responseMsg = "Contact with email address :"+contact_email+"  have been removed as Primary Owner.";
