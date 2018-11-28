@@ -3,136 +3,238 @@
 
 <head >
     <meta charset="UTF-8">
-    <title>Owner Information</title>
+    <title>Owner Information - Sole Proprietorship</title>
 </head>
 <body>
 
 
 
 <!-- End Navbar -->
-<div class="content" style="display: none; background-color: white; min-height: 1500px; min-width: 1200px; position: relative; top:-220px; bottom: -10%; left:-20px;" >
-    <div class="container-fluid"  >
+<div class="content" style="display: none; background-color: white; min-height: 1500px; min-width: 1200px; position: relative; top:-220px; bottom: -10%; left:-10px;" >
+    <div class="container-fluid" >
 
         <div class="col-sm-12" >
             <div class="form-container base-page" style="position: relative; bottom:-170px;">
 
 
 
-            <div class="row" style="position: relative; top:-250px; left:-10px; ">
+                <div class="row" style="position: relative; top:-250px; left:-10px; ">
 
-                <div class="card-text">
+                    <div class="card-text">
 
-                    <h5 class="card-title"><b style="color: black; color: rgb(0, 0, 0); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">Owner Name Information</b><a  style="text-decoration: none;" data-toggle="tooltip" title="If the owner only have one name, insert the words First Name Unavailable (FNU) in the first name field and the name to be entered in the surename field."><i class="material-icons" style="position: relative; top:8px; right:-25px;">info_outline</i></a></h5>
+                        <h5 class="card-title"><b style="color: black; color: rgb(0, 0, 0); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">Owner Information</b><a  style="text-decoration: none;" data-toggle="tooltip" title="If the owner only have one name, insert the words First Name Unavailable (FNU) in the first name field and the name to be entered in the surename field."><i class="material-icons" style="position: relative; top:8px; right:-25px;">info_outline</i></a></h5>
 
+                    </div>
+                    <hr style="height:3px; position:relative; top:-20px; left:-11.5%; max-width: 80.1%">
                 </div>
-                <hr style="height:3px; position:relative; top:-20px; left:-11.5%; max-width: 80.1%">
-            </div>
 
-    <form method="post" style="" id="addNewOwnerForm" action="/owner/add"  class="form-horizontal"  th:object="${addNewOwnerContactFormDTO}">
-
-            <!--start of first name field -->
+                <form method="post" style="" id="addNewOwnerForm" action="/owner/add"  class="form-horizontal"  th:object="${addNewOwnerContactFormDTO}">
 
 
-            <div class="row" style="position: relative; top:-250px;  right:-7%;">
+
+                    <div class="row" style="position: relative; top:-250px; right:-85px;">
+
+                        <div class="col-sm-3">
+                            <label for="ownername"><b style="color: red">&#42;</b>Owner Name</label>
+                            <input type="text" class="form-control rounded-borders" id="ownername" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                        </div>
+                    </div>
+
+                    <div class="row" style="position: relative; top:-250px; right:-85px;">
+                        <div class="col-sm-3">
+                        <label for="additionalname">Additional Name</label>
+                                <select class="form-control" id="additionalname" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" >
+                                    <option value="Select">Select</option>
+                                    <option value="DBA">Doing Business As (DBA)</option>
+                                    <option value="TA">Trading As (TA)</option>
+                                    <option value="AKA">Also Known As (AKA)</option>
+                                    <option value="Formerly">Formerly</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="row" style="position: relative; top:-250px; right:-85px;">
+                        <div class="col-sm-3">
+                            <label><b style="color: red">&#42;</b>State of Organization</label>
+                            <select  class="form-control custom-select" name="State" th:field="*{ownerState}"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" >
+                                <option  value="none"></option>
+                                <option  value="AL">Alabama</option>
+                                <option  value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="CA">California</option>
+                                <option value="CO">Colorado</option>
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="DC">District of Columbia</option>
+                                <option value="FL">Florida</option>
+                                <option value="GA">Georgia</option>
+                                <option value="HI">Hawaii</option>
+                                <option value="ID">Idaho</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IN">Indiana</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="ME">Maine</option>
+                                <option value="MD">Maryland</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="MI">Michigan</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MO">Missouri</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NV">Nevada</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="NY">New York</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="OH">Ohio</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="OR">Oregon</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="TX">Texas</option>
+                                <option value="UT">Utah</option>
+                                <option value="VT">Vermont</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WA">Washington</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="WY">Wyoming</option>
+
+                            </select>
+
+                            </div>
+                    </div>
+
+
+
+
+
+
+
+                    <div class="row" style="position: relative; top:-250px; left:-10px; ">
+
+                        <div class="card-text">
+
+                            <h5 class="card-title"><b style="color: black; color: rgb(0, 0, 0); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">Sole Proprietor Information</b><a  style="text-decoration: none;" data-toggle="tooltip" title="If the owner only have one name, insert the words First Name Unavailable (FNU) in the first name field and the name to be entered in the surename field."><i class="material-icons" style="position: relative; top:8px; right:-25px;">info_outline</i></a></h5>
+
+                        </div>
+                        <hr style="height:3px; position:relative; top:-20px; left:-11.5%; max-width: 80.1%">
+                    </div>
+
+
+
+                    <!--start of first name field -->
+
+
+                    <div class="row" style="position: relative; top:-250px;  right:-7%;">
                      <span>
 
                          <label class="col-sm-2 col-form-label"><b style="color: red">*</b>First Name </label>
                      </span>
 
-            </div>
+                    </div>
 
-            <div class="row" style="position: relative; top:-250px; right:-8%;">
+                    <div class="row" style="position: relative; top:-250px; right:-8%;">
 
-                <div class="col-sm-3">
-                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <div class="form-group">
                         <span>
                             <input type="text" id="first-name"   th:field="*{firstName}"   name="firstName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
 
 
                         </span>
 
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4" style="position: relative; bottom:-5px; right:-80px;">
+                            <div class="form-group first-nameFieldMsgArea" style="display:none;  position: relative; left:-15%;">
+                                <b><span></span></b>
+                            </div>
+                        </div>
+
                     </div>
-                </div>
 
-                <div class="col-sm-4" style="position: relative; bottom:-5px; right:-80px;">
-                    <div class="form-group first-nameFieldMsgArea" style="display:none;  position: relative; left:-15%;">
-                        <b><span></span></b>
-                    </div>
-                </div>
-
-            </div>
-
-            <!--  end of first name field  -->
+                    <!--  end of first name field  -->
 
 
 
-            <div class="row" style="position: relative; top:-250px;  right:-7%;">
+                    <div class="row" style="position: relative; top:-250px;  right:-7%;">
                     <span>
                          <label class="col-sm-2 col-form-label">Middle Name</label>
 
                     </span>
 
-            </div>
-            <div class="row" style="position: relative; top:-250px; right:-8%;">
+                    </div>
+                    <div class="row" style="position: relative; top:-250px; right:-8%;">
 
-                    <div class="col-sm-3">
-                        <div class="form-group">
+                        <div class="col-sm-3">
+                            <div class="form-group">
                             <span>
                               <input type="text"   th:field="*{middleName}"  name="middleName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                             </span>
+                            </div>
+
                         </div>
 
-                    </div>
-
-                    <div class="col-sm-4" style=" position: relative; bottom:-35px;">
-                        <div class="form-group middle-nameFieldMsgArea" style="display:none;position: relative; left:-15%;">
-                            <b><span></span></b>
+                        <div class="col-sm-4" style=" position: relative; bottom:-35px;">
+                            <div class="form-group middle-nameFieldMsgArea" style="display:none;position: relative; left:-15%;">
+                                <b><span></span></b>
+                            </div>
                         </div>
                     </div>
-            </div>
 
 
 
-            <div class="row" style="position: relative; top:-250px;  right:-7%;">
+                    <div class="row" style="position: relative; top:-250px;  right:-7%;">
                     <span>
                         <label class="col-sm-2 col-form-label"><b style="color: red">*</b>Last Name </label>
 
                     </span>
 
-            </div>
+                    </div>
 
-            <div class="row" style="position: relative; top:-250px; right:-8%;">
+                    <div class="row" style="position: relative; top:-250px; right:-8%;">
 
-                <div class="col-sm-3">
+                        <div class="col-sm-3">
 
-                    <div class="form-group">
+                            <div class="form-group">
                         <span>
                             <input type="text" id="last-name"    th:field="*{lastName}" name="lastName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
 
                         </span>
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-4" style=" position: relative; bottom:-5px; right:-80px;">
+                            <div class="form-group last-nameFieldMsgArea" style="display:none; position: relative; left:-15%;">
+                                <b><span></span></b>
+                            </div>
+                        </div>
                     </div>
 
-                </div>
 
-                <div class="col-sm-4" style=" position: relative; bottom:-5px; right:-80px;">
-                    <div class="form-group last-nameFieldMsgArea" style="display:none; position: relative; left:-15%;">
-                        <b><span></span></b>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="row" style="position: relative; top:-250px;  right:-7%;">
+                    <div class="row" style="position: relative; top:-250px;  right:-7%;">
                 <span>
 
                     <label class="col-sm-2 col-form-label">Suffix</label>
                 </span>
-            </div>
+                    </div>
 
-            <div class="row" style="position: relative; top:-250px; right:-8%;">
+                    <div class="row" style="position: relative; top:-250px; right:-8%;">
 
-                <div class="col-sm-3">
-                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <div class="form-group">
                         <span>
                             <select  class="form-control" name="suffix"    th:field="*{suffix}"  style="font-family:Impact; font-weight: bold;   border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                 <option value=""><b></b></option>
@@ -143,26 +245,26 @@
 
                         </span>
 
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="position: relative;bottom:-5px; right:-80px;">
+                            <div class="form-group suffixFieldMsgArea" style="display:none; position: relative; left:-15%;">
+                                <b><span></span></b>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-4" style="position: relative;bottom:-5px; right:-80px;">
-                    <div class="form-group suffixFieldMsgArea" style="display:none; position: relative; left:-15%;">
-                        <b><span></span></b>
+
+                    <div class="row" style="position: relative; top:-960px; left:-5.5%; ">
+                        <div id="TextElementf1b9b6a821ef49b39c5e8f1f9b34dc9c" class="ng-element el-text-2 empty-line-hack font-S-Arial-n4" data-id="8d9671048db0497e97be402509fb1b2f" style="opacity: 1; mix-blend-mode: normal; font-variant: normal; color: rgb(0, 0, 0); font-size: 16px; font-weight: bold; font-style: normal; text-decoration: none; text-align: left; width: 573px; height: 18px; transform: rotate(0deg) translate(164px, 724px) rotate(0deg);"><p>Add&nbsp;additional name if I do business as/or trading under a different name:</p></div>
                     </div>
-                </div>
-            </div>
 
-            <div class="row" style="position: relative; top:-960px; left:-5.5%; ">
-                <div id="TextElementf1b9b6a821ef49b39c5e8f1f9b34dc9c" class="ng-element el-text-2 empty-line-hack font-S-Arial-n4" data-id="8d9671048db0497e97be402509fb1b2f" style="opacity: 1; mix-blend-mode: normal; font-variant: normal; color: rgb(0, 0, 0); font-size: 16px; font-weight: bold; font-style: normal; text-decoration: none; text-align: left; width: 573px; height: 18px; transform: rotate(0deg) translate(164px, 724px) rotate(0deg);"><p>Add&nbsp;additional name if I do business as/or trading under a different name:</p></div>
-            </div>
-
-            <div class="row" style="position: relative; top:-695px; left:-4%; ">
-                <div id="TextElement3c22541d249c4ccdbef101d00bf9c27b" class="ng-element el-text-2 empty-line-hack font-S-Arial-n4" data-id="e663302ac1054b3abb7536d7052cff99" style="opacity: 1; mix-blend-mode: normal; font-variant: normal; color: rgb(0, 0, 0); font-size: 16px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; width: 300px; height: 18px; transform: rotate(0deg) translate(149px, 472px) rotate(0deg);"><p>Type</p></div>
-            </div>
-            <div class="row" style="position: relative; top:-205px; right:-8%; ">
-                <!--default drop down -->
-                <div class="col-sm-3">
-                    <div class="form-group">
+                    <div class="row" style="position: relative; top:-695px; left:-4%; ">
+                        <div id="TextElement3c22541d249c4ccdbef101d00bf9c27b" class="ng-element el-text-2 empty-line-hack font-S-Arial-n4" data-id="e663302ac1054b3abb7536d7052cff99" style="opacity: 1; mix-blend-mode: normal; font-variant: normal; color: rgb(0, 0, 0); font-size: 16px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; width: 300px; height: 18px; transform: rotate(0deg) translate(149px, 472px) rotate(0deg);"><p>Type</p></div>
+                    </div>
+                    <div class="row" style="position: relative; top:-205px; right:-8%; ">
+                        <!--default drop down -->
+                        <div class="col-sm-3">
+                            <div class="form-group">
                         <span>
                             <select  class="form-control" name="nameType"  th:field="*{ownerType}" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                 <option value="none">Select</option>
@@ -173,24 +275,24 @@
 
                             </select>
                         </span>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4" style="position: relative; bottom:-5px; right:-80px;">
+                            <div class="form-group nameTypeFieldMsgArea" style="display:none;position: relative; left:-15%;">
+                                <b><span></span></b>
+                            </div>
+                        </div>
+
                     </div>
-                </div>
 
-                <div class="col-sm-4" style="position: relative; bottom:-5px; right:-80px;">
-                    <div class="form-group nameTypeFieldMsgArea" style="display:none;position: relative; left:-15%;">
-                        <b><span></span></b>
+                    <div class="row" style="position: relative; top:-665px; left:-4% ">
+                        <div id="TextElement3c22541d249c4ccdbef101d00bf9c27b4" class="ng-element el-text-2 empty-line-hack font-S-Arial-n4" data-id="e663302ac1054b3abb7536d7052cff99" style="opacity: 1; mix-blend-mode: normal; font-variant: normal; color: rgb(0, 0, 0); font-size: 16px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; width: 300px; height: 18px; transform: rotate(0deg) translate(149px, 472px) rotate(0deg);"><p>Country of Citizenship<a  style="text-decoration: none;" data-toggle="tooltip" title="If you have dual citizenship only enter the citizenship you would like printed in the Official Gazette."><i class="material-icons" style="position: relative; top:8px; right:-25px;">info_outline</i></a></p></div>
                     </div>
-                </div>
-
-            </div>
-
-            <div class="row" style="position: relative; top:-665px; left:-4% ">
-                <div id="TextElement3c22541d249c4ccdbef101d00bf9c27b4" class="ng-element el-text-2 empty-line-hack font-S-Arial-n4" data-id="e663302ac1054b3abb7536d7052cff99" style="opacity: 1; mix-blend-mode: normal; font-variant: normal; color: rgb(0, 0, 0); font-size: 16px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; width: 300px; height: 18px; transform: rotate(0deg) translate(149px, 472px) rotate(0deg);"><p>Country of Citizenship<a  style="text-decoration: none;" data-toggle="tooltip" title="If you have dual citizenship only enter the citizenship you would like printed in the Official Gazette."><i class="material-icons" style="position: relative; top:8px; right:-25px;">info_outline</i></a></p></div>
-            </div>
-            <div class="row" style="position: relative; top:-175px; right:-8%; margin-bottom: 30px; ">
-                <!--default drop down -->
-                <div class="col-sm-3">
-                    <div class="form-group">
+                    <div class="row" style="position: relative; top:-175px; right:-8%; margin-bottom: 30px; ">
+                        <!--default drop down -->
+                        <div class="col-sm-3">
+                            <div class="form-group">
                                         <span>
                                             <select  id="owner-citizenship"  class="form-control" name="suffix"   th:field="*{ownerCitizenShip}" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
@@ -435,47 +537,47 @@
                                                 <option value="XX">UNKNOWN</option>
                                             </select>
                                         </span>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4" style=" position: relative; bottom:-5px; right:-80px;">
+                            <div class="form-group owner-citizenshipFieldMsgArea" style="display:none; position: relative; left:-15%;">
+                                <b><span></span></b>
+                            </div>
+                        </div>
+
                     </div>
-                </div>
 
-                <div class="col-sm-4" style=" position: relative; bottom:-5px; right:-80px;">
-                    <div class="form-group owner-citizenshipFieldMsgArea" style="display:none; position: relative; left:-15%;">
-                        <b><span></span></b>
+
+
+
+                    <!--                    end of Owner Name Information -->
+
+
+                    <div class=" card-header-rose card-header-text" style="margin-top: 20px; position: relative; top:-180px; left:-20px; " >
+
+                        <div class="card-text">
+
+                            <h5 class="card-title"><b style="color: black; color: rgb(0, 0, 0); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">Owner Address Information</b></h5>
+
+                        </div>
+                        <hr style="height:3px; position:relative; top:-20px; left:-11.5%; max-width: 80.1%">
                     </div>
-                </div>
-
-            </div>
+                    <form class="card-body" style=" margin-top: 20px;">
 
 
-
-
-<!--                    end of Owner Name Information -->
-
-
-            <div class=" card-header-rose card-header-text" style="margin-top: 20px; position: relative; top:-180px; left:-20px; " >
-
-                <div class="card-text">
-
-                    <h5 class="card-title"><b style="color: black; color: rgb(0, 0, 0); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">Owner Address Information</b></h5>
-
-                </div>
-                <hr style="height:3px; position:relative; top:-20px; left:-11.5%; max-width: 80.1%">
-            </div>
-            <form class="card-body" style=" margin-top: 20px;">
-
-
-                <div class="row" style="position: relative; top:-200px; right: -7%; ">
+                        <div class="row" style="position: relative; top:-200px; right: -7%; ">
                          <span>
 
                              <label class="col-sm-2 col-form-label"><b style="color: red">*</b>Country/US Territory</label>
                          </span>
 
-                </div>
+                        </div>
 
-                <div class="row" style="position: relative; top:-200px; right:-8%; ">
+                        <div class="row" style="position: relative; top:-200px; right:-8%; ">
 
-                    <div class="col-sm-3">
-                        <div class="form-group">
+                            <div class="col-sm-3">
+                                <div class="form-group">
                                         <span>
                                              <select   th:field="*{OwnerAddressCountry}"  class="form-control" name="suffix"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
 
@@ -723,361 +825,361 @@
 
                                         </span>
 
+                                </div>
+                            </div>
+                            <div class="col-sm-4" style=" position: relative; bottom:-35px;">
+                                <div class="form-group countryFieldMsgArea2" style="display:none; position: relative; left:-15%;">
+                                    <b><span></span></b>
+                                </div>
+                            </div>
+
+
                         </div>
-                    </div>
-                    <div class="col-sm-4" style=" position: relative; bottom:-35px;">
-                        <div class="form-group countryFieldMsgArea2" style="display:none; position: relative; left:-15%;">
-                            <b><span></span></b>
-                        </div>
-                    </div>
-
-
-                </div>
 
 
 
-                    <div class="row" style="position: relative; top:-200px; right:-7%;">
+                        <div class="row" style="position: relative; top:-200px; right:-7%;">
                              <span>
 
                                  <label class="col-sm-2 col-form-label"><b style="color: red">*</b>Address Line 1</label>
                              </span>
 
-                    </div>
+                        </div>
 
-                    <div class="row" style="position: relative; top:-200px; right:-8%;;">
+                        <div class="row" style="position: relative; top:-200px; right:-8%;;">
 
 
-                        <div class="col-sm-3">
-                            <div class="form-group">
+                            <div class="col-sm-3">
+                                <div class="form-group">
                                     <span>
                                         <input type="text"  th:field="*{ownerAddress1}"    name="Address1" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
                                     </span>
 
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                            <div class="form-group address1FieldMsgArea" style="display:none; position: relative; left:-15%;">
-                                <b><span></span></b>
+                            <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                                <div class="form-group address1FieldMsgArea" style="display:none; position: relative; left:-15%;">
+                                    <b><span></span></b>
+                                </div>
                             </div>
+
+
+
                         </div>
 
 
 
-                    </div>
 
-
-
-
-                <div class="row" style="position: relative; top:-200px; right:-7%;">
+                        <div class="row" style="position: relative; top:-200px; right:-7%;">
                              <span>
 
                                  <label class="col-sm-2 col-form-label">Address Line 2</label>
                              </span>
 
-                </div>
+                        </div>
 
-                <div class="row" style="position: relative; top:-200px; right:-8%;">
+                        <div class="row" style="position: relative; top:-200px; right:-8%;">
 
-                    <div class="col-sm-3">
-                        <div class="form-group">
+                            <div class="col-sm-3">
+                                <div class="form-group">
                             <span>
                                 <input type="text"  th:field="*{ownerAddress2}"   name="Address2" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
 
                             </span>
 
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4" style=" position: relative; bottom:-35px;">
+                                <div class="form-group address2FieldMsgArea" style="display:none; position: relative; left:-15%;">
+                                    <b><span></span></b>
+                                </div>
+                            </div>
+
+
+
                         </div>
-                    </div>
-
-                    <div class="col-sm-4" style=" position: relative; bottom:-35px;">
-                        <div class="form-group address2FieldMsgArea" style="display:none; position: relative; left:-15%;">
-                            <b><span></span></b>
-                        </div>
-                    </div>
 
 
 
-                </div>
-
-
-
-                    <div class="row" style="position: relative; top:-200px; right:-7%;">
+                        <div class="row" style="position: relative; top:-200px; right:-7%;">
                                 <span>
                                      <label class="col-sm-2 col-form-label">Address Line 3</label>
 
                                 </span>
 
-                    </div>
-                    <div class="row" style="position: relative; top:-200px; right:-8%;">
+                        </div>
+                        <div class="row" style="position: relative; top:-200px; right:-8%;">
 
-                        <div class="col-sm-3">
-                            <div class="form-group">
+                            <div class="col-sm-3">
+                                <div class="form-group">
                                         <span>
                                           <input type="text" th:field="*{ownerAddress3}"  name="Address3" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                         </span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                                <div class="form-group address3FieldMsgArea" style="display:none; position: relative; left:-15%;">
+                                    <b><span></span></b>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                            <div class="form-group address3FieldMsgArea" style="display:none; position: relative; left:-15%;">
-                                <b><span></span></b>
-                            </div>
-                        </div>
-                    </div>
 
 
-
-                    <div class="row" style="position: relative; top:-200px; right:-7%;">
+                        <div class="row" style="position: relative; top:-200px; right:-7%;">
                                 <span>
                                     <label class="col-sm-2 col-form-label"><b style="color: red">*</b>City</label>
 
                                 </span>
 
-                    </div>
+                        </div>
 
-                    <div class="row" style="position: relative; top:-200px; right:-8%;">
+                        <div class="row" style="position: relative; top:-200px; right:-8%;">
 
-                        <div class="col-sm-3">
+                            <div class="col-sm-3">
 
-                            <div class="form-group">
+                                <div class="form-group">
                                         <span>
                                          <input type="text" th:field="*{ownerCity}"   th:value="${user.city}"  name="City" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
 
                                         </span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                                <div class="form-group cityFieldMsgArea" style="display:none; position: relative; left:-15%;">
+                                    <b><span></span></b>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                            <div class="form-group cityFieldMsgArea" style="display:none; position: relative; left:-15%;">
-                                <b><span></span></b>
-                            </div>
-                        </div>
-                    </div>
 
-
-                    <div class="row" style="position: relative; top:-200px; right:-7%;">
+                        <div class="row" style="position: relative; top:-200px; right:-7%;">
                                 <span>
 
                                     <label class="col-sm-2 col-form-label">State</label>
                                 </span>
-                    </div>
+                        </div>
 
-                    <div class="row" style="position: relative; top:-200px; right:-8%;">
+                        <div class="row" style="position: relative; top:-200px; right:-8%;">
 
-                        <div class="col-sm-3">
+                            <div class="col-sm-3">
 
-                            <div class="form-group">
-                                <select  class="form-control custom-select" name="State" th:field="*{ownerState}"  th:value="${user.state}"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-                                    <option  value="none"></option>
-                                    <option  value="AL">Alabama</option>
-                                    <option  value="AK">Alaska</option>
-                                    <option value="AZ">Arizona</option>
-                                    <option value="AR">Arkansas</option>
-                                    <option value="CA">California</option>
-                                    <option value="CO">Colorado</option>
-                                    <option value="CT">Connecticut</option>
-                                    <option value="DE">Delaware</option>
-                                    <option value="DC">District of Columbia</option>
-                                    <option value="FL">Florida</option>
-                                    <option value="GA">Georgia</option>
-                                    <option value="HI">Hawaii</option>
-                                    <option value="ID">Idaho</option>
-                                    <option value="IL">Illinois</option>
-                                    <option value="IN">Indiana</option>
-                                    <option value="IA">Iowa</option>
-                                    <option value="KS">Kansas</option>
-                                    <option value="KY">Kentucky</option>
-                                    <option value="LA">Louisiana</option>
-                                    <option value="ME">Maine</option>
-                                    <option value="MD">Maryland</option>
-                                    <option value="MA">Massachusetts</option>
-                                    <option value="MI">Michigan</option>
-                                    <option value="MN">Minnesota</option>
-                                    <option value="MS">Mississippi</option>
-                                    <option value="MO">Missouri</option>
-                                    <option value="MT">Montana</option>
-                                    <option value="NE">Nebraska</option>
-                                    <option value="NV">Nevada</option>
-                                    <option value="NH">New Hampshire</option>
-                                    <option value="NJ">New Jersey</option>
-                                    <option value="NM">New Mexico</option>
-                                    <option value="NY">New York</option>
-                                    <option value="NC">North Carolina</option>
-                                    <option value="ND">North Dakota</option>
-                                    <option value="OH">Ohio</option>
-                                    <option value="OK">Oklahoma</option>
-                                    <option value="OR">Oregon</option>
-                                    <option value="PA">Pennsylvania</option>
-                                    <option value="RI">Rhode Island</option>
-                                    <option value="SC">South Carolina</option>
-                                    <option value="SD">South Dakota</option>
-                                    <option value="TN">Tennessee</option>
-                                    <option value="TX">Texas</option>
-                                    <option value="UT">Utah</option>
-                                    <option value="VT">Vermont</option>
-                                    <option value="VA">Virginia</option>
-                                    <option value="WA">Washington</option>
-                                    <option value="WV">West Virginia</option>
-                                    <option value="WI">Wisconsin</option>
-                                    <option value="WY">Wyoming</option>
+                                <div class="form-group">
+                                    <select  class="form-control custom-select" name="State" th:field="*{ownerState}"  th:value="${user.state}"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                        <option  value="none"></option>
+                                        <option  value="AL">Alabama</option>
+                                        <option  value="AK">Alaska</option>
+                                        <option value="AZ">Arizona</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="CA">California</option>
+                                        <option value="CO">Colorado</option>
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="DC">District of Columbia</option>
+                                        <option value="FL">Florida</option>
+                                        <option value="GA">Georgia</option>
+                                        <option value="HI">Hawaii</option>
+                                        <option value="ID">Idaho</option>
+                                        <option value="IL">Illinois</option>
+                                        <option value="IN">Indiana</option>
+                                        <option value="IA">Iowa</option>
+                                        <option value="KS">Kansas</option>
+                                        <option value="KY">Kentucky</option>
+                                        <option value="LA">Louisiana</option>
+                                        <option value="ME">Maine</option>
+                                        <option value="MD">Maryland</option>
+                                        <option value="MA">Massachusetts</option>
+                                        <option value="MI">Michigan</option>
+                                        <option value="MN">Minnesota</option>
+                                        <option value="MS">Mississippi</option>
+                                        <option value="MO">Missouri</option>
+                                        <option value="MT">Montana</option>
+                                        <option value="NE">Nebraska</option>
+                                        <option value="NV">Nevada</option>
+                                        <option value="NH">New Hampshire</option>
+                                        <option value="NJ">New Jersey</option>
+                                        <option value="NM">New Mexico</option>
+                                        <option value="NY">New York</option>
+                                        <option value="NC">North Carolina</option>
+                                        <option value="ND">North Dakota</option>
+                                        <option value="OH">Ohio</option>
+                                        <option value="OK">Oklahoma</option>
+                                        <option value="OR">Oregon</option>
+                                        <option value="PA">Pennsylvania</option>
+                                        <option value="RI">Rhode Island</option>
+                                        <option value="SC">South Carolina</option>
+                                        <option value="SD">South Dakota</option>
+                                        <option value="TN">Tennessee</option>
+                                        <option value="TX">Texas</option>
+                                        <option value="UT">Utah</option>
+                                        <option value="VT">Vermont</option>
+                                        <option value="VA">Virginia</option>
+                                        <option value="WA">Washington</option>
+                                        <option value="WV">West Virginia</option>
+                                        <option value="WI">Wisconsin</option>
+                                        <option value="WY">Wyoming</option>
 
-                                </select>
+                                    </select>
 
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                                <div class="form-group stateFieldMsgArea" style="display:none; position: relative; left:-15%;">
+                                    <b><span></span></b>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                            <div class="form-group stateFieldMsgArea" style="display:none; position: relative; left:-15%;">
-                                <b><span></span></b>
-                            </div>
-                        </div>
-                    </div>
 
-
-                <div class="row" style="position: relative; top:-200px; right:-7%;">
+                        <div class="row" style="position: relative; top:-200px; right:-7%;">
                                 <span>
                                      <label class="col-sm-2 col-form-label">Zip Code</label>
 
                                 </span>
 
-                </div>
-                <div class="row" style="position: relative; top:-200px; right:-8%;">
+                        </div>
+                        <div class="row" style="position: relative; top:-200px; right:-8%;">
 
-                    <div class="col-sm-3">
-                        <div class="form-group">
+                            <div class="col-sm-3">
+                                <div class="form-group">
                                         <span>
                                           <input type="text" name="zipcode" th:field="*{ownerZipcode}"  placeholder="XXXXX" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                         </span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                                <div class="form-group zipcodeFieldMsgArea" style="display:none; position: relative; left:-15%;">
+                                    <b><span></span></b>
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                        <div class="form-group zipcodeFieldMsgArea" style="display:none; position: relative; left:-15%;">
-                            <b><span></span></b>
+
+                        <div class="row" style="position: relative; top:-210px; left:-10px; ">
+
+                            <div class="card-text">
+
+                                <h5 class="card-title"><b style="color: black; color: rgb(0, 0, 0); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">Additional Information</b></h5>
+
+                            </div>
+                            <hr style="height:3px; position:relative; top:-20px; left:-11.5%; max-width: 80.1%">
                         </div>
-                    </div>
-                </div>
 
-
-                <div class="row" style="position: relative; top:-210px; left:-10px; ">
-
-                    <div class="card-text">
-
-                        <h5 class="card-title"><b style="color: black; color: rgb(0, 0, 0); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">Additional Information</b></h5>
-
-                    </div>
-                    <hr style="height:3px; position:relative; top:-20px; left:-11.5%; max-width: 80.1%">
-                </div>
-
-                <div class="row" style="position: relative; top:-230px; right:-7%;">
+                        <div class="row" style="position: relative; top:-230px; right:-7%;">
                         <span>
                              <label class="col-sm-2 col-form-label"><b style="color: red">*</b>Email Address</label>
 
                         </span>
 
-                </div>
-                <div class="row" style="position: relative; top:-230px; right:-8%;">
+                        </div>
+                        <div class="row" style="position: relative; top:-230px; right:-8%;">
 
-                    <div class="col-sm-3">
-                        <div class="form-group">
+                            <div class="col-sm-3">
+                                <div class="form-group">
                                 <span>
                                     <input type="email" name="email" th:field="*{ownerEmail}"  placeholder="" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
                                 </span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                                <div class="form-group emailFieldMsgArea" style="display:none; position: relative; left:-15%;">
+                                    <b><span></span></b>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                        <div class="form-group emailFieldMsgArea" style="display:none; position: relative; left:-15%;">
-                            <b><span></span></b>
-                        </div>
-                    </div>
-                </div>
 
 
-                <div class="row" style="position: relative; top:-230px; right:-7%;">
+                        <div class="row" style="position: relative; top:-230px; right:-7%;">
                     <span>
                          <label class="col-sm-2 col-form-label">Website URL</label>
 
                     </span>
 
-                </div>
-                <div class="row" style="position: relative; top:-230px; right:-8%;">
+                        </div>
+                        <div class="row" style="position: relative; top:-230px; right:-8%;">
 
-                    <div class="col-sm-3">
-                        <div class="form-group">
+                            <div class="col-sm-3">
+                                <div class="form-group">
                                 <span>
                                   <input type="url" name="website" th:field="*{ownerWebSite}"  placeholder="" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                 </span>
-                        </div>
-                    </div>
+                                </div>
+                            </div>
 
-                    <div class="col-sm-4" style="display:none; position: relative; bottom:-35px;">
-                        <div class="form-group webURLFieldMsgArea" style="position: relative; left:-15%;">
-                            <b><span></span></b>
+                            <div class="col-sm-4" style="display:none; position: relative; bottom:-35px;">
+                                <div class="form-group webURLFieldMsgArea" style="position: relative; left:-15%;">
+                                    <b><span></span></b>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="row" style="position: relative; top:-230px; right:-7%;">
+                        <div class="row" style="position: relative; top:-230px; right:-7%;">
                                 <span>
                                      <label class="col-sm-3 col-form-label">Phone Number</label>
 
                                 </span>
-                                <span>
+                            <span>
                                      <label class="col-sm-2 col-form-label">Ext.</label>
 
                                 </span>
 
-                </div>
-
-
-                <div class="row" style="position: relative; top:-230px; right:-8%;">
-                    <div class="col-sm-1">
-                        <select  class="form-control" name="phone-type"  value="Type" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-                            <option value="cell"><b>Cell</b></option>
-                            <option value="home"><b>Home</b></option>
-                            <option value="work"><b>Work</b></option>
-                            <option value="fax"><b>Fax</b></option>
-                        </select>
-                    </div>
-                    <div class="col-sm-2">
-                        <input type="number" id="phone" name="Phone" class="form-control"  th:field="*{ownerPhone}"   style=" border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-                    </div>
-                    <div class="col-sm-1">
-                        <input type="number" id="ext" name="Phone" class="form-control"   style=" border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-                    </div>
-
-                    <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                        <div class="form-group phoneFieldMsgArea" style="display:none; position: relative; left:-15%;">
-                            <b><span></span></b>
                         </div>
-                    </div>
-                </div>
-
-                <div class="row" style="position: relative; top:-590px;  left:-5%;">
-                    <button id="addNewPhoneNumber" class="ng-element el-button font-S-Arial-n4 interactive" data-id="fdd4cf621d614e66a1ba02d4820e53a9" style="opacity: 1; mix-blend-mode: normal; border-color: rgb(221, 221, 221); background-color: rgb(0, 120, 171); background-image: none; color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center; border-width: 0px; border-radius: 3px; border-style: solid; background-size: cover; background-repeat: repeat; background-position: center center; font-size: 16px; font-style: normal; width: 280px; height: 30px; transform: rotate(0deg) translate(158px, 389px) rotate(0deg);">Add Additional Phone Number</button>
-                </div>
-
-                <div class="row" style="position: relative; display: none; top:-120px;left:-5%;">
-                    <input id="appInternalID" type="text" th:value="${baseTrademarkApplication.applicationInternalID}"  class="form-control"   style=" border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-                </div>
-
-                <div class="row" style="position: relative; display: none; top:-120px;left:-5%;">
-                    <input id="appInternalIDForm" type="text" th:field="*{appInternalID}"   class="form-control"   style=" border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-                </div>
-
-                <div class="row" style="position: relative;  top:-120px; right:-600px;">
-                    <button id="addOwnerConfirm" class=" btn-sm btn"  type="submit"  style=" padding:5px; min-width:120px; color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><b>Confirm</b></button>
-                </div>
 
 
-            </form>
+                        <div class="row" style="position: relative; top:-230px; right:-8%;">
+                            <div class="col-sm-1">
+                                <select  class="form-control" name="phone-type"  value="Type" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                    <option value="cell"><b>Cell</b></option>
+                                    <option value="home"><b>Home</b></option>
+                                    <option value="work"><b>Work</b></option>
+                                    <option value="fax"><b>Fax</b></option>
+                                </select>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="number" id="phone" name="Phone" class="form-control"  th:field="*{ownerPhone}"   style=" border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                            </div>
+                            <div class="col-sm-1">
+                                <input type="number" id="ext" name="Phone" class="form-control"   style=" border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                            </div>
+
+                            <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                                <div class="form-group phoneFieldMsgArea" style="display:none; position: relative; left:-15%;">
+                                    <b><span></span></b>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="position: relative; top:-590px;  left:-5%;">
+                            <button id="addNewPhoneNumber" class="ng-element el-button font-S-Arial-n4 interactive" data-id="fdd4cf621d614e66a1ba02d4820e53a9" style="opacity: 1; mix-blend-mode: normal; border-color: rgb(221, 221, 221); background-color: rgb(0, 120, 171); background-image: none; color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center; border-width: 0px; border-radius: 3px; border-style: solid; background-size: cover; background-repeat: repeat; background-position: center center; font-size: 16px; font-style: normal; width: 280px; height: 30px; transform: rotate(0deg) translate(158px, 389px) rotate(0deg);">Add Additional Phone Number</button>
+                        </div>
+
+                        <div class="row" style="position: relative; display: none; top:-120px;left:-5%;">
+                            <input id="appInternalID" type="text" th:value="${baseTrademarkApplication.applicationInternalID}"  class="form-control"   style=" border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                        </div>
+
+                        <div class="row" style="position: relative; display: none; top:-120px;left:-5%;">
+                            <input id="appInternalIDForm" type="text" th:field="*{appInternalID}"   class="form-control"   style=" border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                        </div>
+
+                        <div class="row" style="position: relative;  top:-200px; right:-600px;">
+                            <button id="addOwnerConfirm" class=" btn-sm btn"  type="submit"  style=" padding:5px; min-width:120px; color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><b>Confirm</b></button>
+                        </div>
+
+
+                    </form>
 
             </div>
 
 
+        </div>
     </div>
-</div>
 
 
     <!--load model attribute for Jquery consumption  -->
@@ -1141,6 +1243,25 @@
         // update app id on hidden field
 
         $('#appInternalIDForm').val(appInternalID);
+
+
+
+
+
+        ////////////////////////////////////////////////////
+        // auto save jquery section
+        ////////////////////////////////////////////////////
+
+
+
+
+
+
+        /////////////////////////////////////////////////////
+        // end of auto save
+        /////////////////////////////////////////////////////
+
+
 
 
 
