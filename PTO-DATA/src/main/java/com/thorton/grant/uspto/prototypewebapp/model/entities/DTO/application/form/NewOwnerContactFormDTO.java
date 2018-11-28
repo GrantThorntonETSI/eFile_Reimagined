@@ -1,9 +1,18 @@
 package com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.form;
 
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Partner;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class NewOwnerContactFormDTO {
 
 
-private String firstName;
+    public NewOwnerContactFormDTO() {
+        this.generalPartners =  new ArrayList<>();
+    }
+
+    private String firstName;
 private String middleName;
 private String lastName;
 private String suffix;
@@ -47,9 +56,26 @@ private String ownerOrganizationState;
 
 
 
+//////////////////////////////////////////////
+// owner - Partnership
+//////////////////////////////////////////////
+private List<Partner> generalPartners;
+
+public void addPartner(Partner partner){
+    this.generalPartners.add(partner);
+}
 
 
+
+
+
+//////////////////////////////////////////////
+// application id tied to the owner,
+// i.e this owner is assigned
+//////////////////////////////////////////////
 private String appInternalID;
+
+
 
     public String getAppInternalID() {
         return appInternalID;
@@ -209,5 +235,13 @@ private String appInternalID;
 
     public void setOwnerOrganizationState(String ownerOrganizationState) {
         this.ownerOrganizationState = ownerOrganizationState;
+    }
+
+    public List<Partner> getGeneralPartners() {
+        return generalPartners;
+    }
+
+    public void setGeneralPartners(List<Partner> generalPartners) {
+        this.generalPartners = generalPartners;
     }
 }

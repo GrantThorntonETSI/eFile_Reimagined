@@ -14,6 +14,7 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.fo
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.form.NewOwnerContactFormDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Partner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
@@ -833,8 +834,15 @@ public class ApplicationController {
         model.addAttribute("hostBean", hostBean);
 
         NewOwnerContactFormDTO newOwnerContactFormDTO = new NewOwnerContactFormDTO();
-        model.addAttribute("addNewOwnerContactFormDTO", newOwnerContactFormDTO);
+        Partner partner = new Partner();
+        newOwnerContactFormDTO.addPartner(partner);
 
+
+
+
+
+
+        model.addAttribute("addNewOwnerContactFormDTO", newOwnerContactFormDTO);
 
         return "application/owner/partnership/ownerInfo";
     }
