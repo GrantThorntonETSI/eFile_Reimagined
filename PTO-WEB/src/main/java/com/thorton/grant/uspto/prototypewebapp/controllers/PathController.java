@@ -209,7 +209,7 @@ public class PathController {
                new SecurityContextLogoutHandler().logout(requesthttp, response, auth);
            }
            //return "redirect:/logout";
-           return "/login";
+           return "login";
        }
 
 
