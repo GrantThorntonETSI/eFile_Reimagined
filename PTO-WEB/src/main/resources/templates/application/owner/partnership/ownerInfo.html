@@ -181,7 +181,7 @@
                             <div class="col-sm-3">
                                 <div class="form-group">
                         <span>
-                            <input type="text" id="first-name" th:field="*{partnerDTOs[__${itemStat.index}__].firstName}" name="firstName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                            <input type="text" id="partner-first-name" th:field="*{partnerDTOs[__${itemStat.index}__].firstName}" name="firstName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
 
 
                         </span>
@@ -242,7 +242,7 @@
 
                                 <div class="form-group">
                                     <span>
-                                        <input type="text" th:field="*{partnerDTOs[__${itemStat.index}__].lastName}" id="last-name"  name="lastName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                                        <input id="partner-last-name" type="text" th:field="*{partnerDTOs[__${itemStat.index}__].lastName}"  name="lastName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
 
                                     </span>
                                 </div>
@@ -548,7 +548,7 @@
 
                             <div class="col-sm-3">
                                 <label for="ownername"><b style="color: red">&#42;</b>Owner Name</label>
-                                <input type="text" th:field="*{partnerDTOs[__${itemStat.index}__].partnerName}"  class="form-control rounded-borders"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                                <input id="owner-name" type="text" th:field="*{partnerDTOs[__${itemStat.index}__].partnerName}"  class="form-control rounded-borders"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
                             </div>
                         </div>
 
@@ -559,7 +559,7 @@
                             <div class="col-sm-3">
                                 <label><b style="color: red">&#42;</b>Type</label>
                                 <span>
-                                    <select  class="form-control" name="nameType" th:field="*{partnerDTOs[__${itemStat.index}__].type}"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                    <select  id="owner-type" class="form-control" name="nameType" th:field="*{partnerDTOs[__${itemStat.index}__].type}"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                         <option value="none">Select</option>
                                         <option value="DBA">Doing Business As(DBA)</option>
                                         <option value="TA">Trading As(TA)</option>
@@ -581,7 +581,7 @@
                         <div class="row" style="position: relative; top:-190px; right:-85px;">
                             <div class="col-sm-3">
                                 <label><b style="color: red">&#42;</b>State where legally organized</label>
-                                <select h:field="*{partnerDTOs[__${itemStat.index}__].state}"  class="form-control" name="State"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" >
+                                <select  id="owner-state" th:field="*{partnerDTOs[__${itemStat.index}__].state}"  class="form-control" name="State"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" >
                                     <option  value="none"></option>
                                     <option  value="AL">Alabama</option>
                                     <option  value="AK">Alaska</option>
@@ -931,7 +931,7 @@
 
 
 
-                        <div class="row" style="position: relative; top:-200px; right:-7%;">
+                        <div class="row" style="position: relative; top:-200px; right:-7%; margin-top: 10px;">
                              <span>
 
                                  <label class="col-sm-2 col-form-label"><b style="color: red">*</b>Address Line 1</label>
@@ -939,7 +939,7 @@
 
                         </div>
 
-                        <div class="row" style="position: relative; top:-200px; right:-8%;;">
+                        <div class="row" style="position: relative; top:-200px; right:-8%;">
 
 
                             <div class="col-sm-3">
@@ -1340,20 +1340,23 @@
                 fadeOutPartnerInfo();
             }
             if(subtype_val == "Individual"){
-                fadeOutPartnerInfo();
+                 fadeOutPartnerInfo();
 
                 $('#individual-partner-entity').fadeIn(1000);
+
+                disableNoneIndiviualRequiredfields();
+                enableIndiviualRequiredfields();
 
             }
             if(subtype_val == "Sole Proprietorship"){
                 fadeOutPartnerInfo();
                 $('#individual-partner-entity').fadeIn(1000);  // same owner entity fields as individual
+                disableNoneIndiviualRequiredfields();
+                enableIndiviualRequiredfields();
             }
 
 
             if(subtype_val == "Limited Liability Company"){
-
-
 
                 setTimeout(function() {
                     // after 1000 ms we add the class animated to the login/register card
@@ -1363,8 +1366,10 @@
                 setTimeout(function() {
                     // after 1000 ms we add the class animated to the login/register card
                     $('#none-individual-partner-entity').fadeIn(1000);
-                }, 1500);
+                }, 1000);
 
+                disableIndiviualRequiredfields();
+                enableNoneIndiviualRequiredfields();
                  // same owner entity fields as individual
 
             }
@@ -1377,8 +1382,9 @@
                 setTimeout(function() {
                     // after 1000 ms we add the class animated to the login/register card
                     $('#none-individual-partner-entity').fadeIn(1000);
-                }, 1500);
-
+                }, 1000);
+                disableIndiviualRequiredfields();
+                enableNoneIndiviualRequiredfields();
             }
 
             if(subtype_val == "Joint Venture"){
@@ -1390,9 +1396,40 @@
                 setTimeout(function() {
                     // after 1000 ms we add the class animated to the login/register card
                     $('#none-individual-partner-entity').fadeIn(1000);
-                }, 1500);
-
+                }, 1000);
+                disableIndiviualRequiredfields();
+                enableNoneIndiviualRequiredfields();
             }
+
+            if(subtype_val == "Trust"){
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    fadeOutPartnerInfo();
+                }, 500);
+
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity').fadeIn(1000);
+                }, 1000);
+                disableIndiviualRequiredfields();
+                enableNoneIndiviualRequiredfields();
+            }
+
+            if(subtype_val == "Estate"){
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    fadeOutPartnerInfo();
+                }, 500);
+
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity').fadeIn(1000);
+                }, 1000);
+                disableIndiviualRequiredfields();
+                enableNoneIndiviualRequiredfields();
+            }
+
+
 
 
 
@@ -1417,6 +1454,33 @@
         $('#individual-partner-entity').fadeOut(1000);
         $('#none-individual-partner-entity').fadeOut(1000);
     }
+
+
+    function disableNoneIndiviualRequiredfields(){
+        $('#owner-name').prop("required", false);
+
+        $('#owner-type').prop("required", false);
+        $('#owner-state').prop("required", false);
+    }
+
+    function enableNoneIndiviualRequiredfields(){
+        $('#owner-name').prop("required", true);
+
+        $('#owner-type').prop("required", true);
+        $('#owner-state').prop("required", true);
+    }
+
+
+    function disableIndiviualRequiredfields(){
+        $('#partner-first-name').prop("required", false);
+        $('#partner-last-name').prop("required", false);
+    }
+
+    function enableIndiviualRequiredfields() {
+        $('#partner-first-name').prop("required", true);
+        $('#partner-last-name').prop("required", true);
+    }
+
 
 </script>
 

@@ -475,7 +475,7 @@ public class ApplicationController {
 
         for(Iterator<Owner> iter = ptoUser.getMyOwners().iterator(); iter.hasNext(); ) {
             owner1 = iter.next();
-            contactNames.add(owner1.getFirstName()+" "+owner1.getLastName());
+            contactNames.add(owner1.getOwnerDisplayname());
             contactEmails.add(owner1.getEmail());
             contactSubTypes.add(owner1.getOwnersubType());
 
@@ -670,6 +670,10 @@ public class ApplicationController {
             owner.setOwnerOrganizationState(newOwnerContactFormDTO.getOwnerOrganizationState());
         }
 
+
+        // crate partner if partner fields are not null
+
+        //
 
 
 

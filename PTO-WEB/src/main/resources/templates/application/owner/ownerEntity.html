@@ -581,6 +581,9 @@
                     /////////////////////////////////////
                     $.post(ownerDomIndvFormURL, function(data){
                         $("#ownerEntityForm").html(data).fadeIn();
+
+                        // remove required
+
                     });
                 }
                 if(subtype_val == "Sole Proprietorship"){
@@ -619,7 +622,7 @@
                 }
 
 
-                //saveProjectInfo("set-Owner-entity-types", "US"+"+"+subtype_val, appInternalID); // static from radio buttton
+                saveProjectInfo("set-Owner-entity-types", "US"+"+"+subtype_val, appInternalID); // static from radio buttton
             });
 
         }); // end of document ready()
