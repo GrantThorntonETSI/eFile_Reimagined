@@ -14,6 +14,8 @@ public class Owner extends Contact{
     public Owner() {
 
         partners = new HashSet<>();
+
+
     }
 
     @OneToOne
@@ -56,6 +58,10 @@ public class Owner extends Contact{
 
 
     private String ownerDisplayname;
+
+
+
+
 
 
     public BaseTrademarkApplication getTrademarkApplication() {
@@ -190,6 +196,8 @@ public class Owner extends Contact{
     public void setOwnerDisplayname(String ownerDisplayname) {
         this.ownerDisplayname = ownerDisplayname;
     }
+
+
 
     @Override
     public boolean equals(Object o) {
