@@ -560,6 +560,7 @@ public class ApplicationService  extends  BaseRESTapiService{
         application_owner.setAddress3(owner.getAddress3());
 
 
+
         application_owner.setCity(owner.getCity());
         application_owner.setState(owner.getState());
         application_owner.setZipcode(owner.getZipcode());
@@ -569,11 +570,18 @@ public class ApplicationService  extends  BaseRESTapiService{
         // copy over contact's professional info
         //////////////////////////////////////////////////////////////////
         application_owner.setOwnerEnityType(owner.getOwnerEnityType());
-        application_owner.setOwnersubType(owner.getOwnersubType());
+        application_owner.setOwnerType(owner.getOwnerType());
         application_owner.setOwnersubType(owner.getOwnersubType());
         application_owner.setWebSiteURL(owner.getWebSiteURL());
+        //////////////////////////////////////////////////////////////////
+        // copy none individual owner info
+        //////////////////////////////////////////////////////////////////
 
 
+        application_owner.setOwnerName(owner.getOwnerName());
+        application_owner.setOwnerDisplayname(owner.getOwnerDisplayname());
+        application_owner.setPartners(owner.getPartners());
+        application_owner.setOwnerOrganizationState(owner.getOwnerOrganizationState());
 
 
 

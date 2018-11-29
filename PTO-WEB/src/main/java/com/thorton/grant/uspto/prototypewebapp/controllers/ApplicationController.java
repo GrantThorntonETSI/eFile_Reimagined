@@ -499,12 +499,16 @@ public class ApplicationController {
         ArrayList<String> ownerContactNames = new ArrayList<>();
         Owner applicationOwner = baseTrademarkApplication.getOwner();
 
-        System.out.println("");
+        // we probably do not need to hit the database for this...
+        //  build it with owner object
+
         if(applicationOwner != null){
-            System.out.println("setting selected owner name for owner : "+applicationOwner.getLastName());
-            ownerContactNames.add( applicationOwner.getFirstName() + " "+applicationOwner.getLastName());
+
+            ownerContactNames.add( applicationOwner.getOwnerDisplayname());
         }
         else{
+
+
             ownerContactNames.add("");
         }
 
@@ -939,7 +943,7 @@ public class ApplicationController {
           if(owner == null){
               System.out.println("OWNER is null!!!!!!!!!!!!!!!!!!");
           }else {
-              System.out.println("owner first name : "+owner.getFirstName());
+              System.out.println("owner display name: "+owner.getOwnerDisplayname());
           }
 
 
