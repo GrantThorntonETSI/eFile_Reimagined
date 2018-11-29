@@ -611,101 +611,102 @@ public class ApplicationController {
         System.out.println("OWNER SUB TYPE : "+owner.getOwnersubType());
         // transfer and reset owner type and subtype
 
-        if(newOwnerContactFormDTO.getFirstName()== ""){
+        if(newOwnerContactFormDTO.getFirstName()!= null){
             owner.setOwnerDisplayname(newOwnerContactFormDTO.getFirstName()+ " "+newOwnerContactFormDTO.getLastName());
             owner.setFirstName(newOwnerContactFormDTO.getFirstName());
         }
-        if(newOwnerContactFormDTO.getLastName()== "") {
+        if(newOwnerContactFormDTO.getLastName()!= null) {
             owner.setLastName(newOwnerContactFormDTO.getLastName());
         }
-        if(newOwnerContactFormDTO.getMiddleName() != ""){
+        if(newOwnerContactFormDTO.getMiddleName() != null){
             owner.setMidlleName(newOwnerContactFormDTO.getMiddleName());
         }
-        if(newOwnerContactFormDTO.getSuffix() != ""){
+        if(newOwnerContactFormDTO.getSuffix() != null){
             owner.setSuffix(newOwnerContactFormDTO.getSuffix());
         }
-        if(newOwnerContactFormDTO.getOwnerType() != ""){
+        if(newOwnerContactFormDTO.getOwnerType() != null){
           owner.setOwnerType(newOwnerContactFormDTO.getOwnerType());
         }
-        if(newOwnerContactFormDTO.getOwnerCitizenShip()!= ""){
+        if(newOwnerContactFormDTO.getOwnerCitizenShip()!= null){
             owner.setCitizenShip(newOwnerContactFormDTO.getOwnerCitizenShip());
         }
         owner.setCountry(newOwnerContactFormDTO.getOwnerAddressCountry());
         owner.setAddress1(newOwnerContactFormDTO.getOwnerAddress1());
         owner.setAddress(newOwnerContactFormDTO.getOwnerAddress1());
         // set both address and address1
-        if(newOwnerContactFormDTO.getOwnerAddress2() != ""){
+        if(newOwnerContactFormDTO.getOwnerAddress2() != null){
             owner.setAddress2(newOwnerContactFormDTO.getOwnerAddress2());
         }
-        if(newOwnerContactFormDTO.getOwnerAddress3() != ""){
+        if(newOwnerContactFormDTO.getOwnerAddress3() != null){
             owner.setAddress3(newOwnerContactFormDTO.getOwnerAddress3());
         }
 
         owner.setCity(newOwnerContactFormDTO.getOwnerCity());
 
-        if(newOwnerContactFormDTO.getOwnerState() != ""){
+        if(newOwnerContactFormDTO.getOwnerState() != null){
             owner.setState(newOwnerContactFormDTO.getOwnerState());
         }
-        if(newOwnerContactFormDTO.getOwnerZipcode() != ""){
+        if(newOwnerContactFormDTO.getOwnerZipcode() != null){
             owner.setZipcode(newOwnerContactFormDTO.getOwnerZipcode());
         }
-        if(newOwnerContactFormDTO.getOwnerEmail() != ""){
+        if(newOwnerContactFormDTO.getOwnerEmail() != null){
             owner.setEmail(newOwnerContactFormDTO.getOwnerEmail());
         }
-        if(newOwnerContactFormDTO.getOwnerWebSite() != ""){
+        if(newOwnerContactFormDTO.getOwnerWebSite() != null){
             owner.setWebSiteURL(newOwnerContactFormDTO.getOwnerWebSite());
         }
-        if(newOwnerContactFormDTO.getOwnerPhone() != ""){
+        if(newOwnerContactFormDTO.getOwnerPhone() != null){
             owner.setPrimaryPhonenumber(newOwnerContactFormDTO.getOwnerPhone());
         }
 
         // set new fields that are specific to sole Proprietorship
         // should be 3 fields
         // check for null then add
-        if(newOwnerContactFormDTO.getOwnerName() != ""){
+        if(newOwnerContactFormDTO.getOwnerName() != null){
+
             owner.setOwnerName(newOwnerContactFormDTO.getOwnerName());
             owner.setOwnerDisplayname(newOwnerContactFormDTO.getOwnerName());
         }
 
-        if(newOwnerContactFormDTO.getOwnerAdditionalName() !=  ""){
+        if(newOwnerContactFormDTO.getOwnerAdditionalName() !=  null){
             owner.setOwnerAdditionalName(newOwnerContactFormDTO.getOwnerAdditionalName());
         }
-        if(newOwnerContactFormDTO.getOwnerOrganizationState() != ""){
+        if(newOwnerContactFormDTO.getOwnerOrganizationState() != null){
             owner.setOwnerOrganizationState(newOwnerContactFormDTO.getOwnerOrganizationState());
         }
 
 
         // crate partner if partner fields are not null
         List<partnerDTO> partnerDTOS = newOwnerContactFormDTO.getPartnerDTOs();
-        if(partnerDTOS != null){
+        if(partnerDTOS.size() > 0){
 
             //for(Iterator<partnerDTO> iter = partnerDTOS.iterator(); iter.hasNext(); ) {
                 //partnerDTO partner = partnerDTOS.iterator().next();
             partnerDTO partner = partnerDTOS.get(0);
                 Partner newPartner = new Partner();
-                if(partner.getFirstName() != ""){
+                if(partner.getFirstName() != null){
                     newPartner.setPartnerFirstName(partner.getFirstName());
 
                 }
-                if(partner.getLastName() != ""){
+                if(partner.getLastName() != null){
                     newPartner.setPartnerLastName(partner.getLastName());
                 }
-                if(partner.getMiddleName() != ""){
+                if(partner.getMiddleName() != null){
                     newPartner.setPartnerMiddleName(partner.getMiddleName());
                 }
-                if(partner.getSuffix() != ""){
+                if(partner.getSuffix() != null){
                     newPartner.setPartnerSuffix(partner.getSuffix());
                 }
-                if(partner.getCitizenShip() != ""){
+                if(partner.getCitizenShip() != null){
                     newPartner.setPartnerCitizenship(partner.getCitizenShip());
                 }
-                if(partner.getPartnerName() != ""){
+                if(partner.getPartnerName() != null){
                     newPartner.setPartnerName(partner.getPartnerName());
                 }
-                if(partner.getState() != ""){
+                if(partner.getState() != null){
                     newPartner.setGetOrganizationState(partner.getState());
                 }
-                if(partner.getType() != ""){
+                if(partner.getType() != null){
                     newPartner.setPartnerEntityType(partner.getType());
                 }
 
