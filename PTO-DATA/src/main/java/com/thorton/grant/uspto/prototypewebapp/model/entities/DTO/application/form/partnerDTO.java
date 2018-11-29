@@ -7,7 +7,7 @@ public class partnerDTO {
     private String firstName;
     private String lastName;
     private String middleName;
-    private String name;
+    private String partnerName;
 
     private String state;
 
@@ -48,12 +48,12 @@ public class partnerDTO {
         this.middleName = middleName;
     }
 
-    public String getName() {
-        return name;
+    public String getPartnerName() {
+        return partnerName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPartnerName(String partnerName) {
+        this.partnerName = partnerName;
     }
 
     public String getState() {

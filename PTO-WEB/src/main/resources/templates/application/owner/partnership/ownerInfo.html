@@ -163,9 +163,9 @@
                         </div>
                     </div>
 
+<div id="partnerEntitydynamicFormArea" th:each="partner, itemStat : *{partnerDTOs}">
 
-
-                    <div id="individual-partner-entity" style="display: none; margin-top: 10px;" th:each="partner, itemStat : *{partnerDTOs}" >
+                    <div id="individual-partner-entity" style="display: none; margin-top: 10px;"  >
 
 
                         <div class="row" style="position: relative; top:-190px;  right:-7%;">
@@ -542,13 +542,13 @@
                     </div> <!-- end of genaral partners individual -->
 
 
-                    <div id="none-individual-partner-entity" style="display:none; margin-top: 10px;">
+                    <div id="none-individual-partner-entity" style="display:none; margin-top: 10px;" >
 
                         <div class="row" style="position: relative; top:-190px; right:-85px; margin-bottom: 5px;">
 
                             <div class="col-sm-3">
                                 <label for="ownername"><b style="color: red">&#42;</b>Owner Name</label>
-                                <input type="text" class="form-control rounded-borders"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                                <input type="text" th:field="*{partnerDTOs[__${itemStat.index}__].partnerName}"  class="form-control rounded-borders"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
                             </div>
                         </div>
 
@@ -559,7 +559,7 @@
                             <div class="col-sm-3">
                                 <label><b style="color: red">&#42;</b>Type</label>
                                 <span>
-                                    <select  class="form-control" name="nameType"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                    <select  class="form-control" name="nameType" th:field="*{partnerDTOs[__${itemStat.index}__].type}"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                         <option value="none">Select</option>
                                         <option value="DBA">Doing Business As(DBA)</option>
                                         <option value="TA">Trading As(TA)</option>
@@ -581,7 +581,7 @@
                         <div class="row" style="position: relative; top:-190px; right:-85px;">
                             <div class="col-sm-3">
                                 <label><b style="color: red">&#42;</b>State where legally organized</label>
-                                <select  class="form-control" name="State"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" >
+                                <select h:field="*{partnerDTOs[__${itemStat.index}__].state}"  class="form-control" name="State"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" >
                                     <option  value="none"></option>
                                     <option  value="AL">Alabama</option>
                                     <option  value="AK">Alaska</option>
@@ -641,7 +641,7 @@
                         </div>
 
                     </div> <!-- end of none-individual-partner-entity -->
-
+</div>
 
                     <!--  end of Owner Name Information -->
 
