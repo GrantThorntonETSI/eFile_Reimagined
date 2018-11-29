@@ -20,6 +20,11 @@ public class Partner {
   private String partnerFirstName;
 
   private String partnerLastName;
+  private String partnerMiddleName;
+
+
+
+
   private String partnerSuffix;
 
   private String partnerCitizenship;
@@ -93,6 +98,11 @@ public class Partner {
         this.getOrganizationState = getOrganizationState;
     }
 
+    public String getPartnerMiddleName() {
+        return partnerMiddleName;
+    }
 
-
+    public void setPartnerMiddleName(String partnerMiddleName) {
+        this.partnerMiddleName = partnerMiddleName;
+    }
 }

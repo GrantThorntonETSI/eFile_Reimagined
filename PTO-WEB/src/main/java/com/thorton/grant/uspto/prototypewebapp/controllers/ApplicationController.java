@@ -672,10 +672,43 @@ public class ApplicationController {
 
 
         // crate partner if partner fields are not null
+        List<partnerDTO> partnerDTOS = newOwnerContactFormDTO.getPartnerDTOs();
+        if(partnerDTOS != null){
 
-        //
+            //for(Iterator<partnerDTO> iter = partnerDTOS.iterator(); iter.hasNext(); ) {
+                //partnerDTO partner = partnerDTOS.iterator().next();
+            partnerDTO partner = partnerDTOS.get(0);
+                Partner newPartner = new Partner();
+                if(partner.getFirstName() != ""){
+                    newPartner.setPartnerFirstName(partner.getFirstName());
 
+                }
+                if(partner.getLastName() != ""){
+                    newPartner.setPartnerLastName(partner.getLastName());
+                }
+                if(partner.getMiddleName() != ""){
+                    newPartner.setPartnerMiddleName(partner.getMiddleName());
+                }
+                if(partner.getSuffix() != ""){
+                    newPartner.setPartnerSuffix(partner.getSuffix());
+                }
+                if(partner.getCitizenShip() != ""){
+                    newPartner.setPartnerCitizenship(partner.getCitizenShip());
+                }
+                if(partner.getPartnerName() != ""){
+                    newPartner.setPartnerName(partner.getPartnerName());
+                }
+                if(partner.getState() != ""){
+                    newPartner.setGetOrganizationState(partner.getState());
+                }
+                if(partner.getType() != ""){
+                    newPartner.setPartnerEntityType(partner.getType());
+                }
 
+                owner.addPartner(newPartner);
+           // }
+
+        }
 
         owner.setClient(ptoUser);
         ptoUser.addOwner(owner);
