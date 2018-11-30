@@ -18,7 +18,6 @@ private String contactType;
 private String entityName;  // organization name/ owner name /i .e none human name
 
 
-
     public PTOUser getContactOwner() {
         return contactOwner;
     }
