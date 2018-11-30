@@ -22,6 +22,7 @@ public class PTOUser extends UserPersonalData {
         myApplications = new HashSet<>();
         myLawyers = new HashSet<>();
         myOwners = new HashSet<>();
+        myManagedContacts = new HashSet<>();
     }
 
     /////////////////////////////////////////////////////////

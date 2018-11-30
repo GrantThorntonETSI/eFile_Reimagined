@@ -12,6 +12,7 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.ap
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Partner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.ManagedContact;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserRole;
@@ -129,6 +130,13 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         PTOUser1.addLawyer(newLawyer);
 
 
+        // add default managed contact
+
+        ManagedContact managedContact = createCopyPTOUserInfo4ManagedContact(PTOUser1);
+
+        PTOUser1.addManagedContact(managedContact);
+
+
         ///////////////////////////////////////////////////////////////////////////////////////////////
         // we need a copy constructor ...so that trademark Application lawyers are not the same ones
         // saved by PTOUser ...
@@ -244,6 +252,9 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
          PTOUser1.setUserCredentials(ownerCreds);
          PTOUser1.setEmail(ownerCreds.getEmail());
 
+         ManagedContact contact = createCopyPTOUserInfo4ManagedContact(PTOUser1);
+         PTOUser1.addManagedContact(contact);
+
          PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
          ptoUserService.save(PTOUser1);
          UserRoleService  userRoleService = serviceBeanFactory.getUserRoleService();
@@ -252,6 +263,38 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
          UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
          userCredentialsService.save(ownerCreds);
 
+     }
+     //////////////////////////////////////////////////////////////////////////////////
+
+
+     //////////////////////////////////////////////////////////////////////////////////
+     // deep copy of field value to managedContact object
+     //////////////////////////////////////////////////////////////////////////////////
+     private ManagedContact createCopyPTOUserInfo4ManagedContact(PTOUser ptoUser){
+
+        ManagedContact contact = new ManagedContact();
+         /////////////////////////////////////////////////////////////////
+         // copy over contact's lawyer's personal info
+         /////////////////////////////////////////////////////////////////
+         contact.setFirstName(ptoUser.getFirstName());
+         contact.setLastName(ptoUser.getLastName());
+         contact.setMidlleName(ptoUser.getMidlleName());
+         contact.setCountry(ptoUser.getCountry());
+         contact.setAddress(ptoUser.getAddress());
+
+
+
+
+         contact.setCity(ptoUser.getCity());
+         contact.setState(ptoUser.getState());
+         contact.setZipcode(ptoUser.getZipcode());
+         contact.setPrimaryPhonenumber(ptoUser.getPrimaryPhonenumber());
+         contact.setEmail(ptoUser.getEmail());
+         //////////////////////////////////////////////////////////////////
+         // copy over contact's professional info
+         //////////////////////////////////////////////////////////////////
+
+        return contact;
      }
 
 
