@@ -545,6 +545,7 @@
         // set previous link
         /////////////////////////////////////////
         $('#prevLink').attr("href",prevLinkURL);
+        $('#prevLinkIcon').attr("href",prevLinkURL);
 
         //////////////////////////////////////////////////////////////
         // check if attorneyFillingFalse is set
@@ -553,6 +554,7 @@
 
             $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
             $('#nextLink').attr("href", nextLinkURL );
+            $('#nextLinkIcon').attr("href", nextLinkURL );
 
 
         }
@@ -623,6 +625,7 @@
             $('.next-button').css("background-color","rgb(55, 69, 120)" );
 
             $('#nextLink').attr("href", nextLinkURL );
+            $('#nextLinkIcon').attr("href", nextLinkURL );
             $('#AttorneySetLink').attr("href", "");
             $('#next-link-widget').css("background-color", "rgb(128, 128, 128)" );
         });
@@ -685,7 +688,7 @@
             "scrollY": "250px",
             "oLanguage": {
 
-                "sSearch": "<i style=\"position: relative; top:5px; bottom: -30px; right:-200px; \"  class=\"material-icons\">search</i>"
+                "sSearch": "<b style=\"position: relative; bottom: -3px; \"><i style=\"position: relative; right:-197px; \"  class=\"material-icons\">search</i></b>"
 
             },
             "dom": '<"top"f<"clear">>rt<"bottom"p<"clear">>',
@@ -2258,11 +2261,14 @@
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
         function enableNextWidgetLink() {
             $('#nextLink').prop("href", nextLinkURLwidget);
+            $('#nextLinkIcon').prop("href", nextLinkURLwidget);
+
             $('.next-button').css("background-color", "rgb(55, 69, 120)");
 
         }
         function disableNextWidgetLink() {
             $('#nextLink').prop("href", "");
+            $('#nextLinkIcon').prop("href", "");
             $('.next-button').css("background-color", "rgb(128, 128, 128)");
 
         }
