@@ -44,6 +44,15 @@ public class PTOUser extends UserPersonalData {
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Owner> myOwners;
 
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<ManagedContact> myManagedContacts;
+
+
+
+
+
+
     @Column(name =  "profile_complete" )
     private boolean profileComplete = false;
 
@@ -53,6 +62,9 @@ public class PTOUser extends UserPersonalData {
 
     private boolean useTwoFactorAuthentication = false;
     private String twoFactorAuthType = "email";
+
+
+
 
 
 
@@ -139,6 +151,42 @@ public class PTOUser extends UserPersonalData {
           myTrademarks.add(newTrademark);
         return  newTrademark;
     }
+
+    public Set<ManagedContact> getMyManagedContacts() {
+        return myManagedContacts;
+    }
+
+    public void setMyManagedContacts(Set<ManagedContact> myManagedContacts) {
+        this.myManagedContacts = myManagedContacts;
+
+    }
+
+    public ManagedContact addManagedContact (ManagedContact newContact){
+        myManagedContacts.add(newContact);
+        return newContact;
+    }
+    public void removeManagedContact(ManagedContact contact){
+        myManagedContacts.remove(contact);
+
+    }
+    public ManagedContact findContactByEmail(String email){
+
+        ManagedContact contact = null;
+        for(Iterator<ManagedContact> iter = myManagedContacts.iterator(); iter.hasNext(); ) {
+            //this.availableLawyers.add(new Lawyer( iter.next() ));
+
+            ManagedContact current = iter.next();
+
+            if(current.getEmail().equals(email)){
+                contact = current;
+            }
+        }
+        return contact;
+
+    }
+
+
+
     ///////////////////////////////////////////////////////////
 
 
