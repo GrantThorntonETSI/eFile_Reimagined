@@ -188,12 +188,13 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
 
         createUser("Jackie", "Babos", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Jackie.Babos@us.gt.com","12345");
         createUser("Jacob", "Goldstein", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Jacob.Goldstein@us.gt.com","12345");
+        createUser("Lynn", "Istanikmas", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "lstanikmas@gmail.com","12345");
         createUser("Avo", "Reed", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Avo.Reid@us.gt.com","12345");
-        createUser("Tina", "Donbeck", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "tina.donbeck@uspto.gov","12345");
-        createUser("Al", "Young", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "al.young@uspto.gov","12345");
-
-
-
+        createUser("Tina", "Donbeck", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Tina.Donbeck@uspto.gov","12345");
+        createUser("Albert", "Young", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Albert.young@uspto.gov","12345");
+        createUser("Keyte", "Ernst", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Keyte.Ernst@uspto.gov","12345");
+        createUser("Shelly", "Matte", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Shelly.Matte@uspto.gov","12345");
+        createUser("Tuong-Vi", "Nguyen", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Tuong-Vi.Nguyen@uspto.gov","12345");
 
     }
 
