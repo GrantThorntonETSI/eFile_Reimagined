@@ -74,32 +74,8 @@ menu-outer{top: auto; bottom: 100%}
   left:-30px;
 }
 
-.table-filter {
-  background-color: @spring-brown;
-  padding: 9px 12px;
-}
 
-.nav > li > a {
-  color: @spring-grey;
-}
 
-.btn-default {
-  border-width: 2px;
-  transition: border 0.15s;
-  -webkit-transition: border 0.15s;
-  -moz-transition: border 0.15s;
-  -o-transition: border 0.15s;
-  -ms-transition: border 0.15s;
-
-  &:hover,
-  &:focus,
-  &:active,
-  &.active,
-  .open .dropdown-toggle& {
-    background-color: @spring-brown;
-    border-color: @spring-brown;
-  }
-}
 
 
 .container .text-muted {
@@ -144,12 +120,6 @@ h1 {
   display: none;
 }
 
-.splash {
-  background: @spring-green;
-  color: @spring-brown;
-  display: none;
-}
-
 .error-page {
   margin-top: 100px;
   text-align: center;
@@ -173,10 +143,6 @@ table td .progress {
 
 table td.action-column {
   width: 1px;
-}
-
-.help-block {
-  color: lighten(@text-color, 50%); // lighten the text some for contrast
 }
 
 .xd-containers {
@@ -217,27 +183,6 @@ table td.action-column {
 .deployment-status-na {
 }
 
-.container-details-table th {
-  background-color: lighten(@spring-brown, 3%);
-  color: @spring-light-grey;
-}
-
-.status-help-content-table td {
-  color: @spring-brown;
-}
-
-.alert-success {
-  .alert-variant(fade(@alert-success-bg, 70%); @alert-success-border; @alert-success-text);
-}
-.alert-info {
-  .alert-variant(fade(@alert-info-bg, 70%); @alert-info-border; @alert-info-text);
-}
-.alert-warning {
-  .alert-variant(fade(@alert-warning-bg, 70%); @alert-warning-border; @alert-warning-text);
-}
-.alert-danger {
-  .alert-variant(fade(@alert-danger-bg, 70%); @alert-danger-border; @alert-danger-text);
-}
 
 .myspinner {
   animation-name: spinner;
@@ -251,30 +196,6 @@ table td.action-column {
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
 }
-#sign-in-modal {
-   text-align: center;
-   padding: 0!important;
-   horiz-align: center;
- }
-
- #sign-in-modal:before {
-   content: '';
-   display: inline-block;
-   height: 100%;
-   vertical-align: middle;
-   horiz-align: center;
-   margin-right: -4px;
-   text-align: center;
- }
-
- #sign-in-modal-dialog {
-   display: inline-block;
-   text-align: left;
-   vertical-align: middle;
-   horiz-align: center;
-   left: 50%;
-
- }
 
 
  //////////////////////////////
@@ -298,7 +219,7 @@ table td.action-column {
 
 
 
-
+@import "lynn.less";
 @import "forms.less";
 @import "cards.less";
 @import "dashboard.less";
