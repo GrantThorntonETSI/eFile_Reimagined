@@ -266,11 +266,11 @@
                             <div class="col-sm-3">
 
                                 <div class="card-body">
-                                    <div class="toolbar" style="position: relative; left:10px;"  >
+                                    <div class="toolbar" style="position: relative; left:10px;" >
                                         <!--        Here you can write extra buttons/actions for the toolbar      -->
                                     </div>
 
-                                    <div class="managedContacts-Table" style="border: rgb(235,235,235);  border-width: 1px; border: solid; padding: 20px; min-height: 420px; max-height: 420px;">
+                                    <div class="contacts-Table" style="border: rgb(235,235,235);  border-width: 1px; border: solid; padding: 20px; min-height: 420px; max-height: 420px;">
                                         <table id="ManagedContacts" class="table-no-bordered table-hover" cellpadding="1" style="margin-right: 5px; margin-top: 10px; margin-bottom: 10px; margin-left: 8px;"></table>
                                     </div>
                                 </div>
@@ -283,7 +283,6 @@
                     </div>
 
                 </div>
-
 
 
 
@@ -512,14 +511,13 @@
         /////////////////////////////////////////////////////////////////////////////
 
         var dataSet1 = [
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            []
+
+            ["<i class='material-icons'>supervised_user_circle</i>", "li zhang", "Indvidual"],
+            ["<i class='material-icons'>supervised_user_circle</i>", "Jackie Babos", "Individual"],
+            ["<i class='material-icons'>supervised_user_circle</i>", "Jacob Goldstein", "Individual"],
+            ["<i class='material-icons'>supervised_user_circle</i>", "Grant Thornton", "LLC"],
+            ["<i class='material-icons'>supervised_user_circle</i>", "Scrubbly Bubbles", "Partnership"]
+
 
         ];
 
@@ -538,12 +536,9 @@
             },
             "dom": '<"top"f<"clear">>rt<"bottom"p<"clear">>',
             columns: [
-
-                { title: "" },
-                { title: "Owner Email" },
-                { title: "Entity Type" }
-
-
+                {  },
+                { title: "Contact Name" },
+                { title: "Contact type" }
             ]
         } );
 
@@ -562,13 +557,7 @@
             ///////////////////////////////////////////////////////////////////////////
             var  isChecked = false;
 
-            for(var b =0; b < selectedContactNames.length; b++){
 
-
-                if(contactNames[a] ===  selectedContactNames[b]){
-                    isChecked = true;
-                }
-            }
 
             if(isChecked === false) {
                 var col1 = "<input class=\"contacts-checkbox\" type='checkbox'>";
@@ -597,13 +586,6 @@
 
         }
         // sort and redraw to line up columns
-
-
-        /////////////////////////////
-        // contatcs dataload end
-        ////////////////////////////
-
-
 
 
 
