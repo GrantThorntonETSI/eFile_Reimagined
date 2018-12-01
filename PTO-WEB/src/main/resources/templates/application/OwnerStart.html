@@ -263,59 +263,27 @@
 
                         <div class="card-body">
 
-                            <div class="col-sm-6">
+                            <div class="col-sm-3">
 
                                 <div class="card-body">
-                                    <div class="toolbar" style="position: relative; left:10px;" cellpadding="5" >
+                                    <div class="toolbar" style="position: relative; left:10px;"  >
                                         <!--        Here you can write extra buttons/actions for the toolbar      -->
                                     </div>
 
-                                    <div class="contacts-Table" style="border: rgb(235,235,235);  border-width: 1px; border: solid; padding: 20px; min-height: 420px; max-height: 420px;">
-                                        <table id="contacts" class="table-no-bordered table-hover" cellpadding="1" style="min-width:540px;margin-right: 5px; margin-top: 10px; margin-bottom: 10px; margin-left: 8px;"></table>
+                                    <div class="managedContacts-Table" style="border: rgb(235,235,235);  border-width: 1px; border: solid; padding: 20px; min-height: 420px; max-height: 420px;">
+                                        <table id="ManagedContacts" class="table-no-bordered table-hover" cellpadding="1" style="margin-right: 5px; margin-top: 10px; margin-bottom: 10px; margin-left: 8px;"></table>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-sm-3" style="position: relative; left:-20px;">
-                                <div class="card-body">
-                                    <div class="toolbar" style="position: relative; left:10px;" cellpadding="5" >
-                                        <!--        Here you can write extra buttons/actions for the toolbar      -->
-                                    </div>
 
-                                    <div class="selected-Attorneys-Table" style="border: rgb(235,235,235); border-width: 1px; border: solid; padding: 20px; min-height: 420px; max-height: 420px;">
-                                        <table id="selected-owners" class="table-no-bordered table-hover" cellpadding="3" style="border-spacing: 0 3px; margin-right: 5px; margin-top: 10px; margin-bottom: 10px; margin-left: 8px;"></table>
-                                    </div>
-                                </div>
-
-                            </div>
                         </div>
 
 
                     </div>
 
                 </div>
-                <div class="row" style="position: relative; top:-10px; right:-8px; ">
-                    <div class="col-md-9">
-                        <div class="card-footer" style="background-color: rgb(235,235,235);  border: rgb(235,235,235);  border-width: 1px; border: solid;  min-height: 100px; max-width: 852px; ">
-                            <div class="row" style="position: relative; ">
-                                <div class="col-sm-4" style="position: relative; right: -10px;">
-                                    <span class="btn-sm btn"  data-target="#addNewOwnerModal" data-toggle="modal" style=" padding:5px; min-width:150px; color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><i class="material-icons" style="  position: relative;left:-10px;bottom:-5px;">person_add</i><b style="position: relative; top:-5px;"><a id="addNewOwnerLink" style="color: white;">New Owner</a></b></span>
-                                </div>
-                                <div class="col-sm-2">
-                                </div>
-                                <div class="col-sm-2">
-                                </div>
-                                <div class="col-sm-2">
-                                </div>
 
-
-
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
 
 
 
@@ -543,12 +511,22 @@
 
         /////////////////////////////////////////////////////////////////////////////
 
-        var dataSet1 = [  ];
+        var dataSet1 = [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+
+        ];
 
         //////////////////////////////////////////////////////////////////////////////
         // initialize contacts table with empty values
         //////////////////////////////////////////////////////////////////////////////
-        var contactsTable = $('#contacts').DataTable( {
+        var contactsTable = $('#ManagedContacts').DataTable( {
             data: dataSet1,
             "pageLength": 5,
             "scrollY": "250px",
@@ -560,11 +538,11 @@
             },
             "dom": '<"top"f<"clear">>rt<"bottom"p<"clear">>',
             columns: [
-                {  },
-                { title: "Name" },
+
+                { title: "" },
                 { title: "Owner Email" },
-                { title: "Entity Type" },
-                { title: "" }
+                { title: "Entity Type" }
+
 
             ]
         } );
@@ -619,249 +597,18 @@
 
         }
         // sort and redraw to line up columns
-        $('#contacts').DataTable().draw();
+
 
         /////////////////////////////
         // contatcs dataload end
         ////////////////////////////
 
-        $('#contacts').on('click', 'input.contacts-checkbox', function () {
 
-            //////////////////////////////////////////////////////////////////////////////////////////////////////////
-            // save contact from contact list to application lawyer pool using contact email and maybe firm name
-            // create push row using contact name and add to selected contacts table
-            //////////////////////////////////////////////////////////////////////////////////////////////////////////
-            $(this).prop("disabled", true);
 
 
-            var newRow = [$(this).parent().next().html(),"<i class=\"material-icons\">remove_circle</i>"];
-            //selectedTable.row.add(newRow).draw();
-            var uncheck_target;
-            // there can only be one owner selected ..
-            $('#selected-owners td').each(function () {
-                uncheck_target = $(this).html();
-                return false;
-            });
-            //alert(uncheck_target);
-            $('#contacts td').each(function () {
-                if($(this).html() === uncheck_target){
-                    $(this).prev().html("<input class=\"contacts-checkbox\" type=\"checkbox\">");
-                }
-            });
 
-            //var contacts_target = $(this).parent().prev().prev().prev().html();
-            selectedTable.clear().draw();
-            // $('#selected-attorneys tr').eq(contacts_counter).addClass('highlight');
-            selectedTable.row.add(newRow).draw();
 
-            //$('#selected-attorneys tr').eq(contacts_counter).addClass('highlight');
-            ////////////////////////////////////////////////////////
-            // update contacts added counter
-            ////////////////////////////////////////////////////////
-            //contacts_counter++;
-            /////////////////////////////////////////////////////////////////////////////////
-            // call back end and add contact via email from the application lawyer pool
-            /////////////////////////////////////////////////////////////////////////////////
-            // required parameters for back end interactions
-            // 1. contact email   // get contact email from sibling TD field
-            // 2. project id ??? how are we going to get that ???
-            // 3. load project id as java script variable like our other pages
-            /////////////////////////////////////////////////////////////////////////////////
-            var contact_email = $(this).parent().next().next().html();
-            // var project_id = appInternalID;
 
-            //addContact2Application(contact_email, project_id);
-            /////////////////////////////////////////////////////////////////////////////////
-            // enable next button
-            // and inject next link
-            /////////////////////////////////////////////////////////////////////////////////
-            setOwner4pplication(contact_email, appInternalID);
-
-            enableNextWidgetLink();
-
-
-
-
-        });
-
-
-
-
-
-
-
-        $('#contacts').on('click', 'i.material-icons', function () {
-
-            var checkBoxState = $(this).parent().prev().prev().prev().prev().html();
-
-            if(checkBoxState.indexOf("disabled") != -1){ // if not checked
-                // do nothing ..contact already selected
-
-
-                // acquire search key ..i.e  attorney name
-                var contacts_target = $(this).parent().prev().prev().prev().html();
-
-                // got through selected table and if matches target .. remove row
-                //
-                $('#selected-owners td').each(function () {
-                    if($(this).html() === contacts_target){
-                        selectedTable.row($(this).parents('tr')).remove().draw()
-                    }
-                });
-
-                ////////////////////////////////////////////////////////
-                // un check check box
-                ////////////////////////////////////////////////////////
-                $(this).parent().prev().prev().prev().prev().html("<input class=\"contacts-checkbox\" type=\"checkbox\">");
-                var contact_email = $(this).parent().prev().prev().html();
-                //removeContact2Application(contact_email, appInternalID);
-               // disableNextWidgetLink();
-                // call back end service to remove owner from application
-
-                removeOwner4pplication(contact_email, appInternalID);
-
-                disableNextWidgetLink();
-
-            }
-            else{
-
-                // checked ... push to selected contacts and update counter
-                var newRow = [$(this).parent().prev().prev().prev().html(),"<i class=\"material-icons\">remove_circle</i>"];
-                $(this).parent().prev().prev().prev().prev().html("<input class=\"contacts-checkbox\" type=\"checkbox\"  checked=\"true\" disabled=\"true\"> ");
-
-                // we need to get the removed email
-                var uncheck_target;
-                // there can only be one owner selected ..
-                $('#selected-owners td').each(function () {
-                    uncheck_target = $(this).html();
-                    return false;
-                });
-                //alert(uncheck_target);
-                $('#contacts td').each(function () {
-                    if($(this).html() === uncheck_target){
-                        $(this).prev().html("<input class=\"contacts-checkbox\" type=\"checkbox\">");
-                    }
-                });
-
-                //var contacts_target = $(this).parent().prev().prev().prev().html();
-                selectedTable.clear().draw();
-                // $('#selected-attorneys tr').eq(contacts_counter).addClass('highlight');
-                selectedTable.row.add(newRow).draw();
-
-
-
-
-                var contact_email = $(this).parent().prev().prev().html();
-                // call back end actions to remove previous owner and add new owner
-                setOwner4pplication(contact_email, appInternalID);
-
-                enableNextWidgetLink();
-
-
-            }
-
-
-            /////////////////////////////////////////////////////////////////////////////////
-            // call back end and add contact via email from the application lawyer pool
-            /////////////////////////////////////////////////////////////////////////////////
-
-
-        });
-
-
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-        // load selected owner datatable
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-        var dataSet3 = [
-
-        ];
-        //////////////////////////////////////////////////////////////////////////////////////////////////
-        // generate data tables for filings
-        //////////////////////////////////////////////////////////////////////////////////////////////////
-        var selectedTable = $('#selected-owners').DataTable( {
-            "createdRow": function ( row, data, index ) {
-
-                if(data != ""){
-                    $(row).addClass( 'highlight' );
-                }
-
-
-
-            },
-
-            "rowCallback": function( row, data ) {
-                // event works
-            },
-            data: dataSet3,
-            "dom": '<"top"<"clear">>rt<"bottom"<"clear">>',
-
-            columns: [
-                { title: "Application Owner" },
-                { title: "" }
-
-            ]
-        } );
-
-
-        // load selected owners
-        for(var a =0; a < selectedContactNames.length; a++) {
-
-
-            if (selectedContactNames[a] != "") {
-
-                var newRow = [selectedContactNames[a], "<i class=\"material-icons\">remove_circle</i>"];
-                selectedTable.row.add(newRow).draw();
-                enableNextWidgetLink();
-            }
-
-        }
-
-
-        //////////////////////////////////////////////////////////////
-        //////////////////////////////////////////////////////////////
-        // add action listeners to selected-contacts table check boxes
-        //////////////////////////////////////////////////////////////
-        $('#selected-owners').on('click', 'i.material-icons', function () {
-
-            //////////////////////////////////////////////////////////
-            // get selected row key i.e contact name
-            //////////////////////////////////////////////////////////
-            var contacts_target = $(this).parent().prev().html();
-
-            /////////////////////////////////////////////////////////
-            // uncheck contacts check box from the user contact list
-            //////////////////////////////////////////////////////////
-            var contact_email ="";
-            $('#contacts td').each(function () {
-                if($(this).html() === contacts_target){
-                    $(this).prev().html("<input class=\"contacts-checkbox\" type=\"checkbox\">");
-                    contact_email = $(this).next().html();
-                }
-
-            });
-
-            ////////////////////////////////////////////////////////
-            // pop current row ...
-            ////////////////////////////////////////////////////////
-            selectedTable.row($(this).parents('tr')).remove().draw();
-            /////////////////////////////////////////////////////////////////////////////////
-            // call back end and remove contact via email from the application lawyer pool
-            /////////////////////////////////////////////////////////////////////////////////
-
-            // call back end services to remove contact from application object
-            //removeContact2Application(contact_email, appInternalID);
-            /////////////////////////////////////////////////////////////////////////////////
-            // check selected table count ...if null ... disable next button
-            // doesn't make sense to set attorneys until you selected them
-            /////////////////////////////////////////////////////////////////////////////////
-            removeOwner4pplication(contact_email,appInternalID);
-            disableNextWidgetLink();
-
-        });
-        ////////////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////
 
 
 
