@@ -55,7 +55,7 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                 // custom authentication provider
                 /////////////////////////////////////////////////////////////
                 // this provider right now lets every one in ..
-                auth.authenticationProvider(usptoCustomAuthenticationProvider);
+                //auth.authenticationProvider(usptoCustomAuthenticationProvider);
                 /////////////////////////////////////////////////////////////
                 //final DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
                 //daoAuthenticationProvider.setUserDetailsService(usptoUserDetailsService);
@@ -65,7 +65,7 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                 /////////////////////////////////////////////////////////////
                 // DAO authentication provider
                 /////////////////////////////////////////////////////////////
-                //auth.userDetailsService(usptoUserDetailsService);
+                auth.userDetailsService(usptoUserDetailsService);
                 /////////////////////////////////////////////////////////////
 
                 /////////////////////////////////////////////////////////////
