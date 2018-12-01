@@ -270,7 +270,7 @@
                                         <!--        Here you can write extra buttons/actions for the toolbar      -->
                                     </div>
 
-                                    <div class="contacts-Table " style="border: rgb(235,235,235);  border-width: 1px; border: solid; padding: 15px; min-height: 420px; max-height: 420px;">
+                                    <div class="contacts-Table " style="border: rgb(235,235,235);  border-width: 1px; border: solid; padding: 15px; min-height: 420px; max-height: 420px; ">
                                         <table id="ManagedContacts" class="table-no-bordered table-hover" cellpadding="1" style="margin-right: 4px; margin-top: 10px; margin-bottom: 10px; margin-left: 4px;"></table>
                                     </div>
                                 </div>
@@ -281,6 +281,11 @@
 
 
                     </div>
+
+                </div>
+
+                <div class="container-fluid" id="pageLoadArea" style="position: relative;  max-width: 1000px;left:-220px; top:-200px; margin-bottom: 10px;">
+
 
                 </div>
 
@@ -296,7 +301,12 @@
 
 
 
-        </div>
+
+
+
+
+
+    </div>
 
         <div class="row" style="position: relative; top:-570px; right:-220px;">
             <div class="col-sm-6">
@@ -386,71 +396,6 @@
 
 
 
-<!-- start add new Owner Modal -->
-<div id="addNewOwnerModal" class="modal fade modal-lg" role="dialog"  tabindex="-1" style="max-width: 1200px;">
-    <div class="modal-dialog" style="min-width: 1200px; ">
-
-        <!-- Modal content-->
-        <div class="modal-content"  style="max-width: 1200px;">
-            <div class="modal-header" style="max-width: 1200px;background-color: rgb(217, 217, 214); position: relative; top:-5px;  z-index: 999;">
-                <!-- will enable this once required fields are entered  data-dismiss="modal" -->
-                <button type="button" id="modal-header-close"  data-dismiss="modal" class="close" style="position: relative; left:-30%;">&times;</button>
-                <h4 class="modal-title"><b>e-File Add New Owner</b></h4>
-
-            </div>
-            <div class="modal-body" id="addNewOwnerModalBody">
-                <div class="content" style="display: none; background-color: white;" >
-                    <div class="container-fluid"  style="max-height: 3000px;" >
-
-                        <div class="col-sm-16" >
-                            <div class="form-container base-page" style="position: relative; top:20px;">
-
-
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                </div>
-            </div>
-            <div class="modal-footer" style="background-color: rgb(217, 217, 214);">
-                <div class="form-group">
-
-                    <div class="row" style="position: relative; top:-15px; right:-30px;">
-                        <div class="col-sm-4" style="position: relative; right: -10px;">
-
-                        </div>
-
-
-                        <div class="col-sm-2">
-
-                            <div class="form-group attorney-saveMsgArea" style="position: relative; left:-15%; bottom:-10px;">
-                                <b><span></span></b>
-                            </div>
-
-                        </div>
-                        <div class="col-sm-2"  style="position: relative; right: -25px;">
-
-                            <!-- add this  back  data-dismiss="modal"  after  required fields are completed .... and also remove disabled=="true"  -->
-
-
-                        </div>
-
-                    </form>
-
-
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- end of add New Owner  modal -->
-
-
-
 
 
 <script>
@@ -468,6 +413,11 @@
         setTimeout(function() {
             // after 1000 ms we add the class animated to the login/register card
             $('#contacts-ui').fadeIn(500);
+
+
+            $.post(newOwnerLink, function(data){
+                $("#pageLoadArea").html(data).fadeIn();
+            });
         }, 500);
 
 
@@ -595,29 +545,6 @@
 
 
 
-
-        ////////////////////////////////////////////////////////////////
-        // load correspoinding owner form into modal on open
-        ////////////////////////////////////////////////////////////////
-        $('#addNewOwnerModal').on('shown.bs.modal', function () {
-
-            $.post(newOwnerLink, function(data){
-
-                $("#addNewOwnerModalBody").html(data).fadeIn();
-
-            });
-
-        });
-
-
-        $('#addNewOwnerModal').on('hidden.bs.modal', function () {
-
-            // clean up dynamically loaded html
-            $("#addNewOwnerModalBody").html("").fadeIn();
-
-            $("#ownerEntityForm").html("").fadeIn();
-
-        });
 
 
 
