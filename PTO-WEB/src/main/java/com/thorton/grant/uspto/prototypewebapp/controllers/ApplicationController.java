@@ -724,11 +724,13 @@ public class ApplicationController {
            // }
 
         }
-
-        owner.setClient(ptoUser);
-        ptoUser.addOwner(owner);
-        ptoUserService.save(ptoUser);
+        baseTrademarkApplication.setOwner(owner);
+        owner.setTrademarkApplication(baseTrademarkApplication);
+        //owner.setClient(p);
+       // ptoUser.addOwner(owner);
+        //ptoUserService.save(ptoUser);
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
 
         // reset application entity type and subtype
         // transfer those entity type and subtype to the new owner object
@@ -786,7 +788,7 @@ public class ApplicationController {
 
 
 
-        return "application/OwnerStart";
+        return "application/OwnerSetView";
     }
 
     @RequestMapping({"/application/owner/us/solp"})

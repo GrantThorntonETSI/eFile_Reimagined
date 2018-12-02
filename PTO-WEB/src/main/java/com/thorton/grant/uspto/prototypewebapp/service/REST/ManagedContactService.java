@@ -41,7 +41,7 @@ public class ManagedContactService extends  BaseRESTapiService {
                 String city="{city:"+contact.getCity()+"},";
                 String state="{state:"+contact.getState()+"},";
                 String zipcode="{zipcode:"+contact.getZipcode()+"},";
-                String email="{email:"+contact.getZipcode()+"},";
+                String email="{email:"+contact.getEmail()+"},";
                 String phone="{phone:"+contact.getPrimaryPhonenumber()+"}";
 
 
