@@ -27,6 +27,11 @@ public class ManagedContacts_JPA_Service implements MangedContactsService {
     }
 
     @Override
+    public ManagedContact findConctactByDisplayName(String name) {
+        return managedContactsRepository.findByDisplayName(name);
+    }
+
+    @Override
     public Set<ManagedContact> findAll() {
         Set<ManagedContact> managedContacts = new HashSet<>();
 

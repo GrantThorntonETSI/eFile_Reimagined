@@ -6,4 +6,5 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.Managed
 public interface MangedContactsService extends CrudService<ManagedContact, Long> {
 
           ManagedContact findContactByEmail(String email);
+          ManagedContact findConctactByDisplayName(String name);
 }

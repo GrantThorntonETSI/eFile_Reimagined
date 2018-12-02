@@ -14,9 +14,19 @@ private PTOUser contactOwner;
 
 private String contactType;
 
+private String displayName;
+
 
 private String entityName;  // organization name/ owner name /i .e none human name
 
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
 
     public PTOUser getContactOwner() {
         return contactOwner;

@@ -6,5 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface ManagedContactsRepository extends CrudRepository<ManagedContact, Long> {
 
     ManagedContact findByEmail(String email);
+    ManagedContact findByDisplayName(String displayName);
 
 }
