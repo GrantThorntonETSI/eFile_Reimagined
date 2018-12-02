@@ -29,6 +29,29 @@ public class ManagedContactService extends  BaseRESTapiService {
             if(contact != null){
 
                // build custom response entity and return it
+               // {{field_name:field_value}, {..}}
+
+
+                String first_name="{firstName:"+contact.getFirstName() +"},";
+                String middle_name="{middleName:"+contact.getMidlleName()+"},";
+                String last_name="{lastName:"+contact.getLastName()+"},";
+                String suffix="{suffix:"+contact.getSuffix()+"},";
+
+                String country="{country:"+contact.getCountry()+"},";
+                String address="{address:"+contact.getAddress()+"},";
+                String city="{city:"+contact.getCity()+"},";
+                String state="{state:"+contact.getState()+"},";
+                String zipcode="{zipcode:"+contact.getZipcode()+"},";
+                String email="{email:"+contact.getZipcode()+"},";
+                String phone="{phone:"+contact.getPrimaryPhonenumber()+"}";
+
+
+                String message = "{"+first_name+middle_name+last_name+suffix+country+address+city+state+zipcode+email+phone+ "}";
+                return  super.buildResponseEnity("200", message);
+
+
+
+
             }
 
 
