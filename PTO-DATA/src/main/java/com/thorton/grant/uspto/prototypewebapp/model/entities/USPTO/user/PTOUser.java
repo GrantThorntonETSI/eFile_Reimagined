@@ -170,7 +170,7 @@ public class PTOUser extends UserPersonalData {
         myManagedContacts.remove(contact);
 
     }
-    public ManagedContact findContactByEmail(String email){
+    public ManagedContact findManagedContactByEmail(String email){
 
         ManagedContact contact = null;
         for(Iterator<ManagedContact> iter = myManagedContacts.iterator(); iter.hasNext(); ) {
@@ -179,6 +179,22 @@ public class PTOUser extends UserPersonalData {
             ManagedContact current = iter.next();
 
             if(current.getEmail().equals(email)){
+                contact = current;
+            }
+        }
+        return contact;
+
+    }
+
+    public ManagedContact findManagedContactByDisplayName(String name){
+
+        ManagedContact contact = null;
+        for(Iterator<ManagedContact> iter = myManagedContacts.iterator(); iter.hasNext(); ) {
+            //this.availableLawyers.add(new Lawyer( iter.next() ));
+
+            ManagedContact current = iter.next();
+
+            if(current.getDisplayName().equals(name)){
                 contact = current;
             }
         }
