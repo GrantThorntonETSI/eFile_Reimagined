@@ -531,7 +531,13 @@
         // widget actions
 
         $('#ManagedContacts').on('click', 'i.material-icons', function () {
-            alert("!!!!!!!");
+
+            if($(this).html() == "folder_shared"){
+                var rawCell=$(this).parent().next().html();
+                var contactDisplayName = getContactName(rawCell);
+                alert(contactDisplayName);
+
+            }
 
 
         });
@@ -663,6 +669,11 @@
 
     } // end of function
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // helper functions
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     function enableNextWidgetLink() {
         $('#nextLink').prop("href", owerSetViewLink);
         $('#nextLinkIcon').prop("href", owerSetViewLink);
@@ -674,6 +685,11 @@
         $('#nextLinkIcon').prop("href", "");
         $('.next-button').css("background-color", "rgb(128, 128, 128)");
 
+    }
+
+    function getContactName(cell) {
+        var contact_name = cell.substring(3, cell.length-4);
+       return contact_name;
     }
 
 
