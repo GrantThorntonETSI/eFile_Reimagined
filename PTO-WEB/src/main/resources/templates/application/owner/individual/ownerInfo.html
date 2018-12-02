@@ -25,7 +25,7 @@
                     <h5 class="card-title"><b style="color: black; color: rgb(0, 0, 0); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">Owner Name Information</b><a  style="text-decoration: none;" data-toggle="tooltip" title="If the owner only have one name, insert the words First Name Unavailable (FNU) in the first name field and the name to be entered in the surename field."><i class="material-icons" style="position: relative; top:8px; right:-25px;">info_outline</i></a></h5>
 
                 </div>
-                <hr style="height:3px; position:relative; top:-20px; left:-11.5%; max-width: 80.1%">
+                <hr style="height:3px; position:relative; top:-20px; left:-12%; max-width: 80.1%">
             </div>
 
     <form method="post" style="" id="addNewOwnerForm" action="/owner/add"  class="form-horizontal"  th:object="${addNewOwnerContactFormDTO}">
@@ -43,7 +43,7 @@
 
             <div class="row" style="position: relative; top:-250px; right:-8%;">
 
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <div class="form-group">
                         <span>
                             <input type="text" id="first-name"   th:field="*{firstName}"   name="firstName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
@@ -75,7 +75,7 @@
             </div>
             <div class="row" style="position: relative; top:-250px; right:-8%;">
 
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <div class="form-group">
                             <span>
                               <input type="text"   th:field="*{middleName}"  name="middleName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
@@ -103,7 +103,7 @@
 
             <div class="row" style="position: relative; top:-250px; right:-8%;">
 
-                <div class="col-sm-3">
+                <div class="col-sm-4">
 
                     <div class="form-group">
                         <span>
@@ -131,7 +131,7 @@
 
             <div class="row" style="position: relative; top:-250px; right:-8%;">
 
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <div class="form-group">
                         <span>
                             <select  class="form-control" name="suffix"    th:field="*{suffix}"  style="font-family:Impact; font-weight: bold;   border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
@@ -152,16 +152,16 @@
                 </div>
             </div>
 
-            <div class="row" style="position: relative; top:-960px; left:-5.5%; ">
+            <div class="row" style="position: relative; top:-960px; left:-13%; ">
                 <div id="TextElementf1b9b6a821ef49b39c5e8f1f9b34dc9c" class="ng-element el-text-2 empty-line-hack font-S-Arial-n4" data-id="8d9671048db0497e97be402509fb1b2f" style="opacity: 1; mix-blend-mode: normal; font-variant: normal; color: rgb(0, 0, 0); font-size: 16px; font-weight: bold; font-style: normal; text-decoration: none; text-align: left; width: 573px; height: 18px; transform: rotate(0deg) translate(164px, 724px) rotate(0deg);"><p>Add&nbsp;additional name if I do business as/or trading under a different name:</p></div>
             </div>
 
-            <div class="row" style="position: relative; top:-695px; left:-4%; ">
+            <div class="row" style="position: relative; top:-695px; left:-13%; ">
                 <div id="TextElement3c22541d249c4ccdbef101d00bf9c27b" class="ng-element el-text-2 empty-line-hack font-S-Arial-n4" data-id="e663302ac1054b3abb7536d7052cff99" style="opacity: 1; mix-blend-mode: normal; font-variant: normal; color: rgb(0, 0, 0); font-size: 16px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; width: 300px; height: 18px; transform: rotate(0deg) translate(149px, 472px) rotate(0deg);"><p>Type</p></div>
             </div>
             <div class="row" style="position: relative; top:-205px; right:-8%; ">
                 <!--default drop down -->
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <div class="form-group">
                         <span>
                             <select  class="form-control" name="nameType"  th:field="*{ownerType}" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
@@ -184,12 +184,12 @@
 
             </div>
 
-            <div class="row" style="position: relative; top:-665px; left:-4% ">
+            <div class="row" style="position: relative; top:-665px; left:-13% ">
                 <div id="TextElement3c22541d249c4ccdbef101d00bf9c27b4" class="ng-element el-text-2 empty-line-hack font-S-Arial-n4" data-id="e663302ac1054b3abb7536d7052cff99" style="opacity: 1; mix-blend-mode: normal; font-variant: normal; color: rgb(0, 0, 0); font-size: 16px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; width: 300px; height: 18px; transform: rotate(0deg) translate(149px, 472px) rotate(0deg);"><p>Country of Citizenship<a  style="text-decoration: none;" data-toggle="tooltip" title="If you have dual citizenship only enter the citizenship you would like printed in the Official Gazette."><i class="material-icons" style="position: relative; top:8px; right:-25px;">info_outline</i></a></p></div>
             </div>
             <div class="row" style="position: relative; top:-175px; right:-8%; margin-bottom: 30px; ">
                 <!--default drop down -->
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <div class="form-group">
                                         <span>
                                             <select  id="owner-citizenship"  class="form-control" name="suffix"   th:field="*{ownerCitizenShip}" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
@@ -459,7 +459,7 @@
                     <h5 class="card-title"><b style="color: black; color: rgb(0, 0, 0); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">Owner Address Information</b></h5>
 
                 </div>
-                <hr style="height:3px; position:relative; top:-20px; left:-11.5%; max-width: 80.1%">
+                <hr style="height:3px; position:relative; top:-22px; left:-12.3%; max-width: 80.1%">
             </div>
 
 
@@ -474,7 +474,7 @@
 
                 <div class="row" style="position: relative; top:-200px; right:-8%; ">
 
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <div class="form-group">
                                         <span>
                                              <select   th:field="*{OwnerAddressCountry}"  class="form-control" name="suffix"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
@@ -747,7 +747,7 @@
                     <div class="row" style="position: relative; top:-200px; right:-8%;">
 
 
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <div class="form-group">
                                     <span>
                                         <input type="text"  th:field="*{ownerAddress1}"    name="Address1" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
@@ -778,7 +778,7 @@
 
                 <div class="row" style="position: relative; top:-200px; right:-8%;">
 
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <div class="form-group">
                             <span>
                                 <input type="text"  th:field="*{ownerAddress2}"   name="Address2" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
@@ -810,7 +810,7 @@
                     </div>
                     <div class="row" style="position: relative; top:-200px; right:-8%;">
 
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <div class="form-group">
                                         <span>
                                           <input type="text" th:field="*{ownerAddress3}"  name="Address3" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
@@ -837,7 +837,7 @@
 
                     <div class="row" style="position: relative; top:-200px; right:-8%;">
 
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
 
                             <div class="form-group">
                                         <span>
@@ -864,7 +864,7 @@
 
                     <div class="row" style="position: relative; top:-200px; right:-8%;">
 
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
 
                             <div class="form-group">
                                 <select  class="form-control custom-select" name="State" th:field="*{ownerState}"  th:value="${user.state}"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
@@ -943,7 +943,7 @@
                 </div>
                 <div class="row" style="position: relative; top:-200px; right:-8%;">
 
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <div class="form-group">
                                         <span>
                                           <input type="text" name="zipcode" th:field="*{ownerZipcode}"  placeholder="XXXXX" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
@@ -966,7 +966,7 @@
                         <h5 class="card-title"><b style="color: black; color: rgb(0, 0, 0); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">Additional Information</b></h5>
 
                     </div>
-                    <hr style="height:3px; position:relative; top:-20px; left:-11.5%; max-width: 80.1%">
+                    <hr style="height:3px; position:relative; top:-20px; left:-12%; max-width: 80.1%">
                 </div>
 
                 <div class="row" style="position: relative; top:-230px; right:-7%;">
@@ -978,7 +978,7 @@
                 </div>
                 <div class="row" style="position: relative; top:-230px; right:-8%;">
 
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <div class="form-group">
                                 <span>
                                     <input type="email" name="email" th:field="*{ownerEmail}"  placeholder="" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
@@ -1003,7 +1003,7 @@
                 </div>
                 <div class="row" style="position: relative; top:-230px; right:-8%;">
 
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <div class="form-group">
                                 <span>
                                   <input type="url" name="website" th:field="*{ownerWebSite}"  placeholder="" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
@@ -1040,7 +1040,7 @@
                             <option value="fax"><b>Fax</b></option>
                         </select>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                         <input type="number" id="phone" name="Phone" class="form-control"  th:field="*{ownerPhone}"   style=" border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                     </div>
                     <div class="col-sm-1">
@@ -1054,7 +1054,7 @@
                     </div>
                 </div>
 
-                <div class="row" style="position: relative; top:-590px;  left:-5%;">
+                <div class="row" style="position: relative; top:-590px;  left:-15%;">
                     <button id="addNewPhoneNumber" class="ng-element el-button font-S-Arial-n4 interactive" data-id="fdd4cf621d614e66a1ba02d4820e53a9" style="opacity: 1; mix-blend-mode: normal; border-color: rgb(221, 221, 221); background-color: rgb(0, 120, 171); background-image: none; color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center; border-width: 0px; border-radius: 3px; border-style: solid; background-size: cover; background-repeat: repeat; background-position: center center; font-size: 16px; font-style: normal; width: 280px; height: 30px; transform: rotate(0deg) translate(158px, 389px) rotate(0deg);">Add Additional Phone Number</button>
                 </div>
 
