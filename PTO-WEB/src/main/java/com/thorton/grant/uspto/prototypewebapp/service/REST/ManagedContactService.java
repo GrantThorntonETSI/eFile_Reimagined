@@ -5,18 +5,17 @@ import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.ManagedContact;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.*;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
-
+@RestController
+@Service
 public class ManagedContactService extends  BaseRESTapiService {
 
 
     @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
-    @RequestMapping(method = GET, value="/REST/apiGateway/user/managedContact/{displayName}")
+    @RequestMapping(method = GET, value="/REST/apiGateway/user/managedContact/get/{displayName}")
     @ResponseBody
     ResponseEntity<String> getManagedContact(@PathVariable String displayName ){
 
