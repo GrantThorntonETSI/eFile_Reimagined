@@ -283,6 +283,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
          contact.setCountry(ptoUser.getCountry());
          contact.setAddress(ptoUser.getAddress());
          contact.setDisplayName(ptoUser.getFirstName()+ " "+ptoUser.getLastName());
+         contact.setContactType("Individual");
 
 
 

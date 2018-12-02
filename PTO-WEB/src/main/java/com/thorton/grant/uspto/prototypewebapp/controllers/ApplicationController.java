@@ -17,6 +17,7 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.ap
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Partner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.ManagedContact;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -471,13 +472,13 @@ public class ApplicationController {
         ArrayList<String> contactNames = new ArrayList<>();
         ArrayList<String> contactEmails = new ArrayList<>();
         ArrayList<String> contactSubTypes = new ArrayList<>();
-        Owner owner1 = null;
+        ManagedContact managedContact = null;
 
-        for(Iterator<Owner> iter = ptoUser.getMyOwners().iterator(); iter.hasNext(); ) {
-            owner1 = iter.next();
-            contactNames.add(owner1.getOwnerDisplayname());
-            contactEmails.add(owner1.getEmail());
-            contactSubTypes.add(owner1.getOwnersubType());
+        for(Iterator<ManagedContact> iter = ptoUser.getMyManagedContacts().iterator(); iter.hasNext(); ) {
+            managedContact = iter.next();
+            contactNames.add(managedContact.getDisplayName());
+            contactEmails.add(managedContact.getEmail());
+            contactSubTypes.add(managedContact.getContactType());
 
         }
         Collections.reverse(contactNames);
@@ -487,7 +488,7 @@ public class ApplicationController {
         contactsDisplayDTO.setContactNames(contactNames);
         contactsDisplayDTO.setContactEmails(contactEmails);
         contactsDisplayDTO.setContactEntitySubType(contactSubTypes);
-        model.addAttribute("myOwnerContacts", contactsDisplayDTO);
+        model.addAttribute("myManagedContacts", contactsDisplayDTO);
 
 
         ///////////////////////////////////////////////////////////////
@@ -515,6 +516,15 @@ public class ApplicationController {
         SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
         selectedContactsDisplayDTO.setSelectedNames(ownerContactNames);
         model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
+
+
+
+        // we need to add managed contact display objects
+
+
+
+
+
 
         return "application/OwnerStart";
     }
@@ -1163,26 +1173,27 @@ public class ApplicationController {
         NewOwnerContactFormDTO newOwnerContactFormDTO = new NewOwnerContactFormDTO();
         model.addAttribute("addNewOwnerContactFormDTO", newOwnerContactFormDTO);
 
-        ArrayList<String> ownerContactNames = new ArrayList<>();
-        ArrayList<String> ownerContactEmails = new ArrayList<>();
-        ArrayList<String> ownerContactSubTypes = new ArrayList<>();
-        Owner owner1 = null;
+        ArrayList<String> managedContactNames = new ArrayList<>();
+        ArrayList<String> managedContactEmails = new ArrayList<>();
+        ArrayList<String> managedCcontactSubTypes = new ArrayList<>();
+        ManagedContact managedContact = null;
 
-        for(Iterator<Owner> iter = ptoUser.getMyOwners().iterator(); iter.hasNext(); ) {
-            owner1 = iter.next();
-            ownerContactNames.add(owner1.getFirstName()+" "+owner1.getLastName());
-            ownerContactEmails.add(owner1.getEmail());
-            ownerContactSubTypes.add(owner1.getOwnersubType());
+        for(Iterator<ManagedContact> iter = ptoUser.getMyManagedContacts().iterator(); iter.hasNext(); ) {
+            managedContact = iter.next();
+            managedContactNames.add(managedContact.getDisplayName());
+            managedContactEmails.add(managedContact.getEmail());
+            managedCcontactSubTypes.add(managedContact.getContactType());
 
         }
-        Collections.reverse(ownerContactNames);
-        Collections.reverse(ownerContactEmails);
-        Collections.reverse(ownerContactSubTypes);
-        ContactsDisplayDTO ownerContactsDisplayDTO = new ContactsDisplayDTO();
-        ownerContactsDisplayDTO.setContactNames(ownerContactNames);
-        ownerContactsDisplayDTO.setContactEmails(ownerContactEmails);
-        ownerContactsDisplayDTO.setContactEntitySubType(ownerContactSubTypes);
-        model.addAttribute("myOwnerContacts", ownerContactsDisplayDTO);
+        Collections.reverse(managedContactNames);
+        Collections.reverse(managedContactEmails);
+        Collections.reverse(managedCcontactSubTypes);
+        ContactsDisplayDTO managedContactsDisplayDTO = new ContactsDisplayDTO();
+        managedContactsDisplayDTO.setContactNames(managedContactNames);
+        managedContactsDisplayDTO.setContactEmails(managedContactEmails);
+        managedContactsDisplayDTO.setContactEntitySubType(managedCcontactSubTypes);
+        model.addAttribute("myManagedContacts", managedContactsDisplayDTO);
+
 
 
         System.out.println("las view model : "+baseTrademarkApplication.getLastViewModel());
