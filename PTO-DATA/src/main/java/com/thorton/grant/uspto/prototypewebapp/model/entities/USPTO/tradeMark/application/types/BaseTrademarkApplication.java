@@ -213,6 +213,15 @@ public class BaseTrademarkApplication  {
     }
 
 
+     public boolean isOwnerSet(){
+
+        boolean ownerSet = false;
+
+        if(owners.size() > 0){
+            ownerSet = true;
+        }
+        return ownerSet;
+     }
 
 
 
