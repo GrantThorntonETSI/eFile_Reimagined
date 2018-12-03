@@ -750,6 +750,7 @@ public class ApplicationController {
 
 
 
+        //return "forward:/application/OwnerSetView/?trademarkID="+newOwnerContactFormDTO.getAppInternalID();
         return "application/OwnerSetView";
     }
 

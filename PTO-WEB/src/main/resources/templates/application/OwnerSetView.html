@@ -275,24 +275,25 @@
                             <div class="card-header" id="headingTwo"  style="background-color: white;">
                                 <div class="row">
                                     <div class="col-sm-1">
-                                        <input  class="primaryOwner" style="position: relative; bottom: -5px;"  type="radio" name="primaryOwner" checked>
+                                        <i class="material-icons" style="position: relative; bottom: -5px;">contacts</i>
 
                                     </div>
                                     <div class="col-sm-1">
-                                        <i class="material-icons collapsed" data-toggle="collapse" th:attr="data-target=${owner.ownerDisplayname}"   aria-expanded="false" aria-controls="collapseTwo" style="position: relative; bottom:-5px; left:-20px;">import_export</i>
+                                        <i class="material-icons collapsed" data-toggle="collapse" th:attr="data-target='#'+${owner.id}"   aria-expanded="false" aria-controls="collapseTwo" style="position: relative; bottom:-5px; left:-20px;">import_export</i>
                                     </div>
                                     <div class="col-sm-3">
-
-                                        <b style="position: relative; bottom: -5px; left:-25px;" th:text="${owner.ownerDisplayname}">Owner Name</b>
+                                        <div class="row">
+                                           <b style="position: relative; bottom:-5px;" th:text="${owner.ownerDisplayname}">Owner Name</b>
+                                        </div>
 
                                     </div>
 
-                                    <div class="col-sm-3">
-                                        <b style="position: relative; bottom: -5px; left:-25px;" th:text="${owner.email}"> Attorney@Email.com</b>
+                                    <div class="col-sm-3" style="position: relative; left:-30px;">
+                                        <i class="material-icons" style="position: relative; left:-5px;">contact_mail</i> <b style="position: relative; top:-5px; " th:text="${owner.email}"> Attorney@Email.com</b>
                                     </div>
 
                                     <div class="col-sm-3">
-                                        <b style="position: relative; bottom: -5px; left:-25px;" th:text="${owner.getOwnersubType()}"> Attorney Firm, LLC </b>
+                                        <i class="material-icons">account_circle</i>   <b style="position: relative; top:-5px;  " th:text="${owner.getOwnersubType()}"> Attorney Firm, LLC </b>
                                     </div>
                                     <div class="col-sm-1">
                                         <i class="material-icons" style="position: relative; bottom: -3px;">remove_circle</i>
@@ -303,15 +304,15 @@
                             </div>
                         </div>
 
-                        <div th:attr="id=${owner.ownerDisplayname}"  class="collapse in" aria-labelledby="headingTwo" data-parent="#accordionExample" style="max-width: 850px; margin-bottom: 10px;">
+                        <div th:attr="id=${owner.id}"  class="collapse in" aria-labelledby="headingTwo" data-parent="#accordionExample" style="max-width: 850px; margin-bottom: 10px;">
                             <div class="card-body">
 
                                 <div class="row" style="position: relative; right:-110px;">
-                                        <span class="collapsed"  data-toggle="collapse" th:attr="data-target=${owner.ownerDisplayname}+'1'"  aria-expanded="false" aria-controls="collapseTwoAddress">
+                                        <span class="collapsed"  data-toggle="collapse" th:attr="data-target='#'+${owner.id}+'a'"  aria-expanded="false" aria-controls="collapseTwoAddress">
                                             <i class="material-icons">keyboard_arrow_right</i><b style="position: relative; top:-7px;"> Address Information</b>
                                         </span>
 
-                                    <div th:attr="id=${owner.ownerDisplayname}+'1'"  class="collapse" aria-labelledby="headingTwoAddress" data-parent="#accordionExample" style="max-width: 850px;">
+                                    <div th:attr="id=${owner.id}+'a'"  class="collapse" aria-labelledby="headingTwoAddress" data-parent="#accordionExample" style="max-width: 850px;">
                                         <div class="card-body">
 
                                             <span style="position: relative; right:-30px;" th:text="${owner.address}+' '+${owner.city}+', '+${owner.state}+' '+${owner.zipcode}"> 1115 Reserve Champion Drive, Rockville MD 20850</span>
@@ -321,11 +322,11 @@
                                 </div>
 
                                 <div class="row" style="position: relative; right:-110px;">
-                                            <span class="collapsed"  data-toggle="collapse" th:attr="data-target=${owner.ownerDisplayname}+'2'"  aria-expanded="false" aria-controls="collapseTwoAffiliation">
+                                            <span class="collapsed"  data-toggle="collapse" th:attr="data-target='#'+${owner.id}+'b'"  aria-expanded="false" aria-controls="collapseTwoAffiliation">
                                                 <i class="material-icons">keyboard_arrow_right</i> <b style="position: relative; top:-7px;">Website URL</b>
                                             </span>
 
-                                    <div th:attr="id=${owner.ownerDisplayname}+'2'"  class="collapse" aria-labelledby="headingTwoAffiliation" data-parent="#accordionExample" style="max-width: 850px;">
+                                    <div th:attr="id=${owner.id}+'b'"  class="collapse" aria-labelledby="headingTwoAffiliation" data-parent="#accordionExample" style="max-width: 850px;">
                                         <div class="card-body">
 
                                             <span style="position: relative; right:-30px;"  th:text="${owner.webSiteURL}">Washington Dc Bar Association. Maryland Bar Association.</span>
