@@ -26,6 +26,7 @@ public class BaseTrademarkApplication  {
     public BaseTrademarkApplication() {
         availableLawyers = new HashSet<>();
         actions = new HashSet<>();
+        owners = new HashSet<>();
     }
 
     ////////////////////////////////////////////////////////
@@ -78,9 +79,9 @@ public class BaseTrademarkApplication  {
 
     // can be a lawyer or owner ???
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     @Nullable
-    private Owner owner; // default owner   PTO user
+    private Set<Owner> owners; // default owner   PTO user
 
 
 
@@ -167,13 +168,58 @@ public class BaseTrademarkApplication  {
     }
 
 
-    public Owner getOwner() {
+    @Nullable
+    public Set<Owner> getOwners() {
+        return owners;
+    }
+
+    public void setOwners(@Nullable Set<Owner> owners) {
+        this.owners = owners;
+    }
+
+    public Owner addOwner(Owner newOwner){
+
+        this.owners.add(newOwner);
+        return newOwner;
+
+    }
+
+    public void removeOwner(Owner owner){
+        this.owners.remove(owner);
+    }
+
+    public Owner findOwnerByEmail(String email){
+        Owner owner = null;
+        for(Iterator<Owner> iter = owners.iterator(); iter.hasNext(); ) {
+            Owner current = iter.next();
+
+            if(current.getEmail().equals(email)){
+                owner = current;
+            }
+        }
         return owner;
     }
 
-    public void setOwner(Owner owner) {
-        this.owner = owner;
+    public Owner findOwnerByDisplayName(String name){
+        Owner owner = null;
+        for(Iterator<Owner> iter = owners.iterator(); iter.hasNext(); ) {
+            Owner current = iter.next();
+
+            if(current.getOwnerDisplayname().equals(name)){
+                owner = current;
+            }
+        }
+        return owner;
     }
+
+
+
+
+
+
+
+
+
 
     public boolean isAttorneyFiling() {
         return isAttorneyFiling;
@@ -274,18 +320,28 @@ public class BaseTrademarkApplication  {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BaseTrademarkApplication that = (BaseTrademarkApplication) o;
-        return Objects.equals(id, that.id);
+        return Objects.equals(id, that.id) &&
+                Objects.equals(trademarkName, that.trademarkName) &&
+                Objects.equals(applicationInternalID, that.applicationInternalID) &&
+                Objects.equals(ownerEmail, that.ownerEmail) &&
+                Objects.equals(availableLawyers, that.availableLawyers) &&
+                Objects.equals(ownerType, that.ownerType) &&
+                Objects.equals(ownerSubType, that.ownerSubType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(id, trademarkName, applicationInternalID, ownerEmail, availableLawyers, ownerType, ownerSubType);
     }
 
     @Override
     public String toString() {
         return "BaseTrademarkApplication{" +
-                "isAttorneyFiling=" + isAttorneyFiling +
+                "id=" + id +
+                ", trademarkName='" + trademarkName + '\'' +
+                ", applicationInternalID='" + applicationInternalID + '\'' +
+                ", isAttorneySet=" + isAttorneySet +
+                ", isAttorneyFiling=" + isAttorneyFiling +
                 ", isForeignEnityFiling=" + isForeignEnityFiling +
                 ", currentStage='" + currentStage + '\'' +
                 ", lastViewModel='" + lastViewModel + '\'' +
@@ -293,9 +349,11 @@ public class BaseTrademarkApplication  {
                 ", ptoUser=" + ptoUser +
                 ", primaryLawyer=" + primaryLawyer +
                 ", availableLawyers=" + availableLawyers +
-                ", owner=" + owner +
+                ", owners=" + owners +
                 ", tradeMark=" + tradeMark +
                 ", actions=" + actions +
+                ", ownerType='" + ownerType + '\'' +
+                ", ownerSubType='" + ownerSubType + '\'' +
                 '}';
     }
 }

@@ -497,25 +497,7 @@ public class ApplicationController {
         // just set it and test for null
         ///////////////////////////////////////////////////////////////
 
-        ArrayList<String> ownerContactNames = new ArrayList<>();
-        Owner applicationOwner = baseTrademarkApplication.getOwner();
 
-        // we probably do not need to hit the database for this...
-        //  build it with owner object
-
-        if(applicationOwner != null){
-
-            ownerContactNames.add( applicationOwner.getOwnerDisplayname());
-        }
-        else{
-
-
-            ownerContactNames.add("");
-        }
-
-        SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
-        selectedContactsDisplayDTO.setSelectedNames(ownerContactNames);
-        model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
 
 
 
@@ -724,8 +706,9 @@ public class ApplicationController {
            // }
 
         }
-        baseTrademarkApplication.setOwner(owner);
+        baseTrademarkApplication.addOwner(owner);
         owner.setTrademarkApplication(baseTrademarkApplication);
+
         //owner.setClient(p);
        // ptoUser.addOwner(owner);
         //ptoUserService.save(ptoUser);
@@ -763,27 +746,6 @@ public class ApplicationController {
         contactsDisplayDTO.setContactEmails(contactEmails);
         contactsDisplayDTO.setContactEntitySubType(contactSubTypes);
         model.addAttribute("myOwnerContacts", contactsDisplayDTO);
-
-
-        ArrayList<String> ownerContactNames = new ArrayList<>();
-        Owner applicationOwner = baseTrademarkApplication.getOwner();
-
-        // we probably do not need to hit the database for this...
-        //  build it with owner object
-
-        if(applicationOwner != null){
-
-            ownerContactNames.add( applicationOwner.getOwnerDisplayname());
-        }
-        else{
-
-
-            ownerContactNames.add("");
-        }
-
-        SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
-        selectedContactsDisplayDTO.setSelectedNames(ownerContactNames);
-        model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
 
 
 
@@ -949,19 +911,6 @@ public class ApplicationController {
 
 
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
-
-        System.out.println("222222222222222222222222222222222222222222222222222222222222222222222");
-        System.out.println("222222222222222222222222222222222222222222222222222222222222222222222");
-        Owner owner = baseTrademarkApplication.getOwner();
-          if(owner == null){
-              System.out.println("OWNER is null!!!!!!!!!!!!!!!!!!");
-          }else {
-              System.out.println("owner display name: "+owner.getOwnerDisplayname());
-          }
-
-
-        System.out.println("222222222222222222222222222222222222222222222222222222222222222222222");
-        System.out.println("222222222222222222222222222222222222222222222222222222222222222222222");
 
 
         model.addAttribute("hostBean", hostBean);

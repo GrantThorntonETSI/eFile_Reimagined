@@ -18,7 +18,7 @@ public class Owner extends Contact{
 
     }
 
-    @OneToOne
+    @ManyToOne
     private BaseTrademarkApplication trademarkApplication;
 
 
