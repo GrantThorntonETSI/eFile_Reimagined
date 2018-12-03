@@ -304,16 +304,16 @@
 
 
 
-<div style="position: relative;  top: -430px; " >
+<div style="position: relative;  top: -430px; left:-350px;  " >
 
-            <div class="row" style="position: relative; top: -430px; right:-60px;">
+            <div class="row" style="position: relative; top: -430px; right:-360px; max-width: 300px; max-height: 100px;">
                 <span><h5><b>Is an Attorney filing this application?</b></h5></span>
 
             </div>
 
             <div th:if="${baseTrademarkApplication.isAttorneySet() == false}">
 
-                <div class="row" style="position: relative; top:-430px; right:-120px; z-index:200;">
+                <div class="row" style="position: relative; top:-430px; right:-320px; z-index: 222; max-width: 100px;">
                     <div class="col-sm-1">
 
                         <input type="radio" name="isAttorneyFiling" id="attorneyFilingTrue">
@@ -324,7 +324,7 @@
                     </div>
 
                 </div>
-                <div class="row" style="position: relative; top:-430px; right:-120px;">
+                <div class="row" style="position: relative; top:-430px; right:-320px;  z-index: 222; max-width: 100px;">
                     <div class="col-sm-1">
 
                         <input type="radio" name="isAttorneyFiling" id="attorneyFillingFalse">
@@ -338,7 +338,7 @@
             </div>
             <div th:if="${baseTrademarkApplication.isAttorneySet() == true}">
 
-                <div class="row" style="position: relative; top:-130px; right:-120px; z-index:200;" >
+                <div class="row" style="position: relative; top:-130px; right:-320px; z-index:200; max-width: 100px;" >
                     <div class="row" style="position: relative; top:-300px; right:-120px; ">
                         <div class="col-sm-1">
 
@@ -351,7 +351,7 @@
                         </div>
 
                     </div>
-                    <div class="row" style="position: relative; top:-300px; right:-120px;">
+                    <div class="row" style="position: relative; top:-300px; right:-120px; max-width: 100px;">
                         <div class="col-sm-1">
 
                             <input type="radio" th:if="${baseTrademarkApplication.isAttorneyFiling() == true}" name="isAttorneyFiling" id="attorneyFillingFalse">
@@ -368,7 +368,7 @@
 
             </div>
 
-            <div class="row" style="position: relative; top:-430px; right:-220px;">
+            <div class="row" style="position: relative; top:-430px; right:-220px; z-index: 0; max-height:100px;max-width: 300px;">
                 <div class="col-sm-6">
                     <div class="form-group set-lawyer-options-valueFieldMsgArea" style="display:none; position: relative; left:30%;">
                         <b><span></span></b>
@@ -377,7 +377,7 @@
 
             </div>
 
-            <div class="container-fluid" id="pageLoadArea" style="position: relative;  max-width: 850px;left:-10px; top:-200px; margin-bottom: 20px; z-index: 0;" >
+            <div class="container-fluid" id="pageLoadArea" style="position: relative;  max-width: 850px; right:-40px; top:-200px; margin-bottom: 20px;margin-right:10px;" >
 
 
             </div>
@@ -493,15 +493,27 @@
             $('#contacts-ui').fadeIn(500);
 
 
-            $.post(newAttorneyLink, function(data){
-                $("#pageLoadArea").html(data).fadeIn();
-            });
+
         }, 500);
 
 
         $('[data-toggle="tooltip"]').tooltip();
 
+        $('#attorneyFilingTrue').click( function () {
+            ////////////////////////////////////////////////////////////
+            // call back end update ...
+            // signal uppate occurred
+            // wait for the confirm message first.
+            ////////////////////////////////////////////////////////////
 
+            $.post(newAttorneyLink, function(data){
+                $("#pageLoadArea").html(data).fadeIn();
+            });
+            saveProjectInfo("set-lawyer-options-value", "yes", appInternalID);
+            setTimeout(function() {
+                $('#pageLoadArea').fadeIn(2000);
+            }, 1500);
+        });
 
 
 
@@ -657,21 +669,19 @@
                     //$('#toggle').delay(1000).click();
                     //$(".autoSaveMessageArea span").fadeOut(500);
 
-                    //alert(s_msg);
-
                     var firstName = getFieldValueFromResponse(s_msg,"firstName");
                     if(firstName != "null"){
-                        $('#first-name').val(firstName);
+                        $('#attorney-first-name').val(firstName);
 
                     }
                     var middleName = getFieldValueFromResponse(s_msg,"middleName");
                     if(middleName != "null"){
-                        $('#middleName').val(middleName);
+                        $('#attorney-middle-name').val(middleName);
 
                     }
                     var lastName = getFieldValueFromResponse(s_msg,"lastName");
                     if(lastName != "null"){
-                        $('#last-name').val(lastName);
+                        $('#attorney-last-name').val(lastName);
 
                     }
                     var suffix = getFieldValueFromResponse(s_msg,"suffix");
@@ -681,34 +691,34 @@
                     }
                     var country = getFieldValueFromResponse(s_msg,"country");
                     if(country != "null"){
-                        $('#OwnerAddressCountry').val(country);
+                        $('#attorney-country').val(country);
 
                     }
 
                     var address1 = getFieldValueFromResponse(s_msg,"address");
                     if(address1 != "null"){
-                        $('#ownerAddress1').val(address1);
+                        $('#attorney-address1').val(address1);
                     }
 
                     var city = getFieldValueFromResponse(s_msg,"city");
                     if(city != "null"){
-                        $('#ownerCity').val(city);
+                        $('#attorney-city').val(city);
                     }
                     var state = getFieldValueFromResponse(s_msg,"state");
                     if(state != "null"){
-                        $('#ownerState').val(state);
+                        $('#attorney-state').val(state);
                     }
                     var zipcode = getFieldValueFromResponse(s_msg,"zipcode");
                     if(zipcode != "null"){
-                        $('#ownerZipcode').val(zipcode);
+                        $('#attorney-zipcode').val(zipcode);
                     }
                     var email = getFieldValueFromResponse(s_msg,"email");
                     if(email != "null"){
-                        $('#ownerEmail').val(email);
+                        $('#attorney-email').val(email);
                     }
                     var phone = getFieldValueFromResponse(s_msg,"phone");
                     if(phone != "null"){
-                        $('#phone').val(phone);
+                        $('#attorney-phone').val(phone);
                     }
 
 

@@ -10,18 +10,18 @@
 
 
 <!-- End Navbar -->
-<div class="content" style="display: none; background-color: white;  max-width: 800px; position: relative; top:-220px; bottom: -10%; left:-170px;" >
-    <div class="container-fluid"  >
+<div class="content" style="display: none; background-color: white;  max-width: 800px; position: relative; top:-220px; bottom: -10%; left:-20px; z-index: 0;" >
+    <div class="container-fluid" style="position: relative; right:-30px;"  >
 
 
-        <div class="col-sm-12" >
-            <div class="form-container base-page" style="position: relative; bottom:-60px;">
+        <div class="col-sm-12" style="position: relative; " >
+            <div class="form-container base-page" style="position: relative; bottom:-170px;">
 
 
 
 
 
-                    <div class="card-text" style="position: relative; left:-30px;">
+                    <div class="card-text" style="position: relative; left:-30px;  ">
                         <h5 class="card-title"><b>Attorney Information</b></h5>
                     </div>
                     <hr style="height:3px; position:relative; top:-20px; left:-13.5%; max-width: 80.3%">
@@ -78,7 +78,7 @@
 
                             <div class="form-group">
                                 <label class="small" style="margin-top: 10px;"><b>Middle Name</b></label>
-                                <input type="text"  th:field="*{middleName}"    id="Attorney Middle Name" placeholder="" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  >
+                                <input type="text"  th:field="*{middleName}"    id="Attorney-middle-name" placeholder="" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  >
 
 
                             </div>
@@ -694,7 +694,7 @@
                                         </select>
                                     </div>
                                     <div class="col-sm-2">
-                                        <input type="text" id="attorney-phone" th:field="*{attorneyPhone}"  name="Phone" class="form-control"   style="min-width: 230px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                                        <input type="text" id="attorney-phone" th:field="*{attorneyPhone}"  name="Phone" class="form-control"   style="min-width: 187px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
                                     </div>
                                 </div>
 
@@ -793,7 +793,7 @@
 
                     <div class="card-text" style="position: relative; left:-30px;">
 
-                        <h5 class="card-title"><b style="color: rgb(56, 56, 56); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">Affilliation Information</b></h5>
+                        <h5 class="card-title"><b style="color: rgb(56, 56, 56); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">Affiliation Information</b></h5>
                     </div>
                     <hr style="height:3px; position:relative; top:-20px; left:-11.55%; max-width: 80.1%">
 
@@ -820,7 +820,7 @@
                         <input id="appInternalIDForm" type="text" th:field="*{appInternalID}"   class="form-control"   style=" border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                     </div>
 
-                    <div class="row" style="position: relative;  top:-30px; right:-650px;">
+                    <div class="row" style="position: relative;  top:-30px; right:-650px; max-width: 150px;">
                         <button id="addOwnerConfirm" class=" btn-sm btn"  type="submit"  style=" padding:5px; min-width:120px; color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top: 20px;"><b>Confirm</b></button>
                     </div>
 
@@ -899,93 +899,6 @@
 
 
 
-
-
-        ////////////////////////////////////////////////////
-        // auto save jquery section
-        ////////////////////////////////////////////////////
-
-
-        /////////////////////////////////////////////////////////////////////////////////
-        // contact information 'State' auto save ////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////
-
-
-        $('#first-name').focusout( function () {
-
-
-
-            // send state, and token to server
-            // token will be generated in the controller and added to the view
-            // similar to how access token works ...a token is tied to a user
-            // access token will be passed in through model
-            //
-            // var tokenValue = '${token}';  // token is the model attribute name
-            // we are not using secured tokens for the prototype
-            // we will secure it by adding ssl and https support
-            //
-            //$('.state-animation').fadeOut();
-
-            var field_value = $(this).val();
-
-            //alert(field_value);
-            //saveProjectOwnerInfo("first-name", field_value, appInternalID);
-
-        });
-
-
-        $('#last-name').focusout( function () {
-
-
-
-            // send state, and token to server
-            // token will be generated in the controller and added to the view
-            // similar to how access token works ...a token is tied to a user
-            // access token will be passed in through model
-            //
-            // var tokenValue = '${token}';  // token is the model attribute name
-            // we are not using secured tokens for the prototype
-            // we will secure it by adding ssl and https support
-            //
-            //$('.state-animation').fadeOut();
-
-            var field_value = $(this).val();
-
-            //alert(field_value);
-            //saveProjectOwnerInfo("last-name", field_value, appInternalID);
-
-        });
-
-        $('#owner-citizenship').focusout( function () {
-
-
-
-            // send state, and token to server
-            // token will be generated in the controller and added to the view
-            // similar to how access token works ...a token is tied to a user
-            // access token will be passed in through model
-            //
-            // var tokenValue = '${token}';  // token is the model attribute name
-            // we are not using secured tokens for the prototype
-            // we will secure it by adding ssl and https support
-            //
-            //$('.state-animation').fadeOut();
-
-            var field_value = $(this).val();
-
-            //saveProjectOwnerInfo("owner-citizenship", field_value, appInternalID);
-
-
-
-        });
-
-
-
-
-
-        /////////////////////////////////////////////////////
-        // end of auto save
-        /////////////////////////////////////////////////////
 
 
 
