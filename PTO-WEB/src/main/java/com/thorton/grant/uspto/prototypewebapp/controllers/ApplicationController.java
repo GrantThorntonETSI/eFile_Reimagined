@@ -495,17 +495,6 @@ public class ApplicationController {
         // set selected owner contacts ...
         // since there is just one owner ...
         // just set it and test for null
-        ///////////////////////////////////////////////////////////////
-
-
-
-
-
-        // we need to add managed contact display objects
-
-
-
-
 
 
         return "application/OwnerStart";
@@ -572,6 +561,17 @@ public class ApplicationController {
                                    BindingResult result,
                                    Errors errors) {
 
+
+
+        // check if owner already exists
+
+
+
+        // reset application entity type and subtype
+        // transfer those entity type and subtype to the new owner object
+
+
+
         System.out.println("11111111111111111111111111111111111111111111");
         System.out.println("owner add module !!!!!!!!");
         System.out.println("11111111111111111111111111111111111111111111");
@@ -590,6 +590,10 @@ public class ApplicationController {
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(newOwnerContactFormDTO.getAppInternalID());
 
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+        model.addAttribute("hostBean", hostBean);
+
         ////////////////////////////////////////////////////////////////////////
         //add new owner contact business logic
         ////////////////////////////////////////////////////////////////////////
@@ -604,8 +608,41 @@ public class ApplicationController {
         // transfer and reset owner type and subtype
 
         if(newOwnerContactFormDTO.getFirstName()!= null){
+            if(baseTrademarkApplication.findOwnerByDisplayName(newOwnerContactFormDTO.getFirstName()+ " "+newOwnerContactFormDTO.getLastName()) != null){
+                model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+                ArrayList<String> contactNames = new ArrayList<>();
+                ArrayList<String> contactEmails = new ArrayList<>();
+                ArrayList<String> contactSubTypes = new ArrayList<>();
+                ManagedContact managedContact = null;
+
+                for(Iterator<ManagedContact> iter = ptoUser.getMyManagedContacts().iterator(); iter.hasNext(); ) {
+                    managedContact = iter.next();
+                    contactNames.add(managedContact.getDisplayName());
+                    contactEmails.add(managedContact.getEmail());
+                    contactSubTypes.add(managedContact.getContactType());
+
+                }
+                Collections.reverse(contactNames);
+                Collections.reverse(contactEmails);
+                Collections.reverse(contactSubTypes);
+                ContactsDisplayDTO contactsDisplayDTO = new ContactsDisplayDTO();
+                contactsDisplayDTO.setContactNames(contactNames);
+                contactsDisplayDTO.setContactEmails(contactEmails);
+                contactsDisplayDTO.setContactEntitySubType(contactSubTypes);
+                model.addAttribute("myManagedContacts", contactsDisplayDTO);
+
+                // also add error message
+
+                return "application/OwnerStart";
+                // return to  ownerStartPage with error message
+            }
+
+
             owner.setOwnerDisplayname(newOwnerContactFormDTO.getFirstName()+ " "+newOwnerContactFormDTO.getLastName());
             owner.setFirstName(newOwnerContactFormDTO.getFirstName());
+
+
+
         }
         if(newOwnerContactFormDTO.getLastName()!= null) {
             owner.setLastName(newOwnerContactFormDTO.getLastName());
@@ -642,6 +679,35 @@ public class ApplicationController {
             owner.setZipcode(newOwnerContactFormDTO.getOwnerZipcode());
         }
         if(newOwnerContactFormDTO.getOwnerEmail() != null){
+            if(baseTrademarkApplication.findOwnerByEmail(newOwnerContactFormDTO.getOwnerEmail()) != null){
+                model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+                ArrayList<String> contactNames = new ArrayList<>();
+                ArrayList<String> contactEmails = new ArrayList<>();
+                ArrayList<String> contactSubTypes = new ArrayList<>();
+                ManagedContact managedContact = null;
+
+                for(Iterator<ManagedContact> iter = ptoUser.getMyManagedContacts().iterator(); iter.hasNext(); ) {
+                    managedContact = iter.next();
+                    contactNames.add(managedContact.getDisplayName());
+                    contactEmails.add(managedContact.getEmail());
+                    contactSubTypes.add(managedContact.getContactType());
+
+                }
+                Collections.reverse(contactNames);
+                Collections.reverse(contactEmails);
+                Collections.reverse(contactSubTypes);
+                ContactsDisplayDTO contactsDisplayDTO = new ContactsDisplayDTO();
+                contactsDisplayDTO.setContactNames(contactNames);
+                contactsDisplayDTO.setContactEmails(contactEmails);
+                contactsDisplayDTO.setContactEntitySubType(contactSubTypes);
+                model.addAttribute("myManagedContacts", contactsDisplayDTO);
+
+                // also add error message
+
+                return "application/OwnerStart";
+                // return to  ownerStartPage with error message
+            }
+
             owner.setEmail(newOwnerContactFormDTO.getOwnerEmail());
         }
         if(newOwnerContactFormDTO.getOwnerWebSite() != null){
@@ -655,6 +721,37 @@ public class ApplicationController {
         // should be 3 fields
         // check for null then add
         if(newOwnerContactFormDTO.getOwnerName() != null){
+
+
+            if(baseTrademarkApplication.findOwnerByDisplayName(newOwnerContactFormDTO.getOwnerName()) != null){
+                model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+                ArrayList<String> contactNames = new ArrayList<>();
+                ArrayList<String> contactEmails = new ArrayList<>();
+                ArrayList<String> contactSubTypes = new ArrayList<>();
+                ManagedContact managedContact = null;
+
+                for(Iterator<ManagedContact> iter = ptoUser.getMyManagedContacts().iterator(); iter.hasNext(); ) {
+                    managedContact = iter.next();
+                    contactNames.add(managedContact.getDisplayName());
+                    contactEmails.add(managedContact.getEmail());
+                    contactSubTypes.add(managedContact.getContactType());
+
+                }
+                Collections.reverse(contactNames);
+                Collections.reverse(contactEmails);
+                Collections.reverse(contactSubTypes);
+                ContactsDisplayDTO contactsDisplayDTO = new ContactsDisplayDTO();
+                contactsDisplayDTO.setContactNames(contactNames);
+                contactsDisplayDTO.setContactEmails(contactEmails);
+                contactsDisplayDTO.setContactEntitySubType(contactSubTypes);
+                model.addAttribute("myManagedContacts", contactsDisplayDTO);
+
+                // also add error message
+
+                return "application/OwnerStart";
+                // return to  ownerStartPage with error message
+            }
+
 
             owner.setOwnerName(newOwnerContactFormDTO.getOwnerName());
             owner.setOwnerDisplayname(newOwnerContactFormDTO.getOwnerName());
@@ -715,12 +812,9 @@ public class ApplicationController {
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
 
-        // reset application entity type and subtype
-        // transfer those entity type and subtype to the new owner object
-        model.addAttribute("user", ptoUser);
-        model.addAttribute("account",credentials);
+
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
-        model.addAttribute("hostBean", hostBean);
+
 
 
         /////////////////////////////////////////////
