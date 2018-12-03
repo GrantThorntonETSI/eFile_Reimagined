@@ -493,7 +493,117 @@ public class ApplicationController {
 
 
         return "application/attorney/attorneyInfo";
+
+
     }
+
+
+
+
+    // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
+    @RequestMapping(value = "/attorney/add", method = RequestMethod.POST)
+    public String addAttorneyContact( Model model,
+                                      @ModelAttribute("addNewAttorneyContactFormDTO") @Valid NewAttorneyContactFormDTO newAttorneyContactFormDTO,
+                                      WebRequest request,
+                                      BindingResult result,
+                                      Errors errors) {
+
+        System.out.println("11111111111111111111111111111111111111111111");
+        System.out.println("attorney add module !!!!!!!!");
+        System.out.println("11111111111111111111111111111111111111111111");
+
+        System.out.println("app inernal id: "+newAttorneyContactFormDTO.getAppInternalID());
+        // is this even necessary ..since this is added to the PTO user object ???
+
+
+        // create a new application and tie it to user then save it to repository
+        // create attorneyDTO + to model
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(newAttorneyContactFormDTO.getAppInternalID());
+        String trademarkInternalID = baseTrademarkApplication.getApplicationInternalID();
+
+        ////////////////////////////////////////////////////////////////////////
+        //add new attorney contact business logic
+        ////////////////////////////////////////////////////////////////////////
+        // create lawyer ...and set it to PTO user ..then save PTO user object and add it to model
+        // set all fields from DTO
+        ////////////////////////////////////////////////////////////////////////
+        Lawyer lawyer = new Lawyer();
+        //owner.setOwnerEnityType(baseTrademarkApplication.getOwnerType());
+        //owner.setOwnersubType(baseTrademarkApplication.getOwnerSubType());
+        //baseTrademarkApplication.setOwnerSubType(null);
+        //baseTrademarkApplication.setOwnerType(null);
+        //
+        ////////////////////////////////////////////////////////////////////////
+        // transfer and reset owner type and subtype
+        ////////////////////////////////////////////////////////////////////////
+        // required field no null checks
+        ////////////////////////////////////////////////////////////////////////
+        lawyer.setFirstName(newAttorneyContactFormDTO.getFirstName());
+        lawyer.setLastName(newAttorneyContactFormDTO.getLastName());
+        if(newAttorneyContactFormDTO.getMiddleName() != ""){
+            lawyer.setMidlleName(newAttorneyContactFormDTO.getMiddleName());
+        }
+        if(newAttorneyContactFormDTO.getSuffix() != ""){
+            lawyer.setSuffix(newAttorneyContactFormDTO.getSuffix());
+        }
+        lawyer.setLawFirmName(newAttorneyContactFormDTO.getLawFirmName());
+
+        if(newAttorneyContactFormDTO.getAttorneyAddressCountry() != ""){
+            lawyer.setCountry(newAttorneyContactFormDTO.getAttorneyAddressCountry());
+        }
+
+        if(newAttorneyContactFormDTO.getAttorneyAddress1() != ""){
+            lawyer.setAddress1(newAttorneyContactFormDTO.getAttorneyAddress1());
+            lawyer.setAddress(newAttorneyContactFormDTO.getAttorneyAddress1());
+        }
+
+        if(newAttorneyContactFormDTO.getAttorneyAddress2() != ""){
+            lawyer.setAddress2(newAttorneyContactFormDTO.getAttorneyAddress2());
+        }
+
+        if(newAttorneyContactFormDTO.getAttorneyAddress3() != ""){
+            lawyer.setAddress3(newAttorneyContactFormDTO.getAttorneyAddress3());
+        }
+        if(newAttorneyContactFormDTO.getAttorneyCity() != ""){
+            lawyer.setCity(newAttorneyContactFormDTO.getAttorneyCity());
+        }
+
+        if(newAttorneyContactFormDTO.getAttorneyState() != ""){
+            lawyer.setState(newAttorneyContactFormDTO.getAttorneyState());
+        }
+        if(newAttorneyContactFormDTO.getAttorneyZipcode() != ""){
+            lawyer.setZipcode(newAttorneyContactFormDTO.getAttorneyZipcode());
+        }
+        if(newAttorneyContactFormDTO.getAttorneyEmail() != ""){
+            lawyer.setEmail(newAttorneyContactFormDTO.getAttorneyEmail());
+        }
+
+        if(newAttorneyContactFormDTO.getAttorneyPhone() != ""){
+            lawyer.setPrimaryPhonenumber(newAttorneyContactFormDTO.getAttorneyPhone());
+        }
+        if(newAttorneyContactFormDTO.getAttorneyDocketNumber()!= ""){
+            lawyer.setDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber());
+        }
+        if(newAttorneyContactFormDTO.getAttorneyAffiliation()!= ""){
+            lawyer.setBarJurisdiction(newAttorneyContactFormDTO.getAttorneyAffiliation());
+        }
+
+       baseTrademarkApplication.addAvailableLawyer(lawyer);
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+        return "forward:/application/AttorneySet/?trademarkID="+trademarkInternalID;
+    }
+
+
+
 
 
 
@@ -1070,114 +1180,6 @@ public class ApplicationController {
         model.addAttribute("hostBean", hostBean);
         return "application/OwnerSetView";
 
-    }
-
-
-
-
-
-    // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
-    @RequestMapping(value = "/attorney/add", method = RequestMethod.POST)
-    public String addAttorneyContact( Model model,
-                                   @ModelAttribute("addNewAttorneyContactFormDTO") @Valid NewAttorneyContactFormDTO newAttorneyContactFormDTO,
-                                   WebRequest request,
-                                   BindingResult result,
-                                   Errors errors) {
-
-        System.out.println("11111111111111111111111111111111111111111111");
-        System.out.println("attorney add module !!!!!!!!");
-        System.out.println("11111111111111111111111111111111111111111111");
-
-        System.out.println("app inernal id: "+newAttorneyContactFormDTO.getAppInternalID());
-        // is this even necessary ..since this is added to the PTO user object ???
-
-
-        // create a new application and tie it to user then save it to repository
-        // create attorneyDTO + to model
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
-        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
-        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
-        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
-
-
-        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
-        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(newAttorneyContactFormDTO.getAppInternalID());
-        String trademarkInternalID = baseTrademarkApplication.getApplicationInternalID();
-
-        ////////////////////////////////////////////////////////////////////////
-        //add new attorney contact business logic
-        ////////////////////////////////////////////////////////////////////////
-        // create lawyer ...and set it to PTO user ..then save PTO user object and add it to model
-        // set all fields from DTO
-        ////////////////////////////////////////////////////////////////////////
-        Lawyer lawyer = new Lawyer();
-        //owner.setOwnerEnityType(baseTrademarkApplication.getOwnerType());
-        //owner.setOwnersubType(baseTrademarkApplication.getOwnerSubType());
-        //baseTrademarkApplication.setOwnerSubType(null);
-        //baseTrademarkApplication.setOwnerType(null);
-        //
-        ////////////////////////////////////////////////////////////////////////
-        // transfer and reset owner type and subtype
-        ////////////////////////////////////////////////////////////////////////
-        // required field no null checks
-        ////////////////////////////////////////////////////////////////////////
-        lawyer.setFirstName(newAttorneyContactFormDTO.getFirstName());
-        lawyer.setLastName(newAttorneyContactFormDTO.getLastName());
-        if(newAttorneyContactFormDTO.getMiddleName() != ""){
-            lawyer.setMidlleName(newAttorneyContactFormDTO.getMiddleName());
-        }
-        if(newAttorneyContactFormDTO.getSuffix() != ""){
-            lawyer.setSuffix(newAttorneyContactFormDTO.getSuffix());
-        }
-        lawyer.setLawFirmName(newAttorneyContactFormDTO.getLawFirmName());
-
-        if(newAttorneyContactFormDTO.getAttorneyAddressCountry() != ""){
-            lawyer.setCountry(newAttorneyContactFormDTO.getAttorneyAddressCountry());
-        }
-
-        if(newAttorneyContactFormDTO.getAttorneyAddress1() != ""){
-            lawyer.setAddress1(newAttorneyContactFormDTO.getAttorneyAddress1());
-            lawyer.setAddress(newAttorneyContactFormDTO.getAttorneyAddress1());
-        }
-
-        if(newAttorneyContactFormDTO.getAttorneyAddress2() != ""){
-            lawyer.setAddress2(newAttorneyContactFormDTO.getAttorneyAddress2());
-        }
-
-        if(newAttorneyContactFormDTO.getAttorneyAddress3() != ""){
-            lawyer.setAddress3(newAttorneyContactFormDTO.getAttorneyAddress3());
-        }
-        if(newAttorneyContactFormDTO.getAttorneyCity() != ""){
-            lawyer.setCity(newAttorneyContactFormDTO.getAttorneyCity());
-        }
-
-        if(newAttorneyContactFormDTO.getAttorneyState() != ""){
-            lawyer.setState(newAttorneyContactFormDTO.getAttorneyState());
-        }
-        if(newAttorneyContactFormDTO.getAttorneyZipcode() != ""){
-            lawyer.setZipcode(newAttorneyContactFormDTO.getAttorneyZipcode());
-        }
-        if(newAttorneyContactFormDTO.getAttorneyEmail() != ""){
-            lawyer.setEmail(newAttorneyContactFormDTO.getAttorneyEmail());
-        }
-
-        if(newAttorneyContactFormDTO.getAttorneyPhone() != ""){
-            lawyer.setPrimaryPhonenumber(newAttorneyContactFormDTO.getAttorneyPhone());
-        }
-        if(newAttorneyContactFormDTO.getAttorneyDocketNumber()!= ""){
-            lawyer.setDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber());
-        }
-        if(newAttorneyContactFormDTO.getAttorneyAffiliation()!= ""){
-            lawyer.setBarJurisdiction(newAttorneyContactFormDTO.getAttorneyAffiliation());
-        }
-
-        lawyer.setClient(ptoUser);
-        ptoUser.addLawyer(lawyer);
-        ptoUserService.save(ptoUser);
-
-
-        return "forward:/application/start/?trademarkID="+trademarkInternalID;
     }
 
 

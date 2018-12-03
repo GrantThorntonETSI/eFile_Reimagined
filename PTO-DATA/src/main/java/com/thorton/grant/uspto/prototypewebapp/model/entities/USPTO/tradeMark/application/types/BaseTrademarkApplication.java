@@ -104,6 +104,18 @@ public class BaseTrademarkApplication  {
 
     private String ownerSubType;
 
+    public boolean isAttorneyPoolEmpty() {
+
+
+        boolean status = false;
+
+        if (availableLawyers.size() > 0) {
+            status = true;
+        }
+
+        return  status;
+    }
+
     public String getOwnerType() {
         return ownerType;
     }

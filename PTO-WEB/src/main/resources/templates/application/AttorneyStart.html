@@ -338,8 +338,8 @@
             </div>
             <div th:if="${baseTrademarkApplication.isAttorneySet() == true}">
 
-                <div class="row" style="position: relative; top:-130px; right:-420px; z-index:200; max-width: 100px;" >
-                    <div class="row" style="position: relative; top:-430px; right:-500px; ">
+                    <div class="row" style="position: relative; top:-430px; right:-500px; z-index: 222; max-width: 100px;" >
+
                         <div class="col-sm-1">
 
                             <input type="radio"   th:if="${baseTrademarkApplication.isAttorneyFiling() == true}" name="isAttorneyFiling" id="attorneyFilingTrue" checked>
@@ -351,7 +351,7 @@
                         </div>
 
                     </div>
-                    <div class="row" style="position: relative; top:-430px; right:-500px; max-width: 100px;">
+                    <div class="row" style="position: relative; top:-430px; right:-500px; z-index: 222; max-width: 100px;">
                         <div class="col-sm-1">
 
                             <input type="radio" th:if="${baseTrademarkApplication.isAttorneyFiling() == true}" name="isAttorneyFiling" id="attorneyFillingFalse">
@@ -363,10 +363,10 @@
                         </div>
                     </div>
 
-                </div>
-
-
             </div>
+
+
+
 
             <div class="row" style="position: relative; top:-430px; right:-220px; z-index: 0; max-height:100px;max-width: 300px;">
                 <div class="col-sm-6">
@@ -408,6 +408,8 @@
     var attorneyOpt = /*[[${baseTrademarkApplication.isAttorneyFiling()}]]*/ 'User Name';
 
     var ownerOpt = /*[[${baseTrademarkApplication.isOwnerSet()}]]*/ 'User Name';
+
+    var atttorneySetOpt = /*[[${baseTrademarkApplication.isAttorneyPoolEmpty()}]]*/ 'User Name';
     var host_name= /*[[${hostBean.host}]]*/ 'User Name';
     var host_port= /*[[${hostBean.port}]]*/ 'User Name';
 
@@ -533,7 +535,7 @@
             // call set attorney options ...for project
             setTimeout(function() {
                 saveProjectInfo("set-lawyer-options-value", "no", appInternalID);
-                $('#contacts-ui').fadeOut(2000);
+                $('#pageLoadArea').fadeOut(2000);
             }, 1500);
             // check there are contacts ...those should get dropped???
             //////////////////////////////////////////////////////////
@@ -552,15 +554,45 @@
         // check if attorneyFillingFalse is set
         /////////////////////////////////////////////////////////////
         if ($('#attorneyFillingFalse').is(':checked') == true){
+
+            alert("!!!!!");
             $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
             $('#nextLink').attr("href", nextLinkURL );
             $('#nextLinkIcon').attr("href", nextLinkURL );
+
+
         }
         /////////////////////////////////////////////////////////////
         // check if attorneyFilingTrue is set
         /////////////////////////////////////////////////////////////
         if ($('#attorneyFilingTrue').is(':checked') == true){
-            $('#contacts-ui').fadeIn(2000);
+
+
+            // check if there are attorneys added to the application
+            // if so ... enable next link to attorney view page
+
+            $.post(newAttorneyLink, function(data){
+                $("#pageLoadArea").html(data);
+            });
+            setTimeout(function() {
+                $('#pageLoadArea').fadeIn(1000);
+            }, 1000);
+
+
+            // if there is an attorney already set for the application
+            // enable next link on page
+
+
+        }
+
+        // enable next page link bas[{
+        // {
+        // ed on if attorney is set
+        if(atttorneySetOpt == false){
+            // attorney pool is not empty
+            // enable next link
+            $('#nextLink').attr("href", nextLinkURL );
+
         }
 
 
