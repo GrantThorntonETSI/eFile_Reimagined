@@ -301,6 +301,82 @@
 
             </div>
 
+
+
+
+
+
+            <div class="row" style="position: relative; top: -430px;left:-40px;">
+                <span><h5><b>Is an Attorney filing this application?</b></h5></span>
+
+            </div>
+
+            <div th:if="${baseTrademarkApplication.isAttorneySet() == false}">
+
+                <div class="row" style="position: relative; top:-430px; right:-120px; z-index:200;">
+                    <div class="col-sm-1">
+
+                        <input type="radio" name="isAttorneyFiling" id="attorneyFilingTrue">
+
+                    </div>
+                    <div class="col-sm-2" style="position: relative; left:-75px;">
+                        Yes
+                    </div>
+
+                </div>
+                <div class="row" style="position: relative; top:-430px; right:-120px;">
+                    <div class="col-sm-1">
+
+                        <input type="radio" name="isAttorneyFiling" id="attorneyFillingFalse">
+
+                    </div>
+                    <div class="col-sm-2" style="position: relative; left:-75px;">
+                        No
+                    </div>
+                </div>
+
+            </div>
+            <div th:if="${baseTrademarkApplication.isAttorneySet() == true}">
+
+                <div class="row" style="position: relative; top:-130px; right:-120px; z-index:200;" >
+                    <div class="row" style="position: relative; top:-300px; right:-120px; ">
+                        <div class="col-sm-1">
+
+                            <input type="radio"   th:if="${baseTrademarkApplication.isAttorneyFiling() == true}" name="isAttorneyFiling" id="attorneyFilingTrue" checked>
+                            <input type="radio"   th:if="${baseTrademarkApplication.isAttorneyFiling() == false}" name="isAttorneyFiling" id="attorneyFilingTrue" >
+
+                        </div>
+                        <div class="col-sm-2" style="position: relative; left:-75px;">
+                            Yes
+                        </div>
+
+                    </div>
+                    <div class="row" style="position: relative; top:-300px; right:-120px;">
+                        <div class="col-sm-1">
+
+                            <input type="radio" th:if="${baseTrademarkApplication.isAttorneyFiling() == true}" name="isAttorneyFiling" id="attorneyFillingFalse">
+                            <input type="radio" th:if="${baseTrademarkApplication.isAttorneyFiling() == false}" name="isAttorneyFiling" id="attorneyFillingFalse" checked>
+
+                        </div>
+                        <div class="col-sm-2" style="position: relative; left:-75px;">
+                            No
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="row" style="position: relative; top:-430px; right:-220px;">
+                <div class="col-sm-6">
+                    <div class="form-group set-lawyer-options-valueFieldMsgArea" style="display:none; position: relative; left:30%;">
+                        <b><span></span></b>
+                    </div>
+                </div>
+
+            </div>
+
             <div class="container-fluid" id="pageLoadArea" style="position: relative; bottom:-230px; max-width: 1000px;left:-10px; margin-bottom: 20px;">
 
 
