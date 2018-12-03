@@ -632,6 +632,7 @@ public class ApplicationController {
                 model.addAttribute("myManagedContacts", contactsDisplayDTO);
 
                 // also add error message
+                model.addAttribute("message", "ERROR: Owner Name exists for this Application.");
 
                 return "application/OwnerStart";
                 // return to  ownerStartPage with error message
@@ -703,6 +704,7 @@ public class ApplicationController {
                 model.addAttribute("myManagedContacts", contactsDisplayDTO);
 
                 // also add error message
+                model.addAttribute("message", "ERROR: Owner Email exists for this Application.");
 
                 return "application/OwnerStart";
                 // return to  ownerStartPage with error message
@@ -747,6 +749,7 @@ public class ApplicationController {
                 model.addAttribute("myManagedContacts", contactsDisplayDTO);
 
                 // also add error message
+                model.addAttribute("message", "ERROR: Owner Name exists for this Application.");
 
                 return "application/OwnerStart";
                 // return to  ownerStartPage with error message
