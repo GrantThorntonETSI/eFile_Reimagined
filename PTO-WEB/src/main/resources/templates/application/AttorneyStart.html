@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{fragments/layoutSession :: layout (~{::body},'user')}" xmlns="http://www.w3.org/1999/html">
+      th:replace="~{fragments/layoutSession :: layout (~{::body},'user')}" >
 <head >
     <meta charset="UTF-8">
     <title>Owner Information</title>
 </head>
 <body>
 
-<!-- End Navbar -->
 
-   <div class="content" style="display: none; background-color: white; min-height: 400px; min-width: 1200px; position: relative; bottom: -10%;" >
+<style>
+    .tooltip-inner {
+        max-width: 550px;
+        white-space: pre-line;
+    }
+
+</style>
+<!-- End Navbar -->
+<div class="content" style="display: none; background-color: white; min-height: 400px; min-width: 1200px; position: relative; bottom: -10%;" >
     <div class="container-fluid"  >
 
         <div class="col-sm-12" >
@@ -217,205 +224,181 @@
 
             </div>
 
-            <!--end of main banner section -->
-
-            <div class="row" style="position: relative; top: -450px;">
-                <div class="col-md-6">
-                    <div style="position: relative; top:-10px; margin-left: 35px; margin-bottom: 5px; margin-top: 10px; min-height: 90px;">
-                        <h1><b style="opacity: 1; mix-blend-mode: normal; color: rgb(0, 0, 0); font-size: 36px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; text-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1.16667px; width: 597px; height: 41px; transform: rotate(0deg) translate(37px, 138px) rotate(0deg);">Attorney Information</b></h1>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="banner-message"  style="position: relative;top:-55px; right:-320px; margin-left: 40px; margin-bottom: 50px; ">
-
-                        <p>
-                            <select class="btn" style="background-color: rgb(235, 235, 235); min-width: 245px; color: black; min-height: 50px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px; max-width: 222px; " type="" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2"><i style="position: relative; left: -20px; top:10px;" class="material-icons">expand_more</i><b>&nbsp;&nbsp;&nbsp; Total Fee&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  $225</b>
-                                <option disabled selected><b>Total Fee      $225</b></option>
-                                <option disabled><b>Basic Fee      $225</b></option>
-                                <option disabled><b>Extra Class Fee  $0</b></option>
-                                <option disabled><b>Total Classes      1</b></option>
-                            </select>
-                        <hr style="height:3px;   position:relative; top:-20px;  left:0px; background-color: #004c97;margin-bottom: 0px;border-bottom-left-radius: 2px;border-bottom-right-radius: 2px;border-top-left-radius: 2px;border-top-right-radius: 2px;">
-                        </p>
-
-
-                    </div>
-                </div>
-            </div>  <!-- end of main content row 1 -->
 
 
 
-                   <div class="row" style="position: relative; top:-800px; left:-40px;">
-                       <div id="TextElement6e71467aaa974416a5a471de8eefac7f" class="ng-element el-text-2 empty-line-hack font-S-Arial-n4" data-id="b590058300be4c13b83464e1b38543e5" style="opacity: 1; mix-blend-mode: normal; font-variant: normal; color: rgb(0, 0, 0); font-size: 18px; font-weight: bold; font-style: normal; text-decoration: none; text-align: left; width: 466px; height: 21px; transform: rotate(0deg) translate(154px, 325px) rotate(0deg);"><p>Is an Attorney filing this application?</p></div>
 
-                   </div>
 
-                    <div th:if="${baseTrademarkApplication.isAttorneySet() == false}">
 
-                            <div class="row" style="position: relative; top:-430px; right:-120px; z-index:200;">
-                                <div class="col-sm-1">
+            <!-- end of domestic entity -->
 
-                                    <input type="radio" name="isAttorneyFiling" id="attorneyFilingTrue">
 
-                                </div>
-                                <div class="col-sm-2" style="position: relative; left:-75px;">
-                                    Yes
-                                </div>
+            <div class="row sticky" id="contacts-ui" style=" display:none; position: fixed; top:500px; right:200px;  ">
 
-                            </div>
-                            <div class="row" style="position: relative; top:-430px; right:-120px;">
-                                <div class="col-sm-1">
 
-                                        <input type="radio" name="isAttorneyFiling" id="attorneyFillingFalse">
-
-                                </div>
-                                <div class="col-sm-2" style="position: relative; left:-75px;">
-                                    No
-                                </div>
-                            </div>
-
-                </div>
-                <div th:if="${baseTrademarkApplication.isAttorneySet() == true}">
-
-                    <div class="row" style="position: relative; top:-130px; right:-120px; z-index:200;" >
-                        <div class="row" style="position: relative; top:-300px; right:-120px; ">
-                            <div class="col-sm-1">
-
-                                <input type="radio"   th:if="${baseTrademarkApplication.isAttorneyFiling() == true}" name="isAttorneyFiling" id="attorneyFilingTrue" checked>
-                                <input type="radio"   th:if="${baseTrademarkApplication.isAttorneyFiling() == false}" name="isAttorneyFiling" id="attorneyFilingTrue" >
-
-                            </div>
-                            <div class="col-sm-2" style="position: relative; left:-75px;">
-                                Yes
-                            </div>
-
+                <div class="row" style="position: relative; top: -290px;" >
+                    <div class="col-sm-12">
+                        <div class="col-sm-3">
                         </div>
-                        <div class="row" style="position: relative; top:-300px; right:-120px;">
-                            <div class="col-sm-1">
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="banner-message"  style="position: relative;top:-225px; ">
 
-                                <input type="radio" th:if="${baseTrademarkApplication.isAttorneyFiling() == true}" name="isAttorneyFiling" id="attorneyFillingFalse">
-                                <input type="radio" th:if="${baseTrademarkApplication.isAttorneyFiling() == false}" name="isAttorneyFiling" id="attorneyFillingFalse" checked>
+                                <p>
+                                    <select class="btn" style="background-color: rgb(235, 235, 235); min-width: 280px; color: black; min-height: 50px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px; max-width: 245px; " type="" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2"><i style="position: relative; left: -20px; top:10px;" class="material-icons">expand_more</i><b>&nbsp;&nbsp;&nbsp; Total Fee&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  $225</b>
+                                        <option disabled selected><b>Total Fee      $225</b></option>
+                                        <option disabled><b>Basic Fee      $225</b></option>
+                                        <option disabled><b>Extra Class Fee  $0</b></option>
+                                        <option disabled><b>Total Classes      1</b></option>
+                                    </select>
+                                <hr style="height:3px; max-width: 280px;  position:relative; top:-20px;  left:0px; background-color: #004c97;margin-bottom: 0px;border-bottom-left-radius: 2px;border-bottom-right-radius: 2px;border-top-left-radius: 2px;border-top-right-radius: 2px;">
+                                </p>
 
-                            </div>
-                            <div class="col-sm-2" style="position: relative; left:-75px;">
-                                No
+
                             </div>
                         </div>
-
                     </div>
-
-
                 </div>
 
-                <div class="row" style="position: relative; top:-430px; right:-220px;">
-                    <div class="col-sm-6">
-                        <div class="form-group set-lawyer-options-valueFieldMsgArea" style="display:none; position: relative; left:30%;">
-                            <b><span></span></b>
-                        </div>
-                    </div>
+                <div class="row" style="position: relative; top: -290px;">
 
-                </div>
+                    <div class="col-sm-12">
 
-            <div class="row" id="contacts-ui" style=" display:none; position: relative; top:-390px; right:-120px;">
+                        <div class="card-body ">
+                            <div class="col-sm-3">
+                            </div>
+                            <div class="col-sm-3">
+                            </div>
+                            <div class="col-sm-3">
+                            </div>
 
-                <div class="row">
+                            <div class="col-sm-3" style="position: relative;  top:-245px;">
 
-                        <div class="col-sm-12">
-
-                            <div class="card-body">
-
-                                    <div class="col-sm-6">
-
-                                        <div class="card-body">
-                                            <div class="toolbar" style="position: relative; left:10px;" cellpadding="5" >
-                                                <!--        Here you can write extra buttons/actions for the toolbar      -->
-                                            </div>
-
-                                            <div class="contacts-Table" style="border: rgb(235,235,235);  border-width: 1px; border: solid; padding: 20px; min-height: 420px; max-height: 420px;">
-                                                <table id="contacts" class="table-no-bordered table-hover" cellpadding="3" style="min-width:530px;margin-right: 5px; margin-top: 10px; margin-bottom: 10px; margin-left: 8px;"></table>
-                                            </div>
-                                        </div>
+                                <div class="card-body">
+                                    <div class="toolbar" style="position: relative; left:10px;" >
+                                        <!--        Here you can write extra buttons/actions for the toolbar      -->
                                     </div>
 
-                                    <div class="col-sm-3" style="position: relative; left:-20px;">
-                                        <div class="card-body">
-                                            <div class="toolbar" style="position: relative; left:10px;" cellpadding="5" >
-                                                <!--        Here you can write extra buttons/actions for the toolbar      -->
-                                            </div>
-
-                                            <div class="selected-Attorneys-Table" style="border: rgb(235,235,235); border-width: 1px; border: solid; padding: 20px; min-height: 420px; max-height: 420px;">
-                                                <table id="selected-attorneys" class="table-no-bordered table-hover" cellpadding="3" style="border-spacing: 0 3px; margin-right: 5px; margin-top: 10px; margin-bottom: 10px; margin-left: 8px;"></table>
-                                            </div>
-                                        </div>
-
+                                    <div class="contacts-Table " style="border: rgb(235,235,235);  border-width: 1px; border: solid; padding: 15px; min-height: 420px; max-height: 420px; ">
+                                        <table id="ManagedContacts" class="table-no-bordered table-hover" cellpadding="1" style="margin-right: 4px; margin-top: 10px; margin-bottom: 10px; margin-left: 4px;"></table>
                                     </div>
+                                </div>
                             </div>
 
 
                         </div>
 
-                </div>
-                <div class="row" style="position: relative; top:-10px; right:-8px; ">
-                    <div class="col-md-9">
-                        <div class="card-footer" style="background-color: rgb(235,235,235);  border: rgb(235,235,235);  border-width: 1px; border: solid;  min-height: 100px; max-width: 852px; ">
-                            <div class="row" style="position: relative; ">
-                                <div class="col-sm-4" style="position: relative; right: -10px;">
-                                    <span class="btn-sm btn" data-target="#addNewAttorneyModal" data-toggle="modal"  style=" padding:5px; min-width:150px; color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><i class="material-icons" style="  position: relative;left:-10px;bottom:-5px;">person_add</i><b style="position: relative; top:-5px;">New Attorney</b></span>
-                                </div>
-                                <div class="col-sm-2">
-                                </div>
-                                <div class="col-sm-2">
-                                </div>
-                                <div class="col-sm-2">
-                                </div>
-                                <div class="col-sm-2"  style="position: relative; right: -15px;">
-                                    <!--this link will be activated when a user add a contact to the selected Pool for the application -->
 
-
-                                </div>
-
-
-
-                            </div>
-
-                        </div>
                     </div>
+
                 </div>
 
+
+
+
+            </div>
+
+            <div class="container-fluid" id="pageLoadArea" style="position: relative; bottom:-230px; max-width: 1000px;left:-10px; margin-bottom: 20px;">
 
 
             </div>
 
 
 
-
         </div>
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <div class="row" style="position: relative; top:-570px; right:-220px;">
+        <div class="col-sm-6">
+            <div class="form-group FieldMsgArea" style="display:none; position: relative; left:30%;">
+                <b><span></span></b>
+            </div>
+        </div>
+
     </div>
 </div>
 
 
 
 
-    <div class="row navigation-row" style="position: relative; top:-200px; right:-50px; ">
-        <div class="col-sm-2">
-            <span class="btn btn-lg prev-button"  style=" border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; background-color: rgb(55, 69, 120);  color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center;    font-size: 14px; font-style: normal; width: 120px; height: 30px;"><a id="prevLinkIcon" style="color: white; text-decoration: none; position: relative; top:-3px;left:-5px;" ><i class="material-icons rotate-180">exit_to_app</i></a><a id="prevLink" style="color: white; text-decoration: none; position: relative; top:-10px;" href="">Prev</a></span>
-        </div>
-        <div class="col-sm-2">
-        </div>
-        <div class="col-sm-2">
-        </div>
-        <div class="col-sm-2">
-        </div>
-        <div class="col-sm-2">
-        </div>
-        <div class="col-sm-2" style="position:relative; left:-30px;">
-            <span class="btn btn-lg next-button"  style=" border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; background-color: rgb(128,128,128); background-image: none; color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center;   font-size: 14px; font-style: normal; width: 120px; height: 30px;"><a id="nextLink" style="color: white; text-decoration: none;position: relative; top:-10px;">Next</a><a id="nextLinkIcon" style="color: white; text-decoration: none; position: relative; top:-3px;right:-5px;" ><i class="material-icons">exit_to_app</i></a><span>
+<!--load model attribute for Jquery consumption  -->
+<script th:inline="javascript">
 
-        </div>
+    /*<![CDATA[*/
 
 
+    var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
+    var attorneyOpt = /*[[${baseTrademarkApplication.isAttorneyFiling()}]]*/ 'User Name';
+
+    var ownerOpt = /*[[${baseTrademarkApplication.isOwnerSet()}]]*/ 'User Name';
+    var host_name= /*[[${hostBean.host}]]*/ 'User Name';
+    var host_port= /*[[${hostBean.port}]]*/ 'User Name';
+
+
+
+    var contactNames = /*[[${myManagedContacts.ContactNames}]]*/ 'User Name';
+    var contactEmails = /*[[${myManagedContacts.ContactEmails}]]*/ 'User Name';
+    var contactTypes = /*[[${myManagedContacts.contactEntitySubType}]]*/ 'User Name';
+
+
+
+
+    var host = host_name+":"+host_port;
+    //alert(tableRows);
+
+    /*]]>*/
+</script>
+
+
+<script>
+
+    var prevLinkURL = "../../application/AttorneySet/?trademarkID="+appInternalID;
+
+    var prevLinkURLAttorneyFalse = "../../application/start/?trademarkID="+appInternalID;
+
+
+    var newAttorneyLink = "../../application/attorney/attorneyInfo/?trademarkID="+appInternalID;
+
+    var ownerSetViewLink = "../../application/OwnerSetView/?trademarkID="+appInternalID;
+
+</script>
+
+
+<div class="row navigation-row" style="position: relative; top:-200px; right:-50px; ">
+    <div class="col-sm-2">
+        <span class="btn btn-md prev-button"  style=" border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; background-color: rgb(55, 69, 120);  color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center;    font-size: 14px; font-style: normal; width: 120px; height: 30px;"><a id="prevLinkIcon" style="color: white; text-decoration: none; position: relative; top:-3px;left:-5px;" ><i class="material-icons rotate-180">exit_to_app</i></a><a id="prevLink" style="color: white; text-decoration: none;position: relative; top:-10px;" href="">Prev</a></span>
+    </div>
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-2" style="position:relative; left:-30px;">
+        <span class="btn btn-md next-button"  style=" border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; background-color: rgb(128,128,128); background-image: none; color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center;   font-size: 14px; font-style: normal; width: 120px; height: 30px;"><a id="nextLink" style="color: white; text-decoration: none; position: relative; top:-10px;" >Next</a><a id="nextLinkIcon" style="color: white; text-decoration: none; position: relative; top:-3px;right:-5px;" ><i class="material-icons">exit_to_app</i></a><span>
 
     </div>
+
+
+
+</div>
+
+</div>
+
 
 
 
@@ -428,112 +411,10 @@
 
 
 
+<script>
 
 
-
-<!-- start add new Attorney Modal -->
-<div id="addNewAttorneyModal" class="modal fade modal-lg" role="dialog"  tabindex="-1" style="max-width: 1200px;">
-    <div class="modal-dialog" style="min-width: 1200px;">
-
-        <!-- Modal content-->
-        <div class="modal-content"  style="max-width: 1200px; max-height: 2000px;">
-
-            <div class="modal-body" id="addNewAttorneyModalBody" style="max-height: 3000px;">
-                <div class="content" style="display: none; background-color: white; max-height: 3000px;"  >
-                    <div class="container-fluid"  >
-
-                        <div class="col-sm-16" >
-                            <div class="form-container base-page" style="position: relative; top:-20px;">
-
-                                <div class="container-fluid" id="attorneyEntityForm" style="position: relative; bottom:-200px; max-width: 1300px;left:-10px; margin-bottom: 20px;">
-
-
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                </div>
-            </div>
-            <div class="modal-footer" style="background-color: rgb(217, 217, 214);">
-                <div class="form-group">
-
-                    <div class="row" style="position: relative; top:-15px; right:-30px;">
-                        <div class="col-sm-4" style="position: relative; right: -10px;">
-
-                        </div>
-
-
-                        <div class="col-sm-2">
-
-                                <div class="form-group attorney-saveMsgArea" style="position: relative; left:-15%; bottom:-10px;">
-                                    <b><span></span></b>
-                                </div>
-
-                        </div>
-                        <div class="col-sm-2"  style="position: relative; right: -25px;">
-
-
-                        </div>
-
-
-
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- end of add New Attorney modal -->
-
-    <!--load data from model -->
-
-    <!--load model attribute for Jquery consumption  -->
-    <script th:inline="javascript">
-
-        /*<![CDATA[*/
-
-
-        var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
-        var host_name= /*[[${hostBean.host}]]*/ 'User Name';
-        var host_port= /*[[${hostBean.port}]]*/ 'User Name';
-        var host = host_name+":"+host_port;
-
-
-        /*]]>*/
-    </script>
-
-
-
-    <script>
-
-        var prevLinkURL = "../../accounts/dashboard";
-        var nextLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
-
-        var nextLinkURLwidget = "../../application/AttorneySet/?trademarkID="+appInternalID;
-
-        var attorneyDomFormURL = "../../application/attorney/attorneyInfo/?trademarkID="+appInternalID;
-
-    </script>
-
-    <!--load model attribute for Jquery consumption  -->
-    <script th:inline="javascript">
-
-        /*<![CDATA[*/
-
-        var contactNames = /*[[${myContacts.ContactNames}]]*/ 'User Name';
-        var contactEmails = /*[[${myContacts.ContactEmails}]]*/ 'User Name';
-        var contactFirms = /*[[${myContacts.ContactFirms}]]*/ 'User Name';
-        var selectedContactNames = /*[[${selectedContacts.selectedNames}]]*/ 'User Name';
-        /*]]>*/
-    </script>
-
-    <script>
+    // next link url to enable  for u.s individual href="http://localhost:8080/application/owner/info"
     $(document).ready(function() {
 
         setTimeout(function() {
@@ -541,1286 +422,240 @@
             $('.content').fadeIn(500);
         }, 500);
 
-         ////////////////////////////////////////
-        // set previous link
-        /////////////////////////////////////////
-        $('#prevLink').attr("href",prevLinkURL);
-        $('#prevLinkIcon').attr("href",prevLinkURL);
 
-        //////////////////////////////////////////////////////////////
-        // check if attorneyFillingFalse is set
-        /////////////////////////////////////////////////////////////
-        if ($('#attorneyFillingFalse').is(':checked') == true){
-
-            $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
-            $('#nextLink').attr("href", nextLinkURL );
-            $('#nextLinkIcon').attr("href", nextLinkURL );
+        setTimeout(function() {
+            // after 1000 ms we add the class animated to the login/register card
+            $('#contacts-ui').fadeIn(500);
 
 
-        }
-        /////////////////////////////////////////////////////////////
-        // check if attorneyFilingTrue is set
-        /////////////////////////////////////////////////////////////
-        if ($('#attorneyFilingTrue').is(':checked') == true){
-
-            $('#contacts-ui').fadeIn(2000);
-
-        }
-
-        /////////////////////////////////////////////////////////////
-        // action listeners on radio buttons
-        ////////////////////////////////////////////////////////////
-        $('#attorneyFillingFalse').click( function () {
-            ////////////////////////////////////////////////////////
-            // call back end update ...
-            ////////////////////////////////////////////////////////
-
-
-            ////////////////////////////////////////////////////////
-            // remove any selected contacts from application object
-            ////////////////////////////////////////////////////////
-            $('#contacts td').each(function () {
-                if($(this).html().indexOf("disabled") > -1){
-                    ////////////////////////////////////////////////
-                    // get contact email ...
-                    // use appInternalID and call contact remove
-                    ////////////////////////////////////////////////
-                    var contact_email = $(this).next().next().html();
-                    var contact_name = $(this).next().html();
-                    removeContact2Application(contact_email, appInternalID);
-                    ////////////////////////////////////////////////////////////////////////
-                    // remove from selected table
-                    ////////////////////////////////////////////////////////////////////////
-                    $('#selected-attorneys td').each(function () {
-                        if($(this).html() === contact_name){
-                            selectedTable.row($(this).parents('tr')).remove().draw()
-                        }
-                    });
-                    ////////////////////////////////////////////////////////////////////////
-                    // redraw check box on current element
-                    ////////////////////////////////////////////////////////////////////////
-                    $(this).html("<input class=\"contacts-checkbox\" type=\"checkbox\">");
-
-
-
-
-                }
-
+            $.post(newAttorneyLink, function(data){
+                $("#pageLoadArea").html(data).fadeIn();
             });
+        }, 500);
 
 
-
-            // call set attorney options ...for project
-
-
-            setTimeout(function() {
-                saveProjectInfo("set-lawyer-options-value", "no", appInternalID);
-                $('#contacts-ui').fadeOut(2000);
-            }, 1500);
-            // check there are contacts ...those should get dropped???
-
-            //////////////////////////////////////////////////////////
-            // enable next link and clean up widget links
-            //////////////////////////////////////////////////////////
-            $('.next-button').css("background-color","rgb(55, 69, 120)" );
-
-            $('#nextLink').attr("href", nextLinkURL );
-            $('#nextLinkIcon').attr("href", nextLinkURL );
-            $('#AttorneySetLink').attr("href", "");
-            $('#next-link-widget').css("background-color", "rgb(128, 128, 128)" );
-        });
-        ////////////////////////////////////////////////////////////////
-
-        $('#attorneyFilingTrue').click( function () {
-            ////////////////////////////////////////////////////////////
-            // call back end update ...
-            // signal uppate occurred
-            // wait for the confirm message first.
-            ////////////////////////////////////////////////////////////
-            saveProjectInfo("set-lawyer-options-value", "yes", appInternalID);
-
-            setTimeout(function() {
-                $('#contacts-ui').fadeIn(2000);
-            }, 1500);
-
-        });
-        /////////////////////////////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////
+        $('[data-toggle="tooltip"]').tooltip();
 
 
 
 
 
-        ////////////////////////////////////////////////////////////////////
-        // loading contact info
-        /////////////////////////////////////////////////////////////////////
 
-        //////////////////////////////////////////////////////////////////////////
-        // static test data
-        //////////////////////////////////////////////////////////////////////////
-        var testdataSet = [
+        //////////////////////////////////////////
+        // show drop downs
+        //////////////////////////////////////////
 
-            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Aaron Attorney", "Aaron.Attorney@email.com", "Grant Thornton", "<i class=\"material-icons\">swap_horiz</i>"],
-            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Melissa Attorney", "Melilssa.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
-            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Nicole Attorney", "Nicole.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
-            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Helen Attorney", "Helen.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"],
-            ["<input class=\"contacts-checkbox\" type='checkbox'>", "Cris Attorney", "Cris.Attorney@email.com", "Grant Thornton","<i class=\"material-icons\">swap_horiz</i>"]
 
-        ];
+        ////////////////////////////////////////////////////
+        // enable next button on select drop down completion
+        ////////////////////////////////////////////////////
 
-        var testdataSet2 = [
-            [ "Aaron Attorney" ,  "<i class=\"material-icons\">remove_circle</i>"],
-            ["Bryan Attorney","<i class=\"material-icons\">remove_circle</i>"],
-            [ "Cris Attorney","<i class=\"material-icons\">remove_circle</i>"],
-            [ "Mellisa Attorney","<i class=\"material-icons\">remove_circle</i>"]
 
-        ];
+/*
+        // check which prev-link to check
+        if(attorneyOpt == false){
+            $('#prevLink').attr("href",prevLinkURLAttorneyFalse);
+            $('#prevLinkIcon').attr("href",prevLinkURLAttorneyFalse);
+        }
+        else {
+            $('#prevLink').attr("href",prevLinkURL);
+            $('#prevLinkIcon').attr("href",prevLinkURL);
+        }
+
+        if(ownerOpt == true){
+
+            $('#nextLink').attr("href",ownerSetViewLink);
+            $('#nextLinkIcon').attr("href",ownerSetViewLink);
+            $('.next-button').css("background-color", "rgb(55,69,120)");
+
+        }
+*/
+
+
+
+        //$('#addNewOwnerLink').attr("href",newOwnerLink);
+
+
+        // load datables for owner contacts
+        ///////////////////////////////////////////////////////////
+
         /////////////////////////////////////////////////////////////////////////////
 
-        var dataSet1 = [ ["","","","",""] ];
+        var dataSet1 = [
+
+            ["<i class='material-icons'>folder_shared</i>", "<b>li zhang</b>", "<i class='material-icons'>account_circle</i><b>Individual</b>"],
+            ["<i class='material-icons'>folder_shared</i>", "<b>Jackie Babos</b>", "<i class='material-icons'>account_circle</i><b>Individual</b>"],
+            ["<i class='material-icons'>folder_shared</i>", "<b>Jacob Goldstein</b>", "<i class='material-icons'>account_circle</i><b>Individual</b>"],
+            ["<i class='material-icons'>folder_shared</i>", "<b>Grant Thornton</b>", "<i class='material-icons'>account_balance</i><b><br>LLC</b>"],
+            ["<i class='material-icons'>folder_shared</i>", "<b>Scrubbly Bubbles</b>", "<i class='material-icons'>supervised_user_circle</i><b><br>Partnership</b>"],
+            ["<i class='material-icons'>folder_shared</i>", "<b>J.P Getty Trust</b>", "<i class='material-icons'>school</i><b><br>Trust</b>"],
+            ["<i class='material-icons'>folder_shared</i>", "<b>JP Morgan Chase</b>","<i class='material-icons'>business_center</i><b><br>Corporation</b>"],
+            ["<i class='material-icons'>folder_shared</i>", "<b>Vanderbelt Estate</b>","<i class='material-icons'>location_city</i><b><br>Estate</b>"]
+
+
+        ];
 
         //////////////////////////////////////////////////////////////////////////////
         // initialize contacts table with empty values
         //////////////////////////////////////////////////////////////////////////////
-        var contactsTable = $('#contacts').DataTable( {
+        var contactsTable = $('#ManagedContacts').DataTable( {
             data: dataSet1,
-            "pageLength": 5,
+            "pageLength": 3,
             "scrollY": "250px",
+            "scrollX": "100%",
             "oLanguage": {
 
-                "sSearch": "<b style=\"position: relative; bottom: -3px; \"><i style=\"position: relative; right:-197px; \"  class=\"material-icons\">search</i></b>"
+                "sSearch": "<b style=\"position: relative; bottom: -3px; \" > <i style=\"position: relative; right:-197px; \"  class=\"material-icons\">search</i></b>"
 
             },
             "dom": '<"top"f<"clear">>rt<"bottom"p<"clear">>',
             columns: [
-                { title: "" },
-                { title: "Name" },
-                { title: "Email" },
-                { title: "Firm" },
-                { title: "" }
-
+                {  },
+                { title: "Contact Name" },
+                { title: "Contact type" }
             ]
         } );
 
-
-
-
-        ////////////////////////////////////////////////////////////////////////////////
-        // initialize empty Contacts table with user's contacts
-        ////////////////////////////////////////////////////////////////////////////////
-
-        for(var a =0; a <contactNames.length; a++) {
-            ///////////////////////////////////////////////////////////////////////////
-            // check each name against selected names ...if in selected lis ...
-            // add row with check box selected and disabled
-            ///////////////////////////////////////////////////////////////////////////
-           var  isChecked = false;
-
-            for(var b =0; b < selectedContactNames.length; b++){
-
-
-
-                if(contactNames[a] ===  selectedContactNames[b]){
-                    isChecked = true;
-                }
-            }
-
-            if(isChecked == false) {
-                var col1 = "<input class=\"contacts-checkbox\" type='checkbox'>";
-                var col2 = contactNames[a];
-                var col3 = contactEmails[a];
-                var col4 = contactFirms[a];
-                var col5 = "<i class=\"material-icons\">swap_horiz</i>";
-                contactsTable.row.add([col1, col2, col3, col4, col5]).draw();
-                //contactsTable.row.add(row).draw(false);
-                //contactsTable.order([1, 'asc']).draw();
-                //contactsTable.page('last').draw(false);
-                // make this jquery expression more generic
-            }
-            else {
-                var col1 = "<input class=\"contacts-checkbox\" disabled=\"true\" checked=\"true\" type='checkbox'>";
-                var col2 = contactNames[a];
-                var col3 = contactEmails[a];
-                var col4 = contactFirms[a];
-                var col5 = "<i class=\"material-icons\">swap_horiz</i>";
-                contactsTable.row.add([col1, col2, col3, col4, col5]).draw();
-                //contactsTable.row.add(row).draw(false);
-                //contactsTable.order([1, 'asc']).draw();
-                //contactsTable.page('last').draw(false);
-
-            }
-
-        }
         ////////////////////////////////////////////////////////////////////////////////////////////////
         // set overflow hidden for horizontal scroll bar created by y-scroll options on data tables
         // that keeps the data tables view port height constant
         /////////////////////////////////////////////////////////////////////////////////////////////////
         $('.dataTables_scrollBody').css('overflow',  'hidden');
-        var dataSet3 = [
-
-        ];
-        //////////////////////////////////////////////////////////////////////////////////////////////////
-        // generate data tables for filings
-        //////////////////////////////////////////////////////////////////////////////////////////////////
-        var selectedTable = $('#selected-attorneys').DataTable( {
-            "createdRow": function ( row, data, index ) {
-
-                if(data != ""){
-                    $(row).addClass( 'highlight' );
-                }
 
 
-
-            },
-
-            "rowCallback": function( row, data ) {
-                // event works
-            },
-            data: dataSet3,
-            "dom": '<"top"<"clear">>rt<"bottom"<"clear">>',
-
-            columns: [
-                { title: "Selected Contacts" },
-                { title: "" }
-
-            ]
-        } );
-
-
-        for(var a =0; a < selectedContactNames.length; a++) {
-
-
-            if (selectedContactNames[a] != "") {
-
-                var newRow = [selectedContactNames[a], "<i class=\"material-icons\">remove_circle</i>"];
-                selectedTable.row.add(newRow).draw();
-                enableNextWidgetLink();
-            }
+        // load managed contacts from server
+        for(var a =0; a <contactNames.length; a++) {
+            ///////////////////////////////////////////////////////////////////////////
+            // check each name against selected names ...if in selected lis ...
+            // add row with check box selected and disabled
+            ///////////////////////////////////////////////////////////////////////////
+            var col1 = "<i class='material-icons'>folder_shared</i>";
+            var col2 = "<b>"+contactNames[a]+"</b>";
+            var col3 = "<i class='material-icons'>account_circle</i><b>"+contactTypes[a]+"</b>";
+            contactsTable.row.add([col1, col2, col3]).draw();
 
         }
+        // sort and redraw to line up columns
 
-        ////////////////////////////////////////////////////////
-        // update contacts table placeholder text
-        ////////////////////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        $('#contacts_filter > label > input').prop('placeholder', 'Search From Contacts');
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // widget actions
 
+        $('#ManagedContacts').on('click', 'i.material-icons', function () {
 
-
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //ACTION LISTERNER FOR SAVING CONTACTS TO PROJECT CONTACTS POOL
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        /////////////////////////////////////////////////////////
-        // add action listeners to contacts table check boxes + add widget
-        // these are the actions that will trigger saving contacts
-        // to project's lawyer pool
-        /////////////////////////////////////////////////////////
-
-        $('#contacts').on('click', 'input.contacts-checkbox', function () {
-
-            //////////////////////////////////////////////////////////////////////////////////////////////////////////
-            // save contact from contact list to application lawyer pool using contact email and maybe firm name
-            // create push row using contact name and add to selected contacts table
-            //////////////////////////////////////////////////////////////////////////////////////////////////////////
-            $(this).prop("disabled", true);
-
-
-            var newRow = [$(this).parent().next().html(),"<i class=\"material-icons\">remove_circle</i>"];
-            selectedTable.row.add(newRow).draw();
-
-
-            //$('#selected-attorneys tr').eq(contacts_counter).addClass('highlight');
-            ////////////////////////////////////////////////////////
-            // update contacts added counter
-            ////////////////////////////////////////////////////////
-            //contacts_counter++;
-            /////////////////////////////////////////////////////////////////////////////////
-            // call back end and add contact via email from the application lawyer pool
-            /////////////////////////////////////////////////////////////////////////////////
-            // required parameters for back end interactions
-            // 1. contact email   // get contact email from sibling TD field
-            // 2. project id ??? how are we going to get that ???
-            // 3. load project id as java script variable like our other pages
-            /////////////////////////////////////////////////////////////////////////////////
-            var contact_email = $(this).parent().next().next().html();
-            var project_id = appInternalID;
-
-            addContact2Application(contact_email, project_id);
-            /////////////////////////////////////////////////////////////////////////////////
-            // enable next button
-            // and inject next link
-            /////////////////////////////////////////////////////////////////////////////////
-            enableNextWidgetLink();
-
-
-
-
-        });
-
-        $('#contacts').on('click', 'i.material-icons', function () {
-
-             var checkBoxState = $(this).parent().prev().prev().prev().prev().html();
-
-            if(checkBoxState.indexOf("disabled") != -1){ // if not checked
-                    // do nothing ..contact already selected
-
-
-                 // acquire search key ..i.e  attorney name
-                var contacts_target = $(this).parent().prev().prev().prev().html();
-
-                // got through selected table and if matches target .. remove row
-                //
-                $('#selected-attorneys td').each(function () {
-                    if($(this).html() === contacts_target){
-                        selectedTable.row($(this).parents('tr')).remove().draw()
-                    }
-                });
-
-                ////////////////////////////////////////////////////////
-                // un check check box
-                ////////////////////////////////////////////////////////
-                $(this).parent().prev().prev().prev().prev().html("<input class=\"contacts-checkbox\" type=\"checkbox\">");
-                var contact_email = $(this).parent().prev().prev().html();
-                removeContact2Application(contact_email, appInternalID);
-                disableNextWidgetLink();
-
-            }
-            else{
-
-                // checked ... push to selected contacts and update counter
-                var newRow = [$(this).parent().prev().prev().prev().html(),"<i class=\"material-icons\">remove_circle</i>"];
-                $(this).parent().prev().prev().prev().prev().html("<input class=\"contacts-checkbox\" type=\"checkbox\"  checked=\"true\" disabled=\"true\"> ");
-
-                selectedTable.row.add(newRow).draw();
-                // $('#selected-attorneys tr').eq(contacts_counter).addClass('highlight');
-
-                var contact_email = $(this).parent().prev().prev().html();
-                var project_id = appInternalID;
-
-                //alert(contact_email);
-                //alert(project_id);
-
-                addContact2Application(contact_email, project_id);
-                enableNextWidgetLink();
-
+            if($(this).html() == "folder_shared"){
+                var rawCell=$(this).parent().next().html();
+                var contactDisplayName = getContactName(rawCell);
+                setformWithManagedContact(contactDisplayName);
 
             }
 
 
-            /////////////////////////////////////////////////////////////////////////////////
-            // call back end and add contact via email from the application lawyer pool
-            /////////////////////////////////////////////////////////////////////////////////
-
-
-        });
-
-
-        //////////////////////////////////////////////////////////////
-        //////////////////////////////////////////////////////////////
-        // add action listeners to selected-contacts table check boxes
-        //////////////////////////////////////////////////////////////
-        $('#selected-attorneys').on('click', 'i.material-icons', function () {
-
-            //////////////////////////////////////////////////////////
-            // get selected row key i.e contact name
-            //////////////////////////////////////////////////////////
-            var contacts_target = $(this).parent().prev().html();
-
-             /////////////////////////////////////////////////////////
-             // uncheck contacts check box from the user contact list
-             //////////////////////////////////////////////////////////
-            var contact_email ="";
-            $('#contacts td').each(function () {
-                if($(this).html() === contacts_target){
-                    $(this).prev().html("<input class=\"contacts-checkbox\" type=\"checkbox\">");
-                    contact_email = $(this).next().html();
-                }
-
-            });
-
-            ////////////////////////////////////////////////////////
-            // pop current row ...
-            ////////////////////////////////////////////////////////
-            selectedTable.row($(this).parents('tr')).remove().draw();
-            /////////////////////////////////////////////////////////////////////////////////
-            // call back end and remove contact via email from the application lawyer pool
-            /////////////////////////////////////////////////////////////////////////////////
-
-            // call back end services to remove contact from application object
-            removeContact2Application(contact_email, appInternalID);
-            /////////////////////////////////////////////////////////////////////////////////
-            // check selected table count ...if null ... disable next button
-            // doesn't make sense to set attorneys until you selected them
-            /////////////////////////////////////////////////////////////////////////////////
-
-            if ( ! selectedTable.data().any() ) {
-                disableNextWidgetLink();
-            }
-        });
-        ////////////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-        //////////////////////////////////////////////////////////////
-        // on modal open set focus to email field :
-        // // this will trigger the creation of a
-        // // new available contact for the user on field complete
-        //////////////////////////////////////////////////////////////
-        $('#addNewAttorneyModal').on('shown.bs.modal', function () {
-               // check if email address set
-               // if not ..set focus ...
-            //////////////////////////////////////////////////////////////
-            // disable modal close button
-            //////////////////////////////////////////////////////////////
-
-            // reset all fields
-            /*
-            $('#attorney-first-name').val("");
-            $('#attorney-last-name').val("");
-            $('#attorney-lawfirm-name').val("");
-            $('#attorney-country').val("");
-            $('#attorney-address1').val("");
-            $('#attorney-city').val("");
-            $('#attorney-state').val("");
-            $('#attorney-zipcode').val("");
-            $('#attorney-phone').val("");
-            $('#attorney-email').val("");
-            $('#docket-id').val("");
-            $('#attorney-bar-standing').val("");
-
-            */
-
-            $.post(attorneyDomFormURL, function(data){
-                $("#attorneyEntityForm").html(data).fadeIn();
-            });
-
-
-        });
-        /////////////////////////////////////////////////////////////////////////
-        // modal clean up
-        /////////////////////////////////////////////////////////////////////////
-        $('#addNewAttorneyModal').on('hidden.bs.modal', function () {
-
-        });
-        /////////////////////////////////////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////
-
-        /////////////////////////////////////////////////////////////////////////
-        // add new attorney modal save
-        /////////////////////////////////////////////////////////////////////////
-
-        $('#addAttorneyConfirm').click( function () {
-
-            /////////////////////////////////////////////////////////////////////
-            // save contact email
-            // in contact email succedes ...save all of the other fields....
-            // get variables
-            //////////////////////////////////////////////////////////////////////
-
-            var attorney_email = $('#attorney-email').val();
-            createContact(attorney_email);
-            ///////////////////////////////////////////////////////////////////
-            // $('#attorney-email').prop('disabled', true);
-            ///////////////////////////////////////////////////////////////////
-            // get all of the other fields from the modal ....
-            ////////////////////////////////////////////////////////////////////
-            // insert new contact into contacts table
-            ////////////////////////////////////////////////////////////////////
-            var attorney_first_name = $('#attorney-first-name').val();
-            var attorney_last_name = $('#attorney-last-name').val();
-            var attorney_lawfirm_name =$('#attorney-lawfirm-name').val();
-            var newRow = ["<input class=\"contacts-checkbox\" type='checkbox'>",attorney_first_name+" "+attorney_last_name, attorney_email, attorney_lawfirm_name, "<i class=\"material-icons\">swap_horiz</i>"];
-           contactsTable.row.add(newRow).draw();
-
         });
 
 
 
 
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // AUTO SAVE jQUERY EVENTS
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // validate email
-        // make ajax call to create lawyer object and add to user
-        // also make name and firm name mandatory  (need that to build ui elements)
-        // make sure we have a functionality on user to find contact by email
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        /////////////////////////////////////////////////////////////////////////////////
-        // contact information 'email' auto save ////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////
-        $('#attorney-email').focusout( function () {
-                  // send state, and token to server
-            // token will be generated in the controller and added to the view
-            // similar to how access token works ...a token is tied to a user
-            // access token will be passed in through model
-            //
-            // var tokenValue = '${token}';  // token is the model attribute name
-            // we are not using secured tokens for the prototype
-            // we will secure it by adding ssl and https support
-            //
-            //$('.state-animation').fadeOut();
 
-            checkUnlockConfirm();
-            /*
-            var field_value = $(this).val();
 
 
 
-            if(field_value != ""){
+    }); // end of document ready()
 
-                if(field_value.indexOf('@') > -1 && (field_value.indexOf(".com") > -1 || field_value.indexOf(".gov") > -1 || field_value.indexOf(".net") > -1 || field_value.indexOf(".lib") > -1) ){
-                    createContact( field_value);
 
+    function setformWithManagedContact(displayName) {
 
-
-
-
-                }
-                else{
-                    $(".attorney-emailFieldMsgArea").fadeOut();
-                    setTimeout(function () {
-                        $(".attorney-emailFieldMsgArea span").text("Email Filed has to be an valid email address!!!");
-                        $(".attorney-emailFieldMsgArea span").css('color', 'red');
-                        $(".attorney-emailFieldMsgArea").fadeIn(1000);
-                    }, 500);
-
-                }
-
-            }
-            else{
-
-
-                $(".attorney-emailFieldMsgArea").fadeOut();
-                setTimeout(function () {
-                    $(".attorney-emailFieldMsgArea span").text("Email Field can not be empty!!");
-                    $(".attorney-emailFieldMsgArea span").css('color', 'red');
-                    $(".attorney-emailFieldMsgArea").fadeIn(1000);
-                }, 500);
-
-            }*/
-
-
-        });
-        // end of auto save email
-
-        /////////////////////////////////////////////////////////////////////////////////
-        // contact information 'attorney-first-name' auto save ////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////
-        $('#attorney-first-name').focusout( function () {
-            // send state, and token to servercv
-            // token will be generated in the controller and added to the view
-            // similar to how access token works ...a token is tied to a user
-            // access token will be passed in through model
-            //
-            // var tokenValue = '${token}';  // token is the model attribute name
-            // we are not using secured tokens for the prototype
-            // we will secure it by adding ssl and https support
-            //
-            //$('.state-animation').fadeOut();
-
-            checkUnlockConfirm();
-
-            /*
-
-            var field_value = $(this).val();
-
-
-            if(field_value != "") {
-                var email = $('#attorney-email').val();
-
-                saveContactInfo(email, "attorney-first-name", field_value);
-
-                ///////////////////////////////////////////////////////////////////
-                // set focus and message for the next field
-                ///////////////////////////////////////////////////////////////////
-                setTimeout(function () {
-                    $('#attorney-last-name').focus();
-                }, 1500);
-                $(".attorney-last-nameFieldMsgArea").fadeOut();
-                setTimeout(function () {
-                    $(".attorney-last-nameFieldMsgArea span").text("Please Complete Last Name Field next.");
-                    $(".attorney-last-nameFieldMsgArea span").css('color', 'red');
-                    $(".attorney-last-nameFieldMsgArea").fadeIn(1000);
-                }, 2500);
-
-            }
-            else {
-                $(".attorney-first-nameFieldMsgArea").fadeOut();
-                setTimeout(function () {
-                    $(".attorney-first-nameFieldMsgArea span").text("First Name Field can not be empty!!");
-                    $(".attorney-first-nameFieldMsgAreaspan").css('color', 'red');
-                    $(".attorney-first-nameFieldMsgArea").fadeIn(1000);
-                }, 500);
-
-            }*/
-
-
-
-        });
-
-        /////////////////////////////////////////////////////////////////////////////////
-        // contact information 'attorney-last-name' auto save ////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////
-        $('#attorney-last-name').focusout( function () {
-            // send state, and token to servercv
-            // token will be generated in the controller and added to the view
-            // similar to how access token works ...a token is tied to a user
-            // access token will be passed in through model
-            //
-            // var tokenValue = '${token}';  // token is the model attribute name
-            // we are not using secured tokens for the prototype
-            // we will secure it by adding ssl and https support
-            //
-            //$('.state-animation').fadeOut();
-
-            checkUnlockConfirm();
-            /*
-
-            var field_value = $(this).val();
-
-            if(field_value != "") {
-                var email = $('#attorney-email').val();
-
-                saveContactInfo(email, "attorney-last-name", field_value);
-
-                ///////////////////////////////////////////////////////////////////
-                // set focus and message for the next field
-                ///////////////////////////////////////////////////////////////////
-                setTimeout(function () {
-                    $('#attorney-lawfirm-name').focus();
-                }, 1500);
-                $(".attorney-lawfirm-nameFieldMsgArea").fadeOut();
-                setTimeout(function () {
-
-                    $(".attorney-lawfirm-nameFieldMsgArea span").text("Please Complete Law Firm name Field next.");
-                    $(".attorney-lawfirm-nameFieldMsgArea span").css('color', 'red');
-                    $(".attorney-lawfirm-nameFieldMsgArea").fadeIn(1000);
-                }, 2500);
-
-            }
-            else{
-                $(".attorney-last-nameFieldMsgArea").fadeOut();
-                setTimeout(function () {
-                    $(".attorney-last-nameFieldMsgArea span").text("Last Name Field can not be empty!!");
-                    $(".attorney-last-nameFieldMsgAreaspan").css('color', 'red');
-                    $(".attorney-last-nameFieldMsgArea").fadeIn(1000);
-                }, 500);
-
-            }*/
-
-
-
-        });
-
-        /////////////////////////////////////////////////////////////////////////////////
-        // contact information 'attorney-lawfirm-name' auto save ////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////
-        $('#attorney-lawfirm-name').focusout( function () {
-            // send state, and token to servercv
-            // token will be generated in the controller and added to the view
-            // similar to how access token works ...a token is tied to a user
-            // access token will be passed in through model
-            //
-            // var tokenValue = '${token}';  // token is the model attribute name
-            // we are not using secured tokens for the prototype
-            // we will secure it by adding ssl and https support
-            //
-            //$('.state-animation').fadeOut();
-
-            checkUnlockConfirm();
-
-            /*
-
-            var field_value = $(this).val();
-
-            if(field_value != "") {
-
-                var email = $('#attorney-email').val();
-                var first_name = $('#attorney-first-name').val();
-                var last_name = $('#attorney-last-name').val();
-                var law_firm = $('#attorney-lawfirm-name').val();
-                saveContactInfo(email, "attorney-lawfirm-name", field_value);
-
-                ///////////////////////////////////////////////////////////////////
-                // set focus and message for the next field
-                ///////////////////////////////////////////////////////////////////
-
-                // unlock confirm buttons ??? unlock after phone number
-                // enable close button in modal header
-
-                // create contacts table row
-                // we need first name, last name, law firm, and email
-                // get it directly with jquery
-                var newRow = ["<input class=\"contacts-checkbox\" type='checkbox'>",first_name+" "+last_name, email, law_firm, "<i class=\"material-icons\">swap_horiz</i>"];
-                contactsTable.row.add(newRow).draw();
-
-                // push contacts table row and redraw()
-
-                // set focus to country
-                // and notify user to fill in information below.
-                setTimeout(function () {
-                    $('#attorney-country').focus();
-                }, 1500);
-                $(".attorney-countryFieldMsgArea").fadeOut();
-                setTimeout(function () {
-
-                    $(".attorney-countryFieldMsgArea span").text("Please Complete Country Field next.");
-                    $(".attorney-countryFieldMsgArea span").css('color', 'red');
-                    $(".attorney-countryFieldMsgArea").fadeIn(1000);
-                }, 2500);
-
-
-            }
-            else{
-                $(".attorney-lawfirm-nameFieldMsgArea").fadeOut();
-                setTimeout(function () {
-                    $(".attorney-lawfirm-nameFieldMsgArea span").text("Last Name Field can not be empty!!");
-                    $(".attorney-lawfirm-nameFieldMsgArea span").css('color', 'red');
-                    $(".attorney-lawfirm-nameFieldMsgArea").fadeIn(1000);
-                }, 500);
-
-            }*/
-
-
-
-        });
-
-        /////////////////////////////////////////////////////////////////////////////////
-        // contact information 'attorney-country' auto save ////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////
-        $('#attorney-country').focusout( function () {
-            // send state, and token to server
-            // token will be generated in the controller and added to the view
-            // similar to how access token works ...a token is tied to a user
-            // access token will be passed in through model
-            //
-            // var tokenValue = '${token}';  // token is the model attribute name
-            // we are not using secured tokens for the prototype
-            // we will secure it by adding ssl and https support
-            //
-            //$('.state-animation').fadeOut();
-
-            checkUnlockConfirm();
-
-            /*
-
-            var field_value = $(this).val();
-
-            if(field_value != "") {
-
-                var email = $('#attorney-email').val();
-
-                saveContactInfo(email, "attorney-country", field_value);
-
-                ///////////////////////////////////////////////////////////////////
-                // set focus and message for the next field
-                ///////////////////////////////////////////////////////////////////
-
-                // push contacts table row and redraw()
-
-                // set focus to country
-                // and notify user to fill in information below.
-                setTimeout(function () {
-                   $('#attorney-address1').focus();
-                }, 1500);
-                $(".attorney-address1FieldMsgArea").fadeOut();
-                setTimeout(function () {
-
-                   $(".attorney-address1FieldMsgArea span").text("Please Complete Address Field next.");
-                   $(".attorney-address1FieldMsgArea span").css('color', 'red');
-                   $(".attorney-address1FieldMsgArea").fadeIn(1000);
-                }, 2500);
-
-
-            }
-            else{
-                $(".attorney-countryFieldMsgArea").fadeOut();
-                setTimeout(function () {
-                    $(".attorney-countryFieldMsgArea span").text("Attorney Country Field can not be empty!!");
-                    $(".attorney-countryFieldMsgArea span").css('color', 'red');
-                    $(".attorney-countryFieldMsgArea").fadeIn(1000);
-                }, 500);
-
-            }*/
-
-
-
-        });
-
-        /////////////////////////////////////////////////////////////////////////////////
-        // contact information 'attorney-address1' auto save ////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////
-        $('#attorney-address1').focusout( function () {
-            // send state, and token to server
-            // token will be generated in the controller and added to the view
-            // similar to how access token works ...a token is tied to a user
-            // access token will be passed in through model
-            //
-            // var tokenValue = '${token}';  // token is the model attribute name
-            // we are not using secured tokens for the prototype
-            // we will secure it by adding ssl and https support
-            //
-            //$('.state-animation').fadeOut();
-
-            checkUnlockConfirm();
-            /*
-            var field_value = $(this).val();
-
-            if(field_value != "") {
-
-                var email = $('#attorney-email').val();
-
-                saveContactInfo(email, "attorney-address1", field_value);
-
-                ///////////////////////////////////////////////////////////////////
-                // set focus and message for the next field
-                ///////////////////////////////////////////////////////////////////
-
-                // push contacts table row and redraw()
-
-                // set focus to country
-                // and notify user to fill in information below.
-                setTimeout(function () {
-                    $('#attorney-city').focus();
-                }, 1500);
-                $(".attorney-cityFieldMsgArea").fadeOut();
-                setTimeout(function () {
-
-                    $(".attorney-cityFieldMsgArea span").text("Please Complete City Field next.");
-                    $(".attorney-cityFieldMsgArea span").css('color', 'red');
-                    $(".attorney-cityFieldMsgArea").fadeIn(1000);
-                }, 2500);
-
-
-            }
-            else{
-                $(".attorney-address1FieldMsgArea").fadeOut();
-                setTimeout(function () {
-                    $(".attorney-address1FieldMsgArea span").text("Attorney Address Field can not be empty!!");
-                    $(".attorney-address1FieldMsgArea span").css('color', 'red');
-                    $(".attorney-address1FieldMsgArea").fadeIn(1000);
-                }, 500);
-
-            }*/
-
-
-
-        });
-
-        /////////////////////////////////////////////////////////////////////////////////
-        // contact information 'attorney-city' auto save ////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////
-        $('#attorney-city').focusout( function () {
-            // send state, and token to server
-            // token will be generated in the controller and added to the view
-            // similar to how access token works ...a token is tied to a user
-            // access token will be passed in through model
-            //
-            // var tokenValue = '${token}';  // token is the model attribute name
-            // we are not using secured tokens for the prototype
-            // we will secure it by adding ssl and https support
-            //
-            //$('.state-animation').fadeOut();
-
-            checkUnlockConfirm();
-
-            /*
-
-            var field_value = $(this).val();
-
-            if(field_value != "") {
-
-                var email = $('#attorney-email').val();
-
-                saveContactInfo(email, "attorney-city", field_value);
-
-                ///////////////////////////////////////////////////////////////////
-                // set focus and message for the next field
-                ///////////////////////////////////////////////////////////////////
-
-                // push contacts table row and redraw()
-
-                // set focus to country
-                // and notify user to fill in information below.
-                setTimeout(function () {
-                    $('#attorney-state').focus();
-                }, 1500);
-                $(".attorney-stateFieldMsgArea").fadeOut();
-                setTimeout(function () {
-
-                    $(".attorney-stateFieldMsgArea span").text("Please Complete State Field next.");
-                    $(".attorney-stateFieldMsgArea span").css('color', 'red');
-                    $(".attorney-stateFieldMsgArea").fadeIn(1000);
-                }, 2500);
-
-
-            }
-            else{
-                $(".attorney-cityFieldMsgArea").fadeOut();
-                setTimeout(function () {
-                    $(".attorney-cityFieldMsgArea span").text("Attorney City Field can not be empty!!");
-                    $(".attorney-cityFieldMsgArea span").css('color', 'red');
-                    $(".attorney-cityFieldMsgArea").fadeIn(1000);
-                }, 500);
-
-            }*/
-
-
-
-        });
-
-
-
-        /////////////////////////////////////////////////////////////////////////////////
-        // contact information 'attorney-state' auto save ////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////
-        $('#attorney-state').focusout( function () {
-            // send state, and token to server
-            // token will be generated in the controller and added to the view
-            // similar to how access token works ...a token is tied to a user
-            // access token will be passed in through model
-            //
-            // var tokenValue = '${token}';  // token is the model attribute name
-            // we are not using secured tokens for the prototype
-            // we will secure it by adding ssl and https support
-            //
-            //$('.state-animation').fadeOut();
-
-            checkUnlockConfirm();
-            /*
-
-            var field_value = $(this).val();
-
-            if(field_value != "") {
-
-                var email = $('#attorney-email').val();
-
-                saveContactInfo(email, "attorney-state", field_value);
-
-                ///////////////////////////////////////////////////////////////////
-                // set focus and message for the next field
-                ///////////////////////////////////////////////////////////////////
-
-                // push contacts table row and redraw()
-
-                // set focus to country
-                // and notify user to fill in information below.
-                setTimeout(function () {
-                    $('#attorney-zipcode').focus();
-                }, 1500);
-                $(".attorney-zipcodeFieldMsgArea").fadeOut();
-                setTimeout(function () {
-
-                    $(".attorney-zipcodeFieldMsgArea span").text("Please Complete Zipcode Field next.");
-                    $(".attorney-zipcodeFieldMsgArea span").css('color', 'red');
-                    $(".attorney-zipcodeFieldMsgArea").fadeIn(1000);
-                }, 2500);
-
-
-            }
-            else{
-                $(".attorney-stateFieldMsgArea").fadeOut();
-                setTimeout(function () {
-                    $(".attorney-stateFieldMsgArea span").text("Attorney State Field can not be empty!!");
-                    $(".attorney-stateFieldMsgArea span").css('color', 'red');
-                    $(".attorney-stateFieldMsgArea ").fadeIn(1000);
-                }, 500);
-
-            }*/
-
-
-
-        });
-
-        /////////////////////////////////////////////////////////////////////////////////
-        // contact information 'attorney-zipcode' auto save ////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////
-        $('#attorney-zipcode').focusout( function () {
-            // send state, and token to server
-            // token will be generated in the controller and added to the view
-            // similar to how access token works ...a token is tied to a user
-            // access token will be passed in through model
-            //
-            // var tokenValue = '${token}';  // token is the model attribute name
-            // we are not using secured tokens for the prototype
-            // we will secure it by adding ssl and https support
-            //
-            //$('.state-animation').fadeOut();
-            checkUnlockConfirm();
-            /*
-            var field_value = $(this).val();
-
-            if(field_value != "") {
-
-                var email = $('#attorney-email').val();
-
-                saveContactInfo(email, "attorney-zipcode", field_value);
-
-                ///////////////////////////////////////////////////////////////////
-                // set focus and message for the next field
-                ///////////////////////////////////////////////////////////////////
-
-                // push contacts table row and redraw()
-
-                // set focus to country
-                // and notify user to fill in information below.
-                setTimeout(function () {
-                    $('#attorney-phone').focus();
-                }, 1500);
-                $(".attorney-phoneFieldMsgArea").fadeOut();
-                setTimeout(function () {
-
-                    $(".attorney-phoneFieldMsgArea span").text("Please Complete Phone number Field next.");
-                    $(".attorney-phoneFieldMsgArea span").css('color', 'red');
-                    $(".attorney-phoneFieldMsgArea").fadeIn(1000);
-                }, 2500);
-
-
-            }
-            else{
-                $(".attorney-zipcodeFieldMsgArea").fadeOut();
-                setTimeout(function () {
-                    $(".attorney-zipcodeFieldMsgArea span").text("Attorney Zipcode Field can not be empty!!");
-                    $(".attorney-zipcodeFieldMsgArea span").css('color', 'red');
-                    $(".attorney-zipcodeFieldMsgArea").fadeIn(1000);
-                }, 500);
-
-            }*/
-
-
-
-        });
-
-        /////////////////////////////////////////////////////////////////////////////////
-        // contact information 'attorney-phone' auto save ////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////
-        $('#attorney-phone').focusout( function () {
-            // send state, and token to server
-            // token will be generated in the controller and added to the view
-            // similar to how access token works ...a token is tied to a user
-            // access token will be passed in through model
-            //
-            // var tokenValue = '${token}';  // token is the model attribute name
-            // we are not using secured tokens for the prototype
-            // we will secure it by adding ssl and https support
-            //
-            //$('.state-animation').fadeOut();
-            checkUnlockConfirm();
-            /*
-            var field_value = $(this).val();
-
-            if(field_value != "") {
-
-                var email = $('#attorney-email').val();
-
-                saveContactInfo(email, "attorney-phone", field_value);
-
-                ///////////////////////////////////////////////////////////////////
-                // set focus and message for the next field
-                ///////////////////////////////////////////////////////////////////
-
-                //////////////////////////////////////////////////////////////////
-                // set focus to confirm button // probably doesn't need to do that
-                // check if the 5 minimal required fields are set,
-                ///////////////////////////////////////////////////////////////////
-
-                // if so ..unlock
-                // unlock confirm button and close button in modal header
-            }
-            else{
-                $(".attorney-phoneFieldMsgArea").fadeOut();
-                setTimeout(function () {
-                    $(".attorney-phoneFieldMsgArea span").text("Attorney Phone number Field can not be empty!!");
-                    $(".attorney-phoneFieldMsgArea span").css('color', 'red');
-                    $(".attorney-phoneFieldMsgArea").fadeIn(1000);
-                }, 500);
-
-            }*/
-
-
-
-        });
-
-
-
-        /////////////////////////////////////////////////////////////////////////////////
-        // contact information 'docket-id' auto save ////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////
-        $('#docket-id').focusout( function () {
-            // send state, and token to server
-            // token will be generated in the controller and added to the view
-            // similar to how access token works ...a token is tied to a user
-            // access token will be passed in through model
-            //
-            // var tokenValue = '${token}';  // token is the model attribute name
-            // we are not using secured tokens for the prototype
-            // we will secure it by adding ssl and https support
-            //
-            //$('.state-animation').fadeOut();
-
-            checkUnlockConfirm();
-            /*
-            var field_value = $(this).val();
-
-            if(field_value != "") {
-
-                var email = $('#attorney-email').val();
-
-                saveContactInfo(email, "docket-id", field_value);
-
-                ///////////////////////////////////////////////////////////////////
-                // set focus and message for the next field
-                ///////////////////////////////////////////////////////////////////
-
-                //////////////////////////////////////////////////////////////////
-                // set focus to confirm button // probably doesn't need to do that
-                // check if the 5 minimal required fields are set,
-                ///////////////////////////////////////////////////////////////////
-
-                // if so ..unlock
-                // unlock confirm button and close button in modal header
-            }
-            else{
-
-
-            }*/
-
-
-
-        });
-
-
-        /////////////////////////////////////////////////////////////////////////////////
-        // contact information 'docket-id' auto save ////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////
-        $('#attorney-bar-standing').focusout( function () {
-            // send state, and token to server
-            // token will be generated in the controller and added to the view
-            // similar to how access token works ...a token is tied to a user
-            // access token will be passed in through model
-            //
-            // var tokenValue = '${token}';  // token is the model attribute name
-            // we are not using secured tokens for the prototype
-            // we will secure it by adding ssl and https support
-            //
-            //$('.state-animation').fadeOut();
-            checkUnlockConfirm();
-
-            /*
-            var field_value = $(this).val();
-
-
-            if(field_value != "") {
-
-                var email = $('#attorney-email').val();
-
-                saveContactInfo(email, "attorney-bar-standing", field_value);
-
-                ///////////////////////////////////////////////////////////////////
-                // set focus and message for the next field
-                ///////////////////////////////////////////////////////////////////
-
-                //////////////////////////////////////////////////////////////////
-                // set focus to confirm button // probably doesn't need to do that
-                // check if the 5 minimal required fields are set,
-                ///////////////////////////////////////////////////////////////////
-
-                // if so ..unlock
-                // unlock confirm button and close button in modal header
-            }
-            else{
-
-
-            }*/
-
-
-
-        });
-
-
-
-    });  // end of document ready ()
-/////////////////////////////////////////////////////
-// aJAX
-/////////////////////////////////////////////////////
-    function saveProjectInfo(field_name_prefix, field_value, application_internal_id) {
-
-
-
-
-
-        //alert(field_name_prefix);
-        // send state, and token to server
-        // token will be generated in the controller and added to the view
-        // similar to how access token works ...a token is tied to a user
-        // access token will be passed in through model
-        //
-        // var tokenValue = '${token}';  // token is the model attribute name
-        // we are not using secured tokens for the prototype
-        // we will secure it by adding ssl and https support
-
-        //var field_value = $(this).val();
-        //alert(field_value);
-
-
+        //////////////////////////////////////////////////////////////////////////////////////
+        // we need REST controller of finding a contact by its email
+        // this needs to be implemented on the PTOUser object
+        //////////////////////////////////////////////////////////////////////////////////////
 
         $.ajax({
             //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
-            url: "../../REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+application_internal_id,
+            url: "../../REST/apiGateway/user/managedContact/get/"+displayName,
+
             type: 'GET',
             success: function(data){
+
+
 
                 // parse out status msg:
                 var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
 
                 var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
 
+
+
+
                 if(s_code.trim() == "200"){
                     //if(data.contains("status: 200")){
                     // show confirmation check mark on form
                     //$('#toggle').delay(1000).click();
+                    //$(".autoSaveMessageArea span").fadeOut(500);
+
+                    //alert(s_msg);
+
+                    var firstName = getFieldValueFromResponse(s_msg,"firstName");
+                    if(firstName != "null"){
+                        $('#first-name').val(firstName);
+
+                    }
+                    var middleName = getFieldValueFromResponse(s_msg,"middleName");
+                    if(middleName != "null"){
+                        $('#middleName').val(middleName);
+
+                    }
+                    var lastName = getFieldValueFromResponse(s_msg,"lastName");
+                    if(lastName != "null"){
+                        $('#last-name').val(lastName);
+
+                    }
+                    var suffix = getFieldValueFromResponse(s_msg,"suffix");
+                    if(suffix != "null"){
+                        $('#suffix').val(suffix);
+
+                    }
+                    var country = getFieldValueFromResponse(s_msg,"country");
+                    if(country != "null"){
+                        $('#OwnerAddressCountry').val(country);
+
+                    }
+
+                    var address1 = getFieldValueFromResponse(s_msg,"address");
+                    if(address1 != "null"){
+                        $('#ownerAddress1').val(address1);
+                    }
+
+                    var city = getFieldValueFromResponse(s_msg,"city");
+                    if(city != "null"){
+                        $('#ownerCity').val(city);
+                    }
+                    var state = getFieldValueFromResponse(s_msg,"state");
+                    if(state != "null"){
+                        $('#ownerState').val(state);
+                    }
+                    var zipcode = getFieldValueFromResponse(s_msg,"zipcode");
+                    if(zipcode != "null"){
+                        $('#ownerZipcode').val(zipcode);
+                    }
+                    var email = getFieldValueFromResponse(s_msg,"email");
+                    if(email != "null"){
+                        $('#ownerEmail').val(email);
+                    }
+                    var phone = getFieldValueFromResponse(s_msg,"phone");
+                    if(phone != "null"){
+                        $('#phone').val(phone);
+                    }
 
 
-                    // add time stamp from server side
-                    $(".autoSaveMessageArea span").fadeOut(500);
+
+                    //alert(firstName);
+
+
                     setTimeout(function() {
                         // after 1000 ms we add the class animated to the login/register card
-                        $(".autoSaveMessageArea span").text(s_msg);
-                        $(".autoSaveMessageArea span").fadeIn(1000);
+                        //  $(".autoSaveMessageArea span").text(s_msg);
+                        // $(".autoSaveMessageArea span").fadeIn(1000);
                     }, 500);
-
-
-                    // animation rendering control
-                    //if($('.state-checkmark').css('display') == 'block'){
-                    if($( "."+field_name_prefix.toLowerCase()+"-animation").css('display') == 'block'){
-
-
-                        $("."+field_name_prefix.toLowerCase()+"-animation").fadeOut(100);
-                        // now we need to create an java back end service that saves this value.
-                        // also add validation on the html  similar to password save
-                        //$('#toggle-'+field_name_prefix.toLowerCase()).delay(100).click();
-
-                        // alert($(this).val());
-                        $("."+field_name_prefix.toLowerCase()+"-animation").fadeIn(1000);
-                        // now we need to create an java back end service that saves this value.
-                        // also add validation on the html  similar to password save
-                        //$("."+field_name_prefix.toLowerCase()+"-animation").delay(1000).click();
-                    }
-                    else {
-
-                        $("."+field_name_prefix.toLowerCase()+"-animation").fadeIn(1000);
-                        // now we need to create an java back end service that saves this value.
-                        // also add validation on the html  similar to password save
-                        //$('#toggle-'+field_name_prefix.toLowerCase()).delay(1000).click();
-                    }
-
 
 
 
@@ -1848,450 +683,168 @@
 
     } // end of function
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 
-    function createContact(email) {
+    function setOwner4pplication(contact_email, project_ID) {
 
-
-
-
-        /////////////////////////////////////////////////////////////////////////////////
-        // alert(field_name_prefix);
-        // send state, and token to server
-        // token will be generated in the controller and added to the view
-        // similar to how access token works ...a token is tied to a user
-        // access token will be passed in through model
-        //
-        // var tokenValue = '${token}';  // token is the model attribute name
-        // we are not using secured tokens for the prototype
-        // we will secure it by adding ssl and https support
-        /////////////////////////////////////////////////////////////////////////////////
-
-        var return_code="";
-        var field_name_prefix = "attorney-email";
-
+        //////////////////////////////////////////////////////////////////////////////////////
+        // we need REST controller of finding a contact by its email
+        // this needs to be implemented on the PTOUser object
+        //////////////////////////////////////////////////////////////////////////////////////
 
         $.ajax({
             //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
-            url: "../../REST/apiGateway/contacts/lawyer/add/"+ email,
+            url: "../../REST/apiGateway/application/owner/set/"+contact_email+"/"+project_ID,
+
             type: 'GET',
-            success: function (data) {
+            success: function(data){
+
+
 
                 // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
 
-                var s_code = data.substring(data.indexOf("status:") + 7, data.indexOf("status:") + 4 + 7);
+                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
 
-                var s_msg = data.substring(data.indexOf("msg:") + 4, data.length - 2);
-                return_code = s_code.trim();
-                if (s_code.trim() == "200") {
-
-                    $(".attorney-saveMsgArea span").fadeOut(500);
+                if(s_code.trim() == "200"){
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
                     setTimeout(function() {
                         // after 1000 ms we add the class animated to the login/register card
-                        $(".attorney-saveMsgArea span").text(s_msg);
-                        $(".attorney-saveMsgArea span").css('color', 'white');
-                        $(".attorney-saveMsgArea span").fadeIn(1000);
-                    }, 1000);
-
-                    ///////////////////////////////////////////////////////////////////
-                    // $('#attorney-email').prop('disabled', true);
-                    ///////////////////////////////////////////////////////////////////
-                    // get all of the other fields from the modal ....
-                    ////////////////////////////////////////////////////////////////////
-                    // reset all fields
-                    var attorney_first_name = $('#attorney-first-name').val();
-                    if(attorney_first_name != ""){
-
-                        setTimeout(function() {
-                            saveAttorneyContactInfo(email, "attorney-first-name", attorney_first_name);
-                        }, 50);
-
-                    }
-                    var attorney_last_name = $('#attorney-last-name').val();
-                    if(attorney_last_name != ""){
-                        setTimeout(function() {
-                            saveAttorneyContactInfo(email, "attorney-last-name", attorney_last_name);
-                        },100);
-
-                    }
-
-
-                    var attorney_lawfirm_name =$('#attorney-lawfirm-name').val();
-                    if(attorney_lawfirm_name != ""){
-                        setTimeout(function() {
-
-                            saveAttorneyContactInfo(email, "attorney-lawfirm-name", attorney_lawfirm_name);
-                        },200);
-
-                    }
-
-
-                    var attorney_country = $('#attorney-country').val();
-                    if(attorney_country != ""){
-
-                        setTimeout(function() {
-                            saveAttorneyContactInfo(email, "attorney-country", attorney_country);
-                        },250);
-
-                    }
-                    var attorney_address = $('#attorney-address1').val();
-                    if(attorney_address != ""){
-
-                        setTimeout(function() {
-                            saveAttorneyContactInfo(email, "attorney-address1", attorney_address);
-                        },300);
-
-                    }
-
-
-
-                    var attorney_city = $('#attorney-city').val();
-                    if(attorney_city != ""){
-                        setTimeout(function() {
-                            saveAttorneyContactInfo(email, "attorney-city", attorney_city);
-                        },350);
-
-                    }
-                    var attorney_state = $('#attorney-state').val();
-                    if(attorney_state != ""){
-
-                        setTimeout(function() {
-                            saveAttorneyContactInfo(email, "attorney-state", attorney_state);
-                        }, 400);
-
-                    }
-
-                    var attorney_zipcode = $('#attorney-zipcode').val();
-                    if(attorney_zipcode != ""){
-                        setTimeout(function() {
-                            saveAttorneyContactInfo(email, "attorney-zipcode", attorney_zipcode);
-                        }, 450);
-
-                    }
-                    var attorney_primary_phone = $('#attorney-phone').val();
-                    if(attorney_primary_phone != ""){
-                        setTimeout(function() {
-                            saveAttorneyContactInfo(email, "attorney-phone", attorney_primary_phone);
-                        }, 500);
-
-                    }
-
-                    var attorney_docket_num = $('#docket-id').val();
-                    if(attorney_docket_num  != ""){
-                        setTimeout(function() {
-                            saveAttorneyContactInfo(email, "docket-id", attorney_docket_num);
-                        },550);
-
-                    }
-                    var attorney_bar_standing = $('#attorney-bar-standing').val();
-                    if(attorney_bar_standing  != ""){
-                        setTimeout(function() {
-                            saveAttorneyContactInfo(email, "attorney-bar-standing", attorney_bar_standing);
-                        },600);
-
-                    }
-
-
-
-                    // animation rendering control
-                    //if($('.state-checkmark').css('display') == 'block'){
-                    if ($(".attorney-saveMsgArea"+ "-animation").css('display') == 'block') {
-
-
-                        $(".attorney-saveMsgArea"+ "-animation").fadeOut(100);
-                        // now we need to create an java back end service that saves this value.
-                        // also add validation on the html  similar to password save
-                        //$('#toggle-'+field_name_prefix.toLowerCase()).delay(100).click();
-
-                        // alert($(this).val());
-                        $(".attorney-saveMsgArea"+ "-animation").fadeIn(1000);
-                        // now we need to create an java back end service that saves this value.
-                        // also add validation on the html  similar to password save
-                        //$("."+field_name_prefix.toLowerCase()+"-animation").delay(1000).click();
-                    }
-                    else {
-
-                        $(".attorney-saveMsgArea"+ "-animation").fadeIn(1000);
-                        // now we need to create an java back end service that saves this value.
-                        // also add validation on the html  similar to password save
-                        //$('#toggle-'+field_name_prefix.toLowerCase()).delay(1000).click();
-                    }
-
-
-                }
-                else {
-
-                    $(".attorney-saveMsgArea").fadeOut();
-
-                    setTimeout(function() {
-                        $(".attorney-saveMsgArea span").text(s_msg);
-                        $(".attorney-saveMsgArea span").css('color', 'red');
-                        $(".attorney-saveMsgArea").fadeIn(1000);
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
                     }, 500);
+
+
+
                 }
-
-
+                else{
+                    //$('.circle-loader').fadeOut(100);
+                    //$('.x-mark').fadeIn(500);
+                    //$(".validationMsgArea span").text(s_msg);
+                    //$(".validationMsgArea span").css('color','red');
+                }
 
             },
-            error: function (data) {
+            error: function(data) {
+
+                //$('.circle-loader').fadeOut(100);
+                //$('.x-mark').fadeIn(500);
+
                 console.log(data);
+                // set message to div area ...fields can not be left null
+                //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                //$(".validationMsgArea span").css('color','red');
             }
-
-
 
         });
 
-        return return_code;
+    } // end of function
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    function removeOwner4pplication(contact_email, project_ID) {
+
+        //////////////////////////////////////////////////////////////////////////////////////
+        // we need REST controller of finding a contact by its email
+        // this needs to be implemented on the PTOUser object
+        //////////////////////////////////////////////////////////////////////////////////////
+
+        $.ajax({
+            //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
+            url: "../../REST/apiGateway/application/owner/delete/"+contact_email+"/"+project_ID,
+
+            type: 'GET',
+            success: function(data){
+
+
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                if(s_code.trim() == "200"){
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function() {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+
+
+                }
+                else{
+                    //$('.circle-loader').fadeOut(100);
+                    //$('.x-mark').fadeIn(500);
+                    //$(".validationMsgArea span").text(s_msg);
+                    //$(".validationMsgArea span").css('color','red');
+                }
+
+            },
+            error: function(data) {
+
+                //$('.circle-loader').fadeOut(100);
+                //$('.x-mark').fadeIn(500);
+
+                console.log(data);
+                // set message to div area ...fields can not be left null
+                //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                //$(".validationMsgArea span").css('color','red');
+            }
+
+        });
+
+    } // end of function
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // helper functions
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    function enableNextWidgetLink() {
+        $('#nextLink').prop("href", owerSetViewLink);
+        $('#nextLinkIcon').prop("href", owerSetViewLink);
+        $('.next-button').css("background-color", "rgb(55, 69, 120)");
 
     }
-    // end of function
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    function disableNextWidgetLink() {
+        $('#nextLink').prop("href", "");
+        $('#nextLinkIcon').prop("href", "");
+        $('.next-button').css("background-color", "rgb(128, 128, 128)");
 
+    }
 
-    /////////////////////////////////////////////////////////////////////////
-    // this can be later used to update attorney contact on edit page
-    /////////////////////////////////////////////////////////////////////////
+    function getContactName(cell) {
+        var contact_name = cell.substring(3, cell.length-4);
+        return contact_name;
+    }
 
-    function saveAttorneyContactInfo(contact_email, contact_field_name, contact_field_value) {
 
-        //////////////////////////////////////////////////////////////////////////////////////
-        // we need REST controller of finding a contact by its email
-        // this needs to be implemented on the PTOUser object
-        //////////////////////////////////////////////////////////////////////////////////////
+    function getFieldValueFromResponse(response, fieldName){
 
-        //var field_value = $(this).val();
-        //alert(field_value);
+        // find starting index of fieldName
+        // find the next colon
+        var indexStart = response.indexOf(fieldName+":")+fieldName.length;
+        response = response.substring(indexStart+1);
+        var indexEnd = response.indexOf("}");
+        response = response.substring(0, indexEnd);
 
-        $.ajax({
-            //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
-            url: "../../REST/apiGateway/contacts/attorney/update/"+contact_email+"/"+contact_field_name+"/"+contact_field_value,
-            type: 'GET',
-            success: function(data){
+        // find the next right closing bracket
+        return response;
 
-                // parse out status msg:
-                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+    }
 
-                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
 
-                if(s_code.trim() == "200"){
-                    //if(data.contains("status: 200")){
-                    // show confirmation check mark on form
-                    //$('#toggle').delay(1000).click();
 
-
-                    // animation rendering control
-                    //if($('.state-checkmark').css('display') == 'block'){
-                    if($( "."+contact_field_name.toLowerCase()+"-animation").css('display') == 'block'){
-
-
-                        $("."+contact_field_name.toLowerCase()+"-animation").fadeOut(100);
-                        // now we need to create an java back end service that saves this value.
-                        // also add validation on the html  similar to password save
-                        //$('#toggle-'+field_name_prefix.toLowerCase()).delay(100).click();
-
-                        // alert($(this).val());
-                        $("."+contact_field_name.toLowerCase()+"-animation").fadeIn(1000);
-                        // now we need to create an java back end service that saves this value.
-                        // also add validation on the html  similar to password save
-                        //$("."+field_name_prefix.toLowerCase()+"-animation").delay(1000).click();
-                    }
-                    else {
-
-                        $("."+contact_field_name.toLowerCase()+"-animation").fadeIn(1000);
-                        // now we need to create an java back end service that saves this value.
-                        // also add validation on the html  similar to password save
-                        //$('#toggle-'+field_name_prefix.toLowerCase()).delay(1000).click();
-                    }
-
-                }
-                else{
-                    //$('.circle-loader').fadeOut(100);
-                    //$('.x-mark').fadeIn(500);
-                    //$(".validationMsgArea span").text(s_msg);
-                    //$(".validationMsgArea span").css('color','red');
-                }
-
-            },
-            error: function(data) {
-
-                //$('.circle-loader').fadeOut(100);
-                //$('.x-mark').fadeIn(500);
-
-                console.log(data);
-                // set message to div area ...fields can not be left null
-                //$(".validationMsgArea span").text("You can not leave any fields empty.");
-                //$(".validationMsgArea span").css('color','red');
-            }
-
-        });
-
-    } // end of function
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-    function addContact2Application(contact_email, project_ID) {
-
-        //////////////////////////////////////////////////////////////////////////////////////
-        // we need REST controller of finding a contact by its email
-        // this needs to be implemented on the PTOUser object
-        //////////////////////////////////////////////////////////////////////////////////////
-        var contact_field_name = "application-contact-add-confirm";
-        $.ajax({
-            //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
-            url: "../../REST/apiGateway/application/contacts/attorney/add/"+contact_email+"/"+project_ID,
-
-            type: 'GET',
-            success: function(data){
-
-
-
-                // parse out status msg:
-                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
-
-                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
-
-                if(s_code.trim() == "200"){
-                    //if(data.contains("status: 200")){
-                    // show confirmation check mark on form
-                    //$('#toggle').delay(1000).click();
-                    $(".autoSaveMessageArea span").fadeOut(500);
-                    setTimeout(function() {
-                        // after 1000 ms we add the class animated to the login/register card
-                        $(".autoSaveMessageArea span").text(s_msg);
-                        $(".autoSaveMessageArea span").fadeIn(1000);
-                    }, 500);
-
-
-
-                }
-                else{
-                    //$('.circle-loader').fadeOut(100);
-                    //$('.x-mark').fadeIn(500);
-                    //$(".validationMsgArea span").text(s_msg);
-                    //$(".validationMsgArea span").css('color','red');
-                }
-
-            },
-            error: function(data) {
-
-                //$('.circle-loader').fadeOut(100);
-                //$('.x-mark').fadeIn(500);
-
-                console.log(data);
-                // set message to div area ...fields can not be left null
-                //$(".validationMsgArea span").text("You can not leave any fields empty.");
-                //$(".validationMsgArea span").css('color','red');
-            }
-
-        });
-
-    } // end of function
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-    function removeContact2Application(contact_email, project_ID) {
-
-        //////////////////////////////////////////////////////////////////////////////////////
-        // we need REST controller of finding a contact by its email
-        // this needs to be implemented on the PTOUser object
-        //////////////////////////////////////////////////////////////////////////////////////
-        var contact_field_name = "application-contact-add-confirm";
-        $.ajax({
-            //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
-            url: "../../REST/apiGateway/application/contacts/attorney/delete/"+contact_email+"/"+project_ID,
-
-            type: 'GET',
-            success: function(data){
-
-
-
-                // parse out status msg:
-                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
-
-                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
-
-                if(s_code.trim() == "200"){
-                    //if(data.contains("status: 200")){
-                    // show confirmation check mark on form
-                    //$('#toggle').delay(1000).click();
-                    $(".autoSaveMessageArea span").fadeOut(500);
-                    setTimeout(function() {
-                        // after 1000 ms we add the class animated to the login/register card
-                        $(".autoSaveMessageArea span").text(s_msg);
-                        $(".autoSaveMessageArea span").fadeIn(1000);
-                    }, 500);
-
-
-
-
-
-                }
-                else{
-                    //$('.circle-loader').fadeOut(100);
-                    //$('.x-mark').fadeIn(500);
-                    //$(".validationMsgArea span").text(s_msg);
-                    //$(".validationMsgArea span").css('color','red');
-                }
-
-            },
-            error: function(data) {
-
-                //$('.circle-loader').fadeOut(100);
-                //$('.x-mark').fadeIn(500);
-
-                console.log(data);
-                // set message to div area ...fields can not be left null
-                //$(".validationMsgArea span").text("You can not leave any fields empty.");
-                //$(".validationMsgArea span").css('color','red');
-            }
-
-        });
-
-    } // end of function
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        function enableNextWidgetLink() {
-            $('#nextLink').prop("href", nextLinkURLwidget);
-            $('#nextLinkIcon').prop("href", nextLinkURLwidget);
-
-            $('.next-button').css("background-color", "rgb(55, 69, 120)");
-
-        }
-        function disableNextWidgetLink() {
-            $('#nextLink').prop("href", "");
-            $('#nextLinkIcon').prop("href", "");
-            $('.next-button').css("background-color", "rgb(128, 128, 128)");
-
-        }
-
-
-
-        function checkUnlockConfirm(){
-
-            if($('#attorney-email').val() != "" && $('#attorney-first-name').val() != "" && $('#attorney-last-name').val()!="" && $('#attorney-lawfirm-name').val() != "" && $('#attorney-phone').val() != ""){
-
-
-                $('#addAttorneyConfirm').prop("disabled", false);
-                //$('#modal-header-close').prop("disabled", false);
-
-
-            }
-
-        }
-
-
-
-
-    </script>
+</script>
 
 </body>
 </html>
