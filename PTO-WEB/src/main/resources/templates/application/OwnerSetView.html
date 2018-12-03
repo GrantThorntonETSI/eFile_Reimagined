@@ -270,6 +270,7 @@
 
 <!--only one owner to display -->
                         <!--item 1 -->
+                    <th:block th:each="owner : ${baseTrademarkApplication.owners}">
                         <div class="card" id="contact" style="max-width: 850px; background-color: white; ">
                             <div class="card-header" id="headingTwo"  style="background-color: white;">
                                 <div class="row">
@@ -282,16 +283,16 @@
                                     </div>
                                     <div class="col-sm-3">
 
-                                        <b style="position: relative; bottom: -5px; left:-25px;" th:text="${baseTrademarkApplication.owner.ownerDisplayname}">Owner Name</b>
+                                        <b style="position: relative; bottom: -5px; left:-25px;" th:text="${owner.ownerDisplayname}">Owner Name</b>
 
                                     </div>
 
                                     <div class="col-sm-3">
-                                        <b style="position: relative; bottom: -5px; left:-25px;" th:text="${baseTrademarkApplication.owner.email}"> Attorney@Email.com</b>
+                                        <b style="position: relative; bottom: -5px; left:-25px;" th:text="${owner.email}"> Attorney@Email.com</b>
                                     </div>
 
                                     <div class="col-sm-3">
-                                        <b style="position: relative; bottom: -5px; left:-25px;" th:text="${baseTrademarkApplication.owner.getOwnersubType()}"> Attorney Firm, LLC </b>
+                                        <b style="position: relative; bottom: -5px; left:-25px;" th:text="${owner.getOwnersubType()}"> Attorney Firm, LLC </b>
                                     </div>
                                     <div class="col-sm-1">
                                         <i class="material-icons" style="position: relative; bottom: -3px;">remove_circle</i>
@@ -313,7 +314,7 @@
                                     <div id="ownerInner1" class="collapse" aria-labelledby="headingTwoAddress" data-parent="#accordionExample" style="max-width: 850px;">
                                         <div class="card-body">
 
-                                            <span style="position: relative; right:-30px;" th:text="${baseTrademarkApplication.owner.address}+' '+${baseTrademarkApplication.owner.city}+', '+${baseTrademarkApplication.owner.state}+' '+${baseTrademarkApplication.owner.zipcode}"> 1115 Reserve Champion Drive, Rockville MD 20850</span>
+                                            <span style="position: relative; right:-30px;" th:text="${owner.address}+' '+${owner.city}+', '+${owner.state}+' '+${owner.zipcode}"> 1115 Reserve Champion Drive, Rockville MD 20850</span>
 
                                         </div>
                                     </div>
@@ -327,14 +328,14 @@
                                     <div id="ownerInner2" class="collapse" aria-labelledby="headingTwoAffiliation" data-parent="#accordionExample" style="max-width: 850px;">
                                         <div class="card-body">
 
-                                            <span style="position: relative; right:-30px;"  th:text="${baseTrademarkApplication.owner.webSiteURL}">Washington Dc Bar Association. Maryland Bar Association.</span>
+                                            <span style="position: relative; right:-30px;"  th:text="${owner.webSiteURL}">Washington Dc Bar Association. Maryland Bar Association.</span>
 
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="row" style="position: relative; right:-137px; margin-top: 10px;">
-                                    <b>Phone Number:</b> <input type="text" style="border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;"  th:value="${baseTrademarkApplication.owner.primaryPhonenumber}" >
+                                    <b>Phone Number:</b> <input type="text" style="border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;"  th:value="${owner.primaryPhonenumber}" >
 
                                 </div>
 
@@ -345,7 +346,7 @@
 
 
 
-
+                    </th:block>
 
 
 
