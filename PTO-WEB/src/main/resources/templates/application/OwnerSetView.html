@@ -262,7 +262,15 @@
             <div class="row" id="contacts-ui" style=" display: none; position: relative; top:-450px; right:-120px;">
 
                 <div class="row" style="">
+
+                    <div class="col-sm-3">
                     <h5><b>Trademark Application Owner Details</b></h5>
+                    </div>
+                    <div class="col-sm-3">
+                    </div>
+                    <div class="col-sm-3" style="position: relative; right:-60px;">
+                        <span id="addOwnerConfirm" class=" btn-sm btn"  type="button"  style=" position:relative; bottom:-10px; min-width: 200px; padding:5px;  color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; "><i class="material-icons" style="position: relative; left: -10px;">person_add</i><b style="position: relative; top:-5px;"><a id="addOwnerLink" style="color: white; text-decoration: none;" >Add Additional Owner</a></b></span>
+                    </div>
                 </div>
 
                 <div class="accordion" id="accordionExample" style="position: relative; right:-10px; margin-top: 30px;">
@@ -567,6 +575,10 @@
             });
 
 
+
+            // set add owner link
+
+            $('#addOwnerLink').prop("href", prevLinkURL);
 
 
             /////////////////////////////////////////////////////////////////////////
