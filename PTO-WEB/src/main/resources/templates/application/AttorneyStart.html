@@ -430,6 +430,7 @@
 <script>
 
     var prevLinkURL = "../../application/AttorneySet/?trademarkID="+appInternalID;
+    var nextLinkURL = "../../application/AttorneySet/?trademarkID="+appInternalID;
 
     var prevLinkURLAttorneyFalse = "../../application/start/?trademarkID="+appInternalID;
 
@@ -499,6 +500,9 @@
 
         $('[data-toggle="tooltip"]').tooltip();
 
+        ////////////////////////////////////////////////////////////
+        // show and hide attorney form actions
+        ////////////////////////////////////////////////////////////
         $('#attorneyFilingTrue').click( function () {
             ////////////////////////////////////////////////////////////
             // call back end update ...
@@ -514,6 +518,50 @@
                 $('#pageLoadArea').fadeIn(2000);
             }, 1500);
         });
+
+        /////////////////////////////////////////////////////////////
+        // action listeners on radio buttons
+        ////////////////////////////////////////////////////////////
+        $('#attorneyFillingFalse').click( function () {
+            ////////////////////////////////////////////////////////
+            // call back end update ...
+            ////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////
+            // remove any selected contacts from application object
+            ////////////////////////////////////////////////////////
+
+            // call set attorney options ...for project
+            setTimeout(function() {
+                saveProjectInfo("set-lawyer-options-value", "no", appInternalID);
+                $('#contacts-ui').fadeOut(2000);
+            }, 1500);
+            // check there are contacts ...those should get dropped???
+            //////////////////////////////////////////////////////////
+            // enable next link and clean up widget links
+            //////////////////////////////////////////////////////////
+            $('.next-button').css("background-color","rgb(55, 69, 120)" );
+            $('#nextLink').attr("href", nextLinkURL );
+            $('#nextLinkIcon').attr("href", nextLinkURL );
+            $('#AttorneySetLink').attr("href", "");
+            $('#next-link-widget').css("background-color", "rgb(128, 128, 128)" );
+        });
+        ////////////////////////////////////////////////////////////////
+
+
+        //////////////////////////////////////////////////////////////
+        // check if attorneyFillingFalse is set
+        /////////////////////////////////////////////////////////////
+        if ($('#attorneyFillingFalse').is(':checked') == true){
+            $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
+            $('#nextLink').attr("href", nextLinkURL );
+            $('#nextLinkIcon').attr("href", nextLinkURL );
+        }
+        /////////////////////////////////////////////////////////////
+        // check if attorneyFilingTrue is set
+        /////////////////////////////////////////////////////////////
+        if ($('#attorneyFilingTrue').is(':checked') == true){
+            $('#contacts-ui').fadeIn(2000);
+        }
 
 
 
@@ -760,42 +808,59 @@
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-
-
-    function setOwner4pplication(contact_email, project_ID) {
-
-        //////////////////////////////////////////////////////////////////////////////////////
-        // we need REST controller of finding a contact by its email
-        // this needs to be implemented on the PTOUser object
-        //////////////////////////////////////////////////////////////////////////////////////
-
+    /////////////////////////////////////////////////////
+    // aJAX
+    /////////////////////////////////////////////////////
+    function saveProjectInfo(field_name_prefix, field_value, application_internal_id) {
+        //alert(field_name_prefix);
+        // send state, and token to server
+        // token will be generated in the controller and added to the view
+        // similar to how access token works ...a token is tied to a user
+        // access token will be passed in through model
+        //
+        // var tokenValue = '${token}';  // token is the model attribute name
+        // we are not using secured tokens for the prototype
+        // we will secure it by adding ssl and https support
+        //var field_value = $(this).val();
+        //alert(field_value);
         $.ajax({
             //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
-            url: "../../REST/apiGateway/application/owner/set/"+contact_email+"/"+project_ID,
-
+            url: "../../REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+application_internal_id,
             type: 'GET',
             success: function(data){
-
-
-
                 // parse out status msg:
                 var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
-
                 var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
-
                 if(s_code.trim() == "200"){
                     //if(data.contains("status: 200")){
                     // show confirmation check mark on form
                     //$('#toggle').delay(1000).click();
+                    // add time stamp from server side
                     $(".autoSaveMessageArea span").fadeOut(500);
                     setTimeout(function() {
                         // after 1000 ms we add the class animated to the login/register card
                         $(".autoSaveMessageArea span").text(s_msg);
                         $(".autoSaveMessageArea span").fadeIn(1000);
                     }, 500);
-
-
-
+                    // animation rendering control
+                    //if($('.state-checkmark').css('display') == 'block'){
+                    if($( "."+field_name_prefix.toLowerCase()+"-animation").css('display') == 'block'){
+                        $("."+field_name_prefix.toLowerCase()+"-animation").fadeOut(100);
+                        // now we need to create an java back end service that saves this value.
+                        // also add validation on the html  similar to password save
+                        //$('#toggle-'+field_name_prefix.toLowerCase()).delay(100).click();
+                        // alert($(this).val());
+                        $("."+field_name_prefix.toLowerCase()+"-animation").fadeIn(1000);
+                        // now we need to create an java back end service that saves this value.
+                        // also add validation on the html  similar to password save
+                        //$("."+field_name_prefix.toLowerCase()+"-animation").delay(1000).click();
+                    }
+                    else {
+                        $("."+field_name_prefix.toLowerCase()+"-animation").fadeIn(1000);
+                        // now we need to create an java back end service that saves this value.
+                        // also add validation on the html  similar to password save
+                        //$('#toggle-'+field_name_prefix.toLowerCase()).delay(1000).click();
+                    }
                 }
                 else{
                     //$('.circle-loader').fadeOut(100);
@@ -803,81 +868,18 @@
                     //$(".validationMsgArea span").text(s_msg);
                     //$(".validationMsgArea span").css('color','red');
                 }
-
             },
             error: function(data) {
-
                 //$('.circle-loader').fadeOut(100);
                 //$('.x-mark').fadeIn(500);
-
                 console.log(data);
                 // set message to div area ...fields can not be left null
                 //$(".validationMsgArea span").text("You can not leave any fields empty.");
                 //$(".validationMsgArea span").css('color','red');
             }
-
         });
-
     } // end of function
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    function removeOwner4pplication(contact_email, project_ID) {
-
-        //////////////////////////////////////////////////////////////////////////////////////
-        // we need REST controller of finding a contact by its email
-        // this needs to be implemented on the PTOUser object
-        //////////////////////////////////////////////////////////////////////////////////////
-
-        $.ajax({
-            //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
-            url: "../../REST/apiGateway/application/owner/delete/"+contact_email+"/"+project_ID,
-
-            type: 'GET',
-            success: function(data){
-
-
-
-                // parse out status msg:
-                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
-
-                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
-
-                if(s_code.trim() == "200"){
-                    //if(data.contains("status: 200")){
-                    // show confirmation check mark on form
-                    //$('#toggle').delay(1000).click();
-                    $(".autoSaveMessageArea span").fadeOut(500);
-                    setTimeout(function() {
-                        // after 1000 ms we add the class animated to the login/register card
-                        $(".autoSaveMessageArea span").text(s_msg);
-                        $(".autoSaveMessageArea span").fadeIn(1000);
-                    }, 500);
-
-
-
-                }
-                else{
-                    //$('.circle-loader').fadeOut(100);
-                    //$('.x-mark').fadeIn(500);
-                    //$(".validationMsgArea span").text(s_msg);
-                    //$(".validationMsgArea span").css('color','red');
-                }
-
-            },
-            error: function(data) {
-
-                //$('.circle-loader').fadeOut(100);
-                //$('.x-mark').fadeIn(500);
-
-                console.log(data);
-                // set message to div area ...fields can not be left null
-                //$(".validationMsgArea span").text("You can not leave any fields empty.");
-                //$(".validationMsgArea span").css('color','red');
-            }
-
-        });
-
-    } // end of function
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
