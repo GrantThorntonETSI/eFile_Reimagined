@@ -24,6 +24,7 @@ import org.springframework.stereotype.Component;
 import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 @Component
@@ -194,77 +195,104 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
 
 
         // create another user
+        Set<PTOUser> managedContacts = new HashSet<>();
+        PTOUser Jackie = createUser("Jackie", "Babos", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Jackie.Babos@us.gt.com","12345",managedContacts);
+        PTOUser Jacob = createUser("Jacob", "Goldstein", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Jacob.Goldstein@us.gt.com","12345",managedContacts);
+        PTOUser Avo = createUser("Avo", "Reed", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Avo.Reid@us.gt.com","12345",managedContacts);
 
-        createUser("Jackie", "Babos", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Jackie.Babos@us.gt.com","12345");
-        createUser("Jacob", "Goldstein", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Jacob.Goldstein@us.gt.com","12345");
-        createUser("Lynn", "Istanikmas", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "lstanikmas@gmail.com","12345");
-        createUser("Avo", "Reed", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Avo.Reid@us.gt.com","12345");
-        createUser("Tina", "Donbeck", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Tina.Donbeck@uspto.gov","12345");
-        createUser("Albert", "Young", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Albert.young@uspto.gov","12345");
-        createUser("Keyte", "Ernst", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Keyte.Ernst@uspto.gov","12345");
-        createUser("Shelly", "Matte", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Shelly.Matte@uspto.gov","12345");
-        createUser("Tuong-Vi", "Nguyen", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Tuong-Vi.Nguyen@uspto.gov","12345");
+        managedContacts.add(Jackie);
+        managedContacts.add(Jacob);
+        managedContacts.add(Avo);
+
+        PTOUser Lynn = createUser("Lynn", "Istanikmas", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "lstanikmas@gmail.com","12345",managedContacts);
+        PTOUser Tina = createUser("Tina", "Donbeck", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Tina.Donbeck@uspto.gov","12345",managedContacts);
+        PTOUser Al = createUser("Albert", "Young", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Albert.young@uspto.gov","12345",managedContacts);
+        PTOUser keyte = createUser("Keyte", "Ernst", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Keyte.Ernst@uspto.gov","12345",managedContacts);
+        PTOUser shelly = createUser("Shelly", "Matte", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Shelly.Matte@uspto.gov","12345",managedContacts);
+        PTOUser Vi = createUser("Tuong-Vi", "Nguyen", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Tuong-Vi.Nguyen@uspto.gov","12345",managedContacts);
+
+
+
+
+
 
     }
 
-    //////////////////////////////////////////////////
+
+
+
     // create helper function add user
     //////////////////////////////////////////////////
-     public void createUser(String firstName, String lastName, String address, String city, String state, String zipcode, String country, String phone, String email, String password){
+    public PTOUser createUser(String firstName, String lastName, String address, String city, String state, String zipcode, String country, String phone, String email, String password, Set<PTOUser> managedContacts){
 
 
-         PTOUser PTOUser1 = new PTOUser();
-         PTOUser1.setFirstName(firstName);
-         PTOUser1.setLastName(lastName);
-         PTOUser1.setAddress(address);
-         PTOUser1.setCity(city);
-         PTOUser1.setState(state);
-         PTOUser1.setZipcode(zipcode);
-         PTOUser1.setCountry(country); // country code for united states
-         PTOUser1.setPrimaryPhonenumber(phone);
-         PTOUser1.setProfileComplete(true);
-         /////////////////////////////////////////////////////////////////////////////////
-         // set username, password, email and role
-         /////////////////////////////////////////////////////////////////////////////////
-         UserCredentials ownerCreds = new UserCredentials();
-         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-         /////////////////////////////////////////////////////////////////////////////////
-         // follow the same convention from the save method and save role for test user 1
-         /////////////////////////////////////////////////////////////////////////////////
+        PTOUser PTOUser1 = new PTOUser();
+        PTOUser1.setFirstName(firstName);
+        PTOUser1.setLastName(lastName);
+        PTOUser1.setAddress(address);
+        PTOUser1.setCity(city);
+        PTOUser1.setState(state);
+        PTOUser1.setZipcode(zipcode);
+        PTOUser1.setCountry(country); // country code for united states
+        PTOUser1.setPrimaryPhonenumber(phone);
+        PTOUser1.setProfileComplete(true);
+        /////////////////////////////////////////////////////////////////////////////////
+        // set username, password, email and role
+        /////////////////////////////////////////////////////////////////////////////////
+        UserCredentials ownerCreds = new UserCredentials();
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        /////////////////////////////////////////////////////////////////////////////////
+        // follow the same convention from the save method and save role for test user 1
+        /////////////////////////////////////////////////////////////////////////////////
 
-         ownerCreds.setUsername(firstName+"."+lastName);
-         ownerCreds.setPassword(bCryptPasswordEncoder.encode(password));
-         ownerCreds.setPasswordConfirm(bCryptPasswordEncoder.encode(password));
-         ownerCreds.setEmail(email);
-         ownerCreds.setActive(1);
+        ownerCreds.setUsername(firstName+"."+lastName);
+        ownerCreds.setPassword(bCryptPasswordEncoder.encode(password));
+        ownerCreds.setPasswordConfirm(bCryptPasswordEncoder.encode(password));
+        ownerCreds.setEmail(email);
+        ownerCreds.setActive(1);
 
-         UserRole userRole = new UserRole();
-         userRole.setRoleName("ROLE_USER");
-         //myRoleService.save(userRole);
-         ownerCreds.setUserRoles(new HashSet<UserRole>(Arrays.asList(userRole)));
-         //////////////////////////////////////////////////////////////////////////////////
-         // set credentails to active
-         //////////////////////////////////////////////////////////////////////////////////
-         ownerCreds.setActive(1);
-         //////////////////////////////////////////////////////////////////////////////////
-         // create bi-directional relationship between credentials and owner
-         //////////////////////////////////////////////////////////////////////////////////
-         ownerCreds.setUserPersonalData(PTOUser1);
-         PTOUser1.setUserCredentials(ownerCreds);
-         PTOUser1.setEmail(ownerCreds.getEmail());
+        UserRole userRole = new UserRole();
+        userRole.setRoleName("ROLE_USER");
+        //myRoleService.save(userRole);
+        ownerCreds.setUserRoles(new HashSet<UserRole>(Arrays.asList(userRole)));
+        //////////////////////////////////////////////////////////////////////////////////
+        // set credentails to active
+        //////////////////////////////////////////////////////////////////////////////////
+        ownerCreds.setActive(1);
+        //////////////////////////////////////////////////////////////////////////////////
+        // create bi-directional relationship between credentials and owner
+        //////////////////////////////////////////////////////////////////////////////////
+        ownerCreds.setUserPersonalData(PTOUser1);
+        PTOUser1.setUserCredentials(ownerCreds);
+        PTOUser1.setEmail(ownerCreds.getEmail());
 
-         ManagedContact contact = createCopyPTOUserInfo4ManagedContact(PTOUser1);
-         PTOUser1.addManagedContact(contact);
+        ManagedContact contact = createCopyPTOUserInfo4ManagedContact(PTOUser1);
+        PTOUser1.addManagedContact(contact);
 
-         PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
-         ptoUserService.save(PTOUser1);
-         UserRoleService  userRoleService = serviceBeanFactory.getUserRoleService();
-         userRoleService.save(userRole);
+        for(Iterator<PTOUser> iter = managedContacts.iterator(); iter.hasNext(); ) {
+            //this.availableLawyers.add(new Lawyer( iter.next() ));
 
-         UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
-         userCredentialsService.save(ownerCreds);
+            PTOUser current = iter.next();
+            PTOUser1.addManagedContact(createCopyPTOUserInfo4ManagedContact(current));
 
-     }
+        }
+
+
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        ptoUserService.save(PTOUser1);
+        UserRoleService  userRoleService = serviceBeanFactory.getUserRoleService();
+        userRoleService.save(userRole);
+
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        userCredentialsService.save(ownerCreds);
+
+        return PTOUser1;
+
+    }
+    //////////////////////////////////////////////////////////////////////////////////
+
+
+
      //////////////////////////////////////////////////////////////////////////////////
 
 
