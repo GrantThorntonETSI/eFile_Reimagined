@@ -579,8 +579,13 @@
             }, 1000);
 
 
-            // if there is an attorney already set for the application
-            // enable next link on page
+            if(atttorneySetOpt == true){
+                // attorney pool is not empty
+                // enable next link
+                $('#nextLink').attr("href", nextLinkURL );
+                $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
+
+            }
 
 
         }
@@ -588,12 +593,7 @@
         // enable next page link bas[{
         // {
         // ed on if attorney is set
-        if(atttorneySetOpt == false){
-            // attorney pool is not empty
-            // enable next link
-            $('#nextLink').attr("href", nextLinkURL );
 
-        }
 
 
 
