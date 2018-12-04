@@ -409,7 +409,7 @@
 
     var ownerOpt = /*[[${baseTrademarkApplication.isOwnerSet()}]]*/ 'User Name';
 
-    var atttorneySetOpt = /*[[${baseTrademarkApplication.isAttorneyPoolEmpty()}]]*/ 'User Name';
+    var isAttorneyPoolEmpty = /*[[${baseTrademarkApplication.isAttorneyPoolEmpty()}]]*/ 'User Name';
     var host_name= /*[[${hostBean.host}]]*/ 'User Name';
     var host_port= /*[[${hostBean.port}]]*/ 'User Name';
 
@@ -431,10 +431,9 @@
 
 <script>
 
-    var prevLinkURL = "../../application/AttorneySet/?trademarkID="+appInternalID;
     var nextLinkURL = "../../application/AttorneySet/?trademarkID="+appInternalID;
+    var nextLinkURLAttorneyFalse = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
-    var prevLinkURLAttorneyFalse = "../../application/start/?trademarkID="+appInternalID;
 
 
     var newAttorneyLink = "../../application/attorney/attorneyInfo/?trademarkID="+appInternalID;
@@ -542,8 +541,8 @@
             // enable next link and clean up widget links
             //////////////////////////////////////////////////////////
             $('.next-button').css("background-color","rgb(55, 69, 120)" );
-            $('#nextLink').attr("href", nextLinkURL );
-            $('#nextLinkIcon').attr("href", nextLinkURL );
+            $('#nextLink').attr("href", nextLinkURLAttorneyFalse );
+            $('#nextLinkIcon').attr("href", nextLinkURLAttorneyFalse );
             $('#AttorneySetLink').attr("href", "");
             $('#next-link-widget').css("background-color", "rgb(128, 128, 128)" );
         });
@@ -555,10 +554,10 @@
         /////////////////////////////////////////////////////////////
         if ($('#attorneyFillingFalse').is(':checked') == true){
 
-            alert("!!!!!");
-            $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
-            $('#nextLink').attr("href", nextLinkURL );
-            $('#nextLinkIcon').attr("href", nextLinkURL );
+
+            $('.next-button').css("background-color","rgb(55, 69, 120)" );
+            $('#nextLink').attr("href", nextLinkURLAttorneyFalse );
+            $('#nextLinkIcon').attr("href", nextLinkURLAttorneyFalse );
 
 
         }
@@ -570,6 +569,14 @@
 
             // check if there are attorneys added to the application
             // if so ... enable next link to attorney view page
+            if(isAttorneyPoolEmpty == false){
+                // attorney pool is not empty
+                // enable next link
+                $('#nextLink').attr("href", nextLinkURL );
+                $('.next-button').css("background-color","rgb(55, 69, 120)" );
+
+            }
+
 
             $.post(newAttorneyLink, function(data){
                 $("#pageLoadArea").html(data);
@@ -579,13 +586,7 @@
             }, 1000);
 
 
-            if(atttorneySetOpt == true){
-                // attorney pool is not empty
-                // enable next link
-                $('#nextLink').attr("href", nextLinkURL );
-                $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );
 
-            }
 
 
         }
