@@ -22,6 +22,7 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -34,6 +35,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import javax.validation.Valid;
 import java.util.*;
@@ -1396,6 +1398,15 @@ public class ApplicationController {
 
     }
 
+
+
+    // helper beans for file upload
+    @Bean(name = "multipartResolver")
+    public CommonsMultipartResolver multipartResolver() {
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+        multipartResolver.setMaxUploadSize(100000);
+        return multipartResolver;
+    }
 
 
 
