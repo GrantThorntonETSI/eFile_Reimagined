@@ -10,7 +10,7 @@
 
 
  <!-- End Navbar -->
-<div class="content" style="display: none; background-color: white;  max-width: 800px; position: relative; top:-220px; bottom: -10%; left:-20px; z-index: 0;" >
+<div class="content" style="display: none; background-color: white;  max-width: 800px; position: relative; top:-250px; bottom: -10%; left:-20px; z-index: 0;" >
     <div class="container-fluid" style="position: relative; right:-30px;"  >
 
 
@@ -1030,6 +1030,105 @@
 
                     </div> <!-- end of attorney-bar-info area -->
 
+                    <div id="attorney-bar-info-area-canada" style="position: relative; top:-10px; display: none; ">
+                        <div class="row" style="margin-left:15px;">
+
+                            <div class="col-sm-4">
+
+                                <div class="form-group">
+                                    <label class="small" style="margin-top: 10px;"><b>Please select a name from the registered OED list from Canadian Trademark and Patent Agents</b></label>
+                                    <select  class="form-control custom-select"  id="attorney-CA-list"  name="attorney-bar-jurisdiction" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-1">
+                                <div class="state-animation" style="display: none; position: relative; top:20px;">
+                                    <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-sm-1">
+
+                            </div>
+
+                            <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                                <div class="form-group attorney-stateFieldMsgArea" style="position: relative; left:-15%;">
+                                    <b><span></span></b>
+                                </div>
+                            </div>
+
+
+                        </div> <!-- end of row -->
+
+                        <div class="row" style="margin-left:15px;">
+
+                            <div class="col-sm-4">
+
+                                <div class="form-group">
+
+                                    <input type="checkbox"/><label class="small" style="margin-top: 10px; margin-left: 10px;"><b>I can not find my name in the list.</b></label>
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-1">
+                                <div class="state-animation" style="display: none; position: relative; top:20px;">
+                                    <div  style="position: relative; bottom: -15px; "> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-sm-1">
+
+                            </div>
+
+                            <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                                <div class="form-group attorney-stateFieldMsgArea" style="position: relative; left:-15%;">
+                                    <b><span></span></b>
+                                </div>
+                            </div>
+
+
+                        </div> <!-- end of row -->
+
+
+                        <div class="row" style="margin-left:15px;">
+                            <span><b>Is the appilcant located inCanada?</b></span>
+
+                        </div>
+
+
+
+                        <div class="row" style="margin-left:15px; margin-top:10px;">
+                            <div class="col-sm-1">
+
+                                <input type="radio" name="isAttorneyFiling" id="attorneyFilingTrue">
+
+                            </div>
+                            <div class="col-sm-2" >
+                                Yes
+                            </div>
+
+                        </div>
+                        <div class="row" style="margin-left:15px; margin-top: 10px;">
+                            <div class="col-sm-1">
+
+                                <input type="radio" name="isAttorneyFiling" id="attorneyFillingFalse">
+
+                            </div>
+                            <div class="col-sm-2">
+                                No
+                            </div>
+                        </div>
+
+
+
+                    </div> <!-- end of bar-info-area-canada -->
+
 
                     <div class="row" style="position: relative; display: none; top:-120px;left:-5%;">
                         <input id="appInternalIDForm" type="text" th:field="*{appInternalID}"   class="form-control"   style=" border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
@@ -1142,6 +1241,9 @@
             var subtype_val = this.value;
             if(subtype_val == "U.S Attorney in good standing"){
                 setTimeout(function() {
+                    $('#attorney-bar-info-area-canada').fadeOut(1000);
+                }, 1000);
+                setTimeout(function() {
                     $('#attorney-bar-info-area').fadeIn(1000);
                 }, 1000);
 
@@ -1151,6 +1253,13 @@
                 /////////////////////////////////////
                 // load form us domestic individual
                 /////////////////////////////////////
+
+                setTimeout(function() {
+                    $('#attorney-bar-info-area').fadeOut(1000);
+                }, 1000);
+                setTimeout(function() {
+                    $('#attorney-bar-info-area-canada').fadeIn(1000);
+                }, 1000);
 
             }
 
