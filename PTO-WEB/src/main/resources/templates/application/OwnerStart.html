@@ -483,6 +483,7 @@
 
         var dataSet1 = [
 
+
         ];
 
         //////////////////////////////////////////////////////////////////////////////
@@ -490,7 +491,7 @@
         //////////////////////////////////////////////////////////////////////////////
         var contactsTable = $('#ManagedContacts').DataTable( {
             data: dataSet1,
-            "pageLength": 3,
+            "pageLength": 5,
             "scrollY": "250px",
             "scrollX": "100%",
             "oLanguage": {
@@ -500,9 +501,10 @@
             },
             "dom": '<"top"f<"clear">>rt<"bottom"p<"clear">>',
             columns: [
-                {  },
+                { title: "Action"  },
                 { title: "Contact Name" },
-                { title: "Contact type" }
+                { title: "" }
+
             ]
         } );
 
@@ -519,13 +521,14 @@
             // check each name against selected names ...if in selected lis ...
             // add row with check box selected and disabled
             ///////////////////////////////////////////////////////////////////////////
-                var col1 = "<i class='material-icons'>folder_shared</i>";
-                var col2 = "<b>"+contactNames[a]+"</b>";
-                var col3 = "<i class='material-icons'>account_circle</i><b>"+contactTypes[a]+"</b>";
-                contactsTable.row.add([col1, col2, col3]).draw();
+            var col1 = "<i class='material-icons'>folder_shared</i>";
+            var col2 = "<b>"+contactNames[a]+"</b>";
+            var col3 = "";
+            contactsTable.row.add([col1, col2, col3]).draw();
 
         }
         // sort and redraw to line up columns
+
 
         // widget actions
 
