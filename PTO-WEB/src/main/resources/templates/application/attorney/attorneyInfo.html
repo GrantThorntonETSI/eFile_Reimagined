@@ -739,7 +739,7 @@
 
                             <div class="form-group">
 
-                                <div class="form-group" ><span class="btn btn-lg" type="button"  style=" padding:3px; position:relative; top: -20px; margin-right: 15px; margin-top: 10px; max-height:30px;  min-width: 280px; color:whitesmoke; background-color: rgb(52, 152, 219); border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;" value="add docket id"><b style="position: relative; top:-5px;"><i class="material-icons" style="position: relative; left:-17px; ">contact_phone</i></b><b style="position: relative; top:-8px;">Additional Phone Number</b></span></div>
+                                <div class="form-group" ><span class="btn btn-sm" type="button"  style=" padding:3px; position:relative; top: -20px; margin-right: 15px; margin-top: 10px; max-height:30px;  min-width: 280px; color:whitesmoke; background-color: rgb(52, 152, 219); border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;" value="add docket id"><b style="position: relative; top:-5px;"><i class="material-icons" style="position: relative; left:-17px; ">contact_phone</i></b><b style="position: relative; top:-8px;">Additional Phone Number</b></span></div>
                             </div>
                         </div>
 
@@ -785,7 +785,7 @@
 
                             <div class="form-group">
 
-                                <div class="form-group" ><span class="btn btn-lg" type="button"  style=" padding:3px; position:relative; top: -20px; margin-right: 15px; margin-top: 10px; max-height:30px;  min-width: 280px; color:whitesmoke; background-color: rgb(52, 152, 219); border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;" value="add-docket"><b style="position: relative; top:-5px;"><i class="material-icons" style="position: relative; left:-17px; ">note_add</i></b><b style="position: relative; top:-8px;font-max-size: 4px;">Additional Docket Number</b></span></div>
+                                <div class="form-group" ><span class="btn btn-sm" type="button"  style=" padding:3px; position:relative; top: -20px; margin-right: 15px; margin-top: 10px; max-height:30px;  min-width: 280px; color:whitesmoke; background-color: rgb(52, 152, 219); border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;" value="add-docket"><b style="position: relative; top:-5px;"><i class="material-icons" style="position: relative; left:-17px; ">note_add</i></b><b style="position: relative; top:-8px;font-max-size: 4px;">Additional Docket Number</b></span></div>
                             </div>
                         </div>
 
@@ -815,7 +815,7 @@
 
                     </div>
                     
-                    <div id="attorney-bar-info-area" style="position: relative; top:-10px;">
+                    <div id="attorney-bar-info-area" style="position: relative; top:-10px; display: none;">
                         <div class="row" style="margin-left:15px;">
 
                             <div class="col-sm-4">
@@ -1136,45 +1136,27 @@
 
 
 
-        ///////////////////////////////////////////////////
-        // radio button interactions
-        ///////////////////////////////////////////////////
-        $('#usEntityTrue').click( function () {
-
-            // enable us. entity type drop down
-
-            $('.international-entity').fadeOut();
-
-            setTimeout(function() {
-                // after 1000 ms we add the class animated to the login/register card
-                $('.domestic-entity').fadeIn();
-            }, 500);
+        $('#attorney-bar-standing').change( function () {
 
 
-            $('#domestic-entity-dropdown').prop('disabled', false);
+            var subtype_val = this.value;
+            if(subtype_val == "U.S Attorney in good standing"){
+                setTimeout(function() {
+                    $('#attorney-bar-info-area').fadeIn(1000);
+                }, 1000);
+
+
+            }
+            if(subtype_val == "Canadian agent or attorney"){
+                /////////////////////////////////////
+                // load form us domestic individual
+                /////////////////////////////////////
+
+            }
 
 
         });
 
-
-        $('#foreginEntityTrue').click( function () {
-            //////////////////////////////////////////////
-            // set display to none for usEntity
-            /////////////////////////////////////////////
-            $('.domestic-entity').fadeOut();
-
-            setTimeout(function() {
-                // after 1000 ms we add the class animated to the login/register card
-                $('.international-entity').fadeIn();
-            }, 500);
-
-            // set display to block for foreignEntity
-
-        });
-
-        ////////////////////////////////////////////////////
-        // enable next button on fields completion
-        ////////////////////////////////////////////////////
 
     });
 
