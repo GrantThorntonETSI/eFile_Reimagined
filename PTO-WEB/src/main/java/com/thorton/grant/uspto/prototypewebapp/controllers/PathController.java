@@ -62,7 +62,7 @@ public class PathController {
         // get owner info
         System.out.println("5555555555555555555555555555555555555555555555555555555555555555#");
 
-        return "application/MarkDetailsStart";
+        return "application/MarkDetailsExamples";
 
         //return "registrationConfirm/VerificationEmail";
     }
