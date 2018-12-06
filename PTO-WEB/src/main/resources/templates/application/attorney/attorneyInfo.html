@@ -26,7 +26,7 @@
                     </div>
                     <hr style="height:3px; position:relative; top:-20px; left:-133px; max-width: 80.3%">
 
-                <form method="post" style="" id="addNewAttorneyForm" action="/attorney/add"  class="form-horizontal"   th:object="${addNewAttorneyContactFormDTO}"  >
+                <form method="post" style="" id="addNewAttorneyForm" action="/attorney/add"  enctype="multipart/form-data" class="form-horizontal"   th:object="${addNewAttorneyContactFormDTO}"  >
                     <div class="row" style="margin-left:15px;">
 
                         <div class="col-sm-4">
@@ -997,7 +997,7 @@
 
                                 <div class="form-group">
                                     <label class="small" style="margin-top: 10px;"><p  style="font-max-size: 3px;">Upload bar credentials, including certificate of good standing from highest court of a state, commonwealth, territory or possession, or of the District of Columbia evidencing that you are a memeber of the bar of such court and are in good standing.</p></label>
-                                   <input type="file" id="attorney-file-upload"  name="file" class="form-control">
+                                   <input type="file" id="file"  name="file" class="form-control">
                                     <!-- Drop Zone -->
                                     <h4>Or drag and drop files below</h4>
                                     <div class="upload-drop-zone" id="drop-zone">

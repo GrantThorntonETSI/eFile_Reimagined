@@ -17,6 +17,7 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.ap
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.ManagedContact;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
+import com.thorton.grant.uspto.prototypewebapp.service.storage.StorageService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,10 +25,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -44,6 +42,9 @@ public class ApplicationObjectCreationController {
     private final ServiceBeanFactory serviceBeanFactory;
     private static long counter = 3000000;
 
+    private final StorageService storageService;
+
+
 
     /////////////////////////////////////////////////////////////////////////////////////////
     // based on the profile  ...we should be able
@@ -54,11 +55,12 @@ public class ApplicationObjectCreationController {
 
     private final ApplicationContext appContext;
 
-    public ApplicationObjectCreationController(ServiceBeanFactory serviceBeanFactory, ApplicationContext appContext) {
+    public ApplicationObjectCreationController(ServiceBeanFactory serviceBeanFactory, ApplicationContext appContext, StorageService storageService) {
         this.serviceBeanFactory = serviceBeanFactory;
         this.appContext = appContext;
 
         this.hostBean = (HostBean) appContext.getBean(HostBean.class);
+        this.storageService = storageService;
 
     }
 
@@ -66,10 +68,10 @@ public class ApplicationObjectCreationController {
 
 
     // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
-    @RequestMapping(value = "/attorney/add", method = RequestMethod.POST)
-    public String addAttorneyContact( @RequestParam(name="file", required=false) MultipartFile file,
+    @PostMapping(value = "/attorney/add")
+    public String addAttorneyContact( @ModelAttribute("addNewAttorneyContactFormDTO") @Valid NewAttorneyContactFormDTO newAttorneyContactFormDTO,
+                                      @RequestParam(name="file", required=false) MultipartFile file,
                                       Model model,
-                                      @ModelAttribute("addNewAttorneyContactFormDTO") @Valid NewAttorneyContactFormDTO newAttorneyContactFormDTO,
                                       WebRequest request,
                                       BindingResult result,
                                       Errors errors) {
@@ -234,9 +236,24 @@ public class ApplicationObjectCreationController {
 
             lawyer.setEmail(newAttorneyContactFormDTO.getAttorneyEmail());
 
+        }
+        //////////////////////////////////////////////////////////////////////////////////////
+        // add attorney bar information here ...
+        //////////////////////////////////////////////////////////////////////////////////////
+
+        if(file != null){
+
+            System.out.println("555555555555555555555555555555555555555555555");
+              if(file.isEmpty() == false) {
+                  storageService.store(file);
+              }
 
 
         }
+        else{
+            System.out.println("777777777777777777777777777777777777777777777777777777");
+        }
+
 
 
         if(newAttorneyContactFormDTO.getAttorneyPhone() != null){
