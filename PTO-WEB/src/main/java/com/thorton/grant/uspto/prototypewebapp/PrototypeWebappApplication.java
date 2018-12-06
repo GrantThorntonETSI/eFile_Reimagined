@@ -1,5 +1,6 @@
 package com.thorton.grant.uspto.prototypewebapp;
 
+import com.thorton.grant.uspto.prototypewebapp.service.storage.properties.StorageProperties;
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
 import org.apache.tomcat.util.descriptor.web.SecurityCollection;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
@@ -20,6 +22,7 @@ import java.util.ArrayList;
 @EnableJpaRepositories(basePackages = "com.thorton.grant.uspto")
 @EntityScan(basePackages = "com.thorton.grant.uspto")
 @ComponentScan(basePackages = "com.thorton.grant.uspto")
+@EnableConfigurationProperties(StorageProperties.class)
 public class PrototypeWebappApplication {
 
     public static void main(String[] args) {

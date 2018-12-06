@@ -34,6 +34,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.util.*;
@@ -502,7 +503,8 @@ public class ApplicationController {
 
     // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
     @RequestMapping(value = "/attorney/add", method = RequestMethod.POST)
-    public String addAttorneyContact( Model model,
+    public String addAttorneyContact( @RequestParam(name="file", required=false) MultipartFile file,
+                                        Model model,
                                       @ModelAttribute("addNewAttorneyContactFormDTO") @Valid NewAttorneyContactFormDTO newAttorneyContactFormDTO,
                                       WebRequest request,
                                       BindingResult result,
