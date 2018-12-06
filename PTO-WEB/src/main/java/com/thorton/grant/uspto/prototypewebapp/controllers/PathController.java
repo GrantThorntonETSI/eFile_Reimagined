@@ -5,13 +5,10 @@ import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.Authenticatio
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.IUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
-import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.PasswordSetDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.TwoFactorDTO;
-import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.serverMessage.ServerMessageDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.AuthenticationToken;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
-import com.thorton.grant.uspto.prototypewebapp.model.entities.security.VerificationToken;
 import com.thorton.grant.uspto.prototypewebapp.service.mail.gmail.GmailJavaMailSenderService;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.core.Authentication;
@@ -31,7 +28,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.Random;
-import java.util.UUID;
 
 
 @Controller
@@ -58,6 +54,19 @@ public class PathController {
 
         //return "registrationConfirm/VerificationEmail";
     }
+
+
+
+    @RequestMapping({"/lynn/preview"})
+    public String test(){
+        // get owner info
+        System.out.println("5555555555555555555555555555555555555555555555555555555555555555#");
+
+        return "application/MarkDetailsStart";
+
+        //return "registrationConfirm/VerificationEmail";
+    }
+
 
 
     // login intercept
