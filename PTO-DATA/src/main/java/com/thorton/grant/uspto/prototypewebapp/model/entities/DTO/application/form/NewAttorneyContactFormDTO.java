@@ -35,6 +35,12 @@ public class NewAttorneyContactFormDTO {
 
     private String attorneyAffiliation;
 
+
+    private String attorneyBarJurisdiction;
+    private String attorneyBarMembershipNumber;
+    private String attorneyBarAdmissionDate;
+
+
     private String appInternalID;
 
 
@@ -172,6 +178,30 @@ public class NewAttorneyContactFormDTO {
 
     public void setAttorneyAffiliation(String attorneyAffiliation) {
         this.attorneyAffiliation = attorneyAffiliation;
+    }
+
+    public String getAttorneyBarJurisdiction() {
+        return attorneyBarJurisdiction;
+    }
+
+    public void setAttorneyBarJurisdiction(String attorneyBarJurisdiction) {
+        this.attorneyBarJurisdiction = attorneyBarJurisdiction;
+    }
+
+    public String getAttorneyBarMembershipNumber() {
+        return attorneyBarMembershipNumber;
+    }
+
+    public void setAttorneyBarMembershipNumber(String attorneyBarMembershipNumber) {
+        this.attorneyBarMembershipNumber = attorneyBarMembershipNumber;
+    }
+
+    public String getAttorneyBarAdmissionDate() {
+        return attorneyBarAdmissionDate;
+    }
+
+    public void setAttorneyBarAdmissionDate(String attorneyBarAdmissionDate) {
+        this.attorneyBarAdmissionDate = attorneyBarAdmissionDate;
     }
 
     public String getAppInternalID() {
