@@ -3,8 +3,10 @@ package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.a
 
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -18,7 +20,13 @@ public class Lawyer extends Contact {
 
     private String docketNumber;
 
+
+    private String AffiliationStatus;
     private String barJurisdiction;
+    private String MembershipNumber;
+    private Date BarAdmissionDate;
+    private String BarCertificateImageKey; // its the name of the file
+
 
     private String address1;
     private String address2;
@@ -146,6 +154,39 @@ public class Lawyer extends Contact {
 
     public void setAddress3(String address3) {
         this.address3 = address3;
+    }
+
+
+    public String getAffiliationStatus() {
+        return AffiliationStatus;
+    }
+
+    public void setAffiliationStatus(String affiliationStatus) {
+        AffiliationStatus = affiliationStatus;
+    }
+
+    public String getMembershipNumber() {
+        return MembershipNumber;
+    }
+
+    public void setMembershipNumber(String membershipNumber) {
+        MembershipNumber = membershipNumber;
+    }
+
+    public Date getBarAdmissionDate() {
+        return BarAdmissionDate;
+    }
+
+    public void setBarAdmissionDate(Date barAdmissionDate) {
+        BarAdmissionDate = barAdmissionDate;
+    }
+
+    public String getBarCertificateImageKey() {
+        return BarCertificateImageKey;
+    }
+
+    public void setBarCertificateImageKey(String barCertificateImageKey) {
+        BarCertificateImageKey = barCertificateImageKey;
     }
 
     @Override
