@@ -87,15 +87,6 @@ public class ApplicationFlowController {
         ////////////////////////////////////////////////////////////////////////////////////////////
 
 
-
-        /////////////////////////////////////////////////////////////////////////////////////////////
-        // create new check
-        /////////////////////////////////////////////////////////////////////////////////////////////
-        // check if user has LoadContinueUrl set ...
-        // in the web url that triggers, you get that from an iteration of
-        // myTradeMarks on the dashboard
-        /////////////////////////////////////////////////////////////////////////////////////////////
-
         /////////////////////////////////////////////
         // load my contacts list for thyemleaf
         /////////////////////////////////////////////
@@ -201,19 +192,6 @@ public class ApplicationFlowController {
         }
         else{
 
-            ////////////////////////////////////////////////////////////////////////////
-            // existing trade  mark application
-            ////////////////////////////////////////////////////////////////////////////
-            // loaded baseTradeMarkapplication by internal id and add to model
-            ////////////////////////////////////////////////////////////////////////////
-            // BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
-            // we are already setting this value in the begging for selected contacts rendering
-            /////////////////////////////////////////////////////////////////////////////
-            //////////////////////////////////////////////////////////////////////////
-            // add relationship (i.e grey out the correspondant contacts table)
-            // we can do this when rendering the contacts table rows ...
-            // do a check and insert different HTML for the row
-            //////////////////////////////////////////////////////////////////////////
 
             ////////////////////////////////////////////////////////////////////////////////////////////
             // add selected contacts display info to model
@@ -311,19 +289,6 @@ public class ApplicationFlowController {
         model.addAttribute("account",credentials);
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
 
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        // add contacts display info to model
-        ////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-        /////////////////////////////////////////////////////////////////////////////////////////////
-        // create new check
-        /////////////////////////////////////////////////////////////////////////////////////////////
-        // check if user has LoadContinueUrl set ...
-        // in the web url that triggers, you get that from an iteration of
-        // myTradeMarks on the dashboard
-        /////////////////////////////////////////////////////////////////////////////////////////////
 
         /////////////////////////////////////////////
         // load my contacts list for thyemleaf
@@ -361,28 +326,8 @@ public class ApplicationFlowController {
             trademarkApplication.setAttorneySet(false);
             trademarkApplication.setAttorneyFiling(false);
 
-            ///////////////////////////////////////////////////////////////////////////////////////////////
-            // we need a copy constructor ...so that trademark Application lawyers are not the same ones
-            // saved by PTOUser ...
-            // as this will allow PTOUser to delete the application with out deleting his/hers lawyers.
-            ///////////////////////////////////////////////////////////////////////////////////////////////
-            // application also needs a better id for find ...build internal id. as user.email+trademark_name???
-            //Lawyer appPrimaryConsole = new Lawyer(PTOUser1.getMyLawyers().iterator().next());
             trademarkApplication.setOwnerEmail(ptoUser.getEmail());
 
-            //Owner owner = new Owner();
-            //owner.setOwnerType("individual");
-            //owner.setEmail(ptoUser.getEmail());
-            //owner.setAddress(ptoUser.getAddress());
-            //owner.setFirstName(ptoUser.getFirstName());
-            //owner.setLastName(ptoUser.getLastName());
-            //owner.setCity(ptoUser.getCity());
-            //owner.setState(ptoUser.getState());
-
-            //trademarkApplication.setOwner(owner);
-            /////////////////////////////////////////////////////////////////////////////////
-            // add a method to PTOUser to just add one application
-            /////////////////////////////////////////////////////////////////////////////////
             baseTradeMarkApplicationService.save(trademarkApplication);
             trademarkApplication.setTrademarkName("my_first_trademark");
             trademarkApplication.setApplicationInternalID(UUID.randomUUID().toString());
