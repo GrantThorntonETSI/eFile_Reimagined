@@ -28,6 +28,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -246,8 +247,8 @@ public class ApplicationObjectCreationController {
             System.out.println("555555555555555555555555555555555555555555555");
               if(file.isEmpty() == false) {
                   storageService.store(file);
+                  lawyer.setBarCertificateImageKey("/files/"+file.getOriginalFilename());
               }
-
 
         }
         else{

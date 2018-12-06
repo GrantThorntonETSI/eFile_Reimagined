@@ -41,19 +41,6 @@ public class FileUploadController {
         return "uploadFormBS3";
     }
 
-    @GetMapping("/files/{filename:.+}")
-    @ResponseBody
-    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
-
-        Resource file = storageService.loadAsResource(filename);
-        //return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
-        //"attachment; filename=\"" + file.getFilename() + "\"").body(file);
-
-        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(file);
-
-
-    }
-
     @PostMapping("/application/fileUploadAttorney")
     public String handleFileUpload(@RequestParam(name="file", required=false) MultipartFile file,
                                    RedirectAttributes redirectAttributes, Model model) {
@@ -78,6 +65,25 @@ public class FileUploadController {
 
 
     }
+
+
+
+
+
+    @GetMapping("/files/{filename:.+}")
+    @ResponseBody
+    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
+
+        Resource file = storageService.loadAsResource(filename);
+        //return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+        //"attachment; filename=\"" + file.getFilename() + "\"").body(file);
+
+        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(file);
+
+
+    }
+
+
 
     @ExceptionHandler(StorageFileNotFoundException.class)
     public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
