@@ -1,12 +1,10 @@
 $(document).ready(function(){
-  //START expand / collapse link button
-  $("#markoptions").off("hide.bs.collapse", function(){
-    $(".btn .Accordion-trigger").html('<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Uncommon Mark Options');
-  });
-  $("#markoptions").on("show.bs.collapse", function(){
-    $(".btn .Accordion-trigger").html('<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span> Uncommon Mark Options');
-  });
-  //END expand / collapse link button
+	//START expand / collapse glyphicon
+	$("button.Accordion-trigger").click(function() {
+		$( 'button.Accordion-trigger span' ).toggleClass('visuallyremoved');
+		$( 'button.Accordion-trigger span#toggleglyph' ).toggleClass('visuallyadded');
+	});
+	//END expand / collapse glyphicon
   
   //START set initial checkboxes
   $('input[type=checkbox]').attr('checked',false);
@@ -115,17 +113,23 @@ $(document).ready(function(){
 	//START panel height match
       var a = $( 'div.match' );
 	  $('#panels .panel-body').css( 'min-height', a.innerHeight() );
+	  $('#panels .panel-body').css( 'max-height', a.innerHeight() );
 	//END 
 	
-	
-	//.hover(function() {
-  //$( this ).fadeOut( 100 );
-  //$( this ).fadeIn( 500 );
-	//START exmples panel link hover / active
+	//START examples panel link hover / active
 	  $('#examples div.panel-body a').hover(function() {
 		  $( this ).parent().parent().parent().addClass( 'examplehover' );
 	  }, function() {
 		  $( this ).parent().parent().parent().removeClass( 'examplehover' );
 	  });
-	//END exmples panel link hover / active
+	//END examples panel link hover / active
+	
+	//START examples panel button toggle text
+	$( 'button#moreoptionsbtn' ).click(function() {
+		$( this ).toggleClass( 'focus' );
+		$(this).text() === 'See More Types'
+			? $(this).text('See Less Types')
+			: $(this).text('See More Types');
+	});	
+	//END examples panel button toggle text
 });

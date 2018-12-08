@@ -94,7 +94,7 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                 .headers().frameOptions().sameOrigin().and()
 
                 .authorizeRequests()
-                .antMatchers( "/resources/**", "/lynn/**","/h2-console/**", "/console/**","/webjars/**","/registration/**","/","/home","/newUser","/aboutUs/**","/contact/**","/public/**","/owner/**","/registrationConfirm/**","/CompleteRegistration/**","/REST/**").permitAll()
+                .antMatchers( "/resources/**","/h2-console/**", "/console/**","/webjars/**","/registration/**","/","/home","/newUser","/aboutUs/**","/contact/**","/public/**","/owner/**","/registrationConfirm/**","/CompleteRegistration/**","/REST/**").permitAll()
                 //.antMatchers("/vets**","/owners**").hasRole("vet")
                 //.antMatchers("/owners","owner","/pet").hasRole("owner")
                 //.antMatchers("/owner**","/vet**","/pet**").hasRole("admin")

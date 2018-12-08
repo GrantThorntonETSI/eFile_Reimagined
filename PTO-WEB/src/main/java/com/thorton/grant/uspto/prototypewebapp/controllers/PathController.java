@@ -57,10 +57,42 @@ public class PathController {
 
 
 
-    @RequestMapping({"/lynn/preview"})
-    public String test(){
+    @RequestMapping({"/mark/details"})
+    public String test( Model model){
         // get owner info
         System.out.println("5555555555555555555555555555555555555555555555555555555555555555#");
+        // get email and get PTOUser object from repository
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+
+
+        //return "application/MarkDetailsExamples";
+        return "application/MarkDetailsStart";
+        //return "registrationConfirm/VerificationEmail";
+    }
+
+    @RequestMapping({"/mark/examples"})
+    public String markExamples( Model model){
+        // get owner info
+        System.out.println("5555555555555555555555555555555555555555555555555555555555555555#");
+        // get email and get PTOUser object from repository
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+
 
         return "application/MarkDetailsExamples";
 

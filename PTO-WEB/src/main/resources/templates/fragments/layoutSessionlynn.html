@@ -1,6 +1,6 @@
 <!doctype html>
 <html th:fragment="layout (template, menu)"
-       xmlns:th="http://www.w3.org/1999/xhtml">
+      xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
 
@@ -18,8 +18,8 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" th:href="@{/resources/css/usPTO.css}"/>
-    <!--<link rel="stylesheet" th:href="@{/resources/css/lynnstyles.css}"/>-->
+   <<link rel="stylesheet" th:href="@{/resources/css/usPTO.css}"/>
+    <link rel="stylesheet" th:href="@{/resources/css/lynnstyles.css}"/>
 
     <link rel="stylesheet" th:href="@{/webjars/datatables/1.10.15/css/dataTables.bootstrap4.css}"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -46,18 +46,18 @@
 
 <body >
 
-  <div>
+<div>
 
-      <!-- header section and navigation section --->
-      <header class="navbar-fixed-top" id="global-header" role="banner">
-          <div class="uspto-header-top">
-              <nav class="nav navbar">
-                  <div class="container-fluid">
-                      <a class="uspto-logo" href="http://www.uspto.gov" id="uspto-logo" target="_blank" title="United States Patent and Trademark Office - An Agency of the Department of Commerce">
-                          <span class="sr-only"> United States Patent and Trademark Office </span>
-                      </a>
-                      <button appskipfocusto="" class="sr-only sr-only-focusable skip-navigation skip-navigation-top" targetelement="skip-nav-content" type="button">Skip Navigation </button>
-                      <span class="pull-right">
+    <!-- header section and navigation section --->
+    <header class="navbar-fixed-top" id="global-header" role="banner">
+        <div class="uspto-header-top">
+            <nav class="nav navbar">
+                <div class="container-fluid">
+                    <a class="uspto-logo" href="http://www.uspto.gov" id="uspto-logo" target="_blank" title="United States Patent and Trademark Office - An Agency of the Department of Commerce">
+                        <span class="sr-only"> United States Patent and Trademark Office </span>
+                    </a>
+                    <button appskipfocusto="" class="sr-only sr-only-focusable skip-navigation skip-navigation-top" targetelement="skip-nav-content" type="button">Skip Navigation </button>
+                    <span class="pull-right">
 
                              <div class="btn-group">
                               <a href="/accounts/Home" aria-expanded="false" aria-haspopup="true" class="btn btn-default" ><span class="hidden-xs ">Home&nbsp;</span><span class="visible-xs icon-btn"><span class="icon icon-question-circle icon-inverse"> </span></span></a>
@@ -114,28 +114,28 @@
                               <a class="btn myuspto-link" href="https://my.uspto.gov" data-event-action="myuspto menu link clicked" data-event-category="myuspto Header: MyUSPTO menu" data-event-label="MyUSPTO web site" target="_blank">MyUSPTO</a>
                           </div>
                       </span>
-                  </div>
-              </nav>
-          </div><!---->
-          <div class="uspto-header-middle hidden-xs">
-              <div class="container-fluid">
-                  <div class="row">
-                      <div class="col-sm-12"><!----></div></div></div></div><!----><div class="uspto-header-bottom"><nav class="navbar"><div class="container-fluid"><div class="navbar-header"><span class="pull-left headerbar-smallHeading" id="headerSmallHeadingMobile"> Account </span><button class="navbar-toggle collapsed" data-target="#bottom-collapse-button" data-toggle="collapse" type="button"><span class="sr-only">Toggle navigation</span><span aria-hidden="true" class="icon icon-bars icon-inverse"></span></button></div><div class="collapse navbar-collapse" id="bottom-collapse-button"><span class="pull-left headerbar-smallHeading" id="headerSmallHeading"> Account </span><!---->
-          <ul class="nav navbar-nav">
-              <li>
+                </div>
+            </nav>
+        </div><!---->
+        <div class="uspto-header-middle hidden-xs">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12"><!----></div></div></div></div><!----><div class="uspto-header-bottom"><nav class="navbar"><div class="container-fluid"><div class="navbar-header"><span class="pull-left headerbar-smallHeading" id="headerSmallHeadingMobile"> Account </span><button class="navbar-toggle collapsed" data-target="#bottom-collapse-button" data-toggle="collapse" type="button"><span class="sr-only">Toggle navigation</span><span aria-hidden="true" class="icon icon-bars icon-inverse"></span></button></div><div class="collapse navbar-collapse" id="bottom-collapse-button"><span class="pull-left headerbar-smallHeading" id="headerSmallHeading"> Account </span><!---->
+        <ul class="nav navbar-nav">
+            <li>
 
-                  <div class="autoSaveMessageArea" style="color: white; ">
-                      <b><span  th:text ="${message}" style="">&nbsp;&nbsp;</span></b>
+                <div class="autoSaveMessageArea" style="color: white; ">
+                    <b><span  th:text ="${message}" style="">&nbsp;&nbsp;</span></b>
 
-                  </div>
+                </div>
 
-              </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right"><li> </li></ul></li></ul></div></div></nav></div></header>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right"><li> </li></ul></li></ul></div></div></nav></div></header>
 
 
 
-      <!-- end of header and navigation section -->
+    <!-- end of header and navigation section -->
 
 
 
@@ -144,26 +144,26 @@
     <!--jquery and web jars -->
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/jquery-ui/jquery-ui.min.js}"></script>
-      <script th:src="@{/webjars/datatables/1.10.15/js/jquery.dataTables.js}"></script>
+    <script th:src="@{/webjars/datatables/1.10.15/js/jquery.dataTables.js}"></script>
     <!--<script src="../resources/js/jquery.dataTables.min.js"></script>-->
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 
-      <script>
+    <script>
 
 
 
 
-      </script>
+    </script>
 
     <div class="container-fluid" >
-        <div class="container xd-container" style="background-color: whitesmoke; min-height: 800px;">
 
-            <th:block th:include="${template}"/>
 
-            <br/>
-            <br/>
+        <th:block th:include="${template}"/>
 
-        </div>
+        <br/>
+        <br/>
+
+
 
     </div>
 

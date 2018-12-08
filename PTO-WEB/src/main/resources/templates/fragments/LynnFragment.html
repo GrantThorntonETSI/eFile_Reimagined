@@ -28,12 +28,12 @@
     <!--<link rel="stylesheet" href="css/reset.css">-->
     <link rel="stylesheet" th:href="@{/resources/css/reset.css}"/>
     <!--<link rel="stylesheet" href="css/lynnstyles.css">-->
-    <link rel="stylesheet" th:href="@{/resources/css/usPTO.css}"/>
+    <link rel="stylesheet" th:href="@{/resources/css/lynnstyles.css}"/>
 </head>
 
-<body>
+<body style="background-color: white;">
 <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
+    <div class="container-fluid" >
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -49,6 +49,9 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Home</a></li>
+                <li><a href="#">Applications/Registration</a></li>
+                <li><a href="#">Actions</a></li>
+                <li><a href="#">Resources</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Help <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -57,7 +60,17 @@
                         <li><a href="http://www.uspto.gov/about-us/contact-us">Contact Us</a></li>
                     </ul>
                 </li>
-                <li><a  data-target="#sign-in-modal" data-toggle="modal">Sign In</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="hidden-xs " th:text="${account.username}">li zhang&nbsp;<span class="caret"></span></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/accounts/dashboard">eFile</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/accounts/userHome">Account</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/logout">Sign Out</a></li>
+                    </ul>
+                </li>
+
                 <li><a href="https://my.uspto.gov/" class="orange">MyUSPTO</a></li>
             </ul>
 
@@ -75,15 +88,13 @@
                         <li><a href="#">Tutorial</a></li>
                     </ul>
                 </li>
+
             </ul>
             <br style="clear:both">
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container-fluid">
-    <th:block th:include="${template}"/>
-</div><!--END row div-->
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script type="application/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <!--jquery and web jars -->
@@ -95,7 +106,16 @@
 <script type="application/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <!--<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>-->
 
-<script type="application/javascript" src="../resources/js/lynnjqueryscript.js"></script>
+<script type="application/javascript"  th:src="@{/resources/js/lynnjqueryscript.js}"></script>
+
+<div class="container-fluid" style="position:relative; bottom: -200px;background-color: white; min-height: 800px;">
+
+        <th:block th:include="${template}"/>
+        <br/>
+        <br/>
+
+</div><!--END row div-->
+
 
 <script>
     $(document).ready(function() {
@@ -107,91 +127,13 @@
         // password modal update actions
         // passowrd update on click
         ////////////////////////////////////////////////////////////////////////////////////////////
-        $('#webPolicy').click( function () {
-            $('#web-policy-card').fadeIn();
-        });
-        $(function() {
-            $('*').click(function(e) {
-                if(e.target.id != 'webPolicy')   {
-                    $('#web-policy-card').fadeOut();
-                }
-            });
-        });
+
         //////////////////////////////////////////////////////////////////////////
     });
 </script>
 
-<!--login modal -->
-<div id="sign-in-modal" class="modal fade modal-lg" role="dialog" tabindex="-1"  style="min-width: 1500px;" >
-    <div class="modal-dialog" id="sign-in-modal-dialog"  style="position: relative; left:130px; right:-130px;">
 
-        <!-- Modal content-->
-        <div class="modal-content" style="max-width:900px; max-height: 900px; background-color: rgb(246, 246, 246); border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
-            <div class="modal-header" style="background-color: #383A3C; color: whitesmoke; border-top-left-radius: 20px; border-top-right-radius: 20px;">
-                <button type="button" class="close" data-dismiss="modal" style="color: whitesmoke;">&times;</button>
-                <h4 class="modal-title" style="color: whitesmoke;"><b>USPTO.gov | eFile <i>Reimagined</i></b> </h4>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid" >
-                    <form th:action="@{/login}" method="post" class="form form-check-input form-control-sm"  >
-                        <div class="card card-login" style="margin: auto; color: #383A3C; background-color: white; min-height: 250px; margin-left: 20px;  max-width: 90%;   border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"  >
-                            <div class=" card-header-blue text-center" style="padding-top: 10px;position:relative;top: 20px; right:-30%;">
-                                <b class="card-title" style=""><a style="font-size: x-small;margin-top: 50px;" href="/registration">New User?</a></b>
-                            </div>
-                            <div class="card-body " style="padding-top: 20px;position:relative;top: 20px;  min-height: 200px;">
-                                <span class="card-description" style="position: relative; right:-22%; top:-10px; "><h5><b>Existing User</b></h5></span>
 
-                                <span class="bmd-form-group" style="position: relative; top:-10%;" >
-                                          <div class="input-group">
-                                            <div class="input-group-prepend">
-                                              <span class="input-group-text" style="margin:auto; position:relative; left:40%; right:40%; margin-bottom: 10px">
-                                                  <span class="glyphicon glyphicon-user"><b>Email Address</b></span>
-                                              </span>
-                                            </div>
-                                            <input style="margin: auto; min-width: 265px; position:relative; left:40%; right:40%; margin-top: 10px; margin-bottom: 10px; border-top-right-radius: 10px; border-top-left-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;" type="email" class="form-control" name="username" placeholder="Email...">
-                                          </div>
-                                        </span>
-                                <span class="bmd-form-group" style="margin:auto;">
-                                          <div class="input-group" >
-                                            <div class="input-group-prepend">
-                                              <span class="input-group-text" style="margin:auto; position:relative; left:40%; right :40%; margin-bottom: 10px; margin-top: 10px;">
-                                                  <span class="glyphicon glyphicon-lock"><b>Password</b></span>
-                                              </span>
-                                            </div>
-                                            <input  style="margin:auto; min-width: 265px; position:relative; left:40%; margin-top: 10px; border-top-right-radius: 10px; border-top-left-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;" type="password" class="form-control" name="password" placeholder="Password...">
-                                          </div>
-                                        </span>
-                            </div>
-                            <div class="card-footer justify-content-center" style="padding-top: 20px; padding-bottom:50px; margin-bottom: 10px; background-color: white; border-top: none; position:relative;top: 12px;  border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                                <div class="form-group" ><button style="position:relative; left:20.7%; right:30%; min-width: 262px; background-color: #004c97; color: whitesmoke; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px;" class="btn" type="submit" value="Sign In"><span style="position: relative; left:-75px;" class="glyphicon glyphicon-log-in" ></span><b style="position: relative; left:-20px;"> &nbsp;  Sign In&nbsp;</b></button></div>
-                                <!-- Login Form -->
-                                <div  style="color: red; position: relative; top:20%; right:-22%;" th:if="${param.error}">
-                                    <b>Invalid username and password.</b>
-                                </div>
-                                <div  style="color: green; position: relative; top:20%; right:-22%;" th:if="${param.logout}">
-                                    You have been logged out.
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="modal-footer" style="  background-color: rgb(246, 246, 246); color: whitesmoke; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end of login modal -->
-<div>
-    <div class="row">
-        <div class="card-body" id="web-policy-card" style=" display:none; margin-top:10px; margin-right:10px; margin-left:10px; position:relative;top: -477px; right:-525px; min-height: 300px; max-width: 670px; background-color: #323232; opacity: 1; mix-blend-mode: normal; font-variant: normal; color: rgb(255, 255, 255); font-size: 12px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; width: 612px; height: 173px; transform: rotate(0deg) translate(17px, 496px) rotate(0deg);">
-                            <span class="bmd-form-group" style="margin-top: 10px;" >
-                                <p style="max-height: 10px;">&nbsp;&nbsp;</p>
-                                <p style="margin-top: 15px; margin-left: 15px; margin-right: 15px;">This is a United States Patent and Trademark Office (USPTO) computer system, which may be accessed and used only for official Government business by authorized personnel. Unauthorized access, actions, use, modification, or disclosure of the data contained herein or in transit to/from this system constitutes a violation of the Computer Fraud and Abuse Act, Pub. L. No. 99-474, codified at 18 U.S.C. ยง1030, state criminal and civil laws, and may subject violators to criminal, civil, and/or administrative action and penalties. Regardless of geographic location, authorized use of this system must comply with USPTO policy, as documented in the USPTO AAO 202-737 (Limited Personal Use of Government Equipment), AAO 212-4 (Information Technology Security Policy) and the USPTO Rules of the Road. Unauthorized use or actions exceeding authorized use of USPTO systems will be investigated, and, when appropriate, official sanctions will be imposed. All data contained on USPTO computer systems is owned by the USPTO, and may be monitored, intercepted, recorded, read, copied, captured, and disclosed in any manner by authorized personnel. THERE IS NO RIGHT OF PRIVACY IN THIS SYSTEM. System personnel may give to law enforcement officials, for investigation and prosecution, any potential evidence of crime found on USPTO computer systems. USE OF THIS SYSTEM BY ANY USER, AUTHORIZED OR UNAUTHORIZED, CONSTITUTES CONSENT TO THIS MONITORING, INTERCEPTION, RECORDING, READING, COPYING, CAPTURING, AND DISCLOSURE. Suspected access violations or policy infractions should be reported to the USPTO Service Desk at (571) 272-9000.</p>
-                            </span>
-        </div>
-    </div>
-</div>
 <footer>
     <div class="container-fluid">
         <div class="row">
