@@ -736,6 +736,29 @@ public class ApplicationFlowController {
         // in the web url that triggers, you get that from an iteration of
         // myTradeMarks on the dashboard
         /////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////
+        // load my contacts list for thyemleaf
+        ////////////////////////////////////////////
+        ArrayList<String> contactNamesMC = new ArrayList<>();
+        ArrayList<String> contactEmailsMC = new ArrayList<>();
+        ArrayList<String> contactSubTypesMC = new ArrayList<>();
+        ManagedContact managedContact = null;
+
+        for(Iterator<ManagedContact> iter = ptoUser.getMyManagedContacts().iterator(); iter.hasNext(); ) {
+            managedContact = iter.next();
+            contactNamesMC.add(managedContact.getDisplayName());
+            contactEmailsMC.add(managedContact.getEmail());
+            contactSubTypesMC.add(managedContact.getContactType());
+
+        }
+        Collections.reverse(contactNamesMC);
+        Collections.reverse(contactEmailsMC);
+        Collections.reverse(contactSubTypesMC);
+        ContactsDisplayDTO mcDisplayDTO = new ContactsDisplayDTO();
+        mcDisplayDTO.setContactNames(contactNamesMC);
+        mcDisplayDTO.setContactEmails(contactEmailsMC);
+        mcDisplayDTO.setContactEntitySubType(contactSubTypesMC);
+        model.addAttribute("myManagedContacts", mcDisplayDTO);
 
 
 

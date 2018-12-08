@@ -572,8 +572,9 @@ public class ApplicationObjectCreationController {
 
 
 
-        //return "forward:/application/OwnerSetView/?trademarkID="+newOwnerContactFormDTO.getAppInternalID();
-        return "application/OwnerSetView";
+
+        return "forward:/application/OwnerSetView/?trademarkID="+newOwnerContactFormDTO.getAppInternalID();
+        //return "application/OwnerSetView";
     }
     ///////////////////////////////////////////////////////////////////////////////
     // end of owner add
