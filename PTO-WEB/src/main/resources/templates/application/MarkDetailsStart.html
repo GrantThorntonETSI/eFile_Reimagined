@@ -138,9 +138,12 @@
                         </div>
                     </div>
                 </fieldset>
-                <script type="application/javascript" src="js/accordion.js"></script>
-                <script type="application/javascript" src="js/checkbox.js"></script>
-                <script type="application/javascript" src="js/btn_checkbox.js"></script>
+                <!--<script type="application/javascript" src="js/accordion.js"></script>-->
+                <script type="application/javascript"  th:src="@{/resources/js/accordion.js}"></script>
+                <!--<script type="application/javascript" src="js/checkbox.js"></script>-->
+                <script type="application/javascript"  th:src="@{/resources/js/checkbox.js}"></script>
+                <!--<script type="application/javascript" src="js/btn_checkbox.js"></script>-->
+                <script type="application/javascript"  th:src="@{/resources/js/btn_checkbox.js}"></script>
                 <!--END Application Type-->
             </div><!--END RADIO container-->
 
@@ -155,7 +158,8 @@
                             <div class="panel-heading">Standard Character</div>
                             <div class="panel-body match">
                                 <div class="col-xs-5">
-                                    <img src="images/FontAwesome47-2.png" alt="" class="img-responsive">
+                                    <img th:src="@{/resources/images/FontAwesome47-2.png}" alt="" class="img-responsive">
+
                                 </div>
                                 <div class="col-xs-7">
                                     <p class="right">Text only, with no particular stylization or font</p>
@@ -169,7 +173,8 @@
                             <div class="panel-heading">Stylized</div>
                             <div class="panel-body">
                                 <div class="col-xs-5">
-                                    <img src="images/RetinaIcon-2.png" alt="" class="img-responsive">
+                                    <img th:src="@{/resources/images/RetinaIcon-2.png}" alt="" class="img-responsive">
+
                                 </div>
                                 <div class="col-xs-7">
                                     <p class="right">Text in a particular style or font</p>
@@ -183,7 +188,8 @@
                             <div class="panel-heading">Design Only</div>
                             <div class="panel-body vctr">
                                 <div class="col-xs-5">
-                                    <img src="images/RetinaIcon-3.png" alt="" class="img-responsive">
+                                    <img th:src="@{/resources/images/RetinaIcon-3.png}" alt="" class="img-responsive">
+
                                 </div>
                                 <div class="col-xs-7">
                                     <a href="#" target="_blank" class="right align-middle vctr">Examples</a>
@@ -196,7 +202,8 @@
                             <div class="panel-heading">Design with Text</div>
                             <div class="panel-body vctr">
                                 <div class="col-xs-5">
-                                    <img src="images/abc_lobster.gif" alt="" class="img-responsive">
+                                    <img th:src="@{/resources/images/abc_lobster.gif}" alt="" class="img-responsive">
+
                                 </div>
                                 <div class="col-xs-7">
                                     <a href="#" target="_blank" class="right align-middle vctr">Examples</a>
@@ -206,7 +213,7 @@
                     </div>
 
                     <!--START Hide / Show Additional Mark Examples-->
-                    <div class="row" style="position: relative; top:-205px; left:-333px;">
+                    <div class="row" >
                         <div class="col-xs-12 text-left">
                             <div id="moremarkoptions" class="collapse Accordion-panel" role="region" aria-labelledby="moreoptionsbtn">
                                 <div class="Accordion">
@@ -215,7 +222,8 @@
                                             <div class="panel-heading">Configuration 3D</div>
                                             <div class="panel-body vctr">
                                                 <div class="col-xs-5">
-                                                    <img src="images/RetinaIcon_1.svg" alt="" class="img-responsive">
+                                                    <img th:src="@{/resources/images/RetinaIcon_1.svg}"alt="" class="img-responsive">
+
                                                 </div>
                                                 <div class="col-xs-7">
                                                     <a href="#" target="_blank" class="right align-middle vctr">Examples</a>
@@ -228,7 +236,7 @@
                                             <div class="panel-heading">Configuration 3D</div>
                                             <div class="panel-body vctr">
                                                 <div class="col-xs-5">
-                                                    <img src="images/RetinaIcon_2.svg" alt="" class="img-responsive">
+                                                    <img th:src="@{/resources/images/RetinaIcon_2.svg}" alt="" class="img-responsive">
                                                 </div>
                                                 <div class="col-xs-7">
                                                     <a href="#" target="_blank" class="right align-middle vctr">Examples</a>
@@ -342,7 +350,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div role="heading" aria-level="3">
+                            <div role="heading" aria-level="3" style="position: relative; right:-333px;">
                                 <button type="button" class="btn btn-primary Accordion-trigger" data-toggle="collapse" data-target="#moremarkoptions" aria-controls="markoptions" aria-expanded="false" id="moreoptionsbtn">See More Types</button>
                             </div>
                         </div>
