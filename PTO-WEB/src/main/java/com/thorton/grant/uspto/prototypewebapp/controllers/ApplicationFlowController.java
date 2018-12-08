@@ -902,4 +902,51 @@ public class ApplicationFlowController {
 
 
 
+    @RequestMapping({"/application/MarkDetails"})
+    public String test (WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
+        // get owner info
+
+        // get email and get PTOUser object from repository
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+
+
+        //return "application/MarkDetailsExamples";
+        return "application/MarkDetailsStart";
+        //return "registrationConfirm/VerificationEmail";
+    }
+
+    @RequestMapping({"/application/MarkExamples"})
+    public String markExamples( Model model){
+        // get owner info
+
+        // get email and get PTOUser object from repository
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+
+
+        return "application/MarkDetailsExamples";
+
+        //return "registrationConfirm/VerificationEmail";
+    }
+
+
+
+
+
+
 }

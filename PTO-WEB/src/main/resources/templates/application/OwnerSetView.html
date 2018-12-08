@@ -67,7 +67,7 @@
 
 
                                 <div class="col-sm-2" style="position:relative; left:-10px; ">
-                                         <span class="btn btn-md next-button"  style=" border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; background-color: rgb(128,128,128); color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center;   font-size: 14px; font-style: normal; width: 120px; height: 30px;"><a id="nextLink" style="color: white; text-decoration: none; position: relative; top:-10px;" >Next</a><a id="nextLinkIcon" style="color: white; text-decoration: none; position: relative; top:-3px;right:-5px;" ><i class="material-icons">exit_to_app</i></a><span>
+                                         <span class="btn btn-md next-button"  style=" border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; background-color: rgb(55, 69, 120); color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center;   font-size: 14px; font-style: normal; width: 120px; height: 30px;"><a id="nextLink" style="color: white; text-decoration: none; position: relative; top:-10px;" >Next</a><a id="nextLinkIcon" style="color: white; text-decoration: none; position: relative; top:-3px;right:-5px;" ><i class="material-icons">exit_to_app</i></a><span>
                                 </div>
                             </div>
 
@@ -288,7 +288,7 @@
     <script>
 
         var prevLinkURL = "../../application/OwnerStart/?trademarkID="+appInternalID;
-        var nextLinkURL = "#";
+        var nextLinkURL = "../../application/MarkDetails/?trademarkID="+appInternalID;
         var newOwnerLink = "../../owner/entity/?trademarkID="+appInternalID;
 
 
@@ -325,6 +325,9 @@
             /////////////////////////////////////////
             $('#prevLink').attr("href",prevLinkURL);
             $('#prevLinkIcon').attr("href",prevLinkURL);
+
+            $('#nextLink').attr("href",nextLinkURL);
+            $('#nextLinkIcon').attr("href",nextLinkURL);
 
             /////////////////////////////////////////////////
             // check each radio button in accordian..
