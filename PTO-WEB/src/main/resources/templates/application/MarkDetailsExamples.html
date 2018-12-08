@@ -6,10 +6,10 @@
     <title></title>
 </head>Mark Details
 <body>
-<div class="row content">
+<div class="row content" style="display: none;">
     <main class="col-xs-12 col-sm-8 col-md-8 col-lg-6">
         <!--START Content Div-->
-        <div class="row">
+        <div class="row" style="position: relative; top:-200px;">
             <section class="col-xs-12">
 
                 <h1>Trademark Examples</h1>
@@ -345,5 +345,19 @@
         <!--END row-->
     </main>
 </div><!--END div content-->
-</body>
+
+    <script>
+
+
+    // next link url to enable  for u.s individual href="http://localhost:8080/application/owner/info"
+    $(document).ready(function() {
+
+            setTimeout(function () {
+                // after 1000 ms we add the class animated to the login/register card
+                $('.content').fadeIn(500);
+            }, 500);
+
+        });
+    </script>
+    </body>
 </html>

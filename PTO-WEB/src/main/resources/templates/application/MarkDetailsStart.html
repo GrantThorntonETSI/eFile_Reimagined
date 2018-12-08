@@ -6,7 +6,7 @@
     <title></title>
 </head>Mark Details
 <body>
-<div class="row content">
+<div class="row content" >
     <main class="col-xs-12 col-sm-8 col-lg-6">
         <div class="row sticky" id="contacts-ui" style=" display:none; position: fixed; top:500px; right:400px;  max-height: 10px;">
 
@@ -145,7 +145,7 @@
         </div><!--END row-->
 
         <!--START Tiles-->
-        <div class="row" id="panels" style="position: relative; top:-205px; left:-333px;">
+        <div class="row" id="panels" style="position: relative; top:-205px; left:-333px; ">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="col-sm-12 col-md-6">
@@ -371,9 +371,12 @@
     // next link url to enable  for u.s individual href="http://localhost:8080/application/owner/info"
     $(document).ready(function() {
 
+            $('#content').fadeOut();
+
+
         setTimeout(function () {
             // after 1000 ms we add the class animated to the login/register card
-            $('.content').fadeIn(500);
+            $('#panels').fadeIn(500);
         }, 500);
 
 
