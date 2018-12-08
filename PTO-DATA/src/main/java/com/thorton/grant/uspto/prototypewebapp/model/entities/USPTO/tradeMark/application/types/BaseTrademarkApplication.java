@@ -109,7 +109,7 @@ public class BaseTrademarkApplication  {
 
         boolean status = false;
 
-        if (availableLawyers.size() > 0) {
+        if (availableLawyers.size()== 0) {
             status = true;
         }
 
