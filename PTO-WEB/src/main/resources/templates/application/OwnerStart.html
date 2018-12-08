@@ -303,7 +303,7 @@
             // check each name against selected names ...if in selected lis ...
             // add row with check box selected and disabled
             ///////////////////////////////////////////////////////////////////////////
-            var col1 = "<i class='material-icons'>folder_shared</i>";
+            var col1 = "<i class='material-icons'>account_circle</i>";
             var col2 = "<b>"+contactNames[a]+"</b>";
             var col3 = "";
             contactsTable.row.add([col1, col2, col3]).draw();
@@ -316,12 +316,11 @@
 
         $('#ManagedContacts').on('click', 'i.material-icons', function () {
 
-            if($(this).html() == "folder_shared"){
+
                 var rawCell=$(this).parent().next().html();
                 var contactDisplayName = getContactName(rawCell);
                 setformWithManagedContact(contactDisplayName);
 
-            }
 
 
         });
