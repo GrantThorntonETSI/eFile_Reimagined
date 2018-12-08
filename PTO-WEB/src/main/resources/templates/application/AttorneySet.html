@@ -494,9 +494,9 @@
             $('#accordionExample input').each(function () {
                 //alert("##############")
                 if($(this).is(':checked')){
-                   // alert("!!!!!!!!!!!!!!!!")
+
                    // confirm link only activated oin new primary set
-                    $('#next-link-application').css("background-color", "rgb(55, 69, 120)");
+                    $('.next-button').css("background-color", "rgb(55, 69, 120)");
                     $('#nextLink').attr("href", nextLinkURL);
                     $('#nextLinkIcon').attr("href", nextLinkURL);
 
@@ -529,7 +529,7 @@
                 // enable next url ...
                 $('#nextLink').attr("href", nextLinkURL);
                 $('#nextLinkIcon').attr("href", nextLinkURL);
-                $('#next-link-application').css("background-color", "rgb(55, 69, 120)");
+                $('.next-button').css("background-color", "rgb(55, 69, 120)");
 
 
 
@@ -1468,7 +1468,7 @@
 
 
         function enableConfirmWidgetLink() {
-            //$('#AttorneySetLink').prop("href", nextLinkURLwidget);
+
             $('#confirm-link-widget').css("background-color", "rgb(52, 152, 219)");
 
         }
