@@ -125,7 +125,7 @@
                         <label class="form-check-label form-check" for="tradeserv" id="tradeserv2"><span class="radio notspecial">Trademark / Servicemark</span></label>
                     </div>
                     <div role="heading" aria-level="3">
-                        <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#markoptions" aria-controls="markoptions" aria-expanded="false" id="optionsbtn"><span class="glyphicon glyphicon-triangle-right"></span><span id="toggleglyph" class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Uncommon Mark Options</button>
+                        <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#markoptions" aria-controls="markoptions" aria-expanded="false" id="optionsbtn"><span class="glyphicon glyphicon-triangle-right"></span>Uncommon Mark Options</button>
                     </div>
                     <div id="markoptions" class="collapse Accordion-panel" role="region" aria-labelledby="optionsbtn">
                         <div class="Accordion">
@@ -138,12 +138,7 @@
                         </div>
                     </div>
                 </fieldset>
-                <!--<script type="application/javascript" src="js/accordion.js"></script>-->
-                <script type="application/javascript"  th:src="@{/resources/js/accordion.js}"></script>
-                <!--<script type="application/javascript" src="js/checkbox.js"></script>-->
-                <script type="application/javascript"  th:src="@{/resources/js/checkbox.js}"></script>
-                <!--<script type="application/javascript" src="js/btn_checkbox.js"></script>-->
-                <script type="application/javascript"  th:src="@{/resources/js/btn_checkbox.js}"></script>
+
                 <!--END Application Type-->
             </div><!--END RADIO container-->
 
@@ -249,7 +244,8 @@
                                             <div class="panel-heading">Sound</div>
                                             <div class="panel-body vctr">
                                                 <div class="col-xs-5">
-                                                    <img src="images/PixleIcon_1.svg" alt="" class="img-responsive">
+                                                    <img th:src="@{/resources/images/PixleIcon_1.svg}" alt="" class="img-responsive">
+
                                                 </div>
                                                 <div class="col-xs-7">
                                                     <a href="#" target="_blank" class="right align-middle vctr">Examples</a>
@@ -262,7 +258,7 @@
                                             <div class="panel-heading">Sound Composite</div>
                                             <div class="panel-body vctr">
                                                 <div class="col-xs-5">
-                                                    <img src="images/PixleIcon_2.svg" alt="" class="img-responsive">
+                                                    <img th:src="@{/resources/images/PixleIcon_2.svg}"  alt="" class="img-responsive">
                                                 </div>
                                                 <div class="col-xs-7">
                                                     <a href="#" target="_blank" class="right align-middle vctr">Examples</a>
@@ -275,7 +271,8 @@
                                             <div class="panel-heading">Scent</div>
                                             <div class="panel-body vctr">
                                                 <div class="col-xs-5">
-                                                    <img src="images/nose-c-52601-jpg.jpg" alt="" class="img-responsive">
+                                                    <img th:src="@{/resources/images/nose-c-52601-jpg.jpg}" alt="" class="img-responsive">
+
                                                 </div>
                                                 <div class="col-xs-7">
                                                     <a href="#" target="_blank" class="right align-middle vctr">Examples</a>
@@ -288,7 +285,8 @@
                                             <div class="panel-heading">Tactile</div>
                                             <div class="panel-body vctr">
                                                 <div class="col-xs-5">
-                                                    <img src="images/yuo-04-e-11-d-jpg.jpg" alt="" class="img-responsive">
+                                                    <img th:src="@{/resources/images/yuo-04-e-11-d-jpg.jpg}" alt="" class="img-responsive">
+
                                                 </div>
                                                 <div class="col-xs-7">
                                                     <a href="#" target="_blank" class="right align-middle vctr">Examples</a>
@@ -301,7 +299,8 @@
                                             <div class="panel-heading">Color Only</div>
                                             <div class="panel-body vctr">
                                                 <div class="col-xs-5">
-                                                    <img src="images/col-7864-bc-jpg.jpg" alt="" class="img-responsive">
+                                                    <img th:src="@{/resources/images/col-7864-bc-jpg.jpg}" alt="" class="img-responsive">
+
                                                 </div>
                                                 <div class="col-xs-7">
                                                     <a href="#" target="_blank" class="right align-middle vctr">Examples</a>
@@ -314,7 +313,8 @@
                                             <div class="panel-heading">Motion</div>
                                             <div class="panel-body vctr">
                                                 <div class="col-xs-5">
-                                                    <img src="images/adf-d-8-e-123-jpg.jpg" alt="" class="img-responsive">
+                                                    <img th:src="@{/resources/images/adf-d-8-e-123-jpg.jpg}"alt="" class="img-responsive">
+
                                                 </div>
                                                 <div class="col-xs-7">
                                                     <a href="#" target="_blank" class="right align-middle vctr">Examples</a>
@@ -327,7 +327,7 @@
                                             <div class="panel-heading">Motion with Text</div>
                                             <div class="panel-body vctr">
                                                 <div class="col-xs-5">
-                                                    <img src="images/adf-d-8-e-123-jpg_2.jpg" alt="" class="img-responsive">
+                                                    <img th:src="@{/resources/images/adf-d-8-e-123-jpg_2.jpg}" alt="" class="img-responsive">
                                                 </div>
                                                 <div class="col-xs-7">
                                                     <a href="#" target="_blank" class="right align-middle vctr">Examples</a>
@@ -341,6 +341,7 @@
                                             <div class="panel-body vctr">
                                                 <div class="col-xs-5">
                                                     <!--<img src="images/RetinaIcon-3.png" alt="" class="img-responsive">-->
+
                                                 </div>
                                                 <div class="col-xs-7">
                                                     <a href="#" target="_blank" class="right align-middle vctr">Examples</a>
@@ -382,6 +383,10 @@
 
 
         }, 500);
+
+        $('.glyphicon').click(function () {
+            $(this).toggleClass("glyphicon-triangle-right").toggleClass("glyphicon-triangle-bottom");
+        });
 
 
         $('[data-toggle="tooltip"]').tooltip();
