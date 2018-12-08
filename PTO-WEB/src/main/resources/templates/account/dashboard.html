@@ -352,6 +352,14 @@
         // generate data tables for filings
         var filingsTable = $('#filings-applications-table').DataTable( {
             data: dataSetFilings2,
+            autoWidth: true,
+            scrollY:        "300px",
+            scrollX:        true,
+            scrollCollapse: true,
+            columnDefs: [
+                { width: '20%', targets: 0 }
+            ],
+            fixedColumns: true,
             "dom": '<"top"f<"clear">>rt<"bottom"ip<"clear">>',
             columns: [
                 { title: "Serial#" },
@@ -373,6 +381,14 @@
 
         var actionsTable = $('#actions-table').DataTable( {
             data: dataSetActions2,
+            autoWidth: true,
+            scrollY:        "300px",
+            scrollX:        true,
+            scrollCollapse: true,
+            columnDefs: [
+                { width: '20%', targets: 0 }
+            ],
+            fixedColumns: true,
             "dom": '<"top"f<"clear">>rt<"bottom"ip<"clear">>',
             columns: [
                 { title: "Serial#" },
