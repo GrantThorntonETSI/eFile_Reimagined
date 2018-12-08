@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{fragments/layoutSession :: layout (~{::body},'dashboard')}" xmlns="http://www.w3.org/1999/html">
+      th:replace="~{fragments/LynnFragment :: layout (~{::body},'dashboard')}" xmlns="http://www.w3.org/1999/html">
 <head >
     <meta charset="UTF-8">
     <title>Dashboard Home Page</title>
@@ -8,14 +8,14 @@
 <body>
 
 <!-- End Navbar -->
-<div class="content" style=" zoom: 90%; display:none; position: relative; top:100px; left:-10%; background-color: white; min-width: 120%; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-top-left-radius: 20px;" >
+<div class="content" style="  display:none; position: relative; top:-100px; background-color: white;  border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-top-left-radius: 20px;" >
     <div class="container-fluid">
 
         <div class="row page-header" style="background-color: white;" >
             <h1 style=" position:relative; left:50px; right:-20px;"><b style=" position:relative; right:-20px; opacity: 1; mix-blend-mode: normal; color: rgb(0, 0, 0); font-size: 36px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; text-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1.16667px; width: 597px; height: 41px; transform: rotate(0deg) translate(37px, 138px) rotate(0deg); position: relative; left:-0.5%;">eFile HOMEPAGE</b></h1>
 
 
-           <div class="row " style=" border-color:black; border-width: 1px; border:solid; position: relative; top:-20%; right:-25px; color: black; background-color: rgb(212, 135, 137); max-width: 98%; min-height: 40px; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;" >
+           <div class="row " style=" border-color:black; border-width: 1px; border:solid; position: relative; top:-20%; right:-25px; color: black; background-color: rgb(212, 135, 137);  min-height: 55px; max-width: 90%; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;" >
 
                 <div style="position: relative; bottom: -5px; right:-20px;">
                     <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
@@ -33,7 +33,6 @@
 
 
         <!-- start of main page content -->
-        <div class="container-fluid">
 
             <!-- star of row 1 -->
             <div class="row" id="dashboard-row1">
@@ -48,7 +47,7 @@
                                 <div class="col-sm-4" style="position: relative; top:10px;">
                                     <h4 class="card-title"><b>FILINGS/APPLICATIONS</b> </h4>
                                 </div>
-                                <div class="col-sm-2" style="position: relative;right:-31.5%;">
+                                <div class="col-sm-2" style="position: relative; ">
                                     <div class="form-group" ><button  style=" margin-top: 10px; background-color: #186A04; color: white; border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;" class="btn" type="button" value="New Applicaton"><a  style="text-decoration: none; color: white; position: relative;" href="/application/start/?trademarkID=new"><i class="material-icons" >note_add</i></a><b><a  style="text-decoration: none; color: white; position: relative; top:-5px;" href="/application/start/?trademarkID=new"> &nbsp;&nbsp;New Applicaton&nbsp;</a></b></button></div>
                                 </div>
                             </div>
@@ -195,7 +194,7 @@
                             <div class="card"  style=" min-height: 70px; min-width: 200px; max-width:245px; position: relative; right:-50px; top:-20px;">
                                 <div class="row" style="position: relative; right:-30px; bottom:-10px;">
 
-                                    <input type="radio" id="GuidedView" name="view-type" > <label><b>Guided View </b></label>
+                                    <input type="radio" id="GuidedView" name="view-type" checked > <label><b>Guided View </b></label>
                                 </div>
 
                                 <div class="row" style="position: relative; right:-30px; bottom: -10px;">
@@ -234,8 +233,6 @@
 
 
 
-
-        </div>
 
     </div> <!-- end of container fluid -->
 </div>
@@ -338,10 +335,6 @@
                 $('.notifications').fadeIn(500);
             }, 500);
 
-            setTimeout(function() {
-                // after 1000 ms we add the class animated to the login/register card
-                $('.page-alert').fadeIn(1000);
-            }, 5000);
 
         }, 500);
 
@@ -351,27 +344,6 @@
             //alert(item.optA);
         //});
 
-
-
-
-
-
-
-
-
-
-
-        var dataSetFilings = [
-
-
-            [ "3477866", "3477866", "<a href=\"#mark-preview-modal\" data-toggle=\"modal\" data-target=\"#mark-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit trademarks-view\"><i class=\"material-icons\">dvr</i></a>\n" +
-            "                                                <input style=\"display: none;\" value=\"../resources/data_images/tesla-tm.jpg\">"  ,"Tesla Inc", "REGISTERED" ],
-            [ "2343555", "2343555","<a href=\"#mark-preview-modal\" data-toggle=\"modal\" data-target=\"#mark-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit trademarks-view\"><i class=\"material-icons\">dvr</i></a>\n" +
-            "                                                <input style=\"display: none;\" value=\"../resources/data_images/vakker.png\">" ,"Bao Kun", "REPORT COMPLETED SUSPENSION CHECK - CASE STILL SUSPENDED. " ]
-
-
-
-            ];
         var dataSetFilings2 = [
 
 
@@ -391,22 +363,6 @@
         } );
 
 
-
-        var dataSetActions = [
-
-
-            [ "3477866", "3477866", "<a href=\"#mark-preview-modal\" data-toggle=\"modal\" data-target=\"#mark-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit trademarks-view\"><i class=\"material-icons\">dvr</i></a>\n" +
-            "                                                <input style=\"display: none;\" value=\"../resources/data_images/tesla-tm.jpg\">"  ,"Tesla Inc", "12/3/2018", "Abandoned","<a href=\"#mark-preview-modal\"  style=\"max-width: 70px;\"  data-toggle=\"modal\" data-target=\"#action-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit actions-view\">File a Petition<br> to Review</a>" ],
-            [ "87653515", "87653515", "<a href=\"#mark-preview-modal\" data-toggle=\"modal\" data-target=\"#mark-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit trademarks-view\"><i class=\"material-icons\">dvr</i></a>\n" +
-            "                                                <input style=\"display: none;\" value=\"../resources/data_images/nike-tm.jpg\">"  ,"Nike. Inc", "1/27/2020", "Appeal Actions Non-Final.","<a href=\"#mark-preview-modal\"  style=\"max-width: 70px;\"  data-toggle=\"modal\" data-target=\"#action-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit actions-view\">Respond to<br> Office Actions</a>" ],
-            [ "87452125", "87452125", "<a href=\"#mark-preview-modal\" data-toggle=\"modal\" data-target=\"#mark-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit trademarks-view\"><i class=\"material-icons\">dvr</i></a>\n" +
-            "                                                <input style=\"display: none;\" value=\"../resources/data_images/jump.png\">"  ,"antonio cirillo, DBA gui.ar.lab.srls", "11/11/2018", "Abandoned","<a href=\"#mark-preview-modal\"  style=\"max-width: 70px;\"  data-toggle=\"modal\" data-target=\"#action-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit actions-view\">File a Petition<br> to Review</a>" ],
-            [ "87663325", "87663325","<a href=\"#mark-preview-modal\" data-toggle=\"modal\" data-target=\"#mark-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit trademarks-view\"><i class=\"material-icons\">dvr</i></a>\n" +
-            "                                                <input style=\"display: none;\" value=\"../resources/data_images/zero30.jpg\">" ,"Barstool Sports, Inc", "1/13/2019","Non-Final Action Issued.", "<a href=\"#mark-preview-modal\"  style=\"max-width: 50px;\" data-toggle=\"modal\" data-target=\"#action-preview-modal\" class=\"btn btn-link btn-warning btn-just-icon edit actions-view\">Respond to <br>Office Actions</a>" ]
-
-
-
-        ];
         var dataSetActions2 = [
 
         ];
