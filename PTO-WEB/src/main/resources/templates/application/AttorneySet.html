@@ -209,7 +209,7 @@
                                         </span>
 
                                         <div th:attr="id=${lawyer.lastName}+${lawyer.firstName}+'1'" class="collapse" aria-labelledby="headingTwoAddress" data-parent="#accordionExample" style="max-width: 850px;">
-                                            <div class="card-body">
+                                            <div class="card-body contact-field-card-body" >
 
                                                 <span style="position: relative; right:-30px;" th:text="${lawyer.address}+' '+${lawyer.city}+', '+${lawyer.state}+' '+${lawyer.zipcode}"> 1115 Reserve Champion Drive, Rockville MD 20850</span>
 
@@ -223,7 +223,7 @@
                                             </span>
 
                                             <div th:attr="id=${lawyer.lastName}+${lawyer.firstName}+'2'" class="collapse" aria-labelledby="headingTwoAffiliation" data-parent="#accordionExample" style="max-width: 850px;">
-                                                <div class="card-body">
+                                                <div class="card-body contact-field-card-body" >
 
                                                     <img th:attr="src=${lawyer.getBarCertificateImageKey()}"/>
 
