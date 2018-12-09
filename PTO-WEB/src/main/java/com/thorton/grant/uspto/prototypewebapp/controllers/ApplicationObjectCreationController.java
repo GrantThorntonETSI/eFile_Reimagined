@@ -267,6 +267,16 @@ public class ApplicationObjectCreationController {
             lawyer.setBarJurisdiction(newAttorneyContactFormDTO.getAttorneyAffiliation());
         }
 
+
+
+        // check if managed contact should be added to PTOUser
+        if(ptoUser.findManagedContactByDisplayName(lawyer.getFirstName()+" "+lawyer.getLastName()) == null && ptoUser.findManagedContactByEmail(lawyer.getEmail()) == null){
+            ManagedContact newContact = createCopyAttorneyInfo4ManagedContact(lawyer);
+            ptoUser.addManagedContact(newContact);
+            ptoUserService.save(ptoUser);
+
+        }
+
         baseTrademarkApplication.addAvailableLawyer(lawyer);
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
@@ -570,7 +580,13 @@ public class ApplicationObjectCreationController {
         model.addAttribute("myOwnerContacts", contactsDisplayDTO);
 
 
+        // check if managed contact should be added to PTOUser
+        if(ptoUser.findManagedContactByDisplayName(owner.getOwnerDisplayname()) == null && ptoUser.findManagedContactByEmail(owner.getEmail()) == null){
+            ManagedContact newContact = createCopyOwnerInfo4ManagedContact(owner);
+            ptoUser.addManagedContact(newContact);
+            ptoUserService.save(ptoUser);
 
+        }
 
 
         return "forward:/application/OwnerSetView/?trademarkID="+newOwnerContactFormDTO.getAppInternalID();
