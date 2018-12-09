@@ -583,4 +583,72 @@ public class ApplicationObjectCreationController {
 
 
 
+    //////////////////////////////////////////////////////////////////////////////////
+    // deep copy of field value to managedContact object
+    //////////////////////////////////////////////////////////////////////////////////
+    private ManagedContact createCopyAttorneyInfo4ManagedContact(Lawyer ptoUser){
+
+        ManagedContact contact = new ManagedContact();
+        /////////////////////////////////////////////////////////////////
+        // copy over contact's lawyer's personal info
+        /////////////////////////////////////////////////////////////////
+        contact.setFirstName(ptoUser.getFirstName());
+        contact.setLastName(ptoUser.getLastName());
+        contact.setMidlleName(ptoUser.getMidlleName());
+        contact.setCountry(ptoUser.getCountry());
+        contact.setAddress(ptoUser.getAddress());
+        contact.setDisplayName(ptoUser.getFirstName()+ " "+ptoUser.getLastName());
+        contact.setContactType("Individual");
+
+        contact.setCity(ptoUser.getCity());
+        contact.setState(ptoUser.getState());
+        contact.setZipcode(ptoUser.getZipcode());
+        contact.setPrimaryPhonenumber(ptoUser.getPrimaryPhonenumber());
+        contact.setEmail(ptoUser.getEmail());
+        //////////////////////////////////////////////////////////////////
+        // copy over contact's professional info
+        //////////////////////////////////////////////////////////////////
+
+        return contact;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    // deep copy of field value to managedContact object
+    //////////////////////////////////////////////////////////////////////////////////
+    private ManagedContact createCopyOwnerInfo4ManagedContact(Owner ptoUser){
+
+        ManagedContact contact = new ManagedContact();
+        /////////////////////////////////////////////////////////////////
+        // copy over contact's lawyer's personal info
+        /////////////////////////////////////////////////////////////////
+        contact.setFirstName(ptoUser.getFirstName());
+        contact.setLastName(ptoUser.getLastName());
+        contact.setMidlleName(ptoUser.getMidlleName());
+        contact.setCountry(ptoUser.getCountry());
+        contact.setAddress(ptoUser.getAddress());
+        contact.setEntityName(ptoUser.getOwnerName());
+        if(contact.getFirstName() != null) {
+            contact.setDisplayName(ptoUser.getFirstName() + " " + ptoUser.getLastName());
+            contact.setContactType("Individual");
+        }
+        else{
+            contact.setDisplayName(ptoUser.getOwnerName());
+            contact.setContactType("Entity");
+        }
+
+        contact.setCity(ptoUser.getCity());
+        contact.setState(ptoUser.getState());
+        contact.setZipcode(ptoUser.getZipcode());
+        contact.setPrimaryPhonenumber(ptoUser.getPrimaryPhonenumber());
+        contact.setEmail(ptoUser.getEmail());
+        //////////////////////////////////////////////////////////////////
+        // copy over contact's professional info
+        //////////////////////////////////////////////////////////////////
+
+        return contact;
+    }
+
+
+
+
 }
