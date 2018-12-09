@@ -27,6 +27,11 @@ public class Lawyer extends Contact {
     private Date BarAdmissionDate;
     private String BarCertificateImageKey; // its the name of the file
 
+    private String CanadianAgentName;
+    private boolean isApplicantCA;
+
+
+
 
     private String address1;
     private String address2;
@@ -187,6 +192,23 @@ public class Lawyer extends Contact {
 
     public void setBarCertificateImageKey(String barCertificateImageKey) {
         BarCertificateImageKey = barCertificateImageKey;
+    }
+
+
+    public String getCanadianAgentName() {
+        return CanadianAgentName;
+    }
+
+    public void setCanadianAgentName(String canadianAgentName) {
+        CanadianAgentName = canadianAgentName;
+    }
+
+    public boolean isApplicantCA() {
+        return isApplicantCA;
+    }
+
+    public void setApplicantCA(boolean applicantCA) {
+        isApplicantCA = applicantCA;
     }
 
     @Override
