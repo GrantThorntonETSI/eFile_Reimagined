@@ -77,13 +77,6 @@ public class ApplicationObjectCreationController {
                                       BindingResult result,
                                       Errors errors) {
 
-        System.out.println("11111111111111111111111111111111111111111111");
-        System.out.println("attorney add module !!!!!!!!");
-        System.out.println("11111111111111111111111111111111111111111111");
-
-        System.out.println("app inernal id: "+newAttorneyContactFormDTO.getAppInternalID());
-        // is this even necessary ..since this is added to the PTO user object ???
-
 
         // create a new application and tie it to user then save it to repository
         // create attorneyDTO + to model
@@ -111,16 +104,7 @@ public class ApplicationObjectCreationController {
         // set all fields from DTO
         ////////////////////////////////////////////////////////////////////////
         Lawyer lawyer = new Lawyer();
-        //owner.setOwnerEnityType(baseTrademarkApplication.getOwnerType());
-        //owner.setOwnersubType(baseTrademarkApplication.getOwnerSubType());
-        //baseTrademarkApplication.setOwnerSubType(null);
-        //baseTrademarkApplication.setOwnerType(null);
-        //
-        ////////////////////////////////////////////////////////////////////////
-        // transfer and reset owner type and subtype
-        ////////////////////////////////////////////////////////////////////////
-        // required field no null checks
-        ////////////////////////////////////////////////////////////////////////
+
 
         if(newAttorneyContactFormDTO.getFirstName()!= null){
             if(baseTrademarkApplication.findAttorneyContactByDisplayName(newAttorneyContactFormDTO.getFirstName()+ " "+newAttorneyContactFormDTO.getLastName()) != null){
@@ -152,10 +136,6 @@ public class ApplicationObjectCreationController {
                 return "application/AttorneyStart";
                 // return to  ownerStartPage with error message
             }
-
-
-            //owner.setOwnerDisplayname(newOwnerContactFormDTO.getFirstName()+ " "+newOwnerContactFormDTO.getLastName());
-            //owner.setFirstName(newOwnerContactFormDTO.getFirstName());
 
             lawyer.setFirstName(newAttorneyContactFormDTO.getFirstName());
 
@@ -230,11 +210,6 @@ public class ApplicationObjectCreationController {
                 // return to  ownerStartPage with error message
             }
 
-
-            //owner.setOwnerDisplayname(newOwnerContactFormDTO.getFirstName()+ " "+newOwnerContactFormDTO.getLastName());
-            //owner.setFirstName(newOwnerContactFormDTO.getFirstName());
-
-
             lawyer.setEmail(newAttorneyContactFormDTO.getAttorneyEmail());
 
         }
@@ -244,18 +219,12 @@ public class ApplicationObjectCreationController {
 
         if(file != null){
 
-            System.out.println("555555555555555555555555555555555555555555555");
               if(file.isEmpty() == false) {
                   storageService.store(file);
                   lawyer.setBarCertificateImageKey("/files/"+storageService.getCounter()+file.getOriginalFilename());
               }
 
         }
-        else{
-            System.out.println("777777777777777777777777777777777777777777777777777777");
-        }
-
-
 
         if(newAttorneyContactFormDTO.getAttorneyPhone() != null){
             lawyer.setPrimaryPhonenumber(newAttorneyContactFormDTO.getAttorneyPhone());
@@ -266,6 +235,9 @@ public class ApplicationObjectCreationController {
         if(newAttorneyContactFormDTO.getAttorneyAffiliation()!= null){
             lawyer.setBarJurisdiction(newAttorneyContactFormDTO.getAttorneyAffiliation());
         }
+
+
+
 
 
 
@@ -296,22 +268,6 @@ public class ApplicationObjectCreationController {
                                    BindingResult result,
                                    Errors errors) {
 
-
-
-        // check if owner already exists
-
-
-
-        // reset application entity type and subtype
-        // transfer those entity type and subtype to the new owner object
-
-
-
-        System.out.println("11111111111111111111111111111111111111111111");
-        System.out.println("owner add module !!!!!!!!");
-        System.out.println("11111111111111111111111111111111111111111111");
-
-        System.out.println("app inernal id: "+newOwnerContactFormDTO.getAppInternalID());
 
         // create a new application and tie it to user then save it to repository
         // create attorneyDTO + to model

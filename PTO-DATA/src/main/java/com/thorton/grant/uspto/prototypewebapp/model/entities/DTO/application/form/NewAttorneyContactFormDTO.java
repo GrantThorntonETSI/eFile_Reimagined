@@ -40,6 +40,9 @@ public class NewAttorneyContactFormDTO {
     private String attorneyBarMembershipNumber;
     private String attorneyBarAdmissionDate;
 
+    private String attorneyCAagentName;
+    private boolean isApplicantCA;
+
 
     private String appInternalID;
 
@@ -210,5 +213,21 @@ public class NewAttorneyContactFormDTO {
 
     public void setAppInternalID(String appInternalID) {
         this.appInternalID = appInternalID;
+    }
+
+    public String getAttorneyCAagentName() {
+        return attorneyCAagentName;
+    }
+
+    public void setAttorneyCAagentName(String attorneyCAagentName) {
+        this.attorneyCAagentName = attorneyCAagentName;
+    }
+
+    public boolean isApplicantCA() {
+        return isApplicantCA;
+    }
+
+    public void setApplicantCA(boolean applicantCA) {
+        isApplicantCA = applicantCA;
     }
 }
