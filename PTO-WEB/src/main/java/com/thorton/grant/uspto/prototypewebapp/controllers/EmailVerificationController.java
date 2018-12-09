@@ -129,6 +129,11 @@ public class EmailVerificationController {
              // password matches confirms checked with js on previous page
              service.saveRegisteredUserCredential(userCredentials);
 
+        String server_message = "Registration Compelete. You can now sign into the application.";
+        //redirectAttributes.addFlashAttribute("message",server_message );
+        model.addAttribute("message", server_message);
+
+
 
 
 
