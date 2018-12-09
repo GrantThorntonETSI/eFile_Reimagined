@@ -18,6 +18,7 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.Managed
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 import com.thorton.grant.uspto.prototypewebapp.service.storage.StorageService;
+import com.thorton.grant.uspto.prototypewebapp.service.storage.error.StorageException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -220,8 +221,15 @@ public class ApplicationObjectCreationController {
         if(file != null){
 
               if(file.isEmpty() == false) {
-                  storageService.store(file);
                   lawyer.setBarCertificateImageKey("/files/"+storageService.getCounter()+file.getOriginalFilename());
+                  try {
+                      storageService.store(file);
+                  }
+                  catch ( StorageException ex){
+                      model.addAttribute("message", "ERROR: Attorney Credentials upload failed due to error: "+ex );
+                      return "forward:/application/start/?trademarkID="+trademarkInternalID;
+
+                  }
               }
 
         }
@@ -233,7 +241,7 @@ public class ApplicationObjectCreationController {
             lawyer.setDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber());
         }
         if(newAttorneyContactFormDTO.getAttorneyAffiliation()!= null){
-            lawyer.setBarJurisdiction(newAttorneyContactFormDTO.getAttorneyAffiliation());
+            lawyer.setBarJurisdiction(newAttorneyContactFormDTO.getAttorneyBarJurisdiction());
         }
 
 
