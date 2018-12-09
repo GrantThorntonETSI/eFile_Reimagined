@@ -5,6 +5,7 @@ import com.thorton.grant.uspto.prototypewebapp.config.host.bean.endPoint.HostBea
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.ManagedContact;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 
@@ -179,6 +180,12 @@ public class UserAccountService extends BaseRESTapiService {
         ////////////////////////////////////////////////
 
 
+        if(profileSet == true){
+            ManagedContact newContact = createCopyPTOUserInfo4ManagedContact(ptoUser);
+            ptoUser.addManagedContact(newContact);
+
+        }
+
         ////////////////////////////////////////////////
         // set ProfileComplete status and save user data
         ////////////////////////////////////////////////
@@ -246,6 +253,40 @@ public class UserAccountService extends BaseRESTapiService {
             // ...
         }
     }
+
+
+    //////////////////////////////////////////////////////////////////////////////////
+    // deep copy of field value to managedContact object
+    //////////////////////////////////////////////////////////////////////////////////
+    private ManagedContact createCopyPTOUserInfo4ManagedContact(PTOUser ptoUser){
+
+        ManagedContact contact = new ManagedContact();
+        /////////////////////////////////////////////////////////////////
+        // copy over contact's lawyer's personal info
+        /////////////////////////////////////////////////////////////////
+        contact.setFirstName(ptoUser.getFirstName());
+        contact.setLastName(ptoUser.getLastName());
+        contact.setMidlleName(ptoUser.getMidlleName());
+        contact.setCountry(ptoUser.getCountry());
+        contact.setAddress(ptoUser.getAddress());
+        contact.setDisplayName(ptoUser.getFirstName()+ " "+ptoUser.getLastName());
+        contact.setContactType("Individual");
+
+
+
+
+        contact.setCity(ptoUser.getCity());
+        contact.setState(ptoUser.getState());
+        contact.setZipcode(ptoUser.getZipcode());
+        contact.setPrimaryPhonenumber(ptoUser.getPrimaryPhonenumber());
+        contact.setEmail(ptoUser.getEmail());
+        //////////////////////////////////////////////////////////////////
+        // copy over contact's professional info
+        //////////////////////////////////////////////////////////////////
+
+        return contact;
+    }
+
 
 
 }
