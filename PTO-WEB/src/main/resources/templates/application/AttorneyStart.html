@@ -257,6 +257,8 @@
 <script>
 
     var nextLinkURL = "../../application/AttorneySet/?trademarkID="+appInternalID;
+    var prevLinkURL = "../../accounts/dashboard";
+
     var nextLinkURLAttorneyFalse = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
 
@@ -306,6 +308,8 @@
 
 
         $('[data-toggle="tooltip"]').tooltip();
+        $('#prevLink').attr("href",prevLinkURL);
+        $('#prevLinkIcon').attr("href",prevLinkURL);
 
         ////////////////////////////////////////////////////////////
         // show and hide attorney form actions

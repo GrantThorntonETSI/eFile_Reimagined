@@ -365,6 +365,33 @@
     </main>
 </div><!--END Tiles row-->
 
+<script th:inline="javascript">
+
+    /*<![CDATA[*/
+
+
+    var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
+
+    var host_name= /*[[${hostBean.host}]]*/ 'User Name';
+    var host_port= /*[[${hostBean.port}]]*/ 'User Name';
+
+
+    var host = host_name+":"+host_port;
+
+
+    /*]]>*/
+</script>
+
+
+
+<script>
+
+    var nextLinkURL = "../../application/AttorneySet/?trademarkID="+appInternalID;
+    var prevLinkURL = "../../application/OwnerSetView/?trademarkID="+appInternalID;
+
+</script>
+
+
 <script>
 
 
@@ -393,6 +420,9 @@
 
 
         $('[data-toggle="tooltip"]').tooltip();
+
+        $('#prevLink').attr("href",prevLinkURL);
+        $('#prevLinkIcon').attr("href",prevLinkURL);
     });
 </script>
 
