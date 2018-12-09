@@ -144,7 +144,7 @@
                                 <b class="card-title" style=""><a style="font-size: x-small;margin-top: 50px;" href="/registration">New User?</a></b>
                             </div>
 
-                            <div class="card-body " style="padding-top: 20px;position:relative;top: 20px;  min-height: 200px;">
+                            <div class="card-body " style="padding-top: 20px;position:relative;top: 20px;  min-height: 200px; border: none;">
                                 <span class="card-description" style="position: relative; right:-22%; top:-10px; "><h5><b>Existing User</b></h5></span>
 
                                 <span class="bmd-form-group" style="position: relative; top:-10%;" >
@@ -154,7 +154,7 @@
                                           <i class="material-icons">face</i><b style="padding-left: 10px; position: relative; top:-5px;">Email Address</b>
                                       </span>
                                     </div>
-                                    <input style="margin: auto; min-width: 265px; position:relative; left:40%; right:40%; margin-top: 10px; margin-bottom: 10px; border-top-right-radius: 10px; border-top-left-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;" type="email" class="form-control" name="username" placeholder="Email...">
+                                    <input style="margin: auto; min-width: 265px; position:relative; left:40%; right:40%; margin-top: 10px; margin-bottom: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;" type="email" class="form-control" name="username" placeholder="Email...">
                                   </div>
                                 </span>
                                 <span class="bmd-form-group" style="margin:auto;">
@@ -164,15 +164,21 @@
                                           <i class="material-icons">vpn_key</i><b style="padding-left: 10px; position: relative; top:-5px;">Password</b>
                                       </span>
                                     </div>
-                                    <input  style="margin:auto; min-width: 265px; position:relative; left:40%; margin-top: 10px; border-top-right-radius: 10px; border-top-left-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;" type="password" class="form-control" name="password" placeholder="Password...">
+                                    <input  style="margin:auto; min-width: 265px; position:relative; left:40%; margin-top: 10px; border-top-right-radius: 5px; border-top-left-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;" type="password" class="form-control" name="password" placeholder="Password...">
                                   </div>
                                 </span>
+
+                                <span class="bmd-form-group" style="margin:auto; position: relative; bottom: -40px;">
+                                     <div class="input-group" >
+                                        <button style="min-width: 265px; margin:auto; position:relative; right:-107px; border-top-right-radius: 5px; border-top-left-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;background-color: #004c97; color: whitesmoke; " class="btn" type="submit" value="Sign In"><i class="material-icons" style="padding-right: 70px; ">input</i><b style="position: relative; left:-45px; top:-5px;"> &nbsp;  Sign In&nbsp;</b>
+                                        </button>
+                                     </div>
+                                </span>
                             </div>
-                            <div class="card-footer justify-content-center" style="padding-top: 20px; padding-bottom:50px; margin-bottom: 10px; background-color: white; border-top: none; position:relative;top: 12px;  border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                            <div class="card-footer justify-content-center" style=" padding-bottom:50px; margin-bottom: 10px; background-color: white; border-top: none; position:relative;top: 12px;  border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; z-index: -1;">
 
 
 
-                                <div class="form-group" ><button style="position:relative; right:-93px; min-width: 262px; background-color: #004c97; color: whitesmoke; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px;" class="btn" type="submit" value="Sign In"><i class="material-icons" style="position: relative; left:-70px; ">input</i><b style="position: relative; left:-20px; top:-5px;"> &nbsp;  Sign In&nbsp;</b></button></div>
 
                                 <!-- Login Form -->
                                 <div  style="color: red; position: relative; top:20%; right:-22%;" th:if="${param.error}">
