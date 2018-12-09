@@ -7,6 +7,7 @@ import com.thorton.grant.uspto.prototypewebapp.service.storage.properties.Storag
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
+
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,9 +24,16 @@ public class FileSystemStorageService implements StorageService {
 
     private final Path rootLocation;
 
+    private int fileCounter = 0;
+
     @Autowired
     public FileSystemStorageService(StorageProperties properties) {
         this.rootLocation = Paths.get(properties.getLocation());
+    }
+
+    @Override
+    public int getCounter() {
+        return 0;
     }
 
     @Override
@@ -34,7 +42,13 @@ public class FileSystemStorageService implements StorageService {
             //if (file.isEmpty()) {
             //   throw new StorageException("Failed to store empty file " + file.getOriginalFilename());
             //}
-            Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
+
+            Files.copy(file.getInputStream(), this.rootLocation.resolve(fileCounter+file.getOriginalFilename()));
+            fileCounter++;
+
+            //Path source = this.rootLocation.resolve(file.getOriginalFilename());
+            //Files.move(source, source.resolveSibling(filePreFix+"-attorney-bar-credentials.jpg"));
+
         } catch (IOException e) {
             throw new StorageException("Failed to store file " + file.getOriginalFilename(), e);
         }
@@ -54,6 +68,7 @@ public class FileSystemStorageService implements StorageService {
 
     @Override
     public Path load(String filename) {
+
         return rootLocation.resolve(filename);
     }
 

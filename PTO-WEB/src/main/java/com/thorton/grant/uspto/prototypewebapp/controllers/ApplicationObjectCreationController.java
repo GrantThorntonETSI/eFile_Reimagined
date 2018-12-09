@@ -247,7 +247,7 @@ public class ApplicationObjectCreationController {
             System.out.println("555555555555555555555555555555555555555555555");
               if(file.isEmpty() == false) {
                   storageService.store(file);
-                  lawyer.setBarCertificateImageKey("/files/"+file.getOriginalFilename());
+                  lawyer.setBarCertificateImageKey("/files/"+storageService.getCounter()+file.getOriginalFilename());
               }
 
         }
