@@ -802,6 +802,7 @@
                         <div class="col-sm-4">
 
                             <div class="form-group">
+                                <!--affiliation status  -->
                                 <label class="small" style="margin-top: 10px;"><b>Affiliation</b></label>
                                 <select  class="form-control" id="attorney-bar-standing"  th:field="*{attorneyAffiliation}"  name="affiliation"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                     <option value="none"><b>select</b></option>
@@ -821,8 +822,9 @@
                             <div class="col-sm-4">
 
                                 <div class="form-group">
+                                    <!--bar jurisdiction -->
                                     <label class="small" style="margin-top: 10px;"><b>Bar Jurisdiction</b></label>
-                                    <select  class="form-control custom-select" th:field="*{attorneyState}"  id="attorney-bar-jurisdiction"  name="attorney-bar-jurisdiction" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                    <select  class="form-control custom-select" th:field="*{attorneyBarJurisdiction}"  id="attorney-bar-jurisdiction"  name="attorney-bar-jurisdiction" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                         <option  value="none"></option>
                                         <option  value="AL">Alabama</option>
                                         <option  value="AK">Alaska</option>
@@ -904,10 +906,11 @@
                         <div class="row" style="margin-left:15px; position: relative; top:-20px;">
 
                             <div class="col-sm-4">
-
+                                <!--bar membership number -->
                                 <div class="form-group">
                                     <label class="small" style="margin-top: 10px;"><b>Membership Number </b></label>
-                                    <input type="text" id="bar-membership-number"  name="bar-memebership-number" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+
+                                    <input type="text" id="bar-membership-number"  th:field="*{attorneyBarMembershipNumber}"  name="bar-memebership-number" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
                                 </div>
                             </div>
@@ -936,8 +939,9 @@
                             <div class="col-sm-4">
 
                                 <div class="form-group">
+                                    <!--bar membership date -->
                                     <label class="small" style="margin-top: 10px;"><b>Date of Admission </b></label>
-                                    <input type="date" id="bar-membership-date"  name="bar-memebership-date" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                    <input type="date" id="bar-membership-date" th:field="*{attorneyBarAdmissionDate}"  name="bar-memebership-date" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
                                 </div>
                             </div>
@@ -966,6 +970,7 @@
                             <div class="col-sm-4">
 
                                 <div class="form-group">
+
                                     <label class="small" style="margin-top: 10px;"><b>Acknowledgement of Certification in good standing </b></label>
                                     <b style="position: relative; left:-120px;"><input type="checkbox" id="user-accept-checkbox"  name="user-accept-checkbox" class="form-control" style="font-max-size: 3px;"> </b><p>I certify that this attorney is in good standing with a bar of the highest court of any U.S State, the District of Columbia, the U.S Commonwealths or U.S Territories.</p>
 
@@ -994,7 +999,7 @@
                         <div class="row" style="margin-left:15px; position: relative; top:-20px;">
 
                             <div class="col-sm-4">
-
+                                <!--bar certificate image key  no need for DTO mapping on this object-->
                                 <div class="form-group">
                                     <label class="small" style="margin-top: 10px;"><p  style="font-max-size: 3px;">Upload bar credentials, including certificate of good standing from highest court of a state, commonwealth, territory or possession, or of the District of Columbia evidencing that you are a memeber of the bar of such court and are in good standing.</p></label>
                                    <input type="file" id="file"  name="file" class="form-control">
@@ -1037,7 +1042,7 @@
 
                                 <div class="form-group">
                                     <label class="small" style="margin-top: 10px;"><b>Please select a name from the registered OED list from Canadian Trademark and Patent Agents</b></label>
-                                    <input class="form-control" name="query" id="ca-attornery-query" placeholder="Start typing something to search..." type="text">
+                                    <input class="form-control" name="query" id="ca-attornery-query" th:field="*{attorneyCAagentName}"  placeholder="Start typing something to search..." type="text">
 
                                 </div>
                             </div>
@@ -1104,7 +1109,7 @@
                         <div class="row" style="margin-left:15px; margin-top:10px;">
                             <div class="col-sm-1">
 
-                                <input type="radio" name="appilcantCATrue" id="applicantCATrue">
+                                <input type="radio" name="appilcantCATrue" th:field="*{applicantCA}"  value="true" id="applicantCATrue">
 
                             </div>
                             <div class="col-sm-2" >
@@ -1115,7 +1120,7 @@
                         <div class="row" style="margin-left:15px; margin-top: 10px;">
                             <div class="col-sm-1">
 
-                                <input type="radio" name="isApplicantCAFalse" id="applicantCAFalse"/>
+                                <input type="radio" th:field="*{applicantCA}"  name="isApplicantCAFalse"  value="false" id="applicantCAFalse"/>
 
                             </div>
                             <div class="col-sm-2">
