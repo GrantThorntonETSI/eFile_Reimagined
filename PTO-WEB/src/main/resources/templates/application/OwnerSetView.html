@@ -219,6 +219,26 @@
                                     </div>
                                 </div>
 
+                                <th:block th:each="partner : ${owner.partners}">
+                                    <div class="row" style="position: relative; right:-111px;">
+                                                <span class="collapsed"  data-toggle="collapse" th:attr="data-target='#'+${owner.id}+${partner.getPartnerCollapseID()}+'c'"  aria-expanded="false" aria-controls="collapseTwoAffiliation">
+                                                    <i class="material-icons">keyboard_arrow_right</i> <b style="position: relative; top:-7px;">Partner Info</b>
+                                                </span>
+
+                                        <div th:attr="id=${owner.id}+${partner.getPartnerCollapseID()}+'c'"  class="collapse" aria-labelledby="headingTwoAffiliation" data-parent="#accordionExample" style="max-width: 850px;">
+                                            <div class="card-body contact-field-card-body" >
+                                                <span>Partner name:</span>
+                                                <span style="position: relative; right:-30px;"  th:text="${partner.partnerDisplayName}">Washington Dc Bar Association. Maryland Bar Association.</span><br>
+                                                <span>Partner Address:</span>
+                                                <span style="position: relative; right:-30px;"  th:text="${partner.partnerDisplayName}">Washington Dc Bar Association. Maryland Bar Association.</span><br>
+                                                <span>Partner email:</span>
+                                                <span style="position: relative; right:-30px;"  th:text="${partner.partnerDisplayName}">Washington Dc Bar Association. Maryland Bar Association.</span><br>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </th:block>
+
                                 <div class="row" style="position: relative; right:-137px; margin-top: 10px;">
                                     <b>Phone Number:</b> <input type="text" style="border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;"  th:value="${owner.primaryPhonenumber}" >
 

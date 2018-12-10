@@ -512,6 +512,8 @@ public class ApplicationObjectCreationController {
             Partner newPartner = new Partner();
             if(partner.getFirstName() != null){
                 newPartner.setPartnerFirstName(partner.getFirstName());
+                newPartner.setPartnerDisplayName(partner.getFirstName()+" "+partner.getLastName());
+                newPartner.setPartnerCollapseID(partner.getFirstName()+partner.getLastName());
 
             }
             if(partner.getLastName() != null){
@@ -528,6 +530,8 @@ public class ApplicationObjectCreationController {
             }
             if(partner.getPartnerName() != null){
                 newPartner.setPartnerName(partner.getPartnerName());
+                newPartner.setPartnerDisplayName(partner.getPartnerName());
+                newPartner.setPartnerCollapseID(partner.getPartnerName());
             }
             if(partner.getState() != null){
                 newPartner.setGetOrganizationState(partner.getState());
@@ -586,6 +590,7 @@ public class ApplicationObjectCreationController {
             ptoUserService.save(ptoUser);
 
         }
+
 
 
         return "forward:/application/OwnerSetView/?trademarkID="+newOwnerContactFormDTO.getAppInternalID();

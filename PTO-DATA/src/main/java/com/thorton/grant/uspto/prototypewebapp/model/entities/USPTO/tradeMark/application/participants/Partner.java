@@ -22,6 +22,9 @@ public class Partner {
   private String partnerLastName;
   private String partnerMiddleName;
 
+  private String partnerDisplayName;
+
+  private String partnerCollapseID;
 
 
 
@@ -104,5 +107,21 @@ public class Partner {
 
     public void setPartnerMiddleName(String partnerMiddleName) {
         this.partnerMiddleName = partnerMiddleName;
+    }
+
+    public String getPartnerDisplayName() {
+        return partnerDisplayName;
+    }
+
+    public void setPartnerDisplayName(String partnerDisplayName) {
+        this.partnerDisplayName = partnerDisplayName;
+    }
+
+    public String getPartnerCollapseID() {
+        return partnerCollapseID;
+    }
+
+    public void setPartnerCollapseID(String partnerCollapseID) {
+        this.partnerCollapseID = partnerCollapseID;
     }
 }
