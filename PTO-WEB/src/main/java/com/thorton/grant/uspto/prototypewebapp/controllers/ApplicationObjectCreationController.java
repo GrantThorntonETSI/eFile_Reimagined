@@ -513,12 +513,12 @@ public class ApplicationObjectCreationController {
             if(partner.getPartnerName() != ""){
                 newPartner.setPartnerName(partner.getPartnerName());
                 newPartner.setPartnerDisplayName(partner.getPartnerName());
-                newPartner.setPartnerCollapseID(partner.getPartnerName());
+                newPartner.setPartnerCollapseID(partner.getPartnerName().replaceAll("/[^A-Za-z0-9]/", ""));
             }
             if(partner.getFirstName() != "" ){
                 newPartner.setPartnerFirstName(partner.getFirstName());
                 newPartner.setPartnerDisplayName(partner.getFirstName()+" "+partner.getLastName());
-                newPartner.setPartnerCollapseID(partner.getFirstName()+partner.getLastName());
+                newPartner.setPartnerCollapseID((partner.getFirstName()+partner.getLastName()).replaceAll("/[^A-Za-z0-9]/", ""));
             }
             if(partner.getLastName() != ""){
                 newPartner.setPartnerLastName(partner.getLastName());
