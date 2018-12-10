@@ -131,7 +131,12 @@ h2 .glyphicon {
 .panel-heading {
 	background-image:none!important;
 }
-/* PROGRESS TRACKER */
+/* PROGRESS tracker */
+section .breadcrumb-steps {
+	color: #333333;
+	width: 100%;
+	font-size: 13px;
+}
 .breadcrumb-steps {
 	display: table;
 	margin: 0 0 40px 0;
@@ -140,30 +145,65 @@ h2 .glyphicon {
 	table-layout: fixed;
 	width: 100%;
 }
-ul {
-	list-style-image: url('../images/rounded-bullet.png');
-	list-style: disc;
+.breadcrumb-steps div {
+	padding: 0;
 }
-.breadcrumb-steps > li.active {
-	color: #fff;
-	text-shadow: rgba(0, 0, 0, 0.5) 0 1px 1px;
+.vertctr {
+	display:table;
+	height:100%;
 }
-.breadcrumb-steps > li.active, .breadcrumb-steps > li.done {
-	background-color: #009CDE;
-	border-bottom-color: #004C97;
+.breadcrumb-steps .active span {
+	text-shadow: #000 0 1px 1px;
+	-webkit-clip-path: polygon(20% 0%, 75% 0%, 100% 50%, 75% 100%, 20% 100%);
+	clip-path: polygon(20% 0%, 75% 0%, 100% 50%, 75% 100%, 20% 100%);
+	position: absolute;
+	left: -7px;
+	background-color:#004C97;
+	background-image: url('../images/stage-active.png');
+	background-position: right;
+	background-repeat: no-repeat;
+	line-height: 50px;
+	width: 35px;
+	text-align: center;
+	font-size: 26px;
 	font-weight: bold;
 }
-.breadcrumb-steps > li:first-child {
+.breadcrumb-steps span {
+	text-shadow: #000 0 1px 1px;
+	-webkit-clip-path: polygon(20% 0%, 75% 0%, 100% 50%, 75% 100%, 20% 100%);
+	clip-path: polygon(20% 0%, 75% 0%, 100% 50%, 75% 100%, 20% 100%);
+	position: absolute;
+	left: -7px;
+	background-color:#D9D9D6;
+	text-shadow: rgba(255, 255, 255, 0.5) 0 1px;
+	line-height: 50px;
+	width: 35px;
+	text-align: center;
+	font-size: 26px;
+	font-weight: bold;
+}
+.breadcrumb-steps .active {
+	color: #fff;
+	text-shadow: rgba(0, 0, 0, 0.5) 0 1px 1px;
+	background-color: #009CDE;
+	border-bottom-color: #003c70;
+	font-weight: bold;
+}
+div.breadcrumb-steps {
+	background-color: #1077b9;
+	border-bottom-color: #003c70;
+	font-weight: bold;
+}
+.breadcrumb-steps > div:first-child {
 	-webkit-border-radius: 4px 0 0 0;
 	-moz-border-radius: 4px 0 0 0;
 	border-radius: 4px 0 0 0;
 }
-.breadcrumb-steps > li {
+.breadcrumb-steps > div {
 	display: table-cell;
 	overflow: hidden;
 	vertical-align: middle;
 	height: 50px;
-	padding-right: 5px;
 	color: #999;
 	background-color: #f5f5f5;
 	font-size: 13px;
@@ -172,54 +212,22 @@ ul {
 	-webkit-box-shadow: inset -7px 0 10px -10px rgba(0, 0, 0, 0.5);
 	-moz-box-shadow: inset -7px 0 10px -10px rgba(0, 0, 0, 0.5);
 	box-shadow: inset -7px 0 10px -10px rgba(0, 0, 0, 0.5);
-	position:relative;
-}
-.breadcrumb-steps > li.active > span {
-	text-shadow: #000 0 1px 1px;
-	-webkit-clip-path: polygon(20% 0%, 75% 0%, 100% 50%, 75% 100%, 20% 100%);
-	clip-path: polygon(20% 0%, 75% 0%, 100% 50%, 75% 100%, 20% 100%);
-}
-.breadcrumb-steps > li.active > span, .breadcrumb-steps > li.done > span {
-	-webkit-clip-path: polygon(20% 0%, 75% 0%, 100% 50%, 75% 100%, 20% 100%);
-	clip-path: polygon(20% 0%, 75% 0%, 100% 50%, 75% 100%, 20% 100%);
-	background-color:#004C97;
-}
-.breadcrumb-steps > li > span {
-	line-height: 50px;
-	width: 50px;
-	padding-right: 15px;
-	float: left;
-	text-align: center;
-	font-size: 26px;
-	font-weight: bold;
-	-webkit-clip-path: polygon(20% 0%, 75% 0%, 100% 50%, 75% 100%, 20% 100%);
-	clip-path: polygon(20% 0%, 75% 0%, 100% 50%, 75% 100%, 20% 100%);
-	background-color:#D9D9D6;
-	position:absolute;
-	left:-10px;
-	top:0;
-}
-.breadcrumb-steps > li.active {
-	color: #fff;
-	text-shadow: rgba(0, 0, 0, 0.5) 0 1px 1px;
-}
-.breadcrumb-steps > li > p {
-	display: table-cell;
-	vertical-align: middle;
-	float:right;
 }
 .steps p {
-	font-size: .58em;
-	left: -11px;
-	margin:0;
-	position:relative;
+	font-size: .8em;
+	line-height: 1.2em;
+	display: table-cell;
+	vertical-align: middle;
+	padding-right:.4em
 }
-.breadcrumb-steps > li:last-child {
+.breadcrumb-steps > div:last-child {
 	-webkit-border-radius: 0 4px 0 0;
 	-moz-border-radius: 0 4px 0 0;
 	border-radius: 0 4px 0 0;
 	box-shadow: none;
 }
+/* END progress tracker*/
+
 /* HEADLINE BACKGROUND */
 .card-text {
 	margin-bottom:24px;

@@ -6,7 +6,7 @@
     <title></title>
 </head>Mark Details
 <body>
-<div class="row content" style="position: relative; right:-30px;">
+<div class="row content" style="position: relative; ">
     <main class="col-xs-12 col-sm-8 col-lg-6" style="min-width: 860px;">
         <div class="row sticky" id="contacts-ui" style=" display:none; position: fixed; top:500px; right:400px;  max-height: 10px;">
 
@@ -81,33 +81,56 @@
         <!--START Content Div-->
         <div class="row" style="position: relative; top:-235px; left:-333px;">
             <div class="col-xs-12 text-left">
-                <section class="steps">
-                    <ul class="breadcrumb-steps">
-                        <li class="one  row">
-                            <span class="col-xs-6">1</span>
-                            <p class="col-xs-6">Your details</p>
-                        </li>
-                        <li class="two active row">
-                            <span class="col-xs-6">2</span>
-                            <p class="col-xs-6">Trademark details</p>
-                        </li>
-                        <li class="three row">
-                            <span class="col-xs-6">3</span>
-                            <p class="col-xs-6">Goods and services</p>
-                        </li>
-                        <li class="four row">
-                            <span class="col-xs-6">4</span>
-                            <p class="col-xs-6">Basis</p>
-                        </li>
-                        <li class="five row">
-                            <span class="col-xs-6">5</span>
-                            <p class="col-xs-6">Additional info</p>
-                        </li>
-                        <li class="six row">
-                            <span class="col-xs-66">6</span>
-                            <p class="col-xs-6">Confirm and pay</p>
-                        </li>
-                    </ul>
+
+                <section class="col-xs-12 steps breadcrumb-steps" style="position: relative; top:-10px; left:-60px;">
+                    <div class="col-xs-2 one active">
+                        <div class="col-xs-4">
+                            <span>1</span>
+                        </div>
+                        <div class="col-xs-8 vertctr">
+                            <p>Trade mark details</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 two">
+                        <div class="col-xs-4">
+                            <span>2</span>
+                        </div>
+                        <div class="col-xs-8 vertctr">
+                            <p>Goods and services</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 three">
+                        <div class="col-xs-4">
+                            <span>3</span>
+                        </div>
+                        <div class="col-xs-8 vertctr">
+                            <p>Similar trade mark(s)</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 four">
+                        <div class="col-xs-4">
+                            <span>4</span>
+                        </div>
+                        <div class="col-xs-8 vertctr">
+                            <p>Your details</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 five">
+                        <div class="col-xs-4">
+                            <span>5</span>
+                        </div>
+                        <div class="col-xs-8 vertctr">
+                            <p>Additional info</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 six">
+                        <div class="col-xs-4">
+                            <span>6</span>
+                        </div>
+                        <div class="col-xs-8 vertctr">
+                            <p>Confirm and pay</p>
+                        </div>
+                    </div>
                 </section>
                 <h1>Trademark Details</h1>
                 <p class="required"><span class="weight600">&#42; = Required</span></p>
@@ -149,209 +172,291 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="col-sm-12 col-md-6">
-                        <div class="panel panel-default nocontent" role="button" aria-label="select standard character mark">
-                            <div class="panel-heading">Standard Character</div>
-                            <div class="panel-body match">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-8">
+                                        <h3>Standard Character</h3>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <a href="/application/MarkExamples/?anchorID=top" target="_blank" class="right">Examples</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body nocontent match" role="button" aria-label="select standard character mark">
                                 <div class="col-xs-5">
                                     <img th:src="@{/resources/images/FontAwesome47-2.png}" alt="" class="img-responsive">
-
                                 </div>
                                 <div class="col-xs-7">
                                     <p class="right">Text only, with no particular stylization or font</p>
-                                    <a href="/application/MarkExamples" target="_blank" class="right">Examples</a>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6">
-                        <div class="panel panel-default nocontent" role="button" aria-label="select stylized mark">
-                            <div class="panel-heading">Stylized</div>
-                            <div class="panel-body">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-8">
+                                        <h3>Stylized</h3>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <a href="/application/MarkExamples/?anchorID=stylized" target="_blank" class="right">Examples</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body nocontent" role="button" aria-label="select stylized mark">
                                 <div class="col-xs-5">
-                                    <img th:src="@{/resources/images/RetinaIcon-2.png}" alt="" class="img-responsive">
-
+                                   <img th:src="@{/resources/images/abc_lobster.gif}" alt="" class="img-responsive">
                                 </div>
                                 <div class="col-xs-7">
                                     <p class="right">Text in a particular style or font</p>
-                                    <a href="/application/MarkExamples" target="_blank" class="right">Examples</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6">
-                        <div class="panel panel-default nocontent" role="button" aria-label="select design only mark">
-                            <div class="panel-heading">Design Only</div>
-                            <div class="panel-body vctr">
-                                <div class="col-xs-5">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-8">
+                                        <h3>Design Only</h3>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <a href="/application/MarkExamples/?anchorID=designonly" target="_blank" class="right align-middle">Examples</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body nocontent" role="button" aria-label="select design only mark">
+                                <div class="col-xs-12">
                                     <img th:src="@{/resources/images/RetinaIcon-3.png}" alt="" class="img-responsive">
-
-                                </div>
-                                <div class="col-xs-7">
-                                    <a href="/application/MarkExamples" target="_blank" class="right align-middle vctr">Examples</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6">
-                        <div class="panel panel-default nocontent" role="button" aria-label="select design with text mark">
-                            <div class="panel-heading">Design with Text</div>
-                            <div class="panel-body vctr">
-                                <div class="col-xs-5">
-                                    <img th:src="@{/resources/images/abc_lobster.gif}" alt="" class="img-responsive">
-
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-8">
+                                        <h3>Design with Text</h3>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <a href="/application/MarkExamples/?anchorID=designwithtext" target="_blank" class="right align-middle">Examples</a>
+                                    </div>
                                 </div>
-                                <div class="col-xs-7">
-                                    <a href="/application/MarkExamples" target="_blank" class="right align-middle vctr">Examples</a>
+                            </div>
+                            <div class="panel-body nocontent" role="button" aria-label="select design with text mark">
+                                <div class="col-xs-12">
+                                    <img th:src="@{/resources/images/RetinaIcon-2.png}" alt="" class="img-responsive">
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!--START Hide / Show Additional Mark Examples-->
-                    <div class="row" >
+                    <div class="row">
                         <div class="col-xs-12 text-left">
                             <div id="moremarkoptions" class="collapse Accordion-panel" role="region" aria-labelledby="moreoptionsbtn">
                                 <div class="Accordion">
                                     <div class="col-sm-12 col-md-6">
-                                        <div class="panel panel-default nocontent" role="button" aria-label="select design only mark">
-                                            <div class="panel-heading">Configuration 3D</div>
-                                            <div class="panel-body vctr">
-                                                <div class="col-xs-5">
-                                                    <img th:src="@{/resources/images/RetinaIcon_1.svg}"alt="" class="img-responsive">
-
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <div class="row">
+                                                    <div class="col-xs-8">
+                                                        <h3>Configuration 3D</h3>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <a href="/application/MarkExamples/?anchorID=configuration3d" target="_blank" class="right align-middle">Examples</a>
+                                                    </div>
                                                 </div>
-                                                <div class="col-xs-7">
-                                                    <a href="/application/MarkExamples" target="_blank" class="right align-middle vctr">Examples</a>
+                                            </div>
+                                            <div class="panel-body nocontent" role="button" aria-label="select design only mark">
+                                                <div class="col-xs-12">
+                                                    <img th:src="@{/resources/images/RetinaIcon_1.svg}"alt="" class="img-responsive">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-6">
-                                        <div class="panel panel-default nocontent" role="button" aria-label="select design only mark">
-                                            <div class="panel-heading">Configuration 3D</div>
-                                            <div class="panel-body vctr">
-                                                <div class="col-xs-5">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <div class="row">
+                                                    <div class="col-xs-8" style="padding-right: 0;">
+                                                        <h3>Configuration 3D with Text</h3>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <a href="/application/MarkExamples/?anchorID=configuration3dtext" target="_blank" class="right align-middle">Examples</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel-body nocontent" role="button" aria-label="select design only mark">
+                                                <div class="col-xs-12">
                                                     <img th:src="@{/resources/images/RetinaIcon_2.svg}" alt="" class="img-responsive">
                                                 </div>
-                                                <div class="col-xs-7">
-                                                    <a href="/application/MarkExamples" target="_blank" class="right align-middle vctr">Examples</a>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-6">
-                                        <div class="panel panel-default nocontent" role="button" aria-label="select design only mark">
-                                            <div class="panel-heading">Sound</div>
-                                            <div class="panel-body vctr">
-                                                <div class="col-xs-5">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <div class="row">
+                                                    <div class="col-xs-8">
+                                                        <h3>Sound</h3>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <a href="/application/MarkExamples/?anchorID=sound" target="_blank" class="right align-middle">Examples</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel-body nocontent" role="button" aria-label="select design only mark">
+                                                <div class="col-xs-12">
                                                     <img th:src="@{/resources/images/PixleIcon_1.svg}" alt="" class="img-responsive">
-
-                                                </div>
-                                                <div class="col-xs-7">
-                                                    <a href="/application/MarkExamples" target="_blank" class="right align-middle vctr">Examples</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-6">
-                                        <div class="panel panel-default nocontent" role="button" aria-label="select design only mark">
-                                            <div class="panel-heading">Sound Composite</div>
-                                            <div class="panel-body vctr">
-                                                <div class="col-xs-5">
-                                                    <img th:src="@{/resources/images/PixleIcon_2.svg}"  alt="" class="img-responsive">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <div class="row">
+                                                    <div class="col-xs-8">
+                                                        <h3>Sound Composite</h3>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <a href="/application/MarkExamples/?anchorID=soundcomposite" target="_blank" class="right align-middle">Examples</a>
+                                                    </div>
                                                 </div>
-                                                <div class="col-xs-7">
-                                                    <a href="/application/MarkExamples" target="_blank" class="right align-middle vctr">Examples</a>
+                                            </div>
+                                            <div class="panel-body nocontent" role="button" aria-label="select design only mark">
+                                                <div class="col-xs-12">
+                                                    <img th:src="@{/resources/images/PixleIcon_2.svg}" alt="" class="img-responsive">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-6">
-                                        <div class="panel panel-default nocontent" role="button" aria-label="select design only mark">
-                                            <div class="panel-heading">Scent</div>
-                                            <div class="panel-body vctr">
-                                                <div class="col-xs-5">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <div class="row">
+                                                    <div class="col-xs-8">
+                                                        <h3>Scent</h3>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <a href="/application/MarkExamples/?anchorID=scent" target="_blank" class="right align-middle">Examples</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel-body nocontent" role="button" aria-label="select design only mark">
+                                                <div class="col-xs-12">
                                                     <img th:src="@{/resources/images/nose-c-52601-jpg.jpg}" alt="" class="img-responsive">
-
-                                                </div>
-                                                <div class="col-xs-7">
-                                                    <a href="/application/MarkExamples" target="_blank" class="right align-middle vctr">Examples</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-6">
-                                        <div class="panel panel-default nocontent" role="button" aria-label="select design only mark">
-                                            <div class="panel-heading">Tactile</div>
-                                            <div class="panel-body vctr">
-                                                <div class="col-xs-5">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <div class="row">
+                                                    <div class="col-xs-8">
+                                                        <h3>Tactile</h3>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <a href="/application/MarkExamples/?anchorID=tactile" target="_blank" class="right align-middle">Examples</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel-body nocontent" role="button" aria-label="select design only mark">
+                                                <div class="col-xs-12">
                                                     <img th:src="@{/resources/images/yuo-04-e-11-d-jpg.jpg}" alt="" class="img-responsive">
-
-                                                </div>
-                                                <div class="col-xs-7">
-                                                    <a href="/application/MarkExamples" target="_blank" class="right align-middle vctr">Examples</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-6">
-                                        <div class="panel panel-default nocontent" role="button" aria-label="select design only mark">
-                                            <div class="panel-heading">Color Only</div>
-                                            <div class="panel-body vctr">
-                                                <div class="col-xs-5">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <div class="row">
+                                                    <div class="col-xs-8">
+                                                        <h3>Color Only</h3>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <a href="/application/MarkExamples/?anchorID=coloronly" target="_blank" class="right align-middle">Examples</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel-body nocontent" role="button" aria-label="select design only mark">
+                                                <div class="col-xs-12">
                                                     <img th:src="@{/resources/images/col-7864-bc-jpg.jpg}" alt="" class="img-responsive">
-
-                                                </div>
-                                                <div class="col-xs-7">
-                                                    <a href="/application/MarkExamples" target="_blank" class="right align-middle vctr">Examples</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-6">
-                                        <div class="panel panel-default nocontent" role="button" aria-label="select design only mark">
-                                            <div class="panel-heading">Motion</div>
-                                            <div class="panel-body vctr">
-                                                <div class="col-xs-5">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <div class="row">
+                                                    <div class="col-xs-8">
+                                                        <h3>Motion</h3>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <a href="/application/MarkExamples/?anchorID=motion" target="_blank" class="right align-middle">Examples</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel-body nocontent" role="button" aria-label="select design only mark">
+                                                <div class="col-xs-12">
                                                     <img th:src="@{/resources/images/adf-d-8-e-123-jpg.jpg}"alt="" class="img-responsive">
-
-                                                </div>
-                                                <div class="col-xs-7">
-                                                    <a href="/application/MarkExamples"  target="_blank" class="right align-middle vctr">Examples</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-6">
-                                        <div class="panel panel-default nocontent" role="button" aria-label="select design only mark">
-                                            <div class="panel-heading">Motion with Text</div>
-                                            <div class="panel-body vctr">
-                                                <div class="col-xs-5">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <div class="row">
+                                                    <div class="col-xs-8">
+                                                        <h3>Motion with Text</h3>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <a href="/application/MarkExamples/?anchorID=motionwithtext" target="_blank" class="right align-middle">Examples</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel-body nocontent" role="button" aria-label="select design only mark">
+                                                <div class="col-xs-12">
                                                     <img th:src="@{/resources/images/adf-d-8-e-123-jpg_2.jpg}" alt="" class="img-responsive">
                                                 </div>
-                                                <div class="col-xs-7">
-                                                    <a href="/application/MarkExamples"  target="_blank" class="right align-middle vctr">Examples</a>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-6">
-                                        <div class="panel panel-default nocontent" role="button" aria-label="select design only mark">
-                                            <div class="panel-heading">Other</div>
-                                            <div class="panel-body vctr">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <div class="row">
+                                                    <div class="col-xs-8">
+                                                        <h3>Other</h3>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <a href="/application/MarkExamples/?anchorID=other" target="_blank" class="right align-middle">Examples</a>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel-body nocontent" role="button" aria-label="select design only mark">
                                                 <div class="col-xs-5">
                                                     <!--<img src="images/RetinaIcon-3.png" alt="" class="img-responsive">-->
-
                                                 </div>
                                                 <div class="col-xs-7">
-                                                    <a href="/application/MarkExamples"  target="_blank" class="right align-middle vctr">Examples</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div role="heading" aria-level="3" style="position: relative; right:-333px;">
+                            <div role="heading" aria-level="3" style="position: relative; right:-360px; max-height: 20px; max-width: 100px;" >
                                 <button type="button" class="btn btn-primary Accordion-trigger" data-toggle="collapse" data-target="#moremarkoptions" aria-controls="markoptions" aria-expanded="false" id="moreoptionsbtn">See More Types</button>
                             </div>
                         </div>
@@ -360,6 +465,7 @@
 
                 </div>
             </div><!--END row-->
+
 
         </div><!--END panels row-->
     </main>

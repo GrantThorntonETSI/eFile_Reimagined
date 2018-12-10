@@ -928,7 +928,7 @@ public class ApplicationFlowController {
     }
 
     @RequestMapping({"/application/MarkExamples"})
-    public String markExamples( Model model){
+    public String markExamples( WebRequest request, Model model, @RequestParam("anchorID") String anchorID){
         // get owner info
 
         // get email and get PTOUser object from repository
@@ -943,6 +943,11 @@ public class ApplicationFlowController {
         model.addAttribute("account",credentials);
         model.addAttribute("hostBean", hostBean);
 
+
+         //int cutOff =  anchorID.indexOf("#");
+         //anchorID = anchorID.substring(0, cutOff-1);
+
+        model.addAttribute("anchorID", anchorID );
 
         return "application/MarkDetailsExamples";
 
