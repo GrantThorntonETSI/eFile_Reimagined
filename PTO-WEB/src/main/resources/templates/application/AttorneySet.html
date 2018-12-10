@@ -224,7 +224,15 @@
 
                                             <div th:attr="id=${lawyer.lastName}+${lawyer.firstName}+'2'" class="collapse" aria-labelledby="headingTwoAffiliation" data-parent="#accordionExample" style="max-width: 850px;">
                                                 <div class="card-body contact-field-card-body" >
-
+                                                    <span> Bar Standing: </span>
+                                                    <span th:text="${lawyer.affiliationStatus}"></span> <br>
+                                                    <span> Bar Membership Number: </span>
+                                                    <span th:text="${lawyer.membershipNumber}"></span> <br>
+                                                    <span> Bar Jurisdiction: </span>
+                                                    <span th:text="${lawyer.barJurisdiction}"></span> <br>
+                                                    <span> Bar Admission Date: </span>
+                                                    <span th:text="${lawyer.barAdmissionDate}"></span><br>
+                                                    <span> Bar Certificate:</span><br>
                                                     <img th:attr="src=${lawyer.getBarCertificateImageKey()}"/>
 
                                                 </div>

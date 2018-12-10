@@ -243,7 +243,7 @@ public class ApplicationObjectCreationController {
             lawyer.setDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber());
         }
         if(newAttorneyContactFormDTO.getAttorneyAffiliation()!= null){
-            lawyer.setAffiliationStatus(newAttorneyContactFormDTO.getAttorneyBarJurisdiction());
+            lawyer.setAffiliationStatus(newAttorneyContactFormDTO.getAttorneyAffiliation());
         }
         if(newAttorneyContactFormDTO.getAttorneyBarJurisdiction()!= null){
             lawyer.setBarJurisdiction(newAttorneyContactFormDTO.getAttorneyBarJurisdiction());
