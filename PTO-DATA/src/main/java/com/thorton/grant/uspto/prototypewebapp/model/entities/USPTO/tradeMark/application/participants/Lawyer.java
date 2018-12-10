@@ -37,6 +37,8 @@ public class Lawyer extends Contact {
     private String address2;
     private String address3;
 
+    private String collapseID;
+
 
 
 
@@ -209,6 +211,14 @@ public class Lawyer extends Contact {
 
     public void setApplicantCA(boolean applicantCA) {
         isApplicantCA = applicantCA;
+    }
+
+    public String getCollapseID() {
+        return collapseID;
+    }
+
+    public void setCollapseID(String collapseID) {
+        this.collapseID = collapseID;
     }
 
     @Override
