@@ -916,6 +916,7 @@ public class ApplicationFlowController {
 
         model.addAttribute("user", ptoUser);
         model.addAttribute("account",credentials);
+        model.addAttribute("hostBean", hostBean);
         String applcationLookupID = trademarkInternalID;
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
@@ -940,6 +941,7 @@ public class ApplicationFlowController {
 
         model.addAttribute("user", ptoUser);
         model.addAttribute("account",credentials);
+        model.addAttribute("hostBean", hostBean);
 
 
         return "application/MarkDetailsExamples";
