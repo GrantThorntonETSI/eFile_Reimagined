@@ -173,7 +173,7 @@
                                                 <input  th:if="${lawyer.isPrimary() == false}" class="primaryLawyer" style="position: relative; bottom: -5px;"  type="radio" name="primaryAttorney" >
                                             </div>
                                             <div class="col-sm-1">
-                                                <i class="material-icons collapsed " data-toggle="collapse" th:attr="data-target='#'+${lawyer.firstName}+${lawyer.lastName}"  aria-expanded="false" aria-controls="collapseTwo" style="position: relative; bottom:-5px; left:-20px;">import_export</i>
+                                                <i class="material-icons collapsed" data-toggle="collapse" th:attr="data-target='#'+${lawyer.firstName}+${lawyer.lastName}"  aria-expanded="false" aria-controls="collapseTwo" style="position: relative; bottom:-5px; left:-20px;">import_export</i>
                                             </div>
                                             <div class="col-sm-3">
 
@@ -182,7 +182,7 @@
                                             </div>
 
                                             <div class="col-sm-3">
-                                                <b style="position: relative; bottom: -5px; left:-25px;" th:text="${lawyer.email}"> Attorney@Email.com</b>
+                                                <b style="position: relative; bottom: -5px; left:-55px;" th:text="${lawyer.email}"> Attorney@Email.com</b>
                                             </div>
 
                                             <div class="col-sm-3">
@@ -434,6 +434,17 @@
                 // after 1000 ms we add the class animated to the login/register card
                 $('#widget-UI').fadeIn(500);
             }, 500);
+
+
+
+            $('input:radio').each(function () {
+
+                if ($(this).prop('checked')) {
+                // alert("555");
+                 //alert($(this).parent().next().html());
+                    alert($(this).parent().next().next().html());
+                }
+            });
 
             ////////////////////////////////////////
             // set previous link
