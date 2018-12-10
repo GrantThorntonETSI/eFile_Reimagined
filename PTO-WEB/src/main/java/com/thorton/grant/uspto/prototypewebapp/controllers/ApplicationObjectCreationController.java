@@ -510,33 +510,33 @@ public class ApplicationObjectCreationController {
             //partnerDTO partner = partnerDTOS.iterator().next();
             partnerDTO partner = partnerDTOS.get(0);
             Partner newPartner = new Partner();
-            if(partner.getFirstName() != null){
-                newPartner.setPartnerFirstName(partner.getFirstName());
-                newPartner.setPartnerDisplayName(partner.getFirstName()+" "+partner.getLastName());
-                newPartner.setPartnerCollapseID(partner.getFirstName()+partner.getLastName());
-
-            }
-            if(partner.getLastName() != null){
-                newPartner.setPartnerLastName(partner.getLastName());
-            }
-            if(partner.getMiddleName() != null){
-                newPartner.setPartnerMiddleName(partner.getMiddleName());
-            }
-            if(partner.getSuffix() != null){
-                newPartner.setPartnerSuffix(partner.getSuffix());
-            }
-            if(partner.getCitizenShip() != null){
-                newPartner.setPartnerCitizenship(partner.getCitizenShip());
-            }
-            if(partner.getPartnerName() != null){
+            if(partner.getPartnerName() != ""){
                 newPartner.setPartnerName(partner.getPartnerName());
                 newPartner.setPartnerDisplayName(partner.getPartnerName());
                 newPartner.setPartnerCollapseID(partner.getPartnerName());
             }
-            if(partner.getState() != null){
+            if(partner.getFirstName() != "" ){
+                newPartner.setPartnerFirstName(partner.getFirstName());
+                newPartner.setPartnerDisplayName(partner.getFirstName()+" "+partner.getLastName());
+                newPartner.setPartnerCollapseID(partner.getFirstName()+partner.getLastName());
+            }
+            if(partner.getLastName() != ""){
+                newPartner.setPartnerLastName(partner.getLastName());
+            }
+            if(partner.getMiddleName() != ""){
+                newPartner.setPartnerMiddleName(partner.getMiddleName());
+            }
+            if(partner.getSuffix() != ""){
+                newPartner.setPartnerSuffix(partner.getSuffix());
+            }
+            if(partner.getCitizenShip() != ""){
+                newPartner.setPartnerCitizenship(partner.getCitizenShip());
+            }
+
+            if(partner.getState() != ""){
                 newPartner.setGetOrganizationState(partner.getState());
             }
-            if(partner.getType() != null){
+            if(partner.getType() != ""){
                 newPartner.setPartnerEntityType(partner.getType());
             }
 
