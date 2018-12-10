@@ -104,6 +104,9 @@ public class BaseTrademarkApplication  {
 
     private String ownerSubType;
 
+
+    private String attorneyCollapseID;
+
     public boolean isAttorneyPoolEmpty() {
 
 
@@ -346,6 +349,14 @@ public class BaseTrademarkApplication  {
 
     public void setOwnerEmail(String ownerEmail) {
         this.ownerEmail = ownerEmail;
+    }
+
+    public String getAttorneyCollapseID() {
+        return attorneyCollapseID;
+    }
+
+    public void setAttorneyCollapseID(String attorneyCollapseID) {
+        this.attorneyCollapseID = attorneyCollapseID;
     }
 
     @Override

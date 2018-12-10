@@ -199,7 +199,7 @@
 
 
 
-                                <div  th:attr="id=${lawyer.firstName}+${lawyer.lastName}"  class="collapse in" aria-labelledby="headingTwo" data-parent="#accordionExample" style="max-width: 850px; margin-bottom: 10px;">
+                                <div  th:attr="id=${lawyer.firstName}+${lawyer.lastName}"  class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample" style="max-width: 850px; margin-bottom: 10px;">
 
                                     <div class="card-body">
 
@@ -385,6 +385,9 @@
 
         var contactNames = /*[[${myManagedContacts.ContactNames}]]*/ 'User Name';
 
+        var collapseID = /*[[${baseTrademarkApplication.attorneyCollapseID}]]*/ 'User Name';
+
+
         /*]]>*/
     </script>
 
@@ -435,7 +438,19 @@
                 $('#widget-UI').fadeIn(500);
             }, 500);
 
+            $('input:radio').each(function () {
 
+                if ($(this).prop('checked')) {
+                    var new_html=   $(this).parent().next().html();
+                    new_html = new_html.replace("aria-expanded=\"false\"", "aria-expanded=\"true\"");
+                    new_html = new_html.replace("material-icons collapsed", "material-icons");
+                    //alert(new_html);
+                   $(this).parent().next().html(new_html);
+                   $('#'+collapseID).addClass("in");
+
+                }
+
+            });
 
             ////////////////////////////////////////
             // set previous link
