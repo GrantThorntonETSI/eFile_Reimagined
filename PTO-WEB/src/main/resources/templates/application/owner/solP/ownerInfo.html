@@ -32,7 +32,7 @@
 
 
 
-                    <div class="row" style="position: relative; top:-250px; right:-85px; margin-bottom: 5px;">
+                    <div class="row" style="position: relative; top:-250px; right:-7%; margin-bottom: 5px;">
 
                         <div class="col-sm-4">
                             <label for="ownername"><b style="color: red">&#42;</b>Owner Name</label>
@@ -40,7 +40,7 @@
                         </div>
                     </div>
 
-                    <div class="row" style="position: relative; top:-250px; right:-85px; margin-bottom: 5px;">
+                    <div class="row" style="position: relative; top:-250px; right:-7%;margin-bottom: 5px;">
                         <div class="col-sm-4">
                         <label for="additionalname">Additional Name</label>
                                 <select class="form-control" id="additionalname" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" >
@@ -52,7 +52,7 @@
                                 </select>
                         </div>
                     </div>
-                    <div class="row" style="position: relative; top:-250px; right:-85px;">
+                    <div class="row" style="position: relative; top:-250px;  right:-7%;">
                         <div class="col-sm-4">
                             <label><b style="color: red">&#42;</b>State of Organization</label>
                             <select  class="form-control custom-select" name="State" th:field="*{ownerState}"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" >
@@ -247,7 +247,7 @@
 
                             </div>
                         </div>
-                        <div class="col-sm-4" style="position: relative;bottom:-5px; right:-80px;">
+                        <div class="col-sm-4" style="position: relative;bottom:-5px; right:-8%;">
                             <div class="form-group suffixFieldMsgArea" style="display:none; position: relative; left:-15%;">
                                 <b><span></span></b>
                             </div>
@@ -257,10 +257,10 @@
 
 
 
-                    <div class="row" style="position: relative; top:-720px; left:-4% ">
-                        <div id="TextElement3c22541d249c4ccdbef101d00bf9c27b4" class="ng-element el-text-2 empty-line-hack font-S-Arial-n4" data-id="e663302ac1054b3abb7536d7052cff99" style="opacity: 1; mix-blend-mode: normal; font-variant: normal; color: rgb(0, 0, 0); font-size: 16px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; width: 300px; height: 18px; transform: rotate(0deg) translate(149px, 472px) rotate(0deg);"><p>Country of Citizenship<a  style="text-decoration: none;" data-toggle="tooltip" title="If you have dual citizenship only enter the citizenship you would like printed in the Official Gazette."><i class="material-icons" style="position: relative; top:8px; right:-25px;">info_outline</i></a></p></div>
+                    <div class="row" style="position: relative; top:-250px; right:-8%; ">
+                        <span style="opacity: 1; mix-blend-mode: normal; font-variant: normal; color: rgb(0, 0, 0); font-size: 16px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; width: 300px; height: 18px; transform: rotate(0deg) translate(149px, 472px) rotate(0deg);"><p>Country of Citizenship<a  style="text-decoration: none;" data-toggle="tooltip" title="If you have dual citizenship only enter the citizenship you would like printed in the Official Gazette."><i class="material-icons" style="position: relative; top:8px; right:-25px;">info_outline</i></a></p></span>
                     </div>
-                    <div class="row" style="position: relative; top:-230px; right:-8%; margin-bottom: 30px; ">
+                    <div class="row" style="position: relative; top:-250px; right:-8%; margin-bottom: 30px; ">
                         <!--default drop down -->
                         <div class="col-sm-4">
                             <div class="form-group">
@@ -535,12 +535,37 @@
                         <hr style="height:3px; position:relative; top:-20px; left:-11.5%; max-width: 80.1%">
                     </div>
 
+                    <div class="row" style="position: relative; top:-230px; right:-7%;">
+                        <span>
+                            <label class="col-sm-3 col-form-label"><p><b style="color: red">*</b>Email Address<a  style="text-decoration: none;" data-toggle="tooltip" title="The USPTO will use this email address to send correspondence regarding this application or registration. It is critical to ensure this email address is current."><i class="material-icons" style="position: relative; top:8px; right:-25px;">info_outline</i></a></p></label>
+
+                            </span>
+
+                    </div>
+                    <div class="row" style="position: relative; top:-250px; right:-8%;">
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <span>
+                                    <input type="email" name="email" th:field="*{ownerEmail}"  placeholder="" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                            <div class="form-group emailFieldMsgArea" style="display:none; position: relative; left:-15%;">
+                                <b><span></span></b>
+                            </div>
+                        </div>
+                    </div>
 
 
-                        <div class="row" style="position: relative; top:-230px; right: -7%; ">
+
+
+                    <div class="row" style="position: relative; top:-230px; right: -7%; ">
                          <span>
 
-                             <label class="col-sm-2 col-form-label"><b style="color: red">*</b>Country/US Territory</label>
+                             <label class="col-sm-3 col-form-label"><b style="color: red">*</b>Country/US Territory</label>
                          </span>
 
                         </div>
@@ -812,7 +837,7 @@
                         <div class="row" style="position: relative; top:-230px; right:-7%;">
                              <span>
 
-                                 <label class="col-sm-2 col-form-label"><b style="color: red">*</b>Address Line 1</label>
+                                 <label class="col-sm-3 col-form-label"><b style="color: red">*</b>Address Line 1</label>
                              </span>
 
                         </div>
@@ -844,7 +869,7 @@
                         <div class="row" style="position: relative; top:-230px; right:-7%;">
                              <span>
 
-                                 <label class="col-sm-2 col-form-label">Address Line 2</label>
+                                 <label class="col-sm-3 col-form-label">Address Line 2</label>
                              </span>
 
                         </div>
@@ -876,7 +901,7 @@
 
                         <div class="row" style="position: relative; top:-230px; right:-7%;">
                                 <span>
-                                     <label class="col-sm-2 col-form-label">Address Line 3</label>
+                                     <label class="col-sm-3 col-form-label">Address Line 3</label>
 
                                 </span>
 
@@ -1032,49 +1057,16 @@
                         </div>
 
 
-                        <div class="row" style="position: relative; top:-230px; left:-10px; ">
-
-                            <div class="card-text">
-
-                                <h5 class="card-title"><b style="color: black; color: rgb(0, 0, 0); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">Additional Information</b></h5>
-
-                            </div>
-                            <hr style="height:3px; position:relative; top:-20px; left:-11.5%; max-width: 80.1%">
-                        </div>
-
-                        <div class="row" style="position: relative; top:-250px; right:-7%;">
-                        <span>
-                             <label class="col-sm-2 col-form-label"><b style="color: red">*</b>Email Address</label>
-
-                        </span>
-
-                        </div>
-                        <div class="row" style="position: relative; top:-250px; right:-8%;">
-
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                <span>
-                                    <input type="email" name="email" th:field="*{ownerEmail}"  placeholder="" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
-                                </span>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                                <div class="form-group emailFieldMsgArea" style="display:none; position: relative; left:-15%;">
-                                    <b><span></span></b>
-                                </div>
-                            </div>
-                        </div>
 
 
-                        <div class="row" style="position: relative; top:-250px; right:-7%;">
+                        <div class="row" style="position: relative; top:-230px; right:-7%;">
                     <span>
                          <label class="col-sm-2 col-form-label">Website URL</label>
 
                     </span>
 
                         </div>
-                        <div class="row" style="position: relative; top:-250px; right:-8%;">
+                        <div class="row" style="position: relative; top:-230px; right:-7%;">
 
                             <div class="col-sm-4">
                                 <div class="form-group">
@@ -1091,7 +1083,7 @@
                             </div>
                         </div>
 
-                        <div class="row" style="position: relative; top:-250px; right:-7%;">
+                        <div class="row" style="position: relative; top:-230px; right:-7%;">
                                 <span>
                                      <label class="col-sm-3 col-form-label">Phone Number</label>
 
@@ -1104,7 +1096,7 @@
                         </div>
 
 
-                        <div class="row" style="position: relative; top:-250px; right:-8%;">
+                        <div class="row" style="position: relative; top:-230px; right:-7%;">
                             <div class="col-sm-1">
                                 <select  class="form-control" name="phone-type"  value="Type" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                     <option value="cell"><b>Cell</b></option>
