@@ -1,5 +1,7 @@
 package com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.form;
 
+import java.util.Date;
+
 public class NewAttorneyContactFormDTO {
 
 

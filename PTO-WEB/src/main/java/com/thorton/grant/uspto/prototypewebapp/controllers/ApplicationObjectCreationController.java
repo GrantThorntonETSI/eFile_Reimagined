@@ -20,6 +20,7 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCrede
 import com.thorton.grant.uspto.prototypewebapp.service.storage.StorageService;
 import com.thorton.grant.uspto.prototypewebapp.service.storage.error.StorageException;
 import org.springframework.context.ApplicationContext;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -29,13 +30,13 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+
 
 @Controller
 public class ApplicationObjectCreationController {
@@ -224,6 +225,7 @@ public class ApplicationObjectCreationController {
                   lawyer.setBarCertificateImageKey("/files/"+storageService.getCounter()+file.getOriginalFilename());
                   try {
                       storageService.store(file);
+
                   }
                   catch ( StorageException ex){
                       model.addAttribute("message", "ERROR: Attorney Credentials upload failed due to error: "+ex );
@@ -241,11 +243,44 @@ public class ApplicationObjectCreationController {
             lawyer.setDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber());
         }
         if(newAttorneyContactFormDTO.getAttorneyAffiliation()!= null){
+            lawyer.setAffiliationStatus(newAttorneyContactFormDTO.getAttorneyBarJurisdiction());
+        }
+        if(newAttorneyContactFormDTO.getAttorneyBarJurisdiction()!= null){
             lawyer.setBarJurisdiction(newAttorneyContactFormDTO.getAttorneyBarJurisdiction());
         }
 
+        if(newAttorneyContactFormDTO.getAttorneyBarMembershipNumber()!= null){
+            lawyer.setMembershipNumber(newAttorneyContactFormDTO.getAttorneyBarMembershipNumber());
+        }
 
+        if(newAttorneyContactFormDTO.getAttorneyBarAdmissionDate()!= null){
 
+            String string = newAttorneyContactFormDTO.getAttorneyBarAdmissionDate();
+
+            System.out.println("Date value : "+string);
+            try {
+                DateFormat format = new SimpleDateFormat("yyyy-dd-mm", Locale.ENGLISH);
+                Date date = format.parse(string);
+
+                lawyer.setBarAdmissionDate(date);
+            }
+            catch(Exception ex){
+
+                model.addAttribute("message", "ERROR: Could not save Bar Admission Date, invalid Date format.");
+            }
+        }
+
+        if(newAttorneyContactFormDTO.getAttorneyCAagentName()!= null){
+            lawyer.setCanadianAgentName(newAttorneyContactFormDTO.getAttorneyCAagentName());
+        }
+        if(newAttorneyContactFormDTO.applicantCA != null){
+            if(newAttorneyContactFormDTO.getApplicantCA() == "true") {
+                lawyer.setApplicantCA(true);
+            }
+            else {
+                lawyer.setApplicantCA(false);
+            }
+        }
 
 
 
@@ -559,6 +594,10 @@ public class ApplicationObjectCreationController {
     ///////////////////////////////////////////////////////////////////////////////
     // end of owner add
     ///////////////////////////////////////////////////////////////////////////////
+
+
+
+
 
 
 
