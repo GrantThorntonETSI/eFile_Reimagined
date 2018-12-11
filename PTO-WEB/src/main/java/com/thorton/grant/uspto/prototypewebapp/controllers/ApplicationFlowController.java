@@ -90,6 +90,7 @@ public class ApplicationFlowController {
         /////////////////////////////////////////////
         // load my contacts list for thyemleaf
         /////////////////////////////////////////////
+        /*
         ArrayList<String> contactNames = new ArrayList<>();
         ArrayList<String> contactEmails = new ArrayList<>();
         ArrayList<String> contactFirms = new ArrayList<>();
@@ -111,7 +112,7 @@ public class ApplicationFlowController {
         contactsDisplayDTO.setContactFirms(contactFirms);
         model.addAttribute("myContacts", contactsDisplayDTO);
         SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
-
+        */
 
         /////////////////////////////////////////////
         // load my contacts list for thyemleaf
@@ -123,9 +124,12 @@ public class ApplicationFlowController {
 
         for(Iterator<ManagedContact> iter = ptoUser.getMyManagedContacts().iterator(); iter.hasNext(); ) {
             managedContact = iter.next();
-            contactNamesMC.add(managedContact.getDisplayName());
-            contactEmailsMC.add(managedContact.getEmail());
-            contactSubTypesMC.add(managedContact.getContactType());
+            if(managedContact.getContactType() == "attorney"){
+                contactNamesMC.add(managedContact.getDisplayName());
+                contactEmailsMC.add(managedContact.getEmail());
+                contactSubTypesMC.add(managedContact.getContactType());
+            }
+
 
         }
         Collections.reverse(contactNamesMC);
@@ -181,61 +185,15 @@ public class ApplicationFlowController {
 
 
             // set empty selected contacts for thymeleaf
-            ArrayList<String> scontactNames = new ArrayList<>();
-            selectedContactsDisplayDTO.setSelectedNames(scontactNames);
-            model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
-
-
-
+            //ArrayList<String> scontactNames = new ArrayList<>();
+            //selectedContactsDisplayDTO.setSelectedNames(scontactNames);
+            //model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
 
 
         }
         else{
-
-
-            ////////////////////////////////////////////////////////////////////////////////////////////
-            // add selected contacts display info to model
-            ////////////////////////////////////////////////////////////////////////////////////////////
-            ArrayList<String> selectedContactNames = new ArrayList<>();
-            Lawyer selected_lawyer = null;
-            BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
-            Set<Lawyer> applicationLawyerPool = baseTrademarkApplication.getAvailableLawyers();
-
-            if(applicationLawyerPool != null){
-                for(Iterator<Lawyer> iterSelectedContacts = baseTrademarkApplication.getAvailableLawyers().iterator(); iterSelectedContacts.hasNext(); ) {
-                    selected_lawyer = iterSelectedContacts.next();
-                    selectedContactNames.add(selected_lawyer.getFirstName()+" "+selected_lawyer.getLastName());
-
-                }
-                Collections.reverse(selectedContactNames);
-                /////////////////////////////////////////////////////////////////////////////////////////////
-                // we need a DTO for passing data to view layer
-                /////////////////////////////////////////////////////////////////////////////////////////////
-
-                selectedContactsDisplayDTO.setSelectedNames(selectedContactNames);
-                model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
-
-            }
-            else{
-                // if there are no one in the application available pool ..
-                // simply add empty value.
-
-                selectedContactNames.add("");
-                selectedContactsDisplayDTO.setSelectedNames(selectedContactNames);
-                model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
-            }
-
-
-
-            // baseTrademarkApplication.setLastViewModel("application/AttorneyStart");
-
+          BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
             model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
-
-            /////////////////////////////////////////////
-            // load my contacts list for thyemleaf
-
-
-
         }
 
         model.addAttribute("hostBean", hostBean);
@@ -325,9 +283,11 @@ public class ApplicationFlowController {
 
         for(Iterator<ManagedContact> iter = ptoUser.getMyManagedContacts().iterator(); iter.hasNext(); ) {
             managedContact = iter.next();
-            contactNamesMC.add(managedContact.getDisplayName());
-            contactEmailsMC.add(managedContact.getEmail());
-            contactSubTypesMC.add(managedContact.getContactType());
+            if(managedContact.getContactType() == "attorney") {
+                contactNamesMC.add(managedContact.getDisplayName());
+                contactEmailsMC.add(managedContact.getEmail());
+                contactSubTypesMC.add(managedContact.getContactType());
+            }
 
         }
         Collections.reverse(contactNamesMC);
@@ -506,9 +466,12 @@ public class ApplicationFlowController {
 
         for(Iterator<ManagedContact> iter = ptoUser.getMyManagedContacts().iterator(); iter.hasNext(); ) {
             managedContact = iter.next();
-            contactNames.add(managedContact.getDisplayName());
-            contactEmails.add(managedContact.getEmail());
-            contactSubTypes.add(managedContact.getContactType());
+            if(managedContact.getContactType()== "owner"){
+                contactNames.add(managedContact.getDisplayName());
+                contactEmails.add(managedContact.getEmail());
+                contactSubTypes.add(managedContact.getContactType());
+            }
+
 
         }
         Collections.reverse(contactNames);

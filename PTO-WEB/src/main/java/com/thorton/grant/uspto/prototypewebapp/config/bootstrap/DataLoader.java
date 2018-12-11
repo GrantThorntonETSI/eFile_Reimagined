@@ -133,7 +133,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
 
         // add default managed contact
 
-        ManagedContact managedContact = createCopyPTOUserInfo4ManagedContact(PTOUser1);
+        ManagedContact managedContact = createCopyPTOUserInfo4ManagedContactAttorney(PTOUser1);
 
 
         PTOUser1.addManagedContact(managedContact);
@@ -195,21 +195,27 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
 
 
         // create another user
-        Set<PTOUser> managedContacts = new HashSet<>();
-        PTOUser Jackie = createUser("Jackie", "Babos", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Jackie.Babos@us.gt.com","12345",managedContacts);
-        PTOUser Jacob = createUser("Jacob", "Goldstein", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Jacob.Goldstein@us.gt.com","12345",managedContacts);
-        PTOUser Avo = createUser("Avo", "Reed", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Avo.Reid@us.gt.com","12345",managedContacts);
+        Set<PTOUser> managedContactsAttorneys = new HashSet<>();
+        Set<PTOUser> managedContactsOwners = new HashSet<>();
+        PTOUser Jackie = createUser("Jackie", "Babos", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Jackie.Babos@us.gt.com","12345",managedContactsAttorneys, managedContactsOwners);
+        PTOUser Jacob = createUser("Jacob", "Goldstein", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "444-444-444", "Jacob.Goldstein@us.gt.com","12345",managedContactsAttorneys,managedContactsOwners);
+        PTOUser Avo = createUser("Avo", "Reed", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "222-22-2222", "Avo.Reid@us.gt.com","12345", managedContactsAttorneys, managedContactsOwners);
+        PTOUser Li = createUser("Li", "Zhang", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "555-555-5555", "li.zhang@us.gt.com","12345", managedContactsAttorneys, managedContactsOwners);
+        PTOUser lynn = createUser("Lynn", "", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "555-555-5555", "lynn.stanikmas@us.gt.com","12345", managedContactsAttorneys, managedContactsOwners);
 
-        managedContacts.add(Jackie);
-        managedContacts.add(Jacob);
-        managedContacts.add(Avo);
+        managedContactsAttorneys.add(Jackie);
+        managedContactsAttorneys.add(Jacob);
+        managedContactsAttorneys.add(Avo);
+        managedContactsOwners.add(lynn);
+        managedContactsOwners.add(Li);
 
-        PTOUser Lynn = createUser("Lynn", "Istanikmas", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "lstanikmas@gmail.com","12345",managedContacts);
-        PTOUser Tina = createUser("Tina", "Donbeck", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Tina.Donbeck@uspto.gov","12345",managedContacts);
-        PTOUser Al = createUser("Albert", "Young", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Albert.young@uspto.gov","12345",managedContacts);
-        PTOUser keyte = createUser("Keyte", "Ernst", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Keyte.Ernst@uspto.gov","12345",managedContacts);
-        PTOUser shelly = createUser("Shelly", "Matte", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Shelly.Matte@uspto.gov","12345",managedContacts);
-        PTOUser Vi = createUser("Tuong-Vi", "Nguyen", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Tuong-Vi.Nguyen@uspto.gov","12345",managedContacts);
+
+        PTOUser Lynn = createUser("Lynn", "Istanikmas", "600 Dulany Street", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "lstanikmas@gmail.com","12345",managedContactsAttorneys, managedContactsOwners);
+        PTOUser Tina = createUser("Tina", "Donbeck", "600 Dulany Street", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Tina.Donbeck@uspto.gov","12345",managedContactsAttorneys, managedContactsOwners);
+        PTOUser Al = createUser("Albert", "Young", "600 Dulany Street", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Albert.young@uspto.gov","12345",managedContactsAttorneys, managedContactsOwners);
+        PTOUser keyte = createUser("Keyte", "Ernst", "600 Dulany Street", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Keyte.Ernst@uspto.gov","12345",managedContactsAttorneys, managedContactsOwners);
+        PTOUser shelly = createUser("Shelly", "Matte", "600 Dulany Street", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Shelly.Matte@uspto.gov","12345",managedContactsAttorneys, managedContactsOwners);
+        PTOUser Vi = createUser("Tuong-Vi", "Nguyen", "600 Dulany Street", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Tuong-Vi.Nguyen@uspto.gov","12345",managedContactsAttorneys, managedContactsOwners);
 
 
 
@@ -223,7 +229,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
 
     // create helper function add user
     //////////////////////////////////////////////////
-    public PTOUser createUser(String firstName, String lastName, String address, String city, String state, String zipcode, String country, String phone, String email, String password, Set<PTOUser> managedContacts){
+    public PTOUser createUser(String firstName, String lastName, String address, String city, String state, String zipcode, String country, String phone, String email, String password, Set<PTOUser> managedContactsAttorneys, Set<PTOUser> managedContactsOwners){
 
 
         PTOUser PTOUser1 = new PTOUser();
@@ -266,16 +272,26 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         PTOUser1.setUserCredentials(ownerCreds);
         PTOUser1.setEmail(ownerCreds.getEmail());
 
-        ManagedContact contact = createCopyPTOUserInfo4ManagedContact(PTOUser1);
+        ManagedContact contact = createCopyPTOUserInfo4ManagedOwner(PTOUser1);
         PTOUser1.addManagedContact(contact);
 
-        for(Iterator<PTOUser> iter = managedContacts.iterator(); iter.hasNext(); ) {
+        for(Iterator<PTOUser> iter = managedContactsOwners.iterator(); iter.hasNext(); ) {
             //this.availableLawyers.add(new Lawyer( iter.next() ));
 
             PTOUser current = iter.next();
-            PTOUser1.addManagedContact(createCopyPTOUserInfo4ManagedContact(current));
+            PTOUser1.addManagedContact(createCopyPTOUserInfo4ManagedOwner(current));
 
         }
+
+
+        for(Iterator<PTOUser> iter = managedContactsAttorneys.iterator(); iter.hasNext(); ) {
+            //this.availableLawyers.add(new Lawyer( iter.next() ));
+
+            PTOUser current = iter.next();
+            PTOUser1.addManagedContact(createCopyPTOUserInfo4ManagedContactAttorney(current));
+
+        }
+
 
 
         PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
@@ -299,7 +315,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
      //////////////////////////////////////////////////////////////////////////////////
      // deep copy of field value to managedContact object
      //////////////////////////////////////////////////////////////////////////////////
-     private ManagedContact createCopyPTOUserInfo4ManagedContact(PTOUser ptoUser){
+     private ManagedContact createCopyPTOUserInfo4ManagedContactAttorney(PTOUser ptoUser){
 
         ManagedContact contact = new ManagedContact();
          /////////////////////////////////////////////////////////////////
@@ -311,7 +327,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
          contact.setCountry(ptoUser.getCountry());
          contact.setAddress(ptoUser.getAddress());
          contact.setDisplayName(ptoUser.getFirstName()+ " "+ptoUser.getLastName());
-         contact.setContactType("Individual");
+         contact.setContactType("attorney");
 
 
 
@@ -327,6 +343,36 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
 
         return contact;
      }
+    //////////////////////////////////////////////////////////////////////////////////
+    private ManagedContact createCopyPTOUserInfo4ManagedOwner(PTOUser ptoUser){
+
+        ManagedContact contact = new ManagedContact();
+        /////////////////////////////////////////////////////////////////
+        // copy over contact's lawyer's personal info
+        /////////////////////////////////////////////////////////////////
+        contact.setFirstName(ptoUser.getFirstName());
+        contact.setLastName(ptoUser.getLastName());
+        contact.setMidlleName(ptoUser.getMidlleName());
+        contact.setCountry(ptoUser.getCountry());
+        contact.setAddress(ptoUser.getAddress());
+        contact.setDisplayName(ptoUser.getFirstName()+ " "+ptoUser.getLastName());
+        contact.setContactType("owner");
+
+
+
+
+        contact.setCity(ptoUser.getCity());
+        contact.setState(ptoUser.getState());
+        contact.setZipcode(ptoUser.getZipcode());
+        contact.setPrimaryPhonenumber(ptoUser.getPrimaryPhonenumber());
+        contact.setEmail(ptoUser.getEmail());
+        //////////////////////////////////////////////////////////////////
+        // copy over contact's professional info
+        //////////////////////////////////////////////////////////////////
+
+        return contact;
+    }
+
 
 
 
