@@ -182,7 +182,10 @@ public class UserAccountService extends BaseRESTapiService {
 
         if(profileSet == true){
             ManagedContact newContact = createCopyPTOUserInfo4ManagedContact(ptoUser);
-            ptoUser.addManagedContact(newContact);
+            if(ptoUser.getMyManagedContacts().size() ==0){
+                ptoUser.addManagedContact(newContact);
+            }
+
 
         }
 
@@ -270,7 +273,7 @@ public class UserAccountService extends BaseRESTapiService {
         contact.setCountry(ptoUser.getCountry());
         contact.setAddress(ptoUser.getAddress());
         contact.setDisplayName(ptoUser.getFirstName()+ " "+ptoUser.getLastName());
-        contact.setContactType("Individual");
+        contact.setContactType("owner");
 
 
 
