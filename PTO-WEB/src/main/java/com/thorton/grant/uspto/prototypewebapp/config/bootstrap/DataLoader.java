@@ -212,7 +212,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
 
         PTOUser Lynn = createUser("Lynn", "Istanikmas", "600 Dulany Street", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "lstanikmas@gmail.com","12345",managedContactsAttorneys, managedContactsOwners);
         PTOUser Tina = createUser("Tina", "Donbeck", "600 Dulany Street", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Tina.Donbeck@uspto.gov","12345",managedContactsAttorneys, managedContactsOwners);
-        PTOUser Al = createUser("Albert", "Young", "600 Dulany Street", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Albert.young@uspto.gov","12345",managedContactsAttorneys, managedContactsOwners);
+        PTOUser Al = createUser("Albert", "Young", "600 Dulany Street", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Albert.Young@uspto.gov","12345",managedContactsAttorneys, managedContactsOwners);
         PTOUser keyte = createUser("Keyte", "Ernst", "600 Dulany Street", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Keyte.Ernst@uspto.gov","12345",managedContactsAttorneys, managedContactsOwners);
         PTOUser shelly = createUser("Shelly", "Matte", "600 Dulany Street", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Shelly.Matte@uspto.gov","12345",managedContactsAttorneys, managedContactsOwners);
         PTOUser Vi = createUser("Tuong-Vi", "Nguyen", "600 Dulany Street", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Tuong-Vi.Nguyen@uspto.gov","12345",managedContactsAttorneys, managedContactsOwners);
