@@ -623,8 +623,9 @@ public class ApplicationObjectCreationController {
         contact.setCountry(ptoUser.getCountry());
         contact.setAddress(ptoUser.getAddress());
         contact.setDisplayName(ptoUser.getFirstName()+ " "+ptoUser.getLastName());
-        contact.setContactType("Individual");
-
+        contact.setContactType("attorney");
+        contact.setLawFirmName(ptoUser.getLawFirmName());
+        contact.setDocketNumber(ptoUser.getDocketNumber());
         contact.setCity(ptoUser.getCity());
         contact.setState(ptoUser.getState());
         contact.setZipcode(ptoUser.getZipcode());
@@ -654,11 +655,11 @@ public class ApplicationObjectCreationController {
         contact.setOwnerEntityName(ptoUser.getOwnerName());
         if(contact.getFirstName() != null) {
             contact.setDisplayName(ptoUser.getFirstName() + " " + ptoUser.getLastName());
-            contact.setContactType("Individual");
+            contact.setContactType("owner");
         }
         else{
             contact.setDisplayName(ptoUser.getOwnerName());
-            contact.setContactType("Entity");
+            contact.setContactType("owner");
         }
 
         contact.setCity(ptoUser.getCity());
@@ -669,6 +670,11 @@ public class ApplicationObjectCreationController {
         //////////////////////////////////////////////////////////////////
         // copy over contact's professional info
         //////////////////////////////////////////////////////////////////
+        contact.setOwnerEntityName(ptoUser.getOwnerName());
+        contact.setOwnerEntityType(ptoUser.getOwnerType());
+        contact.setOwnerStateOfFormation(ptoUser.getOwnerOrganizationState());
+        contact.setOwnerCountryOfCitizenship(ptoUser.getCitizenShip());
+
 
         return contact;
     }
