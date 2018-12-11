@@ -141,7 +141,10 @@ public class ApplicationFlowController {
         mcDisplayDTO.setContactEntitySubType(contactSubTypesMC);
         model.addAttribute("myManagedContacts", mcDisplayDTO);
 
-
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        // add attorneys pool first name last name
+        // and add to model
+        ///////////////////////////////////////////////////////////////////////////////////////////////
 
         if(trademarkInternalID.equals("new")) {
 
@@ -183,16 +186,30 @@ public class ApplicationFlowController {
             ptoUserService.save(ptoUser);
             model.addAttribute("baseTrademarkApplication", trademarkApplication);
 
-
+            /////////////////////////////////////////////////////////////////////////////////
             // set empty selected contacts for thymeleaf
-            //ArrayList<String> scontactNames = new ArrayList<>();
-            //selectedContactsDisplayDTO.setSelectedNames(scontactNames);
-            //model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
+            // add emtpy selected list
+            /////////////////////////////////////////////////////////////////////////////////
+            ArrayList<String> scontactNames = new ArrayList<>();
+            ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
+            selectedAttorneyDisplayDTO.setContactNames(scontactNames);
+
+            model.addAttribute("selectedContacts", selectedAttorneyDisplayDTO);
 
 
         }
         else{
           BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+            ArrayList<String> selectedContactNames = new ArrayList<>();
+            for(Iterator<Lawyer> iter = baseTrademarkApplication.getAvailableLawyers().iterator(); iter.hasNext(); ) {
+                    Lawyer current = iter.next();
+                    selectedContactNames.add(current.getFirstName()+" "+current.getLastName());
+            }
+            ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
+            selectedAttorneyDisplayDTO.setContactNames(selectedContactNames);
+            model.addAttribute("selectedAttorneys",selectedAttorneyDisplayDTO);
+
             model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
         }
 

@@ -201,7 +201,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         PTOUser Jacob = createUser("Jacob", "Goldstein", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "444-444-444", "Jacob.Goldstein@us.gt.com","12345",managedContactsAttorneys,managedContactsOwners);
         PTOUser Avo = createUser("Avo", "Reed", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "222-22-2222", "Avo.Reid@us.gt.com","12345", managedContactsAttorneys, managedContactsOwners);
         PTOUser Li = createUser("Li", "Zhang", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "555-555-5555", "li.zhang@us.gt.com","12345", managedContactsAttorneys, managedContactsOwners);
-        PTOUser lynn = createUser("Lynn", "", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "555-555-5555", "lynn.stanikmas@us.gt.com","12345", managedContactsAttorneys, managedContactsOwners);
+        PTOUser lynn = createUser("Lynn", "Istanikmas", "333 Carlyle ave", "Alexendria", "Virginia", "22222", "X1", "555-555-5555", "lynn.stanikmas@us.gt.com","12345", managedContactsAttorneys, managedContactsOwners);
 
         managedContactsAttorneys.add(Jackie);
         managedContactsAttorneys.add(Jacob);
