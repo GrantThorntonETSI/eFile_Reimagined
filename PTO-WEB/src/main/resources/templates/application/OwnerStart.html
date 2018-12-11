@@ -180,6 +180,8 @@
     var contactEmails = /*[[${myManagedContacts.ContactEmails}]]*/ 'User Name';
     var contactTypes = /*[[${myManagedContacts.contactEntitySubType}]]*/ 'User Name';
 
+    var selectedContactNames = /*[[${selectedOwners.ContactNames}]]*/ 'User Name';
+
 
 
 
@@ -316,12 +318,35 @@
             // check each name against selected names ...if in selected lis ...
             // add row with check box selected and disabled
             ///////////////////////////////////////////////////////////////////////////
-            var col1 = "<span class='small-tooltip'><a  style=\" min-width:500px; text-decoration: none;\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Copy Contact Information to Owner Form.\">&nbsp;&nbsp;</a></span><i class='material-icons' style='position: relative; right:-10px;'>add_circle_outline</i>";
-            var col2 = "<b>"+contactNames[a]+"</b>";
-            var col3 = "";
-            contactsTable.row.add([col1, col2, col3]).draw();
+            var selectedContact = false;
+            for(var b=0; b <selectedContactNames.length; b++ ){
+                if(contactNames[a] == selectedContactNames[b]){
+                    selectedContact = true;
+                }
+
+            }
+
+            if(selectedContact == true){
+                var col1 = "<span class='small-tooltip'><a  style=\" min-width:500px; text-decoration: none;\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Contact is an attorney for this application.\">&nbsp;</a></span><i class='material-icons' style='position: relative; right:-10px;'>check_circle_outline</i>";
+                var col2 = "<b>"+contactNames[a]+"</b>";
+                var col3 = "";
+                contactsTable.row.add([col1, col2, col3]).draw();
+
+            }
+            else {
+                var col1 = "<span class='small-tooltip'><a  style=\" min-width:500px; text-decoration: none;\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Copy Contact Information to Attorney Form.\">&nbsp;</a></span><i class='material-icons' style='position: relative; right:-10px;'>add_circle_outline</i>";
+                var col2 = "<b>"+contactNames[a]+"</b>";
+                var col3 = "";
+                contactsTable.row.add([col1, col2, col3]).draw();
+
+            }
+
+
 
         }
+        // sort and redraw to line up columns
+        $('[data-toggle="tooltip"]').tooltip();
+        // widget actions
         // sort and redraw to line up columns
 
 

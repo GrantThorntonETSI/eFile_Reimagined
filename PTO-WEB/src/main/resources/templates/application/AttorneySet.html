@@ -11,7 +11,7 @@
 
 <div class="content" style="display: none; background-color: white; min-height: 400px; min-width: 1200px; position: relative; bottom: -10%;" >
     <div class="container-fluid"  >
-        <div class="row sticky" id="widget-UI" style=" display:none; position: fixed; top:500px; right:400px;  max-height: 10px; z-index:555;">
+        <div class="row sticky" id="widget-UI" style=" display:none; position: fixed; top:500px; right:400px;  max-height: 10px; ">
 
 
             <div class="row" style="position: relative; top: -150px;max-height: 10px; " >
@@ -52,8 +52,8 @@
 
                             </div>
 
-                            <div class="contacts-Table " style="border: rgb(235,235,235); min-width: 280px; max-width: 280px; border-width: 1px; border: solid; padding: 15px; min-height: 420px; max-height: 420px; ">
-                                <table id="ManagedContacts" class="table-no-bordered table-hover" cellpadding="1" style="min-width: 280px; max-width: 280px; margin-right: 4px; margin-top: 10px; margin-bottom: 10px; margin-left: 4px; "></table>
+                            <div class="contacts-Table " style="border: rgb(235,235,235); min-width: 280px;  border-width: 1px; border: solid; padding: 15px; min-height: 420px;  ">
+                                <table id="ManagedContacts" class="table-no-bordered table-hover" cellpadding="1" style="min-width: 280px;  margin-right: 4px; margin-top: 10px; margin-bottom: 10px; margin-left: 4px; "></table>
                             </div>
 
                             <div class="row navigation-row" style=" max-height: 100px; position: relative; bottom:-60px; min-width: 350px; max-width: 325px;">
@@ -166,16 +166,20 @@
 
 
 
-            <div class="row" id="contacts-ui" style=" display: none; position: relative;  top:-90px; right:-70px;">
+            <div class="row" id="contacts-ui" style=" display: none; position: relative;  top:-90px; right:-70px; max-width:850px;">
 
-                        <div class="row" style="">
-                           <div class="col-sm-3">
+                        <div class="row" style=" max-width:850px;">
+                           <div class="col-sm-4">
                                 <h5><b>Select one of the following attorneys to be the primary attorney.</b></h5>
                            </div>
+                            <div class="col-sm-1">
+                            </div>
                             <div class="col-sm-3" style="position: relative; right:-50px; top:-10px;">
                                 <span class="btn-sm btn"  id="confirm-link-widget"  style=" padding:5px; max-width: 170px; color: white; background-color: rgb(128, 128, 128); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top:20px;"><i class="material-icons" style="position: relative;left:-5px;bottom:-5px;">how_to_reg</i><b style="position: relative; top:-5px;">Confirm<br> Primary Attorney</b></span>
                             </div>
-                            <div class="col-sm-3" style="position: relative; top: -10px; left:-145px;">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-3" style="position: relative; top: -10px; ">
                                 <span id="addAttorneyConfirm" class=" btn-sm btn"  type="button"  style=" padding:5px; max-width: 170px; padding:5px;  color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px;  position: relative;top:20px;"><i class="material-icons" style="position: relative; left: -10px;">person_add</i><b style="position: relative; top:-5px;"><a id="addAttorneyLink" style="color: white; text-decoration: none;" >Add<br> Additional Attorney</a></b></span>
                             </div>
                         </div>
@@ -514,14 +518,14 @@
                 }
 
                 if(selectedContact == true){
-                    var col1 = "<span class='small-tooltip'><a  style=\" min-width:500px; text-decoration: none;\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Contact is an attorney for this application.\">&nbsp;&nbsp;</a></span><i class='material-icons' style='position: relative; right:-10px;'>check_circle_outline</i>";
+                    var col1 = "<span class='small-tooltip'><a  style=\" min-width:500px; text-decoration: none;\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Contact is an attorney for this application.\">&nbsp;</a></span><i class='material-icons' style='position: relative; right:-10px;'>check_circle_outline</i>";
                     var col2 = "<b>"+contactNames[a]+"</b>";
                     var col3 = "";
                     contactsTable.row.add([col1, col2, col3]).draw();
 
                 }
                 else {
-                    var col1 = "<span class='small-tooltip'><a  style=\" min-width:500px; text-decoration: none;\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Copy Contact Information to Attorney Form.\">&nbsp;&nbsp;</a></span><i class='material-icons' style='position: relative; right:-10px;'>add_circle_outline</i>";
+                    var col1 = "<span class='small-tooltip'><a  style=\" min-width:500px; text-decoration: none;\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Copy Contact Information to Attorney Form.\">&nbsp;</a></span><i class='material-icons' style='position: relative; right:-10px;'>add_circle_outline</i>";
                     var col2 = "<b>"+contactNames[a]+"</b>";
                     var col3 = "";
                     contactsTable.row.add([col1, col2, col3]).draw();
