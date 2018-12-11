@@ -709,9 +709,12 @@ public class ApplicationFlowController {
 
         for(Iterator<ManagedContact> iter = ptoUser.getMyManagedContacts().iterator(); iter.hasNext(); ) {
             managedContact = iter.next();
-            contactNamesMC.add(managedContact.getDisplayName());
-            contactEmailsMC.add(managedContact.getEmail());
-            contactSubTypesMC.add(managedContact.getContactType());
+            if(managedContact.getContactType() == "owner"){
+                contactNamesMC.add(managedContact.getDisplayName());
+                contactEmailsMC.add(managedContact.getEmail());
+                contactSubTypesMC.add(managedContact.getContactType());
+            }
+
 
         }
         Collections.reverse(contactNamesMC);
