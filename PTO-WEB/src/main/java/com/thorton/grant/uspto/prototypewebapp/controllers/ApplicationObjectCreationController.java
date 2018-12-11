@@ -651,7 +651,7 @@ public class ApplicationObjectCreationController {
         contact.setMidlleName(ptoUser.getMidlleName());
         contact.setCountry(ptoUser.getCountry());
         contact.setAddress(ptoUser.getAddress());
-        contact.setEntityName(ptoUser.getOwnerName());
+        contact.setOwnerEntityName(ptoUser.getOwnerName());
         if(contact.getFirstName() != null) {
             contact.setDisplayName(ptoUser.getFirstName() + " " + ptoUser.getLastName());
             contact.setContactType("Individual");

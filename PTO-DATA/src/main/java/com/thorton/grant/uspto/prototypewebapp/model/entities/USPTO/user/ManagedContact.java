@@ -10,16 +10,28 @@ public class ManagedContact extends UserPersonalData {
 
 @ManyToOne
 private PTOUser contactOwner;
-
-
 private String contactType;
-
 private String displayName;
 
 
-private String entityName;  // organization name/ owner name /i .e none human name
+    ///////////////////////////////////////////////////////////////////////////////
+    // owner specific fields
+    ///////////////////////////////////////////////////////////////////////////////
+    private String ownerEntityName;
+    private String ownerEntityType;  // i.e additional name field "Trading as" or " Doing business as"
+    private String ownerStateOfFormation; // includes incorporation or organization
+    private String ownerCountryOfCitizenship;
+
+    ///////////////////////////////////////////////////////////////////////////////
+    // attorney specific fields
+    ///////////////////////////////////////////////////////////////////////////////
+    private String lawFirmName;
+    private String docketNumber;
 
 
+
+
+    ///////////////////////////////////////////////////////////////////////////////
     public String getDisplayName() {
         return displayName;
     }
@@ -44,13 +56,52 @@ private String entityName;  // organization name/ owner name /i .e none human na
         this.contactType = contactType;
     }
 
-    public String getEntityName() {
-        return entityName;
+    public String getOwnerEntityName() {
+        return ownerEntityName;
     }
 
-    public void setEntityName(String entityName) {
-        this.entityName = entityName;
+    public void setOwnerEntityName(String ownerEntityName) {
+        this.ownerEntityName = ownerEntityName;
+    }
+
+    public String getOwnerEntityType() {
+        return ownerEntityType;
+    }
+
+    public void setOwnerEntityType(String ownerEntityType) {
+        this.ownerEntityType = ownerEntityType;
+    }
+
+    public String getOwnerStateOfFormation() {
+        return ownerStateOfFormation;
+    }
+
+    public void setOwnerStateOfFormation(String ownerStateOfFormation) {
+        this.ownerStateOfFormation = ownerStateOfFormation;
+    }
+
+    public String getOwnerCountryOfCitizenship() {
+        return ownerCountryOfCitizenship;
+    }
+
+    public void setOwnerCountryOfCitizenship(String ownerCountryOfCitizenship) {
+        this.ownerCountryOfCitizenship = ownerCountryOfCitizenship;
     }
 
 
+    public String getDocketNumber() {
+        return docketNumber;
+    }
+
+    public void setDocketNumber(String docketNumber) {
+        this.docketNumber = docketNumber;
+    }
+
+    public String getLawFirmName() {
+        return lawFirmName;
+    }
+
+    public void setLawFirmName(String lawFirmName) {
+        this.lawFirmName = lawFirmName;
+    }
 }

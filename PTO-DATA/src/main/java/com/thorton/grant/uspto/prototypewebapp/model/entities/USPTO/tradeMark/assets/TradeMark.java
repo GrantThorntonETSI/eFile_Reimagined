@@ -19,6 +19,8 @@ public class TradeMark extends BaseEntity {
     private String PTOtradeMarkID;
     private String description;
 
+    private String trademarkDesignType;
+
     private String trademarkImage_awsS3Path;
 
 
@@ -68,6 +70,14 @@ public class TradeMark extends BaseEntity {
 
     public void setTrademarkOwner(PTOUser trademarkOwner) {
         this.trademarkOwner = trademarkOwner;
+    }
+
+    public String getTrademarkDesignType() {
+        return trademarkDesignType;
+    }
+
+    public void setTrademarkDesignType(String trademarkDesignType) {
+        this.trademarkDesignType = trademarkDesignType;
     }
 
     @Override
