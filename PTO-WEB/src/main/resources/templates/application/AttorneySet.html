@@ -407,6 +407,7 @@
         var contactNames = /*[[${myManagedContacts.ContactNames}]]*/ 'User Name';
 
         var collapseID = /*[[${baseTrademarkApplication.attorneyCollapseID}]]*/ 'User Name';
+        var selectedContactNames = /*[[${selectedAttorneys.ContactNames}]]*/ 'User Name';
 
 
         /*]]>*/
@@ -423,23 +424,7 @@
     </script>
 
     <!--load model attribute for Jquery consumption  -->
-    <script th:inline="javascript">
 
-        /*<![CDATA[*/
-
-        //var contactNames = /*[[${myContacts.ContactNames}]]*/ 'User Name';
-        //var contactEmails = /*[[${myContacts.ContactEmails}]]*/ 'User Name';
-        //var contactFirms = /*[[${myContacts.ContactFirms}]]*/ 'User Name';
-        //var selectedContactNames = /*[[${selectedContacts.selectedNames}]]*/ 'User Name';
-        //  selectd contact address
-        //  selectd contact affliation
-        //  selectd contact Docket number
-
-
-
-
-        /*]]>*/
-    </script>
 
     <script>
         $(document).ready(function() {
@@ -520,14 +505,34 @@
                 // check each name against selected names ...if in selected lis ...
                 // add row with check box selected and disabled
                 ///////////////////////////////////////////////////////////////////////////
-                var col1 = "<span class='small-tooltip'><a  style=\" min-width:500px; text-decoration: none;\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Copy Contact Information to Attorney Form.\">&nbsp;&nbsp;</a></span><i class='material-icons' style='position: relative; right:-10px;'>add_circle_outline</i>";
-                var col2 = "<b>"+contactNames[a]+"</b>";
-                var col3 = "";
-                contactsTable.row.add([col1, col2, col3]).draw();
+                var selectedContact = false;
+                for(var b=0; b <selectedContactNames.length; b++ ){
+                    if(contactNames[a] == selectedContactNames[b]){
+                        selectedContact = true;
+                    }
+
+                }
+
+                if(selectedContact == true){
+                    var col1 = "<span class='small-tooltip'><a  style=\" min-width:500px; text-decoration: none;\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Contact is an attorney for this application.\">&nbsp;&nbsp;</a></span><i class='material-icons' style='position: relative; right:-10px;'>check_circle_outline</i>";
+                    var col2 = "<b>"+contactNames[a]+"</b>";
+                    var col3 = "";
+                    contactsTable.row.add([col1, col2, col3]).draw();
+
+                }
+                else {
+                    var col1 = "<span class='small-tooltip'><a  style=\" min-width:500px; text-decoration: none;\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Copy Contact Information to Attorney Form.\">&nbsp;&nbsp;</a></span><i class='material-icons' style='position: relative; right:-10px;'>add_circle_outline</i>";
+                    var col2 = "<b>"+contactNames[a]+"</b>";
+                    var col3 = "";
+                    contactsTable.row.add([col1, col2, col3]).draw();
+
+                }
+
+
 
             }
             // sort and redraw to line up columns
-
+            $('[data-toggle="tooltip"]').tooltip();
 
 
 

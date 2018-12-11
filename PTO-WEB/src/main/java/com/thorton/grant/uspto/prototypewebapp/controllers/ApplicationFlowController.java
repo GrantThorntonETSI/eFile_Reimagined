@@ -194,7 +194,7 @@ public class ApplicationFlowController {
             ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
             selectedAttorneyDisplayDTO.setContactNames(scontactNames);
 
-            model.addAttribute("selectedContacts", selectedAttorneyDisplayDTO);
+            model.addAttribute("selectedAttorneys", selectedAttorneyDisplayDTO);
 
 
         }
@@ -316,6 +316,17 @@ public class ApplicationFlowController {
         mcDisplayDTO.setContactEntitySubType(contactSubTypesMC);
         model.addAttribute("myManagedContacts", mcDisplayDTO);
 
+        // set empty selected contacts for thymeleaf
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+        ArrayList<String> selectedContactNames = new ArrayList<>();
+        for(Iterator<Lawyer> iter = baseTrademarkApplication.getAvailableLawyers().iterator(); iter.hasNext(); ) {
+            Lawyer current = iter.next();
+            selectedContactNames.add(current.getFirstName()+" "+current.getLastName());
+        }
+        ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
+        selectedAttorneyDisplayDTO.setContactNames(selectedContactNames);
+        model.addAttribute("selectedAttorneys",selectedAttorneyDisplayDTO);
 
 
         if(trademarkInternalID.equals("new")) {
@@ -339,13 +350,9 @@ public class ApplicationFlowController {
             model.addAttribute("baseTrademarkApplication", trademarkApplication);
 
 
-            // set empty selected contacts for thymeleaf
-            ArrayList<String> scontactNames = new ArrayList<>();
-            scontactNames.add("");
-            selectedContactsDisplayDTO.setSelectedNames(scontactNames);
-            model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
-            model.addAttribute("lawyerPool", trademarkApplication.getAvailableLawyers());
 
+
+            model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
 
         }
@@ -368,34 +375,6 @@ public class ApplicationFlowController {
             ////////////////////////////////////////////////////////////////////////////////////////////
             // add selected contacts display info to model
             ////////////////////////////////////////////////////////////////////////////////////////////
-            ArrayList<String> selectedContactNames = new ArrayList<>();
-            Lawyer selected_lawyer = null;
-            BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
-            Set<Lawyer> applicationLawyerPool = baseTrademarkApplication.getAvailableLawyers();
-
-            if(applicationLawyerPool != null){
-                for(Iterator<Lawyer> iterSelectedContacts = baseTrademarkApplication.getAvailableLawyers().iterator(); iterSelectedContacts.hasNext(); ) {
-                    selected_lawyer = iterSelectedContacts.next();
-                    selectedContactNames.add(selected_lawyer.getFirstName()+" "+selected_lawyer.getLastName());
-
-                }
-                Collections.reverse(selectedContactNames);
-                /////////////////////////////////////////////////////////////////////////////////////////////
-                // we need a DTO for passing data to view layer
-                /////////////////////////////////////////////////////////////////////////////////////////////
-
-                selectedContactsDisplayDTO.setSelectedNames(selectedContactNames);
-                model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
-
-            }
-            else{
-                // if there are no one in the application available pool ..
-                // simply add empty value.
-
-                selectedContactNames.add("");
-                selectedContactsDisplayDTO.setSelectedNames(selectedContactNames);
-                model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
-            }
 
 
 
