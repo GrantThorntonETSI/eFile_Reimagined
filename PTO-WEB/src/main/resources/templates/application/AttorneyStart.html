@@ -8,13 +8,6 @@
 <body>
 
 
-<style>
-    .tooltip-inner {
-        max-width: 550px;
-        white-space: pre-line;
-    }
-
-</style>
 <!-- End Navbar -->
 <div class="content" style="display: none; background-color: white; top:600px; " >
     <div class="container-fluid"  >
@@ -330,7 +323,10 @@
         }, 500);
 
 
-        $('[data-toggle="tooltip"]').tooltip();
+
+
+
+
         $('#prevLink').attr("href",prevLinkURL);
         $('#prevLinkIcon').attr("href",prevLinkURL);
 
@@ -515,14 +511,14 @@
             // check each name against selected names ...if in selected lis ...
             // add row with check box selected and disabled
             ///////////////////////////////////////////////////////////////////////////
-            var col1 = "<i class='material-icons' style='position: relative; right:-10px;'>add_circle_outline</i>";
+            var col1 = "<span class='small-tooltip'><a  style=\" min-width:500px; text-decoration: none;\" data-toggle=\"tooltip\" data-placement=\"left\" title=\"Copy Contact Information to Attorney Form.\">&nbsp;&nbsp;</a></span><i class='material-icons' style='position: relative; right:-10px;'>add_circle_outline</i>";
             var col2 = "<b>"+contactNames[a]+"</b>";
             var col3 = "";
             contactsTable.row.add([col1, col2, col3]).draw();
 
         }
         // sort and redraw to line up columns
-
+        $('[data-toggle="tooltip"]').tooltip();
         // widget actions
 
         $('#ManagedContacts').on('click', 'i.material-icons', function () {
@@ -753,18 +749,6 @@
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // helper functions
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    function enableNextWidgetLink() {
-        $('#nextLink').prop("href", owerSetViewLink);
-        $('#nextLinkIcon').prop("href", owerSetViewLink);
-        $('.next-button').css("background-color", "rgb(55, 69, 120)");
-
-    }
-    function disableNextWidgetLink() {
-        $('#nextLink').prop("href", "");
-        $('#nextLinkIcon').prop("href", "");
-        $('.next-button').css("background-color", "rgb(128, 128, 128)");
-
-    }
 
     function getContactName(cell) {
         var contact_name = cell.substring(3, cell.length-4);

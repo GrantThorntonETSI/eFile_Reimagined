@@ -8,13 +8,7 @@
 <body>
 
 
-<style>
-    .tooltip-inner {
-        max-width: 550px;
-        white-space: pre-line;
-    }
 
-</style>
 <!-- End Navbar -->
 <div class="content" style="display: none; background-color: white; top:600px; " >
     <div class="container-fluid"  >
@@ -61,7 +55,7 @@
 
                             </div>
 
-                            <div class="contacts-Table " style="border: rgb(235,235,235); min-width: 280px; max-width: 280px; border-width: 1px; border: solid; padding: 15px; min-height: 420px; max-height: 420px; ">
+                            <div class="contacts-Table " style="border: rgb(235,235,235); min-width: 280px; max-width: 280px; border-width: 1px; border: solid; padding: 15px; min-height: 420px; max-height: 555px; ">
                                 <table id="ManagedContacts" class="table-no-bordered table-hover" cellpadding="1" style="min-width: 280px; max-width: 280px; margin-right: 4px; margin-top: 10px; margin-bottom: 10px; margin-left: 4px; "></table>
                             </div>
 
@@ -242,8 +236,6 @@
 
 
 
-
-
         //////////////////////////////////////////
         // show drop downs
         //////////////////////////////////////////
@@ -324,7 +316,7 @@
             // check each name against selected names ...if in selected lis ...
             // add row with check box selected and disabled
             ///////////////////////////////////////////////////////////////////////////
-            var col1 = "<i class='material-icons' style='position: relative; right:-10px;'>add_circle_outline</i>";
+            var col1 = "<span class='small-tooltip'><a  style=\" min-width:500px; text-decoration: none;\" data-toggle=\"tooltip\" data-placement=\"left\" title=\"Copy Contact Information to Owner Form.\"><i class='material-icons' style='position: relative; right:-10px;'>add_circle_outline</i></a></span>";
             var col2 = "<b>"+contactNames[a]+"</b>";
             var col3 = "";
             contactsTable.row.add([col1, col2, col3]).draw();
