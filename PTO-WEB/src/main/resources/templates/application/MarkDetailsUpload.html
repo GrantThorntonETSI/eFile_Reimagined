@@ -51,7 +51,10 @@
                             </div>
 
                             <div class="contacts-Table " style="border: rgb(235,235,235); min-width: 280px; max-width: 280px; border-width: 1px; border: solid; padding: 15px; min-height: 200px; max-height: 200px; ">
-                                <img style="position: relative; left:-5px; max-width: 255px;  max-height: 420px;" id="markImage" src=""/>
+                                <img th:src="@{/resources/images/placeholder-icon-3.jpg}" style="position: relative; left:-5px; max-width: 255px;  max-height: 420px;" id="markImage" />
+
+
+
 
 
                             </div>
@@ -159,7 +162,7 @@
 
                         <!--Start Dropzone-->
                         <!--<p>Or drag and drop files below</p>-->
-                        <div class="upload-drop-zone col-xs-12 col-md-10 col-lg-8" id="drop-zone">
+                        <div class="upload-drop-zone col-xs-12 col-md-10 col-lg-8" id="drop-zone" >
                             <p><span class="glyphicon glyphicon-upload"></span><br><br>
                                 Drag and drop files or click here to browse.<br><br>
                                 <span>Permitted file types include .doc, .docx, xlsx, csv, ppt, jpg, png, tiff, or pdf.</span></p>
@@ -183,7 +186,7 @@
                                     <legend class="sr-only"><span>File upload</span></legend>
                                     <div>
                                         <label for="file" class="sr-only">Upload file</label>
-                                        <input type="file" name="file" id="file" class="form-control" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/png, image/jpeg,image/tiff,.xls,.xlxs,.csv,.ppt">
+                                        <input  style="max-width: 500px; position: relative; right:-222px;" type="file" name="file" id="file" class="form-control" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/png, image/jpeg,image/tiff,.xls,.xlxs,.csv,.ppt">
                                     </div>
 
 
@@ -230,6 +233,8 @@
 
     var nextLinkURL = "../../application/AttorneySet/?trademarkID="+appInternalID;
     var prevLinkURL = "../../application/OwnerSetView/?trademarkID="+appInternalID;
+
+    var image_place_holder_path = "../resources/images/placeholder-icon-3.jpg";
 
 </script>
 
