@@ -924,6 +924,40 @@ public class ApplicationFlowController {
         //return "registrationConfirm/VerificationEmail";
     }
 
+    @RequestMapping({"/application/MarkUpload"})
+    public String markUpload (WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
+        //public String markUpload (WebRequest request, Model model) {
+        // get owner info
+
+        // get email and get PTOUser object from repository
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+        model.addAttribute("hostBean", hostBean);
+        String applcationLookupID = trademarkInternalID;
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+        }
+        else{
+            model.addAttribute("markImagePath","");
+        }
+
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
+        //return "application/MarkDetailsExamples";
+        return "application/MarkDetailsUpload";
+        //return "registrationConfirm/VerificationEmail";
+    }
+
     @RequestMapping({"/application/MarkExamples"})
     public String markExamples( WebRequest request, Model model, @RequestParam("anchorID") String anchorID){
         // get owner info

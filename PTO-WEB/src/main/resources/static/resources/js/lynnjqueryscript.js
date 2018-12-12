@@ -1,8 +1,8 @@
 $(document).ready(function(){
 	//START expand / collapse glyphicon
-	$("button.Accordion-trigger").click(function() {
-		$( 'button.Accordion-trigger span' ).toggleClass('visuallyremoved');
-		$( 'button.Accordion-trigger span#toggleglyph' ).toggleClass('visuallyadded');
+	$("button#optionsbtn").click(function() {
+		$( 'button#optionsbtn span' ).toggleClass('visuallyremoved');
+		$( 'button#optionsbtn span#toggleglyph' ).toggleClass('visuallyadded');
 	});
 	//END expand / collapse glyphicon
   
@@ -102,25 +102,20 @@ $(document).ready(function(){
 	$( '.nocontent' ).click(function() {
 		$( document ).find('div').removeClass( 'highlight focus' );
 		$( this ).addClass( 'highlight focus' );
-	});//END toggle panel color
-	
-	//START vertical center panel examples links
-	var a = $( 'div.panel-body' ); 
-	$( 'div.panel-body a.vctr' ).css( 'margin-top', ((a.innerHeight()/9) + 24) + 'px' );
-	$( 'div.panel-body a.vctr' ).css( 'margin-bottom', ((a.innerHeight()/9) + 24) + 'px' );
-	//END vertical center panel examples links
+	});
+	//END toggle panel color
 	
 	//START panel height match
       var a = $( 'div.match' );
-	  $('#panels .panel-body').css( 'min-height', a.innerHeight() );
-	  $('#panels .panel-body').css( 'max-height', a.innerHeight() );
+	  //$('#panels .panel-body').css( 'min-height', (a.innerHeight() + 8) );
+	  $('#panels .panel-body').css( 'height', (a.innerHeight() + 8) );
 	//END 
 	
 	//START examples panel link hover / active
-	  $('#examples div.panel-body a').hover(function() {
-		  $( this ).parent().parent().parent().addClass( 'examplehover' );
+	  $('#examples div.panel a').hover(function() {
+		$( this ).parent().parent().parent().addClass( 'examplehover' );
 	  }, function() {
-		  $( this ).parent().parent().parent().removeClass( 'examplehover' );
+		$( this ).parent().parent().parent().removeClass( 'examplehover' );
 	  });
 	//END examples panel link hover / active
 	
@@ -132,4 +127,11 @@ $(document).ready(function(){
 			: $(this).text('See More Types');
 	});	
 	//END examples panel button toggle text
+	
+	
+	
+	
+	
+	
+	
 });

@@ -21,8 +21,7 @@ public class TradeMark extends BaseEntity {
 
     private String trademarkDesignType;
 
-    private String trademarkImage_awsS3Path;
-
+    private String trademarkImagePath;
 
     @OneToOne
     private BaseTrademarkApplication initialFilingInfo;
@@ -48,12 +47,12 @@ public class TradeMark extends BaseEntity {
         this.description = description;
     }
 
-    public String getTrademarkImage_awsS3Path() {
-        return trademarkImage_awsS3Path;
+    public String getTrademarkImagePath() {
+        return trademarkImagePath;
     }
 
-    public void setTrademarkImage_awsS3Path(String trademarkImage_awsS3Path) {
-        this.trademarkImage_awsS3Path = trademarkImage_awsS3Path;
+    public void setTrademarkImagePath(String trademarkImagePath) {
+        this.trademarkImagePath = trademarkImagePath;
     }
 
     public BaseTrademarkApplication getInitialFilingInfo() {
@@ -87,14 +86,13 @@ public class TradeMark extends BaseEntity {
         TradeMark tradeMark = (TradeMark) o;
         return Objects.equals(PTOtradeMarkID, tradeMark.PTOtradeMarkID) &&
                 Objects.equals(description, tradeMark.description) &&
-                Objects.equals(trademarkImage_awsS3Path, tradeMark.trademarkImage_awsS3Path) &&
-                Objects.equals(initialFilingInfo, tradeMark.initialFilingInfo) &&
-                Objects.equals(trademarkOwner, tradeMark.trademarkOwner);
+                Objects.equals(trademarkDesignType, tradeMark.trademarkDesignType) &&
+                Objects.equals(trademarkImagePath, tradeMark.trademarkImagePath);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(PTOtradeMarkID, description, trademarkImage_awsS3Path, initialFilingInfo, trademarkOwner);
+        return Objects.hash(PTOtradeMarkID, description, trademarkDesignType, trademarkImagePath);
     }
 
     @Override
@@ -102,7 +100,8 @@ public class TradeMark extends BaseEntity {
         return "TradeMark{" +
                 "PTOtradeMarkID='" + PTOtradeMarkID + '\'' +
                 ", description='" + description + '\'' +
-                ", trademarkImage_awsS3Path='" + trademarkImage_awsS3Path + '\'' +
+                ", trademarkDesignType='" + trademarkDesignType + '\'' +
+                ", trademarkImagePath='" + trademarkImagePath + '\'' +
                 ", initialFilingInfo=" + initialFilingInfo +
                 ", trademarkOwner=" + trademarkOwner +
                 '}';

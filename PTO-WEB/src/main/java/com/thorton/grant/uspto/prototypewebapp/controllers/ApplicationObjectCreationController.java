@@ -14,6 +14,7 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.ap
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Partner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.TradeMark;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.ManagedContact;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
@@ -141,11 +142,7 @@ public class ApplicationObjectCreationController {
 
             lawyer.setFirstName(newAttorneyContactFormDTO.getFirstName());
             lawyer.setCollapseID((newAttorneyContactFormDTO.getFirstName()+newAttorneyContactFormDTO.getLastName()).replaceAll("[^A-Za-z0-9]", ""));
-
         }
-
-
-
 
         lawyer.setLastName(newAttorneyContactFormDTO.getLastName());
         if(newAttorneyContactFormDTO.getMiddleName() != null){
@@ -678,6 +675,72 @@ public class ApplicationObjectCreationController {
 
         return contact;
     }
+
+
+
+
+    // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
+    @PostMapping(value = "/Mark/add")
+    public String addMarkDetailsImageFile(
+                                      @RequestParam(name="file", required=false) MultipartFile file,
+                                      @RequestParam String AppInternalID,
+                                      Model model) {
+
+
+
+        System.out.println("1111111111111111111111111111111111111111111111122222222222222222222222222222222222222222");
+        System.out.println("mark upload controller !!!!!!!!!!!");
+
+        System.out.println("1111111111111111111111111111111111111111111111122222222222222222222222222222222222222222");
+        // create a new application and tie it to user then save it to repository
+        // create attorneyDTO + to model
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID( AppInternalID);
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
+        model.addAttribute("hostBean", hostBean);
+        String trademarkInternalID = baseTrademarkApplication.getApplicationInternalID();
+
+        TradeMark tradeMark = new TradeMark();
+        if(file != null){
+
+            if(file.isEmpty() == false) {
+               tradeMark.setTrademarkImagePath("/files/"+storageService.getCounter()+file.getOriginalFilename());
+               baseTrademarkApplication.setTradeMark(tradeMark);
+               baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+               model.addAttribute("markImagePath",tradeMark.getTrademarkImagePath());
+                try {
+                    storageService.store(file);
+
+                }
+                catch ( StorageException ex){
+                    model.addAttribute("message", "ERROR: Mark Image upload failed due to error: "+ex );
+                    return "forward:/application/MarkUpload/?trademarkID="+trademarkInternalID;
+
+                }
+            }
+
+        }
+
+
+
+
+        return "forward:/application/MarkUpload/?trademarkID="+AppInternalID;
+    }
+    ///////////////////////////////////////////////////////////////////////////////
+    // end of attorney add
+    ///////////////////////////////////////////////////////////////////////////////
 
 
 
