@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{fragments/layoutSession :: layout (~{::body},'user')}" xmlns="http://www.w3.org/1999/html">
+      th:replace="~{fragments/LynnFragment :: layout (~{::body},'user')}" xmlns="http://www.w3.org/1999/html">
 <head >
     <meta charset="UTF-8">
     <title>User Home Page</title>
@@ -12,10 +12,10 @@
     <div class="container-fluid"  >
 
         <div class="col-sm-16" >
-            <div class="form-container base-page" style="position: relative; top:20px;">
+            <div class="form-container base-page" style="position: relative; top:-120px;">
                 <div class="row">
                     <div class="col-sm-6">
-                        <div style="position: relative; top:50px; margin-left: 40px; margin-bottom: 5px; margin-top: 20px; min-height: 90px;">
+                        <div style="position: relative;  margin-left: 40px; margin-bottom: 5px; margin-top: 20px; min-height: 90px;">
                             <h1><b style="opacity: 1; mix-blend-mode: normal; color: rgb(0, 0, 0); font-size: 36px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; text-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1.16667px; width: 597px; height: 41px; transform: rotate(0deg) translate(37px, 138px) rotate(0deg);">User Account</b></h1>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
 
                         <h5 class="card-title"><b>Sign In</b></h5>
                     </div>
-                    <hr style="height:3px; position:relative; top:-20px; left:-11.55%; max-width: 80.3%">
+
 
 
                 </div>
@@ -63,7 +63,7 @@
                         </div>
 
                 <!-- row 1 -->
-                        <div class="row" style="margin-left:15px;">
+                        <div class="row" style="margin-left:15px; margin-bottom: 10px;">
 
                             <!-- column 1 row 1 -->
                             <div class="col-sm-4">
@@ -75,7 +75,7 @@
                                     <div class="card-header card-header-blue " style="background-color: rgb(217, 217, 214);">
                                         <b class="card-title" style="position: relative; left:2%;"> Change Email Address</b>
                                     </div>
-                                    <div class="card-body " style="position:relative;top: 5px; min-height: 100px;">
+                                    <div class="card-body " style="position:relative;top: 5px; min-height: 130px;">
                                         <p class="card-description text-center"><b>You will need to sign in with your new email address after this change.</b></p>
 
                                         <span class="bmd-form-group">
@@ -103,7 +103,7 @@
                                     </div>
 
 
-                                    <div class="card-body " style="position:relative;top: 5px; min-height: 100px;">
+                                    <div class="card-body " style="position:relative;top: 5px; min-height: 130px;">
                                         <p class="card-description text-center"><b>You can change your security question. Helps verify your identity.</b></p>
 
                                         <span class="bmd-form-group">
@@ -130,7 +130,7 @@
                                     </div>
 
 
-                                    <div class="card-body " style="position:relative;top: 5px; min-height: 100px;">
+                                    <div class="card-body " style="position:relative;top: 5px; min-height: 130px;">
                                         <p class="card-description text-center"><b>Your password will expire on January 5, 2019. in 180 days.</b></p>
 
                                         <span class="bmd-form-group">
@@ -152,11 +152,11 @@
 
                         </div>
 
-                        <div class="card-text">
+                        <div class="card-text" style="position: relative; bottom: -20px;">
                             <h5 class="card-title"><b>Two-Step Authentication</b></h5>
                         </div>
-                        <hr style="height:3px; position:relative; top:-20px; left:-11.55%; max-width: 80.3%">
-                        <div class="row" style="position: relative; right:-30px;">
+
+                        <div class="row" style="position: relative; bottom: -20px; right:-30px;">
 
                             <div class="col-sm-10">
                                 <div class="form-group" style="margin-left: 25px;">
@@ -168,7 +168,7 @@
                         </div>
 
 
-                       <div class="row">
+                       <div class="row" style="position: relative; bottom: -20px;" >
                            <div class="col-md-14" >
                                <div class="col-sm-5">
 
@@ -184,7 +184,7 @@
                                        </div>
 
 
-                                       <div class="card-body " style="position:relative;top: 5px; min-height: 100px;">
+                                       <div class="card-body " style="position:relative;top: 5px; min-height: 130px;">
                                            <p class="card-description text-center"><b>6 digit code sent to e-mail lasts for twenty minutes.</b></p>
 
                                            <span class="bmd-form-group">
@@ -210,7 +210,7 @@
                                        </div>
 
 
-                                       <div class="card-body " style="position:relative;top: 5px; min-height: 100px;">
+                                       <div class="card-body " style="position:relative;top: 5px; min-height: 130px;">
                                            <p class="card-description text-center"><b>6 digit code generated by mobile app. One-time set up required. Your mobile app must be set up before using this option.</b></p>
 
                                             <span class="bmd-form-group">
@@ -238,10 +238,10 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <span style="position: relative; bottom:-2px; left:5px;">
-                                            <input type="checkbox"  th:if="${user.isUseTwoFactorAuthentication() == true}"id="useTwoFactor" name="useTwoFactor" checked>
-                                             <input type="checkbox"  th:if="${user.isUseTwoFactorAuthentication() == false}"id="useTwoFactor" name="useTwoFactor">
-
-                                        </span>&nbsp;&nbsp;<span><b>I want to use the two-step authentication method every time I sign in.</b></span>
+                                            <input  class="form-check-input checkmark fa-check" type="checkbox"  value="" role="checkbox" aria-checked="true" tabindex="0" aria-labelledby="2factorcheck-label" th:if="${user.isUseTwoFactorAuthentication() == true}"id="useTwoFactor" name="useTwoFactor" checked>
+                                             <input class="form-check-input checkmark" type="checkbox"  value="" role="checkbox" aria-checked="false" tabindex="0" aria-labelledby="2factorcheck-label" th:if="${user.isUseTwoFactorAuthentication() == false}"id="useTwoFactor" name="useTwoFactor">
+                                            <label class="form-check-label form-check" for="useTwoFactor" id="2factorcheck-label"><span class="radio notspecial">I want to use the two-step authentication method every time I sign in.</span></label>
+                                        </span>&nbsp;&nbsp;<span><b></b></span>
                                     </div>
 
 
@@ -339,7 +339,7 @@
 
                 <h5 class="card-title"><b style="color: rgb(56, 56, 56); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">Contact Information</b></h5>
             </div>
-            <hr style="height:3px; position:relative; top:-20px; left:-11.55%; max-width: 80.1%">
+
 
             <div class="row" style="margin-left:15px;">
 
