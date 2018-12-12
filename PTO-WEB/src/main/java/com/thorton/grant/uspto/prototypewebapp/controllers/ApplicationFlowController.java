@@ -734,6 +734,17 @@ public class ApplicationFlowController {
 
 
 
+        ArrayList<String> selectedContactNames = new ArrayList<>();
+        for(Iterator<Owner> iter = baseTrademarkApplication.getOwners().iterator(); iter.hasNext(); ) {
+            Owner current = iter.next();
+            selectedContactNames.add(current.getFirstName()+" "+current.getLastName());
+        }
+        ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
+        selectedAttorneyDisplayDTO.setContactNames(selectedContactNames);
+        model.addAttribute("selectedOwners",selectedAttorneyDisplayDTO);
+
+
+
 
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
@@ -809,6 +820,7 @@ public class ApplicationFlowController {
 
         model.addAttribute("myContacts", contactsDisplayDTO);
 
+        // add selected attorney info for continuing views
 
         ArrayList<String> selectedContactNames = new ArrayList<>();
         Lawyer selected_lawyer = null;
@@ -825,7 +837,7 @@ public class ApplicationFlowController {
             /////////////////////////////////////////////////////////////////////////////////////////////
             SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
             selectedContactsDisplayDTO.setSelectedNames(selectedContactNames);
-            model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
+            model.addAttribute("selectedAttorneys", selectedContactsDisplayDTO);
         }
         else{
             // if there are no one in the application available pool ..
@@ -834,7 +846,7 @@ public class ApplicationFlowController {
             SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
             selectedContactNames.add("");
             selectedContactsDisplayDTO.setSelectedNames(selectedContactNames);
-            model.addAttribute("selectedContacts", selectedContactsDisplayDTO);
+            model.addAttribute("selectedAttorneys", selectedContactsDisplayDTO);
         }
 
         model.addAttribute("lawyerPool", baseTrademarkApplication.getAvailableLawyers());
@@ -861,6 +873,20 @@ public class ApplicationFlowController {
         managedContactsDisplayDTO.setContactEmails(managedContactEmails);
         managedContactsDisplayDTO.setContactEntitySubType(managedCcontactSubTypes);
         model.addAttribute("myManagedContacts", managedContactsDisplayDTO);
+
+
+
+
+         // add selected owner info for continuing views
+        ArrayList<String> selectedOwnerContactNames = new ArrayList<>();
+        for(Iterator<Owner> iter = baseTrademarkApplication.getOwners().iterator(); iter.hasNext(); ) {
+            Owner current = iter.next();
+            selectedOwnerContactNames.add(current.getFirstName()+" "+current.getLastName());
+        }
+        ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
+        selectedAttorneyDisplayDTO.setContactNames(selectedOwnerContactNames);
+        model.addAttribute("selectedOwners",selectedAttorneyDisplayDTO);
+
 
 
 

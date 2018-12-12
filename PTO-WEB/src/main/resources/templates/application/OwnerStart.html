@@ -327,14 +327,14 @@
             }
 
             if(selectedContact == true){
-                var col1 = "<span class='small-tooltip'><a  style=\" min-width:500px; text-decoration: none;\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Contact is an attorney for this application.\">&nbsp;</a></span><i class='material-icons' style='position: relative; right:-10px;'>check_circle_outline</i>";
+                var col1 = "<span class='small-tooltip'><a  style=\" min-width:500px; text-decoration: none;\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Contact is an Owner for this application.\">&nbsp;</a></span><i class='material-icons' style='position: relative; right:-10px;'>check_circle_outline</i>";
                 var col2 = "<b>"+contactNames[a]+"</b>";
                 var col3 = "";
                 contactsTable.row.add([col1, col2, col3]).draw();
 
             }
             else {
-                var col1 = "<span class='small-tooltip'><a  style=\" min-width:500px; text-decoration: none;\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Copy Contact Information to Attorney Form.\">&nbsp;</a></span><i class='material-icons' style='position: relative; right:-10px;'>add_circle_outline</i>";
+                var col1 = "<span class='small-tooltip'><a  style=\" min-width:500px; text-decoration: none;\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Copy Contact Information to Owner Form.\">&nbsp;</a></span><i class='material-icons' style='position: relative; right:-10px;'>add_circle_outline</i>";
                 var col2 = "<b>"+contactNames[a]+"</b>";
                 var col3 = "";
                 contactsTable.row.add([col1, col2, col3]).draw();
@@ -354,10 +354,11 @@
 
         $('#ManagedContacts').on('click', 'i.material-icons', function () {
 
-
-                var rawCell=$(this).parent().next().html();
+            if($(this).html() == "add_circle_outline") {
+                var rawCell = $(this).parent().next().html();
                 var contactDisplayName = getContactName(rawCell);
                 setformWithManagedContact(contactDisplayName);
+            }
 
 
 
