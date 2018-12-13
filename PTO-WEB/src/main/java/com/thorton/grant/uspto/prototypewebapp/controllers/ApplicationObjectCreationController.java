@@ -734,7 +734,7 @@ public class ApplicationObjectCreationController {
         }
 
         //return "/mark/designWithText/?trademarkID="+AppInternalID;
-        return "application/MarkDetailsUpload";
+        return "application/MarkDetailsDesignWText";
     }
     ///////////////////////////////////////////////////////////////////////////////
     // end of attorney add

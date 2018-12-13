@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/LynnFragment :: layout (~{::body},'user')}" xmlns="http://www.w3.org/1999/html">
+<head >
+    <meta charset="UTF-8">
+    <title></title>
+</head>Mark Details
+<body>
+<div class="row content" style="position: relative; ">
+    <main class="col-xs-12 col-sm-8 col-lg-6" style="min-width: 860px;">
+        <div class="row sticky" id="contacts-ui" style=" display:none; position: fixed; top:500px; right:400px;  max-height: 10px;">
+
+
+
+            <div class="row" style="position: relative; top: -150px;max-height: 10px; " >
+                <div class="col-sm-12" style="max-height: 10px;">
+                    <div class="col-sm-9" style="max-height: 10px;" >
+
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="banner-message"  style="position: relative;top:-225px; ">
+
+                            <div style="min-width: 280px; max-width: 280px;">
+                                <ul class="aside-fees">
+                                    <!-- 			BASIC/COLLECTIVE MARK -->
+                                    <li class="fee-item collapse" style="height: 0px;">
+                                        <span class="fee-description">Basic fee</span>
+                                        <span class="fee-value fee-basic">225 $</span>
+                                    </li>
+
+                                    <!-- 			EXTRA CLASS FEE -->
+                                    <li class="fee-item collapse" style="height: 0px;">
+                                        <span class="fee-description">Extra Class Fee</span>
+                                        <span class="fee-value fee-extra-class">0 $</span>
+                                    </li>
+
+                                    <!-- 			TOTAL CLASSES -->
+                                    <li class="fee-item collapse" style="height: 0px;">
+                                        <span class="fee-description">Total classes</span>
+                                        <span class="fee-value fee-total-classes">0</span>
+                                    </li>
+
+                                    <!-- 			TOTAL -->
+                                    <li class="fee-item-total collapsed" data-toggle="collapse" data-target=".fee-item">
+                                        <span class="fee-description-total">Total fee</span>
+                                        <span class="fee-value fee-total">225 $</span>
+                                    </li>
+                                </ul>
+
+                            </div>
+
+                            <div class="contacts-Table " style="border: rgb(235,235,235); min-width: 280px; max-width: 280px; border-width: 1px; border: solid; padding: 15px; min-height: 200px; max-height: 200px; ">
+                                <div style="margin: 3px; position: relative; top:-5px;">
+                                    <img th:src="@{/resources/images/placeholder-icon.jpg}" style="position: relative; left:-5px; max-width: 250px; max-height: 200px;"  id="markImage" />
+                                </div>
+                            </div>
+
+                            <div class="row navigation-row" style=" max-height: 100px; position: relative; bottom:-60px; min-width: 350px; max-width: 325px;">
+                                <div class="col-sm-2">
+                                    <span class="btn btn-md prev-button"  style=" padding: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; background-color: rgb(55, 69, 120);  color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center;    font-size: 14px; font-style: normal; width: 120px; height: 30px;"><a id="prevLinkIcon" style="color: white; text-decoration: none; position: relative; top:-3px;left:-5px;" ><i class="material-icons rotate-180">exit_to_app</i></a><a id="prevLink" style="color: white; text-decoration: none;position: relative; top:-10px;" href="">Prev</a></span>
+                                </div>
+                                <div class="col-sm-2">
+                                </div>
+                                <div class="col-sm-2">
+                                </div>
+
+
+                                <div class="col-sm-2" style="position:relative; left:-10px; ">
+                                         <span class="btn btn-md next-button"  style="padding: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; background-color: rgb(128,128,128); color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center;   font-size: 14px; font-style: normal; width: 120px; height: 30px;"><a id="nextLink" style="color: white; text-decoration: none; position: relative; top:-10px;" >Next</a><a id="nextLinkIcon" style="color: white; text-decoration: none; position: relative; top:-3px;right:-5px;" ><i class="material-icons">exit_to_app</i></a><span>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div><!--end row sticky -->
+        <!--START Content Div-->
+        <div class="row" style="position: relative; top:-235px; left:-333px;">
+            <div class="col-xs-12 text-left">
+
+                <section class="col-xs-12 steps breadcrumb-steps"  style="position: relative;  left:-55px;">
+                    <div class="col-xs-2 one">
+                        <div class="col-xs-4">
+                            <span>1</span>
+                        </div>
+                        <div class="col-xs-8 vertctr">
+                            <p>Your details</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 two active">
+                        <div class="col-xs-4">
+                            <span>2</span>
+                        </div>
+                        <div class="col-xs-8 vertctr">
+                            <p>Trademark Details</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 three">
+                        <div class="col-xs-4">
+                            <span>3</span>
+                        </div>
+                        <div class="col-xs-8 vertctr">
+                            <p>Goods and Services</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 four">
+                        <div class="col-xs-4">
+                            <span>4</span>
+                        </div>
+                        <div class="col-xs-8 vertctr">
+                            <p>Basis</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 five">
+                        <div class="col-xs-4">
+                            <span>5</span>
+                        </div>
+                        <div class="col-xs-8 vertctr">
+                            <p>Additional information</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 six">
+                        <div class="col-xs-4">
+                            <span>6</span>
+                        </div>
+                        <div class="col-xs-8 vertctr">
+                            <p>Confirm and pay</p>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!--END Application Type-->
+            </div><!--END RADIO container-->
+
+        </div><!--END row-->
+
+
+        <div class="row" id="panels" style="position: relative; top:-222px; left:-333px; ">
+        <h1>Trademark Details &#8211; Design with Text</h1>
+        <p class="required"><span class="weight600">&#42; = Required</span></p>
+        <!--START Trademark Examples-->
+        <!--START Standard Character-->
+        <div class="row">
+            <div class="col-xs-12" id="uploaded">
+                <div class="card-text">
+                    <h2 class="card-title weight600">Mark Information</h2>
+                </div>
+
+                <form action="" method="post" >
+                    <fieldset>
+                        <div class="form-group form-group-md col-xs-12">
+                            <p class="required weight600" aria-level="3"><span class="weight600">&#42;</span> Mark Literal</p>
+                            <label for="ta2">Enter the words, letters and numbers appearing in the mark. <a href="#" data-toggle="tooltip" title="Any entry in this field that is not found in the mark image will not be considered part of the mark." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
+                            <textarea id="ta2" rows="3" class="form-control"></textarea>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <section aria-label="color claim">
+                                        <div class="card-text">
+                                            <div role="heading" aria-level="2">
+                                                <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#colorclaim" aria-controls="colorclaim" aria-expanded="false" id="colorbtn"><span class="glyphicon glyphicon-triangle-right"></span>Color Claim</button>
+                                            </div>
+                                        </div>
+                                        <div id="colorclaim" class="collapse Accordion-panel" role="region" aria-labelledby="colorclaimbtn">
+                                            <div class="Accordion">
+                                                <p>If the mark includes color, the drawing must show the mark in color, and you must name the color(s), describe where the color(s) appear on the mark, and submit a claim that the color(s) is a feature of the mark.</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <p id="color">Are you claiming color as a feature of the mark?</p>
+                                            <div role="radiogroup" aria-labelledby="color">
+                                                <label for="inlineRadio1" class="radio-inline"><input type="radio" name="coloradioyes" id="inlineRadio1" value="yes">Yes</label>
+                                                <label for="inlineRadio2" class="radio-inline"><input type="radio" name="coloradiono" id="inlineRadio2" value="no">No</label>
+                                            </div><!--END radiogroup-->
+                                            <div id="yescolorclaim"><!--toggle 'yes' radio-->
+                                                <label for="ta3">Identify the colors in your mark.</label>
+                                                <textarea id="ta3" rows="3" class="form-control"></textarea>
+                                                <h3 class="weight600">Mark Description</h3>
+                                                <label for="ta2"><span class="weight600">&#42;</span> Enter the description of the mark including the location of the colors. <a href="#" data-toggle="tooltip" title="If the mark is a color mark, the description must include the nature and location of the color; i.e., you must specifically state where each color is located within the mark." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
+                                                <textarea id="ta2" rows="3" class="form-control" placeholder="This mark consists of"></textarea>
+                                            </div>
+                                            <div id="nocolorclaim"><!--toggle 'no' radio-->
+                                                <input class="form-check-input checkmark" type="checkbox" value="accept B W mark" role="checkbox" aria-checked="false" tabindex="0" aria-labelledby="acceptmark" id="bwmark">
+                                                <label class="form-check-label form-check" for="bwmark" id="acceptmark"><span class="radio notspecial">Accept the black and white drawing.</span></label>
+                                                <div class="alert alert-warning" role="alert">
+                                                    <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+                                                    <span class="sr-only">Warning:</span>
+                                                    Submitting a color drawing with no claim to color could result in a refusal and delay the examination process.
+                                                </div>
+                                                <h3 class="weight600">Mark Description</h3>
+                                                <label for="ta5"><span class="weight600">&#42;</span> Provide a description of the mark.</label>
+                                                <textarea id="ta5" rows="3" class="form-control" placeholder="This mark consists of"></textarea>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div><!--END color claim-->
+
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <section aria-label="translation">
+                                        <div class="card-text">
+                                            <div role="heading" aria-level="2">
+                                                <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#translation" aria-controls="translation" aria-expanded="false" id="translatesbtn"><span class="glyphicon glyphicon-triangle-right"></span> Translation</button>
+                                            </div>
+                                        </div>
+                                        <div id="translation" class="collapse Accordion-panel" role="region" aria-labelledby="translationbtn">
+                                            <div class="Accordion">
+                                                <p>A translation of a trademark is the meaning in English of any non-English wording. Every application to register a trademark that includes non-English wording must include a translation of that wording. <a href="https://tmep.uspto.gov/RDMS/TMEP/current#/current/TMEP-800d1e2300.html" target="_blank">More information</a>.</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <p id="foreign">Does your mark contain foreign wording?</p>
+                                            <div role="radiogroup" aria-labelledby="foreign">
+                                                <label for="inlineRadio3" class="radio-inline"><input type="radio" name="foreignradioyes" id="inlineRadio3" value="yes">Yes</label>
+                                                <label for="inlineRadio4" class="radio-inline"><input type="radio" name="foreignradiono" id="inlineRadio4" value="no">No</label>
+                                            </div><!--END radiogroup-->
+                                            <div id="yestranslation"><!--toggle 'yes' radio-->
+                                                <h3 class="weight600">Enter the foreign language and the translation.</h3>
+                                                <div class="form-group form-group-md col-xs-12 col-md-3">
+                                                    <label for="language">Language</label>
+                                                    <select class="form-control" id="language">
+                                                        <option value="Select">Select</option>
+                                                        <option value="Spanish">Spanish</option>
+                                                        <option value="German">German</option>
+                                                        <option value="French">French</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group form-group-md col-xs-12 col-md-5">
+                                                    <label for="engtranslation">The English Translation of</label>
+                                                    <input type="text" class="form-control" id="engtranslation">
+                                                </div>
+                                                <div class="form-group form-group-md col-xs-12 col-md-4">
+                                                    <label for="inthemark">in the mark is</label>
+                                                    <input type="text" class="form-control" id="inthemark">
+                                                </div>
+                                            </div>
+                                            <div id="notranslation"><!--toggle 'no' radio-->
+                                                <div class="form-group form-group-md col-xs-12">
+                                                    <label for="notranslations">There is no meaning in a foreign language for</label>
+                                                    <input type="text" class="form-control" id="notranslations">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </section>
+                                </div>
+                            </div><!--END translation-->
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <section aria-label="transliteration">
+                                        <div class="card-text">
+                                            <div role="heading" aria-level="2">
+                                                <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#transliteration" aria-controls="transliteration" aria-expanded="false" id="translitbtn"><span class="glyphicon glyphicon-triangle-right"></span> Transliteration</button>
+                                            </div>
+                                        </div>
+                                        <div id="transliteration" class="collapse Accordion-panel" role="region" aria-labelledby="translitbtn">
+                                            <div class="Accordion">
+                                                <p>If a name(s) shown in the mark identifies a particular living individual, enter the name of the individual being identified. In addition, attach a .jpg or .pdf file showing the actual consent of the named individual to the use and registration of his or her name. Select &#8220;No&#8221; if the mark includes a name(s) but this does NOT identify a particular living person. <a href="https://tmep.uspto.gov/RDMS/TMEP/current#/current/TMEP-1200d1e4891.html" target="_blank">More information</a>.</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <p id="translit">Does your mark contain foreign wording in non-Latin characters that requires transliteration?</p>                                            			<div role="radiogroup" aria-labelledby="translit">
+                                            <label for="inlineRadio5" class="radio-inline"><input type="radio" name="nonlatradioyes" id="inlineRadio5" value="yes">Yes</label>
+                                            <label for="inlineRadio6" class="radio-inline"><input type="radio" name="nonlatradiono" id="inlineRadio6" value="no">No</label>
+                                        </div><!--END radiogroup-->
+                                            <div id="yestransliteration"><!--toggle 'yes' radio-->
+                                                <h3 class="weight600">Enter the transliteration of the mark.</h3>
+                                                <div class="form-group form-group-md col-xs-12 col-md-3">
+                                                    <label for="languagetranslit">Language</label>
+                                                    <select class="form-control" id="languagetranslit">
+                                                        <option value="Select">Select</option>
+                                                        <option value="German">German</option>
+                                                        <option value="Korean">Korean</option>
+                                                        <option value="French">French</option>
+                                                        <option value="Spanish">Spanish</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group form-group-md col-xs-12 col-md-9">
+                                                    <label for="nonlatranslation">The non-Latin characters in the mark transliterate to</label>
+                                                    <input type="text" class="form-control" id="nonlatranslation">
+                                                </div>
+                                                <div class="form-group form-group-md col-xs-12 col-md-12">
+                                                    <label for="inenglish">and this, in English, means</label>
+                                                    <input type="text" class="form-control" id="inenglish">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div><!--END transliteration-->
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <section aria-label="name portrait signature">
+                                        <div class="card-text">
+                                            <div role="heading" aria-level="2">
+                                                <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#nps" aria-controls="nps" aria-expanded="false" id="npsbtn"><span class="glyphicon glyphicon-triangle-right"></span><span id="toggleglyph" class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Name / Portrait / Signature</button>
+                                            </div>
+                                        </div>
+                                        <div id="nps" class="collapse Accordion-panel" role="region" aria-labelledby="npsbtn">
+                                            <div class="Accordion">
+                                                <p>If a name(s) shown in the mark identifies a particular living individual, enter the name of the individual being identified. In addition, attach a .jpg or .pdf file showing the actual consent of the named individual to the use and registration of his or her name. Select &#8220;No&#8221; if the mark includes a name(s) but this does NOT identify a particular living person. <a href="https://tmep.uspto.gov/RDMS/TMEP/current#/current/TMEP-1200d1e4891.html" target="_blank">More information</a>.</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <p id="nps">Does your mark contain a name, portrait, or signature?</p>
+                                            <div role="radiogroup" aria-labelledby="nps">
+                                                <label for="inlineRadio7" class="radio-inline"><input type="radio" name="npsradioyes" id="inlineRadio7" value="yes">Yes</label>
+                                                <label for="inlineRadio8" class="radio-inline"><input type="radio" name="npsradiono" id="inlineRadio8" value="no">No</label>
+                                            </div><!--END radiogroup-->
+                                            <div id="yesnps" role="region" aria-labelledby="translit">
+                                                <input class="form-check-input checkmark" type="checkbox" value="name" aria-checked="false" tabindex="0" aria-labelledby="checkname" id="namechecked">
+                                                <label class="form-check-label form-check" for="namechecked" id="checkname"><span class="radio notspecial">Name</span></label>
+                                                <input class="form-check-input checkmark" type="checkbox" value="portrait" aria-checked="false" tabindex="0" id="portraitchecked" aria-labelledby="checkportrait">
+                                                <label class="form-check-label form-check" for="portraitchecked" id="checkportrait"><span class="radio notspecial" id="collect">Portrait</span></label>
+                                                <input class="form-check-input checkmark" type="checkbox" value="signature" aria-checked="false" tabindex="0" aria-labelledby="checksignature" id="signaturechecked">
+                                                <label class="form-check-label form-check" for="signaturechecked" id="checksignature"><span class="radio notspecial" id="collectm">Signature</span></label>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div><!--END nameportraitsignature-->
+                        </div><!--END formgroup-->
+                    </fieldset>
+                </form>
+            </div><!--END col-->
+        </div><!--END row-->
+        </div>
+
+
+
+    </main>
+</div><!--END Tiles row-->
+
+<script th:inline="javascript">
+
+    /*<![CDATA[*/
+
+
+    var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
+
+    var host_name= /*[[${hostBean.host}]]*/ 'User Name';
+    var host_port= /*[[${hostBean.port}]]*/ 'User Name';
+    var  image_path = /*[[${markImagePath}]]*/ 'User Name';
+
+    //alert(image_path);
+
+
+    var host = host_name+":"+host_port;
+
+
+    /*]]>*/
+</script>
+
+
+
+<script>
+
+    var nextLinkURL = "../../application/AttorneySet/?trademarkID="+appInternalID;
+    var prevLinkURL = "../../mark/designWithText/?trademarkID="+appInternalID;
+
+
+</script>
+
+
+<script>
+    $('#appInternalIDForm').val(appInternalID);
+
+    if(image_path != null){
+        $('#markImage').attr("src",image_path );
+
+    }
+
+
+
+    // next link url to enable  for u.s individual href="http://localhost:8080/application/owner/info"
+    $(document).ready(function() {
+        setTimeout(function () {
+            $('#content').fadeIn(500);
+        }, 500);
+
+        setTimeout(function () {
+            // after 1000 ms we add the class animated to the login/register card
+            $('#panels').fadeIn(500);
+        }, 500);
+
+
+        setTimeout(function () {
+            // after 1000 ms we add the class animated to the login/register card
+            $('#contacts-ui').fadeIn(500);
+
+
+        }, 500);
+
+        $('.glyphicon').click(function () {
+            $(this).toggleClass("glyphicon-triangle-right").toggleClass("glyphicon-triangle-bottom");
+        });
+
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+        $('#prevLink').attr("href",prevLinkURL);
+        $('#prevLinkIcon').attr("href",prevLinkURL);
+    });
+
+
+
+    //display file_icon
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#fileimage')
+                    .attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+
+</script>
+
+</body>
+</html>

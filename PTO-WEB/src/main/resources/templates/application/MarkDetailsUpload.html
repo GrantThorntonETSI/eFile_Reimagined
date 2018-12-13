@@ -226,10 +226,9 @@
 
 <script>
 
-    var nextLinkURL = "../../application/AttorneySet/?trademarkID="+appInternalID;
+    var nextLinkURL = "../../mark/designWithTextDetails/?trademarkID="+appInternalID;
     var prevLinkURL = "../../application/MarkDetails/?trademarkID="+appInternalID;
 
-    var image_place_holder_path = "../resources/images/placeholder-icon-3.jpg";
 
 </script>
 
@@ -239,6 +238,9 @@
 
     if(image_path != null){
         $('#markImage').attr("src",image_path );
+        $('#nextLink').attr("href",nextLinkURL);
+        $('#nextLinkIcon').attr("href",nextLinkURL);
+
 
     }
 
