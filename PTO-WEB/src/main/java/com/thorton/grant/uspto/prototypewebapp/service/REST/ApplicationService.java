@@ -445,9 +445,9 @@ public class ApplicationService  extends  BaseRESTapiService{
 
 
     @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
-    @RequestMapping(method = GET, value="/REST/apiGateway/application/contacts/attorney/delete/{markType}/{appInternalID}")
+    @RequestMapping(method = GET, value="/REST/apiGateway/mark/designType/{markType}/{appInternalID}")
     @ResponseBody
-    ResponseEntity<String> setMarkTypel(@PathVariable String markType , @PathVariable String appInternalID){
+    ResponseEntity<String> setMarkType(@PathVariable String markType , @PathVariable String appInternalID){
 
    //////////////////////////////////////////////////////////
         // retrieve application using passed internal id
@@ -457,7 +457,7 @@ public class ApplicationService  extends  BaseRESTapiService{
 
         TradeMark tradeMark = new TradeMark();
         tradeMark.setTrademarkDesignType(markType);
-
+        baseTrademarkApplication.setTradeMark(tradeMark);
 
         //////////////////////////////////////////////////////////
         // find contact via email from PTOUser

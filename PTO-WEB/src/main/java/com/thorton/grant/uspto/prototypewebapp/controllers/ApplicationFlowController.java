@@ -953,9 +953,8 @@ public class ApplicationFlowController {
 
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
-        //return "application/MarkDetailsExamples";
         return "application/MarkDetailsUpload";
-        //return "registrationConfirm/VerificationEmail";
+
     }
 
     @RequestMapping({"/application/MarkExamples"})
