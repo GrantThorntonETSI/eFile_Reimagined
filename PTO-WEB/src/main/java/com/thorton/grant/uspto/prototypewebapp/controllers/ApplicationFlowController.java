@@ -924,7 +924,7 @@ public class ApplicationFlowController {
         //return "registrationConfirm/VerificationEmail";
     }
 
-    @RequestMapping({"/application/MarkUpload"})
+    @RequestMapping({"/mark/designWithText"})
     public String markUpload (WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
         //public String markUpload (WebRequest request, Model model) {
         // get owner info

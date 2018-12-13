@@ -690,7 +690,6 @@ public class ApplicationObjectCreationController {
 
         System.out.println("1111111111111111111111111111111111111111111111122222222222222222222222222222222222222222");
         System.out.println("mark upload controller !!!!!!!!!!!");
-
         System.out.println("1111111111111111111111111111111111111111111111122222222222222222222222222222222222222222");
         // create a new application and tie it to user then save it to repository
         // create attorneyDTO + to model
@@ -732,9 +731,6 @@ public class ApplicationObjectCreationController {
             }
 
         }
-
-
-
 
         return "forward:/application/MarkUpload/?trademarkID="+AppInternalID;
     }

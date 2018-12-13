@@ -248,7 +248,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="panel-body nocontent" role="button" aria-label="select design with text mark">
+                            <div class="panel-body nocontent" role="button" aria-label="select design with text mark" URI="/mark/designWithText/?trademarkID=">
                                 <div class="col-xs-12">
                                     <img th:src="@{/resources/images/RetinaIcon-2.png}" alt="" class="img-responsive">
                                 </div>
@@ -495,7 +495,7 @@
 
 <script>
 
-    var nextLinkURL = "../../application/AttorneySet/?trademarkID="+appInternalID;
+    var nextLinkURL ="";
     var prevLinkURL = "../../application/OwnerSetView/?trademarkID="+appInternalID;
 
 </script>
@@ -533,8 +533,19 @@
         $('#prevLink').attr("href",prevLinkURL);
         $('#prevLinkIcon').attr("href",prevLinkURL);
 
-        $('#nextLink').attr("href",nexLink);
-        $('#nextLinkIcon').attr("href",nexLink);
+
+        $('.panel-body').click(function () {
+           nextLinkURL = $(this).attr("URI")+appInternalID;
+           $('#nextLink').attr("href",nextLinkURL);
+           $('#nextLinkIcon').attr("href",nextLinkURL);
+           $('.next-button').css("background-color","rgb(55, 69, 120)" );
+
+
+        });
+
+
+
+
     });
 </script>
 

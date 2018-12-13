@@ -51,12 +51,9 @@
                             </div>
 
                             <div class="contacts-Table " style="border: rgb(235,235,235); min-width: 280px; max-width: 280px; border-width: 1px; border: solid; padding: 15px; min-height: 200px; max-height: 200px; ">
-                                <img th:src="@{/resources/images/placeholder-icon-3.jpg}" style="position: relative; left:-5px; max-width: 255px;  max-height: 420px;" id="markImage" />
-
-
-
-
-
+                                <div style="margin: 3px; position: relative; top:-5px;">
+                                <img th:src="@{/resources/images/placeholder-icon.jpg}" style="position: relative; left:-5px; max-width: 250px; max-height: 200px;"  id="markImage" />
+                                </div>
                             </div>
 
                             <div class="row navigation-row" style=" max-height: 100px; position: relative; bottom:-60px; min-width: 350px; max-width: 325px;">
@@ -146,7 +143,7 @@
         </div><!--END row-->
 
         <!--START Tiles-->
-        <div class="row" id="panels" style="position: relative; top:-205px; left:-333px; ">
+        <div class="row" id="panels" style="position: relative; top:-222px; left:-333px; ">
             <h1>Trademark Details &#8211; Design with Text</h1>
             <p class="required"><span class="weight600">&#42; = Required</span></p>
             <!--START Trademark Examples-->
@@ -186,7 +183,7 @@
                                     <legend class="sr-only"><span>File upload</span></legend>
                                     <div>
                                         <label for="file" class="sr-only">Upload file</label>
-                                        <input  style="max-width: 500px; position: relative; right:-222px;" type="file" name="file" id="file" class="form-control" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/png, image/jpeg,image/tiff,.xls,.xlxs,.csv,.ppt">
+                                        <input  style="max-width: 555px; position: relative; right:-152px;" type="file" name="file" id="file" class="form-control" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/png, image/jpeg,image/tiff,.xls,.xlxs,.csv,.ppt">
                                     </div>
 
 
@@ -196,11 +193,7 @@
                                 <button type="submit" id="addOwnerConfirm" class="btn btn-sm" >Upload files</button>
                             </form>
                         </div>
-
-
                     </div>
-
-
 
                 </div><!--END col-->
             </div><!--END row-->
@@ -232,7 +225,7 @@
 <script>
 
     var nextLinkURL = "../../application/AttorneySet/?trademarkID="+appInternalID;
-    var prevLinkURL = "../../application/OwnerSetView/?trademarkID="+appInternalID;
+    var prevLinkURL = "../../application/MarkDetails/?trademarkID="+appInternalID;
 
     var image_place_holder_path = "../resources/images/placeholder-icon-3.jpg";
 
@@ -279,51 +272,6 @@
     });
 
 
-    + function($) {
-        'use strict';
-
-        // UPLOAD CLASS DEFINITION
-        // ======================
-
-        var dropZone = document.getElementById('drop-zone');
-        var uploadForm = document.getElementById('addNewMark');
-
-        var startUpload = function(files) {
-            console.log(files)
-            var fileName = files[0].name;
-            //alert('The file "' + fileName +  '" has been selected.');
-            $('a.list-group-item').html('<span class="filename">' + files[0].name + '</span>' + '<span class="badge alert-success pull-right">Success</span>')
-        }
-        //if user clicks, do this
-        $('input[type="file"]').change(function(e){
-            var fileName = e.target.files[0].name;
-            //alert('The file "' + fileName +  '" has been selected.');
-            $('a.list-group-item').html('<span class="filename">' + fileName + '</span>' + '<span class="badge alert-success pull-right">Success</span>')
-        });
-
-        uploadForm.addEventListener('submit', function(e) {
-            var uploadFiles = document.getElementById('file').files;
-            e.preventDefault()
-
-            startUpload(uploadFiles)
-        })
-
-        dropZone.ondrop = function(e) {
-            e.preventDefault();
-            this.className = 'upload-drop-zone col-xs-12 col-md-10 col-lg-8'; //this is where to add the classname appended with the filename as background-image
-
-            startUpload(e.dataTransfer.files)
-        }
-
-        dropZone.ondragover = function() {
-            this.className = 'upload-drop-zone drop col-xs-12 col-md-10 col-lg-8';
-            return false;
-        }
-
-        dropZone.ondragleave = function() {
-            this.className = 'upload-drop-zone';
-            return false;
-        }
 
         //display file_icon
         function readURL(input) {
@@ -339,7 +287,7 @@
             }
         }
 
-    }(jQuery);
+
 </script>
 
 </body>
