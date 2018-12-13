@@ -248,7 +248,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="panel-body nocontent" role="button" aria-label="select design with text mark" URI="/mark/designWithText/?trademarkID=" mark-type="Design%20with%20Text">
+                            <div  id="design-with-text-panel" class="panel-body nocontent" role="button" aria-label="select design with text mark" URI="/mark/designWithText/?trademarkID=" mark-type="Design%20with%20Text">
+                                <div  class="panel-body nocontent" role="button" aria-label="select design with text mark" URI="/mark/designWithText/?trademarkID=" mark-type="Design%20with%20Text">
                                 <div class="col-xs-12">
                                     <img th:src="@{/resources/images/RetinaIcon-2.png}" alt="" class="img-responsive">
                                 </div>
@@ -484,9 +485,7 @@
 
 
     var host = host_name+":"+host_port;
-
-    var nexLink = "../../application/MarkUpload/?trademarkID="+appInternalID;
-
+    var markType = /*[[${baseTrademarkApplication.tradeMark.trademarkDesignType}]]*/ 'User Name';
 
     /*]]>*/
 </script>
@@ -532,6 +531,16 @@
 
         $('#prevLink').attr("href",prevLinkURL);
         $('#prevLinkIcon').attr("href",prevLinkURL);
+
+        if(markType == "Design with Text"){
+            $('#design-with-text-panel').addClass("highlight");
+            $('#design-with-text-panel').addClass("focus");
+            $('#nextLink').attr("href",nextLinkURL);
+            $('#nextLinkIcon').attr("href",nextLinkURL);
+            $('.next-button').css("background-color","rgb(55, 69, 120)" );
+
+        }
+
 
 
         $('.panel-body').click(function () {
@@ -584,24 +593,7 @@
                             $(".autoSaveMessageArea span").fadeIn(1000);
                         }, 500);
                         // animation rendering control
-                        //if($('.state-checkmark').css('display') == 'block'){
-                        if($( "."+field_name_prefix.toLowerCase()+"-animation").css('display') == 'block'){
-                            $("."+field_name_prefix.toLowerCase()+"-animation").fadeOut(100);
-                            // now we need to create an java back end service that saves this value.
-                            // also add validation on the html  similar to password save
-                            //$('#toggle-'+field_name_prefix.toLowerCase()).delay(100).click();
-                            // alert($(this).val());
-                            $("."+field_name_prefix.toLowerCase()+"-animation").fadeIn(1000);
-                            // now we need to create an java back end service that saves this value.
-                            // also add validation on the html  similar to password save
-                            //$("."+field_name_prefix.toLowerCase()+"-animation").delay(1000).click();
-                        }
-                        else {
-                            $("."+field_name_prefix.toLowerCase()+"-animation").fadeIn(1000);
-                            // now we need to create an java back end service that saves this value.
-                            // also add validation on the html  similar to password save
-                            //$('#toggle-'+field_name_prefix.toLowerCase()).delay(1000).click();
-                        }
+
                     }
                     else{
                         //$('.circle-loader').fadeOut(100);

@@ -26,6 +26,7 @@ public class TradeMark extends BaseEntity {
     @OneToOne
     private BaseTrademarkApplication initialFilingInfo;
 
+    private boolean typeSet = false;
 
     @ManyToOne
     private PTOUser trademarkOwner;
@@ -77,6 +78,14 @@ public class TradeMark extends BaseEntity {
 
     public void setTrademarkDesignType(String trademarkDesignType) {
         this.trademarkDesignType = trademarkDesignType;
+    }
+
+    public boolean isTypeSet() {
+        return typeSet;
+    }
+
+    public void setTypeSet(boolean typeSet) {
+        this.typeSet = typeSet;
     }
 
     @Override
