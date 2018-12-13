@@ -10,79 +10,15 @@
 
 <!-- End Navbar -->
 <div class="content" style="display: none; background-color: white; top:600px; " >
-    <div class="container-fluid"  >
-
-
-            <div class="row sticky" id="contacts-ui" style=" display:none; position: fixed; top:500px; right:400px;  max-height: 10px;">
-
-
-                <div class="row" style="position: relative; top: -150px;max-height: 10px; " >
-                    <div class="col-sm-12" style="max-height: 10px;">
-                        <div class="col-sm-9" style="max-height: 10px;" >
-
-                        </div>
-
-                        <div class="col-sm-3">
-                            <div class="banner-message"  style="position: relative;top:-225px; ">
-
-                                 <div style="min-width: 280px; max-width: 280px;">
-                                     <ul class="aside-fees">
-                                         <!-- 			BASIC/COLLECTIVE MARK -->
-                                         <li class="fee-item collapse" style="height: 0px;">
-				                                <span class="fee-description">Basic fee</span>
-                                             <span class="fee-value fee-basic">225 $</span>
-                                         </li>
-
-                                         <!-- 			EXTRA CLASS FEE -->
-                                         <li class="fee-item collapse" style="height: 0px;">
-                                             <span class="fee-description">Extra Class Fee</span>
-                                             <span class="fee-value fee-extra-class">0 $</span>
-                                         </li>
-
-                                         <!-- 			TOTAL CLASSES -->
-                                         <li class="fee-item collapse" style="height: 0px;">
-                                             <span class="fee-description">Total classes</span>
-                                             <span class="fee-value fee-total-classes">0</span>
-                                         </li>
-
-                                         <!-- 			TOTAL -->
-                                         <li class="fee-item-total collapsed" data-toggle="collapse" data-target=".fee-item">
-                                             <span class="fee-description-total">Total fee</span>
-                                             <span class="fee-value fee-total">225 $</span>
-                                         </li>
-                                     </ul>
-
-                                 </div>
-
-                                <div class="contacts-Table " style="border: rgb(235,235,235); min-width: 280px;  border-width: 1px; border: solid; padding: 15px; min-height: 420px;  ">
-                                    <table id="ManagedContacts" class="table-no-bordered table-hover" cellpadding="1" style="min-width: 280px;  margin-right: 4px; margin-top: 10px; margin-bottom: 10px; margin-left: 4px; "></table>
-                                </div>
-
-                                <div class="row navigation-row" style=" max-height: 100px; position: relative; bottom:-60px; min-width: 350px; max-width: 325px;">
-                                    <div class="col-sm-2">
-                                        <span class="btn btn-md prev-button"  style=" padding: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; background-color: rgb(55, 69, 120);  color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center;    font-size: 14px; font-style: normal; width: 120px; height: 30px;"><a id="prevLinkIcon" style="color: white; text-decoration: none; position: relative; top:-3px;left:-5px;" ><i class="material-icons rotate-180">exit_to_app</i></a><a id="prevLink" style="color: white; text-decoration: none;position: relative; top:-10px;" href="">Prev</a></span>
-                                    </div>
-                                    <div class="col-sm-2">
-                                    </div>
-                                    <div class="col-sm-2">
-                                    </div>
-
-
-                                    <div class="col-sm-2" style="position:relative; left:-10px; ">
-                                         <span class="btn btn-md next-button"  style="padding: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; background-color: rgb(128,128,128); color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center;   font-size: 14px; font-style: normal; width: 120px; height: 30px;"><a id="nextLink" style="color: white; text-decoration: none; position: relative; top:-10px;" >Next</a><a id="nextLinkIcon" style="color: white; text-decoration: none; position: relative; top:-3px;right:-5px;" ><i class="material-icons">exit_to_app</i></a><span>
-                                    </div>
-                                </div>
+    <div class="container-fluid row"  >
 
 
 
-                            </div>
+        <!-- start of column 2 -->
 
-                        </div>
-                    </div>
-                </div>
+        <div class="col-xs-12">
 
 
-            </div><!--end row sticky -->
             <div class="row" style="position: relative; top:-75px;  max-width: 850px; max-height: 100px;margin-bottom: 30px;">
 
                 <section class="col-xs-12 steps breadcrumb-steps"  style="position: relative;  right:-10px;">
@@ -179,7 +115,7 @@
             </div>
             <div th:if="${baseTrademarkApplication.isAttorneySet() == true}">
 
-                    <div class="row" style="position: relative;  right:-200px; z-index: 222; max-width: 100px;" >
+                    <div class="row" style="position: relative;  right:-200px;  max-width: 100px;" >
 
                         <div class="col-sm-1">
 
@@ -192,7 +128,7 @@
                         </div>
 
                     </div>
-                    <div class="row" style="position: relative;  right:-200px; z-index: 222; max-width: 100px;">
+                    <div class="row" style="position: relative;  right:-200px; max-width: 100px;">
                         <div class="col-sm-1">
 
                             <input type="radio" th:if="${baseTrademarkApplication.isAttorneyFiling() == true}" name="isAttorneyFiling" id="attorneyFillingFalse">
@@ -218,22 +154,68 @@
 
             </div>
 
-            <div class="container-fluid" id="pageLoadArea" style="position: relative; bottom:-222px; left:-645px; max-width: 850px;  margin-bottom: 20px;margin-right:10px;" >
+            <div class="container-fluid" id="pageLoadArea" style="  position: relative; bottom:-222px; left:-555px; max-width: 850px;  margin-bottom: 20px;margin-right:10px;" >
 
 
             </div>
 
-
-    </div>
-
-    <div class="row" style="position: relative;  right:-220px;">
-        <div class="col-sm-6">
-            <div class="form-group FieldMsgArea" style="display:none; position: relative; left:30%;">
-                <b><span></span></b>
-            </div>
         </div>
+        <!-- end of column 2 -->
 
-    </div>
+
+        <div class="col-xs12">
+            <div class="row sticky" id="contacts-ui" style=" display:none; position:fixed;  top:500px; right:233px;  max-height: 10px;">
+
+
+                <div class="row" style="position: relative; top: -150px;max-height: 10px; " >
+                    <div class="col-sm-12" style="max-height: 10px;">
+                        <div class="col-sm-9" style="max-height: 10px;" >
+
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="banner-message"  style="position: relative;top:-225px; ">
+
+                                <div style="min-width: 280px; max-width: 280px;">
+
+
+                                </div>
+
+                                <div class="contacts-Table " style="border: rgb(235,235,235); min-width: 280px;  border-width: 1px; border: solid; padding: 15px; min-height: 420px;  ">
+                                    <table id="ManagedContacts" class="table-no-bordered table-hover" cellpadding="1" style="min-width: 280px;  margin-right: 4px; margin-top: 10px; margin-bottom: 10px; margin-left: 4px; "></table>
+                                </div>
+
+                                <div class="row navigation-row" style=" max-height: 100px; position: relative; bottom:-60px; min-width: 350px; max-width: 325px;">
+                                    <div class="col-sm-2">
+                                        <span class="btn btn-md prev-button"  style=" padding: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; background-color: rgb(55, 69, 120);  color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center;    font-size: 14px; font-style: normal; width: 120px; height: 30px;"><a id="prevLinkIcon" style="color: white; text-decoration: none; position: relative; top:-3px;left:-5px;" ><i class="material-icons rotate-180">exit_to_app</i></a><a id="prevLink" style="color: white; text-decoration: none;position: relative; top:-10px;" href="">Prev</a></span>
+                                    </div>
+                                    <div class="col-sm-2">
+                                    </div>
+                                    <div class="col-sm-2">
+                                    </div>
+
+
+                                    <div class="col-sm-2" style="position:relative; left:-10px; ">
+                                                 <span class="btn btn-md next-button"  style="padding: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; background-color: rgb(128,128,128); color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center;   font-size: 14px; font-style: normal; width: 120px; height: 30px;"><a id="nextLink" style="color: white; text-decoration: none; position: relative; top:-10px;" >Next</a><a id="nextLinkIcon" style="color: white; text-decoration: none; position: relative; top:-3px;right:-5px;" ><i class="material-icons">exit_to_app</i></a><span>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div><!--end row sticky -->
+
+        </div> <!-- end of column 1 -->
+
+
+    </div> <!-- end of container fluid/ row -->
+
 
 
 

@@ -215,6 +215,8 @@ public class ApplicationFlowController {
         }
 
         model.addAttribute("hostBean", hostBean);
+        NewAttorneyContactFormDTO attorneyContactFormDTO = new NewAttorneyContactFormDTO();
+        model.addAttribute("addNewAttorneyContactFormDTO", attorneyContactFormDTO);
         return "application/AttorneyStart";
 
 
