@@ -710,15 +710,15 @@ public class ApplicationObjectCreationController {
         model.addAttribute("hostBean", hostBean);
         String trademarkInternalID = baseTrademarkApplication.getApplicationInternalID();
 
-        TradeMark tradeMark = new TradeMark();
+        //TradeMark tradeMark = new TradeMark();
         if(file != null){
 
             if(file.isEmpty() == false) {
-               tradeMark.setTrademarkImagePath("/files/"+storageService.getCounter()+file.getOriginalFilename());
-               baseTrademarkApplication.setTradeMark(tradeMark);
+              baseTrademarkApplication.getTradeMark().setTrademarkImagePath("/files/"+storageService.getCounter()+file.getOriginalFilename());
+
                baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
-               model.addAttribute("markImagePath",tradeMark.getTrademarkImagePath());
+               model.addAttribute("markImagePath",baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
                 try {
                     storageService.store(file);
 
