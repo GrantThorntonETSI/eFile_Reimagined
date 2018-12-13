@@ -11,6 +11,7 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.ap
 
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.TradeMark;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 
 import org.springframework.http.ResponseEntity;
@@ -439,6 +440,48 @@ public class ApplicationService  extends  BaseRESTapiService{
         return application_owner;
     }
     ////////////////////////////////////////////////
+
+
+
+
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/application/contacts/attorney/delete/{markType}/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> setMarkTypel(@PathVariable String markType , @PathVariable String appInternalID){
+
+   //////////////////////////////////////////////////////////
+        // retrieve application using passed internal id
+        //////////////////////////////////////////////////////////
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+
+        TradeMark tradeMark = new TradeMark();
+        tradeMark.setTrademarkDesignType(markType);
+
+
+        //////////////////////////////////////////////////////////
+        // find contact via email from PTOUser
+        // create a copy of the contact object
+        // add the copy of the contact to the application object
+        // save application object
+        ///////////////////////////////////////////////////////////
+
+
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+        ////////////////////////////////////////////////
+        // start generating response
+        ////////////////////////////////////////////////
+
+        String responseMsg = "Mark Type:"+markType+" has been set for the Application";
+        return buildResponseEnity("200", responseMsg);
+
+    }
+
+
+
+
 
 
 
