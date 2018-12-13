@@ -454,11 +454,15 @@ public class ApplicationService  extends  BaseRESTapiService{
         //////////////////////////////////////////////////////////
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+        if(baseTrademarkApplication.getTradeMark() != null){
+            baseTrademarkApplication.getTradeMark().setTrademarkDesignType(markType);
 
-        TradeMark tradeMark = new TradeMark();
-        tradeMark.setTrademarkDesignType(markType);
-        baseTrademarkApplication.setTradeMark(tradeMark);
-
+        }
+        else {
+            TradeMark tradeMark = new TradeMark();
+            tradeMark.setTrademarkDesignType(markType);
+            baseTrademarkApplication.setTradeMark(tradeMark);
+        }
         //////////////////////////////////////////////////////////
         // find contact via email from PTOUser
         // create a copy of the contact object

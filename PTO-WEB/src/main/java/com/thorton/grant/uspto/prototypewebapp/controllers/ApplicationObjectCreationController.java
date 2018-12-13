@@ -725,14 +725,16 @@ public class ApplicationObjectCreationController {
                 }
                 catch ( StorageException ex){
                     model.addAttribute("message", "ERROR: Mark Image upload failed due to error: "+ex );
-                    return "forward:/application/MarkUpload/?trademarkID="+trademarkInternalID;
+                   // return "forward:/mark/designWithText/?trademarkID="+trademarkInternalID;
+                    return "application/MarkDetailsUpload";
 
                 }
             }
 
         }
 
-        return "forward:/application/MarkUpload/?trademarkID="+AppInternalID;
+        //return "/mark/designWithText/?trademarkID="+AppInternalID;
+        return "application/MarkDetailsUpload";
     }
     ///////////////////////////////////////////////////////////////////////////////
     // end of attorney add

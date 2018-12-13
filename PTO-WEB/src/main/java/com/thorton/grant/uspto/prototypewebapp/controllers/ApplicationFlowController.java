@@ -949,6 +949,8 @@ public class ApplicationFlowController {
         }
         else{
             model.addAttribute("markImagePath","");
+
+
         }
 
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);

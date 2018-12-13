@@ -213,6 +213,8 @@
     var host_port= /*[[${hostBean.port}]]*/ 'User Name';
     var  image_path = /*[[${markImagePath}]]*/ 'User Name';
 
+    //alert(image_path);
+
 
     var host = host_name+":"+host_port;
 
@@ -235,10 +237,11 @@
 <script>
     $('#appInternalIDForm').val(appInternalID);
 
-    if(image_path != ""){
+    if(image_path != null){
         $('#markImage').attr("src",image_path );
 
     }
+
 
 
     // next link url to enable  for u.s individual href="http://localhost:8080/application/owner/info"
