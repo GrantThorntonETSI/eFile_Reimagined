@@ -7,7 +7,7 @@ $(document).ready(function(){
 	//END expand / collapse glyphicon
   
   //START set initial checkboxes
-  $('input[type=checkbox]').attr('checked',false);
+  //$('input[type=checkbox]').attr('checked',false);
   //END set initial checkboxes
 
   //START enable / disable checkboxes

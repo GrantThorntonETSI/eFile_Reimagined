@@ -276,6 +276,18 @@ label {
 	visibility:hidden!important;
 }
 /*BUTTONS*/
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus, div[role="radio"]:focus {
+	/*outline: thin dotted;*/
+	outline: 1px solid #009CDE!important;
+	outline: 1px auto -webkit-focus-ring-color;
+	outline-offset: -4px;
+	-webkit-box-shadow: rgb(0,156,222);
+	-moz-box-shadow:    rgb(0,156,222);
+	box-shadow:         rgb(0,156,222);
+}
+div[role="radio"]:focus {
+	outline-offset: 4px;
+}
 .btn {
 	font-size: inherit;
 	font-weight: 400;
@@ -311,7 +323,7 @@ label {
 .btn-link:focus, .btn-link:hover {
 	text-decoration:none;
 }
-/*CHECKBOXES*/
+/* CHECKBOXES */
 .collapse {
 	display: none;
 }
@@ -337,7 +349,6 @@ legend {
 	height:1px;
 	overflow:hidden;
 }
-
 input[type="checkbox"]{
 	position:absolute;
 	left:-10000px;
@@ -421,6 +432,14 @@ input[type="checkbox"]:checked + label span.radio::before {
 input[type="checkbox"]:checked + label span.radio::after {
 	color: #fff;
 	font-size: 1.3em;
+}
+/* RADIOS */
+input[type=radio] {
+	margin:0;
+	background-color: #009CDE;
+}
+div[role="radiogroup"] {
+	margin-bottom:1.2em;
 }
 /* Dropzone file upload */
 .upload-drop-zone {
