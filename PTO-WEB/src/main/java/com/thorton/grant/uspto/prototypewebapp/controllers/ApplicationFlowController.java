@@ -215,8 +215,6 @@ public class ApplicationFlowController {
         }
 
         model.addAttribute("hostBean", hostBean);
-        NewAttorneyContactFormDTO attorneyContactFormDTO = new NewAttorneyContactFormDTO();
-        model.addAttribute("addNewAttorneyContactFormDTO", attorneyContactFormDTO);
         return "application/AttorneyStart";
 
 
@@ -898,6 +896,16 @@ public class ApplicationFlowController {
             baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
         }
+
+
+        ArrayList<String> selectedContactNames2 = new ArrayList<>();
+        for(Iterator<Lawyer> iter = baseTrademarkApplication.getAvailableLawyers().iterator(); iter.hasNext(); ) {
+            Lawyer current = iter.next();
+            selectedContactNames2.add(current.getFirstName()+" "+current.getLastName());
+        }
+        ContactsDisplayDTO selectedAttorneyDisplayDTO2 = new ContactsDisplayDTO();
+        selectedAttorneyDisplayDTO2.setContactNames(selectedContactNames2);
+        model.addAttribute("selectedAttorneys",selectedAttorneyDisplayDTO2);
 
 
         System.out.println("las view model : "+baseTrademarkApplication.getLastViewModel());
