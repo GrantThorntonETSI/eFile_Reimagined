@@ -158,6 +158,9 @@ public class PathController {
 
 
 
+
+
+
     @RequestMapping(value = "/2factorSubmit", method = RequestMethod.POST)
     public String verifyTwoFactorToken(
             Model model,
@@ -206,8 +209,8 @@ public class PathController {
            if (auth != null){
                new SecurityContextLogoutHandler().logout(requesthttp, response, auth);
            }
-           //return "redirect:/logout";
-           return "login";
+           return "redirect:/logout";
+           //return "forward:/2FactorAuthFailure";
        }
 
 

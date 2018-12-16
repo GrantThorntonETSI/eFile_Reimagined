@@ -5,7 +5,7 @@
     // ======================
 
     var dropZone = document.getElementById('drop-zone');
-    var uploadForm = document.getElementById('addNewMark');
+    var uploadForm = document.getElementById('js-upload-form');
 
     var startUpload = function(files) {
         console.log(files)
@@ -21,7 +21,7 @@
         });
 	
     uploadForm.addEventListener('submit', function(e) {
-        var uploadFiles = document.getElementById('file').files;
+        var uploadFiles = document.getElementById('js-upload-files').files;
         e.preventDefault()
 
         startUpload(uploadFiles)
