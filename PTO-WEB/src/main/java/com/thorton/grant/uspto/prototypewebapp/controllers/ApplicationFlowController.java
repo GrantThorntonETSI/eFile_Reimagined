@@ -907,6 +907,10 @@ public class ApplicationFlowController {
         selectedAttorneyDisplayDTO2.setContactNames(selectedContactNames2);
         model.addAttribute("selectedAttorneys",selectedAttorneyDisplayDTO2);
 
+        model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+        model.addAttribute("markImagePath",baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+
+
 
         System.out.println("las view model : "+baseTrademarkApplication.getLastViewModel());
 
@@ -1008,12 +1012,19 @@ public class ApplicationFlowController {
 
         if( baseTrademarkApplication.getTradeMark() != null) {
             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+
         }
         else{
             model.addAttribute("markImagePath","");
 
+            model.addAttribute("markImagePathBW","");
+
 
         }
+
+
+
 
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
