@@ -18,7 +18,7 @@ public class TradeMarkService extends BaseRESTapiService {
         super(serviceBeanFactory, hostBean);
     }
 
-    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @CrossOrigin(origins = {"https://localhost","https://efile-reimagined.com"})
     @RequestMapping(method = GET, value="/REST/apiGateway/mark/update/{markField}/{markValue}/{appInternalID}")
     @ResponseBody
     ResponseEntity<String> updateApplicationFields(@PathVariable String markField , @PathVariable String markValue, @PathVariable String appInternalID){
@@ -37,11 +37,56 @@ public class TradeMarkService extends BaseRESTapiService {
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
 
-        // page 1 fields
-        if(markField.equals("")){
+        if(markField.equals("mark-literal")){
             // ptoUser.setState(param); // sets state code
+            baseTrademarkApplication.getTradeMark().setMarkLiteral(markValue);
+            appFieldReadable = "Mark Literal";
 
         }
+
+        if(markField.equals("color-claim")){
+            // ptoUser.setState(param); // sets state code
+
+            if(markValue == "yes"){
+                baseTrademarkApplication.getTradeMark().setMarkColorClaim(true);
+
+            }
+            if(markValue == "no"){
+                baseTrademarkApplication.getTradeMark().setMarkColorClaim(false);
+
+            }
+
+            appFieldReadable = "Color Claim";
+
+        }
+
+
+        if(markField.equals("mark-description")){
+            // ptoUser.setState(param); // sets state code
+            baseTrademarkApplication.getTradeMark().setMarkDescription(markValue);
+            appFieldReadable = "Mark Description";
+
+        }
+
+        if(markField.equals("mark-translation-wording-foreignText")){
+            // ptoUser.setState(param); // sets state code
+
+            if(markValue == "yes"){
+                baseTrademarkApplication.getTradeMark().setForeignLanguageTranslationWording(true);
+
+            }
+            if(markValue == "no"){
+                baseTrademarkApplication.getTradeMark().setForeignLanguageTranslationWording(false);
+
+            }
+
+            appFieldReadable = "Mark Translation Foreign Wording";
+
+        }
+
+
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
         String responseMsg = appFieldReadable+" has been saved.";
 
