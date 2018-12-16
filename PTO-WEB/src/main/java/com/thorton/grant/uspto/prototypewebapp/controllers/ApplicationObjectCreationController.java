@@ -714,9 +714,9 @@ public class ApplicationObjectCreationController {
         if(file != null){
 
             if(file.isEmpty() == false) {
-              baseTrademarkApplication.getTradeMark().setTrademarkImagePath("/files/"+storageService.getCounter()+file.getOriginalFilename());
+                baseTrademarkApplication.getTradeMark().setTrademarkImagePath("/files/"+storageService.getCounter()+file.getOriginalFilename());
 
-               baseTradeMarkApplicationService.save(baseTrademarkApplication);
+                baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
                model.addAttribute("markImagePath",baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
                 try {
@@ -729,6 +729,11 @@ public class ApplicationObjectCreationController {
                     return "application/MarkDetailsUpload";
 
                 }
+
+                // generate black and white version and store path
+
+
+
             }
 
         }

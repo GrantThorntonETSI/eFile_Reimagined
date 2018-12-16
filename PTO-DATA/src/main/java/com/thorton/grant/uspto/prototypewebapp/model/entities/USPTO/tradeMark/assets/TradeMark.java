@@ -22,6 +22,7 @@ public class TradeMark extends BaseEntity {
     private String trademarkDesignType;
 
     private String trademarkImagePath;
+    private String trademarkBWImagePath;
 
     @OneToOne
     private BaseTrademarkApplication initialFilingInfo;
@@ -86,6 +87,14 @@ public class TradeMark extends BaseEntity {
 
     public void setTypeSet(boolean typeSet) {
         this.typeSet = typeSet;
+    }
+
+    public String getTrademarkBWImagePath() {
+        return trademarkBWImagePath;
+    }
+
+    public void setTrademarkBWImagePath(String trademarkBWImagePath) {
+        this.trademarkBWImagePath = trademarkBWImagePath;
     }
 
     @Override
