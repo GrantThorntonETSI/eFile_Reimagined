@@ -179,23 +179,23 @@
                                                <input type="radio" name="coloradiono" id="inlineRadio2" value="no">No
                                             </div><!--END radiogroup-->
                                             <div id="yescolorclaim"><!--toggle 'yes' radio-->
-                                                <label for="ta3">Identify the colors in your mark.</label>
-                                                <textarea id="ta3" rows="3" class="form-control"></textarea>
+                                                <b>Identify the colors in your mark.</b>
+                                                <textarea id="mark-color-description" rows="3" class="form-control"></textarea>
                                                 <h3 class="weight600">Mark Description</h3>
-                                                <label for="mark-color-claim"><span class="weight600">&#42;</span> Enter the description of the mark including the location of the colors. <a href="#" data-toggle="tooltip" title="If the mark is a color mark, the description must include the nature and location of the color; i.e., you must specifically state where each color is located within the mark." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
+                                                <b><span class="weight600">&#42;</span> Enter the description of the mark including the location of the colors. <a href="#" data-toggle="tooltip" title="If the mark is a color mark, the description must include the nature and location of the color; i.e., you must specifically state where each color is located within the mark." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></b>
                                                 <textarea id="mark-color-claim" rows="3" class="form-control" placeholder="This mark consists of"></textarea>
                                             </div>
                                             <div id="nocolorclaim"><!--toggle 'no' radio-->
                                                 <input class="form-check-input checkmark" type="checkbox" value="accept B W mark" role="checkbox" aria-checked="false" tabindex="0" aria-labelledby="acceptmark" id="bwmark">
-                                                <label class="form-check-label form-check" for="bwmark" id="acceptmark"><span class="radio notspecial">Accept the black and white drawing.</span></label>
+                                                <span class="radio notspecial">Accept the black and white drawing.</span>
                                                 <div class="alert alert-warning" role="alert">
                                                     <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
                                                     <span class="sr-only">Warning:</span>
                                                     Submitting a color drawing with no claim to color could result in a refusal and delay the examination process.
                                                 </div>
                                                 <h3 class="weight600">Mark Description</h3>
-                                                <label for="ta5"><span class="weight600">&#42;</span> Provide a description of the mark.</label>
-                                                <textarea id="ta5" rows="3" class="form-control" placeholder="This mark consists of"></textarea>
+                                                <span class="weight600">&#42;</span> Provide a description of the mark.
+                                                <textarea id="mark-BW-description" rows="3" class="form-control" placeholder="This mark consists of"></textarea>
                                             </div>
                                         </div>
                                     </section>
@@ -224,7 +224,7 @@
                                             <div id="yestranslation"><!--toggle 'yes' radio-->
                                                 <h3 class="weight600">Enter the foreign language and the translation.</h3>
                                                 <div class="form-group form-group-md col-xs-12 col-md-3">
-                                                    <label for="language">Language</label>
+                                                    <b for="language">Language</b>
                                                     <select class="form-control" id="language">
                                                         <option value="Select">Select</option>
                                                         <option value="Spanish">Spanish</option>
@@ -233,17 +233,17 @@
                                                     </select>
                                                 </div>
                                                 <div class="form-group form-group-md col-xs-12 col-md-5">
-                                                    <label for="engtranslation">The English Translation of</label>
+                                                    <b>The English Translation of</b>
                                                     <input type="text" class="form-control" id="engtranslation">
                                                 </div>
                                                 <div class="form-group form-group-md col-xs-12 col-md-4">
-                                                    <label for="inthemark">in the mark is</label>
+                                                    <b >in the mark is</b>
                                                     <input type="text" class="form-control" id="inthemark">
                                                 </div>
                                             </div>
                                             <div id="notranslation"><!--toggle 'no' radio-->
                                                 <div class="form-group form-group-md col-xs-12">
-                                                    <label for="notranslations">There is no meaning in a foreign language for</label>
+                                                    <b >There is no meaning in a foreign language for</b>
                                                     <input type="text" class="form-control" id="notranslations">
                                                 </div>
                                             </div>
@@ -273,7 +273,7 @@
                                             <div id="yestransliteration"><!--toggle 'yes' radio-->
                                                 <h3 class="weight600">Enter the transliteration of the mark.</h3>
                                                 <div class="form-group form-group-md col-xs-12 col-md-3">
-                                                    <label for="languagetranslit">Language</label>
+                                                    <b>Language</b>
                                                     <select class="form-control" id="languagetranslit">
                                                         <option value="Select">Select</option>
                                                         <option value="German">German</option>
@@ -283,11 +283,11 @@
                                                     </select>
                                                 </div>
                                                 <div class="form-group form-group-md col-xs-12 col-md-9">
-                                                    <label for="nonlatranslation">The non-Latin characters in the mark transliterate to</label>
+                                                    <b >The non-Latin characters in the mark transliterate to</b>
                                                     <input type="text" class="form-control" id="nonlatranslation">
                                                 </div>
                                                 <div class="form-group form-group-md col-xs-12 col-md-12">
-                                                    <label for="inenglish">and this, in English, means</label>
+                                                    <b for="inenglish">and this, in English, means</b>
                                                     <input type="text" class="form-control" id="inenglish">
                                                 </div>
                                             </div>
@@ -315,12 +315,13 @@
                                                 <input type="radio" name="npsradiono" id="inlineRadio8" value="no">No
                                             </div><!--END radiogroup-->
                                             <div id="yesnps" role="region" aria-labelledby="translit">
-                                                <input class="form-check-input checkmark" type="checkbox" value="name" aria-checked="false" tabindex="0" aria-labelledby="checkname" id="namechecked">
+                                                <input class="form-check-input checkmark" type="checkbox" value="name" aria-checked="false" tabindex="0"  aria-labelledby="checkname" id="namechecked">
                                                 <label class="form-check-label form-check" for="namechecked" id="checkname"><span class="radio notspecial">Name</span></label>
                                                 <input class="form-check-input checkmark" type="checkbox" value="portrait" aria-checked="false" tabindex="0" id="portraitchecked" aria-labelledby="checkportrait">
                                                 <label class="form-check-label form-check" for="portraitchecked" id="checkportrait"><span class="radio notspecial" id="collect">Portrait</span></label>
                                                 <input class="form-check-input checkmark" type="checkbox" value="signature" aria-checked="false" tabindex="0" aria-labelledby="checksignature" id="signaturechecked">
                                                 <label class="form-check-label form-check" for="signaturechecked" id="checksignature"><span class="radio notspecial" id="collectm">Signature</span></label>
+
                                             </div>
                                         </div>
                                     </section>
