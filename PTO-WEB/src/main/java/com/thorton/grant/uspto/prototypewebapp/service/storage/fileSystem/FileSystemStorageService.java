@@ -12,7 +12,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -48,6 +54,33 @@ public class FileSystemStorageService implements StorageService {
 
             //Path source = this.rootLocation.resolve(file.getOriginalFilename());
             //Files.move(source, source.resolveSibling(filePreFix+"-attorney-bar-credentials.jpg"));
+
+        } catch (IOException e) {
+            throw new StorageException("Failed to store file " + file.getOriginalFilename(), e);
+        }
+    }
+
+
+
+    public void storeBW(MultipartFile file) {
+        try {
+
+            BufferedImage image = ImageIO.read(file.getInputStream());
+
+            BufferedImage result = new BufferedImage(
+                    image.getWidth(),
+                    image.getHeight(),
+                    BufferedImage.TYPE_BYTE_BINARY);
+
+            Graphics2D graphic = result.createGraphics();
+            graphic.drawImage(image, 0, 0, Color.WHITE, null);
+            graphic.dispose();
+
+            File output = new File("bw_"+file.getOriginalFilename());
+            ImageIO.write(result, "png", output);
+            InputStream targetStream = new FileInputStream(output);
+            Files.copy(targetStream, this.rootLocation.resolve(fileCounter+file.getOriginalFilename()));
+            fileCounter++;
 
         } catch (IOException e) {
             throw new StorageException("Failed to store file " + file.getOriginalFilename(), e);
