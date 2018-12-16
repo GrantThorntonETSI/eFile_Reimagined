@@ -76,10 +76,10 @@ public class FileSystemStorageService implements StorageService {
             graphic.drawImage(image, 0, 0, Color.WHITE, null);
             graphic.dispose();
 
-            File output = new File("bw_"+file.getOriginalFilename());
+            File output = new File(file.getOriginalFilename());
             ImageIO.write(result, "png", output);
             InputStream targetStream = new FileInputStream(output);
-            Files.copy(targetStream, this.rootLocation.resolve(fileCounter+file.getOriginalFilename()));
+            Files.copy(targetStream, this.rootLocation.resolve(fileCounter+"bw_"+file.getOriginalFilename()));
             fileCounter++;
 
         } catch (IOException e) {

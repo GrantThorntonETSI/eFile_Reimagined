@@ -719,7 +719,7 @@ public class ApplicationObjectCreationController {
 
                 baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
-               model.addAttribute("markImagePath",baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+                model.addAttribute("markImagePath",baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
                 try {
                     storageService.store(file);
 
@@ -732,6 +732,20 @@ public class ApplicationObjectCreationController {
                 }
 
                 // generate black and white version and store path
+                baseTrademarkApplication.getTradeMark().setTrademarkBWImagePath("/files/"+storageService.getCounter()+"bw_"+file.getOriginalFilename());
+                model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+                try {
+                    storageService.storeBW(file);
+
+                }
+                catch ( StorageException ex){
+                    model.addAttribute("message", "ERROR: Mark Image upload failed due to error: "+ex );
+                    // return "forward:/mark/designWithText/?trademarkID="+trademarkInternalID;
+                    return "application/MarkDetailsUpload";
+
+                }
+
+
 
 
 
