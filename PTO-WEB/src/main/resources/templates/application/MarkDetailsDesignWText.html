@@ -158,7 +158,7 @@
                         <div class="form-group form-group-md col-xs-12">
                             <p class="required weight600" aria-level="3"><span class="weight600">&#42;</span> Mark Literal</p>
                             <label for="mark-literal">Enter the words, letters and numbers appearing in the mark. <a href="#" data-toggle="tooltip" title="Any entry in this field that is not found in the mark image will not be considered part of the mark." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
-                            <textarea id="mark-literal" rows="3" class="form-control"></textarea>
+                            <textarea id="mark-literal" rows="3" class="form-control" th:text="${baseTrademarkApplication.tradeMark.markLiteral}"></textarea>
                             <div class="row">
                                 <div class="col-xs-12">
                                     <section aria-label="color claim">
