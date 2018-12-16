@@ -43,13 +43,14 @@ public class FileSystemStorageService implements StorageService {
     }
 
     @Override
-    public void store(MultipartFile file) {
+    public String store(MultipartFile file) {
+        String newFileName = "";
         try {
             //if (file.isEmpty()) {
             //   throw new StorageException("Failed to store empty file " + file.getOriginalFilename());
             //}
-
-            Files.copy(file.getInputStream(), this.rootLocation.resolve(fileCounter+file.getOriginalFilename()));
+            newFileName = fileCounter+file.getOriginalFilename();
+            Files.copy(file.getInputStream(), this.rootLocation.resolve(newFileName));
             fileCounter++;
 
             //Path source = this.rootLocation.resolve(file.getOriginalFilename());
@@ -58,11 +59,14 @@ public class FileSystemStorageService implements StorageService {
         } catch (IOException e) {
             throw new StorageException("Failed to store file " + file.getOriginalFilename(), e);
         }
+        return newFileName;
     }
 
 
 
-    public void storeBW(MultipartFile file) {
+    public String storeBW(MultipartFile file) {
+
+        String newFileName = "";
         try {
 
             BufferedImage image = ImageIO.read(file.getInputStream());
@@ -79,12 +83,16 @@ public class FileSystemStorageService implements StorageService {
             File output = new File(file.getOriginalFilename());
             ImageIO.write(result, "png", output);
             InputStream targetStream = new FileInputStream(output);
-            Files.copy(targetStream, this.rootLocation.resolve(fileCounter+"bw_"+file.getOriginalFilename()));
+            newFileName = fileCounter+"bw_"+file.getOriginalFilename();
+            Files.copy(targetStream, this.rootLocation.resolve(newFileName));
             fileCounter++;
+
 
         } catch (IOException e) {
             throw new StorageException("Failed to store file " + file.getOriginalFilename(), e);
         }
+
+        return newFileName;
     }
 
     @Override

@@ -715,14 +715,13 @@ public class ApplicationObjectCreationController {
         if(file != null){
 
             if(file.isEmpty() == false) {
-                baseTrademarkApplication.getTradeMark().setTrademarkImagePath("/files/"+storageService.getCounter()+file.getOriginalFilename());
 
-                baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
-                model.addAttribute("markImagePath",baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
                 try {
-                    storageService.store(file);
+                    String image_path = storageService.store(file);
 
+                    baseTrademarkApplication.getTradeMark().setTrademarkImagePath("/files/"+image_path);
+                    model.addAttribute("markImagePath",baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
                 }
                 catch ( StorageException ex){
                     model.addAttribute("message", "ERROR: Mark Image upload failed due to error: "+ex );
@@ -730,30 +729,30 @@ public class ApplicationObjectCreationController {
                     return "application/MarkDetailsUpload";
 
                 }
-                int concurrentCounter = storageService.getCounter()+1;
+
                 // generate black and white version and store path
-                baseTrademarkApplication.getTradeMark().setTrademarkBWImagePath("/files/"+concurrentCounter+"bw_"+file.getOriginalFilename());
-                model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+
                 try {
-                    storageService.storeBW(file);
+                    String BWimagePath = storageService.storeBW(file);
+
+                    baseTrademarkApplication.getTradeMark().setTrademarkBWImagePath("/files/"+BWimagePath);
+                    model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
 
                 }
                 catch ( StorageException ex){
-                    model.addAttribute("message", "ERROR: Mark Image upload failed due to error: "+ex );
+                    model.addAttribute("message", "ERROR: BW Mark Image upload failed due to error: "+ex );
                     // return "forward:/mark/designWithText/?trademarkID="+trademarkInternalID;
                     return "application/MarkDetailsUpload";
 
                 }
 
-
-
+                baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
 
             }
 
         }
 
-        //return "/mark/designWithText/?trademarkID="+AppInternalID;
         return "application/MarkDetailsDesignWText";
     }
     ///////////////////////////////////////////////////////////////////////////////
