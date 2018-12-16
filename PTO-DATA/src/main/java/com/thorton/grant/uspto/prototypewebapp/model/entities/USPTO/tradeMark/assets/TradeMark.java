@@ -19,10 +19,20 @@ public class TradeMark extends BaseEntity {
     private String PTOtradeMarkID;
     private String description;
 
-    private String trademarkDesignType;
+
+    private String TradeMarkBaseType; // TradeMark or serviceMark,
+    private String TradeMarkOptions; // this is uncommon
+
+
+    private String trademarkDesignType;  // ex: design with text
 
     private String trademarkImagePath;
     private String trademarkBWImagePath;
+
+
+
+
+
 
     private String markLiteral;
     private String markDescription;
@@ -194,6 +204,22 @@ public class TradeMark extends BaseEntity {
 
     public void setContainNamePortaitSignature(boolean containNamePortaitSignature) {
         this.containNamePortaitSignature = containNamePortaitSignature;
+    }
+
+    public String getTradeMarkBaseType() {
+        return TradeMarkBaseType;
+    }
+
+    public void setTradeMarkBaseType(String tradeMarkBaseType) {
+        TradeMarkBaseType = tradeMarkBaseType;
+    }
+
+    public String getTradeMarkOptions() {
+        return TradeMarkOptions;
+    }
+
+    public void setTradeMarkOptions(String tradeMarkOptions) {
+        TradeMarkOptions = tradeMarkOptions;
     }
 
     @Override
