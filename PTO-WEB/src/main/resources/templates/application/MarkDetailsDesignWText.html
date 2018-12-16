@@ -349,6 +349,8 @@
     var host_port= /*[[${hostBean.port}]]*/ 'User Name';
     var  image_path = /*[[${markImagePath}]]*/ 'User Name';
 
+    var  image_pathBW = /*[[${markImagePathBW}]]*/ 'User Name';
+
     //alert(image_path);
 
 
@@ -411,19 +413,15 @@
 
 
 
-    //display file_icon
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+    // toggle between color or bw
+    $('#inlineRadio2').click(function () {
+        $('#markImage').attr("src",image_pathBW );
+    });
 
-            reader.onload = function (e) {
-                $('#fileimage')
-                    .attr('src', e.target.result);
-            };
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
+    // toggle between color or bw
+    $('#inlineRadio1').click(function () {
+        $('#markImage').attr("src",image_path );
+    });
 
 
 </script>

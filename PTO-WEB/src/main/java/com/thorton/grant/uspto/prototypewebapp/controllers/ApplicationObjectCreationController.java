@@ -730,9 +730,9 @@ public class ApplicationObjectCreationController {
                     return "application/MarkDetailsUpload";
 
                 }
-
+                int concurrentCounter = storageService.getCounter()+1;
                 // generate black and white version and store path
-                baseTrademarkApplication.getTradeMark().setTrademarkBWImagePath("/files/"+storageService.getCounter()+"bw_"+file.getOriginalFilename());
+                baseTrademarkApplication.getTradeMark().setTrademarkBWImagePath("/files/"+concurrentCounter+"bw_"+file.getOriginalFilename());
                 model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
                 try {
                     storageService.storeBW(file);
