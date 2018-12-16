@@ -24,6 +24,25 @@ public class TradeMark extends BaseEntity {
     private String trademarkImagePath;
     private String trademarkBWImagePath;
 
+    private String markLiteral;
+    private String markDescription;
+    private boolean markColorClaim;
+
+    // translation
+    private boolean foreignLanguageTranslationWording;
+    private String foreignLanguageTranslationOriginalText;
+    private String foreignLanguageTranslationUSText;
+
+    // transliteration
+    private boolean foreignLanguateTransliterationWording;
+    private String foreignLanguateTransliterationOriginalText;
+    private String foreignLanguateTransliterationUSText;
+
+    // name / portrait / Signature
+    private boolean containNamePortaitSignature;
+
+
+
     @OneToOne
     private BaseTrademarkApplication initialFilingInfo;
 
@@ -95,6 +114,86 @@ public class TradeMark extends BaseEntity {
 
     public void setTrademarkBWImagePath(String trademarkBWImagePath) {
         this.trademarkBWImagePath = trademarkBWImagePath;
+    }
+
+    public String getMarkLiteral() {
+        return markLiteral;
+    }
+
+    public void setMarkLiteral(String markLiteral) {
+        this.markLiteral = markLiteral;
+    }
+
+    public String getMarkDescription() {
+        return markDescription;
+    }
+
+    public void setMarkDescription(String markDescription) {
+        this.markDescription = markDescription;
+    }
+
+    public boolean isMarkColorClaim() {
+        return markColorClaim;
+    }
+
+    public void setMarkColorClaim(boolean markColorClaim) {
+        this.markColorClaim = markColorClaim;
+    }
+
+    public boolean isForeignLanguageTranslationWording() {
+        return foreignLanguageTranslationWording;
+    }
+
+    public void setForeignLanguageTranslationWording(boolean foreignLanguageTranslationWording) {
+        this.foreignLanguageTranslationWording = foreignLanguageTranslationWording;
+    }
+
+    public String getForeignLanguageTranslationOriginalText() {
+        return foreignLanguageTranslationOriginalText;
+    }
+
+    public void setForeignLanguageTranslationOriginalText(String foreignLanguageTranslationOriginalText) {
+        this.foreignLanguageTranslationOriginalText = foreignLanguageTranslationOriginalText;
+    }
+
+    public String getForeignLanguageTranslationUSText() {
+        return foreignLanguageTranslationUSText;
+    }
+
+    public void setForeignLanguageTranslationUSText(String foreignLanguageTranslationUSText) {
+        this.foreignLanguageTranslationUSText = foreignLanguageTranslationUSText;
+    }
+
+    public boolean isForeignLanguateTransliterationWording() {
+        return foreignLanguateTransliterationWording;
+    }
+
+    public void setForeignLanguateTransliterationWording(boolean foreignLanguateTransliterationWording) {
+        this.foreignLanguateTransliterationWording = foreignLanguateTransliterationWording;
+    }
+
+    public String getForeignLanguateTransliterationOriginalText() {
+        return foreignLanguateTransliterationOriginalText;
+    }
+
+    public void setForeignLanguateTransliterationOriginalText(String foreignLanguateTransliterationOriginalText) {
+        this.foreignLanguateTransliterationOriginalText = foreignLanguateTransliterationOriginalText;
+    }
+
+    public String getForeignLanguateTransliterationUSText() {
+        return foreignLanguateTransliterationUSText;
+    }
+
+    public void setForeignLanguateTransliterationUSText(String foreignLanguateTransliterationUSText) {
+        this.foreignLanguateTransliterationUSText = foreignLanguateTransliterationUSText;
+    }
+
+    public boolean isContainNamePortaitSignature() {
+        return containNamePortaitSignature;
+    }
+
+    public void setContainNamePortaitSignature(boolean containNamePortaitSignature) {
+        this.containNamePortaitSignature = containNamePortaitSignature;
     }
 
     @Override
