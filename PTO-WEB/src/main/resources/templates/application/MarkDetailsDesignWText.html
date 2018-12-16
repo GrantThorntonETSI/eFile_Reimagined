@@ -157,8 +157,8 @@
                     <fieldset>
                         <div class="form-group form-group-md col-xs-12">
                             <p class="required weight600" aria-level="3"><span class="weight600">&#42;</span> Mark Literal</p>
-                            <label for="ta2">Enter the words, letters and numbers appearing in the mark. <a href="#" data-toggle="tooltip" title="Any entry in this field that is not found in the mark image will not be considered part of the mark." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
-                            <textarea id="ta2" rows="3" class="form-control"></textarea>
+                            <label for="mark-literal">Enter the words, letters and numbers appearing in the mark. <a href="#" data-toggle="tooltip" title="Any entry in this field that is not found in the mark image will not be considered part of the mark." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
+                            <textarea id="mark-literal" rows="3" class="form-control"></textarea>
                             <div class="row">
                                 <div class="col-xs-12">
                                     <section aria-label="color claim">
@@ -182,8 +182,8 @@
                                                 <label for="ta3">Identify the colors in your mark.</label>
                                                 <textarea id="ta3" rows="3" class="form-control"></textarea>
                                                 <h3 class="weight600">Mark Description</h3>
-                                                <label for="ta2"><span class="weight600">&#42;</span> Enter the description of the mark including the location of the colors. <a href="#" data-toggle="tooltip" title="If the mark is a color mark, the description must include the nature and location of the color; i.e., you must specifically state where each color is located within the mark." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
-                                                <textarea id="ta2" rows="3" class="form-control" placeholder="This mark consists of"></textarea>
+                                                <label for="mark-color-claim"><span class="weight600">&#42;</span> Enter the description of the mark including the location of the colors. <a href="#" data-toggle="tooltip" title="If the mark is a color mark, the description must include the nature and location of the color; i.e., you must specifically state where each color is located within the mark." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
+                                                <textarea id="mark-color-claim" rows="3" class="form-control" placeholder="This mark consists of"></textarea>
                                             </div>
                                             <div id="nocolorclaim"><!--toggle 'no' radio-->
                                                 <input class="form-check-input checkmark" type="checkbox" value="accept B W mark" role="checkbox" aria-checked="false" tabindex="0" aria-labelledby="acceptmark" id="bwmark">
@@ -424,6 +424,31 @@
             $('#markImage').attr("src",image_path );
         });
 
+
+
+
+        $('#mark-literal').focusout( function () {
+
+
+
+            // send state, and token to server
+            // token will be generated in the controller and added to the view
+            // similar to how access token works ...a token is tied to a user
+            // access token will be passed in through model
+            //
+            // var tokenValue = '${token}';  // token is the model attribute name
+            // we are not using secured tokens for the prototype
+            // we will secure it by adding ssl and https support
+            //
+            $('.phone-animation').fadeOut();
+
+            var field_value = $(this).val();
+            saveMarkTextdetails("mark-literal", field_value, appInternalID);
+
+        });
+
+
+
     });
 
 
@@ -449,7 +474,7 @@
         //alert(field_value);
 
         $.ajax({
-            url: "../../REST/apiGateway/Mark/update/"+field_name_prefix+"/"+field_value+"/"+appInternalID,
+            url: "../../REST/apiGateway/mark/update/"+field_name_prefix+"/"+field_value+"/"+appInternalID,
             type: 'GET',
             success: function(data){
 
@@ -519,13 +544,6 @@
             }
 
         });
-
-
-
-        setTimeout(function() {
-            // after 1000 ms we add the class animated to the login/register card
-            checkProfileComplete();
-        }, 500);
 
 
 
