@@ -175,11 +175,11 @@
                                         <div class="col-xs-12">
                                             <p id="color">Are you claiming color as a feature of the mark?</p>
                                             <div aria-labelledby="color">
-                                              <input type="radio" name="coloradioyes" id="inlineRadio1" value="yes">Yes
+                                              <input type="radio" name="coloradioyes" id="inlineRadio1" value="yes" checked="true">Yes
                                                <input type="radio" name="coloradiono" id="inlineRadio2" value="no">No
                                             </div><!--END radiogroup-->
                                             <div id="yescolorclaim"><!--toggle 'yes' radio-->
-                                                <b>Identify the colors in your mark.</b>
+                                                <label>Identify the colors in your mark.</label>
                                                 <textarea id="mark-color-description" rows="3" class="form-control"></textarea>
                                                 <h3 class="weight600">Mark Description</h3>
                                                 <b><span class="weight600">&#42;</span> Enter the description of the mark including the location of the colors. <a href="#" data-toggle="tooltip" title="If the mark is a color mark, the description must include the nature and location of the color; i.e., you must specifically state where each color is located within the mark." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></b>
@@ -187,7 +187,7 @@
                                             </div>
                                             <div id="nocolorclaim"><!--toggle 'no' radio-->
                                                 <input class="form-check-input checkmark" type="checkbox" value="accept B W mark" role="checkbox" aria-checked="false" tabindex="0" aria-labelledby="acceptmark" id="bwmark">
-                                                <span class="radio notspecial">Accept the black and white drawing.</span>
+                                                <label class="form-check-label form-check" for="bwmark" id="acceptmark"><span class="radio notspecial">Accept the black and white drawing.</span></label>
                                                 <div class="alert alert-warning" role="alert">
                                                     <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
                                                     <span class="sr-only">Warning:</span>
@@ -352,7 +352,11 @@
 
     var  image_pathBW = /*[[${markImagePathBW}]]*/ 'User Name';
 
-    //alert(image_path);
+    var colorClaim = /*[[${markColorClaim}]]*/ 'User Name';
+
+    var acceptBW = /*[[${markColorClaimBW}]]*/ 'User Name';
+
+
 
 
     var host = host_name+":"+host_port;
@@ -396,31 +400,57 @@
 
         }, 500);
 
-        $('#appInternalIDForm').val(appInternalID);
 
-        if(image_path != null){
-            $('#markImage').attr("src",image_path );
+        //////////////////////////////////////////////////////////////////////
+        // set mark image based on persisted values
+        //////////////////////////////////////////////////////////////////////
+        if(colorClaim == null){
+            if(image_path != null){
+                $('#markImage').attr("src",image_path );
+
+            }
+        }
+
+        if(colorClaim == false){
+            $('#inlineRadio2').click();
+
+            if(acceptBW == true){
+                $('#bwmark').click();
+
+                $('#markImage').attr("src",image_pathBW );
+            }
 
         }
 
 
+
+
+        //////////////////////////////////////////////////////////////////////
+        // added for integration
+        // right triang\le accodian toggle
+        //////////////////////////////////////////////////////////////////////
         $('.glyphicon').click(function () {
             $(this).toggleClass("glyphicon-triangle-right").toggleClass("glyphicon-triangle-bottom");
         });
-
-
+        //////////////////////////////////////////////////////////////////////
+        // activate tool tip
+        //////////////////////////////////////////////////////////////////////
         $('[data-toggle="tooltip"]').tooltip();
+
+
 
         $('#prevLink').attr("href",prevLinkURL);
         $('#prevLinkIcon').attr("href",prevLinkURL);
 
-
-        // toggle between color or bw
+        //////////////////////////////////////////////////////////////////////
+        // toggle between color or bw local
+        //////////////////////////////////////////////////////////////////////
         $('#inlineRadio2').click(function () {
             $('#markImage').attr("src",image_pathBW );
         });
-
-        // toggle between color or bw
+        //////////////////////////////////////////////////////////////////////
+        // toggle between color or bw local
+        //////////////////////////////////////////////////////////////////////
         $('#inlineRadio1').click(function () {
             $('#markImage').attr("src",image_path );
         });
@@ -428,26 +458,33 @@
 
 
 
+       //////////////////////////////////////////////////////////////////////
+       // field auto save
+       //////////////////////////////////////////////////////////////////////
+
         $('#mark-literal').focusout( function () {
-
-
-
-            // send state, and token to server
-            // token will be generated in the controller and added to the view
-            // similar to how access token works ...a token is tied to a user
-            // access token will be passed in through model
-            //
-            // var tokenValue = '${token}';  // token is the model attribute name
-            // we are not using secured tokens for the prototype
-            // we will secure it by adding ssl and https support
-            //
-            $('.phone-animation').fadeOut();
 
             var field_value = $(this).val();
             saveMarkTextdetails("mark-literal", field_value, appInternalID);
 
         });
+        $('#inlineRadio2').click( function () {
 
+
+            saveMarkTextdetails("mark-color-claim", "no", appInternalID);
+
+        });
+        $('#inlineRadio1').click( function () {
+
+
+            saveMarkTextdetails("mark-color-claim", "yes", appInternalID);
+
+        });
+
+        $('#bwmark').click(function () {
+
+            saveMarkTextdetails("mark-accept-BW", "yes", appInternalID);
+        });
 
 
     });

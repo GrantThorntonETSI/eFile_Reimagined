@@ -43,7 +43,7 @@ public class TradeMarkService extends BaseRESTapiService {
 
         }
 
-        if(markField.equals("color-claim")){
+        if(markField.equals("mark-color-claim")){
             // ptoUser.setState(param); // sets state code
 
             if(markValue == "yes"){
@@ -56,6 +56,14 @@ public class TradeMarkService extends BaseRESTapiService {
             }
 
             appFieldReadable = "Color Claim";
+
+        }
+
+        if(markField.equals("mark-accept-BW")){
+            // ptoUser.setState(param); // sets state code
+
+           baseTrademarkApplication.getTradeMark().setMarkColorClaimBW(true);
+            appFieldReadable = "Accept BW Drawing ";
 
         }
 

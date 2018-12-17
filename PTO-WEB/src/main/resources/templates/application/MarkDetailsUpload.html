@@ -212,8 +212,12 @@
     var host_name= /*[[${hostBean.host}]]*/ 'User Name';
     var host_port= /*[[${hostBean.port}]]*/ 'User Name';
     var  image_path = /*[[${markImagePath}]]*/ 'User Name';
+    var  image_pathBW = /*[[${markImagePathBW}]]*/ 'User Name';
 
-    //alert(image_path);
+    var colorClaim = /*[[${markColorClaim}]]*/ 'User Name';
+
+    var acceptBW = /*[[${markColorClaimBW}]]*/ 'User Name';
+
 
 
     var host = host_name+":"+host_port;
@@ -274,6 +278,25 @@
 
         $('#prevLink').attr("href",prevLinkURL);
         $('#prevLinkIcon').attr("href",prevLinkURL);
+
+
+
+
+        if(colorClaim == null){
+            if(image_path != null){
+                $('#markImage').attr("src",image_path );
+
+            }
+        }
+
+        if(colorClaim == false){
+
+            if(acceptBW == true){
+                $('#markImage').attr("src",image_pathBW );
+            }
+
+        }
+
     });
 
 

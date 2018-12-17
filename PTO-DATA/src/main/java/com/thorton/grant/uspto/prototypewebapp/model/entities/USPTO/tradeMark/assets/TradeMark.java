@@ -38,6 +38,13 @@ public class TradeMark extends BaseEntity {
     private String markDescription;
     private boolean markColorClaim;
 
+    private boolean markColorClaimBW = false; // black and white or color
+
+
+
+
+
+
     // translation
     private boolean foreignLanguageTranslationWording;
     private String foreignLanguageTranslationOriginalText;
@@ -220,6 +227,14 @@ public class TradeMark extends BaseEntity {
 
     public void setTradeMarkOptions(String tradeMarkOptions) {
         TradeMarkOptions = tradeMarkOptions;
+    }
+
+    public boolean isMarkColorClaimBW() {
+        return markColorClaimBW;
+    }
+
+    public void setMarkColorClaimBW(boolean markColorClaimBW) {
+        this.markColorClaimBW = markColorClaimBW;
     }
 
     @Override
