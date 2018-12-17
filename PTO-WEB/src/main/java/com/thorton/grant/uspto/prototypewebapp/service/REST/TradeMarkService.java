@@ -46,11 +46,15 @@ public class TradeMarkService extends BaseRESTapiService {
         if(markField.equals("mark-color-claim")){
             // ptoUser.setState(param); // sets state code
 
-            if(markValue == "yes"){
+            if(markValue.equals("yes")){
+
                 baseTrademarkApplication.getTradeMark().setMarkColorClaim(true);
+                baseTrademarkApplication.getTradeMark().setMarkColorClaimBW(false);
+
 
             }
-            if(markValue == "no"){
+            if(markValue.equals("no")){
+
                 baseTrademarkApplication.getTradeMark().setMarkColorClaim(false);
 
             }
@@ -78,11 +82,11 @@ public class TradeMarkService extends BaseRESTapiService {
         if(markField.equals("mark-translation-wording-foreignText")){
             // ptoUser.setState(param); // sets state code
 
-            if(markValue == "yes"){
+            if(markValue.equals("yes")){
                 baseTrademarkApplication.getTradeMark().setForeignLanguageTranslationWording(true);
 
             }
-            if(markValue == "no"){
+            if(markValue.equals("no")){
                 baseTrademarkApplication.getTradeMark().setForeignLanguageTranslationWording(false);
 
             }

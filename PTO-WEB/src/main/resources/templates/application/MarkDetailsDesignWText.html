@@ -356,9 +356,6 @@
 
     var acceptBW = /*[[${markColorClaimBW}]]*/ 'User Name';
 
-
-
-
     var host = host_name+":"+host_port;
 
 
@@ -412,14 +409,27 @@
         }
 
         if(colorClaim == false){
-            $('#inlineRadio2').click();
 
             if(acceptBW == true){
+                $('#inlineRadio2').click();
                 $('#bwmark').click();
 
                 $('#markImage').attr("src",image_pathBW );
             }
+            else{
+                if(image_path != null){
+                    $('#markImage').attr("src",image_path );
 
+                }
+            }
+
+        }
+        if(colorClaim == true){
+            $('#inlineRadio1').click();
+            if(image_path != null){
+                $('#markImage').attr("src",image_path );
+
+            }
         }
 
 
@@ -476,7 +486,7 @@
         });
         $('#inlineRadio1').click( function () {
 
-
+alert("1111111111");
             saveMarkTextdetails("mark-color-claim", "yes", appInternalID);
 
         });

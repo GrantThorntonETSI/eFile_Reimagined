@@ -218,8 +218,6 @@
 
     var acceptBW = /*[[${markColorClaimBW}]]*/ 'User Name';
 
-
-
     var host = host_name+":"+host_port;
 
 
@@ -282,7 +280,7 @@
 
 
 
-
+        // peristence logic for bw/ color image toggle
         if(colorClaim == null){
             if(image_path != null){
                 $('#markImage').attr("src",image_path );
@@ -294,6 +292,21 @@
 
             if(acceptBW == true){
                 $('#markImage').attr("src",image_pathBW );
+            }
+            else{
+                if(image_path != null){
+                    $('#markImage').attr("src",image_path );
+
+                }
+
+            }
+
+        }
+
+        if(colorClaim == true){
+            if(image_path != null){
+                $('#markImage').attr("src",image_path );
+
             }
 
         }
