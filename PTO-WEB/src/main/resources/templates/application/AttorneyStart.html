@@ -54,9 +54,16 @@
 
                                  </div>
 
-                                <div class="contacts-Table " style="border: rgb(235,235,235); min-width: 280px;  border-width: 1px; border: solid; padding: 15px; min-height: 420px; max-height: 555px; position: relative; top:-20px; ">
+                                <div class="contacts-Table" style=" display:none; border: rgb(235,235,235); min-width: 280px;  border-width: 1px; border: solid; padding: 15px; min-height: 420px; max-height: 555px; position: relative; top:-20px; ">
                                     <table id="ManagedContacts" class="table-no-bordered table-hover" cellpadding="1" style="min-width: 280px;  margin-right: 4px; margin-top: 10px; margin-bottom: 10px; margin-left: 4px; "></table>
                                 </div>
+                                <div class="row" id="attorney-submit-row" style=" display: none; max-height: 100px; position: relative; top:-30px; right: -33px; min-width: 350px; max-width: 325px;">
+                                    <div class="col-sm-2"  style="position: relative; left:-222px;">
+                                        <button id="addAttorneyConfirm"  form="addNewAttorneyForm" class=" btn-sm btn"  type="submit"  style=" padding:5px; min-width:222px; color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top: 20px;"><i class="material-icons" style="position: relative; left: -10px;">how_to_reg</i><b style="position: relative; top:-5px; font-weight:bold;">Add New Attorney</b></button>
+                                    </div>
+
+                                </div>
+
 
                                 <div class="row navigation-row" style=" max-height: 100px; position: relative;  min-width: 350px; max-width: 325px;">
                                     <div class="col-sm-2">
@@ -74,12 +81,6 @@
                                 </div>
 
 
-                                <div class="row" style=" max-height: 100px; position: relative;  min-width: 350px; max-width: 325px;">
-                                    <div class="col-sm-2"  style="position: relative; left:-222px;">
-                                        <button id="addOwnerConfirm"  form="addNewAttorneyForm" class=" btn-sm btn"  type="submit"  style=" padding:5px; min-width:222px; color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px; position: relative; top: 20px;"><i class="material-icons" style="position: relative; left: -10px;">how_to_reg</i><b style="position: relative; top:-5px; font-weight:bold;">Add New Attorney</b></button>
-                                    </div>
-
-                                </div>
 
 
 
@@ -373,6 +374,9 @@
                 saveProjectInfo("set-lawyer-options-value", "no", appInternalID);
                 $('#pageLoadArea').fadeOut(555);
             }, 555);
+
+            $('#attorney-submit-row').fadeOut(555);
+            $('.contacts-Table').fadeOut(500);
             // check there are contacts ...those should get dropped???
             //////////////////////////////////////////////////////////
             // enable next link and clean up widget links

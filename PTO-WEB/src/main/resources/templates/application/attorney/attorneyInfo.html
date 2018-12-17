@@ -1183,6 +1183,62 @@
 
 </div>
 <!-- end of main content-->
+ <!--login modal -->
+ <div id="managed-contact-info-modal" class="modal fade modal-lg" role="dialog" tabindex="-1"  style="min-width: 1500px;" >
+     <div class="modal-dialog" id="sign-in-modal-dialog"  style="position: relative; left:130px; right:-130px;">
+
+         <!-- Modal content-->
+         <div class="modal-content" style="max-width:900px; max-height: 900px; background-color: rgb(246, 246, 246); border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+             <div class="modal-header" style="background-color: #383A3C; color: whitesmoke; border-top-left-radius: 20px; border-top-right-radius: 20px;">
+                 <button type="button" class="close" data-dismiss="modal" style="color: whitesmoke;">&times;</button>
+                 <h4 class="modal-title" style="color: whitesmoke;"><b>USPTO.gov | eFile <i>Reimagined</i></b> </h4>
+             </div>
+             <div class="modal-body">
+
+                 <div class="container-fluid" >
+
+                         <div class="card card-login" style="margin: auto; color: #383A3C; background-color: white; min-height: 250px; margin-left: 20px;  max-width: 90%;   border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"  >
+                             <div class=" card-header-blue text-center" style="padding-top: 10px;position:relative;top: 20px; right:-30%;">
+
+                             </div>
+
+                             <div class="card-body " style="padding-top: 20px;position:relative;top: 20px;  min-height: 200px; border: none;">
+
+                                 <p style="font-weight: bold;">Attorney's information whom's information are not in Managed Contact module will be automatically saved for later use in a other Trademark applications. you can populate the form by pressing the <b><i class="material-icons">add_circle_outline</i></b> icon next to the contact name. if a contact is already added to the application. you will see a <i class="material-icons">check_circle_outline</i> icon. would you like to use Managed Contact Attorney module to populate the attorney form?</p>
+
+                                 <button type="button" class="managedContactDenyButton" data-dismiss="modal"><span class="glyphicon glyphicon-thumbs-down" disabled="true"></span> &nbsp;&nbsp;<b>No</b>&nbsp;</button>
+                                 <button type="button" class="managedContactAcceptButton" data-dismiss="modal"><span class="glyphicon glyphicon-thumbs-up" disabled="true"></span> &nbsp;&nbsp;<b>Yes</b>&nbsp;</button>
+
+
+                             </div>
+                             <div class="card-footer justify-content-center" style=" padding-bottom:50px; margin-bottom: 10px; background-color: white; border-top: none; position:relative;top: 12px;  border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; z-index: -1;">
+
+
+
+
+                             </div>
+
+
+
+                         </div>
+
+
+
+
+                 </div>
+
+             </div>
+             <div class="modal-footer" style="  background-color: rgb(246, 246, 246); color: whitesmoke; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+
+
+
+
+             </div>
+
+         </div>
+     </div>
+ </div>
+ <!-- end of login modal -->
 
 
 
@@ -1200,7 +1256,19 @@
         setTimeout(function() {
             // after 1000 ms we add the class animated to the login/register card
             $('.content').fadeIn(500);
+
+            $('#attorney-submit-row').fadeIn(500);
         }, 500);
+
+
+        $('#managed-contact-info-modal').modal('show');
+
+
+        $('.managedContactAcceptButton').click(function () {
+            $('.contacts-Table').fadeIn(500);
+
+        });
+
 
         ///////////////////////////////////////////////////////////////////////////////
         // initialize hover text on Owner Name Information
