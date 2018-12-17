@@ -130,10 +130,6 @@
 
                 </li>
 
-
-                <li><a data-backdrop="false" data-keyboard="false" data-target="#mark-image-modal" data-toggle="modal" style="margin-right: 10px;">Mark Image<span class="caret"><span style="position: relative; right:-10px;top:-15px; margin-left: 2px;"><img th:src="@{/resources/images/pets.png}" style="position: relative; left:-5px; max-width: 50px; max-height: 30px;"  id="markImageThumb" /></span></span></span></a></li>
-
-
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Fees<span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -146,44 +142,8 @@
                         <li><a href="#">Total fee 225$</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Application Attorneys<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Jackie Babos</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Jacob Goldstein</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Avo Reed</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Lynn Stanikmas</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Application Owners<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Tina Donbeck</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Albert Young</a></li>
 
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Managed Contacts<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Tina Donbeck</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Albert Young</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Jackie Babos</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Jacob Goldstein</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Avo Reed</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Lynn Stanikmas</a></li>
 
-                    </ul>
-                </li>
 
             </ul>
             <br style="clear:both">
@@ -215,6 +175,53 @@
         //////////////////////////////////////////////////////////////////////////
     });
 </script>
+
+
+<div class="container-fluid" id="footer-widget-panel" style="display: none;">
+    <div id="chats">
+        <div class="row">
+            <section class="col-xs-5 col-sm-2 col-md-4 col-lg-2 col-sm-offset-2 col-md-offset-4 col-lg-offset-4 weight600" aria-label="your data" id="mydata">
+                <div class="panel-group">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#collapse1" aria-controls="collapse1" aria-expanded="false" id="feebtn" aria-label="toggle fee panel"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span><span id="toggleglyph" class="glyphicon glyphicon-triangle-top visuallyremoved" aria-hidden="true"></span> Total Fee</button>
+                            </h4>
+                            <button type="button" id="closefee" class="close" data-target="#mydata" aria-label="Close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                        </div>
+                        <div id="collapse1" class="panel-collapse collapse" aria-labelledby="feebtn">
+                            <ul class="list-group">
+                                <li class="list-group-item">$225</li>
+                                <!--<li class="list-group-item">Two</li>
+                                <li class="list-group-item">Three</li>-->
+                            </ul>
+                        </div>
+                    </div>
+                </div><!--END total fee-->
+            </section>
+            <section class="col-xs-7 col-sm-6 col-md-6 col-lg-6 col-xs-offset-5 col-sm-offset-6 col-md-offset-6 col-lg-offset-6 weight600" aria-label="your data" id="mydata2">
+                <div class="panel-group">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" id="contacts">
+                            <h4 class="panel-title">
+                                <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#collapse2" aria-controls="collapse2" aria-expanded="false" id="contactsbtn" aria-label="toggle contacts panel"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span><span id="toggleglyph" class="glyphicon glyphicon-triangle-top visuallyremoved" aria-hidden="true"></span> Managed Contacts</button>
+                            </h4>
+                            <button type="button" id="closecontacts" class="close" data-target="#mydata2" aria-label="Close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                        </div>
+                        <div id="collapse2" class="panel-collapse collapse" aria-labelledby="contactsbtn">
+                            <ul class="list-group">
+                                <li class="list-group-item"><a href="#" class="fromcontact" id="clearform"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><span class="glyphicon glyphicon-ok-sign visuallyremoved" aria-hidden="true"></span></a> Clear Form</li>
+                                <li class="list-group-item"><a href="#" class="fromcontact" id="avo"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><span class="glyphicon glyphicon-ok-sign visuallyremoved" aria-hidden="true"></span></a> Avo Reed</li>
+                                <li class="list-group-item"><a href="#" class="fromcontact" id="jackie"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><span class="glyphicon glyphicon-ok-sign visuallyremoved" aria-hidden="true"></span></a> Jackie Babos</li>
+                                <li class="list-group-item"><a href="#" class="fromcontact" id="jacob"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><span class="glyphicon glyphicon-ok-sign visuallyremoved" aria-hidden="true"></span></a> Jacob Goldstein</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div><!--END contacts-->
+            </section>
+        </div><!--END row-->
+    </div><!--END chats-->
+</div><!--END div container-fluid-->
 
 
 
