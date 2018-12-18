@@ -53,7 +53,7 @@
     <!--<script type="application/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>-->
     <script th:src="@{/webjars/datatables/1.10.15/js/jquery.dataTables.js}"></script>
 
-    <script type="application/javascript"  th:src="@{/resources/js/lynnjqueryscript.js}"></script>
+    <!--<script type="application/javascript"  th:src="@{/resources/js/lynnjqueryscript.js}"></script>-->
     <!--<script type="application/javascript" src="js/accordion.js"></script>-->
     <script type="application/javascript"  th:src="@{/resources/js/accordion.js}"></script>
     <!--<script type="application/javascript" src="js/checkbox.js"></script>-->
@@ -159,7 +159,7 @@
             <div class="modal-body">
 
                 <div class="container-fluid" >
-                    <form th:action="@{/login}" method="post" class="form form-check-input form-control-sm"  >
+                    <form id="login-form" th:action="@{/login}" method="post" class="form form-check-input form-control-sm"  >
                         <div class="card card-login" style="margin: auto; color: #383A3C; background-color: white; min-height: 250px; margin-left: 20px;  max-width: 90%;   border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"  >
                             <div class=" card-header-blue text-center" style="padding-top: 10px;position:relative;top: 20px; right:-30%;">
                                 <b class="card-title" style=""><a style="margin-top: 50px; font-weight: bold;" href="/registration">New User?</a></b>
@@ -191,7 +191,7 @@
 
                                 <span class="bmd-form-group" style="margin:auto; position: relative; bottom: -40px;">
                                      <div class="input-group" >
-                                        <button style="min-width: 265px; margin:auto; position:relative; right:-107px; border-top-right-radius: 5px; border-top-left-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;background-color: #004c97; color: whitesmoke; " class="btn" type="submit" value="Sign In"><i class="material-icons" style="padding-right: 70px; ">input</i><b style="position: relative; left:-45px; top:-5px; font-weight: bold;"> &nbsp;  Sign In&nbsp;</b>
+                                        <button style="min-width: 265px; margin:auto; position:relative; right:-107px; border-top-right-radius: 5px; border-top-left-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;background-color: #004c97; color: whitesmoke; " class="btn" type="submit" form="login-form" value="Sign In"><i class="material-icons" style="padding-right: 70px; ">input</i><b style="position: relative; left:-45px; top:-5px; font-weight: bold;"> &nbsp;  Sign In&nbsp;</b>
                                         </button>
                                      </div>
                                 </span>
