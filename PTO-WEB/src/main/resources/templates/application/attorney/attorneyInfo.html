@@ -10,184 +10,62 @@
 
 
  <!-- End Navbar -->
-<div class="content" style="display: none; background-color: white;  max-width: 850px; position: relative; left:-33px; right:33px; top:-300px; bottom: -10%;  margin-bottom: 50px;" >
-    <div class="container-fluid" style="position: relative; right:-30px;"  >
+<div class="content" style="display: none; background-color: white;  max-width: 850px; position: relative; left:-33px; right:33px; top:-222px; bottom: -10%;  margin-bottom: 50px;" >
+    <div class="container-fluid" style="position: relative; right:-30px;">
 
 
-        <div class="col-sm-12" style="position: relative; " >
-            <div class="form-container base-page" style="position: relative; bottom:-170px;">
+        <div class="col-sm-12" style="position: relative;">
+            <div class="form-container base-page" style="position: relative;">
+                <div class="card-text">
+                    <h2 class="card-title weight600" id="attorneyinfo">Attorney Information</h2>
+                </div>
 
-
-
-
-
-                    <div class="card-text" style="position: relative; top:-100px; left:-60px;  ">
-                        <h5 class="card-title"><b style="color: rgb(56, 56, 56); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none; position:relative; bottom: -5px;">Attorney Information</b></h5>
-                    </div>
-
-
-                <form method="post" style="" id="addNewAttorneyForm" action="/attorney/add"  enctype="multipart/form-data" class="form-horizontal"   th:object="${addNewAttorneyContactFormDTO}"  >
-                    <div class="row" style="margin-left:15px; position: relative; top:-100px;">
-
-                        <div class="col-sm-4">
-
-                            <div class="form-group">
-                                <label class="small" style="margin-top: 10px;"><b>Title</b></label>
-                                <input type="text"   id="title" placeholder="" class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  >
-
+                <div id="yesattorneyfiling" role="region" aria-labelledby="attorneyfiling">
+                    <form method="post" id="addNewAttorneyForm" action="/attorney/add" enctype="multipart/form-data" th:object="${addNewAttorneyContactFormDTO}" aria-labelledby="title">
+                        <fieldset aria-labelledby="attorneyinfo">
+                            <div class="col-xs-12 col-sm-12 col-lg-12">
+                                <button type="button" class="btn-sm btn-success fill" id="autofill">Fill from Managed Contacts</button>
                             </div>
-                        </div>
-
-                    </div>
-
-                    <div class="row" style="margin-left:15px; position: relative; top:-100px;">
-
-                        <div class="col-sm-4">
-
-                             <div class="form-group">
-                                <label class="small" style="margin-top: 10px;"><b style="color: red;">*</b><b>First Name</b></label>
-                                <input type="text"   id="attorney-first-name" th:field="*{firstName}"   placeholder="first name" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  required>
-
-
+                            <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                <label for="title">Title</label>
+                                <input type="text" class="form-control" id="title"><!--Needs th:field= attribute to capture this value on submit-->
                             </div>
-                        </div>
-
-                        <div class="col-sm-1">
-                            <div class="city-animation" style="display: none; position: relative; top:20px;">
-                                <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
+                            <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                <label for="attorney-first-name"><span class="weight600">&#42;</span> First Name</label>
+                                <input type="text" class="form-control" id="attorney-first-name" th:field="*{firstName}" name="first" placeholder="First Name">
                             </div>
-
-
-                        </div>
-                        <div class="col-sm-1">
-
-                        </div>
-
-                        <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                            <div class="form-group attorney-first-nameFieldMsgArea" style="position: relative; left:-15%;">
-                                <b><span></span></b>
+                            <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                <label for="Attorney-middle-name">Middle Name</label>
+                                <input type="text" class="form-control" id="Attorney-middle-name" th:field="*{middleName}">
                             </div>
-                        </div>
-
-                    </div>
-
-
-                    <div class="row" style="margin-left:15px; position: relative; top:-100px;">
-
-                        <div class="col-sm-4">
-
-                            <div class="form-group">
-                                <label class="small" style="margin-top: 10px;"><b>Middle Name</b></label>
-                                <input type="text"  th:field="*{middleName}"    id="Attorney-middle-name" placeholder="" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  >
-
-
+                            <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
+                                <label for="attorney-last-name"><span class="weight600">&#42;</span> Last Name</label>
+                                <input type="text" class="form-control" id="attorney-last-name" th:field="*{lastName}">
                             </div>
-                        </div>
-
-                    </div>
-
-                    <div class="row" style="margin-left:15px; position: relative; top:-100px;">
-
-                        <div class="col-sm-4">
-
-                            <div class="form-group">
-                                <label class="small" style="margin-top: 10px;"><b style="color: red;">*</b><b>Last Name</b></label>
-                                <input type="text"  th:field="*{lastName}"   id="attorney-last-name" placeholder="Attorney Last Name" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required >
-
-
-                            </div>
-                        </div>
-                        <div class="col-sm-1">
-                            <div class="city-animation" style="display: none; position: relative; top:20px;">
-                                <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
-                            </div>
-
-
-                        </div>
-                        <div class="col-sm-1">
-
-                        </div>
-
-                        <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                            <div class="form-group attorney-last-nameFieldMsgArea" style="position: relative; left:-15%;">
-                                <b><span></span></b>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="row" style="margin-left:15px; position: relative; top:-100px;">
-
-                        <div class="col-sm-4">
-
-                            <div class="form-group">
-                                <label class="small" style="margin-top: 10px;"><b>Suffix</b></label>
-                                <select   th:field="*{suffix}"    class="form-control" name="suffix"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-                                    <option value=""><b>Select</b></option>
-                                    <option value="Sr."><b>Sr.</b></option>
-                                    <option value="I"><b>I</b></option>
-                                    <option value="II"><b>II</b></option>
-                                    <option value="III"><b>III</b></option>
-                                    <option value="IV"><b>IV</b></option>
-                                    <option value="V"><b>V</b></option>
-                                    <option value="VI"><b>VI</b></option>
-                                    <option value="Jr."><b>Jr.</b></option>
-                                    <option value="VII"><b>VII</b></option>
-                                    <option value="VIII"><b>VIII</b></option>
+                            <div class="form-group form-group-md col-xs-5 col-sm-3">
+                                <label for="suffix">Suffix</label>
+                                <select class="form-control" id="suffix" th:field="*{suffix}">
+                                    <option value="Select">Select</option>
+                                    <option value="1">Mr.</option>
+                                    <option value="2">Mrs.</option>
+                                    <option value="3">Ms.</option>
                                 </select>
-
                             </div>
-                        </div>
-
-                    </div>
-
-                    <div class="row" style="margin-left:15px; position: relative; top:-100px;">
-
-                        <div class="col-sm-4">
-
-                            <div class="form-group">
-                                <label class="small" style="margin-top: 10px;"><b>Firm</b></label>
-                                <input type="text"  th:field="*{lawFirmName}"    id="attorney-lawfirm-name" placeholder="Law Firm Name" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  >
-
-
+                            <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-5">
+                                <label for="attorney-lawfirm-name"><span class="weight600">&#42;</span> Firm</label>
+                                <input type="text" class="form-control" id="attorney-lawfirm-name" th:field="*{lawFirmName}" placeholder="Law Firm Name">
                             </div>
+                        </fieldset><!--END Attorney Information-->
+                        <!--START Attorney Contact Information-->
+                        <div class="card-text">
+                            <h2 class="card-title weight600" id="attorneycontact">Attorney Contact Information</h2>
                         </div>
-                        <div class="col-sm-1">
-                            <div class="city-animation" style="display: none; position: relative; top:20px;">
-                                <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
-                            </div>
-
-
-                        </div>
-                        <div class="col-sm-1">
-
-                        </div>
-
-                        <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                            <div class="form-group attorney-lawfirm-nameFieldMsgArea" style="position: relative; left:-15%;">
-                                <b><span></span></b>
-                            </div>
-                        </div>
-
-                    </div>
-
-
-
-                    <div class="card-text" style="position: relative; top:-100px; left:-60px;">
-
-                        <h5 class="card-title"><b style="color: rgb(56, 56, 56); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none; position: relative; bottom:-5px;">Attorney Address Information</b></h5>
-                    </div>
-
-
-                    <div class="row" style="margin-left:15px; position: relative; top:-100px;">
-
-                        <div class="col-sm-4">
-
-                            <div class="form-group">
-                                <label class="small" style="margin-top: 10px;"><b>Country/US Territory</b></label>
-                                <select class="form-control custom-select" th:field="*{attorneyAddressCountry}"   id="attorney-country" name="country"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-                                    <option value="none"></option>
-                                    <option value="X1">UNITED STATES OF AMERICA</option>
+                        <fieldset aria-labelledby="attorneycontact">
+                            <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-5">
+                                <label for="attorney-country">Country / US Territory</label>
+                                <select class="form-control" id="attorney-country" th:field="*{attorneyAddressCountry}">
+                                    <option value="Select">Select</option>
+                                    <option value="1">UNITED STATES OF AMERICA</option>
                                     <option value="B2">AFGHANISTAN</option>
                                     <option value="B3">ALBANIA</option>
                                     <option value="B4">ALGERIA</option>
@@ -427,123 +305,144 @@
                                     <option value="Y5">ZIMBABWE</option>
                                     <option value="XX">UNKNOWN</option>
                                 </select>
-
                             </div>
-                        </div>
-
-                        <div class="col-sm-1">
-                            <div class="country-animation" style="display: none; position: relative; top:20px;">
-                                <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
+                            <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-7">
+                                <label for="attorney-address1">Address Line 1</label>
+                                <input type="text" class="form-control" id="attorney-address1" th:field="*{attorneyAddress1}">
                             </div>
-
-
-                        </div>
-                        <div class="col-sm-1">
-
-                        </div>
-
-                        <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                            <div class="form-group attorney-countryFieldMsgArea" style="position: relative; left:-15%;">
-                                <b><span></span></b>
+                            <div class="form-group form-group-md col-xs-12 col-xl-6">
+                                <label for="attorney-address2">Address Line 2</label>
+                                <input type="text" class="form-control" id="attorney-address2" th:field="*{attorneyAddress2}">
                             </div>
+                            <div class="form-group form-group-md col-xs-12 col-xl-6">
+                                <label for="attorney-address3">Address Line 3</label>
+                                <input type="text" class="form-control" id="attorney-address3" th:field="*{attorneyAddress3}">
+                            </div>
+                            <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
+                                <label for="attorney-city">City</label>
+                                <input type="text" class="form-control" id="attorney-city" th:field="*{attorneyCity}">
+                            </div>
+                            <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
+                                <label for="attorney-state">State</label>
+                                <select class="form-control" id="attorney-state" th:field="*{attorneyState}">
+                                    <option value="Select">Select</option>
+                                    <option  value="AL">Alabama</option>
+                                    <option  value="AK">Alaska</option>
+                                    <option value="AZ">Arizona</option>
+                                    <option value="AR">Arkansas</option>
+                                    <option value="CA">California</option>
+                                    <option value="CO">Colorado</option>
+                                    <option value="CT">Connecticut</option>
+                                    <option value="DE">Delaware</option>
+                                    <option value="DC">District of Columbia</option>
+                                    <option value="FL">Florida</option>
+                                    <option value="GA">Georgia</option>
+                                    <option value="HI">Hawaii</option>
+                                    <option value="ID">Idaho</option>
+                                    <option value="IL">Illinois</option>
+                                    <option value="IN">Indiana</option>
+                                    <option value="IA">Iowa</option>
+                                    <option value="KS">Kansas</option>
+                                    <option value="KY">Kentucky</option>
+                                    <option value="LA">Louisiana</option>
+                                    <option value="ME">Maine</option>
+                                    <option value="MD">Maryland</option>
+                                    <option value="MA">Massachusetts</option>
+                                    <option value="MI">Michigan</option>
+                                    <option value="MN">Minnesota</option>
+                                    <option value="MS">Mississippi</option>
+                                    <option value="MO">Missouri</option>
+                                    <option value="MT">Montana</option>
+                                    <option value="NE">Nebraska</option>
+                                    <option value="NV">Nevada</option>
+                                    <option value="NH">New Hampshire</option>
+                                    <option value="NJ">New Jersey</option>
+                                    <option value="NM">New Mexico</option>
+                                    <option value="NY">New York</option>
+                                    <option value="NC">North Carolina</option>
+                                    <option value="ND">North Dakota</option>
+                                    <option value="OH">Ohio</option>
+                                    <option value="OK">Oklahoma</option>
+                                    <option value="OR">Oregon</option>
+                                    <option value="PA">Pennsylvania</option>
+                                    <option value="RI">Rhode Island</option>
+                                    <option value="SC">South Carolina</option>
+                                    <option value="SD">South Dakota</option>
+                                    <option value="TN">Tennessee</option>
+                                    <option value="TX">Texas</option>
+                                    <option value="UT">Utah</option>
+                                    <option value="VT">Vermont</option>
+                                    <option value="4">Virginia</option>
+                                    <option value="WA">Washington</option>
+                                    <option value="WV">West Virginia</option>
+                                    <option value="WI">Wisconsin</option>
+                                    <option value="WY">Wyoming</option>
+                                </select>
+                            </div>
+                            <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
+                                <label for="attorney-zipcode">Zip Code</label>
+                                <input type="text" class="form-control" id="attorney-zipcode" placeholder="XXXXX" th:field="*{attorneyZipcode}">
+                            </div>
+                            <div class="form-group form-group-md col-xs-12 col-md-5 col-lg-5">
+                                <label for="attorney-email"><span class="weight600">&#42;</span> Email Address</label>
+                                <input type="text" class="form-control" id="attorney-email" placeholder="email Address" th:field="*{attorneyEmail}">
+                            </div>
+                            <div class="form-group form-group-md col-xs-12 col-md-3 col-lg-3">
+                                <label for="attorney-phonenumbertype">Phone Type</label>
+                                <select class="form-control" id="attorney-phonenumbertype"><!--Needs th:field= attribute to capture this value on submit-->
+                                    <option value="Type">Type</option>
+                                    <option value="Cell">Cell</option>
+                                    <option value="Home">Home</option>
+                                    <option value="4">Work</option>
+                                    <option value="Fax">Fax</option>
+                                </select>
+                            </div>
+                            <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-4">
+                                <label for="attorney-phone"><span class="weight600">&#42;</span> Phone Number</label>
+                                <input type="text" class="form-control" id="attorney-phone" placeholder="Phone Number" th:field="*{attorneyPhone}">
+                            </div>
+                            <div class="col-xs-12">
+                                <button type="button" class="btn-sm btn-success add ctr">Additional Number</button>
+                            </div>
+                        </fieldset><!--END Contact Attorney Information-->
+                        <!--START Docket Reference Information-->
+                        <div class="card-text">
+                            <h2 class="card-title weight600" id="docketreference">Docket or Reference Number</h2>
                         </div>
+                        <fieldset aria-labelledby="docketreference">
+                            <div class="form-group form-group-md col-xs-12">
+                                <label for="docket-id">If applicable, enter the attorney docket or reference number.</label>
+                                <input type="text" class="form-control" id="docket-id" th:field="*{attorneyDocketNumber}">
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn-sm btn-success add ctr">Additional Docket or Reference Number</button>
+                            </div>
+                        </fieldset><!--END Docket Reference Information-->
+                        <!--START Affiliation Information-->
+                        <div class="card-text">
+                            <h2 class="card-title weight600" id="affiliation">Affiliation Information</h2>
+                        </div>
+                        <fieldset aria-labelledby="affiliation">
+                            <div class="form-group form-group-md col-xs-12">
+                                <label for="attorney-bar-standing">Affiliation Information</label>
+                                <select class="form-control" id="attorney-bar-standing" th:field="*{attorneyAffiliation}">
+                                    <option value="Select">Select</option>
+                                    <option value="U.S Attorney in good standing">U.S Attorney in good standing</option>
+                                    <option value="Canadian agent or attorney">Canadian agent or attorney</option>
+                                </select>
+                            </div>
+                        </fieldset><!--END Affiliation Information-->
 
-                    </div>
 
-                    <div class="row" style="margin-left:15px; position: relative;  top:-100px;">
+                <div id="attorney-bar-info-area" style="position: relative; top:-10px; display: none;">
+                    <div class="row" style="margin-left:15px;">
 
                         <div class="col-sm-4">
 
                             <div class="form-group">
-                                <label class="small" style="margin-top: 10px;"><b>Address1 </b></label>
-                                <input id="attorney-address1" th:field="*{attorneyAddress1}"   type="text" name="address" class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-
-                            </div>
-                        </div>
-
-                        <div class="col-sm-1">
-                            <div class="address-animation" style="display: none; position: relative; top:20px;">
-                                <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
-                            </div>
-
-
-                        </div>
-                        <div class="col-sm-1">
-
-                        </div>
-
-                        <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                            <div class="form-group attorney-address1FieldMsgArea" style="position: relative; left:-15%;">
-                                <b><span></span></b>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="row" style="margin-left:15px; position: relative;  top:-100px;">
-
-                        <div class="col-sm-4">
-
-                            <div class="form-group">
-                                <label class="small" style="margin-top: 10px;"><b>Address2</b></label>
-                                <input type="text" th:field="*{attorneyAddress2}"  name="address2" class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-
-                            </div>
-                        </div>
-
-                    </div>
-
-
-                    <div class="row" style="margin-left:15px; position: relative;  top:-100px;">
-
-                        <div class="col-sm-4">
-
-                            <div class="form-group">
-                                <label class="small" style="margin-top: 10px;"><b>Address3</b></label>
-                                <input type="text" th:field="*{attorneyAddress3}"  name="address3" class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="row" style="margin-left:15px; position: relative;  top:-100px;">
-
-                        <div class="col-sm-4">
-
-                            <div class="form-group">
-                                <label class="small" style="margin-top: 10px;"><b>City </b></label>
-                                <input type="text" th:field="*{attorneyCity}"  id="attorney-city" name="City" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-
-                            </div>
-                        </div>
-
-                        <div class="col-sm-1">
-                            <div class="city-animation" style="display: none; position: relative; top:20px;">
-                                <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
-                            </div>
-
-
-                        </div>
-                        <div class="col-sm-1">
-
-                        </div>
-
-                        <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                            <div class="form-group attorney-cityFieldMsgArea" style="position: relative; left:-15%;">
-                                <b><span></span></b>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="row" style="margin-left:15px; position: relative;  top:-100px;">
-
-                        <div class="col-sm-4">
-
-                            <div class="form-group">
-                                <label class="small" style="margin-top: 10px;"><b>State </b></label>
-                                <select  class="form-control custom-select" th:field="*{attorneyState}"  id="attorney-state"  name="attorney-state" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                <!--bar jurisdiction -->
+                                <label class="small" style="margin-top: 10px;"><b>Bar Jurisdiction</b></label>
+                                <select  class="form-control custom-select" th:field="*{attorneyBarJurisdiction}"  id="attorney-bar-jurisdiction"  name="attorney-bar-jurisdiction" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                     <option  value="none"></option>
                                     <option  value="AL">Alabama</option>
                                     <option  value="AK">Alaska</option>
@@ -620,151 +519,16 @@
                         </div>
 
 
-                    </div>
-
-                    <div class="row" style="margin-left:15px; position: relative;  top:-100px;">
-
-                        <div class="col-sm-4">
-
-                            <div class="form-group">
-                                <label class="small" style="margin-top: 10px;"><b>Zipcode </b></label>
-                                <input type="text" id="attorney-zipcode" th:field="*{attorneyZipcode}"  name="Zipcode" class="form-control"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-
-                            </div>
-                        </div>
-
-
-                        <div class="col-sm-1">
-                            <div class="zipcode-animation" style="display: none; position: relative; top:20px;">
-                                <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
-                            </div>
-
-
-                        </div>
-                        <div class="col-sm-1">
-
-                        </div>
-
-
-                        <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                            <div class="form-group attorney-zipcodeFieldMsgArea" style="position: relative; left:-15%;">
-                                <b><span></span></b>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="row" style="margin-left:15px; position: relative;  top:-100px;">
-
-                        <div class="col-sm-4">
-
-                            <div class="form-group">
-                                <label class="small" style="margin-top: 10px;"><b style="color: red;">*</b><b>E-Mail Address</b></label>
-                                <input id="attorney-email" type="text" name="attorney-email" th:field="*{attorneyEmail}"  class="form-control"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
-                            </div>
-                        </div>
-                        <div class="col-sm-1">
-                            <div class="attornery-email-animation" style="display: none; position: relative; top:20px;">
-                                <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
-                            </div>
-
-
-                        </div>
-                        <div class="col-sm-1">
-
-                        </div>
-
-
-                        <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                            <div class="form-group attorney-emailFieldMsgArea" style="display: none; position: relative; left:-18%; top:5px;">
-                                <b><span></span></b>
-                            </div>
-                        </div>
-
-                    </div>
-
-
-
-
-                    <div class="row" style="position: relative;  top:-100px; margin-left:15px;">
-
-                        <div class="col-sm-6">
-
-                            <div class="form-group">
-                                <label class="small" style="margin-top: 10px;"><b style="color: red;">*</b><b>Phone Number </b></label>
-                                <div class="row">
-                                    <div class="col-sm-2">
-                                        <select  class="form-control" name="phone-type"  value="Type" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-                                            <option value="cell"><b>Cell</b></option>
-                                            <option value="home"><b>Home</b></option>
-                                            <option value="work"><b>Work</b></option>
-                                            <option value="fax"><b>Fax</b></option>
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <input type="text" id="attorney-phone" th:field="*{attorneyPhone}"  name="Phone" class="form-control"   style="min-width: 187px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                        <div class="col-sm-1">
-                            <div class="phone-animation" style="display: none; position: relative; top:25px; left:-195px;">
-                                <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
-                            </div>
-
-
-                        </div>
-                        <div class="col-sm-1">
-
-                        </div>
-
-
-                        <div class="col-sm-4" style="position: relative; bottom:-15px; left:-120px;">
-                            <div class="form-group attorney-phoneFieldMsgArea" style="position: relative; left:-35%; top:25px;">
-                                <b><span></span></b>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-
-
-
-
-
-                    <div class="row" style="position: relative; left:-30px; top:-100px; margin-bottom: 30px;">
-
-
-                    </div>
-
-                    <div class="row" style="margin-left:15px; position: relative; right:-10px;">
-
-                        <div class="col-sm-4">
-
-                            <div class="form-group">
-
-                                <div class="form-group" ><span class="btn btn-sm" type="button"  style=" padding:3px; position:relative; top: -20px; margin-right: 15px; margin-top: 10px; max-height:30px;  min-width: 250px; color:whitesmoke; background-color: rgb(52, 152, 219); border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;" value="add docket id"><b style="position: relative; top:-5px;"><i class="material-icons" style="position: relative; left:-17px; ">contact_phone</i></b><b style="position: relative; top:-8px;">Additional Phone Number</b></span></div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="card-text" style="position: relative; left:-60px;">
-
-                        <h5 class="card-title"><b style="color: rgb(56, 56, 56); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none; position:relative; bottom: -5px;">Docket or Reference Number</b></h5>
-                    </div>
+                    </div> <!-- end of row -->
 
                     <div class="row" style="margin-left:15px; position: relative; top:-20px;">
 
                         <div class="col-sm-4">
-
+                            <!--bar membership number -->
                             <div class="form-group">
-                                <label class="small" style="margin-top: 10px;"><b>If applicable, enter the attorney docket or reference number. </b></label>
-                                <input type="text" id="docket-id" th:field="*{attorneyDocketNumber}"  name="docket-id" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                <label class="small" style="margin-top: 10px;"><b>Membership Number </b></label>
+
+                                <input type="text" id="bar-membership-number"  th:field="*{attorneyBarMembershipNumber}"  name="bar-memebership-number" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
                             </div>
                         </div>
@@ -786,366 +550,221 @@
                             </div>
                         </div>
 
-                    </div>
-                    <div class="row" style="margin-left:15px; position: relative; right:-10px;">
-
-                        <div class="col-sm-4">
-
-                            <div class="form-group">
-
-                                <div class="form-group" ><span class="btn btn-sm" type="button"  style=" padding:3px; position:relative; top: -20px; margin-right: 15px; margin-top: 10px; max-height:30px;  min-width: 250px; color:whitesmoke; background-color: rgb(52, 152, 219); border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;" value="add-docket"><b style="position: relative; top:-5px;"><i class="material-icons" style="position: relative; left:-17px; ">note_add</i></b><b style="position: relative; top:-8px;font-max-size: 4px;">Additional Docket Number</b></span></div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="card-text" style="position: relative; left:-60px;">
-
-                        <h5 class="card-title"><b style="color: rgb(56, 56, 56); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none; position:relative; bottom: -5px;">Affiliation Information</b></h5>
-                    </div>
-
+                    </div> <!-- end of row -->
 
                     <div class="row" style="margin-left:15px; position: relative; top:-20px;">
 
                         <div class="col-sm-4">
 
                             <div class="form-group">
-                                <!--affiliation status  -->
-                                <label class="small" style="margin-top: 10px;"><b>Affiliation</b></label>
-                                <select  class="form-control" id="attorney-bar-standing"  th:field="*{attorneyAffiliation}"  name="affiliation"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-                                    <option value="none"><b>select</b></option>
-                                    <option value="U.S Attorney in good standing"><b>U.S Attorney in good standing</b></option>
-                                    <option value="Canadian agent or attorney"><b>Canadian agent or attorney </b></option>
-
-                                </select>
+                                <!--bar membership date -->
+                                <label class="small" style="margin-top: 10px;"><b>Date of Admission </b></label>
+                                <input type="date" id="bar-membership-date" th:field="*{attorneyBarAdmissionDate}"  name="bar-memebership-date" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
                             </div>
+                        </div>
+
+                        <div class="col-sm-1">
+                            <div class="bar-membership-date-animation" style="display: none; position: relative; top:20px;">
+                                <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-sm-1">
+
+                        </div>
+
+                        <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                            <div class="form-group bar-membership-dateFieldMsgArea" style="position: relative; left:-15%;">
+                                <b><span></span></b>
+                            </div>
+                        </div>
+
+                    </div> <!-- end of row -->
+
+                    <div class="row" style="margin-left:15px; position: relative; top:-20px;">
+
+                        <div class="col-sm-4">
+
+                            <div class="form-group">
+
+                                <label class="small" style="margin-top: 10px;"><b>Acknowledgement of Certification in good standing </b></label>
+                                <b style="position: relative; left:-120px;"><input type="checkbox" id="user-accept-checkbox"  name="user-accept-checkbox" class="form-control" style="font-max-size: 3px;"> </b><p>I certify that this attorney is in good standing with a bar of the highest court of any U.S State, the District of Columbia, the U.S Commonwealths or U.S Territories.</p>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-1">
+                            <div class="user-accept-msg-animation" style="display: none; position: relative; top:20px;">
+                                <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-sm-1">
+
+                        </div>
+
+                        <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                            <div class="form-group user-accept-msgFieldMsgArea" style="position: relative; left:-15%;">
+                                <b><span></span></b>
+                            </div>
+                        </div>
+
+                    </div> <!-- end of row -->
+
+                    <div class="row" style="margin-left:15px; position: relative; top:-20px;">
+
+                        <div class="col-sm-4">
+                            <!--bar certificate image key  no need for DTO mapping on this object-->
+                            <div class="form-group">
+                                <label class="small" style="margin-top: 10px;"><p  style="font-max-size: 3px;">Upload bar credentials, including certificate of good standing from highest court of a state, commonwealth, territory or possession, or of the District of Columbia evidencing that you are a memeber of the bar of such court and are in good standing.</p></label>
+                                <input type="file" id="file"  name="file" class="form-control">
+                                <!-- Drop Zone -->
+                                <h4>Or drag and drop files below</h4>
+                                <div class="upload-drop-zone" id="drop-zone">
+                                    Just drag and drop files here
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-1">
+                            <div class="user-accept-msg-animation" style="display: none; position: relative; top:20px;">
+                                <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-1">
+
+                        </div>
+
+                        <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                            <div class="form-group user-accept-msgFieldMsgArea" style="position: relative; left:-15%;">
+                                <b><span></span></b>
+                            </div>
+                        </div>
+
+                    </div> <!-- end of row -->
+
+
+
+                </div> <!-- end of attorney-bar-info area -->
+
+                <div id="attorney-bar-info-area-canada" style="position: relative; top:-10px; display: none; ">
+                    <div class="row" style="margin-left:15px;">
+
+                        <div class="col-sm-4">
+
+                            <div class="form-group">
+                                <label class="small" style="margin-top: 10px;"><b>Please select a name from the registered OED list from Canadian Trademark and Patent Agents</b></label>
+                                <input class="form-control" name="query" id="ca-attornery-query" th:field="*{attorneyCAagentName}"  placeholder="Start typing something to search..." type="text">
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-1">
+                            <div class="attorney-CA-listanimation" style="display: none; position: relative; top:20px;">
+                                <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-sm-1">
+
+                        </div>
+
+                        <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                            <div class="form-group attorney-CA-listFieldMsgArea" style="position: relative; left:-15%;">
+                                <b><span></span></b>
+                            </div>
+                        </div>
+
+
+                    </div> <!-- end of row -->
+
+                    <div class="row" style="margin-left:15px;">
+
+                        <div class="col-sm-4">
+
+                            <div class="form-group">
+
+                                <input type="checkbox" id="notOnCAlist"/><label class="small" style="margin-top: 10px; margin-left: 10px;"><b>I can not find my name in the list.</b></label>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-1">
+                            <div class="notOnCAlist-animation" style="display: none; position: relative; top:20px;">
+                                <div  style="position: relative; bottom: -15px; "> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-sm-1">
+
+                        </div>
+
+                        <div class="col-sm-4" style="position: relative; bottom:-35px;">
+                            <div class="form-group notOnCAlistFieldMsgArea" style="position: relative; left:-15%;">
+                                <b><span></span></b>
+                            </div>
+                        </div>
+
+
+                    </div> <!-- end of row -->
+
+
+                    <div class="row" style="margin-left:15px;">
+                        <span><b>Is the appilcant located inCanada?</b></span>
+
+                    </div>
+
+
+
+                    <div class="row" style="margin-left:15px; margin-top:10px;">
+                        <div class="col-sm-1">
+
+                            <input type="radio" name="appilcantCATrue" th:field="*{applicantCA}"  value="true" id="applicantCATrue">
+
+                        </div>
+                        <div class="col-sm-2" >
+                            Yes
                         </div>
 
                     </div>
-                    
-                    <div id="attorney-bar-info-area" style="position: relative; top:-10px; display: none;">
-                        <div class="row" style="margin-left:15px;">
+                    <div class="row" style="margin-left:15px; margin-top: 10px;">
+                        <div class="col-sm-1">
 
-                            <div class="col-sm-4">
-
-                                <div class="form-group">
-                                    <!--bar jurisdiction -->
-                                    <label class="small" style="margin-top: 10px;"><b>Bar Jurisdiction</b></label>
-                                    <select  class="form-control custom-select" th:field="*{attorneyBarJurisdiction}"  id="attorney-bar-jurisdiction"  name="attorney-bar-jurisdiction" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-                                        <option  value="none"></option>
-                                        <option  value="AL">Alabama</option>
-                                        <option  value="AK">Alaska</option>
-                                        <option value="AZ">Arizona</option>
-                                        <option value="AR">Arkansas</option>
-                                        <option value="CA">California</option>
-                                        <option value="CO">Colorado</option>
-                                        <option value="CT">Connecticut</option>
-                                        <option value="DE">Delaware</option>
-                                        <option value="DC">District of Columbia</option>
-                                        <option value="FL">Florida</option>
-                                        <option value="GA">Georgia</option>
-                                        <option value="HI">Hawaii</option>
-                                        <option value="ID">Idaho</option>
-                                        <option value="IL">Illinois</option>
-                                        <option value="IN">Indiana</option>
-                                        <option value="IA">Iowa</option>
-                                        <option value="KS">Kansas</option>
-                                        <option value="KY">Kentucky</option>
-                                        <option value="LA">Louisiana</option>
-                                        <option value="ME">Maine</option>
-                                        <option value="MD">Maryland</option>
-                                        <option value="MA">Massachusetts</option>
-                                        <option value="MI">Michigan</option>
-                                        <option value="MN">Minnesota</option>
-                                        <option value="MS">Mississippi</option>
-                                        <option value="MO">Missouri</option>
-                                        <option value="MT">Montana</option>
-                                        <option value="NE">Nebraska</option>
-                                        <option value="NV">Nevada</option>
-                                        <option value="NH">New Hampshire</option>
-                                        <option value="NJ">New Jersey</option>
-                                        <option value="NM">New Mexico</option>
-                                        <option value="NY">New York</option>
-                                        <option value="NC">North Carolina</option>
-                                        <option value="ND">North Dakota</option>
-                                        <option value="OH">Ohio</option>
-                                        <option value="OK">Oklahoma</option>
-                                        <option value="OR">Oregon</option>
-                                        <option value="PA">Pennsylvania</option>
-                                        <option value="RI">Rhode Island</option>
-                                        <option value="SC">South Carolina</option>
-                                        <option value="SD">South Dakota</option>
-                                        <option value="TN">Tennessee</option>
-                                        <option value="TX">Texas</option>
-                                        <option value="UT">Utah</option>
-                                        <option value="VT">Vermont</option>
-                                        <option value="VA">Virginia</option>
-                                        <option value="WA">Washington</option>
-                                        <option value="WV">West Virginia</option>
-                                        <option value="WI">Wisconsin</option>
-                                        <option value="WY">Wyoming</option>
-
-                                    </select>
-
-                                </div>
-                            </div>
-
-                            <div class="col-sm-1">
-                                <div class="state-animation" style="display: none; position: relative; top:20px;">
-                                    <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
-                                </div>
-
-
-                            </div>
-                            <div class="col-sm-1">
-
-                            </div>
-
-                            <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                                <div class="form-group attorney-stateFieldMsgArea" style="position: relative; left:-15%;">
-                                    <b><span></span></b>
-                                </div>
-                            </div>
-
-
-                        </div> <!-- end of row -->
-
-                        <div class="row" style="margin-left:15px; position: relative; top:-20px;">
-
-                            <div class="col-sm-4">
-                                <!--bar membership number -->
-                                <div class="form-group">
-                                    <label class="small" style="margin-top: 10px;"><b>Membership Number </b></label>
-
-                                    <input type="text" id="bar-membership-number"  th:field="*{attorneyBarMembershipNumber}"  name="bar-memebership-number" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-
-                                </div>
-                            </div>
-
-                            <div class="col-sm-1">
-                                <div class="city-animation" style="display: none; position: relative; top:20px;">
-                                    <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
-                                </div>
-
-
-                            </div>
-                            <div class="col-sm-1">
-
-                            </div>
-
-                            <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                                <div class="form-group docket-idFieldMsgArea" style="position: relative; left:-15%;">
-                                    <b><span></span></b>
-                                </div>
-                            </div>
-
-                        </div> <!-- end of row -->
-
-                        <div class="row" style="margin-left:15px; position: relative; top:-20px;">
-
-                            <div class="col-sm-4">
-
-                                <div class="form-group">
-                                    <!--bar membership date -->
-                                    <label class="small" style="margin-top: 10px;"><b>Date of Admission </b></label>
-                                    <input type="date" id="bar-membership-date" th:field="*{attorneyBarAdmissionDate}"  name="bar-memebership-date" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-
-                                </div>
-                            </div>
-
-                            <div class="col-sm-1">
-                                <div class="bar-membership-date-animation" style="display: none; position: relative; top:20px;">
-                                    <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
-                                </div>
-
-
-                            </div>
-                            <div class="col-sm-1">
-
-                            </div>
-
-                            <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                                <div class="form-group bar-membership-dateFieldMsgArea" style="position: relative; left:-15%;">
-                                    <b><span></span></b>
-                                </div>
-                            </div>
-
-                        </div> <!-- end of row -->
-
-                        <div class="row" style="margin-left:15px; position: relative; top:-20px;">
-
-                            <div class="col-sm-4">
-
-                                <div class="form-group">
-
-                                    <label class="small" style="margin-top: 10px;"><b>Acknowledgement of Certification in good standing </b></label>
-                                    <b style="position: relative; left:-120px;"><input type="checkbox" id="user-accept-checkbox"  name="user-accept-checkbox" class="form-control" style="font-max-size: 3px;"> </b><p>I certify that this attorney is in good standing with a bar of the highest court of any U.S State, the District of Columbia, the U.S Commonwealths or U.S Territories.</p>
-
-                                </div>
-                            </div>
-
-                            <div class="col-sm-1">
-                                <div class="user-accept-msg-animation" style="display: none; position: relative; top:20px;">
-                                    <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
-                                </div>
-
-
-                            </div>
-                            <div class="col-sm-1">
-
-                            </div>
-
-                            <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                                <div class="form-group user-accept-msgFieldMsgArea" style="position: relative; left:-15%;">
-                                    <b><span></span></b>
-                                </div>
-                            </div>
-
-                        </div> <!-- end of row -->
-
-                        <div class="row" style="margin-left:15px; position: relative; top:-20px;">
-
-                            <div class="col-sm-4">
-                                <!--bar certificate image key  no need for DTO mapping on this object-->
-                                <div class="form-group">
-                                    <label class="small" style="margin-top: 10px;"><p  style="font-max-size: 3px;">Upload bar credentials, including certificate of good standing from highest court of a state, commonwealth, territory or possession, or of the District of Columbia evidencing that you are a memeber of the bar of such court and are in good standing.</p></label>
-                                   <input type="file" id="file"  name="file" class="form-control">
-                                    <!-- Drop Zone -->
-                                    <h4>Or drag and drop files below</h4>
-                                    <div class="upload-drop-zone" id="drop-zone">
-                                        Just drag and drop files here
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="col-sm-1">
-                                <div class="user-accept-msg-animation" style="display: none; position: relative; top:20px;">
-                                    <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
-                                </div>
-
-                            </div>
-                            <div class="col-sm-1">
-
-                            </div>
-
-                            <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                                <div class="form-group user-accept-msgFieldMsgArea" style="position: relative; left:-15%;">
-                                    <b><span></span></b>
-                                </div>
-                            </div>
-
-                        </div> <!-- end of row -->
-
-
-
-                    </div> <!-- end of attorney-bar-info area -->
-
-                    <div id="attorney-bar-info-area-canada" style="position: relative; top:-10px; display: none; ">
-                        <div class="row" style="margin-left:15px;">
-
-                            <div class="col-sm-4">
-
-                                <div class="form-group">
-                                    <label class="small" style="margin-top: 10px;"><b>Please select a name from the registered OED list from Canadian Trademark and Patent Agents</b></label>
-                                    <input class="form-control" name="query" id="ca-attornery-query" th:field="*{attorneyCAagentName}"  placeholder="Start typing something to search..." type="text">
-
-                                </div>
-                            </div>
-
-                            <div class="col-sm-1">
-                                <div class="attorney-CA-listanimation" style="display: none; position: relative; top:20px;">
-                                    <div  style="position: relative; bottom: -15px;"> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
-                                </div>
-
-
-                            </div>
-                            <div class="col-sm-1">
-
-                            </div>
-
-                            <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                                <div class="form-group attorney-CA-listFieldMsgArea" style="position: relative; left:-15%;">
-                                    <b><span></span></b>
-                                </div>
-                            </div>
-
-
-                        </div> <!-- end of row -->
-
-                        <div class="row" style="margin-left:15px;">
-
-                            <div class="col-sm-4">
-
-                                <div class="form-group">
-
-                                    <input type="checkbox" id="notOnCAlist"/><label class="small" style="margin-top: 10px; margin-left: 10px;"><b>I can not find my name in the list.</b></label>
-
-                                </div>
-                            </div>
-
-                            <div class="col-sm-1">
-                                <div class="notOnCAlist-animation" style="display: none; position: relative; top:20px;">
-                                    <div  style="position: relative; bottom: -15px; "> <span><i class="material-icons" style="color: green">check_circle</i></span></div>
-                                </div>
-
-
-                            </div>
-                            <div class="col-sm-1">
-
-                            </div>
-
-                            <div class="col-sm-4" style="position: relative; bottom:-35px;">
-                                <div class="form-group notOnCAlistFieldMsgArea" style="position: relative; left:-15%;">
-                                    <b><span></span></b>
-                                </div>
-                            </div>
-
-
-                        </div> <!-- end of row -->
-
-
-                        <div class="row" style="margin-left:15px;">
-                            <span><b>Is the appilcant located inCanada?</b></span>
+                            <input type="radio" th:field="*{applicantCA}"  name="isApplicantCAFalse"  value="false" id="applicantCAFalse"/>
 
                         </div>
-
-
-
-                        <div class="row" style="margin-left:15px; margin-top:10px;">
-                            <div class="col-sm-1">
-
-                                <input type="radio" name="appilcantCATrue" th:field="*{applicantCA}"  value="true" id="applicantCATrue">
-
-                            </div>
-                            <div class="col-sm-2" >
-                                Yes
-                            </div>
-
+                        <div class="col-sm-2">
+                            No
                         </div>
-                        <div class="row" style="margin-left:15px; margin-top: 10px;">
-                            <div class="col-sm-1">
-
-                                <input type="radio" th:field="*{applicantCA}"  name="isApplicantCAFalse"  value="false" id="applicantCAFalse"/>
-
-                            </div>
-                            <div class="col-sm-2">
-                                No
-                            </div>
-                        </div>
-
-
-
-                    </div> <!-- end of bar-info-area-canada -->
-
-
-                    <div class="row" style="position: relative;  top:-120px; display:none; max-height: 1px;">
-                        <input id="appInternalIDForm" type="text" th:field="*{appInternalID}"   class="form-control"   style=" width:1px;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                     </div>
+
+
+
+                </div> <!-- end of bar-info-area-canada -->
+
+
+                <div class="row" style="position: relative;  top:-120px;left:-25%; max-height: 1px;">
+                    <input id="appInternalIDForm" type="text" th:field="*{appInternalID}"   class="form-control"   style=" width:1px;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                </div>
 
 
                 </form>
+                </div><!--END attorney toggle area-->
+
+                <div class="col-xs-12">
+                    <button type="submit"form="addNewAttorneyForm" class="btn btn-sm btn-primary add ctr" id="confirmattorney">Confirm</button>
+                </div>
+
+
+
+
 
 
             </div>
@@ -1214,8 +833,8 @@
 
                                  <p style="font-weight: bold;">Attorney's information whom's information are not in Managed Contact module will be automatically saved for later use in a other Trademark applications. you can populate the form by pressing the <b style="position: relative; bottom: -9px;"><i class="material-icons">add_circle_outline</i></b> icon next to the contact name. if a contact is already added to the application. you will see a <b style="position: relative; bottom: -9px;"><i class="material-icons">check_circle_outline</i></b> icon. <br> <h6 style="font-weight: bold">would you like to use Managed Contact Attorney module to populate the attorney form?</h6></p>
 
-                                 <button type="button" class="managedContactDenyButton" data-dismiss="modal"><span class="glyphicon glyphicon-thumbs-down" disabled="true"></span> &nbsp;&nbsp;<b style="font-weight: bold;">No</b>&nbsp;</button>
-                                 <button type="button" class="managedContactAcceptButton" data-dismiss="modal"><span class="glyphicon glyphicon-thumbs-up" disabled="true"></span> &nbsp;&nbsp;<b style="font-weight: bold;">Yes</b>&nbsp;</button>
+                                 <button type="button" class="managedContactDenyButton" data-dismiss="modal"> &nbsp;&nbsp;<b style="font-weight: bold;">No</b>&nbsp;</button>
+                                 <button type="button" class="managedContactAcceptButton" data-dismiss="modal">&nbsp;&nbsp;<b style="font-weight: bold;">Yes</b>&nbsp;</button>
 ;
 
                              </div>
@@ -1265,14 +884,14 @@
             // after 1000 ms we add the class animated to the login/register card
             $('.content').fadeIn(500);
 
-            $('#attorney-submit-row').fadeIn(500);
+            //$('#attorney-submit-row').fadeIn(500);
         }, 500);
 
 
-        $('#managed-contact-info-modal').modal('show');
+        //$('#managed-contact-info-modal').modal('show');
 
 
-        $('.managedContactAcceptButton').click(function () {
+        $('#autofill').click(function () {
             $('.contacts-Table').fadeIn(500);
 
         });
