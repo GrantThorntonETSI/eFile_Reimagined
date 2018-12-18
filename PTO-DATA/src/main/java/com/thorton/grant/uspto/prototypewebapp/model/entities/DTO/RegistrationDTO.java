@@ -28,9 +28,17 @@ public class RegistrationDTO {
 
     private String suffix;
 
+    @NotNull
+    @NotEmpty
+    private String password;
 
     @NotNull
     @NotEmpty
+    private String password_confirm;
+
+
+
+
     private String viewType;
 
 
@@ -73,5 +81,21 @@ public class RegistrationDTO {
 
     public void setViewType(String viewType) {
         this.viewType = viewType;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPassword_confirm() {
+        return password_confirm;
+    }
+
+    public void setPassword_confirm(String password_confirm) {
+        this.password_confirm = password_confirm;
     }
 }
