@@ -118,26 +118,26 @@ public class EmailVerificationController {
             Errors errors){
 
 
-             String account = getAccount_email();
-             System.out.println("saving password for account : "+account);
 
-             String token = getAccount_token();
-             VerificationToken verificationToken = service.getVerificationToken(token);
-             UserCredentials userCredentials = verificationToken.getNewCredential();
-             userCredentials.setPassword(bCryptPasswordEncoder.encode(passwordSetDTO.getPassword()));
-             userCredentials.setPasswordConfirm(bCryptPasswordEncoder.encode(passwordSetDTO.getPassword()));
-             // password matches confirms checked with js on previous page
-             service.saveRegisteredUserCredential(userCredentials);
+            String account = getAccount_email();
+            System.out.println("saving password for account : " + account);
 
-        String server_message = "Registration Compelete. You can now sign into the application.";
-        //redirectAttributes.addFlashAttribute("message",server_message );
-        model.addAttribute("message", server_message);
+            String token = getAccount_token();
+            VerificationToken verificationToken = service.getVerificationToken(token);
+            UserCredentials userCredentials = verificationToken.getNewCredential();
+            userCredentials.setPassword(bCryptPasswordEncoder.encode(passwordSetDTO.getPassword()));
+            userCredentials.setPasswordConfirm(bCryptPasswordEncoder.encode(passwordSetDTO.getPassword()));
+            // password matches confirms checked with js on previous page
+            service.saveRegisteredUserCredential(userCredentials);
 
 
+            String server_message = "Registration Compelete. You can now sign into the application.";
+            //redirectAttributes.addFlashAttribute("message",server_message );
+            model.addAttribute("message", server_message);
 
 
+            return "login";
 
-        return "login";
 
 
     }
