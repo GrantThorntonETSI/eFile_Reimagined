@@ -105,7 +105,7 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                 .and()
 
                 .formLogin()
-                .loginPage("/login").successForwardUrl("/2FactorAuth")
+                .loginPage("/login").successForwardUrl("/2FactorAuth").failureForwardUrl("/passwordFailure")
                 .permitAll()
                 .and()
                 .logout()

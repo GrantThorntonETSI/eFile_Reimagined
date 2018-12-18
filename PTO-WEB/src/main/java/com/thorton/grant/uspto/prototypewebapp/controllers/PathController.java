@@ -229,7 +229,20 @@ public class PathController {
         return "login";
 
     }
+    ///////////////////////////////////
+    // login failure intercept
+    ///////////////////////////////////
+    @RequestMapping({"/passwordFailure"})
+    public String loginFailure(Model model) {
 
+
+        String server_message = "Password entered was not not correct.";
+        //redirectAttributes.addFlashAttribute("message",server_message );
+        model.addAttribute("message", server_message);
+
+        return "login";
+
+    }
 
 
 
