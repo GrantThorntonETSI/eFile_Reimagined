@@ -193,7 +193,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
 
         tradeMarkApplicationService.save(trademarkApplication);
 
-
+/*
         // create another user
         Set<PTOUser> managedContactsAttorneys = new HashSet<>();
         Set<PTOUser> managedContactsOwners = new HashSet<>();
@@ -218,7 +218,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         PTOUser Vi = createUser("Tuong-Vi", "Nguyen", "600 Dulany Street", "Alexendria", "Virginia", "22222", "X1", "333-333-3333", "Tuong-Vi.Nguyen@uspto.gov","12345",managedContactsAttorneys, managedContactsOwners);
 
 
-
+*/
 
 
 

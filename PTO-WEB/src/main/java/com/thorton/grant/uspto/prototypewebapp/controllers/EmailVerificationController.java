@@ -101,10 +101,28 @@ public class EmailVerificationController {
         //////////////////////////////////////////////////////////////////////////
         // create DTO object and bind it to form on the next view
         //////////////////////////////////////////////////////////////////////////
-        PasswordSetDTO passwordSetDTO = new PasswordSetDTO();
-        model.addAttribute("passwordSetDTO", passwordSetDTO);
+      // PasswordSetDTO passwordSetDTO = new PasswordSetDTO();
+       //model.addAttribute("passwordSetDTO", passwordSetDTO);
 
-        return "registrationConfirm/activate";
+       //return "registrationConfirm/activate";
+
+        //String token2 = getAccount_token();
+        //VerificationToken verificationToken2 = service.getVerificationToken(token2);
+        //UserCredentials userCredentials2 = verificationToken.getNewCredential();
+       // userCredentials.setPassword(bCryptPasswordEncoder.encode(r.getPassword()));
+        //userCredentials.setPasswordConfirm(bCryptPasswordEncoder.encode(passwordSetDTO.getPassword()));
+        // password matches confirms checked with js on previous page
+
+       // service.saveRegisteredUserCredential(userCredentials);
+
+
+        String server_message = "Registration Compelete. You can now sign into the application.";
+        //redirectAttributes.addFlashAttribute("message",server_message );
+       model.addAttribute("message", server_message);
+
+
+        return "login";
+
     }
 
 

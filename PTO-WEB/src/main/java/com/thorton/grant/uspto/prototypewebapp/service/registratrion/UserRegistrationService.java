@@ -61,8 +61,11 @@ public class UserRegistrationService implements IUserService {
         ptoUserService.save(newUser);
 
         newUserCredentials.setEmail(accountDto.getEmail());
-       // newUserCredentials.setPassword(bCryptPasswordEncoder.encode(accountDto.getPassword()));
-        //newUserCredentials.setPasswordConfirm(bCryptPasswordEncoder.encode(accountDto.getMatchingPassword()));
+        newUserCredentials.setPassword(bCryptPasswordEncoder.encode(accountDto.getPassword()));
+        newUserCredentials.setPasswordConfirm(bCryptPasswordEncoder.encode(accountDto.getPassword_confirm()));
+        //newUserCredentials.setPassword(bCryptPasswordEncoder.encode("12345"));
+        //newUserCredentials.setPasswordConfirm(bCryptPasswordEncoder.encode("12345"));
+
         newUserCredentials.setUserRoles(new HashSet<UserRole>(Arrays.asList(defaultRole)));
         newUserCredentials.setUserPersonalData(newUser);
         ////newUserCredentials.setActive(1);

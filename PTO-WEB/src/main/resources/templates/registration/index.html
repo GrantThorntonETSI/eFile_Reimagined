@@ -164,6 +164,56 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row" style="position: relative; right:-18%; font-weight: bold;">
+                                <span>
+                                    <label class="col-sm-2 col-form-label"><b style="color: red">*</b>Password</label>
+                                </span>
+
+                            </div>
+
+                            <div class="row" style="position: relative; right:-20%; top: 10%; ">
+
+                                <div class="col-sm-6">
+
+                                    <div class="form-group">
+                                        <span>
+
+                                           <input id="password" type="password"  th:field="*{password}"   class="form-control" style="margin:auto; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  th:required>
+                                             <b style="color: red"> <p th:each="error : ${#fields.errors('password')}"
+                                                                       th:text="${error}">Validation error</p></b>
+
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="row" style="position: relative; right:-18%; font-weight: bold;">
+                             <span>
+
+                                 <label class="col-sm-2 col-form-label"><b style="color: red">*</b>Confirm Password </label>
+                             </span>
+
+                            </div>
+
+                            <div class="row" style="position: relative; right:-20%;">
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <span>
+                                            <input id="password-confirm" type="password"   th:field="*{password_confirm}" name="password-confirm" class="form-control" placeholder="Confirm Password" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+
+                                                 <b style="color: red"> <p th:each="error : ${#fields.errors('password_confirm')}"
+                                                                           th:text="${error}">Validation error</p></b>
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+
 
 
 
@@ -184,6 +234,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </form>
 
 
 
@@ -273,6 +324,44 @@
             $('.confirmDisclaimerCheckbox').prop('disabled', false)
             $('.confirmDisclaimerCheckbox').prop('checked', true);
             $('.registrationSubmit').prop('disabled', false);
+        });
+
+        var allowsubmit = false;
+
+        //on keypress
+        $('#password-confirm').keyup(function(e){
+            //get values
+            var pass = $('#password').val();
+            var confpass = $(this).val();
+
+            //check the strings
+            if(pass == confpass){
+                //if both are same remove the error and allow to submit
+                $('.autoSaveMessageArea').text('');
+                allowsubmit = true;
+            }else{
+                //if not matching show error and not allow to submit
+                $('.autoSaveMessageArea').text('Password and Password confirm do not match.');
+                allowsubmit = false;
+            }
+        });
+
+        //jquery form submit
+        $('#setAccountPW').submit(function(){
+
+            var pass = $('#password').val();
+            var confpass = $('#password-confirm').val();
+
+            //just to make sure once again during submit
+            //if both are true then only allow submit
+            if(pass == confpass){
+                allowsubmit = true;
+            }
+            if(allowsubmit){
+                return true;
+            }else{
+                return false;
+            }
         });
     });
 </script>
