@@ -158,44 +158,6 @@
                                 </div>
                             </div>
 
-                        <div class="card-text">
-                            <h5 class="card-title"><b style="color: black; color: rgb(0, 0, 0); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">Account View Preference</b></h5>
-                        </div>
-
-
-
-                            <div class="row" style="position: relative; right:-20%; margin-bottom: 15px;">
-
-                                <b style="color: red">*</b>  <b>Select application View for new applications: </b><a  style="text-decoration: none;" data-toggle="tooltip" data-placement="right"      title="Guided User view guides the applicant through the process with questions and videos. While the Experienced User view minimizes the extra assistance. "><i  style="position: relative; bottom: -5px;"  class="material-icons">info_outline</i></a>
-                            </div>
-
-                            <div class="row" style="position: relative; right: -7%;">
-                                <label class="col-sm-2 col-form-label"></label>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-
-
-                                           <div class="row">
-                                                <span>
-                                                    <input type="radio" th:field="*{viewType}"  name="viewType" value="Guided User View">&nbsp;&nbsp;<b>Guided User View</b>
-                                                </span>
-
-                                           </div>
-
-                                        <div class="row">
-                                            <span>
-
-                                                <input type="radio"  th:field="*{viewType}" name="viewType" value="Experienced User View">&nbsp;&nbsp;<b>Experienced User View</b>
-                                            </span>
-
-
-                                        </div>
-                                        <b style="color: red"> <p th:each="error : ${#fields.errors('lastName')}"
-                                                                  th:text="${error}">Validation error</p></b>
-
-                                    </div>
-                                </div>
-                            </div>
 
 
                             <div class="row">
