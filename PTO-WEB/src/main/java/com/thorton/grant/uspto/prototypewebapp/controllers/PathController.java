@@ -209,7 +209,7 @@ public class PathController {
            if (auth != null){
                new SecurityContextLogoutHandler().logout(requesthttp, response, auth);
            }
-           return "redirect:/logout";
+           return "forward:/login";
            //return "forward:/2FactorAuthFailure";
        }
 
