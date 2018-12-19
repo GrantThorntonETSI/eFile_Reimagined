@@ -17,6 +17,7 @@
                         <div class="col-sm-6">
                             <div style="position: relative;top:26px; margin-left: 40px; margin-bottom: 50px;">
                                 <h4><b style="color: black; opacity: 1; mix-blend-mode: normal; color: rgb(0, 0, 0); font-size: 36px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; width: 597px; height: 41px; transform: rotate(0deg) translate(96px, 195px) rotate(0deg);">Create an account</b></h4>
+                                <p class="help-block">Already have an account? <a href="/login">Sign in</a></p>
                             </div>
                         </div>
                         <div class="col-sm-4">
@@ -36,13 +37,16 @@
                         </div>
 
                     </div>
+
+
                     <div class="card-body" style=" margin-top: 20px; border: none;">
                         <form method="post" style="" action="/newUser" class="form-horizontal" th:object="${userCredentialsDTO}">
+                            <div class="text-right help-block form-control-width-lg"><p class="req-form-input-text"><span aria-hidden="true">*</span><span class="sr-only">asterisk</span> indicates <span id="reqAsstText">required</span></p></div>
 
 
                             <div class="row" style="position: relative; right:-18%;">
                                 <span>
-                                    <label class="col-sm-2 col-form-label"><b style="color: red">*</b>E-Mail Address </label>
+                                    <label class="col-sm-2 col-form-label">Email Address<b>*</b> </label>
                                 </span>
 
                             </div>
@@ -53,7 +57,7 @@
                                     <div class="form-group">
                                         <span>
 
-                                           <input type="email" th:field="*{email}"  id="email" placeholder="" class="form-control" style="margin:auto; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  required>
+                                           <input type="email" th:field="*{email}"  id="email" placeholder="" class="form-control" style="margin:auto; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;"  required>
 
                                        <b style="color: red"> <p th:each="error : ${#fields.errors('email')}"
                                               th:text="${error}">Validation error</p></b>
@@ -68,7 +72,7 @@
                             <div class="row" style="position: relative; right:-18%;">
                              <span>
 
-                                 <label class="col-sm-2 col-form-label"><b style="color: red">*</b>First Name </label>
+                                 <label class="col-sm-2 col-form-label">First Name <b>*</b> </label>
                              </span>
 
                             </div>
@@ -78,7 +82,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <span>
-                                            <input type="text" th:field="*{firstName}"  name="firstName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                                            <input type="text" th:field="*{firstName}"  name="firstName" class="form-control" style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;" required>
                                            <b style="color: red">   <p th:each="error : ${#fields.errors('firstName')}"
                                                                        th:text="${error}">Validation error</p></b>
 
@@ -102,7 +106,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <span>
-                                          <input type="text" name="middleName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                          <input type="text" name="middleName" class="form-control" style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;">
                                         </span>
                                     </div>
                                 </div>
@@ -112,7 +116,7 @@
 
                             <div class="row" style="position: relative; right:-18%;">
                                 <span>
-                                    <label class="col-sm-2 col-form-label"><b style="color: red">*</b>Last Name </label>
+                                    <label class="col-sm-2 col-form-label">Last Name <b>*</b> </label>
 
                                 </span>
 
@@ -124,7 +128,7 @@
 
                                     <div class="form-group">
                                         <span>
-                                         <input type="text" th:field="*{lastName}" name="lastName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                                         <input type="text" th:field="*{lastName}" name="lastName" class="form-control" style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;" required>
                                            <b style="color: red">  <p th:each="error : ${#fields.errors('lastName')}"
                                                                       th:text="${error}">Validation error</p></b>
                                         </span>
@@ -145,7 +149,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <span>
-                                            <input  type="text" class="form-control" name="suffix"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"/>
+                                            <input  type="text" class="form-control" name="suffix"  style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;"/>
 
                                         </span>
 
@@ -154,7 +158,7 @@
                             </div>
                             <div class="row" style="position: relative; right:-18%; font-weight: bold;">
                                 <span>
-                                    <label class="col-sm-2 col-form-label"><b style="color: red">*</b>Password</label>
+                                    <label class="col-sm-2 col-form-label">Password <b>*</b></label>
                                 </span>
 
                             </div>
@@ -166,7 +170,7 @@
                                     <div class="form-group">
                                         <span>
 
-                                           <input id="password" type="password"  th:field="*{password}"   class="form-control" style="margin:auto; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"  th:required>
+                                           <input id="password" type="password"  th:field="*{password}"   class="form-control" style="margin:auto; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;"  th:required>
                                              <b style="color: red"> <p th:each="error : ${#fields.errors('password')}"
                                                                        th:text="${error}">Validation error</p></b>
 
@@ -182,7 +186,7 @@
                             <div class="row" style="position: relative; right:-18%; font-weight: bold;">
                              <span>
 
-                                 <label class="col-sm-2 col-form-label"><b style="color: red">*</b>Confirm Password </label>
+                                 <label class="col-sm-2 col-form-label">Confirm Password<b>*</b></label>
                              </span>
 
                             </div>
@@ -192,7 +196,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <span>
-                                            <input id="password-confirm" type="password"   th:field="*{password_confirm}" name="password-confirm" class="form-control" placeholder="Confirm Password" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                            <input id="password-confirm" type="password"   th:field="*{password_confirm}" name="password-confirm" class="form-control" placeholder="" style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;">
 
                                                  <b style="color: red"> <p th:each="error : ${#fields.errors('password_confirm')}"
                                                                            th:text="${error}">Validation error</p></b>
