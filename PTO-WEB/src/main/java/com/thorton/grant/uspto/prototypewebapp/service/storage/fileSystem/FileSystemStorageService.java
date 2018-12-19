@@ -14,7 +14,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.color.ColorSpace;
 import java.awt.image.BufferedImage;
+import java.awt.image.ColorConvertOp;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -70,7 +72,7 @@ public class FileSystemStorageService implements StorageService {
         try {
 
             BufferedImage image = ImageIO.read(file.getInputStream());
-
+/*
             BufferedImage result = new BufferedImage(
                     image.getWidth(),
                     image.getHeight(),
@@ -84,6 +86,20 @@ public class FileSystemStorageService implements StorageService {
             ImageIO.write(result, "png", output);
             InputStream targetStream = new FileInputStream(output);
             newFileName = fileCounter+"bw_"+file.getOriginalFilename();
+
+*/
+
+
+            ColorSpace cs = ColorSpace.getInstance(ColorSpace.CS_GRAY);
+            ColorConvertOp op = new ColorConvertOp(cs, null);
+            BufferedImage imageGray = op.filter(image, null);
+
+            File output = new File(file.getOriginalFilename());
+            ImageIO.write(imageGray, "png", output);
+            InputStream targetStream = new FileInputStream(output);
+            newFileName = fileCounter+"bw_"+file.getOriginalFilename();
+
+
             Files.copy(targetStream, this.rootLocation.resolve(newFileName));
             fileCounter++;
 
