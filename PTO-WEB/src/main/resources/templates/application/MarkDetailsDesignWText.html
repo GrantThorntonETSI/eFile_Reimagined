@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{fragments/LynnFragment :: layout (~{::body},'user')}" xmlns="http://www.w3.org/1999/html">
+      th:replace="~{fragments/ApplicationMarkFragment :: layout (~{::body},'user')}" xmlns="http://www.w3.org/1999/html">
 <head >
     <meta charset="UTF-8">
     <title></title>
@@ -21,36 +21,8 @@
                     <div class="col-sm-3">
                         <div class="banner-message"  style="position: relative;top:-225px; ">
 
-                            <div style="min-width: 280px; max-width: 280px;">
-                                <ul class="aside-fees">
-                                    <!-- 			BASIC/COLLECTIVE MARK -->
-                                    <li class="fee-item collapse" style="height: 0px;">
-                                        <span class="fee-description">Basic fee</span>
-                                        <span class="fee-value fee-basic">225 $</span>
-                                    </li>
 
-                                    <!-- 			EXTRA CLASS FEE -->
-                                    <li class="fee-item collapse" style="height: 0px;">
-                                        <span class="fee-description">Extra Class Fee</span>
-                                        <span class="fee-value fee-extra-class">0 $</span>
-                                    </li>
-
-                                    <!-- 			TOTAL CLASSES -->
-                                    <li class="fee-item collapse" style="height: 0px;">
-                                        <span class="fee-description">Total classes</span>
-                                        <span class="fee-value fee-total-classes">0</span>
-                                    </li>
-
-                                    <!-- 			TOTAL -->
-                                    <li class="fee-item-total collapsed" data-toggle="collapse" data-target=".fee-item">
-                                        <span class="fee-description-total">Total fee</span>
-                                        <span class="fee-value fee-total">225 $</span>
-                                    </li>
-                                </ul>
-
-                            </div>
-
-                            <div class="contacts-Table " style="border: rgb(235,235,235); min-width: 280px; max-width: 280px; border-width: 1px; border: solid; padding: 15px; min-height: 200px; max-height: 200px; position: relative; top:-10px; ">
+                            <div class="contacts-Table " style=" display:none;  border: rgb(235,235,235); min-width: 280px; max-width: 280px; border-width: 1px; border: solid; padding: 15px; min-height: 200px; max-height: 200px; position: relative; top:-10px; ">
                                 <div style="margin: 3px; position: relative; top:-5px;">
                                     <img th:src="@{/resources/images/placeholder-icon.jpg}" style="position: relative; left:-5px; max-width: 250px; max-height: 200px;"  id="markImage" />
                                 </div>
@@ -403,7 +375,11 @@
         //////////////////////////////////////////////////////////////////////
         if(colorClaim == null){
             if(image_path != null){
-                $('#markImage').attr("src",image_path );
+                $('[data-toggle="popover"]').popover({
+                    title : false,
+                    html : true,
+                    content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
+                });
 
             }
         }
@@ -414,11 +390,20 @@
                 $('#inlineRadio2').click();
                 $('#bwmark').click();
 
-                $('#markImage').attr("src",image_pathBW );
+                $('[data-toggle="popover"]').popover({
+                    title : false,
+                    html : true,
+                    content : '<div class="media"><img src="'+image_pathBW+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
+                });
             }
             else{
                 if(image_path != null){
-                    $('#markImage').attr("src",image_path );
+
+                    $('[data-toggle="popover"]').popover({
+                        title : false,
+                        html : true,
+                        content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
+                    });
 
                 }
             }
@@ -427,11 +412,24 @@
         if(colorClaim == true){
             $('#inlineRadio1').click();
             if(image_path != null){
-                $('#markImage').attr("src",image_path );
+
+                $('[data-toggle="popover"]').popover({
+                    title : false,
+                    html : true,
+                    content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
+                });
 
             }
         }
 
+
+
+        $( '#togglepop' ).click(function() {
+            $( this ).toggleClass( 'focus' );
+            $(this).html() === '<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Hide My Mark'
+                ? $(this).html('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Show My Mark')
+                : $(this).html('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Hide My Mark');
+        });
 
 
 
@@ -456,13 +454,21 @@
         // toggle between color or bw local
         //////////////////////////////////////////////////////////////////////
         $('#inlineRadio2').click(function () {
-            $('#markImage').attr("src",image_pathBW );
+            $('[data-toggle="popover"]').popover({
+                title : false,
+                html : true,
+                content : '<div class="media"><img src="'+image_pathBW+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
+            });
         });
         //////////////////////////////////////////////////////////////////////
         // toggle between color or bw local
         //////////////////////////////////////////////////////////////////////
         $('#inlineRadio1').click(function () {
-            $('#markImage').attr("src",image_path );
+            $('[data-toggle="popover"]').popover({
+                title : false,
+                html : true,
+                content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
+            });
         });
 
 
