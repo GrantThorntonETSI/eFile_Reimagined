@@ -151,6 +151,10 @@
                                                <input type="radio" name="coloradiono" id="inlineRadio2" value="no">No
                                             </div><!--END radiogroup-->
                                             <div id="yescolorclaim"><!--toggle 'yes' radio-->
+
+                                                <img id="colorMarkInline" src="" style="position: relative; left:-5px; max-width: 250px; max-height: 200px; margin-bottom: 20px; margin-top: 11px;" />
+                                                <br>
+
                                                 <label>Identify the colors in your mark.</label>
                                                 <textarea id="mark-color-description" rows="3" class="form-control"></textarea>
                                                 <h3 class="weight600">Mark Description</h3>
@@ -158,8 +162,10 @@
                                                 <textarea id="mark-color-claim" rows="3" class="form-control" placeholder="This mark consists of"></textarea>
                                             </div>
                                             <div id="nocolorclaim"><!--toggle 'no' radio-->
-                                                <input class="form-check-input checkmark" type="checkbox" value="accept B W mark" role="checkbox" aria-checked="false" tabindex="0" aria-labelledby="acceptmark" id="bwmark">
-                                                <label class="form-check-label form-check" for="bwmark" id="acceptmark"><span class="radio notspecial">Accept the black and white drawing.</span></label>
+
+                                                <img id="colorMarkBWInline" src="" style="position: relative; left:-5px; max-width: 250px; max-height: 200px; margin-bottom: 20px; margin-top: 11px;" />
+                                                <input class="form-check-input checkmark" type="checkbox" value="accept B W mark" role="checkbox" aria-checked="false" tabindex="0" aria-labelledby="acceptmark" id="bwmark" style="position:relative; left:-33px;">
+                                                <label class="form-check-label form-check" for="bwmark" id="acceptmark" style="position:relative; left:-33px;"><span class="radio notspecial">Accept the black and white drawing.</span></label>
                                                 <div class="alert alert-warning" role="alert">
                                                     <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
                                                     <span class="sr-only">Warning:</span>
@@ -348,6 +354,7 @@
 <script>
 
 
+
     // next link url to enable  for u.s individual href="http://localhost:8080/application/owner/info"
     $(document).ready(function() {
 
@@ -367,7 +374,7 @@
             $('#contacts-ui').fadeIn(500);
 
 
-        }, 500);
+        }, 500)
 
 
         //////////////////////////////////////////////////////////////////////
@@ -459,6 +466,9 @@
                 html : true,
                 content : '<div class="media"><img src="'+image_pathBW+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
             });
+
+            $('#colorMarkBWInline').attr("src",image_pathBW );
+
         });
         //////////////////////////////////////////////////////////////////////
         // toggle between color or bw local
@@ -469,6 +479,8 @@
                 html : true,
                 content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
             });
+
+            $('#colorMarkInline').attr("src",image_path );
         });
 
 
