@@ -223,10 +223,9 @@ public class PathController {
 
 
         String server_message = "You have Successfully logged out.";
-        //redirectAttributes.addFlashAttribute("message",server_message );
         model.addAttribute("message", server_message);
 
-        return "login";
+        return "public/index2";
 
     }
     ///////////////////////////////////
