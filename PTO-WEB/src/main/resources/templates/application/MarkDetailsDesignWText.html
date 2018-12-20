@@ -206,10 +206,7 @@
                                                 </div>
                                             </div>
                                             <div id="notranslation"><!--toggle 'no' radio-->
-                                                <div class="form-group form-group-md col-xs-12">
-                                                    <b >There is no meaning in a foreign language for</b>
-                                                    <input type="text" class="form-control" id="notranslations">
-                                                </div>
+
                                             </div>
 
                                         </div>
@@ -403,6 +400,9 @@
                 });
 
                 $('#colorMarkBWInline').attr("src", image_pathBW);
+                $('#nextLink').attr("href", nextLinkURL);
+                $('#nextLinkIcon').attr("href", nextLinkURL);
+                $('.next-button').css("background-color", "rgb(55,69,120)");
             }
             else{
                 if(image_path != null){
@@ -414,6 +414,9 @@
                     });
 
                     $('#colorMarkInline').attr("src", image_path);
+                    $('#nextLink').attr("href", nextLinkURL);
+                    $('#nextLinkIcon').attr("href", nextLinkURL);
+                    $('.next-button').css("background-color", "rgb(55,69,120)");
 
                 }
             }
@@ -429,6 +432,9 @@
                     content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
                 });
                 $('#colorMarkInline').attr("src", image_path);
+                $('#nextLink').attr("href", nextLinkURL);
+                $('#nextLinkIcon').attr("href", nextLinkURL);
+                $('.next-button').css("background-color", "rgb(55,69,120)");
 
             }
         }
@@ -497,11 +503,14 @@
         $('#mark-literal').focusout( function () {
 
             var field_value = $(this).val();
-            saveMarkTextdetails("mark-literal", field_value, appInternalID);
-            // enable next link
+
             $('#nextLink').attr("href", nextLinkURL);
             $('#nextLinkIcon').attr("href", nextLinkURL);
-            $('.next-button').attr("background-color", "rgb(55,69,120)");
+            $('.next-button').css("background-color", "rgb(55,69,120)");
+
+            saveMarkTextdetails("mark-literal", field_value, appInternalID);
+            // enable next link
+
 
 
         });

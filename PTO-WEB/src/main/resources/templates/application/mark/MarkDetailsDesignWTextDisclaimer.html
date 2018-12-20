@@ -6,7 +6,7 @@
     <title></title>
 </head>Mark Details
 <body>
-<div class="row content" style="position: relative; ">
+<div class="row content" style="position: relative; display: none; ">
     <main class="col-xs-12 col-sm-8 col-lg-6" style="min-width: 860px;">
         <div class="row sticky" id="contacts-ui" style=" display:none; position: fixed; top:500px; right:222px;  max-height: 10px;">
 
@@ -28,20 +28,6 @@
                                 </div>
                             </div>
 
-                            <div class="row navigation-row" style=" max-height: 100px; position: relative; min-width: 350px; max-width: 325px;">
-                                <div class="col-sm-2">
-                                    <span class="btn btn-md prev-button"  style=" padding: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; background-color: rgb(55, 69, 120);  color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center;    font-size: 14px; font-style: normal; width: 120px; height: 30px;"><a id="prevLinkIcon" style="color: white; text-decoration: none; position: relative; top:-3px;left:-5px;" ><i class="material-icons rotate-180">exit_to_app</i></a><a id="prevLink" style="color: white; text-decoration: none;position: relative; top:-10px;" href="">Prev</a></span>
-                                </div>
-                                <div class="col-sm-2">
-                                </div>
-                                <div class="col-sm-2">
-                                </div>
-
-
-                                <div class="col-sm-2" style="position:relative; left:-10px; ">
-                                         <span class="btn btn-md next-button"  style="padding: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; background-color: rgb(128,128,128); color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center;   font-size: 14px; font-style: normal; width: 120px; height: 30px;"><a id="nextLink" style="color: white; text-decoration: none; position: relative; top:-10px;" >Next</a><a id="nextLinkIcon" style="color: white; text-decoration: none; position: relative; top:-3px;right:-5px;" ><i class="material-icons">exit_to_app</i></a><span>
-                                </div>
-                            </div>
 
 
 
@@ -227,6 +213,21 @@
                     </form>
                 </div><!--END col-->
             </div><!--END row-->
+
+            <div class="row navigation-row" style=" max-height: 100px; position: relative; bottom: -111px; right: -222px; margin-bottom: 111px; ">
+
+                <div class="col-sm-2" style="position: relative; left:-222px;">
+                    <span class="btn btn-md prev-button"  style=" padding: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; background-color: rgb(55, 69, 120);  color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center;    font-size: 14px; font-style: normal; width: 120px; height: 30px;"><a id="prevLinkIcon" style="color: white; text-decoration: none; position: relative; top:-3px;left:-5px;" ><i class="material-icons rotate-180">exit_to_app</i></a><a id="prevLink" style="color: white; text-decoration: none;position: relative; top:-10px;" href="">Prev</a></span>
+                </div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-2"></div>
+
+                <div class="col-sm-2" style="position:relative; right:-111px; ">
+                    <span class="btn btn-md next-button"  style="padding: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; background-color: rgb(128,128,128); color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center;   font-size: 14px; font-style: normal; width: 120px; height: 30px;"><a id="nextLink" style="color: white; text-decoration: none; position: relative; top:-10px;" >Next</a><a id="nextLinkIcon" style="color: white; text-decoration: none; position: relative; top:-3px;right:-5px;" ><i class="material-icons">exit_to_app</i></a></span>
+                </div>
+
+            </div>
         </div>
 
 
@@ -246,6 +247,14 @@
 
     var host = host_name+":"+host_port;
 
+    var  image_path = /*[[${markImagePath}]]*/ 'User Name';
+
+    var  image_pathBW = /*[[${markImagePathBW}]]*/ 'User Name';
+
+    var colorClaim = /*[[${markColorClaim}]]*/ 'User Name';
+
+    var acceptBW = /*[[${markColorClaimBW}]]*/ 'User Name';
+
 
     /*]]>*/
 </script>
@@ -254,8 +263,8 @@
 
 <script>
 
-    var nextLinkURL = "../../application/AttorneySet/?trademarkID="+appInternalID;
-    var prevLinkURL = "../../mark/designWithText/?trademarkID="+appInternalID;
+    var nextLinkURL = "";
+    var prevLinkURL = "../../mark/designWithTextDetails/?trademarkID="+appInternalID;
 
 
 </script>
@@ -285,12 +294,63 @@
 
         }, 500);
 
+        //////////////////////////////////////////////////////////////////////
+        // set mark image based on persisted values
+        //////////////////////////////////////////////////////////////////////
+        if(colorClaim == null){
+            if(image_path != null){
+                $('[data-toggle="popover"]').popover({
+                    title : false,
+                    html : true,
+                    content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
+                });
 
-        $('[data-toggle="popover"]').popover({
-            title : false,
-            html : true,
-            content : '<div class="media"><img src="../resources/images/placeholder-icon.jpg" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
-        });
+            }
+        }
+
+        if(colorClaim == false){
+
+            if(acceptBW == true){
+                $('#inlineRadio2').click();
+                $('#bwmark').click();
+
+                $('[data-toggle="popover"]').popover({
+                    title : false,
+                    html : true,
+                    content : '<div class="media"><img src="'+image_pathBW+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
+                });
+
+
+            }
+            else{
+                if(image_path != null){
+
+                    $('[data-toggle="popover"]').popover({
+                        title : false,
+                        html : true,
+                        content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
+                    });
+
+
+
+                }
+            }
+
+        }
+        if(colorClaim == true){
+            $('#inlineRadio1').click();
+            if(image_path != null){
+
+                $('[data-toggle="popover"]').popover({
+                    title : false,
+                    html : true,
+                    content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
+                });
+
+
+            }
+        }
+
 
 
         $( '#togglepop' ).click(function() {
@@ -299,6 +359,7 @@
                 ? $(this).html('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Show My Mark')
                 : $(this).html('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Hide My Mark');
         });
+
 
 
 
