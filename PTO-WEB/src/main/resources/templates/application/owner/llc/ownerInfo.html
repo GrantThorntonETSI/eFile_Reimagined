@@ -22,7 +22,7 @@
 
                     <div class="card-text">
 
-                        <h5 class="card-title"><b style="color: black; color: rgb(0, 0, 0); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">Owner Information</b><a  style="text-decoration: none;" data-toggle="tooltip" title="If the owner only have one name, insert the words First Name Unavailable (FNU) in the first name field and the name to be entered in the surename field."><i class="material-icons" style="position: relative; top:8px; right:-25px;">info_outline</i></a></h5>
+                        <h2 class="card-title"><b style="color: black; color: rgb(0, 0, 0); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">Owner Information</b><a  style="text-decoration: none;" data-toggle="tooltip" title="If the owner only have one name, insert the words First Name Unavailable (FNU) in the first name field and the name to be entered in the surename field."><i class="material-icons" style="position: relative; top:8px; right:-25px;">info_outline</i></a></h2>
 
                     </div>
                     <hr style="height:3px; position:relative; top:-20px; left:-11.5%; max-width: 80.1%">
@@ -36,7 +36,7 @@
 
                         <div class="col-sm-4">
                             <label for="ownername"><b style="color: red">&#42;</b>Owner Name</label>
-                            <input type="text" class="form-control rounded-borders" id="ownername"  th:field="*{ownerName}" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                            <input type="text" class="form-control rounded-borders" id="ownername"  th:field="*{ownerName}" style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;" required>
                         </div>
                     </div>
 
@@ -52,7 +52,7 @@
                         <div class="col-sm-4">
 
                         <span>
-                            <select  class="form-control" name="nameType"  th:field="*{ownerType}" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                            <select  class="form-control" name="nameType"  th:field="*{ownerType}" style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;">
                                 <option value="none">Select</option>
                                 <option value="DBA">Doing Business As(DBA)</option>
                                 <option value="TA">Trading As(TA)</option>
@@ -74,7 +74,7 @@
                     <div class="row" style="position: relative; top:-190px; right:-7%;">
                         <div class="col-sm-4">
                             <label><b style="color: red">&#42;</b>State Where Legally Organized</label>
-                            <select  class="form-control" name="State" th:field="*{ownerState}"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" >
+                            <select  class="form-control" name="State" th:field="*{ownerState}"   style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;" >
                                 <option  value="none"></option>
                                 <option  value="AL">Alabama</option>
                                 <option  value="AK">Alaska</option>
@@ -147,7 +147,7 @@
 
                         <div class="card-text">
 
-                            <h5 class="card-title"><b style="color: black; color: rgb(0, 0, 0); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">Owner Address Information</b></h5>
+                            <h2 class="card-title"><b style="color: black; color: rgb(0, 0, 0); font-size: 16px; text-align: left; font-weight: bold; font-style: normal; text-decoration: none;">Owner Address Information</b></h2>
 
                         </div>
                         <hr style="height:3px; position:relative; top:-20px; left:-11.5%; max-width: 80.1%">
@@ -167,7 +167,7 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <span>
-                                    <input type="email" name="email" th:field="*{ownerEmail}"  placeholder="" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                                    <input type="email" name="email" th:field="*{ownerEmail}"  placeholder="" class="form-control" style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;" required>
                                 </span>
                             </div>
                         </div>
@@ -194,7 +194,7 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                         <span>
-                                             <select   th:field="*{OwnerAddressCountry}"  class="form-control" name="addressCountry"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                                             <select   th:field="*{OwnerAddressCountry}"  class="form-control" name="addressCountry"  style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;" required>
 
                                                     <option value="X1">UNITED STATES OF AMERICA</option>
                                                     <option value="B2">AFGHANISTAN</option>
@@ -467,7 +467,7 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <span>
-                                        <input type="text"  th:field="*{ownerAddress1}"    name="Address1" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                                        <input type="text"  th:field="*{ownerAddress1}"    name="Address1" class="form-control" style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;" required>
                                     </span>
 
                                 </div>
@@ -498,7 +498,7 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                             <span>
-                                <input type="text"  th:field="*{ownerAddress2}"   name="Address2" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                <input type="text"  th:field="*{ownerAddress2}"   name="Address2" class="form-control" style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;">
 
 
                             </span>
@@ -530,7 +530,7 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                         <span>
-                                          <input type="text" th:field="*{ownerAddress3}"  name="Address3" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                          <input type="text" th:field="*{ownerAddress3}"  name="Address3" class="form-control" style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;">
                                         </span>
                                 </div>
                             </div>
@@ -558,7 +558,7 @@
 
                                 <div class="form-group">
                                         <span>
-                                         <input type="text" th:field="*{ownerCity}"   th:value="${user.city}"  name="City" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                                         <input type="text" th:field="*{ownerCity}"   th:value="${user.city}"  name="City" class="form-control" style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;" required>
 
                                         </span>
                                 </div>
@@ -584,7 +584,7 @@
                             <div class="col-sm-4">
 
                                 <div class="form-group">
-                                    <select  class="form-control custom-select" name="State" th:field="*{ownerState}"  th:value="${user.state}"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                    <select  class="form-control custom-select" name="State" th:field="*{ownerState}"  th:value="${user.state}"  style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;">
                                         <option  value="none"></option>
                                         <option  value="AL">Alabama</option>
                                         <option  value="AK">Alaska</option>
@@ -663,7 +663,7 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                         <span>
-                                          <input type="text" name="zipcode" th:field="*{ownerZipcode}"  placeholder="XXXXX" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                          <input type="text" name="zipcode" th:field="*{ownerZipcode}"  placeholder="XXXXX" class="form-control" style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;">
                                         </span>
                                 </div>
                             </div>
@@ -691,7 +691,7 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                 <span>
-                                  <input type="url" name="website" th:field="*{ownerWebSite}"  placeholder="" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                  <input type="url" name="website" th:field="*{ownerWebSite}"  placeholder="" class="form-control" style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;">
                                 </span>
                                 </div>
                             </div>
@@ -718,7 +718,7 @@
 
                         <div class="row" style="position: relative; top:-205px; right:-7%">
                             <div class="col-sm-1">
-                                <select  class="form-control" name="phone-type"  value="Type" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                <select  class="form-control" name="phone-type"  value="Type" style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;">
                                     <option value="cell"><b>Cell</b></option>
                                     <option value="home"><b>Home</b></option>
                                     <option value="work"><b>Work</b></option>
@@ -726,10 +726,10 @@
                                 </select>
                             </div>
                             <div class="col-sm-3">
-                                <input type="number" id="phone" name="Phone" class="form-control"  th:field="*{ownerPhone}"   style=" border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                <input type="number" id="phone" name="Phone" class="form-control"  th:field="*{ownerPhone}"   style=" border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;">
                             </div>
                             <div class="col-sm-1">
-                                <input type="number" id="ext" name="Phone" class="form-control"   style=" border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                <input type="number" id="ext" name="Phone" class="form-control"   style=" border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;">
                             </div>
 
                             <div class="col-sm-4" style="position: relative; bottom:-35px;">
@@ -744,11 +744,11 @@
                         </div>
 
                         <div class="row" style="position: relative; display: none; top:-120px;left:-5%;">
-                            <input id="appInternalID" type="text" th:value="${baseTrademarkApplication.applicationInternalID}"  class="form-control"   style=" border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                            <input id="appInternalID" type="text" th:value="${baseTrademarkApplication.applicationInternalID}"  class="form-control"   style=" border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;">
                         </div>
 
                         <div class="row" style="position: relative;  top:-120px;left:-55%;">
-                            <input id="appInternalIDForm" type="text" th:field="*{appInternalID}"   class="form-control"   style="width: 1px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                            <input id="appInternalIDForm" type="text" th:field="*{appInternalID}"   class="form-control"   style="width: 1px; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;">
                         </div>
 
                         <div class="row" style="position: relative;  top:-150px; right:-600px;">
