@@ -1080,7 +1080,7 @@ public class ApplicationFlowController {
 
 
     @RequestMapping({"/mark/designWithTextDisclaimer"})
-    public String designWithTextDisclaimer (WebRequest request, Model model) {
+    public String designWithTextDisclaimer (WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
         //public String markUpload (WebRequest request, Model model) {
         // get owner info
 
@@ -1097,8 +1097,19 @@ public class ApplicationFlowController {
         model.addAttribute("hostBean", hostBean);
         //String applcationLookupID = trademarkInternalID;
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
-        //BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
 
+        }
+        else{
+            model.addAttribute("markImagePath","");
+
+            model.addAttribute("markImagePathBW","");
+
+
+        }
 
 
         return "application/mark/MarkDetailsDesignWTextDisclaimer";

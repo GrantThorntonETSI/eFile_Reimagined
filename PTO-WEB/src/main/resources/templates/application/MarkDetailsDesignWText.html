@@ -343,7 +343,7 @@
 
 <script>
 
-    var nextLinkURL = "../../application/AttorneySet/?trademarkID="+appInternalID;
+    var nextLinkURL = "../../mark/designWithTextDisclaimer/?trademarkID="+appInternalID;
     var prevLinkURL = "../../mark/designWithText/?trademarkID="+appInternalID;
 
 
@@ -498,6 +498,10 @@
 
             var field_value = $(this).val();
             saveMarkTextdetails("mark-literal", field_value, appInternalID);
+            // enable next link
+            $('#nextLink').attr("href", nextLinkURL);
+            $('#nextLinkIcon').attr("href", nextLinkURL);
+            $('.next-button').attr("background-color", "rgb(55,69,120)");
 
 
         });
