@@ -193,7 +193,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
 
         tradeMarkApplicationService.save(trademarkApplication);
 
-
+/*
         // create another user
         Set<PTOUser> managedContactsAttorneys = new HashSet<>();
         Set<PTOUser> managedContactsOwners = new HashSet<>();
@@ -220,7 +220,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
 
 
 
-
+*/
 
     }
 

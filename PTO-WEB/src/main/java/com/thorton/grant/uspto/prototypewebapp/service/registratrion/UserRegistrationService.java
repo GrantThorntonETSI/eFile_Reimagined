@@ -58,7 +58,7 @@ public class UserRegistrationService implements IUserService {
         newUser.setFirstName(accountDto.getFirstName());
         newUser.setLastName(accountDto.getLastName());
         newUser.setEmail(accountDto.getEmail());
-        ptoUserService.save(newUser);
+
 
         newUserCredentials.setEmail(accountDto.getEmail());
         newUserCredentials.setPassword(bCryptPasswordEncoder.encode(accountDto.getPassword()));
@@ -71,9 +71,9 @@ public class UserRegistrationService implements IUserService {
         ////newUserCredentials.setActive(1);
         newUserCredentials.setUsername(newUser.getFirstName()+"."+newUser.getLastName());
         userCredentialsService.save(newUserCredentials);
+        newUser.setUserCredentials(newUserCredentials);
 
-
-
+        ptoUserService.save(newUser);
 
         return newUserCredentials;
     }
