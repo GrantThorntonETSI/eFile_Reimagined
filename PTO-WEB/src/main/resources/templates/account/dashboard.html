@@ -363,6 +363,7 @@
         //});
 
         var dataSetFilings2 = [
+            ["85290164", "<a target='_blank' href='http://tsdr.uspto.gov/documentviewer?caseId=sn85290164&docId=ORC20111025015349#docIndex=8&page=1'>4045519</a>","Merry Maids", "Service Master Brands, LLC", "Filed", ""]
 
 
         ];
@@ -384,8 +385,8 @@
                 { title: "Registration#" },
                 { title: "Mark" },
                 { title: "Owner" },
-                { title: "Status" },
-                { title: "Action" }
+                { title: "Status" }
+
             ]
         } );
 
@@ -435,7 +436,7 @@
         for(var a =0; a <tableRowIDs.length; a++) {
 
             var hrefVal = '<a href="/application/continueApplication/?trademarkID='+tableRowIDs[a]+'">'+tableRowTMnames[a]+'</a>';
-            filingsTable.row.add([hrefVal,"N/A", "N/A", tableRowOwners[a], tableRowStatuses[a], "<i class='material-icons filings-table'>remove_circle</i>"]).draw();
+            filingsTable.row.add([hrefVal,"N/A", "N/A", tableRowOwners[a], tableRowStatuses[a]]).draw();
             // make this jquery expression more generic
 
         }
