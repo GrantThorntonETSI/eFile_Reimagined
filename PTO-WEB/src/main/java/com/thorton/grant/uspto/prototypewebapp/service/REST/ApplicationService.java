@@ -70,7 +70,7 @@ public class ApplicationService  extends  BaseRESTapiService{
             }
 
 
-            appFieldReadable = "Attorney Option. ";
+            appFieldReadable = "Attorney Information. ";
         }
 
 
