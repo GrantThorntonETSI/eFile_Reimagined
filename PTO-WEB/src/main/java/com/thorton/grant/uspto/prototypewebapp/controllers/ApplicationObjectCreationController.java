@@ -753,7 +753,8 @@ public class ApplicationObjectCreationController {
 
         }
 
-        return "application/MarkDetailsDesignWText";
+        //return "application/MarkDetailsDesignWText";
+        return "application/MarkDetailsUpload";
     }
     ///////////////////////////////////////////////////////////////////////////////
     // end of attorney add

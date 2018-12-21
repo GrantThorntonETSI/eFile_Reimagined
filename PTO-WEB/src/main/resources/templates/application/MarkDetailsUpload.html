@@ -114,9 +114,9 @@
                         <!--Start Dropzone-->
                         <!--<p>Or drag and drop files below</p>-->
                         <div class="upload-drop-zone col-xs-12 col-md-10 col-lg-8" id="drop-zone" >
-                            <p><span class="glyphicon glyphicon-upload"></span><br><br>
+                            <p style="float: right;"><span class="glyphicon glyphicon-picture"></span>Mark Image<br><br>
 
-                                <span>Permitted file types include .doc, .docx, xlsx, csv, ppt, jpg, png, tiff, or pdf.</span></p>
+                                <span><img th:src="@{/resources/images/image_placeholder_icon.png}" style="position: relative; left:-5px; min-width: 555px; max-width: 555px; max-height: 333px; min-height: 333px;"  id="markImage" /></span></p>
 
                         </div>
 
@@ -125,6 +125,7 @@
                         <div class="js-upload-finished col-xs-12 col-md-10 col-lg-8">
                             <p>Processed files</p>
                             <div class="list-group">
+
                                 <a href="#" class="list-group-item list-group-item-success"></a>
                             </div>
 
