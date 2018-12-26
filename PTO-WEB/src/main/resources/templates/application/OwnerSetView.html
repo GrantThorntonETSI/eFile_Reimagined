@@ -204,22 +204,22 @@
                                     </div>
                                 </div>
 
-                                <th:block th:each="partner : ${owner.partners}">
+                                <th:block th:each="governingEntity : ${owner.governingEntities}">
                                     <div class="row" style="position: relative; right:-111px;">
-                                                <span class="collapsed"  data-toggle="collapse" th:attr="data-target='#'+${owner.id}+${partner.getPartnerCollapseID()}+'c'"  aria-expanded="false" aria-controls="collapseTwoAffiliation">
+                                                <span class="collapsed"  data-toggle="collapse" th:attr="data-target='#'+${owner.id}+${governingEntity.collapseID}+'c'"  aria-expanded="false" aria-controls="collapseTwoAffiliation">
                                                     <i class="material-icons">keyboard_arrow_right</i> <b style="position: relative; top:-7px;">Partner Info</b>
                                                 </span>
 
-                                        <div th:attr="id=${owner.id}+${partner.getPartnerCollapseID()}+'c'"  class="collapse" aria-labelledby="headingTwoAffiliation" data-parent="#accordionExample" style="max-width: 850px;">
+                                        <div th:attr="id=${owner.id}+${governingEntity.collapseID}+'c'"  class="collapse" aria-labelledby="headingTwoAffiliation" data-parent="#accordionExample" style="max-width: 850px;">
                                             <div class="card-body contact-field-card-body" >
                                                 <span>Partner name:</span>
-                                                <span style="position: relative; right:-30px;"  th:text="${partner.partnerDisplayName}">Washington Dc Bar Association. Maryland Bar Association.</span><br>
+                                                <span style="position: relative; right:-30px;"  th:text="${governingEntity.displayName}">Washington Dc Bar Association. Maryland Bar Association.</span><br>
                                                 <span>Partner Type:</span>
-                                                <span style="position: relative; right:-30px;"  th:text="${partner.partnerEntityType}">Washington Dc Bar Association. Maryland Bar Association.</span><br>
+                                                <span style="position: relative; right:-30px;"  th:text="${governingEntity.entityType}">Washington Dc Bar Association. Maryland Bar Association.</span><br>
                                                 <span>Partner State of Organization or Incorporation:</span>
-                                                <span style="position: relative; right:-30px;"  th:text="${partner.getOrganizationState}">Washington Dc Bar Association. Maryland Bar Association.</span><br>
+                                                <span style="position: relative; right:-30px;"  th:text="${governingEntity.organizationState}">Washington Dc Bar Association. Maryland Bar Association.</span><br>
                                                 <span>Partner Country:</span>
-                                                <span style="position: relative; right:-30px;"  th:text="${partner.partnerCitizenship}">Washington Dc Bar Association. Maryland Bar Association.</span><br>
+                                                <span style="position: relative; right:-30px;"  th:text="${governingEntity.organizationCountry}">Washington Dc Bar Association. Maryland Bar Association.</span><br>
 
                                             </div>
                                         </div>

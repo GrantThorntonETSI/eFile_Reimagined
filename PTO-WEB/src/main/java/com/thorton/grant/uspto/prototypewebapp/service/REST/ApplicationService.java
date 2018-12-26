@@ -424,7 +424,7 @@ public class ApplicationService  extends  BaseRESTapiService{
 
         application_owner.setOwnerName(owner.getOwnerName());
         application_owner.setOwnerDisplayname(owner.getOwnerDisplayname());
-        application_owner.setPartners(owner.getPartners());
+        application_owner.setGoverningEntities(owner.getGoverningEntities());
         application_owner.setOwnerOrganizationState(owner.getOwnerOrganizationState());
 
 

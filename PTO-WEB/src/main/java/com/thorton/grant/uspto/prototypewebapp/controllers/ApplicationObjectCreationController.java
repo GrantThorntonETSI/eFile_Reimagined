@@ -10,11 +10,10 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.Co
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.form.NewAttorneyContactFormDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.form.NewOwnerContactFormDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.form.partnerDTO;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.GoverningEntity;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
-import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Partner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
-import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.TradeMark;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.ManagedContact;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
@@ -33,7 +32,6 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -509,38 +507,40 @@ public class ApplicationObjectCreationController {
             //for(Iterator<partnerDTO> iter = partnerDTOS.iterator(); iter.hasNext(); ) {
             //partnerDTO partner = partnerDTOS.iterator().next();
             partnerDTO partner = partnerDTOS.get(0);
-            Partner newPartner = new Partner();
+
+            GoverningEntity governingEntity = new GoverningEntity();
+
             if(partner.getPartnerName() != ""){
-                newPartner.setPartnerName(partner.getPartnerName());
-                newPartner.setPartnerDisplayName(partner.getPartnerName());
-                newPartner.setPartnerCollapseID(partner.getPartnerName().replaceAll("[^A-Za-z0-9]", ""));
+                governingEntity.setEntityName(partner.getPartnerName());
+                governingEntity.setDisplayName(partner.getPartnerName());
+                governingEntity.setCollapseID(partner.getPartnerName().replaceAll("[^A-Za-z0-9]", ""));
             }
             if(partner.getFirstName() != "" ){
-                newPartner.setPartnerFirstName(partner.getFirstName());
-                newPartner.setPartnerDisplayName(partner.getFirstName()+" "+partner.getLastName());
-                newPartner.setPartnerCollapseID((partner.getFirstName()+partner.getLastName()).replaceAll("[^A-Za-z0-9]", ""));
+                governingEntity.setFirstName(partner.getFirstName());
+                governingEntity.setDisplayName(partner.getFirstName()+" "+partner.getLastName());
+                governingEntity.setCollapseID((partner.getFirstName()+partner.getLastName()).replaceAll("[^A-Za-z0-9]", ""));
             }
             if(partner.getLastName() != ""){
-                newPartner.setPartnerLastName(partner.getLastName());
+                governingEntity.setLastName(partner.getLastName());
             }
             if(partner.getMiddleName() != ""){
-                newPartner.setPartnerMiddleName(partner.getMiddleName());
+                governingEntity.setMiddleName(partner.getMiddleName());
             }
             if(partner.getSuffix() != ""){
-                newPartner.setPartnerSuffix(partner.getSuffix());
+                governingEntity.setSuffix(partner.getSuffix());
             }
             if(partner.getCitizenShip() != ""){
-                newPartner.setPartnerCitizenship(partner.getCitizenShip());
+                governingEntity.setEntityCitizenship(partner.getCitizenShip());
             }
 
             if(partner.getState() != ""){
-                newPartner.setGetOrganizationState(partner.getState());
+                governingEntity.setOrganizationState(partner.getState());
             }
             if(partner.getType() != ""){
-                newPartner.setPartnerEntityType(partner.getType());
+                governingEntity.setEntityType(partner.getType());
             }
 
-            owner.addPartner(newPartner);
+            owner.addGoverningEnity(governingEntity);
             // }
 
         }

@@ -13,7 +13,7 @@ public class Owner extends Contact{
 
     public Owner() {
 
-        partners = new HashSet<>();
+       governingEntities = new HashSet<>();
 
 
     }
@@ -27,7 +27,7 @@ public class Owner extends Contact{
 
 
     @OneToMany(cascade = CascadeType.ALL)
-    private Set<Partner> partners;
+    private Set<GoverningEntity> governingEntities;
 
 
 
@@ -144,26 +144,24 @@ public class Owner extends Contact{
     }
 
 
-    public Set<Partner> getPartners() {
-        return partners;
+    public Set<GoverningEntity> getGoverningEntities() {
+        return governingEntities;
     }
 
-    public void setPartners(Set<Partner> partners) {
-        this.partners = partners;
+    public void setGoverningEntities(Set<GoverningEntity> governingEntities) {
+        this.governingEntities = governingEntities;
     }
 
+    public GoverningEntity addGoverningEnity(GoverningEntity governingEntity){
+        this.governingEntities.add(governingEntity);
 
-    public Partner addPartner(Partner newPartner){
-        partners.add(newPartner);
-
-        return newPartner;
-
-    }
-
-    public void deletePartner(Partner partner){
-        partners.remove(partner);
+        return governingEntity;
 
     }
+
+   public void deleteGoverningEntity(GoverningEntity governingEntity){
+        this.governingEntities.remove(governingEntity);
+   }
 
     public String getOwnerName() {
         return ownerName;
