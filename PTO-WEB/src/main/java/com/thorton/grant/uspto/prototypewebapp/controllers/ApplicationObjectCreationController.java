@@ -327,6 +327,7 @@ public class ApplicationObjectCreationController {
         model.addAttribute("account",credentials);
         model.addAttribute("hostBean", hostBean);
 
+        System.out.println("app id value : "+newOwnerContactFormDTO.getAppInternalID());
         ////////////////////////////////////////////////////////////////////////
         //add new owner contact business logic
         ////////////////////////////////////////////////////////////////////////

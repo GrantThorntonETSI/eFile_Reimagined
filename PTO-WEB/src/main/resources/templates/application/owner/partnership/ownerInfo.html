@@ -1251,11 +1251,9 @@
                             <button id="addNewPhoneNumber"  style="opacity: 1; mix-blend-mode: normal; border-color: rgb(221, 221, 221); background-color: rgb(0, 120, 171); background-image: none; color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center; border-width: 0px; border-radius: 3px; border-style: solid; background-size: cover; background-repeat: repeat; background-position: center center; font-size: 16px; font-style: normal; width: 280px; height: 30px; transform: rotate(0deg) translate(158px, 389px) rotate(0deg);">Add Additional Phone Number</button>
                         </div>
 
-                        <div class="row" style="position: relative; display: none; top:-120px;left:-5%;">
-                            <input id="appInternalID" type="text" th:value="${baseTrademarkApplication.applicationInternalID}"  class="form-control"   style=" border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-                        </div>
 
-                        <div class="row" style="position: relative; top:-120px;left:-55%;">
+
+                        <div class="row" style="position:relative; display: none;">
                             <input id="appInternalIDForm" type="text" th:field="*{appInternalID}"   class="form-control"   style=" width: 1px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                         </div>
 
@@ -1283,7 +1281,7 @@
         var host_name= /*[[${hostBean.host}]]*/ 'User Name';
         var host_port= /*[[${hostBean.port}]]*/ 'User Name';
         var host = host_name+":"+host_port;
-        //alert(tableRows);
+        //alert(appInternalID);
 
         /*]]>*/
     </script>
