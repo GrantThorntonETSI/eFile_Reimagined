@@ -30,7 +30,7 @@
                         </div>
                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-4">
                             <label for="ownername"><span class="weight600">&#42;</span>Owner Name</label>
-                            <input type="text" class="form-control" id="ownername" th:field="*{firstName}">
+                            <input type="text" class="form-control" id="ownername" th:field="*{ownerName}">
                         </div>
                         <div class="form-group form-group-md col-xs-12 col-sm-6 col-lg-4">
                             <label for="additionalname">Additional Name</label>
@@ -44,7 +44,7 @@
                         </div>
                         <div class="form-group form-group-md col-xs-12 col-sm-6 col-lg-4">
                             <label for="stateoforg"><span class="weight600">&#42;</span>State of Organization</label>
-                            <select class="form-control" id="stateoforg">
+                            <select class="form-control" id="stateoforg" th:field="*{ownerState}" >
                                 <option  value="none"></option>
                                 <option  value="AL">Alabama</option>
                                 <option  value="AK">Alaska</option>
@@ -109,7 +109,7 @@
                     <fieldset>
                         <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
                             <label for="first-name"><span class="weight600">&#42;</span>First Name</label>
-                            <input type="text" class="form-control" id="first-name">
+                            <input type="text" class="form-control" id="first-name" th:field="*{firstName}">
                         </div>
                         <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
                             <label for="middle-name">Middle Name</label>
