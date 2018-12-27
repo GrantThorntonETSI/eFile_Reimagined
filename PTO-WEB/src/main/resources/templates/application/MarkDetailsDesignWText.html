@@ -334,7 +334,6 @@
 
     var translitFW = /*[[${translitFW}]]*/ 'User Name';
 
-    alert(translationFW);
 
     var host = host_name+":"+host_port;
 
@@ -459,7 +458,7 @@
             $('#inlineRadio5').click();
         }
         else {
-            if(translationFW == false) {
+            if(translitFW == false) {
                 $('#inlineRadio6').click();
             }
 
@@ -656,7 +655,7 @@
         // field auto save transliteration foreign wording "yes"
         //////////////////////////////////////////////////////////////////////
 
-        $('#inlineRadio4').click( function () {
+        $('#inlineRadio5').click( function () {
 
 
             saveMarkTextdetails("mark-fw-transliteration", "yes", appInternalID);
@@ -667,7 +666,7 @@
         // field auto save transliteration foreign wording "no"
         //////////////////////////////////////////////////////////////////////
 
-        $('#inlineRadio5').click( function () {
+        $('#inlineRadio6').click( function () {
 
 
             saveMarkTextdetails("mark-fw-transliteration", "no", appInternalID);
