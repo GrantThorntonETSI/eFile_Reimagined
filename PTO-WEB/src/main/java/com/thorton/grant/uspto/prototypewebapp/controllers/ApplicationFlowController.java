@@ -1031,9 +1031,12 @@ public class ApplicationFlowController {
         boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
         boolean translationFW = baseTrademarkApplication.getTradeMark().isForeignLanguageTranslationWording();
 
+        boolean transliterationFW = baseTrademarkApplication.getTradeMark().isForeignLanguateTransliterationWording();
+
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
         model.addAttribute("translationFW", translationFW);
+        model.addAttribute("translitFW", transliterationFW);
 
         return "application/MarkDetailsDesignWText";
 

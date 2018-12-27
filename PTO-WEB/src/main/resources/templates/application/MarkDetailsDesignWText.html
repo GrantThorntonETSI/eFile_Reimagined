@@ -332,6 +332,8 @@
 
     var translationFW = /*[[${translationFW}]]*/ 'User Name';
 
+    var translitFW = /*[[${translitFW}]]*/ 'User Name';
+
     alert(translationFW);
 
     var host = host_name+":"+host_port;
@@ -449,6 +451,16 @@
         else {
             if(translationFW == false) {
                 $('#inlineRadio4').click();
+            }
+
+        }
+
+        if(translitFW == true){
+            $('#inlineRadio5').click();
+        }
+        else {
+            if(translationFW == false) {
+                $('#inlineRadio6').click();
             }
 
         }
@@ -594,7 +606,7 @@
         });
 
         //////////////////////////////////////////////////////////////////////
-        // field auto save translation foreign wording "yes"
+        // field auto save translation foreign wording "no"
         //////////////////////////////////////////////////////////////////////
 
         $('#inlineRadio4').click( function () {
@@ -637,6 +649,31 @@
             saveMarkTextdetails("mark-fw-engText", engText, appInternalID);
 
         });
+
+
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save transliteration foreign wording "yes"
+        //////////////////////////////////////////////////////////////////////
+
+        $('#inlineRadio4').click( function () {
+
+
+            saveMarkTextdetails("mark-fw-transliteration", "yes", appInternalID);
+
+        });
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save transliteration foreign wording "no"
+        //////////////////////////////////////////////////////////////////////
+
+        $('#inlineRadio5').click( function () {
+
+
+            saveMarkTextdetails("mark-fw-transliteration", "no", appInternalID);
+
+        });
+
 
         //////////////////////////////////////////////////////////////////////
         // field auto save transliteration foreign wording  language type
