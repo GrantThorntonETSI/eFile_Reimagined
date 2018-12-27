@@ -195,7 +195,7 @@ public class TradeMarkService extends BaseRESTapiService {
 
             }
 
-            appFieldReadable = "Mark Transliteration Foreign Wording";
+            appFieldReadable = "Mark Disclaimer";
 
         }
 
