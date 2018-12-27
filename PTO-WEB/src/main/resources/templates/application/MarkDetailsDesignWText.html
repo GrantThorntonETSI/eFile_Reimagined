@@ -159,7 +159,7 @@
                                                 </div>
                                                 <h3 class="weight600">Mark Description</h3>
                                                 <span class="weight600">&#42;</span> Provide a description of the mark.
-                                                <textarea id="mark-BW-description" rows="3" class="form-control" placeholder="This mark consists of"></textarea>
+                                                <textarea id="mark-BW-description" rows="3" class="form-control" placeholder="" th:text="${baseTrademarkApplication.tradeMark.markBWDescription}"></textarea>
                                             </div>
                                         </div>
                                     </section>
@@ -497,7 +497,7 @@
 
 
        //////////////////////////////////////////////////////////////////////
-       // field auto save
+       // field auto save mark literal
        //////////////////////////////////////////////////////////////////////
 
         $('#mark-literal').focusout( function () {
@@ -514,22 +514,46 @@
 
 
         });
+        //////////////////////////////////////////////////////////////////////
+        // field auto save color claim "no"
+        //////////////////////////////////////////////////////////////////////
+
         $('#inlineRadio2').click( function () {
 
 
             saveMarkTextdetails("mark-color-claim", "no", appInternalID);
 
         });
+        //////////////////////////////////////////////////////////////////////
+        // field auto save BW mark description
+        //////////////////////////////////////////////////////////////////////
+        $('#bwmark').click(function () {
+
+            saveMarkTextdetails("mark-accept-BW", "yes", appInternalID);
+        });
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save accept BW mark
+        //////////////////////////////////////////////////////////////////////
+        $('#mark-BW-description').focusout(function () {
+            var description = $(this).val();
+
+            saveMarkTextdetails("mark-BW-description",description, appInternalID);
+        });
+
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save color claim "yes"
+        //////////////////////////////////////////////////////////////////////
         $('#inlineRadio1').click( function () {
 
             saveMarkTextdetails("mark-color-claim", "yes", appInternalID);
 
         });
 
-        $('#bwmark').click(function () {
 
-            saveMarkTextdetails("mark-accept-BW", "yes", appInternalID);
-        });
+
+
 
 
     }); // end of document ready

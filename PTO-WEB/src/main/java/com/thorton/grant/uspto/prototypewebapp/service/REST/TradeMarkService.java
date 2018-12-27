@@ -95,6 +95,13 @@ public class TradeMarkService extends BaseRESTapiService {
 
         }
 
+        if(markField.equals("mark-BW-description")){
+            // ptoUser.setState(param); // sets state code
+            baseTrademarkApplication.getTradeMark().setMarkBWDescription(markValue);
+            appFieldReadable = "Mark BW Description";
+
+        }
+
 
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
