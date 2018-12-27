@@ -102,6 +102,22 @@ public class TradeMarkService extends BaseRESTapiService {
 
         }
 
+        if(markField.equals("mark-color-list")){
+            // ptoUser.setState(param); // sets state code
+            baseTrademarkApplication.getTradeMark().setMarkColors(markValue);
+            appFieldReadable = "Mark Colors ";
+
+        }
+
+        if(markField.equals("mark-color-description")){
+            // ptoUser.setState(param); // sets state code
+            baseTrademarkApplication.getTradeMark().setMarkColorDescription(markValue);
+            appFieldReadable = "Mark Colors Description";
+
+        }
+
+
+
 
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
