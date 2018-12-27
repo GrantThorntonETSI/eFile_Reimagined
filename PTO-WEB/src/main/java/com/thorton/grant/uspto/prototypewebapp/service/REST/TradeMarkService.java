@@ -79,21 +79,6 @@ public class TradeMarkService extends BaseRESTapiService {
 
         }
 
-        if(markField.equals("mark-translation-wording-foreignText")){
-            // ptoUser.setState(param); // sets state code
-
-            if(markValue.equals("yes")){
-                baseTrademarkApplication.getTradeMark().setForeignLanguageTranslationWording(true);
-
-            }
-            if(markValue.equals("no")){
-                baseTrademarkApplication.getTradeMark().setForeignLanguageTranslationWording(false);
-
-            }
-
-            appFieldReadable = "Mark Translation Foreign Wording";
-
-        }
 
         if(markField.equals("mark-BW-description")){
             // ptoUser.setState(param); // sets state code
@@ -113,6 +98,22 @@ public class TradeMarkService extends BaseRESTapiService {
             // ptoUser.setState(param); // sets state code
             baseTrademarkApplication.getTradeMark().setMarkColorDescription(markValue);
             appFieldReadable = "Mark Colors Description";
+
+        }
+
+        if(markField.equals("mark-fw-translation")){
+            // ptoUser.setState(param); // sets state code
+
+            if(markValue.equals("yes")){
+                baseTrademarkApplication.getTradeMark().setForeignLanguageTranslationWording(true);
+
+            }
+            if(markValue.equals("no")){
+                baseTrademarkApplication.getTradeMark().setForeignLanguageTranslationWording(false);
+
+            }
+
+            appFieldReadable = "Mark Translation Foreign Wording";
 
         }
 

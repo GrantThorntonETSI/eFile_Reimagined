@@ -330,6 +330,10 @@
 
     var acceptBW = /*[[${markColorClaimBW}]]*/ 'User Name';
 
+    var translationFW = /*[[${translationFW}]]*/ 'User Name';
+
+    alert(translationFW);
+
     var host = host_name+":"+host_port;
 
 
@@ -437,6 +441,16 @@
                 $('.next-button').css("background-color", "rgb(55,69,120)");
 
             }
+        }
+
+        if(translationFW == true){
+            $('#inlineRadio3').click();
+        }
+        else {
+            if(translationFW == false) {
+                $('#inlineRadio4').click();
+            }
+
         }
 
 
@@ -567,6 +581,32 @@
 
             saveMarkTextdetails("mark-color-description", colorDescriptions, appInternalID);
         });
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save translation foreign wording "yes"
+        //////////////////////////////////////////////////////////////////////
+
+        $('#inlineRadio3').click( function () {
+
+
+            saveMarkTextdetails("mark-fw-translation", "yes", appInternalID);
+
+        });
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save translation foreign wording "yes"
+        //////////////////////////////////////////////////////////////////////
+
+        $('#inlineRadio4').click( function () {
+
+
+            saveMarkTextdetails("mark-fw-translation", "no", appInternalID);
+
+        });
+
+
+
+
 
 
 
