@@ -1113,6 +1113,10 @@ public class ApplicationFlowController {
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
 
+        boolean activeDisclaimer = baseTrademarkApplication.getTradeMark().isActvieDisclaimer();
+        model.addAttribute("activeDisclaimer", activeDisclaimer);
+
+
         return "application/mark/MarkDetailsDesignWTextDisclaimer";
 
     }

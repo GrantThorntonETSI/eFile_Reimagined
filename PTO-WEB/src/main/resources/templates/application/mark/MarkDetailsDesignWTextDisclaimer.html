@@ -255,6 +255,8 @@
 
     var acceptBW = /*[[${markColorClaimBW}]]*/ 'User Name';
 
+    var activeDisclaimer = /*[[${activeDisclaimer}]]*/ 'User Name';
+
 
     /*]]>*/
 </script>
@@ -360,6 +362,16 @@
                 : $(this).html('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Hide My Mark');
         });
 
+        if(activeDisclaimer == true){
+            $('#inlineRadio09').click();
+        }
+        else {
+            if(activeDisclaimer == false) {
+                $('#inlineRadio10').click();
+            }
+
+        }
+
 
 
 
@@ -405,7 +417,7 @@
         // field auto save translation foreign wording "no"
         //////////////////////////////////////////////////////////////////////
 
-        $('#inlineRadio09').click( function () {
+        $('#inlineRadio10').click( function () {
 
 
             saveMarkTextdetails("mark-active-disclaimer", "no", appInternalID);
