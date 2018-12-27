@@ -117,6 +117,29 @@ public class TradeMarkService extends BaseRESTapiService {
 
         }
 
+        if(markField.equals("mark-fw-languageType")){
+            // ptoUser.setState(param); // sets state code
+            baseTrademarkApplication.getTradeMark().setForeignLanguageType_translation(markValue);
+
+            appFieldReadable = "Mark Foreign Language Type";
+
+        }
+
+        if(markField.equals("mark-fw-fwText")){
+            // ptoUser.setState(param); // sets state code
+            baseTrademarkApplication.getTradeMark().setForeignLanguageTranslationOriginalText(markValue);
+
+            appFieldReadable = "Mark Foreign Language Text";
+
+        }
+        if(markField.equals("mark-fw-engText")){
+            // ptoUser.setState(param); // sets state code
+            baseTrademarkApplication.getTradeMark().setForeignLanguageTranslationUSText(markValue);
+
+            appFieldReadable = "Mark Foreign Language English Text";
+
+        }
+
 
 
 
