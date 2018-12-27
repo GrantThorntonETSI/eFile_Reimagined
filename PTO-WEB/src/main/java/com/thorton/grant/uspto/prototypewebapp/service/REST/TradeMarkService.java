@@ -183,6 +183,24 @@ public class TradeMarkService extends BaseRESTapiService {
 
 
 
+        if(markField.equals("mark-active-disclaimer")){
+            // ptoUser.setState(param); // sets state code
+
+            if(markValue.equals("yes")){
+                baseTrademarkApplication.getTradeMark().setActvieDisclaimer(true);
+
+            }
+            if(markValue.equals("no")){
+                baseTrademarkApplication.getTradeMark().setActvieDisclaimer(false);
+
+            }
+
+            appFieldReadable = "Mark Transliteration Foreign Wording";
+
+        }
+
+
+
 
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
