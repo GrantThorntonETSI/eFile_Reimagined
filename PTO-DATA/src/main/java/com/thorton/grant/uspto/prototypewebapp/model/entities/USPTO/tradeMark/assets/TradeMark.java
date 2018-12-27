@@ -75,6 +75,25 @@ public class TradeMark extends BaseEntity {
 
 
 
+
+    // disclaimer fields
+
+    private boolean actvieDisclaimer;
+
+    private String disclaimerDeclaration;
+
+
+
+    private boolean priorRegistratoin;
+    private String priorRegistrationNumber;
+
+    private boolean markWordingHasSignifigance;
+    private String  markWordingSignifiganceText;
+
+
+
+
+
     @OneToOne
     private BaseTrademarkApplication initialFilingInfo;
 
@@ -298,6 +317,55 @@ public class TradeMark extends BaseEntity {
 
     public void setForeignLanguageType_transliteration(String foreignLanguageType_transliteration) {
         this.foreignLanguageType_transliteration = foreignLanguageType_transliteration;
+    }
+
+
+    public boolean isActvieDisclaimer() {
+        return actvieDisclaimer;
+    }
+
+    public void setActvieDisclaimer(boolean actvieDisclaimer) {
+        this.actvieDisclaimer = actvieDisclaimer;
+    }
+
+    public String getDisclaimerDeclaration() {
+        return disclaimerDeclaration;
+    }
+
+    public void setDisclaimerDeclaration(String disclaimerDeclaration) {
+        this.disclaimerDeclaration = disclaimerDeclaration;
+    }
+
+    public boolean isPriorRegistratoin() {
+        return priorRegistratoin;
+    }
+
+    public void setPriorRegistratoin(boolean priorRegistratoin) {
+        this.priorRegistratoin = priorRegistratoin;
+    }
+
+    public String getPriorRegistrationNumber() {
+        return priorRegistrationNumber;
+    }
+
+    public void setPriorRegistrationNumber(String priorRegistrationNumber) {
+        this.priorRegistrationNumber = priorRegistrationNumber;
+    }
+
+    public boolean isMarkWordingHasSignifigance() {
+        return markWordingHasSignifigance;
+    }
+
+    public void setMarkWordingHasSignifigance(boolean markWordingHasSignifigance) {
+        this.markWordingHasSignifigance = markWordingHasSignifigance;
+    }
+
+    public String getMarkWordingSignifiganceText() {
+        return markWordingSignifiganceText;
+    }
+
+    public void setMarkWordingSignifiganceText(String markWordingSignifiganceText) {
+        this.markWordingSignifiganceText = markWordingSignifiganceText;
     }
 
     @Override

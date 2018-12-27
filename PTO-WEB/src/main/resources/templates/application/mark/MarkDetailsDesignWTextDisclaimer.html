@@ -295,7 +295,7 @@
         }, 500);
 
         //////////////////////////////////////////////////////////////////////
-        // set mark image based on persisted values
+        // set mark image widget based on persisted values
         //////////////////////////////////////////////////////////////////////
         if(colorClaim == null){
             if(image_path != null){
@@ -352,7 +352,7 @@
         }
 
 
-
+        // listener for mark image widget popover
         $( '#togglepop' ).click(function() {
             $( this ).toggleClass( 'focus' );
             $(this).html() === '<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Hide My Mark'
@@ -383,24 +383,6 @@
         //////////////////////////////////////////////////////////////////////
         // toggle between color or bw local
         //////////////////////////////////////////////////////////////////////
-        $('#inlineRadio2').click(function () {
-            $('[data-toggle="popover"]').popover({
-                title : false,
-                html : true,
-                content : '<div class="media"><img src="'+image_pathBW+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
-            });
-        });
-        //////////////////////////////////////////////////////////////////////
-        // toggle between color or bw local
-        //////////////////////////////////////////////////////////////////////
-        $('#inlineRadio1').click(function () {
-            $('[data-toggle="popover"]').popover({
-                title : false,
-                html : true,
-                content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
-            });
-        });
-
 
 
 
@@ -408,28 +390,6 @@
         // field auto save
         //////////////////////////////////////////////////////////////////////
 
-        $('#mark-literal').focusout( function () {
-
-            var field_value = $(this).val();
-            saveMarkTextdetails("mark-literal", field_value, appInternalID);
-
-        });
-        $('#inlineRadio2').click( function () {
-
-
-            saveMarkTextdetails("mark-color-claim", "no", appInternalID);
-
-        });
-        $('#inlineRadio1').click( function () {
-
-            saveMarkTextdetails("mark-color-claim", "yes", appInternalID);
-
-        });
-
-        $('#bwmark').click(function () {
-
-            saveMarkTextdetails("mark-accept-BW", "yes", appInternalID);
-        });
 
 
     });
