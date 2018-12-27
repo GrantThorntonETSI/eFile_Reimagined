@@ -36,9 +36,19 @@ public class TradeMark extends BaseEntity {
 
     private String markLiteral;
     private String markDescription;
+
+
+    // color claim fields
     private boolean markColorClaim;
+    private String markColors;
+    private String markColorDescription;
+
+
 
     private boolean markColorClaimBW = false; // black and white or color
+    private boolean acceptBWmark;
+    private String markBWDescription;
+
 
 
 
@@ -47,11 +57,16 @@ public class TradeMark extends BaseEntity {
 
     // translation
     private boolean foreignLanguageTranslationWording;
+    private String  foreignLanguageType_translation;
     private String foreignLanguageTranslationOriginalText;
     private String foreignLanguageTranslationUSText;
 
+
+
+
     // transliteration
     private boolean foreignLanguateTransliterationWording;
+    private String  foreignLanguageType_transliteration;
     private String foreignLanguateTransliterationOriginalText;
     private String foreignLanguateTransliterationUSText;
 
@@ -235,6 +250,54 @@ public class TradeMark extends BaseEntity {
 
     public void setMarkColorClaimBW(boolean markColorClaimBW) {
         this.markColorClaimBW = markColorClaimBW;
+    }
+
+    public String getMarkColors() {
+        return markColors;
+    }
+
+    public void setMarkColors(String markColors) {
+        this.markColors = markColors;
+    }
+
+    public String getMarkColorDescription() {
+        return markColorDescription;
+    }
+
+    public void setMarkColorDescription(String markColorDescription) {
+        this.markColorDescription = markColorDescription;
+    }
+
+    public boolean isAcceptBWmark() {
+        return acceptBWmark;
+    }
+
+    public void setAcceptBWmark(boolean acceptBWmark) {
+        this.acceptBWmark = acceptBWmark;
+    }
+
+    public String getMarkBWDescription() {
+        return markBWDescription;
+    }
+
+    public void setMarkBWDescription(String markBWDescription) {
+        this.markBWDescription = markBWDescription;
+    }
+
+    public String getForeignLanguageType_translation() {
+        return foreignLanguageType_translation;
+    }
+
+    public void setForeignLanguageType_translation(String foreignLanguageType_translation) {
+        this.foreignLanguageType_translation = foreignLanguageType_translation;
+    }
+
+    public String getForeignLanguageType_transliteration() {
+        return foreignLanguageType_transliteration;
+    }
+
+    public void setForeignLanguageType_transliteration(String foreignLanguageType_transliteration) {
+        this.foreignLanguageType_transliteration = foreignLanguageType_transliteration;
     }
 
     @Override
