@@ -121,7 +121,7 @@ public class TradeMarkService extends BaseRESTapiService {
             // ptoUser.setState(param); // sets state code
             baseTrademarkApplication.getTradeMark().setForeignLanguageType_translation(markValue);
 
-            appFieldReadable = "Mark Foreign Language Type";
+            appFieldReadable = "Mark Foreign Language Type - Translation";
 
         }
 
@@ -129,14 +129,38 @@ public class TradeMarkService extends BaseRESTapiService {
             // ptoUser.setState(param); // sets state code
             baseTrademarkApplication.getTradeMark().setForeignLanguageTranslationOriginalText(markValue);
 
-            appFieldReadable = "Mark Foreign Language Text";
+            appFieldReadable = "Mark Foreign Language Text - Translation ";
 
         }
         if(markField.equals("mark-fw-engText")){
             // ptoUser.setState(param); // sets state code
             baseTrademarkApplication.getTradeMark().setForeignLanguageTranslationUSText(markValue);
 
-            appFieldReadable = "Mark Foreign Language English Text";
+            appFieldReadable = "Mark Foreign Language English Text - Translation";
+
+        }
+
+
+        if(markField.equals("mark-fw-translit-languageType")){
+            // ptoUser.setState(param); // sets state code
+            baseTrademarkApplication.getTradeMark().setForeignLanguageType_transliteration(markValue);
+
+            appFieldReadable = "Mark Foreign Language Type - Transliteration";
+
+        }
+
+        if(markField.equals("mark-fw-translit-fwText")){
+            // ptoUser.setState(param); // sets state code
+            baseTrademarkApplication.getTradeMark().setForeignLanguateTransliterationOriginalText(markValue);
+
+            appFieldReadable = "Mark Foreign Language Text - Transliteration";
+
+        }
+        if(markField.equals("mark-fw-translit-engText")){
+            // ptoUser.setState(param); // sets state code
+            baseTrademarkApplication.getTradeMark().setForeignLanguateTransliterationUSText(markValue);
+
+            appFieldReadable = "Mark Foreign Language English Text - Transliteration";
 
         }
 

@@ -235,7 +235,7 @@
                                                 <h3 class="weight600">Enter the transliteration of the mark.</h3>
                                                 <div class="form-group form-group-md col-xs-12 col-md-3">
                                                     <b>Language</b>
-                                                    <select class="form-control" id="languagetranslit">
+                                                    <select class="form-control" id="languagetranslit" th:field="${baseTrademarkApplication.tradeMark.foreignLanguageType_transliteration}">
                                                         <option value="Select">Select</option>
                                                         <option value="German">German</option>
                                                         <option value="Korean">Korean</option>
@@ -245,11 +245,11 @@
                                                 </div>
                                                 <div class="form-group form-group-md col-xs-12 col-md-9">
                                                     <b >The non-Latin characters in the mark transliterate to</b>
-                                                    <input type="text" class="form-control" id="nonlatranslation">
+                                                    <input type="text" class="form-control" id="nonlatranslation" th:value="${baseTrademarkApplication.tradeMark.foreignLanguateTransliterationOriginalText}">
                                                 </div>
                                                 <div class="form-group form-group-md col-xs-12 col-md-12">
                                                     <b for="inenglish">and this, in English, means</b>
-                                                    <input type="text" class="form-control" id="inenglish">
+                                                    <input type="text" class="form-control" id="inenglish" th:value="${baseTrademarkApplication.tradeMark.foreignLanguateTransliterationUSText}">
                                                 </div>
                                             </div>
                                         </div>
@@ -637,6 +637,42 @@
             saveMarkTextdetails("mark-fw-engText", engText, appInternalID);
 
         });
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save transliteration foreign wording  language type
+        //////////////////////////////////////////////////////////////////////
+
+        $('#languagetranslit').change( function () {
+
+            var languageType = $(this).val();
+            saveMarkTextdetails("mark-fw-translit-languageType", languageType, appInternalID);
+
+        });
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save transliteration foreign wording  fw text
+        //////////////////////////////////////////////////////////////////////
+
+        $('#nonlatranslation').focusout( function () {
+
+            var fwText = $(this).val();
+            saveMarkTextdetails("mark-fw-translit-fwText", fwText, appInternalID);
+
+        });
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save transliteration foreign wording  fw text
+        //////////////////////////////////////////////////////////////////////
+
+        $('#inenglish').focusout( function () {
+
+            var engText = $(this).val();
+            saveMarkTextdetails("mark-fw-translit-engText", engText, appInternalID);
+
+        });
+
+
+
 
 
 
