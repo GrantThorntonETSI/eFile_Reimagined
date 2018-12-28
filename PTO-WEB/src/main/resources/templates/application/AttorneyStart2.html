@@ -101,26 +101,13 @@
                     <h2 class="card-title weight600" id="attorneyinfo">Attorney Information</h2>
                 </div>
                 <p id="attorneyfiling">Is an Attorney filing this application?</p>
-                <div th:if="${baseTrademarkApplication.isAttorneySet() == false}">
+
                     <div role="radiogroup" aria-labelledby="attorneyfiling">
                         <label for="inlineRadio015" class="radio-inline"><input type="radio" name="attorneyfilingradioyes" id="inlineRadio015" value="yes">Yes</label>
                         <label for="inlineRadio016" class="radio-inline"><input type="radio" name="attorneyfilingradiono" id="inlineRadio016" value="no">No</label>
                     </div><!--END radiogroup-->
 
-                </div>
 
-                <div th:if="${baseTrademarkApplication.isAttorneySet() == true}">
-                    <div role="radiogroup" aria-labelledby="attorneyfiling" th:if="${baseTrademarkApplication.isAttorneyFiling() == true}" >
-                        <label for="inlineRadio015" class="radio-inline"><input type="radio" name="attorneyfilingradioyes" id="inlineRadio015" value="yes" checked>Yes</label>
-                        <label for="inlineRadio016" class="radio-inline"><input type="radio" name="attorneyfilingradiono" id="inlineRadio016" value="no">No</label>
-                    </div><!--END radiogroup-->
-
-                    <div role="radiogroup" aria-labelledby="attorneyfiling" th:if="${baseTrademarkApplication.isAttorneyFiling() == false}" >
-                        <label for="inlineRadio015" class="radio-inline"><input type="radio" name="attorneyfilingradioyes" id="inlineRadio015" value="yes">Yes</label>
-                        <label for="inlineRadio016" class="radio-inline"><input type="radio" name="attorneyfilingradiono" id="inlineRadio016" value="no" checked>No</label>
-                    </div><!--END radiogroup-->
-
-                </div>
 
 
                 <div id="yesattorneyfiling" role="region" aria-labelledby="attorneyfiling">
@@ -738,7 +725,9 @@
         var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
         var attorneyOpt = /*[[${baseTrademarkApplication.isAttorneyFiling()}]]*/ 'User Name';
 
-        var ownerOpt = /*[[${baseTrademarkApplication.isOwnerSet()}]]*/ 'User Name';
+
+        var isAttorneyOptionSet = /*[[${isAttorneyOptionSet}]]*/ 'User Name';
+        var isAttorneyFiling = /*[[${isAttorneyFiling}]]*/ 'User Name';
 
         var isAttorneyPoolEmpty = /*[[${baseTrademarkApplication.isAttorneyPoolEmpty()}]]*/ 'User Name';
         var host_name= /*[[${hostBean.host}]]*/ 'User Name';
@@ -752,7 +741,7 @@
 
         var selectedContactNames = /*[[${selectedAttorneys.ContactNames}]]*/ 'User Name';
         var host = host_name+":"+host_port;
-        //alert(tableRows);
+
 
         /*]]>*/
     </script>
@@ -766,10 +755,6 @@
         var nextLinkURLAttorneyFalse = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
 
-
-        var newAttorneyLink = "../../application/attorney/attorneyInfo/?trademarkID="+appInternalID;
-
-        var ownerSetViewLink = "../../application/OwnerSetView/?trademarkID="+appInternalID;
 
     </script>
 
@@ -859,40 +844,36 @@
         ////////////////////////////////////////////////////////////////
 
 
+
+
+        // this will be replaced ... with new persistence logic
+
         //////////////////////////////////////////////////////////////
         // check if attorneyFillingFalse is set
         /////////////////////////////////////////////////////////////
-        if ($('#attorneyFillingFalse').is(':checked') == true){
+        if(isAttorneyOptionSet == true){
+            if(isAttorneyFiling == true){
+                if(isAttorneyPoolEmpty == false){
+                    // call jquery click
+                    // set next link to attorney view
+                    // activate link
+                    $('#inlineRadio015').click();
+                    $('#nextButton').attr("disabled",false);
 
-
-            nextLinkURL = nextLinkURLAttorneyFalse;
-            $('#nextButton').attr("disabled",false);
-
-
-        }
-        /////////////////////////////////////////////////////////////
-        // check if attorneyFilingTrue is set
-        /////////////////////////////////////////////////////////////
-        if ($('#attorneyFilingTrue').is(':checked') == true){
-
-
-            // check if there are attorneys added to the application
-            // if so ... enable next link to attorney view page
-            if(isAttorneyPoolEmpty == false){
-                // attorney pool is not empty
-                // enable next link
-
-                $('#nextButton').attr("disabled",false);
+                }
 
             }
-
-
-
-
-
-
-
+            else{
+                // call jquery click
+                // no attorney, option set
+                // set next link to owner page
+                // activate next link
+                $('#inlineRadio016').click();
+                nextLinkURL = nextLinkURLAttorneyFalse;
+                $('#nextButton').attr("disabled",false);
+            }
         }
+
 
         // enable next page link bas[{
         // {

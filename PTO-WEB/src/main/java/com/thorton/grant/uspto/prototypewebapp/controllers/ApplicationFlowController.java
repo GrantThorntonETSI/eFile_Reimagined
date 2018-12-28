@@ -74,41 +74,6 @@ public class ApplicationFlowController {
         model.addAttribute("account",credentials);
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
 
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        // add contacts display info to model
-        ////////////////////////////////////////////////////////////////////////////////////////////
-
-
-        /////////////////////////////////////////////
-        // load my contacts list for thyemleaf
-        /////////////////////////////////////////////
-        /*
-        ArrayList<String> contactNames = new ArrayList<>();
-        ArrayList<String> contactEmails = new ArrayList<>();
-        ArrayList<String> contactFirms = new ArrayList<>();
-        Lawyer lawyer = null;
-
-        for(Iterator<Lawyer> iter = ptoUser.getMyLawyers().iterator(); iter.hasNext(); ) {
-            lawyer = iter.next();
-            contactNames.add(lawyer.getFirstName()+" "+lawyer.getLastName());
-            contactEmails.add(lawyer.getEmail());
-            contactFirms.add(lawyer.getLawFirmName());
-
-        }
-        Collections.reverse(contactNames);
-        Collections.reverse(contactEmails);
-        Collections.reverse(contactFirms);
-        ContactsDisplayDTO contactsDisplayDTO = new ContactsDisplayDTO();
-        contactsDisplayDTO.setContactNames(contactNames);
-        contactsDisplayDTO.setContactEmails(contactEmails);
-        contactsDisplayDTO.setContactFirms(contactFirms);
-        model.addAttribute("myContacts", contactsDisplayDTO);
-        SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
-        */
-
-        /////////////////////////////////////////////
-        // load my contacts list for thyemleaf
-        ////////////////////////////////////////////
         ArrayList<String> contactNamesMC = new ArrayList<>();
         ArrayList<String> contactEmailsMC = new ArrayList<>();
         ArrayList<String> contactSubTypesMC = new ArrayList<>();
@@ -137,6 +102,8 @@ public class ApplicationFlowController {
         // add attorneys pool first name last name
         // and add to model
         ///////////////////////////////////////////////////////////////////////////////////////////////
+        boolean isAttorneyOptionSet = false;
+        boolean isAttorneyFiling = false;
 
         if(trademarkInternalID.equals("new")) {
 
@@ -147,25 +114,9 @@ public class ApplicationFlowController {
             trademarkApplication.setAttorneySet(false);
             trademarkApplication.setAttorneyFiling(false);
 
-            ///////////////////////////////////////////////////////////////////////////////////////////////
-            // we need a copy constructor ...so that trademark Application lawyers are not the same ones
-            // saved by PTOUser ...
-            // as this will allow PTOUser to delete the application with out deleting his/hers lawyers.
-            ///////////////////////////////////////////////////////////////////////////////////////////////
-            // application also needs a better id for find ...build internal id. as user.email+trademark_name???
-            //Lawyer appPrimaryConsole = new Lawyer(PTOUser1.getMyLawyers().iterator().next());
+
             trademarkApplication.setOwnerEmail(ptoUser.getEmail());
 
-            //Owner owner = new Owner();
-           // owner.setOwnerType("individual");
-           // owner.setEmail(ptoUser.getEmail());
-           // owner.setAddress(ptoUser.getAddress());
-           // owner.setFirstName(ptoUser.getFirstName());
-           // owner.setLastName(ptoUser.getLastName());
-           // owner.setCity(ptoUser.getCity());
-           // owner.setState(ptoUser.getState());
-
-           // trademarkApplication.setOwner(owner);
             /////////////////////////////////////////////////////////////////////////////////
             // add a method to PTOUser to just add one application
             /////////////////////////////////////////////////////////////////////////////////
@@ -187,7 +138,8 @@ public class ApplicationFlowController {
             selectedAttorneyDisplayDTO.setContactNames(scontactNames);
 
             model.addAttribute("selectedAttorneys", selectedAttorneyDisplayDTO);
-
+            model.addAttribute("isAttorneyOptionSet",isAttorneyOptionSet);
+            model.addAttribute("isAttorneyFiling",isAttorneyFiling);
 
         }
         else{
@@ -203,9 +155,16 @@ public class ApplicationFlowController {
             model.addAttribute("selectedAttorneys",selectedAttorneyDisplayDTO);
 
             model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+            isAttorneyOptionSet = baseTrademarkApplication.isAttorneySet();
+            isAttorneyFiling = baseTrademarkApplication.isAttorneyFiling();
+            model.addAttribute("isAttorneyOptionSet",isAttorneyOptionSet);
+            model.addAttribute("isAttorneyFiling",isAttorneyFiling);
         }
         NewAttorneyContactFormDTO attorneyContactFormDTO = new NewAttorneyContactFormDTO();
         model.addAttribute("addNewAttorneyContactFormDTO", attorneyContactFormDTO);
+
+
+
         model.addAttribute("hostBean", hostBean);
         return "application/AttorneyStart2";
 
