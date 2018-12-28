@@ -204,9 +204,10 @@ public class ApplicationFlowController {
 
             model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
         }
-
+        NewAttorneyContactFormDTO attorneyContactFormDTO = new NewAttorneyContactFormDTO();
+        model.addAttribute("addNewAttorneyContactFormDTO", attorneyContactFormDTO);
         model.addAttribute("hostBean", hostBean);
-        return "application/AttorneyStart";
+        return "application/AttorneyStart2";
 
 
 
