@@ -520,11 +520,12 @@
                             <div class="row">
                                 <div class="form-group form-group-md col-xs-12">
                                     <label for="docket-id">If applicable, enter the attorney docket or reference number.</label>
-                                    <input type="text" class="form-control" id="docket-id" th:field="*{attorneyDocketNumber}">
+                                    <input type="text" class="form-control" id="docket-id" th:field="*{attorneyDocketNumber}"/>
                                 </div>
                                 <div class="col">
                                     <button type="button" class="btn-sm btn-success add ctr">Additional Docket or Reference Number</button>
                                 </div>
+                            </div>
                         </fieldset><!--END Docket Reference Information-->
                         <!--START Affiliation Information-->
                         <div class="card-text">
@@ -654,6 +655,10 @@
                                     <label for="applicantCAFalse" class="radio-inline"><input type="radio" name="applicantCA" value="false" id="applicantCAFalse">No</label>
                                 </div><!--END radiogroup-->
                             </div><!--END canadian affiliation-->
+                            <div class="row" style="display:none; max-height: 1px;">
+                                <input id="appInternalIDForm" type="text" th:field="*{appInternalID}"   class="form-control"   style=" width:1px;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                            </div>
+
 
                         </fieldset><!--END Affiliation Information-->
 
@@ -661,7 +666,7 @@
                     </form><!--END Attorney Form-->
                 </div><!--END attorney toggle area-->
                 <div class="col-xs-12">
-                    <button type="submit" class="btn btn-sm btn-primary add ctr" id="confirmattorney">Confirm</button>
+                    <button type="submit" form="addNewAttorneyForm"  class="btn btn-sm btn-primary add ctr" id="confirmattorney">Confirm</button>
                 </div>
             </div>
         </div>
@@ -821,11 +826,13 @@
             // signal uppate occurred
             // wait for the confirm message first.
             ////////////////////////////////////////////////////////////
-
+            $('#appInternalIDForm').val(appInternalID);
             saveProjectInfo("set-lawyer-options-value", "yes", appInternalID);
             //setTimeout(function() {
             //    $('#pageLoadArea').fadeIn(2000);
             // }, 1500);
+
+
         });
 
 
