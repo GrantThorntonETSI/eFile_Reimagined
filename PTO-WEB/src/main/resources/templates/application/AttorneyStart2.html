@@ -9,7 +9,7 @@
 
 
 <!-- End Navbar -->
-<div class="row content" id="attorney">
+<div class="row content" id="attorney" style="display: none;">
     <main class="col-xs-12 col-sm-8 col-md-8 col-lg-7">
         <!--START Content Div-->
         <div class="row">
@@ -105,9 +105,7 @@
                     <label for="inlineRadio015" class="radio-inline"><input type="radio" name="attorneyfilingradioyes" id="inlineRadio015" value="yes">Yes</label>
                     <label for="inlineRadio016" class="radio-inline"><input type="radio" name="attorneyfilingradiono" id="inlineRadio016" value="no">No</label>
                 </div><!--END radiogroup-->
-                <script type="application/javascript" src="js/accordion.js"></script>
-                <script type="application/javascript" src="js/checkbox.js"></script>
-                <script type="application/javascript" src="js/btn_checkbox.js"></script>
+
                 <div id="yesattorneyfiling" role="region" aria-labelledby="attorneyfiling">
                     <form method="post" id="addNewAttorneyForm" action="/attorney/add" enctype="multipart/form-data" th:object="${addNewAttorneyContactFormDTO}" aria-labelledby="title">
                         <fieldset aria-labelledby="attorneyinfo">
