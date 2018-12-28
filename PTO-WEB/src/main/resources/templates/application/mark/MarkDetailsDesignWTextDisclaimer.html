@@ -257,6 +257,8 @@
 
     var activeDisclaimer = /*[[${activeDisclaimer}]]*/ 'User Name';
 
+    var priorRegistration = /*[[${priorRegistration}]]*/ 'User Name';
+
 
     /*]]>*/
 </script>
@@ -373,6 +375,17 @@
         }
 
 
+        if(priorRegistration == true){
+            $('#inlineRadio11').click();
+        }
+        else {
+            if(priorRegistration == false) {
+                $('#inlineRadio12').click();
+            }
+
+        }
+
+
 
 
         //////////////////////////////////////////////////////////////////////
@@ -429,6 +442,36 @@
             var declaration = $(this).val();
 
             saveMarkTextdetails("mark-disclaimer-declaration", declaration, appInternalID);
+        });
+
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save mark prior u.s registration
+        //////////////////////////////////////////////////////////////////////
+
+        $('#inlineRadio11').click( function () {
+
+
+            saveMarkTextdetails("mark-prior-registration", "yes", appInternalID);
+
+        });
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save translation foreign wording "no"
+        //////////////////////////////////////////////////////////////////////
+
+        $('#inlineRadio12').click( function () {
+
+
+            saveMarkTextdetails("mark-prior-registration", "no", appInternalID);
+
+        });
+
+
+        $('#yesprior').focusout(function () {
+            var regNumber = $(this).val();
+
+            saveMarkTextdetails("mark-prior-reg-number", regNumber, appInternalID);
         });
 
     });

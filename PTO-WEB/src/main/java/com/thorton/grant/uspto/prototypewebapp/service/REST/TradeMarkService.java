@@ -209,6 +209,33 @@ public class TradeMarkService extends BaseRESTapiService {
 
 
 
+        if(markField.equals("mark-prior-registration")){
+            // ptoUser.setState(param); // sets state code
+
+            if(markValue.equals("yes")){
+                baseTrademarkApplication.getTradeMark().setPriorRegistratoin(true);
+
+            }
+            if(markValue.equals("no")){
+                baseTrademarkApplication.getTradeMark().setPriorRegistratoin(false);
+
+            }
+
+            appFieldReadable = "Mark Prior U.S Registration";
+
+        }
+
+        if(markField.equals("\"mark-prior-reg-number")){
+            // ptoUser.setState(param); // sets state code
+            baseTrademarkApplication.getTradeMark().setPriorRegistrationNumber(markValue);
+
+            appFieldReadable = "Mark Prior U.S Registration Number";
+
+        }
+
+
+
+
 
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
