@@ -1115,8 +1115,12 @@ public class ApplicationFlowController {
 
         boolean activeDisclaimer = baseTrademarkApplication.getTradeMark().isActvieDisclaimer();
         boolean priorRegistration = baseTrademarkApplication.getTradeMark().isPriorRegistratoin();
+        boolean markHasMeaning = baseTrademarkApplication.getTradeMark().isMarkWordingHasSignifigance();
+
         model.addAttribute("activeDisclaimer", activeDisclaimer);
         model.addAttribute("priorRegistration", priorRegistration);
+        model.addAttribute("markHasMeaning", markHasMeaning);
+
 
 
         return "application/mark/MarkDetailsDesignWTextDisclaimer";

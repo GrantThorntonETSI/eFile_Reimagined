@@ -235,6 +235,33 @@ public class TradeMarkService extends BaseRESTapiService {
 
 
 
+        if(markField.equals("mark-has-meaning")){
+            // ptoUser.setState(param); // sets state code
+
+            if(markValue.equals("yes")){
+                baseTrademarkApplication.getTradeMark().setMarkWordingHasSignifigance(true);
+
+            }
+            if(markValue.equals("no")){
+                baseTrademarkApplication.getTradeMark().setMarkWordingHasSignifigance(false);
+
+            }
+
+            appFieldReadable = "Mark has Meaning";
+
+        }
+
+        if(markField.equals("mark-meaning-text")){
+            // ptoUser.setState(param); // sets state code
+            baseTrademarkApplication.getTradeMark().setMarkWordingSignifiganceText(markValue);
+
+            appFieldReadable = "Mark has Meaning Text";
+
+        }
+
+
+
+
 
 
 

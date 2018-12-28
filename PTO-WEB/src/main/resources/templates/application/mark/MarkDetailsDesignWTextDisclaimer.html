@@ -166,7 +166,7 @@
                                                 <div id="yesprior" role="region" aria-labelledby="prioreg" class="form-group form-group-md">
                                                     <div class="col-xs-12 col-md-9">
                                                         <label for="yesprior">Enter prior U.S. registration numbers.</label>
-                                                        <input type="text" class="form-control" id="yesprior">
+                                                        <input type="text" class="form-control" id="yesprior" th:value="${baseTrademarkApplication.tradeMark.priorRegistrationNumber}" >
                                                     </div>
                                                     <div class="col-xs-12 col-md-3">
                                                         <button type="button" class="btn btn-sm btn-primary add">Add Number</button>
@@ -198,7 +198,7 @@
                                                 <div id="yesmeaning" role="region" class="form-horizontal form-group form-group-md">
                                                     <div class="col-xs-12 col-md-7">
                                                         <label for="yesmeaning" class="sr-only">What has meaning or significance?</label>
-                                                        <input type="text" class="form-control" id="yesmeaning">
+                                                        <input type="text" class="form-control" id="yesmeaning" th:value="${baseTrademarkApplication.tradeMark.markWordingSignifiganceText}">
                                                     </div>
                                                     <div class="control-label col-xs-12 col-md-5">
                                                         <p>in the mark means or signifies</p>
@@ -258,6 +258,7 @@
     var activeDisclaimer = /*[[${activeDisclaimer}]]*/ 'User Name';
 
     var priorRegistration = /*[[${priorRegistration}]]*/ 'User Name';
+    var markHasMeaning = /*[[${markHasMeaning}]]*/ 'User Name';
 
 
     /*]]>*/
@@ -386,6 +387,17 @@
         }
 
 
+        if(markHasMeaning == true){
+            $('#inlineRadio13').click();
+        }
+        else {
+            if(markHasMeaning == false) {
+                $('#inlineRadio14').click();
+            }
+
+        }
+
+
 
 
         //////////////////////////////////////////////////////////////////////
@@ -446,7 +458,7 @@
 
 
         //////////////////////////////////////////////////////////////////////
-        // field auto save mark prior u.s registration
+        // field auto save mark prior u.s registration "yes"
         //////////////////////////////////////////////////////////////////////
 
         $('#inlineRadio11').click( function () {
@@ -457,7 +469,7 @@
         });
 
         //////////////////////////////////////////////////////////////////////
-        // field auto save translation foreign wording "no"
+        // field auto save mark prior u.s registration  "no"
         //////////////////////////////////////////////////////////////////////
 
         $('#inlineRadio12').click( function () {
@@ -473,6 +485,38 @@
 
             saveMarkTextdetails("mark-prior-reg-number", regNumber, appInternalID);
         });
+
+
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save mark meaning
+        //////////////////////////////////////////////////////////////////////
+
+        $('#inlineRadio13').click( function () {
+
+
+            saveMarkTextdetails("mark-has-meaning", "yes", appInternalID);
+
+        });
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save mark prior u.s registration  "no"
+        //////////////////////////////////////////////////////////////////////
+
+        $('#inlineRadio14').click( function () {
+
+
+            saveMarkTextdetails("mark-has-meaning", "no", appInternalID);
+
+        });
+
+
+        $('#yesmeaning').focusout(function () {
+            var regNumber = $(this).val();
+
+            saveMarkTextdetails("mark-meaning-text", regNumber, appInternalID);
+        });
+
 
     });
 
