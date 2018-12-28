@@ -1158,6 +1158,26 @@ public class ApplicationFlowController {
         }
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+
+        }
+        else{
+            model.addAttribute("markImagePath","");
+
+            model.addAttribute("markImagePathBW","");
+
+
+        }
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+        boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+        boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+
+
         //return "application/MarkDetailsExamples";
         return "application/GoodsServicesStart";
         //return "registrationConfirm/VerificationEmail";
