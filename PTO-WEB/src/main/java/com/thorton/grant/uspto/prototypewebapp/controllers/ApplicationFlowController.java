@@ -1130,6 +1130,41 @@ public class ApplicationFlowController {
 
 
 
+    @RequestMapping({"/application/goodsAndServicesStart"})
+    public String goodsAndServicesStart (WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
+        // get owner info
+
+        // get email and get PTOUser object from repository
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+        model.addAttribute("hostBean", hostBean);
+        String applcationLookupID = trademarkInternalID;
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+        if(baseTrademarkApplication.getTradeMark() == null){
+            TradeMark tradeMark = new TradeMark();
+            tradeMark.setTrademarkDesignType("");
+            baseTrademarkApplication.setTradeMark(tradeMark);
+            baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+        }
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
+        //return "application/MarkDetailsExamples";
+        return "application/GoodsServicesStart";
+        //return "registrationConfirm/VerificationEmail";
+    }
+
+
+
 
 
 
