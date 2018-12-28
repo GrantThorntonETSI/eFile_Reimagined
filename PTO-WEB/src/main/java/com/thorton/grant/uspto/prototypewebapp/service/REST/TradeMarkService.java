@@ -199,6 +199,14 @@ public class TradeMarkService extends BaseRESTapiService {
 
         }
 
+        if(markField.equals("mark-disclaimer-declaration")){
+            // ptoUser.setState(param); // sets state code
+            baseTrademarkApplication.getTradeMark().setDisclaimerDeclaration(markValue);
+
+            appFieldReadable = "Mark Disclaimer Declaration";
+
+        }
+
 
 
 

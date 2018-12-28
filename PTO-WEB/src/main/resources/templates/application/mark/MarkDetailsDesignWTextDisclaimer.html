@@ -135,7 +135,7 @@
                                                     </div>
                                                     <div class="col-xs-12">
                                                         <label for="yesdisclaim" class="sr-only">No claim is made to the exclusive right to use this part of the mark apart from the mark as shown</label>
-                                                        <input type="text" class="form-control" id="yesdisclaim" aria-label="Enter the portion of your mark that you wish to disclaim.">
+                                                        <input type="text" class="form-control" id="yesdisclaim" aria-label="Enter the portion of your mark that you wish to disclaim." th:value="${baseTrademarkApplication.tradeMark.disclaimerDeclaration}">
                                                     </div>
                                                     <div class="col-xs-12 control-label">
                                                         <p>apart from the mark as shown.</p>
@@ -425,7 +425,11 @@
         });
 
 
+        $('#yesdisclaim').focusout(function () {
+            var declaration = $(this).val();
 
+            saveMarkTextdetails("mark-disclaimer-declaration", declaration, appInternalID);
+        });
 
     });
 
