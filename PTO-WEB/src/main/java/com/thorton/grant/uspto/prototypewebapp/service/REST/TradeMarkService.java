@@ -225,7 +225,7 @@ public class TradeMarkService extends BaseRESTapiService {
 
         }
 
-        if(markField.equals("\"mark-prior-reg-number")){
+        if(markField.equals("mark-prior-reg-number")){
             // ptoUser.setState(param); // sets state code
             baseTrademarkApplication.getTradeMark().setPriorRegistrationNumber(markValue);
 

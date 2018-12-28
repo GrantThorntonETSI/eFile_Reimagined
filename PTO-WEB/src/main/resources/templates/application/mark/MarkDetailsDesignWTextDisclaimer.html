@@ -163,7 +163,7 @@
                                                 <label for="inlineRadio011" class="radio-inline"><input type="radio" name="priorradioyes" id="inlineRadio011" value="yes">Yes</label>
                                                 <label for="inlineRadio012" class="radio-inline"><input type="radio" name="priorradiono" id="inlineRadio012" value="no">No</label>
                                             </div><!--END radiogroup-->
-                                                <div id="yesprior" role="region" aria-labelledby="prioreg" class="form-group form-group-md">
+                                                <div id="yespriordiv" role="region" aria-labelledby="prioreg" class="form-group form-group-md">
                                                     <div class="col-xs-12 col-md-9">
                                                         <label for="yesprior">Enter prior U.S. registration numbers.</label>
                                                         <input type="text" class="form-control" id="yesprior" th:value="${baseTrademarkApplication.tradeMark.priorRegistrationNumber}" >
@@ -195,7 +195,7 @@
                                                     <label for="inlineRadio013" class="radio-inline"><input type="radio" name="meaningradioyes" id="inlineRadio013" value="yes">Yes</label>
                                                     <label for="inlineRadio014" class="radio-inline"><input type="radio" name="meaningradiono" id="inlineRadio014" value="no">No</label>
                                                 </div><!--END radiogroup-->
-                                                <div id="yesmeaning" role="region" class="form-horizontal form-group form-group-md">
+                                                <div id="yesmeaningdiv" role="region" class="form-horizontal form-group form-group-md">
                                                     <div class="col-xs-12 col-md-7">
                                                         <label for="yesmeaning" class="sr-only">What has meaning or significance?</label>
                                                         <input type="text" class="form-control" id="yesmeaning" th:value="${baseTrademarkApplication.tradeMark.markWordingSignifiganceText}">
@@ -442,7 +442,7 @@
         // field auto save translation foreign wording "no"
         //////////////////////////////////////////////////////////////////////
 
-        $('#inlineRadio10').click( function () {
+        $('#inlineRadio010').click( function () {
 
 
             saveMarkTextdetails("mark-active-disclaimer", "no", appInternalID);
@@ -461,7 +461,7 @@
         // field auto save mark prior u.s registration "yes"
         //////////////////////////////////////////////////////////////////////
 
-        $('#inlineRadio11').click( function () {
+        $('#inlineRadio011').click( function () {
 
 
             saveMarkTextdetails("mark-prior-registration", "yes", appInternalID);
@@ -472,7 +472,7 @@
         // field auto save mark prior u.s registration  "no"
         //////////////////////////////////////////////////////////////////////
 
-        $('#inlineRadio12').click( function () {
+        $('#inlineRadio012').click( function () {
 
 
             saveMarkTextdetails("mark-prior-registration", "no", appInternalID);
@@ -492,7 +492,7 @@
         // field auto save mark meaning
         //////////////////////////////////////////////////////////////////////
 
-        $('#inlineRadio13').click( function () {
+        $('#inlineRadio013').click( function () {
 
 
             saveMarkTextdetails("mark-has-meaning", "yes", appInternalID);
@@ -503,7 +503,7 @@
         // field auto save mark prior u.s registration  "no"
         //////////////////////////////////////////////////////////////////////
 
-        $('#inlineRadio14').click( function () {
+        $('#inlineRadio014').click( function () {
 
 
             saveMarkTextdetails("mark-has-meaning", "no", appInternalID);

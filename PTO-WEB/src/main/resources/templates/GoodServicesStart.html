@@ -21,10 +21,6 @@
                         <div class="banner-message"  style="position: relative;top:-225px; ">
 
 
-
-
-
-
                         </div>
 
                     </div>
@@ -46,7 +42,7 @@
                             <p>Your details</p>
                         </div>
                     </div>
-                    <div class="col-xs-2 two active">
+                    <div class="col-xs-2 two done">
                         <div class="col-xs-4">
                             <span>2</span>
                         </div>
@@ -54,7 +50,7 @@
                             <p>Trademark Details</p>
                         </div>
                     </div>
-                    <div class="col-xs-2 three">
+                    <div class="col-xs-2 three active">
                         <div class="col-xs-4">
                             <span>3</span>
                         </div>
@@ -164,7 +160,7 @@
                             </div>
                             <div class="panel-body nocontent" role="button" aria-label="select stylized mark">
                                 <div class="col-xs-5">
-                                   <img th:src="@{/resources/images/abc_lobster.gif}" alt="" class="img-responsive">
+                                    <img th:src="@{/resources/images/abc_lobster.gif}" alt="" class="img-responsive">
                                 </div>
                                 <div class="col-xs-7">
                                     <p class="right">Text in a particular style or font</p>
@@ -531,12 +527,12 @@
 
 
         $('.panel-body').click(function () {
-           nextLinkURL = $(this).attr("URI")+appInternalID;
-           var designType = $(this).attr("mark-Type");
-           $('#nextLink').attr("href",nextLinkURL);
-           $('#nextLinkIcon').attr("href",nextLinkURL);
-           $('.next-button').css("background-color","rgb(55, 69, 120)" );
-           savemarkDesignType(designType,appInternalID);
+            nextLinkURL = $(this).attr("URI")+appInternalID;
+            var designType = $(this).attr("mark-Type");
+            $('#nextLink').attr("href",nextLinkURL);
+            $('#nextLinkIcon').attr("href",nextLinkURL);
+            $('.next-button').css("background-color","rgb(55, 69, 120)" );
+            savemarkDesignType(designType,appInternalID);
 
 
         });
