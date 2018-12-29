@@ -88,12 +88,25 @@ public class ApplicationObjectCreationController {
         UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
         UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
 
-
-        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
-        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(newAttorneyContactFormDTO.getAppInternalID());
         System.out.println("1111111111111111111111111111111111111111111111111111111111111111111111111111111");
         System.out.println("app internal id : "+newAttorneyContactFormDTO.getAppInternalID());
         System.out.println("1111111111111111111111111111111111111111111111111111111111111111111111111111111");
+        String tempAppId = newAttorneyContactFormDTO.getAppInternalID();
+        if(tempAppId.contains(",")){
+            int index = tempAppId.indexOf(",");
+            tempAppId = tempAppId.substring(0, index-1);
+            newAttorneyContactFormDTO.setAppInternalID(tempAppId);
+        }
+
+        System.out.println("22222222222222222222222222222222222222222222222222222222222222222222222222222222");
+        System.out.println("app internal id : "+newAttorneyContactFormDTO.getAppInternalID());
+        System.out.println("222222222222222222222222222222222222222222222222222222222222222222222222222222222");
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(newAttorneyContactFormDTO.getAppInternalID());
+
+
         model.addAttribute("user", ptoUser);
         model.addAttribute("account",credentials);
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
@@ -318,6 +331,20 @@ public class ApplicationObjectCreationController {
         PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
         UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
         UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        System.out.println("1111111111111111111111111111111111111111111111111111111111111111111111111111111");
+        System.out.println("app internal id : "+newOwnerContactFormDTO.getAppInternalID());
+        System.out.println("1111111111111111111111111111111111111111111111111111111111111111111111111111111");
+        String tempAppId = newOwnerContactFormDTO.getAppInternalID();
+        if(tempAppId.contains(",")){
+            int index = tempAppId.indexOf(",");
+            tempAppId = tempAppId.substring(0, index-1);
+            newOwnerContactFormDTO.setAppInternalID(tempAppId);
+        }
+
+        System.out.println("22222222222222222222222222222222222222222222222222222222222222222222222222222222");
+        System.out.println("app internal id : "+newOwnerContactFormDTO.getAppInternalID());
+        System.out.println("222222222222222222222222222222222222222222222222222222222222222222222222222222222");
 
 
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
@@ -702,6 +729,18 @@ public class ApplicationObjectCreationController {
         PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
         UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
         UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+        System.out.println("1111111111111111111111111111111111111111111111111111111111111111111111111111111");
+        System.out.println("app internal id : "+AppInternalID);
+        System.out.println("1111111111111111111111111111111111111111111111111111111111111111111111111111111");
+
+        if(AppInternalID.contains(",")){
+            int index = AppInternalID.indexOf(",");
+            AppInternalID = AppInternalID.substring(0, index-1);
+        }
+
+        System.out.println("22222222222222222222222222222222222222222222222222222222222222222222222222222222");
+        System.out.println("app internal id : "+AppInternalID);
+        System.out.println("222222222222222222222222222222222222222222222222222222222222222222222222222222222");
 
 
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
