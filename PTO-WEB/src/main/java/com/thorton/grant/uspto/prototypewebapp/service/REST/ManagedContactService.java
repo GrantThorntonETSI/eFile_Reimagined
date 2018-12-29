@@ -15,15 +15,15 @@ public class ManagedContactService extends  BaseRESTapiService {
 
 
     @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
-    @RequestMapping(method = GET, value="/REST/apiGateway/user/managedContact/get/{displayName}")
+    @RequestMapping(method = GET, value="/REST/apiGateway/user/managedContact/get/{email}")
     @ResponseBody
-    ResponseEntity<String> getManagedContact(@PathVariable String displayName ){
+    ResponseEntity<String> getManagedContact(@PathVariable String email ){
 
         PTOUser ptoUser = getCurrentPTOuser();
 
         if(ptoUser != null){
 
-            ManagedContact contact = ptoUser.findManagedContactByDisplayName(displayName);
+            ManagedContact contact = ptoUser.findManagedContactByEmail(email);
 
             if(contact != null){
 
@@ -41,11 +41,11 @@ public class ManagedContactService extends  BaseRESTapiService {
                 String city="{city:"+contact.getCity()+"},";
                 String state="{state:"+contact.getState()+"},";
                 String zipcode="{zipcode:"+contact.getZipcode()+"},";
-                String email="{email:"+contact.getEmail()+"},";
+                String email2="{email:"+contact.getEmail()+"},";
                 String phone="{phone:"+contact.getPrimaryPhonenumber()+"}";
 
 
-                String message = "{"+first_name+middle_name+last_name+suffix+country+address+city+state+zipcode+email+phone+ "}";
+                String message = "{"+first_name+middle_name+last_name+suffix+country+address+city+state+zipcode+email2+phone+ "}";
                 return  super.buildResponseEnity("200", message);
 
 

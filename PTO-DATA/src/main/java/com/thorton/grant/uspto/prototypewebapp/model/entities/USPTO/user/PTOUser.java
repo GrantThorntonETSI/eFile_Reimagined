@@ -203,6 +203,44 @@ public class PTOUser extends UserPersonalData {
     }
 
 
+    public Set<ManagedContact> getAttorneyManagedContact(){
+        Set<ManagedContact> attorneyContacts = new HashSet<>();
+
+        for(Iterator<ManagedContact> iter = myManagedContacts.iterator(); iter.hasNext(); ) {
+            //this.availableLawyers.add(new Lawyer( iter.next() ));
+
+            ManagedContact current = iter.next();
+            if(current.getContactType() == "attorney"){
+               attorneyContacts.add(current);
+            }
+
+        }
+
+
+        return attorneyContacts;
+    }
+
+    public Set<ManagedContact> getOwnerManagedContact(){
+        Set<ManagedContact> ownerContacts = new HashSet<>();
+
+        for(Iterator<ManagedContact> iter = myManagedContacts.iterator(); iter.hasNext(); ) {
+            //this.availableLawyers.add(new Lawyer( iter.next() ));
+
+            ManagedContact current = iter.next();
+            if(current.getContactType() == "owner"){
+                ownerContacts.add(current);
+            }
+
+        }
+
+
+        return ownerContacts;
+    }
+
+
+
+
+
 
     ///////////////////////////////////////////////////////////
 

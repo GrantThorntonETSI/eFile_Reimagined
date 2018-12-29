@@ -623,7 +623,7 @@
                                     <span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr;">
                                                 <input class="tt-hint" type="text" autocomplete="off" spellcheck="off" disabled="" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
                                                 <input class="form-control tt-query" name="attorneyCAagentName" id="ca-attornery-query" placeholder="Start typing something to search..." type="text" value="" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: rgb(255, 255, 255);">
-                                                    <span style="position: absolute; left: -9999px; visibility: hidden; white-space: nowrap; font-family: &quot;Segoe UI&quot;, &quot;Helvetica Neue&quot;, Tahoma, Arial; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;">a</span>
+                                                    <span style="position: absolute; left: -9999px; visibility: hidden; white-space: nowrap; font-family: 'Segoe UI', 'Helvetica Neue', Tahoma, Arial; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;">a</span>
                                                         <span class="tt-dropdown-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none; right: auto;">
                                                             <div class="tt-dataset-0" style="display: none;">
                                                                 <span class="tt-suggestions" style="display: block;"></span>
@@ -660,6 +660,7 @@
     </main>
 </div>
 </div><!--END container-fluid-->
+
 <div class="container-fluid stickycomponents">
     <div id="chats">
         <div class="row">
@@ -679,30 +680,17 @@
                                     <td class="list-group-item col-xs-6"><a href="#" class="fromcontact" id="clearform">Clear Form</a></td>
                                     <td class="list-group-item inner-addon right-addon col-xs-6"><i class="glyphicon glyphicon-search" aria-hidden="true"></i><input type="text" class="form-control" id="contactsearch" placeholder="Search" aria-label="search"></td>
                                 </tr>
-                                <tr class="row">
-                                    <td class="list-group-item col-xs-6"><a href="#" class="fromcontact" id="avo"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><span class="glyphicon glyphicon-ok-sign visuallyremoved" aria-hidden="true"></span></a> Avo Reed</td>
-                                    <td class="list-group-item col-xs-6">avo.reid@us.gt.com</td>
-                                </tr>
-                                <tr class="row">
-                                    <td class="list-group-item col-xs-6"><a href="#" class="fromcontact" id="jackie"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><span class="glyphicon glyphicon-ok-sign visuallyremoved" aria-hidden="true"></span></a> Jackie Babos</td>
-                                    <td class="list-group-item col-xs-6">jackie.babos@us.gt.com</td>
-                                </tr>
-                                <tr class="row">
-                                    <td class="list-group-item col-xs-6"><a href="#" class="fromcontact" id="jacob"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><span class="glyphicon glyphicon-ok-sign visuallyremoved" aria-hidden="true"></span></a> Jacob Goldstein</td>
-                                    <td class="list-group-item col-xs-6">jacob.goldstein@us.gt.com</td>
-                                </tr>
-                                <tr class="row">
-                                    <td class="list-group-item col-xs-6"><a href="#" class="fromcontact" id="avo"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><span class="glyphicon glyphicon-ok-sign visuallyremoved" aria-hidden="true"></span></a> Avo Reed</td>
-                                    <td class="list-group-item col-xs-6">avo.reid@us.gt.com</td>
-                                </tr>
-                                <tr class="row">
-                                    <td class="list-group-item col-xs-6"><a href="#" class="fromcontact" id="jackie"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><span class="glyphicon glyphicon-ok-sign visuallyremoved" aria-hidden="true"></span></a> Jackie Babos</td>
-                                    <td class="list-group-item col-xs-6">jackie.babos@us.gt.com</td>
-                                </tr>
-                                <tr class="row">
-                                    <td class="list-group-item col-xs-6"><a href="#" class="fromcontact" id="jacob"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><span class="glyphicon glyphicon-ok-sign visuallyremoved" aria-hidden="true"></span></a> Jacob Goldstein</td>
-                                    <td class="list-group-item col-xs-6">jacob.goldstein@us.gt.com</td>
-                                </tr>
+
+
+
+                                <th:block th:each="contact : ${user.getAttorneyManagedContact()}">
+
+                                    <tr class="row">
+                                        <td class="list-group-item col-xs-6"><a href="#" class="fromcontact" id="managedContactFillFormAction" ><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><span class="glyphicon glyphicon-ok-sign visuallyremoved" aria-hidden="true"></span></a> <b th:text="${contact.displayName}">Avo Reed</b></td>
+                                        <td class="list-group-item col-xs-6" th:text="${contact.email}">avo.reid@us.gt.com</td>
+                                    </tr>
+
+                                </th:block>
                             </table>
                         </div>
                     </div>
@@ -710,6 +698,8 @@
             </section>
         </div><!--END row-->
     </div><!--END chats-->
+</div><!--END div container-fluid-->
+
 
 
 
@@ -1015,6 +1005,16 @@
         });
 
 
+
+
+        $('#managedContactFillFormAction').click(function () {
+            var contactEmail = $(this).parent().next().html();
+            setformWithManagedContact(contactEmail);
+
+
+        });
+
+
 // show attorney affiliation area
 
 
@@ -1031,7 +1031,7 @@
     }); // end of document ready()
 
 
-    function setformWithManagedContact(displayName) {
+    function setformWithManagedContact(email) {
 
         //////////////////////////////////////////////////////////////////////////////////////
         // we need REST controller of finding a contact by its email
@@ -1040,7 +1040,7 @@
 
         $.ajax({
             //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
-            url: "../../REST/apiGateway/user/managedContact/get/"+displayName,
+            url: "../../REST/apiGateway/user/managedContact/get/"+email,
 
             type: 'GET',
             success: function(data){
