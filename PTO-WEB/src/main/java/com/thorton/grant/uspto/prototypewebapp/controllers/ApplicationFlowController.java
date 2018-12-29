@@ -803,8 +803,13 @@ public class ApplicationFlowController {
 
         model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
         model.addAttribute("markImagePath",baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+        boolean isAttorneyOptionSet = baseTrademarkApplication.isAttorneySet();
+        boolean isAttorneyFiling = baseTrademarkApplication.isAttorneyFiling();
+        model.addAttribute("isAttorneyOptionSet", isAttorneyOptionSet);
+        model.addAttribute("isAttorneyFiling", isAttorneyFiling);
 
-
+        NewAttorneyContactFormDTO attorneyContactFormDTO = new NewAttorneyContactFormDTO();
+        model.addAttribute("addNewAttorneyContactFormDTO", attorneyContactFormDTO);
 
         System.out.println("las view model : "+baseTrademarkApplication.getLastViewModel());
 

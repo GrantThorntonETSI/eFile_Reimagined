@@ -58,7 +58,7 @@ public class ApplicationService  extends  BaseRESTapiService{
             if(param.equals("no")){
                 baseTrademarkApplication.setAttorneySet(true);
                 baseTrademarkApplication.setAttorneyFiling(false);
-                baseTrademarkApplication.setLastViewModel("application/AttorneyStart");
+                baseTrademarkApplication.setLastViewModel("application/attorney/AttorneyStart");
                 // drop all attorneys added to attorney pool if any exists
                 baseTrademarkApplication.setPrimaryLawyer(null);
                 for(Iterator<Lawyer> iter = baseTrademarkApplication.getAvailableLawyers().iterator(); iter.hasNext(); ) {
@@ -76,7 +76,7 @@ public class ApplicationService  extends  BaseRESTapiService{
             else {
                 baseTrademarkApplication.setAttorneySet(true);
                 baseTrademarkApplication.setAttorneyFiling(true);
-                baseTrademarkApplication.setLastViewModel("application/AttorneyStart");
+                baseTrademarkApplication.setLastViewModel("application/attorney/AttorneyStart");
                 baseTradeMarkApplicationService.save(baseTrademarkApplication);
             }
 
@@ -255,7 +255,7 @@ public class ApplicationService  extends  BaseRESTapiService{
             if(delLawyer.getEmail().equals(contact_email)){
 
                 if(baseTrademarkApplication.getAvailableLawyers().size() == 1){
-                    baseTrademarkApplication.setLastViewModel("application/AttorneyStart");
+                    baseTrademarkApplication.setLastViewModel("application/attorney/AttorneyStart");
                     //baseTrademarkApplication.setAttorneyFiling(false);
 
                 }
