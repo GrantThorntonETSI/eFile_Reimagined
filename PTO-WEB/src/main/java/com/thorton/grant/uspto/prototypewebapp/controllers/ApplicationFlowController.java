@@ -71,7 +71,7 @@ public class ApplicationFlowController {
         UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
 
         model.addAttribute("user", ptoUser);
-        model.addAttribute("account",credentials);
+        model.addAttribute("account", credentials);
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
 
         ArrayList<String> contactNamesMC = new ArrayList<>();
@@ -79,9 +79,9 @@ public class ApplicationFlowController {
         ArrayList<String> contactSubTypesMC = new ArrayList<>();
         ManagedContact managedContact = null;
 
-        for(Iterator<ManagedContact> iter = ptoUser.getMyManagedContacts().iterator(); iter.hasNext(); ) {
+        for (Iterator<ManagedContact> iter = ptoUser.getMyManagedContacts().iterator(); iter.hasNext(); ) {
             managedContact = iter.next();
-            if(managedContact.getContactType() == "attorney"){
+            if (managedContact.getContactType() == "attorney") {
                 contactNamesMC.add(managedContact.getDisplayName());
                 contactEmailsMC.add(managedContact.getEmail());
                 contactSubTypesMC.add(managedContact.getContactType());
@@ -105,7 +105,7 @@ public class ApplicationFlowController {
         boolean isAttorneyOptionSet = false;
         boolean isAttorneyFiling = false;
 
-        if(trademarkInternalID.equals("new")) {
+        if (trademarkInternalID.equals("new")) {
 
             BaseTrademarkApplication trademarkApplication = new BaseTrademarkApplication();
             //trademarkApplication.setLastViewModel("application/owner/individual/ownerInfo");
@@ -124,7 +124,7 @@ public class ApplicationFlowController {
             trademarkApplication.setTrademarkName("my_first_trademark");
             trademarkApplication.setApplicationInternalID(UUID.randomUUID().toString());
             counter++;
-            trademarkApplication.setTrademarkName(""+counter);
+            trademarkApplication.setTrademarkName("" + counter);
             ptoUser.addApplication(trademarkApplication); // adds to myApplications Collection
             ptoUserService.save(ptoUser);
             model.addAttribute("baseTrademarkApplication", trademarkApplication);
@@ -138,63 +138,36 @@ public class ApplicationFlowController {
             selectedAttorneyDisplayDTO.setContactNames(scontactNames);
 
             model.addAttribute("selectedAttorneys", selectedAttorneyDisplayDTO);
-            model.addAttribute("isAttorneyOptionSet",isAttorneyOptionSet);
-            model.addAttribute("isAttorneyFiling",isAttorneyFiling);
+            model.addAttribute("isAttorneyOptionSet", isAttorneyOptionSet);
+            model.addAttribute("isAttorneyFiling", isAttorneyFiling);
 
-        }
-        else{
-          BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+        } else {
+            BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
 
             ArrayList<String> selectedContactNames = new ArrayList<>();
-            for(Iterator<Lawyer> iter = baseTrademarkApplication.getAvailableLawyers().iterator(); iter.hasNext(); ) {
-                    Lawyer current = iter.next();
-                    selectedContactNames.add(current.getFirstName()+" "+current.getLastName());
+            for (Iterator<Lawyer> iter = baseTrademarkApplication.getAvailableLawyers().iterator(); iter.hasNext(); ) {
+                Lawyer current = iter.next();
+                selectedContactNames.add(current.getFirstName() + " " + current.getLastName());
             }
             ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
             selectedAttorneyDisplayDTO.setContactNames(selectedContactNames);
-            model.addAttribute("selectedAttorneys",selectedAttorneyDisplayDTO);
+            model.addAttribute("selectedAttorneys", selectedAttorneyDisplayDTO);
 
             model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
             isAttorneyOptionSet = baseTrademarkApplication.isAttorneySet();
             isAttorneyFiling = baseTrademarkApplication.isAttorneyFiling();
-            model.addAttribute("isAttorneyOptionSet",isAttorneyOptionSet);
-            model.addAttribute("isAttorneyFiling",isAttorneyFiling);
+            model.addAttribute("isAttorneyOptionSet", isAttorneyOptionSet);
+            model.addAttribute("isAttorneyFiling", isAttorneyFiling);
         }
         NewAttorneyContactFormDTO attorneyContactFormDTO = new NewAttorneyContactFormDTO();
         model.addAttribute("addNewAttorneyContactFormDTO", attorneyContactFormDTO);
 
 
-
         model.addAttribute("hostBean", hostBean);
-        return "application/AttorneyStart2";
-
-
+        return "application/attorney/AttorneyStart";
 
 
     }
-
-    // hopefully just a redirecta here, we won't need to add the applicaiton and credentials to the model
-    @RequestMapping({"/application/attorneyEntity/"})
-    public String attorneyEntity(WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
-
-        // create a new application and tie it to user then save it to repository
-        // create attorneyDTO + to model
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
-        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
-        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
-        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
-
-        model.addAttribute("user", ptoUser);
-        model.addAttribute("account",credentials);
-        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
-        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
-
-        model.addAttribute("hostBean", hostBean);
-        return "application/attorney/attorneyEntity";
-    }
-
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
     // controller for AttorneySet page
@@ -341,37 +314,7 @@ public class ApplicationFlowController {
 
 
         model.addAttribute("hostBean", hostBean);
-        return "application/AttorneySet";
-
-    }
-
-
-    // show form for attorney add module ... this page is loaded into modal
-    @RequestMapping({"/application/attorney/attorneyInfo"})
-    public String attorneyContactshowFormInfo(WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
-
-        // create a new application and tie it to user then save it to repository
-        // create attorneyDTO + to model
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
-        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
-        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
-        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
-
-        model.addAttribute("user", ptoUser);
-        model.addAttribute("account",credentials);
-        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
-        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
-
-        model.addAttribute("hostBean", hostBean);
-
-        NewAttorneyContactFormDTO attorneyContactFormDTO = new NewAttorneyContactFormDTO();
-        model.addAttribute("addNewAttorneyContactFormDTO", attorneyContactFormDTO);
-
-
-        return "application/attorney/attorneyInfo";
-
+        return "application/attorney/AttorneySet";
 
     }
 

@@ -91,7 +91,9 @@ public class ApplicationObjectCreationController {
 
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(newAttorneyContactFormDTO.getAppInternalID());
-
+        System.out.println("1111111111111111111111111111111111111111111111111111111111111111111111111111111");
+        System.out.println("app internal id : "+newAttorneyContactFormDTO.getAppInternalID());
+        System.out.println("1111111111111111111111111111111111111111111111111111111111111111111111111111111");
         model.addAttribute("user", ptoUser);
         model.addAttribute("account",credentials);
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
@@ -135,7 +137,7 @@ public class ApplicationObjectCreationController {
                 // also add error message
                 model.addAttribute("message", "ERROR: Attorney Name exists for this Application.");
 
-                return "application/AttorneyStart";
+                return "application/attorney/AttorneyStart";
                 // return to  ownerStartPage with error message
             }
 
@@ -205,7 +207,7 @@ public class ApplicationObjectCreationController {
                 // also add error message
                 model.addAttribute("message", "ERROR: Attorney email exists for this Application.");
 
-                return "application/AttorneyStart";
+                return "application/attorney/AttorneyStart";
                 // return to  ownerStartPage with error message
             }
 

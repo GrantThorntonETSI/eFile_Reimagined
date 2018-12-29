@@ -123,7 +123,7 @@
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                     <label for="attorney-first-name"><span class="weight600">&#42;</span> First Name</label>
-                                    <input type="text" class="form-control" id="attorney-first-name" th:field="*{firstName}" name="first" placeholder="First Name">
+                                    <input type="text" class="form-control" id="attorney-first-name" th:field="*{firstName}" name="first" placeholder="">
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                     <label for="Attorney-middle-name">Middle Name</label>
@@ -144,7 +144,7 @@
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-5">
                                     <label for="attorney-lawfirm-name"><span class="weight600">&#42;</span> Firm</label>
-                                    <input type="text" class="form-control" id="attorney-lawfirm-name" th:field="*{lawFirmName}" placeholder="Law Firm Name">
+                                    <input type="text" class="form-control" id="attorney-lawfirm-name" th:field="*{lawFirmName}" placeholder="">
                                 </div>
                             </div>
                         </fieldset><!--END Attorney Information-->
@@ -474,7 +474,7 @@
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
                                     <label for="attorney-zipcode">Zip Code</label>
-                                    <input type="text" class="form-control" id="attorney-zipcode" placeholder="XXXXX" th:field="*{attorneyZipcode}">
+                                    <input type="text" class="form-control" id="attorney-zipcode" placeholder="" th:field="*{attorneyZipcode}">
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-5 col-lg-5">
                                     <label for="attorney-email"><span class="weight600">&#42;</span> Email Address</label>
@@ -492,10 +492,10 @@
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-4">
                                     <label for="attorney-phone"><span class="weight600">&#42;</span> Phone Number</label>
-                                    <input type="text" class="form-control" id="attorney-phone" placeholder="Phone Number" th:field="*{attorneyPhone}">
+                                    <input type="text" class="form-control" id="attorney-phone" placeholder="" th:field="*{attorneyPhone}">
                                 </div>
                                 <div class="col-xs-12">
-                                    <button type="button" class="btn-sm btn-success add ctr">Additional Number</button>
+                                    <button type="button" class="btn-sm btn-success add ctr" disabled>Additional Number</button>
                                 </div>
                             </div>
                         </fieldset><!--END Contact Attorney Information-->
@@ -510,7 +510,7 @@
                                     <input type="text" class="form-control" id="docket-id" th:field="*{attorneyDocketNumber}"/>
                                 </div>
                                 <div class="col">
-                                    <button type="button" class="btn-sm btn-success add ctr">Additional Docket or Reference Number</button>
+                                    <button type="button" class="btn-sm btn-success add ctr" disabled>Additional Docket or Reference Number</button>
                                 </div>
                             </div>
                         </fieldset><!--END Docket Reference Information-->
@@ -622,7 +622,7 @@
                                     <label class="small" for="ca-attornery-query">Please select a name from the registered OED list from Canadian Trademark and Patent Agents</label>
                                     <span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr;">
                                                 <input class="tt-hint" type="text" autocomplete="off" spellcheck="off" disabled="" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
-                                                <input class="form-control tt-query" name="attorneyCAagentName" id="ca-attornery-query" placeholder="Start typing something to search..." type="text" value="" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: rgb(255, 255, 255);">
+                                                <input class="form-control tt-query" name="attorneyCAagentName" id="ca-attornery-query" placeholder="" type="text" value="" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: rgb(255, 255, 255);">
                                                     <span style="position: absolute; left: -9999px; visibility: hidden; white-space: nowrap; font-family: 'Segoe UI', 'Helvetica Neue', Tahoma, Arial; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;">a</span>
                                                         <span class="tt-dropdown-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none; right: auto;">
                                                             <div class="tt-dataset-0" style="display: none;">
@@ -678,7 +678,7 @@
                             <table class="list-group table">
                                 <tr class="row">
                                     <td class="list-group-item col-xs-6"><a href="#" class="fromcontact" id="clearform">Clear Form</a></td>
-                                    <td class="list-group-item inner-addon right-addon col-xs-6"><i class="glyphicon glyphicon-search" aria-hidden="true"></i><input type="text" class="form-control" id="contactsearch" placeholder="Search" aria-label="search"></td>
+                                    <td class="list-group-item inner-addon right-addon col-xs-6"><i class="glyphicon glyphicon-search" aria-hidden="true"></i><input type="text" class="form-control" id="contactsearch" placeholder="" aria-label="search"></td>
                                 </tr>
 
 
