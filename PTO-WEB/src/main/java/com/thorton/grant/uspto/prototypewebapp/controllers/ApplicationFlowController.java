@@ -314,7 +314,7 @@ public class ApplicationFlowController {
 
 
         model.addAttribute("hostBean", hostBean);
-        return "application/attorney/AttorneySet";
+        return "application/attorney/AttorneySet2";
 
     }
 

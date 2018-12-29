@@ -715,7 +715,6 @@
         var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
         var attorneyOpt = /*[[${baseTrademarkApplication.isAttorneyFiling()}]]*/ 'User Name';
 
-
         var isAttorneyOptionSet = /*[[${isAttorneyOptionSet}]]*/ 'User Name';
         var isAttorneyFiling = /*[[${isAttorneyFiling}]]*/ 'User Name';
 
@@ -777,15 +776,8 @@
         }, 500);
 
 
-        setTimeout(function() {
-            // after 1000 ms we add the class animated to the login/register card
-            $('#contacts-ui').fadeIn(500);
 
-
-
-        }, 500);
-
-
+        $('#appInternalIDForm').val(appInternalID);
 
 
 
@@ -801,7 +793,7 @@
             // signal uppate occurred
             // wait for the confirm message first.
             ////////////////////////////////////////////////////////////
-            $('#appInternalIDForm').val(appInternalID);
+
             saveProjectInfo("set-lawyer-options-value", "yes", appInternalID);
             //setTimeout(function() {
             //    $('#pageLoadArea').fadeIn(2000);
@@ -892,117 +884,12 @@
         ////////////////////////////////////////////////////
 
 
-        /*
-                // check which prev-link to check
-                if(attorneyOpt == false){
-                    $('#prevLink').attr("href",prevLinkURLAttorneyFalse);
-                    $('#prevLinkIcon').attr("href",prevLinkURLAttorneyFalse);
-                }
-                else {
-                    $('#prevLink').attr("href",prevLinkURL);
-                    $('#prevLinkIcon').attr("href",prevLinkURL);
-                }
-
-                if(ownerOpt == true){
-
-                    $('#nextLink').attr("href",ownerSetViewLink);
-                    $('#nextLinkIcon').attr("href",ownerSetViewLink);
-                    $('.next-button').css("background-color", "rgb(55,69,120)");
-
-                }
-        */
-
-
-
-        //$('#addNewOwnerLink').attr("href",newOwnerLink);
-
-
-        // load datables for owner contacts
         ///////////////////////////////////////////////////////////
 
-        /////////////////////////////////////////////////////////////////////////////
 
-        var dataSet1 = [
-
-
-        ];
-
-        //////////////////////////////////////////////////////////////////////////////
-        // initialize contacts table with empty values
-        //////////////////////////////////////////////////////////////////////////////
-        var contactsTable = $('#ManagedContacts').DataTable( {
-            data: dataSet1,
-            "pageLength": 5,
-            "scrollY": "250px",
-            "scrollX": "100%",
-            "oLanguage": {
-
-                "sSearch": "<b style=\"position: relative; bottom: -3px; \" > <i style=\"position: relative; right:-197px; \"  class=\"material-icons\">search</i></b>"
-
-            },
-            "dom": '<"top"f<"clear">>rt<"bottom"p<"clear">>',
-            columns: [
-                { title: "" },
-                { title: "Contact Name" },
-                { title: "" }
-
-            ]
-        } );
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-        // set overflow hidden for horizontal scroll bar created by y-scroll options on data tables
-        // that keeps the data tables view port height constant
-        /////////////////////////////////////////////////////////////////////////////////////////////////
-        $('.dataTables_scrollBody').css('overflow',  'hidden');
-
-
-        // load managed contacts from server
-        for(var a =0; a <contactNames.length; a++) {
-            ///////////////////////////////////////////////////////////////////////////
-            // check each name against selected names ...if in selected lis ...
-            // add row with check box selected and disabled
-            ///////////////////////////////////////////////////////////////////////////
-            var selectedContact = false;
-            for(var b=0; b <selectedContactNames.length; b++ ){
-                if(contactNames[a] == selectedContactNames[b]){
-                    selectedContact = true;
-                }
-
-            }
-
-            if(selectedContact == true){
-                var col1 = "<span class='small-tooltip'><a  style=\" min-width:500px; text-decoration: none;\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Contact is an attorney for this application.\">&nbsp;</a></span><i class='material-icons' style='position: relative; right:-10px;'>check_circle_outline</i>";
-                var col2 = "<b>"+contactNames[a]+"</b>";
-                var col3 = "";
-                contactsTable.row.add([col1, col2, col3]).draw();
-
-            }
-            else {
-                var col1 = "<span class='small-tooltip'><a  style=\" min-width:500px; text-decoration: none;\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Copy Contact Information to Attorney Form.\">&nbsp;</a></span><i class='material-icons' style='position: relative; right:-10px;'>add_circle_outline</i>";
-                var col2 = "<b>"+contactNames[a]+"</b>";
-                var col3 = "";
-                contactsTable.row.add([col1, col2, col3]).draw();
-
-            }
-
-
-
-        }
         // sort and redraw to line up columns
         $('[data-toggle="tooltip"]').tooltip();
         // widget actions
-
-        $('#ManagedContacts').on('click', 'i.material-icons', function () {
-
-            if($(this).html() == "add_circle_outline"){
-                var rawCell=$(this).parent().next().html();
-                var contactDisplayName = getContactName(rawCell);
-                setformWithManagedContact(contactDisplayName);
-
-            }
-
-
-        });
 
 
 
