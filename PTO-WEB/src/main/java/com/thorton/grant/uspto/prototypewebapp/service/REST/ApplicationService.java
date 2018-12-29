@@ -59,6 +59,17 @@ public class ApplicationService  extends  BaseRESTapiService{
                 baseTrademarkApplication.setAttorneySet(true);
                 baseTrademarkApplication.setAttorneyFiling(false);
                 baseTrademarkApplication.setLastViewModel("application/AttorneyStart");
+                // drop all attorneys added to attorney pool if any exists
+                baseTrademarkApplication.setPrimaryLawyer(null);
+                for(Iterator<Lawyer> iter = baseTrademarkApplication.getAvailableLawyers().iterator(); iter.hasNext(); ) {
+                    Lawyer current = iter.next();
+                    baseTrademarkApplication.removeAvailableLawyer(current);
+                    // remove lawyer from the database completely
+                    LawyerService lawyerService = getServiceBeanFactory().getLawyerService();
+                    lawyerService.delete(current);
+
+                }
+
                 baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
             }
