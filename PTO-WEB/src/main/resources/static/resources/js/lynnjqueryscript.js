@@ -186,17 +186,7 @@ $(document).ready(function(){
 		});
 	
 	//Initialize popover
-	$('[data-toggle="popover"]').popover({
-        title : false,
-		html : true,
-        content : '<div class="media"><img src="images/stylized_alt2.gif" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
-    });	
-	$( '#togglepop' ).click(function() {
-		$( this ).toggleClass( 'focus' );
-		$(this).html() === '<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Hide My Mark'
-			? $(this).html('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Show My Mark')
-			: $(this).html('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Hide My Mark');
-		});	
+
 	//Display uploaded filename
 	$('input[type="file"]').change(function(e){
 		var fileName = e.target.files[0].name;
