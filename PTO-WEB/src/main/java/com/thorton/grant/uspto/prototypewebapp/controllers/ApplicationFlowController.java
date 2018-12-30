@@ -1093,6 +1093,59 @@ public class ApplicationFlowController {
 
 
 
+    @RequestMapping({"/application/goodsAndServicesSelect"})
+    public String goodsAndServicesSelect (WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
+        // get owner info
+
+        // get email and get PTOUser object from repository
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+        model.addAttribute("hostBean", hostBean);
+        String applcationLookupID = trademarkInternalID;
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+        if(baseTrademarkApplication.getTradeMark() == null){
+            TradeMark tradeMark = new TradeMark();
+            tradeMark.setTrademarkDesignType("");
+            baseTrademarkApplication.setTradeMark(tradeMark);
+            baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+        }
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+
+        }
+        else{
+            model.addAttribute("markImagePath","");
+
+            model.addAttribute("markImagePathBW","");
+
+
+        }
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+        boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+        boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+
+
+        //return "application/MarkDetailsExamples";
+        return "application/GoodsServicesSelect";
+        //return "registrationConfirm/VerificationEmail";
+    }
+
 
 
 
