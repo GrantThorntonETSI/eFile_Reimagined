@@ -7,7 +7,7 @@
 </head>Mark Details
 <body>
 <div class="row content" style="position: relative; display: none; ">
-    <main class="col-xs-12 col-sm-8 col-lg-6" style="min-width: 860px;">
+    <main class="col-xs-12 col-sm-8 col-md-8 col-lg-7" >
         <div class="row sticky" id="contacts-ui" style=" display:none; position: fixed; top:500px; right:222px;  max-height: 10px;">
 
 
@@ -102,7 +102,22 @@
 
 
         <div class="row" id="panels" style="position: relative; top:-222px; left:-135px; ">
-            <h1>Trademark Details &#8211; Design with Text</h1>
+            <div class="row" style="position: relative; left:-55px;">
+                <div class="col-xs-6">
+                    <h1>Trademark Details - Design with Text</h1>
+                    <p class="required"><span class="weight600">&#42; = Required</span></p>
+                </div>
+                <nav class="col-xs-6" id="previousnext">
+                    <div class="btn-group btn-group-justified btn-sm" role="group" aria-label="previous and next buttons">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default btn-sm" id="prevButton">Previous</button>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default btn-sm" id="nextButton">Next</button>
+                        </div>
+                    </div>
+                </nav>
+            </div>
             <!--START Trademark Examples-->
             <!--START Standard Character-->
             <div class="row">
@@ -214,20 +229,7 @@
                 </div><!--END col-->
             </div><!--END row-->
 
-            <div class="row navigation-row" style=" max-height: 100px; position: relative; bottom: -111px; right: -222px; margin-bottom: 111px; ">
 
-                <div class="col-sm-2" style="position: relative; left:-222px;">
-                    <span class="btn btn-md prev-button"  style=" padding: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; background-color: rgb(55, 69, 120);  color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center;    font-size: 14px; font-style: normal; width: 120px; height: 30px;"><a id="prevLinkIcon" style="color: white; text-decoration: none; position: relative; top:-3px;left:-5px;" ><i class="material-icons rotate-180">exit_to_app</i></a><a id="prevLink" style="color: white; text-decoration: none;position: relative; top:-10px;" href="">Prev</a></span>
-                </div>
-                <div class="col-sm-2"></div>
-                <div class="col-sm-2"></div>
-                <div class="col-sm-2"></div>
-
-                <div class="col-sm-2" style="position:relative; right:-111px; ">
-                    <span class="btn btn-md next-button"  style="padding: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; background-color: rgb(55,69,120); color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center;   font-size: 14px; font-style: normal; width: 120px; height: 30px;"><a id="nextLink" style="color: white; text-decoration: none; position: relative; top:-10px;" >Next</a><a id="nextLinkIcon" style="color: white; text-decoration: none; position: relative; top:-3px;right:-5px;" ><i class="material-icons">exit_to_app</i></a></span>
-                </div>
-
-            </div>
         </div>
 
 
@@ -413,12 +415,18 @@
         $('[data-toggle="tooltip"]').tooltip();
 
 
+        ////////////////////////////////////////
+        // set link click events
+        /////////////////////////////////////////
 
-        $('#prevLink').attr("href",prevLinkURL);
-        $('#prevLinkIcon').attr("href",prevLinkURL);
+        $('#prevButton').click(function () {
+            location.href=prevLinkURL;
+        });
 
-        $('#nextLink').attr("href",nextLinkURL);
-        $('#nextLinkIcon').attr("href",nextLinkURL);
+        $('#nextButton').click(function () {
+            location.href=nextLinkURL;
+        });
+
 
         //////////////////////////////////////////////////////////////////////
         // toggle between color or bw local
