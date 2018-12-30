@@ -18,14 +18,22 @@
 
         <div class="col-sm-12" >
 
-
-            <div class="row" style="position: relative; top:-20px; left:-20px">
-                <div class="col-md-6">
-                    <div style="position: relative; top:-10px; margin-left: 35px; margin-bottom: 5px; margin-top: 10px; min-height: 90px;">
-                        <h1><b style="opacity: 1; mix-blend-mode: normal; color: rgb(0, 0, 0); font-size: 36px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; text-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1.16667px; width: 597px; height: 41px; transform: rotate(0deg) translate(37px, 138px) rotate(0deg);">Owner Information</b></h1>
-                    </div>
+            <div class="row"  style="position: relative; top:-20px; left:-20px">
+                <div class="col-xs-6" style="position: relative; top:-11px;">
+                    <h1>Owner  Information</h1>
                 </div>
+                <nav class="col-xs-6" id="previousnext">
+                    <div class="btn-group btn-group-justified btn-sm" role="group" aria-label="previous and next buttons">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default btn-sm" id="prevButton">Previous</button>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default btn-sm" id="nextButton" disabled>Next</button>
+                        </div>
+                    </div>
+                </nav>
             </div>
+            <p class="required"><span class="weight600">&#42; = Required</span></p>
 
             <div class="row" style="position: relative; top:-80px;">
 
@@ -416,6 +424,9 @@
     var host_name= /*[[${hostBean.host}]]*/ 'User Name';
     var host_port= /*[[${hostBean.port}]]*/ 'User Name';
 
+    var attorneyOpt = /*[[${baseTrademarkApplication.isAttorneyFiling()}]]*/ 'User Name';
+    var ownerOpt = /*[[${baseTrademarkApplication.isOwnerSet()}]]*/ 'User Name';
+
     var host = host_name+":"+host_port;
     //alert(tableRows);
 
@@ -425,6 +436,9 @@
 
 <script>
 
+    var prevLinkURL = "../../application/AttorneySet/?trademarkID="+appInternalID;
+    var prevLinkURLAttorneyFalse = "../../application/start/?trademarkID="+appInternalID;
+    var nextLinkURL = "../../application/OwnerSetView/?trademarkID="+appInternalID;
 
     var ownerDomIndvFormURL = "../../application/owner/Ind/info/?trademarkID="+appInternalID;
     var ownerDomUSSolPFormURL = "../../application/owner/us/solp/?trademarkID="+appInternalID;
@@ -469,6 +483,39 @@
             /////////////////////////////////////////////////////////////
             // check if attorneyFillingFalse is set
             /////////////////////////////////////////////////////////////
+
+
+
+            // check which prev-link to check
+            if(attorneyOpt == false){
+
+                prevLinkURL = prevLinkURLAttorneyFalse;
+
+
+            }
+
+
+            if(ownerOpt == true){
+
+                $('#nextButton').attr("disabled",false);
+
+            }
+
+
+
+
+            $('#prevButton').click(function () {
+                location.href=prevLinkURL;
+            });
+
+            $('#nextButton').click(function () {
+                location.href=nextLinkURL;
+            });
+
+
+
+
+
             if ($('#usEntityTrue').is(':checked') == true){
 
                 $('.next-button').css("backgroundColor","rgb(55, 69, 120)" );

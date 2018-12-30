@@ -98,6 +98,7 @@
             </section>
 
 
+
         </div>
 
 
@@ -110,30 +111,7 @@
 
     </div>
 
-    <div class="row" style="position: relative;  right:-220px;">
-        <div class="col-sm-6">
-            <div class="form-group FieldMsgArea" style="display:none; position: relative; left:30%;">
-                <b><span></span></b>
-            </div>
-        </div>
-
-    </div>
-
-
-    <div class="row navigation-row" style=" max-height: 100px; position: relative; bottom: -222px; right: -111px; margin-bottom: 111px; ">
-
-        <div class="col-sm-2">
-            <span class="btn btn-md prev-button"  style=" padding: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; background-color: rgb(55, 69, 120);  color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center;    font-size: 14px; font-style: normal; width: 120px; height: 30px;"><a id="prevLinkIcon" style="color: white; text-decoration: none; position: relative; top:-3px;left:-5px;" ><i class="material-icons rotate-180">exit_to_app</i></a><a id="prevLink" style="color: white; text-decoration: none;position: relative; top:-10px;" href="">Prev</a></span>
-        </div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-2" style="position:relative; left:-10px; ">
-            <span class="btn btn-md next-button"  style="padding: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; background-color: rgb(128,128,128); color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center;   font-size: 14px; font-style: normal; width: 120px; height: 30px;"><a id="nextLink" style="color: white; text-decoration: none; position: relative; top:-10px;" >Next</a><a id="nextLinkIcon" style="color: white; text-decoration: none; position: relative; top:-3px;right:-5px;" ><i class="material-icons">exit_to_app</i></a></span>
-        </div>
-
-    </div>
-
+</div>
 
 
 
@@ -144,9 +122,7 @@
 
 
     var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
-    var attorneyOpt = /*[[${baseTrademarkApplication.isAttorneyFiling()}]]*/ 'User Name';
 
-    var ownerOpt = /*[[${baseTrademarkApplication.isOwnerSet()}]]*/ 'User Name';
     var host_name= /*[[${hostBean.host}]]*/ 'User Name';
     var host_port= /*[[${hostBean.port}]]*/ 'User Name';
 
@@ -170,14 +146,10 @@
 
 <script>
 
-    var prevLinkURL = "../../application/AttorneySet/?trademarkID="+appInternalID;
-
-    var prevLinkURLAttorneyFalse = "../../application/start/?trademarkID="+appInternalID;
 
 
     var newOwnerLink = "../../owner/entity/?trademarkID="+appInternalID;
 
-    var ownerSetViewLink = "../../application/OwnerSetView/?trademarkID="+appInternalID;
 
 </script>
 
@@ -222,31 +194,6 @@
         ////////////////////////////////////////////////////
         // enable next button on select drop down completion
         ////////////////////////////////////////////////////
-
-
-
-        // check which prev-link to check
-        if(attorneyOpt == false){
-            $('#prevLink').attr("href",prevLinkURLAttorneyFalse);
-            $('#prevLinkIcon').attr("href",prevLinkURLAttorneyFalse);
-        }
-        else {
-            $('#prevLink').attr("href",prevLinkURL);
-            $('#prevLinkIcon').attr("href",prevLinkURL);
-        }
-
-        if(ownerOpt == true){
-
-            $('#nextLink').attr("href",ownerSetViewLink);
-            $('#nextLinkIcon').attr("href",ownerSetViewLink);
-            $('.next-button').css("background-color", "rgb(55,69,120)");
-
-        }
-
-
-
-
-        //$('#addNewOwnerLink').attr("href",newOwnerLink);
 
 
         // load datables for owner contacts
@@ -320,14 +267,18 @@
 
 
         }
+        //////////////////////////////////////////////////////////////////////////
         // sort and redraw to line up columns
+        //////////////////////////////////////////////////////////////////////////
         $('[data-toggle="tooltip"]').tooltip();
+        //////////////////////////////////////////////////////////////////////////
         // widget actions
         // sort and redraw to line up columns
+        //////////////////////////////////////////////////////////////////////////
 
-
+        //////////////////////////////////////////////////////////////////////////
         // widget actions
-
+        //////////////////////////////////////////////////////////////////////////
         $('#ManagedContacts').on('click', 'i.material-icons', function () {
 
             if($(this).html() == "add_circle_outline") {
@@ -339,16 +290,9 @@
 
 
         });
+        //////////////////////////////////////////////////////////////////////////
 
-
-
-
-
-
-
-
-
-        }); // end of document ready()
+    }); // end of document ready()
 
 
     function setformWithManagedContact(displayName) {
@@ -478,18 +422,7 @@
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // helper functions
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    function enableNextWidgetLink() {
-        $('#nextLink').prop("href",ownerSetViewLink);
-        $('#nextLinkIcon').prop("href", ownerSetViewLink);
-        $('.next-button').css("background-color", "rgb(55, 69, 120)");
 
-    }
-    function disableNextWidgetLink() {
-        $('#nextLink').prop("href", "");
-        $('#nextLinkIcon').prop("href", "");
-        $('.next-button').css("background-color", "rgb(128, 128, 128)");
-
-    }
 
     function getContactName(cell) {
         var contact_name = cell.substring(3, cell.length-4);
