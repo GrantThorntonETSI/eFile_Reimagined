@@ -97,7 +97,7 @@ public class ApplicationService  extends  BaseRESTapiService{
                 baseTrademarkApplication.setOwnerType(entity_type);
                 baseTrademarkApplication.setOwnerSubType(sub_type);
 
-                baseTrademarkApplication.setLastViewModel("application/OwnerStart");
+                baseTrademarkApplication.setLastViewModel("application/owner/OwnerStart");
                 baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
                 appFieldReadable = "Entity Type. ";
@@ -325,7 +325,7 @@ public class ApplicationService  extends  BaseRESTapiService{
            }
            baseTrademarkApplication.setPrimaryLawyer(primaryAttorney);
            primaryAttorney.setPrimary(true);
-           baseTrademarkApplication.setLastViewModel("application/AttorneySet");
+           baseTrademarkApplication.setLastViewModel("application/attorney/AttorneySet");
            baseTrademarkApplication.setAttorneyCollapseID(primaryAttorney.getFirstName()+primaryAttorney.getLastName());
            baseTradeMarkApplicationService.save(baseTrademarkApplication);
 

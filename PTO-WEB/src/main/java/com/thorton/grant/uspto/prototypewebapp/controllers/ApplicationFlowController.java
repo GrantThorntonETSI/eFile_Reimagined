@@ -314,7 +314,7 @@ public class ApplicationFlowController {
 
 
         model.addAttribute("hostBean", hostBean);
-        return "application/attorney/AttorneySet2";
+        return "application/attorney/AttorneySet";
 
     }
 
@@ -343,7 +343,7 @@ public class ApplicationFlowController {
         model.addAttribute("account",credentials);
 
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
-        baseTrademarkApplication.setLastViewModel("application/OwnerStart");
+        baseTrademarkApplication.setLastViewModel("application/owner/OwnerStart");
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
         model.addAttribute("hostBean", hostBean);
@@ -390,7 +390,7 @@ public class ApplicationFlowController {
         model.addAttribute("selectedOwners",selectedAttorneyDisplayDTO);
 
 
-        return "application/OwnerStart";
+        return "application/owner/OwnerStart";
     }
 
 
@@ -645,7 +645,7 @@ public class ApplicationFlowController {
 
 
         model.addAttribute("hostBean", hostBean);
-        return "application/OwnerSetView";
+        return "application/owner/OwnerSetView";
 
     }
 
