@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{fragments/ApplicationFragment :: layout (~{::body},'user')}" xmlns="http://www.w3.org/1999/html">
+      th:replace="~{fragments/efileApplicationAttorneyFragment :: layout (~{::body},'user')}" xmlns="http://www.w3.org/1999/html">
 <head >
     <meta charset="UTF-8">
     <title>Owner Information</title>
@@ -8,241 +8,242 @@
 <body>
 
 <!-- End Navbar -->
+<div class="row content" id="attorney" style="display: none;">
+    <main class="col-xs-12 col-sm-8 col-md-8 col-lg-7">
 
-<div class="content" style="display: none; background-color: white; min-height: 400px; min-width: 1200px; position: relative; bottom: -7%;" >
-    <div class="container-fluid"  >
-        <div class="row sticky" id="widget-UI" style=" display:none; position: fixed; top:500px; right:222px;  max-height: 10px; ">
-
-
-            <div class="row" style="position: relative; top: -150px;max-height: 10px; " >
-                <div class="col-sm-12" style="max-height: 10px;">
-                    <div class="col-sm-9" style="max-height: 10px;" >
-
-                    </div>
-
-                    <div class="col-sm-3">
-                        <div class="banner-message"  style="position: relative;top:-225px; left:-10px; ">
-
-
-
-                            <div class="contacts-Table " style="border: rgb(235,235,235); min-width: 280px; max-width: 280px; border-width: 1px; border: solid; padding: 15px; min-height: 420px; max-height: 555px; position: relative; top:-20px; ">
-                                <table id="ManagedContacts" class="table-no-bordered table-hover" cellpadding="1" style="min-width: 280px; max-width: 280px; margin-right: 4px; margin-top: 10px; margin-bottom: 10px; margin-left: 4px; "></table>
-                            </div>
-
-
-
-
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
-        </div><!--end row sticky -->
-
-
-        <div class="row" style="position: relative; top:-75px;  max-width: 850px; max-height: 100px;margin-bottom: 30px;">
-
-            <section class="col-xs-12 steps breadcrumb-steps"  style="position: relative;  right:-10px;">
-                <div class="col-xs-2 one active">
-                    <div class="col-xs-4">
-                        <span>1</span>
-                    </div>
-                    <div class="col-xs-8 vertctr">
-                        <p>Your details</p>
-                    </div>
-                </div>
-                <div class="col-xs-2 two">
-                    <div class="col-xs-4">
-                        <span>2</span>
-                    </div>
-                    <div class="col-xs-8 vertctr">
-                        <p>Trademark Details</p>
-                    </div>
-                </div>
-                <div class="col-xs-2 three">
-                    <div class="col-xs-4">
-                        <span>3</span>
-                    </div>
-                    <div class="col-xs-8 vertctr">
-                        <p>Goods and Services</p>
-                    </div>
-                </div>
-                <div class="col-xs-2 four">
-                    <div class="col-xs-4">
-                        <span>4</span>
-                    </div>
-                    <div class="col-xs-8 vertctr">
-                        <p>Basis</p>
-                    </div>
-                </div>
-                <div class="col-xs-2 five">
-                    <div class="col-xs-4">
-                        <span>5</span>
-                    </div>
-                    <div class="col-xs-8 vertctr">
-                        <p>Additional information</p>
-                    </div>
-                </div>
-                <div class="col-xs-2 six">
-                    <div class="col-xs-4">
-                        <span>6</span>
-                    </div>
-                    <div class="col-xs-8 vertctr">
-                        <p>Confirm and pay</p>
-                    </div>
-                </div>
-            </section>
-
-
-
-        </div>
-
-
-
-        <!--end of main banner section -->
-
-            <div class="row" style="position: relative; top:-100px;  max-width:850px;" >
-                <div class="col-md-6">
-                    <div style="position: relative; top:-10px; margin-left: 35px; margin-bottom: 5px; margin-top: 10px; min-height: 90px;">
-                        <h1><b style="opacity: 1; mix-blend-mode: normal; color: rgb(0, 0, 0); font-size: 36px; font-weight: normal; font-style: normal; text-decoration: none; text-align: left; text-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1.16667px; width: 597px; height: 41px; transform: rotate(0deg) translate(37px, 138px) rotate(0deg);">Owner Information</b></h1>
-                    </div>
-                </div>
-
-            </div>  <!-- end of main content row 1 -->
-
-
-
-            <div class="row" id="contacts-ui" style=" display: none; position: relative; top:-100px; right:-90px;  max-width:850px;">
-
-                <div class="row" style="">
-
-                    <div class="col-sm-3">
-                    <h5><b>Trademark Application Owner Details</b></h5>
-                    </div>
-
-                    <div class="col-sm-3">
-                    </div>
-                    <div class="col-sm-3">
-                    </div>
-
-                    <div class="col-sm-3" style="position: relative; top: -10px; right:-30px; ">
-                        <span id="addOwneronfirm" class=" btn-sm btn"  type="button"  style=" padding:5px; max-width: 170px; padding:5px;  color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px;  position: relative;top:20px;"><i class="material-icons" style="position: relative; left: -10px;">person_add</i><b style="position: relative; top:-5px;"><a id="addOwnerLink" style="color: white; text-decoration: none;" >Add<br> Additional Owner</a></b></span>
-                    </div>
-
-                </div>
-
-                <div class="accordion" id="accordionExample" style="position: relative; right:-10px; margin-top: 30px;">
-
-
-<!--only one owner to display -->
-                        <!--item 1 -->
-                    <th:block th:each="owner : ${baseTrademarkApplication.owners}">
-                        <div class="card" id="contact" style="max-width: 850px; background-color: white; ">
-                            <div class="card-header" id="headingTwo"  style="background-color: white;">
+        <!--START Content Div-->
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row">
+                    <section class="col-xs-12 steps breadcrumb-steps" aria-label="progress tracker">
+                        <div class="row displaycell">
+                            <div class="col-xs-2 one active">
                                 <div class="row">
-                                    <div class="col-sm-1">
-                                        <i class="material-icons" style="position: relative; bottom: -5px;">contacts</i>
-
+                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
+                                        <span>1</span>
                                     </div>
-                                    <div class="col-sm-1">
-                                        <i class="material-icons collapsed" data-toggle="collapse" th:attr="data-target='#'+${owner.id}"   aria-expanded="false" aria-controls="collapseTwo" style="position: relative; bottom:-5px; left:-20px;">import_export</i>
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                        <p class="first">Your details</p>
                                     </div>
-                                    <div class="col-sm-3">
-                                        <div class="row">
-                                           <b style="position: relative; bottom:-5px;" th:text="${owner.ownerDisplayname}">Owner Name</b>
-                                        </div>
-
+                                </div>
+                            </div>
+                            <div class="col-xs-2 two">
+                                <div class="row">
+                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
+                                        <span>2</span>
                                     </div>
-
-                                    <div class="col-sm-3" style="position: relative; left:-55px;">
-                                       <b style="position: relative;  " th:text="${owner.email}"> Attorney@Email.com</b>
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                        <p>Trademark details</p>
                                     </div>
-
-                                    <div class="col-sm-3">
-                                        <i class="material-icons">account_circle</i>   <b style="position: relative; top:-5px;  " th:text="${owner.getOwnersubType()}"> Attorney Firm, LLC </b>
+                                </div>
+                            </div>
+                            <div class="col-xs-2 three">
+                                <div class="row">
+                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
+                                        <span>3</span>
                                     </div>
-                                    <div class="col-sm-1">
-                                        <i class="material-icons" style="position: relative; bottom: -3px;">remove_circle</i>
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                        <p>Goods and services</p>
                                     </div>
-
-
+                                </div>
+                            </div>
+                            <div class="col-xs-2 four">
+                                <div class="row">
+                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
+                                        <span>4</span>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                        <p>Basis</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-2 five">
+                                <div class="row">
+                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
+                                        <span>5</span>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                        <p>Additional info</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-2 six">
+                                <div class="row">
+                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
+                                        <span>6</span>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                        <p>Confirm and pay</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </section>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <h1>Ownwer Information</h1>
+                    </div>
+                    <nav class="col-xs-6" id="previousnext">
+                        <div class="btn-group btn-group-justified btn-sm" role="group" aria-label="previous and next buttons">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default btn-sm" id="prevButton">Previous</button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default btn-sm" id="nextButton">Next</button>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
 
-                        <div th:attr="id=${owner.id}"  class="collapse in" aria-labelledby="headingTwo" data-parent="#accordionExample" style="max-width: 850px; margin-bottom: 10px;">
-                            <div class="card-body">
+                <!--START Attorney Information Form-->
 
-                                <div class="row" style="position: relative; right:-111px; margin-top: 10px;">
+                <div class="row" id="contacts-ui" style=" display: none; position: relative;  max-width:850px;right:-33px;">
+
+                    <div class="row" style="">
+
+                        <div class="col-sm-3">
+                            <h5><b>Trademark Application Owner Details</b></h5>
+                        </div>
+
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="col-sm-3">
+                        </div>
+
+                        <div class="col-sm-3" style="position: relative; top: -10px; right:-30px; ">
+                            <span id="addOwneronfirm" class=" btn-sm btn"  type="button"  style=" padding:5px; max-width: 170px; padding:5px;  color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px;  position: relative;top:20px;"><i class="material-icons" style="position: relative; left: -10px;">person_add</i><b style="position: relative; top:-5px;"><a id="addOwnerLink" style="color: white; text-decoration: none;" >Add<br> Additional Owner</a></b></span>
+                        </div>
+
+                    </div>
+
+                    <div class="accordion" id="accordionExample" style="position: relative; right:-10px; margin-top: 30px;">
+
+
+                        <!--only one owner to display -->
+                        <!--item 1 -->
+                        <th:block th:each="owner : ${baseTrademarkApplication.owners}">
+                            <div class="card" id="contact" style="max-width: 850px; background-color: white; ">
+                                <div class="card-header" id="headingTwo"  style="background-color: white;">
+                                    <div class="row">
+                                        <div class="col-sm-1">
+                                            <i class="material-icons" style="position: relative; bottom: -5px;">contacts</i>
+
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <i class="material-icons collapsed" data-toggle="collapse" th:attr="data-target='#'+${owner.id}"   aria-expanded="false" aria-controls="collapseTwo" style="position: relative; bottom:-5px; left:-20px;">import_export</i>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="row">
+                                                <b style="position: relative; bottom:-5px;" th:text="${owner.ownerDisplayname}">Owner Name</b>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-sm-3" style="position: relative; left:-55px;">
+                                            <b style="position: relative;  " th:text="${owner.email}"> Attorney@Email.com</b>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <i class="material-icons">account_circle</i>   <b style="position: relative; top:-5px;  " th:text="${owner.getOwnersubType()}"> Attorney Firm, LLC </b>
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <i class="material-icons" style="position: relative; bottom: -3px;">remove_circle</i>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div th:attr="id=${owner.id}"  class="collapse in" aria-labelledby="headingTwo" data-parent="#accordionExample" style="max-width: 850px; margin-bottom: 10px;">
+                                <div class="card-body">
+
+                                    <div class="row" style="position: relative; right:-111px; margin-top: 10px;">
                                         <span class="collapsed"  data-toggle="collapse" th:attr="data-target='#'+${owner.id}+'a'"  aria-expanded="false" aria-controls="collapseTwoAddress">
                                             <i class="material-icons">keyboard_arrow_right</i><b style="position: relative; top:-7px;"> Address Information</b>
                                         </span>
 
-                                    <div th:attr="id=${owner.id}+'a'"  class="collapse" aria-labelledby="headingTwoAddress" data-parent="#accordionExample" style="max-width: 850px;">
-                                        <div class="card-body contact-field-card-body">
+                                        <div th:attr="id=${owner.id}+'a'"  class="collapse" aria-labelledby="headingTwoAddress" data-parent="#accordionExample" style="max-width: 850px;">
+                                            <div class="card-body contact-field-card-body">
 
-                                            <span style="position: relative; right:-30px;" th:text="${owner.address}+' '+${owner.city}+', '+${owner.state}+' '+${owner.zipcode}"> 1115 Reserve Champion Drive, Rockville MD 20850</span>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row" style="position: relative; right:-111px;">
-                                            <span class="collapsed"  data-toggle="collapse" th:attr="data-target='#'+${owner.id}+'b'"  aria-expanded="false" aria-controls="collapseTwoAffiliation">
-                                                <i class="material-icons">keyboard_arrow_right</i> <b style="position: relative; top:-7px;">Website URL</b>
-                                            </span>
-
-                                    <div th:attr="id=${owner.id}+'b'"  class="collapse" aria-labelledby="headingTwoAffiliation" data-parent="#accordionExample" style="max-width: 850px;">
-                                        <div class="card-body contact-field-card-body" >
-
-                                            <span style="position: relative; right:-30px;"  th:text="${owner.webSiteURL}">Washington Dc Bar Association. Maryland Bar Association.</span>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <th:block th:each="governingEntity : ${owner.governingEntities}">
-                                    <div class="row" style="position: relative; right:-111px;">
-                                                <span class="collapsed"  data-toggle="collapse" th:attr="data-target='#'+${owner.id}+${governingEntity.collapseID}+'c'"  aria-expanded="false" aria-controls="collapseTwoAffiliation">
-                                                    <i class="material-icons">keyboard_arrow_right</i> <b style="position: relative; top:-7px;">Partner Info</b>
-                                                </span>
-
-                                        <div th:attr="id=${owner.id}+${governingEntity.collapseID}+'c'"  class="collapse" aria-labelledby="headingTwoAffiliation" data-parent="#accordionExample" style="max-width: 850px;">
-                                            <div class="card-body contact-field-card-body" >
-                                                <span>Partner name:</span>
-                                                <span style="position: relative; right:-30px;"  th:text="${governingEntity.displayName}">Washington Dc Bar Association. Maryland Bar Association.</span><br>
-                                                <span>Partner Type:</span>
-                                                <span style="position: relative; right:-30px;"  th:text="${governingEntity.entityType}">Washington Dc Bar Association. Maryland Bar Association.</span><br>
-                                                <span>Partner State of Organization or Incorporation:</span>
-                                                <span style="position: relative; right:-30px;"  th:text="${governingEntity.organizationState}">Washington Dc Bar Association. Maryland Bar Association.</span><br>
-                                                <span>Partner Country:</span>
-                                                <span style="position: relative; right:-30px;"  th:text="${governingEntity.organizationCountry}">Washington Dc Bar Association. Maryland Bar Association.</span><br>
+                                                <span style="position: relative; right:-30px;" th:text="${owner.address}+' '+${owner.city}+', '+${owner.state}+' '+${owner.zipcode}"> 1115 Reserve Champion Drive, Rockville MD 20850</span>
 
                                             </div>
                                         </div>
                                     </div>
-                                </th:block>
 
-                                <div class="row" style="position: relative; right:-137px; margin-top: 10px;">
-                                    <b>Phone Number:</b> <input type="text" style="border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;"  th:value="${owner.primaryPhonenumber}" >
+                                    <div class="row" style="position: relative; right:-111px;">
+                                            <span class="collapsed"  data-toggle="collapse" th:attr="data-target='#'+${owner.id}+'b'"  aria-expanded="false" aria-controls="collapseTwoAffiliation">
+                                                <i class="material-icons">keyboard_arrow_right</i> <b style="position: relative; top:-7px;">Website URL</b>
+                                            </span>
 
-                                </div>
+                                        <div th:attr="id=${owner.id}+'b'"  class="collapse" aria-labelledby="headingTwoAffiliation" data-parent="#accordionExample" style="max-width: 850px;">
+                                            <div class="card-body contact-field-card-body" >
 
-                            </div> <!-- end of outter card body -->
-                        </div> <!--end of collapse two -->
+                                                <span style="position: relative; right:-30px;"  th:text="${owner.webSiteURL}">Washington Dc Bar Association. Maryland Bar Association.</span>
 
-                        <!-- end of item 1 -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <th:block th:each="governingEntity : ${owner.governingEntities}">
+                                        <div class="row" style="position: relative; right:-111px;">
+                                                <span class="collapsed"  data-toggle="collapse" th:attr="data-target='#'+${owner.id}+${governingEntity.collapseID}+'c'"  aria-expanded="false" aria-controls="collapseTwoAffiliation">
+                                                    <i class="material-icons">keyboard_arrow_right</i> <b style="position: relative; top:-7px;">Partner Info</b>
+                                                </span>
+
+                                            <div th:attr="id=${owner.id}+${governingEntity.collapseID}+'c'"  class="collapse" aria-labelledby="headingTwoAffiliation" data-parent="#accordionExample" style="max-width: 850px;">
+                                                <div class="card-body contact-field-card-body" >
+                                                    <span>Partner name:</span>
+                                                    <span style="position: relative; right:-30px;"  th:text="${governingEntity.displayName}">Washington Dc Bar Association. Maryland Bar Association.</span><br>
+                                                    <span>Partner Type:</span>
+                                                    <span style="position: relative; right:-30px;"  th:text="${governingEntity.entityType}">Washington Dc Bar Association. Maryland Bar Association.</span><br>
+                                                    <span>Partner State of Organization or Incorporation:</span>
+                                                    <span style="position: relative; right:-30px;"  th:text="${governingEntity.organizationState}">Washington Dc Bar Association. Maryland Bar Association.</span><br>
+                                                    <span>Partner Country:</span>
+                                                    <span style="position: relative; right:-30px;"  th:text="${governingEntity.organizationCountry}">Washington Dc Bar Association. Maryland Bar Association.</span><br>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </th:block>
+
+                                    <div class="row" style="position: relative; right:-137px; margin-top: 10px;">
+                                        <b>Phone Number:</b> <input type="text" style="border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;"  th:value="${owner.primaryPhonenumber}" >
+
+                                    </div>
+
+                                </div> <!-- end of outter card body -->
+                            </div> <!--end of collapse two -->
+
+                            <!-- end of item 1 -->
 
 
 
-                    </th:block>
+                        </th:block>
 
 
 
-                </div> <!~- end of accordian -->
+                    </div> <!~- end of accordian -->
+
+
+
+
+
+
+
+
+                </div> <!--end of contacts UI -->
+
+
+
+
+
+
+
+
+
 
 
 
@@ -252,32 +253,67 @@
 
 
             </div>
-
-        <div class="row navigation-row" style=" max-height: 100px; position: relative; bottom: -222px; right: -111px; margin-bottom: 111px; ">
-
-            <div class="col-sm-2">
-                <span class="btn btn-md prev-button"  style=" padding: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; background-color: rgb(55, 69, 120);  color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center;    font-size: 14px; font-style: normal; width: 120px; height: 30px;"><a id="prevLinkIcon" style="color: white; text-decoration: none; position: relative; top:-3px;left:-5px;" ><i class="material-icons rotate-180">exit_to_app</i></a><a id="prevLink" style="color: white; text-decoration: none;position: relative; top:-10px;" href="">Prev</a></span>
-            </div>
-            <div class="col-sm-2"></div>
-            <div class="col-sm-2"></div>
-            <div class="col-sm-2"></div>
-            <div class="col-sm-2" style="position:relative; left:-10px; ">
-                <span class="btn btn-md next-button"  style="padding: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; background-color: rgb(55,69,120); color: rgb(255, 255, 255); font-weight: bold; padding: 6px 10px; text-align: center;   font-size: 14px; font-style: normal; width: 120px; height: 30px;"><a id="nextLink" style="color: white; text-decoration: none; position: relative; top:-10px;" >Next</a><a id="nextLinkIcon" style="color: white; text-decoration: none; position: relative; top:-3px;right:-5px;" ><i class="material-icons">exit_to_app</i></a></span>
-            </div>
-
         </div>
 
 
-    </div>
+
+
+
+
+
+
+
+
+
+    </main>
+    <!-- end of main content-->
 </div>
+<div class="container-fluid stickycomponents">
+    <div id="chats">
+        <div class="row">
+
+            <section class="col-xs-7 col-sm-6 col-md-6 col-lg-6 col-xs-offset-5 col-sm-offset-6 col-md-offset-6 col-lg-offset-6 weight600" aria-label="your data" id="mydata2">
+                <div class="panel-group">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" id="contacts">
+                            <h4 class="panel-title">
+                                <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#collapse2" aria-controls="collapse2" aria-expanded="false" id="contactsbtn" aria-label="toggle contacts panel"><span id="toggleglyphone" class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span><span id="toggleglyph" class="glyphicon glyphicon-triangle-top visuallyremoved" aria-hidden="true"></span> Managed Contacts</button>
+                            </h4>
+                            <button type="button" id="closecontacts" class="close" data-target="#mydata2" aria-label="Close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                        </div>
+                        <div id="collapse2" class="panel-collapse collapse" aria-labelledby="contactsbtn">
+                            <table class="list-group table">
+                                <tr class="row">
+                                    <td class="list-group-item col-xs-6"><a href="#" class="fromcontact" id="clearform">Clear Form</a></td>
+                                    <td class="list-group-item inner-addon right-addon col-xs-6"><i class="glyphicon glyphicon-search" aria-hidden="true"></i><input type="text" class="form-control" id="contactsearch" placeholder="" aria-label="search"></td>
+                                </tr>
+
+
+
+                                <th:block th:each="contact : ${user.getOwnerManagedContact()}">
+
+                                    <tr class="row">
+                                        <td class="list-group-item col-xs-6"><a href="#" class="fromcontact" id="managedContactFillFormAction" ><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><span class="glyphicon glyphicon-ok-sign visuallyremoved" aria-hidden="true"></span></a> <b th:text="${contact.displayName}">Avo Reed</b></td>
+                                        <td class="list-group-item col-xs-6" th:text="${contact.email}">avo.reid@us.gt.com</td>
+                                    </tr>
+
+                                </th:block>
+                            </table>
+                        </div>
+                    </div>
+                </div><!--END contacts-->
+            </section>
+        </div><!--END row-->
+    </div><!--END chats-->
+</div><!--END div container-fluid-->
 
 
 
 
 
 
-</div>
-<!-- end of main content-->
+
+
 
 
 
@@ -341,13 +377,16 @@
             }, 500);
 
             ////////////////////////////////////////
-            // set previous link
+            // set link click events
             /////////////////////////////////////////
-            $('#prevLink').attr("href",prevLinkURL);
-            $('#prevLinkIcon').attr("href",prevLinkURL);
 
-            $('#nextLink').attr("href",nextLinkURL);
-            $('#nextLinkIcon').attr("href",nextLinkURL);
+            $('#prevButton').click(function () {
+                location.href=prevLinkURL;
+            });
+
+            $('#nextButton').click(function () {
+                location.href=nextLinkURL;
+            });
 
             /////////////////////////////////////////////////
             // check each radio button in accordian..
