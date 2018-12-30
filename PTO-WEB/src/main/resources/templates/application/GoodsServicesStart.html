@@ -90,7 +90,7 @@
 
 
 
-                    <div class="row" style="position: relative; ">
+                    <div class="row" style="position: relative; left:-55px;">
                         <div class="col-xs-6">
                             <h1>Goods and Services</h1>
 
@@ -193,8 +193,14 @@
 
         $('[data-toggle="tooltip"]').tooltip();
 
-        $('#prevLink').attr("href",prevLinkURL);
-        $('#prevLinkIcon').attr("href",prevLinkURL);
+
+        $('#prevButton').click(function () {
+            location.href=prevLinkURL;
+        });
+
+        $('#nextButton').click(function () {
+            location.href=nextLinkURL;
+        });
 
 
 
