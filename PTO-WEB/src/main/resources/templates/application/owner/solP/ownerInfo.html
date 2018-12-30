@@ -30,7 +30,7 @@
                         </div>
                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-4">
                             <label for="ownername"><span class="weight600">&#42;</span>Owner Name</label>
-                            <input type="text" class="form-control" id="ownername" th:field="*{ownerName}">
+                            <input type="text" class="form-control" id="ownername" th:field="*{ownerName}" required>
                         </div>
                         <div class="form-group form-group-md col-xs-12 col-sm-6 col-lg-4">
                             <label for="additionalname">Additional Name</label>
@@ -44,7 +44,7 @@
                         </div>
                         <div class="form-group form-group-md col-xs-12 col-sm-6 col-lg-4">
                             <label for="stateoforg"><span class="weight600">&#42;</span>State of Organization</label>
-                            <select class="form-control" id="stateoforg" th:field="*{ownerState}" >
+                            <select class="form-control" id="stateoforg" th:field="*{ownerState}"  required>
                                 <option  value="none"></option>
                                 <option  value="AL">Alabama</option>
                                 <option  value="AK">Alaska</option>
@@ -109,7 +109,7 @@
                     <fieldset>
                         <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
                             <label for="first-name"><span class="weight600">&#42;</span>First Name</label>
-                            <input type="text" class="form-control" id="first-name" th:field="*{firstName}">
+                            <input type="text" class="form-control" id="first-name" th:field="*{firstName}" required>
                         </div>
                         <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
                             <label for="middle-name">Middle Name</label>
@@ -117,7 +117,7 @@
                         </div>
                         <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
                             <label for="last-name"><span class="weight600">&#42;</span>Last Name</label>
-                            <input type="text" class="form-control" id="last-name" th:field="*{lastName}">
+                            <input type="text" class="form-control" id="last-name" th:field="*{lastName}" required>
                         </div>
                         <div class="form-group form-group-md col-xs-6">
                             <label for="suffix">Suffix</label>
@@ -397,7 +397,7 @@
                         </div>
                         <div class="form-group form-group-md col-md-12 col-lg-8">
                             <label for="ownerAddress1"><span class="weight600">&#42;</span>Address Line 1</label>
-                            <input type="text" class="form-control" id="ownerAddress1" th:field="*{ownerAddress1}">
+                            <input type="text" class="form-control" id="ownerAddress1" th:field="*{ownerAddress1}" required>
                         </div>
                         <div class="form-group form-group-md col-md-12 col-lg-8">
                             <label for="addressline2">Address Line 2</label>
@@ -409,11 +409,11 @@
                         </div>
                         <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
                             <label for="ownerCity"><span class="weight600">&#42;</span>City</label>
-                            <input type="text" class="form-control" id="ownerCity" th:field="*{ownerCity}">
+                            <input type="text" class="form-control" id="ownerCity" th:field="*{ownerCity}" required>
                         </div>
                         <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
                             <label for="ownerState"><span class="weight600">&#42;</span>State</label>
-                            <select class="form-control" id="ownerState" th:field="*{ownerState}">
+                            <select class="form-control" id="ownerState" th:field="*{ownerState}" required>
                                 <option  value="none"></option>
                                 <option  value="AL">Alabama</option>
                                 <option  value="AK">Alaska</option>
@@ -470,7 +470,7 @@
                         </div>
                         <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
                             <label for="ownerZipcode"><span class="weight600">&#42;</span>Zip Code</label>
-                            <input type="text" class="form-control" id="ownerZipcode" placeholder="" th:field="*{ownerZipcode}">
+                            <input type="text" class="form-control" id="ownerZipcode" placeholder="" th:field="*{ownerZipcode}" required>
                         </div>
                     </fieldset>
 
@@ -482,7 +482,7 @@
                     <fieldset>
                         <div class="form-group form-group-md col-xs-12 col-md-6">
                             <label for="ownerEmail"><span class="weight600">&#42;</span>Email Address</label>
-                            <input type="text" class="form-control" id="ownerEmail" th:field="*{ownerEmail}">
+                            <input type="text" class="form-control" id="ownerEmail" th:field="*{ownerEmail}" required>
                         </div>
                         <div class="form-group form-group-md col-xs-12 col-md-6">
                             <label for="webaddress">Website Address</label>
