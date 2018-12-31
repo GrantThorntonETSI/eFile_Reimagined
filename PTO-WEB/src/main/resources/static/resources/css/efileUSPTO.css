@@ -7,20 +7,30 @@
     font-size: 100%;
 }
 html {
+    height:auto;
 }
 body {
-    font-family: "Segoe UI", "Helvetica Neue", Tahoma, Arial;
+    font-family: "Segoe UI", "Helvetica Neue", Tahoma, Arial!important;
     background-color:#f6f6f6;
     min-height:100%;
     height:100%;
+}
+body.insertform {
+    background-color:#fff;
 }
 p {
     margin-bottom: .6em;
     line-height: 1.16em;
 }
+iframe {
+    width:100%;
+    height:100%;
+    margin:0;
+    overflow:visible;
+}
 .popover, .arrow {
-    top: 0!important;
     border:none;
+    border-bottom-color:transparent!important;
     -webkit-border-top-left-radius: 	2px;
     -webkit-border-top-right-radius: 	2px;
     -webkit-border-bottom-right-radius: 2px;
@@ -33,9 +43,6 @@ p {
     border-top-right-radius: 			2px;
     border-bottom-right-radius: 		2px;
     border-bottom-left-radius: 			2px;
-}
-.arrow {
-    top: 50%!important;
 }
 .container-fluid {
     font-size: inherit;
@@ -254,8 +261,8 @@ ul#lowernav .dropdown-menu>li>a:hover  {
 main {
     background-color:#fff;
     margin:123px auto!important;
-    /*margin-bottom:30px!important;*/
-    float:none!important;
+    /*	margin-bottom:30px!important;
+    */	float:none!important;
     -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.025);
     -moz-box-shadow: 	0 1px 2px rgba(0,0,0,0.025);
     box-shadow: 		0 1px 2px rgba(0,0,0,0.025);
@@ -263,6 +270,10 @@ main {
     -webkit-border-radius: 	3px;
     -moz-border-radius: 	3px;
     border-radius: 			3px;
+}
+#owner main {
+    height:100%;
+    overflow: visible;
 }
 #goodservideo p {
     margin-bottom: 1.6em;
@@ -495,6 +506,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child:before, tabl
 }
 #mydata2 td.list-group-item {
     border-bottom: 1px solid #ddd;
+    border-top: none;
 }
 /* END data panel */
 
@@ -684,7 +696,7 @@ label {
     margin-top:1em;
     margin-bottom:1em;
 }
-.btn-success.active.focus, .btn-success.active:focus, .btn-success.focus, .btn-success:active.focus, .btn-success:active:focus, .btn-success:focus {
+.btn-success.active.focus, .btn-success.active:focus, .btn-success.focus, .btn-success:active.focus, .btn-success:active:focus, .btn-success:focus, .btn-default:focus {
     /*outline: thin dotted;*/
     outline: 1px solid #D9D9D6!important;
 }
@@ -701,6 +713,19 @@ div[role="radio"]:focus {
     box-shadow:none;
     text-shadow:none;
     background-color:#004C97;
+}
+.btn-default {
+    color: #444;
+    background-color: #f9f9f9;
+    border-color: #ccc;
+    background-image: none;
+    text-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow:none;
+    -webkit-border-radius: 2px 2px 2px 2px;
+    -moz-border-radius: 2px 2px 2px 2px;
+    border-radius: 2px 2px 2px 2px;
 }
 .btn-primary:hover,.btn-primary:active {
     background-color: #003865!important;
@@ -763,6 +788,10 @@ button#moreoptionsbtn {
     margin:0 auto;
     margin-bottom: 1.5em;
 }
+#yesentity .btn.fill, .btn-success.fill  {
+    margin-bottom: 0;
+    margin-top: 1.01em;
+}
 .btn.add.ctr, .btn-success.add.ctr, .fill  {
     margin:0 auto;
     margin-top: 1.66em;
@@ -771,7 +800,7 @@ button#moreoptionsbtn {
 div[role="heading"] {
     margin-bottom: .6em;
 }
-#uploaded div[role="heading"] {
+#uploaded div[role="heading"], #entities div[role="heading"] {
     margin-bottom: 0;
 }
 .Accordion-trigger {
@@ -791,7 +820,7 @@ div[role="heading"] {
     font-weight: 600;
     color: #333;
 }
-#uploaded form .card-text {
+#uploaded form .card-text, #entities .card-text {
     padding-top:6px;
     padding-bottom:6px;
 }
@@ -990,9 +1019,9 @@ div[role="radiogroup"] {
     height: 2.65em;
     margin-bottom: 1em;
     margin-top: 1em;
+    width:100%;
 }
 .upload-drop-zone:hover, .upload-drop-zone:focus {
-    margin-left: 0;
     background-color: #fafafb!important;
     -webkit-box-shadow:none;
     -moz-box-shadow:none;
@@ -1002,7 +1031,7 @@ div[role="radiogroup"] {
     outline-offset: -2px;
     border:2px dashed transparent;
 }
-#attorney input[type=file] {
+#attorney input[type=file], #owner input[type=file], #uploadmark input[type=file], #yesnps input[type=file] {
     width: 0.1px;
     height: 0.1px;
     opacity: 0;
@@ -1012,21 +1041,6 @@ div[role="radiogroup"] {
 }
 .drop {
     border: 2px dashed #808080;
-}
-#uploadmark {
-    margin: 0 auto;
-    float: none;
-}
-#uploadmark p {
-    margin-bottom:2em;
-    margin-top:2em;
-    color:#808080;
-}
-#uploadmark form {
-    position: absolute;
-    top: 0;
-    left:0;
-    width: 100%;
 }
 .upload-drop-zone span {
     font-size:.75em;
@@ -1044,11 +1058,9 @@ div[role="radiogroup"] {
     display: inline-block;
     padding: 0 7px;
 }
-/*input[type=file] {
-	opacity: 0;
-	color:transparent;
-	width: 100%;
-	}*/
+.alert-success {
+    background-image:none!important;
+}
 button[type=submit] {
     margin: 0 auto;
     float: none;
@@ -1087,6 +1099,7 @@ footer {
     top: 100%;
     width: 100%;
     background-color: #222222;
+    margin-top:100px;
 }
 footer p {
     font-size:.7em;
@@ -1132,31 +1145,6 @@ a.footer-brand {
         position: absolute;
         margin-top:5px;
     }
-    #goodsandservices.table > tbody > tr > td {
-        padding:1.7em;
-    }
-}
-@media (max-width: 767px) {
-    main {
-        margin-top:40px!important;
-    }
-    /*#attorney main {
-        margin:80px 0!important;
-        margin-bottom:170px!important;
-        }*/
-    #mydata .panel-group, #mydata2 .panel-group {
-        margin-bottom: 0;
-    }
-    .popover {
-        left:20%!important;
-        width:140px!important;
-    }
-    #goodsandservices th {
-        line-height:1em;
-    }
-    ul#lowernav li {
-        color: #fff!important;
-    }
 }
 @media (min-width: 768px){
     .navbar-nav#lowernav>li {
@@ -1179,6 +1167,18 @@ a.footer-brand {
 @media (max-width: 767px) {
     body {
         font-size:90%;
+    }
+    main {
+        margin-top:40px!important;
+    }
+    #mydata .panel-group, #mydata2 .panel-group {
+        margin-bottom: 0;
+    }
+    #goodsandservices th {
+        line-height:1em;
+    }
+    ul#lowernav li {
+        color: #fff!important;
     }
     .navbar-inverse .navbar-nav>li>a {
         font-size:1.3em;
@@ -1222,10 +1222,37 @@ a.footer-brand {
     }
     #goodsandservices input[type="checkbox"]:checked + label span.radio::after {
         font-size: 1.6em;
-        top: -19px;
+        top: -16px;
     }
     .breadcrumb-steps p {
         display:none!important;
+    }
+    .popover {
+        top:-16px!important;
+        left:140px!important;
+    }
+    .popover.bottom>.arrow {
+        top:62%;
+        left:-5px!important;
+        margin-top:-11px;
+        -moz-transform: rotate(-90deg);
+        -webkit-transform: rotate(-90deg);
+        -o-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+    }
+    .popover.bottom>.arrow:after {
+        bottom: -10px!important;
+        left: 1px!important;
+    }
+    #mydata .list-group-item a, #mydata2 .list-group-item a {
+        margin-right: 2em;
+    }
+    #mydata2 .list-group-item a#clearform {
+        margin-left: 0;
+    }
+    .long span.radio::after {
+        top: 21px;
     }
 }
 @media (max-width: 1199px) {
@@ -1245,12 +1272,12 @@ a.footer-brand {
         top: -15px;
     }
 }
-@media (max-width: 588px) {
-    .popover {
-        left:50%!important;
-        width:120px!important;
-    }
-}
+/*@media (max-width: 588px) {
+	.popover {
+		left:50%!important;
+		width:120px!important;
+		}
+}*/
 /* IMAGES */
 @media (max-width: 576px) {
     #goodservideo .bgimg {
@@ -1287,55 +1314,4 @@ a.footer-brand {
     .stickycomponents {
         margin-bottom: 100%!important;
     }
-}
-
-/*cards */
-
-
-.card-header{
-    padding-top: 15px;
-    padding-bottom:15px;
-    padding-left: 20px;
-
-    border: solid;
-    border-width: 1px;
-    border-color: grey;
-//background-color: gray;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-
-
-}
-
-
-.card-body{
-    padding-top: 15px;
-    padding-bottom:15px;
-    padding-left: 20px;
-    padding-right: 10px;
-
-    border: solid;
-    border-width: 1px;
-    border-color: grey;
-//background-color: gray;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-
-
-}
-
-.contact-field-card-body{
-    max-width: 700px;
-}
-
-
-.card-footer{
-    padding-top: 10px;
-    position:relative;top: 10px;
-    padding-bottom: 50px;
-    padding-right:10%;
 }

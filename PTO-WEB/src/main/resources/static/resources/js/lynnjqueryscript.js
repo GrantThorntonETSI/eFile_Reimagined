@@ -32,6 +32,10 @@ $(document).ready(function(){
 		$( 'button#meanbtn span' ).toggleClass('visuallyremoved');
 		$( 'button#meanbtn span#toggleglyph' ).toggleClass('visuallyadded');
 	});
+	$("button#entbtn").click(function() {
+		$( 'button#entbtn span' ).toggleClass('visuallyremoved');
+		$( 'button#entbtn span#toggleglyph' ).toggleClass('visuallyadded');
+	});
 	//END expand / collapse glyphicon
 	
 	//START initialize datable
@@ -45,9 +49,15 @@ $(document).ready(function(){
 				var y = $( this ).siblings( 'input[type=checkbox]' ).attr('id');
 				$( this ).attr('for', y);
 			});
+			if ($('#goodsandservices tr').length < 10) {
+				$('#goodsandservices_wrapper').css('min-height','975px');
+			}
 		},
 			responsive: {
             details: true,
+			breakpoints: [
+			{ name: 'phone',   width: 480 }
+			],
 			},
 			"autoWidth": false,
 			"responsive": true,
@@ -57,19 +67,14 @@ $(document).ready(function(){
 				{ "width": "30%" },
 				{ "width": "33%" },
 			  ],
-			  
 		});
+		
 	//END initialize datable
 	
   //START set initial checkboxes
   $('input[type=checkbox]').attr('checked',false);
   //END set initial checkboxes
   
-  //START make label for datatable checkboxes 
- 
-	
-	//END make label for datatable checkboxes
-
   //START enable / disable checkboxes
 	$('input#certcheck').change(function() {
 		if(this.checked == true){
@@ -186,7 +191,18 @@ $(document).ready(function(){
 		});
 	
 	//Initialize popover
-
+	$('[data-toggle="popover"]').popover({
+        title : false,
+		html : true,
+		placement : 'bottom auto',
+        content : '<div class="media"><img src="images/stylized_alt2.gif" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
+    });	
+	$( '#togglepop' ).click(function() {
+		$( this ).toggleClass( 'focus' );
+		$(this).html() === '<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Hide My Mark'
+			? $(this).html('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Show My Mark')
+			: $(this).html('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Hide My Mark');
+		});	
 	//Display uploaded filename
 	$('input[type="file"]').change(function(e){
 		var fileName = e.target.files[0].name;
@@ -377,6 +393,32 @@ $(document).ready(function(){
 				$('div#yescontainsname').hide( 'fast' );
 				}
 			});
+		//yes, contains portrait is checked
+		$("#portraitchecked").prop({
+				checked: false,
+			});
+		$('div#yescontainsportrait').hide();
+		$('#portraitchecked').change(function() {
+			if(this.checked == true){
+				$('div#yescontainsportrait').show( 'fast' );
+				}
+		else {
+				$('div#yescontainsportrait').hide( 'fast' );
+				}
+			});
+		//yes, contains signature is checked
+		$("#signaturechecked").prop({
+				checked: false,
+			});
+		$('div#yescontainssignature').hide();
+		$('#signaturechecked').change(function() {
+			if(this.checked == true){
+				$('div#yescontainssignature').show( 'fast' );
+				}
+		else {
+				$('div#yescontainssignature').hide( 'fast' );
+				}
+			});
 		
 	//end nps options
 	
@@ -535,14 +577,61 @@ $(document).ready(function(){
 		}
 		});
 	//end attorney options
+	
+	//start us foreign options
+	$("input#inlineRadio019").prop({
+				checked: false,
+			});
+	$('div#yesusentity').css('display','none');
+	$('input#inlineRadio019').change(function() {
+		if(this.checked == true){
+			$('div#yesusentity').show( 'fast' );
+			
+			$("input#inlineRadio020").prop({
+				checked: false,
+			});
+			}
+	else {
+			$('div#yesusentity').hide( 'fast' );
+			
+			$("input#inlineRadio020").prop({
+				checked: true,
+			});	
+			}
+		});
+	$('input#inlineRadio020').change(function() {
+		if(this.checked == true){
+			$('div#yesusentity').hide( 'fast' );
+			
+			$("input#inlineRadio019").prop({
+				checked: false,
+			});
+			}
+	else {
+			$('div#yesusentity').show( 'fast' );
+			
+			$("input#inlineRadio019").prop({
+				checked: true,
+			});
+		}
+		});
+	//end us foreign options
 	//start affiliation options
 	$('div#usaffiliation').css('display','none');
 	$('div#canadianaffiliation').css('display','none');
-	  $('#attorney-bar-standing').change(function(){
-		  $('.hidethis').hide( 'fast' );
-    $('#' + $(this).val()).show( 'fast' );
-  });
+	$('#attorney-bar-standing').change(function(){
+		$('.hidethis').hide( 'fast' );
+		$('#' + $(this).val()).show( 'fast' );
+	});
 	//end affiliation options
+	//start entity options
+	$('#autofill').css('display','none');
+
+	//end entity options
+	//start iframe width
+	var a = $( "body.insertform" ); 
+	$( "div#entities" ).css( "height", a.innerHeight() );//set the width of the div to the height of the div
+	//end iframe width
 	//END toggle radio buttons content
 	
 	//START set text area
@@ -670,11 +759,10 @@ $(document).ready(function(){
 	});
 	//populate form from managed contacts
 	$('button#autofill').on('click',function() {
-		//$( document ).find('#mydata2.panel-group.visuallyremoved').addClass( 'visuallyadded' ).removeClass( 'visuallyremoved' )
 		$( '#mydata2' ).css('visibility','visible');
 		$( '#mydata2 .collapse' ).collapse('show').fadeIn( 'slow','swing');
-		$( 'button#contactsbtn span#toggleglyphone' ).toggleClass('visuallyremoved','visuallyadded');
-		$( 'button#contactsbtn span#toggleglyph' ).toggleClass('visuallyadded','visuallyremoved');
+		$( 'button#contactsbtn span#toggleglyphone' ).addClass('visuallyremoved');
+		$( 'button#contactsbtn span#toggleglyph' ).addClass('visuallyadded');
 	});
 	//end show managed contacts from nav
 });

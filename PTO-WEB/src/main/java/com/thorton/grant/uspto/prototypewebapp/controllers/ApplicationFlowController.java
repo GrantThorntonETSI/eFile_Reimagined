@@ -110,7 +110,7 @@ public class ApplicationFlowController {
             BaseTrademarkApplication trademarkApplication = new BaseTrademarkApplication();
             //trademarkApplication.setLastViewModel("application/owner/individual/ownerInfo");
             //trademarkApplication.setLastViewModel("application/OwnerStart");
-            trademarkApplication.setLastViewModel("application/AttorneyStart");
+            trademarkApplication.setLastViewModel("application/attorney/AttorneyStart");
             trademarkApplication.setAttorneySet(false);
             trademarkApplication.setAttorneyFiling(false);
 
@@ -390,7 +390,7 @@ public class ApplicationFlowController {
         model.addAttribute("selectedOwners",selectedAttorneyDisplayDTO);
 
 
-        return "application/owner/OwnerStart";
+        return "application/owner/OwnerStart2";
     }
 
 

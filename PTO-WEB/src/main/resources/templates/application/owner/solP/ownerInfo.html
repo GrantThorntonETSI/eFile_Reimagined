@@ -580,11 +580,13 @@
 
         $('#appInternalIDForm').val(appInternalID);
 
-        $('#autofill').click(function () {
-            $('.contacts-Table').fadeIn(500);
-
+        //populate form from managed contacts
+        $('button#autofill').on('click',function() {
+            $( '#mydata2' ).css('visibility','visible');
+            $( '#mydata2 .collapse' ).collapse('show').fadeIn( 'slow','swing');
+            $( 'button#contactsbtn span#toggleglyphone' ).addClass('visuallyremoved');
+            $( 'button#contactsbtn span#toggleglyph' ).addClass('visuallyadded');
         });
-
 
 
 
