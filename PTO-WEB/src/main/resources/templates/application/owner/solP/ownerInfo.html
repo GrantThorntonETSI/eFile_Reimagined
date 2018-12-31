@@ -152,7 +152,7 @@
                     <fieldset>
                         <div class="form-group form-group-md col-md-12 col-lg-7">
                             <label for="territory">Country/US Territory</label>
-                            <select class="form-control" id="territory">
+                            <select class="form-control" id="territory" >
                                 <option value="none"></option>
                                 <option value="X1">UNITED STATES OF AMERICA</option>
                                 <option value="B2">AFGHANISTAN</option>
@@ -529,21 +529,6 @@
     </div>
 
 
-    <!--load model attribute for Jquery consumption  -->
-    <script th:inline="javascript">
-
-        /*<![CDATA[*/
-
-
-        var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
-        var host_name= /*[[${hostBean.host}]]*/ 'User Name';
-        var host_port= /*[[${hostBean.port}]]*/ 'User Name';
-        var host = host_name+":"+host_port;
-        //alert(tableRows);
-
-        /*]]>*/
-    </script>
-
 
 
 
@@ -556,6 +541,21 @@
 <!-- end of main content-->
 
 
+
+<!--load model attribute for Jquery consumption  -->
+<script th:inline="javascript">
+
+    /*<![CDATA[*/
+
+
+    var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
+    var host_name= /*[[${hostBean.host}]]*/ 'User Name';
+    var host_port= /*[[${hostBean.port}]]*/ 'User Name';
+    var host = host_name+":"+host_port;
+    //alert(tableRows);
+
+    /*]]>*/
+</script>
 
 
 
