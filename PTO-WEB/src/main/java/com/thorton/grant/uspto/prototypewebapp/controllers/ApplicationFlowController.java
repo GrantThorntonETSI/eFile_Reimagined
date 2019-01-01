@@ -919,10 +919,13 @@ public class ApplicationFlowController {
 
         boolean transliterationFW = baseTrademarkApplication.getTradeMark().isForeignLanguateTransliterationWording();
 
+        boolean containsSignatureName = baseTrademarkApplication.getTradeMark().isContainNamePortaitSignature();
+
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
         model.addAttribute("translationFW", translationFW);
         model.addAttribute("translitFW", transliterationFW);
+        model.addAttribute("containsSignatureName", containsSignatureName );
 
         return "application/MarkDetailsDesignWText";
 

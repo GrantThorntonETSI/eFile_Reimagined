@@ -449,7 +449,7 @@
     var translationFW = /*[[${translationFW}]]*/ 'User Name';
 
     var translitFW = /*[[${translitFW}]]*/ 'User Name';
-
+    var containsSignatureName = /*[[${containsSignatureName}]]*/ 'User Name';
 
     var host = host_name+":"+host_port;
 
@@ -573,6 +573,17 @@
             }
 
         }
+
+        if(containsSignatureName== true){
+            $('#inlineRadio7').click();
+        }
+        else {
+            if(containsSignatureName == false) {
+                $('#inlineRadio8').click();
+            }
+
+        }
+
 
 
 
