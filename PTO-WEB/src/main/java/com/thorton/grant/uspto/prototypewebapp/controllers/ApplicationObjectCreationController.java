@@ -859,7 +859,19 @@ public class ApplicationObjectCreationController {
 
                     baseTrademarkApplication.getTradeMark().setTrademarkConsentFilePath("/files/"+file_path);
                     baseTrademarkApplication.getTradeMark().setConsentFileUploaded(true);
-                    model.addAttribute("markConsentUploaded", true);
+                    boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+                    boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+                    boolean translationFW = baseTrademarkApplication.getTradeMark().isForeignLanguageTranslationWording();
+
+                    boolean transliterationFW = baseTrademarkApplication.getTradeMark().isForeignLanguateTransliterationWording();
+
+                    boolean containsSignatureName = baseTrademarkApplication.getTradeMark().isContainNamePortaitSignature();
+
+                    model.addAttribute("markColorClaim", colorClaim);
+                    model.addAttribute("markColorClaimBW", acceptBW);
+                    model.addAttribute("translationFW", translationFW);
+                    model.addAttribute("translitFW", transliterationFW);
+                    model.addAttribute("containsSignatureName", containsSignatureName );
                 }
                 catch ( StorageException ex){
                     model.addAttribute("message", "ERROR: Mark Image upload failed due to error: "+ex );
