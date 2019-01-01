@@ -916,16 +916,18 @@ public class ApplicationFlowController {
         boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
         boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
         boolean translationFW = baseTrademarkApplication.getTradeMark().isForeignLanguageTranslationWording();
-
         boolean transliterationFW = baseTrademarkApplication.getTradeMark().isForeignLanguateTransliterationWording();
-
         boolean containsSignatureName = baseTrademarkApplication.getTradeMark().isContainNamePortaitSignature();
+
+        boolean isName = baseTrademarkApplication.getTradeMark().isName();
 
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
         model.addAttribute("translationFW", translationFW);
         model.addAttribute("translitFW", transliterationFW);
         model.addAttribute("containsSignatureName", containsSignatureName );
+
+        model.addAttribute("isName", isName );
 
         return "application/MarkDetailsDesignWText";
 

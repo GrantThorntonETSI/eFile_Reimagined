@@ -307,6 +307,7 @@
                                             </div><!--END radiogroup-->
                                             <div id="yesnps" role="region" aria-labelledby="translit">
                                                 <p id="whichnps">Identify which of the following it contains:</p>
+
                                                 <input class="form-check-input checkmark" type="checkbox" value="name" aria-checked="false" tabindex="0" aria-labelledby="checkname" id="namechecked">
                                                 <label class="form-check-label form-check" for="namechecked" id="checkname"><span class="radio notspecial">Name</span></label>
 
@@ -451,6 +452,8 @@
     var translitFW = /*[[${translitFW}]]*/ 'User Name';
     var containsSignatureName = /*[[${containsSignatureName}]]*/ 'User Name';
 
+    var isName = /*[[${isName}]]*/ 'User Name';
+
     var host = host_name+":"+host_port;
 
 
@@ -583,6 +586,12 @@
             }
 
         }
+
+        if(isName == true){
+            $('#checkname').click();
+
+        }
+
 
 
 
@@ -875,51 +884,24 @@
              var clickedCheckbox = $(this).attr("id");
              if(clickedCheckbox == 'checkname'){
 
-
-                 if($(this).is(":checked")){
-
                      saveMarkTextdetails("mark-NPS-name", "yes", appInternalID);
 
-                 }
-                 else{
-
-                     saveMarkTextdetails("mark-NPS-name", "no", appInternalID);
-
-
-                 }
 
 
              }
             if(clickedCheckbox == 'checkportrait'){
 
 
-                if($(this).is(":checked")){
-
                     saveMarkTextdetails("mark-NPS-portrait", "yes", appInternalID);
 
-                }
-                else{
-
-                    saveMarkTextdetails("mark-NPS-portrait", "no", appInternalID);
-
-
-                }
 
             }
 
             if(clickedCheckbox == 'checksignature'){
 
-                if($(this).is(":checked")){
-
                     saveMarkTextdetails("mark-NPS-signature", "yes", appInternalID);
 
-                }
-                else{
 
-                    saveMarkTextdetails("mark-NPS-signature", "no", appInternalID);
-
-
-                }
 
             }
 

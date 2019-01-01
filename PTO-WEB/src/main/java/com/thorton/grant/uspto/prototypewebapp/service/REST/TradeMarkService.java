@@ -200,6 +200,9 @@ public class TradeMarkService extends BaseRESTapiService {
         if(markField.equals("mark-NPS-name")){
             // ptoUser.setState(param); // sets state code
 
+            System.out.println("mark nps value : "+markValue);
+
+
             if(markValue.equals("yes")){
                 baseTrademarkApplication.getTradeMark().setName(true);
 
