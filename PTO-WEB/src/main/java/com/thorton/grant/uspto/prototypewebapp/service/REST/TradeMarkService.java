@@ -249,6 +249,15 @@ public class TradeMarkService extends BaseRESTapiService {
         }
 
 
+        if(markField.equals("mark-NPS-name-firstName")){
+            // ptoUser.setState(param); // sets state code
+
+            baseTrademarkApplication.getTradeMark().setNameFirstName(markValue);
+            appFieldReadable = "Mark NPS - name First Name";
+
+        }
+
+
 
 
 
