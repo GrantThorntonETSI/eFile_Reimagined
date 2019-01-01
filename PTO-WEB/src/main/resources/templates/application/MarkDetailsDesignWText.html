@@ -308,23 +308,24 @@
                                             <div id="yesnps" role="region" aria-labelledby="translit">
                                                 <p id="whichnps">Identify which of the following it contains:</p>
 
-                                                <input class="form-check-input checkmark" type="checkbox" value="name" aria-checked="false" tabindex="0" aria-labelledby="checkname" id="namechecked">
+                                                <input class="form-check-input checkmark" type="checkbox" value="" role="checkbox" aria-checked="false" tabindex="0" aria-labelledby="checkname" id="namechecked">
                                                 <label class="form-check-label form-check" for="namechecked" id="checkname"><span class="radio notspecial">Name</span></label>
+
 
 
                                                 <div id="yescontainsname" role="region" aria-labelledby="whichnps" class="form-group form-group-md">
                                                     <div class="row">
                                                         <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
-                                                            <label for="firstname">First Name</label>
-                                                            <input type="text" class="form-control" id="firstname">
+                                                            <label for="name-firstname">First Name</label>
+                                                            <input type="text" class="form-control" id="name-firstname">
                                                         </div>
                                                         <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
-                                                            <label for="middlename">Middle Name</label>
-                                                            <input type="text" class="form-control" id="middlename">
+                                                            <label for="name-middlename">Middle Name</label>
+                                                            <input type="text" class="form-control" id="name-middlename">
                                                         </div>
                                                         <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-3">
-                                                            <label for="lastname">Last Name</label>
-                                                            <input type="text" class="form-control" id="lastname">
+                                                            <label for="name-lastname">Last Name</label>
+                                                            <input type="text" class="form-control" id="name-lastname">
                                                         </div>
                                                         <div class="form-group form-group-md col-xs-12 col-md-3">
                                                             <button type="button" class="btn-sm btn-success add ctr">Add Additional</button>
@@ -339,16 +340,16 @@
                                                 <div id="yescontainsportrait" role="region" aria-labelledby="whichnps" class="form-group form-group-md">
                                                     <div class="row">
                                                         <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
-                                                            <label for="firstname">First Name</label>
-                                                            <input type="text" class="form-control" id="firstname">
+                                                            <label for="portrait-firstname">First Name</label>
+                                                            <input type="text" class="form-control" id="portrait-firstname">
                                                         </div>
                                                         <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
-                                                            <label for="middlename">Middle Name</label>
-                                                            <input type="text" class="form-control" id="middlename">
+                                                            <label for="portrait-middlename">Middle Name</label>
+                                                            <input type="text" class="form-control" id="portrait-middlename">
                                                         </div>
                                                         <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-3">
-                                                            <label for="lastname">Last Name</label>
-                                                            <input type="text" class="form-control" id="lastname">
+                                                            <label for="portrait-lastname">Last Name</label>
+                                                            <input type="text" class="form-control" id="portrait-lastname">
                                                         </div>
                                                         <div class="form-group form-group-md col-xs-12 col-md-3">
                                                             <button type="button" class="btn-sm btn-success add ctr">Add Additional</button>
@@ -363,16 +364,16 @@
                                                 <div id="yescontainssignature" role="region" aria-labelledby="whichnps" class="form-group form-group-md">
                                                     <div class="row">
                                                         <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
-                                                            <label for="firstname">First Name</label>
-                                                            <input type="text" class="form-control" id="firstname">
+                                                            <label for="signature-firstname">First Name</label>
+                                                            <input type="text" class="form-control" id="signature-firstname">
                                                         </div>
                                                         <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
-                                                            <label for="middlename">Middle Name</label>
-                                                            <input type="text" class="form-control" id="middlename">
+                                                            <label for="signature-middlename">Middle Name</label>
+                                                            <input type="text" class="form-control" id="signature-middlename">
                                                         </div>
                                                         <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-3">
-                                                            <label for="lastname">Last Name</label>
-                                                            <input type="text" class="form-control" id="lastname">
+                                                            <label for="signature-lastname">Last Name</label>
+                                                            <input type="text" class="form-control" id="signature-lastname">
                                                         </div>
                                                         <div class="form-group form-group-md col-xs-12 col-md-3">
                                                             <button type="button" class="btn-sm btn-success add ctr">Add Additional</button>
@@ -452,7 +453,7 @@
     var translitFW = /*[[${translitFW}]]*/ 'User Name';
     var containsSignatureName = /*[[${containsSignatureName}]]*/ 'User Name';
 
-
+    var isName = /*[[${isName}]]*/ 'User Name';
     var isSignature = /*[[${isSignature}]]*/ 'User Name';
     var isPortrait = /*[[${isPortrait}]]*/ 'User Name';
 
@@ -891,34 +892,56 @@
         //////////////////////////////////////////////////////////////////////
 
 
-        $('label.form-check').click( function () {
+
+        $('#namechecked').click(function () {
+
+            if($(this).is(":checked")) {
+
+                saveMarkTextdetails("mark-NPS-name", "yes", appInternalID);
+            }
+            else{
+                saveMarkTextdetails("mark-NPS-name", "no", appInternalID);
+            }
+        });
+
+        $('#portraitchecked').click(function () {
+
+            if($(this).is(":checked")) {
+
+                saveMarkTextdetails("mark-NPS-portrait", "yes", appInternalID);
+            }
+            else{
+                saveMarkTextdetails("mark-NPS-portrait", "no", appInternalID);
+            }
+        });
+
+        $('#signaturechecked').click(function () {
+
+            if($(this).is(":checked")) {
+
+                saveMarkTextdetails("mark-NPS-signature", "yes", appInternalID);
+            }
+            else{
+                saveMarkTextdetails("mark-NPS-signature", "no", appInternalID);
+            }
+        });
 
 
-             var clickedCheckbox = $(this).attr("id");
-             if(clickedCheckbox == 'checkname'){
 
-                     saveMarkTextdetails("mark-NPS-name", "yes", appInternalID);
+        //////////////////////////////////////////////////////////////////////
+        // field auto save mark literal
+        //////////////////////////////////////////////////////////////////////
 
+        $('#mark-literal').focusout( function () {
 
+            var field_value = $(this).val();
+            if(field_value != ""){
+                $('#nextButton').attr("disabled",false);
 
-             }
-            if(clickedCheckbox == 'checkportrait'){
-
-
-                    saveMarkTextdetails("mark-NPS-portrait", "yes", appInternalID);
-
-
+                saveMarkTextdetails("mark-literal", field_value, appInternalID);
             }
 
-            if(clickedCheckbox == 'checksignature'){
-
-                    saveMarkTextdetails("mark-NPS-signature", "yes", appInternalID);
-
-
-
-            }
-
-
+            // enable next link
 
 
 
