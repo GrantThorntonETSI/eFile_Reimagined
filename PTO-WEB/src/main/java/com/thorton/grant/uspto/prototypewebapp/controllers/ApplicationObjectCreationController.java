@@ -866,12 +866,18 @@ public class ApplicationObjectCreationController {
                     boolean transliterationFW = baseTrademarkApplication.getTradeMark().isForeignLanguateTransliterationWording();
 
                     boolean containsSignatureName = baseTrademarkApplication.getTradeMark().isContainNamePortaitSignature();
+                    boolean isName = baseTrademarkApplication.getTradeMark().isName();
+                    boolean isSignature = baseTrademarkApplication.getTradeMark().isSignature();
+                    boolean isPortrait =  baseTrademarkApplication.getTradeMark().isPortrait();
 
                     model.addAttribute("markColorClaim", colorClaim);
                     model.addAttribute("markColorClaimBW", acceptBW);
                     model.addAttribute("translationFW", translationFW);
                     model.addAttribute("translitFW", transliterationFW);
                     model.addAttribute("containsSignatureName", containsSignatureName );
+                    model.addAttribute("isName", isName );
+                    model.addAttribute("isSignature", isSignature );
+                    model.addAttribute("isPortrait", isPortrait );
                 }
                 catch ( StorageException ex){
                     model.addAttribute("message", "ERROR: Mark Image upload failed due to error: "+ex );

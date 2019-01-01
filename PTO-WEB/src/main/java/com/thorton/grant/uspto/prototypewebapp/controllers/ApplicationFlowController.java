@@ -920,6 +920,8 @@ public class ApplicationFlowController {
         boolean containsSignatureName = baseTrademarkApplication.getTradeMark().isContainNamePortaitSignature();
 
         boolean isName = baseTrademarkApplication.getTradeMark().isName();
+        boolean isSignature = baseTrademarkApplication.getTradeMark().isSignature();
+        boolean isPortrait =  baseTrademarkApplication.getTradeMark().isPortrait();
 
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
@@ -928,6 +930,8 @@ public class ApplicationFlowController {
         model.addAttribute("containsSignatureName", containsSignatureName );
 
         model.addAttribute("isName", isName );
+        model.addAttribute("isSignature", isSignature );
+        model.addAttribute("isPortrait", isPortrait );
 
         return "application/MarkDetailsDesignWText";
 
