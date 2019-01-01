@@ -181,6 +181,31 @@ public class TradeMarkService extends BaseRESTapiService {
 
         }
 
+        if(markField.equals("mark-name-sig-portrait")){
+            // ptoUser.setState(param); // sets state code
+
+            if(markValue.equals("yes")){
+                baseTrademarkApplication.getTradeMark().setContainNamePortaitSignature(true);
+
+            }
+            if(markValue.equals("no")){
+                baseTrademarkApplication.getTradeMark().setContainNamePortaitSignature(false);
+
+            }
+
+            appFieldReadable = "Mark Name Signature Portrait Setting";
+
+        }
+
+
+
+
+
+
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////
+        // mark disclaimer fields
+        //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
         if(markField.equals("mark-active-disclaimer")){
