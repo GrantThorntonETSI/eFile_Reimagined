@@ -805,6 +805,85 @@ public class ApplicationObjectCreationController {
 
 
 
+    // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
+    @PostMapping(value = "/Mark/consent/add")
+    public String uploadMarkConset(
+            @RequestParam(name="file", required=false) MultipartFile file,
+            @RequestParam String AppInternalID,
+            Model model) {
+
+
+
+        System.out.println("1111111111111111111111111111111111111111111111122222222222222222222222222222222222222222");
+        System.out.println("mark consent file upload controller !!!!!!!!!!!");
+        System.out.println("1111111111111111111111111111111111111111111111122222222222222222222222222222222222222222");
+        // create a new application and tie it to user then save it to repository
+        // create attorneyDTO + to model
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+        System.out.println("1111111111111111111111111111111111111111111111111111111111111111111111111111111");
+        System.out.println("app internal id : "+AppInternalID);
+        System.out.println("1111111111111111111111111111111111111111111111111111111111111111111111111111111");
+
+        if(AppInternalID.contains(",")){
+            int index = AppInternalID.indexOf(",");
+            AppInternalID = AppInternalID.substring(0, index-1);
+        }
+
+        System.out.println("22222222222222222222222222222222222222222222222222222222222222222222222222222222");
+        System.out.println("app internal id : "+AppInternalID);
+        System.out.println("222222222222222222222222222222222222222222222222222222222222222222222222222222222");
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID( AppInternalID);
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
+        model.addAttribute("hostBean", hostBean);
+        String trademarkInternalID = baseTrademarkApplication.getApplicationInternalID();
+
+        //TradeMark tradeMark = new TradeMark();
+        if(file != null){
+
+            if(file.isEmpty() == false) {
+
+
+                try {
+                    String file_path = storageService.store(file);
+
+                    baseTrademarkApplication.getTradeMark().setTrademarkConsentFilePath("/files/"+file_path);
+                    model.addAttribute("markConsentUploaded", true);
+                }
+                catch ( StorageException ex){
+                    model.addAttribute("message", "ERROR: Mark Image upload failed due to error: "+ex );
+                    // return "forward:/mark/designWithText/?trademarkID="+trademarkInternalID;
+                    return "application/MarkDetailsUpload";
+
+                }
+
+
+                baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+
+            }
+
+        }
+
+        return "application/MarkDetailsDesignWText";
+        //return "application/MarkDetailsUpload";
+    }
+    ///////////////////////////////////////////////////////////////////////////////
+    // end of attorney add
+    ///////////////////////////////////////////////////////////////////////////////
+
+
+
 }
 
 

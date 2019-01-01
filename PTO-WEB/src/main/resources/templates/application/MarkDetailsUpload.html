@@ -161,7 +161,7 @@
                                     </div>
 
 
-                                    <input  style=" position:relative; left: -200px; width: 1px; height:1px;" name="AppInternalID" id="appInternalIDForm"   value="xxxxxxxx" />
+                                    <input  style=" position:relative; display: none; width: 1px; height:1px;" name="AppInternalID" id="appInternalIDForm"   value="" />
                                 </fieldset>
 
                                 <button type="submit" id="addOwnerConfirm" class="btn btn-sm" >Upload file</button>
@@ -211,7 +211,7 @@
 
 
 <script>
-    $('#appInternalIDForm').val(appInternalID);
+
 
     if(image_path != null){
         $('#markImage').attr("src",image_path );
@@ -250,6 +250,7 @@
         $('[data-toggle="tooltip"]').tooltip();
 
 
+        $('#appInternalIDForm').val(appInternalID);
 
         $('#prevButton').click(function () {
             location.href=prevLinkURL;

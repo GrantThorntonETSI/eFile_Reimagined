@@ -29,6 +29,8 @@ public class TradeMark extends BaseEntity {
     private String trademarkImagePath;
     private String trademarkBWImagePath;
 
+    private String trademarkConsentFilePath; // pdf or .doc
+
 
 
 
@@ -72,6 +74,12 @@ public class TradeMark extends BaseEntity {
 
     // name / portrait / Signature
     private boolean containNamePortaitSignature;
+
+
+
+
+
+
 
 
 
@@ -366,6 +374,14 @@ public class TradeMark extends BaseEntity {
 
     public void setMarkWordingSignifiganceText(String markWordingSignifiganceText) {
         this.markWordingSignifiganceText = markWordingSignifiganceText;
+    }
+
+    public String getTrademarkConsentFilePath() {
+        return trademarkConsentFilePath;
+    }
+
+    public void setTrademarkConsentFilePath(String trademarkConsentFilePath) {
+        this.trademarkConsentFilePath = trademarkConsentFilePath;
     }
 
     @Override

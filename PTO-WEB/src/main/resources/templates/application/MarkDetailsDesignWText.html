@@ -117,7 +117,7 @@
         </div><!--END row-->
 
 
-        <div class="row" id="panels" style="position: relative; top:-222px; left:-135px; ">
+        <div class="row" style="position: relative; top:-222px; left:-135px; ">
             <div class="row" style="position: relative;">
                 <div class="col-xs-6">
                     <h1>Trademark Details - Design with Text</h1>
@@ -287,11 +287,11 @@
                                 </div>
                             </div><!--END transliteration-->
                             <div class="row">
-                                <div class="col-xs-12">
+                                <div class="col-sm-12">
                                     <section aria-label="name portrait signature">
                                         <div class="card-text">
                                             <div role="heading" aria-level="2">
-                                                <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#nps" aria-controls="nps" aria-expanded="false" id="npsbtn"><span class="glyphicon glyphicon-triangle-right"></span>Name / Portrait / Signature</button>
+                                                <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#nps" aria-controls="nps" aria-expanded="false" id="npsbtn"><span class="glyphicon glyphicon-triangle-right"></span><span id="toggleglyph" class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Name / Portrait / Signature</button>
                                             </div>
                                         </div>
                                         <div id="nps" class="collapse Accordion-panel" role="region" aria-labelledby="npsbtn">
@@ -299,20 +299,112 @@
                                                 <p>If a name(s) shown in the mark identifies a particular living individual, enter the name of the individual being identified. In addition, attach a .jpg or .pdf file showing the actual consent of the named individual to the use and registration of his or her name. Select &#8220;No&#8221; if the mark includes a name(s) but this does NOT identify a particular living person. <a href="https://tmep.uspto.gov/RDMS/TMEP/current#/current/TMEP-1200d1e4891.html" target="_blank">More information</a>.</p>
                                             </div>
                                         </div>
-                                        <div class="col-xs-12">
+                                        <div>
                                             <p id="nps">Does your mark contain a name, portrait, or signature?</p>
-                                            <div  aria-labelledby="nps">
-                                               <input type="radio" name="npsradioyes" id="inlineRadio7" value="yes">Yes
-                                                <input type="radio" name="npsradiono" id="inlineRadio8" value="no">No
+                                            <div role="radiogroup" aria-labelledby="nps">
+                                                <label for="inlineRadio7" class="radio-inline"><input type="radio" name="npsradio" id="inlineRadio7" value="yes">Yes</label>
+                                                <label for="inlineRadio8" class="radio-inline"><input type="radio" name="npsradio" id="inlineRadio8" value="no">No</label>
                                             </div><!--END radiogroup-->
                                             <div id="yesnps" role="region" aria-labelledby="translit">
-                                                <input class="form-check-input checkmark" type="checkbox" value="name" aria-checked="false" tabindex="0"  aria-labelledby="checkname" id="namechecked">
+                                                <p id="whichnps">Identify which of the following it contains:</p>
+                                                <input class="form-check-input checkmark" type="checkbox" value="name" aria-checked="false" tabindex="0" aria-labelledby="checkname" id="namechecked">
                                                 <label class="form-check-label form-check" for="namechecked" id="checkname"><span class="radio notspecial">Name</span></label>
+
+
+                                                <div id="yescontainsname" role="region" aria-labelledby="whichnps" class="form-group form-group-md">
+                                                    <div class="row">
+                                                        <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
+                                                            <label for="firstname">First Name</label>
+                                                            <input type="text" class="form-control" id="firstname">
+                                                        </div>
+                                                        <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
+                                                            <label for="middlename">Middle Name</label>
+                                                            <input type="text" class="form-control" id="middlename">
+                                                        </div>
+                                                        <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-3">
+                                                            <label for="lastname">Last Name</label>
+                                                            <input type="text" class="form-control" id="lastname">
+                                                        </div>
+                                                        <div class="form-group form-group-md col-xs-12 col-md-3">
+                                                            <button type="button" class="btn-sm btn-success add ctr">Add Additional</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
                                                 <input class="form-check-input checkmark" type="checkbox" value="portrait" aria-checked="false" tabindex="0" id="portraitchecked" aria-labelledby="checkportrait">
                                                 <label class="form-check-label form-check" for="portraitchecked" id="checkportrait"><span class="radio notspecial" id="collect">Portrait</span></label>
+
+                                                <div id="yescontainsportrait" role="region" aria-labelledby="whichnps" class="form-group form-group-md">
+                                                    <div class="row">
+                                                        <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
+                                                            <label for="firstname">First Name</label>
+                                                            <input type="text" class="form-control" id="firstname">
+                                                        </div>
+                                                        <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
+                                                            <label for="middlename">Middle Name</label>
+                                                            <input type="text" class="form-control" id="middlename">
+                                                        </div>
+                                                        <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-3">
+                                                            <label for="lastname">Last Name</label>
+                                                            <input type="text" class="form-control" id="lastname">
+                                                        </div>
+                                                        <div class="form-group form-group-md col-xs-12 col-md-3">
+                                                            <button type="button" class="btn-sm btn-success add ctr">Add Additional</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
                                                 <input class="form-check-input checkmark" type="checkbox" value="signature" aria-checked="false" tabindex="0" aria-labelledby="checksignature" id="signaturechecked">
                                                 <label class="form-check-label form-check" for="signaturechecked" id="checksignature"><span class="radio notspecial" id="collectm">Signature</span></label>
 
+                                                <div id="yescontainssignature" role="region" aria-labelledby="whichnps" class="form-group form-group-md">
+                                                    <div class="row">
+                                                        <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
+                                                            <label for="firstname">First Name</label>
+                                                            <input type="text" class="form-control" id="firstname">
+                                                        </div>
+                                                        <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
+                                                            <label for="middlename">Middle Name</label>
+                                                            <input type="text" class="form-control" id="middlename">
+                                                        </div>
+                                                        <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-3">
+                                                            <label for="lastname">Last Name</label>
+                                                            <input type="text" class="form-control" id="lastname">
+                                                        </div>
+                                                        <div class="form-group form-group-md col-xs-12 col-md-3">
+                                                            <button type="button" class="btn-sm btn-success add ctr">Add Additional</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <p id="individualiving">Is this of a living individual?</p>
+                                                <div role="radiogroup" class="form-group form-group-md" aria-labelledby="individualiving">
+                                                    <label for="inlineRadio17" class="radio-inline"><input type="radio" name="livindividualradio" id="inlineRadio17" value="yes">Yes</label>
+                                                    <label for="inlineRadio18" class="radio-inline"><input type="radio" name="livindividualradio" id="inlineRadio18" value="no">No</label>
+                                                </div><!--END radiogroup-->
+                                                <h4 class="weight600">Upload Consent</h4></div>
+                                                <p><a href="#"><span class="glyphicon glyphicon-download" aria-hidden="true"></span> Consent Template</a></p>
+                                                <form action="/Mark/consent/add" method="post" enctype="multipart/form-data" id="markConsentForm" class="form-horizontal">
+                                                    <div class="form-group form-group-md">
+                                                        <label class="small upload-drop-zone" for="consentfile"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>
+                                                            Upload Consent</label>
+                                                        <input type="file" id="consentfile" name="file" class="form-control">
+                                                    </div><!-- Drop Zone -->
+                                                    <div class="row">
+                                                        <div class="js-upload-finished col-xs-12 col-md-10 col-lg-8">
+                                                            <p id="uploaded">Processed files</p>
+                                                            <div class="list-group">
+                                                                <a href="#" class="list-group-item list-group-item-success" aria-labelledby="uploaded"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <input  style=" position:relative; display: none; width: 1px; height:1px;" name="AppInternalID" id="appInternalIDForm"   value="" />
+                                                    <div class="col-xs-12">
+                                                        <button type="submit" form="markConsentForm" class="btn btn-sm btn-primary add ctr">Continue</button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </section>
@@ -393,7 +485,7 @@
 
         }, 500)
 
-
+        $('#appInternalIDForm').val(appInternalID);
         //////////////////////////////////////////////////////////////////////
         // set mark image based on persisted values
         //////////////////////////////////////////////////////////////////////
