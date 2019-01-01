@@ -622,6 +622,12 @@
             location.href=nextLinkURL;
         });
 
+        if($('#mark-literal').val()!= ""){
+            $('#nextButton').attr("disabled",false);
+
+        }
+
+
         //////////////////////////////////////////////////////////////////////
         // toggle between color or bw local
         //////////////////////////////////////////////////////////////////////
@@ -652,10 +658,12 @@
         $('#mark-literal').focusout( function () {
 
             var field_value = $(this).val();
+            if(field_value != ""){
+                $('#nextButton').attr("disabled",false);
 
-            $('#nextButton').attr("disabled",false);
+                saveMarkTextdetails("mark-literal", field_value, appInternalID);
+            }
 
-            saveMarkTextdetails("mark-literal", field_value, appInternalID);
             // enable next link
 
 
