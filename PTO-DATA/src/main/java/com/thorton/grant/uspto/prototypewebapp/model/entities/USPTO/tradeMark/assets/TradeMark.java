@@ -77,7 +77,20 @@ public class TradeMark extends BaseEntity {
 
     private boolean consentFileUploaded = false;
 
+    private boolean isName;
+    private String nameFirstName;
+    private String nameMiddleName;
+    private String nameLastName;
 
+    private boolean isPortrait;
+    private String portraitFirstName;
+    private String portraitMiddleName;
+    private String portraitLastName;
+
+    private boolean isSignature;
+    private String signatureFirstName;
+    private String signatureMiddleName;
+    private String signatureLastName;
 
 
 
@@ -392,6 +405,102 @@ public class TradeMark extends BaseEntity {
 
     public void setConsentFileUploaded(boolean consentFileUploaded) {
         this.consentFileUploaded = consentFileUploaded;
+    }
+
+    public boolean isName() {
+        return isName;
+    }
+
+    public void setName(boolean name) {
+        isName = name;
+    }
+
+    public String getNameFirstName() {
+        return nameFirstName;
+    }
+
+    public void setNameFirstName(String nameFirstName) {
+        this.nameFirstName = nameFirstName;
+    }
+
+    public String getNameMiddleName() {
+        return nameMiddleName;
+    }
+
+    public void setNameMiddleName(String nameMiddleName) {
+        this.nameMiddleName = nameMiddleName;
+    }
+
+    public String getNameLastName() {
+        return nameLastName;
+    }
+
+    public void setNameLastName(String nameLastName) {
+        this.nameLastName = nameLastName;
+    }
+
+    public boolean isPortrait() {
+        return isPortrait;
+    }
+
+    public void setPortrait(boolean portrait) {
+        isPortrait = portrait;
+    }
+
+    public String getPortraitFirstName() {
+        return portraitFirstName;
+    }
+
+    public void setPortraitFirstName(String portraitFirstName) {
+        this.portraitFirstName = portraitFirstName;
+    }
+
+    public String getPortraitMiddleName() {
+        return portraitMiddleName;
+    }
+
+    public void setPortraitMiddleName(String portraitMiddleName) {
+        this.portraitMiddleName = portraitMiddleName;
+    }
+
+    public String getPortraitLastName() {
+        return portraitLastName;
+    }
+
+    public void setPortraitLastName(String portraitLastName) {
+        this.portraitLastName = portraitLastName;
+    }
+
+    public boolean isSignature() {
+        return isSignature;
+    }
+
+    public void setSignature(boolean signature) {
+        isSignature = signature;
+    }
+
+    public String getSignatureFirstName() {
+        return signatureFirstName;
+    }
+
+    public void setSignatureFirstName(String signatureFirstName) {
+        this.signatureFirstName = signatureFirstName;
+    }
+
+    public String getSignatureMiddleName() {
+        return signatureMiddleName;
+    }
+
+    public void setSignatureMiddleName(String signatureMiddleName) {
+        this.signatureMiddleName = signatureMiddleName;
+    }
+
+    public String getSignatureLastName() {
+        return signatureLastName;
+    }
+
+    public void setSignatureLastName(String signatureLastName) {
+        this.signatureLastName = signatureLastName;
     }
 
     @Override
