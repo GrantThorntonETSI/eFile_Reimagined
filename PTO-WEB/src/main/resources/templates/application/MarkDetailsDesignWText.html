@@ -856,6 +856,73 @@
 
 
 
+        //////////////////////////////////////////////////////////////////////
+        // field auto save name / portrai/ signature BS check boxes
+        //////////////////////////////////////////////////////////////////////
+
+
+        $('label.form-check').click( function () {
+
+
+             var clickedCheckbox = $(this).attr("id");
+             if(clickedCheckbox == 'checkname'){
+
+
+                 if($(this).is(":checked")){
+
+                     saveMarkTextdetails("mark-NPS-name", "yes", appInternalID);
+
+                 }
+                 else{
+
+                     saveMarkTextdetails("mark-NPS-name", "no", appInternalID);
+
+
+                 }
+
+
+             }
+            if(clickedCheckbox == 'checkportrait'){
+
+
+                if($(this).is(":checked")){
+
+                    saveMarkTextdetails("mark-NPS-portrait", "yes", appInternalID);
+
+                }
+                else{
+
+                    saveMarkTextdetails("mark-NPS-portrait", "no", appInternalID);
+
+
+                }
+
+            }
+
+            if(clickedCheckbox == 'checksignature'){
+
+                if($(this).is(":checked")){
+
+                    saveMarkTextdetails("mark-NPS-signature", "yes", appInternalID);
+
+                }
+                else{
+
+                    saveMarkTextdetails("mark-NPS-signature", "no", appInternalID);
+
+
+                }
+
+            }
+
+
+
+
+
+        });
+
+
+
 
 
 
