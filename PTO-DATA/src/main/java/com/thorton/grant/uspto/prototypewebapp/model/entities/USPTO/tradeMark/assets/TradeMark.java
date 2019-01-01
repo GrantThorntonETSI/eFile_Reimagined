@@ -75,6 +75,8 @@ public class TradeMark extends BaseEntity {
     // name / portrait / Signature
     private boolean containNamePortaitSignature;
 
+    private boolean consentFileUploaded = false;
+
 
 
 
@@ -382,6 +384,14 @@ public class TradeMark extends BaseEntity {
 
     public void setTrademarkConsentFilePath(String trademarkConsentFilePath) {
         this.trademarkConsentFilePath = trademarkConsentFilePath;
+    }
+
+    public boolean isConsentFileUploaded() {
+        return consentFileUploaded;
+    }
+
+    public void setConsentFileUploaded(boolean consentFileUploaded) {
+        this.consentFileUploaded = consentFileUploaded;
     }
 
     @Override

@@ -858,6 +858,7 @@ public class ApplicationObjectCreationController {
                     String file_path = storageService.store(file);
 
                     baseTrademarkApplication.getTradeMark().setTrademarkConsentFilePath("/files/"+file_path);
+                    baseTrademarkApplication.getTradeMark().setConsentFileUploaded(true);
                     model.addAttribute("markConsentUploaded", true);
                 }
                 catch ( StorageException ex){

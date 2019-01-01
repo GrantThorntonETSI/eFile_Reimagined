@@ -384,27 +384,35 @@
                                                     <label for="inlineRadio17" class="radio-inline"><input type="radio" name="livindividualradio" id="inlineRadio17" value="yes">Yes</label>
                                                     <label for="inlineRadio18" class="radio-inline"><input type="radio" name="livindividualradio" id="inlineRadio18" value="no">No</label>
                                                 </div><!--END radiogroup-->
-                                                <h4 class="weight600">Upload Consent</h4></div>
-                                                <p><a href="#"><span class="glyphicon glyphicon-download" aria-hidden="true"></span> Consent Template</a></p>
-                                                <form action="/Mark/consent/add" method="post" enctype="multipart/form-data" id="markConsentForm" class="form-horizontal">
-                                                    <div class="form-group form-group-md">
-                                                        <label class="small upload-drop-zone" for="consentfile"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>
-                                                            Upload Consent</label>
-                                                        <input type="file" id="consentfile" name="file" class="form-control">
-                                                    </div><!-- Drop Zone -->
-                                                    <div class="row">
-                                                        <div class="js-upload-finished col-xs-12 col-md-10 col-lg-8">
-                                                            <p id="uploaded">Processed files</p>
-                                                            <div class="list-group">
-                                                                <a href="#" class="list-group-item list-group-item-success" aria-labelledby="uploaded"></a>
+
+                                               <div th:if="${baseTrademarkApplication.tradeMark.consentFileUploaded == false}">
+                                                    <h4 class="weight600">Upload Consent <i class="material-icons" style="position: relative; bottom: -5px;">cloud_upload</i></h4>
+                                                    <p><a href="#"><span class="glyphicon glyphicon-download" aria-hidden="true"></span> Consent Template</a></p>
+                                                    <form action="/Mark/consent/add" method="post" enctype="multipart/form-data" id="markConsentForm" class="form-horizontal">
+                                                        <div class="form-group form-group-md">
+                                                            <label class="small upload-drop-zone" for="consentfile"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>
+                                                                Upload Consent</label>
+                                                            <input type="file" id="consentfile" name="file" class="form-control">
+                                                        </div><!-- Drop Zone -->
+                                                        <div class="row">
+                                                            <div class="js-upload-finished col-xs-12 col-md-10 col-lg-8">
+                                                                <p id="uploaded">Processed files</p>
+                                                                <div class="list-group">
+                                                                    <a href="#" class="list-group-item list-group-item-success" aria-labelledby="uploaded"></a>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <input  style=" position:relative; display: none; width: 1px; height:1px;" name="AppInternalID" id="appInternalIDForm"   value="" />
-                                                    <div class="col-xs-12">
-                                                        <button type="submit" form="markConsentForm" class="btn btn-sm btn-primary add ctr">Continue</button>
-                                                    </div>
-                                                </form>
+                                                        <input  style=" position:relative; display: none; width: 1px; height:1px;" name="AppInternalID" id="appInternalIDForm"   value="" />
+                                                        <div class="col-xs-12">
+                                                            <button type="submit" form="markConsentForm" class="btn btn-sm btn-primary add ctr">Continue</button>
+                                                        </div>
+                                                    </form>
+                                               </div>
+
+                                            <div th:if="${baseTrademarkApplication.tradeMark.consentFileUploaded == true}">
+                                                <h4 class="weight600">Consent Uploaded <i class="material-icons" style="position: relative; bottom: -5px;">check_circle</i></h4>
+
+                                            </div>
                                             </div>
                                         </div>
                                     </section>
