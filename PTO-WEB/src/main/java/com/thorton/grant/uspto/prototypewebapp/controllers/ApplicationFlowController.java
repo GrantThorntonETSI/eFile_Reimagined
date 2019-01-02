@@ -590,6 +590,65 @@ public class ApplicationFlowController {
         return "application/owner/jointVC/ownerInfo";
     }
 
+    @RequestMapping({"/application/owner/us/trust"})
+    public String ownerTrustUSInfo(WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
+
+        // create a new application and tie it to user then save it to repository
+        // create attorneyDTO + to model
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
+        model.addAttribute("hostBean", hostBean);
+
+        NewOwnerContactFormDTO newOwnerContactFormDTO = new NewOwnerContactFormDTO();
+        partnerDTO partner = new partnerDTO();
+        newOwnerContactFormDTO.addPartner(partner);
+
+        model.addAttribute("addNewOwnerContactFormDTO", newOwnerContactFormDTO);
+
+        return "application/owner/trust/ownerInfo";
+    }
+
+
+
+    @RequestMapping({"/application/owner/us/estate"})
+    public String ownerEstateUSInfo(WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
+
+        // create a new application and tie it to user then save it to repository
+        // create attorneyDTO + to model
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
+        model.addAttribute("hostBean", hostBean);
+
+        NewOwnerContactFormDTO newOwnerContactFormDTO = new NewOwnerContactFormDTO();
+        partnerDTO partner = new partnerDTO();
+        newOwnerContactFormDTO.addPartner(partner);
+
+        model.addAttribute("addNewOwnerContactFormDTO", newOwnerContactFormDTO);
+
+        return "application/owner/estate/ownerInfo";
+    }
+
+
 
 
 
