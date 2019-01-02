@@ -321,11 +321,11 @@
                                                         </div>
                                                         <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
                                                             <label for="name-middlename">Middle Name</label>
-                                                            <input type="text" class="form-control" id="name-middlename">
+                                                            <input type="text" class="form-control" id="name-middlename" th:value="${baseTrademarkApplication.tradeMark.nameMiddleName}">
                                                         </div>
                                                         <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-3">
                                                             <label for="name-lastname">Last Name</label>
-                                                            <input type="text" class="form-control" id="name-lastname">
+                                                            <input type="text" class="form-control" id="name-lastname" th:value="${baseTrademarkApplication.tradeMark.nameLastName}">
                                                         </div>
                                                         <div class="form-group form-group-md col-xs-12 col-md-3">
                                                             <button type="button" class="btn-sm btn-success add ctr">Add Additional</button>
@@ -937,6 +937,33 @@
             var field_value = $(this).val();
             if(field_value != ""){
                 saveMarkTextdetails("mark-NPS-name-firstName", field_value, appInternalID);
+            }
+
+        });
+
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save mark NPS - name-middleName
+        //////////////////////////////////////////////////////////////////////
+
+        $('#name-middlename').focusout( function () {
+
+            var field_value = $(this).val();
+            if(field_value != ""){
+                saveMarkTextdetails("mark-NPS-name-middleName", field_value, appInternalID);
+            }
+
+        });
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save mark NPS - name-lastName
+        //////////////////////////////////////////////////////////////////////
+
+        $('#name-lastname').focusout( function () {
+
+            var field_value = $(this).val();
+            if(field_value != ""){
+                saveMarkTextdetails("mark-NPS-name-lastName", field_value, appInternalID);
             }
 
         });
