@@ -131,7 +131,7 @@
                                                     <option value="corp">Corporation</option>
                                                     <option value="limitedliabilty">Limited Liability Company</option>
                                                     <option value="partnership">Partnership</option>
-                                                    <option value="limited">Limited Partnership</option>
+                                                    <option value="llp">Limited Partnership</option>
                                                     <option value="jointv">Joint Venture</option>
                                                     <option value="trust">Trust</option>
                                                     <option value="estate">Estate</option>
@@ -247,6 +247,8 @@
 
     var ownerDomUSPartnerFormURL = "../../application/owner/us/partnership/?trademarkID="+appInternalID;
 
+    var ownerDomUSLLPFormURL = "../../application/owner/us/llp/?trademarkID="+appInternalID;
+
 </script>
 
 
@@ -328,6 +330,10 @@
             if( formType == 'partnership'){
 
                 testURL = ownerDomUSPartnerFormURL;
+            }
+            if( formType == 'llp'){
+
+                testURL = ownerDomUSLLPFormURL;
             }
 
 
