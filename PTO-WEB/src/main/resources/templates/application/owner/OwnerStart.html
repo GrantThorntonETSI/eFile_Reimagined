@@ -421,9 +421,13 @@
 
 
 
-        $('#managedContactFillFormAction').click(function () {
+
+
+
+        $('a.fromcontact').click(function () {
 
             var contactEmail = $(this).parent().next().html();
+
             setformWithManagedContact(contactEmail);
 
 
@@ -448,8 +452,6 @@
             type: 'GET',
             success: function(data){
 
-
-
                 // parse out status msg:
                 var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
 
@@ -459,8 +461,6 @@
 
 
                 if(s_code.trim() == "200"){
-
-                    alert(s_msg);
 
                     //if(data.contains("status: 200")){
                     // show confirmation check mark on form
