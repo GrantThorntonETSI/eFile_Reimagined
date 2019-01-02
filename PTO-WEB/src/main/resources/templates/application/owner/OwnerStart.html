@@ -237,12 +237,15 @@
     var prevLinkURL = "../../application/AttorneySet/?trademarkID="+appInternalID;
     var prevLinkURLAttorneyFalse = "../../application/start/?trademarkID="+appInternalID;
     var nextLinkURL = "../../application/OwnerSetView/?trademarkID="+appInternalID;
-
     var ownerDomUSSolPFormURL = "../../application/owner/us/solp/?trademarkID="+appInternalID;
 
     var ownerDomUSIndFormURL = "../../application/owner/Ind/info/?trademarkID="+appInternalID;
 
     var ownerDomUSLLCFormURL = "../../application/owner/us/llc/?trademarkID="+appInternalID;
+
+    var ownerDomUSCorpFormURL = "../../application/owner/us/corp/?trademarkID="+appInternalID;
+
+    var ownerDomUSPartnerFormURL = "../../application/owner/us/partnership/?trademarkID="+appInternalID;
 
 </script>
 
@@ -316,6 +319,15 @@
             if( formType == 'limitedliabilty'){
 
                 testURL = ownerDomUSLLCFormURL;
+            }
+
+            if( formType == 'corp'){
+
+                testURL = ownerDomUSCorpFormURL;
+            }
+            if( formType == 'partnership'){
+
+                testURL = ownerDomUSPartnerFormURL;
             }
 
 

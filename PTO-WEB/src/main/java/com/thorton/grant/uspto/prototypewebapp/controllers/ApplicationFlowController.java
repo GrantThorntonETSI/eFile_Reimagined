@@ -474,7 +474,7 @@ public class ApplicationFlowController {
         model.addAttribute("addNewOwnerContactFormDTO", newOwnerContactFormDTO);
 
 
-        return "application/owner/corp/ownerInfo";
+        return "application/owner/corp/ownerInfo2";
     }
 
     @RequestMapping({"/application/owner/us/llc"})
@@ -533,7 +533,7 @@ public class ApplicationFlowController {
 
         model.addAttribute("addNewOwnerContactFormDTO", newOwnerContactFormDTO);
 
-        return "application/owner/partnership/ownerInfo";
+        return "application/owner/partnership/ownerInfo2";
     }
 
 
