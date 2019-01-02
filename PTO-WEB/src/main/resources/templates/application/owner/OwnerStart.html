@@ -242,6 +242,8 @@
 
     var ownerDomUSIndFormURL = "../../application/owner/Ind/info/?trademarkID="+appInternalID;
 
+    var ownerDomUSLLCFormURL = "../../application/owner/us/llc/?trademarkID="+appInternalID;
+
 </script>
 
 
@@ -299,6 +301,7 @@
 
 
             var formType = $(this).val();
+
             var testURL = "";
 
             if( formType == 'individual') {
@@ -309,6 +312,12 @@
             if( formType == 'sole'){
                 testURL = ownerDomUSSolPFormURL;
             }
+
+            if( formType == 'limitedliabilty'){
+
+                testURL = ownerDomUSLLCFormURL;
+            }
+
 
 
 
