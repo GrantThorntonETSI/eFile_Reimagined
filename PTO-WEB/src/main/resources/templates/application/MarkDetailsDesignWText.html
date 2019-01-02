@@ -457,6 +457,8 @@
     var isSignature = /*[[${isSignature}]]*/ 'User Name';
     var isPortrait = /*[[${isPortrait}]]*/ 'User Name';
 
+    var isNPSLivingPerson = /*[[${isNPSLivingPerson}]]*/ 'User Name';
+
 
     var host = host_name+":"+host_port;
 
@@ -604,6 +606,17 @@
             $('#checkportrait').click();
 
         }
+
+        if(isNPSLivingPerson == true){
+            $('#inlineRadio017').click();
+
+        }
+        else {
+            if(isNPSLivingPerson == false){
+                $('#inlineRadio018').click();
+            }
+        }
+
 
 
 
@@ -1023,6 +1036,30 @@
             }
 
         });
+
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save Mark is NPS living  "yes"
+        //////////////////////////////////////////////////////////////////////
+
+        $('#inlineRadio17').click( function () {
+
+
+            saveMarkTextdetails("mark-nps-living", "yes", appInternalID);
+
+        });
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save Mark is NPS living "no"
+        //////////////////////////////////////////////////////////////////////
+
+        $('#inlineRadio18').click( function () {
+
+
+            saveMarkTextdetails("mark-nps-living", "no", appInternalID);
+
+        });
+
 
 
 

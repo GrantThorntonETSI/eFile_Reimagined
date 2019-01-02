@@ -869,6 +869,7 @@ public class ApplicationObjectCreationController {
                     boolean isName = baseTrademarkApplication.getTradeMark().isName();
                     boolean isSignature = baseTrademarkApplication.getTradeMark().isSignature();
                     boolean isPortrait =  baseTrademarkApplication.getTradeMark().isPortrait();
+                    boolean isNPSLivingPerson =  baseTrademarkApplication.getTradeMark().isNPSLivingPerson();
 
                     model.addAttribute("markColorClaim", colorClaim);
                     model.addAttribute("markColorClaimBW", acceptBW);
@@ -878,6 +879,7 @@ public class ApplicationObjectCreationController {
                     model.addAttribute("isName", isName );
                     model.addAttribute("isSignature", isSignature );
                     model.addAttribute("isPortrait", isPortrait );
+                    model.addAttribute("isNPSLivingPerson", isNPSLivingPerson );
                 }
                 catch ( StorageException ex){
                     model.addAttribute("message", "ERROR: Mark Image upload failed due to error: "+ex );

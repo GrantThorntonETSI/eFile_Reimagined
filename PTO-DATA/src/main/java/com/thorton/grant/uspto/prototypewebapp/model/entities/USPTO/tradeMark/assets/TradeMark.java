@@ -92,6 +92,10 @@ public class TradeMark extends BaseEntity {
     private String signatureMiddleName;
     private String signatureLastName;
 
+    private boolean isNPSLivingPerson;
+
+
+
 
 
 
@@ -501,6 +505,14 @@ public class TradeMark extends BaseEntity {
 
     public void setSignatureLastName(String signatureLastName) {
         this.signatureLastName = signatureLastName;
+    }
+
+    public boolean isNPSLivingPerson() {
+        return isNPSLivingPerson;
+    }
+
+    public void setNPSLivingPerson(boolean NPSLivingPerson) {
+        isNPSLivingPerson = NPSLivingPerson;
     }
 
     @Override
