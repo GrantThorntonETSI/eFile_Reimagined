@@ -365,15 +365,15 @@
                                                     <div class="row">
                                                         <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
                                                             <label for="signature-firstname">First Name</label>
-                                                            <input type="text" class="form-control" id="signature-firstname">
+                                                            <input type="text" class="form-control" id="signature-firstname" th:value="${baseTrademarkApplication.tradeMark.signatureFirstName}">
                                                         </div>
                                                         <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
                                                             <label for="signature-middlename">Middle Name</label>
-                                                            <input type="text" class="form-control" id="signature-middlename">
+                                                            <input type="text" class="form-control" id="signature-middlename" th:value="${baseTrademarkApplication.tradeMark.signatureMiddleName}">
                                                         </div>
                                                         <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-3">
                                                             <label for="signature-lastname">Last Name</label>
-                                                            <input type="text" class="form-control" id="signature-lastname">
+                                                            <input type="text" class="form-control" id="signature-lastname" th:value="${baseTrademarkApplication.tradeMark.signatureLastName}">
                                                         </div>
                                                         <div class="form-group form-group-md col-xs-12 col-md-3">
                                                             <button type="button" class="btn-sm btn-success add ctr">Add Additional</button>
@@ -964,6 +964,34 @@
             var field_value = $(this).val();
             if(field_value != ""){
                 saveMarkTextdetails("mark-NPS-name-lastName", field_value, appInternalID);
+            }
+
+        });
+
+
+        $('#signature-firstname').focusout( function () {
+
+            var field_value = $(this).val();
+            if(field_value != ""){
+                saveMarkTextdetails("mark-NPS-signature-firstName", field_value, appInternalID);
+            }
+
+        });
+
+        $('#signature-middlename').focusout( function () {
+
+            var field_value = $(this).val();
+            if(field_value != ""){
+                saveMarkTextdetails("mark-NPS-signature-middleName", field_value, appInternalID);
+            }
+
+        });
+
+        $('#signature-lastname').focusout( function () {
+
+            var field_value = $(this).val();
+            if(field_value != ""){
+                saveMarkTextdetails("mark-NPS-signature-lastName", field_value, appInternalID);
             }
 
         });
