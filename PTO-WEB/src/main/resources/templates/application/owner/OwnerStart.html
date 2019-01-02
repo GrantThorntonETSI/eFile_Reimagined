@@ -240,6 +240,8 @@
 
     var ownerDomUSSolPFormURL = "../../application/owner/us/solp/?trademarkID="+appInternalID;
 
+    var ownerDomUSIndFormURL = "../../application/owner/Ind/info/?trademarkID="+appInternalID;
+
 </script>
 
 
@@ -295,11 +297,27 @@
         $('#entype').change(function(){
             $('#autofill').show( 'fast' );
 
-            var testURL = ownerDomUSSolPFormURL;
+
+            alert($(this).val());
+
+            var formType = $(this).val();
+            var testURL = "";
+
+            if( formType == 'individual') {
+
+                testURL = ownerDomUSIndFormURL;
+            }
+
+            if( formType == 'sole'){
+                testURL = ownerDomUSSolPFormURL;
+            }
+
+
+
             $.post(testURL, function(data){
                 $("#ownerEntityForm").html(data).fadeIn();
 
-                // remove required
+                // remove
 
             });
 

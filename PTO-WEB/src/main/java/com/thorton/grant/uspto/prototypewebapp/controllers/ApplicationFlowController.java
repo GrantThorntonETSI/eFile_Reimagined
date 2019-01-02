@@ -421,7 +421,7 @@ public class ApplicationFlowController {
         model.addAttribute("addNewOwnerContactFormDTO", newOwnerContactFormDTO);
 
 
-        return "application/owner/individual/ownerInfo";
+        return "application/owner/individual/ownerInfo2";
     }
 
 

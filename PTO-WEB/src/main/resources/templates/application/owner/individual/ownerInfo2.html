@@ -1,0 +1,242 @@
+<!doctype html>
+<html th:fragment="layout (template, menu)" lang="en" xml:lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" style="-moz-border-radius: 0px;-webkit-border-radius: 0px;border-radius: 0px;" type="image/x-icon" th:href="@{/resources/images/nav_banner.png}">
+
+    <title>Owner Sole Proprietor :: USPTO.gov :: webapp prototype</title>
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+
+<body class="insertform">
+<div class="row content" style="display: none;">
+    <div class="col-xs-12">
+        <!--START Content Div-->
+        <div class="row" style="position: relative; top:-222px;">
+
+            <div class="col-xs-12 text-left">
+                <!--START Owner Information Form-->
+                <div class="card-text">
+                    <h2 class="card-title weight600" id="ownerinfo">Owner Name Information</h2>
+                </div>
+                <script type="application/javascript" src="js/imports.js"></script>
+                <form method="post" id="addNewOwnerForm" action="/owner/add" th:object="${addNewOwnerContactFormDTO}" aria-labelledby="ownerinfo">
+
+                <fieldset aria-labelledby="ownerinfo">
+                        <div class="row">
+                            <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
+                                <label for="firstname"><span class="weight600">&#42;</span>First Name <a href="#" data-toggle="tooltip" title="If the owner only has one name, insert the words First Name Unavailable (FNU) in the first name field and the name to be entered in the surname field." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
+                                <input type="text" class="form-control" id="firstname" name="firstname" required>
+                            </div>
+                            <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
+                                <label for="middlename">Middle Name</label>
+                                <input type="text" class="form-control" id="middlename" name="middlename" th:field="*{middleName}">
+                            </div>
+                            <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
+                                <label for="lastname"><span class="weight600">&#42;</span>Last Name</label>
+                                <input type="text" class="form-control" id="lastname" name="lastname" th:field="*{lastName}" required>
+                            </div>
+                            <div class="form-group form-group-md col-xs-6">
+                                <label for="suffix">Suffix</label>
+                                <select class="form-control" id="suffix" th:field="*{suffix}">
+                                    <option value="select">Select</option>
+                                    <option value="Sr.">Sr.</option>
+                                    <option value="I">I</option>
+                                    <option value="II">II</option>
+                                    <option value="III">III</option>
+                                    <option value="IV">IV</option>
+                                    <option value="V">V</option>
+                                    <option value="VI">VI</option>
+                                    <option value="Jr.">Jr.</option>
+                                    <option value="VII">VII</option>
+                                    <option value="VIII">VIII</option>
+                                </select>
+                            </div>
+                            <div class="form-group form-group-md col-xs-12">
+                                <p class="weight600">Add additional name if I do business as/or trading under a different name:</p>
+                            </div>
+                            <div class="form-group form-group-md col-xs-6">
+                                <label for="type">Type</label>
+                                <select class="form-control" id="type"><!--Needs th:attribute-->
+                                    <option value="select">Select</option>
+                                    <option value="dba">Doing Business As (DBA)</option>
+                                    <option value="ta">Trading As (TA)</option>
+                                    <option value="aka">Also Known As (AKA)</option>
+                                    <option value="formerly">Formerly</option>
+                                </select>
+                            </div>
+                            <div class="form-group form-group-md col-xs-6" id="nametype">
+                                <label for="nameoftype">Name</label>
+                                <input type="text" class="form-control" id="nameoftype" name="nameoftype"><!--needs th:attribute-->
+                            </div>
+                            <div class="form-group form-group-md col-xs-7">
+                                <label for="countryofcitizenship">Country of Citizenship <a href="#" data-toggle="tooltip" title="If you have dual citizenship only enter the citizenship you would like printed in the Official Gazette." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
+                                <select class="form-control" id="countryofcitizenship" name="countryofcitizenship" th:field="*{ownerCitizenShip}">
+                                    <option value="Select">Select</option>
+                                    <option value="United States">United States</option>
+                                    <option value="Canada">Canada</option>
+                                </select>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <!--END Sole Proprietor Information Form-->
+                    <!--START Owner Address Information Form-->
+                    <div class="card-text">
+                        <h2 class="card-title weight600" id="addressinfo">Owner Address Information</h2>
+                    </div>
+                    <fieldset aria-labelledby="addressinfo">
+                        <div class="row">
+                            <div class="form-group form-group-md col-xs-12 col-md-6 col-lg-7">
+                                <label for="email"><span class="weight600">&#42;</span>Email Address <a href="#" data-toggle="tooltip" title="The USPTO will use this email address to end correspondence regarding this application or registration. It is critical to ensure this email address is current." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
+                                <input type="text" class="form-control" id="email" name="email" th:field="*{ownerEmail}" required>
+                            </div>
+                            <div class="form-group form-group-md col-xs-12 col-md-6 col-lg-7">
+                                <label for="territory"><span class="weight600">&#42;</span>Country/US Territory</label>
+                                <select class="form-control" id="territory" name="territory" required>
+                                    <option value="select">Select</option>
+                                    <option value="United States">United States</option>
+                                    <option value="Afghanistan">Afghanistan</option>
+                                    <option value="Albania">Albania</option>
+                                    <option value="Belgium">Belgium</option>
+                                    <option value="Brazil">Brazil</option>
+                                    <option value="Cambodia">Cambodia</option>
+                                    <option value="Cameroon">Cameroon</option>
+                                    <option value="Denmark">Denmark</option>
+                                    <option value="Dominican Republic">Dominican Republic</option>
+                                </select>
+                            </div>
+                            <div class="form-group form-group-md col-md-12 col-lg-8">
+                                <label for="addressline1"><span class="weight600">&#42;</span>Address Line 1</label>
+                                <input type="text" class="form-control" id="addressline1" name="addressline1" th:field="*{ownerAddress1}" required>
+                            </div>
+                            <div class="form-group form-group-md col-md-12 col-lg-8">
+                                <label for="addressline2">Address Line 2</label>
+                                <input type="text" class="form-control" id="addressline2" th:field="*{ownerAddress2}">
+                            </div>
+                            <div class="form-group form-group-md col-md-12 col-lg-8">
+                                <label for="addressline3">Address Line 3</label>
+                                <input type="text" class="form-control" id="addressline3" th:field="*{ownerAddress3}">
+                            </div>
+                            <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
+                                <label for="city"><span class="weight600">&#42;</span>City</label>
+                                <input type="text" class="form-control" id="city" name="city" th:field="*{ownerCity}" required>
+                            </div>
+                            <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
+                                <label for="state"><span class="weight600">&#42;</span>State</label>
+                                <select class="form-control" id="state" name="state" th:field="*{ownerState}" required>
+                                    <option value="Select">Select</option>
+                                    <option value="Virginia">Virginia</option>
+                                    <option value="Maryland">Maryland</option>
+                                    <option value="North Carolina">North Carolina</option>
+                                </select>
+                            </div>
+                            <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
+                                <label for="zipcode"><span class="weight600">&#42;</span>Zip Code</label>
+                                <input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="XXXXX" th:field="*{ownerZipcode}" required>
+                            </div>
+                            <div class="form-group form-group-md col-xs-12 col-md-7">
+                                <label for="webaddress">Website Address</label>
+                                <input type="text" class="form-control" id="webaddress" th:field="*{ownerWebSite}">
+                            </div>
+                            <div class="col-xs-12 phone">
+                                <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-4">
+                                    <label for="phonenumbertype">Phone Type</label>
+                                    <select class="form-control" id="phonenumbertype" name="phonenumbertype">
+                                        <option value="Type">Type</option>
+                                        <option value="Cell">Cell</option>
+                                        <option value="Home">Home</option>
+                                        <option value="Work">Work</option>
+                                        <option value="Fax">Fax</option>
+                                    </select>
+                                </div>
+                                <div class="form-group form-group-md col-xs-12 col-md-6 col-lg-6">
+                                    <label for="phonenumber">Phone Number</label>
+                                    <input type="text" class="form-control" id="phonenumber" name="phonenumber" th:field="*{ownerPhone}">
+                                </div>
+                                <div class="form-group form-group-md col-xs-12 col-md-2 col-lg-2">
+                                    <label for="extension">Ext.</label>
+                                    <input type="text" class="form-control" id="extension">
+                                </div>
+                            </div>
+                            <div class="appendto"></div>
+                            <div class="col-xs-12">
+                                <button type="button" class="btn-sm btn-success fill" id="clonephone">Add Additional Phone Number</button>
+                            </div>
+                        </div>
+                    </fieldset><!--END Owner Address Information Form-->
+            </div><!--END Content Div-->
+
+        </div>
+    </div><!--END container div-->
+
+
+</div>
+
+
+
+<!--load model attribute for Jquery consumption  -->
+<script th:inline="javascript">
+
+    /*<![CDATA[*/
+
+
+    var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
+    var host_name= /*[[${hostBean.host}]]*/ 'User Name';
+    var host_port= /*[[${hostBean.port}]]*/ 'User Name';
+    var host = host_name+":"+host_port;
+    //alert(tableRows);
+
+    /*]]>*/
+</script>
+
+
+
+
+<script>
+    $(document).ready(function() {
+
+        ///////////////////////////////////////////////////////////////////////////////
+        // initial page load
+        ///////////////////////////////////////////////////////////////////////////////
+        setTimeout(function() {
+            // after 1000 ms we add the class animated to the login/register card
+            $('.content').fadeIn(500);
+        }, 500);
+
+        ///////////////////////////////////////////////////////////////////////////////
+        // initialize hover text on Owner Name Information
+        ///////////////////////////////////////////////////////////////////////////////
+        $('[data-toggle="tooltip"]').tooltip();
+
+        // update app id on hidden field
+
+        $('#appInternalIDForm').val(appInternalID);
+
+        //populate form from managed contacts
+        $('button#autofill').on('click',function() {
+            $( '#mydata2' ).css('visibility','visible');
+            $( '#mydata2 .collapse' ).collapse('show').fadeIn( 'slow','swing');
+            $( 'button#contactsbtn span#toggleglyphone' ).addClass('visuallyremoved');
+            $( 'button#contactsbtn span#toggleglyph' ).addClass('visuallyadded');
+        });
+
+
+
+
+    });
+
+</script>
+
+
+</body>
+</html>
