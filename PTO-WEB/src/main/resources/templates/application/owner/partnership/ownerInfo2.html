@@ -46,7 +46,7 @@
                                 </select>
                             </div>
                             <div class="form-group form-group-md col-xs-12 col-sm-6 col-lg-4">
-                                <label for="stateoforg"><span class="weight600">&#42;</span>State of Organization</label>
+                                <label for="stateoforg"><span class="weight600">&#42;</span>State Where Legally Organized</label>
                                 <select class="form-control" id="stateoforg" th:field="*{ownerState}"  required>
                                     <option value="Select">Select</option>
                                     <option value="AL">Alabama</option>
@@ -67,7 +67,23 @@
                     <div class="card-text">
                         <h2 class="card-title weight600" id="proprietorinfo">General Partners</h2>
                     </div>
-                    <fieldset aria-labelledby="proprietorinfo">
+
+                    <label><b style="color: red">&#42;</b>Select Entity Type</label>
+
+                    <span>
+                                <select  id="domestic-entity-dropdown-partner" class="form-control" name="nameType"   style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;">
+                                        <option id="opt-none" value="none"  ></option>
+                                        <option id="opt-domestic-ind" value="Individual"  >Individual</option>
+                                        <option id="opt-domestic-soleP" value="Sole Proprietorship" >Sole Proprietorship</option>
+                                        <option id="opt-domestic-llc" value="Limited Liability Company" >Limited Liability Company</option>
+                                        <option  id="opt-domestic-part" value="Partnership" >Partnership</option>
+                                        <option id="opt-domestic-jvc" value="Joint Venture">Joint Venture</option>
+                                        <option id="opt-domestic-trt" value="Trust">Trust</option>
+                                        <option id="opt-domestic-est" value="Estate">Estate</option>
+                                </select>
+                    </span>
+
+                    <fieldset aria-labelledby="proprietorinfo" id="individual-partner-entity" style="display: none;">
                         <div class="row">
                             <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
                                 <label for="first-name"><span class="weight600">&#42;</span>First Name</label>
@@ -105,6 +121,89 @@
                                     <option value="Canada">Canada</option>
                                 </select>
                             </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset aria-labelledby="proprietorinfo" id="none-individual-partner-entity" style="display: none;">
+                        <div class="row">
+                            <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
+                                <label for="ownername"><b style="color: red">&#42;</b>Owner Name</label>
+                                <input id="owner-name" type="text"   class="form-control rounded-borders"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                            </div>
+                            <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
+                            <label><b style="color: red">&#42;</b>Type</label>
+                            <span>
+                                    <select  id="owner-type" class="form-control" name="nameType"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                        <option value="none">Select</option>
+                                        <option value="DBA">Doing Business As(DBA)</option>
+                                        <option value="TA">Trading As(TA)</option>
+                                        <option value="AKA">Also Known As(AKA)</option>
+                                        <option value="F">Formerly</option>
+
+                                    </select>
+                                </span>
+                            </div>
+
+
+                            <div class="form-group form-group-md col-xs-6">
+                                <label><b style="color: red">&#42;</b>State where legally organized</label>
+                                <select  id="owner-state"   class="form-control" name="State"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" >
+                                    <option  value="none"></option>
+                                    <option  value="AL">Alabama</option>
+                                    <option  value="AK">Alaska</option>
+                                    <option value="AZ">Arizona</option>
+                                    <option value="AR">Arkansas</option>
+                                    <option value="CA">California</option>
+                                    <option value="CO">Colorado</option>
+                                    <option value="CT">Connecticut</option>
+                                    <option value="DE">Delaware</option>
+                                    <option value="DC">District of Columbia</option>
+                                    <option value="FL">Florida</option>
+                                    <option value="GA">Georgia</option>
+                                    <option value="HI">Hawaii</option>
+                                    <option value="ID">Idaho</option>
+                                    <option value="IL">Illinois</option>
+                                    <option value="IN">Indiana</option>
+                                    <option value="IA">Iowa</option>
+                                    <option value="KS">Kansas</option>
+                                    <option value="KY">Kentucky</option>
+                                    <option value="LA">Louisiana</option>
+                                    <option value="ME">Maine</option>
+                                    <option value="MD">Maryland</option>
+                                    <option value="MA">Massachusetts</option>
+                                    <option value="MI">Michigan</option>
+                                    <option value="MN">Minnesota</option>
+                                    <option value="MS">Mississippi</option>
+                                    <option value="MO">Missouri</option>
+                                    <option value="MT">Montana</option>
+                                    <option value="NE">Nebraska</option>
+                                    <option value="NV">Nevada</option>
+                                    <option value="NH">New Hampshire</option>
+                                    <option value="NJ">New Jersey</option>
+                                    <option value="NM">New Mexico</option>
+                                    <option value="NY">New York</option>
+                                    <option value="NC">North Carolina</option>
+                                    <option value="ND">North Dakota</option>
+                                    <option value="OH">Ohio</option>
+                                    <option value="OK">Oklahoma</option>
+                                    <option value="OR">Oregon</option>
+                                    <option value="PA">Pennsylvania</option>
+                                    <option value="RI">Rhode Island</option>
+                                    <option value="SC">South Carolina</option>
+                                    <option value="SD">South Dakota</option>
+                                    <option value="TN">Tennessee</option>
+                                    <option value="TX">Texas</option>
+                                    <option value="UT">Utah</option>
+                                    <option value="VT">Vermont</option>
+                                    <option value="VA">Virginia</option>
+                                    <option value="WA">Washington</option>
+                                    <option value="WV">West Virginia</option>
+                                    <option value="WI">Wisconsin</option>
+                                    <option value="WY">Wyoming</option>
+
+                                </select>
+                            </div>
+
                         </div>
                     </fieldset>
                     <!--END Sole Proprietor Information Form-->
@@ -465,6 +564,7 @@
 
 
 
+
 <script>
     $(document).ready(function() {
 
@@ -485,18 +585,162 @@
 
         $('#appInternalIDForm').val(appInternalID);
 
-        //populate form from managed contacts
-        $('button#autofill').on('click',function() {
-            $( '#mydata2' ).css('visibility','visible');
-            $( '#mydata2 .collapse' ).collapse('show').fadeIn( 'slow','swing');
-            $( 'button#contactsbtn span#toggleglyphone' ).addClass('visuallyremoved');
-            $( 'button#contactsbtn span#toggleglyph' ).addClass('visuallyadded');
-        });
 
 
+
+
+        // load partner div
+
+        $('#domestic-entity-dropdown-partner').change( function () {
+
+
+            var subtype_val = this.value;
+            if(subtype_val == "none"){
+                //fade out every thing
+                fadeOutPartnerInfo();
+            }
+            if(subtype_val == "Individual"){
+                fadeOutPartnerInfo();
+
+                $('#individual-partner-entity').fadeIn(1000);
+
+                disableNoneIndiviualRequiredfields();
+                enableIndiviualRequiredfields();
+
+            }
+            if(subtype_val == "Sole Proprietorship"){
+                fadeOutPartnerInfo();
+                $('#individual-partner-entity').fadeIn(1000);  // same owner entity fields as individual
+                disableNoneIndiviualRequiredfields();
+                enableIndiviualRequiredfields();
+            }
+
+
+            if(subtype_val == "Limited Liability Company"){
+
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    fadeOutPartnerInfo();
+                }, 500);
+
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity').fadeIn(1000);
+                }, 1000);
+
+                disableIndiviualRequiredfields();
+                enableNoneIndiviualRequiredfields();
+                // same owner entity fields as individual
+
+            }
+            if(subtype_val == "Partnership"){
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    fadeOutPartnerInfo();
+                }, 500);
+
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity').fadeIn(1000);
+                }, 1000);
+                disableIndiviualRequiredfields();
+                enableNoneIndiviualRequiredfields();
+            }
+
+            if(subtype_val == "Joint Venture"){
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    fadeOutPartnerInfo();
+                }, 500);
+
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity').fadeIn(1000);
+                }, 1000);
+                disableIndiviualRequiredfields();
+                enableNoneIndiviualRequiredfields();
+            }
+
+            if(subtype_val == "Trust"){
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    fadeOutPartnerInfo();
+                }, 500);
+
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity').fadeIn(1000);
+                }, 1000);
+                disableIndiviualRequiredfields();
+                enableNoneIndiviualRequiredfields();
+            }
+
+            if(subtype_val == "Estate"){
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    fadeOutPartnerInfo();
+                }, 500);
+
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity').fadeIn(1000);
+                }, 1000);
+                disableIndiviualRequiredfields();
+                enableNoneIndiviualRequiredfields();
+            }
+
+
+
+
+
+            //saveProjectInfo("set-Owner-entity-types", "US"+"+"+subtype_val, appInternalID); // static from radio buttton
+        })
+
+
+
+
+        ////////////////////////////////////////////////////
+        // set server specific link urls
+        // set links for traversal buttons
+        ////////////////////////////////////////////////////
+        //alert(window.location.href);
 
 
     });
+
+
+    function fadeOutPartnerInfo(){
+
+        $('#individual-partner-entity').fadeOut(1000);
+        $('#none-individual-partner-entity').fadeOut(1000);
+    }
+
+
+    function disableNoneIndiviualRequiredfields(){
+        $('#owner-name').prop("required", false);
+
+        $('#owner-type').prop("required", false);
+        $('#owner-state').prop("required", false);
+    }
+
+    function enableNoneIndiviualRequiredfields(){
+        $('#owner-name').prop("required", true);
+
+        $('#owner-type').prop("required", true);
+        $('#owner-state').prop("required", true);
+    }
+
+
+    function disableIndiviualRequiredfields(){
+        $('#partner-first-name').prop("required", false);
+        $('#partner-last-name').prop("required", false);
+    }
+
+    function enableIndiviualRequiredfields() {
+        $('#partner-first-name').prop("required", true);
+        $('#partner-last-name').prop("required", true);
+    }
+
 
 </script>
 
