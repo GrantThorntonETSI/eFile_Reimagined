@@ -942,7 +942,7 @@ public class ApplicationFlowController {
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
         //return "application/MarkDetailsExamples";
-        return "application/MarkDetailsStart";
+        return "application/mark/MarkDetailsStart";
         //return "registrationConfirm/VerificationEmail";
     }
 
@@ -986,7 +986,7 @@ public class ApplicationFlowController {
 
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
-        return "application/MarkDetailsUpload";
+        return "application/mark/MarkDetailsUpload";
 
     }
 
@@ -1049,7 +1049,7 @@ public class ApplicationFlowController {
         model.addAttribute("isSignature", isSignature );
         model.addAttribute("isPortrait", isPortrait );
         model.addAttribute("isNPSLivingPerson", isNPSLivingPerson );
-        return "application/MarkDetailsDesignWText";
+        return "application/mark/MarkDetailsDesignWText";
 
     }
 
@@ -1078,7 +1078,7 @@ public class ApplicationFlowController {
 
         model.addAttribute("anchorID", anchorID );
 
-        return "application/MarkDetailsExamples";
+        return "application/mark/MarkDetailsExamples";
 
         //return "registrationConfirm/VerificationEmail";
     }
@@ -1190,7 +1190,7 @@ public class ApplicationFlowController {
 
 
         //return "application/MarkDetailsExamples";
-        return "application/GoodsServicesStart";
+        return "application/goods_services/GoodsServicesStart";
         //return "registrationConfirm/VerificationEmail";
     }
 
@@ -1245,7 +1245,7 @@ public class ApplicationFlowController {
 
 
         //return "application/MarkDetailsExamples";
-        return "application/GoodsServicesSelect";
+        return "application/goods_services/GoodsServicesSelect";
         //return "registrationConfirm/VerificationEmail";
     }
 
