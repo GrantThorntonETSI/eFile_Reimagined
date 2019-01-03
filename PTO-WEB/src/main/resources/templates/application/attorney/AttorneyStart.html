@@ -651,10 +651,11 @@
 
 
                     </form><!--END Attorney Form-->
+                    <div class="col-xs-12">
+                        <button type="submit" form="addNewAttorneyForm"  class="btn btn-sm btn-primary add ctr" id="confirmattorney">Confirm</button>
+                    </div>
                 </div><!--END attorney toggle area-->
-                <div class="col-xs-12">
-                    <button type="submit" form="addNewAttorneyForm"  class="btn btn-sm btn-primary add ctr" id="confirmattorney">Confirm</button>
-                </div>
+
             </div>
         </div>
     </main>
@@ -779,7 +780,9 @@
 
         $('#appInternalIDForm').val(appInternalID);
 
+        // hide managed contacts by default
 
+        $('.glyphicon-remove').click();
 
 
 
@@ -798,6 +801,8 @@
             //setTimeout(function() {
             //    $('#pageLoadArea').fadeIn(2000);
             // }, 1500);
+
+            $('#autofill').fadeIn(500);
 
 
         });

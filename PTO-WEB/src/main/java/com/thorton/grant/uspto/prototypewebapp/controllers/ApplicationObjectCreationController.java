@@ -94,7 +94,7 @@ public class ApplicationObjectCreationController {
         String tempAppId = newAttorneyContactFormDTO.getAppInternalID();
         if(tempAppId.contains(",")){
             int index = tempAppId.indexOf(",");
-            tempAppId = tempAppId.substring(0, index-1);
+            tempAppId = tempAppId.substring(0, index);
             newAttorneyContactFormDTO.setAppInternalID(tempAppId);
         }
 
@@ -338,7 +338,7 @@ public class ApplicationObjectCreationController {
         String tempAppId = newOwnerContactFormDTO.getAppInternalID();
         if(tempAppId.contains(",")){
             int index = tempAppId.indexOf(",");
-            tempAppId = tempAppId.substring(0, index-1);
+            tempAppId = tempAppId.substring(0, index);
             newOwnerContactFormDTO.setAppInternalID(tempAppId);
         }
 
@@ -735,7 +735,7 @@ public class ApplicationObjectCreationController {
 
         if(AppInternalID.contains(",")){
             int index = AppInternalID.indexOf(",");
-            AppInternalID = AppInternalID.substring(0, index-1);
+            AppInternalID = AppInternalID.substring(0, index);
         }
 
         System.out.println("22222222222222222222222222222222222222222222222222222222222222222222222222222222");
@@ -830,7 +830,7 @@ public class ApplicationObjectCreationController {
 
         if(AppInternalID.contains(",")){
             int index = AppInternalID.indexOf(",");
-            AppInternalID = AppInternalID.substring(0, index-1);
+            AppInternalID = AppInternalID.substring(0, index);
         }
 
         System.out.println("22222222222222222222222222222222222222222222222222222222222222222222222222222222");
