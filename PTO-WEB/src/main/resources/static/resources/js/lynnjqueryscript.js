@@ -647,6 +647,11 @@ $(document).ready(function(){
         $( 'input#attorney-email' ).val( '' );
         $( 'input#attorney-phonenumbertype' ).val( );
         $( 'input#attorney-phone' ).val( '' );
+
+
+
+        $('#contactSumbit').attr("form", "");
+        $('#contactSumbit').attr("id", "nextButton");
     });
 	//START set text area
 	$( "a#clearform" ).click(function() {

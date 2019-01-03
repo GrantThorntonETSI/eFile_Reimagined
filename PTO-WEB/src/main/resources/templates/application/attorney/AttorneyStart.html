@@ -111,7 +111,7 @@
 
 
                 <div id="yesattorneyfiling" role="region" aria-labelledby="attorneyfiling">
-                    <form method="post" id="addNewAttorneyForm" action="/attorney/add" enctype="multipart/form-data" th:object="${addNewAttorneyContactFormDTO}" aria-labelledby="title">
+                    <form method="post" id="addNewAttorneyForm" action="/attorney/add"  enctype="multipart/form-data" th:object="${addNewAttorneyContactFormDTO}" aria-labelledby="title">
                         <fieldset aria-labelledby="attorneyinfo">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-lg-12">
@@ -857,8 +857,7 @@
                        // call jquery click
                        // set next link to attorney view
                        // activate link
-                       $('#inlineRadio015').click();
-                       $('#nextButton').attr("disabled", false);
+                       location.href=nextLinkURL;
 
 
                    }
@@ -870,7 +869,18 @@
 
 
 
-        //
+        $('input.form-control').focusout(function () {
+
+            if($(this).val() != "") {
+                $('#nextButton').attr("form", "addNewAttorneyForm");
+                $('#nextButton').attr("type", "submit");
+                $('#nextButton').attr("id", "contactSumbit");
+            }
+
+        });
+
+        // if this works, then add it to populate form with contacts data js call
+
 
 
 
@@ -940,6 +950,10 @@
             var contactEmail = $(this).parent().next().html();
 
             setformWithManagedContact(contactEmail);
+
+            $('#nextButton').attr("form", "addNewAttorneyForm");
+            $('#nextButton').attr("type", "submit");
+            $('#nextButton').attr("id", "contactSumbit");
 
 
         });
