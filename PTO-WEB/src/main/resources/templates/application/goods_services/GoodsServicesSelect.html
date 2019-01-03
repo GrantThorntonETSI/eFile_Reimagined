@@ -21,7 +21,7 @@
                                     <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
                                         <span>1</span>
                                     </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="breadcrumb1">
                                         <p class="first">Your Details</p>
                                     </div>
                                 </div>
@@ -31,7 +31,7 @@
                                     <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
                                         <span>2</span>
                                     </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="breadcrumb2">
                                         <p>Trademark details</p>
                                     </div>
                                 </div>
@@ -41,7 +41,7 @@
                                     <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
                                         <span>3</span>
                                     </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="breadcrumb3">
                                         <p>Goods and services</p>
                                     </div>
                                 </div>
@@ -3127,6 +3127,9 @@
     var nextLinkURL = "";
     var prevLinkURL = "../../application/goodsAndServicesStart/?trademarkID="+appInternalID;
 
+    var breadCrumb1Link = "../../application/start/?trademarkID="+appInternalID;
+    var breadCrumb2Link = "../../application/MarkDetails/?trademarkID="+appInternalID;
+
 
 </script>
 
@@ -3253,6 +3256,17 @@
         $('#nextButton').click(function () {
             location.href=nextLinkURL;
         });
+
+
+        $('#breadcrumb1').click(function () {
+            location.href=breadCrumb1Link;
+        });
+
+
+        $('#breadcrumb2').click(function () {
+            location.href=breadCrumb2Link;
+        });
+
 
 
 
