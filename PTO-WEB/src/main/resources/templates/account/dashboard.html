@@ -59,7 +59,7 @@
 
                                 </div>
                                 <div class="col-sm-2" style="position: relative;  top:-5px; ">
-                                    <div class="form-group" ><button  style=" margin-top: 10px; background-color: #186A04; color: white; border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;" class="btn" type="button" value="New Applicaton"><a  style="text-decoration: none; color: white;  position: relative;" href="/application/start/?trademarkID=new"><i class="material-icons" >note_add</i></a><b style="font-weight: bold;"><a  style="text-decoration: none; color: white; position: relative;  top:-5px;" href="/application/start/?trademarkID=new"> &nbsp;&nbsp;New Applicaton&nbsp;</a></b></button></div>
+                                    <div class="form-group" ><button  style=" margin-top: 10px; background-color: #186A04; color: white; border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;" class="btn" type="button" value="New Applicaton" id="newFiling"><i class="material-icons" >note_add</i></a><b style="font-weight: bold;"><a  style="text-decoration: none; color: white; position: relative;  top:-5px;" href="/application/start/?trademarkID=new"> &nbsp;&nbsp;New Applicaton&nbsp;</a></b></button></div>
                                 </div>
                             </div>
                         </div>
@@ -452,6 +452,13 @@
             // make this jquery expression more generic
 
         }
+
+
+
+        $('#newFiling').click(function () {
+           var newFilingURL = "/application/start/?trademarkID=new";
+            location.href=newFilingURL;
+        });
 
     });
 
