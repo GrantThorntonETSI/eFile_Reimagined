@@ -115,7 +115,8 @@
                         <fieldset aria-labelledby="attorneyinfo">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-lg-12">
-                                    <button type="button" class="btn-sm btn-success fill" id="autofill">Fill from Managed Contacts</button>
+                                    <button type="button" class="btn-sm btn-success fill" id="autofill">Select from Managed Contacts</button>
+                                    <button type="button" class="btn-sm btn-success fill" id="clearfill">Clear form</button>
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                     <label for="title">Title</label>
@@ -143,7 +144,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-5">
-                                    <label for="attorney-lawfirm-name"><span class="weight600">&#42;</span> Firm</label>
+                                    <label for="attorney-lawfirm-name"><span class="weight600"></span> Firm</label>
                                     <input type="text" class="form-control" id="attorney-lawfirm-name" th:field="*{lawFirmName}" placeholder="">
                                 </div>
                             </div>
@@ -495,7 +496,7 @@
                                     <input type="text" class="form-control" id="attorney-phone" placeholder="" th:field="*{attorneyPhone}">
                                 </div>
                                 <div class="col-xs-12">
-                                    <button type="button" class="btn-sm btn-success add ctr" disabled>Additional Number</button>
+                                    <button type="button" class="btn-sm btn-success add ctr">Additional Number</button>
                                 </div>
                             </div>
                         </fieldset><!--END Contact Attorney Information-->
@@ -510,7 +511,7 @@
                                     <input type="text" class="form-control" id="docket-id" th:field="*{attorneyDocketNumber}"/>
                                 </div>
                                 <div class="col">
-                                    <button type="button" class="btn-sm btn-success add ctr" disabled>Additional Docket or Reference Number</button>
+                                    <button type="button" class="btn-sm btn-success add ctr" >Additional Docket or Reference Number</button>
                                 </div>
                             </div>
                         </fieldset><!--END Docket Reference Information-->
@@ -651,9 +652,7 @@
 
 
                     </form><!--END Attorney Form-->
-                    <div class="col-xs-12">
-                        <button type="submit" form="addNewAttorneyForm"  class="btn btn-sm btn-primary add ctr" id="confirmattorney">Confirm</button>
-                    </div>
+
                 </div><!--END attorney toggle area-->
 
             </div>
@@ -798,12 +797,16 @@
             ////////////////////////////////////////////////////////////
 
             saveProjectInfo("set-lawyer-options-value", "yes", appInternalID);
-            //setTimeout(function() {
-            //    $('#pageLoadArea').fadeIn(2000);
-            // }, 1500);
 
+            // loads form // done by another script
+            // show auto fill button
             $('#autofill').fadeIn(500);
+            // show clear form button
 
+            // next button behavior not determined (can be form submit or just going to the next page)
+            // but enabled
+
+            $('#nextButton').attr("disabled",false);
 
         });
 
@@ -830,11 +833,51 @@
         });
         ////////////////////////////////////////////////////////////////
 
+        $('#prevButton').click(function () {
+            location.href=prevLinkURL;
+        });
+
+        $('#nextButton').click(function () {
+            //location.href=nextLinkURL;
+           if($('#inlineRadio016').is(":checked")){
+
+               location.href=nextLinkURL;
+           }
+           else{
+               // check if yes radio is clicked
+               if($('#inlineRadio015').is(":checked")) {
+
+                   // start check fields
+
+                   // if all fields are empty
+                   // and lawyer pool not empty
+                   // send to next page
+
+                   if (isAttorneyPoolEmpty == false) {
+                       // call jquery click
+                       // set next link to attorney view
+                       // activate link
+                       $('#inlineRadio015').click();
+                       $('#nextButton').attr("disabled", false);
+
+
+                   }
+               } // we will handle turning the button to submit in another jquery
+
+           }
+        });
 
 
 
-        // this will be replaced ... with new persistence logic
 
+        //
+
+
+
+
+        //////////////////////////////////////////////////////////////
+        //  persistence logic
+        //////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////
         // check if attorneyFillingFalse is set
         /////////////////////////////////////////////////////////////
@@ -868,14 +911,6 @@
 
 
 
-        $('#prevButton').click(function () {
-            location.href=prevLinkURL;
-        });
-
-        $('#nextButton').click(function () {
-            location.href=nextLinkURL;
-        });
-
 
 
 
@@ -899,8 +934,11 @@
 
 
 
-        $('#managedContactFillFormAction').click(function () {
+
+        $('a.fromcontact').click(function () {
+
             var contactEmail = $(this).parent().next().html();
+
             setformWithManagedContact(contactEmail);
 
 

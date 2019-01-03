@@ -303,8 +303,21 @@ public class ApplicationObjectCreationController {
             ptoUserService.save(ptoUser);
 
         }
+        System.out.println("lawyer pool size : "+baseTrademarkApplication.getAvailableLawyers().size());
+
+        if(baseTrademarkApplication.getAvailableLawyers().size() == 0){
+            lawyer.setPrimary(true);
+            baseTrademarkApplication.setPrimaryLawyer(lawyer);
+        }
+
 
         baseTrademarkApplication.addAvailableLawyer(lawyer);
+
+        // check if attorney should be set as primary
+
+
+
+
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
         return "forward:/application/AttorneySet/?trademarkID="+trademarkInternalID;
