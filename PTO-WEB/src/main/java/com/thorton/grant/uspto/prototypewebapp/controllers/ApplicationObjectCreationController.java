@@ -395,7 +395,7 @@ public class ApplicationObjectCreationController {
                 // also add error message
                 model.addAttribute("message", "ERROR: Owner Name exists for this Application.");
 
-                return "application/OwnerStart";
+                return "application/owner/OwnerStart";
                 // return to  ownerStartPage with error message
             }
 
@@ -467,7 +467,7 @@ public class ApplicationObjectCreationController {
                 // also add error message
                 model.addAttribute("message", "ERROR: Owner Email exists for this Application.");
 
-                return "application/OwnerStart";
+                return "application/owner/OwnerStart";
                 // return to  ownerStartPage with error message
             }
 
@@ -512,7 +512,7 @@ public class ApplicationObjectCreationController {
                 // also add error message
                 model.addAttribute("message", "ERROR: Owner Name exists for this Application.");
 
-                return "application/OwnerStart";
+                return "application/owner/OwnerStart";
                 // return to  ownerStartPage with error message
             }
 
@@ -768,7 +768,7 @@ public class ApplicationObjectCreationController {
                 catch ( StorageException ex){
                     model.addAttribute("message", "ERROR: Mark Image upload failed due to error: "+ex );
                    // return "forward:/mark/designWithText/?trademarkID="+trademarkInternalID;
-                    return "application/MarkDetailsUpload";
+                    return "application/mark/MarkDetailsUpload";
 
                 }
 
@@ -784,7 +784,7 @@ public class ApplicationObjectCreationController {
                 catch ( StorageException ex){
                     model.addAttribute("message", "ERROR: BW Mark Image upload failed due to error: "+ex );
                     // return "forward:/mark/designWithText/?trademarkID="+trademarkInternalID;
-                    return "application/MarkDetailsUpload";
+                    return "application/mark/MarkDetailsUpload";
 
                 }
 
@@ -796,7 +796,7 @@ public class ApplicationObjectCreationController {
         }
 
         //return "application/MarkDetailsDesignWText";
-        return "application/MarkDetailsUpload";
+        return "application/mark/MarkDetailsUpload";
     }
     ///////////////////////////////////////////////////////////////////////////////
     // end of attorney add
@@ -884,7 +884,7 @@ public class ApplicationObjectCreationController {
                 catch ( StorageException ex){
                     model.addAttribute("message", "ERROR: Mark Image upload failed due to error: "+ex );
                     // return "forward:/mark/designWithText/?trademarkID="+trademarkInternalID;
-                    return "application/MarkDetailsUpload";
+                    return "application/mark/MarkDetailsDesignWText";
 
                 }
 
@@ -896,7 +896,7 @@ public class ApplicationObjectCreationController {
 
         }
 
-        return "application/MarkDetailsDesignWText";
+        return "application/mark/MarkDetailsDesignWText";
         //return "application/MarkDetailsUpload";
     }
     ///////////////////////////////////////////////////////////////////////////////
