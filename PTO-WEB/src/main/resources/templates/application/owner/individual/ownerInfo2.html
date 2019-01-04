@@ -763,6 +763,10 @@
 
 
             if($(this).val() != "") {
+                $('#formPagingNextButtonGroup').fadeOut();
+                $('#formSubmitNextButtonGroup').fadeIn();
+
+
                 $('#nextButton').attr("disabled",false);
                 $('#nextButton').attr("form", "addNewOwnerForm");
                 $('#nextButton').attr("type", "submit");
@@ -773,9 +777,14 @@
 
 
         $('a.fromcontact').click(function () {
+
+            $('#formPagingNextButtonGroup').fadeOut();
+            $('#formSubmitNextButtonGroup').fadeIn();
             var contactEmail = $(this).parent().next().html();
 
             setformWithManagedContact(contactEmail);
+
+
             $('#nextButton').attr("disabled",false);
             $('#nextButton').attr("form", "addNewOwnerForm");
             $('#nextButton').attr("type", "submit");
