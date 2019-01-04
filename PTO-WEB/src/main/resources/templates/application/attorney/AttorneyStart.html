@@ -652,8 +652,14 @@
             <div class="btn-group">
                 <button type="button" class="btn btn-sm btn-default fill prev" id="prevButton" value="previous">Previous</button>
             </div>
-            <div class="btn-group">
+
+
+            <div class="btn-group" id="formSubmitNextButtonGroup" style="display: none;">
                 <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next" disabled>Next
+                    <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
+            </div>
+            <div class="btn-group" id="formPagingNextButtonGroup" >
+                <button type="button" class="btn btn-sm btn-primary fill next" id="nextButtonFormPaging" value="next">Next
                     <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
             </div>
         </div>
@@ -807,7 +813,9 @@
             // next button behavior not determined (can be form submit or just going to the next page)
             // but enabled
 
-            $('#nextButton').attr("disabled",true);
+
+
+            $('#nextButtonFormPaging').attr("disabled",true);
 
         });
 
@@ -830,7 +838,7 @@
             }, 555);
 
             nextLinkURL = nextLinkURLAttorneyFalse;
-            $('#nextButton').attr("disabled",false);
+            $('#nextButtonFormPaging').attr("disabled",false);
         });
         ////////////////////////////////////////////////////////////////
 
@@ -838,7 +846,7 @@
             location.href=prevLinkURL;
         });
 
-        $('#nextButton').click(function () {
+        $('#nextButtonFormPaging').click(function () {
             //location.href=nextLinkURL;
            if($('#inlineRadio016').is(":checked")){
 
@@ -888,7 +896,9 @@
                     // set next link to attorney view
                     // activate link
                     $('#inlineRadio015').click();
-                    $('#nextButton').attr("disabled",false);
+                    $('#formSubmitNextButtonGroup').fadeOut();
+                    $('#formPagingNextButtonGroup').fadeIn();
+                    $('#nextButtonFormPaging').attr("disabled",false);
 
                 }
 
@@ -899,8 +909,11 @@
                 // set next link to owner page
                 // activate next link
                 $('#inlineRadio016').click();
+
+                $('#formSubmitNextButtonGroup').fadeOut();
+                $('#formPagingNextButtonGroup').fadeIn();
                 nextLinkURL = nextLinkURLAttorneyFalse;
-                $('#nextButton').attr("disabled",false);
+                $('#nextButtonFormPaging').attr("disabled",false);
             }
         }
 
@@ -938,6 +951,8 @@
         $('a.fromcontact').click(function () {
 
             var contactEmail = $(this).parent().next().html();
+            $('#formPagingNextButtonGroup').fadeOut();
+            $('#formSubmitNextButtonGroup').fadeIn();
 
             setformWithManagedContact(contactEmail);
             $('#nextButton').attr("disabled", false);
@@ -952,6 +967,8 @@
         $('input.form-control').focusout(function () {
 
             if($(this).val() != "") {
+                $('#formPagingNextButtonGroup').fadeOut();
+                $('#formSubmitNextButtonGroup').fadeIn();
                 $('#nextButton').attr("disabled", false);
                 $('#nextButton').attr("form", "addNewAttorneyForm");
                 $('#nextButton').attr("type", "submit");
@@ -977,12 +994,12 @@
             $( 'input#attorney-phonenumbertype' ).val( );
             $( 'input#attorney-phone' ).val( '' );
 
+            $('#formSubmitNextButtonGroup').fadeOut();
+            $('#formPagingNextButtonGroup').fadeIn();
 
 
-            $('#contactSumbit').attr("form", "");
-            $('#contactSumbit').attr("id", "nextButton");
             if(isAttorneyPoolEmpty == true){
-                $('#nextButton').attr("disabled", true);
+                $('#nextButtonFormPaging').attr("disabled", true);
             }
         });
 
