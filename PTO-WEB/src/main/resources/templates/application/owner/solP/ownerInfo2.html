@@ -573,15 +573,16 @@
 
         $( "#clearfillOwner" ).click(function() {
 
+
             $('#addNewOwnerForm')[0].reset();
             $('#appInternalIDForm').val(appInternalID);
+            $('#formSubmitNextButtonGroup').fadeOut();
+            $('#formPagingNextButtonGroup').fadeIn();
 
 
-            $('#contactSumbit').attr("form", "");
-            $('#contactSumbit').attr("id", "nextButton");
 
             if(ownerOpt == false){
-                $('#nextButton').attr("disabled", true);
+                $('#nextButtonFormPaging').attr("disabled", true);
             }
 
         });
