@@ -111,7 +111,7 @@
 
 
                 <div id="yesattorneyfiling" role="region" aria-labelledby="attorneyfiling">
-                    <form method="post" id="addNewAttorneyForm" action="/attorney/add"  enctype="multipart/form-data" th:object="${addNewAttorneyContactFormDTO}" aria-labelledby="title">
+                    <form method="post" id="addNewAttorneyForm" action="/attorney/add" onsubmit="return validateAttorneyForm();" enctype="multipart/form-data" th:object="${addNewAttorneyContactFormDTO}" aria-labelledby="title">
                         <fieldset aria-labelledby="attorneyinfo">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-lg-12">
@@ -124,7 +124,7 @@
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                     <label for="attorney-first-name"><span class="weight600">&#42;</span> First Name</label>
-                                    <input type="text" class="form-control" id="attorney-first-name" th:field="*{firstName}" name="first" placeholder="">
+                                    <input type="text" class="form-control" id="attorney-first-name" th:field="*{firstName}" name="first" placeholder="" required>
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                     <label for="Attorney-middle-name">Middle Name</label>
@@ -132,7 +132,7 @@
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
                                     <label for="attorney-last-name"><span class="weight600">&#42;</span> Last Name</label>
-                                    <input type="text" class="form-control" id="attorney-last-name" th:field="*{lastName}">
+                                    <input type="text" class="form-control" id="attorney-last-name" th:field="*{lastName}" required>
                                 </div>
                                 <div class="form-group form-group-md col-xs-5 col-sm-3">
                                     <label for="suffix">Suffix</label>
@@ -156,8 +156,8 @@
                         <fieldset aria-labelledby="attorneycontact">
                             <div class="row">
                                 <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-5">
-                                    <label for="attorney-country">Country / US Territory</label>
-                                    <select class="form-control" id="attorney-country" th:field="*{attorneyAddressCountry}">
+                                    <label for="attorney-country"><span class="weight600">&#42;</span> Country / US Territory</label>
+                                    <select class="form-control" id="attorney-country" th:field="*{attorneyAddressCountry}" required>
                                         <option value="Select">Select</option>
                                         <option value="1">UNITED STATES OF AMERICA</option>
                                         <option value="B2">AFGHANISTAN</option>
@@ -401,8 +401,8 @@
                                     </select>
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-7">
-                                    <label for="attorney-address1">Address Line 1</label>
-                                    <input type="text" class="form-control" id="attorney-address1" th:field="*{attorneyAddress1}">
+                                    <label for="attorney-address1"><span class="weight600">&#42;</span> Address Line 1</label>
+                                    <input type="text" class="form-control" id="attorney-address1" th:field="*{attorneyAddress1}" required>
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-xl-6">
                                     <label for="attorney-address2">Address Line 2</label>
@@ -413,12 +413,12 @@
                                     <input type="text" class="form-control" id="attorney-address3" th:field="*{attorneyAddress3}">
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
-                                    <label for="attorney-city">City</label>
-                                    <input type="text" class="form-control" id="attorney-city" th:field="*{attorneyCity}">
+                                    <label for="attorney-city"><span class="weight600">&#42;</span>City</label>
+                                    <input type="text" class="form-control" id="attorney-city" th:field="*{attorneyCity}" required>
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
-                                    <label for="attorney-state">State</label>
-                                    <select class="form-control" id="attorney-state" th:field="*{attorneyState}">
+                                    <label for="attorney-state"><span class="weight600">&#42;</span>State</label>
+                                    <select class="form-control" id="attorney-state" th:field="*{attorneyState}" required>
                                         <option value="Select">Select</option>
                                         <option  value="AL">Alabama</option>
                                         <option  value="AK">Alaska</option>
@@ -474,12 +474,12 @@
                                     </select>
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
-                                    <label for="attorney-zipcode">Zip Code</label>
-                                    <input type="text" class="form-control" id="attorney-zipcode" placeholder="" th:field="*{attorneyZipcode}">
+                                    <label for="attorney-zipcode"><span class="weight600">&#42;</span> Zip Code</label>
+                                    <input type="text" class="form-control" id="attorney-zipcode" placeholder="" th:field="*{attorneyZipcode}" required>
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-5 col-lg-5">
                                     <label for="attorney-email"><span class="weight600">&#42;</span> Email Address</label>
-                                    <input type="text" class="form-control" id="attorney-email" placeholder="email Address" th:field="*{attorneyEmail}">
+                                    <input type="text" class="form-control" id="attorney-email" placeholder="email Address" th:field="*{attorneyEmail}" required>
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-3 col-lg-3">
                                     <label for="attorney-phonenumbertype">Phone Type</label>
@@ -493,7 +493,7 @@
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-4">
                                     <label for="attorney-phone"><span class="weight600">&#42;</span> Phone Number</label>
-                                    <input type="text" class="form-control" id="attorney-phone" placeholder="" th:field="*{attorneyPhone}">
+                                    <input type="text" class="form-control" id="attorney-phone" placeholder="" th:field="*{attorneyPhone}" required>
                                 </div>
                                 <div class="col-xs-12">
                                     <button type="button" class="btn-sm btn-success add ctr">Additional Number</button>
@@ -724,11 +724,12 @@
 
 
 
-        var contactNames = /*[[${myManagedContacts.ContactNames}]]*/ 'User Name';
-        var contactEmails = /*[[${myManagedContacts.ContactEmails}]]*/ 'User Name';
-        var contactTypes = /*[[${myManagedContacts.contactEntitySubType}]]*/ 'User Name';
+        var managedContactNames = /*[[${myManagedContacts.ContactNames}]]*/ 'User Name';
+        var managedContactEmails = /*[[${myManagedContacts.ContactEmails}]]*/ 'User Name';
+        var managedContactTypes = /*[[${myManagedContacts.contactEntitySubType}]]*/ 'User Name';
 
-        var selectedContactNames = /*[[${selectedAttorneys.ContactNames}]]*/ 'User Name';
+        var selectedContacts = /*[[${selectedAttorneys.ContactEmails}]]*/ 'User Name';
+
         var host = host_name+":"+host_port;
 
 
@@ -974,6 +975,43 @@
 
     }); // end of document ready()
 
+
+
+    // validation function
+    function validateAttorneyForm()
+    {
+        var formError = false;
+        var errorMsg = "";
+        // check if contact attempted to add already in application
+        for(var a=0; a < selectedContacts.length; a++){
+           if($('#attorney-email').val() == selectedContacts[a]){
+               formError = true;
+               errorMsg = "this contact is already added to this application as an attorney.";
+           }
+        }
+
+
+
+        for(var b=0; b < managedContactEmails.length; b++){
+
+            if($('#attorney-email').val() == managedContactEmails[b]){
+                if(managedContactTypes[b] == "owner"){
+                    formError = true;
+                    errorMsg = "this contact has email address matching an owner contact.";
+                }
+            }
+        }
+
+
+        if(formError)
+        {
+            alert(errorMsg);
+
+            return false;
+        }
+
+        return true;
+    }
 
     function setformWithManagedContact(email) {
 

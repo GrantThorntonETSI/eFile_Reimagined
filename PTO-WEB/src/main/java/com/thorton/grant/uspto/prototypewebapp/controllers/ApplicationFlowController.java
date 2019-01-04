@@ -74,6 +74,7 @@ public class ApplicationFlowController {
         model.addAttribute("account", credentials);
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
 
+
         ArrayList<String> contactNamesMC = new ArrayList<>();
         ArrayList<String> contactEmailsMC = new ArrayList<>();
         ArrayList<String> contactSubTypesMC = new ArrayList<>();
@@ -97,6 +98,10 @@ public class ApplicationFlowController {
         mcDisplayDTO.setContactEmails(contactEmailsMC);
         mcDisplayDTO.setContactEntitySubType(contactSubTypesMC);
         model.addAttribute("myManagedContacts", mcDisplayDTO);
+
+
+
+
 
         ///////////////////////////////////////////////////////////////////////////////////////////////
         // add attorneys pool first name last name
@@ -141,6 +146,16 @@ public class ApplicationFlowController {
             model.addAttribute("isAttorneyOptionSet", isAttorneyOptionSet);
             model.addAttribute("isAttorneyFiling", isAttorneyFiling);
 
+            ArrayList<String> selectedContactEmails2 = new ArrayList<>();
+            for(Iterator<Lawyer> iter = trademarkApplication.getAvailableLawyers().iterator(); iter.hasNext(); ) {
+                Lawyer current = iter.next();
+                selectedContactEmails2.add(current.getEmail());
+            }
+            ContactsDisplayDTO selectedAttorneyDisplayDTO2 = new ContactsDisplayDTO();
+            selectedAttorneyDisplayDTO2.setContactEmails(selectedContactEmails2 );
+            model.addAttribute("selectedAttorneys",selectedAttorneyDisplayDTO2);
+
+
         } else {
             BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
 
@@ -158,9 +173,20 @@ public class ApplicationFlowController {
             isAttorneyFiling = baseTrademarkApplication.isAttorneyFiling();
             model.addAttribute("isAttorneyOptionSet", isAttorneyOptionSet);
             model.addAttribute("isAttorneyFiling", isAttorneyFiling);
+
+            ArrayList<String> selectedContactEmails2 = new ArrayList<>();
+            for(Iterator<Lawyer> iter = baseTrademarkApplication.getAvailableLawyers().iterator(); iter.hasNext(); ) {
+                Lawyer current = iter.next();
+                selectedContactEmails2.add(current.getEmail());
+            }
+            ContactsDisplayDTO selectedAttorneyDisplayDTO2 = new ContactsDisplayDTO();
+            selectedAttorneyDisplayDTO2.setContactEmails(selectedContactEmails2 );
+            model.addAttribute("selectedAttorneys",selectedAttorneyDisplayDTO2);
+
         }
         NewAttorneyContactFormDTO attorneyContactFormDTO = new NewAttorneyContactFormDTO();
         model.addAttribute("addNewAttorneyContactFormDTO", attorneyContactFormDTO);
+        // add any selected attorneys to model as selectedContacts
 
 
         model.addAttribute("hostBean", hostBean);
