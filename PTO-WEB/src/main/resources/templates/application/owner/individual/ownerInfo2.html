@@ -820,11 +820,12 @@
 
     function validateOwnerForm()
     {
+
         var formError = false;
         var errorMsg = "";
         // check if contact attempted to add already in application
         for(var a=0; a < selectedContacts.length; a++){
-            if($('#owner-email').val() == selectedContacts[a]){
+            if($('#ownerEmail').val() == selectedContacts[a]){
                 formError = true;
                 errorMsg = "this new contact is already added to this application as an owner.";
             }

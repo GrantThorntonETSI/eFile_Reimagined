@@ -124,35 +124,7 @@ public class ApplicationObjectCreationController {
 
 
         if(newAttorneyContactFormDTO.getFirstName()!= null){
-            if(baseTrademarkApplication.findAttorneyContactByDisplayName(newAttorneyContactFormDTO.getFirstName()+ " "+newAttorneyContactFormDTO.getLastName()) != null){
-                model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
-                ArrayList<String> contactNames = new ArrayList<>();
-                ArrayList<String> contactEmails = new ArrayList<>();
-                ArrayList<String> contactSubTypes = new ArrayList<>();
-                ManagedContact managedContact = null;
 
-                for(Iterator<ManagedContact> iter = ptoUser.getMyManagedContacts().iterator(); iter.hasNext(); ) {
-                    managedContact = iter.next();
-                    contactNames.add(managedContact.getDisplayName());
-                    contactEmails.add(managedContact.getEmail());
-                    contactSubTypes.add(managedContact.getContactType());
-
-                }
-                Collections.reverse(contactNames);
-                Collections.reverse(contactEmails);
-                Collections.reverse(contactSubTypes);
-                ContactsDisplayDTO contactsDisplayDTO = new ContactsDisplayDTO();
-                contactsDisplayDTO.setContactNames(contactNames);
-                contactsDisplayDTO.setContactEmails(contactEmails);
-                contactsDisplayDTO.setContactEntitySubType(contactSubTypes);
-                model.addAttribute("myManagedContacts", contactsDisplayDTO);
-
-                // also add error message
-                model.addAttribute("message", "ERROR: Attorney Name exists for this Application.");
-
-                return "application/attorney/AttorneyStart";
-                // return to  ownerStartPage with error message
-            }
 
             lawyer.setFirstName(newAttorneyContactFormDTO.getFirstName());
             lawyer.setCollapseID((newAttorneyContactFormDTO.getFirstName()+newAttorneyContactFormDTO.getLastName()).replaceAll("[^A-Za-z0-9]", ""));
@@ -382,35 +354,7 @@ public class ApplicationObjectCreationController {
         // transfer and reset owner type and subtype
 
         if(newOwnerContactFormDTO.getFirstName()!= null){
-            if(baseTrademarkApplication.findOwnerByDisplayName(newOwnerContactFormDTO.getFirstName()+ " "+newOwnerContactFormDTO.getLastName()) != null){
-                model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
-                ArrayList<String> contactNames = new ArrayList<>();
-                ArrayList<String> contactEmails = new ArrayList<>();
-                ArrayList<String> contactSubTypes = new ArrayList<>();
-                ManagedContact managedContact = null;
 
-                for(Iterator<ManagedContact> iter = ptoUser.getMyManagedContacts().iterator(); iter.hasNext(); ) {
-                    managedContact = iter.next();
-                    contactNames.add(managedContact.getDisplayName());
-                    contactEmails.add(managedContact.getEmail());
-                    contactSubTypes.add(managedContact.getContactType());
-
-                }
-                Collections.reverse(contactNames);
-                Collections.reverse(contactEmails);
-                Collections.reverse(contactSubTypes);
-                ContactsDisplayDTO contactsDisplayDTO = new ContactsDisplayDTO();
-                contactsDisplayDTO.setContactNames(contactNames);
-                contactsDisplayDTO.setContactEmails(contactEmails);
-                contactsDisplayDTO.setContactEntitySubType(contactSubTypes);
-                model.addAttribute("myManagedContacts", contactsDisplayDTO);
-
-                // also add error message
-                model.addAttribute("message", "ERROR: Owner Name exists for this Application.");
-
-                return "application/owner/OwnerStart";
-                // return to  ownerStartPage with error message
-            }
 
 
             owner.setOwnerDisplayname(newOwnerContactFormDTO.getFirstName()+ " "+newOwnerContactFormDTO.getLastName());
