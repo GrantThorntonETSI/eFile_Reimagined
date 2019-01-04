@@ -633,26 +633,6 @@ $(document).ready(function(){
 	$( "div#entities" ).css( "height", a.innerHeight() );//set the width of the div to the height of the div
 	//end iframe width
 	//END toggle radio buttons content
-    $( "#clearfill" ).click(function() {
-        $( 'input#attorney-first-name' ).val( '' );
-        $( 'input#title' ).val( '' );
-        $( 'input#attorney-last-name' ).val( '' );
-        $( '#suffix' ).val( );
-        $( 'input#attorney-lawfirm-name' ).val( '' );
-        $( '#attorney-country' ).val( );
-        $( 'input#attorney-address1' ).val( '' );
-        $( 'input#attorney-city' ).val( '' );
-        $( '#attorney-state' ).val( );
-        $( 'input#attorney-zipcode' ).val( '' );
-        $( 'input#attorney-email' ).val( '' );
-        $( 'input#attorney-phonenumbertype' ).val( );
-        $( 'input#attorney-phone' ).val( '' );
-
-
-
-        $('#contactSumbit').attr("form", "");
-        $('#contactSumbit').attr("id", "nextButton");
-    });
 
 	//START set text area
 	$( "a#clearform" ).click(function() {

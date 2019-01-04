@@ -84,16 +84,7 @@
                     <div class="col-xs-6">
                         <h1>Attorney Information</h1>
                     </div>
-                    <nav class="col-xs-6" id="previousnext">
-                        <div class="btn-group btn-group-justified btn-sm" role="group" aria-label="previous and next buttons">
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-default btn-sm" id="prevButton">Previous</button>
-                            </div>
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-default btn-sm" id="nextButton" disabled>Next</button>
-                            </div>
-                        </div>
-                    </nav>
+
                 </div>
                 <p class="required"><span class="weight600">&#42; = Required</span></p>
                 <!--START Attorney Information Form-->
@@ -657,6 +648,15 @@
 
             </div>
         </div>
+        <div class="inlinebuttons btn-group btn-group-justified  owner-paging-buttons" role="nav" aria-label="view previous or next page" id="prevnxt">
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-default fill prev" id="prevButton" value="previous">Previous</button>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next" disabled>Next
+                    <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
+            </div>
+        </div>
     </main>
 </div>
 </div><!--END container-fluid-->
@@ -869,17 +869,6 @@
 
 
 
-
-        $('input.form-control').focusout(function () {
-
-            if($(this).val() != "") {
-                $('#nextButton').attr("form", "addNewAttorneyForm");
-                $('#nextButton').attr("type", "submit");
-                $('#nextButton').attr("id", "contactSumbit");
-            }
-
-        });
-
         // if this works, then add it to populate form with contacts data js call
 
 
@@ -951,7 +940,7 @@
             var contactEmail = $(this).parent().next().html();
 
             setformWithManagedContact(contactEmail);
-
+            $('#nextButton').attr("disabled", false);
             $('#nextButton').attr("form", "addNewAttorneyForm");
             $('#nextButton').attr("type", "submit");
             $('#nextButton').attr("id", "contactSumbit");
@@ -960,7 +949,43 @@
         });
 
 
-// show attorney affiliation area
+        $('input.form-control').focusout(function () {
+
+            if($(this).val() != "") {
+                $('#nextButton').attr("disabled", false);
+                $('#nextButton').attr("form", "addNewAttorneyForm");
+                $('#nextButton').attr("type", "submit");
+                $('#nextButton').attr("id", "contactSumbit");
+            }
+
+        });
+
+
+
+        $( "#clearfill" ).click(function() {
+            $( 'input#attorney-first-name' ).val( '' );
+            $( 'input#title' ).val( '' );
+            $( 'input#attorney-last-name' ).val( '' );
+            $( '#suffix' ).val( );
+            $( 'input#attorney-lawfirm-name' ).val( '' );
+            $( '#attorney-country' ).val( );
+            $( 'input#attorney-address1' ).val( '' );
+            $( 'input#attorney-city' ).val( '' );
+            $( '#attorney-state' ).val( );
+            $( 'input#attorney-zipcode' ).val( '' );
+            $( 'input#attorney-email' ).val( '' );
+            $( 'input#attorney-phonenumbertype' ).val( );
+            $( 'input#attorney-phone' ).val( '' );
+
+
+
+            $('#contactSumbit').attr("form", "");
+            $('#contactSumbit').attr("id", "nextButton");
+            if(isAttorneyPoolEmpty == true){
+                $('#nextButton').attr("disabled", true);
+            }
+        });
+
 
 
 
