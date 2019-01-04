@@ -409,10 +409,10 @@ public class ApplicationFlowController {
         ArrayList<String> selectedContactNames = new ArrayList<>();
         for(Iterator<Owner> iter = baseTrademarkApplication.getOwners().iterator(); iter.hasNext(); ) {
             Owner current = iter.next();
-            selectedContactNames.add(current.getFirstName()+" "+current.getLastName());
+            selectedContactNames.add(current.getEmail());
         }
         ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
-        selectedAttorneyDisplayDTO.setContactNames(selectedContactNames);
+        selectedAttorneyDisplayDTO.setContactEmails(selectedContactNames);
         model.addAttribute("selectedOwners",selectedAttorneyDisplayDTO);
 
 
@@ -445,6 +445,15 @@ public class ApplicationFlowController {
 
         NewOwnerContactFormDTO newOwnerContactFormDTO = new NewOwnerContactFormDTO();
         model.addAttribute("addNewOwnerContactFormDTO", newOwnerContactFormDTO);
+
+        ArrayList<String> selectedContactNames = new ArrayList<>();
+        for(Iterator<Owner> iter = baseTrademarkApplication.getOwners().iterator(); iter.hasNext(); ) {
+            Owner current = iter.next();
+            selectedContactNames.add(current.getEmail());
+        }
+        ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
+        selectedAttorneyDisplayDTO.setContactEmails(selectedContactNames);
+        model.addAttribute("selectedOwners",selectedAttorneyDisplayDTO);
 
 
         return "application/owner/individual/ownerInfo2";

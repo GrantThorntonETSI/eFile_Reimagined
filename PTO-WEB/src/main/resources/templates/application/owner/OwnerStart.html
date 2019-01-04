@@ -85,16 +85,7 @@
                     <div class="col-xs-6">
                         <h1>Owner Information</h1>
                     </div>
-                    <nav class="col-xs-6" id="previousnext">
-                        <div class="btn-group btn-group-justified btn-sm" role="group" aria-label="previous and next buttons">
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-default btn-sm" id="prevButton">Previous</button>
-                            </div>
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-default btn-sm" id="nextButton" disabled>Next</button>
-                            </div>
-                        </div>
-                    </nav>
+
                 </div>
                 <p class="required"><span class="weight600">&#42; = Required</span></p>
 
@@ -141,6 +132,7 @@
                                         </div>
                                         <div class="col-xs-12">
                                             <button type="button" class="btn-sm btn-success fill" id="autofill">Select from Managed Contacts</button>
+
                                         </div>
                                         <div class="embed-responsive-item" id="ownerEntityForm" style="position: relative; bottom:-222px;" >
 
@@ -156,6 +148,16 @@
                         </section>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="inlinebuttons btn-group btn-group-justified  owner-paging-buttons" role="nav" aria-label="view previous or next page" id="prevnxt">
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-default fill prev" id="prevButton" value="previous">Previous</button>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next" disabled>Next
+                    <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
             </div>
         </div>
     </main>
@@ -220,12 +222,14 @@
     var isAttorneyOptionSet = /*[[${isAttorneyOptionSet}]]*/ 'User Name';
     var isAttorneyFiling = /*[[${isAttorneyFiling}]]*/ 'User Name';
 
-    var isAttorneyPoolEmpty = /*[[${baseTrademarkApplication.isAttorneyPoolEmpty()}]]*/ 'User Name';
+
     var host_name= /*[[${hostBean.host}]]*/ 'User Name';
     var host_port= /*[[${hostBean.port}]]*/ 'User Name';
 
 
     var host = host_name+":"+host_port;
+
+    var selectedContacts = /*[[${selectedOwners.ContactEmails}]]*/ 'User Name';
 
 
     /*]]>*/
@@ -258,9 +262,40 @@
 
 
 
-    // bread crumb links
-    // tab 1 application_start_id
-    var breadCrumb1Link = "../../application/start/?trademarkID="+appInternalID;
+    function validateOwnerForm()
+    {
+        var formError = false;
+        var errorMsg = "";
+        // check if contact attempted to add already in application
+        for(var a=0; a < selectedContacts.length; a++){
+            if($('#attorney-email').val() == selectedContacts[a]){
+                formError = true;
+                errorMsg = "this new contact is already added to this application as an owner.";
+            }
+        }
+
+
+
+        for(var b=0; b < managedContactEmails.length; b++){
+
+            if($('#attorney-email').val() == managedContactEmails[b]){
+                if(managedContactTypes[b] == "attorney"){
+                    formError = true;
+                    errorMsg = "this new contact has email address matching an attorney contact.";
+                }
+            }
+        }
+
+
+        if(formError)
+        {
+            alert(errorMsg);
+
+            return false;
+        }
+
+        return true;
+    }
 
 
 </script>
@@ -368,8 +403,8 @@
                 testURL = ownerDomUSEstateFormURL;
             }
 
-
-
+            // hide currnet next and prev, these buttons will be loaded from the page fragment
+            $(".owner-paging-buttons").fadeOut();
 
 
             $.post(testURL, function(data){
@@ -381,48 +416,7 @@
 
 
         });
-   // this will be replaced ... with new persistence logic
 
-        //////////////////////////////////////////////////////////////
-        // check if attorneyFillingFalse is set
-        /////////////////////////////////////////////////////////////
-        if(isAttorneyOptionSet == true){
-            if(isAttorneyFiling == true){
-                if(isAttorneyPoolEmpty == false){
-                    // call jquery click
-                    // set next link to attorney view
-                    // activate link
-                    $('#inlineRadio015').click();
-                    $('#nextButton').attr("disabled",false);
-
-                }
-
-            }
-            else{
-                // call jquery click
-                // no attorney, option set
-                // set next link to owner page
-                // activate next link
-                $('#inlineRadio016').click();
-                nextLinkURL = nextLinkURLAttorneyFalse;
-                $('#nextButton').attr("disabled",false);
-            }
-        }
-
-
-        // enable next page link bas[{
-        // {
-        // ed on if attorney is set
-
-
-
-        $('#prevButton').click(function () {
-            location.href=prevLinkURL;
-        });
-
-        $('#nextButton').click(function () {
-            location.href=nextLinkURL;
-        });
 
         ////////////////////////////////////////////////////
         // enable next button on select drop down completion
@@ -437,18 +431,11 @@
 
 
 
-        $('a.fromcontact').click(function () {
-
-            var contactEmail = $(this).parent().next().html();
-
-            setformWithManagedContact(contactEmail);
-
-
-        });
-
-
 
     }); // end of document ready()
+
+
+
 
 
     function setformWithManagedContact(email) {

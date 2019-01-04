@@ -653,6 +653,7 @@ $(document).ready(function(){
         $('#contactSumbit').attr("form", "");
         $('#contactSumbit').attr("id", "nextButton");
     });
+
 	//START set text area
 	$( "a#clearform" ).click(function() {
 	  $( 'input#attorney-first-name' ).val( '' );

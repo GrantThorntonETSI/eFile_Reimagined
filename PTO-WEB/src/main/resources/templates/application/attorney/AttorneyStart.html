@@ -986,7 +986,7 @@
         for(var a=0; a < selectedContacts.length; a++){
            if($('#attorney-email').val() == selectedContacts[a]){
                formError = true;
-               errorMsg = "this contact is already added to this application as an attorney.";
+               errorMsg = "this new contact is already added to this application as an attorney.";
            }
         }
 
@@ -997,7 +997,7 @@
             if($('#attorney-email').val() == managedContactEmails[b]){
                 if(managedContactTypes[b] == "owner"){
                     formError = true;
-                    errorMsg = "this contact has email address matching an owner contact.";
+                    errorMsg = "this new contact has email address matching an owner contact.";
                 }
             }
         }
