@@ -573,6 +573,15 @@ public class ApplicationFlowController {
 
         model.addAttribute("addNewOwnerContactFormDTO", newOwnerContactFormDTO);
 
+        ArrayList<String> selectedContactNames = new ArrayList<>();
+        for(Iterator<Owner> iter = baseTrademarkApplication.getOwners().iterator(); iter.hasNext(); ) {
+            Owner current = iter.next();
+            selectedContactNames.add(current.getEmail());
+        }
+        ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
+        selectedAttorneyDisplayDTO.setContactEmails(selectedContactNames);
+        model.addAttribute("selectedOwners",selectedAttorneyDisplayDTO);
+
         return "application/owner/partnership/ownerInfo2";
     }
 
