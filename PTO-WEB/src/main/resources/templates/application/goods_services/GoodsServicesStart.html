@@ -1,38 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{fragments/ApplicationMarkFragment :: layout (~{::body},'user')}" xmlns="http://www.w3.org/1999/html">
+      th:replace="~{fragments/efileApplicationMarkFragment :: layout (~{::body},'user')}" xmlns="http://www.w3.org/1999/html">
 <head >
     <meta charset="UTF-8">
     <title></title>
 </head>Mark Details
 <body>
-<div class="row content" style="position: relative; display: none; ">
-    <main class="col-xs-12 col-sm-8 col-md-8 col-lg-7" style="">
-        <div class="row sticky" id="contacts-ui" style=" display:none; position: fixed; top:500px; right:222px;  max-height: 10px;">
-
-
-            <div class="row" style="position: relative; top: -150px;max-height: 10px; " >
-                <div class="col-sm-12" style="max-height: 10px;">
-                    <div class="col-sm-9" style="max-height: 10px;" >
-
-                    </div>
-
-                    <div class="col-sm-3">
-                        <div class="banner-message"  style="position: relative;top:-225px; ">
-
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
-        </div><!--end row sticky -->
+<div class="row content" style="display: none;">
+    <main class="col-xs-12 col-sm-11 col-md-8 col-lg-7">
         <!--START Content Div-->
-        <div class="row" style="position: relative; top:-235px; left:-135px;" id="goodservideo">
-            <div class="col-xs-12">
-
+        <div class="row">
+            <div class="col-xs-12 text-left" id="goodservideo">
                 <div class="row">
                     <section class="col-xs-12 steps breadcrumb-steps" aria-label="progress tracker">
                         <div class="row displaycell">
@@ -41,7 +19,7 @@
                                     <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
                                         <span>1</span>
                                     </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="breadcrumb1">
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
                                         <p class="first">Your details</p>
                                     </div>
                                 </div>
@@ -51,14 +29,14 @@
                                     <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
                                         <span>2</span>
                                     </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="breadcrumb2">
-                                        <p>Trademark details</p>
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                        <p>Trade mark details</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xs-2 three active">
                                 <div class="row">
-                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number" id="breadcrumb3">
+                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
                                         <span>3</span>
                                     </div>
                                     <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
@@ -99,49 +77,32 @@
                         </div>
                     </section>
                 </div>
-
-                <!--END Application Type-->
-            </div><!--END RADIO container-->
-
-
-
-                    <div class="row" style="position: relative; max-height: 55px; bottom: -55px;">
-                        <div class="col-xs-6">
-                            <h1>Goods and Services</h1>
-
-                        </div>
-                        <nav class="col-xs-6" id="previousnext">
-                            <div class="btn-group btn-group-justified btn-sm" role="group" aria-label="previous and next buttons">
-                                <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-default btn-sm" id="prevButton">Previous</button>
-                                </div>
-                                <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-default btn-sm" id="nextButton">Next</button>
-                                </div>
-                            </div>
-                        </nav>
+                <h1>Goods and Services</h1>
+                <p>Goods are physical things (products) that can be touched &#8211; like bicycles. Services are actions performed for the benefit of someone else &#8211; like bicycle rental services. You must list the goods or services with which you are using, or with which you intend to use, the trademark.</p>
+                <!--START goods and services table-->
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 bgimg img-fluid">
+                        <a href="https://youtu.be/H0LI1t5mn8M" target="_blank" class="btn btn-block"></a>
                     </div>
-                    <p style="position: relative; bottom: -111px;">Goods are physical things (products) that can be touched &#8211; like bicycles. Services are actions performed for the benefit of someone else &#8211; like bicycle rental services. You must list the goods or services with which you are using, or with which you intend to use, the trademark.</p>
-                    <!--START goods and services table-->
-                    <div class="row" style="position: relative; bottom: -111px;">
-                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
-
-                            <a href="https://youtu.be/H0LI1t5mn8M" target="_blank" class="btn btn-block"><img  th:src="@{/resources/images/tmin_news_06_goods_and_services_sm.jpg}" /></a>
-
-
-
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                            <p class="weight600">Search through and select the goods and services that apply to your trademark, or provide a list.</p>
-                            <button type="button" class="btn btn-sm btn-success" style="margin-bottom: 5px;">Search ID Manual for Goods and Services</button>
-                            <button type="button" class="btn btn-sm btn-success">Provide Own Goods and Services</button>
-                        </div>
-                    </div><!--END Content Div-->
-        </div><!--END row-->
-
-
-    </main>
-</div><!--END Tiles row-->
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        <p class="weight600">Search through and select the goods and services that apply to your trademark, or provide a list.</p>
+                        <button type="button" class="btn btn-sm btn-success" id="searchGS">Search ID Manual for Goods and Services</button>
+                        <button type="button" class="btn btn-sm btn-success" id="manualInput">Provide Own Goods and Services</button>
+                    </div>
+                </div><!--END Content Div-->
+            </div>
+        </div>
+        <div class="inlinebuttons btn-group btn-group-justified  owner-paging-buttons" role="nav" aria-label="view previous or next page" id="prevnxt">
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-default fill prev" id="prevButton" value="previous">Previous</button>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next" disabled>Next
+                    <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
+            </div>
+        </div>
+    </main><!--MAIN-->
+</div><!--END container div-->
 
 <script th:inline="javascript">
 
@@ -187,7 +148,7 @@
     // next link url to enable  for u.s individual href="http://localhost:8080/application/owner/info"
     $(document).ready(function() {
         setTimeout(function () {
-            $('#content').fadeIn(500);
+            $('.content').fadeIn(500);
         }, 500);
 
         setTimeout(function () {
@@ -229,6 +190,11 @@
 
         $('#breadcrumb2').click(function () {
             location.href=breadCrumb2Link;
+        });
+
+
+        $('#searchGS').click(function () {
+            $('#nextButton').attr("disabled",false);
         });
 
 
