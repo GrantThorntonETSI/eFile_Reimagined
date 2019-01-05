@@ -516,6 +516,14 @@ public class ApplicationFlowController {
 
         NewOwnerContactFormDTO newOwnerContactFormDTO = new NewOwnerContactFormDTO();
         model.addAttribute("addNewOwnerContactFormDTO", newOwnerContactFormDTO);
+        ArrayList<String> selectedContactNames = new ArrayList<>();
+        for(Iterator<Owner> iter = baseTrademarkApplication.getOwners().iterator(); iter.hasNext(); ) {
+            Owner current = iter.next();
+            selectedContactNames.add(current.getEmail());
+        }
+        ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
+        selectedAttorneyDisplayDTO.setContactEmails(selectedContactNames);
+        model.addAttribute("selectedOwners",selectedAttorneyDisplayDTO);
 
 
         return "application/owner/corp/ownerInfo2";
@@ -542,6 +550,14 @@ public class ApplicationFlowController {
 
         NewOwnerContactFormDTO newOwnerContactFormDTO = new NewOwnerContactFormDTO();
         model.addAttribute("addNewOwnerContactFormDTO", newOwnerContactFormDTO);
+        ArrayList<String> selectedContactNames = new ArrayList<>();
+        for(Iterator<Owner> iter = baseTrademarkApplication.getOwners().iterator(); iter.hasNext(); ) {
+            Owner current = iter.next();
+            selectedContactNames.add(current.getEmail());
+        }
+        ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
+        selectedAttorneyDisplayDTO.setContactEmails(selectedContactNames);
+        model.addAttribute("selectedOwners",selectedAttorneyDisplayDTO);
 
 
         return "application/owner/llc/ownerInfo2";
@@ -610,6 +626,14 @@ public class ApplicationFlowController {
         newOwnerContactFormDTO.addPartner(partner);
 
         model.addAttribute("addNewOwnerContactFormDTO", newOwnerContactFormDTO);
+        ArrayList<String> selectedContactNames = new ArrayList<>();
+        for(Iterator<Owner> iter = baseTrademarkApplication.getOwners().iterator(); iter.hasNext(); ) {
+            Owner current = iter.next();
+            selectedContactNames.add(current.getEmail());
+        }
+        ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
+        selectedAttorneyDisplayDTO.setContactEmails(selectedContactNames);
+        model.addAttribute("selectedOwners",selectedAttorneyDisplayDTO);
 
         return "application/owner/llp/ownerInfo";
     }
@@ -639,6 +663,14 @@ public class ApplicationFlowController {
         newOwnerContactFormDTO.addPartner(partner);
 
         model.addAttribute("addNewOwnerContactFormDTO", newOwnerContactFormDTO);
+        ArrayList<String> selectedContactNames = new ArrayList<>();
+        for(Iterator<Owner> iter = baseTrademarkApplication.getOwners().iterator(); iter.hasNext(); ) {
+            Owner current = iter.next();
+            selectedContactNames.add(current.getEmail());
+        }
+        ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
+        selectedAttorneyDisplayDTO.setContactEmails(selectedContactNames);
+        model.addAttribute("selectedOwners",selectedAttorneyDisplayDTO);
 
         return "application/owner/jointVC/ownerInfo";
     }
@@ -667,6 +699,14 @@ public class ApplicationFlowController {
         newOwnerContactFormDTO.addPartner(partner);
 
         model.addAttribute("addNewOwnerContactFormDTO", newOwnerContactFormDTO);
+        ArrayList<String> selectedContactNames = new ArrayList<>();
+        for(Iterator<Owner> iter = baseTrademarkApplication.getOwners().iterator(); iter.hasNext(); ) {
+            Owner current = iter.next();
+            selectedContactNames.add(current.getEmail());
+        }
+        ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
+        selectedAttorneyDisplayDTO.setContactEmails(selectedContactNames);
+        model.addAttribute("selectedOwners",selectedAttorneyDisplayDTO);
 
         return "application/owner/trust/ownerInfo";
     }
@@ -697,6 +737,14 @@ public class ApplicationFlowController {
         newOwnerContactFormDTO.addPartner(partner);
 
         model.addAttribute("addNewOwnerContactFormDTO", newOwnerContactFormDTO);
+        ArrayList<String> selectedContactNames = new ArrayList<>();
+        for(Iterator<Owner> iter = baseTrademarkApplication.getOwners().iterator(); iter.hasNext(); ) {
+            Owner current = iter.next();
+            selectedContactNames.add(current.getEmail());
+        }
+        ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
+        selectedAttorneyDisplayDTO.setContactEmails(selectedContactNames);
+        model.addAttribute("selectedOwners",selectedAttorneyDisplayDTO);
 
         return "application/owner/estate/ownerInfo";
     }
