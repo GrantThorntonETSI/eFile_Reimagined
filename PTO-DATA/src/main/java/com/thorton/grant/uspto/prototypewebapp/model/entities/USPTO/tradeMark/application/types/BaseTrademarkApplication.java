@@ -396,6 +396,20 @@ public class BaseTrademarkApplication  {
         this.searchExistingGSdatabase = searchExistingGSdatabase;
     }
 
+    public GoodAndService findGSbyDescription(String description){
+        GoodAndService goodAndService = null;
+        for(Iterator<GoodAndService> iter = goodAndServices.iterator(); iter.hasNext(); ) {
+            GoodAndService current = iter.next();
+
+            if(current.getClassDescription().equals(description)){
+                goodAndService = current;
+            }
+        }
+        return goodAndService;
+    }
+
+
+
 
     @Override
     public boolean equals(Object o) {
