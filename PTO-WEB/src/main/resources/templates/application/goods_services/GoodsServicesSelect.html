@@ -3264,6 +3264,31 @@
         });
 
 
+        // datatables check rest call triggers
+
+
+        $( '#goodsandservices_wrapper input[type=checkbox]' ).click(function () {
+            if($(this).is(":checked")){
+                alert("check mark");
+            }
+            else {
+                alert("uncheck mark");
+            }
+
+            var count = 0;
+            $(this).parent().parent().find('td').each(function () {
+                if(count == 1 || count == 2){
+                    alert($(this).html());
+                }
+                count++;
+
+            });
+
+
+
+
+        });
+
 
 
 
