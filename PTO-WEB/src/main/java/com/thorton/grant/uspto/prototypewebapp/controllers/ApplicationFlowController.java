@@ -1285,10 +1285,13 @@ public class ApplicationFlowController {
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
         boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
         boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+        boolean searchDB = baseTrademarkApplication.isSearchExistingGSdatabase();
+
+
 
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
-
+        model.addAttribute("searchDB", searchDB);
 
         //return "application/MarkDetailsExamples";
         return "application/goods_services/GoodsServicesStart";

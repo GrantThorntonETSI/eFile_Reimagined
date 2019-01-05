@@ -1107,53 +1107,14 @@
                         $(".autoSaveMessageArea span").fadeIn(1000);
                     }, 500);
 
-                    // animation rendering control
-                    // we are no longer rendering check marks next to the field. auto save displayed in header areaa.
-
-                    /*
-                    if($( "."+field_name_prefix.toLowerCase()+"-animation").css('display') == 'block'){
-
-
-                            $("."+field_name_prefix.toLowerCase()+"-animation").fadeOut(100);
-                            // now we need to create an java back end service that saves this value.
-                            // also add validation on the html  similar to password save
-                            //$('#toggle-'+field_name_prefix.toLowerCase()).delay(100).click();
-
-                            // alert($(this).val());
-                            $("."+field_name_prefix.toLowerCase()+"-animation").fadeIn(1000);
-                            // now we need to create an java back end service that saves this value.
-                            // also add validation on the html  similar to password save
-                            //$("."+field_name_prefix.toLowerCase()+"-animation").delay(1000).click();
-                    }
-                    else {
-
-                            $("."+field_name_prefix.toLowerCase()+"-animation").fadeIn(1000);
-                            // now we need to create an java back end service that saves this value.
-                            // also add validation on the html  similar to password save
-                            //$('#toggle-'+field_name_prefix.toLowerCase()).delay(1000).click();
-                    }*/
-
-
-
-
                 }
-                else{
-                    //$('.circle-loader').fadeOut(100);
-                    //$('.x-mark').fadeIn(500);
-                    //$(".validationMsgArea span").text(s_msg);
-                    //$(".validationMsgArea span").css('color','red');
-                }
+
 
             },
             error: function(data) {
 
-                //$('.circle-loader').fadeOut(100);
-                //$('.x-mark').fadeIn(500);
-
                 console.log(data);
-                // set message to div area ...fields can not be left null
-                //$(".validationMsgArea span").text("You can not leave any fields empty.");
-                //$(".validationMsgArea span").css('color','red');
+
             }
 
         });

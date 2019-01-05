@@ -116,8 +116,7 @@ public class BaseTrademarkApplication  {
     private String attorneyCollapseID;
 
 
-    private boolean searchExistingGSdatabase;
-    private boolean manualGSinput;
+    private boolean searchExistingGSdatabase = false;
 
     public boolean isAttorneyPoolEmpty() {
 
@@ -397,13 +396,6 @@ public class BaseTrademarkApplication  {
         this.searchExistingGSdatabase = searchExistingGSdatabase;
     }
 
-    public boolean isManualGSinput() {
-        return manualGSinput;
-    }
-
-    public void setManualGSinput(boolean manualGSinput) {
-        this.manualGSinput = manualGSinput;
-    }
 
     @Override
     public boolean equals(Object o) {

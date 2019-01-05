@@ -2,6 +2,8 @@ package com.thorton.grant.uspto.prototypewebapp.service.REST;
 
 import com.thorton.grant.uspto.prototypewebapp.config.host.bean.endPoint.HostBean;
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
@@ -24,8 +26,23 @@ public class Goods_ServicesService  extends BaseRESTapiService{
     ResponseEntity<String> updateGoods_Services(@PathVariable String gsField , @PathVariable String gsValue, @PathVariable String appInternalID){
 
        String appFieldReadable = "";
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
 
+        if(gsField.equals("GS-select-Option")){
+            // ptoUser.setState(param); // sets state code
+            if(gsValue.equals("search")) {
+                baseTrademarkApplication.setSearchExistingGSdatabase(true);
+            }
+            else {
+                baseTrademarkApplication.setSearchExistingGSdatabase(false);
 
+            }
+            appFieldReadable = "Goods And Services search option";
+
+        }
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
         String responseMsg = appFieldReadable+" has been saved.";
 
         //return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
