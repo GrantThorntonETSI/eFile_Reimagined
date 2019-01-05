@@ -189,6 +189,32 @@
             ;
             $('#nextButton').attr("disabled",false);
 
+        }
+
+        //////////////////////////////////////////////////////////////////////
+        if(colorClaim == null){
+            if(image_path != null){
+                $('[data-toggle="popover"]').popover({
+                    title : false,
+                    html : true,
+                    content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
+                });
+
+
+            }
+
+        }
+        else{
+
+            if(image_path != null){
+                $('[data-toggle="popover"]').popover({
+                    title : false,
+                    html : true,
+                    content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
+                });
+
+
+            }
 
         }
 
@@ -230,14 +256,6 @@
         });
 
 
-
-
-
-        $('[data-toggle="popover"]').popover({
-            title : false,
-            html : true,
-            content : '<div class="media"><img src="../../resources/images/placeholder-icon.jpg" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
-        });
 
         $( '#togglepop' ).click(function() {
             $( this ).toggleClass( 'focus' );
