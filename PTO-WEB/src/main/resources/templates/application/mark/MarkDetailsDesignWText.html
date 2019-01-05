@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{fragments/ApplicationMarkFragment :: layout (~{::body},'user')}" xmlns="http://www.w3.org/1999/html">
+      th:replace="~{fragments/efileApplicationMarkFragment :: layout (~{::body},'user')}" xmlns="http://www.w3.org/1999/html">
 <head >
     <meta charset="UTF-8">
     <title></title>
@@ -8,39 +8,9 @@
 <body>
 <div class="row content" style="position: relative; display: none; ">
     <main class="col-xs-12 col-sm-8 col-md-8 col-lg-7" >
-        <div class="row sticky" id="contacts-ui" style=" display:none; position: fixed; top:500px; right:222px;  max-height: 10px;">
 
-
-
-            <div class="row" style="position: relative; top: -150px;max-height: 10px; " >
-                <div class="col-sm-12" style="max-height: 10px;">
-                    <div class="col-sm-9" style="max-height: 10px;" >
-
-                    </div>
-
-                    <div class="col-sm-3">
-                        <div class="banner-message"  style="position: relative;top:-225px; ">
-
-
-                            <div class="contacts-Table " style=" display:none;  border: rgb(235,235,235); min-width: 280px; max-width: 280px; border-width: 1px; border: solid; padding: 15px; min-height: 200px; max-height: 200px; position: relative; top:-10px; ">
-                                <div style="margin: 3px; position: relative; top:-5px;">
-                                    <img th:src="@{/resources/images/placeholder-icon.jpg}" style="position: relative; left:-5px; max-width: 250px; max-height: 200px;"  id="markImage" />
-                                </div>
-                            </div>
-
-
-
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
-        </div><!--end row sticky -->
         <!--START Content Div-->
-        <div class="row" style="position: relative; top:-235px; left:-135px;">
+        <div class="row" style="position: relative;">
             <div class="col-xs-12 ">
 
                 <div class="row">
@@ -117,28 +87,19 @@
         </div><!--END row-->
 
 
-        <div class="row" style="position: relative; top:-222px; left:-135px; ">
-            <div class="row" style="position: relative;">
+        <div class="row" style="position: relative;  ">
+            <div class="row" style="position: relative; right:-15px;">
                 <div class="col-xs-6">
                     <h1>Trademark Details - Design with Text</h1>
-                    <p class="required"><span class="weight600">&#42; = Required</span></p>
+                    <p class="required" style="position: relative; right:-15px;"><span class="weight600">&#42; = Required</span></p>
                 </div>
-                <nav class="col-xs-6" id="previousnext">
-                    <div class="btn-group btn-group-justified btn-sm" role="group" aria-label="previous and next buttons">
-                        <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-default btn-sm" id="prevButton">Previous</button>
-                        </div>
-                        <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-default btn-sm" id="nextButton" disabled>Next</button>
-                        </div>
-                    </div>
-                </nav>
+
             </div>
         <!--START Trademark Examples-->
         <!--START Standard Character-->
         <div class="row">
-            <div class="col-xs-12" id="uploaded" >
-                <div class="card-text" style="position: relative; left:-33px;">
+            <div class="col-xs-12" id="uploaded1" >
+                <div class="card-text" >
                     <h2 class="card-title weight600">Mark Information</h2>
                 </div>
 
@@ -427,6 +388,16 @@
         </div><!--END row-->
         </div>
 
+        <div class="inlinebuttons btn-group btn-group-justified  owner-paging-buttons" role="nav" aria-label="view previous or next page" id="prevnxt">
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-default fill prev" id="prevButton" value="previous">Previous</button>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next" disabled>Next
+                    <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
+            </div>
+        </div>
+
 
     </main>
 </div><!--END Tiles row-->
@@ -487,7 +458,7 @@
 
 
         setTimeout(function () {
-            $('#content').fadeIn(500);
+            $('.content').fadeIn(500);
         }, 500);
 
         setTimeout(function () {
