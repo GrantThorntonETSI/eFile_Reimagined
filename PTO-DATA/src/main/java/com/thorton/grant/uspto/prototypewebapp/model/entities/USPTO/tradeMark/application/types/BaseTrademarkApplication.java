@@ -4,6 +4,7 @@ package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.a
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.OfficeActions;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.GoodAndService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.TradeMark;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.base.BaseEntity;
@@ -27,6 +28,7 @@ public class BaseTrademarkApplication  {
         availableLawyers = new HashSet<>();
         actions = new HashSet<>();
         owners = new HashSet<>();
+        goodAndServices = new HashSet<>();
     }
 
     ////////////////////////////////////////////////////////
@@ -94,6 +96,12 @@ public class BaseTrademarkApplication  {
     private TradeMark tradeMark;
 
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @Nullable
+    private Set<GoodAndService> goodAndServices; // default owner   PTO user
+
+
+
     @OneToMany(cascade =  CascadeType.ALL)
     @Nullable
     private Set<OfficeActions> actions;
@@ -106,6 +114,10 @@ public class BaseTrademarkApplication  {
 
 
     private String attorneyCollapseID;
+
+
+    private boolean searchExistingGSdatabase;
+    private boolean manualGSinput;
 
     public boolean isAttorneyPoolEmpty() {
 
@@ -357,6 +369,40 @@ public class BaseTrademarkApplication  {
 
     public void setAttorneyCollapseID(String attorneyCollapseID) {
         this.attorneyCollapseID = attorneyCollapseID;
+    }
+
+
+    // goods and services
+    @Nullable
+    public Set<GoodAndService> getGoodAndServices() {
+        return goodAndServices;
+    }
+
+    public void setGoodAndServices(@Nullable Set<GoodAndService> goodAndServices) {
+        this.goodAndServices = goodAndServices;
+    }
+
+    public void addGoodAndService(GoodAndService goodAndService){
+        goodAndServices.add(goodAndService);
+    }
+    public void removeGoodAndService(GoodAndService goodAndService){
+        goodAndServices.remove(goodAndService);
+    }
+
+    public boolean isSearchExistingGSdatabase() {
+        return searchExistingGSdatabase;
+    }
+
+    public void setSearchExistingGSdatabase(boolean searchExistingGSdatabase) {
+        this.searchExistingGSdatabase = searchExistingGSdatabase;
+    }
+
+    public boolean isManualGSinput() {
+        return manualGSinput;
+    }
+
+    public void setManualGSinput(boolean manualGSinput) {
+        this.manualGSinput = manualGSinput;
     }
 
     @Override

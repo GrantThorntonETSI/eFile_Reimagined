@@ -103,6 +103,8 @@ public class TradeMark extends BaseEntity {
 
 
 
+
+
     // disclaimer fields
 
     private boolean actvieDisclaimer;
