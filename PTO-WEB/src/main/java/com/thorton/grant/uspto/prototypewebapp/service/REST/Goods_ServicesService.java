@@ -61,9 +61,17 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
 
+        if(baseTrademarkApplication.findGSbyDescription(classDescription) != null){
+
+            return buildResponseEnity("444", "Good and Service Already added to the Application.");
+
+        }
+
         GoodAndService goodAndService = new GoodAndService();
         goodAndService.setClassNumber(classNumber);
         goodAndService.setClassDescription(classDescription);
+
+
 
         baseTrademarkApplication.addGoodAndService(goodAndService);
 
