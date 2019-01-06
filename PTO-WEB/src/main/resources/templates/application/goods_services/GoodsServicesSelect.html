@@ -3275,9 +3275,7 @@
         // datatables check rest call triggers
 
 
-        $( '#goodsandservices_wrapper input[type=checkbox]' ).click(function () {
-
-
+        $('#goodsandservices').on("click", "input.checkmark", function () {
             var count = 0;
             var classNumber = "";
             var classDescription="";
@@ -3311,6 +3309,10 @@
                 }
             }
         });
+
+
+
+
 
     }); // end of document ready
 

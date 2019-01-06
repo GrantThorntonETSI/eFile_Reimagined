@@ -106,7 +106,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-xs-2 closepans">
-                                                        <button type="button" class="close closegspanels btn" aria-label="Close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                                                        <button type="button" class="close closegspanels btn" th:attr="GS-description=${Good_Service.getClassDescription()}" aria-label="Close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -323,10 +323,70 @@
         });
 
 
+        $('button.close').click(function () {
+
+            var gsDesc = $(this).attr("GS-description");
+            removeGoodAndService("0",gsDesc,appInternalID);
+
+
+        });
+
+
+
+
+
+
 
     });
 
 
+
+
+    function removeGoodAndService(classNumber, classDescription, appInternalID) {
+
+
+
+        $.ajax({
+            url: "../../REST/apiGateway/GS/remove/"+classNumber+"/"+classDescription+"/"+appInternalID,
+            type: 'GET',
+            success: function(data){
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                if(s_code.trim() == "200"){
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function() {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+            },
+            error: function(data) {
+
+                console.log(data);
+
+            }
+
+        });
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////
+        // end of contact information 'State' auto save ////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+
+
+    }
 
 
 
