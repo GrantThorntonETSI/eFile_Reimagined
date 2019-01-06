@@ -3291,9 +3291,20 @@
             });
             if($(this).is(":checked")){
                 addGoodAndService(classNumber,classDescription,appInternalID);
+                $('#nextButton').attr("disabled", false);
             }
             else {
                 removeGoodAndService(classNumber,classDescription,appInternalID);
+                var unsetNextButton = true;
+                $( '#goodsandservices_wrapper input[type=checkbox]' ).each(function() {
+                    if($(this).is(":checked")){
+                        unsetNextButton = false;
+                    }
+                });
+
+                if(unsetNextButton){
+                    $('#nextButton').attr("disabled", true);
+                }
             }
         });
 

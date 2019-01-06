@@ -81,7 +81,6 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
         String responseMsg = appFieldReadable+" has been saved.";
 
-        //return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
         return buildResponseEnity("200", responseMsg);
     }
 
