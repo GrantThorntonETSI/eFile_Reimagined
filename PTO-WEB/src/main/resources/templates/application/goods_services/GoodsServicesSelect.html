@@ -3110,7 +3110,7 @@
 
     var selectedGSDescription = /*[[${selectedGoods_Services.ContactNames}]]*/ 'User Name';
 
-
+    var isGSempty = /*[[${isGSempty}]]*/ 'User Name';
 
     var host = host_name+":"+host_port;
 
@@ -3227,6 +3227,10 @@
                 : $(this).html('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Hide My Mark');
         });
 
+
+        if(isGSempty == false){
+            $('#nextButton').attr("disabled", false);
+        }
 
 
 

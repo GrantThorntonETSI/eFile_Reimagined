@@ -1345,6 +1345,7 @@ public class ApplicationFlowController {
         boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
         boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
 
+
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
 
@@ -1357,6 +1358,12 @@ public class ApplicationFlowController {
         selectedDescription.setContactNames(selectedGSDescrption);
         model.addAttribute("selectedGoods_Services",selectedDescription);
 
+        int numberOfSelectedGS = baseTrademarkApplication.getGoodAndServices().size();
+        boolean isGSempty = true;
+        if(numberOfSelectedGS > 0){
+            isGSempty = false;
+        }
+        model.addAttribute("isGSempty", isGSempty);
 
 
 

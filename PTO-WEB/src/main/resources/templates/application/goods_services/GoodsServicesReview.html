@@ -6,7 +6,7 @@
     <title>Goods and Services Review</title>
 </head>
 <body>
-<div class="row content">
+<div class="row content" style="display: none;">
     <main class="col-xs-12 col-sm-8 col-md-8 col-lg-7">
         <!--START Content Div-->
         <div class="row">
@@ -184,7 +184,7 @@
                 <button type="button" class="btn btn-sm btn-default fill prev" id="prevButton" value="previous">Previous</button>
             </div>
             <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next" disabled>Next
+                <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next">Next
                     <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
             </div>
         </div>
@@ -269,6 +269,11 @@
         $('#nextButton').click(function () {
             location.href=nextLinkURL;
         });
+
+        $('#searchDB').click(function () {
+            location.href=prevLinkURL;
+        });
+
 
 
 
