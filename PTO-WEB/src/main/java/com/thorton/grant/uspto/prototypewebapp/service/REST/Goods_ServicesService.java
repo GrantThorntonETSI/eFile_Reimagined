@@ -98,6 +98,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         GoodAndService deleteThisGS = baseTrademarkApplication.findGSbyDescription(classDescription);
         baseTrademarkApplication.removeGoodAndService(deleteThisGS);
 
+
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
         String responseMsg = appFieldReadable+" has been removed.";
 

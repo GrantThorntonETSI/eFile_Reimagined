@@ -3,11 +3,12 @@ package com.thorton.grant.uspto.prototypewebapp.services.USPTO.tradeMark.asset;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.asset.GoodsAndServicesService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.GoodAndService;
 import com.thorton.grant.uspto.prototypewebapp.repositories.jpa.USPTO.tradeMark.asset.GoodsAndServicesRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
-
+@Service
 public class GoodsAndServices_JPA_Service implements GoodsAndServicesService {
 
     private final GoodsAndServicesRepository goodsAndServicesRepository;
