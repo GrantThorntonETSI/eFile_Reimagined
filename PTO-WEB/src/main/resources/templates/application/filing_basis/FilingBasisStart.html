@@ -34,7 +34,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-2 three active">
+                            <div class="col-xs-2 three done">
                                 <div class="row">
                                     <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
                                         <span>3</span>
@@ -44,7 +44,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-2 four">
+                            <div class="col-xs-2 four active">
                                 <div class="row">
                                     <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
                                         <span>4</span>
@@ -77,64 +77,38 @@
                         </div>
                     </section>
                 </div>
-                <h1>Goods and Services</h1>
+                <h1>Filing Basis</h1>
                 <div class="row">
-                    <div class="col-xs-12" id="gsselected">
-                        <div class="lead">
-                            <p>All of the selected goods and services are provided below.</p>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-
-                                <!--START selected panels-->
-                                <!--panel one-->
-                                <th:block th:each="Good_Service : ${baseTrademarkApplication.getGoodAndServices()}">
-                                    <div class="panel-group" id="gsone">
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <div class="row">
-                                                    <div class="col-xs-10">
-                                                        <div class="col-xs-12">
-                                                            <div class="row">
-                                                                <div class="col-xs-5">
-                                                                    <h4 class="panel-title number" th:text="${Good_Service.getClassNumber()}">Class 003</h4>
-                                                                </div>
-                                                                <div class="col-xs-7">
-                                                                    <p th:text="${Good_Service.getClassDescription()}">Bar Soap</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-xs-2 closepans">
-                                                        <button type="button" class="close closegspanels btn" th:attr="GS-description=${Good_Service.getClassDescription()}" aria-label="Close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </th:block>
-                                <!--panel two-->
-
-                                <!--panel three-->
-
+                    <form action="" method="post" >
+                        <fieldset>
+                            <div class="col-xs-12 form-group form-group-md margincontent" id="inuseyes">
                                 <div class="row">
                                     <div class="col-xs-12">
-                                        <p>If you would like to add more, select a following method to add additional goods and services. <span class="weight600">Otherwise, continue on to add the filing basis</span>.</p>
-                                        <div class="inlinebuttons btn-group btn-group-justified" role="group" aria-label="search manual or manually upload">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn-sm btn-success fill" id="searchDB" value="searchidmanual">Search ID Manual</button>
+                                        <p class="weight600" id="inuse">Is the mark currently in use? <a href="#" data-toggle="tooltip" title="" class="glyphicon glyphicon-info-sign test" data-placement="right" data-original-title="In use means you are already using your trademark in commerce. Commerce means the buying and selling of goods and services"></a></p>
+                                        <div role="radiogroup" aria-labelledby="inuse" class="form-group form-group-md">
+                                            <div class="radio">
+                                                <label for="inlineRadio21" class="radio-inline radiocontainer">Yes, the mark is in use with all of the selected goods/services<input type="radio" name="markinuse" id="inlineRadio21" value="yes" tabindex="0"><span class="checkmark"></span></label>
                                             </div>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn-sm btn-success fill" id="manualSelect" value="manualupload" disabled>Manually Upload</button>
+                                            <div class="radio">
+                                                <label for="inlineRadio022" class="radio-inline radiocontainer">No, the mark is not in use with all of the selected goods/services<input type="radio" name="markinuse" id="inlineRadio022" value="no" tabindex="0"><span class="checkmark"></span></label>
                                             </div>
-                                        </div>
+                                        </div><!--END radiogroup-->
+                                        <p class="weight600" id="foreigninuse">Do you have a registration and/or pending application in a foreign country for same goods/services?</p>
+                                        <div role="radiogroup" aria-labelledby="foreigninuse">
+                                            <div class="radio form-group form-group-md">
+                                                <label for="inlineRadio23" class="radio-inline radiocontainer">Yes<input type="radio" name="foreigninuse" id="inlineRadio23" value="yes" tabindex="0"><span class="checkmark"></span></label>
+                                            </div>
+                                            <div class="radio">
+                                                <label for="inlineRadio024" class="radio-inline radiocontainer">No<input type="radio" name="foreigninuse" id="inlineRadio024" value="no" tabindex="0"><span class="checkmark"></span></label>
+                                            </div>
+                                        </div><!--END radiogroup-->
                                     </div>
-                                </div><!-- END button row -->
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div><!--END row-->
-            </div><!--END row-->
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
         </div>
         <!--prev / next buttons-->
         <div class="inlinebuttons btn-group btn-group-justified  owner-paging-buttons" role="nav" aria-label="view previous or next page" id="prevnxt">
@@ -180,8 +154,8 @@
 
 <script>
 
-    var nextLinkURL = "../../application/filingBasisStart/?trademarkID="+appInternalID;
-    var prevLinkURL = "../../application/goodsAndServicesSelect/?trademarkID="+appInternalID;
+    var nextLinkURL = ""
+    var prevLinkURL = "../../application/goodsAndServicesReview/?trademarkID="+appInternalID;
 
     var breadCrumb1Link = "../../application/start/?trademarkID="+appInternalID;
     var breadCrumb2Link = "../../application/MarkDetails/?trademarkID="+appInternalID;
@@ -323,15 +297,6 @@
         });
 
 
-        $('button.close').click(function () {
-
-            var gsDesc = $(this).attr("GS-description");
-            removeGoodAndService("0",gsDesc,appInternalID);
-
-
-        });
-
-
 
 
 
@@ -342,42 +307,6 @@
 
 
 
-    function removeGoodAndService(classNumber, classDescription, appInternalID) {
-
-
-
-        $.ajax({
-            url: "../../REST/apiGateway/GS/remove/"+classNumber+"/"+classDescription+"/"+appInternalID,
-            type: 'GET',
-            success: function(data){
-
-                // parse out status msg:
-                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
-
-                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
-
-                if(s_code.trim() == "200"){
-                    //if(data.contains("status: 200")){
-                    // show confirmation check mark on form
-                    //$('#toggle').delay(1000).click();
-                    $(".autoSaveMessageArea span").fadeOut(500);
-                    setTimeout(function() {
-                        // after 1000 ms we add the class animated to the login/register card
-                        $(".autoSaveMessageArea span").text(s_msg);
-                        $(".autoSaveMessageArea span").fadeIn(1000);
-                    }, 500);
-
-                }
-
-
-            },
-            error: function(data) {
-
-                console.log(data);
-
-            }
-
-        });
 
 
 
@@ -386,7 +315,6 @@
         ////////////////////////////////////////////////////////////////////////////////
 
 
-    }
 
 
 
