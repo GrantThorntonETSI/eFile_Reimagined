@@ -3,6 +3,7 @@ package com.thorton.grant.uspto.prototypewebapp.service.REST;
 import com.thorton.grant.uspto.prototypewebapp.config.host.bean.endPoint.HostBean;
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.asset.GoodsAndServicesService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.GoodAndService;
 import org.springframework.http.ResponseEntity;
@@ -97,9 +98,12 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
         GoodAndService deleteThisGS = baseTrademarkApplication.findGSbyDescription(classDescription);
         baseTrademarkApplication.removeGoodAndService(deleteThisGS);
+        GoodsAndServicesService goodsAndServicesService = getServiceBeanFactory().getGoodsAndServicesService();
 
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
+        goodsAndServicesService.delete(deleteThisGS);
+
         String responseMsg = appFieldReadable+" has been removed.";
 
         //return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
