@@ -108,12 +108,22 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
 
-        GoodAndService deleteThisGS = baseTrademarkApplication.findGSbyInternalID(gsID);
-        baseTrademarkApplication.removeGoodAndService(deleteThisGS);
-        GoodsAndServicesService goodsAndServicesService = getServiceBeanFactory().getGoodsAndServicesService();
 
+        if(baseTrademarkApplication.findGSbyInternalID(gsID) == null){
+
+            return buildResponseEnity("444", "Good and Service is not part of the Application.");
+
+        }
+
+
+        GoodAndService deleteThisGS = baseTrademarkApplication.findGSbyInternalID(gsID);
+        baseTrademarkApplication.getGoodsAndSevicesMap().get(classNumber).remove(deleteThisGS);
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+
+
+        GoodsAndServicesService goodsAndServicesService = getServiceBeanFactory().getGoodsAndServicesService();
         goodsAndServicesService.delete(deleteThisGS);
 
         String responseMsg = appFieldReadable+" has been removed.";
