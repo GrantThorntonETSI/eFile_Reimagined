@@ -363,42 +363,54 @@
 
             var testURL = "";
 
+            var subtype_val = "";
+
             if( formType == 'individual') {
 
                 testURL = ownerDomUSIndFormURL;
+                subtype_val = "Individual";
             }
 
             if( formType == 'sole'){
                 testURL = ownerDomUSSolPFormURL;
+                subtype_val = "Sole Proprietorship";
             }
 
             if( formType == 'limitedliabilty'){
 
                 testURL = ownerDomUSLLCFormURL;
+                subtype_val = "Limited Liability Company";
+
             }
 
             if( formType == 'corp'){
 
                 testURL = ownerDomUSCorpFormURL;
+                subtype_val = "Corporation";
             }
             if( formType == 'partnership'){
 
                 testURL = ownerDomUSPartnerFormURL;
+                subtype_val = "Partnership";
             }
             if( formType == 'llp'){
 
                 testURL = ownerDomUSLLPFormURL;
+                subtype_val = "Limited Partnership";
             }
             if( formType == 'jointv'){
 
                 testURL = ownerDomUSJointVCFormURL;
+                subtype_val = "Joint Venture";
             }
             if( formType == 'trust'){
+                subtype_val = "Trust";
 
                 testURL = ownerDomUSTrustFormURL;
             }
 
             if( formType == 'estate'){
+                subtype_val = "Estate";
 
                 testURL = ownerDomUSEstateFormURL;
             }
@@ -413,6 +425,7 @@
                 // remove
 
             });
+            saveProjectInfo("set-Owner-entity-types", "US"+"+"+subtype_val, appInternalID); // static from radio buttton
 
 
         });
