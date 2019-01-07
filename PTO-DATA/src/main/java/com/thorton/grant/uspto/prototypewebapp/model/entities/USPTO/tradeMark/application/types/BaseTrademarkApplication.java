@@ -11,10 +11,7 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.base.BaseEntity;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 
 @Entity
@@ -96,12 +93,6 @@ public class BaseTrademarkApplication  {
     private TradeMark tradeMark;
 
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @Nullable
-    private Set<GoodAndService> goodAndServices; // default owner   PTO user
-
-
-
     @OneToMany(cascade =  CascadeType.ALL)
     @Nullable
     private Set<OfficeActions> actions;
@@ -109,14 +100,35 @@ public class BaseTrademarkApplication  {
 
 
     private String ownerType;
-
     private String ownerSubType;
-
-
     private String attorneyCollapseID;
-
-
     private boolean searchExistingGSdatabase = false;
+
+
+    ////////////////////////////////////////////////////////
+    // one class of Good and service // old code
+    // leave it here for now until the new code works
+    ////////////////////////////////////////////////////////
+    @OneToMany(cascade = CascadeType.ALL)
+    @Nullable
+    private Set<GoodAndService> goodAndServices; // default owner   PTO user
+    ////////////////////////////////////////////////////////
+    // new data structure to store all of the goods and services
+    // key: classNumber
+    // object HashSet of GoodAndService
+    ////////////////////////////////////////////////////////
+    @OneToMany(cascade = CascadeType.ALL)
+    @Nullable
+    private TreeMap<String, HashSet<GoodAndService>> GoodsAndSevicesMap;
+    ////////////////////////////////////////////////////////
+    // an list of ids that corresponds to the TreeMap of GS hash set sorted by TreeMap key (classNumber)/ and also sorted
+    // within each GoodAndServices set
+    ////////////////////////////////////////////////////////
+    private ArrayList<String> GoodsAndServicesIDListView;
+
+
+
+
 
     public boolean isAttorneyPoolEmpty() {
 
@@ -421,8 +433,22 @@ public class BaseTrademarkApplication  {
         return goodAndService;
     }
 
+    @Nullable
+    public TreeMap<String, HashSet<GoodAndService>> getGoodsAndSevicesMap() {
+        return GoodsAndSevicesMap;
+    }
 
+    public void setGoodsAndSevicesMap(@Nullable TreeMap<String, HashSet<GoodAndService>> goodsAndSevicesMap) {
+        GoodsAndSevicesMap = goodsAndSevicesMap;
+    }
 
+    public ArrayList<String> getGoodsAndServicesIDListView() {
+        return GoodsAndServicesIDListView;
+    }
+
+    public void setGoodsAndServicesIDListView(ArrayList<String> goodsAndServicesIDListView) {
+        GoodsAndServicesIDListView = goodsAndServicesIDListView;
+    }
 
     @Override
     public boolean equals(Object o) {
