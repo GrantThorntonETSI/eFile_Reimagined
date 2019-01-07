@@ -10,7 +10,7 @@ $(document).ready(function(){
 	});
 	$("button#colorbtn").click(function() {
 		$( 'button#colorbtn span' ).toggleClass('visuallyremoved');
-		$( 'button#colorbtn span#toggleglyph' ).toggleClass('visuallyadded');
+	 	$( 'button#colorbtn span#toggleglyph' ).toggleClass('visuallyadded');
 	});
 	$("button#translitbtn").click(function() {
 		$( 'button#translitbtn span' ).toggleClass('visuallyremoved');
