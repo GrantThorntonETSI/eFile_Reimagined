@@ -497,6 +497,7 @@
          $('.remove-attorney').click(function () {
             //alert($(this).parent().parent().parent().html());
              $(this).parent().parent().parent().fadeOut(500);
+             $(this).parent().parent().parent().parent().next().fadeOut(500);
              var contactEmail = $(this).attr("contact-email");
              //alert(contactEmail);
              // make call to remove attorney from application
