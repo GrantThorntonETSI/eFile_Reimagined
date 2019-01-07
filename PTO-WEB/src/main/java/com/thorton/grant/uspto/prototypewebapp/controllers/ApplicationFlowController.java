@@ -1422,13 +1422,13 @@ public class ApplicationFlowController {
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
 
-        ArrayList<String> selectedGSDescrption = new ArrayList<>();
+        ArrayList<String> selectedGSIDs = new ArrayList<>();
         for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
             GoodAndService current = iter.next();
-            selectedGSDescrption.add(current.getClassDescription());
+            selectedGSIDs.add(current.getInternalID());
         }
         ContactsDisplayDTO selectedDescription = new ContactsDisplayDTO();
-        selectedDescription.setContactNames(selectedGSDescrption);
+        selectedDescription.setContactNames(selectedGSIDs);
         model.addAttribute("selectedGoods_Services",selectedDescription);
 
 

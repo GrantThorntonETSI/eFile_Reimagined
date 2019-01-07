@@ -54,9 +54,9 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
 
     @CrossOrigin(origins = {"https://localhost","https://efile-reimagined.com"})
-    @RequestMapping(method = GET, value="/REST/apiGateway/GS/add/{classNumber}/{classDescription}/{appInternalID}")
+    @RequestMapping(method = GET, value="/REST/apiGateway/GS/add/{classNumber}/{classDescription}/{gsID}/{appInternalID}")
     @ResponseBody
-    ResponseEntity<String> updateApplictionGoodsServcis(@PathVariable String classNumber , @PathVariable String classDescription, @PathVariable String appInternalID){
+    ResponseEntity<String> updateApplictionGoodsServcis(@PathVariable String classNumber , @PathVariable String classDescription,  @PathVariable String gsID, @PathVariable String appInternalID){
 
         String appFieldReadable = "";
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
@@ -71,6 +71,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         GoodAndService goodAndService = new GoodAndService();
         goodAndService.setClassNumber(classNumber);
         goodAndService.setClassDescription(classDescription);
+        goodAndService.setInternalID(gsID);
 
 
 
@@ -87,15 +88,15 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
 
     @CrossOrigin(origins = {"https://localhost","https://efile-reimagined.com"})
-    @RequestMapping(method = GET, value="/REST/apiGateway/GS/remove/{classNumber}/{classDescription}/{appInternalID}")
+    @RequestMapping(method = GET, value="/REST/apiGateway/GS/remove/{classNumber}/{classDescription}/{gsID}/{appInternalID}")
     @ResponseBody
-    ResponseEntity<String> updateApplictionGoodsServcisRemove(@PathVariable String classNumber , @PathVariable String classDescription, @PathVariable String appInternalID){
+    ResponseEntity<String> updateApplictionGoodsServcisRemove(@PathVariable String classNumber , @PathVariable String classDescription, @PathVariable String gsID, @PathVariable String appInternalID){
 
         String appFieldReadable = "Good and Service";
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
 
-        GoodAndService deleteThisGS = baseTrademarkApplication.findGSbyDescription(classDescription);
+        GoodAndService deleteThisGS = baseTrademarkApplication.findGSbyInternalID(gsID);
         baseTrademarkApplication.removeGoodAndService(deleteThisGS);
         GoodsAndServicesService goodsAndServicesService = getServiceBeanFactory().getGoodsAndServicesService();
 

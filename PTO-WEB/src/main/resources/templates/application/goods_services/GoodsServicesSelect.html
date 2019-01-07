@@ -3108,7 +3108,7 @@
 
     var acceptBW = /*[[${markColorClaimBW}]]*/ 'User Name';
 
-    var selectedGSDescription = /*[[${selectedGoods_Services.ContactNames}]]*/ 'User Name';
+    var selectedGSIDS = /*[[${selectedGoods_Services.ContactNames}]]*/ 'User Name';
 
     var isGSempty = /*[[${isGSempty}]]*/ 'User Name';
 
@@ -3279,7 +3279,20 @@
             var count = 0;
             var classNumber = "";
             var classDescription="";
+            var id = "";
+
             $(this).parent().parent().find('td').each(function () {
+
+
+                //alert($(this).html());
+
+
+                if(count == 0){
+                    var html = $(this).html();
+
+                   id = getIDValueFromHTML(html);
+                }
+
                 if(count == 1){
                     classNumber = $(this).html();
                 }
@@ -3292,11 +3305,11 @@
 
             });
             if($(this).is(":checked")){
-                addGoodAndService(classNumber,classDescription,appInternalID);
+                addGoodAndService(classNumber,classDescription,id,appInternalID);
                 $('#nextButton').attr("disabled", false);
             }
             else {
-                removeGoodAndService(classNumber,classDescription,appInternalID);
+                removeGoodAndService(classNumber,classDescription,id,appInternalID);
                 var unsetNextButton = true;
                 $( '#goodsandservices_wrapper input[type=checkbox]' ).each(function() {
                     if($(this).is(":checked")){
@@ -3408,6 +3421,22 @@
         // end of contact information 'State' auto save ////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
 
+
+    }
+
+
+    function getIDValueFromHTML(html){
+
+        // find starting index of fieldName
+        // find the next colon
+        var indexStart = html.indexOf("id");
+        html = html.substring(indexStart+4);
+
+        var indexEnd = html.indexOf('"');
+        var id  = html.substring(0, indexEnd);
+
+        // find the next right closing bracket
+        return id;
 
     }
 

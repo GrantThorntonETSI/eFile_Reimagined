@@ -409,6 +409,19 @@ public class BaseTrademarkApplication  {
     }
 
 
+    public GoodAndService findGSbyInternalID(String internalID){
+        GoodAndService goodAndService = null;
+        for(Iterator<GoodAndService> iter = goodAndServices.iterator(); iter.hasNext(); ) {
+            GoodAndService current = iter.next();
+
+            if(current.getInternalID().equals(internalID)){
+                goodAndService = current;
+            }
+        }
+        return goodAndService;
+    }
+
+
 
 
     @Override

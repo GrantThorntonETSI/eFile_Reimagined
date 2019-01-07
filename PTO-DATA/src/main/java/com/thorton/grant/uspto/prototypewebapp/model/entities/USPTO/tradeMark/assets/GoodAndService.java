@@ -24,6 +24,9 @@ public class GoodAndService {
     private String sampleDescription;
 
 
+    private String internalID;
+
+
     public String getClassNumber() {
         return classNumber;
     }
@@ -54,6 +57,14 @@ public class GoodAndService {
 
     public void setSampleDescription(String sampleDescription) {
         this.sampleDescription = sampleDescription;
+    }
+
+    public String getInternalID() {
+        return internalID;
+    }
+
+    public void setInternalID(String internalID) {
+        this.internalID = internalID;
     }
 
     @Override
