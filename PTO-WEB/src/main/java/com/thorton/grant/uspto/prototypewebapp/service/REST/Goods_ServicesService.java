@@ -86,8 +86,9 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         goodAndService.setClassNumber(classNumber);
         goodAndService.setClassDescription(classDescription);
         goodAndService.setInternalID(gsID);
+        baseTrademarkApplication.addGoodAndService(goodAndService);
 
-        baseTrademarkApplication.getGoodsAndSevicesMap().get(classNumber).add(goodAndService);
+        //baseTrademarkApplication.getGoodsAndSevicesMap().get(classNumber).add(goodAndService);
 
         appFieldReadable = "Good and Service";
 
@@ -117,8 +118,8 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
 
         GoodAndService deleteThisGS = baseTrademarkApplication.findGSbyInternalID(gsID);
-        baseTrademarkApplication.getGoodsAndSevicesMap().get(classNumber).remove(deleteThisGS);
-
+       // baseTrademarkApplication.getGoodsAndSevicesMap().get(classNumber).remove(deleteThisGS);
+        baseTrademarkApplication.removeGoodAndService(deleteThisGS);
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
 

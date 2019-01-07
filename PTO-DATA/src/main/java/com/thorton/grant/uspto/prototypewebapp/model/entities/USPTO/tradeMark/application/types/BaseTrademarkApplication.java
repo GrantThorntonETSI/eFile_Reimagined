@@ -118,8 +118,7 @@ public class BaseTrademarkApplication  {
     // key: classNumber
     // object HashSet of GoodAndService
     ////////////////////////////////////////////////////////
-    @OneToMany(cascade = CascadeType.ALL)
-    @Nullable
+
     private TreeMap<String, HashSet<GoodAndService>> GoodsAndSevicesMap;
     ////////////////////////////////////////////////////////
     // an list of ids that corresponds to the TreeMap of GS hash set sorted by TreeMap key (classNumber)/ and also sorted
@@ -386,6 +385,70 @@ public class BaseTrademarkApplication  {
 
     // goods and services
     @Nullable
+    public ArrayList<GoodAndService> getGoodAndServicesList() {
+
+        // go through the map, for each hashset,  add each good and services to the hash set that is returned
+
+        Set<GoodAndService> sortedGoodsAndServices = new HashSet<>();
+
+        // determine how many unique keys do we have
+
+        Set<String> uniqeClassNumber = getUniqueClassNumberforGS();
+
+        ArrayList<GoodAndService> returnGoodsServicesList = new ArrayList<>();
+
+        // for each unique key, after its sorted
+        // sort uniqeIDs
+        List<String> sortedUniqeClassNumbers = new ArrayList<>(uniqeClassNumber);
+        Collections.sort(sortedUniqeClassNumbers);
+        System.out.println("number of unique class numbers found : "+sortedUniqeClassNumbers.size());
+
+
+        for(int a=0; a < sortedUniqeClassNumbers.size(); a++){
+            System.out.println("processing class number : "+sortedUniqeClassNumbers.get(a));
+
+            ArrayList<GoodAndService> sortedCategory = new ArrayList<>();
+
+            for(Iterator<GoodAndService> iter = goodAndServices.iterator(); iter.hasNext(); ) {
+                GoodAndService current = iter.next();
+                if(sortedUniqeClassNumbers.get(a).equals(current.getClassNumber())){
+
+                    System.out.println("adding GS with description" +current.getClassDescription());
+                    System.out.println("GS added has class number "+current.getClassNumber());
+                    sortedCategory.add(current);
+                }
+
+
+            }
+            // sort sorted category and add it to return value
+
+            Collections.sort(sortedCategory, new CustomComparator());
+
+             for(int b =0; b < sortedCategory.size(); b++){
+                 returnGoodsServicesList.add(sortedCategory.get(b));
+             }
+
+
+
+        }
+        // go through the main gs list and find GS that matches this key
+
+        // for each id unique id,
+        //   create an arrayList
+             // for each GS that matches this unique Category
+             // add to the array list
+
+        // // end for loop
+        // sort array list
+        // and add to return hash set
+
+
+
+
+        return returnGoodsServicesList;
+    }
+
+    @Nullable
     public Set<GoodAndService> getGoodAndServices() {
         return goodAndServices;
     }
@@ -491,5 +554,32 @@ public class BaseTrademarkApplication  {
                 ", ownerType='" + ownerType + '\'' +
                 ", ownerSubType='" + ownerSubType + '\'' +
                 '}';
+    }
+
+    public Set<String> getUniqueClassNumberforGS(){
+
+       Set<String> uniqeIDS = new HashSet<>();
+
+        for(Iterator<GoodAndService> iter = goodAndServices.iterator(); iter.hasNext(); ) {
+            GoodAndService current = iter.next();
+
+
+               uniqeIDS.add(current.getClassNumber());
+
+        }
+
+
+        return uniqeIDS;
+
+    }
+
+    public class CustomComparator implements Comparator<GoodAndService> {
+        @Override
+        public int compare(GoodAndService o1, GoodAndService o2) {
+
+            System.out.println("comparing string 1 : "+o1.getClassDescription()+" | to String 2 : "+o2.getClassDescription());
+            System.out.println("compare results : "+o1.getClassDescription().compareTo(o2.getClassDescription()));
+            return o1.getClassDescription().compareTo(o2.getClassDescription());
+        }
     }
 }
