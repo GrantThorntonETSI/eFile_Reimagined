@@ -105,7 +105,7 @@
                         </div>
                     </div>
 
-                    <div class="accordion" id="accordionExample" style="position: relative; right:-10px; margin-top: 30px; ">
+                    <div class="accordion" id="accordionExample" style="position: relative; right:-10px; margin-top: 30px;word-wrap:break-word; ">
 
 
 
@@ -119,23 +119,24 @@
                                             <input  th:if="${lawyer.isPrimary() == false}" class="primaryLawyer" style="position: relative; bottom: -5px;"  type="radio" name="primaryAttorney" >
                                         </div>
                                         <div class="col-sm-1">
-                                            <i class="material-icons collapsed" data-toggle="collapse" th:attr="data-target='#'+${lawyer.collapseID}"  aria-expanded="false" aria-controls="collapseTwo" style="position: relative; bottom:-5px; left:-20px;">import_export</i>
+                                            <i class="material-icons collapsed" data-toggle="collapse" th:attr="data-target='#'+${lawyer.collapseID}"  aria-expanded="false" aria-controls="collapseTwo" style="position: relative; bottom:-5px;">import_export</i>
                                         </div>
+                                        <div class="col-sm-2 col-sm-3">
+
+                                            <b style="position: relative; bottom: -5px;" th:text="${lawyer.firstName}+' '+${lawyer.lastName}">Attorney Name</b>
+
+                                        </div>
+
+                                        <div class="col-sm-2 col-sm-3 col-sm-4">
+                                            <b style="position: relative; bottom: -5px;" th:text="${lawyer.email}"> Attorney@Email.com</b>
+                                        </div>
+
                                         <div class="col-sm-3">
-
-                                            <b style="position: relative; bottom: -5px; left:-25px;" th:text="${lawyer.firstName}+' '+${lawyer.lastName}">Attorney Name</b>
-
+                                            <b style="position: relative; bottom: -5px;" th:text="${lawyer.getLawFirmName()}"> Attorney Firm, LLC </b>
                                         </div>
 
-                                        <div class="col-sm-3">
-                                            <b style="position: relative; bottom: -5px; left:-55px;" th:text="${lawyer.email}"> Attorney@Email.com</b>
-                                        </div>
-
-                                        <div class="col-sm-3">
-                                            <b style="position: relative; bottom: -5px; left:-25px;" th:text="${lawyer.getLawFirmName()}"> Attorney Firm, LLC </b>
-                                        </div>
-                                        <div class="col-sm-1">
-                                            <i class="material-icons" style="position: relative; bottom: -3px;">remove_circle</i>
+                                        <div class="col-sm-1" style="position: relative; margin-left:8%"  th:attr="primary-attorney=${lawyer.isPrimary()}" >
+                                            <button th:attr="contact-email=${lawyer.email}" type="button" class="close btn remove-attorney"  aria-label="Close" style="position: relative; bottom: -9px;"><span class="glyphicon glyphicon-remove" aria-hidden="true" style=""></span></button>
                                         </div>
 
 
@@ -492,7 +493,22 @@
 
 
 
+         // remove attorney hide and auto save
+         $('.remove-attorney').click(function () {
+            //alert($(this).parent().parent().parent().html());
+             $(this).parent().parent().parent().fadeOut(500);
+             var contactEmail = $(this).attr("contact-email");
+             //alert(contactEmail);
+             // make call to remove attorney from application
+             removeAttorneyFromApplication(contactEmail,appInternalID);
 
+             // check if primary attr set ..if set . disable next button
+             if($(this).parent().attr("primary-attorney") == "true"){
+                 $('#nextButton').attr("disabled", true);
+             }
+
+
+         });
 
 
 
@@ -507,6 +523,70 @@
         $('#confirm-link-widget').css("background-color", "rgb(52, 152, 219)");
 
     }
+
+    function removeAttorneyFromApplication(contact_email, project_ID) {
+
+        //////////////////////////////////////////////////////////////////////////////////////
+        // we need REST controller of finding a contact by its email
+        // this needs to be implemented on the PTOUser object
+        //////////////////////////////////////////////////////////////////////////////////////
+        var contact_field_name = "application-contact-add-confirm";
+        $.ajax({
+            //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
+            url: "../../REST/apiGateway/application/contacts/attorney/delete/"+contact_email+"/"+project_ID,
+
+            type: 'GET',
+            success: function(data){
+
+
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                if(s_code.trim() == "200"){
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function() {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+
+
+
+
+                }
+                else{
+                    //$('.circle-loader').fadeOut(100);
+                    //$('.x-mark').fadeIn(500);
+                    //$(".validationMsgArea span").text(s_msg);
+                    //$(".validationMsgArea span").css('color','red');
+                }
+
+            },
+            error: function(data) {
+
+                //$('.circle-loader').fadeOut(100);
+                //$('.x-mark').fadeIn(500);
+
+                console.log(data);
+                // set message to div area ...fields can not be left null
+                //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                //$(".validationMsgArea span").css('color','red');
+            }
+
+        });
+
+    } // end of function
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
 
     function setPrimaryAttorneyApplication(contact_email, project_ID) {
