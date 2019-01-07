@@ -393,13 +393,13 @@ public class BaseTrademarkApplication  {
 
         // determine how many unique keys do we have
 
-        Set<String> uniqeClassNumber = getUniqueClassNumberforGS();
+        Set<Integer> uniqeClassNumber = getUniqueClassNumberforGS();
 
         ArrayList<GoodAndService> returnGoodsServicesList = new ArrayList<>();
 
         // for each unique key, after its sorted
         // sort uniqeIDs
-        List<String> sortedUniqeClassNumbers = new ArrayList<>(uniqeClassNumber);
+        List<Integer> sortedUniqeClassNumbers = new ArrayList<>(uniqeClassNumber);
         Collections.sort(sortedUniqeClassNumbers);
         System.out.println("number of unique class numbers found : "+sortedUniqeClassNumbers.size());
 
@@ -411,7 +411,7 @@ public class BaseTrademarkApplication  {
 
             for(Iterator<GoodAndService> iter = goodAndServices.iterator(); iter.hasNext(); ) {
                 GoodAndService current = iter.next();
-                if(sortedUniqeClassNumbers.get(a).equals(current.getClassNumber())){
+                if(sortedUniqeClassNumbers.get(a) == Integer.getInteger(current.getClassNumber())){
 
                     System.out.println("adding GS with description" +current.getClassDescription());
                     System.out.println("GS added has class number "+current.getClassNumber());
@@ -556,15 +556,15 @@ public class BaseTrademarkApplication  {
                 '}';
     }
 
-    public Set<String> getUniqueClassNumberforGS(){
+    public Set<Integer> getUniqueClassNumberforGS(){
 
-       Set<String> uniqeIDS = new HashSet<>();
+       Set<Integer> uniqeIDS = new HashSet<>();
 
         for(Iterator<GoodAndService> iter = goodAndServices.iterator(); iter.hasNext(); ) {
             GoodAndService current = iter.next();
 
 
-               uniqeIDS.add(current.getClassNumber());
+               uniqeIDS.add(Integer.getInteger(current.getClassNumber()));
 
         }
 
