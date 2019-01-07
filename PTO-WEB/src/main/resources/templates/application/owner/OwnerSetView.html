@@ -90,11 +90,11 @@
 
                 <!--START Attorney Information Form-->
 
-                <div class="row" id="contacts-ui" style=" display: none; position: relative;  max-width:850px;right:-33px;">
+
 
                     <div class="row" style="">
 
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <h5><b>Trademark Application Owner Details</b></h5>
                         </div>
 
@@ -103,13 +103,13 @@
                         <div class="col-sm-3">
                         </div>
 
-                        <div class="col-sm-3" style="position: relative; top: -10px; right:-30px; ">
+                        <div class="col-sm-3" style="position: relative; top: -10px; float: right; ">
                             <span id="addOwneronfirm" class=" btn-sm btn"  type="button"  style=" padding:5px; max-width: 170px; padding:5px;  color: white; background-color: rgb(52, 152, 219); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px;  position: relative;top:20px;"><i class="material-icons" style="position: relative; left: -10px;">person_add</i><b style="position: relative; top:-5px;"><a id="addOwnerLink" style="color: white; text-decoration: none;" >Add<br> Additional Owner</a></b></span>
                         </div>
 
                     </div>
 
-                    <div class="accordion" id="accordionExample" style="position: relative; right:-10px; margin-top: 30px;">
+                    <div class="accordion" id="accordionExample" style="position: relative; right:-10px; margin-top: 30px; word-wrap:break-word;">
 
 
                         <!--only one owner to display -->
@@ -132,7 +132,7 @@
 
                                         </div>
 
-                                        <div class="col-sm-2 col-sm-3 col-sm-4" style="position: relative; left:-55px;">
+                                        <div class="col-sm-2 col-sm-3 col-sm-4" style="position: relative ">
                                             <b style="position: relative;  " th:text="${owner.email}"> Attorney@Email.com</b>
                                         </div>
 
@@ -149,7 +149,7 @@
                                 </div>
                             </div>
 
-                            <div th:attr="id=${owner.id}"  class="collapse in" aria-labelledby="headingTwo" data-parent="#accordionExample" style="max-width: 850px; margin-bottom: 10px;">
+                            <div th:attr="id=${owner.id}"  class="collapse in" aria-labelledby="headingTwo" data-parent="#accordionExample" style="margin-bottom: 10px;">
                                 <div class="card-body">
 
                                     <div class="row" style="position: relative; right:-111px; margin-top: 10px;">
@@ -157,8 +157,8 @@
                                             <i class="material-icons">keyboard_arrow_right</i><b style="position: relative; top:-7px;"> Address</b>
                                         </span>
 
-                                        <div th:attr="id=${owner.id}+'a'"  class="collapse" aria-labelledby="headingTwoAddress" data-parent="#accordionExample" style="max-width: 850px;">
-                                            <div class="card-body contact-field-card-body">
+                                        <div th:attr="id=${owner.id}+'a'"  class="collapse" aria-labelledby="headingTwoAddress" data-parent="#accordionExample" >
+                                            <div class="card-body" style="max-width: 85%;">
 
                                                 <span style="position: relative; right:-30px;" th:text="${owner.address}+' '+${owner.city}+', '+${owner.state}+' '+${owner.zipcode}"> 1115 Reserve Champion Drive, Rockville MD 20850</span>
 
@@ -171,8 +171,8 @@
                                                 <i class="material-icons">keyboard_arrow_right</i> <b style="position: relative; top:-7px;">Website URL</b>
                                             </span>
 
-                                        <div th:attr="id=${owner.id}+'b'"  class="collapse" aria-labelledby="headingTwoAffiliation" data-parent="#accordionExample" style="max-width: 850px;">
-                                            <div class="card-body contact-field-card-body" >
+                                        <div th:attr="id=${owner.id}+'b'"  class="collapse" aria-labelledby="headingTwoAffiliation" data-parent="#accordionExample" >
+                                            <div class="card-body" style="max-width: 85%;">
 
                                                 <span style="position: relative; right:-30px;"  th:text="${owner.webSiteURL}">Washington Dc Bar Association. Maryland Bar Association.</span>
 
@@ -187,7 +187,7 @@
                                                 </span>
 
                                             <div th:attr="id=${owner.id}+${governingEntity.collapseID}+'c'"  class="collapse" aria-labelledby="headingTwoAffiliation" data-parent="#accordionExample" style="max-width: 850px;">
-                                                <div class="card-body contact-field-card-body" >
+                                                <div class="card-body" style="max-width: 85%;" >
                                                     <span>Partner name:</span>
                                                     <span style="position: relative; right:-30px;"  th:text="${governingEntity.displayName}">Washington Dc Bar Association. Maryland Bar Association.</span><br>
                                                     <span>Partner Type:</span>
@@ -220,7 +220,7 @@
 
                     </div> <!~- end of accordian -->
 
-                </div> <!--end of contacts UI -->
+
 
             </div>
         </div>
