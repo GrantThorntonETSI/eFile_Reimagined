@@ -26,6 +26,7 @@ public class BaseTrademarkApplication  {
         actions = new HashSet<>();
         owners = new HashSet<>();
         goodAndServices = new HashSet<>();
+        GoodsAndSevicesMap = new TreeMap<>();
     }
 
     ////////////////////////////////////////////////////////

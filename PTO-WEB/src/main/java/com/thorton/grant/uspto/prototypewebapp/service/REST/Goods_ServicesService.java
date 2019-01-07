@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashSet;
+
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
@@ -62,20 +64,30 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
 
-        if(baseTrademarkApplication.findGSbyDescription(classDescription) != null){
+        if(baseTrademarkApplication.findGSbyInternalID(gsID) != null){
 
             return buildResponseEnity("444", "Good and Service Already added to the Application.");
 
         }
 
+
+        // check if classNumber exists ..  // if the classNumber/category does not exist // create it
+        if(baseTrademarkApplication.getGoodsAndSevicesMap().containsKey(classNumber) == false){
+            // new key/classNumber
+            // we need to create a new category for this class
+            HashSet<GoodAndService> goodAndServiceHashSet = new HashSet<>();
+            baseTrademarkApplication.getGoodsAndSevicesMap().put(classNumber, goodAndServiceHashSet);
+
+        }
+
+
+        // create the good and service
         GoodAndService goodAndService = new GoodAndService();
         goodAndService.setClassNumber(classNumber);
         goodAndService.setClassDescription(classDescription);
         goodAndService.setInternalID(gsID);
 
-
-
-        baseTrademarkApplication.addGoodAndService(goodAndService);
+        baseTrademarkApplication.getGoodsAndSevicesMap().get(classNumber).add(goodAndService);
 
         appFieldReadable = "Good and Service";
 
