@@ -137,7 +137,7 @@
                                         </div>
 
                                         <div class="col-sm-3">
-                                               <b style="position: relative; top:-5px;  " th:text="${owner.getOwnersubType()}"> Attorney Firm, LLC </b>
+                                               <b style="position: relative;" th:text="${owner.getOwnersubType()}"> Attorney Firm, LLC </b>
                                         </div>
 
 
@@ -152,7 +152,7 @@
                             <div th:attr="id=${owner.id}"  class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample" style="margin-bottom: 10px;">
                                 <div class="card-body">
 
-                                    <div class="row" style="position: relative; right:-111px; margin-top: 10px;">
+                                    <div class="row" style="position: relative;  margin-top: 10px; margin-left: 5%;">
                                         <span class="collapsed"  data-toggle="collapse" th:attr="data-target='#'+${owner.id}+'a'"  aria-expanded="false" aria-controls="collapseTwoAddress">
                                             <i class="material-icons">keyboard_arrow_right</i><b style="position: relative; top:-7px;"> Address</b>
                                         </span>
@@ -166,7 +166,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row" style="position: relative; right:-111px;">
+                                    <div class="row" style="position: relative; margin-top: 10px; margin-left: 5%;">
                                             <span class="collapsed"  data-toggle="collapse" th:attr="data-target='#'+${owner.id}+'b'"  aria-expanded="false" aria-controls="collapseTwoAffiliation">
                                                 <i class="material-icons">keyboard_arrow_right</i> <b style="position: relative; top:-7px;">Website URL</b>
                                             </span>
@@ -181,7 +181,7 @@
                                     </div>
 
                                     <th:block th:each="governingEntity : ${owner.governingEntities}">
-                                        <div class="row" style="position: relative; right:-111px;">
+                                        <div class="row" style="position: relative; margin-top: 10px; margin-left: 5%;">
                                                 <span class="collapsed"  data-toggle="collapse" th:attr="data-target='#'+${owner.id}+${governingEntity.collapseID}+'c'"  aria-expanded="false" aria-controls="collapseTwoAffiliation">
                                                     <i class="material-icons">keyboard_arrow_right</i> <b style="position: relative; top:-7px;">Partner Info</b>
                                                 </span>
@@ -202,7 +202,7 @@
                                         </div>
                                     </th:block>
 
-                                    <div class="row" style="position: relative; right:-137px; margin-top: 10px;">
+                                    <div class="row" style="position: relative; margin-left: 5%; margin-top: 10px;">
                                         <b>Phone Number:</b> <input type="text" style="border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;"  th:value="${owner.primaryPhonenumber}" >
 
                                     </div>
