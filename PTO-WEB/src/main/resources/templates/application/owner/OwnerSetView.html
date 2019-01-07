@@ -123,26 +123,27 @@
 
                                         </div>
                                         <div class="col-sm-1">
-                                            <i class="material-icons collapsed" data-toggle="collapse" th:attr="data-target='#'+${owner.id}"   aria-expanded="false" aria-controls="collapseTwo" style="position: relative; bottom:-5px; left:-20px;">import_export</i>
+                                            <i class="material-icons collapsed" data-toggle="collapse" th:attr="data-target='#'+${owner.id}"   aria-expanded="false" aria-controls="collapseTwo" style="position: relative; bottom:-5px; left:-20px;">keyboard_arrow_right</i>
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-2 col-sm-3">
                                             <div class="row">
                                                 <b style="position: relative; bottom:-5px;" th:text="${owner.ownerDisplayname}">Owner Name</b>
                                             </div>
 
                                         </div>
 
-                                        <div class="col-sm-3" style="position: relative; left:-55px;">
+                                        <div class="col-sm-2 col-sm-3 col-sm-4" style="position: relative; left:-55px;">
                                             <b style="position: relative;  " th:text="${owner.email}"> Attorney@Email.com</b>
                                         </div>
 
                                         <div class="col-sm-3">
                                                <b style="position: relative; top:-5px;  " th:text="${owner.getOwnersubType()}"> Attorney Firm, LLC </b>
                                         </div>
-                                        <div class="col-sm-1">
-                                            <i class="material-icons" style="position: relative; bottom: -3px;">remove_circle</i>
-                                        </div>
 
+
+                                        <div class="col-sm-1" style="position: relative; margin-left:8%"   >
+                                            <button th:attr="contact-email=${owner.email}" type="button" class="close btn remove-owner"  aria-label="Close" style="position: relative; bottom: -9px;"><span class="glyphicon glyphicon-remove" aria-hidden="true" style=""></span></button>
+                                        </div>
 
                                     </div>
                                 </div>
@@ -153,7 +154,7 @@
 
                                     <div class="row" style="position: relative; right:-111px; margin-top: 10px;">
                                         <span class="collapsed"  data-toggle="collapse" th:attr="data-target='#'+${owner.id}+'a'"  aria-expanded="false" aria-controls="collapseTwoAddress">
-                                            <i class="material-icons">keyboard_arrow_right</i><b style="position: relative; top:-7px;"> Address Information</b>
+                                            <i class="material-icons">keyboard_arrow_right</i><b style="position: relative; top:-7px;"> Address</b>
                                         </span>
 
                                         <div th:attr="id=${owner.id}+'a'"  class="collapse" aria-labelledby="headingTwoAddress" data-parent="#accordionExample" style="max-width: 850px;">
