@@ -3304,6 +3304,7 @@
                 count++;
 
             });
+
             if($(this).is(":checked")){
                 addGoodAndService(classNumber,classDescription,id,appInternalID);
                 $('#nextButton').attr("disabled", false);
@@ -3330,13 +3331,13 @@
     }); // end of document ready
 
 
-    function addGoodAndService(classNumber, classDescription, appInternalID) {
+    function addGoodAndService(classNumber, classDescription, id, appInternalID) {
 
         //var field_value = $(this).val();
         //alert(field_value);
 
         $.ajax({
-            url: "../../REST/apiGateway/GS/add/"+classNumber+"/"+classDescription+"/"+appInternalID,
+            url: "../../REST/apiGateway/GS/add/"+classNumber+"/"+classDescription+"/"+id+"/"+appInternalID,
             type: 'GET',
             success: function(data){
 
@@ -3378,12 +3379,12 @@
     }
 
 
-    function removeGoodAndService(classNumber, classDescription, appInternalID) {
+    function removeGoodAndService(classNumber, classDescription, id, appInternalID) {
 
 
 
         $.ajax({
-            url: "../../REST/apiGateway/GS/remove/"+classNumber+"/"+classDescription+"/"+appInternalID,
+            url: "../../REST/apiGateway/GS/remove/"+classNumber+"/"+classDescription+"/"+id+"/"+appInternalID,
             type: 'GET',
             success: function(data){
 

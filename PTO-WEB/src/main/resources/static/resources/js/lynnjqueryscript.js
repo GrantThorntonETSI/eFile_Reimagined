@@ -44,6 +44,8 @@ $(document).ready(function(){
 			$( '#goodsandservices_wrapper input[type=checkbox]' ).each(function() {
 				var x = $( 'input[type=checkbox]' ).index( this );
 				$( this ).attr('id', 'a' + x);
+
+
 			});
 			$( '#goodsandservices_wrapper label' ).each(function() {
 				var y = $( this ).siblings( 'input[type=checkbox]' ).attr('id');
