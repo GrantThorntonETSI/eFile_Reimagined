@@ -493,6 +493,63 @@ public class ApplicationService  extends  BaseRESTapiService{
 
 
 
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/application/contacts/owner/delete/{contact_email}/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> updateApplicationRemoveOwner(@PathVariable String contact_email , @PathVariable String appInternalID){
+
+
+        if(verifyValidUserSession(contact_email) == false){
+            String responseMsg = "Contact with email address :"+contact_email+ " has not been saved. invalid user session.";
+            return buildResponseEnity("404", responseMsg);
+
+        }
+        //////////////////////////////////////////////////////////
+        // retrieve application using passed internal id
+        //////////////////////////////////////////////////////////
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+        OwnerService ownerService = getServiceBeanFactory().getOwnerService();
+        //////////////////////////////////////////////////////////
+        // find contact via email from PTOUser
+        // create a copy of the contact object
+        // add the copy of the contact to the application object
+        // save application object
+        ///////////////////////////////////////////////////////////
+
+        Owner delOwner;
+
+        for(Iterator<Owner> iter = baseTrademarkApplication.getOwners().iterator(); iter.hasNext(); ) {
+            //delLawyer = null;
+            delOwner = iter.next();
+            if(delOwner.getEmail().equals(contact_email)){
+
+                if(baseTrademarkApplication.getOwners().size() == 1){
+                    baseTrademarkApplication.setLastViewModel("application/owner/OwnerStart");
+                    //baseTrademarkApplication.setAttorneyFiling(false);
+
+                }
+
+                baseTrademarkApplication.removeOwner(delOwner);
+
+                ownerService.delete(delOwner);
+
+            }
+        }
+
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+        ////////////////////////////////////////////////
+        // start generating response
+        ////////////////////////////////////////////////
+
+        String responseMsg = "Contact with email address :"+contact_email+" has been removed from the Application";
+        return buildResponseEnity("200", responseMsg);
+
+    }
+
+
 
 
 

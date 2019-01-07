@@ -300,6 +300,8 @@
 
 
         var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
+        var ownerPoolSize = /*[[${baseTrademarkApplication.owners.size()}]]*/ 'User Name';
+
         var host_name= /*[[${hostBean.host}]]*/ 'User Name';
         var host_port= /*[[${hostBean.port}]]*/ 'User Name';
         var host = host_name+":"+host_port;
@@ -456,75 +458,29 @@
 
             /////////////////////////////////////////////////////////////////////////////
 
-            var dataSet1 = [
-
-
-            ];
-
-            //////////////////////////////////////////////////////////////////////////////
-            // initialize contacts table with empty values
-            //////////////////////////////////////////////////////////////////////////////
-            var contactsTable = $('#ManagedContacts').DataTable( {
-                data: dataSet1,
-                "pageLength": 5,
-                "scrollY": "250px",
-                "scrollX": "100%",
-                "oLanguage": {
-
-                    "sSearch": "<b style=\"position: relative; bottom: -3px; \" > <i style=\"position: relative; right:-197px; \"  class=\"material-icons\">search</i></b>"
-
-                },
-                "dom": '<"top"f<"clear">>rt<"bottom"p<"clear">>',
-                columns: [
-                    { title: ""  },
-                    { title: "Contact Name" },
-                    { title: "" }
-
-                ]
-            } );
-
-            ////////////////////////////////////////////////////////////////////////////////////////////////
-            // set overflow hidden for horizontal scroll bar created by y-scroll options on data tables
-            // that keeps the data tables view port height constant
-            /////////////////////////////////////////////////////////////////////////////////////////////////
-            $('.dataTables_scrollBody').css('overflow',  'hidden');
-
-
-            // load managed contacts from server
-            for(var a =0; a <contactNames.length; a++) {
-                ///////////////////////////////////////////////////////////////////////////
-                // check each name against selected names ...if in selected lis ...
-                // add row with check box selected and disabled
-                ///////////////////////////////////////////////////////////////////////////
-                var selectedContact = false;
-                for(var b=0; b <selectedContactNames.length; b++ ){
-                    if(contactNames[a] == selectedContactNames[b]){
-                        selectedContact = true;
-                    }
-
-                }
-
-                if(selectedContact == true){
-                    var col1 = "<span class='small-tooltip'><a  style=\" min-width:500px; text-decoration: none;\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Contact is an Owner for this application.\">&nbsp;</a></span><i class='material-icons' style='position: relative; right:-10px;'>check_circle_outline</i>";
-                    var col2 = "<b>"+contactNames[a]+"</b>";
-                    var col3 = "";
-                    contactsTable.row.add([col1, col2, col3]).draw();
-
-                }
-                else {
-                    var col1 = "<span class='small-tooltip'><a  style=\" min-width:500px; text-decoration: none;\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Copy Contact Information to Owner Form.\">&nbsp;</a></span><i class='material-icons' style='position: relative; right:-10px;'>add_circle_outline</i>";
-                    var col2 = "<b>"+contactNames[a]+"</b>";
-                    var col3 = "";
-                    contactsTable.row.add([col1, col2, col3]).draw();
-
-                }
-
-
-
-            }
             // sort and redraw to line up columns
             $('[data-toggle="tooltip"]').tooltip();
             // sort and redraw to line up columns
+
+
+
+            // remove owner - hide and auto save
+            $('.remove-owner').click(function () {
+                //alert($(this).parent().parent().parent().html());
+                $(this).parent().parent().parent().fadeOut(500);
+                var contactEmail = $(this).attr("contact-email");
+                //alert(contactEmail);
+                // make call to remove attorney from application
+                removeOwnerFromApplication(contactEmail,appInternalID);
+
+                if(ownerPoolSize == 1){
+                    $('#nextButton').attr("disabled", true);
+
+                }
+
+
+            });
+
 
 
 
@@ -534,6 +490,67 @@
         // aJAX
         /////////////////////////////////////////////////////
 
+        function removeOwnerFromApplication(contact_email, project_ID) {
+
+            //////////////////////////////////////////////////////////////////////////////////////
+            // we need REST controller of finding a contact by its email
+            // this needs to be implemented on the PTOUser object
+            //////////////////////////////////////////////////////////////////////////////////////
+            var contact_field_name = "application-contact-add-confirm";
+            $.ajax({
+                //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
+                url: "../../REST/apiGateway/application/contacts/owner/delete/"+contact_email+"/"+project_ID,
+
+                type: 'GET',
+                success: function(data){
+
+
+
+                    // parse out status msg:
+                    var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                    var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                    if(s_code.trim() == "200"){
+                        //if(data.contains("status: 200")){
+                        // show confirmation check mark on form
+                        //$('#toggle').delay(1000).click();
+                        $(".autoSaveMessageArea span").fadeOut(500);
+                        setTimeout(function() {
+                            // after 1000 ms we add the class animated to the login/register card
+                            $(".autoSaveMessageArea span").text(s_msg);
+                            $(".autoSaveMessageArea span").fadeIn(1000);
+                        }, 500);
+
+
+
+
+
+                    }
+                    else{
+                        //$('.circle-loader').fadeOut(100);
+                        //$('.x-mark').fadeIn(500);
+                        //$(".validationMsgArea span").text(s_msg);
+                        //$(".validationMsgArea span").css('color','red');
+                    }
+
+                },
+                error: function(data) {
+
+                    //$('.circle-loader').fadeOut(100);
+                    //$('.x-mark').fadeIn(500);
+
+                    console.log(data);
+                    // set message to div area ...fields can not be left null
+                    //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                    //$(".validationMsgArea span").css('color','red');
+                }
+
+            });
+
+        } // end of function
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
