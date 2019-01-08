@@ -148,6 +148,12 @@
 
     var hasFapp =  /*[[${baseTrademarkApplication.markHasForeignRegistration}]]*/ 'User Name';
     var hasFappSet =  /*[[${baseTrademarkApplication.markFappSet}]]*/ 'User Name';
+
+
+    var inUse =  /*[[${baseTrademarkApplication.markInUseForAllGS}]]*/ 'User Name';
+    var inUseSet =  /*[[${baseTrademarkApplication.markAllgsSet}]]*/ 'User Name';
+
+
     /*]]>*/
 </script>
 
@@ -301,7 +307,19 @@
 
 
        }
+        if(inUseSet){
 
+            if(inUse == false){
+                $('#inlineRadio022').click();
+
+            }
+            else {
+                $('#inlineRadio21').click();
+
+            }
+
+
+        }
 
         $("#inlineRadio21").click(function () {
 

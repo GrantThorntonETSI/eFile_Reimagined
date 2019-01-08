@@ -581,12 +581,21 @@ public class ApplicationService  extends  BaseRESTapiService{
                     return buildResponseEnity("444", "");
                 }
                 baseTrademarkApplication.setMarkInUseForAllGS(true);
+                baseTrademarkApplication.setMarkAllgsSet(true);
             }
             else {
-                if(baseTrademarkApplication.isMarkInUseForAllGS() == false){
-                    return buildResponseEnity("444", "");
+                if(baseTrademarkApplication.isMarkAllgsSet() == false){
+                    baseTrademarkApplication.setMarkInUseForAllGS(false);
+                    baseTrademarkApplication.setMarkAllgsSet(true);
                 }
-                baseTrademarkApplication.setMarkInUseForAllGS(false);
+                else {
+                    if(baseTrademarkApplication.isMarkInUseForAllGS() == false){
+                        return buildResponseEnity("444", "");
+                    }
+                    baseTrademarkApplication.setMarkInUseForAllGS(false);
+                }
+
+
 
             }
             appFieldReadable = "Filing Basis mark in use option";
