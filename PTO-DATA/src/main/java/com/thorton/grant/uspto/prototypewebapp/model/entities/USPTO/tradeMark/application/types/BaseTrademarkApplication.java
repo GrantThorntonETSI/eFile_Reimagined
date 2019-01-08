@@ -4,6 +4,7 @@ package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.a
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.OfficeActions;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.GSClassCategory;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.GoodAndService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.TradeMark;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
@@ -125,6 +126,12 @@ public class BaseTrademarkApplication  {
     // within each GoodAndServices set
     ////////////////////////////////////////////////////////
     private ArrayList<String> GoodsAndServicesIDListView;
+
+
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @Nullable
+    private ArrayList<GSClassCategory> goodsAndServicesClasses;
 
 
 
@@ -435,6 +442,8 @@ public class BaseTrademarkApplication  {
         return returnGoodsServicesList;
     }
 
+
+
     @Nullable
     public Set<GoodAndService> getGoodAndServices() {
         return goodAndServices;
@@ -484,6 +493,11 @@ public class BaseTrademarkApplication  {
         return goodAndService;
     }
 
+
+
+
+
+
     @Nullable
     public TreeMap<String, HashSet<GoodAndService>> getGoodsAndSevicesMap() {
         return GoodsAndSevicesMap;
@@ -500,6 +514,83 @@ public class BaseTrademarkApplication  {
     public void setGoodsAndServicesIDListView(ArrayList<String> goodsAndServicesIDListView) {
         GoodsAndServicesIDListView = goodsAndServicesIDListView;
     }
+
+
+    @Nullable
+    public ArrayList<GSClassCategory> getGoodsAndServicesClasses() {
+        return goodsAndServicesClasses;
+    }
+
+    // goods and services
+    @Nullable
+    public ArrayList<GSClassCategory> getGoodAndServicesCategories() {
+
+
+        ArrayList<GSClassCategory> returnArrayList = new ArrayList<>();
+
+        Set<Integer> uniqeClassNumber = getUniqueClassNumberforGS();
+
+        // for each unique number create a GSClass category object
+
+
+            // loop through and add GS classes with matching class numbers to the category object
+            // call sort on category object's GS array list ..so that every thing added is sorted
+            // add category object to the return arraylist
+
+
+       // call sort on return arraylist
+
+
+        List<Integer> sortedUniqeClassNumbers = new ArrayList<>(uniqeClassNumber);
+        Collections.sort(sortedUniqeClassNumbers);
+
+        for(int a=0; a < sortedUniqeClassNumbers.size(); a++){
+
+            GSClassCategory gsClassCategory = new GSClassCategory();
+            gsClassCategory.setClassCategoryNumber(sortedUniqeClassNumbers.get(a));
+            for(Iterator<GoodAndService> iter = goodAndServices.iterator(); iter.hasNext(); ) {
+                GoodAndService current = iter.next();
+
+                if(gsClassCategory.getClassCategoryNumber() == Integer.valueOf(current.getClassNumber())){
+                    gsClassCategory.addGoodAndService(current);
+                }
+            }
+            Collections.sort(gsClassCategory.getGoodAndServices(), new CustomComparator());
+            returnArrayList.add(gsClassCategory);
+
+        }
+
+        Collections.sort(returnArrayList, new CustomComparatorGSClassCategory());
+        return  returnArrayList;
+
+    }
+
+
+    public void setGoodsAndServicesClasses(@Nullable ArrayList<GSClassCategory> goodsAndServicesClasses) {
+        this.goodsAndServicesClasses = goodsAndServicesClasses;
+    }
+
+
+    public void addGSClass(GSClassCategory classCategory){
+        this.goodsAndServicesClasses.add(classCategory);
+    }
+    public void removeGSClass(GSClassCategory classCategory){
+        this.goodsAndServicesClasses.remove(classCategory);
+    }
+
+    public GSClassCategory findGSClassByClassNumber( Integer classNumber){
+        GSClassCategory gsClassCategory = null;
+        for(int a =0; a < this.goodsAndServicesClasses.size(); a++){
+            if(goodsAndServicesClasses.get(a).getClassCategoryNumber() == classNumber){
+                gsClassCategory = goodsAndServicesClasses.get(a);
+            }
+
+        }
+        return  gsClassCategory;
+    }
+
+
+
 
     @Override
     public boolean equals(Object o) {
@@ -567,6 +658,15 @@ public class BaseTrademarkApplication  {
             System.out.println("comparing string 1 : "+o1.getClassDescription()+" | to String 2 : "+o2.getClassDescription());
             System.out.println("compare results : "+o1.getClassDescription().compareTo(o2.getClassDescription()));
             return o1.getClassDescription().compareTo(o2.getClassDescription());
+        }
+    }
+
+
+    public class CustomComparatorGSClassCategory implements Comparator<GSClassCategory> {
+        @Override
+        public int compare(GSClassCategory o1, GSClassCategory o2) {
+
+            return o1.getClassCategoryNumber().compareTo(o2.getClassCategoryNumber());
         }
     }
 }
