@@ -164,7 +164,8 @@
                                                                         <textarea id="specdescriptwo" rows="4" class="form-control"></textarea>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-xs-12 form-group form-group-md">
+
+                                                                <div class="col-xs-12 form-group form-group-md" th:if="${baseTrademarkApplication.markHasForeignRegistration == true}">
                                                                     <p class="weight600">Specify if you have a pending application, foreign registration, or both for this good/service.</p>
                                                                     <input class="form-check-input checkmark" type="checkbox" value="pending" tabindex="0" aria-labelledby="pend" id="pending">
                                                                     <label class="form-check-label form-check" for="pending"><span class="radio notspecial" id="pend">Pending Foreign Application</span></label>
