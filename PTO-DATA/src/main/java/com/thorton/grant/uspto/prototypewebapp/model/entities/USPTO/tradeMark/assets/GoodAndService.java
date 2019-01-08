@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -18,13 +19,24 @@ public class GoodAndService {
 
     private String classDescription;
 
+    private String internalID;
+
+    //filing basis fields
+    private boolean markInUse;
+    private Date firstGSDate;
+    private Date firstCommerceDate;
+
 
     private String sampleImagePath;
 
     private String sampleDescription;
 
+    private boolean GSPendingForignApplicatoin;
+    private boolean GSForeignApplication;
+    private boolean GSNotApplicable;
 
-    private String internalID;
+
+
 
 
     public String getClassNumber() {
@@ -65,6 +77,55 @@ public class GoodAndService {
 
     public void setInternalID(String internalID) {
         this.internalID = internalID;
+    }
+
+
+    public boolean isMarkInUse() {
+        return markInUse;
+    }
+
+    public void setMarkInUse(boolean markInUse) {
+        this.markInUse = markInUse;
+    }
+
+    public Date getFirstGSDate() {
+        return firstGSDate;
+    }
+
+    public void setFirstGSDate(Date firstGSDate) {
+        this.firstGSDate = firstGSDate;
+    }
+
+    public Date getFirstCommerceDate() {
+        return firstCommerceDate;
+    }
+
+    public void setFirstCommerceDate(Date firstCommerceDate) {
+        this.firstCommerceDate = firstCommerceDate;
+    }
+
+    public boolean isGSPendingForignApplicatoin() {
+        return GSPendingForignApplicatoin;
+    }
+
+    public void setGSPendingForignApplicatoin(boolean GSPendingForignApplicatoin) {
+        this.GSPendingForignApplicatoin = GSPendingForignApplicatoin;
+    }
+
+    public boolean isGSForeignApplication() {
+        return GSForeignApplication;
+    }
+
+    public void setGSForeignApplication(boolean GSForeignApplication) {
+        this.GSForeignApplication = GSForeignApplication;
+    }
+
+    public boolean isGSNotApplicable() {
+        return GSNotApplicable;
+    }
+
+    public void setGSNotApplicable(boolean GSNotApplicable) {
+        this.GSNotApplicable = GSNotApplicable;
     }
 
     @Override
