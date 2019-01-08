@@ -1352,7 +1352,7 @@ public class ApplicationFlowController {
         ArrayList<String> selectedGSDescrption = new ArrayList<>();
         for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
             GoodAndService current = iter.next();
-            selectedGSDescrption.add(current.getClassDescription());
+            selectedGSDescrption.add(current.getInternalID());
         }
         ContactsDisplayDTO selectedDescription = new ContactsDisplayDTO();
         selectedDescription.setContactNames(selectedGSDescrption);

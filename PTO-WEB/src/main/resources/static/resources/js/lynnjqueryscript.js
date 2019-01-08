@@ -38,38 +38,6 @@ $(document).ready(function(){
 	});
 	//END expand / collapse glyphicon
 
-	//START initialize datable
-	var table = $('#goodsandservices').DataTable({
-		"fnDrawCallback": function( oSettings ) {
-			$( '#goodsandservices_wrapper input[type=checkbox]' ).each(function() {
-				var x = $( 'input[type=checkbox]' ).index( this );
-				$( this ).attr('id', 'a' + x);
-
-
-			});
-			$( '#goodsandservices_wrapper label' ).each(function() {
-				var y = $( this ).siblings( 'input[type=checkbox]' ).attr('id');
-				$( this ).attr('for', y);
-			});
-			if ($('#goodsandservices tr').length < 10) {
-				$('#goodsandservices_wrapper').css('min-height','975px');
-			}
-		},
-		responsive: {
-			details: true,
-			breakpoints: [
-				{ name: 'phone',   width: 480 }
-			],
-		},
-		"autoWidth": false,
-		"responsive": true,
-		"columns": [
-			{ "width": "25%" },
-			{ "width": "25%" },
-			{ "width": "25%" },
-			{ "width": "25%" },
-		],
-	});
 	//END initialize datable
 	//start close (x) gs panels
 	$('.closegspanels').click(function() {

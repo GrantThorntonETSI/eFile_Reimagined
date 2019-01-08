@@ -3158,6 +3158,47 @@
         }, 500)
 
 
+
+
+        //START initialize datable
+        var table = $('#goodsandservices').DataTable({
+            "fnDrawCallback": function( oSettings ) {
+                $( '#goodsandservices_wrapper input[type=checkbox]' ).each(function() {
+                    var x = $( 'input[type=checkbox]' ).index( this );
+                    $( this ).attr('id', 'a' + x);
+
+                    var internalID = $(this).attr("internal-id");
+                    for(var a =0; a < selectedGSIDS.length; a++){
+                        if(internalID == selectedGSIDS[a]){
+                            $(this).click();
+                        }
+                    }
+
+
+                });
+                $( '#goodsandservices_wrapper label' ).each(function() {
+                    var y = $( this ).siblings( 'input[type=checkbox]' ).attr('id');
+                    $( this ).attr('for', y);
+                });
+                if ($('#goodsandservices tr').length < 10) {
+                    $('#goodsandservices_wrapper').css('min-height','975px');
+                }
+            },
+            responsive: {
+                details: true,
+                breakpoints: [
+                    { name: 'phone',   width: 480 }
+                ],
+            },
+            "autoWidth": false,
+            "responsive": true,
+            "columns": [
+                { "width": "25%" },
+                { "width": "25%" },
+                { "width": "25%" },
+                { "width": "25%" },
+            ],
+        });
         //////////////////////////////////////////////////////////////////////
         // set mark image based on persisted values
         //////////////////////////////////////////////////////////////////////
