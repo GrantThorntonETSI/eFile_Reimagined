@@ -129,8 +129,6 @@ public class BaseTrademarkApplication  {
 
 
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @Nullable
     private ArrayList<GSClassCategory> goodsAndServicesClasses;
 
 

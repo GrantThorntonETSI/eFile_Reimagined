@@ -3,13 +3,12 @@ package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.a
 
 import org.springframework.lang.Nullable;
 
-
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 
 public class GSClassCategory {
-
 
     private ArrayList<GoodAndService> goodAndServices;
     private  Integer classCategoryNumber;
