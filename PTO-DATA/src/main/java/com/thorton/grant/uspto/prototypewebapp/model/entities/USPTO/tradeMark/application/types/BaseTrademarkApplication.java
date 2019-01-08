@@ -411,7 +411,7 @@ public class BaseTrademarkApplication  {
 
             for(Iterator<GoodAndService> iter = goodAndServices.iterator(); iter.hasNext(); ) {
                 GoodAndService current = iter.next();
-                if(sortedUniqeClassNumbers.get(a) == Integer.getInteger(current.getClassNumber())){
+                if(sortedUniqeClassNumbers.get(a) == Integer.valueOf(current.getClassNumber())){
 
                     System.out.println("adding GS with description" +current.getClassDescription());
                     System.out.println("GS added has class number "+current.getClassNumber());
@@ -564,7 +564,7 @@ public class BaseTrademarkApplication  {
             GoodAndService current = iter.next();
 
 
-               uniqeIDS.add(Integer.getInteger(current.getClassNumber()));
+               uniqeIDS.add(Integer.valueOf(current.getClassNumber()));
 
         }
 
