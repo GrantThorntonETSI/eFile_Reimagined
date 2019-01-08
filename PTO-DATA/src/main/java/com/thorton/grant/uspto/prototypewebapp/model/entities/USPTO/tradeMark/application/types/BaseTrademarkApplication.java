@@ -387,11 +387,6 @@ public class BaseTrademarkApplication  {
     @Nullable
     public ArrayList<GoodAndService> getGoodAndServicesList() {
 
-        // go through the map, for each hashset,  add each good and services to the hash set that is returned
-
-        Set<GoodAndService> sortedGoodsAndServices = new HashSet<>();
-
-        // determine how many unique keys do we have
 
         Set<Integer> uniqeClassNumber = getUniqueClassNumberforGS();
 
@@ -401,24 +396,16 @@ public class BaseTrademarkApplication  {
         // sort uniqeIDs
         List<Integer> sortedUniqeClassNumbers = new ArrayList<>(uniqeClassNumber);
         Collections.sort(sortedUniqeClassNumbers);
-        System.out.println("number of unique class numbers found : "+sortedUniqeClassNumbers.size());
-
 
         for(int a=0; a < sortedUniqeClassNumbers.size(); a++){
-            System.out.println("processing class number : "+sortedUniqeClassNumbers.get(a));
-
             ArrayList<GoodAndService> sortedCategory = new ArrayList<>();
 
             for(Iterator<GoodAndService> iter = goodAndServices.iterator(); iter.hasNext(); ) {
                 GoodAndService current = iter.next();
                 if(sortedUniqeClassNumbers.get(a) == Integer.valueOf(current.getClassNumber())){
 
-                    System.out.println("adding GS with description" +current.getClassDescription());
-                    System.out.println("GS added has class number "+current.getClassNumber());
                     sortedCategory.add(current);
                 }
-
-
             }
             // sort sorted category and add it to return value
 

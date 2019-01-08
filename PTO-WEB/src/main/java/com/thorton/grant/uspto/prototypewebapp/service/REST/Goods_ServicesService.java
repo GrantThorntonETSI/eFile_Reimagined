@@ -71,15 +71,6 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
-        // check if classNumber exists ..  // if the classNumber/category does not exist // create it
-        if(baseTrademarkApplication.getGoodsAndSevicesMap().containsKey(classNumber) == false){
-            // new key/classNumber
-            // we need to create a new category for this class
-            HashSet<GoodAndService> goodAndServiceHashSet = new HashSet<>();
-            baseTrademarkApplication.getGoodsAndSevicesMap().put(classNumber, goodAndServiceHashSet);
-
-        }
-
 
         // create the good and service
         GoodAndService goodAndService = new GoodAndService();
