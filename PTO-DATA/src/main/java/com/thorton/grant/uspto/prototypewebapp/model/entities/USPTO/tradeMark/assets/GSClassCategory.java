@@ -21,6 +21,8 @@ public class GSClassCategory {
 
     private String classCategoryName;
 
+    private String classCategoryImagePath;
+
 
     @Nullable
     public ArrayList<GoodAndService> getGoodAndServices() {
@@ -73,6 +75,11 @@ public class GSClassCategory {
         goodAndServices.remove(goodAndService);
     }
 
+    public String getClassCategoryImagePath() {
+        return classCategoryImagePath;
+    }
 
-
+    public void setClassCategoryImagePath(String classCategoryImagePath) {
+        this.classCategoryImagePath = classCategoryImagePath;
+    }
 }

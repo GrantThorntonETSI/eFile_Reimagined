@@ -135,8 +135,8 @@
                                                             </div>
                                                             <p id="commerce">Are you currently using the mark on bar soap in commerce?</p>
                                                             <div role="radiogroup" aria-labelledby="commerce" class="form-group form-group-md">
-                                                                <label for="inlineRadio25" class="radio-inline radiocontainer"><input type="radio" name="commerceadio" id="inlineRadio25" value="yes" tabindex="0"><span class="checkmark"></span>Yes</label>
-                                                                <label for="inlineRadio26" class="radio-inline radiocontainer"><input type="radio" name="commerceadio" id="inlineRadio26" value="no" tabindex="0"><span class="checkmark"></span>No</label>
+                                                                <label for="mark-in-use-radio-yes" class="radio-inline"><input type="radio"  th:attr="name=${Good_Service.getInternalID()}" id="mark-in-use-radio-yes" value="yes" tabindex="0"  class="mark-in-use-radio">Yes</label>
+                                                                <label for="mark-in-use-radio-no" class="radio-inline"><input type="radio"  th:attr="name=${Good_Service.getInternalID()}" id="mark-in-use-radio-no" value="no" tabindex="0" class="mark-in-use-radio">No</label>
                                                             </div><!--END radiogroup-->
                                                             <div id="yescommerce" class="form-group form-group-md"><!--toggle 'yes' radio-->
                                                                 <div class="col-xs-12 col-md-6 form-group form-group-md">
@@ -372,7 +372,36 @@
 
 
 
+         $('input.mark-in-use-radio').click(function () {
 
+
+             $(this).parent().parent().next().css('display','none');
+
+            // alert($(this).parent().parent().next().html());
+
+
+             if($(this).attr("id") == "mark-in-use-radio-yes"){
+                 if(this.checked == true){
+                     $(this).parent().parent().next().show(500);
+                     //$('div#yescommerce').show(500);
+                 }
+                 else {
+                     $(this).parent().parent().next().fadeOut(500);
+                 }
+             }
+             else{
+
+                 if(this.checked == true){
+                     $(this).parent().parent().next().fadeOut(500);
+                 }
+                 else {
+                     $(this).parent().parent().next().show(500);
+                 }
+             }
+
+
+
+         });
 
 
     });
