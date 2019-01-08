@@ -116,7 +116,7 @@
                 <button type="button" class="btn btn-sm btn-default fill prev" id="prevButton" value="previous">Previous</button>
             </div>
             <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next">Next
+                <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next" disabled>Next
                     <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
             </div>
         </div>
@@ -247,10 +247,7 @@
                     content : '<div class="media"><img src="'+image_pathBW+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
                 });
 
-                $('#colorMarkBWInline').attr("src", image_pathBW);
-                $('#nextLink').attr("href", nextLinkURL);
-                $('#nextLinkIcon').attr("href", nextLinkURL);
-                $('.next-button').css("background-color", "rgb(55,69,120)");
+
             }
             else{
                 if(image_path != null){
@@ -261,10 +258,7 @@
                         content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
                     });
 
-                    $('#colorMarkInline').attr("src", image_path);
-                    $('#nextLink').attr("href", nextLinkURL);
-                    $('#nextLinkIcon').attr("href", nextLinkURL);
-                    $('.next-button').css("background-color", "rgb(55,69,120)");
+
 
                 }
             }
@@ -279,10 +273,6 @@
                     html : true,
                     content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
                 });
-                $('#colorMarkInline').attr("src", image_path);
-                $('#nextLink').attr("href", nextLinkURL);
-                $('#nextLinkIcon').attr("href", nextLinkURL);
-                $('.next-button').css("background-color", "rgb(55,69,120)");
 
             }
         }
@@ -294,6 +284,33 @@
             $(this).html() === '<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Hide My Mark'
                 ? $(this).html('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Show My Mark')
                 : $(this).html('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Hide My Mark');
+        });
+
+
+        $("#inlineRadio21").click(function () {
+
+
+            // call rest api
+            // unlock next button
+
+            // yes to pending foreign registration
+            $('#nextButton').attr("disabled", false);
+            saveGSdetails("GS-mark-inUse", "yes", appInternalID);
+
+
+
+        });
+
+        $("#inlineRadio022").click(function () {
+
+
+            // call rest api
+            // unlock next button
+
+            // no to pending foreign registration
+            $('#nextButton').attr("disabled", false);
+            saveGSdetails("GS-mark-inUse", "no", appInternalID);
+
         });
 
 
@@ -313,6 +330,68 @@
         ////////////////////////////////////////////////////////////////////////////////
         // end of contact information 'State' auto save ////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
+
+    function saveGSdetails(field_name_prefix, field_value, appInternalID) {
+
+
+
+
+
+        //alert(field_name_prefix);
+        // send state, and token to server
+        // token will be generated in the controller and added to the view
+        // similar to how access token works ...a token is tied to a user
+        // access token will be passed in through model
+        //
+        // var tokenValue = '${token}';  // token is the model attribute name
+        // we are not using secured tokens for the prototype
+        // we will secure it by adding ssl and https support
+
+        //var field_value = $(this).val();
+        //alert(field_value);
+
+        $.ajax({
+            url: "../../REST/apiGateway/GS/update/"+field_name_prefix+"/"+field_value+"/"+appInternalID,
+            type: 'GET',
+            success: function(data){
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                if(s_code.trim() == "200"){
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function() {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+            },
+            error: function(data) {
+
+                console.log(data);
+
+            }
+
+        });
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////
+        // end of contact information 'State' auto save ////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+
+
+    }
+
 
 
 

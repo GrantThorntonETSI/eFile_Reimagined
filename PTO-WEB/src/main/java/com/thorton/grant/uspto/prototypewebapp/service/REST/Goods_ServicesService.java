@@ -45,6 +45,19 @@ public class Goods_ServicesService  extends BaseRESTapiService{
             appFieldReadable = "Goods And Services search option";
 
         }
+        if(gsField.equals("GS-mark-inUse")){
+            // ptoUser.setState(param); // sets state code
+            if(gsValue.equals("yes")) {
+                baseTrademarkApplication.setMarkInUseForAllGS(true);
+            }
+            else {
+                baseTrademarkApplication.setMarkInUseForAllGS(false);
+
+            }
+            appFieldReadable = "Goods And Services search option";
+
+        }
+
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
         String responseMsg = appFieldReadable+" has been saved.";

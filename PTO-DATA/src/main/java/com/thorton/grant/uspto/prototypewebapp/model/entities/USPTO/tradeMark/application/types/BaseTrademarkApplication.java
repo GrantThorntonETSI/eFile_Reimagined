@@ -132,6 +132,11 @@ public class BaseTrademarkApplication  {
     private ArrayList<GSClassCategory> goodsAndServicesClasses;
 
 
+    private boolean markInUseForAllGS;
+
+    private boolean markHasForeignRegistration;
+
+
 
 
 
@@ -571,8 +576,21 @@ public class BaseTrademarkApplication  {
         return  gsClassCategory;
     }
 
+    public boolean isMarkInUseForAllGS() {
+        return markInUseForAllGS;
+    }
 
+    public void setMarkInUseForAllGS(boolean markInUseForAllGS) {
+        this.markInUseForAllGS = markInUseForAllGS;
+    }
 
+    public boolean isMarkHasForeignRegistration() {
+        return markHasForeignRegistration;
+    }
+
+    public void setMarkHasForeignRegistration(boolean markHasForeignRegistration) {
+        this.markHasForeignRegistration = markHasForeignRegistration;
+    }
 
     @Override
     public boolean equals(Object o) {
