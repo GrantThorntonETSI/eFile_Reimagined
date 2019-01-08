@@ -27,7 +27,7 @@ public class BaseTrademarkApplication  {
         actions = new HashSet<>();
         owners = new HashSet<>();
         goodAndServices = new HashSet<>();
-        GoodsAndSevicesMap = new TreeMap<>();
+
     }
 
     ////////////////////////////////////////////////////////
@@ -120,7 +120,7 @@ public class BaseTrademarkApplication  {
     // object HashSet of GoodAndService
     ////////////////////////////////////////////////////////
 
-    private TreeMap<String, HashSet<GoodAndService>> GoodsAndSevicesMap;
+
     ////////////////////////////////////////////////////////
     // an list of ids that corresponds to the TreeMap of GS hash set sorted by TreeMap key (classNumber)/ and also sorted
     // within each GoodAndServices set
@@ -277,13 +277,6 @@ public class BaseTrademarkApplication  {
         }
         return ownerSet;
      }
-
-
-
-
-
-
-
 
     public boolean isAttorneyFiling() {
         return isAttorneyFiling;
@@ -491,20 +484,6 @@ public class BaseTrademarkApplication  {
         return goodAndService;
     }
 
-
-
-
-
-
-    @Nullable
-    public TreeMap<String, HashSet<GoodAndService>> getGoodsAndSevicesMap() {
-        return GoodsAndSevicesMap;
-    }
-
-    public void setGoodsAndSevicesMap(@Nullable TreeMap<String, HashSet<GoodAndService>> goodsAndSevicesMap) {
-        GoodsAndSevicesMap = goodsAndSevicesMap;
-    }
-
     public ArrayList<String> getGoodsAndServicesIDListView() {
         return GoodsAndServicesIDListView;
     }
@@ -519,7 +498,7 @@ public class BaseTrademarkApplication  {
         return goodsAndServicesClasses;
     }
 
-    // goods and services
+    // goods and services category view
     @Nullable
     public ArrayList<GSClassCategory> getGoodAndServicesCategories() {
 
