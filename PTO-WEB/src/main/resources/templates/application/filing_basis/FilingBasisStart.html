@@ -146,7 +146,8 @@
 
     var acceptBW = /*[[${markColorClaimBW}]]*/ 'User Name';
 
-
+    var hasFapp =  /*[[${baseTrademarkApplication.markHasForeignRegistration}]]*/ 'User Name';
+    var hasFappSet =  /*[[${baseTrademarkApplication.markFappSet}]]*/ 'User Name';
     /*]]>*/
 </script>
 
@@ -287,6 +288,21 @@
         });
 
 
+       if(hasFappSet){
+
+           if(hasFapp == false){
+               $('#inlineRadio024').click();
+               $('#nextButton').attr("disabled", false);
+           }
+           else {
+               $('#inlineRadio23').click();
+               $('#nextButton').attr("disabled", false);
+           }
+
+
+       }
+
+
         $("#inlineRadio21").click(function () {
 
 
@@ -314,7 +330,31 @@
         });
 
 
+        $("#inlineRadio23").click(function () {
 
+
+            // call rest api
+            // unlock next button
+
+            // yes to pending foreign registration
+            $('#nextButton').attr("disabled", false);
+            saveGSdetails("GS-mark-fapp", "yes", appInternalID);
+
+
+
+        });
+
+        $("#inlineRadio024").click(function () {
+
+
+            // call rest api
+            // unlock next button
+
+            // no to pending foreign registration
+            $('#nextButton').attr("disabled", false);
+            saveGSdetails("GS-mark-fapp", "no", appInternalID);
+
+        });
 
 
 

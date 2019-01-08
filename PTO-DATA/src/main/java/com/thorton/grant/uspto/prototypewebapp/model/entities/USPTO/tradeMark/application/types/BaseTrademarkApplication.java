@@ -135,6 +135,7 @@ public class BaseTrademarkApplication  {
     private boolean markInUseForAllGS;
 
     private boolean markHasForeignRegistration;
+    private boolean markFappSet;
 
 
 
@@ -590,6 +591,14 @@ public class BaseTrademarkApplication  {
 
     public void setMarkHasForeignRegistration(boolean markHasForeignRegistration) {
         this.markHasForeignRegistration = markHasForeignRegistration;
+    }
+
+    public boolean isMarkFappSet() {
+        return markFappSet;
+    }
+
+    public void setMarkFappSet(boolean markFappSet) {
+        this.markFappSet = markFappSet;
     }
 
     @Override

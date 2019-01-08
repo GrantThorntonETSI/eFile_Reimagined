@@ -553,6 +553,82 @@ public class ApplicationService  extends  BaseRESTapiService{
 
 
 
+    @CrossOrigin(origins = {"https://localhost","https://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/GS/update/{gsField}/{gsValue}/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> updateGoods_ServicesSelectOptions(@PathVariable String gsField , @PathVariable String gsValue, @PathVariable String appInternalID){
+
+        String appFieldReadable = "";
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+
+        if(gsField.equals("GS-select-Option")){
+            // ptoUser.setState(param); // sets state code
+            if(gsValue.equals("search")) {
+                baseTrademarkApplication.setSearchExistingGSdatabase(true);
+            }
+            else {
+                baseTrademarkApplication.setSearchExistingGSdatabase(false);
+
+            }
+            appFieldReadable = "Goods And Services search option";
+
+        }
+        if(gsField.equals("GS-mark-inUse")){
+            // ptoUser.setState(param); // sets state code
+            if(gsValue.equals("yes")) {
+                if(baseTrademarkApplication.isMarkInUseForAllGS() == true){
+                    return buildResponseEnity("444", "");
+                }
+                baseTrademarkApplication.setMarkInUseForAllGS(true);
+            }
+            else {
+                if(baseTrademarkApplication.isMarkInUseForAllGS() == false){
+                    return buildResponseEnity("444", "");
+                }
+                baseTrademarkApplication.setMarkInUseForAllGS(false);
+
+            }
+            appFieldReadable = "Filing Basis mark in use option";
+
+        }
+        if(gsField.equals("GS-mark-fapp")){
+            // ptoUser.setState(param); // sets state code
+            if(gsValue.equals("yes")) {
+
+                if(baseTrademarkApplication.isMarkHasForeignRegistration() == true){
+                    return buildResponseEnity("444", "");
+                }
+                baseTrademarkApplication.setMarkHasForeignRegistration(true);
+                baseTrademarkApplication.setMarkFappSet(true);
+            }
+            else {
+
+                if(baseTrademarkApplication.isMarkFappSet() == false) {
+                    baseTrademarkApplication.setMarkHasForeignRegistration(false);
+                    baseTrademarkApplication.setMarkFappSet(true);
+                }
+                else {
+                    if(baseTrademarkApplication.isMarkHasForeignRegistration()== false){
+                        return buildResponseEnity("444", "");
+                    }
+                    baseTrademarkApplication.setMarkHasForeignRegistration(false);
+                }
+
+            }
+            appFieldReadable = "Filing Basis foreign registration/application option";
+
+        }
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+        String responseMsg = appFieldReadable+" has been saved.";
+
+        //return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+        return buildResponseEnity("200", responseMsg);
+    }
+
+
+
 
 
 }
