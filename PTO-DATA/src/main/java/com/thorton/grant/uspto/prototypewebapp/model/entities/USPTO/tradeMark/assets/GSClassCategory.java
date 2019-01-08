@@ -10,6 +10,12 @@ import java.util.Iterator;
 
 public class GSClassCategory {
 
+
+    public GSClassCategory() {
+
+        goodAndServices = new ArrayList<>();
+    }
+
     private ArrayList<GoodAndService> goodAndServices;
     private  Integer classCategoryNumber;
 
@@ -18,6 +24,7 @@ public class GSClassCategory {
 
     @Nullable
     public ArrayList<GoodAndService> getGoodAndServices() {
+
         return goodAndServices;
     }
 

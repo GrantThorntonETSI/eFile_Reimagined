@@ -395,25 +395,30 @@ public class BaseTrademarkApplication  {
         List<Integer> sortedUniqeClassNumbers = new ArrayList<>(uniqeClassNumber);
         Collections.sort(sortedUniqeClassNumbers);
 
+        System.out.println("found "+sortedUniqeClassNumbers.size()+" unique class numbers.");
+
         for(int a=0; a < sortedUniqeClassNumbers.size(); a++){
+            System.out.println("processing class number : "+sortedUniqeClassNumbers.get(a));
             ArrayList<GoodAndService> sortedCategory = new ArrayList<>();
 
             for(Iterator<GoodAndService> iter = goodAndServices.iterator(); iter.hasNext(); ) {
                 GoodAndService current = iter.next();
-                if(sortedUniqeClassNumbers.get(a) == Integer.valueOf(current.getClassNumber())){
 
+                if(sortedUniqeClassNumbers.get(a) == Integer.valueOf(current.getClassNumber())){
+                    System.out.println("adding class with description : "+current.getClassDescription() );
                     sortedCategory.add(current);
                 }
             }
             // sort sorted category and add it to return value
 
             Collections.sort(sortedCategory, new CustomComparator());
+            System.out.println("sorted GS size is "+sortedCategory.size());
 
              for(int b =0; b < sortedCategory.size(); b++){
                  returnGoodsServicesList.add(sortedCategory.get(b));
              }
 
-
+             System.out.println("return array list sie is "+returnGoodsServicesList.size());
 
         }
         // go through the main gs list and find GS that matches this key
