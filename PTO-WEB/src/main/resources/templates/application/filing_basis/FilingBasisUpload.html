@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/efileApplicationMarkFragment :: layout (~{::body},'user')}" xmlns="http://www.w3.org/1999/html">
+<head >
+    <meta charset="UTF-8">
+    <title>Goods and Services Upload</title>
+</head>
+<body>
+<div class="row content" style="display: none;">
+    <main class="col-xs-12 col-sm-8 col-md-8 col-lg-7">
+        <!--START Content Div-->
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row">
+                    <section class="col-xs-12 steps breadcrumb-steps" aria-label="progress tracker">
+                        <div class="row displaycell">
+                            <div class="col-xs-2 one done">
+                                <div class="row">
+                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
+                                        <span>1</span>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                        <p class="first">Your details</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-2 two done">
+                                <div class="row">
+                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
+                                        <span>2</span>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                        <p>Trademark details</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-2 three done">
+                                <div class="row">
+                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
+                                        <span>3</span>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                        <p>Goods and services</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-2 four active">
+                                <div class="row">
+                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
+                                        <span>4</span>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                        <p>Basis</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-2 five">
+                                <div class="row">
+                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
+                                        <span>5</span>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                        <p>Additional info</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-2 six">
+                                <div class="row">
+                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
+                                        <span>6</span>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                        <p>Confirm and pay</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <h1>Filing Basis</h1>
+                    </div>
+                    <div class="col-xs-4">
+                        <label for="pagelayout">Page Layout</label>
+                        <select class="form-control" id="pagelayout">
+                            <option value="Select">Select</option>
+                            <option value="guided">Guided</option>
+                            <option value="grid">Grid</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="lead">
+                            <p class="weight600">Please provide information about each class you have selected for your mark.</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <th:block th:each="Good_Service_class : ${baseTrademarkApplication.getGoodAndServicesCategories()}">
+                    <div class="row">
+                        <div class="col-xs-12" id="basisabde">
+
+                            <div class="card-text noexpand blue">
+                                <h2 class="card-title weight600" th:text="${Good_Service_class.getClassNumberDisplay()}">Class 003</h2>
+                            </div>
+                            <form action="" method="post" >
+                                <fieldset>
+                                    <div class="row">
+                                        <div class="form-group form-group-md col-xs-12">
+                                            <div class="row">
+                                                <section aria-label="class image and description">
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <p id="upimage">Provide an image of your specimen:</p>
+                                                        <div>
+                                                            <label class="small upload-drop-zone" for="specimenfile" id="upimg"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Drag and drop files or click here to upload.</label>
+                                                            <input type="file" id="specimenfile" name="specimenfileupload" class="form-control" aria-labelledby="upimg upimage">
+                                                        </div><!-- Drop Zone -->
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <label for="specdescript">Provide a description of your specimen:</label>
+                                                        <textarea id="specdescript" rows="4" class="form-control"></textarea>
+                                                    </div>
+                                                </section>
+                                            </div>
+
+                                            <th:block th:each="Good_Service: ${Good_Service_class.getGoodAndServices()}">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <section aria-label="basisone">
+                                                            <div class="card-text noexpand">
+                                                                <h2 class="card-title weight600" th:text="${Good_Service.getClassDescription()}">Bar Soap</h2>
+                                                            </div>
+                                                            <p id="commerce">Are you currently using the mark on bar soap in commerce?</p>
+                                                            <div role="radiogroup" aria-labelledby="commerce" class="form-group form-group-md">
+                                                                <label for="inlineRadio25" class="radio-inline radiocontainer"><input type="radio" name="commerceadio" id="inlineRadio25" value="yes" tabindex="0"><span class="checkmark"></span>Yes</label>
+                                                                <label for="inlineRadio26" class="radio-inline radiocontainer"><input type="radio" name="commerceadio" id="inlineRadio26" value="no" tabindex="0"><span class="checkmark"></span>No</label>
+                                                            </div><!--END radiogroup-->
+                                                            <div id="yescommerce" class="form-group form-group-md"><!--toggle 'yes' radio-->
+                                                                <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                                                    <label for="firstcommerce-date">When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
+                                                                    <input type="date" class="form-control" id="firstcommerce-date" name="firstcommerce" value="">
+                                                                </div>
+                                                                <div class="col-xs-12 col-md-6 form-group form-group-md matchlabelheightdiv">
+                                                                    <label for="commerce-date" class="matchlabelheight">When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
+                                                                    <input type="date" class="form-control" id="commerce-date" name="commercedate" value="">
+                                                                </div>
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="specimen" tabindex="0" id="specimen">
+                                                                    <label class="form-check-label form-check long" for="specimen"><span class="radio notspecial small">Check here to provide a specimen for this individual good/service.</span></label>
+                                                                </div>
+                                                                <div id="yesspecimenone" class="form-group form-group-md"><!--toggle 'yes' radio-->
+                                                                    <div class="col-xs-12 col-md-6">
+                                                                        <p id="upimagetwo">Provide an image of your specimen:</p>
+                                                                        <div>
+                                                                            <label class="small upload-drop-zone" for="specimentwofile" id="upimgtwo"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Drag and drop files or click here to upload.</label>
+                                                                            <input type="file" id="specimentwofile" name="specimentwofileupload" class="form-control" aria-labelledby="upimgtwo upimagetwo">
+                                                                        </div><!-- Drop Zone -->
+                                                                    </div>
+                                                                    <div class="col-xs-12 col-md-6">
+                                                                        <label for="specdescriptwo">Provide a description of your specimen:</label>
+                                                                        <textarea id="specdescriptwo" rows="4" class="form-control"></textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <p class="weight600">Specify if you have a pending application, foreign registration, or both for this good/service.</p>
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="pending" tabindex="0" aria-labelledby="pend" id="pending">
+                                                                    <label class="form-check-label form-check" for="pending"><span class="radio notspecial" id="pend">Pending Foreign Application</span></label>
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="foreign" tabindex="0" id="foreign" aria-labelledby="forreg">
+                                                                    <label class="form-check-label form-check" for="foreign"><span class="radio notspecial" id="forreg">Foreign Registration</span></label>
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="na" tabindex="0" aria-labelledby="naone" id="na">
+                                                                    <label class="form-check-label form-check" for="na"><span class="radio notspecial" id="naone">Not Applicable</span></label>
+                                                                </div>
+                                                            </div>
+                                                        </section>
+                                                    </div>
+                                                </div><!--END basis one-->
+                                            </th:block>
+
+
+
+                                        </div><!--END formgroup-->
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div><!--END col-->
+                    </div><!--END row-->
+
+                </th:block>
+
+            </div>
+        </div>
+        <!--prev / next buttons-->
+        <div class="inlinebuttons btn-group btn-group-justified  owner-paging-buttons" role="nav" aria-label="view previous or next page" id="prevnxt">
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-default fill prev" id="prevButton" value="previous">Previous</button>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next">Next
+                    <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
+            </div>
+        </div>
+    </main>
+</div><!--END div content-->
+
+
+<script th:inline="javascript">
+
+    /*<![CDATA[*/
+
+
+    var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
+
+    var host_name= /*[[${hostBean.host}]]*/ 'User Name';
+    var host_port= /*[[${hostBean.port}]]*/ 'User Name';
+
+
+    var host = host_name+":"+host_port;
+    var markType = /*[[${baseTrademarkApplication.tradeMark.trademarkDesignType}]]*/ 'User Name';
+
+    var  image_path = /*[[${markImagePath}]]*/ 'User Name';
+
+    var  image_pathBW = /*[[${markImagePathBW}]]*/ 'User Name';
+
+    var colorClaim = /*[[${markColorClaim}]]*/ 'User Name';
+
+    var acceptBW = /*[[${markColorClaimBW}]]*/ 'User Name';
+
+
+    /*]]>*/
+</script>
+
+
+
+<script>
+
+    var nextLinkURL = ""
+    var prevLinkURL = "../../application/filingBasisStart/?trademarkID="+appInternalID;
+
+    var breadCrumb1Link = "../../application/start/?trademarkID="+appInternalID;
+    var breadCrumb2Link = "../../application/MarkDetails/?trademarkID="+appInternalID;
+
+</script>
+
+
+<script>
+
+
+    // next link url to enable  for u.s individual href="http://localhost:8080/application/owner/info"
+    $(document).ready(function() {
+        setTimeout(function () {
+            $('.content').fadeIn(500);
+        }, 500);
+
+        setTimeout(function () {
+            // after 1000 ms we add the class animated to the login/register card
+            $('#panels').fadeIn(500);
+        }, 500);
+
+
+        setTimeout(function () {
+            // after 1000 ms we add the class animated to the login/register card
+            $('#contacts-ui').fadeIn(500);
+
+
+        }, 500);
+
+        $('.glyphicon').click(function () {
+            $(this).toggleClass("glyphicon-triangle-right").toggleClass("glyphicon-triangle-bottom");
+        });
+
+
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+
+        $('#prevButton').click(function () {
+            location.href=prevLinkURL;
+        });
+
+        $('#nextButton').click(function () {
+            location.href=nextLinkURL;
+        });
+
+        $('#searchDB').click(function () {
+            location.href=prevLinkURL;
+        });
+
+
+
+
+        $('#breadcrumb1').click(function () {
+            location.href=breadCrumb1Link;
+        });
+
+
+        $('#breadcrumb2').click(function () {
+            location.href=breadCrumb2Link;
+        });
+
+
+
+
+        //////////////////////////////////////////////////////////////////////
+        // set mark image based on persisted values
+        //////////////////////////////////////////////////////////////////////
+        if(colorClaim == null){
+            if(image_path != null){
+                $('[data-toggle="popover"]').popover({
+                    title : false,
+                    html : true,
+                    content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
+                });
+
+            }
+        }
+
+        if(colorClaim == false){
+
+            if(acceptBW == true){
+                $('#inlineRadio2').click();
+                $('#bwmark').click();
+
+                $('[data-toggle="popover"]').popover({
+                    title : false,
+                    html : true,
+                    content : '<div class="media"><img src="'+image_pathBW+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
+                });
+
+                $('#colorMarkBWInline').attr("src", image_pathBW);
+                $('#nextLink').attr("href", nextLinkURL);
+                $('#nextLinkIcon').attr("href", nextLinkURL);
+                $('.next-button').css("background-color", "rgb(55,69,120)");
+            }
+            else{
+                if(image_path != null){
+
+                    $('[data-toggle="popover"]').popover({
+                        title : false,
+                        html : true,
+                        content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
+                    });
+
+                    $('#colorMarkInline').attr("src", image_path);
+                    $('#nextLink').attr("href", nextLinkURL);
+                    $('#nextLinkIcon').attr("href", nextLinkURL);
+                    $('.next-button').css("background-color", "rgb(55,69,120)");
+
+                }
+            }
+
+        }
+        if(colorClaim == true){
+            $('#inlineRadio1').click();
+            if(image_path != null){
+
+                $('[data-toggle="popover"]').popover({
+                    title : false,
+                    html : true,
+                    content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
+                });
+                $('#colorMarkInline').attr("src", image_path);
+                $('#nextLink').attr("href", nextLinkURL);
+                $('#nextLinkIcon').attr("href", nextLinkURL);
+                $('.next-button').css("background-color", "rgb(55,69,120)");
+
+            }
+        }
+
+
+        // listener for mark image widget popover
+        $( '#togglepop' ).click(function() {
+            $( this ).toggleClass( 'focus' );
+            $(this).html() === '<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Hide My Mark'
+                ? $(this).html('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Show My Mark')
+                : $(this).html('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Hide My Mark');
+        });
+
+
+
+
+
+
+
+    });
+
+
+
+
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////
+    // end of contact information 'State' auto save ////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

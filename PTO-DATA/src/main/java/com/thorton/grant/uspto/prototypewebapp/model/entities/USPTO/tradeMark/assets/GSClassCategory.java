@@ -36,6 +36,12 @@ public class GSClassCategory {
         return classCategoryNumber;
     }
 
+    public String getClassNumberDisplay(){
+
+
+        return "Class "+classCategoryNumber;
+    }
+
     public void setClassCategoryNumber(Integer classCategoryNumber) {
         this.classCategoryNumber = classCategoryNumber;
     }
