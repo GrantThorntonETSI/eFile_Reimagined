@@ -226,7 +226,7 @@
                                                                     <input class="form-check-input checkmark provide-spec" type="checkbox" value="yes" tabindex="0"  th:attr="id=${Good_Service.getInternalID()}" >
                                                                     <label class="form-check-label form-check long"  th:attr="for=${Good_Service.getInternalID()}"><span class="radio notspecial small">Check here to provide a specimen for this individual good/service.</span></label>
                                                                 </div>
-                                                                <div id="yesspecimenone" class="form-group form-group-md"><!--toggle 'yes' radio-->
+                                                                <div id="yesspecimenone" class="form-group form-group-md" style="display: none;"><!--toggle 'yes' radio-->
                                                                     <div class="col-xs-12 col-md-6">
                                                                         <p id="upimagetwo">Provide an image of your specimen:</p>
                                                                         <div>
@@ -584,27 +584,6 @@
 
 
 
-        $('input#pendingtwo').change(function() {
-            if(this.val == 'pendingtwo'){
-                $('div .holdsapending').hide( 'fast' );
-                $('div #pluspending').hide( 'fast' );
-            }
-            else {
-                $('div .holdsapending').show( 'fast' );
-                $('div #pluspending').show( 'fast' );
-            }
-        });
-
-        $('input#foreigntwo').change(function() {
-            if(this.val == 'foreigntwo'){
-                $('div .holdsaforeign').hide( 'fast' );
-                $('div #plusforeign').hide('fast');
-            }
-            else {
-                $('div .holdsaforeign').show( 'fast' );
-                $('div #plusforeign').show('fast');
-            }
-        });
         //END additional pending + foreign
 
 
@@ -675,9 +654,12 @@
             if(this.checked == true) {
 
                 addFilingBasisInfoToGoodAndService("fb-provide-spec", "yes", gsId, appInternalID);
+                $(this).parent().next().show(500);
+
             }
             else{
                 addFilingBasisInfoToGoodAndService("fb-provide-spec", "no", gsId, appInternalID);
+                $(this).parent().next().fadeOut(500);
             }
             //alert($(this).attr("id"));
         });
