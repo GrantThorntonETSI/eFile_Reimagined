@@ -23,6 +23,8 @@ public class GoodAndService {
 
     //filing basis fields
     private boolean markInUse;
+    private boolean markInUseSet;
+
     private Date firstGSDate;
     private Date firstCommerceDate;
 
@@ -136,6 +138,14 @@ public class GoodAndService {
 
     public void setGSNotApplicable(boolean GSNotApplicable) {
         this.GSNotApplicable = GSNotApplicable;
+    }
+
+    public boolean isMarkInUseSet() {
+        return markInUseSet;
+    }
+
+    public void setMarkInUseSet(boolean markInUseSet) {
+        this.markInUseSet = markInUseSet;
     }
 
     @Override

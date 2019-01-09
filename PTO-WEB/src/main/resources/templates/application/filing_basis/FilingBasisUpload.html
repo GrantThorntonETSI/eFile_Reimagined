@@ -134,11 +134,27 @@
                                                                 <h2 class="card-title weight600" th:text="${Good_Service.getClassDescription()}">Bar Soap</h2>
                                                             </div>
                                                             <p id="commerce">Are you currently using the mark on bar soap in commerce?</p>
-                                                            <div role="radiogroup" aria-labelledby="commerce" class="form-group form-group-md">
-                                                                <label for="mark-in-use-radio-yes" class="radio-inline"><input type="radio"  th:attr="name=${Good_Service.getInternalID()}" id="mark-in-use-radio-yes" value="yes" tabindex="0"  class="mark-in-use-radio" checked>Yes</label>
-                                                                <label for="mark-in-use-radio-no" class="radio-inline"><input type="radio"  th:attr="name=${Good_Service.getInternalID()}" id="mark-in-use-radio-no" value="no" tabindex="0" class="mark-in-use-radio">No</label>
-                                                            </div><!--END radiogroup-->
-                                                            <div id="yescommerce" class="form-group form-group-md" style="display: none"><!--toggle 'yes' radio-->
+
+                                                            <th:block th:if="${Good_Service.isMarkInUseSet() == true}">
+                                                                <div role="radiogroup" aria-labelledby="commerce" class="form-group form-group-md" th:if="${Good_Service.isMarkInUse() == true}">
+                                                                    <label for="mark-in-use-radio-yes" class="radio-inline"><input type="radio"  th:attr="name=${Good_Service.getInternalID()}" id="mark-in-use-radio-yes" value="yes" tabindex="0"  class="mark-in-use-radio" checked >Yes</label>
+                                                                    <label for="mark-in-use-radio-no" class="radio-inline"><input type="radio"  th:attr="name=${Good_Service.getInternalID()}" id="mark-in-use-radio-no" value="no" tabindex="0" class="mark-in-use-radio">No</label>
+                                                                </div><!--END radiogroup-->
+                                                                <div role="radiogroup" aria-labelledby="commerce" class="form-group form-group-md" th:if="${Good_Service.isMarkInUse() == false}">
+                                                                    <label for="mark-in-use-radio-yes" class="radio-inline"><input type="radio"  th:attr="name=${Good_Service.getInternalID()}" id="mark-in-use-radio-yes" value="yes" tabindex="0"  class="mark-in-use-radio" >Yes</label>
+                                                                    <label for="mark-in-use-radio-no" class="radio-inline"><input type="radio"  th:attr="name=${Good_Service.getInternalID()}" id="mark-in-use-radio-no" value="no" tabindex="0" class="mark-in-use-radio" checked>No</label>
+                                                                </div><!--END radiogroup-->
+
+                                                            </th:block>
+
+                                                            <th:block th:if="${Good_Service.isMarkInUseSet() == false}">
+                                                                <div role="radiogroup" aria-labelledby="commerce" class="form-group form-group-md" >
+                                                                    <label for="mark-in-use-radio-yes" class="radio-inline"><input type="radio"  th:attr="name=${Good_Service.getInternalID()}" id="mark-in-use-radio-yes" value="yes" tabindex="0"  class="mark-in-use-radio">Yes</label>
+                                                                    <label for="mark-in-use-radio-no" class="radio-inline"><input type="radio"  th:attr="name=${Good_Service.getInternalID()}" id="mark-in-use-radio-no" value="no" tabindex="0" class="mark-in-use-radio">No</label>
+                                                                </div><!--END radiogroup-->
+                                                            </th:block>
+
+                                                            <div id="yescommerce" class="form-group form-group-md" th:if="${Good_Service.isMarkInUse() == true}" style=""><!--toggle 'yes' radio-->
                                                                 <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                     <label>When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
                                                                     <input type="date" class="form-control gs-date"   th:attr="name=${Good_Service.getInternalID()}" value="">
@@ -148,7 +164,45 @@
                                                                     <input type="date" class="form-control mark-date"   th:attr="name=${Good_Service.getInternalID()}" name="commercedate" value="">
                                                                 </div>
                                                                 <div class="col-xs-12 form-group form-group-md">
-                                                                    <input class="form-check-input checkmark provide-spec" type="checkbox" value="yes" tabindex="0"  th:attr="id=${Good_Service.getInternalID()}" checked>
+                                                                    <input class="form-check-input checkmark provide-spec" type="checkbox" value="yes" tabindex="0"  th:attr="id=${Good_Service.getInternalID()}" >
+                                                                    <label class="form-check-label form-check long"  th:attr="for=${Good_Service.getInternalID()}"><span class="radio notspecial small">Check here to provide a specimen for this individual good/service.</span></label>
+                                                                </div>
+                                                                <div id="yesspecimenone" class="form-group form-group-md"><!--toggle 'yes' radio-->
+                                                                    <div class="col-xs-12 col-md-6">
+                                                                        <p id="upimagetwo">Provide an image of your specimen:</p>
+                                                                        <div>
+                                                                            <label class="small upload-drop-zone" for="specimentwofile" id="upimgtwo"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Drag and drop files or click here to upload.</label>
+                                                                            <input type="file" id="specimentwofile" name="specimentwofileupload" class="form-control" aria-labelledby="upimgtwo upimagetwo">
+                                                                        </div><!-- Drop Zone -->
+                                                                    </div>
+                                                                    <div class="col-xs-12 col-md-6">
+                                                                        <label for="specdescriptwo">Provide a description of your specimen:</label>
+                                                                        <textarea id="specdescriptwo" rows="4"  th:attr="name=${Good_Service.getInternalID()}" class="form-control spec-description"></textarea>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-xs-12 form-group form-group-md" th:if="${baseTrademarkApplication.markHasForeignRegistration == true}">
+                                                                    <p class="weight600">Specify if you have a pending application, foreign registration, or both for this good/service.</p>
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="pending" tabindex="0" th:attr="id=${Good_Service.getpfaID()}" checked>
+                                                                    <label class="form-check-label form-check" th:attr="for=${Good_Service.getpfaID()}"><span class="radio notspecial small">ending Foreign Application</span></label>
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="foreign" tabindex="0"  th:attr="id=${Good_Service.getpfrID()}">
+                                                                    <label class="form-check-label form-check" th:attr="for=${Good_Service.getpfrID()}"><span class="radio notspecial small">Foreign Registration</span></label>
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="na" tabindex="0" th:attr="id=${Good_Service.getpnaID()}">
+                                                                    <label class="form-check-label form-check" th:attr="for=${Good_Service.getpnaID()}"><span class="radio notspecial small">Not Applicable</span></label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div id="yescommerce" class="form-group form-group-md" th:if="${Good_Service.isMarkInUse() == false}" style="display: none;"><!--toggle 'yes' radio-->
+                                                                <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                                                    <label>When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
+                                                                    <input type="date" class="form-control gs-date"   th:attr="name=${Good_Service.getInternalID()}" value="">
+                                                                </div>
+                                                                <div class="col-xs-12 col-md-6 form-group form-group-md matchlabelheightdiv">
+                                                                    <label  class="matchlabelheight">When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
+                                                                    <input type="date" class="form-control mark-date"   th:attr="name=${Good_Service.getInternalID()}" name="commercedate" value="">
+                                                                </div>
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <input class="form-check-input checkmark provide-spec" type="checkbox" value="yes" tabindex="0"  th:attr="id=${Good_Service.getInternalID()}" >
                                                                     <label class="form-check-label form-check long"  th:attr="for=${Good_Service.getInternalID()}"><span class="radio notspecial small">Check here to provide a specimen for this individual good/service.</span></label>
                                                                 </div>
                                                                 <div id="yesspecimenone" class="form-group form-group-md"><!--toggle 'yes' radio-->
@@ -377,22 +431,26 @@
 
              $(this).parent().parent().next().css('display','none');
 
-            // alert($(this).parent().parent().next().html());
-
+             var gsID= $(this).attr("name");
 
              if($(this).attr("id") == "mark-in-use-radio-yes"){
+                 // yes readio click
                  if(this.checked == true){
                      $(this).parent().parent().next().show(500);
                      //$('div#yescommerce').show(500);
+                     addFilingBasisInfoToGoodAndService("fb-mark-in-use", "yes", gsID, appInternalID);
                  }
                  else {
                      $(this).parent().parent().next().fadeOut(500);
                  }
              }
              else{
+                 // no readio click
+
 
                  if(this.checked == true){
                      $(this).parent().parent().next().fadeOut(500);
+                     addFilingBasisInfoToGoodAndService("fb-mark-in-use", "no", gsID, appInternalID);
                  }
                  else {
                      $(this).parent().parent().next().show(500);
@@ -427,13 +485,52 @@
 
 
 
+    function addFilingBasisInfoToGoodAndService(fbFieldName, fbFieldValue, gsID, appInternalID) {
+
+        //var field_value = $(this).val();
+        //alert(field_value);
+
+        $.ajax({
+            url: "../../REST/apiGateway/GS/fb/update/"+fbFieldName+"/"+fbFieldValue+"/"+gsID+"/"+appInternalID,
+            type: 'GET',
+            success: function(data){
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                if(s_code.trim() == "200"){
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function() {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+            },
+            error: function(data) {
+
+                console.log(data);
+
+            }
+
+        });
 
 
 
-    ////////////////////////////////////////////////////////////////////////////////
-    // end of contact information 'State' auto save ////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        // end of contact information 'State' auto save ////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
 
+
+    }
 
 
 
