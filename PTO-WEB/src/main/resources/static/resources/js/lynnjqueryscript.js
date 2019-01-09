@@ -46,7 +46,7 @@ $(document).ready(function(){
 	//end close (x) gs panels
 
 	//START set initial checkboxes
-	$('input[type=checkbox]').attr('checked',false);
+
 	//END set initial checkboxes
 
 	//START enable / disable checkboxes

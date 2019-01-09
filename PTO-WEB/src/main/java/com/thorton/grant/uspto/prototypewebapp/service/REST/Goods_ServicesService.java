@@ -262,6 +262,24 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
         }
 
+        if(fbField.equals("fb-provide-spec")){
+            // ptoUser.setState(param); // sets state code
+
+            if(fbValue.equals("yes")){
+                baseTrademarkApplication.findGSbyInternalID(gsID).setProvideSample(true);
+
+            }
+            if(fbValue.equals("no")){
+                baseTrademarkApplication.findGSbyInternalID(gsID).setProvideSample(false);
+
+
+            }
+
+            appFieldReadable = "Filing Basis Provide Specimen";
+
+        }
+
+
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
         String responseMsg = appFieldReadable+" has been saved.";
 

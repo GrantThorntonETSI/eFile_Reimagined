@@ -28,6 +28,7 @@ public class GoodAndService {
     private Date firstGSDate;
     private Date firstCommerceDate;
 
+    private boolean provideSample;
 
     private String sampleImagePath;
 
@@ -167,6 +168,15 @@ public class GoodAndService {
 
     public void setMarkInUseSet(boolean markInUseSet) {
         this.markInUseSet = markInUseSet;
+    }
+
+
+    public boolean isProvideSample() {
+        return provideSample;
+    }
+
+    public void setProvideSample(boolean provideSample) {
+        this.provideSample = provideSample;
     }
 
     @Override
