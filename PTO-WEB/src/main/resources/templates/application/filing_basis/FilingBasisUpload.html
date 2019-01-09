@@ -160,8 +160,8 @@
                                                                     <input type="date" class="form-control gs-date"   th:value="${Good_Service.getFirstGSDateDisplay()}" >
                                                                 </div>
                                                                 <div class="col-xs-12 col-md-6 form-group form-group-md matchlabelheightdiv">
-                                                                    <label  class="matchlabelheight">When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
-                                                                    <input type="date" class="form-control mark-date"   th:attr="name=${Good_Service.getInternalID()}" name="commercedate" value="">
+                                                                    <label  class="matchlabelheight"  th:attr="name=${Good_Service.getInternalID()}" >When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
+                                                                    <input type="date" class="form-control mark-date"   th:value="${Good_Service.getFirstCommerceDateDisplay()}" name="commercedate" value="">
                                                                 </div>
                                                                 <div class="col-xs-12 form-group form-group-md">
                                                                     <input class="form-check-input checkmark provide-spec" type="checkbox" value="yes" tabindex="0"  th:attr="id=${Good_Service.getInternalID()}" >
@@ -198,8 +198,8 @@
                                                                     <input type="date" class="form-control gs-date" value="">
                                                                 </div>
                                                                 <div class="col-xs-12 col-md-6 form-group form-group-md matchlabelheightdiv">
-                                                                    <label  class="matchlabelheight">When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip" th:attr="name=${Good_Service.getInternalID()}" title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
-                                                                    <input type="date" class="form-control mark-date"    name="commercedate" >
+                                                                    <label  class="matchlabelheight"  th:attr="name=${Good_Service.getInternalID()}">When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip" th:attr="name=${Good_Service.getInternalID()}" title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
+                                                                    <input type="date" class="form-control mark-date"    name="commercedate"  value="">
                                                                 </div>
                                                                 <div class="col-xs-12 form-group form-group-md">
                                                                     <input class="form-check-input checkmark provide-spec" type="checkbox" value="yes" tabindex="0"  th:attr="id=${Good_Service.getInternalID()}" >
@@ -474,7 +474,11 @@
          });
 
         $('input.mark-date').change(function () {
-            alert($(this).attr("name"));
+            var gsId = $(this).prev().attr("name");
+
+            var date = $(this).val();
+
+            addFilingBasisInfoToGoodAndService("fb-mark-date",date,gsId,appInternalID);
         });
 
         $('input.provide-spec').click(function () {
