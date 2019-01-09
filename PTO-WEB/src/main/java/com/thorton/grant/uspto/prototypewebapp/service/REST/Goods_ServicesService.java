@@ -253,7 +253,14 @@ public class Goods_ServicesService  extends BaseRESTapiService{
             appFieldReadable = "Filing Basis First Commerce Date";
 
         }
+        if(fbField.equals("fb-sample-desc")){
+            // ptoUser.setState(param); // sets state code
 
+            baseTrademarkApplication.findGSbyInternalID(gsID).setSampleDescription(fbValue);
+
+            appFieldReadable = "Filing Basis Specimen Description";
+
+        }
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
         String responseMsg = appFieldReadable+" has been saved.";

@@ -176,8 +176,8 @@
                                                                         </div><!-- Drop Zone -->
                                                                     </div>
                                                                     <div class="col-xs-12 col-md-6">
-                                                                        <label for="specdescriptwo">Provide a description of your specimen:</label>
-                                                                        <textarea id="specdescriptwo" rows="4"  th:attr="name=${Good_Service.getInternalID()}" class="form-control spec-description"></textarea>
+                                                                        <label for="specdescriptwo" th:attr="name=${Good_Service.getInternalID()}">Provide a description of your specimen:</label>
+                                                                        <textarea id="specdescriptwo" rows="4"  th:text="${Good_Service.getSampleDescription()}"  class="form-control spec-description"></textarea>
                                                                     </div>
                                                                 </div>
 
@@ -214,8 +214,8 @@
                                                                         </div><!-- Drop Zone -->
                                                                     </div>
                                                                     <div class="col-xs-12 col-md-6">
-                                                                        <label for="specdescriptwo">Provide a description of your specimen:</label>
-                                                                        <textarea id="specdescriptwo" rows="4"  th:attr="name=${Good_Service.getInternalID()}" class="form-control spec-description"></textarea>
+                                                                        <label for="specdescriptwo" th:attr="name=${Good_Service.getInternalID()}">Provide a description of your specimen:</label>
+                                                                        <textarea id="specdescriptwo" rows="4"   class="form-control spec-description"></textarea>
                                                                     </div>
                                                                 </div>
 
@@ -482,12 +482,17 @@
         });
 
         $('input.provide-spec').click(function () {
-            alert($(this).attr("id"));
+            //alert($(this).attr("id"));
         });
 
         $('textarea.spec-description').focusout(function () {
+            var gsId = $(this).prev().attr("name")
+            var msg = $(this).val();
 
-            alert($(this).attr("name"));
+            if(msg != ""){
+                addFilingBasisInfoToGoodAndService("fb-sample-desc",msg,gsId, appInternalID);
+            }
+
 
         })
     });
@@ -558,7 +563,7 @@
 
         var maxDate = year + '-' + month + '-' + day;
         $('input.gs-date').attr('max', maxDate);
-        $('input.mark-date-date').attr('max', maxDate);
+        $('input.mark-date').attr('max', maxDate);
     }
 
 
