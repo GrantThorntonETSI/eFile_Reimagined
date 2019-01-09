@@ -32,8 +32,18 @@ public class GoodAndService {
     private String sampleDescription;
 
     private boolean GSPendingForignApplicatoin;
+
+    public String getpfaID(){
+        return internalID+"pfa";
+    }
     private boolean GSForeignApplication;
+    public String getpfrID(){
+        return internalID+"pfr";
+    }
     private boolean GSNotApplicable;
+    public String getpnaID(){
+        return internalID+"pna";
+    }
 
 
 

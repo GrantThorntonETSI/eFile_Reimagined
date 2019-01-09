@@ -167,12 +167,12 @@
 
                                                                 <div class="col-xs-12 form-group form-group-md" th:if="${baseTrademarkApplication.markHasForeignRegistration == true}">
                                                                     <p class="weight600">Specify if you have a pending application, foreign registration, or both for this good/service.</p>
-                                                                    <input class="form-check-input checkmark" type="checkbox" value="pending" tabindex="0" aria-labelledby="pend" id="pending">
-                                                                    <label class="form-check-label form-check" for="pending"><span class="radio notspecial" id="pend">Pending Foreign Application</span></label>
-                                                                    <input class="form-check-input checkmark" type="checkbox" value="foreign" tabindex="0" id="foreign" aria-labelledby="forreg">
-                                                                    <label class="form-check-label form-check" for="foreign"><span class="radio notspecial" id="forreg">Foreign Registration</span></label>
-                                                                    <input class="form-check-input checkmark" type="checkbox" value="na" tabindex="0" aria-labelledby="naone" id="na">
-                                                                    <label class="form-check-label form-check" for="na"><span class="radio notspecial" id="naone">Not Applicable</span></label>
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="pending" tabindex="0" th:attr="id=${Good_Service.getpfaID()}">
+                                                                    <label class="form-check-label form-check" th:attr="for=${Good_Service.getpfaID()}"><span class="radio notspecial small">ending Foreign Application</span></label>
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="foreign" tabindex="0"  th:attr="id=${Good_Service.getpfrID()}">
+                                                                    <label class="form-check-label form-check" th:attr="for=${Good_Service.getpfrID()}"><span class="radio notspecial small">Foreign Registration</span></label>
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="na" tabindex="0" th:attr="id=${Good_Service.getpnaID()}">
+                                                                    <label class="form-check-label form-check" th:attr="for=${Good_Service.getpnaID()}"><span class="radio notspecial small">Not Applicable</span></label>
                                                                 </div>
                                                             </div>
                                                         </section>
