@@ -195,7 +195,7 @@
 
                                                                 <div class="col-xs-12 form-group form-group-md" th:if="${baseTrademarkApplication.markHasForeignRegistration == true}">
                                                                     <p class="weight600">Specify if you have a pending application, foreign registration, or both for this good/service.</p>
-                                                                    <input class="form-check-input checkmark" type="checkbox" value="pending" tabindex="0" th:attr="id=${Good_Service.getpfaID()}" checked>
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="pending" tabindex="0" th:attr="id=${Good_Service.getpfaID()}">
                                                                     <label class="form-check-label form-check" th:attr="for=${Good_Service.getpfaID()}"><span class="radio notspecial small">ending Foreign Application</span></label>
                                                                     <input class="form-check-input checkmark" type="checkbox" value="foreign" tabindex="0"  th:attr="id=${Good_Service.getpfrID()}">
                                                                     <label class="form-check-label form-check" th:attr="for=${Good_Service.getpfrID()}"><span class="radio notspecial small">Foreign Registration</span></label>
