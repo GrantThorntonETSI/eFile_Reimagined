@@ -798,7 +798,7 @@
         $('.glyphicon-remove').click();
 
 
-
+        preventFutureDate();
 
         ////////////////////////////////////////////////////////////
         // show and hide attorney form actions
@@ -1278,6 +1278,22 @@
         // find the next right closing bracket
         return response;
 
+    }
+
+    function preventFutureDate() {
+        var dtToday = new Date();
+
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+
+        if(month < 10)
+            month = '0' + month.toString();
+        if(day < 10)
+            day = '0' + day.toString();
+
+        var maxDate = year + '-' + month + '-' + day;
+        $('#bar-membership-date').attr('max', maxDate);
     }
 
 

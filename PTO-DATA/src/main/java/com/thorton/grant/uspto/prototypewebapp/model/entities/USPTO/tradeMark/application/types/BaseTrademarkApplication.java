@@ -674,8 +674,6 @@ public class BaseTrademarkApplication  {
         @Override
         public int compare(GoodAndService o1, GoodAndService o2) {
 
-            System.out.println("comparing string 1 : "+o1.getClassDescription()+" | to String 2 : "+o2.getClassDescription());
-            System.out.println("compare results : "+o1.getClassDescription().compareTo(o2.getClassDescription()));
             return o1.getClassDescription().compareTo(o2.getClassDescription());
         }
     }

@@ -355,7 +355,7 @@
             location.href=breadCrumb2Link;
         });
 
-
+        preventFutureDate();
 
 
         //////////////////////////////////////////////////////////////////////
@@ -464,7 +464,12 @@
 
 
          $('input.gs-date').change(function () {
-            alert($(this).attr("name"));
+
+            var gsId = $(this).attr("name");
+            var date = $(this).val();
+            alert(date);
+            addFilingBasisInfoToGoodAndService("fb-gs-date",date,gsId,appInternalID);
+
          });
 
         $('input.mark-date').change(function () {
@@ -534,6 +539,22 @@
 
 
 
+    function preventFutureDate() {
+        var dtToday = new Date();
+
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+
+        if(month < 10)
+            month = '0' + month.toString();
+        if(day < 10)
+            day = '0' + day.toString();
+
+        var maxDate = year + '-' + month + '-' + day;
+        $('input.gs-date').attr('max', maxDate);
+        $('input.mark-date-date').attr('max', maxDate);
+    }
 
 
 
