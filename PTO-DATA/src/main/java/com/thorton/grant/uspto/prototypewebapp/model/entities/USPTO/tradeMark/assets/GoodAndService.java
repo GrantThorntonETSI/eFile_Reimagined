@@ -52,6 +52,9 @@ public class GoodAndService {
 
 
 
+
+
+
     public String getClassNumber() {
         return classNumber;
     }

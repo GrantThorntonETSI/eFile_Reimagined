@@ -60,7 +60,7 @@ public class BaseRESTapiService {
 
         //String statusCode = "404";
         String statusCode = status_code;
-        //String responseMsg = "Contact with email address :"+contact_email+ "has not been set as Primary Attorney. invalid user session.";
+        //String responseMsg = "Contact with email address :"+contact_email+ "has not been set as Primary Attorney.";
         String responseMsg = response_main;
         responseMsg = "{status:" + statusCode +" } { msg:"+responseMsg+" }";
         HttpHeaders responseHeader = new HttpHeaders ();

@@ -100,7 +100,7 @@ public class UserAccountService extends BaseRESTapiService {
             }
             else{
                 statusCode = "444";
-                responseMsg = "New password can not be empty.";
+                responseMsg = "New password can not be empty";
             }
         }
 
@@ -200,7 +200,7 @@ public class UserAccountService extends BaseRESTapiService {
         // start generating response
         ////////////////////////////////////////////////
         String statusCode = "200";
-        String responseMsg = userAccountField+" has been saved.";
+        String responseMsg = userAccountField+" has been saved";
 
         return buildResponseEnity(statusCode, responseMsg );
 
@@ -218,7 +218,7 @@ public class UserAccountService extends BaseRESTapiService {
        if(ptoUser.isProfileComplete() == false){
 
            String statusCode = "444";
-           String responseMsg = "User Profile required information is not complete.";
+           String responseMsg = "User Profile required information is not complete";
 
            return buildResponseEnity(statusCode, responseMsg );
 
@@ -227,7 +227,7 @@ public class UserAccountService extends BaseRESTapiService {
 
 
         String statusCode = "200";
-        String responseMsg = "User Profile required information is  complete.";
+        String responseMsg = "User Profile required information is  complete";
 
       return buildResponseEnity(statusCode, responseMsg );
 

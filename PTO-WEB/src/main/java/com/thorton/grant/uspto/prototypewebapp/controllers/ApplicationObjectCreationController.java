@@ -21,6 +21,8 @@ import com.thorton.grant.uspto.prototypewebapp.service.storage.StorageService;
 import com.thorton.grant.uspto.prototypewebapp.service.storage.error.StorageException;
 import org.springframework.context.ApplicationContext;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -859,6 +861,61 @@ public class ApplicationObjectCreationController {
     ///////////////////////////////////////////////////////////////////////////////
     // end of attorney add
     ///////////////////////////////////////////////////////////////////////////////
+
+    // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
+    @PostMapping(value = "/class/specimen/add")
+    public ResponseEntity addClassCategorySpecimenImg(
+                                      @RequestParam(name="file", required=false) MultipartFile file,
+                                      Model model,
+                                      WebRequest request
+                                    ) {
+
+        System.out.println("Specimen file upload!!!! ");
+
+
+        if(file != null){
+            System.out.println("file is not null");
+
+            if(file.isEmpty() == false) {
+               System.out.println("file is not empty !!!!!!!!!!!!!!!");
+            }
+
+        }
+        else{
+            System.out.println("file object is null");
+        }
+
+
+        //return buildResponseEnity("200", "file upload success");
+
+        return ResponseEntity.ok().build();
+
+    }
+
+
+    ////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////
+    // build response enity for REST API
+    ////////////////////////////////////////////////
+    ResponseEntity<String> buildResponseEnity(String status_code, String response_main) {
+
+        //String statusCode = "404";
+        String statusCode = status_code;
+        //String responseMsg = "Contact with email address :"+contact_email+ "has not been set as Primary Attorney. invalid user session.";
+        String responseMsg = response_main;
+        responseMsg = "{status:" + statusCode + " } { msg:" + responseMsg + " }";
+        HttpHeaders responseHeader = new HttpHeaders();
+        responseHeader.setAccessControlAllowOrigin(hostBean.getHost() + hostBean.getPort());
+        ArrayList<String> headersAllowed = new ArrayList<String>();
+        headersAllowed.add("Access-Control-Allow-Origin");
+        responseHeader.setAccessControlAllowHeaders(headersAllowed);
+        ArrayList<String> methAllowed = new ArrayList<String>();
+
+        return ResponseEntity.ok().headers(responseHeader).body(responseMsg);
+    }
+
+
 
 
 

@@ -107,7 +107,6 @@
                                 <h2 class="card-title weight600" th:text="${Good_Service_class.getClassNumberDisplay()}">Class 003</h2>
                             </div>
 
-                            <form action="" method="post" >
                                 <fieldset>
                                     <div class="row">
                                         <div class="col-xs-12">
@@ -120,14 +119,31 @@
                                         <div class="form-group form-group-md col-xs-12">
                                             <div class="row">
                                                 <section aria-label="class image and description">
+                                                    <form method="post"   th:attr="id=${Good_Service_class.getClassCategporyImpageFormID()}"  action="/class/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
+                                                        <div class="col-xs-12 col-md-6">
+                                                            <p id="upimage">Provide an image of your specimen:</p>
+                                                            <div>
 
-                                                    <div class="col-xs-12 col-md-6">
-                                                        <p id="upimage">Provide an image of your specimen:</p>
-                                                        <div>
-                                                            <label class="small upload-drop-zone" for="specimenfile" id="upimg"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Drag and drop files or click here to upload.</label>
-                                                            <input type="file" id="specimenfile" name="specimenfileupload" class="form-control" aria-labelledby="upimg upimage">
-                                                        </div><!-- Drop Zone -->
-                                                    </div>
+                                                                <label class="small long upload-drop-zone" for="file"><span class="glyphicon glyphicon-upload"></span> <br>
+                                                                    Upload bar credentials, including certificate of good standing from highest court of a state, commonwealth, territory or possession, or of the District of Columbia evidencing that you are a memeber of the bar of such court and are in good standing.</label>
+                                                                <input type="file" id="file" name="file" class="form-control">
+                                                            </div><!-- Drop Zone -->
+                                                        </div>
+                                                        <button type="submit" th:attr="form=${Good_Service_class.getClassCategporyImpageFormID()}" class="btn btn-sm submitCCSpecimen" >Upload file</button>
+
+                                                        <div class="row">
+                                                            <div class="js-upload-finished col-xs-6" >
+                                                                <p>Processed files</p>
+                                                                <div class="list-group">
+                                                                    <a href="#" class="list-group-item list-group-item-success"></a>
+                                                                </div>
+                                                            </div>
+                                                        </div><!--END US affiliation-->
+                                                    </form>
+
+
+
+
                                                     <div class="col-xs-12 col-md-6">
                                                         <label for="specdescript">Provide a description of your specimen:</label>
                                                         <textarea id="specdescript" rows="4" class="form-control"></textarea>
@@ -341,7 +357,7 @@
                                         </div><!--END formgroup-->
                                     </div>
                                 </fieldset>
-                            </form>
+
                         </div><!--END col-->
                     </div><!--END row-->
 
@@ -674,6 +690,55 @@
 
 
         })
+
+        ////////////////////////////////////////////////////////////////////////////////
+        // ajax form submit
+        // we will need one for each file upload form
+        // but for now, just get one working
+        ////////////////////////////////////////////////////////////////////////////////
+
+        // this is the id of the submit button
+        $(".submitCCSpecimen").click(function() {
+
+            // get the id of the form
+            // need to add hidden fields to form for class number
+            // need to add hidden field for app internal id
+
+            var formID = $(this).attr("form");
+            var form = document.getElementById(formID);
+            var fileSelect = document.getElementById('file');
+
+
+            // Get the selected files from the input.
+            var files = fileSelect.files;
+
+            var formData = new FormData();
+              formData.append("file", files);
+
+            // get form url
+
+            $.ajax({
+                type: "POST",
+                url: formActionURL,
+                data: formData, // serializes the form's elements.
+                async: false,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(data)
+                {
+                    alert(data);
+                }
+            });
+
+
+            return false; // avoid to execute the actual submit of the form.
+        });
+
+
+
+
+
     });
 
 
@@ -683,6 +748,7 @@
 
         //var field_value = $(this).val();
         //alert(field_value);
+
 
         $.ajax({
             url: "../../REST/apiGateway/GS/fb/update/"+fbFieldName+"/"+fbFieldValue+"/"+gsID+"/"+appInternalID,

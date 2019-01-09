@@ -82,7 +82,7 @@ public class ApplicationService  extends  BaseRESTapiService{
             }
 
 
-            appFieldReadable = "Attorney Information. ";
+            appFieldReadable = "Attorney Information";
         }
 
 
@@ -101,12 +101,12 @@ public class ApplicationService  extends  BaseRESTapiService{
                 baseTrademarkApplication.setLastViewModel("application/owner/OwnerStart");
                 baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
-                appFieldReadable = "Entity Type. ";
+                appFieldReadable = "Entity Type";
             }
             // ptoUser.setState(param); // sets state code
         }
 
-        String responseMsg = appFieldReadable+" has been saved.";
+        String responseMsg = appFieldReadable+" has been saved";
 
         //return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
         return buildResponseEnity("200", responseMsg);
@@ -215,7 +215,7 @@ public class ApplicationService  extends  BaseRESTapiService{
         // start generating response
         ////////////////////////////////////////////////
 
-        String responseMsg = "Contact with email address :"+contact_email+" has been added to the Application.";
+        String responseMsg = "Contact with email address :"+contact_email+" has been added to the Application";
 
         return buildResponseEnity("200", responseMsg);
 
@@ -231,7 +231,7 @@ public class ApplicationService  extends  BaseRESTapiService{
 
 
         if(verifyValidUserSession(contact_email) == false){
-            String responseMsg = "Contact with email address :"+contact_email+ " has not been saved. invalid user session.";
+            String responseMsg = "Contact with email address :"+contact_email+ " has not been saved";
             return buildResponseEnity("404", responseMsg);
 
         }
@@ -298,7 +298,7 @@ public class ApplicationService  extends  BaseRESTapiService{
 
         if(verifyValidUserSession(contact_email) == false){
 
-            String responseMsg = "Contact with email address :"+contact_email+ "has not been set as Primary Attorney. invalid user session.";
+            String responseMsg = "Contact with email address :"+contact_email+ "has not been set as Primary Attorney. invalid user session";
             return buildResponseEnity("404", responseMsg);
 
         }
@@ -335,7 +335,7 @@ public class ApplicationService  extends  BaseRESTapiService{
        else{
            // error
 
-           String responseMsg = "Contact with email address :"+contact_email+ " has not been set as Primary Attorney. invalid contact email.";
+           String responseMsg = "Contact with email address :"+contact_email+ " has not been set as Primary Attorney. invalid contact email";
            //return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
            return buildResponseEnity("404", responseMsg);
        }

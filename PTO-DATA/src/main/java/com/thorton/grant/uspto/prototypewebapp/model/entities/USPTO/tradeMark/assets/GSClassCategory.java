@@ -82,4 +82,11 @@ public class GSClassCategory {
     public void setClassCategoryImagePath(String classCategoryImagePath) {
         this.classCategoryImagePath = classCategoryImagePath;
     }
+
+
+    public String getClassCategporyImpageFormID(){
+
+
+        return getClassCategoryNumber()+"imageForm";
+    }
 }

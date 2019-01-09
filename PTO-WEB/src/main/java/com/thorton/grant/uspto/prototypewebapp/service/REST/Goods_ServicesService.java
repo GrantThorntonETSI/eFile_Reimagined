@@ -39,7 +39,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
         if(baseTrademarkApplication.findGSbyInternalID(gsID) != null){
 
-            return buildResponseEnity("444", "Good and Service Already added to the Application.");
+            return buildResponseEnity("444", "Good and Service Already added to the Application");
 
         }
 
@@ -57,7 +57,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         appFieldReadable = "Good and Service";
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
-        String responseMsg = appFieldReadable+" has been saved.";
+        String responseMsg = appFieldReadable+" has been saved";
 
         return buildResponseEnity("200", responseMsg);
     }
@@ -76,7 +76,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
         if(baseTrademarkApplication.findGSbyInternalID(gsID) == null){
 
-            return buildResponseEnity("444", "Good and Service is not part of the Application.");
+            return buildResponseEnity("444", "Good and Service is not part of the Application");
 
         }
 
@@ -91,7 +91,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         GoodsAndServicesService goodsAndServicesService = getServiceBeanFactory().getGoodsAndServicesService();
         goodsAndServicesService.delete(deleteThisGS);
 
-        String responseMsg = appFieldReadable+" has been removed.";
+        String responseMsg = appFieldReadable+" has been removed";
 
         //return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
         return buildResponseEnity("200", responseMsg);
@@ -228,7 +228,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
             }
             catch(Exception ex){
-                return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format.");
+                return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
 
             }
             appFieldReadable = "Filing Basis First Good and Services Date";
@@ -247,7 +247,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
             }
             catch(Exception ex){
-                return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format.");
+                return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
 
             }
             appFieldReadable = "Filing Basis First Commerce Date";
@@ -281,7 +281,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
-        String responseMsg = appFieldReadable+" has been saved.";
+        String responseMsg = appFieldReadable+" has been saved";
 
         return buildResponseEnity("200", responseMsg);
     }

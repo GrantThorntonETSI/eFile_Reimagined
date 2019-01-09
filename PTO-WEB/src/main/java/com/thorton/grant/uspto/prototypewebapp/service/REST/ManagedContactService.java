@@ -58,7 +58,7 @@ public class ManagedContactService extends  BaseRESTapiService {
 
 
                 // we need a different response entity
-        return  super.buildResponseEnity("404", "in valid session.");
+        return  super.buildResponseEnity("404", "in valid session");
 
     }
 

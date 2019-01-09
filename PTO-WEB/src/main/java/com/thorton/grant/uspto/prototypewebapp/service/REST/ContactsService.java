@@ -56,7 +56,7 @@ public class ContactsService extends  BaseRESTapiService {
 
         if(verifyValidUserSession("xxx") == false){
 
-            String responseMsg = appFieldReadable+" has not been saved. invalid user session.";
+            String responseMsg = appFieldReadable+" has not been saved";
             return buildResponseEnity("404", responseMsg );
 
         }
@@ -68,7 +68,7 @@ public class ContactsService extends  BaseRESTapiService {
         Lawyer lawyer = ptoUser.findLawyerContactByEmail(contact_email);
         if(lawyer != null){
 
-            String responseMsg = appFieldReadable+" has not been saved. Contact email exists..";
+            String responseMsg = appFieldReadable+" has not been saved Contact email exists";
             return buildResponseEnity("404", responseMsg );
         }
 
@@ -92,7 +92,7 @@ public class ContactsService extends  BaseRESTapiService {
         // start generating response
         ////////////////////////////////////////////////
 
-        String responseMsg = appFieldReadable+" has been saved.";
+        String responseMsg = appFieldReadable+" has been saved";
         return buildResponseEnity("200", responseMsg );
     }
 
@@ -112,7 +112,7 @@ public class ContactsService extends  BaseRESTapiService {
         // have to have a valid session
 
         if(ptoUser == null){ // can probably put this in a function
-            String responseMsgs = appFieldReadable+" has not been saved. invalid user session.";
+            String responseMsgs = appFieldReadable+" has not been saved";
             return buildResponseEnity("404", responseMsgs);
 
         }
@@ -190,7 +190,7 @@ public class ContactsService extends  BaseRESTapiService {
         // start generating response
         ////////////////////////////////////////////////
 
-        String responseMsg = appFieldReadable+" has been saved.";
+        String responseMsg = appFieldReadable+" has been saved";
         return buildResponseEnity("200", responseMsg);
     }
 
