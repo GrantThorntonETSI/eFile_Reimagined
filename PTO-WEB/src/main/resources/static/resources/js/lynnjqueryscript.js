@@ -205,22 +205,22 @@ $(document).ready(function(){
 	$('div#yescolorclaim').css('display','none');
 	$('input#inlineRadio1').change(function() {
 		if(this.checked == true){
-			$('div#nocolorclaim').hide( 'fast' );
-			$('div#yescolorclaim').show( 'slow' );
+			$('div#nocolorclaim').hide( 500 );
+			$('div#yescolorclaim').show( 500 );
 		}
 		else {
-			$('div#nocolorclaim').show( 'fast' );
-			$('div#yescolorclaim').hide( 'slow' );
+			$('div#nocolorclaim').show( 500 );
+			$('div#yescolorclaim').hide( 500 );
 		}
 	});
 	$('input#inlineRadio2').change(function() {
 		if(this.checked == true){
-			$('div#nocolorclaim').show( 'fast' );
-			$('div#yescolorclaim').hide( 'slow' );
+			$('div#nocolorclaim').show( 500 );
+			$('div#yescolorclaim').hide( 500 );
 		}
 		else {
-			$('div#nocolorclaim').hide( 'fast' );
-			$('div#yescolorclaim').show( 'slow' );
+			$('div#nocolorclaim').hide( 500 );
+			$('div#yescolorclaim').show( 500 );
 		}
 	});
 	//end mark color options
@@ -232,18 +232,18 @@ $(document).ready(function(){
 	$('div#yestranslation').css('display','none');
 	$('input#inlineRadio3').change(function() {
 		if(this.checked == true){
-			$('div#yestranslation').show( 'slow' );
+			$('div#yestranslation').show( 500 );
 		}
 		else {
-			$('div#yestranslation').hide( 'slow' );
+			$('div#yestranslation').hide( 500 );
 		}
 	});
 	$('input#inlineRadio4').change(function() {
 		if(this.checked == true){
-			$('div#yestranslation').hide( 'slow' );
+			$('div#yestranslation').hide( 500 );
 		}
 		else {
-			$('div#yestranslation').show( 'slow' );
+			$('div#yestranslation').show( 500 );
 		}
 	});
 	//end translations options
@@ -255,18 +255,18 @@ $(document).ready(function(){
 	$('div#yestransliteration').css('display','none');
 	$('input#inlineRadio5').change(function() {
 		if(this.checked == true){
-			$('div#yestransliteration').show( 'fast' );
+			$('div#yestransliteration').show( 500 );
 		}
 		else {
-			$('div#yestransliteration').hide( 'fast' );
+			$('div#yestransliteration').hide( 500 );
 		}
 	});
 	$('input#inlineRadio6').change(function() {
 		if(this.checked == true){
-			$('div#yestransliteration').hide( 'fast' );
+			$('div#yestransliteration').hide(500 );
 		}
 		else {
-			$('div#yestransliteration').show( 'fast' );
+			$('div#yestransliteration').show( 500 );
 		}
 	});
 	//end translations options
@@ -278,38 +278,38 @@ $(document).ready(function(){
 	$('div#yesnps').css('display','none');
 	$('input#inlineRadio7').change(function() {
 		if(this.checked == true){
-			$('div#yesnps').show( 'fast' );
+			$('div#yesnps').show( 500 );
 		}
 		else {
-			$('div#yesnps').hide( 'fast' );
+			$('div#yesnps').hide( 500 );
 		}
 	});
 	$('input#inlineRadio8').change(function() {
 		if(this.checked == true){
-			$('div#yesnps').hide( 'fast' );
+			$('div#yesnps').hide( 500 );
 		}
 		else {
-			$('div#yesnps').show( 'fast' );
+			$('div#yesnps').show( 500 );
 		}
 	});
 	//yes, contains name is checked
 	$('div#yescontainsname').hide();
 	$('#namechecked').change(function() {
 		if(this.checked == true){
-			$('div#yescontainsname').show( 'fast' );
+			$('div#yescontainsname').show( 500 );
 		}
 		else {
-			$('div#yescontainsname').hide( 'fast' );
+			$('div#yescontainsname').hide( 500 );
 		}
 	});
 	//yes, contains portrait is checked
 	$('div#yescontainsportrait').hide();
 	$('#portraitchecked').change(function() {
 		if(this.checked == true){
-			$('div#yescontainsportrait').show( 'fast' );
+			$('div#yescontainsportrait').show( 500 );
 		}
 		else {
-			$('div#yescontainsportrait').hide( 'fast' );
+			$('div#yescontainsportrait').hide( 500 );
 		}
 	});
 	//yes, contains signature is checked
@@ -319,10 +319,10 @@ $(document).ready(function(){
 	$('div#yescontainssignature').hide();
 	$('#signaturechecked').change(function() {
 		if(this.checked == true){
-			$('div#yescontainssignature').show( 'fast' );
+			$('div#yescontainssignature').show( 500 );
 		}
 		else {
-			$('div#yescontainssignature').hide( 'fast' );
+			$('div#yescontainssignature').hide( 500 );
 		}
 	});
 	//end nps options
@@ -334,18 +334,18 @@ $(document).ready(function(){
 	$('div#yesdisclaimer').css('display','none');
 	$('input#inlineRadio09').change(function() {
 		if(this.checked == true){
-			$('div#yesdisclaimer').show( 'fast' );
+			$('div#yesdisclaimer').show( 500 );
 		}
 		else {
-			$('div#yesdisclaimer').hide( 'fast' );
+			$('div#yesdisclaimer').hide( 500 );
 		}
 	});
 	$('input#inlineRadio010').change(function() {
 		if(this.checked == true){
-			$('div#yesdisclaimer').hide( 'fast' );
+			$('div#yesdisclaimer').hide( 500 );
 		}
 		else {
-			$('div#yesdisclaimer').show( 'fast' );
+			$('div#yesdisclaimer').show( 500 );
 		}
 	});
 	//end disclaimer options
@@ -357,18 +357,18 @@ $(document).ready(function(){
 	$('div#yesprior').css('display','none');
 	$('input#inlineRadio011').change(function() {
 		if(this.checked == true){
-			$('div#yesprior').show( 'fast' );
+			$('div#yesprior').show( 500 );
 		}
 		else {
-			$('div#yesprior').hide( 'fast' );
+			$('div#yesprior').hide( 500 );
 		}
 	});
 	$('input#inlineRadio012').change(function() {
 		if(this.checked == true){
-			$('div#yesprior').hide( 'fast' );
+			$('div#yesprior').hide( 500 );
 		}
 		else {
-			$('div#yesprior').show( 'fast' );
+			$('div#yesprior').show( 500 );
 		}
 	});
 	//end prior options
@@ -380,18 +380,18 @@ $(document).ready(function(){
 	$('div#yesmeaning').css('display','none');
 	$('input#inlineRadio013').change(function() {
 		if(this.checked == true){
-			$('div#yesmeaning').show( 'fast' );
+			$('div#yesmeaning').show( 500 );
 		}
 		else {
-			$('div#yesmeaning').hide( 'fast' );
+			$('div#yesmeaning').hide( 500 );
 		}
 	});
 	$('input#inlineRadio014').change(function() {
 		if(this.checked == true){
-			$('div#yesmeaning').hide( 'fast' );
+			$('div#yesmeaning').hide( 500 );
 		}
 		else {
-			$('div#yesmeaning').show( 'fast' );
+			$('div#yesmeaning').show( 500 );
 		}
 	});
 	//end prior options
@@ -403,18 +403,18 @@ $(document).ready(function(){
 	$('div#yesattorneyfiling').css('display','none');
 	$('input#inlineRadio015').change(function() {
 		if(this.checked == true){
-			$('div#yesattorneyfiling').show( 'fast' );
+			$('div#yesattorneyfiling').show( 500 );
 		}
 		else {
-			$('div#yesattorneyfiling').hide( 'fast' );
+			$('div#yesattorneyfiling').hide( 500 );
 		}
 	});
 	$('input#inlineRadio016').change(function() {
 		if(this.checked == true){
-			$('div#yesattorneyfiling').hide( 'fast' );
+			$('div#yesattorneyfiling').hide( 500 );
 		}
 		else {
-			$('div#yesattorneyfiling').show( 'fast' );
+			$('div#yesattorneyfiling').show( 500 );
 		}
 	});
 	//end attorney options
@@ -426,14 +426,14 @@ $(document).ready(function(){
 	$('div#yesusentity').css('display','none');
 	$('input#inlineRadio019').change(function() {
 		if(this.checked == true){
-			$('div#yesusentity').show( 'fast' );
+			$('div#yesusentity').show( 500 );
 
 			$("input#inlineRadio020").prop({
 				checked: false,
 			});
 		}
 		else {
-			$('div#yesusentity').hide( 'fast' );
+			$('div#yesusentity').hide( 500 );
 
 			$("input#inlineRadio020").prop({
 				checked: true,
@@ -442,14 +442,14 @@ $(document).ready(function(){
 	});
 	$('input#inlineRadio020').change(function() {
 		if(this.checked == true){
-			$('div#yesusentity').hide( 'fast' );
+			$('div#yesusentity').hide(500 );
 
 			$("input#inlineRadio019").prop({
 				checked: false,
 			});
 		}
 		else {
-			$('div#yesusentity').show( 'fast' );
+			$('div#yesusentity').show( 500 );
 
 			$("input#inlineRadio019").prop({
 				checked: true,
@@ -465,18 +465,18 @@ $(document).ready(function(){
 
 	$('input#inlineRadio25').change(function() {
 		if(this.checked == true){
-			$('div#yescommerce').show( 'fast' );
+			$('div#yescommerce').show( 500 );
 		}
 		else {
-			$('div#yescommerce').hide( 'fast' );
+			$('div#yescommerce').hide( 500 );
 		}
 	});
 	$('input#inlineRadio26').change(function() {
 		if(this.checked == true){
-			$('div#yescommerce').hide( 'fast' );
+			$('div#yescommerce').hide( 500 );
 		}
 		else {
-			$('div#yescommerce').show( 'fast' );
+			$('div#yescommerce').show( 500 );
 		}
 	});
 	//end basis commerce options
@@ -488,18 +488,18 @@ $(document).ready(function(){
 	$('div#yesconnection').css('display','none');
 	$('input#inlineRadio29').change(function() {
 		if(this.checked == true){
-			$('div#yesconnection').show( 'fast' );
+			$('div#yesconnection').show( 500);
 		}
 		else {
-			$('div#yesconnection').hide( 'fast' );
+			$('div#yesconnection').hide( 500 );
 		}
 	});
 	$('input#inlineRadio30').change(function() {
 		if(this.checked == true){
-			$('div#yesconnection').hide( 'fast' );
+			$('div#yesconnection').hide( 500 );
 		}
 		else {
-			$('div#yesconnection').show( 'fast' );
+			$('div#yesconnection').show( 500 );
 		}
 	});
 	//end basistwo connection options
@@ -510,14 +510,14 @@ $(document).ready(function(){
 	$('div#usaffiliation').css('display','none');
 	$('div#canadianaffiliation').css('display','none');
 	$('#attorney-bar-standing').change(function(){
-		$('.hidethis').hide( 'fast' );
-		$('#' + $(this).val()).show( 'fast' );
+		$('.hidethis').hide( 500 );
+		$('#' + $(this).val()).show( 500 );
 	});
 	//end affiliation options
 	//start nameoftypeofbusiness options
 	$( 'div#nametype' ).css('display','none');
 	$( '#type' ).on('change',function(){
-		$( 'div#nametype' ).show( 'fast' );
+		$( 'div#nametype' ).show( 500 );
 	});
 	//start entity options (import concept)
 	$('#autofill').css('display','none');
@@ -526,7 +526,7 @@ $(document).ready(function(){
 		$('footer').css('display','none');
 		var include = ('js/' + $(this).val() + '.js');
 		$.getScript( include );
-		$('#autofill').show( 'fast' );
+		$('#autofill').show( 500 );
 		$('footer').css('display','block');
 	});
 	//end entity options (import concept)
@@ -690,32 +690,7 @@ $(document).ready(function(){
 	});
 	//END additional containsname
 
-	//START additional pending + foreign
-	$('div .holdsapending').css('display','none');
-	$('div #pluspending').css('display','none');
-	$('input#pendingtwo').change(function() {
-		if(this.val == 'pendingtwo'){
-			$('div .holdsapending').hide( 'fast' );
-			$('div #pluspending').hide( 'fast' );
-		}
-		else {
-			$('div .holdsapending').show( 'fast' );
-			$('div #pluspending').show( 'fast' );
-		}
-	});
-	$('div .holdsaforeign').css('display','none');
-	$('div #plusforeign').css('display','none');
-	$('input#foreigntwo').change(function() {
-		if(this.val == 'foreigntwo'){
-			$('div .holdsaforeign').hide( 'fast' );
-			$('div #plusforeign').hide('fast');
-		}
-		else {
-			$('div .holdsaforeign').show( 'fast' );
-			$('div #plusforeign').show('fast');
-		}
-	});
-	//END additional pending + foreign
+
 
 	$( 'button#addaname' ).on('click',function(){
 		$( '.containsaname:eq(0)' ).clone().appendTo( '.appendaname' );
