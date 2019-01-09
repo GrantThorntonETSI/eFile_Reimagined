@@ -118,32 +118,16 @@
                                     <div class="row">
                                         <div class="form-group form-group-md col-xs-12">
                                             <div class="row">
+
+
                                                 <section aria-label="class image and description">
-                                                    <form method="post"   th:attr="id=${Good_Service_class.getClassCategporyImpageFormID()}"  action="/class/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
-                                                        <div class="col-xs-12 col-md-6">
-                                                            <p id="upimage">Provide an image of your specimen:</p>
-                                                            <div>
-
-                                                                <label class="small long upload-drop-zone" for="file"><span class="glyphicon glyphicon-upload"></span> <br>
-                                                                    Upload bar credentials, including certificate of good standing from highest court of a state, commonwealth, territory or possession, or of the District of Columbia evidencing that you are a memeber of the bar of such court and are in good standing.</label>
-                                                                <input type="file" id="file" name="file" class="form-control">
-                                                            </div><!-- Drop Zone -->
-                                                        </div>
-                                                        <button type="submit" th:attr="form=${Good_Service_class.getClassCategporyImpageFormID()}" class="btn btn-sm submitCCSpecimen" >Upload file</button>
-
-                                                        <div class="row">
-                                                            <div class="js-upload-finished col-xs-6" >
-                                                                <p>Processed files</p>
-                                                                <div class="list-group">
-                                                                    <a href="#" class="list-group-item list-group-item-success"></a>
-                                                                </div>
-                                                            </div>
-                                                        </div><!--END US affiliation-->
-                                                    </form>
-
-
-
-
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <p id="upimage">Provide an image of your specimen:</p>
+                                                        <div>
+                                                            <label class="small upload-drop-zone" for="specimenfile" id="upimg"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Click here to upload.</label>
+                                                            <input type="file" id="specimenfile" name="specimenfileupload" class="form-control" aria-labelledby="upimg upimage">
+                                                        </div><!-- Drop Zone -->
+                                                    </div>
                                                     <div class="col-xs-12 col-md-6">
                                                         <label for="specdescript">Provide a description of your specimen:</label>
                                                         <textarea id="specdescript" rows="4" class="form-control"></textarea>

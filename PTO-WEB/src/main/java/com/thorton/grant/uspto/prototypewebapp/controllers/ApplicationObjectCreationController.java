@@ -244,16 +244,19 @@ public class ApplicationObjectCreationController {
             String string = newAttorneyContactFormDTO.getAttorneyBarAdmissionDate();
 
             System.out.println("Date value : "+string);
-            try {
-                DateFormat format = new SimpleDateFormat("yyyy-dd-mm", Locale.ENGLISH);
-                Date date = format.parse(string);
+            if(string.length() < 10){
+                try {
+                    DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+                    Date date = format.parse(string);
 
-                lawyer.setBarAdmissionDate(date);
-            }
-            catch(Exception ex){
+                    lawyer.setBarAdmissionDate(date);
+                }
+                catch(Exception ex){
 
-                model.addAttribute("message", "ERROR: Could not save Bar Admission Date, invalid Date format.");
+                    model.addAttribute("message", "ERROR: Could not save Bar Admission Date, invalid Date format.");
+                }
             }
+
         }
 
         if(newAttorneyContactFormDTO.getAttorneyCAagentName()!= null){
