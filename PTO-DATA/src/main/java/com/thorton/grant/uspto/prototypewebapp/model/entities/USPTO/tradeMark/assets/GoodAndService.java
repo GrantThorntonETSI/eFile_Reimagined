@@ -9,6 +9,9 @@ import java.util.Objects;
 
 @Entity
 public class GoodAndService {
+    public GoodAndService() {
+        firstGSDate = new Date();
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -101,7 +104,13 @@ public class GoodAndService {
     }
 
     public Date getFirstGSDate() {
+
         return firstGSDate;
+
+    }
+
+    public String getFirstGSDateDisplay() {
+        return firstGSDate.toString().substring(0,10);
     }
 
     public void setFirstGSDate(Date firstGSDate) {

@@ -10,7 +10,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashSet;
+import java.util.Locale;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -213,6 +217,23 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
+        if(fbField.equals("fb-gs-date")){
+            // ptoUser.setState(param); // sets state code
+
+
+            try {
+                DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+                Date date = format.parse(fbValue);
+                baseTrademarkApplication.findGSbyInternalID(gsID).setFirstGSDate(date);
+
+            }
+            catch(Exception ex){
+                return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format.");
+
+            }
+            appFieldReadable = "Filing Basis First Good and Services Date";
+
+        }
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
         String responseMsg = appFieldReadable+" has been saved.";
