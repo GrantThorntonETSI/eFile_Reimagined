@@ -135,10 +135,10 @@
                                                             </div>
                                                             <p id="commerce">Are you currently using the mark on bar soap in commerce?</p>
                                                             <div role="radiogroup" aria-labelledby="commerce" class="form-group form-group-md">
-                                                                <label for="mark-in-use-radio-yes" class="radio-inline"><input type="radio"  th:attr="name=${Good_Service.getInternalID()}" id="mark-in-use-radio-yes" value="yes" tabindex="0"  class="mark-in-use-radio">Yes</label>
+                                                                <label for="mark-in-use-radio-yes" class="radio-inline"><input type="radio"  th:attr="name=${Good_Service.getInternalID()}" id="mark-in-use-radio-yes" value="yes" tabindex="0"  class="mark-in-use-radio" checked>Yes</label>
                                                                 <label for="mark-in-use-radio-no" class="radio-inline"><input type="radio"  th:attr="name=${Good_Service.getInternalID()}" id="mark-in-use-radio-no" value="no" tabindex="0" class="mark-in-use-radio">No</label>
                                                             </div><!--END radiogroup-->
-                                                            <div id="yescommerce" class="form-group form-group-md"><!--toggle 'yes' radio-->
+                                                            <div id="yescommerce" class="form-group form-group-md" style="display: none"><!--toggle 'yes' radio-->
                                                                 <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                     <label>When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
                                                                     <input type="date" class="form-control gs-date"   th:attr="name=${Good_Service.getInternalID()}" value="">
@@ -148,7 +148,7 @@
                                                                     <input type="date" class="form-control mark-date"   th:attr="name=${Good_Service.getInternalID()}" name="commercedate" value="">
                                                                 </div>
                                                                 <div class="col-xs-12 form-group form-group-md">
-                                                                    <input class="form-check-input checkmark provide-spec" type="checkbox" value="yes" tabindex="0"  th:attr="id=${Good_Service.getInternalID()}">
+                                                                    <input class="form-check-input checkmark provide-spec" type="checkbox" value="yes" tabindex="0"  th:attr="id=${Good_Service.getInternalID()}" checked>
                                                                     <label class="form-check-label form-check long"  th:attr="for=${Good_Service.getInternalID()}"><span class="radio notspecial small">Check here to provide a specimen for this individual good/service.</span></label>
                                                                 </div>
                                                                 <div id="yesspecimenone" class="form-group form-group-md"><!--toggle 'yes' radio-->
@@ -167,7 +167,7 @@
 
                                                                 <div class="col-xs-12 form-group form-group-md" th:if="${baseTrademarkApplication.markHasForeignRegistration == true}">
                                                                     <p class="weight600">Specify if you have a pending application, foreign registration, or both for this good/service.</p>
-                                                                    <input class="form-check-input checkmark" type="checkbox" value="pending" tabindex="0" th:attr="id=${Good_Service.getpfaID()}">
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="pending" tabindex="0" th:attr="id=${Good_Service.getpfaID()}" checked>
                                                                     <label class="form-check-label form-check" th:attr="for=${Good_Service.getpfaID()}"><span class="radio notspecial small">ending Foreign Application</span></label>
                                                                     <input class="form-check-input checkmark" type="checkbox" value="foreign" tabindex="0"  th:attr="id=${Good_Service.getpfrID()}">
                                                                     <label class="form-check-label form-check" th:attr="for=${Good_Service.getpfrID()}"><span class="radio notspecial small">Foreign Registration</span></label>

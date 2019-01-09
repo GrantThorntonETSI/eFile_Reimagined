@@ -462,7 +462,7 @@ $(document).ready(function(){
 	$("input#inlineRadio25").prop({
 		checked: false,
 	});
-	$('div#yescommerce').css('display','none');
+
 	$('input#inlineRadio25').change(function() {
 		if(this.checked == true){
 			$('div#yescommerce').show( 'fast' );
