@@ -158,7 +158,7 @@ Collective Membership Mark:  A collective membership mark is a mark used by the 
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="panel-body nocontent" role="button" aria-label="select stylized mark">
+                                    <div class="panel-body nocontent" id="design-stylized-panel" role="button" aria-label="select stylized mark" URI="/mark/designWithText/?trademarkID=" mark-type="Stylized">
                                         <div class="col-xs-5">
                                             <img th:src="@{/resources/images/abc_lobster.gif}" alt="" class="img-responsive">
                                         </div>
@@ -182,7 +182,7 @@ Collective Membership Mark:  A collective membership mark is a mark used by the 
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="panel-body nocontent" role="button" aria-label="select design only mark">
+                                    <div class="panel-body nocontent" id="design-only-panel" role="button" aria-label="select design only mark" URI="/mark/designWithText/?trademarkID=" mark-type="Design%20Only">
                                         <div class="col-xs-12">
                                             <img th:src="@{/resources/images/RetinaIcon-2.png}" alt="" class="img-responsive">
                                         </div>
@@ -548,7 +548,24 @@ Collective Membership Mark:  A collective membership mark is a mark used by the 
             $('#nextButton').attr("disabled",false);
 
         }
+        if(markType == "Design Only"){
 
+            $('#design-only-panel').addClass("highlight");
+            $('#design-only-panel').addClass("focus");
+
+            nextLinkURL="/mark/designWithText/?trademarkID="+appInternalID;
+            $('#nextButton').attr("disabled",false);
+
+        }
+        if(markType == "Stylized"){
+
+            $('#design-stylized-panel').addClass("highlight");
+            $('#design-stylized-panel').addClass("focus");
+
+            nextLinkURL="/mark/designWithText/?trademarkID="+appInternalID;
+            $('#nextButton').attr("disabled",false);
+
+        }
 
 
         $('.panel-body').click(function () {

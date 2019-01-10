@@ -90,7 +90,7 @@
         <div class="row"  style="position: relative;">
             <div class="row" style="position: relative;right:-15px; ">
                 <div class="col-xs-6">
-                    <h1>Trademark Details - Design with Text</h1>
+                    <h1  th:text="${baseTrademarkApplication.tradeMark.getTradeMarkPageTitle()}"></h1>
                     <p class="required" style="position: relative; right:-15px;"><span class="weight600">&#42; = Required</span></p>
                 </div>
             </div>
@@ -154,7 +154,7 @@
                                                 <label for="inlineRadio011" class="radio-inline"><input type="radio" name="priorradio" id="inlineRadio011" value="yes">Yes</label>
                                                 <label for="inlineRadio012" class="radio-inline"><input type="radio" name="priorradio" id="inlineRadio012" value="no">No</label>
                                             </div><!--END radiogroup-->
-                                                <div id="yespriordiv" role="region" aria-labelledby="prioreg" class="form-group form-group-md">
+                                                <div id="yespriordiv" role="region" aria-labelledby="prioreg" class="form-group form-group-md" style="display: none;">
                                                     <div class="col-xs-12 col-md-9">
                                                         <label for="yesprior">Enter prior U.S. registration numbers.</label>
                                                         <input type="text" class="form-control" id="yesprior" th:value="${baseTrademarkApplication.tradeMark.priorRegistrationNumber}" >
@@ -469,6 +469,8 @@
 
             saveMarkTextdetails("mark-prior-registration", "yes", appInternalID);
 
+            $('#yespriordiv').show(500);
+
         });
 
         //////////////////////////////////////////////////////////////////////
@@ -479,6 +481,8 @@
 
 
             saveMarkTextdetails("mark-prior-registration", "no", appInternalID);
+
+            $('#yespriordiv').fadeOut(500);
 
         });
 

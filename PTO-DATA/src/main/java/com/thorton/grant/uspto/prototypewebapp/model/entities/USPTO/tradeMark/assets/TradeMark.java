@@ -517,6 +517,12 @@ public class TradeMark extends BaseEntity {
         isNPSLivingPerson = NPSLivingPerson;
     }
 
+
+    public String getTradeMarkPageTitle(){
+
+        return "Trademark Details - "+trademarkDesignType;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
