@@ -1158,6 +1158,70 @@ public class ApplicationFlowController {
 
 
 
+    @RequestMapping({"/mark/standard"})
+    public String standardCharacterDetails (WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
+        //public String markUpload (WebRequest request, Model model) {
+        // get owner info
+
+        // get email and get PTOUser object from repository
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+        model.addAttribute("hostBean", hostBean);
+        String applcationLookupID = trademarkInternalID;
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+
+        }
+        else{
+            model.addAttribute("markImagePath","");
+
+            model.addAttribute("markImagePathBW","");
+
+
+        }
+
+
+
+
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+        boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+        boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+        boolean translationFW = baseTrademarkApplication.getTradeMark().isForeignLanguageTranslationWording();
+        boolean transliterationFW = baseTrademarkApplication.getTradeMark().isForeignLanguateTransliterationWording();
+        boolean containsSignatureName = baseTrademarkApplication.getTradeMark().isContainNamePortaitSignature();
+
+        boolean isName = baseTrademarkApplication.getTradeMark().isName();
+        boolean isSignature = baseTrademarkApplication.getTradeMark().isSignature();
+        boolean isPortrait =  baseTrademarkApplication.getTradeMark().isPortrait();
+        boolean isNPSLivingPerson =  baseTrademarkApplication.getTradeMark().isNPSLivingPerson();
+
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("translationFW", translationFW);
+        model.addAttribute("translitFW", transliterationFW);
+        model.addAttribute("containsSignatureName", containsSignatureName );
+
+        model.addAttribute("isName", isName );
+        model.addAttribute("isSignature", isSignature );
+        model.addAttribute("isPortrait", isPortrait );
+        model.addAttribute("isNPSLivingPerson", isNPSLivingPerson );
+        return "application/mark/MarkDetailsStandard";
+
+    }
+
+
+
     @RequestMapping({"/application/MarkExamples"})
     public String markExamples( WebRequest request, Model model, @RequestParam("anchorID") String anchorID){
         // get owner info

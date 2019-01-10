@@ -136,7 +136,7 @@ Collective Membership Mark:  A collective membership mark is a mark used by the 
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="panel-body nocontent match" role="button" aria-label="select standard character mark">
+                                    <div class="panel-body nocontent match" id="design-standard-panel" role="button" aria-label="select standard character mark" URI="/mark/standard/?trademarkID=" mark-type="Standard%20Character">
                                         <div class="col-xs-5">
                                             <img th:src="@{/resources/images/FontAwesome47-2.png}" alt="" class="img-responsive">
                                         </div>
@@ -563,6 +563,16 @@ Collective Membership Mark:  A collective membership mark is a mark used by the 
             $('#design-stylized-panel').addClass("focus");
 
             nextLinkURL="/mark/designWithText/?trademarkID="+appInternalID;
+            $('#nextButton').attr("disabled",false);
+
+        }
+
+        if(markType == "Standard Character"){
+
+            $('#design-standard-panel').addClass("highlight");
+            $('#design-standard-panel').addClass("focus");
+
+            nextLinkURL="/mark/standard/?trademarkID="+appInternalID;
             $('#nextButton').attr("disabled",false);
 
         }

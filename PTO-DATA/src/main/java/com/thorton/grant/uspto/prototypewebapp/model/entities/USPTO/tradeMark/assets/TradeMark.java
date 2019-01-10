@@ -32,6 +32,7 @@ public class TradeMark extends BaseEntity {
     private String trademarkConsentFilePath; // pdf or .doc
 
 
+    private String trademarkStandardCharacterText;
 
 
 
@@ -521,6 +522,14 @@ public class TradeMark extends BaseEntity {
     public String getTradeMarkPageTitle(){
 
         return "Trademark Details - "+trademarkDesignType;
+    }
+
+    public String getTrademarkStandardCharacterText() {
+        return trademarkStandardCharacterText;
+    }
+
+    public void setTrademarkStandardCharacterText(String trademarkStandardCharacterText) {
+        this.trademarkStandardCharacterText = trademarkStandardCharacterText;
     }
 
     @Override

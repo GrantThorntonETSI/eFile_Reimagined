@@ -735,4 +735,11 @@ $(document).ready(function(){
 		$( '.appendapending .holdsapending' ).remove( '.holdsapending:eq(0)' );
 	});
 	//END additional foreignpending
+
+
+	//START show standard character preview
+	$( '#ta2' ).keyup(function(){
+		var currentText = $(this).val();
+		$( 'p#showmarktxt' ).text(currentText);
+	});
 });
