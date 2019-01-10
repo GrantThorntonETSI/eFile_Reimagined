@@ -548,6 +548,7 @@ public class BaseTrademarkApplication  {
 
                 if(gsClassCategory.getClassCategoryNumber() == Integer.valueOf(current.getClassNumber())){
                     gsClassCategory.addGoodAndService(current);
+                    gsClassCategory.setClassCategoryImagePath(current.getClassSpecimenImgPath());
                 }
             }
             Collections.sort(gsClassCategory.getGoodAndServices(), new CustomComparator());

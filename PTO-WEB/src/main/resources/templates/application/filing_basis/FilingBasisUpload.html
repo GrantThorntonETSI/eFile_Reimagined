@@ -137,9 +137,9 @@
                                                     </div>
                                                     <div class="col-xs-12">
                                                         <div class="center">
-                                                            <div class="speciman-image" id="cat-spec-img" style="display: none;">
+                                                            <div class="speciman-image" id="cat-spec-img" style="">
 
-                                                                <img id="testUpload" src=""  alt="" class="img-responsive"/>
+                                                                <img id="testUpload" th:attr="src=${Good_Service_class.classCategoryImagePath}"  alt="" class="img-responsive"/>
                                                             </div>
                                                             <div class="upload-spinner center" id="upload-spinner" style="display: none; margin-left: 44%; margin-right: 44%;">
                                                                 <img id="spinner" th:src="@{/resources/images/ajax-loader.gif}"  style="min-width: 88px; min-height: 55px;" alt="" class="img-responsive "/>
