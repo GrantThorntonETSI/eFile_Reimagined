@@ -121,13 +121,18 @@
 
 
                                                 <section aria-label="class image and description">
-                                                    <div class="col-xs-12 col-md-6">
-                                                        <p id="upimage">Provide an image of your specimen:</p>
-                                                        <div>
-                                                            <label class="small upload-drop-zone" for="specimenfile" id="upimg"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Click here to upload.</label>
-                                                            <input type="file" id="specimenfile" name="specimenfileupload" class="form-control" aria-labelledby="upimg upimage">
-                                                        </div><!-- Drop Zone -->
-                                                    </div>
+                                                    <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service_class.getClassCategporyImpageFormID()}"  action="/class/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
+                                                        <div class="col-xs-12 col-md-6">
+                                                            <p id="upimage">Provide an image of your specimen:</p>
+                                                            <div>
+                                                                <label class="small upload-drop-zone" for="file" id="upimg"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Drag and drop files or click here to upload.</label>
+                                                                <input type="file" id="file" name="file" class="form-control">
+                                                            </div><!-- Drop Zone -->
+                                                        </div>
+                                                        <button  th:attr="form=${Good_Service_class.getClassCategporyImpageFormID()}" class="btn btn-sm submitCCSpecimen" >Upload file</button>
+
+
+                                                    </form>
                                                     <div class="col-xs-12 col-md-6">
                                                         <label for="specdescript">Provide a description of your specimen:</label>
                                                         <textarea id="specdescript" rows="4" class="form-control"></textarea>
@@ -689,23 +694,22 @@
             // need to add hidden field for app internal id
 
             var formID = $(this).attr("form");
-            var form = document.getElementById(formID);
-            var fileSelect = document.getElementById('file');
-
-
-            // Get the selected files from the input.
-            var files = fileSelect.files;
-
+            var fileInput = document.getElementById('file');
+            var file = fileInput.files[0];
             var formData = new FormData();
-              formData.append("file", files);
+            formData.append('file', file);
+
+            var url = $("#"+formID).attr("action");
+            // Get the selected files from the input.
+
 
             // get form url
 
             $.ajax({
                 type: "POST",
-                url: formActionURL,
+                url: url,
                 data: formData, // serializes the form's elements.
-                async: false,
+                async: true,
                 cache: false,
                 contentType: false,
                 processData: false,
