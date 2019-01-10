@@ -6,6 +6,7 @@ import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.asset.GoodsAndServicesService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.ContactsDisplayDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.form.NewAttorneyContactFormDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.form.NewOwnerContactFormDTO;
@@ -14,9 +15,11 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.ap
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.GoodAndService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.ManagedContact;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
+import com.thorton.grant.uspto.prototypewebapp.service.REST.Goods_ServicesService;
 import com.thorton.grant.uspto.prototypewebapp.service.storage.StorageService;
 import com.thorton.grant.uspto.prototypewebapp.service.storage.error.StorageException;
 import org.springframework.context.ApplicationContext;
@@ -869,18 +872,55 @@ public class ApplicationObjectCreationController {
     @PostMapping(value = "/class/specimen/add")
     public ResponseEntity addClassCategorySpecimenImg(
                                       @RequestParam(name="file", required=false) MultipartFile file,
-                                      Model model,
-                                      WebRequest request
-                                    ) {
+                                      @RequestParam (name="appID")String AppInternalID,
+                                      @RequestParam (name="catNum")String classCategoryNumber,
+                                      Model model
+    ) {
 
         System.out.println("Specimen file upload!!!! ");
 
-
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID( AppInternalID);
+        //Goods_ServicesService goods_servicesService = serviceBeanFactory.getGoodsAndServicesService();
+        String filePath ="";
         if(file != null){
             System.out.println("file is not null");
 
             if(file.isEmpty() == false) {
                System.out.println("file is not empty !!!!!!!!!!!!!!!");
+
+
+                try {
+                    String image_path = storageService.store(file);
+
+                    // this will be store for each good and service that matches this
+
+                    // on building class categoreis, this value is then copied over
+                    // file path returned to client in response
+
+                    // server redraw should render the image file path from category object
+
+
+                   // baseTrademarkApplication.getc("/files/"+image_path);
+                    filePath = "/files/"+image_path;
+
+                    for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                        GoodAndService current = iter.next();
+
+                        if(current.getClassNumber().equals(classCategoryNumber)){
+                            current.setClassSpecimenImgPath(filePath);
+                            //goods_servicesService.save(current);
+                        }
+                    }
+                    model.addAttribute("markImagePath",baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+                }
+                catch ( StorageException ex){
+                    model.addAttribute("message", "ERROR: Mark Image upload failed due to error: "+ex );
+                    // return "forward:/mark/designWithText/?trademarkID="+trademarkInternalID;
+                    return buildResponseEnity("420", "ERROR: Mark Image upload failed due to error: "+ex);
+
+                }
+                baseTradeMarkApplicationService.save(baseTrademarkApplication);
             }
 
         }
@@ -889,9 +929,9 @@ public class ApplicationObjectCreationController {
         }
 
 
-        //return buildResponseEnity("200", "file upload success");
+        return buildResponseEnity("200", "{image-url:" +filePath+"}");
 
-        return ResponseEntity.ok().build();
+        //return ResponseEntity.ok().build();
 
     }
 

@@ -28,6 +28,8 @@ public class GoodAndService {
     private Date firstGSDate;
     private Date firstCommerceDate;
 
+    private String classSpecimenImgPath;
+
     private boolean provideSample;
 
     private String sampleImagePath;
@@ -180,6 +182,14 @@ public class GoodAndService {
 
     public void setProvideSample(boolean provideSample) {
         this.provideSample = provideSample;
+    }
+
+    public String getClassSpecimenImgPath() {
+        return classSpecimenImgPath;
+    }
+
+    public void setClassSpecimenImgPath(String classSpecimenImgPath) {
+        this.classSpecimenImgPath = classSpecimenImgPath;
     }
 
     @Override

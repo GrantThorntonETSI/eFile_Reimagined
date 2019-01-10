@@ -531,67 +531,7 @@ $(document).ready(function(){
 	});
 	//end entity options (import concept)
 
-	//START fill from contacts values -- attorney
-	$( "a#clearform" ).click(function() {
-		$( 'input#attorney-first-name' ).val( '' );
-		$( 'input#title' ).val( '' );
-		$( 'input#attorney-last-name' ).val( '' );
-		$( '#suffix' ).val( );
-		$( 'input#attorney-lawfirm-name' ).val( '' );
-		$( '#attorney-country' ).val( );
-		$( 'input#attorney-address1' ).val( '' );
-		$( 'input#attorney-city' ).val( '' );
-		$( '#attorney-state' ).val( );
-		$( 'input#attorney-zipcode' ).val( '' );
-		$( 'input#attorney-email' ).val( '' );
-		$( 'input#attorney-phonenumbertype' ).val( );
-		$( 'input#attorney-phone' ).val( '' );
-	});
-	$( "a#avo" ).click(function() {
-		$( 'input#firstname' ).val( 'Avo' );
-		$( 'input#title' ).val( 'Director, Enterprise Technology Strategy and Innovation' );
-		$( 'input#attorney-last-name' ).val( 'Reid' );
-		$( '#suffix' ).val( 1 );
-		$( 'input#attorney-lawfirm-name' ).val( 'Grant Thornton' );
-		$( '#attorney-country' ).val( 1 );
-		$( 'input#attorney-address1' ).val( '333 John Carlyle St # 500' );
-		$( 'input#attorney-city' ).val( 'Alexandria' );
-		$( '#attorney-state' ).val( 4 );
-		$( 'input#attorney-zipcode' ).val( '22314' );
-		$( 'input#attorney-email' ).val( 'avo.reid@us.gt.com' );
-		$( 'input#attorney-phonenumbertype' ).val( 4 );
-		$( 'input#attorney-phone' ).val( '703-637-4097' );
-	});
-	$( "a#jacob" ).click(function() {
-		$( 'input#attorney-first-name' ).val( 'Jacob' );
-		$( 'input#title' ).val( 'ETS-GPS Senior Associate PS Advisory Practice' );
-		$( 'input#attorney-last-name' ).val( 'Goldstein' );
-		$( '#suffix' ).val( 1 );
-		$( 'input#attorney-lawfirm-name' ).val( 'Grant Thornton' );
-		$( '#attorney-country' ).val( 1 );
-		$( 'input#attorney-address1' ).val( '333 John Carlyle St # 500' );
-		$( 'input#attorney-city' ).val( 'Alexandria' );
-		$( '#attorney-state' ).val( 4 );
-		$( 'input#attorney-zipcode' ).val( '22314' );
-		$( 'input#attorney-email' ).val( 'jacob.goldstein@us.gt.com' );
-		$( 'input#attorney-phonenumbertype' ).val( 4 );
-		$( 'input#attorney-phone' ).val( '571-444-1983' );
-	});
-	$( "a#jackie" ).click(function() {
-		$( 'input#attorney-first-name' ).val( 'Jackie' );
-		$( 'input#title' ).val( 'ADTA-GPS Associate PS Advisory Practice' );
-		$( 'input#attorney-last-name' ).val( 'Babos' );
-		$( '#suffix' ).val( 3 );
-		$( 'input#attorney-lawfirm-name' ).val( 'Grant Thornton' );
-		$( '#attorney-country' ).val( 1 );
-		$( 'input#attorney-address1' ).val( '333 John Carlyle St # 500' );
-		$( 'input#attorney-city' ).val( 'Alexandria' );
-		$( '#attorney-state' ).val( 4 );
-		$( 'input#attorney-zipcode' ).val( '22314' );
-		$( 'input#attorney-email' ).val( 'jackie.babos@us.gt.com' );
-		$( '#attorney-phonenumbertype' ).val( 4 );
-		$( 'input#attorney-phone' ).val( '703-562-6675' );
-	});
+
 	//END fill from contacts values -- attorney
 
 	//START contacts, fees, my mark components

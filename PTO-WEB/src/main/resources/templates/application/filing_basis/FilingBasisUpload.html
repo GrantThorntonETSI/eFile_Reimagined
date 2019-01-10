@@ -118,21 +118,48 @@
                                     <div class="row">
                                         <div class="form-group form-group-md col-xs-12">
                                             <div class="row">
-
-
                                                 <section aria-label="class image and description">
-                                                    <div class="col-xs-12 col-md-6">
-                                                        <p id="upimage">Provide an image of your specimen:</p>
-                                                        <div>
-                                                            <label class="small upload-drop-zone" for="specimenfile" id="upimg"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Click here to upload.</label>
-                                                            <input type="file" id="specimenfile" name="specimenfileupload" class="form-control" aria-labelledby="upimg upimage">
-                                                        </div><!-- Drop Zone -->
-                                                    </div>
+                                                    <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service_class.getClassCategporyImpageFormID()}"  action="/class/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
+                                                        <div class="col-xs-12 col-md-6">
+                                                            <p id="upimage">Provide an image of your specimen:</p>
+                                                            <div>
+                                                                <label class="small upload-drop-zone" for="file" id="upimg"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Click here to select file for upload.</label>
+                                                                <input type="file" id="file" name="file" class="form-control">
+                                                            </div><!-- Drop Zone -->
+                                                        </div>
+
+
+
+                                                    </form>
                                                     <div class="col-xs-12 col-md-6">
                                                         <label for="specdescript">Provide a description of your specimen:</label>
                                                         <textarea id="specdescript" rows="4" class="form-control"></textarea>
                                                     </div>
+                                                    <div class="col-xs-12">
+                                                        <div class="center">
+                                                            <div class="speciman-image" id="cat-spec-img" style="display: none;">
+
+                                                                <img id="testUpload" src=""  alt="" class="img-responsive"/>
+                                                            </div>
+                                                            <div class="upload-spinner center" id="upload-spinner" style="display: none; margin-left: 44%; margin-right: 44%;">
+                                                                <img id="spinner" th:src="@{/resources/images/ajax-loader.gif}"  style="min-width: 88px; min-height: 55px;" alt="" class="img-responsive "/>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="col-xs-12">
+                                                        <div class="center">
+
+                                                            <div type="button" th:attr="form=${Good_Service_class.getClassCategporyImpageFormID()},cat-num=${Good_Service_class.getClassCategoryNumber()}" class="btn btn-sm submitCCSpecimen" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Specimen</b></div>
+                                                        </div>
+
+                                                    </div>
+
                                                 </section>
+
                                             </div>
 
                                             <th:block th:each="Good_Service: ${Good_Service_class.getGoodAndServices()}">
@@ -717,35 +744,36 @@
 
         // this is the id of the submit button
         $(".submitCCSpecimen").click(function() {
-
-            // get the id of the form
-            // need to add hidden fields to form for class number
-            // need to add hidden field for app internal id
+            $('#upload-spinner').show();
 
             var formID = $(this).attr("form");
-            var form = document.getElementById(formID);
-            var fileSelect = document.getElementById('file');
-
-
-            // Get the selected files from the input.
-            var files = fileSelect.files;
-
+            var classNumber = $(this).attr("cat-num")
+            var fileInput = document.getElementById('file');
+            var file = fileInput.files[0];
             var formData = new FormData();
-              formData.append("file", files);
+            formData.append('file', file);
+            formData.append('appID', appInternalID);
+            formData.append('catNum',classNumber);
 
+            var url = $("#"+formID).attr("action");
+            // Get the selected files from the input.
             // get form url
-
             $.ajax({
                 type: "POST",
-                url: formActionURL,
+                url: url,
                 data: formData, // serializes the form's elements.
-                async: false,
+                async: true,
                 cache: false,
                 contentType: false,
                 processData: false,
                 success: function(data)
                 {
-                    alert(data);
+                    // we will return the the file url
+                    // call jquery and set it in the img div
+                    var imgPath = parsePathFromResponse(data);
+                    $('#testUpload').attr("src", imgPath);
+                    $("#upload-spinner").hide();
+                    $("#cat-spec-img").fadeIn(500);
                 }
             });
 
@@ -829,6 +857,17 @@
         $('input.mark-date').attr('max', maxDate);
     }
 
+
+    function parsePathFromResponse(response){
+        var index = response.indexOf("image-url:");
+        index = index+10;
+        response = response.substring(index);
+
+
+        var index2 = response.indexOf("}");
+        response = response.substring(0, index2);
+        return response;
+    }
 
 
 </script>

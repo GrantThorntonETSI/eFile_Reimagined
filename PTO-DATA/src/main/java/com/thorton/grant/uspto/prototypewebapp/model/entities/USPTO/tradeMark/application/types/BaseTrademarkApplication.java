@@ -561,6 +561,8 @@ public class BaseTrademarkApplication  {
     }
 
 
+
+
     public void setGoodsAndServicesClasses(@Nullable ArrayList<GSClassCategory> goodsAndServicesClasses) {
         this.goodsAndServicesClasses = goodsAndServicesClasses;
     }
