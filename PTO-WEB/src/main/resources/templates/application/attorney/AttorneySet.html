@@ -121,18 +121,18 @@
                                         <div class="col-sm-1">
                                             <i class="material-icons collapsed" data-toggle="collapse" th:attr="data-target='#'+${lawyer.collapseID}"  aria-expanded="false" aria-controls="collapseTwo" style="position: relative; bottom:-5px;">keyboard_arrow_right</i>
                                         </div>
-                                        <div class="col-sm-2 col-sm-3">
+                                        <div class="col-sm-2 col-sm-3 col-sm-4">
 
                                             <b style="position: relative; bottom: -5px;" th:text="${lawyer.firstName}+' '+${lawyer.lastName}">Attorney Name</b>
 
                                         </div>
 
-                                        <div class="col-sm-2 col-sm-3 col-sm-4">
-                                            <b style="position: relative; bottom: -5px;" th:text="${lawyer.email}"> Attorney@Email.com</b>
+                                        <div class="col-sm-3 col-sm-4 col-sm-5">
+                                            <b style="position: relative; bottom: -5px;" th:text="${lawyer.email}">Attorney@Email.com</b>
                                         </div>
 
-                                        <div class="col-sm-3">
-                                            <b style="position: relative; bottom: -5px;" th:text="${lawyer.getLawFirmName()}"> Attorney Firm, LLC </b>
+                                        <div class="col-sm-2 col-sm-3 col-sm-4">
+                                            <b style="position: relative; bottom: -5px;" th:text="${lawyer.getLawFirmName()}">Attorney Firm, LLC </b>
                                         </div>
 
                                         <div class="col-sm-1" style="position: relative; margin-left:8%"  th:attr="primary-attorney=${lawyer.isPrimary()}" >
@@ -186,9 +186,8 @@
                                         </div>
                                     </div>
 
-                                    <div class="row" style="position: relative;  margin-left: 5%; margin-top: 10px;">
-                                        <b>Docket Number:</b> <input type="text" style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px;"  th:value="${lawyer.docketNumber}" >
-
+                                    <div class="row" style="position: relative;  margin-left: 9%; margin-top: 10px;">
+                                        <b>Docket Number:</b> <span  th:text="${lawyer.docketNumber}" ></span>
                                     </div>
 
                                 </div> <!-- end of outter card body -->
