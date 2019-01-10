@@ -23,9 +23,14 @@ public class BaseTrademarkApplication  {
     // could have an lawyer as well
 
     public BaseTrademarkApplication() {
+
+
+        System.out.println("Basetrade mark constructor call 111111111111111111111111111111111111111111111111111111");
         availableLawyers = new HashSet<>();
         actions = new HashSet<>();
         owners = new HashSet<>();
+
+
         goodAndServices = new HashSet<>();
 
     }

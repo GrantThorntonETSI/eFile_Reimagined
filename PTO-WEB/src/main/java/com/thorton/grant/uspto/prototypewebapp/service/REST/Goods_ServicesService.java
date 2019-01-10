@@ -44,6 +44,8 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
+        System.out.println("adding class number : "+classNumber);
+        System.out.println("adding GS ID : "+gsID);
 
         // create the good and service
         GoodAndService goodAndService = new GoodAndService();
@@ -55,7 +57,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         //baseTrademarkApplication.getGoodsAndSevicesMap().get(classNumber).add(goodAndService);
 
         appFieldReadable = "Good and Service";
-
+        System.out.println("add GS called 33333333333333333333333333333333333");
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
         String responseMsg = appFieldReadable+" has been saved";
 
@@ -80,7 +82,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
         }
 
-
+System.out.println("remove GS called 2222222222222222222222222222222");
         GoodAndService deleteThisGS = baseTrademarkApplication.findGSbyInternalID(gsID);
        // baseTrademarkApplication.getGoodsAndSevicesMap().get(classNumber).remove(deleteThisGS);
         baseTrademarkApplication.removeGoodAndService(deleteThisGS);

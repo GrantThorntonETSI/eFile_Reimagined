@@ -121,18 +121,13 @@
 
 
                                                 <section aria-label="class image and description">
-                                                    <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service_class.getClassCategporyImpageFormID()}"  action="/class/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
-                                                        <div class="col-xs-12 col-md-6">
-                                                            <p id="upimage">Provide an image of your specimen:</p>
-                                                            <div>
-                                                                <label class="small upload-drop-zone" for="file" id="upimg"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Drag and drop files or click here to upload.</label>
-                                                                <input type="file" id="file" name="file" class="form-control">
-                                                            </div><!-- Drop Zone -->
-                                                        </div>
-                                                        <button  th:attr="form=${Good_Service_class.getClassCategporyImpageFormID()}" class="btn btn-sm submitCCSpecimen" >Upload file</button>
-
-
-                                                    </form>
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <p id="upimage">Provide an image of your specimen:</p>
+                                                        <div>
+                                                            <label class="small upload-drop-zone" for="specimenfile" id="upimg"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Click here to upload.</label>
+                                                            <input type="file" id="specimenfile" name="specimenfileupload" class="form-control" aria-labelledby="upimg upimage">
+                                                        </div><!-- Drop Zone -->
+                                                    </div>
                                                     <div class="col-xs-12 col-md-6">
                                                         <label for="specdescript">Provide a description of your specimen:</label>
                                                         <textarea id="specdescript" rows="4" class="form-control"></textarea>
@@ -147,7 +142,7 @@
                                                             <div class="card-text noexpand">
                                                                 <h2 class="card-title weight600" th:text="${Good_Service.getClassDescription()}">Bar Soap</h2>
                                                             </div>
-                                                            <p id="commerce">Are you currently using the mark on bar soap in commerce?</p>
+                                                            <p id="commerce">Are you currently using the mark on  goods/services in commerce?</p>
 
                                                             <th:block th:if="${Good_Service.isMarkInUseSet() == true}">
                                                                 <div role="radiogroup" aria-labelledby="commerce" class="form-group form-group-md" th:if="${Good_Service.isMarkInUse() == true}">
@@ -578,6 +573,37 @@
            }
 
 
+           if($(this).val() == "na" ){
+
+
+               if(this.checked == true){
+                   // unhide  parent next div
+                   // call auto save yes on foreign application
+
+                   $(this).parent().next().next().fadeOut(500);
+                   $(this).parent().next().fadeOut(500);
+
+                   $(this).prev().prev().attr("disabled", true);
+                   $(this).prev().prev().attr("checked", false);
+                   $(this).prev().prev().prev().prev().attr("disabled",true);
+                   $(this).prev().prev().prev().prev().attr("checked",false);
+
+               }
+               else{
+                   // hide parent next div
+                   // call auto save no on forgeign application
+                   //$(this).parent().next().next().fadeOut(500);
+                   $(this).prev().prev().attr("disabled", false);
+                   $(this).prev().prev().prev().prev().attr("disabled",false)
+
+               }
+
+
+
+           }
+
+
+
 
 
            // unhide related div
@@ -680,6 +706,9 @@
 
         })
 
+
+
+
         ////////////////////////////////////////////////////////////////////////////////
         // ajax form submit
         // we will need one for each file upload form
@@ -694,22 +723,23 @@
             // need to add hidden field for app internal id
 
             var formID = $(this).attr("form");
-            var fileInput = document.getElementById('file');
-            var file = fileInput.files[0];
-            var formData = new FormData();
-            formData.append('file', file);
+            var form = document.getElementById(formID);
+            var fileSelect = document.getElementById('file');
 
-            var url = $("#"+formID).attr("action");
+
             // Get the selected files from the input.
+            var files = fileSelect.files;
 
+            var formData = new FormData();
+              formData.append("file", files);
 
             // get form url
 
             $.ajax({
                 type: "POST",
-                url: url,
+                url: formActionURL,
                 data: formData, // serializes the form's elements.
-                async: true,
+                async: false,
                 cache: false,
                 contentType: false,
                 processData: false,

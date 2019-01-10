@@ -120,6 +120,8 @@ public class TradeMark extends BaseEntity {
     private boolean markWordingHasSignifigance;
     private String  markWordingSignifiganceText;
 
+    private String markWordingIndustryText;
+
 
 
 
@@ -530,6 +532,14 @@ public class TradeMark extends BaseEntity {
 
     public void setTrademarkStandardCharacterText(String trademarkStandardCharacterText) {
         this.trademarkStandardCharacterText = trademarkStandardCharacterText;
+    }
+
+    public String getMarkWordingIndustryText() {
+        return markWordingIndustryText;
+    }
+
+    public void setMarkWordingIndustryText(String markWordingIndustryText) {
+        this.markWordingIndustryText = markWordingIndustryText;
     }
 
     @Override

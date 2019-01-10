@@ -194,6 +194,13 @@
                                                     <div class="control-label col-xs-12 col-md-5">
                                                         <p>in the mark means or signifies</p>
                                                     </div>
+
+                                                    <div class="col-xs-12 col-md-7" style="margin-top: 5px;">
+                                                        <input type="text" class="form-control" id="yesIndustry" th:value="${baseTrademarkApplication.tradeMark.markWordingIndustryText}" >
+                                                    </div>
+                                                    <div class="control-label col-xs-12 col-md-5">
+                                                        <p>in the relevant trade or industry.</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </section>
@@ -367,29 +374,29 @@
         }
         else {
             if(activeDisclaimer == false) {
-                $('#inlineRadio10').click();
+                $('#inlineRadio010').click();
             }
 
         }
 
 
         if(priorRegistration == true){
-            $('#inlineRadio11').click();
+            $('#inlineRadio011').click();
         }
         else {
             if(priorRegistration == false) {
-                $('#inlineRadio12').click();
+                $('#inlineRadio012').click();
             }
 
         }
 
 
         if(markHasMeaning == true){
-            $('#inlineRadio13').click();
+            $('#inlineRadio013').click();
         }
         else {
             if(markHasMeaning == false) {
-                $('#inlineRadio14').click();
+                $('#inlineRadio014').click();
             }
 
         }
@@ -466,6 +473,12 @@
             var declaration = $(this).val();
 
             saveMarkTextdetails("mark-disclaimer-declaration", declaration, appInternalID);
+        });
+
+        $('#yesIndustry').focusout(function () {
+            var declaration = $(this).val();
+
+            saveMarkTextdetails("mark-Industry-text", declaration, appInternalID);
         });
 
 
