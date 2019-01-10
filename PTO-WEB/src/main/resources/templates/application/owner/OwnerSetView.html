@@ -125,18 +125,18 @@
                                         <div class="col-sm-1">
                                             <i class="material-icons collapsed" data-toggle="collapse" th:attr="data-target='#'+${owner.id}"   aria-expanded="false" aria-controls="collapseTwo" style="position: relative; bottom:-5px; left:-20px;">keyboard_arrow_right</i>
                                         </div>
-                                        <div class="col-sm-2 col-sm-3">
+                                        <div class="col-sm-2 col-sm-3 col-sm-4">
                                             <div class="row">
                                                 <b style="position: relative; bottom:-5px;" th:text="${owner.ownerDisplayname}">Owner Name</b>
                                             </div>
 
                                         </div>
 
-                                        <div class="col-sm-2 col-sm-3 col-sm-4" style="position: relative ">
+                                        <div class="col-sm-3 col-sm-4 col-sm-5" style="position: relative ">
                                             <b style="position: relative;  " th:text="${owner.email}"> Attorney@Email.com</b>
                                         </div>
 
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-2 col-sm-3 col-sm-4">
                                                <b style="position: relative;" th:text="${owner.getOwnersubType()}"> Attorney Firm, LLC </b>
                                         </div>
 
@@ -202,8 +202,8 @@
                                         </div>
                                     </th:block>
 
-                                    <div class="row" style="position: relative; margin-left: 5%; margin-top: 10px;">
-                                        <b>Phone Number:</b> <input type="text" style="border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;"  th:value="${owner.primaryPhonenumber}" >
+                                    <div class="row" style="position: relative; margin-left: 9%; margin-top: 10px;">
+                                        <b>Phone Number:</b> <span  th:text="${owner.primaryPhonenumber}" > </span>
 
                                     </div>
 
