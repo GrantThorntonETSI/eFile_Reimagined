@@ -29,7 +29,7 @@
                             <div class="form-group form-group-md col-xs-12 col-sm-6 col-lg-4">
                                 <label for="additionalname">Additional Name</label>
                                 <select class="form-control" id="additionalname" th:field="*{ownerType}">
-                                    <option value="Select">Select</option>
+                                    <option value="">Select</option>
                                     <option value="DBA">Doing Business As (DBA)</option>
                                     <option value="TA">Trading As (TA)</option>
                                     <option value="AKA">Also Known As (AKA)</option>
@@ -39,7 +39,7 @@
                             <div class="form-group form-group-md col-xs-12 col-sm-6 col-lg-4">
                                 <label for="stateoforg"><span class="weight600">&#42;</span>State of Organization</label>
                                 <select class="form-control" id="stateoforg" th:field="*{ownerState}"  required>
-                                    <option value="Select">Select</option>
+                                    <option value="">Select</option>
                                     <option value="AL">Alabama</option>
                                     <option value="AK">Alaska</option>
                                     <option value="AZ">Arizona</option>
@@ -108,7 +108,7 @@
                             <div class="form-group form-group-md col-md-12 col-lg-7">
                                 <label for="OwnerAddressCountry">Country/US Territory</label>
                                 <select class="form-control" id="OwnerAddressCountry" name="territory" th:field="*{OwnerAddressCountry}" required>
-                                    <option value="none"></option>
+                                    <option value="">Select</option>
                                     <option value="X1">UNITED STATES OF AMERICA</option>
                                     <option value="B2">AFGHANISTAN</option>
                                     <option value="B3">ALBANIA</option>
@@ -369,7 +369,7 @@
                             <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
                                 <label for="ownerState"><span class="weight600">&#42;</span>State</label>
                                 <select class="form-control" id="ownerState" th:field="*{ownerState}" required>
-                                    <option value="Select">Select</option>
+                                    <option value="">Select</option>
                                     <option value="AL">Alabama</option>
                                     <option value="AK">Alaska</option>
                                     <option value="AZ">Arizona</option>

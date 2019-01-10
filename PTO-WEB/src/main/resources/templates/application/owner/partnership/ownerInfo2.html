@@ -41,7 +41,7 @@
                             <div class="form-group form-group-md col-xs-12 col-sm-6 col-lg-4">
                                 <label for="additionalname">Additional Name</label>
                                 <select class="form-control" id="additionalname" th:field="*{ownerType}">
-                                    <option value="Select">Select</option>
+                                    <option value="">Select</option>
                                     <option value="DBA">Doing Business As (DBA)</option>
                                     <option value="TA">Trading As (TA)</option>
                                     <option value="AKA">Also Known As (AKA)</option>
@@ -51,7 +51,7 @@
                             <div class="form-group form-group-md col-xs-12 col-sm-6 col-lg-4">
                                 <label for="stateoforg"><span class="weight600">&#42;</span>State Where Legally Organized</label>
                                 <select class="form-control" id="stateoforg" th:field="*{ownerState}"  required>
-                                    <option value="Select">Select</option>
+                                    <option value="">Select</option>
                                     <option value="AL">Alabama</option>
                                     <option value="AK">Alaska</option>
                                     <option value="AZ">Arizona</option>
@@ -405,7 +405,7 @@
                             <label><b style="color: red">&#42;</b>Type</label>
                             <span>
                                     <select  id="owner-type" class="form-control" name="nameType" th:field="*{partnerDTOs[__${itemStat.index}__].type}"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-                                        <option value="none">Select</option>
+                                        <option value="">Select</option>
                                         <option value="DBA">Doing Business As(DBA)</option>
                                         <option value="TA">Trading As(TA)</option>
                                         <option value="AKA">Also Known As(AKA)</option>
@@ -419,7 +419,7 @@
                             <div class="form-group form-group-md col-xs-6">
                                 <label><b style="color: red">&#42;</b>State where legally organized</label>
                                 <select  id="owner-state" th:field="*{partnerDTOs[__${itemStat.index}__].state}"  class="form-control" name="State"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" >
-                                    <option  value="none"></option>
+                                    <option  value="">Select</option>
                                     <option  value="AL">Alabama</option>
                                     <option  value="AK">Alaska</option>
                                     <option value="AZ">Arizona</option>
@@ -488,7 +488,7 @@
                             <div class="form-group form-group-md col-md-12 col-lg-7">
                                 <label for="OwnerAddressCountry">Country/US Territory</label>
                                 <select class="form-control" id="OwnerAddressCountry" name="territory" th:field="*{OwnerAddressCountry}" required>
-                                    <option value="none"></option>
+                                    <option value="">Select</option>
                                     <option value="X1">UNITED STATES OF AMERICA</option>
                                     <option value="B2">AFGHANISTAN</option>
                                     <option value="B3">ALBANIA</option>
@@ -749,7 +749,7 @@
                             <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
                                 <label for="ownerState"><span class="weight600">&#42;</span>State</label>
                                 <select class="form-control" id="ownerState" th:field="*{ownerState}" required>
-                                    <option value="Select">Select</option>
+                                    <option value="">Select</option>
                                     <option value="AL">Alabama</option>
                                     <option value="AK">Alaska</option>
                                     <option value="AZ">Arizona</option>

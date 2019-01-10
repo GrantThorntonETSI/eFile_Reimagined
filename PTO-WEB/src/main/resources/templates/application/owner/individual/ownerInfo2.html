@@ -71,7 +71,7 @@
                             <div class="form-group form-group-md col-xs-6">
                                 <label for="owner-type">Type</label>
                                 <select class="form-control" name="nameType"  th:field="*{ownerType}" id="owner-type"><!--Needs th:attribute-->
-                                    <option value="select">Select</option>
+                                    <option value="">Select</option>
                                     <option value="dba">Doing Business As (DBA)</option>
                                     <option value="ta">Trading As (TA)</option>
                                     <option value="aka">Also Known As (AKA)</option>
@@ -85,7 +85,7 @@
                             <div class="form-group form-group-md col-xs-7">
                                 <label for="owner-citizenship">Country of Citizenship <a href="#" data-toggle="tooltip" title="If you have dual citizenship only enter the citizenship you would like printed in the Official Gazette." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
                                 <select id="owner-citizenship"  class="form-control" name="suffix"   th:field="*{ownerCitizenShip}">
-                                    <option value="none"></option>
+                                    <option value="">Select</option>
                                     <option value="X1">UNITED STATES OF AMERICA</option>
                                     <option value="B2">AFGHANISTAN</option>
                                     <option value="B3">ALBANIA</option>
@@ -345,7 +345,7 @@
                             <div class="form-group form-group-md col-xs-12 col-md-6 col-lg-7">
                                 <label for="OwnerAddressCountry"><span class="weight600">&#42;</span>Country/US Territory</label>
                                 <select class="form-control" id="OwnerAddressCountry" name="territory" th:field="*{OwnerAddressCountry}" required>
-                                    <option value="none"></option>
+                                    <option value="">Select</option>
                                     <option value="X1">UNITED STATES OF AMERICA</option>
                                     <option value="B2">AFGHANISTAN</option>
                                     <option value="B3">ALBANIA</option>
@@ -606,7 +606,7 @@
                             <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
                                 <label for="ownerState"><span class="weight600">&#42;</span>State</label>
                                 <select class="form-control" id="ownerState" th:field="*{ownerState}" required>
-                                    <option value="Select">Select</option>
+                                    <option value="">Select</option>
                                     <option value="AL">Alabama</option>
                                     <option value="AK">Alaska</option>
                                     <option value="AZ">Arizona</option>
