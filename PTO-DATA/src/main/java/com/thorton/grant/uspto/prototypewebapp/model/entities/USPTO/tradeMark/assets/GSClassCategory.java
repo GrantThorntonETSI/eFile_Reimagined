@@ -23,6 +23,8 @@ public class GSClassCategory {
 
     private String classCategoryImagePath;
 
+    private String classCategoryDescr;
+
 
     @Nullable
     public ArrayList<GoodAndService> getGoodAndServices() {
@@ -107,4 +109,11 @@ public class GSClassCategory {
         return getClassCategoryNumber()+"classUploadSpinnerID";
     }
 
+    public String getClassCategoryDescr() {
+        return classCategoryDescr;
+    }
+
+    public void setClassCategoryDescr(String classCategoryDescr) {
+        this.classCategoryDescr = classCategoryDescr;
+    }
 }

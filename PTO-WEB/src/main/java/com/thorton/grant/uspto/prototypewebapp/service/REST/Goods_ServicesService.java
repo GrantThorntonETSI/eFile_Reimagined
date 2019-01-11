@@ -14,6 +14,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Locale;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -280,6 +281,47 @@ System.out.println("remove GS called 2222222222222222222222222222222");
             appFieldReadable = "Filing Basis Provide Specimen";
 
         }
+
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+        String responseMsg = appFieldReadable+" has been saved";
+
+        return buildResponseEnity("200", responseMsg);
+    }
+
+
+
+
+
+    @CrossOrigin(origins = {"https://localhost","https://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/CC/fb/update/{ccField}/{ccValue}/{ccNumber}/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> updateFilingBasisForClassCategory(@PathVariable String ccField , @PathVariable String ccValue,  @PathVariable String ccNumber, @PathVariable String appInternalID){
+
+        String appFieldReadable = "";
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+
+
+
+
+        if(ccField.equals("cc-spec-descr")){
+            // ptoUser.setState(param); // sets state code
+
+            for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                GoodAndService current = iter.next();
+
+                if(current.getClassNumber().equals(ccNumber)){
+                    current.setClassSpecimenDescr(ccValue);
+
+                }
+            }
+
+            appFieldReadable = "Class Specimen Description";
+
+        }
+
+
 
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);

@@ -29,6 +29,7 @@ public class GoodAndService {
     private Date firstCommerceDate;
 
     private String classSpecimenImgPath;
+    private String classSpecimenDescr;
 
     private boolean provideSample;
 
@@ -223,6 +224,14 @@ public class GoodAndService {
 
     public void setSampleUploaded(boolean sampleUploaded) {
         this.sampleUploaded = sampleUploaded;
+    }
+
+    public String getClassSpecimenDescr() {
+        return classSpecimenDescr;
+    }
+
+    public void setClassSpecimenDescr(String classSpecimenDescr) {
+        this.classSpecimenDescr = classSpecimenDescr;
     }
 
     @Override
