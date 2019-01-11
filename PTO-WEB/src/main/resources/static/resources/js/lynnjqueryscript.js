@@ -521,6 +521,7 @@ $(document).ready(function(){
 	});
 	//start entity options (import concept)
 	$('#autofill').css('display','none');
+	$('#autofillForeign').css('display','none');
 	$('#entype').on('change',function(){
 		$('#container').empty();
 		$('footer').css('display','none');
@@ -682,4 +683,50 @@ $(document).ready(function(){
 		var currentText = $(this).val();
 		$( 'p#showmarktxt' ).text(currentText);
 	});
+
+
+	//foreign entity show
+	$('div#yesforeignentity').css('display','none');
+	$('input#inlineRadio020').change(function() {
+		if(this.checked == true){
+			$('div#yesforeignentity').show( 500);
+
+			$("input#inlineRadio019").prop({
+				checked: false,
+			});
+		}
+		else {
+			$('div#yesforeignentity').hide( 500 );
+
+			$("input#inlineRadio019").prop({
+				checked: true,
+			});
+		}
+	});
+	$('input#inlineRadio019').change(function() {
+		if(this.checked == true){
+			$('div#yesforeignentity').hide( 500 );
+
+			$("input#inlineRadio020").prop({
+				checked: false,
+			});
+		}
+		else {
+			$('div#yesforeignentity').show( 500 );
+
+			$("input#inlineRadio020").prop({
+				checked: true,
+			});
+		}
+	});
+	//foreign select by country
+	$('.albaniaform, .algeriaform, .angolaform, .bahamasform').css('display','none');
+	$('#entitycountry').on('change',function(){
+		var loadselectmenu = ('.' + $(this).val() + 'form');
+		$('.hidethis').hide('fast');
+		$( loadselectmenu ).show('slow').addClass('hidethis');
+		$( loadselectmenu ).css('display','block');
+	});
+
+
 });

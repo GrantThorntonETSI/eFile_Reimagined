@@ -145,6 +145,81 @@
                                     </fieldset><!--END Owner Information-->
                                 </form><!--END Owner Form-->
                             </div><!--END owner toggle area-->
+
+                            <div id="yesforeignentity" role="region" aria-labelledby="usforeign">
+                                <fieldset aria-labelledby="entitytype">
+                                    <div class="row">
+                                        <div class="form-group form-group-md col-xs-6">
+                                            <label for="entitycountry">Please select country:</label>
+                                            <select class="form-control" id="entitycountry">
+                                                <option value="Select">Select</option>
+                                                <option value="albania">Albania</option>
+                                                <option value="algeria">Algeria</option>
+                                                <option value="angola">Angola</option>
+                                                <option value="bahamas">Bahamas</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group form-group-md col-xs-6" id="switchselect">
+                                            <div class="row">
+                                                <div class="col-xs-12 albaniaform">
+                                                    <label for="entypeforeignalbania">Please select the entity type:</label>
+                                                    <select class="form-control" id="entypeforeignalbania">
+                                                        <option value="Select">Select</option>
+                                                        <option value="jointstock">Joint Stock Company</option>
+                                                        <option value="liabilitco">Limited Liability Company</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-xs-12 algeriaform">
+                                                    <label for="entypeforeignalgeria">Please select the entity type:</label>
+                                                    <select class="form-control" id="entypeforeignalgeria">
+                                                        <option value="Select">Select</option>
+                                                        <option value="jointstock">Joint Stock Company</option>
+                                                        <option value="liabilitco">Limited Liability Company</option>
+                                                        <option value="limitedpartner">Limited Partnership</option>
+                                                        <option value="limitedpartnershares">Limited Partnership with Shares</option>
+                                                        <option value="publiclimited">Public Limited Company</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-xs-12 angolaform">
+                                                    <label for="entypeforeignangola">Please select the entity type:</label>
+                                                    <select class="form-control" id="entypeforeignangola">
+                                                        <option value="Select">Select</option>
+                                                        <option value="jointstock">Joint Stock Company</option>
+                                                        <option value="liabilitco">Limited Liability Company</option>
+                                                        <option value="limitedpartner">Limited Partnership</option>
+                                                        <option value="limitedpartnershares">Limited Partnership with Shares</option>
+                                                        <option value="publiclimited">Public Limited Company</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-xs-12 bahamasform">
+                                                    <label for="entypeforeignbahamas">Please select the entity type:</label>
+                                                    <select class="form-control" id="entypeforeignbahamas">
+                                                        <option value="Select">Select</option>
+                                                        <option value="soleforeign">Sole Proprietorship</option>
+                                                        <option value="corpforeign">Corporation</option>
+                                                        <option value="domestic">Domestic Limited Companies</option>
+                                                        <option value="expartnership">Exempted Limited Partnership</option>
+                                                        <option value="international">International Business Company</option>
+                                                        <option value="duration">Limited Duration Company</option>
+                                                        <option value="liabilitco">Limited Liability Company</option>
+                                                        <option value="liabilitpart">Limited Liability Partnership</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <button type="button" class="btn-sm btn-success fill" id="autofillForeign">Select from Contacts</button>
+
+                                    </div>
+                                    <div class="embed-responsive-item" id="ownerEntityForeignForm" style="position: relative; bottom:-222px;" >
+
+
+                                    </div>
+
+                                </fieldset><!--END Owner Information-->
+                            </div><!--END owner toggle area-->
+
                         </section>
                     </div>
                 </div>
@@ -356,7 +431,7 @@
 
 
         $('#entype').change(function(){
-            $('#autofill').show( 'fast' );
+            $('#autofill').show( 500 );
 
 
             var formType = $(this).val();
