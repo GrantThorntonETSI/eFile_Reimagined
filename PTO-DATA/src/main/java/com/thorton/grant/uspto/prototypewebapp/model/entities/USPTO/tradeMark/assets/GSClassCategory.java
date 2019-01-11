@@ -89,4 +89,22 @@ public class GSClassCategory {
 
         return getClassCategoryNumber()+"imageForm";
     }
+
+    public String getClassImageID(){
+        return getClassCategoryNumber()+"classSpecImg";
+    }
+    public String getClassFileInputID(){
+        return getClassCategoryNumber()+"classFileInputID";
+    }
+
+    public String getClassSpecDescID(){
+        return getClassCategoryNumber()+"classSpecimenDescID";
+    }
+
+
+    public String getClassUploadSpinnerID(){
+
+        return getClassCategoryNumber()+"classUploadSpinnerID";
+    }
+
 }

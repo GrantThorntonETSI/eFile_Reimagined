@@ -192,6 +192,30 @@ public class GoodAndService {
         this.classSpecimenImgPath = classSpecimenImgPath;
     }
 
+    public String getGSImpageFormID(){
+
+
+        return getInternalID()+"imageForm";
+    }
+
+    public String getGSImageID(){
+        return getInternalID()+"classSpecImg";
+    }
+    public String getGSFileInputID(){
+        return getInternalID()+"classFileInputID";
+    }
+
+    public String getGSSpecDescID(){
+        return getInternalID()+"classSpecimenDescID";
+    }
+
+
+    public String getGSUploadSpinnerID(){
+
+        return getInternalID()+"classUploadSpinnerID";
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

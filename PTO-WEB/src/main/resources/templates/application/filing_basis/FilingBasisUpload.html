@@ -123,8 +123,8 @@
                                                         <div class="col-xs-12 col-md-6">
                                                             <p id="upimage">Provide an image of your specimen:</p>
                                                             <div>
-                                                                <label class="small upload-drop-zone" for="file" id="upimg"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Click here to select file for upload.</label>
-                                                                <input type="file" id="file" name="file" class="form-control">
+                                                                <label class="small upload-drop-zone" th:attr="for=${Good_Service_class.classFileInputID}" id="upimg"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Click here to select file for upload.</label>
+                                                                <input type="file" th:attr="id=${Good_Service_class.classFileInputID}" name="file" class="form-control">
                                                             </div><!-- Drop Zone -->
                                                         </div>
 
@@ -132,14 +132,14 @@
 
                                                     </form>
                                                     <div class="col-xs-12 col-md-6">
-                                                        <label for="specdescript">Provide a description of your specimen:</label>
-                                                        <textarea id="specdescript" rows="4" class="form-control"></textarea>
+                                                        <label th:attr="for=${Good_Service_class.classSpecDescID}" >Provide a description of your specimen:</label>
+                                                        <textarea  th:attr="id=${Good_Service_class.classSpecDescID}" rows="4" class="form-control class-spec-desc-ta"></textarea>
                                                     </div>
                                                     <div class="col-xs-12">
                                                         <div class="center">
                                                             <div class="speciman-image" id="cat-spec-img" style="">
 
-                                                                <img id="testUpload" th:attr="src=${Good_Service_class.classCategoryImagePath}"  alt="" class="img-responsive"/>
+                                                                <img  th:attr="src=${Good_Service_class.classCategoryImagePath}, id=${Good_Service_class.classImageID}"  alt="" class="img-responsive"/>
                                                             </div>
 
 
@@ -150,7 +150,7 @@
                                                     <div class="col-xs-12">
                                                         <div class="center">
 
-                                                            <div type="button" th:attr="form=${Good_Service_class.getClassCategporyImpageFormID()},cat-num=${Good_Service_class.getClassCategoryNumber()}" class="btn btn-sm submitCCSpecimen" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Specimen</b><span><i class="fa fa-spinner fa-spin" id="upload-spinner-1" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                                            <div type="button" th:attr="form=${Good_Service_class.getClassCategporyImpageFormID()},cat-num=${Good_Service_class.getClassCategoryNumber()}, file-id=${Good_Service_class.classFileInputID}, class-img-id=${Good_Service_class.classImageID}, spinner-id=${Good_Service_class.classUploadSpinnerID}" class="btn btn-sm submitCCSpecimen" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Specimen</b><span><i class="fa fa-spinner fa-spin"  th:attr="id=${Good_Service_class.classUploadSpinnerID}" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
                                                         </div>
 
                                                     </div>
@@ -250,6 +250,9 @@
                                                                     <input class="form-check-input checkmark provide-spec" type="checkbox" value="yes" tabindex="0"  th:attr="id=${Good_Service.getInternalID()}" >
                                                                     <label class="form-check-label form-check long"  th:attr="for=${Good_Service.getInternalID()}"><span class="radio notspecial small">Check here to provide a specimen for this individual good/service.</span></label>
                                                                 </div>
+
+
+
                                                                 <div id="yesspecimenone" class="form-group form-group-md" style="display: none;"><!--toggle 'yes' radio-->
                                                                     <div class="col-xs-12 col-md-6">
                                                                         <p id="upimagetwo">Provide an image of your specimen:</p>
@@ -262,7 +265,17 @@
                                                                         <label for="specdescriptwo" th:attr="name=${Good_Service.getInternalID()}">Provide a description of your specimen:</label>
                                                                         <textarea id="specdescriptwo" rows="4"   class="form-control spec-description"></textarea>
                                                                     </div>
+
+
+
+
+
                                                                 </div>
+
+
+
+
+
 
                                                                 <div class="col-xs-12 form-group form-group-md" th:if="${baseTrademarkApplication.markHasForeignRegistration == true}">
                                                                     <p class="weight600">Specify if you have a pending application, foreign registration, or both for this good/service.</p>
@@ -741,12 +754,19 @@
 
         // this is the id of the submit button
         $(".submitCCSpecimen").click(function() {
-            $('#upload-spinner-1').show();
+
 
 
             var formID = $(this).attr("form");
-            var classNumber = $(this).attr("cat-num")
-            var fileInput = document.getElementById('file');
+            var classNumber = $(this).attr("cat-num");
+
+            var fileInputId = $(this).attr("file-id");
+
+            var imageId = $(this).attr("class-img-id");
+
+            var spinnerID = $(this).attr("spinner-id");
+            $('#'+spinnerID).show();
+            var fileInput = document.getElementById(fileInputId);
             var file = fileInput.files[0];
             var formData = new FormData();
             formData.append('file', file);
@@ -769,9 +789,9 @@
                     // we will return the the file url
                     // call jquery and set it in the img div
                     var imgPath = parsePathFromResponse(data);
-                    $('#testUpload').attr("src", imgPath);
-                    $("#upload-spinner-1").hide();
-                    $("#cat-spec-img").fadeIn(500);
+                    $('#'+imageId).attr("src", imgPath);
+                    $("#"+spinnerID).hide();
+                    //$("#cat-spec-img").fadeIn(500);
                 }
             });
 
