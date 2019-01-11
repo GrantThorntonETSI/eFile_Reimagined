@@ -525,8 +525,8 @@ $(document).ready(function(){
 	$('#entype').on('change',function(){
 		$('#container').empty();
 		$('footer').css('display','none');
-		var include = ('js/' + $(this).val() + '.js');
-		$.getScript( include );
+		//var include = ('js/' + $(this).val() + '.js');
+		//$.getScript( include );
 		$('#autofill').show( 500 );
 		$('footer').css('display','block');
 	});
@@ -602,6 +602,13 @@ $(document).ready(function(){
 		$( 'button#contactsbtn span#toggleglyphone' ).addClass('visuallyremoved');
 		$( 'button#contactsbtn span#toggleglyph' ).addClass('visuallyadded');
 	});
+
+    $('button#autofillForeign').on('click',function() {
+        $( '#mydata2' ).css('visibility','visible');
+        $( '#mydata2 .collapse' ).collapse('show').fadeIn( 'slow','swing');
+        $( 'button#contactsbtn span#toggleglyphone' ).addClass('visuallyremoved');
+        $( 'button#contactsbtn span#toggleglyph' ).addClass('visuallyadded');
+    });
 	//end show managed contacts from nav
 
 	//START additional phone
