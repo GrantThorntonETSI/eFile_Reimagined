@@ -34,6 +34,8 @@ public class GoodAndService {
 
     private String sampleImagePath;
 
+    private boolean sampleUploaded;
+
     private String sampleDescription;
 
     private boolean GSPendingForignApplicatoin;
@@ -215,6 +217,13 @@ public class GoodAndService {
         return getInternalID()+"classUploadSpinnerID";
     }
 
+    public boolean isSampleUploaded() {
+        return sampleUploaded;
+    }
+
+    public void setSampleUploaded(boolean sampleUploaded) {
+        this.sampleUploaded = sampleUploaded;
+    }
 
     @Override
     public boolean equals(Object o) {
