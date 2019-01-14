@@ -89,19 +89,84 @@ public class ApplicationService  extends  BaseRESTapiService{
         // page two fields
         if(applicationField.equals("set-Owner-entity-types")){
             // parse params
+
             int start = param.indexOf("+");
             String entity_type = param.substring(0,start);
             String sub_type = param.substring(start+1);
+
 
             if(entity_type.equals("US")){
 
                 baseTrademarkApplication.setOwnerType(entity_type);
                 baseTrademarkApplication.setOwnerSubType(sub_type);
+                baseTrademarkApplication.setForeignEnityFiling(false);
+                baseTrademarkApplication.setEntityTypeSet(true);
+
+                baseTrademarkApplication.setLastViewModel("application/owner/OwnerStart");
+                baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+                appFieldReadable = "Entity Sub Type";
+            }
+            else {
+                baseTrademarkApplication.setOwnerType("Foreign");
+                baseTrademarkApplication.setOwnerSubType("Foreign Corporation");
+                baseTrademarkApplication.setForeignEnityFiling(true);
+                baseTrademarkApplication.setEntityTypeSet(true);
+
+                baseTrademarkApplication.setLastViewModel("application/owner/OwnerStart");
+                baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+                appFieldReadable = "Entity Sub Type";
+
+            }
+            // ptoUser.setState(param); // sets state code
+        }
+
+        // page two fields
+        if(applicationField.equals("set-Owner-entity")){
+            // parse params
+
+            if(param.equals("US")){
+
+                if(baseTrademarkApplication.isForeignEnityFiling() == true){
+
+                    OwnerService ownerService = getServiceBeanFactory().getOwnerService();
+                    for(Iterator<Owner> iter = baseTrademarkApplication.getOwners().iterator(); iter.hasNext(); ) {
+                        Owner current = iter.next();
+                        baseTrademarkApplication.removeOwner(current);
+                        ownerService.delete(current);
+
+                    }
+                }
+                baseTrademarkApplication.setForeignEnityFiling(false);
+                baseTrademarkApplication.setEntityTypeSet(true);
+
+
 
                 baseTrademarkApplication.setLastViewModel("application/owner/OwnerStart");
                 baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
                 appFieldReadable = "Entity Type";
+            }
+            else {
+                if(baseTrademarkApplication.isForeignEnityFiling() == false){
+
+                    OwnerService ownerService = getServiceBeanFactory().getOwnerService();
+                    for(Iterator<Owner> iter = baseTrademarkApplication.getOwners().iterator(); iter.hasNext(); ) {
+                        Owner current = iter.next();
+                        baseTrademarkApplication.removeOwner(current);
+                        ownerService.delete(current);
+
+                    }
+                }
+                baseTrademarkApplication.setForeignEnityFiling(true);
+                baseTrademarkApplication.setEntityTypeSet(true);
+
+                baseTrademarkApplication.setLastViewModel("application/owner/OwnerStart");
+                baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+                appFieldReadable = "Entity Type";
+
             }
             // ptoUser.setState(param); // sets state code
         }

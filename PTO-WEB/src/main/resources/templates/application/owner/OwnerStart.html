@@ -104,10 +104,14 @@
                                 </div>
                             </div>
                             <p id="usforeign">Is the owner a U.S. or Foreign Entity?</p>
-                            <div role="radiogroup" aria-labelledby="usforeign">
-                                <label for="inlineRadio019" class="radio-inline" id="usentityselected"><input type="radio" name="usforeignradio" id="inlineRadio019" value="usentity">US Entity</label>
-                                <label for="inlineRadio020" class="radio-inline" id="foreignentityselected"><input type="radio" name="usforeignradio" id="inlineRadio020" value="foreignentity">Foreign Entity</label>
-                            </div><!--END radiogroup-->
+
+                                <div role="radiogroup" aria-labelledby="usforeign" >
+                                    <label for="inlineRadio019" class="radio-inline" id="usentityselected"><input type="radio" name="usforeignradio" id="inlineRadio019" value="usentity">US Entity</label>
+                                    <label for="inlineRadio020" class="radio-inline" id="foreignentityselected"><input type="radio" name="usforeignradio" id="inlineRadio020" value="foreignentity">Foreign Entity</label>
+                                </div><!--END radiogroup-->
+
+
+
 
                             <div id="yesusentity" role="region" aria-labelledby="usforeign">
                                 <form method="post" id="" action="" aria-labelledby="usentityselected">
@@ -297,6 +301,9 @@
     var isAttorneyOptionSet = /*[[${isAttorneyOptionSet}]]*/ 'User Name';
     var isAttorneyFiling = /*[[${isAttorneyFiling}]]*/ 'User Name';
 
+    var isForeignEntity = /*[[${baseTrademarkApplication.isForeignEnityFiling()}]]*/ 'User Name';
+
+    var isEntityTypeSet = /*[[${baseTrademarkApplication.isEntityTypeSet()}]]*/ 'User Name';
 
     var host_name= /*[[${hostBean.host}]]*/ 'User Name';
     var host_port= /*[[${hostBean.port}]]*/ 'User Name';
@@ -427,8 +434,37 @@
 
 
 
+        if(isEntityTypeSet){
+            if(isForeignEntity){
+                $('#inlineRadio020').click();
+            }
+            else {
+                $('#inlineRadio019').click();
+            }
+
+        }
 
 
+        $('#inlineRadio019').click(function () {
+
+
+            if(isForeignEntity){
+                $('#nextButton').attr("disabled",true);
+            }
+
+
+            saveProjectInfo("set-Owner-entity", "US", appInternalID); // static from radio buttton
+
+        });
+
+        $('#inlineRadio020').click(function () {
+
+            if(isForeignEntity == false){
+                $('#nextButton').attr("disabled",true);
+            }
+
+            saveProjectInfo("set-Owner-entity", "Foreign", appInternalID); // static from radio buttton
+        });
 
 
 
@@ -527,12 +563,16 @@
                 // remove
 
             });
+
+            saveProjectInfo("set-Owner-entity-types", "in"+"+"+"Corporation+Foreign", appInternalID); // static from radio buttton
         });
         ////////////////////////////////////////////////////
         // enable next button on select drop down completion
         ////////////////////////////////////////////////////
 
         $('[data-toggle="tooltip"]').tooltip();
+
+
 
 
 

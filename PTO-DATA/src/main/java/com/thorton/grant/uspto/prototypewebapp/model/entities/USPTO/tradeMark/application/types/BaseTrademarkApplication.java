@@ -24,8 +24,6 @@ public class BaseTrademarkApplication  {
 
     public BaseTrademarkApplication() {
 
-
-        System.out.println("Basetrade mark constructor call 111111111111111111111111111111111111111111111111111111");
         availableLawyers = new HashSet<>();
         actions = new HashSet<>();
         owners = new HashSet<>();
@@ -46,6 +44,8 @@ public class BaseTrademarkApplication  {
     private boolean isAttorneySet = false;
     private boolean isAttorneyFiling;
     private boolean isForeignEnityFiling;
+    private boolean isEntityTypeSet;
+
     private String currentStage;
     private String lastViewModel;
 
@@ -618,6 +618,14 @@ public class BaseTrademarkApplication  {
 
     public void setMarkAllgsSet(boolean markAllgsSet) {
         this.markAllgsSet = markAllgsSet;
+    }
+
+    public boolean isEntityTypeSet() {
+        return isEntityTypeSet;
+    }
+
+    public void setEntityTypeSet(boolean entityTypeSet) {
+        isEntityTypeSet = entityTypeSet;
     }
 
     @Override
