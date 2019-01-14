@@ -90,7 +90,7 @@
                                                 <input type="radio" name="markinuse" id="inlineRadio21" value="yes" tabindex="0" style="position: relative; bottom: -5px; margin-left: 15px;"> <label for="inlineRadio21" class="radio-inline">Yes, the mark is in use with all of the selected goods/services</label>
                                             </div>
                                             <div class="radio">
-                                                <input type="radio" name="markinuse" id="inlineRadio022" value="no" tabindex="0" style="position: relative; bottom: -5px; margin-left: 15px;" disabled> <label for="inlineRadio022" class="radio-inline">No, the mark is not in use with all of the selected goods/services</label>
+                                                <input type="radio" name="markinuse" id="inlineRadio022" value="no" tabindex="0" style="position: relative; bottom: -5px; margin-left: 15px;" > <label for="inlineRadio022" class="radio-inline">No, the mark is not in use with all of the selected goods/services</label>
                                             </div>
                                         </div><!--END radiogroup-->
                                         <p class="weight600" id="foreigninuse">Do you have a registration and/or pending application in a foreign country for same goods/services?</p>
@@ -330,6 +330,7 @@
             // yes to pending foreign registration
             $('#nextButton').attr("disabled", false);
             saveGSdetails("GS-mark-inUse", "yes", appInternalID);
+            nextLinkURL = "../../application/inUseFilingBasisUpload/?trademarkID="+appInternalID;
 
 
 
@@ -357,6 +358,11 @@
             // yes to pending foreign registration
             $('#nextButton').attr("disabled", false);
             saveGSdetails("GS-mark-fapp", "yes", appInternalID);
+            if($('#inlineRadio21').is(":checked")){
+
+                nextLinkURL = "../../application/inUseFilingBasisUpload/?trademarkID="+appInternalID;
+            }
+
 
 
 
@@ -371,6 +377,11 @@
             // no to pending foreign registration
             $('#nextButton').attr("disabled", false);
             saveGSdetails("GS-mark-fapp", "no", appInternalID);
+
+            if($('#inlineRadio21').is(":checked")){
+
+                nextLinkURL = "../../application/inUseFilingBasisUpload/?trademarkID="+appInternalID;
+            }
 
         });
 
