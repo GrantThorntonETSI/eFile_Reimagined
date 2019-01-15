@@ -162,6 +162,12 @@
 <script>
 
     var nextLinkURL = "../../application/filingBasisUpload/?trademarkID="+appInternalID;
+
+
+    if(inUse){
+        nextLinkURL = "../../application/inUseFilingBasisUpload/?trademarkID="+appInternalID;
+
+    }
     var prevLinkURL = "../../application/goodsAndServicesReview/?trademarkID="+appInternalID;
 
     var breadCrumb1Link = "../../application/start/?trademarkID="+appInternalID;
@@ -345,6 +351,7 @@
             // no to pending foreign registration
             $('#nextButton').attr("disabled", false);
             saveGSdetails("GS-mark-inUse", "no", appInternalID);
+            nextLinkURL = "../../application/filingBasisUpload/?trademarkID="+appInternalID;
 
         });
 
@@ -362,7 +369,10 @@
 
                 nextLinkURL = "../../application/inUseFilingBasisUpload/?trademarkID="+appInternalID;
             }
+            if($('#inlineRadio022').is(":checked")){
 
+                nextLinkURL = "../../application/filingBasisUpload/?trademarkID="+appInternalID;
+            }
 
 
 
@@ -382,6 +392,13 @@
 
                 nextLinkURL = "../../application/inUseFilingBasisUpload/?trademarkID="+appInternalID;
             }
+
+            if($('#inlineRadio022').is(":checked")){
+
+                nextLinkURL = "../../application/filingBasisUpload/?trademarkID="+appInternalID;
+            }
+
+
 
         });
 

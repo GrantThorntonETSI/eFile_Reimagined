@@ -236,9 +236,18 @@
 
 
                                                             <div class="col-xs-12 form-group form-group-md" th:if="${baseTrademarkApplication.markHasForeignRegistration == true}">
+
                                                                 <p class="weight600">Specify if you have a pending application, foreign registration, or both for this good/service.</p>
-                                                                <input class="form-check-input checkmark" type="checkbox" value="pending" tabindex="0" th:attr="id=${Good_Service.getpfaID()}">
+                                                                <th:block th:if="${Good_Service.pendingFA == false}">
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="pending" tabindex="0" th:attr="id=${Good_Service.getpfaID()},gs-id=${Good_Service.getInternalID()}">
+                                                                </th:block>
+                                                                <th:block th:if="${Good_Service.pendingFA == true}">
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="pending" tabindex="0" th:attr="id=${Good_Service.getpfaID()},gs-id=${Good_Service.getInternalID()}" checked>
+                                                                </th:block>
                                                                 <label class="form-check-label form-check" th:attr="for=${Good_Service.getpfaID()}"><span class="radio notspecial small">Pending Foreign Application</span></label>
+
+
+
                                                                 <input class="form-check-input checkmark" type="checkbox" value="foreign" tabindex="0"  th:attr="id=${Good_Service.getpfrID()}">
                                                                 <label class="form-check-label form-check" th:attr="for=${Good_Service.getpfrID()}"><span class="radio notspecial small">Foreign Registration</span></label>
                                                                 <input class="form-check-input checkmark" type="checkbox" value="na" tabindex="0" th:attr="id=${Good_Service.getpnaID()}">
@@ -997,6 +1006,7 @@
 
         $('input.checkmark').click(function () {
 
+            var gsID = $(this).attr("gs-id");
             // check value
             if($(this).val() == "pending" ){
 
@@ -1005,12 +1015,16 @@
                     // unhide  parent next div
                     // call auto save yes on foreign application
                     $(this).parent().next().show(500);
+                    addFilingBasisInfoToGoodAndService("gs-pfa-option", "yes", gsID, appInternalID);
+
 
                 }
                 else{
                     // hide parent next div
                     // call auto save no on forgeign application
                     $(this).parent().next().fadeOut(500);
+                    addFilingBasisInfoToGoodAndService("gs-pfa-option", "no", gsID, appInternalID);
+
 
                 }
 
