@@ -20,8 +20,9 @@ public class GoodAndService {
     private String classDescription;
 
     private String internalID;
-
+    ////////////////////////////////////////////////////////
     //filing basis fields
+    ////////////////////////////////////////////////////////
     private boolean markInUse;
     private boolean markInUseSet;
 
@@ -52,7 +53,25 @@ public class GoodAndService {
     public String getpnaID(){
         return internalID+"pna";
     }
+    ////////////////////////////////////////////////////////
+    // foreign application fields
+    ////////////////////////////////////////////////////////
 
+
+    // foreign radio checkboxes
+
+    private boolean pendingFA;
+    private boolean pendingFAset;
+
+    private boolean foreignRegistration;
+    private boolean foreignRegistrationSet;
+
+    private boolean foreignAR_NA;
+    private boolean foreignAR_NAset;
+
+
+
+    //
 
 
 
@@ -232,6 +251,55 @@ public class GoodAndService {
 
     public void setClassSpecimenDescr(String classSpecimenDescr) {
         this.classSpecimenDescr = classSpecimenDescr;
+    }
+
+
+    public boolean isPendingFA() {
+        return pendingFA;
+    }
+
+    public void setPendingFA(boolean pendingFA) {
+        this.pendingFA = pendingFA;
+    }
+
+    public boolean isPendingFAset() {
+        return pendingFAset;
+    }
+
+    public void setPendingFAset(boolean pendingFAset) {
+        this.pendingFAset = pendingFAset;
+    }
+
+    public boolean isForeignRegistration() {
+        return foreignRegistration;
+    }
+
+    public void setForeignRegistration(boolean foreignRegistration) {
+        this.foreignRegistration = foreignRegistration;
+    }
+
+    public boolean isForeignRegistrationSet() {
+        return foreignRegistrationSet;
+    }
+
+    public void setForeignRegistrationSet(boolean foreignRegistrationSet) {
+        this.foreignRegistrationSet = foreignRegistrationSet;
+    }
+
+    public boolean isForeignAR_NA() {
+        return foreignAR_NA;
+    }
+
+    public void setForeignAR_NA(boolean foreignAR_NA) {
+        this.foreignAR_NA = foreignAR_NA;
+    }
+
+    public boolean isForeignAR_NAset() {
+        return foreignAR_NAset;
+    }
+
+    public void setForeignAR_NAset(boolean foreignAR_NAset) {
+        this.foreignAR_NAset = foreignAR_NAset;
     }
 
     @Override
