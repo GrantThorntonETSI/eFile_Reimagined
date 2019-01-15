@@ -213,8 +213,8 @@
                                                                 </th:block>
 
 
-
-                                                                <div id="yesspecimenone" class="form-group form-group-md"    style=""><!--toggle 'yes' radio-->
+                                                                <th:block th:if="${Good_Service.isProvideSample() == false}">
+                                                                <div id="yesspecimenone" class="form-group form-group-md"    style="display: none"><!--toggle 'yes' radio-->
                                                                     <div class="col-xs-12 col-md-6">
                                                                         <p id="upimagetwo">Provide an image of your specimen:</p>
                                                                         <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service.getGSImpageFormID()}"  action="/gs/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
@@ -250,6 +250,46 @@
                                                                     </div>
 
                                                                 </div>
+                                                                </th:block>
+
+                                                                <th:block th:if="${Good_Service.isProvideSample() == true}">
+                                                                    <div id="yesspecimenone" class="form-group form-group-md"    style=""><!--toggle 'yes' radio-->
+                                                                        <div class="col-xs-12 col-md-6">
+                                                                            <p id="upimagetwo">Provide an image of your specimen:</p>
+                                                                            <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service.getGSImpageFormID()}"  action="/gs/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
+                                                                                <div>
+                                                                                    <label class="small upload-drop-zone" th:attr="for=${Good_Service.getGSFileInputID()}" id="upimgtwo"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Drag and drop files or click here to upload.</label>
+                                                                                    <input type="file" th:attr="id=${Good_Service.getGSFileInputID()}" name="file" class="form-control" aria-labelledby="upimgtwo upimagetwo">
+                                                                                </div><!-- Drop Zone -->
+                                                                            </form>
+                                                                        </div>
+                                                                        <div class="col-xs-12 col-md-6">
+                                                                            <label th:attr="for=${Good_Service.getGSSpecDescID()}">Provide a description of your specimen:</label>
+                                                                            <textarea  th:attr="id=${Good_Service.getGSSpecDescID()}"  rows="4"   class="form-control spec-description"></textarea>
+                                                                        </div>
+
+                                                                        <div class="col-xs-12">
+                                                                            <div class="center">
+                                                                                <div class="speciman-image" id="gs-spec-img" style="">
+
+                                                                                    <img  th:attr="src=${Good_Service.sampleImagePath}, id=${Good_Service.getGSImageID()}"  alt="" class="img-responsive"/>
+                                                                                </div>
+
+
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                        <div class="col-xs-12">
+                                                                            <div class="center">
+
+                                                                                <div type="button" th:attr="form=${Good_Service.getGSImpageFormID()},gs-id=${Good_Service.internalID}, file-id=${Good_Service.getGSFileInputID()}, gs-img-id=${Good_Service.getGSImageID()}, spinner-id=${Good_Service.getGSUploadSpinnerID()}" class="btn btn-sm submitGSSpecimen" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Specimen</b><span><i class="fa fa-spinner fa-spin"  th:attr="id=${Good_Service.getGSUploadSpinnerID()}" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                </th:block>
 
 
                                                                 <div class="col-xs-12 form-group form-group-md" th:if="${baseTrademarkApplication.markHasForeignRegistration == true}">
@@ -347,8 +387,9 @@
                                                                     <input class="form-check-input checkmark" type="checkbox" value="na" tabindex="0" th:attr="id=${Good_Service.getpnaID()}">
                                                                     <label class="form-check-label form-check" th:attr="for=${Good_Service.getpnaID()}"><span class="radio notspecial small">Not Applicable</span></label>
                                                                 </div>
-
+                                                                <th:block th:if="${Good_Service.pendingFA == false}">
                                                                 <div class="row" style="display: none;">
+
                                                                     <div class="col-xs-12 form-group form-group-md holdsapending" aria-labelledby="foreignapplication">
                                                                         <div class="col-xs-12">
                                                                             <p class="weight600" id="foreignapplication">Foreign Application Information:</p>
@@ -617,6 +658,10 @@
                                                                     </div>
 
                                                                 </div><!--row-->
+                                                                </th:block>
+
+
+
 
                                                                 <div class="row" style="display: none;">
                                                                     <div class="col-xs-12 form-group form-group-md holdsaforeign">
