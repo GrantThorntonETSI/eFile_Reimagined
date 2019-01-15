@@ -71,7 +71,23 @@ public class GoodAndService {
 
 
 
-    //
+    // foreign application fields
+    private String faCountry;
+    private String faRegistrationNumber;
+    private Date faFilingDate;
+
+
+
+
+    // foreign registration fields
+    private String frCountry;
+    private String frRegistartionNumber;
+    private Date  frExpirationDate;
+    private Date  frRenewlDate;
+
+    private String frSpecimenImagePath;
+
+
 
 
 
@@ -300,6 +316,70 @@ public class GoodAndService {
 
     public void setForeignAR_NAset(boolean foreignAR_NAset) {
         this.foreignAR_NAset = foreignAR_NAset;
+    }
+
+    public String getFaCountry() {
+        return faCountry;
+    }
+
+    public void setFaCountry(String faCountry) {
+        this.faCountry = faCountry;
+    }
+
+    public String getFaRegistrationNumber() {
+        return faRegistrationNumber;
+    }
+
+    public void setFaRegistrationNumber(String faRegistrationNumber) {
+        this.faRegistrationNumber = faRegistrationNumber;
+    }
+
+    public Date getFaFilingDate() {
+        return faFilingDate;
+    }
+
+    public void setFaFilingDate(Date faFilingDate) {
+        this.faFilingDate = faFilingDate;
+    }
+
+    public String getFrCountry() {
+        return frCountry;
+    }
+
+    public void setFrCountry(String frCountry) {
+        this.frCountry = frCountry;
+    }
+
+    public String getFrRegistartionNumber() {
+        return frRegistartionNumber;
+    }
+
+    public void setFrRegistartionNumber(String frRegistartionNumber) {
+        this.frRegistartionNumber = frRegistartionNumber;
+    }
+
+    public Date getFrExpirationDate() {
+        return frExpirationDate;
+    }
+
+    public void setFrExpirationDate(Date frExpirationDate) {
+        this.frExpirationDate = frExpirationDate;
+    }
+
+    public Date getFrRenewlDate() {
+        return frRenewlDate;
+    }
+
+    public void setFrRenewlDate(Date frRenewlDate) {
+        this.frRenewlDate = frRenewlDate;
+    }
+
+    public String getFrSpecimenImagePath() {
+        return frSpecimenImagePath;
+    }
+
+    public void setFrSpecimenImagePath(String frSpecimenImagePath) {
+        this.frSpecimenImagePath = frSpecimenImagePath;
     }
 
     @Override
