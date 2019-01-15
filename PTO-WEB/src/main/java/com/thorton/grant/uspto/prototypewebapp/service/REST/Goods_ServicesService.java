@@ -303,6 +303,27 @@ System.out.println("remove GS called 2222222222222222222222222222222");
 
         }
 
+        if(fbField.equals("gs-pfr-option")){
+            // ptoUser.setState(param); // sets state code
+
+            if(fbValue.equals("yes")){
+                baseTrademarkApplication.findGSbyInternalID(gsID).setForeignRegistration(true);
+
+
+
+            }
+            if(fbValue.equals("no")){
+                baseTrademarkApplication.findGSbyInternalID(gsID).setForeignRegistration(false);
+
+
+
+            }
+
+            appFieldReadable = "Filing Basis Foreign Registration Option";
+
+        }
+
+
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
         String responseMsg = appFieldReadable+" has been saved";
 
