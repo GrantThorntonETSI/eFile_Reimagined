@@ -283,6 +283,26 @@ System.out.println("remove GS called 2222222222222222222222222222222");
         }
 
 
+        if(fbField.equals("gs-pfa-option")){
+            // ptoUser.setState(param); // sets state code
+
+            if(fbValue.equals("yes")){
+                baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
+
+
+
+            }
+            if(fbValue.equals("no")){
+                baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(false);
+
+
+
+            }
+
+            appFieldReadable = "Filing Basis Pending Foreign Application Option";
+
+        }
+
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
         String responseMsg = appFieldReadable+" has been saved";
 

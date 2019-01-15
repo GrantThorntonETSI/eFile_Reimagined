@@ -40,16 +40,14 @@ public class GoodAndService {
 
     private String sampleDescription;
 
-    private boolean GSPendingForignApplicatoin;
-
     public String getpfaID(){
         return internalID+"pfa";
     }
-    private boolean GSForeignApplication;
+
     public String getpfrID(){
         return internalID+"pfr";
     }
-    private boolean GSNotApplicable;
+
     public String getpnaID(){
         return internalID+"pna";
     }
@@ -61,13 +59,13 @@ public class GoodAndService {
     // foreign radio checkboxes
 
     private boolean pendingFA;
-    private boolean pendingFAset;
+
 
     private boolean foreignRegistration;
-    private boolean foreignRegistrationSet;
+
 
     private boolean foreignAR_NA;
-    private boolean foreignAR_NAset;
+
 
 
 
@@ -181,29 +179,8 @@ public class GoodAndService {
         this.firstCommerceDate = firstCommerceDate;
     }
 
-    public boolean isGSPendingForignApplicatoin() {
-        return GSPendingForignApplicatoin;
-    }
 
-    public void setGSPendingForignApplicatoin(boolean GSPendingForignApplicatoin) {
-        this.GSPendingForignApplicatoin = GSPendingForignApplicatoin;
-    }
 
-    public boolean isGSForeignApplication() {
-        return GSForeignApplication;
-    }
-
-    public void setGSForeignApplication(boolean GSForeignApplication) {
-        this.GSForeignApplication = GSForeignApplication;
-    }
-
-    public boolean isGSNotApplicable() {
-        return GSNotApplicable;
-    }
-
-    public void setGSNotApplicable(boolean GSNotApplicable) {
-        this.GSNotApplicable = GSNotApplicable;
-    }
 
     public boolean isMarkInUseSet() {
         return markInUseSet;
@@ -278,13 +255,6 @@ public class GoodAndService {
         this.pendingFA = pendingFA;
     }
 
-    public boolean isPendingFAset() {
-        return pendingFAset;
-    }
-
-    public void setPendingFAset(boolean pendingFAset) {
-        this.pendingFAset = pendingFAset;
-    }
 
     public boolean isForeignRegistration() {
         return foreignRegistration;
@@ -294,13 +264,6 @@ public class GoodAndService {
         this.foreignRegistration = foreignRegistration;
     }
 
-    public boolean isForeignRegistrationSet() {
-        return foreignRegistrationSet;
-    }
-
-    public void setForeignRegistrationSet(boolean foreignRegistrationSet) {
-        this.foreignRegistrationSet = foreignRegistrationSet;
-    }
 
     public boolean isForeignAR_NA() {
         return foreignAR_NA;
@@ -310,13 +273,7 @@ public class GoodAndService {
         this.foreignAR_NA = foreignAR_NA;
     }
 
-    public boolean isForeignAR_NAset() {
-        return foreignAR_NAset;
-    }
 
-    public void setForeignAR_NAset(boolean foreignAR_NAset) {
-        this.foreignAR_NAset = foreignAR_NAset;
-    }
 
     public String getFaCountry() {
         return faCountry;
