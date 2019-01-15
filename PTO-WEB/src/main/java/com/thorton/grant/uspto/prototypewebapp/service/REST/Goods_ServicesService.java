@@ -323,6 +323,28 @@ System.out.println("remove GS called 2222222222222222222222222222222");
 
         }
 
+        if(fbField.equals("gs-pna-option")){
+            // ptoUser.setState(param); // sets state code
+
+            if(fbValue.equals("yes")){
+                baseTrademarkApplication.findGSbyInternalID(gsID).setForeignAR_NA(true);
+                baseTrademarkApplication.findGSbyInternalID(gsID).setForeignRegistration(false);
+                baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(false);
+
+
+
+            }
+            if(fbValue.equals("no")){
+                baseTrademarkApplication.findGSbyInternalID(gsID).setForeignAR_NA(false);
+
+
+
+            }
+
+            appFieldReadable = "Filing Basis Foreign Not Applicable Option";
+
+        }
+
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
         String responseMsg = appFieldReadable+" has been saved";
