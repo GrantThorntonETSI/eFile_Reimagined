@@ -81,6 +81,7 @@ public class TradeMark extends BaseEntity {
 
     // name / portrait / Signature
     private boolean containNamePortaitSignature;
+    private boolean namePortraitSet;
 
     private boolean consentFileUploaded = false;
 
@@ -570,6 +571,14 @@ public class TradeMark extends BaseEntity {
 
     public void setTranlierationSet(boolean tranlierationSet) {
         this.tranlierationSet = tranlierationSet;
+    }
+
+    public boolean isNamePortraitSet() {
+        return namePortraitSet;
+    }
+
+    public void setNamePortraitSet(boolean namePortraitSet) {
+        this.namePortraitSet = namePortraitSet;
     }
 
     //////////////////////////////////////////////////////////////////////////////

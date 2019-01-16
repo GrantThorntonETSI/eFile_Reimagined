@@ -274,7 +274,7 @@ $(document).ready(function(){
 	$("input#inlineRadio7").prop({
 		checked: false,
 	});
-	$('div#yesnps').css('display','none');
+
 	$('input#inlineRadio7').change(function() {
 		if(this.checked == true){
 			$('div#yesnps').show( 500 );

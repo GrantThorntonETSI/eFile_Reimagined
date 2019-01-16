@@ -149,10 +149,12 @@ public class TradeMarkService extends BaseRESTapiService {
 
             if(markValue.equals("yes")){
                 baseTrademarkApplication.getTradeMark().setForeignLanguateTransliterationWording(true);
+                baseTrademarkApplication.getTradeMark().setTranlierationSet(true);
 
             }
             if(markValue.equals("no")){
                 baseTrademarkApplication.getTradeMark().setForeignLanguateTransliterationWording(false);
+                baseTrademarkApplication.getTradeMark().setTranlierationSet(true);
 
             }
 
@@ -190,10 +192,12 @@ public class TradeMarkService extends BaseRESTapiService {
 
             if(markValue.equals("yes")){
                 baseTrademarkApplication.getTradeMark().setContainNamePortaitSignature(true);
+                baseTrademarkApplication.getTradeMark().setNamePortraitSet(true);
 
             }
             if(markValue.equals("no")){
                 baseTrademarkApplication.getTradeMark().setContainNamePortaitSignature(false);
+                baseTrademarkApplication.getTradeMark().setNamePortraitSet(true);
 
             }
 

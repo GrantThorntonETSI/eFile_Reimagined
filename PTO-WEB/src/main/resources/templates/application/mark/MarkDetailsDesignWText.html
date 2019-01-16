@@ -388,33 +388,103 @@
                                                 <p>If a name(s) shown in the mark identifies a particular living individual, enter the name of the individual being identified. In addition, attach a .jpg or .pdf file showing the actual consent of the named individual to the use and registration of his or her name. Select &#8220;No&#8221; if the mark includes a name(s) but this does NOT identify a particular living person. <a href="https://tmep.uspto.gov/RDMS/TMEP/current#/current/TMEP-1200d1e4891.html" target="_blank">More information</a>.</p>
                                             </div>
                                         </div>
-                                        <div class="col-xs-12">
-                                            <p id="translit">Does your mark contain foreign wording in non-Latin characters that requires transliteration?</p>                                            			<div role="radiogroup" aria-labelledby="translit">
-                                            <input type="radio" name="nonlatradio" id="inlineRadio5" value="yes">Yes
-                                            <input type="radio" name="nonlatradio" id="inlineRadio6" value="no">No
-                                        </div><!--END radiogroup-->
-                                            <div id="yestransliteration"><!--toggle 'yes' radio-->
-                                                <h3 class="weight600">Enter the transliteration of the mark.</h3>
-                                                <div class="form-group form-group-md col-xs-12 col-md-3">
-                                                    <b>Language</b>
-                                                    <select class="form-control" id="languagetranslit" th:field="${baseTrademarkApplication.tradeMark.foreignLanguageType_transliteration}">
-                                                        <option value="Select">Select</option>
-                                                        <option value="German">German</option>
-                                                        <option value="Korean">Korean</option>
-                                                        <option value="French">French</option>
-                                                        <option value="Spanish">Spanish</option>
-                                                    </select>
+
+                                        <th:block th:if="${baseTrademarkApplication.tradeMark.isTranslationSet() == false}">
+                                            <div class="col-xs-12">
+                                                <p id="translit">Does your mark contain foreign wording in non-Latin characters that requires transliteration?</p>
+                                                <div role="radiogroup" aria-labelledby="translit">
+                                                    <input type="radio" name="nonlatradio" id="inlineRadio5" value="yes">Yes
+                                                    <input type="radio" name="nonlatradio" id="inlineRadio6" value="no">No
                                                 </div>
-                                                <div class="form-group form-group-md col-xs-12 col-md-9">
-                                                    <b >The non-Latin characters in the mark transliterate to</b>
-                                                    <input type="text" class="form-control" id="nonlatranslation" th:value="${baseTrademarkApplication.tradeMark.foreignLanguateTransliterationOriginalText}">
+                                                <div id="yestransliteration" style="display: none"><!--toggle 'yes' radio-->
+                                                    <h3 class="weight600">Enter the transliteration of the mark.</h3>
+                                                    <div class="form-group form-group-md col-xs-12 col-md-3">
+                                                        <b>Language</b>
+                                                        <select class="form-control" id="languagetranslit" th:field="${baseTrademarkApplication.tradeMark.foreignLanguageType_transliteration}">
+                                                            <option value="Select">Select</option>
+                                                            <option value="German">German</option>
+                                                            <option value="Korean">Korean</option>
+                                                            <option value="French">French</option>
+                                                            <option value="Spanish">Spanish</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group form-group-md col-xs-12 col-md-9">
+                                                        <b >The non-Latin characters in the mark transliterate to</b>
+                                                        <input type="text" class="form-control" id="nonlatranslation" th:value="${baseTrademarkApplication.tradeMark.foreignLanguateTransliterationOriginalText}">
+                                                    </div>
+                                                    <div class="form-group form-group-md col-xs-12 col-md-12">
+                                                        <b for="inenglish">and this, in English, means</b>
+                                                        <input type="text" class="form-control" id="inenglish" th:value="${baseTrademarkApplication.tradeMark.foreignLanguateTransliterationUSText}">
+                                                    </div>
                                                 </div>
-                                                <div class="form-group form-group-md col-xs-12 col-md-12">
-                                                    <b for="inenglish">and this, in English, means</b>
-                                                    <input type="text" class="form-control" id="inenglish" th:value="${baseTrademarkApplication.tradeMark.foreignLanguateTransliterationUSText}">
-                                                </div>
+
                                             </div>
-                                        </div>
+                                        </th:block>
+                                        <th:block th:if="${baseTrademarkApplication.tradeMark.isTranslationSet() == true}">
+                                            <th:block th:if="${baseTrademarkApplication.tradeMark.foreignLanguateTransliterationWording == true}">
+                                                <div class="col-xs-12">
+                                                    <p id="translit">Does your mark contain foreign wording in non-Latin characters that requires transliteration?</p>
+                                                    <div role="radiogroup" aria-labelledby="translit">
+                                                        <input type="radio" name="nonlatradio" id="inlineRadio5" value="yes" checked>Yes
+                                                        <input type="radio" name="nonlatradio" id="inlineRadio6" value="no">No
+                                                    </div>
+                                                    <div id="yestransliteration" style=""><!--toggle 'yes' radio-->
+                                                        <h3 class="weight600">Enter the transliteration of the mark.</h3>
+                                                        <div class="form-group form-group-md col-xs-12 col-md-3">
+                                                            <b>Language</b>
+                                                            <select class="form-control" id="languagetranslit" th:field="${baseTrademarkApplication.tradeMark.foreignLanguageType_transliteration}">
+                                                                <option value="Select">Select</option>
+                                                                <option value="German">German</option>
+                                                                <option value="Korean">Korean</option>
+                                                                <option value="French">French</option>
+                                                                <option value="Spanish">Spanish</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group form-group-md col-xs-12 col-md-9">
+                                                            <b >The non-Latin characters in the mark transliterate to</b>
+                                                            <input type="text" class="form-control" id="nonlatranslation" th:value="${baseTrademarkApplication.tradeMark.foreignLanguateTransliterationOriginalText}">
+                                                        </div>
+                                                        <div class="form-group form-group-md col-xs-12 col-md-12">
+                                                            <b for="inenglish">and this, in English, means</b>
+                                                            <input type="text" class="form-control" id="inenglish" th:value="${baseTrademarkApplication.tradeMark.foreignLanguateTransliterationUSText}">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </th:block>
+                                            <th:block th:if="${baseTrademarkApplication.tradeMark.foreignLanguateTransliterationWording == false}">
+                                                <div class="col-xs-12">
+                                                    <p id="translit">Does your mark contain foreign wording in non-Latin characters that requires transliteration?</p>
+                                                    <div role="radiogroup" aria-labelledby="translit">
+                                                        <input type="radio" name="nonlatradio" id="inlineRadio5" value="yes">Yes
+                                                        <input type="radio" name="nonlatradio" id="inlineRadio6" value="no"checked>No
+                                                    </div>
+                                                    <div id="yestransliteration" style="display: none;"><!--toggle 'yes' radio-->
+                                                        <h3 class="weight600">Enter the transliteration of the mark.</h3>
+                                                        <div class="form-group form-group-md col-xs-12 col-md-3">
+                                                            <b>Language</b>
+                                                            <select class="form-control" id="languagetranslit" th:field="${baseTrademarkApplication.tradeMark.foreignLanguageType_transliteration}">
+                                                                <option value="Select">Select</option>
+                                                                <option value="German">German</option>
+                                                                <option value="Korean">Korean</option>
+                                                                <option value="French">French</option>
+                                                                <option value="Spanish">Spanish</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group form-group-md col-xs-12 col-md-9">
+                                                            <b >The non-Latin characters in the mark transliterate to</b>
+                                                            <input type="text" class="form-control" id="nonlatranslation" th:value="${baseTrademarkApplication.tradeMark.foreignLanguateTransliterationOriginalText}">
+                                                        </div>
+                                                        <div class="form-group form-group-md col-xs-12 col-md-12">
+                                                            <b for="inenglish">and this, in English, means</b>
+                                                            <input type="text" class="form-control" id="inenglish" th:value="${baseTrademarkApplication.tradeMark.foreignLanguateTransliterationUSText}">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </th:block>
+                                        </th:block>
+
                                     </section>
                                 </div>
                             </div><!--END transliteration-->
@@ -433,121 +503,366 @@
                                         </div>
                                         <div>
                                             <p id="nps">Does your mark contain a name, portrait, or signature?</p>
-                                            <div role="radiogroup" aria-labelledby="nps">
-                                                <label for="inlineRadio7" class="radio-inline"><input type="radio" name="npsradio" id="inlineRadio7" value="yes">Yes</label>
-                                                <label for="inlineRadio8" class="radio-inline"><input type="radio" name="npsradio" id="inlineRadio8" value="no">No</label>
-                                            </div><!--END radiogroup-->
-                                            <div id="yesnps" role="region" aria-labelledby="translit">
-                                                <p id="whichnps">Identify which of the following it contains:</p>
 
-                                                <input class="form-check-input checkmark" type="checkbox" value="" role="checkbox" aria-checked="false" tabindex="0" aria-labelledby="checkname" id="namechecked">
-                                                <label class="form-check-label form-check" for="namechecked" id="checkname"><span class="radio notspecial">Name</span></label>
+                                            <th:block th:if="${baseTrademarkApplication.tradeMark.isNamePortraitSet() == false}">
+                                                    <div role="radiogroup" aria-labelledby="nps">
+                                                        <label for="inlineRadio7" class="radio-inline"><input type="radio" name="npsradio" id="inlineRadio7" value="yes">Yes</label>
+                                                        <label for="inlineRadio8" class="radio-inline"><input type="radio" name="npsradio" id="inlineRadio8" value="no">No</label>
+                                                    </div><!--END radiogroup-->
 
 
+                                                    <div id="yesnps" role="region" aria-labelledby="translit" style="display: none;">
+                                                        <p id="whichnps">Identify which of the following it contains:</p>
 
-                                                <div id="yescontainsname" role="region" aria-labelledby="whichnps" class="form-group form-group-md">
-                                                    <div class="row">
-                                                        <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
-                                                            <label for="name-firstname">First Name</label>
-                                                            <input type="text" class="form-control" id="name-firstname" th:value="${baseTrademarkApplication.tradeMark.nameFirstName}">
-                                                        </div>
-                                                        <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
-                                                            <label for="name-middlename">Middle Name</label>
-                                                            <input type="text" class="form-control" id="name-middlename" th:value="${baseTrademarkApplication.tradeMark.nameMiddleName}">
-                                                        </div>
-                                                        <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-3">
-                                                            <label for="name-lastname">Last Name</label>
-                                                            <input type="text" class="form-control" id="name-lastname" th:value="${baseTrademarkApplication.tradeMark.nameLastName}">
-                                                        </div>
-                                                        <div class="form-group form-group-md col-xs-12 col-md-3">
-                                                            <button type="button" class="btn-sm btn-success add ctr">Add Additional</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                        <input class="form-check-input checkmark" type="checkbox" value="" role="checkbox" aria-checked="false" tabindex="0" aria-labelledby="checkname" id="namechecked">
+                                                        <label class="form-check-label form-check" for="namechecked" id="checkname"><span class="radio notspecial">Name</span></label>
 
 
-                                                <input class="form-check-input checkmark" type="checkbox" value="portrait" aria-checked="false" tabindex="0" id="portraitchecked" aria-labelledby="checkportrait">
-                                                <label class="form-check-label form-check" for="portraitchecked" id="checkportrait"><span class="radio notspecial" id="collect">Portrait</span></label>
 
-                                                <div id="yescontainsportrait" role="region" aria-labelledby="whichnps" class="form-group form-group-md">
-                                                    <div class="row">
-                                                        <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
-                                                            <label for="portrait-firstname">First Name</label>
-                                                            <input type="text" class="form-control" id="portrait-firstname" th:value="${baseTrademarkApplication.tradeMark.portraitFirstName}">
-                                                        </div>
-                                                        <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
-                                                            <label for="portrait-middlename">Middle Name</label>
-                                                            <input type="text" class="form-control" id="portrait-middlename" th:value="${baseTrademarkApplication.tradeMark.portraitMiddleName}">
-                                                        </div>
-                                                        <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-3">
-                                                            <label for="portrait-lastname">Last Name</label>
-                                                            <input type="text" class="form-control" id="portrait-lastname" th:value="${baseTrademarkApplication.tradeMark.portraitLastName}">
-                                                        </div>
-                                                        <div class="form-group form-group-md col-xs-12 col-md-3">
-                                                            <button type="button" class="btn-sm btn-success add ctr">Add Additional</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-                                                <input class="form-check-input checkmark" type="checkbox" value="signature" aria-checked="false" tabindex="0" aria-labelledby="checksignature" id="signaturechecked">
-                                                <label class="form-check-label form-check" for="signaturechecked" id="checksignature"><span class="radio notspecial" id="collectm">Signature</span></label>
-
-                                                <div id="yescontainssignature" role="region" aria-labelledby="whichnps" class="form-group form-group-md">
-                                                    <div class="row">
-                                                        <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
-                                                            <label for="signature-firstname">First Name</label>
-                                                            <input type="text" class="form-control" id="signature-firstname" th:value="${baseTrademarkApplication.tradeMark.signatureFirstName}">
-                                                        </div>
-                                                        <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
-                                                            <label for="signature-middlename">Middle Name</label>
-                                                            <input type="text" class="form-control" id="signature-middlename" th:value="${baseTrademarkApplication.tradeMark.signatureMiddleName}">
-                                                        </div>
-                                                        <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-3">
-                                                            <label for="signature-lastname">Last Name</label>
-                                                            <input type="text" class="form-control" id="signature-lastname" th:value="${baseTrademarkApplication.tradeMark.signatureLastName}">
-                                                        </div>
-                                                        <div class="form-group form-group-md col-xs-12 col-md-3">
-                                                            <button type="button" class="btn-sm btn-success add ctr">Add Additional</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <p id="individualiving">Is this of a living individual?</p>
-                                                <div role="radiogroup" class="form-group form-group-md" aria-labelledby="individualiving">
-                                                    <label for="inlineRadio17" class="radio-inline"><input type="radio" name="livindividualradio" id="inlineRadio17" value="yes">Yes</label>
-                                                    <label for="inlineRadio18" class="radio-inline"><input type="radio" name="livindividualradio" id="inlineRadio18" value="no">No</label>
-                                                </div><!--END radiogroup-->
-
-                                               <div th:if="${baseTrademarkApplication.tradeMark.consentFileUploaded == false}">
-                                                    <h4 class="weight600">Upload Consent <i class="material-icons" style="position: relative; bottom: -5px;">cloud_upload</i></h4>
-                                                    <p><a href="#"><span class="glyphicon glyphicon-download" aria-hidden="true"></span> Consent Template</a></p>
-                                                    <form action="/Mark/consent/add" method="post" enctype="multipart/form-data" id="markConsentForm" class="form-horizontal">
-                                                        <div class="form-group form-group-md">
-                                                            <label class="small upload-drop-zone" for="consentfile"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>
-                                                                Upload Consent</label>
-                                                            <input type="file" id="consentfile" name="file" class="form-control">
-                                                        </div><!-- Drop Zone -->
-                                                        <div class="row">
-                                                            <div class="js-upload-finished col-xs-12 col-md-10 col-lg-8">
-                                                                <p id="uploaded">Processed files</p>
-                                                                <div class="list-group">
-                                                                    <a href="#" class="list-group-item list-group-item-success" aria-labelledby="uploaded"></a>
+                                                        <div id="yescontainsname" role="region" aria-labelledby="whichnps" class="form-group form-group-md">
+                                                            <div class="row">
+                                                                <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
+                                                                    <label for="name-firstname">First Name</label>
+                                                                    <input type="text" class="form-control" id="name-firstname" th:value="${baseTrademarkApplication.tradeMark.nameFirstName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
+                                                                    <label for="name-middlename">Middle Name</label>
+                                                                    <input type="text" class="form-control" id="name-middlename" th:value="${baseTrademarkApplication.tradeMark.nameMiddleName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-3">
+                                                                    <label for="name-lastname">Last Name</label>
+                                                                    <input type="text" class="form-control" id="name-lastname" th:value="${baseTrademarkApplication.tradeMark.nameLastName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-3">
+                                                                    <button type="button" class="btn-sm btn-success add ctr">Add Additional</button>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <input  style=" position:relative; display: none; width: 1px; height:1px;" name="AppInternalID" id="appInternalIDForm"   value="" />
-                                                        <div class="col-xs-12">
-                                                            <button type="submit" id="consentSubmit" class="btn btn-sm" >Upload file</button>
+
+
+                                                        <input class="form-check-input checkmark" type="checkbox" value="portrait" aria-checked="false" tabindex="0" id="portraitchecked" aria-labelledby="checkportrait">
+                                                        <label class="form-check-label form-check" for="portraitchecked" id="checkportrait"><span class="radio notspecial" id="collect">Portrait</span></label>
+
+                                                        <div id="yescontainsportrait" role="region" aria-labelledby="whichnps" class="form-group form-group-md">
+                                                            <div class="row">
+                                                                <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
+                                                                    <label for="portrait-firstname">First Name</label>
+                                                                    <input type="text" class="form-control" id="portrait-firstname" th:value="${baseTrademarkApplication.tradeMark.portraitFirstName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
+                                                                    <label for="portrait-middlename">Middle Name</label>
+                                                                    <input type="text" class="form-control" id="portrait-middlename" th:value="${baseTrademarkApplication.tradeMark.portraitMiddleName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-3">
+                                                                    <label for="portrait-lastname">Last Name</label>
+                                                                    <input type="text" class="form-control" id="portrait-lastname" th:value="${baseTrademarkApplication.tradeMark.portraitLastName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-3">
+                                                                    <button type="button" class="btn-sm btn-success add ctr">Add Additional</button>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </form>
-                                               </div>
 
-                                            <div th:if="${baseTrademarkApplication.tradeMark.consentFileUploaded == true}">
-                                                <h4 class="weight600">Consent Uploaded <i class="material-icons" style="position: relative; bottom: -5px;">check_circle</i></h4>
 
-                                            </div>
-                                            </div>
+                                                        <input class="form-check-input checkmark" type="checkbox" value="signature" aria-checked="false" tabindex="0" aria-labelledby="checksignature" id="signaturechecked">
+                                                        <label class="form-check-label form-check" for="signaturechecked" id="checksignature"><span class="radio notspecial" id="collectm">Signature</span></label>
+
+                                                        <div id="yescontainssignature" role="region" aria-labelledby="whichnps" class="form-group form-group-md">
+                                                            <div class="row">
+                                                                <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
+                                                                    <label for="signature-firstname">First Name</label>
+                                                                    <input type="text" class="form-control" id="signature-firstname" th:value="${baseTrademarkApplication.tradeMark.signatureFirstName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
+                                                                    <label for="signature-middlename">Middle Name</label>
+                                                                    <input type="text" class="form-control" id="signature-middlename" th:value="${baseTrademarkApplication.tradeMark.signatureMiddleName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-3">
+                                                                    <label for="signature-lastname">Last Name</label>
+                                                                    <input type="text" class="form-control" id="signature-lastname" th:value="${baseTrademarkApplication.tradeMark.signatureLastName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-3">
+                                                                    <button type="button" class="btn-sm btn-success add ctr">Add Additional</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <p id="individualiving">Is this of a living individual?</p>
+                                                        <div role="radiogroup" class="form-group form-group-md" aria-labelledby="individualiving">
+                                                            <label for="inlineRadio17" class="radio-inline"><input type="radio" name="livindividualradio" id="inlineRadio17" value="yes">Yes</label>
+                                                            <label for="inlineRadio18" class="radio-inline"><input type="radio" name="livindividualradio" id="inlineRadio18" value="no">No</label>
+                                                        </div><!--END radiogroup-->
+
+                                                       <div th:if="${baseTrademarkApplication.tradeMark.consentFileUploaded == false}">
+                                                            <h4 class="weight600">Upload Consent <i class="material-icons" style="position: relative; bottom: -5px;">cloud_upload</i></h4>
+                                                            <p><a href="#"><span class="glyphicon glyphicon-download" aria-hidden="true"></span> Consent Template</a></p>
+                                                            <form action="/Mark/consent/add" method="post" enctype="multipart/form-data" id="markConsentForm" class="form-horizontal">
+                                                                <div class="form-group form-group-md">
+                                                                    <label class="small upload-drop-zone" for="consentfile"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>
+                                                                        Upload Consent</label>
+                                                                    <input type="file" id="consentfile" name="file" class="form-control">
+                                                                </div><!-- Drop Zone -->
+                                                                <div class="row">
+                                                                    <div class="js-upload-finished col-xs-12 col-md-10 col-lg-8">
+                                                                        <p id="uploaded">Processed files</p>
+                                                                        <div class="list-group">
+                                                                            <a href="#" class="list-group-item list-group-item-success" aria-labelledby="uploaded"></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <input  style=" position:relative; display: none; width: 1px; height:1px;" name="AppInternalID" id="appInternalIDForm"   value="" />
+                                                                <div class="col-xs-12">
+                                                                    <button type="submit" id="consentSubmit" class="btn btn-sm" >Upload file</button>
+                                                                </div>
+                                                            </form>
+                                                       </div>
+
+                                                    <div th:if="${baseTrademarkApplication.tradeMark.consentFileUploaded == true}">
+                                                        <h4 class="weight600">Consent Uploaded <i class="material-icons" style="position: relative; bottom: -5px;">check_circle</i></h4>
+
+                                                    </div>
+                                                    </div>
+                                            </th:block>
+                                            <th:block th:if="${baseTrademarkApplication.tradeMark.isNamePortraitSet() == true}">
+                                                <th:block th:if="${baseTrademarkApplication.tradeMark.containNamePortaitSignature == true}">
+                                                    <div role="radiogroup" aria-labelledby="nps">
+                                                        <label for="inlineRadio7" class="radio-inline"><input type="radio" name="npsradio" id="inlineRadio7" value="yes" checked>Yes</label>
+                                                        <label for="inlineRadio8" class="radio-inline"><input type="radio" name="npsradio" id="inlineRadio8" value="no">No</label>
+                                                    </div><!--END radiogroup-->
+
+
+                                                    <div id="yesnps" role="region" aria-labelledby="translit" style="">
+                                                        <p id="whichnps">Identify which of the following it contains:</p>
+
+                                                        <input class="form-check-input checkmark" type="checkbox" value="" role="checkbox" aria-checked="false" tabindex="0" aria-labelledby="checkname" id="namechecked">
+                                                        <label class="form-check-label form-check" for="namechecked" id="checkname"><span class="radio notspecial">Name</span></label>
+
+
+
+                                                        <div id="yescontainsname" role="region" aria-labelledby="whichnps" class="form-group form-group-md">
+                                                            <div class="row">
+                                                                <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
+                                                                    <label for="name-firstname">First Name</label>
+                                                                    <input type="text" class="form-control" id="name-firstname" th:value="${baseTrademarkApplication.tradeMark.nameFirstName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
+                                                                    <label for="name-middlename">Middle Name</label>
+                                                                    <input type="text" class="form-control" id="name-middlename" th:value="${baseTrademarkApplication.tradeMark.nameMiddleName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-3">
+                                                                    <label for="name-lastname">Last Name</label>
+                                                                    <input type="text" class="form-control" id="name-lastname" th:value="${baseTrademarkApplication.tradeMark.nameLastName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-3">
+                                                                    <button type="button" class="btn-sm btn-success add ctr">Add Additional</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <input class="form-check-input checkmark" type="checkbox" value="portrait" aria-checked="false" tabindex="0" id="portraitchecked" aria-labelledby="checkportrait">
+                                                        <label class="form-check-label form-check" for="portraitchecked" id="checkportrait"><span class="radio notspecial" id="collect">Portrait</span></label>
+
+                                                        <div id="yescontainsportrait" role="region" aria-labelledby="whichnps" class="form-group form-group-md">
+                                                            <div class="row">
+                                                                <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
+                                                                    <label for="portrait-firstname">First Name</label>
+                                                                    <input type="text" class="form-control" id="portrait-firstname" th:value="${baseTrademarkApplication.tradeMark.portraitFirstName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
+                                                                    <label for="portrait-middlename">Middle Name</label>
+                                                                    <input type="text" class="form-control" id="portrait-middlename" th:value="${baseTrademarkApplication.tradeMark.portraitMiddleName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-3">
+                                                                    <label for="portrait-lastname">Last Name</label>
+                                                                    <input type="text" class="form-control" id="portrait-lastname" th:value="${baseTrademarkApplication.tradeMark.portraitLastName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-3">
+                                                                    <button type="button" class="btn-sm btn-success add ctr">Add Additional</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <input class="form-check-input checkmark" type="checkbox" value="signature" aria-checked="false" tabindex="0" aria-labelledby="checksignature" id="signaturechecked">
+                                                        <label class="form-check-label form-check" for="signaturechecked" id="checksignature"><span class="radio notspecial" id="collectm">Signature</span></label>
+
+                                                        <div id="yescontainssignature" role="region" aria-labelledby="whichnps" class="form-group form-group-md">
+                                                            <div class="row">
+                                                                <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
+                                                                    <label for="signature-firstname">First Name</label>
+                                                                    <input type="text" class="form-control" id="signature-firstname" th:value="${baseTrademarkApplication.tradeMark.signatureFirstName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
+                                                                    <label for="signature-middlename">Middle Name</label>
+                                                                    <input type="text" class="form-control" id="signature-middlename" th:value="${baseTrademarkApplication.tradeMark.signatureMiddleName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-3">
+                                                                    <label for="signature-lastname">Last Name</label>
+                                                                    <input type="text" class="form-control" id="signature-lastname" th:value="${baseTrademarkApplication.tradeMark.signatureLastName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-3">
+                                                                    <button type="button" class="btn-sm btn-success add ctr">Add Additional</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <p id="individualiving">Is this of a living individual?</p>
+                                                        <div role="radiogroup" class="form-group form-group-md" aria-labelledby="individualiving">
+                                                            <label for="inlineRadio17" class="radio-inline"><input type="radio" name="livindividualradio" id="inlineRadio17" value="yes">Yes</label>
+                                                            <label for="inlineRadio18" class="radio-inline"><input type="radio" name="livindividualradio" id="inlineRadio18" value="no">No</label>
+                                                        </div><!--END radiogroup-->
+
+                                                        <div th:if="${baseTrademarkApplication.tradeMark.consentFileUploaded == false}">
+                                                            <h4 class="weight600">Upload Consent <i class="material-icons" style="position: relative; bottom: -5px;">cloud_upload</i></h4>
+                                                            <p><a href="#"><span class="glyphicon glyphicon-download" aria-hidden="true"></span> Consent Template</a></p>
+                                                            <form action="/Mark/consent/add" method="post" enctype="multipart/form-data" id="markConsentForm" class="form-horizontal">
+                                                                <div class="form-group form-group-md">
+                                                                    <label class="small upload-drop-zone" for="consentfile"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>
+                                                                        Upload Consent</label>
+                                                                    <input type="file" id="consentfile" name="file" class="form-control">
+                                                                </div><!-- Drop Zone -->
+                                                                <div class="row">
+                                                                    <div class="js-upload-finished col-xs-12 col-md-10 col-lg-8">
+                                                                        <p id="uploaded">Processed files</p>
+                                                                        <div class="list-group">
+                                                                            <a href="#" class="list-group-item list-group-item-success" aria-labelledby="uploaded"></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <input  style=" position:relative; display: none; width: 1px; height:1px;" name="AppInternalID" id="appInternalIDForm"   value="" />
+                                                                <div class="col-xs-12">
+                                                                    <button type="submit" id="consentSubmit" class="btn btn-sm" >Upload file</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+
+                                                        <div th:if="${baseTrademarkApplication.tradeMark.consentFileUploaded == true}">
+                                                            <h4 class="weight600">Consent Uploaded <i class="material-icons" style="position: relative; bottom: -5px;">check_circle</i></h4>
+
+                                                        </div>
+                                                    </div>
+                                                </th:block>
+                                                <th:block th:if="${baseTrademarkApplication.tradeMark.containNamePortaitSignature == false}">
+                                                    <div role="radiogroup" aria-labelledby="nps">
+                                                        <label for="inlineRadio7" class="radio-inline"><input type="radio" name="npsradio" id="inlineRadio7" value="yes">Yes</label>
+                                                        <label for="inlineRadio8" class="radio-inline"><input type="radio" name="npsradio" id="inlineRadio8" value="no" checked>No</label>
+                                                    </div><!--END radiogroup-->
+
+
+                                                    <div id="yesnps" role="region" aria-labelledby="translit" style="display: none;">
+                                                        <p id="whichnps">Identify which of the following it contains:</p>
+
+                                                        <input class="form-check-input checkmark" type="checkbox" value="" role="checkbox" aria-checked="false" tabindex="0" aria-labelledby="checkname" id="namechecked">
+                                                        <label class="form-check-label form-check" for="namechecked" id="checkname"><span class="radio notspecial">Name</span></label>
+
+
+
+                                                        <div id="yescontainsname" role="region" aria-labelledby="whichnps" class="form-group form-group-md">
+                                                            <div class="row">
+                                                                <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
+                                                                    <label for="name-firstname">First Name</label>
+                                                                    <input type="text" class="form-control" id="name-firstname" th:value="${baseTrademarkApplication.tradeMark.nameFirstName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
+                                                                    <label for="name-middlename">Middle Name</label>
+                                                                    <input type="text" class="form-control" id="name-middlename" th:value="${baseTrademarkApplication.tradeMark.nameMiddleName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-3">
+                                                                    <label for="name-lastname">Last Name</label>
+                                                                    <input type="text" class="form-control" id="name-lastname" th:value="${baseTrademarkApplication.tradeMark.nameLastName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-3">
+                                                                    <button type="button" class="btn-sm btn-success add ctr">Add Additional</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <input class="form-check-input checkmark" type="checkbox" value="portrait" aria-checked="false" tabindex="0" id="portraitchecked" aria-labelledby="checkportrait">
+                                                        <label class="form-check-label form-check" for="portraitchecked" id="checkportrait"><span class="radio notspecial" id="collect">Portrait</span></label>
+
+                                                        <div id="yescontainsportrait" role="region" aria-labelledby="whichnps" class="form-group form-group-md">
+                                                            <div class="row">
+                                                                <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
+                                                                    <label for="portrait-firstname">First Name</label>
+                                                                    <input type="text" class="form-control" id="portrait-firstname" th:value="${baseTrademarkApplication.tradeMark.portraitFirstName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
+                                                                    <label for="portrait-middlename">Middle Name</label>
+                                                                    <input type="text" class="form-control" id="portrait-middlename" th:value="${baseTrademarkApplication.tradeMark.portraitMiddleName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-3">
+                                                                    <label for="portrait-lastname">Last Name</label>
+                                                                    <input type="text" class="form-control" id="portrait-lastname" th:value="${baseTrademarkApplication.tradeMark.portraitLastName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-3">
+                                                                    <button type="button" class="btn-sm btn-success add ctr">Add Additional</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <input class="form-check-input checkmark" type="checkbox" value="signature" aria-checked="false" tabindex="0" aria-labelledby="checksignature" id="signaturechecked">
+                                                        <label class="form-check-label form-check" for="signaturechecked" id="checksignature"><span class="radio notspecial" id="collectm">Signature</span></label>
+
+                                                        <div id="yescontainssignature" role="region" aria-labelledby="whichnps" class="form-group form-group-md">
+                                                            <div class="row">
+                                                                <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
+                                                                    <label for="signature-firstname">First Name</label>
+                                                                    <input type="text" class="form-control" id="signature-firstname" th:value="${baseTrademarkApplication.tradeMark.signatureFirstName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
+                                                                    <label for="signature-middlename">Middle Name</label>
+                                                                    <input type="text" class="form-control" id="signature-middlename" th:value="${baseTrademarkApplication.tradeMark.signatureMiddleName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-3">
+                                                                    <label for="signature-lastname">Last Name</label>
+                                                                    <input type="text" class="form-control" id="signature-lastname" th:value="${baseTrademarkApplication.tradeMark.signatureLastName}">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-md-3">
+                                                                    <button type="button" class="btn-sm btn-success add ctr">Add Additional</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <p id="individualiving">Is this of a living individual?</p>
+                                                        <div role="radiogroup" class="form-group form-group-md" aria-labelledby="individualiving">
+                                                            <label for="inlineRadio17" class="radio-inline"><input type="radio" name="livindividualradio" id="inlineRadio17" value="yes">Yes</label>
+                                                            <label for="inlineRadio18" class="radio-inline"><input type="radio" name="livindividualradio" id="inlineRadio18" value="no">No</label>
+                                                        </div><!--END radiogroup-->
+
+                                                        <div th:if="${baseTrademarkApplication.tradeMark.consentFileUploaded == false}">
+                                                            <h4 class="weight600">Upload Consent <i class="material-icons" style="position: relative; bottom: -5px;">cloud_upload</i></h4>
+                                                            <p><a href="#"><span class="glyphicon glyphicon-download" aria-hidden="true"></span> Consent Template</a></p>
+                                                            <form action="/Mark/consent/add" method="post" enctype="multipart/form-data" id="markConsentForm" class="form-horizontal">
+                                                                <div class="form-group form-group-md">
+                                                                    <label class="small upload-drop-zone" for="consentfile"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>
+                                                                        Upload Consent</label>
+                                                                    <input type="file" id="consentfile" name="file" class="form-control">
+                                                                </div><!-- Drop Zone -->
+                                                                <div class="row">
+                                                                    <div class="js-upload-finished col-xs-12 col-md-10 col-lg-8">
+                                                                        <p id="uploaded">Processed files</p>
+                                                                        <div class="list-group">
+                                                                            <a href="#" class="list-group-item list-group-item-success" aria-labelledby="uploaded"></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <input  style=" position:relative; display: none; width: 1px; height:1px;" name="AppInternalID" id="appInternalIDForm"   value="" />
+                                                                <div class="col-xs-12">
+                                                                    <button type="submit" id="consentSubmit" class="btn btn-sm" >Upload file</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+
+                                                        <div th:if="${baseTrademarkApplication.tradeMark.consentFileUploaded == true}">
+                                                            <h4 class="weight600">Consent Uploaded <i class="material-icons" style="position: relative; bottom: -5px;">check_circle</i></h4>
+
+                                                        </div>
+                                                    </div>
+                                                </th:block>
+                                            </th:block>
                                         </div>
                                     </section>
                                 </div>
@@ -710,15 +1025,6 @@
         }
 
 
-        if(translitFW == true){
-            $('#inlineRadio5').click();
-        }
-        else {
-            if(translitFW == false) {
-                $('#inlineRadio6').click();
-            }
-
-        }
 
         if(containsSignatureName== true){
             $('#inlineRadio7').click();
