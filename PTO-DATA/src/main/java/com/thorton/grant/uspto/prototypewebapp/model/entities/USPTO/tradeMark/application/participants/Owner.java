@@ -195,6 +195,19 @@ public class Owner extends Contact{
         this.ownerDisplayname = ownerDisplayname;
     }
 
+    public String getOwnerEntityCountryOfOrigin(){
+       // this value is either united states, or bahamas
+
+        if(ownerType.equals("US")){
+           return "United States Of America";
+        }
+        else {
+            return "Bahamas";
+        }
+
+
+    }
+
 
 
     @Override

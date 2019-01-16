@@ -542,6 +542,27 @@ public class TradeMark extends BaseEntity {
         this.markWordingIndustryText = markWordingIndustryText;
     }
 
+
+    //////////////////////////////////////////////////////////////////////////////
+    // check color claim, then return the apporporiate image path, color or b&w
+    //////////////////////////////////////////////////////////////////////////////
+    public String getMarkImageDisplayPath(){
+
+        if(markColorClaim == true){
+            return getTrademarkImagePath();
+        }
+        else{
+            if(markColorClaimBW == true){
+                return getTrademarkBWImagePath();
+            }
+            else {
+                // in case nothing is set
+                return getTrademarkImagePath();
+            }
+        }
+
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

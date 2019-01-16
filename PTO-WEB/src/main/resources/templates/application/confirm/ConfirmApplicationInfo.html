@@ -107,7 +107,7 @@
                                                             <h4>Mark Image</h4>
                                                         </div>
                                                         <div class="col-xs-12 col-sm-8">
-                                                            <img th:src="${baseTrademarkApplication.tradeMark.getTrademarkImagePath()}" alt="Scrubby Butts Soap company mark" class="img-responsive">
+                                                            <img th:src="${baseTrademarkApplication.tradeMark.getMarkImageDisplayPath()}" alt="Scrubby Butts Soap company mark" class="img-responsive">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -166,7 +166,7 @@
                                                                 <h4>Citizenship</h4>
                                                             </div>
                                                             <div class="col-xs-12 col-sm-8">
-                                                                <p class="weight600" th:text="${owner.getCitizenShip()}">United States of America</p>
+                                                                <p class="weight600" th:text="${owner.getOwnerEntityCountryOfOrigin()}">United States of America</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -205,50 +205,64 @@
                                                     <span class="overline"><a href="#">Edit</a></span>
                                                     <br clear="all">
                                                 </div>
-                                                <div class="col-xs-12">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 col-sm-4">
-                                                            <h4>International Class</h4>
-                                                        </div>
-                                                        <div class="col-xs-12 col-sm-8">
-                                                            <p class="weight600">003</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-12">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 col-sm-4">
-                                                            <h4>Identification</h4>
-                                                        </div>
-                                                        <div class="col-xs-12 col-sm-8">
-                                                            <p class="weight600">SECTION 1(a)</p>
+                                                <th:block th:each="class : ${baseTrademarkApplication.getGoodAndServicesCategories()}">
+                                                    <div class="col-xs-12">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-4">
+                                                                <h4>International Class</h4>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-8">
+                                                                <p class="weight600" th:text="${class.getClassNumberDisplay()}">003</p>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-xs-12">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 col-sm-4">
-                                                            <h4>First Use Anywhere Date</h4>
-                                                        </div>
-                                                        <div class="col-xs-12 col-sm-8">
-                                                            <p class="weight600">At least as early as 07/22/2017</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-12">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 col-sm-4">
-                                                            <h4>First Use In Commerce Date</h4>
-                                                        </div>
-                                                        <div class="col-xs-12 col-sm-8">
-                                                            <p class="weight600">At least as early as 07/22/2017</p>
-                                                        </div>
-                                                        <div class="col-xs-12">
-                                                            <p class="small form-group">Use in Commerce: The applicant is using the mark in commerce on or in connection with the identified goods/services. The applicant attaches, or will later submit, one specimen as a JPG/PDF image file showing the mark as used in commerce on or in connection with any item in the class of listed goods/services, regardless of whether the mark itself is in the standard character format or is a stylized or design mark. The specimen image file may be in color, and the image must be in color if color is being claimed as a feature of the mark.<br><br>
-                                                                In International Class 0003, the mark was first used by the applicant or the applicant&#8217;s related company or licensee predecessor in interest at least as early as 07/22/2017, and first used in commerce at least as early as 07/22/2017, and is now in use in such commerce. The applicant is submitting one(or more) specimen(s) showing the mark as used in commerce on or in connection with any item in the class of listed goods/services, consisting of a(n) packaging for Scrubby Butts soap.&#8221;</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                    <th:block th:each="Good_Service: ${class.getGoodAndServices()}">
+                                                            <div class="col-xs-12">
+                                                                <div class="row">
+                                                                    <div class="col-xs-12 col-sm-4">
+                                                                        <h4>Identification</h4>
+                                                                    </div>
+                                                                    <div class="col-xs-12 col-sm-8">
+                                                                        <p class="weight600">SECTION 1(a)</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-12">
+                                                                <div class="row">
+                                                                    <div class="col-xs-12 col-sm-4">
+                                                                        <h4>Description</h4>
+                                                                    </div>
+                                                                    <div class="col-xs-12 col-sm-8">
+                                                                        <p class="weight600" th:text="${Good_Service.getClassDescription()}">Bar Soap</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-12">
+                                                                <div class="row">
+                                                                    <div class="col-xs-12 col-sm-4">
+                                                                        <h4>First Use Anywhere Date</h4>
+                                                                    </div>
+                                                                    <div class="col-xs-12 col-sm-8">
+                                                                        <p class="weight600">At least as early as <span th:text="${Good_Service.getFirstGSDateDisplay()}">12/21/2012</span></p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-12">
+                                                                <div class="row">
+                                                                    <div class="col-xs-12 col-sm-4">
+                                                                        <h4>First Use In Commerce Date</h4>
+                                                                    </div>
+                                                                    <div class="col-xs-12 col-sm-8">
+                                                                        <p class="weight600">At least as early as <span th:text="${Good_Service.getFirstCommerceDateDisplay()}">12/21/2012</span></p>
+                                                                    </div>
+                                                                    <div class="col-xs-12">
+                                                                        <p class="small form-group">Use in Commerce: The applicant is using the mark in commerce on or in connection with the identified goods/services. The applicant attaches, or will later submit, one specimen as a JPG/PDF image file showing the mark as used in commerce on or in connection with any item in the class of listed goods/services, regardless of whether the mark itself is in the standard character format or is a stylized or design mark. The specimen image file may be in color, and the image must be in color if color is being claimed as a feature of the mark.<br><br>
+                                                                            In International Class 0003, the mark was first used by the applicant or the applicant&#8217;s related company or licensee predecessor in interest at least as early as 07/22/2017, and first used in commerce at least as early as 07/22/2017, and is now in use in such commerce. The applicant is submitting one(or more) specimen(s) showing the mark as used in commerce on or in connection with any item in the class of listed goods/services, consisting of a(n) packaging for Scrubby Butts soap.&#8221;</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                    </th:block>
+                                                </th:block>
                                                 <!--//gs + basis data review-->
                                                 <div class="col-xs-12 float">
                                                     <h3 class="overline">Correspondent Information</h3>
