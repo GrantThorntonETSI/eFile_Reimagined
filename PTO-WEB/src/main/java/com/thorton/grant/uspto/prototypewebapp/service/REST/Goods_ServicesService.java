@@ -366,6 +366,27 @@ System.out.println("remove GS called 2222222222222222222222222222222");
         }
 
 
+        if(fbField.equals("gs-pfa-filing-date")){
+            // ptoUser.setState(param); // sets state code
+
+           // baseTrademarkApplication.findGSbyInternalID(gsID).setFaRegistrationNumber(fbValue);
+
+            try {
+                DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+                Date date = format.parse(fbValue);
+                baseTrademarkApplication.findGSbyInternalID(gsID).setFaFilingDate(date);
+
+            }
+            catch(Exception ex){
+                return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
+
+            }
+            appFieldReadable = "Filing Basis  Pending Foreign Application Filing Date";
+
+        }
+
+
+
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
         String responseMsg = appFieldReadable+" has been saved";
 

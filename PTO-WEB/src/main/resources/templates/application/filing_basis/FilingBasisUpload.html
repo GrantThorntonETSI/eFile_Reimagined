@@ -188,9 +188,6 @@
                                                             </th:block>
 
 
-
-
-
                                                             <!--mark is in use section -->
                                                             <div id="yescommerce" class="form-group form-group-md" th:if="${Good_Service.isMarkInUse() == true}" style=""><!--toggle 'yes' radio-->
                                                                 <div class="col-xs-12 col-md-6 form-group form-group-md">
@@ -871,7 +868,7 @@
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12">
                                                                                 <label for="application-date">Foreign application filing date:</label>
-                                                                                <input type="date" class="form-control fa-filing-date" id="application-date" name="applicationdate" value="" th:attr="gs-id=${Good_Service.getInternalID()}">
+                                                                                <input type="date" class="form-control fa-filing-date" id="application-date" name="applicationdate" value="" th:attr="gs-id=${Good_Service.getInternalID()}" th:value="${Good_Service.getFAFilingDateDisplay()}">
                                                                             </div>
                                                                         </div><!--pending foreign-->
                                                                         <div class="appendapending"></div>
@@ -1810,11 +1807,11 @@
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12">
                                                                             <label for="appnumber">Foreign application number:</label>
-                                                                            <input type="text" class="form-control fa-app-number" id="appnumber">
+                                                                            <input type="text" class="form-control fa-app-number" id="appnumber" th:attr="gs-id=${Good_Service.getInternalID()}" >
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12">
                                                                             <label for="application-date">Foreign application filing date:</label>
-                                                                            <input type="date" class="form-control fa-filing-date" id="application-date" name="applicationdate" value="">
+                                                                            <input type="date" class="form-control fa-filing-date" id="application-date" name="applicationdate" value="" th:attr="gs-id=${Good_Service.getInternalID()}" >
                                                                         </div>
                                                                     </div><!--pending foreign-->
                                                                     <div class="appendapending"></div>
@@ -2422,6 +2419,16 @@
             //alert(gsID);
             var value = $(this).val();
             addFilingBasisInfoToGoodAndService("gs-pfa-app-Number", value, gsID, appInternalID);
+
+        });
+
+
+        $('input.fa-filing-date').focusout(function () {
+            var gsID= $(this).attr("gs-id");
+
+            //alert(gsID);
+            var value = $(this).val();
+            addFilingBasisInfoToGoodAndService("gs-pfa-filing-date", value, gsID, appInternalID);
 
         });
 

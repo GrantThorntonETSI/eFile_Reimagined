@@ -174,7 +174,14 @@ public class GoodAndService {
         }
     }
 
-
+    public String getFAFilingDateDisplay() {
+        if(faFilingDate!= null) {
+            return faFilingDate.toString().substring(0, 10);
+        }
+        else {
+            return "";
+        }
+    }
     public void setFirstCommerceDate(Date firstCommerceDate) {
         this.firstCommerceDate = firstCommerceDate;
     }
