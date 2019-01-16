@@ -224,10 +224,6 @@ $(document).ready(function(){
 	});
 	//end mark color options
 
-	//start translations options
-	$("input#inlineRadio3").prop({
-		checked: false,
-	});
 
 	$('input#inlineRadio3').change(function() {
 		if(this.checked == true){
@@ -247,11 +243,7 @@ $(document).ready(function(){
 	});
 	//end translations options
 
-	//start transliterations options
-	$("input#inlineRadio5").prop({
-		checked: false,
-	});
-	$('div#yestransliteration').css('display','none');
+
 	$('input#inlineRadio5').change(function() {
 		if(this.checked == true){
 			$('div#yestransliteration').show( 500 );
@@ -270,10 +262,6 @@ $(document).ready(function(){
 	});
 	//end translations options
 
-	//start nps options
-	$("input#inlineRadio7").prop({
-		checked: false,
-	});
 
 	$('input#inlineRadio7').change(function() {
 		if(this.checked == true){
@@ -326,10 +314,7 @@ $(document).ready(function(){
 	});
 	//end nps options
 
-	//start disclaimer options
-	$("input#inlineRadio09").prop({
-		checked: false,
-	});
+
 	$('div#yesdisclaimer').css('display','none');
 	$('input#inlineRadio09').change(function() {
 		if(this.checked == true){
@@ -349,10 +334,7 @@ $(document).ready(function(){
 	});
 	//end disclaimer options
 
-	//start prior options
-	$("input#inlineRadio011").prop({
-		checked: false,
-	});
+
 	$('div#yesprior').css('display','none');
 	$('input#inlineRadio011').change(function() {
 		if(this.checked == true){
@@ -372,10 +354,6 @@ $(document).ready(function(){
 	});
 	//end prior options
 
-	//start prior options
-	$("input#inlineRadio013").prop({
-		checked: false,
-	});
 	$('div#yesmeaning').css('display','none');
 	$('input#inlineRadio013').change(function() {
 		if(this.checked == true){
@@ -395,10 +373,7 @@ $(document).ready(function(){
 	});
 	//end prior options
 
-	//start attorney options
-	$("input#inlineRadio015").prop({
-		checked: false,
-	});
+
 	$('div#yesattorneyfiling').css('display','none');
 	$('input#inlineRadio015').change(function() {
 		if(this.checked == true){
@@ -418,10 +393,7 @@ $(document).ready(function(){
 	});
 	//end attorney options
 
-	//start us foreign options
-	$("input#inlineRadio019").prop({
-		checked: false,
-	});
+
 	$('div#yesusentity').css('display','none');
 	$('input#inlineRadio019').change(function() {
 		if(this.checked == true){
@@ -457,10 +429,7 @@ $(document).ready(function(){
 	});
 	//end us foreign options
 
-	//start basis commerce options
-	$("input#inlineRadio25").prop({
-		checked: false,
-	});
+
 
 	$('input#inlineRadio25').change(function() {
 		if(this.checked == true){
@@ -480,10 +449,7 @@ $(document).ready(function(){
 	});
 	//end basis commerce options
 
-	//start basistwo connection options
-	$("input#inlineRadio29").prop({
-		checked: false,
-	});
+
 	$('div#yesconnection').css('display','none');
 	$('input#inlineRadio29').change(function() {
 		if(this.checked == true){
