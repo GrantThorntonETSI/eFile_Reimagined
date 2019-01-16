@@ -389,7 +389,7 @@
                                             </div>
                                         </div>
 
-                                        <th:block th:if="${baseTrademarkApplication.tradeMark.isTranslationSet() == false}">
+                                        <th:block th:if="${baseTrademarkApplication.tradeMark.isTranlierationSet() == false}">
                                             <div class="col-xs-12">
                                                 <p id="translit">Does your mark contain foreign wording in non-Latin characters that requires transliteration?</p>
                                                 <div role="radiogroup" aria-labelledby="translit">
@@ -420,7 +420,7 @@
 
                                             </div>
                                         </th:block>
-                                        <th:block th:if="${baseTrademarkApplication.tradeMark.isTranslationSet() == true}">
+                                        <th:block th:if="${baseTrademarkApplication.tradeMark.isTranlierationSet()== true}">
                                             <th:block th:if="${baseTrademarkApplication.tradeMark.foreignLanguateTransliterationWording == true}">
                                                 <div class="col-xs-12">
                                                     <p id="translit">Does your mark contain foreign wording in non-Latin characters that requires transliteration?</p>
@@ -1025,16 +1025,6 @@
         }
 
 
-
-        if(containsSignatureName== true){
-            $('#inlineRadio7').click();
-        }
-        else {
-            if(containsSignatureName == false) {
-                $('#inlineRadio8').click();
-            }
-
-        }
 
         if(isName == true){
             $('#checkname').click();
