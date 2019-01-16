@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/efileApplicationMarkFragment :: layout (~{::body},'user')}" xmlns="http://www.w3.org/1999/html">
+<head >
+    <meta charset="UTF-8">
+    <title>Goods and Services Review</title>
+</head>
+<body>
+<div class="row content" style="display: none;">
+    <main class="col-xs-12 col-sm-8 col-md-8 col-lg-7">
+        <!--START Content Div-->
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row">
+                    <section class="col-xs-12 steps breadcrumb-steps" aria-label="progress tracker">
+                        <div class="row displaycell">
+                            <div class="col-xs-2 one done">
+                                <div class="row">
+                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
+                                        <span>1</span>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                        <p class="first">Your details</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-2 two done">
+                                <div class="row">
+                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
+                                        <span>2</span>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                        <p>Trademark details</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-2 three done">
+                                <div class="row">
+                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
+                                        <span>3</span>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                        <p>Goods and services</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-2 four done">
+                                <div class="row">
+                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
+                                        <span>4</span>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                        <p>Basis</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-2 five done">
+                                <div class="row">
+                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
+                                        <span>5</span>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                        <p>Additional info</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-2 six active">
+                                <div class="row">
+                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
+                                        <span>6</span>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                        <p>Confirm and pay</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h1>Declaration and Signature</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12" id="declarationsignature">
+                        <div class="lead">
+                            <p>Selecting edit will take you back to the appropriate section in the application.</p>
+                        </div>
+                        <div class="card-text noexpand">
+                            <h2 class="card-title weight600">Review Application</h2>
+                        </div>
+                        <form action="" method="post" >
+                            <fieldset>
+                                <div class="row">
+                                    <div class="form-group form-group-md col-xs-12">
+                                        <div class="row">
+                                            <section aria-label="mark information" id="scrollone">
+                                                <div class="col-xs-12 float">
+                                                    <h3 class="overline">Mark Information</h3>
+                                                    <span class="overline"><a href="#">Edit</a></span>
+                                                    <br clear="all">
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-4">
+                                                            <h4>Mark Image</h4>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-8">
+                                                            <img src="images/scrubutts-09-a-68-a-jpg.jpg" alt="Scrubby Butts Soap company mark" class="img-responsive">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-4">
+                                                            <h4>Mark Literal</h4>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-8">
+                                                            <p class="weight600">Scrubby Butts Soap Co. Squeaky Clean Naturally!</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-4">
+                                                            <h4>Mark Description</h4>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-8">
+                                                            <p class="weight600">A stylized smiling baby boy with blonde hair sitting in a tan wash basin filled with blue water with blue bubbles. The wash basin intersects with two concentric ovals with the outer oval in tan and the inner oval in red. Inside the center oval is the wording &#8220;SCRUBBY BUTTS SOAP CO.&#8221; in stylized font. Below the design element is the wording &#8220;SQUEAKY CLEAN NATURALLY!&#8221; in red</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--//mark data review-->
+                                                <div class="col-xs-12 float">
+                                                    <h3 class="overline">Owner Information</h3>
+                                                    <span class="overline"><a href="#">Edit</a></span>
+                                                    <br clear="all">
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-4">
+                                                            <h4>Owner</h4>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-8">
+                                                            <p class="weight600">John Smith</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-4">
+                                                            <h4>Entity Type</h4>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-8">
+                                                            <p class="weight600">Individual</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-4">
+                                                            <h4>Citizenship</h4>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-8">
+                                                            <p class="weight600">United States of America</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-4">
+                                                            <h4>Email Address</h4>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-8">
+                                                            <p class="weight600">john.smith@gmail.com</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-4">
+                                                            <h4>Address</h4>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-8">
+                                                            <p class="weight600">123 Main Street  <br>Alexandria VA 22313</p>
+                                                        </div>
+                                                        <div class="col-xs-12">
+                                                            <p class="small form-group">Requests registration of the trademark/service mark identified above in the United States Patent and Trademark Office on the Principal Register established by the Act of July 5, 1946 (15 U.S.C. Section 1051 et seq.), as amended.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--//owner data review-->
+                                                <div class="col-xs-12 float">
+                                                    <h3 class="overline">Goods and Services and Filing Basis Information</h3>
+                                                    <span class="overline"><a href="#">Edit</a></span>
+                                                    <br clear="all">
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-4">
+                                                            <h4>International Class</h4>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-8">
+                                                            <p class="weight600">003</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-4">
+                                                            <h4>Identification</h4>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-8">
+                                                            <p class="weight600">SECTION 1(a)</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-4">
+                                                            <h4>First Use Anywhere Date</h4>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-8">
+                                                            <p class="weight600">At least as early as 07/22/2017</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-4">
+                                                            <h4>First Use In Commerce Date</h4>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-8">
+                                                            <p class="weight600">At least as early as 07/22/2017</p>
+                                                        </div>
+                                                        <div class="col-xs-12">
+                                                            <p class="small form-group">Use in Commerce: The applicant is using the mark in commerce on or in connection with the identified goods/services. The applicant attaches, or will later submit, one specimen as a JPG/PDF image file showing the mark as used in commerce on or in connection with any item in the class of listed goods/services, regardless of whether the mark itself is in the standard character format or is a stylized or design mark. The specimen image file may be in color, and the image must be in color if color is being claimed as a feature of the mark.<br><br>
+                                                                In International Class 0003, the mark was first used by the applicant or the applicant&#8217;s related company or licensee predecessor in interest at least as early as 07/22/2017, and first used in commerce at least as early as 07/22/2017, and is now in use in such commerce. The applicant is submitting one(or more) specimen(s) showing the mark as used in commerce on or in connection with any item in the class of listed goods/services, consisting of a(n) packaging for Scrubby Butts soap.&#8221;</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--//gs + basis data review-->
+                                                <div class="col-xs-12 float">
+                                                    <h3 class="overline">Correspondent Information</h3>
+                                                    <span class="overline"><a href="#">Edit</a></span>
+                                                    <br clear="all">
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-4">
+                                                            <h4>Owner</h4>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-8">
+                                                            <p class="weight600">John Smith</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-4">
+                                                            <h4>Entity Type</h4>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-8">
+                                                            <p class="weight600">Individual</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-4">
+                                                            <h4>Citizenship</h4>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-8">
+                                                            <p class="weight600">United States of America</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-4">
+                                                            <h4>Email Address</h4>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-8 checkmargin">
+                                                            <p class="weight600">john.smith@gmail.com</p>
+                                                            <input class="form-check-input checkmark" type="checkbox" value="authorizedemail" tabindex="0" aria-labelledby="authem" id="authemail">
+                                                            <label class="form-check-label form-check long" for="authemail" id="emauth"><span class="radio notspecial small" id="authem">Authorized</span></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-4">
+                                                            <h4>Address</h4>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-8">
+                                                            <p class="weight600">123 Main Street  <br>Alexandria VA 22313</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--//owner data review-->
+                                            </section>
+                                            <div class="col-xs-12">
+                                                <div class="row">
+                                                    <div class="col-xs-12" role="group" aria-label="accept">
+                                                        <div class="col-xs-12">
+                                                            <button type="button" class="btn-sm btn-success add ctr" id="acceptreview">Accept</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!--//row-->
+                                        <div class="row">
+                                            <section class="col-xs-12" aria-label="signature method">
+                                                <div class="card-text noexpand">
+                                                    <h2 class="card-title weight600">Signature Method</h2>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 form-group form-group-md">
+                                                            <label for="ta2" class="weight600">How are you signing the application?</label>
+                                                            <select class="form-control" id="signmethod">
+                                                                <option value="Select">Select Signature Method</option>
+                                                                <option value="direct">Sign Directly</option>
+                                                                <option value="handwritten">Print and Upload Handwritten Signature</option>
+                                                                <option value="send">Send to Second Party for Signature</option>
+                                                                <option value="unsigned">Submit Unsigned</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                        </div><!--//signature method-->
+                                        <div class="row" id="direct">
+                                            <section class="col-xs-12" aria-label="declarations" id="declarationschecks">
+                                                <div class="card-text noexpand">
+                                                    <h2 class="card-title weight600">Declarations</h2>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 form-group form-group-md indentctr">
+                                                            <p class="weight600">Read the following statements before signing. Acknowledge the statements by checking the boxes and signing below.</p>
+                                                            <div class="row">
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="court" tabindex="0" aria-labelledby="courtdecree" id="courtd">
+                                                                    <label class="form-check-label form-check long" for="courtd" id="courtdec"><span class="radio notspecial small" id="courtdecree">The signatory believes that the applicant is the owner of the trademark/service mark sought to be registered;</span></label>
+                                                                </div>
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="ttab" tabindex="0" aria-labelledby="priorttab" id="ttabmade">
+                                                                    <label class="form-check-label form-check long" for="ttabmade" id="ttabdecision"><span class="radio notspecial small" id="priorttab">The mark is in use in commerce on or in connection with the goods/services in the application;</span></label>
+                                                                </div>
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="conflicting" tabindex="0" aria-labelledby="conflictingreg" id="conflict">
+                                                                    <label class="form-check-label form-check long" for="conflict" id="conflictowner"><span class="radio notspecial small" id="conflictingreg">The specimen(s) shows the mark as used on or in connection with the goods/services in the application; and</span></label>
+                                                                </div>
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="earlier" tabindex="0" aria-labelledby="early" id="earlieruse">
+                                                                    <label class="form-check-label form-check long" for="earlieruse" id="firstcommerce"><span class="radio notspecial small" id="early">To the best of the signatory&#8217;s knowledge and belief, the facts recited in the application are accurate. To the best of the signatory&#8217;s knowledge and belief, no other persons, except, if applicable, concurrent users, have the right to use the mark in commerce, either in the identical form or in such near resemblance as to be likely, when used on or in connection with the goods/services of such other persons, to cause confusion or mistake, or to deceive.</span></label>
+                                                                </div>
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="earlier4" tabindex="0" aria-labelledby="earlyu" id="earlierusey">
+                                                                    <label class="form-check-label form-check long" for="earlierusey" id="firstcommercefour"><span class="radio notspecial small" id="earlyu">To the best of the signatory&#8217;s knowledge, information, and belief, formed after an inquiry reasonable under the circumstances, the allegations and other factual contentions made above have evidentiary support.</span></label>
+                                                                </div>
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="earlier5" tabindex="0" aria-labelledby="earlyx" id="earlierusex">
+                                                                    <label class="form-check-label form-check long" for="earlierusex" id="firstcommercefive"><span class="radio notspecial small" id="earlyx">The signatory being warned that willful false statements and the like are punishable by fine or imprisonment, or both, under 18 U.S.C. &#167; 1001, and that such willful false statements and the like may jeopardize the validity of the application or submission or any registration resulting therefrom, declares that all statements made of his/her own knowledge are true and all statements made on information and belief are believed to be true.</span></label>
+                                                                </div>
+                                                            </div><!--end checkbox row-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section><!--//declarations-->
+                                            <section class="col-xs-12" aria-label="sign">
+                                                <div class="card-text noexpand">
+                                                    <h2 class="card-title weight600">Sign</h2>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 form-group form-group-md">
+                                                            <div class="row">
+                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                    <p class="sr-only">Enclose the signature in forward slashes</p>
+                                                                    <label for="signature"><span class="weight600">&#42;</span> Signature</label>
+                                                                    <input type="text" class="form-control" placeholder="/Signature/" id="signature" required>
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                    <p class="sr-only">Enter the date in the following format: 20:36:14 May 30, 2019 E.T.</p>
+                                                                    <label for="datesigned">Date Signed</label>
+                                                                    <textarea type="text" rows="2" class="form-control" placeholder="20:36:14 May 30, 2019 E.T." id="datesigned"></textarea>
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                    <label for="signatoryname"><span class="weight600">&#42;</span> Signatory&#8217;s Name</label>
+                                                                    <input type="text" class="form-control" id="signatoryname" required>
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
+                                                                    <label for="signatoryphone">Signatory&#8217;s Phone Number</label>
+                                                                    <input type="text" class="form-control" id="signatoryphone">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                    <label for="signatoryposition"><span class="weight600">&#42;</span> Signatory&#8217;s Position</label>
+                                                                    <input type="text" class="form-control" id="signatoryposition" required>
+                                                                </div>
+                                                            </div><!--end checkbox row-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                        </div><!--//sign-->
+                                    </div><!--END formgroup-->
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div><!--END col-->
+                </div><!--END row-->
+
+
+
+
+
+
+            </div>
+        </div>
+        <!--prev / next buttons-->
+        <div class="inlinebuttons btn-group btn-group-justified  owner-paging-buttons" role="nav" aria-label="view previous or next page" id="prevnxt">
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-default fill prev" id="prevButton" value="previous">Previous</button>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next" disabled>Next
+                    <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
+            </div>
+        </div>
+    </main>
+</div><!--END div content-->
+
+
+<script th:inline="javascript">
+
+    /*<![CDATA[*/
+
+
+    var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
+
+    var host_name= /*[[${hostBean.host}]]*/ 'User Name';
+    var host_port= /*[[${hostBean.port}]]*/ 'User Name';
+
+
+    var host = host_name+":"+host_port;
+    var markType = /*[[${baseTrademarkApplication.tradeMark.trademarkDesignType}]]*/ 'User Name';
+
+    var  image_path = /*[[${markImagePath}]]*/ 'User Name';
+
+    var  image_pathBW = /*[[${markImagePathBW}]]*/ 'User Name';
+
+    var colorClaim = /*[[${markColorClaim}]]*/ 'User Name';
+
+    var acceptBW = /*[[${markColorClaimBW}]]*/ 'User Name';
+
+    var hasFapp =  /*[[${baseTrademarkApplication.markHasForeignRegistration}]]*/ 'User Name';
+    var hasFappSet =  /*[[${baseTrademarkApplication.markFappSet}]]*/ 'User Name';
+
+
+    var inUse =  /*[[${baseTrademarkApplication.markInUseForAllGS}]]*/ 'User Name';
+    var inUseSet =  /*[[${baseTrademarkApplication.markAllgsSet}]]*/ 'User Name';
+
+
+    /*]]>*/
+</script>
+
+
+
+<script>
+
+    var nextLinkURL = "../../application/filingBasisUpload/?trademarkID="+appInternalID;
+
+
+    if(inUse){
+        nextLinkURL = "../../application/inUseFilingBasisUpload/?trademarkID="+appInternalID;
+
+    }
+    var prevLinkURL = "../../application/goodsAndServicesReview/?trademarkID="+appInternalID;
+
+    var breadCrumb1Link = "../../application/start/?trademarkID="+appInternalID;
+    var breadCrumb2Link = "../../application/MarkDetails/?trademarkID="+appInternalID;
+
+</script>
+
+
+<script>
+
+
+    // next link url to enable  for u.s individual href="http://localhost:8080/application/owner/info"
+    $(document).ready(function() {
+        setTimeout(function () {
+            $('.content').fadeIn(500);
+        }, 500);
+
+        setTimeout(function () {
+            // after 1000 ms we add the class animated to the login/register card
+            $('#panels').fadeIn(500);
+        }, 500);
+
+
+        setTimeout(function () {
+            // after 1000 ms we add the class animated to the login/register card
+            $('#contacts-ui').fadeIn(500);
+
+
+        }, 500);
+
+        $('.glyphicon').click(function () {
+            $(this).toggleClass("glyphicon-triangle-right").toggleClass("glyphicon-triangle-bottom");
+        });
+
+
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+
+        $('#prevButton').click(function () {
+            location.href=prevLinkURL;
+        });
+
+        $('#nextButton').click(function () {
+            location.href=nextLinkURL;
+        });
+
+        $('#searchDB').click(function () {
+            location.href=prevLinkURL;
+        });
+
+
+
+
+        $('#breadcrumb1').click(function () {
+            location.href=breadCrumb1Link;
+        });
+
+
+        $('#breadcrumb2').click(function () {
+            location.href=breadCrumb2Link;
+        });
+
+
+
+
+        //////////////////////////////////////////////////////////////////////
+        // set mark image based on persisted values
+        //////////////////////////////////////////////////////////////////////
+        if(colorClaim == null){
+            if(image_path != null){
+                $('[data-toggle="popover"]').popover({
+                    title : false,
+                    html : true,
+                    content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
+                });
+
+            }
+        }
+
+        if(colorClaim == false){
+
+            if(acceptBW == true){
+                $('#inlineRadio2').click();
+                $('#bwmark').click();
+
+                $('[data-toggle="popover"]').popover({
+                    title : false,
+                    html : true,
+                    content : '<div class="media"><img src="'+image_pathBW+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
+                });
+
+
+            }
+            else{
+                if(image_path != null){
+
+                    $('[data-toggle="popover"]').popover({
+                        title : false,
+                        html : true,
+                        content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
+                    });
+
+
+
+                }
+            }
+
+        }
+        if(colorClaim == true){
+            $('#inlineRadio1').click();
+            if(image_path != null){
+
+                $('[data-toggle="popover"]').popover({
+                    title : false,
+                    html : true,
+                    content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
+                });
+
+            }
+        }
+
+
+        // listener for mark image widget popover
+        $( '#togglepop' ).click(function() {
+            $( this ).toggleClass( 'focus' );
+            $(this).html() === '<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Hide My Mark'
+                ? $(this).html('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Show My Mark')
+                : $(this).html('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Hide My Mark');
+        });
+
+
+
+
+
+
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
