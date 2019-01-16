@@ -203,7 +203,32 @@ public class GoodAndService {
     }
 
 
+    public String getIdentification(){
 
+        String identification = "";
+        if(markInUse == true){
+            if(firstCommerceDate != null || firstGSDate != null){
+                identification = identification+"SECTION 1(a), ";
+            }
+            if(pendingFA == true){
+                identification = identification+"SECTION 44(d), ";
+            }
+            if(foreignRegistration == true){
+                identification = identification+"SECTION 44(e), ";
+            }
+        }
+        else{
+
+            identification = identification+"SECTION 1(b), ";
+        }
+
+        if(identification != ""){
+            identification = identification.substring(0, identification.length()-2);
+        }
+
+
+        return identification;
+    }
 
     public void setFirstCommerceDate(Date firstCommerceDate) {
         this.firstCommerceDate = firstCommerceDate;

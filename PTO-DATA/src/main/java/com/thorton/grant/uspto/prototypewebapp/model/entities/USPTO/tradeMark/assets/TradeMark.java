@@ -52,6 +52,8 @@ public class TradeMark extends BaseEntity {
     private boolean acceptBWmark;
     private String markBWDescription;
 
+    private boolean colorClaimSet;
+
 
 
 
@@ -542,6 +544,13 @@ public class TradeMark extends BaseEntity {
         this.markWordingIndustryText = markWordingIndustryText;
     }
 
+    public boolean isColorClaimSet() {
+        return colorClaimSet;
+    }
+
+    public void setColorClaimSet(boolean colorClaimSet) {
+        this.colorClaimSet = colorClaimSet;
+    }
 
     //////////////////////////////////////////////////////////////////////////////
     // check color claim, then return the apporporiate image path, color or b&w

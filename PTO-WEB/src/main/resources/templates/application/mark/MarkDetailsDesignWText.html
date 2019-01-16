@@ -122,36 +122,133 @@
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
+
+
+
                                             <p id="color">Are you claiming color as a feature of the mark?</p>
-                                            <div aria-labelledby="color">
-                                              <input type="radio" name="coloradio" id="inlineRadio1" value="yes" checked="true">Yes
-                                               <input type="radio" name="coloradio" id="inlineRadio2" value="no">No
-                                            </div><!--END radiogroup-->
-                                            <div id="yescolorclaim"><!--toggle 'yes' radio-->
 
-                                                <img id="colorMarkInline" src="" style="position: relative; left:-5px; max-width: 250px; max-height: 200px; margin-bottom: 20px; margin-top: 11px;" />
-                                                <br>
+                                            <th:block th:if="${baseTrademarkApplication.tradeMark.isColorClaimSet() == false}">
+                                                <div aria-labelledby="color">
+                                                  <input type="radio" name="coloradio" id="inlineRadio1" value="yes">Yes
+                                                   <input type="radio" name="coloradio" id="inlineRadio2" value="no">No
+                                                </div><!--END radiogroup-->
 
-                                                <label>Identify the colors in your mark.</label>
-                                                <textarea id="mark-color-description" rows="3" class="form-control" th:text="${baseTrademarkApplication.tradeMark.markColors}"></textarea>
-                                                <h3 class="weight600">Mark Description</h3>
-                                                <b><span class="weight600">&#42;</span> Enter the description of the mark including the location of the colors. <a href="#" data-toggle="tooltip" title="If the mark is a color mark, the description must include the nature and location of the color; i.e., you must specifically state where each color is located within the mark." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></b>
-                                                <textarea id="mark-color-claim" rows="3" class="form-control" placeholder="This mark consists of" th:text="${baseTrademarkApplication.tradeMark.markColorDescription}"></textarea>
-                                            </div>
-                                            <div id="nocolorclaim"><!--toggle 'no' radio-->
 
-                                                <img id="colorMarkBWInline" src="" style="position: relative; left:-5px; max-width: 250px; max-height: 200px; margin-bottom: 20px; margin-top: 11px;" />
-                                                <input class="form-check-input checkmark" type="checkbox" value="accept B W mark" role="checkbox" aria-checked="false" tabindex="0" aria-labelledby="acceptmark" id="bwmark" style="position:relative; left:-33px;">
-                                                <label class="form-check-label form-check" for="bwmark" id="acceptmark" style="position:relative; left:-33px;"><span class="radio notspecial">Accept the black and white drawing.</span></label>
-                                                <div class="alert alert-warning" role="alert">
-                                                    <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
-                                                    <span class="sr-only">Warning:</span>
-                                                    Submitting a color drawing with no claim to color could result in a refusal and delay the examination process.
+
+
+                                                <div id="yescolorclaim"><!--toggle 'yes' radio-->
+
+                                                    <img id="colorMarkInline" src="" style="position: relative; left:-5px; max-width: 250px; max-height: 200px; margin-bottom: 20px; margin-top: 11px;" />
+                                                    <br>
+
+                                                    <label>Identify the colors in your mark.</label>
+                                                    <textarea id="mark-color-description" rows="3" class="form-control" th:text="${baseTrademarkApplication.tradeMark.markColors}"></textarea>
+                                                    <h3 class="weight600">Mark Description</h3>
+                                                    <b><span class="weight600">&#42;</span> Enter the description of the mark including the location of the colors. <a href="#" data-toggle="tooltip" title="If the mark is a color mark, the description must include the nature and location of the color; i.e., you must specifically state where each color is located within the mark." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></b>
+                                                    <textarea id="mark-color-claim" rows="3" class="form-control" placeholder="This mark consists of" th:text="${baseTrademarkApplication.tradeMark.markColorDescription}"></textarea>
                                                 </div>
-                                                <h3 class="weight600">Mark Description</h3>
-                                                <span class="weight600">&#42;</span> Provide a description of the mark.
-                                                <textarea id="mark-BW-description" rows="3" class="form-control" placeholder="" th:text="${baseTrademarkApplication.tradeMark.markBWDescription}"></textarea>
-                                            </div>
+
+
+
+                                                <div id="nocolorclaim"><!--toggle 'no' radio-->
+
+                                                    <img id="colorMarkBWInline" src="" style="position: relative; left:-5px; max-width: 250px; max-height: 200px; margin-bottom: 20px; margin-top: 11px;" />
+                                                    <input class="form-check-input checkmark" type="checkbox" value="accept B W mark" role="checkbox" aria-checked="false" tabindex="0" aria-labelledby="acceptmark" id="bwmark" style="position:relative; left:-33px;">
+                                                    <label class="form-check-label form-check" for="bwmark" id="acceptmark" style="position:relative; left:-33px;"><span class="radio notspecial">Accept the black and white drawing.</span></label>
+                                                    <div class="alert alert-warning" role="alert">
+                                                        <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+                                                        <span class="sr-only">Warning:</span>
+                                                        Submitting a color drawing with no claim to color could result in a refusal and delay the examination process.
+                                                    </div>
+                                                    <h3 class="weight600">Mark Description</h3>
+                                                    <span class="weight600">&#42;</span> Provide a description of the mark.
+                                                    <textarea id="mark-BW-description" rows="3" class="form-control" placeholder="" th:text="${baseTrademarkApplication.tradeMark.markBWDescription}"></textarea>
+                                                </div>
+
+
+                                            </th:block>
+                                            <th:block th:if="${baseTrademarkApplication.tradeMark.isColorClaimSet() == true}">
+
+                                                <th:block th:if="${baseTrademarkApplication.tradeMark.isMarkColorClaim() == true}">
+                                                    <div aria-labelledby="color">
+                                                        <input type="radio" name="coloradio" id="inlineRadio1" value="yes" checked>Yes
+                                                        <input type="radio" name="coloradio" id="inlineRadio2" value="no">No
+                                                    </div><!--END radiogroup-->
+
+
+
+
+                                                    <div id="yescolorclaim"><!--toggle 'yes' radio-->
+
+                                                        <img id="colorMarkInline" src="" style="position: relative; left:-5px; max-width: 250px; max-height: 200px; margin-bottom: 20px; margin-top: 11px;" />
+                                                        <br>
+
+                                                        <label>Identify the colors in your mark.</label>
+                                                        <textarea id="mark-color-description" rows="3" class="form-control" th:text="${baseTrademarkApplication.tradeMark.markColors}"></textarea>
+                                                        <h3 class="weight600">Mark Description</h3>
+                                                        <b><span class="weight600">&#42;</span> Enter the description of the mark including the location of the colors. <a href="#" data-toggle="tooltip" title="If the mark is a color mark, the description must include the nature and location of the color; i.e., you must specifically state where each color is located within the mark." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></b>
+                                                        <textarea id="mark-color-claim" rows="3" class="form-control" placeholder="This mark consists of" th:text="${baseTrademarkApplication.tradeMark.markColorDescription}"></textarea>
+                                                    </div>
+
+
+
+                                                    <div id="nocolorclaim" style="display: none;"><!--toggle 'no' radio-->
+
+                                                        <img id="colorMarkBWInline" src="" style="position: relative; left:-5px; max-width: 250px; max-height: 200px; margin-bottom: 20px; margin-top: 11px;" />
+                                                        <input class="form-check-input checkmark" type="checkbox" value="accept B W mark" role="checkbox" aria-checked="false" tabindex="0" aria-labelledby="acceptmark" id="bwmark" style="position:relative; left:-33px;">
+                                                        <label class="form-check-label form-check" for="bwmark" id="acceptmark" style="position:relative; left:-33px;"><span class="radio notspecial">Accept the black and white drawing.</span></label>
+                                                        <div class="alert alert-warning" role="alert">
+                                                            <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+                                                            <span class="sr-only">Warning:</span>
+                                                            Submitting a color drawing with no claim to color could result in a refusal and delay the examination process.
+                                                        </div>
+                                                        <h3 class="weight600">Mark Description</h3>
+                                                        <span class="weight600">&#42;</span> Provide a description of the mark.
+                                                        <textarea id="mark-BW-description" rows="3" class="form-control" placeholder="" th:text="${baseTrademarkApplication.tradeMark.markBWDescription}"></textarea>
+                                                    </div>
+                                                </th:block>
+                                                <th:block th:if="${baseTrademarkApplication.tradeMark.isMarkColorClaim() == false}">
+                                                    <div aria-labelledby="color">
+                                                        <input type="radio" name="coloradio" id="inlineRadio1" value="yes">Yes
+                                                        <input type="radio" name="coloradio" id="inlineRadio2" value="no" checked>No
+                                                    </div><!--END radiogroup-->
+
+
+
+
+                                                    <div id="yescolorclaim" style="display: none;"><!--toggle 'yes' radio-->
+
+                                                        <img id="colorMarkInline" src="" style="position: relative; left:-5px; max-width: 250px; max-height: 200px; margin-bottom: 20px; margin-top: 11px;" />
+                                                        <br>
+
+                                                        <label>Identify the colors in your mark.</label>
+                                                        <textarea id="mark-color-description" rows="3" class="form-control" th:text="${baseTrademarkApplication.tradeMark.markColors}"></textarea>
+                                                        <h3 class="weight600">Mark Description</h3>
+                                                        <b><span class="weight600">&#42;</span> Enter the description of the mark including the location of the colors. <a href="#" data-toggle="tooltip" title="If the mark is a color mark, the description must include the nature and location of the color; i.e., you must specifically state where each color is located within the mark." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></b>
+                                                        <textarea id="mark-color-claim" rows="3" class="form-control" placeholder="This mark consists of" th:text="${baseTrademarkApplication.tradeMark.markColorDescription}"></textarea>
+                                                    </div>
+
+
+
+                                                    <div id="nocolorclaim" style=""><!--toggle 'no' radio-->
+
+                                                        <img id="colorMarkBWInline" src="" style="position: relative; left:-5px; max-width: 250px; max-height: 200px; margin-bottom: 20px; margin-top: 11px;" />
+                                                        <input class="form-check-input checkmark" type="checkbox" value="accept B W mark" role="checkbox" aria-checked="false" tabindex="0" aria-labelledby="acceptmark" id="bwmark" style="position:relative; left:-33px;">
+                                                        <label class="form-check-label form-check" for="bwmark" id="acceptmark" style="position:relative; left:-33px;"><span class="radio notspecial">Accept the black and white drawing.</span></label>
+                                                        <div class="alert alert-warning" role="alert">
+                                                            <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+                                                            <span class="sr-only">Warning:</span>
+                                                            Submitting a color drawing with no claim to color could result in a refusal and delay the examination process.
+                                                        </div>
+                                                        <h3 class="weight600">Mark Description</h3>
+                                                        <span class="weight600">&#42;</span> Provide a description of the mark.
+                                                        <textarea id="mark-BW-description" rows="3" class="form-control" placeholder="" th:text="${baseTrademarkApplication.tradeMark.markBWDescription}"></textarea>
+                                                    </div>
+                                                </th:block>
+
+                                            </th:block>
+
+
                                         </div>
                                     </section>
                                 </div>
@@ -495,8 +592,8 @@
         if(colorClaim == false){
 
             if(acceptBW == true){
-                $('#inlineRadio2').click();
-                $('#bwmark').click();
+               // $('#inlineRadio2').click();
+               // $('#bwmark').click();
 
                 $('[data-toggle="popover"]').popover({
                     title : false,
@@ -524,7 +621,7 @@
 
         }
         if(colorClaim == true){
-            $('#inlineRadio1').click();
+           // $('#inlineRadio1').click();
             if(image_path != null){
 
                 $('[data-toggle="popover"]').popover({

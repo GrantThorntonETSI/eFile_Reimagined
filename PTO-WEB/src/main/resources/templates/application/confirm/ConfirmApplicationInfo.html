@@ -223,7 +223,7 @@
                                                                         <h4>Identification</h4>
                                                                     </div>
                                                                     <div class="col-xs-12 col-sm-8">
-                                                                        <p class="weight600">SECTION 1(a)</p>
+                                                                        <p class="weight600"th:text="${Good_Service.getIdentification()}">SECTION 1(a)</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -557,14 +557,14 @@
 
 <script>
 
-    var nextLinkURL = "../../application/filingBasisUpload/?trademarkID="+appInternalID;
+    var prevLinkURL = "../../application/filingBasisUpload/?trademarkID="+appInternalID;
 
 
     if(inUse){
-        nextLinkURL = "../../application/inUseFilingBasisUpload/?trademarkID="+appInternalID;
+        prevLinkURL = "../../application/inUseFilingBasisUpload/?trademarkID="+appInternalID;
 
     }
-    var prevLinkURL = "../../application/goodsAndServicesReview/?trademarkID="+appInternalID;
+    var nextLinkURL = "";
 
     var breadCrumb1Link = "../../application/start/?trademarkID="+appInternalID;
     var breadCrumb2Link = "../../application/MarkDetails/?trademarkID="+appInternalID;

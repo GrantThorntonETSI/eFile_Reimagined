@@ -201,8 +201,7 @@ $(document).ready(function(){
 
 	//START toggle radio buttons content
 	//start mark color options
-	$('div#nocolorclaim').css('display','none');
-	$('div#yescolorclaim').css('display','none');
+
 	$('input#inlineRadio1').change(function() {
 		if(this.checked == true){
 			$('div#nocolorclaim').hide( 500 );

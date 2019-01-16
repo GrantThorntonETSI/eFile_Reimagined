@@ -132,6 +132,12 @@ System.out.println("remove GS called 2222222222222222222222222222222");
                 }
                 baseTrademarkApplication.setMarkInUseForAllGS(true);
                 baseTrademarkApplication.setMarkAllgsSet(true);
+                // we need to loop though all gs and set its in use to true
+                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                    GoodAndService current = iter.next();
+                    current.setMarkInUse(true);
+                    current.setMarkInUseSet(true);
+                }
             }
             else {
                 if(baseTrademarkApplication.isMarkAllgsSet() == false){
@@ -144,8 +150,12 @@ System.out.println("remove GS called 2222222222222222222222222222222");
                     }
                     baseTrademarkApplication.setMarkInUseForAllGS(false);
                 }
-
-
+                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                    GoodAndService current = iter.next();
+                    current.setMarkInUse(false);
+                    current.setMarkInUseSet(true);
+                }
+                // we need to loop though all gs and set its in use to false
 
             }
             appFieldReadable = "Filing Basis mark in use option";
