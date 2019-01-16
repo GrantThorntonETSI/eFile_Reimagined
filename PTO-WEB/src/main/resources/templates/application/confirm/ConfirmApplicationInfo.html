@@ -98,7 +98,7 @@
                                             <section aria-label="mark information" id="scrollone">
                                                 <div class="col-xs-12 float">
                                                     <h3 class="overline">Mark Information</h3>
-                                                    <span class="overline"><a href="#">Edit</a></span>
+                                                    <span class="overline"><a href="#" id="mark-image-edit">Edit</a></span>
                                                     <br clear="all">
                                                 </div>
                                                 <div class="col-xs-12">
@@ -134,7 +134,7 @@
                                                 <!--//mark data review-->
                                                 <div class="col-xs-12 float">
                                                     <h3 class="overline">Owner Information</h3>
-                                                    <span class="overline"><a href="#">Edit</a></span>
+                                                    <span class="overline"><a href="#" id="mark-owner-edit">Edit</a></span>
                                                     <br clear="all">
                                                 </div>
 
@@ -202,7 +202,7 @@
 
                                                 <div class="col-xs-12 float">
                                                     <h3 class="overline">Goods and Services and Filing Basis Information</h3>
-                                                    <span class="overline"><a href="#">Edit</a></span>
+                                                    <span class="overline"><a href="#" id="mark-fb-edit">Edit</a></span>
                                                     <br clear="all">
                                                 </div>
                                                 <th:block th:each="class : ${baseTrademarkApplication.getGoodAndServicesCategories()}">
@@ -264,13 +264,14 @@
                                                     </th:block>
                                                 </th:block>
                                                 <!--//gs + basis data review-->
+                                                <div class="col-xs-12 float">
+                                                    <h3 class="overline">Correspondent Information</h3>
+                                                    <span class="overline"><a href="#" id="mark-cors-link">Edit</a></span>
+                                                    <br clear="all">
+                                                </div>
 
                                                 <th:block th:if="${baseTrademarkApplication.isAttorneyFiling() == true}">
-                                                    <div class="col-xs-12 float">
-                                                        <h3 class="overline">Correspondent Information</h3>
-                                                        <span class="overline"><a href="#">Edit</a></span>
-                                                        <br clear="all">
-                                                    </div>
+
                                                     <div class="col-xs-12">
                                                         <div class="row">
                                                             <div class="col-xs-12 col-sm-4">
@@ -326,11 +327,7 @@
                                                     <!--//owner data review-->
                                                 </th:block>
                                                 <th:block th:if="${baseTrademarkApplication.isAttorneyFiling() == false}">
-                                                    <div class="col-xs-12 float">
-                                                        <h3 class="overline">Correspondent Information</h3>
-                                                        <span class="overline"><a href="#">Edit</a></span>
-                                                        <br clear="all">
-                                                    </div>
+
                                                     <div class="col-xs-12">
                                                         <div class="row">
                                                             <div class="col-xs-12 col-sm-4">
@@ -548,6 +545,7 @@
 
     var inUse =  /*[[${baseTrademarkApplication.markInUseForAllGS}]]*/ 'User Name';
     var inUseSet =  /*[[${baseTrademarkApplication.markAllgsSet}]]*/ 'User Name';
+    var attorneyOpt = /*[[${baseTrademarkApplication.isAttorneyFiling()}]]*/ 'User Name';
 
 
     /*]]>*/
@@ -568,6 +566,22 @@
 
     var breadCrumb1Link = "../../application/start/?trademarkID="+appInternalID;
     var breadCrumb2Link = "../../application/MarkDetails/?trademarkID="+appInternalID;
+
+    var markImageEditLink = "../../mark/designWithText/?trademarkID="+appInternalID;
+
+    var markOwnerEditLink = "../../application/OwnerSetView/?trademarkID="+appInternalID;
+
+    var markGSEditLink = "../../application/goodsAndServicesReview/?trademarkID="+appInternalID;
+
+    var corrspondentEditLink = "../../application/OwnerSetView/?trademarkID="+appInternalID;
+    if(attorneyOpt == true){
+        corrspondentEditLink = "../../application/AttorneySet/?trademarkID="+appInternalID;
+    }
+
+
+
+
+
 
 </script>
 
@@ -696,6 +710,16 @@
         });
 
 
+
+
+
+
+        // set edit links
+
+        $('#mark-image-edit').attr("href", markImageEditLink);
+        $('#mark-owner-edit').attr("href",markOwnerEditLink);
+        $('#mark-fb-edit').attr("href", markGSEditLink);
+        $('#mark-cors-link').attr("href",corrspondentEditLink);
 
 
 
