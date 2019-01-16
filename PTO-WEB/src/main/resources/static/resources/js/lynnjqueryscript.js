@@ -228,7 +228,7 @@ $(document).ready(function(){
 	$("input#inlineRadio3").prop({
 		checked: false,
 	});
-	$('div#yestranslation').css('display','none');
+
 	$('input#inlineRadio3').change(function() {
 		if(this.checked == true){
 			$('div#yestranslation').show( 500 );

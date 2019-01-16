@@ -62,6 +62,8 @@ public class TradeMark extends BaseEntity {
 
     // translation
     private boolean foreignLanguageTranslationWording;
+    private boolean translationSet;
+
     private String  foreignLanguageType_translation;
     private String foreignLanguageTranslationOriginalText;
     private String foreignLanguageTranslationUSText;
@@ -71,6 +73,8 @@ public class TradeMark extends BaseEntity {
 
     // transliteration
     private boolean foreignLanguateTransliterationWording;
+    private boolean tranlierationSet;
+
     private String  foreignLanguageType_transliteration;
     private String foreignLanguateTransliterationOriginalText;
     private String foreignLanguateTransliterationUSText;
@@ -550,6 +554,22 @@ public class TradeMark extends BaseEntity {
 
     public void setColorClaimSet(boolean colorClaimSet) {
         this.colorClaimSet = colorClaimSet;
+    }
+
+    public boolean isTranslationSet() {
+        return translationSet;
+    }
+
+    public void setTranslationSet(boolean translationSet) {
+        this.translationSet = translationSet;
+    }
+
+    public boolean isTranlierationSet() {
+        return tranlierationSet;
+    }
+
+    public void setTranlierationSet(boolean tranlierationSet) {
+        this.tranlierationSet = tranlierationSet;
     }
 
     //////////////////////////////////////////////////////////////////////////////

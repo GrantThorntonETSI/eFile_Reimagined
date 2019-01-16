@@ -267,37 +267,111 @@
                                                 <p>A translation of a trademark is the meaning in English of any non-English wording. Every application to register a trademark that includes non-English wording must include a translation of that wording. <a href="https://tmep.uspto.gov/RDMS/TMEP/current#/current/TMEP-800d1e2300.html" target="_blank">More information</a>.</p>
                                             </div>
                                         </div>
-                                        <div class="col-xs-12">
-                                            <p id="foreign">Does your mark contain foreign wording?</p>
-                                            <div  aria-labelledby="foreign">
-                                                <input type="radio" name="foreignradio" id="inlineRadio3" value="yes">Yes
-                                                <input type="radio" name="foreignradio" id="inlineRadio4" value="no">No
-                                            </div><!--END radiogroup-->
-                                            <div id="yestranslation"><!--toggle 'yes' radio-->
-                                                <h3 class="weight600">Enter the foreign language and the translation.</h3>
-                                                <div class="form-group form-group-md col-xs-12 col-md-3">
-                                                    <b for="language">Language</b>
-                                                    <select class="form-control" id="language" th:field="${baseTrademarkApplication.tradeMark.foreignLanguageType_translation}">
-                                                        <option value="Select">Select</option>
-                                                        <option value="Spanish">Spanish</option>
-                                                        <option value="German">German</option>
-                                                        <option value="French">French</option>
-                                                    </select>
+
+                                        <th:block th:if="${baseTrademarkApplication.tradeMark.isTranslationSet() == false}">
+                                            <div class="col-xs-12">
+                                                <p id="foreign">Does your mark contain foreign wording?</p>
+                                                <div  aria-labelledby="foreign">
+                                                    <input type="radio" name="foreignradio" id="inlineRadio3" value="yes">Yes
+                                                    <input type="radio" name="foreignradio" id="inlineRadio4" value="no">No
+                                                </div><!--END radiogroup-->
+                                                <div id="yestranslation" style="display: none;"><!--toggle 'yes' radio-->
+                                                    <h3 class="weight600">Enter the foreign language and the translation.</h3>
+                                                    <div class="form-group form-group-md col-xs-12 col-md-3">
+                                                        <b for="language">Language</b>
+                                                        <select class="form-control" id="language" th:field="${baseTrademarkApplication.tradeMark.foreignLanguageType_translation}">
+                                                            <option value="Select">Select</option>
+                                                            <option value="Spanish">Spanish</option>
+                                                            <option value="German">German</option>
+                                                            <option value="French">French</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group form-group-md col-xs-12 col-md-5">
+                                                        <b>The English Translation of</b>
+                                                        <input type="text" class="form-control" id="engtranslation" th:value="${baseTrademarkApplication.tradeMark.foreignLanguageTranslationOriginalText}" >
+                                                    </div>
+                                                    <div class="form-group form-group-md col-xs-12 col-md-4">
+                                                        <b >in the mark is</b>
+                                                        <input type="text" class="form-control" id="inthemark" th:value="${baseTrademarkApplication.tradeMark.foreignLanguageTranslationUSText}">
+                                                    </div>
                                                 </div>
-                                                <div class="form-group form-group-md col-xs-12 col-md-5">
-                                                    <b>The English Translation of</b>
-                                                    <input type="text" class="form-control" id="engtranslation" th:value="${baseTrademarkApplication.tradeMark.foreignLanguageTranslationOriginalText}" >
+                                                <div id="notranslation"><!--toggle 'no' radio-->
+
                                                 </div>
-                                                <div class="form-group form-group-md col-xs-12 col-md-4">
-                                                    <b >in the mark is</b>
-                                                    <input type="text" class="form-control" id="inthemark" th:value="${baseTrademarkApplication.tradeMark.foreignLanguageTranslationUSText}">
-                                                </div>
-                                            </div>
-                                            <div id="notranslation"><!--toggle 'no' radio-->
 
                                             </div>
+                                        </th:block>
+                                        <th:block th:if="${baseTrademarkApplication.tradeMark.isTranslationSet() == true}">
+                                            <th:block th:if="${baseTrademarkApplication.tradeMark.foreignLanguageTranslationWording == true}">
+                                                <div class="col-xs-12">
+                                                    <p id="foreign">Does your mark contain foreign wording?</p>
+                                                    <div  aria-labelledby="foreign">
+                                                        <input type="radio" name="foreignradio" id="inlineRadio3" value="yes" checked>Yes
+                                                        <input type="radio" name="foreignradio" id="inlineRadio4" value="no">No
+                                                    </div><!--END radiogroup-->
+                                                    <div id="yestranslation"><!--toggle 'yes' radio-->
+                                                        <h3 class="weight600">Enter the foreign language and the translation.</h3>
+                                                        <div class="form-group form-group-md col-xs-12 col-md-3">
+                                                            <b for="language">Language</b>
+                                                            <select class="form-control" id="language" th:field="${baseTrademarkApplication.tradeMark.foreignLanguageType_translation}">
+                                                                <option value="Select">Select</option>
+                                                                <option value="Spanish">Spanish</option>
+                                                                <option value="German">German</option>
+                                                                <option value="French">French</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group form-group-md col-xs-12 col-md-5">
+                                                            <b>The English Translation of</b>
+                                                            <input type="text" class="form-control" id="engtranslation" th:value="${baseTrademarkApplication.tradeMark.foreignLanguageTranslationOriginalText}" >
+                                                        </div>
+                                                        <div class="form-group form-group-md col-xs-12 col-md-4">
+                                                            <b >in the mark is</b>
+                                                            <input type="text" class="form-control" id="inthemark" th:value="${baseTrademarkApplication.tradeMark.foreignLanguageTranslationUSText}">
+                                                        </div>
+                                                    </div>
+                                                    <div id="notranslation"><!--toggle 'no' radio-->
 
-                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </th:block>
+                                            <th:block th:if="${baseTrademarkApplication.tradeMark.foreignLanguageTranslationWording == false}">
+                                                <div class="col-xs-12">
+                                                    <p id="foreign">Does your mark contain foreign wording?</p>
+                                                    <div  aria-labelledby="foreign">
+                                                        <input type="radio" name="foreignradio" id="inlineRadio3" value="yes">Yes
+                                                        <input type="radio" name="foreignradio" id="inlineRadio4" value="no" checked>No
+                                                    </div><!--END radiogroup-->
+                                                    <div id="yestranslation" style="display: none;"><!--toggle 'yes' radio-->
+                                                        <h3 class="weight600">Enter the foreign language and the translation.</h3>
+                                                        <div class="form-group form-group-md col-xs-12 col-md-3">
+                                                            <b for="language">Language</b>
+                                                            <select class="form-control" id="language" th:field="${baseTrademarkApplication.tradeMark.foreignLanguageType_translation}">
+                                                                <option value="Select">Select</option>
+                                                                <option value="Spanish">Spanish</option>
+                                                                <option value="German">German</option>
+                                                                <option value="French">French</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group form-group-md col-xs-12 col-md-5">
+                                                            <b>The English Translation of</b>
+                                                            <input type="text" class="form-control" id="engtranslation" th:value="${baseTrademarkApplication.tradeMark.foreignLanguageTranslationOriginalText}" >
+                                                        </div>
+                                                        <div class="form-group form-group-md col-xs-12 col-md-4">
+                                                            <b >in the mark is</b>
+                                                            <input type="text" class="form-control" id="inthemark" th:value="${baseTrademarkApplication.tradeMark.foreignLanguageTranslationUSText}">
+                                                        </div>
+                                                    </div>
+                                                    <div id="notranslation"><!--toggle 'no' radio-->
+
+                                                    </div>
+
+                                                </div>
+                                            </th:block>
+                                        </th:block>
+
+
+
                                     </section>
                                 </div>
                             </div><!--END translation-->
@@ -635,15 +709,6 @@
             }
         }
 
-        if(translationFW == true){
-            $('#inlineRadio3').click();
-        }
-        else {
-            if(translationFW == false) {
-                $('#inlineRadio4').click();
-            }
-
-        }
 
         if(translitFW == true){
             $('#inlineRadio5').click();

@@ -108,10 +108,12 @@ public class TradeMarkService extends BaseRESTapiService {
 
             if(markValue.equals("yes")){
                 baseTrademarkApplication.getTradeMark().setForeignLanguageTranslationWording(true);
+                baseTrademarkApplication.getTradeMark().setTranslationSet(true);
 
             }
             if(markValue.equals("no")){
                 baseTrademarkApplication.getTradeMark().setForeignLanguageTranslationWording(false);
+                baseTrademarkApplication.getTradeMark().setTranslationSet(true);
 
             }
 
