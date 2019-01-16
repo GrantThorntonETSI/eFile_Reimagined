@@ -394,6 +394,14 @@ System.out.println("remove GS called 2222222222222222222222222222222");
 
         }
 
+        if(fbField.equals("gs-pfr-reg-Number")){
+            // ptoUser.setState(param); // sets state code
+
+            baseTrademarkApplication.findGSbyInternalID(gsID).setFrRegistartionNumber(fbValue);
+
+            appFieldReadable = "Filing Basis Foreign Registration Number";
+
+        }
 
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);

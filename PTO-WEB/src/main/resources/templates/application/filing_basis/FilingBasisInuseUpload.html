@@ -1106,7 +1106,7 @@
                                                                     </div>
                                                                     <div class="form-group form-group-md col-xs-12">
                                                                         <label for="appnumbertwo">Foreign registration number:</label>
-                                                                        <input type="text" class="form-control" id="appnumbertwo">
+                                                                        <input type="text" class="form-control fr-reg-number" id="appnumbertwo" th:attr="gs-id=${Good_Service.getInternalID()}">
                                                                     </div>
                                                                     <div class="form-group form-group-md col-xs-12">
                                                                         <label for="reg-date">Foreign registration expiration date:</label>
@@ -1389,7 +1389,7 @@
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12">
                                                                             <label for="appnumbertwo">Foreign registration number:</label>
-                                                                            <input type="text" class="form-control" id="appnumbertwo">
+                                                                            <input type="text" class="form-control fr-reg-number" id="appnumbertwo"  th:attr="gs-id=${Good_Service.getInternalID()}" th:value="${Good_Service.getFrRegistartionNumber()}">
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12">
                                                                             <label for="reg-date">Foreign registration expiration date:</label>
@@ -1656,12 +1656,14 @@
                     // unhide  parent next div
                     // call auto save yes on foreign application
                     $(this).parent().next().next().show(500);
+                    addFilingBasisInfoToGoodAndService("gs-pfr-option", "yes", gsID, appInternalID);
 
                 }
                 else{
                     // hide parent next div
                     // call auto save no on forgeign application
                     $(this).parent().next().next().fadeOut(500);
+                    addFilingBasisInfoToGoodAndService("gs-pfr-option", "no", gsID, appInternalID);
 
                 }
 
@@ -1684,6 +1686,7 @@
                     $(this).prev().prev().attr("checked", false);
                     $(this).prev().prev().prev().prev().attr("disabled",true);
                     $(this).prev().prev().prev().prev().attr("checked",false);
+                    addFilingBasisInfoToGoodAndService("gs-pna-option", "yes", gsID, appInternalID);
 
                 }
                 else{
@@ -1691,7 +1694,8 @@
                     // call auto save no on forgeign application
                     //$(this).parent().next().next().fadeOut(500);
                     $(this).prev().prev().attr("disabled", false);
-                    $(this).prev().prev().prev().prev().attr("disabled",false)
+                    $(this).prev().prev().prev().prev().attr("disabled",false);
+                    addFilingBasisInfoToGoodAndService("gs-pna-option", "no", gsID, appInternalID);
 
                 }
 
@@ -1755,6 +1759,15 @@
 
             addFilingBasisInfoToGoodAndService("gs-pfr-country", value, gsID, appInternalID);
 
+
+        });
+
+        $('input.fr-reg-number').focusout(function () {
+            var gsID= $(this).attr("gs-id");
+
+            //alert(gsID);
+            var value = $(this).val();
+            addFilingBasisInfoToGoodAndService("gs-pfr-reg-Number", value, gsID, appInternalID);
 
         });
 

@@ -1131,7 +1131,7 @@
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12">
                                                                             <label for="appnumbertwo">Foreign registration number:</label>
-                                                                            <input type="text" class="form-control" id="appnumbertwo">
+                                                                            <input type="text" class="form-control fr-reg-number" id="appnumbertwo"  th:attr="gs-id=${Good_Service.getInternalID()}" th:value="${Good_Service.getFrRegistartionNumber()}">
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12">
                                                                             <label for="reg-date">Foreign registration expiration date:</label>
@@ -1414,7 +1414,7 @@
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12">
                                                                                 <label for="appnumbertwo">Foreign registration number:</label>
-                                                                                <input type="text" class="form-control" id="appnumbertwo">
+                                                                                <input type="text" class="form-control fr-reg-number" id="appnumbertwo"  th:attr="gs-id=${Good_Service.getInternalID()}">
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12">
                                                                                 <label for="reg-date">Foreign registration expiration date:</label>
@@ -2074,7 +2074,7 @@
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12">
                                                                             <label for="appnumbertwo">Foreign registration number:</label>
-                                                                            <input type="text" class="form-control" id="appnumbertwo">
+                                                                            <input type="text" class="form-control fr-reg-number" id="appnumbertwo"  th:attr="gs-id=${Good_Service.getInternalID()}">
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12">
                                                                             <label for="reg-date">Foreign registration expiration date:</label>
@@ -2449,6 +2449,14 @@
 
         });
 
+        $('input.fr-reg-number').focusout(function () {
+            var gsID= $(this).attr("gs-id");
+
+            //alert(gsID);
+            var value = $(this).val();
+            addFilingBasisInfoToGoodAndService("gs-pfr-reg-Number", value, gsID, appInternalID);
+
+        });
         // end foreign registartion
 
         ////////////////////////////////////////////////////////////////////////////////////////
