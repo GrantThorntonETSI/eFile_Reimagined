@@ -25,6 +25,15 @@ p {
     margin-bottom: .6em;
     line-height: 1.16em;
 }
+p#showmarktxt {
+    font-family: Palatino, Garamond, Bookman, Avant Garde;
+    font-size:2em;
+    text-align:center;
+    margin-bottom:0;
+}
+.uppercase {
+    text-transform:uppercase;
+}
 iframe {
     width:100%;
     height:100%;
@@ -320,6 +329,21 @@ main {
 #goodservideo .match {
     min-height: 400px;
 }
+.float h3 {
+    float:left;
+    width: 80%;
+}
+.float span {
+    float:right;
+    width: 20%;
+    text-align: right;
+}
+.imagefloat {
+    float:right;
+    position:relative;
+    width:40px;
+    margin-right:13px;
+}
 h1 {
     font-size:2.2em;
     line-height: .98em;
@@ -327,6 +351,80 @@ h1 {
 #designwithtext h3 {
     margin-top: 1em;
     margin-bottom: 1em;
+}
+.overline {
+    border-top:1px solid #333;
+    padding-top: .5em;
+    padding-right: .5em;
+    margin-bottom:1.6em;
+}
+.overlinerow {
+    border-top:1px solid #333;
+    border-bottom:1px solid #333;
+    margin-left:0;
+    margin-right:0;
+    padding: .7em 0 0 0;
+}
+.underlinerow {
+    border-bottom:1px solid #333;
+    margin-left:0;
+    margin-right:0;
+    padding: 0 0 1.3em 0;
+    margin-bottom: 1em;
+}
+.underlinerow .small p {
+    text-align:right;
+    font-size:.6em;
+    margin-bottom:0;
+}
+.underlinerow h2#enter {
+    margin-top:2em;
+}
+.overlinerow h3 {
+    margin-bottom: .6em;
+    line-height: 1.16em;
+    color:#808080;
+    text-transform:uppercase;
+    font-size:.8em
+}
+
+#declarationsignature h4 {
+    font-weight:normal;
+    margin:0;
+    margin-bottom: 1.3em;
+}
+#declarationsignature #authem .small {
+    margin-bottom: 3.3em;
+}
+#declarationsignature .form-check span#authem::before {
+    bottom: .2em!important;
+}
+#declarationsignature #declarationschecks label {
+    margin-top:0!important;
+    margin-bottom:0!important;
+}
+#declarationsignature #declarationschecks span {
+    margin-top:0!important;
+    margin-bottom:0!important;
+}
+#declarationsignature .form-check span::before {
+    top:.2em!important;
+    bottom:auto!important;
+}
+#declarationsignature .form-check span::before {
+    content: '\f00c'!important;
+    font-family: 'FontAwesome';
+    color: #fff;
+    -webkit-transition: color .2s;
+    transition: color .2s;
+    font-size: 1.4em;
+    padding-left: .14em;
+}
+#declarationsignature .form-check span::after {
+    content:'';
+}
+#declarationsignature .checkmargin {
+    margin-bottom:2em!important;
 }
 h4, h5, h6 {
     margin-top: 2em;
@@ -641,7 +739,7 @@ label a:hover {
     position: absolute;
     left: -999em;
 }
-#examples .img-responsive, #uploaded .img-responsive, #panels .img-responsive {
+#examples .img-responsive, #uploaded .img-responsive, #panels .img-responsive, #detected .img-responsive {
     margin:0 auto;
     float:none;
 }
@@ -693,6 +791,37 @@ label a:hover {
 .card-text.noexpand {
     padding: 9px 0 9px 18px;
 }
+#payment .card-text.noexpand {
+    background-color:#EEEEEE;
+    padding: 0 0 0 15px;
+}
+.card-text.noexpand .rowheader h3 {
+    font-weight:normal;
+    font-size:.7em;
+    line-height: 1.16em;
+    padding: .8em;
+    min-height: 40px;
+    padding-right: 0;
+}
+.card-text.noexpand .rowheader p {
+    font-size:.8em;
+    background-color: #fff;
+    min-height: 32px;
+    padding: .7em;
+    margin-bottom:0;
+    padding-right: 0;
+}
+.rowheader h3.morepad {
+    padding-left: 1.4em!important;
+}
+.rowheader p.morepad {
+    padding-left: 1.2em!important;
+}
+.rowheader div {
+    padding:0;
+    margin:0;
+    padding-top: .5em;
+}
 .noexpand.blue {
     background-color: #004C97;
     color: #fff;
@@ -707,13 +836,12 @@ label a:hover {
     padding: 8px 0 8px 0;
     width:100%;
 }
+#payment .lead {
+    font-size:inherit;
+}
 .lead p {
     font-size:.761905em;
     margin-bottom:0;
-}
-.insertform h2.card-title {
-    padding-top:4px;
-    padding-bottom:4px;
 }
 .weight600 {
     font-weight:600;
@@ -738,10 +866,20 @@ span.weight600 {
 .checkbox-inline, .radio-inline {
     padding-left: 21px;
 }
+input[type=date]::-webkit-inner-spin-button, input[type=month]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
 label {
     font-weight: 400;
     font-size:inherit;
     margin-bottom: .6em;
+}
+label.hasinfo {
+    display:inline-block;
+    margin-right:.5em;
+    margin-bottom: 0;
+    margin-top: 0;
 }
 .badge {
     line-height: inherit;
@@ -764,13 +902,52 @@ label {
 .visuallyadded {
     display:inline-block!important;
 }
+.visuallyaddedblock {
+    display:block!important;
+}
 .phone, .phones {
     padding-left:0!important;
     padding-right:0!important;
 }
+#payment .form-inline input, #payment .form-inline select {
+    float:right;
+    width:50%;
+}
+#payment .form-inline label {
+    vertical-align:middle;
+    margin-bottom:0;
+    margin-top:.6em;
+}
+/*SCROLL*/
+#scrollone {
+    overflow: scroll;
+    max-height:300px;
+    margin:auto 5%;
+    overflow:auto;
+    overflow-y:auto;
+    overflow-x:auto;
+}
+#scrollone::-webkit-scrollbar {
+    width: .4em;
+}
+#scrollone::-webkit-scrollbar-track {
+    background: #fff;
+}
+#scrollone::-webkit-scrollbar-thumb {
+    background: #808080;
+}
+#scrollone::-webkit-scrollbar-thumb:hover {
+    background: #004C97;
+}
 /*BUTTONS*/
 button[disabled] {
     background-color: #eee!important;
+}
+label.disabled {
+    color:#ddd;
+}
+label.disabled span {
+    border-color: #eee!important;
 }
 .inlinebuttons {
     margin:0 auto;
@@ -804,10 +981,6 @@ button[disabled] {
     margin:0 auto;
     margin-top:1.2em;
     margin-bottom:1em;
-}
-#plusforeign, #pluspending {
-    width: 400px;
-    margin: 0 auto;
 }
 .btn-success.active.focus, .btn-success.active:focus, .btn-success.focus, .btn-success:active.focus, .btn-success:active:focus, .btn-success:focus, .btn-default:focus {
     /*outline: thin dotted;*/
@@ -896,7 +1069,7 @@ button#moreoptionsbtn {
     font-size: inherit;
     font-weight: 400;
 }
-.btn-success:active:focus, btn.btn-success:active:hover, .btn-success:focus, .btn-success:hover {
+.btn-success:active:focus, btn.btn-success:active:hover, .btn-success:focus, .btn-success:hover, .btn-success:active.focus, btn.btn-success:active.hover, .btn-success.focus, .btn-success.hover {
     background-color: #047db0;
     border-color: #057eb1;
 }
@@ -919,6 +1092,38 @@ button#moreoptionsbtn {
     padding:8px 10px!important;
     margin-top:16.16px;
     margin-bottom:16.16px;
+}
+.btn-group-justified.large {
+    float:none;
+    max-width:600px;
+    margin:0 auto;
+}
+/* MODALS*/
+.modal-content {
+    -webkit-border-top-left-radius: 		0;
+    -webkit-border-top-right-radius: 		0;
+    -webkit-border-bottom-left-radius: 		0;
+    -webkit-border-bottom-right-radius: 	0;
+    -moz-border-top-left-radius: 			0;
+    -moz-border-top-right-radius: 			0;
+    -moz-border-bottom-left-radius: 		0;
+    -moz-border-bottom-right-radius: 		0;
+    border-top-left-radius: 				0;
+    border-top-right-radius: 				0;
+    border-bottom-left-radius: 				0;
+    border-bottom-right-radius: 			0;
+    border: 0;
+    -webkit-box-shadow:none;
+    -moz-box-shadow:none;
+    box-shadow:none;
+    font-size:.8em;
+    font-weight:400;
+    color: #fff;
+    background-color:#9BB8D3;
+}
+.modal-body {
+    color: #333;
+    background-color:#fff;
 }
 .glyphicon-menu-right {
     color:#fff;
@@ -970,11 +1175,10 @@ div[role="heading"] button {
     padding:0;
     font-weight:600;
     outline-offset: 4px;
-    color: #808080;
-}
-.Accordion-trigger {
-    font-weight: 600;
     color: #333;
+}
+.Accordion-trigger.link {
+    color: #337ab7;
 }
 .Accordion-trigger .btn-link:focus, .Accordion-trigger .btn-link:hover {
     color: #808080;
@@ -1002,6 +1206,9 @@ div[role="heading"] button {
 }
 input[type="file"]:focus {
     margin-left: 0;
+}
+select, input[type="text"], input[type="email"], input[type="date"], input[type="date"] {
+    min-height: 38px;
 }
 #goodsandservices_wrapper input[type="search"] {
     margin-left: 1em!important;
@@ -1117,6 +1324,7 @@ input[type="checkbox"]{
 }
 .form-check span.small.radio::after {
     font-size: 1.6em!important;
+    top: 9%;
 }
 .form-check span.radio::after {
     content: '\f00c';
@@ -1144,7 +1352,7 @@ input[type="checkbox"]:focus + label span.radio::before {
     outline: 1px auto -webkit-focus-ring-color!important;
     outline-offset: 2px!important;
 }
-input[type="date"] {
+input[type="date"], input[type="date"] {
     padding:0 12px;
     line-height:.95em!important;
 }
@@ -1221,7 +1429,7 @@ input[type="radio"]:focus + label span.checkmark::after {
     background: white;
 }
 /* FIX for smooth animations */
-#nocolorclaim, #yescolorclaim, #notranslation, #yestranslation, #yestransliteration, #yesnps, #markoptions, #yesattorneyfiling, #yesusentity, #gsselected {
+#nocolorclaim, #yescolorclaim, #notranslation, #yestranslation, #yestransliteration, #yesnps, #markoptions, #yesattorneyfiling, #yesusentity, #gsselected, #register2, #yesdistict, #yespart, #yeswhole, #yesevidence, #yesotherform, #yeswholeother, #yespartother, #hideshowconcurrentuses {
     overflow:hidden;
 }
 /* FILE UPLOAD */
@@ -1254,7 +1462,7 @@ input[type="radio"]:focus + label span.checkmark::after {
     outline-offset: -2px;
     border:2px dashed transparent;
 }
-#attorney input[type=file], #owner input[type=file], #uploadmark input[type=file], #yesnps input[type=file], #basisabde input[type=file] {
+#attorney input[type=file], #owner input[type=file], #uploadmark input[type=file], #yesnps input[type=file], #basisabde input[type=file], #detected input[type=file] {
     width: 0.1px;
     height: 0.1px;
     opacity: 0;
@@ -1320,9 +1528,27 @@ button[type=submit] {
 #gsselected button.close {
     font-size: 1.45em;
     color:#111;
+    margin: 0 auto;
 }
 .closepans {
+    display: -webkit-flex;
     flex: 1;
+}
+#displaytext, p#showmarktxt {
+    display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-wrap: break-word;
+    word-wrap:break-word;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    columns: 2;
+    -webkit-column-width: 100px;
+    -moz-column-width: 100px;
+    column-width: 100px;
+    word-break:break-all;
+    min-height: 149px;
 }
 #gsselected .panel-heading {
     -webkit-border-top-left-radius: 		0;
@@ -1396,7 +1622,7 @@ footer {
     top: 100%;
     width: 100%;
     background-color: #222222;
-    margin-top:127px;
+    margin-top:200px;
 }
 footer p {
     font-size:.7em;
@@ -1437,6 +1663,13 @@ a.footer-brand {
     border-color: #1596D1;
     outline: 0;
 }
+@media (max-width: 500px){
+    #payment .form-inline input {
+        float:none!important;
+        width:100%!important;
+        margin-top:1em!important;
+    }
+}
 @media (min-width: 768px){
     .navbar-nav#lowernav>li {
         float: right;
@@ -1463,6 +1696,12 @@ a.footer-brand {
         top: 10%!important;
     }
 }
+@media (max-width: 827px) {
+    .form-check span.small.match.radio::after {
+        font-size: 1.6em !important;
+        top: -26%!important;
+    }
+}
 @media (min-width: 507px) and (max-width: 767px) {
     .form-check span.small.radio::after {
         top: -22%;
@@ -1476,6 +1715,11 @@ a.footer-brand {
 @media (min-width: 800px) {
     .inlinebuttons {
         width: 61%;
+    }
+    #declarationsignature .indentctr {
+        width: 90%;
+        margin: 0 auto;
+        float: none;
     }
 }
 @media (max-width: 768px) {
@@ -1577,17 +1821,15 @@ a.footer-brand {
     #mydata2 .list-group-item a#clearform {
         margin-left: 0;
     }
+    .form-check {
+        padding-left: 50px;
+    }
 }
 @media (max-width: 1199px) {
     btn.fill, .btn-success.fill, .btn-default.fill  {
         margin:0 auto;
         margin-top:.8em;
         margin-bottom:0;
-    }
-}
-@media (min-width: 700px) {
-    .steps p {
-        font-size: .85em;
     }
 }
 /* IMAGES */
@@ -1622,6 +1864,11 @@ a.footer-brand {
         font-size: .82em;
     }
 }
+@media (min-width: 700px) {
+    .steps p {
+        font-size: .85em;
+    }
+}
 @media (min-width: 992px) {
     #goodservideo .bgimg {
         background: url('../images/tmin_news_06_goods_and_services_lg.jpg');
@@ -1633,6 +1880,22 @@ a.footer-brand {
 @media (orientation: portrait) {
     .stickycomponents {
         margin-bottom: 100%!important;
+    }
+}
+@media (min-width: 1400px) {
+    .wide {
+        width:70%;
+    }
+    #declarationsignature .indentctr {
+        width: 60%;
+    }
+}
+@media (min-width: 2150px) {
+    .wide {
+        width:60%;
+    }
+    #declarationsignature .indentctr {
+        width: 50%;
     }
 }
 
