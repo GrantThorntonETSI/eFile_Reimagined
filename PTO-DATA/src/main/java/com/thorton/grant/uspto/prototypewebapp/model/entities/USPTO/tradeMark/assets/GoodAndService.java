@@ -182,6 +182,29 @@ public class GoodAndService {
             return "";
         }
     }
+
+
+    public String getFRexpirationDateDisplay() {
+        if(frExpirationDate!= null) {
+            return frExpirationDate.toString().substring(0, 10);
+        }
+        else {
+            return "";
+        }
+    }
+
+    public String getFRrenewalDateDisplay() {
+        if(frRenewlDate!= null) {
+            return frRenewlDate.toString().substring(0, 10);
+        }
+        else {
+            return "";
+        }
+    }
+
+
+
+
     public void setFirstCommerceDate(Date firstCommerceDate) {
         this.firstCommerceDate = firstCommerceDate;
     }
