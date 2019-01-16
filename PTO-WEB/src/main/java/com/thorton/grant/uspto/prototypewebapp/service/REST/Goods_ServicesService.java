@@ -385,6 +385,15 @@ System.out.println("remove GS called 2222222222222222222222222222222");
 
         }
 
+        if(fbField.equals("gs-pfr-country")){
+            // ptoUser.setState(param); // sets state code
+
+            baseTrademarkApplication.findGSbyInternalID(gsID).setFrCountry(fbValue);
+
+            appFieldReadable = "Filing Basis Foreign Registration Country";
+
+        }
+
 
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
