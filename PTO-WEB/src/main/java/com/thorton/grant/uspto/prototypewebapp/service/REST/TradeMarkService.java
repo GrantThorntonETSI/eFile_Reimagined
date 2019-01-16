@@ -354,10 +354,12 @@ public class TradeMarkService extends BaseRESTapiService {
 
             if(markValue.equals("yes")){
                 baseTrademarkApplication.getTradeMark().setActvieDisclaimer(true);
+                baseTrademarkApplication.getTradeMark().setDisclaimerSet(true);
 
             }
             if(markValue.equals("no")){
                 baseTrademarkApplication.getTradeMark().setActvieDisclaimer(false);
+                baseTrademarkApplication.getTradeMark().setDisclaimerSet(true);
 
             }
 
@@ -381,9 +383,12 @@ public class TradeMarkService extends BaseRESTapiService {
             if(markValue.equals("yes")){
                 baseTrademarkApplication.getTradeMark().setPriorRegistratoin(true);
 
+                baseTrademarkApplication.getTradeMark().setPriorRegistratoinSet(true);
+
             }
             if(markValue.equals("no")){
                 baseTrademarkApplication.getTradeMark().setPriorRegistratoin(false);
+                baseTrademarkApplication.getTradeMark().setPriorRegistratoinSet(true);
 
             }
 
@@ -406,10 +411,12 @@ public class TradeMarkService extends BaseRESTapiService {
 
             if(markValue.equals("yes")){
                 baseTrademarkApplication.getTradeMark().setMarkWordingHasSignifigance(true);
+                baseTrademarkApplication.getTradeMark().setMeaningSet(true);
 
             }
             if(markValue.equals("no")){
                 baseTrademarkApplication.getTradeMark().setMarkWordingHasSignifigance(false);
+                baseTrademarkApplication.getTradeMark().setMeaningSet(true);
 
             }
 

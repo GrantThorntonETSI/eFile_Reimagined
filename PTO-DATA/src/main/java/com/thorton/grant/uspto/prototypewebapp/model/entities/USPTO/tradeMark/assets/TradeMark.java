@@ -116,15 +116,20 @@ public class TradeMark extends BaseEntity {
     // disclaimer fields
 
     private boolean actvieDisclaimer;
+    private boolean disclaimerSet;
 
     private String disclaimerDeclaration;
 
 
 
     private boolean priorRegistratoin;
+    private boolean priorRegistratoinSet;
+
     private String priorRegistrationNumber;
 
     private boolean markWordingHasSignifigance;
+    private boolean meaningSet;
+
     private String  markWordingSignifiganceText;
 
     private String markWordingIndustryText;
@@ -579,6 +584,30 @@ public class TradeMark extends BaseEntity {
 
     public void setNamePortraitSet(boolean namePortraitSet) {
         this.namePortraitSet = namePortraitSet;
+    }
+
+    public boolean isDisclaimerSet() {
+        return disclaimerSet;
+    }
+
+    public void setDisclaimerSet(boolean disclaimerSet) {
+        this.disclaimerSet = disclaimerSet;
+    }
+
+    public boolean isPriorRegistratoinSet() {
+        return priorRegistratoinSet;
+    }
+
+    public void setPriorRegistratoinSet(boolean priorRegistratoinSet) {
+        this.priorRegistratoinSet = priorRegistratoinSet;
+    }
+
+    public boolean isMeaningSet() {
+        return meaningSet;
+    }
+
+    public void setMeaningSet(boolean meaningSet) {
+        this.meaningSet = meaningSet;
     }
 
     //////////////////////////////////////////////////////////////////////////////

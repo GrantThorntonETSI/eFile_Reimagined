@@ -116,22 +116,66 @@
                                             </div>
                                             <div class="col-xs-12">
                                                 <p id="disclaim">Is there a portion of your mark that you wish to disclaim?</p>
-                                                <div role="radiogroup" aria-labelledby="disclaim">
-                                                    <label for="inlineRadio09" class="radio-inline"><input type="radio" name="disclaimradio" id="inlineRadio09" value="yes">Yes</label>
-                                                    <label for="inlineRadio010" class="radio-inline"><input type="radio" name="disclaimradio" id="inlineRadio010" value="no">No</label>
-                                                </div><!--END radiogroup-->
-                                                <div id="yesdisclaimer" class="form-group form-group-md form-horizontal"><!--toggle 'yes' radio-->
-                                                    <div class="col-xs-12 control-label">
-                                                        <p>No claim is made to the exclusive right to use</p>
+
+                                                <th:block th:if="${baseTrademarkApplication.tradeMark.isDisclaimerSet() == false}">
+                                                    <div role="radiogroup" aria-labelledby="disclaim">
+                                                        <label for="inlineRadio09" class="radio-inline"><input type="radio" name="disclaimradio" id="inlineRadio09" value="yes">Yes</label>
+                                                        <label for="inlineRadio010" class="radio-inline"><input type="radio" name="disclaimradio" id="inlineRadio010" value="no">No</label>
+                                                    </div><!--END radiogroup-->
+                                                    <div id="yesdisclaimer" class="form-group form-group-md form-horizontal" style="display: none;"><!--toggle 'yes' radio-->
+                                                        <div class="col-xs-12 control-label">
+                                                            <p>No claim is made to the exclusive right to use</p>
+                                                        </div>
+                                                        <div class="col-xs-12">
+                                                            <label for="yesdisclaim" class="sr-only">No claim is made to the exclusive right to use this part of the mark apart from the mark as shown</label>
+                                                            <input type="text" class="form-control" id="yesdisclaim" aria-label="Enter the portion of your mark that you wish to disclaim." th:value="${baseTrademarkApplication.tradeMark.disclaimerDeclaration}">
+                                                        </div>
+                                                        <div class="col-xs-12 control-label">
+                                                            <p>apart from the mark as shown.</p>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-xs-12">
-                                                        <label for="yesdisclaim" class="sr-only">No claim is made to the exclusive right to use this part of the mark apart from the mark as shown</label>
-                                                        <input type="text" class="form-control" id="yesdisclaim" aria-label="Enter the portion of your mark that you wish to disclaim." th:value="${baseTrademarkApplication.tradeMark.disclaimerDeclaration}">
-                                                    </div>
-                                                    <div class="col-xs-12 control-label">
-                                                        <p>apart from the mark as shown.</p>
-                                                    </div>
-                                                </div>
+                                                </th:block>
+                                                <th:block th:if="${baseTrademarkApplication.tradeMark.isDisclaimerSet() == true}">
+                                                    <th:block th:if="${baseTrademarkApplication.tradeMark.isActvieDisclaimer() == true}">
+                                                        <div role="radiogroup" aria-labelledby="disclaim">
+                                                            <label for="inlineRadio09" class="radio-inline"><input type="radio" name="disclaimradio" id="inlineRadio09" value="yes" checked>Yes</label>
+                                                            <label for="inlineRadio010" class="radio-inline"><input type="radio" name="disclaimradio" id="inlineRadio010" value="no">No</label>
+                                                        </div><!--END radiogroup-->
+                                                        <div id="yesdisclaimer" class="form-group form-group-md form-horizontal"><!--toggle 'yes' radio-->
+                                                            <div class="col-xs-12 control-label">
+                                                                <p>No claim is made to the exclusive right to use</p>
+                                                            </div>
+                                                            <div class="col-xs-12">
+                                                                <label for="yesdisclaim" class="sr-only">No claim is made to the exclusive right to use this part of the mark apart from the mark as shown</label>
+                                                                <input type="text" class="form-control" id="yesdisclaim" aria-label="Enter the portion of your mark that you wish to disclaim." th:value="${baseTrademarkApplication.tradeMark.disclaimerDeclaration}">
+                                                            </div>
+                                                            <div class="col-xs-12 control-label">
+                                                                <p>apart from the mark as shown.</p>
+                                                            </div>
+                                                        </div>
+                                                    </th:block>
+                                                    <th:block th:if="${baseTrademarkApplication.tradeMark.isActvieDisclaimer() == false}">
+                                                        <div role="radiogroup" aria-labelledby="disclaim">
+                                                            <label for="inlineRadio09" class="radio-inline"><input type="radio" name="disclaimradio" id="inlineRadio09" value="yes">Yes</label>
+                                                            <label for="inlineRadio010" class="radio-inline"><input type="radio" name="disclaimradio" id="inlineRadio010" value="no" checked>No</label>
+                                                        </div><!--END radiogroup-->
+                                                        <div id="yesdisclaimer" class="form-group form-group-md form-horizontal" style="display: none;"><!--toggle 'yes' radio-->
+                                                            <div class="col-xs-12 control-label">
+                                                                <p>No claim is made to the exclusive right to use</p>
+                                                            </div>
+                                                            <div class="col-xs-12">
+                                                                <label for="yesdisclaim" class="sr-only">No claim is made to the exclusive right to use this part of the mark apart from the mark as shown</label>
+                                                                <input type="text" class="form-control" id="yesdisclaim" aria-label="Enter the portion of your mark that you wish to disclaim." th:value="${baseTrademarkApplication.tradeMark.disclaimerDeclaration}">
+                                                            </div>
+                                                            <div class="col-xs-12 control-label">
+                                                                <p>apart from the mark as shown.</p>
+                                                            </div>
+                                                        </div>
+                                                    </th:block>
+                                                </th:block>
+
+
+
                                             </div>
                                         </section>
                                     </div>
@@ -149,21 +193,69 @@
                                                     <p>If you own one or more prior registrations for the same mark (same wording, design, etc.) list it below.</p>
                                                 </div>
                                             </div>
-                                            <div class="col-xs-12">
-                                                <p id="prioreg">Do you have a prior registration for the same mark?</p>                                                        <div role="radiogroup" aria-labelledby="prioreg">
-                                                <label for="inlineRadio011" class="radio-inline"><input type="radio" name="priorradio" id="inlineRadio011" value="yes">Yes</label>
-                                                <label for="inlineRadio012" class="radio-inline"><input type="radio" name="priorradio" id="inlineRadio012" value="no">No</label>
-                                            </div><!--END radiogroup-->
-                                                <div id="yespriordiv" role="region" aria-labelledby="prioreg" class="form-group form-group-md" style="display: none;">
-                                                    <div class="col-xs-12 col-md-9">
-                                                        <label for="yesprior">Enter prior U.S. registration numbers.</label>
-                                                        <input type="text" class="form-control" id="yesprior" th:value="${baseTrademarkApplication.tradeMark.priorRegistrationNumber}" >
+
+                                            <th:block th:if="${baseTrademarkApplication.tradeMark.isPriorRegistratoinSet() == false}">
+                                                <div class="col-xs-12">
+                                                    <p id="prioreg">Do you have a prior registration for the same mark?</p>
+                                                    <div role="radiogroup" aria-labelledby="prioreg">
+                                                        <label for="inlineRadio011" class="radio-inline"><input type="radio" name="priorradio" id="inlineRadio011" value="yes">Yes</label>
+                                                        <label for="inlineRadio012" class="radio-inline"><input type="radio" name="priorradio" id="inlineRadio012" value="no">No</label>
+                                                    </div><!--END radiogroup-->
+                                                    <div id="yespriordiv" role="region" aria-labelledby="prioreg" class="form-group form-group-md" style="display: none;">
+                                                        <div class="col-xs-12 col-md-9">
+                                                            <label for="yesprior">Enter prior U.S. registration numbers.</label>
+                                                            <input type="text" class="form-control" id="yesprior" th:value="${baseTrademarkApplication.tradeMark.priorRegistrationNumber}" >
+                                                        </div>
+                                                        <div class="col-xs-12 col-md-3">
+                                                            <button type="button" class="btn btn-sm btn-primary add">Add Number</button>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-xs-12 col-md-3">
-                                                        <button type="button" class="btn btn-sm btn-primary add">Add Number</button>
-                                                    </div>
+
                                                 </div>
-                                            </div>
+                                            </th:block>
+                                            <th:block th:if="${baseTrademarkApplication.tradeMark.isPriorRegistratoinSet() == true}">
+                                                <th:block th:if="${baseTrademarkApplication.tradeMark.isPriorRegistratoin() == true}">
+                                                    <div class="col-xs-12">
+                                                        <p id="prioreg">Do you have a prior registration for the same mark?</p>
+                                                        <div role="radiogroup" aria-labelledby="prioreg">
+                                                            <label for="inlineRadio011" class="radio-inline"><input type="radio" name="priorradio" id="inlineRadio011" value="yes" checked>Yes</label>
+                                                            <label for="inlineRadio012" class="radio-inline"><input type="radio" name="priorradio" id="inlineRadio012" value="no">No</label>
+                                                        </div><!--END radiogroup-->
+                                                        <div id="yespriordiv" role="region" aria-labelledby="prioreg" class="form-group form-group-md" style="">
+                                                            <div class="col-xs-12 col-md-9">
+                                                                <label for="yesprior">Enter prior U.S. registration numbers.</label>
+                                                                <input type="text" class="form-control" id="yesprior" th:value="${baseTrademarkApplication.tradeMark.priorRegistrationNumber}" >
+                                                            </div>
+                                                            <div class="col-xs-12 col-md-3">
+                                                                <button type="button" class="btn btn-sm btn-primary add">Add Number</button>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </th:block>
+                                                <th:block th:if="${baseTrademarkApplication.tradeMark.isPriorRegistratoin() == false}">
+                                                    <div class="col-xs-12">
+                                                        <p id="prioreg">Do you have a prior registration for the same mark?</p>
+                                                        <div role="radiogroup" aria-labelledby="prioreg">
+                                                            <label for="inlineRadio011" class="radio-inline"><input type="radio" name="priorradio" id="inlineRadio011" value="yes">Yes</label>
+                                                            <label for="inlineRadio012" class="radio-inline"><input type="radio" name="priorradio" id="inlineRadio012" value="no" checked>No</label>
+                                                        </div><!--END radiogroup-->
+                                                        <div id="yespriordiv" role="region" aria-labelledby="prioreg" class="form-group form-group-md" style="display: none;">
+                                                            <div class="col-xs-12 col-md-9">
+                                                                <label for="yesprior">Enter prior U.S. registration numbers.</label>
+                                                                <input type="text" class="form-control" id="yesprior" th:value="${baseTrademarkApplication.tradeMark.priorRegistrationNumber}" >
+                                                            </div>
+                                                            <div class="col-xs-12 col-md-3">
+                                                                <button type="button" class="btn btn-sm btn-primary add">Add Number</button>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </th:block>
+                                            </th:block>
+
+
+
                                         </section>
                                     </div>
                                 </div><!--END Active Prior U.S. Registration-->
@@ -182,11 +274,12 @@
                                             </div>
                                             <div class="margincontent">
                                                 <p id="meansignificance">Does the wording in your mark have a particular meaning or significance in your industry?</p>
+                                                <th:block th:if="${baseTrademarkApplication.tradeMark.isMeaningSet() == false}">
                                                 <div role="radiogroup" aria-labelledby="meansignificance">
                                                     <label for="inlineRadio013" class="radio-inline"><input type="radio" name="meaningradio" id="inlineRadio013" value="yes">Yes</label>
                                                     <label for="inlineRadio014" class="radio-inline"><input type="radio" name="meaningradio" id="inlineRadio014" value="no">No</label>
                                                 </div><!--END radiogroup-->
-                                                <div id="yesmeaning" role="region" class="form-horizontal form-group form-group-md">
+                                                <div id="yesmeaning" role="region" class="form-horizontal form-group form-group-md" style="display: none;">
                                                     <div class="col-xs-12 col-md-7">
                                                         <label for="yesmeaning" class="sr-only">What has meaning or significance?</label>
                                                         <input type="text" class="form-control" id="yesmeaning" th:value="${baseTrademarkApplication.tradeMark.markWordingSignifiganceText}" >
@@ -202,6 +295,55 @@
                                                         <p>in the relevant trade or industry.</p>
                                                     </div>
                                                 </div>
+                                            </th:block>
+                                                <th:block th:if="${baseTrademarkApplication.tradeMark.isMeaningSet() == true}">
+                                                    <th:block th:if="${baseTrademarkApplication.tradeMark.isMarkWordingHasSignifigance() == true}">
+                                                        <div role="radiogroup" aria-labelledby="meansignificance">
+                                                            <label for="inlineRadio013" class="radio-inline"><input type="radio" name="meaningradio" id="inlineRadio013" value="yes" checked>Yes</label>
+                                                            <label for="inlineRadio014" class="radio-inline"><input type="radio" name="meaningradio" id="inlineRadio014" value="no">No</label>
+                                                        </div><!--END radiogroup-->
+                                                        <div id="yesmeaning" role="region" class="form-horizontal form-group form-group-md">
+                                                            <div class="col-xs-12 col-md-7">
+                                                                <label for="yesmeaning" class="sr-only">What has meaning or significance?</label>
+                                                                <input type="text" class="form-control" id="yesmeaning" th:value="${baseTrademarkApplication.tradeMark.markWordingSignifiganceText}" >
+                                                            </div>
+                                                            <div class="control-label col-xs-12 col-md-5">
+                                                                <p>in the mark means or signifies</p>
+                                                            </div>
+
+                                                            <div class="col-xs-12 col-md-7" style="margin-top: 5px;">
+                                                                <input type="text" class="form-control" id="yesIndustry" th:value="${baseTrademarkApplication.tradeMark.markWordingIndustryText}" >
+                                                            </div>
+                                                            <div class="control-label col-xs-12 col-md-5">
+                                                                <p>in the relevant trade or industry.</p>
+                                                            </div>
+                                                        </div>
+                                                    </th:block>
+                                                    <th:block th:if="${baseTrademarkApplication.tradeMark.isMarkWordingHasSignifigance() == false}">
+                                                        <div role="radiogroup" aria-labelledby="meansignificance">
+                                                            <label for="inlineRadio013" class="radio-inline"><input type="radio" name="meaningradio" id="inlineRadio013" value="yes">Yes</label>
+                                                            <label for="inlineRadio014" class="radio-inline"><input type="radio" name="meaningradio" id="inlineRadio014" value="no" checked>No</label>
+                                                        </div><!--END radiogroup-->
+                                                        <div id="yesmeaning" role="region" class="form-horizontal form-group form-group-md" style="display: none;">
+                                                            <div class="col-xs-12 col-md-7">
+                                                                <label for="yesmeaning" class="sr-only">What has meaning or significance?</label>
+                                                                <input type="text" class="form-control" id="yesmeaning" th:value="${baseTrademarkApplication.tradeMark.markWordingSignifiganceText}" >
+                                                            </div>
+                                                            <div class="control-label col-xs-12 col-md-5">
+                                                                <p>in the mark means or signifies</p>
+                                                            </div>
+
+                                                            <div class="col-xs-12 col-md-7" style="margin-top: 5px;">
+                                                                <input type="text" class="form-control" id="yesIndustry" th:value="${baseTrademarkApplication.tradeMark.markWordingIndustryText}" >
+                                                            </div>
+                                                            <div class="control-label col-xs-12 col-md-5">
+                                                                <p>in the relevant trade or industry.</p>
+                                                            </div>
+                                                        </div>
+                                                    </th:block>
+                                                </th:block>
+
+
                                             </div>
                                         </section>
                                     </div>
@@ -369,37 +511,8 @@
                 : $(this).html('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Hide My Mark');
         });
 
-        if(activeDisclaimer == true){
-            $('#inlineRadio09').click();
-        }
-        else {
-            if(activeDisclaimer == false) {
-                $('#inlineRadio010').click();
-            }
-
-        }
 
 
-        if(priorRegistration == true){
-            $('#inlineRadio011').click();
-        }
-        else {
-            if(priorRegistration == false) {
-                $('#inlineRadio012').click();
-            }
-
-        }
-
-
-        if(markHasMeaning == true){
-            $('#inlineRadio013').click();
-        }
-        else {
-            if(markHasMeaning == false) {
-                $('#inlineRadio014').click();
-            }
-
-        }
 
 
 

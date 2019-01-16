@@ -315,7 +315,6 @@ $(document).ready(function(){
 	//end nps options
 
 
-	$('div#yesdisclaimer').css('display','none');
 	$('input#inlineRadio09').change(function() {
 		if(this.checked == true){
 			$('div#yesdisclaimer').show( 500 );
@@ -354,7 +353,6 @@ $(document).ready(function(){
 	});
 	//end prior options
 
-	$('div#yesmeaning').css('display','none');
 	$('input#inlineRadio013').change(function() {
 		if(this.checked == true){
 			$('div#yesmeaning').show( 500 );
