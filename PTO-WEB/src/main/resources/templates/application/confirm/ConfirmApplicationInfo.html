@@ -264,64 +264,127 @@
                                                     </th:block>
                                                 </th:block>
                                                 <!--//gs + basis data review-->
-                                                <div class="col-xs-12 float">
-                                                    <h3 class="overline">Correspondent Information</h3>
-                                                    <span class="overline"><a href="#">Edit</a></span>
-                                                    <br clear="all">
-                                                </div>
-                                                <div class="col-xs-12">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 col-sm-4">
-                                                            <h4>Owner</h4>
-                                                        </div>
-                                                        <div class="col-xs-12 col-sm-8">
-                                                            <p class="weight600">John Smith</p>
+
+                                                <th:block th:if="${baseTrademarkApplication.isAttorneyFiling() == true}">
+                                                    <div class="col-xs-12 float">
+                                                        <h3 class="overline">Correspondent Information</h3>
+                                                        <span class="overline"><a href="#">Edit</a></span>
+                                                        <br clear="all">
+                                                    </div>
+                                                    <div class="col-xs-12">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-4">
+                                                                <h4>Owner</h4>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-8">
+                                                                <p class="weight600" th:text="${baseTrademarkApplication.primaryLawyer.firstName}+' '+${baseTrademarkApplication.primaryLawyer.lastName}">John Smith</p>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-xs-12">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 col-sm-4">
-                                                            <h4>Entity Type</h4>
-                                                        </div>
-                                                        <div class="col-xs-12 col-sm-8">
-                                                            <p class="weight600">Individual</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-12">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 col-sm-4">
-                                                            <h4>Citizenship</h4>
-                                                        </div>
-                                                        <div class="col-xs-12 col-sm-8">
-                                                            <p class="weight600">United States of America</p>
+                                                    <div class="col-xs-12">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-4">
+                                                                <h4>Entity Type</h4>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-8">
+                                                                <p class="weight600">Attorney</p>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-xs-12">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 col-sm-4">
-                                                            <h4>Email Address</h4>
-                                                        </div>
-                                                        <div class="col-xs-12 col-sm-8 checkmargin">
-                                                            <p class="weight600">john.smith@gmail.com</p>
-                                                            <input class="form-check-input checkmark" type="checkbox" value="authorizedemail" tabindex="0" aria-labelledby="authem" id="authemail">
-                                                            <label class="form-check-label form-check long" for="authemail" id="emauth"><span class="radio notspecial small" id="authem">Authorized</span></label>
+                                                    <div class="col-xs-12">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-4">
+                                                                <h4>Citizenship</h4>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-8">
+                                                                <p class="weight600" th:text="${baseTrademarkApplication.primaryOwner.getOwnerEntityCountryOfOrigin()}">United States of America</p>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-xs-12">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 col-sm-4">
-                                                            <h4>Address</h4>
-                                                        </div>
-                                                        <div class="col-xs-12 col-sm-8">
-                                                            <p class="weight600">123 Main Street  <br>Alexandria VA 22313</p>
+                                                    <div class="col-xs-12">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-4">
+                                                                <h4>Email Address</h4>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-8 checkmargin">
+                                                                <p class="weight600" th:text="${baseTrademarkApplication.primaryLawyer.getEmail()}">john.smith@gmail.com</p>
+                                                                <input class="form-check-input checkmark" type="checkbox" value="authorizedemail" tabindex="0" aria-labelledby="authem" id="authemail">
+                                                                <label class="form-check-label form-check long" for="authemail" id="emauth"><span class="radio notspecial small" id="authem">Authorized</span></label>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <!--//owner data review-->
+                                                    <div class="col-xs-12">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-4">
+                                                                <h4>Address</h4>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-8">
+                                                                <p class="weight600"th:text="${baseTrademarkApplication.primaryLawyer.getAddress1()}+' '+${baseTrademarkApplication.primaryLawyer.getCity()}+' '+${baseTrademarkApplication.primaryLawyer.getState()}+' '+${baseTrademarkApplication.primaryLawyer.getZipcode()}">123 Main Street  <br>Alexandria VA 22313</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--//owner data review-->
+                                                </th:block>
+                                                <th:block th:if="${baseTrademarkApplication.isAttorneyFiling() == false}">
+                                                    <div class="col-xs-12 float">
+                                                        <h3 class="overline">Correspondent Information</h3>
+                                                        <span class="overline"><a href="#">Edit</a></span>
+                                                        <br clear="all">
+                                                    </div>
+                                                    <div class="col-xs-12">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-4">
+                                                                <h4>Owner</h4>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-8">
+                                                                <p class="weight600" th:text="${baseTrademarkApplication.primaryOwner.getOwnerDisplayname()}">John Smith</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-4">
+                                                                <h4>Entity Type</h4>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-8">
+                                                                <p class="weight600" th:text="${baseTrademarkApplication.primaryOwner.getOwnersubType()}">Individual</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-4">
+                                                                <h4>Citizenship</h4>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-8">
+                                                                <p class="weight600" th:text="${baseTrademarkApplication.primaryOwner.getOwnerEntityCountryOfOrigin()}">United States of America</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-4">
+                                                                <h4>Email Address</h4>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-8 checkmargin">
+                                                                <p class="weight600" th:text="${baseTrademarkApplication.primaryOwner.getEmail()}">john.smith@gmail.com</p>
+                                                                <input class="form-check-input checkmark" type="checkbox" value="authorizedemail" tabindex="0" aria-labelledby="authem" id="authemail">
+                                                                <label class="form-check-label form-check long" for="authemail" id="emauth"><span class="radio notspecial small" id="authem">Authorized</span></label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-4">
+                                                                <h4>Address</h4>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-8">
+                                                                <p class="weight600" th:text="${baseTrademarkApplication.primaryOwner.getAddress1()}+' '+${baseTrademarkApplication.primaryOwner.getCity()}+' '+${baseTrademarkApplication.primaryOwner.getState()}+' '+${baseTrademarkApplication.primaryOwner.getZipcode()}">123 Main Street  <br>Alexandria VA 22313</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--//owner data review-->
+                                                </th:block>
                                             </section>
                                             <div class="col-xs-12">
                                                 <div class="row">

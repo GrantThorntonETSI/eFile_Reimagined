@@ -78,6 +78,11 @@ public class BaseTrademarkApplication  {
     @Nullable
     private Lawyer primaryLawyer;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @Nullable
+    private Owner primaryOwner;
+
+
     @OneToMany(cascade = CascadeType.ALL)
     @Nullable
     private Set<Lawyer> availableLawyers;
@@ -627,6 +632,17 @@ public class BaseTrademarkApplication  {
     public void setEntityTypeSet(boolean entityTypeSet) {
         isEntityTypeSet = entityTypeSet;
     }
+
+    @Nullable
+    public Owner getPrimaryOwner() {
+        return primaryOwner;
+    }
+
+    public void setPrimaryOwner(@Nullable Owner primaryOwner) {
+        this.primaryOwner = primaryOwner;
+    }
+
+
 
     @Override
     public boolean equals(Object o) {

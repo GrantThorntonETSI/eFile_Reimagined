@@ -59,7 +59,8 @@ public class Owner extends Contact{
 
     private String ownerDisplayname;
 
-
+    @OneToOne
+    private BaseTrademarkApplication primaryApplication;
 
 
 
@@ -198,7 +199,7 @@ public class Owner extends Contact{
     public String getOwnerEntityCountryOfOrigin(){
        // this value is either united states, or bahamas
 
-        if(ownerType.equals("US")){
+        if(ownerEnityType.equals("US")){
            return "United States Of America";
         }
         else {
@@ -208,7 +209,13 @@ public class Owner extends Contact{
 
     }
 
+    public BaseTrademarkApplication getPrimaryApplication() {
+        return primaryApplication;
+    }
 
+    public void setPrimaryApplication(BaseTrademarkApplication primaryApplication) {
+        this.primaryApplication = primaryApplication;
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -538,6 +538,12 @@ public class ApplicationObjectCreationController {
             // }
 
         }
+
+
+        if(baseTrademarkApplication.getOwners().size() == 0){
+            //owner.setPrimaryApplication(baseTrademarkApplication);
+            baseTrademarkApplication.setPrimaryOwner(owner);
+        }
         baseTrademarkApplication.addOwner(owner);
         owner.setTrademarkApplication(baseTrademarkApplication);
 
