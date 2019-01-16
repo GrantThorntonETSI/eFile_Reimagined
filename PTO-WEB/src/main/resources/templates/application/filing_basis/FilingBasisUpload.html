@@ -358,7 +358,7 @@
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12">
                                                                             <label for="country">Country:</label>
-                                                                            <select class="form-control fa-country" id="country" th:attr="gs-id=${Good_Service.getInternalID()}"  th:value="${Good_Service.getFaCountry()}">
+                                                                            <select class="form-control fa-country" id="country" th:attr="gs-id=${Good_Service.getInternalID()}">
                                                                                 <option value="">Select</option>
                                                                                 <option value="B2">AFGHANISTAN</option>
                                                                                 <option value="B3">ALBANIA</option>
@@ -602,22 +602,14 @@
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12">
                                                                             <label for="appnumber">Foreign application number:</label>
-                                                                            <input type="text" class="form-control" id="appnumber">
+                                                                            <input type="text" class="form-control fa-app-number" id="appnumber"  th:attr="gs-id=${Good_Service.getInternalID()}">
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12">
                                                                             <label for="application-date">Foreign application filing date:</label>
-                                                                            <input type="date" class="form-control" id="application-date" name="applicationdate" value="">
+                                                                            <input type="date" class="form-control fa-filing-date" id="application-date" name="applicationdate" value="" th:attr="gs-id=${Good_Service.getInternalID()}">
                                                                         </div>
                                                                     </div><!--pending foreign-->
                                                                     <div class="appendapending"></div>
-                                                                    <div class="btn-group btn-group-justified large" role="group" id="pluspending" aria-label="Add or delete additional pending foreign registrations">
-                                                                        <div class="col-xs-5 col-sm-12 btn-group">
-                                                                            <button type="button" class="btn-sm btn-success add ctr" id="addpending">Add Additional Application</button>
-                                                                        </div>
-                                                                        <div class="col-xs-7 col-sm-12 btn-group">
-                                                                            <button type="button" class="btn-sm btn-success add ctr" id="resetpending">Remove Additional Application</button>
-                                                                        </div>
-                                                                    </div>
 
                                                                 </div><!--row-->
                                                                 </th:block>
@@ -875,22 +867,15 @@
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12">
                                                                                 <label for="appnumber">Foreign application number:</label>
-                                                                                <input type="text" class="form-control" id="appnumber">
+                                                                                <input type="text" class="form-control fa-app-number" id="appnumber" th:attr="gs-id=${Good_Service.getInternalID()}" th:value="${Good_Service.getFaRegistrationNumber()}">
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12">
                                                                                 <label for="application-date">Foreign application filing date:</label>
-                                                                                <input type="date" class="form-control" id="application-date" name="applicationdate" value="">
+                                                                                <input type="date" class="form-control fa-filing-date" id="application-date" name="applicationdate" value="" th:attr="gs-id=${Good_Service.getInternalID()}">
                                                                             </div>
                                                                         </div><!--pending foreign-->
                                                                         <div class="appendapending"></div>
-                                                                        <div class="btn-group btn-group-justified large" role="group" id="pluspending" aria-label="Add or delete additional pending foreign registrations">
-                                                                            <div class="col-xs-5 col-sm-12 btn-group">
-                                                                                <button type="button" class="btn-sm btn-success add ctr" id="addpending">Add Additional Application</button>
-                                                                            </div>
-                                                                            <div class="col-xs-7 col-sm-12 btn-group">
-                                                                                <button type="button" class="btn-sm btn-success add ctr" id="resetpending">Remove Additional Application</button>
-                                                                            </div>
-                                                                        </div>
+
 
                                                                     </div><!--row-->
                                                                 </th:block>
@@ -1825,22 +1810,15 @@
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12">
                                                                             <label for="appnumber">Foreign application number:</label>
-                                                                            <input type="text" class="form-control" id="appnumber">
+                                                                            <input type="text" class="form-control fa-app-number" id="appnumber">
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12">
                                                                             <label for="application-date">Foreign application filing date:</label>
-                                                                            <input type="date" class="form-control" id="application-date" name="applicationdate" value="">
+                                                                            <input type="date" class="form-control fa-filing-date" id="application-date" name="applicationdate" value="">
                                                                         </div>
                                                                     </div><!--pending foreign-->
                                                                     <div class="appendapending"></div>
-                                                                    <div class="btn-group btn-group-justified large" role="group" id="pluspending" aria-label="Add or delete additional pending foreign registrations">
-                                                                        <div class="col-xs-5 col-sm-12 btn-group">
-                                                                            <button type="button" class="btn-sm btn-success add ctr" id="addpending">Add Additional Application</button>
-                                                                        </div>
-                                                                        <div class="col-xs-7 col-sm-12 btn-group">
-                                                                            <button type="button" class="btn-sm btn-success add ctr" id="resetpending">Remove Additional Application</button>
-                                                                        </div>
-                                                                    </div>
+
 
                                                                 </div><!--row-->
 
@@ -2435,6 +2413,15 @@
             }
 
 
+
+        });
+
+        $('input.fa-app-number').focusout(function () {
+            var gsID= $(this).attr("gs-id");
+
+            //alert(gsID);
+            var value = $(this).val();
+            addFilingBasisInfoToGoodAndService("gs-pfa-app-Number", value, gsID, appInternalID);
 
         });
 
