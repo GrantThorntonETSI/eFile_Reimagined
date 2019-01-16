@@ -107,7 +107,7 @@
                                                             <h4>Mark Image</h4>
                                                         </div>
                                                         <div class="col-xs-12 col-sm-8">
-                                                            <img src="images/scrubutts-09-a-68-a-jpg.jpg" alt="Scrubby Butts Soap company mark" class="img-responsive">
+                                                            <img th:src="${baseTrademarkApplication.tradeMark.getTrademarkImagePath()}" alt="Scrubby Butts Soap company mark" class="img-responsive">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -117,7 +117,7 @@
                                                             <h4>Mark Literal</h4>
                                                         </div>
                                                         <div class="col-xs-12 col-sm-8">
-                                                            <p class="weight600">Scrubby Butts Soap Co. Squeaky Clean Naturally!</p>
+                                                            <p class="weight600" th:text="${baseTrademarkApplication.tradeMark.getMarkLiteral()}">Scrubby Butts Soap Co. Squeaky Clean Naturally!</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -127,7 +127,7 @@
                                                             <h4>Mark Description</h4>
                                                         </div>
                                                         <div class="col-xs-12 col-sm-8">
-                                                            <p class="weight600">A stylized smiling baby boy with blonde hair sitting in a tan wash basin filled with blue water with blue bubbles. The wash basin intersects with two concentric ovals with the outer oval in tan and the inner oval in red. Inside the center oval is the wording &#8220;SCRUBBY BUTTS SOAP CO.&#8221; in stylized font. Below the design element is the wording &#8220;SQUEAKY CLEAN NATURALLY!&#8221; in red</p>
+                                                            <p class="weight600" th:text="${baseTrademarkApplication.tradeMark.getMarkDescription()}">A stylized smiling baby boy with blonde hair sitting in a tan wash basin filled with blue water with blue bubbles. The wash basin intersects with two concentric ovals with the outer oval in tan and the inner oval in red. Inside the center oval is the wording &#8220;SCRUBBY BUTTS SOAP CO.&#8221; in stylized font. Below the design element is the wording &#8220;SQUEAKY CLEAN NATURALLY!&#8221; in red</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -137,6 +137,8 @@
                                                     <span class="overline"><a href="#">Edit</a></span>
                                                     <br clear="all">
                                                 </div>
+
+                                                <!--we need to do a for each for the owners   -->
                                                 <div class="col-xs-12">
                                                     <div class="row">
                                                         <div class="col-xs-12 col-sm-4">
