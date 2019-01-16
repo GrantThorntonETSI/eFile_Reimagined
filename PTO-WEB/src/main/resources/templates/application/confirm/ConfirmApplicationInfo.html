@@ -139,60 +139,67 @@
                                                 </div>
 
                                                 <!--we need to do a for each for the owners   -->
-                                                <div class="col-xs-12">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 col-sm-4">
-                                                            <h4>Owner</h4>
-                                                        </div>
-                                                        <div class="col-xs-12 col-sm-8">
-                                                            <p class="weight600">John Smith</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-12">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 col-sm-4">
-                                                            <h4>Entity Type</h4>
-                                                        </div>
-                                                        <div class="col-xs-12 col-sm-8">
-                                                            <p class="weight600">Individual</p>
+                                                <th:block th:each="owner : ${baseTrademarkApplication.getOwners()}">
+                                                    <div class="col-xs-12">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-4">
+                                                                <h4>Owner</h4>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-8">
+                                                                <p class="weight600" th:text="${owner.getOwnerDisplayname()}">John Smith</p>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-xs-12">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 col-sm-4">
-                                                            <h4>Citizenship</h4>
-                                                        </div>
-                                                        <div class="col-xs-12 col-sm-8">
-                                                            <p class="weight600">United States of America</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-12">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 col-sm-4">
-                                                            <h4>Email Address</h4>
-                                                        </div>
-                                                        <div class="col-xs-12 col-sm-8">
-                                                            <p class="weight600">john.smith@gmail.com</p>
+                                                    <div class="col-xs-12">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-4">
+                                                                <h4>Entity Type</h4>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-8">
+                                                                <p class="weight600" th:text="${owner.getOwnersubType()}">Individual</p>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-xs-12">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 col-sm-4">
-                                                            <h4>Address</h4>
-                                                        </div>
-                                                        <div class="col-xs-12 col-sm-8">
-                                                            <p class="weight600">123 Main Street  <br>Alexandria VA 22313</p>
-                                                        </div>
-                                                        <div class="col-xs-12">
-                                                            <p class="small form-group">Requests registration of the trademark/service mark identified above in the United States Patent and Trademark Office on the Principal Register established by the Act of July 5, 1946 (15 U.S.C. Section 1051 et seq.), as amended.</p>
+                                                    <div class="col-xs-12">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-4">
+                                                                <h4>Citizenship</h4>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-8">
+                                                                <p class="weight600" th:text="${owner.getCitizenShip()}">United States of America</p>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <!--//owner data review-->
+                                                    <div class="col-xs-12">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-4">
+                                                                <h4>Email Address</h4>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-8">
+                                                                <p class="weight600" th:text="${owner.getEmail()}">john.smith@gmail.com</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-4">
+                                                                <h4>Address</h4>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-8">
+                                                                <p class="weight600" th:text="${owner.address1}+' '+${owner.city}+' '+${owner.state}+' '+${owner.zipcode}">123 Main Street  <br>Alexandria VA 22313</p>
+                                                            </div>
+                                                            <div class="col-xs-12">
+                                                                <p class="small form-group">Requests registration of the trademark/service mark identified above in the United States Patent and Trademark Office on the Principal Register established by the Act of July 5, 1946 (15 U.S.C. Section 1051 et seq.), as amended.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--//owner data review-->
+
+                                                </th:block>
+
+
+
+
                                                 <div class="col-xs-12 float">
                                                     <h3 class="overline">Goods and Services and Filing Basis Information</h3>
                                                     <span class="overline"><a href="#">Edit</a></span>
