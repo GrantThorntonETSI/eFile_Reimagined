@@ -83,7 +83,7 @@ public class GoodAndService {
     private Date  frExpirationDate;
     private Date  frRenewlDate;
 
-    private String frSpecimenImagePath;
+    private String frCertImagePath;
 
 
 
@@ -262,6 +262,10 @@ public class GoodAndService {
         this.classSpecimenImgPath = classSpecimenImgPath;
     }
 
+
+    ////////////////////////////////////////////////////////
+    // get id functions for goods and services
+    ////////////////////////////////////////////////////////
     public String getGSImpageFormID(){
 
 
@@ -284,6 +288,31 @@ public class GoodAndService {
 
         return getInternalID()+"classUploadSpinnerID";
     }
+
+    ////////////////////////////////////////////////////////
+    public String getFRCertImageFormID(){
+
+        return getInternalID()+"FRcertForm";
+    }
+    public String getFRCertImageID(){
+        return getInternalID()+"FRCertImg";
+    }
+
+    public String getFRCertFileID(){
+
+        return getInternalID()+"FRCertFile";
+    }
+
+    public String getFRCertUploadSpinnerID(){
+        return  getInternalID()+"FRCertSpinner";
+    }
+    ////////////////////////////////////////////////////////
+
+
+
+
+
+
 
     public boolean isSampleUploaded() {
         return sampleUploaded;
@@ -386,12 +415,12 @@ public class GoodAndService {
         this.frRenewlDate = frRenewlDate;
     }
 
-    public String getFrSpecimenImagePath() {
-        return frSpecimenImagePath;
+    public String getFrCertImagePath() {
+        return frCertImagePath;
     }
 
-    public void setFrSpecimenImagePath(String frSpecimenImagePath) {
-        this.frSpecimenImagePath = frSpecimenImagePath;
+    public void setFrCertImagePath(String frCertImagePath) {
+        this.frCertImagePath = frCertImagePath;
     }
 
     @Override
