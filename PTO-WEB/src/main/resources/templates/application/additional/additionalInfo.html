@@ -108,12 +108,35 @@
                                     <!--Start Dropzone-->
                                     <div class="col-xs-12 form-group form-group-md" style="margin-left: 3px; margin-right: 3px;">
                                         <label for="ta2" class="weight600">Provide the additional information.</label>
-                                        <textarea id="ta2" rows="3" class="form-control"></textarea>
-                                        <div class="form-group form-group-md">
-                                            <p class="weight600" role="heading" aria-level="3">Optional upload.</p>
-                                            <label class="small upload-drop-zone" for="file"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload a File</label>
-                                            <input type="file" id="file" name="file" class="form-control">
-                                        </div><!-- Drop Zone -->
+                                        <textarea id="ta2" rows="3" class="form-control" th:text="${baseTrademarkApplication.getMiscInformation()}"></textarea>
+
+                                        <form method="post"  target="hidden-iframe" id="misc-file-form"  action="/misc/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
+                                            <div class="form-group form-group-md">
+                                                <p class="weight600" role="heading" aria-level="3">Optional upload.</p>
+                                                <label class="small upload-drop-zone" for="misc-file-input"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload a File</label>
+                                                <input type="file" id="misc-file-input" name="file" class="form-control" >
+                                            </div><!-- Drop Zone -->
+                                        </form>
+
+                                        <div class="col-xs-12">
+                                            <div class="center">
+                                                <div class="speciman-image" id="misc-info-img-container" style="">
+
+                                                    <img id="misc-info-img" th:attr="src=${baseTrademarkApplication.getMiscInfoImagePath()}" alt="" class="img-responsive"/>
+                                                </div>
+
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-xs-12">
+                                            <div class="center">
+
+                                                <div type="button"  id="additional-file-upload" class="btn btn-sm" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Specimen</b><span><i class="fa fa-spinner fa-spin" id="misc-file-upload-spinner" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                            </div>
+
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group form-group-md col-xs-12">
@@ -451,7 +474,7 @@
                 <button type="button" class="btn btn-sm btn-default fill prev" id="prevButton" value="previous">Previous</button>
             </div>
             <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next" disabled>Next
+                <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next">Next
                     <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
             </div>
         </div>
@@ -547,8 +570,7 @@
         if(colorClaim == false){
 
             if(acceptBW == true){
-                $('#inlineRadio2').click();
-                $('#bwmark').click();
+
 
                 $('[data-toggle="popover"]').popover({
                     title : false,
@@ -576,7 +598,7 @@
 
         }
         if(colorClaim == true){
-            $('#inlineRadio1').click();
+
             if(image_path != null){
 
                 $('[data-toggle="popover"]').popover({
@@ -636,29 +658,69 @@
             location.href=breadCrumb1Link;
         });
 
-        if($('#mark-literal').val()!= ""){
-            $('#nextButton').attr("disabled",false);
-
-        }
 
 
-        //////////////////////////////////////////////////////////////////////
-        // toggle between color or bw local
-        //////////////////////////////////////////////////////////////////////
-        $('#inlineRadio2').click(function () {
+        //ajax auto save and file upload
 
-            $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_pathBW+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
-
+        $('#ta2').focusout(function () {
+            // save text
+            var textValue = $(this).val();
+            saveAdditionalInfo("ai-misc-statement", textValue, appInternalID);
 
 
         });
-        //////////////////////////////////////////////////////////////////////
-        // toggle between color or bw local
-        //////////////////////////////////////////////////////////////////////
-        $('#inlineRadio1').click(function () {
-            $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+        // java script upload for additional info misc info
+        $("#additional-file-upload").click(function() {
 
 
+            // static know value
+            var formID = "misc-file-form";
+            // static know value
+            var fileInputId = "misc-file-input";
+            // static know value
+            var imageId = "misc-info-img";
+            // static know value
+            var spinnerID = "misc-file-upload-spinner"
+
+
+            $('#'+spinnerID).show();
+
+
+
+            var fileInput = document.getElementById(fileInputId);
+            var file = fileInput.files[0];
+            var formData = new FormData();
+            formData.append('file', file);
+            formData.append('appID', appInternalID);
+
+            // static known value
+            var url = "/misc/specimen/add";
+
+
+            // Get the selected files from the input.
+            // get form url
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: formData, // serializes the form's elements.
+                async: true,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(data)
+                {
+                    // we will return the the file url
+                    // call jquery and set it in the img div
+                    var imgPath = parsePathFromResponse(data);
+                    $('#'+imageId).attr("src", imgPath);
+                    $("#"+spinnerID).hide();
+                    //$("#cat-spec-img").fadeIn(500);
+                }
+            });
+
+
+            return false; // avoid to execute the actual submit of the form.
         });
 
 
@@ -686,8 +748,7 @@
 
 
 
-
-    function saveMarkTextdetails(field_name_prefix, field_value, appInternalID) {
+    function saveAdditionalInfo(field_name_prefix, field_value, appInternalID) {
 
 
 
@@ -707,7 +768,7 @@
         //alert(field_value);
 
         $.ajax({
-            url: "../../REST/apiGateway/mark/update/"+field_name_prefix+"/"+field_value+"/"+appInternalID,
+            url: "../../REST/apiGateway/additionalInfo/update/"+field_name_prefix+"/"+field_value+"/"+appInternalID,
             type: 'GET',
             success: function(data){
 
@@ -748,6 +809,16 @@
 
     }
 
+    function parsePathFromResponse(response){
+        var index = response.indexOf("image-url:");
+        index = index+10;
+        response = response.substring(index);
+
+
+        var index2 = response.indexOf("}");
+        response = response.substring(0, index2);
+        return response;
+    }
 
 
 </script>

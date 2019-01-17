@@ -150,6 +150,11 @@ public class BaseTrademarkApplication  {
     private boolean markFappSet;
 
 
+    //additional info fields
+    private String miscInformation;
+    private String miscInfoImagePath;
+
+
 
 
 
@@ -642,7 +647,21 @@ public class BaseTrademarkApplication  {
         this.primaryOwner = primaryOwner;
     }
 
+    public String getMiscInformation() {
+        return miscInformation;
+    }
 
+    public void setMiscInformation(String miscInformation) {
+        this.miscInformation = miscInformation;
+    }
+
+    public String getMiscInfoImagePath() {
+        return miscInfoImagePath;
+    }
+
+    public void setMiscInfoImagePath(String miscInfoImagePath) {
+        this.miscInfoImagePath = miscInfoImagePath;
+    }
 
     @Override
     public boolean equals(Object o) {
