@@ -8,7 +8,7 @@ public class StorageProperties {
     /**
      * Folder location for storing files
      */
-    private String location = "/home/zhangl/images/";
+   private String location = "/home/zhangl/images/";
 
     // load this value from property file
     //private String location = "C:\\images\\attorney";
