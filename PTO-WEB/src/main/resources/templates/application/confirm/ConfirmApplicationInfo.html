@@ -555,14 +555,10 @@
 
 <script>
 
-    var prevLinkURL = "../../application/filingBasisUpload/?trademarkID="+appInternalID;
+    var prevLinkURL = "../../application/additionalInfoUpload/?trademarkID="+appInternalID;
 
 
-    if(inUse){
-        prevLinkURL = "../../application/inUseFilingBasisUpload/?trademarkID="+appInternalID;
-
-    }
-    var nextLinkURL = "";
+    var nextLinkURL = "../../application/confirmPayment/?trademarkID="+appInternalID;
 
     var breadCrumb1Link = "../../application/start/?trademarkID="+appInternalID;
     var breadCrumb2Link = "../../application/MarkDetails/?trademarkID="+appInternalID;
@@ -723,7 +719,22 @@
 
 
 
+        $('#signmethod').change(function () {
 
+            var value = $(this).val();
+
+            if(value != "direct"){
+               $('#nextButton').attr("disabled", true);
+            }
+
+
+        });
+
+
+        $('#acceptreview').click(function () {
+           $('#nextButton').attr("disabled", false);
+
+        });
 
     });
 
