@@ -448,6 +448,7 @@ public class TradeMarkService extends BaseRESTapiService {
         if(markField.equals("mark-standard-text")){
             // ptoUser.setState(param); // sets state code
             baseTrademarkApplication.getTradeMark().setTrademarkStandardCharacterText(markValue);
+            baseTrademarkApplication.getTradeMark().setStandardCharacterMark(true);
 
             appFieldReadable = "Mark Standard Character Text";
 

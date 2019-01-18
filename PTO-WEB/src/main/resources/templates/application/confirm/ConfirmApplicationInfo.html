@@ -101,16 +101,35 @@
                                                     <span class="overline"><a href="#" id="mark-image-edit">Edit</a></span>
                                                     <br clear="all">
                                                 </div>
-                                                <div class="col-xs-12">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 col-sm-4">
-                                                            <h4>Mark Image</h4>
-                                                        </div>
-                                                        <div class="col-xs-12 col-sm-8">
-                                                            <img th:src="${baseTrademarkApplication.tradeMark.getMarkImageDisplayPath()}" alt="Scrubby Butts Soap company mark" class="img-responsive">
+
+
+                                                <th:block th:if="${baseTrademarkApplication.tradeMark.isStandardCharacterMark() == false}">
+                                                    <div class="col-xs-12">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-4">
+                                                                <h4>Mark Image</h4>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-8">
+                                                                <img th:src="${baseTrademarkApplication.tradeMark.getMarkImageDisplayPath()}" alt="Scrubby Butts Soap company mark" class="img-responsive">
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </th:block>
+                                                <th:block th:if="${baseTrademarkApplication.tradeMark.isStandardCharacterMark() == true}">
+                                                    <div class="col-xs-12">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-4">
+                                                                <h4>Mark Image</h4>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-8">
+                                                                <span th:text="${baseTrademarkApplication.tradeMark.trademarkStandardCharacterText}" style="font-family: Palatino, Garamond, Bookman, Avant Garde; font-size:2.0em;text-align:center;margin-bottom:0;"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </th:block>
+
+
+
                                                 <div class="col-xs-12">
                                                     <div class="row">
                                                         <div class="col-xs-12 col-sm-4">

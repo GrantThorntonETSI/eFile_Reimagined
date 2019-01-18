@@ -33,6 +33,7 @@ public class TradeMark extends BaseEntity {
 
 
     private String trademarkStandardCharacterText;
+    private boolean standardCharacterMark;
 
 
 
@@ -628,6 +629,14 @@ public class TradeMark extends BaseEntity {
             }
         }
 
+    }
+
+    public boolean isStandardCharacterMark() {
+        return standardCharacterMark;
+    }
+
+    public void setStandardCharacterMark(boolean standardCharacterMark) {
+        this.standardCharacterMark = standardCharacterMark;
     }
 
     @Override
