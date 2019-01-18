@@ -3115,7 +3115,8 @@
     var isGSempty = /*[[${isGSempty}]]*/ 'User Name';
 
     var host = host_name+":"+host_port;
-
+    var markType = /*[[${baseTrademarkApplication.tradeMark.trademarkDesignType}]]*/ 'User Name';
+    var markText = /*[[${baseTrademarkApplication.tradeMark.trademarkStandardCharacterText}]]*/ 'User Name';
 
     /*]]>*/
 </script>
@@ -3204,33 +3205,63 @@
         //////////////////////////////////////////////////////////////////////
         // set mark image based on persisted values
         //////////////////////////////////////////////////////////////////////
-        if(colorClaim == null){
-            if(image_path != null){
-                $('[data-toggle="popover"]').popover({
-                    title : false,
-                    html : true,
-                    content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
-                });
 
-            }
+        if(markType == "Standard Character"){
+            $('[data-toggle="popover"]').popover({
+                title : false,
+                html : true,
+                content : '<div class="media"><span id="showmarktxt" style="min-width:77px;width:80px;margin:0 auto;font-family: Palatino, Garamond, Bookman, Avant Garde; font-size:.9em;text-align:center;margin-bottom:0;" class="media-object" alt="my trademark">'+markText+'</span></div>'
+            });
+
+
         }
+        else {
 
-        if(colorClaim == false){
+            //////////////////////////////////////////////////////////////////////
+            // set mark image widget based on persisted values
+            //////////////////////////////////////////////////////////////////////
+            if(colorClaim == null){
+                if(image_path != null){
+                    $('[data-toggle="popover"]').popover({
+                        title : false,
+                        html : true,
+                        content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
+                    });
 
-            if(acceptBW == true){
-                $('#inlineRadio2').click();
-                $('#bwmark').click();
+                }
+            }
 
-                $('[data-toggle="popover"]').popover({
-                    title : false,
-                    html : true,
-                    content : '<div class="media"><img src="'+image_pathBW+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
-                });
+            if(colorClaim == false){
 
-               // $('#colorMarkBWInline').attr("src", image_pathBW);
+                if(acceptBW == true){
+                    $('#inlineRadio2').click();
+                    $('#bwmark').click();
+
+                    $('[data-toggle="popover"]').popover({
+                        title : false,
+                        html : true,
+                        content : '<div class="media"><img src="'+image_pathBW+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
+                    });
+
+
+                }
+                else{
+                    if(image_path != null){
+
+                        $('[data-toggle="popover"]').popover({
+                            title : false,
+                            html : true,
+                            content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
+                        });
+
+
+
+                    }
+                }
 
             }
-            else{
+            if(colorClaim == true){
+                $('#inlineRadio1').click();
                 if(image_path != null){
 
                     $('[data-toggle="popover"]').popover({
@@ -3239,28 +3270,12 @@
                         content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
                     });
 
-                    //$('#colorMarkInline').attr("src", image_path);
-
 
                 }
             }
 
+
         }
-        if(colorClaim == true){
-            $('#inlineRadio1').click();
-            if(image_path != null){
-
-                $('[data-toggle="popover"]').popover({
-                    title : false,
-                    html : true,
-                    content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
-                });
-                //$('#colorMarkInline').attr("src", image_path);
-
-
-            }
-        }
-
 
 
         $( '#togglepop' ).click(function() {
