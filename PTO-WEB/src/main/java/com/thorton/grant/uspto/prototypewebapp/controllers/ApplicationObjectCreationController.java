@@ -1006,6 +1006,70 @@ public class ApplicationObjectCreationController {
     }
     ////////////////////////////////////////////////
 
+    // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
+    @PostMapping(value = "/fb/foreignReg/add")
+    public ResponseEntity addGSSfrRegCertImg(
+            @RequestParam(name="file", required=false) MultipartFile file,
+            @RequestParam (name="appID")String AppInternalID,
+            @RequestParam (name="gsID")String gsID,
+            Model model
+    ) {
+
+        System.out.println("GS FR registrton certifcate file upload!!!! ");
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID( AppInternalID);
+
+        String filePath ="";
+        if(file != null){
+            System.out.println("file is not null");
+
+            if(file.isEmpty() == false) {
+                System.out.println("file is not empty !!!!!!!!!!!!!!!");
+
+
+                try {
+                    String image_path = storageService.store(file);
+
+                    // this will be store for each good and service that matches this
+
+                    // on building class categoreis, this value is then copied over
+                    // file path returned to client in response
+
+                    // server redraw should render the image file path from category object
+
+
+                    // baseTrademarkApplication.getc("/files/"+image_path);
+                    filePath = "/files/"+image_path;
+
+                    baseTrademarkApplication.findGSbyInternalID(gsID).setFrCertImagePath(filePath);
+
+
+
+                }
+                catch ( StorageException ex){
+                    model.addAttribute("message", "ERROR: Mark Image upload failed due to error: "+ex );
+                    // return "forward:/mark/designWithText/?trademarkID="+trademarkInternalID;
+                    return buildResponseEnity("420", "ERROR: Mark Image upload failed due to error: "+ex);
+
+                }
+                baseTradeMarkApplicationService.save(baseTrademarkApplication);
+            }
+
+        }
+        else{
+            System.out.println("file object is null");
+        }
+
+
+        return buildResponseEnity("200", "{image-url:" +filePath+"}");
+
+        //return ResponseEntity.ok().build();
+
+    }
+    ////////////////////////////////////////////////
+
+
 
     // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
     @PostMapping(value = "/misc/specimen/add")
