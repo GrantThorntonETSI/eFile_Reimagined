@@ -663,6 +663,48 @@ public class BaseTrademarkApplication  {
         this.miscInfoImagePath = miscInfoImagePath;
     }
 
+    public String getExtraFeeCalculationString(){
+
+        if(getUniqueClassNumberforGS().size() > 0){
+            return (getUniqueClassNumberforGS().size()-1)+"x$275 = $"+(Integer.valueOf(getUniqueClassNumberforGS().size()-1)*275);
+        }
+        else {
+            return "0x$275 = $0";
+        }
+
+
+
+    }
+
+    public String getNumberOfExtraClasses(){
+
+        if( getUniqueClassNumberforGS().size() > 0) {
+            return getUniqueClassNumberforGS().size() - 1 + "";
+        }
+        else{
+            return "0";
+        }
+    }
+
+
+    public String getTotalNumberOfclasses(){
+        return getUniqueClassNumberforGS().size()+"";
+    }
+
+    public String getTotalFeeString(){
+        String val = "";
+                if(getUniqueClassNumberforGS().size() > 0){
+                  val=  (225+Integer.valueOf(getUniqueClassNumberforGS().size()-1)*275)+"";
+                }
+                else{
+                    val = "225";
+
+                }
+
+
+        return "Fee $"+val;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
