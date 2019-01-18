@@ -95,7 +95,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         trademarkApplication.setPtoUser(PTOUser1);
 
         //trademarkApplication.setLastViewModel("application/MarkDetailsStart");
-        trademarkApplication.setLastViewModel("application/additional/additionalInfo");
+        //trademarkApplication.setLastViewModel("application/additional/additionalInfo");
+        trademarkApplication.setLastViewModel("application/mark/MarkDetailsStandard");
         //trademarkApplication.setLastViewModel("application/AttorneyStart");
         trademarkApplication.setAttorneySet(true);
         trademarkApplication.setAttorneyFiling(true);
