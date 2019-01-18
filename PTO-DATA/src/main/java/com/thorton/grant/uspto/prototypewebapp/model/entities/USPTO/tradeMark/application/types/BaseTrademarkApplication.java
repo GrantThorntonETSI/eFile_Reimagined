@@ -704,6 +704,19 @@ public class BaseTrademarkApplication  {
 
         return "Fee $"+val;
     }
+    public String getTotalFeeAmount(){
+        String val = "";
+        if(getUniqueClassNumberforGS().size() > 0){
+            val=  (225+Integer.valueOf(getUniqueClassNumberforGS().size()-1)*275)+"";
+        }
+        else{
+            val = "225";
+
+        }
+
+
+        return "$"+val+".00";
+    }
 
     @Override
     public boolean equals(Object o) {
