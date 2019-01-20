@@ -380,6 +380,10 @@
                     var msg = parseValuesFromResponse(s_msg, "server-message");
 
                     var feeDisplay = parseValuesFromResponse(s_msg, "fee-display-html");
+                    var previousFeeDisplay = $('#fee-display').text();
+                    if(feeDisplay != previousFeeDisplay){
+                        $('#fee-display').effect("highlight", {}, 3000);
+                    }
                     $('#fee-display').text(feeDisplay);
 
                     var totalClasses = parseValuesFromResponse(s_msg,"total-class-html");
