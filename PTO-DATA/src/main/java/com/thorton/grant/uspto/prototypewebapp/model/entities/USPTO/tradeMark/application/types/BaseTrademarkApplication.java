@@ -676,6 +676,19 @@ public class BaseTrademarkApplication  {
 
     }
 
+    public String getBasicFeeCalculationString(){
+
+        if(getUniqueClassNumberforGS().size() > 0){
+            return "1x$225 = $225";
+        }
+        else {
+            return "0x$225 = $0";
+        }
+
+
+
+    }
+
     public String getNumberOfExtraClasses(){
 
         if( getUniqueClassNumberforGS().size() > 0) {
@@ -697,7 +710,7 @@ public class BaseTrademarkApplication  {
                   val=  (225+Integer.valueOf(getUniqueClassNumberforGS().size()-1)*275)+"";
                 }
                 else{
-                    val = "225";
+                    val = "0";
 
                 }
 
@@ -710,13 +723,15 @@ public class BaseTrademarkApplication  {
             val=  (225+Integer.valueOf(getUniqueClassNumberforGS().size()-1)*275)+"";
         }
         else{
-            val = "225";
+            val = "0";
 
         }
 
 
         return "$"+val+".00";
     }
+
+
 
     @Override
     public boolean equals(Object o) {

@@ -60,7 +60,17 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         appFieldReadable = "Good and Service";
         System.out.println("add GS called 33333333333333333333333333333333333");
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
-        String responseMsg = appFieldReadable+" has been saved";
+        String responseMsg = "{{server-message:"+appFieldReadable+" has been saved}";
+
+        // new return message structure
+
+        //  return buildResponseEnity("200", "{image-url:" +filePath+"}");
+        // {server-msg:xxxxx},{fee-display-html:xxxx},{total-class-html:xxxxx},{total-extra-class-html:xxxx},{extra-class-fee-info-html:xxxxxx},{extra-class-fee-calc-html},{basic-fee-calc-html:xxxxx},{fee-total-html}
+        responseMsg+=",{fee-display-html:"+baseTrademarkApplication.getTotalFeeString()+"}"+",{total-class-html:"+baseTrademarkApplication.getTotalNumberOfclasses()+"}"+",{total-extra-class-html:"+baseTrademarkApplication.getNumberOfExtraClasses()+"}"+",{basic-fee-calc-html:"+baseTrademarkApplication.getBasicFeeCalculationString()+"}"+",{extra-class-fee-calc-html:"+baseTrademarkApplication.getExtraFeeCalculationString()+"}"+",{total-fee-html:"+baseTrademarkApplication.getTotalFeeString()+  "}}";
+        // but responsemsg
+
+
+
 
         return buildResponseEnity("200", responseMsg);
     }
@@ -83,7 +93,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
         }
 
-System.out.println("remove GS called 2222222222222222222222222222222");
+        System.out.println("remove GS called 2222222222222222222222222222222");
         GoodAndService deleteThisGS = baseTrademarkApplication.findGSbyInternalID(gsID);
        // baseTrademarkApplication.getGoodsAndSevicesMap().get(classNumber).remove(deleteThisGS);
         baseTrademarkApplication.removeGoodAndService(deleteThisGS);
@@ -94,8 +104,13 @@ System.out.println("remove GS called 2222222222222222222222222222222");
         GoodsAndServicesService goodsAndServicesService = getServiceBeanFactory().getGoodsAndServicesService();
         goodsAndServicesService.delete(deleteThisGS);
 
-        String responseMsg = appFieldReadable+" has been removed";
+        String responseMsg = "{{server-message:"+appFieldReadable+" has been saved}";
 
+        // new return message structure
+
+        //  return buildResponseEnity("200", "{image-url:" +filePath+"}");
+        // {server-msg:xxxxx},{fee-display-html:xxxx},{total-class-html:xxxxx},{total-extra-class-html:xxxx},{extra-class-fee-info-html:xxxxxx},{extra-class-fee-calc-html},{basic-fee-calc-html:xxxxx},{fee-total-html}
+        responseMsg+=",{fee-display-html:"+baseTrademarkApplication.getTotalFeeString()+"}"+",{total-class-html:"+baseTrademarkApplication.getTotalNumberOfclasses()+"}"+",{total-extra-class-html:"+baseTrademarkApplication.getNumberOfExtraClasses()+"}"+",{basic-fee-calc-html:"+baseTrademarkApplication.getBasicFeeCalculationString()+"}"+",{extra-class-fee-calc-html:"+baseTrademarkApplication.getExtraFeeCalculationString()+"}}";
         //return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
         return buildResponseEnity("200", responseMsg);
     }

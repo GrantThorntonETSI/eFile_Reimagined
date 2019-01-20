@@ -337,8 +337,7 @@
                 : $(this).html('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Hide My Mark');
         });
 
-        /* expand fee widget */
-        $('.fees').click();
+
 
         $('button.close').click(function () {
 
@@ -377,10 +376,30 @@
                     //if(data.contains("status: 200")){
                     // show confirmation check mark on form
                     //$('#toggle').delay(1000).click();
+
+                    var msg = parseValuesFromResponse(s_msg, "server-message");
+
+                    var feeDisplay = parseValuesFromResponse(s_msg, "fee-display-html");
+                    $('#fee-display').text(feeDisplay);
+
+                    var totalClasses = parseValuesFromResponse(s_msg,"total-class-html");
+                    $('#total-classes').text(totalClasses);
+
+                    var totalExtraClasses = parseValuesFromResponse(s_msg, "total-extra-class-html");
+                    $('#total-extra-classes').text(totalExtraClasses);
+
+                    var basicCalc = parseValuesFromResponse(s_msg, "basic-fee-calc-html");
+                    $('#basic-fee-calc').text(basicCalc);
+
+                    var extraCalc = parseValuesFromResponse(s_msg, "extra-class-fee-calc-html");
+                    $('#extra-fee-calc').text(extraCalc);
+
+                    var feeTotal = parseValuesFromResponse(s_msg,"total-fee-html");
+                    $('#total-fees').text(feeTotal);
                     $(".autoSaveMessageArea span").fadeOut(500);
                     setTimeout(function() {
                         // after 1000 ms we add the class animated to the login/register card
-                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").text(msg);
                         $(".autoSaveMessageArea span").fadeIn(1000);
                     }, 500);
 
@@ -404,6 +423,20 @@
 
 
     }
+
+
+
+    function parseValuesFromResponse(response, fieldName){
+        var index = response.indexOf(fieldName);
+        index = index+fieldName.length;
+        response = response.substring(index);
+
+
+        var index2 = response.indexOf("}");
+        response = response.substring(0, index2);
+        return response;
+    }
+
 
 
 
