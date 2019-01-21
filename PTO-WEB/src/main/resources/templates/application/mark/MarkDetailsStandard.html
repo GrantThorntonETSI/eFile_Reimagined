@@ -462,7 +462,7 @@
 
                                                     <div th:if="${baseTrademarkApplication.tradeMark.consentFileUploaded == false}">
                                                         <h4 class="weight600">Upload Consent <i class="material-icons" style="position: relative; bottom: -5px;">cloud_upload</i></h4>
-                                                        <p><a href="#"><span class="glyphicon glyphicon-download" aria-hidden="true"></span> Consent Template</a></p>
+                                                        <p><a th:href="@{/resources/documents/Consent_template.docx}"><span class="glyphicon glyphicon-download" aria-hidden="true"></span>Download Consent Template</a></p>
                                                         <form action="/Mark/consent/add" method="post" enctype="multipart/form-data" id="markConsentForm" class="form-horizontal">
                                                             <div class="form-group form-group-md">
                                                                 <label class="small upload-drop-zone" for="consentfile"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>
@@ -582,7 +582,7 @@
 
                                                         <div th:if="${baseTrademarkApplication.tradeMark.consentFileUploaded == false}">
                                                             <h4 class="weight600">Upload Consent <i class="material-icons" style="position: relative; bottom: -5px;">cloud_upload</i></h4>
-                                                            <p><a href="#"><span class="glyphicon glyphicon-download" aria-hidden="true"></span> Consent Template</a></p>
+                                                            <p><a th:href="@{/resources/documents/Consent_template.docx}"><span class="glyphicon glyphicon-download" aria-hidden="true"></span>Download Consent Template</a></p>
                                                             <form action="/Mark/consent/add" method="post" enctype="multipart/form-data" id="markConsentForm" class="form-horizontal">
                                                                 <div class="form-group form-group-md">
                                                                     <label class="small upload-drop-zone" for="consentfile"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>
@@ -701,7 +701,7 @@
 
                                                         <div th:if="${baseTrademarkApplication.tradeMark.consentFileUploaded == false}">
                                                             <h4 class="weight600">Upload Consent <i class="material-icons" style="position: relative; bottom: -5px;">cloud_upload</i></h4>
-                                                            <p><a href="#"><span class="glyphicon glyphicon-download" aria-hidden="true"></span> Consent Template</a></p>
+                                                            <p><a th:href="@{/resources/documents/Consent_template.docx}"><span class="glyphicon glyphicon-download" aria-hidden="true"></span>Download Consent Template</a></p>
                                                             <form action="/Mark/consent/add" method="post" enctype="multipart/form-data" id="markConsentForm" class="form-horizontal">
                                                                 <div class="form-group form-group-md">
                                                                     <label class="small upload-drop-zone" for="consentfile"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>
