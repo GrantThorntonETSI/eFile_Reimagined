@@ -729,7 +729,7 @@
         var attorneyOpt = /*[[${baseTrademarkApplication.isAttorneyFiling()}]]*/ 'User Name';
 
         var ownerOpt = /*[[${baseTrademarkApplication.isOwnerSet()}]]*/ 'User Name';
-        alert(ownerOpt);
+
 
         var isAttorneyOptionSet = /*[[${isAttorneyOptionSet}]]*/ 'User Name';
         var isAttorneyFiling = /*[[${isAttorneyFiling}]]*/ 'User Name';
@@ -767,6 +767,29 @@
         var nextLinkURLAttorneyFalse = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
         var bsLink1 = "../../application/OwnerSetView/?trademarkID="+appInternalID;
+
+        var bsLink2_active =  "../../application/MarkDetails/?trademarkID="+appInternalID;
+        var bsLink2_done =  "../../mark/designWithTextDisclaimer/?trademarkID="+appInternalID;
+
+        var bsLink3_active =  "../../application/goodsAndServicesStart/?trademarkID="+appInternalID;
+        var bsLink3_done =  "../../application/goodsAndServicesReview/?trademarkID="+appInternalID;
+
+
+
+
+        var bsLink4_active = "../../application/filingBasisStart/?trademarkID="+appInternalID;
+        var bsLink4_done = "../../application/filingBasisStart/?trademarkID="+appInternalID;
+
+
+
+        var bsLink5_active =  "../../application/additionalInfoUpload/?trademarkID="+appInternalID;
+        var bsLink5_done =  "../../application/additionalInfoUpload/?trademarkID="+appInternalID;
+
+
+
+
+        var bsLink6_active =  "../../application/confirmInfo/?trademarkID="+appInternalID;
+        var bsLink6_done =  "../../application/confirmInfo/?trademarkID="+appInternalID;
 
 
 
@@ -818,6 +841,46 @@
            if(url != "undefined"){
                location.href=url;
            }
+
+        });
+
+        $('#bs-link2').click(function () {
+            var url = $(this).attr("href");
+            if(url != "undefined"){
+                location.href=url;
+            }
+
+        });
+
+        $('#bs-link3').click(function () {
+            var url = $(this).attr("href");
+            if(url != "undefined"){
+                location.href=url;
+            }
+
+        });
+
+        $('#bs-link4').click(function () {
+            var url = $(this).attr("href");
+            if(url != "undefined"){
+                location.href=url;
+            }
+
+        });
+
+        $('#bs-link5').click(function () {
+            var url = $(this).attr("href");
+            if(url != "undefined"){
+                location.href=url;
+            }
+
+        });
+
+        $('#bs-link6').click(function () {
+            var url = $(this).attr("href");
+            if(url != "undefined"){
+                location.href=url;
+            }
 
         });
 
@@ -1327,12 +1390,29 @@
             }
             if(a==1){
                 if(bsStatusArrayList[a] != "NA"){
+                    $('#bs-header2').addClass(bsStatusArrayList[a]);
+                    if(bsStatusArrayList[a] == "active"){
+                        $('#bs-link2').attr("href", bsLink2_active);
 
+                    }
+                    if(bsStatusArrayList[a] == "done"){
+                        $('#bs-link2').attr("href", bsLink2_done);
+                    }
+                    //$('#bs-link2').attr("href", bsLink2);
                 }
 
             }
             if(a==2){
                 if(bsStatusArrayList[a] != "NA"){
+
+                    $('#bs-header3').addClass(bsStatusArrayList[a]);
+                    if(bsStatusArrayList[a] == "active"){
+                        $('#bs-link3').attr("href", bsLink3_active);
+
+                    }
+                    if(bsStatusArrayList[a] == "done"){
+                        $('#bs-link3').attr("href", bsLink3_done);
+                    }
 
                 }
 
@@ -1340,17 +1420,42 @@
             if(a==3){
                 if(bsStatusArrayList[a] != "NA"){
 
+                    $('#bs-header4').addClass(bsStatusArrayList[a]);
+                    if(bsStatusArrayList[a] == "active"){
+                        $('#bs-link4').attr("href", bsLink4_active);
+
+                    }
+                    if(bsStatusArrayList[a] == "done"){
+                        $('#bs-link4').attr("href", bsLink4_done);
+                    }
+
                 }
 
             }
             if(a==4){
                 if(bsStatusArrayList[a] != "NA"){
+                    $('#bs-header5').addClass(bsStatusArrayList[a]);
+                    if(bsStatusArrayList[a] == "active"){
+                        $('#bs-link5').attr("href", bsLink5_active);
+
+                    }
+                    if(bsStatusArrayList[a] == "done"){
+                        $('#bs-link5').attr("href", bsLink5_done);
+                    }
 
                 }
 
             }
             if(a==5){
                 if(bsStatusArrayList[a] != "NA"){
+                    $('#bs-header6').addClass(bsStatusArrayList[a]);
+                    if(bsStatusArrayList[a] == "active"){
+                        $('#bs-link6').attr("href", bsLink6_active);
+
+                    }
+                    if(bsStatusArrayList[a] == "done"){
+                        $('#bs-link6').attr("href", bsLink6_done);
+                    }
 
                 }
 
