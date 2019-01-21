@@ -116,7 +116,18 @@ public class ApplicationFlowController {
             BaseTrademarkApplication trademarkApplication = new BaseTrademarkApplication();
             //trademarkApplication.setLastViewModel("application/owner/individual/ownerInfo");
             //trademarkApplication.setLastViewModel("application/OwnerStart");
+
+            ////////////////////////////////////////////////////////////////////////////
+            // bread crumb and continue application updates
+            ////////////////////////////////////////////////////////////////////////////
             trademarkApplication.setLastViewModel("application/attorney/AttorneyStart");
+            ArrayList<String> sectionStatus = trademarkApplication.getSectionStatus();
+            sectionStatus.set(0,"active");
+            trademarkApplication.setSectionStatus(sectionStatus);
+            ////////////////////////////////////////////////////////////////////////////
+
+
+
             trademarkApplication.setAttorneySet(false);
             trademarkApplication.setAttorneyFiling(false);
 
@@ -155,6 +166,7 @@ public class ApplicationFlowController {
             ContactsDisplayDTO selectedAttorneyDisplayDTO2 = new ContactsDisplayDTO();
             selectedAttorneyDisplayDTO2.setContactEmails(selectedContactEmails2 );
             model.addAttribute("selectedAttorneys",selectedAttorneyDisplayDTO2);
+            model.addAttribute("breadCrumbStatus", trademarkApplication.getSectionStatus());
 
 
         } else {
@@ -183,6 +195,8 @@ public class ApplicationFlowController {
             ContactsDisplayDTO selectedAttorneyDisplayDTO2 = new ContactsDisplayDTO();
             selectedAttorneyDisplayDTO2.setContactEmails(selectedContactEmails2 );
             model.addAttribute("selectedAttorneys",selectedAttorneyDisplayDTO2);
+
+            model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
 
         }
         NewAttorneyContactFormDTO attorneyContactFormDTO = new NewAttorneyContactFormDTO();
@@ -279,14 +293,12 @@ public class ApplicationFlowController {
         ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
         selectedAttorneyDisplayDTO.setContactNames(selectedContactNames);
         model.addAttribute("selectedAttorneys",selectedAttorneyDisplayDTO);
-
+        baseTrademarkApplication.setLastViewModel("application/AttorneySet");
 
         if(trademarkInternalID.equals("new")) {
 
             BaseTrademarkApplication trademarkApplication = new BaseTrademarkApplication();
-            //trademarkApplication.setLastViewModel("application/owner/individual/ownerInfo");
-            //trademarkApplication.setLastViewModel("application/OwnerStart");
-            trademarkApplication.setLastViewModel("application/AttorneySet");
+
             trademarkApplication.setAttorneySet(false);
             trademarkApplication.setAttorneyFiling(false);
 
@@ -440,6 +452,8 @@ public class ApplicationFlowController {
         model.addAttribute("account",credentials);
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
         model.addAttribute("hostBean", hostBean);
@@ -818,6 +832,8 @@ public class ApplicationFlowController {
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication  baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
 
+        baseTrademarkApplication.setLastViewModel("application/owner/OwnerSetView");
+
         ////////////////////////////////////////////////////////////////////////////////////////////
         // add contacts display info to model
         ////////////////////////////////////////////////////////////////////////////////////////////
@@ -900,7 +916,7 @@ public class ApplicationFlowController {
         // and return the the view that trademark object has saved.
         //////////////////////////////////////////////////////////////////////////
 
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -1033,8 +1049,7 @@ public class ApplicationFlowController {
         selectedAttorneyDisplayDTO2.setContactNames(selectedContactNames2);
         model.addAttribute("selectedAttorneys",selectedAttorneyDisplayDTO2);
 
-        model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
-        model.addAttribute("markImagePath",baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+
         boolean isAttorneyOptionSet = baseTrademarkApplication.isAttorneySet();
         boolean isAttorneyFiling = baseTrademarkApplication.isAttorneyFiling();
         model.addAttribute("isAttorneyOptionSet", isAttorneyOptionSet);
@@ -1042,6 +1057,37 @@ public class ApplicationFlowController {
 
         NewAttorneyContactFormDTO attorneyContactFormDTO = new NewAttorneyContactFormDTO();
         model.addAttribute("addNewAttorneyContactFormDTO", attorneyContactFormDTO);
+
+
+
+
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+
+        }
+        else{
+            model.addAttribute("markImagePath","");
+
+            model.addAttribute("markImagePathBW","");
+
+
+        }
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+        boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+        boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+
+        ArrayList<String> selectedGSDescrption = new ArrayList<>();
+        for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+            GoodAndService current = iter.next();
+            selectedGSDescrption.add(current.getClassDescription());
+        }
+        ContactsDisplayDTO selectedDescription = new ContactsDisplayDTO();
+        selectedDescription.setContactNames(selectedGSDescrption);
+        model.addAttribute("selectedGoods_Services",selectedDescription);
 
         System.out.println("las view model : "+baseTrademarkApplication.getLastViewModel());
 
@@ -1070,6 +1116,15 @@ public class ApplicationFlowController {
         String applcationLookupID = trademarkInternalID;
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+        //////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////
+        baseTrademarkApplication.setLastViewModel("application/mark/MarkDetailsStart");
+        ArrayList<String> sectionStatus = baseTrademarkApplication.getSectionStatus();
+        sectionStatus.set(0,"done");
+        sectionStatus.set(1,"active");
+        baseTrademarkApplication.setSectionStatus(sectionStatus);
+        //////////////////////////////////////////////////////////////////////////////////////
+
 
         if(baseTrademarkApplication.getTradeMark() == null){
             TradeMark tradeMark = new TradeMark();
@@ -1104,6 +1159,8 @@ public class ApplicationFlowController {
         String applcationLookupID = trademarkInternalID;
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+        baseTrademarkApplication.setLastViewModel("application/mark/MarkDetailsUpload");
+
 
         if( baseTrademarkApplication.getTradeMark() != null) {
             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
@@ -1149,6 +1206,7 @@ public class ApplicationFlowController {
         String applcationLookupID = trademarkInternalID;
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+        baseTrademarkApplication.setLastViewModel("application/mark/MarkDetailsDesignWText");
 
         if( baseTrademarkApplication.getTradeMark() != null) {
             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
@@ -1215,6 +1273,7 @@ public class ApplicationFlowController {
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
 
+        baseTrademarkApplication.setLastViewModel("application/mark/MarkDetailsStandard");
         if( baseTrademarkApplication.getTradeMark() != null) {
             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
             model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
@@ -1308,6 +1367,9 @@ public class ApplicationFlowController {
         //String applcationLookupID = trademarkInternalID;
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+        baseTrademarkApplication.setLastViewModel("application/mark/MarkDetailsDesignWTextDisclaimer");
+
+
         if( baseTrademarkApplication.getTradeMark() != null) {
             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
             model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
@@ -1362,6 +1424,16 @@ public class ApplicationFlowController {
         String applcationLookupID = trademarkInternalID;
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+        //////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////
+        baseTrademarkApplication.setLastViewModel("application/goods_services/GoodsServicesStart");
+        ArrayList<String> sectionStatus = baseTrademarkApplication.getSectionStatus();
+        sectionStatus.set(0,"done");
+        sectionStatus.set(1,"done");
+        sectionStatus.set(2,"active");
+        baseTrademarkApplication.setSectionStatus(sectionStatus);
+        //////////////////////////////////////////////////////////////////////////////////////
 
         if(baseTrademarkApplication.getTradeMark() == null){
             TradeMark tradeMark = new TradeMark();
@@ -1420,6 +1492,8 @@ public class ApplicationFlowController {
         String applcationLookupID = trademarkInternalID;
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+        baseTrademarkApplication.setLastViewModel("application/goods_services/GoodsServicesSelect");
 
         if(baseTrademarkApplication.getTradeMark() == null){
             TradeMark tradeMark = new TradeMark();
@@ -1494,6 +1568,7 @@ public class ApplicationFlowController {
         String applcationLookupID = trademarkInternalID;
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+        baseTrademarkApplication.setLastViewModel("application/goods_services/GoodsServicesReview");
 
         if(baseTrademarkApplication.getTradeMark() == null){
             TradeMark tradeMark = new TradeMark();
@@ -1563,6 +1638,17 @@ public class ApplicationFlowController {
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
 
+        //////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////
+        baseTrademarkApplication.setLastViewModel("application/filing_basis/FilingBasisStart");
+        ArrayList<String> sectionStatus = baseTrademarkApplication.getSectionStatus();
+        sectionStatus.set(0,"done");
+        sectionStatus.set(1,"done");
+        sectionStatus.set(2,"done");
+        sectionStatus.set(3,"active");
+        baseTrademarkApplication.setSectionStatus(sectionStatus);
+        //////////////////////////////////////////////////////////////////////////////////////
+
         if(baseTrademarkApplication.getTradeMark() == null){
             TradeMark tradeMark = new TradeMark();
             tradeMark.setTrademarkDesignType("");
@@ -1628,6 +1714,8 @@ public class ApplicationFlowController {
         String applcationLookupID = trademarkInternalID;
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+        baseTrademarkApplication.setLastViewModel("application/filing_basis/FilingBasisUpload");
 
         if(baseTrademarkApplication.getTradeMark() == null){
             TradeMark tradeMark = new TradeMark();
@@ -1696,6 +1784,8 @@ public class ApplicationFlowController {
         String applcationLookupID = trademarkInternalID;
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+        baseTrademarkApplication.setLastViewModel("application/filing_basis/FilingBasisInuseUpload");
 
         if(baseTrademarkApplication.getTradeMark() == null){
             TradeMark tradeMark = new TradeMark();
@@ -1766,6 +1856,19 @@ public class ApplicationFlowController {
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
 
+        //////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////
+        baseTrademarkApplication.setLastViewModel("application/additional/additionalInfo");
+        ArrayList<String> sectionStatus = baseTrademarkApplication.getSectionStatus();
+        sectionStatus.set(0,"done");
+        sectionStatus.set(1,"done");
+        sectionStatus.set(2,"done");
+        sectionStatus.set(3,"done");
+        sectionStatus.set(4,"active");
+        baseTrademarkApplication.setSectionStatus(sectionStatus);
+        //////////////////////////////////////////////////////////////////////////////////////
+
+
         if(baseTrademarkApplication.getTradeMark() == null){
             TradeMark tradeMark = new TradeMark();
             tradeMark.setTrademarkDesignType("");
@@ -1832,6 +1935,20 @@ public class ApplicationFlowController {
         String applcationLookupID = trademarkInternalID;
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+        //////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////
+        baseTrademarkApplication.setLastViewModel("application/confirm/ConfirmApplicationInfo");
+        ArrayList<String> sectionStatus = baseTrademarkApplication.getSectionStatus();
+        sectionStatus.set(0,"done");
+        sectionStatus.set(1,"done");
+        sectionStatus.set(2,"done");
+        sectionStatus.set(3,"done");
+        sectionStatus.set(4,"done");
+        sectionStatus.set(5,"active");
+        baseTrademarkApplication.setSectionStatus(sectionStatus);
+        //////////////////////////////////////////////////////////////////////////////////////
+
 
         if(baseTrademarkApplication.getTradeMark() == null){
             TradeMark tradeMark = new TradeMark();
@@ -1906,7 +2023,7 @@ public class ApplicationFlowController {
             baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
         }
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
 
         if( baseTrademarkApplication.getTradeMark() != null) {
             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());

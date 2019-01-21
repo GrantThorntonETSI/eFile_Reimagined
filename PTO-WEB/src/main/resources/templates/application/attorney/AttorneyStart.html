@@ -17,62 +17,62 @@
                 <div class="row">
                     <section class="col-xs-12 steps breadcrumb-steps" aria-label="progress tracker">
                         <div class="row displaycell">
-                            <div class="col-xs-2 one active">
+                            <div class="col-xs-2 one" id="bs-header1">
                                 <div class="row">
                                     <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
                                         <span>1</span>
                                     </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link1">
                                         <p class="first">Your details</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-2 two">
+                            <div class="col-xs-2 two" id="bs-header2">
                                 <div class="row">
                                     <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
                                         <span>2</span>
                                     </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link2">
                                         <p>Trademark details</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-2 three">
+                            <div class="col-xs-2 three" id="bs-header3">
                                 <div class="row">
                                     <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
                                         <span>3</span>
                                     </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link3">
                                         <p>Goods and services</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-2 four">
+                            <div class="col-xs-2 four" id="bs-header4">
                                 <div class="row">
                                     <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
                                         <span>4</span>
                                     </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link4">
                                         <p>Basis</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-2 five">
+                            <div class="col-xs-2 five" id="bs-header5">
                                 <div class="row">
                                     <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
                                         <span>5</span>
                                     </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link5">
                                         <p>Additional info</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-2 six">
+                            <div class="col-xs-2 six" id="bs-header6">
                                 <div class="row">
                                     <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
                                         <span>6</span>
                                     </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link6">
                                         <p>Confirm and pay</p>
                                     </div>
                                 </div>
@@ -728,6 +728,9 @@
         var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
         var attorneyOpt = /*[[${baseTrademarkApplication.isAttorneyFiling()}]]*/ 'User Name';
 
+        var ownerOpt = /*[[${baseTrademarkApplication.isOwnerSet()}]]*/ 'User Name';
+        alert(ownerOpt);
+
         var isAttorneyOptionSet = /*[[${isAttorneyOptionSet}]]*/ 'User Name';
         var isAttorneyFiling = /*[[${isAttorneyFiling}]]*/ 'User Name';
 
@@ -746,6 +749,12 @@
         var host = host_name+":"+host_port;
 
 
+
+        var breadCrumbStatus = /*[[${breadCrumbStatus}]]*/ 'User Name';
+        //alert(breadCrumbStatus);
+
+
+
         /*]]>*/
     </script>
 
@@ -756,6 +765,8 @@
         var prevLinkURL = "../../accounts/dashboard";
 
         var nextLinkURLAttorneyFalse = "../../application/OwnerStart/?trademarkID="+appInternalID;
+
+        var bsLink1 = "../../application/OwnerSetView/?trademarkID="+appInternalID;
 
 
 
@@ -799,6 +810,17 @@
 
 
         preventFutureDate();
+
+        setBreadCrumb(breadCrumbStatus);
+
+        $('#bs-link1').click(function () {
+           var url = $(this).attr("href");
+           if(url != "undefined"){
+               location.href=url;
+           }
+
+
+        });
 
         ////////////////////////////////////////////////////////////
         // show and hide attorney form actions
@@ -923,15 +945,6 @@
                 $('#nextButtonFormPaging').attr("disabled",false);
             }
         }
-
-
-        // enable next page link bas[{
-        // {
-        // ed on if attorney is set
-
-
-
-
 
 
         //////////////////////////////////////////
@@ -1296,6 +1309,57 @@
         $('#bar-membership-date').attr('max', maxDate);
     }
 
+
+    function setBreadCrumb(bsStatusArrayList){
+
+        for(var a=0; a< bsStatusArrayList.length; a++){
+            if(a==0){
+                if(bsStatusArrayList[a] != "NA"){
+
+                    $('#bs-header1').addClass(bsStatusArrayList[a]);
+
+                    if(ownerOpt){
+                        $('#bs-link1').attr("href", bsLink1);
+
+                    }
+
+                }
+
+            }
+            if(a==1){
+                if(bsStatusArrayList[a] != "NA"){
+
+                }
+
+            }
+            if(a==2){
+                if(bsStatusArrayList[a] != "NA"){
+
+                }
+
+            }
+            if(a==3){
+                if(bsStatusArrayList[a] != "NA"){
+
+                }
+
+            }
+            if(a==4){
+                if(bsStatusArrayList[a] != "NA"){
+
+                }
+
+            }
+            if(a==5){
+                if(bsStatusArrayList[a] != "NA"){
+
+                }
+
+            }
+
+        }
+
+    }
 
 
 </script>

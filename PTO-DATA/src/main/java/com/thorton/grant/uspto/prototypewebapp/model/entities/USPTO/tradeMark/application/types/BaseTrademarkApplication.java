@@ -30,6 +30,13 @@ public class BaseTrademarkApplication  {
 
 
         goodAndServices = new HashSet<>();
+        sectionStatus = new ArrayList<>();
+        sectionStatus.add("NA"); //#1
+        sectionStatus.add("NA"); //#2
+        sectionStatus.add("NA"); //#3
+        sectionStatus.add("NA"); //#4
+        sectionStatus.add("NA"); //#5
+        sectionStatus.add("NA"); //#6
 
     }
 
@@ -42,6 +49,10 @@ public class BaseTrademarkApplication  {
     private String trademarkName;
     private String applicationInternalID;
     private boolean isAttorneySet = false;
+
+
+
+
     private boolean isAttorneyFiling;
     private boolean isForeignEnityFiling;
     private boolean isEntityTypeSet;
@@ -154,6 +165,13 @@ public class BaseTrademarkApplication  {
     private String miscInformation;
     private String miscInfoImagePath;
 
+
+
+
+
+    // bread crumb fields
+    // 6 values; each value can be "active", "NA", "done"
+    private ArrayList<String> sectionStatus;
 
 
 
@@ -731,7 +749,13 @@ public class BaseTrademarkApplication  {
         return "$"+val+".00";
     }
 
+    public ArrayList<String> getSectionStatus() {
+        return sectionStatus;
+    }
 
+    public void setSectionStatus(ArrayList<String> sectionStatus) {
+        this.sectionStatus = sectionStatus;
+    }
 
     @Override
     public boolean equals(Object o) {
