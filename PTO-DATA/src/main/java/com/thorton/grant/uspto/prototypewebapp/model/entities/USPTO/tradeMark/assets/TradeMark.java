@@ -175,7 +175,12 @@ public class TradeMark extends BaseEntity {
                 return  "";
             }
             else {
-                return trademarkBWImagePath;
+                if(isMarkColorClaimBW()) {
+                    return trademarkBWImagePath;
+                }
+                else {
+                    return trademarkImagePath;
+                }
             }
         }
 
