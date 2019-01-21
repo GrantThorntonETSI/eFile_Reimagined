@@ -167,7 +167,7 @@ public class UserAccountController {
         }
         //////////////////////////////////////////////////////////////////////////////////////////////
 
-        return "account/dashboard";
+        return "account/dashboard2";
         //return baseTrademarkApplication.getLastViewModel();
 
     }
