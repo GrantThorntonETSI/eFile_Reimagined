@@ -1,6 +1,8 @@
 package com.thorton.grant.uspto.prototypewebapp.controllers;
 
 
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.thorton.grant.uspto.prototypewebapp.config.host.bean.endPoint.HostBean;
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
@@ -30,6 +32,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
 
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.*;
 import java.util.*;
 
 @Controller
@@ -2061,48 +2068,6 @@ public class ApplicationFlowController {
 
 
         return "application/confirm/ConfirmPayment";
-
-    }
-
-    @RequestMapping({"/application/success"})
-    public String applicaitonSucces(WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
-        // get owner info
-
-
-        // get email and get PTOUser object from repository
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
-        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
-
-        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
-        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
-
-        model.addAttribute("user", ptoUser);
-        model.addAttribute("account",credentials);
-        model.addAttribute("hostBean", hostBean);
-        String applcationLookupID = trademarkInternalID;
-        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
-        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
-
-
-        // generate pdf file and add it to model
-        // update application status
-        baseTrademarkApplication.setLastViewModel("application/success/index");
-        ArrayList<String> sectionStatus = baseTrademarkApplication.getSectionStatus();
-        sectionStatus.set(0,"done");
-        sectionStatus.set(1,"done");
-        sectionStatus.set(2,"done");
-        sectionStatus.set(3,"done");
-        sectionStatus.set(4,"done");
-        sectionStatus.set(5,"done");
-        baseTrademarkApplication.setSectionStatus(sectionStatus);
-
-
-
-
-
-
-        return "application/success/index";
 
     }
 

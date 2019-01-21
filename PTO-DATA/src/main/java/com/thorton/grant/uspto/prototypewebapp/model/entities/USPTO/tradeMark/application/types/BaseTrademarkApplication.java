@@ -174,6 +174,11 @@ public class BaseTrademarkApplication  {
     private ArrayList<String> sectionStatus;
 
 
+    // receipt fields
+
+    private String recieptFilePath;
+
+
 
 
     public boolean isAttorneyPoolEmpty() {
@@ -755,6 +760,14 @@ public class BaseTrademarkApplication  {
 
     public void setSectionStatus(ArrayList<String> sectionStatus) {
         this.sectionStatus = sectionStatus;
+    }
+
+    public String getRecieptFilePath() {
+        return recieptFilePath;
+    }
+
+    public void setRecieptFilePath(String recieptFilePath) {
+        this.recieptFilePath = recieptFilePath;
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.thorton.grant.uspto.prototypewebapp.controllers;
 
 
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.thorton.grant.uspto.prototypewebapp.config.host.bean.endPoint.HostBean;
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
@@ -37,10 +39,11 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
-
+import java.util.List;
 
 
 @Controller
@@ -1133,6 +1136,124 @@ public class ApplicationObjectCreationController {
     }
 
 
+
+    @RequestMapping({"/application/success"})
+    public String applicaitonSucces(WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
+        // get owner info
+
+
+        // get email and get PTOUser object from repository
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+        model.addAttribute("hostBean", hostBean);
+        String applcationLookupID = trademarkInternalID;
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+
+        // generate pdf file and add it to model
+        // update application status
+        baseTrademarkApplication.setLastViewModel("application/success/index");
+        ArrayList<String> sectionStatus = baseTrademarkApplication.getSectionStatus();
+        sectionStatus.set(0,"done");
+        sectionStatus.set(1,"done");
+        sectionStatus.set(2,"done");
+        sectionStatus.set(3,"done");
+        sectionStatus.set(4,"done");
+        sectionStatus.set(5,"done");
+        baseTrademarkApplication.setSectionStatus(sectionStatus);
+
+
+        Document document = new Document();
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        //Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
+        Font boldFont = new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD);
+        Font normalFont = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL);
+
+        try {
+            PdfWriter.getInstance(document, byteArrayOutputStream);
+            document.open();
+
+            //Chunk chunk = new Chunk();
+            Paragraph paragraph = new Paragraph("Filing Receipt for Trademark Service Mark Application for Registration on the Principal Register and Next Steps in the Application Process", boldFont);
+
+            document.add(paragraph);
+            paragraph = new Paragraph("Thank you for submitting your trademark application to the U.S. Patent and Trademark Office (USPTO). This filing receipt confirms your mark and serial number, describes next steps in the application process, and includes the information submitted in your application. Please read this receipt carefully and keep a copy for your records.", normalFont);
+            document.add(paragraph);
+
+            paragraph = new Paragraph("For an overview of important things to know after filing your application, visit our website to read the After You File page and watch video number 9 After You File. ", normalFont);
+            document.add(paragraph);
+
+            String colorClaimString ="";
+            if(baseTrademarkApplication.getTradeMark().isMarkColorClaim()){
+                colorClaimString = "with";
+            }
+            else {
+                colorClaimString = "without";
+
+            }
+            paragraph = new Paragraph("1. Your mark. The mark in your application is "+baseTrademarkApplication.getTradeMark().getMarkDescription()+". The mark consists of "+baseTrademarkApplication.getTradeMark().getTrademarkDesignType()+","+colorClaimString +" claim any particular font style, size, or color.");
+
+            document.close();
+        }
+        catch(Exception ex){
+            // file not found
+
+        }
+
+        byte[] pdfBytes = byteArrayOutputStream.toByteArray();
+        String strFilePath = trademarkInternalID+"TrademarkApplicationRecipet.pdf";
+        FileOutputStream fos = null;
+
+        File pdffile = new File(strFilePath);
+
+
+        try {
+
+            fos = new FileOutputStream(pdffile);
+            fos.write(pdfBytes);
+            fos.close();
+        }
+        catch(FileNotFoundException ex)   {
+            System.out.println("FileNotFoundException : " + ex);
+        }
+        catch(IOException ioe)  {
+            System.out.println("IOException : " + ioe);
+        }
+
+
+        // save pdf file object
+        // return file path in model
+
+        String recieptFilePath = storageService.storeFile(pdffile, strFilePath);
+
+        // this will be store for each good and service that matches this
+
+        // on building class categoreis, this value is then copied over
+        // file path returned to client in response
+
+        // server redraw should render the image file path from category object
+
+
+        // baseTrademarkApplication.getc("/files/"+image_path);
+        recieptFilePath  = "/files-server/"+recieptFilePath;
+
+        baseTrademarkApplication.setRecieptFilePath(recieptFilePath);
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
+        return "application/success/index";
+
+    }
 
 
 

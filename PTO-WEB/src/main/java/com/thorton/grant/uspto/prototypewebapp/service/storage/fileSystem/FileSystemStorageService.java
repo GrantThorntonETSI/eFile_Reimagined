@@ -64,6 +64,26 @@ public class FileSystemStorageService implements StorageService {
         return newFileName;
     }
 
+    @Override
+    public String storeFile(File file, String fileName) {
+        String newFileName = "";
+        try {
+            //if (file.isEmpty()) {
+            //   throw new StorageException("Failed to store empty file " + file.getOriginalFilename());
+            //}
+            newFileName = fileCounter+fileName;
+            InputStream targetStream = new FileInputStream(file);
+            Files.copy(targetStream, this.rootLocation.resolve(newFileName));
+            fileCounter++;
+
+            //Path source = this.rootLocation.resolve(file.getOriginalFilename());
+            //Files.move(source, source.resolveSibling(filePreFix+"-attorney-bar-credentials.jpg"));
+
+        } catch (IOException e) {
+            throw new StorageException("Failed to store file " + fileName, e);
+        }
+        return newFileName;
+    }
 
 
     public String storeBW(MultipartFile file) {

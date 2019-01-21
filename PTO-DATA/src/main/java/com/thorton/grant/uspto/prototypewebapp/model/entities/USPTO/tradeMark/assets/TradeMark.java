@@ -221,7 +221,14 @@ public class TradeMark extends BaseEntity {
     }
 
     public String getMarkDescription() {
-        return markDescription;
+
+        if(isMarkColorClaim()){
+            return markColorDescription;
+        }
+        else {
+            return markBWDescription;
+        }
+
     }
 
     public void setMarkDescription(String markDescription) {
