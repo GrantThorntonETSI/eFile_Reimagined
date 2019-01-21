@@ -19,6 +19,7 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.ap
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.GSClassCategory;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.GoodAndService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.ManagedContact;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
@@ -1341,11 +1342,114 @@ public class ApplicationObjectCreationController {
             table.addCell("STATE");
             table.addCell(baseTrademarkApplication.getPrimaryOwner().getState());
             table.addCell("COUNTRY");
-            table.addCell(baseTrademarkApplication.getPrimaryOwner().getCountry());
+            table.addCell(baseTrademarkApplication.getPrimaryOwner().getOwnerEntityCountryOfOrigin());
             table.addCell("ZIP/POSTAL CODE");
             table.addCell(baseTrademarkApplication.getPrimaryOwner().getZipcode());
             table.addCell("PHONE");
             table.addCell(baseTrademarkApplication.getPrimaryOwner().getPrimaryPhonenumber());
+
+
+            table.addCell("LEGAL ENTITY INFORMATION");
+            table.addCell("");
+            table.addCell("TYPE");
+            table.addCell(baseTrademarkApplication.getPrimaryOwner().getOwnersubType());
+            table.addCell("STATE/COUNTRY WHERE LEGALLY ORGANIZED");
+            table.addCell(baseTrademarkApplication.getPrimaryOwner().getOwnerOrganizationState());
+
+
+
+            table.addCell("GOODS AND/OR SERVICES AND BASIS INFORMATION");
+            table.addCell("");
+            // run a for loop on the ordered list ...
+            ArrayList<GSClassCategory> gsClassCategories = baseTrademarkApplication.getGoodAndServicesCategories();
+
+
+            for(Iterator<GSClassCategory> iter = gsClassCategories.iterator(); iter.hasNext(); ) {
+                GSClassCategory current = iter.next();
+                for(Iterator<GoodAndService> iter2 = current.getGoodAndServices().iterator(); iter2.hasNext(); ) {
+                    GoodAndService current2 = iter2.next();
+
+                    table.addCell("INTERNATIONAL CLASS");
+                    table.addCell(current2.getClassNumber());
+                    table.addCell("IDENTIFICATION");
+                    table.addCell(current2.getClassDescription());
+                    table.addCell("FILING BASIS");
+                    table.addCell(current2.getIdentification());
+
+                }
+
+
+            }
+
+
+            if(baseTrademarkApplication.isAttorneyFiling()) {
+                table.addCell("ATTORNEY INFORMATION");
+                table.addCell("");
+                table.addCell("NAME");
+                table.addCell(baseTrademarkApplication.getPrimaryLawyer().getFirstName()+" "+baseTrademarkApplication.getPrimaryLawyer().getLastName());
+                table.addCell("STREET");
+                table.addCell(baseTrademarkApplication.getPrimaryLawyer().getAddress1());
+                table.addCell("CITY");
+                table.addCell(baseTrademarkApplication.getPrimaryLawyer().getCity());
+                table.addCell("STATE");
+                table.addCell(baseTrademarkApplication.getPrimaryLawyer().getState());
+                table.addCell("COUNTRY");
+                table.addCell(baseTrademarkApplication.getPrimaryOwner().getOwnerEntityCountryOfOrigin());
+                table.addCell("ZIP/POSTAL CODE");
+                table.addCell(baseTrademarkApplication.getPrimaryLawyer().getZipcode());
+                table.addCell("PHONE");
+                table.addCell(baseTrademarkApplication.getPrimaryLawyer().getPrimaryPhonenumber());
+                table.addCell("FAX");
+                table.addCell("");
+                table.addCell("EMAIL ADDRESS");
+                table.addCell(baseTrademarkApplication.getPrimaryLawyer().getEmail());
+                table.addCell("AUTHORIZED TO COMMUNICATE VIA EMAIL");
+                table.addCell("YES");
+
+                table.addCell("CORRESPONDENCE INFORMATION");
+                table.addCell("");
+                table.addCell("NAME");
+                table.addCell(baseTrademarkApplication.getPrimaryLawyer().getFirstName()+" "+baseTrademarkApplication.getPrimaryLawyer().getLastName());
+                table.addCell("STREET");
+                table.addCell(baseTrademarkApplication.getPrimaryLawyer().getAddress1());
+                table.addCell("CITY");
+                table.addCell(baseTrademarkApplication.getPrimaryLawyer().getCity());
+                table.addCell("STATE");
+                table.addCell(baseTrademarkApplication.getPrimaryLawyer().getState());
+                table.addCell("COUNTRY");
+                table.addCell(baseTrademarkApplication.getPrimaryOwner().getOwnerEntityCountryOfOrigin());
+                table.addCell("ZIP/POSTAL CODE");
+                table.addCell(baseTrademarkApplication.getPrimaryLawyer().getZipcode());
+
+
+
+
+            }
+            else {
+
+                table.addCell("CORRESPONDENCE INFORMATION");
+                table.addCell("");
+                table.addCell("NAME");
+                table.addCell(baseTrademarkApplication.getPrimaryOwner().getOwnerDisplayname());
+                table.addCell("STREET");
+                table.addCell(baseTrademarkApplication.getPrimaryOwner().getAddress1());
+                table.addCell("CITY");
+                table.addCell(baseTrademarkApplication.getPrimaryOwner().getCity());
+                table.addCell("STATE");
+                table.addCell(baseTrademarkApplication.getPrimaryOwner().getState());
+                table.addCell("COUNTRY");
+                table.addCell(baseTrademarkApplication.getPrimaryOwner().getOwnerEntityCountryOfOrigin());
+                table.addCell("ZIP/POSTAL CODE");
+                table.addCell(baseTrademarkApplication.getPrimaryOwner().getZipcode());
+            }
+
+
+
+
+
+
+
+
 
 
 
