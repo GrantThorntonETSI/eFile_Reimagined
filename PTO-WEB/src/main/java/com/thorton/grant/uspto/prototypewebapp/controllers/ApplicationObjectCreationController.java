@@ -2,6 +2,8 @@ package com.thorton.grant.uspto.prototypewebapp.controllers;
 
 
 import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.thorton.grant.uspto.prototypewebapp.config.host.bean.endPoint.HostBean;
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
@@ -44,6 +46,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.List;
+import java.util.stream.Stream;
 
 
 @Controller
@@ -1267,6 +1270,61 @@ public class ApplicationObjectCreationController {
             document.add(paragraph);
 
 
+            paragraph = new Paragraph("The information submitted in the application appears below: ", boldFontSmall);
+            document.add(paragraph);
+
+            paragraph = new Paragraph("Under the Paperwork Reduction Act of 1995 no persons are required to respond to a collection of information unless it displays a valid OMB control number.", normalFont);
+            document.add(paragraph);
+
+            paragraph = new Paragraph("PTO Form 1478 (Rev 09/2006)", normalFont);
+            document.add(paragraph);
+
+            paragraph = new Paragraph("OMB No. 0651-0009 (Exp 02/28/2018)", normalFont);
+            document.add(paragraph);
+
+            paragraph = new Paragraph("Trademark/Service Mark Application, Principal Register ", normalFont);
+            document.add(paragraph);
+
+            phrase = new Phrase("Note: ",boldFontSmall);
+            paragraph = new Paragraph();
+            paragraph.add(phrase);
+            paragraph.add("Data fields with the * are mandatory. The wording \"(if applicable)\" appears where the field is only mandatory under the facts of the particular application. ");
+            document.add(paragraph);
+
+            paragraph = new Paragraph(" ", normalFont);
+            document.add(paragraph);
+
+            paragraph = new Paragraph("-------------------------------------------------------------------- ", normalFont);
+            document.add(paragraph);
+            paragraph = new Paragraph("The table below presents the data as entered. ", normalFont);
+            document.add(paragraph);
+
+            paragraph = new Paragraph(" ", normalFont);
+            document.add(paragraph);
+            paragraph = new Paragraph(" ", normalFont);
+            document.add(paragraph);
+            // dynamic section adding tables and rows
+            PdfPTable table = new PdfPTable(2);
+            addTableHeader(table);
+            table.addCell("SERIAL NUMBER");
+            table.addCell(baseTrademarkApplication.getTrademarkName());
+            table.addCell("MARK INFORMATION");
+            table.addCell("");
+            table.addCell("MARK");
+            table.addCell(baseTrademarkApplication.getTradeMark().getMarkDescription());
+            table.addCell("STANDARD CHARACTERS");
+            if(baseTrademarkApplication.getTradeMark().getTrademarkDesignType().equals("Standard Characters")){
+                table.addCell("YES");
+                table.addCell("USPTO-GENERATED IMAGE");
+                table.addCell("YES");
+            }
+            else {
+                table.addCell("NO");
+                table.addCell("USPTO-GENERATED IMAGE");
+                table.addCell("NO");
+            }
+
+            document.add(table);
 
             document.close();
         }
@@ -1347,7 +1405,16 @@ public class ApplicationObjectCreationController {
     }
 
 
-
+    private void addTableHeader(PdfPTable table) {
+        Stream.of("Input Field", "Entered Value")
+                .forEach(columnTitle -> {
+                    PdfPCell header = new PdfPCell();
+                    header.setBackgroundColor(BaseColor.CYAN);
+                    header.setBorderWidth(2);
+                    header.setPhrase(new Phrase(columnTitle));
+                    table.addCell(header);
+                });
+    }
 
 
 }
