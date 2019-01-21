@@ -2016,6 +2016,9 @@ public class ApplicationFlowController {
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
 
+        baseTrademarkApplication.setLastViewModel("application/confirm/ConfirmPayment");
+
+
         if(baseTrademarkApplication.getTradeMark() == null){
             TradeMark tradeMark = new TradeMark();
             tradeMark.setTrademarkDesignType("");
@@ -2080,6 +2083,19 @@ public class ApplicationFlowController {
         String applcationLookupID = trademarkInternalID;
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+
+        // generate pdf file and add it to model
+        // update application status
+        baseTrademarkApplication.setLastViewModel("application/success/index");
+        ArrayList<String> sectionStatus = baseTrademarkApplication.getSectionStatus();
+        sectionStatus.set(0,"done");
+        sectionStatus.set(1,"done");
+        sectionStatus.set(2,"done");
+        sectionStatus.set(3,"done");
+        sectionStatus.set(4,"done");
+        sectionStatus.set(5,"done");
+        baseTrademarkApplication.setSectionStatus(sectionStatus);
 
 
 
