@@ -115,6 +115,8 @@ public class BaseTrademarkApplication  {
     @Nullable
     private TradeMark tradeMark;
 
+    private boolean tradeMarkUploaded;
+
 
     @OneToMany(cascade =  CascadeType.ALL)
     @Nullable
@@ -177,6 +179,8 @@ public class BaseTrademarkApplication  {
     // receipt fields
 
     private String recieptFilePath;
+
+    private String filingStatus = "Draft";
 
 
 
@@ -768,6 +772,22 @@ public class BaseTrademarkApplication  {
 
     public void setRecieptFilePath(String recieptFilePath) {
         this.recieptFilePath = recieptFilePath;
+    }
+
+    public String getFilingStatus() {
+        return filingStatus;
+    }
+
+    public void setFilingStatus(String filingStatus) {
+        this.filingStatus = filingStatus;
+    }
+
+    public boolean isTradeMarkUploaded() {
+        return tradeMarkUploaded;
+    }
+
+    public void setTradeMarkUploaded(boolean tradeMarkUploaded) {
+        this.tradeMarkUploaded = tradeMarkUploaded;
     }
 
     @Override

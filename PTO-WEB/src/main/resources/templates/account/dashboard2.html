@@ -130,41 +130,31 @@
                                                             </tr>
                                                             </thead>
                                                             <tbody>
-                                                            <tr>
-                                                                <td>87697840</td>
-                                                                <td>87697838</td>
-                                                                <td>Lynn Stanikmas</td>
-                                                                <td>Draft</td>
-                                                                <td>[image]</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>87697248</td>
-                                                                <td>87587238</td>
-                                                                <td>Jacob Goldstein</td>
-                                                                <td>Completed</td>
-                                                                <td>[image]</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>87697840</td>
-                                                                <td>87697839</td>
-                                                                <td>Jackie Babos</td>
-                                                                <td>Draft</td>
-                                                                <td>[image]</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>87697899</td>
-                                                                <td>87693875</td>
-                                                                <td>Li Zhang</td>
-                                                                <td>Draft</td>
-                                                                <td>[image]</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>87697294</td>
-                                                                <td>87697387</td>
-                                                                <td>Avo Reid</td>
-                                                                <td>Completed</td>
-                                                                <td>[image]</td>
-                                                            </tr>
+                                                            <th:block th:each="app : ${user.getMyApplications()}">
+                                                                <tr>
+                                                                    <td th:text="${app.getTrademarkName()}">87697840</td>
+                                                                    <td></td>
+
+                                                                    <th:block th:if="${app.isOwnerSet() == true}">
+
+                                                                        <td th:text="${app.getPrimaryOwner().getOwnerDisplayname()}">Lynn Stanikmas</td>
+
+                                                                    </th:block>
+                                                                    <th:block th:if="${app.isOwnerSet() == false}">
+
+                                                                        <td></td>
+
+                                                                    </th:block>
+
+                                                                    <td th:text="${app.getFilingStatus()}">Draft</td>
+                                                                    <th:block th:if="${app.isTradeMarkUploaded() == true}">
+                                                                        <td><img th:src="${app.getTrademark().getTrademarkImagePath()}" style="max-width: 55px; max-height: 33px;"></td>
+                                                                    </th:block>
+                                                                    <th:block th:if="${app.isTradeMarkUploaded() == false}">
+                                                                        <td></td>
+                                                                    </th:block>
+                                                                </tr>
+                                                            </th:block>
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -205,15 +195,6 @@
                                                                 <td>Resubmit</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>87697248</td>
-                                                                <td>87697235</td>
-                                                                <td>[image]</td>
-                                                                <td>Jacob Goldstein</td>
-                                                                <td>None</td>
-                                                                <td>Completed</td>
-                                                                <td>None</td>
-                                                            </tr>
-                                                            <tr>
                                                                 <td>87697899</td>
                                                                 <td>87697823</td>
                                                                 <td>[image]</td>
@@ -249,33 +230,7 @@
                                                                 <td>Draft</td>
                                                                 <td>Filing Basis, Additional Information, Confirm and Pay</td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>87697840</td>
-                                                                <td>87697834</td>
-                                                                <td>[image]</td>
-                                                                <td>Lynn Stanikmas</td>
-                                                                <td>12/21/2019</td>
-                                                                <td>Abandoned</td>
-                                                                <td>Resubmit</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>87697248</td>
-                                                                <td>87697235</td>
-                                                                <td>[image]</td>
-                                                                <td>Jacob Goldstein</td>
-                                                                <td>None</td>
-                                                                <td>Completed</td>
-                                                                <td>None</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>87697899</td>
-                                                                <td>87697823</td>
-                                                                <td>[image]</td>
-                                                                <td>Li Zhang</td>
-                                                                <td>Draft</td>
-                                                                <td>Draft</td>
-                                                                <td>Filing Basis, Additional Information, Confirm and Pay</td>
-                                                            </tr>
+
                                                             </tbody>
                                                         </table>
                                                     </div>

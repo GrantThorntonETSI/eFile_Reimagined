@@ -165,7 +165,20 @@ public class TradeMark extends BaseEntity {
     }
 
     public String getTrademarkImagePath() {
-        return trademarkImagePath;
+
+
+        if(isMarkColorClaim()){
+            return trademarkImagePath;
+        }
+        else {
+            if(trademarkDesignType.equals("Standard Character")){
+                return  "";
+            }
+            else {
+                return trademarkBWImagePath;
+            }
+        }
+
     }
 
     public void setTrademarkImagePath(String trademarkImagePath) {

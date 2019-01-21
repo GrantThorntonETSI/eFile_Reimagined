@@ -765,7 +765,7 @@ public class ApplicationObjectCreationController {
                     return "application/mark/MarkDetailsUpload";
 
                 }
-
+                baseTrademarkApplication.setTradeMarkUploaded(true);
                 baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
 
@@ -1503,7 +1503,9 @@ public class ApplicationObjectCreationController {
         recieptFilePath  = "/files-server/"+recieptFilePath;
 
         baseTrademarkApplication.setRecieptFilePath(recieptFilePath);
+        baseTrademarkApplication.setFilingStatus("Filed");
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
 
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
