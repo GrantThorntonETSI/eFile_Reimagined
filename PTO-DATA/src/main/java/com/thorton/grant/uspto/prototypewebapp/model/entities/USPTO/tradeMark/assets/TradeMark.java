@@ -226,7 +226,13 @@ public class TradeMark extends BaseEntity {
             return markColorDescription;
         }
         else {
-            return markBWDescription;
+            if(trademarkDesignType.equals("Standard Character")){
+                System.out.println("999999999999999999999999999999999999999999999999999999999999999999999999999999");
+                return trademarkStandardCharacterText;
+            }
+            else {
+                return markBWDescription;
+            }
         }
 
     }

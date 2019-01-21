@@ -423,6 +423,13 @@ public class GoodAndService {
         this.frCertImagePath = frCertImagePath;
     }
 
+
+    public String getClassNumberDisplay(){
+
+
+        return "Class "+classNumber;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

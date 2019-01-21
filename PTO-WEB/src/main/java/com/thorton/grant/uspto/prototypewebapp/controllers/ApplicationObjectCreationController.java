@@ -1176,6 +1176,7 @@ public class ApplicationObjectCreationController {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         //Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
         Font boldFont = new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD);
+        Font boldFontSmall = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD);
         Font normalFont = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL);
 
         try {
@@ -1184,13 +1185,19 @@ public class ApplicationObjectCreationController {
 
             //Chunk chunk = new Chunk();
             Paragraph paragraph = new Paragraph("Filing Receipt for Trademark Service Mark Application for Registration on the Principal Register and Next Steps in the Application Process", boldFont);
-
             document.add(paragraph);
             paragraph = new Paragraph("Thank you for submitting your trademark application to the U.S. Patent and Trademark Office (USPTO). This filing receipt confirms your mark and serial number, describes next steps in the application process, and includes the information submitted in your application. Please read this receipt carefully and keep a copy for your records.", normalFont);
             document.add(paragraph);
 
-            paragraph = new Paragraph("For an overview of important things to know after filing your application, visit our website to read the After You File page and watch video number 9 After You File. ", normalFont);
-            document.add(paragraph);
+            /////////////////////////////////////////////////////////////////////////////////////////////////
+            Phrase phrase = new Phrase("",normalFont);
+            phrase.add("For an overview of important things to know after filing your application, visit our website to read the");
+            Chunk chunk = new Chunk("After You File");
+            chunk.setAnchor("https://www.uspto.gov/trademarks-application-process/filing-online/after-you-file");
+            phrase.add(chunk);
+            phrase.add("page and watch video number 9 \"");
+            phrase.add(chunk);
+            document.add(phrase);
 
             String colorClaimString ="";
             if(baseTrademarkApplication.getTradeMark().isMarkColorClaim()){
@@ -1200,7 +1207,66 @@ public class ApplicationObjectCreationController {
                 colorClaimString = "without";
 
             }
-            paragraph = new Paragraph("1. Your mark. The mark in your application is "+baseTrademarkApplication.getTradeMark().getMarkDescription()+". The mark consists of "+baseTrademarkApplication.getTradeMark().getTrademarkDesignType()+","+colorClaimString +" claim any particular font style, size, or color.");
+
+
+            phrase = new Phrase("1. Your mark. ",boldFontSmall);
+            paragraph = new Paragraph();
+            paragraph.add(phrase);
+            paragraph.add("The mark in your application is "+baseTrademarkApplication.getTradeMark().getMarkDescription()+". The mark consists of "+baseTrademarkApplication.getTradeMark().getTrademarkDesignType()+","+colorClaimString +" claim of any particular font style, size, or color.");
+            document.add(paragraph);
+
+
+
+            phrase = new Phrase("2. Your serial number. ",boldFontSmall);
+            paragraph = new Paragraph();
+            paragraph.add(phrase);
+            paragraph.add("Your application was assigned serial number"+baseTrademarkApplication.getTrademarkName()+". You must refer to your serial number in all communications about your application.");
+            document.add(paragraph);
+
+
+
+            phrase = new Phrase("3. What happens next - legal examination. ",boldFontSmall);
+            paragraph = new Paragraph();
+            paragraph.add(phrase);
+            paragraph.add("Your mark will not be registered automatically. In approximatelty three months, your applicaiton will be assigned to a USPTO examining attorney for review. The attorney will deterimine if your application meets all applicable legal requirements, and if it doesn't you will be notified in an email with a link to the official Office action(official letter from the USPTO). Visit our website for an explanation of application process time lines.");
+            document.add(paragraph);
+
+            phrase = new Phrase("4. Keep your address current in USPTO records",boldFontSmall);
+            paragraph = new Paragraph();
+            paragraph.add(phrase);
+            paragraph.add("We do not extend filing deadlines if you do not receive USPTO mail or email. If your postal address or email address changes, you must update the correspondence or owner's address using the address forms on our website.");
+            document.add(paragraph);
+
+
+            phrase = new Phrase("5. Check your application status in our database every three to four months. ",boldFontSmall);
+            paragraph = new Paragraph();
+            paragraph.add(phrase);
+            paragraph.add("To be sure that you don't miss an important email from us, and to avoid the possible abandonment of your application, check your application status and review your documents in our database, Trademark Status and Document Retrieval (TSDR), every three to four months.");
+            document.add(paragraph);
+
+
+            phrase = new Phrase("6. Warning about private companies offering trademark-related services. ",boldFontSmall);
+            paragraph = new Paragraph();
+            paragraph.add(phrase);
+            paragraph.add("Private companies may send you communications that resemble official USPTO communications. These private companies are not associated with the USPTO. All official correspondence will be from the \"United States Patent and Trademark Office\" in Alexandria, Virginia, and from emails with the domain \"uspto.gov.\" If you are unsure about whether the correspondence is from us, check your records in our database, TSDR. Visit our website for more information on trademark-related communications that may resemble official USPTO communications.");
+            document.add(paragraph);
+
+
+            phrase = new Phrase("7. Questions? ",boldFontSmall);
+            paragraph = new Paragraph();
+            paragraph.add(phrase);
+            paragraph.add("Please visit our website, email us, or call us at 1-800-786-9199 and select option 1.");
+            document.add(paragraph);
+
+
+
+            phrase = new Phrase("8. Application data. ",boldFontSmall);
+            paragraph = new Paragraph();
+            paragraph.add(phrase);
+            paragraph.add("If you find an error in the data below, visit the After You File page on our website for information on correcting errors.");
+            document.add(paragraph);
+
+
 
             document.close();
         }
