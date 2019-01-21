@@ -1294,8 +1294,6 @@ public class ApplicationObjectCreationController {
             paragraph = new Paragraph(" ", normalFont);
             document.add(paragraph);
 
-            paragraph = new Paragraph("-------------------------------------------------------------------- ", normalFont);
-            document.add(paragraph);
             paragraph = new Paragraph("The table below presents the data as entered. ", normalFont);
             document.add(paragraph);
 
@@ -1323,6 +1321,36 @@ public class ApplicationObjectCreationController {
                 table.addCell("USPTO-GENERATED IMAGE");
                 table.addCell("NO");
             }
+            table.addCell("LITERAL ELEMENT");
+            table.addCell(baseTrademarkApplication.getTradeMark().getMarkLiteral());
+
+
+            table.addCell("MARK STATEMENT");
+            table.addCell("The mark consists of "+baseTrademarkApplication.getTradeMark().getTrademarkDesignType()+","+colorClaimString +" claim of any particular font style, size, or color.");
+
+            table.addCell("APPLICATION INFORMATION");
+            table.addCell("");
+            table.addCell("OWNER OF MARK");
+            table.addCell(baseTrademarkApplication.getPrimaryOwner().getOwnerDisplayname());
+            table.addCell("DBA/AKA/TA/Formerly");
+            table.addCell("");
+            table.addCell("STREET");
+            table.addCell(baseTrademarkApplication.getPrimaryOwner().getAddress1());
+            table.addCell("CITY");
+            table.addCell(baseTrademarkApplication.getPrimaryOwner().getCity());
+            table.addCell("STATE");
+            table.addCell(baseTrademarkApplication.getPrimaryOwner().getState());
+            table.addCell("COUNTRY");
+            table.addCell(baseTrademarkApplication.getPrimaryOwner().getCountry());
+            table.addCell("ZIP/POSTAL CODE");
+            table.addCell(baseTrademarkApplication.getPrimaryOwner().getZipcode());
+            table.addCell("PHONE");
+            table.addCell(baseTrademarkApplication.getPrimaryOwner().getPrimaryPhonenumber());
+
+
+
+
+
 
             document.add(table);
 
