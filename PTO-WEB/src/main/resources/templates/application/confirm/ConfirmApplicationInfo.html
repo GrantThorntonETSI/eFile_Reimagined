@@ -859,6 +859,7 @@
                 if(bsStatusArrayList[a] != "NA"){
 
                     $('#bs-header1').addClass(bsStatusArrayList[a]);
+                    $('#bs-link1').attr("href", bsLink1);
 
                 }
 
@@ -873,7 +874,9 @@
                     if(bsStatusArrayList[a] == "done"){
                         $('#bs-link2').attr("href", bsLink2_done);
                     }
-                    //$('#bs-link2').attr("href", bsLink2);
+
+
+
                 }
 
             }
@@ -881,6 +884,7 @@
                 if(bsStatusArrayList[a] != "NA"){
 
                     $('#bs-header3').addClass(bsStatusArrayList[a]);
+
                     if(bsStatusArrayList[a] == "active"){
                         $('#bs-link3').attr("href", bsLink3_active);
 
@@ -888,6 +892,7 @@
                     if(bsStatusArrayList[a] == "done"){
                         $('#bs-link3').attr("href", bsLink3_done);
                     }
+
 
                 }
 
@@ -917,20 +922,13 @@
                     if(bsStatusArrayList[a] == "done"){
                         $('#bs-link5').attr("href", bsLink5_done);
                     }
-
                 }
 
             }
             if(a==5){
                 if(bsStatusArrayList[a] != "NA"){
                     $('#bs-header6').addClass(bsStatusArrayList[a]);
-                    if(bsStatusArrayList[a] == "active"){
-                        $('#bs-link6').attr("href", bsLink6_active);
 
-                    }
-                    if(bsStatusArrayList[a] == "done"){
-                        $('#bs-link6').attr("href", bsLink6_done);
-                    }
 
                 }
 

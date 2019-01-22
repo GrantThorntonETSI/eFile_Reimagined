@@ -519,6 +519,7 @@
                 if(bsStatusArrayList[a] != "NA"){
 
                     $('#bs-header1').addClass(bsStatusArrayList[a]);
+                    $('#bs-link1').attr("href", bsLink1);
 
                 }
 
@@ -533,7 +534,9 @@
                     if(bsStatusArrayList[a] == "done"){
                         $('#bs-link2').attr("href", bsLink2_done);
                     }
-                    //$('#bs-link2').attr("href", bsLink2);
+
+
+
                 }
 
             }
@@ -541,13 +544,7 @@
                 if(bsStatusArrayList[a] != "NA"){
 
                     $('#bs-header3').addClass(bsStatusArrayList[a]);
-                    if(bsStatusArrayList[a] == "active"){
-                        $('#bs-link3').attr("href", bsLink3_active);
 
-                    }
-                    if(bsStatusArrayList[a] == "done"){
-                        $('#bs-link3').attr("href", bsLink3_done);
-                    }
 
                 }
 
@@ -599,7 +596,6 @@
         }
 
     }
-
 
 
 

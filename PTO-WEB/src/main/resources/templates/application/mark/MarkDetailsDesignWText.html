@@ -1671,6 +1671,7 @@
                 if(bsStatusArrayList[a] != "NA"){
 
                     $('#bs-header1').addClass(bsStatusArrayList[a]);
+                    $('#bs-link1').attr("href", bsLink1);
 
                 }
 
@@ -1678,14 +1679,8 @@
             if(a==1){
                 if(bsStatusArrayList[a] != "NA"){
                     $('#bs-header2').addClass(bsStatusArrayList[a]);
-                    if(bsStatusArrayList[a] == "active"){
-                        $('#bs-link2').attr("href", bsLink2_active);
 
-                    }
-                    if(bsStatusArrayList[a] == "done"){
-                        $('#bs-link2').attr("href", bsLink2_done);
-                    }
-                    //$('#bs-link2').attr("href", bsLink2);
+
                 }
 
             }
@@ -1751,8 +1746,6 @@
         }
 
     }
-
-
 </script>
 
 </body>
