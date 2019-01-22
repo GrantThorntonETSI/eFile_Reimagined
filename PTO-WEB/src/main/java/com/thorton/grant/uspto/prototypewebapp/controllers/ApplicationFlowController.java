@@ -1765,7 +1765,7 @@ public class ApplicationFlowController {
 
 
 
-
+        model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
         return "application/filing_basis/FilingBasisUpload";
 
     }
@@ -1835,7 +1835,7 @@ public class ApplicationFlowController {
 
 
 
-
+        model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
         return "application/filing_basis/FilingBasisInuseUpload";
 
     }
@@ -1917,7 +1917,7 @@ public class ApplicationFlowController {
 
 
 
-
+        model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
         return "application/additional/additionalInfo";
 
     }
@@ -1998,7 +1998,7 @@ public class ApplicationFlowController {
 
 
 
-
+        model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
         return "application/confirm/ConfirmApplicationInfo";
 
     }
@@ -2067,7 +2067,7 @@ public class ApplicationFlowController {
 
 
 
-
+        model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
         return "application/confirm/ConfirmPayment";
 
     }
