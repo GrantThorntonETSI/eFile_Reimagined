@@ -436,7 +436,7 @@ public class ApplicationFlowController {
         selectedAttorneyDisplayDTO.setContactEmails(selectedContactNames);
         model.addAttribute("selectedOwners",selectedAttorneyDisplayDTO);
 
-
+        model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
         return "application/owner/OwnerStart";
     }
 
