@@ -693,10 +693,10 @@ public class BaseTrademarkApplication  {
     public String getExtraFeeCalculationString(){
 
         if(getUniqueClassNumberforGS().size() > 0){
-            return"("+ (getUniqueClassNumberforGS().size()-1)+"x)$275";
+            return"("+ (getUniqueClassNumberforGS().size()-1)+")$"+((getUniqueClassNumberforGS().size()-1)*275);
         }
         else {
-            return "(0x)$275";
+            return "(0)$0";
         }
 
 
@@ -705,12 +705,9 @@ public class BaseTrademarkApplication  {
 
     public String getBasicFeeCalculationString(){
 
-        if(getUniqueClassNumberforGS().size() > 0){
+
             return "$275";
-        }
-        else {
-            return "$0";
-        }
+
 
 
 
@@ -734,10 +731,10 @@ public class BaseTrademarkApplication  {
     public String getTotalFeeString(){
         String val = "";
                 if(getUniqueClassNumberforGS().size() > 0){
-                  val=  (225+Integer.valueOf(getUniqueClassNumberforGS().size()-1)*275)+"";
+                  val=  (275+Integer.valueOf(getUniqueClassNumberforGS().size()-1)*275)+"";
                 }
                 else{
-                    val = "0";
+                    val = "275";
 
                 }
 
@@ -750,7 +747,7 @@ public class BaseTrademarkApplication  {
             val=  (275+Integer.valueOf(getUniqueClassNumberforGS().size()-1)*275)+"";
         }
         else{
-            val = "0";
+            val = "275";
 
         }
 
