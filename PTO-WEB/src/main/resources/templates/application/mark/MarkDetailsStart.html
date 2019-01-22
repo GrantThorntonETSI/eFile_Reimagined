@@ -14,62 +14,62 @@
                 <div class="row">
                     <section class="col-xs-12 steps breadcrumb-steps" aria-label="progress tracker">
                         <div class="row displaycell">
-                            <div class="col-xs-2 one done">
+                            <div class="col-xs-2 one" id="bs-header1">
                                 <div class="row">
                                     <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
                                         <span>1</span>
                                     </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="breadcrumb1">
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link1">
                                         <p class="first">Your details</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-2 two active">
+                            <div class="col-xs-2 two" id="bs-header2">
                                 <div class="row">
                                     <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
                                         <span>2</span>
                                     </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="breadcrumb2">
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link2">
                                         <p>Trademark details</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-2 three">
+                            <div class="col-xs-2 three" id="bs-header3">
                                 <div class="row">
                                     <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
                                         <span>3</span>
                                     </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="breadcrumb3">
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link3">
                                         <p>Goods and services</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-2 four">
+                            <div class="col-xs-2 four" id="bs-header4">
                                 <div class="row">
                                     <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
                                         <span>4</span>
                                     </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="breadcrumb4">
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link4">
                                         <p>Basis</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-2 five">
+                            <div class="col-xs-2 five" id="bs-header5">
                                 <div class="row">
                                     <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
                                         <span>5</span>
                                     </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="breadcrumb5">
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link5">
                                         <p>Additional info</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-2 six">
+                            <div class="col-xs-2 six" id="bs-header6">
                                 <div class="row">
                                     <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
                                         <span>6</span>
                                     </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="breadcrumb6">
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link6">
                                         <p>Confirm and pay</p>
                                     </div>
                                 </div>
@@ -450,6 +450,7 @@ Collective Membership Mark:  A collective membership mark is a mark used by the 
 
     var host = host_name+":"+host_port;
     var markType = /*[[${baseTrademarkApplication.tradeMark.trademarkDesignType}]]*/ 'User Name';
+    var breadCrumbStatus = /*[[${breadCrumbStatus}]]*/ 'User Name';
 
     /*]]>*/
 </script>
@@ -464,7 +465,34 @@ Collective Membership Mark:  A collective membership mark is a mark used by the 
 
     // bread crumb links
     // tab 1 application_start_id
-    var breadCrumb1Link = "../../application/OwnerSetView/?trademarkID="+appInternalID;
+    ////////////////////////////////////////////////////////////////////////////////////
+    // bred crumb links
+    ////////////////////////////////////////////////////////////////////////////////////
+    var bsLink1 = "../../application/OwnerSetView/?trademarkID="+appInternalID;
+
+    var bsLink2_active =  "../../application/MarkDetails/?trademarkID="+appInternalID;
+    var bsLink2_done =  "../../mark/designWithTextDisclaimer/?trademarkID="+appInternalID;
+
+    var bsLink3_active =  "../../application/goodsAndServicesStart/?trademarkID="+appInternalID;
+    var bsLink3_done =  "../../application/goodsAndServicesReview/?trademarkID="+appInternalID;
+
+
+
+
+    var bsLink4_active = "../../application/filingBasisStart/?trademarkID="+appInternalID;
+    var bsLink4_done = "../../application/filingBasisStart/?trademarkID="+appInternalID;
+
+
+
+    var bsLink5_active =  "../../application/additionalInfoUpload/?trademarkID="+appInternalID;
+    var bsLink5_done =  "../../application/additionalInfoUpload/?trademarkID="+appInternalID;
+
+
+
+
+    var bsLink6_active =  "../../application/confirmInfo/?trademarkID="+appInternalID;
+    var bsLink6_done =  "../../application/confirmInfo/?trademarkID="+appInternalID;
+    ////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -514,6 +542,57 @@ Collective Membership Mark:  A collective membership mark is a mark used by the 
 
         $('[data-toggle="tooltip"]').tooltip();
 
+        setBreadCrumb(breadCrumbStatus);
+
+        $('#bs-link1').click(function () {
+            var url = $(this).attr("href");
+            if(url != "undefined"){
+                location.href=url;
+            }
+
+        });
+
+        $('#bs-link2').click(function () {
+            var url = $(this).attr("href");
+            if(url != "undefined"){
+                //location.href=url;
+            }
+
+        });
+
+        $('#bs-link3').click(function () {
+            var url = $(this).attr("href");
+            if(url != "undefined"){
+                location.href=url;
+            }
+
+        });
+
+        $('#bs-link4').click(function () {
+            var url = $(this).attr("href");
+            if(url != "undefined"){
+                location.href=url;
+            }
+
+        });
+
+        $('#bs-link5').click(function () {
+            var url = $(this).attr("href");
+            if(url != "undefined"){
+                location.href=url;
+            }
+
+        });
+
+        $('#bs-link6').click(function () {
+            var url = $(this).attr("href");
+            if(url != "undefined"){
+                location.href=url;
+            }
+
+        });
+
+
 
 
         ////////////////////////////////////////
@@ -526,10 +605,6 @@ Collective Membership Mark:  A collective membership mark is a mark used by the 
 
         $('#nextButton').click(function () {
             location.href=nextLinkURL;
-        });
-
-        $('#breadcrumb1').click(function () {
-            location.href=breadCrumb1Link;
         });
 
 
@@ -650,6 +725,96 @@ Collective Membership Mark:  A collective membership mark is a mark used by the 
 
 
     });
+
+
+    function setBreadCrumb(bsStatusArrayList){
+
+        for(var a=0; a< bsStatusArrayList.length; a++){
+            if(a==0){
+                if(bsStatusArrayList[a] != "NA"){
+
+                    $('#bs-header1').addClass(bsStatusArrayList[a]);
+
+                }
+
+            }
+            if(a==1){
+                if(bsStatusArrayList[a] != "NA"){
+                    $('#bs-header2').addClass(bsStatusArrayList[a]);
+                    if(bsStatusArrayList[a] == "active"){
+                        $('#bs-link2').attr("href", bsLink2_active);
+
+                    }
+                    if(bsStatusArrayList[a] == "done"){
+                        $('#bs-link2').attr("href", bsLink2_done);
+                    }
+                    //$('#bs-link2').attr("href", bsLink2);
+                }
+
+            }
+            if(a==2){
+                if(bsStatusArrayList[a] != "NA"){
+
+                    $('#bs-header3').addClass(bsStatusArrayList[a]);
+                    if(bsStatusArrayList[a] == "active"){
+                        $('#bs-link3').attr("href", bsLink3_active);
+
+                    }
+                    if(bsStatusArrayList[a] == "done"){
+                        $('#bs-link3').attr("href", bsLink3_done);
+                    }
+
+                }
+
+            }
+            if(a==3){
+                if(bsStatusArrayList[a] != "NA"){
+
+                    $('#bs-header4').addClass(bsStatusArrayList[a]);
+                    if(bsStatusArrayList[a] == "active"){
+                        $('#bs-link4').attr("href", bsLink4_active);
+
+                    }
+                    if(bsStatusArrayList[a] == "done"){
+                        $('#bs-link4').attr("href", bsLink4_done);
+                    }
+
+                }
+
+            }
+            if(a==4){
+                if(bsStatusArrayList[a] != "NA"){
+                    $('#bs-header5').addClass(bsStatusArrayList[a]);
+                    if(bsStatusArrayList[a] == "active"){
+                        $('#bs-link5').attr("href", bsLink5_active);
+
+                    }
+                    if(bsStatusArrayList[a] == "done"){
+                        $('#bs-link5').attr("href", bsLink5_done);
+                    }
+
+                }
+
+            }
+            if(a==5){
+                if(bsStatusArrayList[a] != "NA"){
+                    $('#bs-header6').addClass(bsStatusArrayList[a]);
+                    if(bsStatusArrayList[a] == "active"){
+                        $('#bs-link6').attr("href", bsLink6_active);
+
+                    }
+                    if(bsStatusArrayList[a] == "done"){
+                        $('#bs-link6').attr("href", bsLink6_done);
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
 </script>
 
 </body>

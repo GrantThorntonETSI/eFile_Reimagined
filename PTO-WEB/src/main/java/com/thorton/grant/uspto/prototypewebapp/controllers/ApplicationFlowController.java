@@ -1145,7 +1145,7 @@ public class ApplicationFlowController {
         }
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
-        //return "application/MarkDetailsExamples";
+        model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
         return "application/mark/MarkDetailsStart";
         //return "registrationConfirm/VerificationEmail";
     }
