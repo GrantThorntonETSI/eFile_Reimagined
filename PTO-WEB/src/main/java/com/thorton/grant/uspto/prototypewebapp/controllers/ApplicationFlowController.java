@@ -1410,7 +1410,7 @@ public class ApplicationFlowController {
         model.addAttribute("priorRegistration", priorRegistration);
         model.addAttribute("markHasMeaning", markHasMeaning);
 
-
+        model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
 
         return "application/mark/MarkDetailsDesignWTextDisclaimer";
 
