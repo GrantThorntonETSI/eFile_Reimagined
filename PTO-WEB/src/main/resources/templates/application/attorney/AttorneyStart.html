@@ -732,9 +732,16 @@
 
 
         var isAttorneyOptionSet = /*[[${isAttorneyOptionSet}]]*/ 'User Name';
+
+
+
         var isAttorneyFiling = /*[[${isAttorneyFiling}]]*/ 'User Name';
 
+
+
         var isAttorneyPoolEmpty = /*[[${baseTrademarkApplication.isAttorneyPoolEmpty()}]]*/ 'User Name';
+
+
         var host_name= /*[[${hostBean.host}]]*/ 'User Name';
         var host_port= /*[[${hostBean.port}]]*/ 'User Name';
 
@@ -958,6 +965,7 @@
                        // set next link to attorney view
                        // activate link
                        location.href=nextLinkURL;
+                       //$('#nextButtonFormPaging').attr("disabled",false);
 
 
                    }
@@ -981,6 +989,7 @@
         // check if attorneyFillingFalse is set
         /////////////////////////////////////////////////////////////
         if(isAttorneyOptionSet == true){
+
             if(isAttorneyFiling == true){
                 if(isAttorneyPoolEmpty == false){
                     // call jquery click

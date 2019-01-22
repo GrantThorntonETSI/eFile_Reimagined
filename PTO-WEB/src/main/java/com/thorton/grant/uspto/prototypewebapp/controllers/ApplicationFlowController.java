@@ -300,7 +300,7 @@ public class ApplicationFlowController {
         ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
         selectedAttorneyDisplayDTO.setContactNames(selectedContactNames);
         model.addAttribute("selectedAttorneys",selectedAttorneyDisplayDTO);
-        baseTrademarkApplication.setLastViewModel("application/AttorneySet");
+        baseTrademarkApplication.setLastViewModel("application/attorney/AttorneySet");
 
         if(trademarkInternalID.equals("new")) {
 
@@ -1095,6 +1095,7 @@ public class ApplicationFlowController {
         ContactsDisplayDTO selectedDescription = new ContactsDisplayDTO();
         selectedDescription.setContactNames(selectedGSDescrption);
         model.addAttribute("selectedGoods_Services",selectedDescription);
+        model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
 
         System.out.println("las view model : "+baseTrademarkApplication.getLastViewModel());
 
