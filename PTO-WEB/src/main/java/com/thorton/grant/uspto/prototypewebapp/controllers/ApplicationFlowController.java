@@ -360,6 +360,7 @@ public class ApplicationFlowController {
 
 
         model.addAttribute("hostBean", hostBean);
+        model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
         return "application/attorney/AttorneySet";
 
     }
