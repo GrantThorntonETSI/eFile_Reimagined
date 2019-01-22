@@ -1325,6 +1325,7 @@ public class ApplicationFlowController {
         model.addAttribute("isSignature", isSignature );
         model.addAttribute("isPortrait", isPortrait );
         model.addAttribute("isNPSLivingPerson", isNPSLivingPerson );
+        model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
         return "application/mark/MarkDetailsStandard";
 
     }
