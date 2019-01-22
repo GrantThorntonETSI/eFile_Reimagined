@@ -111,17 +111,9 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle fees" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" th:text="${baseTrademarkApplication.getTotalFeeString()}" id="fee-display">Fees $725<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li>Total Classes - <span th:text="${baseTrademarkApplication.getTotalNumberOfclasses()}" id="total-classes">2</span></li>
+                        <li>Basic Fee <span th:text="${baseTrademarkApplication.getBasicFeeCalculationString()}" id="basic-fee-calc"></span> </li>
                         <li role="separator" class="divider"></li>
-                        <li>Total Extra Classes - <span th:text="${baseTrademarkApplication.getNumberOfExtraClasses()}" id="total-extra-classes">2</span></li>
-                        <li role="separator" class="divider"></li>
-                        <li id="firstli">Basic Fees - $225 </li>
-                        <li role="separator" class="divider"></li>
-                        <li>Extra Class Fee -  $275 per class</li>
-                        <li role="separator" class="divider"></li>
-                        <li>Total Basic Fees - <span th:text="${baseTrademarkApplication.getBasicFeeCalculationString()}" id="basic-fee-calc">1x225 = $225</span> </li>
-                        <li role="separator" class="divider"></li>
-                        <li>Total Extra Class Fees - <span th:text="${baseTrademarkApplication.getExtraFeeCalculationString()}"id="extra-fee-calc">2x275 = $500</span> </li>
+                        <li>Additional Classes <span th:text="${baseTrademarkApplication.getExtraFeeCalculationString()}"id="extra-fee-calc"></span> </li>
                         <li role="separator" class="divider"></li>
                         <li id="lastli">Total <span th:text="${baseTrademarkApplication.getTotalFeeString()}" id="total-fees">Fees $725</span></li>
                     </ul>
