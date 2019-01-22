@@ -14,62 +14,62 @@
                 <div class="row">
                     <section class="col-xs-12 steps breadcrumb-steps" aria-label="progress tracker">
                         <div class="row displaycell">
-                            <div class="col-xs-2 one done">
+                            <div class="col-xs-2 one" id="bs-header1">
                                 <div class="row">
                                     <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
                                         <span>1</span>
                                     </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link1">
                                         <p class="first">Your details</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-2 two done">
+                            <div class="col-xs-2 two" id="bs-header2">
                                 <div class="row">
                                     <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
                                         <span>2</span>
                                     </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link2">
                                         <p>Trademark details</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-2 three done">
+                            <div class="col-xs-2 three" id="bs-header3">
                                 <div class="row">
                                     <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
                                         <span>3</span>
                                     </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link3">
                                         <p>Goods and services</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-2 four done">
+                            <div class="col-xs-2 four" id="bs-header4">
                                 <div class="row">
                                     <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
                                         <span>4</span>
                                     </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link4">
                                         <p>Basis</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-2 five done">
+                            <div class="col-xs-2 five" id="bs-header5">
                                 <div class="row">
                                     <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
                                         <span>5</span>
                                     </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link5">
                                         <p>Additional info</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-2 six active">
+                            <div class="col-xs-2 six" id="bs-header6">
                                 <div class="row">
                                     <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
                                         <span>6</span>
                                     </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link6">
                                         <p>Confirm and pay</p>
                                     </div>
                                 </div>
@@ -596,7 +596,7 @@
     var markType = /*[[${baseTrademarkApplication.tradeMark.trademarkDesignType}]]*/ 'User Name';
     var markText = /*[[${baseTrademarkApplication.tradeMark.trademarkStandardCharacterText}]]*/ 'User Name';
 
-
+    var breadCrumbStatus = /*[[${breadCrumbStatus}]]*/ 'User Name';
     /*]]>*/
 </script>
 
@@ -611,8 +611,35 @@
     var nextLinkURL = "../../application/success/?trademarkID="+appInternalID;
 
 
-    var breadCrumb1Link = "../../application/start/?trademarkID="+appInternalID;
-    var breadCrumb2Link = "../../application/MarkDetails/?trademarkID="+appInternalID;
+    ////////////////////////////////////////////////////////////////////////////////////
+    // bred crumb links
+    ////////////////////////////////////////////////////////////////////////////////////
+    var bsLink1 = "../../application/OwnerSetView/?trademarkID="+appInternalID;
+
+    var bsLink2_active =  "../../application/MarkDetails/?trademarkID="+appInternalID;
+    var bsLink2_done =  "../../mark/designWithTextDisclaimer/?trademarkID="+appInternalID;
+
+    var bsLink3_active =  "../../application/goodsAndServicesStart/?trademarkID="+appInternalID;
+    var bsLink3_done =  "../../application/goodsAndServicesReview/?trademarkID="+appInternalID;
+
+
+
+
+    var bsLink4_active = "../../application/filingBasisStart/?trademarkID="+appInternalID;
+    var bsLink4_done = "../../application/filingBasisStart/?trademarkID="+appInternalID;
+
+
+
+    var bsLink5_active =  "../../application/additionalInfoUpload/?trademarkID="+appInternalID;
+    var bsLink5_done =  "../../application/additionalInfoUpload/?trademarkID="+appInternalID;
+
+
+
+
+    var bsLink6_active =  "../../application/confirmInfo/?trademarkID="+appInternalID;
+    var bsLink6_done =  "../../application/confirmInfo/?trademarkID="+appInternalID;
+    ////////////////////////////////////////////////////////////////////////////////////
+
 
 
 
@@ -666,18 +693,55 @@
         });
 
 
+        setBreadCrumb(breadCrumbStatus);
 
+        $('#bs-link1').click(function () {
+            var url = $(this).attr("href");
+            if(url != "undefined"){
+                location.href=url;
+            }
 
-        $('#breadcrumb1').click(function () {
-            location.href=breadCrumb1Link;
         });
 
+        $('#bs-link2').click(function () {
+            var url = $(this).attr("href");
+            if(url != "undefined"){
+                location.href=url;
+            }
 
-        $('#breadcrumb2').click(function () {
-            location.href=breadCrumb2Link;
         });
 
+        $('#bs-link3').click(function () {
+            var url = $(this).attr("href");
+            if(url != "undefined"){
+                location.href=url;
+            }
 
+        });
+
+        $('#bs-link4').click(function () {
+            var url = $(this).attr("href");
+            if(url != "undefined"){
+                location.href=url;
+            }
+
+        });
+
+        $('#bs-link5').click(function () {
+            var url = $(this).attr("href");
+            if(url != "undefined"){
+                location.href=url;
+            }
+
+        });
+
+        $('#bs-link6').click(function () {
+            var url = $(this).attr("href");
+            if(url != "undefined"){
+                //location.href=url;
+            }
+
+        });
 
 
         //////////////////////////////////////////////////////////////////////
