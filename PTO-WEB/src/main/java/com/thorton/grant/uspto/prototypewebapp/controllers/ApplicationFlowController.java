@@ -1550,9 +1550,9 @@ public class ApplicationFlowController {
 
 
 
-        //return "application/MarkDetailsExamples";
+        model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
         return "application/goods_services/GoodsServicesSelect";
-        //return "registrationConfirm/VerificationEmail";
+
     }
 
 
@@ -1618,9 +1618,9 @@ public class ApplicationFlowController {
 
 
 
-        //return "application/MarkDetailsExamples";
+        model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
         return "application/goods_services/GoodsServicesReview";
-        //return "registrationConfirm/VerificationEmail";
+
     }
 
 
