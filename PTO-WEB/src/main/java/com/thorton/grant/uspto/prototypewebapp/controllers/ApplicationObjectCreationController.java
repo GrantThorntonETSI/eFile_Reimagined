@@ -1175,262 +1175,167 @@ public class ApplicationObjectCreationController {
         baseTrademarkApplication.setSectionStatus(sectionStatus);
 
 
-        Document document = new Document();
+        if(baseTrademarkApplication.getFilingStatus() != "Filed"){
+            Document document = new Document();
 
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        //Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
-        Font boldFont = new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD);
-        Font boldFontSmall = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD);
-        Font normalFont = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL);
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            //Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
+            Font boldFont = new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD);
+            Font boldFontSmall = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD);
+            Font normalFont = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL);
 
-        try {
-            PdfWriter.getInstance(document, byteArrayOutputStream);
-            document.open();
+            try {
+                PdfWriter.getInstance(document, byteArrayOutputStream);
+                document.open();
 
-            //Chunk chunk = new Chunk();
-            Paragraph paragraph = new Paragraph("Filing Receipt for Trademark Service Mark Application for Registration on the Principal Register and Next Steps in the Application Process", boldFont);
-            document.add(paragraph);
-            paragraph = new Paragraph("Thank you for submitting your trademark application to the U.S. Patent and Trademark Office (USPTO). This filing receipt confirms your mark and serial number, describes next steps in the application process, and includes the information submitted in your application. Please read this receipt carefully and keep a copy for your records.", normalFont);
-            document.add(paragraph);
+                //Chunk chunk = new Chunk();
+                Paragraph paragraph = new Paragraph("Filing Receipt for Trademark Service Mark Application for Registration on the Principal Register and Next Steps in the Application Process", boldFont);
+                document.add(paragraph);
+                paragraph = new Paragraph("Thank you for submitting your trademark application to the U.S. Patent and Trademark Office (USPTO). This filing receipt confirms your mark and serial number, describes next steps in the application process, and includes the information submitted in your application. Please read this receipt carefully and keep a copy for your records.", normalFont);
+                document.add(paragraph);
 
-            /////////////////////////////////////////////////////////////////////////////////////////////////
-            Phrase phrase = new Phrase("",normalFont);
-            phrase.add("For an overview of important things to know after filing your application, visit our website to read the");
-            Chunk chunk = new Chunk("After You File");
-            chunk.setAnchor("https://www.uspto.gov/trademarks-application-process/filing-online/after-you-file");
-            phrase.add(chunk);
-            phrase.add("page and watch video number 9 \"");
-            phrase.add(chunk);
-            document.add(phrase);
+                /////////////////////////////////////////////////////////////////////////////////////////////////
+                Phrase phrase = new Phrase("",normalFont);
+                phrase.add("For an overview of important things to know after filing your application, visit our website to read the");
+                Chunk chunk = new Chunk("After You File");
+                chunk.setAnchor("https://www.uspto.gov/trademarks-application-process/filing-online/after-you-file");
+                phrase.add(chunk);
+                phrase.add("page and watch video number 9 \"");
+                phrase.add(chunk);
+                document.add(phrase);
 
-            String colorClaimString ="";
-            if(baseTrademarkApplication.getTradeMark().isMarkColorClaim()){
-                colorClaimString = "with";
-            }
-            else {
-                colorClaimString = "without";
-
-            }
-
-
-            phrase = new Phrase("1. Your mark. ",boldFontSmall);
-            paragraph = new Paragraph();
-            paragraph.add(phrase);
-            paragraph.add("The mark in your application is "+baseTrademarkApplication.getTradeMark().getMarkDescription()+". The mark consists of "+baseTrademarkApplication.getTradeMark().getTrademarkDesignType()+","+colorClaimString +" claim of any particular font style, size, or color.");
-            document.add(paragraph);
-
-
-
-            phrase = new Phrase("2. Your serial number. ",boldFontSmall);
-            paragraph = new Paragraph();
-            paragraph.add(phrase);
-            paragraph.add("Your application was assigned serial number"+baseTrademarkApplication.getTrademarkName()+". You must refer to your serial number in all communications about your application.");
-            document.add(paragraph);
-
-
-
-            phrase = new Phrase("3. What happens next - legal examination. ",boldFontSmall);
-            paragraph = new Paragraph();
-            paragraph.add(phrase);
-            paragraph.add("Your mark will not be registered automatically. In approximatelty three months, your applicaiton will be assigned to a USPTO examining attorney for review. The attorney will deterimine if your application meets all applicable legal requirements, and if it doesn't you will be notified in an email with a link to the official Office action(official letter from the USPTO). Visit our website for an explanation of application process time lines.");
-            document.add(paragraph);
-
-            phrase = new Phrase("4. Keep your address current in USPTO records",boldFontSmall);
-            paragraph = new Paragraph();
-            paragraph.add(phrase);
-            paragraph.add("We do not extend filing deadlines if you do not receive USPTO mail or email. If your postal address or email address changes, you must update the correspondence or owner's address using the address forms on our website.");
-            document.add(paragraph);
-
-
-            phrase = new Phrase("5. Check your application status in our database every three to four months. ",boldFontSmall);
-            paragraph = new Paragraph();
-            paragraph.add(phrase);
-            paragraph.add("To be sure that you don't miss an important email from us, and to avoid the possible abandonment of your application, check your application status and review your documents in our database, Trademark Status and Document Retrieval (TSDR), every three to four months.");
-            document.add(paragraph);
-
-
-            phrase = new Phrase("6. Warning about private companies offering trademark-related services. ",boldFontSmall);
-            paragraph = new Paragraph();
-            paragraph.add(phrase);
-            paragraph.add("Private companies may send you communications that resemble official USPTO communications. These private companies are not associated with the USPTO. All official correspondence will be from the \"United States Patent and Trademark Office\" in Alexandria, Virginia, and from emails with the domain \"uspto.gov.\" If you are unsure about whether the correspondence is from us, check your records in our database, TSDR. Visit our website for more information on trademark-related communications that may resemble official USPTO communications.");
-            document.add(paragraph);
-
-
-            phrase = new Phrase("7. Questions? ",boldFontSmall);
-            paragraph = new Paragraph();
-            paragraph.add(phrase);
-            paragraph.add("Please visit our website, email us, or call us at 1-800-786-9199 and select option 1.");
-            document.add(paragraph);
-
-
-
-            phrase = new Phrase("8. Application data. ",boldFontSmall);
-            paragraph = new Paragraph();
-            paragraph.add(phrase);
-            paragraph.add("If you find an error in the data below, visit the After You File page on our website for information on correcting errors.");
-            document.add(paragraph);
-
-
-            paragraph = new Paragraph("The information submitted in the application appears below: ", boldFontSmall);
-            document.add(paragraph);
-
-            paragraph = new Paragraph("Under the Paperwork Reduction Act of 1995 no persons are required to respond to a collection of information unless it displays a valid OMB control number.", normalFont);
-            document.add(paragraph);
-
-            paragraph = new Paragraph("PTO Form 1478 (Rev 09/2006)", normalFont);
-            document.add(paragraph);
-
-            paragraph = new Paragraph("OMB No. 0651-0009 (Exp 02/28/2018)", normalFont);
-            document.add(paragraph);
-
-            paragraph = new Paragraph("Trademark/Service Mark Application, Principal Register ", normalFont);
-            document.add(paragraph);
-
-            phrase = new Phrase("Note: ",boldFontSmall);
-            paragraph = new Paragraph();
-            paragraph.add(phrase);
-            paragraph.add("Data fields with the * are mandatory. The wording \"(if applicable)\" appears where the field is only mandatory under the facts of the particular application. ");
-            document.add(paragraph);
-
-            paragraph = new Paragraph(" ", normalFont);
-            document.add(paragraph);
-
-            paragraph = new Paragraph("The table below presents the data as entered. ", normalFont);
-            document.add(paragraph);
-
-            paragraph = new Paragraph(" ", normalFont);
-            document.add(paragraph);
-            paragraph = new Paragraph(" ", normalFont);
-            document.add(paragraph);
-            // dynamic section adding tables and rows
-            PdfPTable table = new PdfPTable(2);
-            addTableHeader(table);
-            table.addCell("SERIAL NUMBER");
-            table.addCell(baseTrademarkApplication.getTrademarkName());
-            table.addCell("MARK INFORMATION");
-            table.addCell("");
-            table.addCell("MARK");
-            table.addCell(baseTrademarkApplication.getTradeMark().getMarkDescription());
-            table.addCell("STANDARD CHARACTERS");
-            if(baseTrademarkApplication.getTradeMark().getTrademarkDesignType().equals("Standard Characters")){
-                table.addCell("YES");
-                table.addCell("USPTO-GENERATED IMAGE");
-                table.addCell("YES");
-            }
-            else {
-                table.addCell("NO");
-                table.addCell("USPTO-GENERATED IMAGE");
-                table.addCell("NO");
-            }
-            table.addCell("LITERAL ELEMENT");
-            table.addCell(baseTrademarkApplication.getTradeMark().getMarkLiteral());
-
-
-            table.addCell("MARK STATEMENT");
-            table.addCell("The mark consists of "+baseTrademarkApplication.getTradeMark().getTrademarkDesignType()+","+colorClaimString +" claim of any particular font style, size, or color.");
-
-            table.addCell("APPLICATION INFORMATION");
-            table.addCell("");
-            table.addCell("OWNER OF MARK");
-            table.addCell(baseTrademarkApplication.getPrimaryOwner().getOwnerDisplayname());
-            table.addCell("DBA/AKA/TA/Formerly");
-            table.addCell("");
-            table.addCell("STREET");
-            table.addCell(baseTrademarkApplication.getPrimaryOwner().getAddress1());
-            table.addCell("CITY");
-            table.addCell(baseTrademarkApplication.getPrimaryOwner().getCity());
-            table.addCell("STATE");
-            table.addCell(baseTrademarkApplication.getPrimaryOwner().getState());
-            table.addCell("COUNTRY");
-            table.addCell(baseTrademarkApplication.getPrimaryOwner().getOwnerEntityCountryOfOrigin());
-            table.addCell("ZIP/POSTAL CODE");
-            table.addCell(baseTrademarkApplication.getPrimaryOwner().getZipcode());
-            table.addCell("PHONE");
-            table.addCell(baseTrademarkApplication.getPrimaryOwner().getPrimaryPhonenumber());
-
-
-            table.addCell("LEGAL ENTITY INFORMATION");
-            table.addCell("");
-            table.addCell("TYPE");
-            table.addCell(baseTrademarkApplication.getPrimaryOwner().getOwnersubType());
-            table.addCell("STATE/COUNTRY WHERE LEGALLY ORGANIZED");
-            table.addCell(baseTrademarkApplication.getPrimaryOwner().getOwnerOrganizationState());
-
-
-
-            table.addCell("GOODS AND/OR SERVICES AND BASIS INFORMATION");
-            table.addCell("");
-            // run a for loop on the ordered list ...
-            ArrayList<GSClassCategory> gsClassCategories = baseTrademarkApplication.getGoodAndServicesCategories();
-
-
-            for(Iterator<GSClassCategory> iter = gsClassCategories.iterator(); iter.hasNext(); ) {
-                GSClassCategory current = iter.next();
-                for(Iterator<GoodAndService> iter2 = current.getGoodAndServices().iterator(); iter2.hasNext(); ) {
-                    GoodAndService current2 = iter2.next();
-
-                    table.addCell("INTERNATIONAL CLASS");
-                    table.addCell(current2.getClassNumber());
-                    table.addCell("IDENTIFICATION");
-                    table.addCell(current2.getClassDescription());
-                    table.addCell("FILING BASIS");
-                    table.addCell(current2.getIdentification());
+                String colorClaimString ="";
+                if(baseTrademarkApplication.getTradeMark().isMarkColorClaim()){
+                    colorClaimString = "with";
+                }
+                else {
+                    colorClaimString = "without";
 
                 }
 
 
-            }
+                phrase = new Phrase("1. Your mark. ",boldFontSmall);
+                paragraph = new Paragraph();
+                paragraph.add(phrase);
+                paragraph.add("The mark in your application is "+baseTrademarkApplication.getTradeMark().getMarkDescription()+". The mark consists of "+baseTrademarkApplication.getTradeMark().getTrademarkDesignType()+","+colorClaimString +" claim of any particular font style, size, or color.");
+                document.add(paragraph);
 
 
-            if(baseTrademarkApplication.isAttorneyFiling()) {
-                table.addCell("ATTORNEY INFORMATION");
+
+                phrase = new Phrase("2. Your serial number. ",boldFontSmall);
+                paragraph = new Paragraph();
+                paragraph.add(phrase);
+                paragraph.add("Your application was assigned serial number"+baseTrademarkApplication.getTrademarkName()+". You must refer to your serial number in all communications about your application.");
+                document.add(paragraph);
+
+
+
+                phrase = new Phrase("3. What happens next - legal examination. ",boldFontSmall);
+                paragraph = new Paragraph();
+                paragraph.add(phrase);
+                paragraph.add("Your mark will not be registered automatically. In approximatelty three months, your applicaiton will be assigned to a USPTO examining attorney for review. The attorney will deterimine if your application meets all applicable legal requirements, and if it doesn't you will be notified in an email with a link to the official Office action(official letter from the USPTO). Visit our website for an explanation of application process time lines.");
+                document.add(paragraph);
+
+                phrase = new Phrase("4. Keep your address current in USPTO records",boldFontSmall);
+                paragraph = new Paragraph();
+                paragraph.add(phrase);
+                paragraph.add("We do not extend filing deadlines if you do not receive USPTO mail or email. If your postal address or email address changes, you must update the correspondence or owner's address using the address forms on our website.");
+                document.add(paragraph);
+
+
+                phrase = new Phrase("5. Check your application status in our database every three to four months. ",boldFontSmall);
+                paragraph = new Paragraph();
+                paragraph.add(phrase);
+                paragraph.add("To be sure that you don't miss an important email from us, and to avoid the possible abandonment of your application, check your application status and review your documents in our database, Trademark Status and Document Retrieval (TSDR), every three to four months.");
+                document.add(paragraph);
+
+
+                phrase = new Phrase("6. Warning about private companies offering trademark-related services. ",boldFontSmall);
+                paragraph = new Paragraph();
+                paragraph.add(phrase);
+                paragraph.add("Private companies may send you communications that resemble official USPTO communications. These private companies are not associated with the USPTO. All official correspondence will be from the \"United States Patent and Trademark Office\" in Alexandria, Virginia, and from emails with the domain \"uspto.gov.\" If you are unsure about whether the correspondence is from us, check your records in our database, TSDR. Visit our website for more information on trademark-related communications that may resemble official USPTO communications.");
+                document.add(paragraph);
+
+
+                phrase = new Phrase("7. Questions? ",boldFontSmall);
+                paragraph = new Paragraph();
+                paragraph.add(phrase);
+                paragraph.add("Please visit our website, email us, or call us at 1-800-786-9199 and select option 1.");
+                document.add(paragraph);
+
+
+
+                phrase = new Phrase("8. Application data. ",boldFontSmall);
+                paragraph = new Paragraph();
+                paragraph.add(phrase);
+                paragraph.add("If you find an error in the data below, visit the After You File page on our website for information on correcting errors.");
+                document.add(paragraph);
+
+
+                paragraph = new Paragraph("The information submitted in the application appears below: ", boldFontSmall);
+                document.add(paragraph);
+
+                paragraph = new Paragraph("Under the Paperwork Reduction Act of 1995 no persons are required to respond to a collection of information unless it displays a valid OMB control number.", normalFont);
+                document.add(paragraph);
+
+                paragraph = new Paragraph("PTO Form 1478 (Rev 09/2006)", normalFont);
+                document.add(paragraph);
+
+                paragraph = new Paragraph("OMB No. 0651-0009 (Exp 02/28/2018)", normalFont);
+                document.add(paragraph);
+
+                paragraph = new Paragraph("Trademark/Service Mark Application, Principal Register ", normalFont);
+                document.add(paragraph);
+
+                phrase = new Phrase("Note: ",boldFontSmall);
+                paragraph = new Paragraph();
+                paragraph.add(phrase);
+                paragraph.add("Data fields with the * are mandatory. The wording \"(if applicable)\" appears where the field is only mandatory under the facts of the particular application. ");
+                document.add(paragraph);
+
+                paragraph = new Paragraph(" ", normalFont);
+                document.add(paragraph);
+
+                paragraph = new Paragraph("The table below presents the data as entered. ", normalFont);
+                document.add(paragraph);
+
+                paragraph = new Paragraph(" ", normalFont);
+                document.add(paragraph);
+                paragraph = new Paragraph(" ", normalFont);
+                document.add(paragraph);
+                // dynamic section adding tables and rows
+                PdfPTable table = new PdfPTable(2);
+                addTableHeader(table);
+                table.addCell("SERIAL NUMBER");
+                table.addCell(baseTrademarkApplication.getTrademarkName());
+                table.addCell("MARK INFORMATION");
                 table.addCell("");
-                table.addCell("NAME");
-                table.addCell(baseTrademarkApplication.getPrimaryLawyer().getFirstName()+" "+baseTrademarkApplication.getPrimaryLawyer().getLastName());
-                table.addCell("STREET");
-                table.addCell(baseTrademarkApplication.getPrimaryLawyer().getAddress1());
-                table.addCell("CITY");
-                table.addCell(baseTrademarkApplication.getPrimaryLawyer().getCity());
-                table.addCell("STATE");
-                table.addCell(baseTrademarkApplication.getPrimaryLawyer().getState());
-                table.addCell("COUNTRY");
-                table.addCell(baseTrademarkApplication.getPrimaryOwner().getOwnerEntityCountryOfOrigin());
-                table.addCell("ZIP/POSTAL CODE");
-                table.addCell(baseTrademarkApplication.getPrimaryLawyer().getZipcode());
-                table.addCell("PHONE");
-                table.addCell(baseTrademarkApplication.getPrimaryLawyer().getPrimaryPhonenumber());
-                table.addCell("FAX");
+                table.addCell("MARK");
+                table.addCell(baseTrademarkApplication.getTradeMark().getMarkDescription());
+                table.addCell("STANDARD CHARACTERS");
+                if(baseTrademarkApplication.getTradeMark().getTrademarkDesignType().equals("Standard Characters")){
+                    table.addCell("YES");
+                    table.addCell("USPTO-GENERATED IMAGE");
+                    table.addCell("YES");
+                }
+                else {
+                    table.addCell("NO");
+                    table.addCell("USPTO-GENERATED IMAGE");
+                    table.addCell("NO");
+                }
+                table.addCell("LITERAL ELEMENT");
+                table.addCell(baseTrademarkApplication.getTradeMark().getMarkLiteral());
+
+
+                table.addCell("MARK STATEMENT");
+                table.addCell("The mark consists of "+baseTrademarkApplication.getTradeMark().getTrademarkDesignType()+","+colorClaimString +" claim of any particular font style, size, or color.");
+
+                table.addCell("APPLICATION INFORMATION");
                 table.addCell("");
-                table.addCell("EMAIL ADDRESS");
-                table.addCell(baseTrademarkApplication.getPrimaryLawyer().getEmail());
-                table.addCell("AUTHORIZED TO COMMUNICATE VIA EMAIL");
-                table.addCell("YES");
-
-                table.addCell("CORRESPONDENCE INFORMATION");
-                table.addCell("");
-                table.addCell("NAME");
-                table.addCell(baseTrademarkApplication.getPrimaryLawyer().getFirstName()+" "+baseTrademarkApplication.getPrimaryLawyer().getLastName());
-                table.addCell("STREET");
-                table.addCell(baseTrademarkApplication.getPrimaryLawyer().getAddress1());
-                table.addCell("CITY");
-                table.addCell(baseTrademarkApplication.getPrimaryLawyer().getCity());
-                table.addCell("STATE");
-                table.addCell(baseTrademarkApplication.getPrimaryLawyer().getState());
-                table.addCell("COUNTRY");
-                table.addCell(baseTrademarkApplication.getPrimaryOwner().getOwnerEntityCountryOfOrigin());
-                table.addCell("ZIP/POSTAL CODE");
-                table.addCell(baseTrademarkApplication.getPrimaryLawyer().getZipcode());
-
-
-
-
-            }
-            else {
-
-                table.addCell("CORRESPONDENCE INFORMATION");
-                table.addCell("");
-                table.addCell("NAME");
+                table.addCell("OWNER OF MARK");
                 table.addCell(baseTrademarkApplication.getPrimaryOwner().getOwnerDisplayname());
+                table.addCell("DBA/AKA/TA/Formerly");
+                table.addCell("");
                 table.addCell("STREET");
                 table.addCell(baseTrademarkApplication.getPrimaryOwner().getAddress1());
                 table.addCell("CITY");
@@ -1441,70 +1346,172 @@ public class ApplicationObjectCreationController {
                 table.addCell(baseTrademarkApplication.getPrimaryOwner().getOwnerEntityCountryOfOrigin());
                 table.addCell("ZIP/POSTAL CODE");
                 table.addCell(baseTrademarkApplication.getPrimaryOwner().getZipcode());
+                table.addCell("PHONE");
+                table.addCell(baseTrademarkApplication.getPrimaryOwner().getPrimaryPhonenumber());
+
+
+                table.addCell("LEGAL ENTITY INFORMATION");
+                table.addCell("");
+                table.addCell("TYPE");
+                table.addCell(baseTrademarkApplication.getPrimaryOwner().getOwnersubType());
+                table.addCell("STATE/COUNTRY WHERE LEGALLY ORGANIZED");
+                table.addCell(baseTrademarkApplication.getPrimaryOwner().getOwnerOrganizationState());
+
+
+
+                table.addCell("GOODS AND/OR SERVICES AND BASIS INFORMATION");
+                table.addCell("");
+                // run a for loop on the ordered list ...
+                ArrayList<GSClassCategory> gsClassCategories = baseTrademarkApplication.getGoodAndServicesCategories();
+
+
+                for(Iterator<GSClassCategory> iter = gsClassCategories.iterator(); iter.hasNext(); ) {
+                    GSClassCategory current = iter.next();
+                    for(Iterator<GoodAndService> iter2 = current.getGoodAndServices().iterator(); iter2.hasNext(); ) {
+                        GoodAndService current2 = iter2.next();
+
+                        table.addCell("INTERNATIONAL CLASS");
+                        table.addCell(current2.getClassNumber());
+                        table.addCell("IDENTIFICATION");
+                        table.addCell(current2.getClassDescription());
+                        table.addCell("FILING BASIS");
+                        table.addCell(current2.getIdentification());
+
+                    }
+
+
+                }
+
+
+                if(baseTrademarkApplication.isAttorneyFiling()) {
+                    table.addCell("ATTORNEY INFORMATION");
+                    table.addCell("");
+                    table.addCell("NAME");
+                    table.addCell(baseTrademarkApplication.getPrimaryLawyer().getFirstName()+" "+baseTrademarkApplication.getPrimaryLawyer().getLastName());
+                    table.addCell("STREET");
+                    table.addCell(baseTrademarkApplication.getPrimaryLawyer().getAddress1());
+                    table.addCell("CITY");
+                    table.addCell(baseTrademarkApplication.getPrimaryLawyer().getCity());
+                    table.addCell("STATE");
+                    table.addCell(baseTrademarkApplication.getPrimaryLawyer().getState());
+                    table.addCell("COUNTRY");
+                    table.addCell(baseTrademarkApplication.getPrimaryOwner().getOwnerEntityCountryOfOrigin());
+                    table.addCell("ZIP/POSTAL CODE");
+                    table.addCell(baseTrademarkApplication.getPrimaryLawyer().getZipcode());
+                    table.addCell("PHONE");
+                    table.addCell(baseTrademarkApplication.getPrimaryLawyer().getPrimaryPhonenumber());
+                    table.addCell("FAX");
+                    table.addCell("");
+                    table.addCell("EMAIL ADDRESS");
+                    table.addCell(baseTrademarkApplication.getPrimaryLawyer().getEmail());
+                    table.addCell("AUTHORIZED TO COMMUNICATE VIA EMAIL");
+                    table.addCell("YES");
+
+                    table.addCell("CORRESPONDENCE INFORMATION");
+                    table.addCell("");
+                    table.addCell("NAME");
+                    table.addCell(baseTrademarkApplication.getPrimaryLawyer().getFirstName()+" "+baseTrademarkApplication.getPrimaryLawyer().getLastName());
+                    table.addCell("STREET");
+                    table.addCell(baseTrademarkApplication.getPrimaryLawyer().getAddress1());
+                    table.addCell("CITY");
+                    table.addCell(baseTrademarkApplication.getPrimaryLawyer().getCity());
+                    table.addCell("STATE");
+                    table.addCell(baseTrademarkApplication.getPrimaryLawyer().getState());
+                    table.addCell("COUNTRY");
+                    table.addCell(baseTrademarkApplication.getPrimaryOwner().getOwnerEntityCountryOfOrigin());
+                    table.addCell("ZIP/POSTAL CODE");
+                    table.addCell(baseTrademarkApplication.getPrimaryLawyer().getZipcode());
+
+
+
+
+                }
+                else {
+
+                    table.addCell("CORRESPONDENCE INFORMATION");
+                    table.addCell("");
+                    table.addCell("NAME");
+                    table.addCell(baseTrademarkApplication.getPrimaryOwner().getOwnerDisplayname());
+                    table.addCell("STREET");
+                    table.addCell(baseTrademarkApplication.getPrimaryOwner().getAddress1());
+                    table.addCell("CITY");
+                    table.addCell(baseTrademarkApplication.getPrimaryOwner().getCity());
+                    table.addCell("STATE");
+                    table.addCell(baseTrademarkApplication.getPrimaryOwner().getState());
+                    table.addCell("COUNTRY");
+                    table.addCell(baseTrademarkApplication.getPrimaryOwner().getOwnerEntityCountryOfOrigin());
+                    table.addCell("ZIP/POSTAL CODE");
+                    table.addCell(baseTrademarkApplication.getPrimaryOwner().getZipcode());
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                document.add(table);
+
+                document.close();
+            }
+            catch(Exception ex){
+                // file not found
+
+            }
+
+            byte[] pdfBytes = byteArrayOutputStream.toByteArray();
+            String strFilePath = trademarkInternalID+"TrademarkApplicationRecipet.pdf";
+            FileOutputStream fos = null;
+
+            File pdffile = new File(strFilePath);
+
+
+            try {
+
+                fos = new FileOutputStream(pdffile);
+                fos.write(pdfBytes);
+                fos.close();
+            }
+            catch(FileNotFoundException ex)   {
+                System.out.println("FileNotFoundException : " + ex);
+            }
+            catch(IOException ioe)  {
+                System.out.println("IOException : " + ioe);
             }
 
 
+            // save pdf file object
+            // return file path in model
+
+            String recieptFilePath = storageService.storeFile(pdffile, strFilePath);
+
+            // this will be store for each good and service that matches this
+
+            // on building class categoreis, this value is then copied over
+            // file path returned to client in response
+
+            // server redraw should render the image file path from category object
 
 
+            // baseTrademarkApplication.getc("/files/"+image_path);
+            //recieptFilePath  = "/files-server/"+recieptFilePath;
 
+            recieptFilePath  = "/files-pdf/"+recieptFilePath;
 
+            baseTrademarkApplication.setRecieptFilePath(recieptFilePath);
+            baseTrademarkApplication.setFilingStatus("Filed");
+            baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
-
-
-
-
-
-
-
-            document.add(table);
-
-            document.close();
-        }
-        catch(Exception ex){
-            // file not found
-
-        }
-
-        byte[] pdfBytes = byteArrayOutputStream.toByteArray();
-        String strFilePath = trademarkInternalID+"TrademarkApplicationRecipet.pdf";
-        FileOutputStream fos = null;
-
-        File pdffile = new File(strFilePath);
-
-
-        try {
-
-            fos = new FileOutputStream(pdffile);
-            fos.write(pdfBytes);
-            fos.close();
-        }
-        catch(FileNotFoundException ex)   {
-            System.out.println("FileNotFoundException : " + ex);
-        }
-        catch(IOException ioe)  {
-            System.out.println("IOException : " + ioe);
         }
 
 
-        // save pdf file object
-        // return file path in model
-
-        String recieptFilePath = storageService.storeFile(pdffile, strFilePath);
-
-        // this will be store for each good and service that matches this
-
-        // on building class categoreis, this value is then copied over
-        // file path returned to client in response
-
-        // server redraw should render the image file path from category object
-
-
-        // baseTrademarkApplication.getc("/files/"+image_path);
-        recieptFilePath  = "/files-server/"+recieptFilePath;
-
-        baseTrademarkApplication.setRecieptFilePath(recieptFilePath);
-        baseTrademarkApplication.setFilingStatus("Filed");
-        baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
 
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);

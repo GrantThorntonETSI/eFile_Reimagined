@@ -33,6 +33,24 @@ public class FileServerController {
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(file);
 
 
+
+
+    }
+
+
+    @GetMapping("/files-pdf/{filename:.+}")
+    @ResponseBody
+    public ResponseEntity<Resource> servePDFFile(@PathVariable String filename) {
+
+        Resource file = storageService.loadAsResource(filename);
+        //return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+        //"attachment; filename=\"" + file.getFilename() + "\"").body(file);
+
+        //return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(file);
+
+        return ResponseEntity.ok().contentType(MediaType.APPLICATION_PDF).body(file);
+
+
     }
 
     @GetMapping("/files-server/{filename:.+}")
