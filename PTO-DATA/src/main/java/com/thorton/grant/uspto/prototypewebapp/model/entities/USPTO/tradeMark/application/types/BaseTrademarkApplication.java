@@ -179,12 +179,26 @@ public class BaseTrademarkApplication  {
     // receipt fields
 
     private String recieptFilePath;
-
     private String filingStatus = "Draft";
-
-
-
     private boolean standardTextMark;
+
+    private String applicationSignature;
+    private Date applicationDateSigned;
+    private String applicationDateSignedDisplay;
+
+    private String appSignatoryName;
+    private  String appSignatoryPosition;
+    private String appSignatoryPhone;
+
+
+
+
+
+
+
+
+
+
 
 
     public boolean isAttorneyPoolEmpty() {
@@ -795,6 +809,54 @@ public class BaseTrademarkApplication  {
 
     public void setStandardTextMark(boolean standardTextMark) {
         this.standardTextMark = standardTextMark;
+    }
+
+    public String getApplicationSignature() {
+        return applicationSignature;
+    }
+
+    public void setApplicationSignature(String applicationSignature) {
+        this.applicationSignature = applicationSignature;
+    }
+
+    public Date getApplicationDateSigned() {
+        return applicationDateSigned;
+    }
+
+    public void setApplicationDateSigned(Date applicationDateSigned) {
+        this.applicationDateSigned = applicationDateSigned;
+    }
+
+    public String getApplicationDateSignedDisplay() {
+        return applicationDateSignedDisplay;
+    }
+
+    public void setApplicationDateSignedDisplay(String applicationDateSignedDisplay) {
+        this.applicationDateSignedDisplay = applicationDateSignedDisplay;
+    }
+
+    public String getAppSignatoryName() {
+        return appSignatoryName;
+    }
+
+    public void setAppSignatoryName(String appSignatoryName) {
+        this.appSignatoryName = appSignatoryName;
+    }
+
+    public String getAppSignatoryPosition() {
+        return appSignatoryPosition;
+    }
+
+    public void setAppSignatoryPosition(String appSignatoryPosition) {
+        this.appSignatoryPosition = appSignatoryPosition;
+    }
+
+    public String getAppSignatoryPhone() {
+        return appSignatoryPhone;
+    }
+
+    public void setAppSignatoryPhone(String appSignatoryPhone) {
+        this.appSignatoryPhone = appSignatoryPhone;
     }
 
     @Override

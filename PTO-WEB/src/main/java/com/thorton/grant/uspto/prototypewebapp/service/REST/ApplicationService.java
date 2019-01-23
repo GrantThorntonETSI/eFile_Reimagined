@@ -21,7 +21,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
+import java.util.Locale;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -620,6 +625,39 @@ public class ApplicationService  extends  BaseRESTapiService{
 
 
 
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/application/signDirect/{signature}/{date}/{dateDisplay}/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> saveApplicatoinSignature(@PathVariable String signature ,@PathVariable String date, @PathVariable String dateDisplay, @PathVariable String appInternalID){
+
+        //////////////////////////////////////////////////////////
+        // retrieve application using passed internal id
+        //////////////////////////////////////////////////////////
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+
+
+        baseTrademarkApplication.setApplicationSignature("/"+signature+"/");
+        Long dateInMilli = Long.valueOf(date);
+
+        //DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+        Date result = new Date(dateInMilli);
+        baseTrademarkApplication.setApplicationDateSigned(result);
+        baseTrademarkApplication.setApplicationDateSignedDisplay(dateDisplay);
+
+
+
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+        ////////////////////////////////////////////////
+        // start generating response
+        ////////////////////////////////////////////////
+
+        String responseMsg = "Direct Sign Signature has been saved for the Application";
+        return buildResponseEnity("200", responseMsg);
+
+    }
 
 
 
