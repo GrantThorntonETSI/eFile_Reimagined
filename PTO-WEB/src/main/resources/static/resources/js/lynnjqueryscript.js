@@ -872,7 +872,7 @@ $(document).ready(function(){
 	});
 
 	//select signature method
-	$('#direct').css('display','none');
+
 	$('#signmethod').on('change',function(){
 		var loadsign = ('#' + $(this).val());
 		$('.hidethis').hide('fast');

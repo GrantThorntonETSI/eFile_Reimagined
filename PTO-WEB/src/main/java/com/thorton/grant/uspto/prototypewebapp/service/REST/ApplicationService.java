@@ -694,6 +694,18 @@ public class ApplicationService  extends  BaseRESTapiService{
         }
 
 
+        if(fieldName.equals("app-sign-type")){
+            // ptoUser.setState(param); // sets state code
+            baseTrademarkApplication.setSignatureType(fieldValue);
+            if(fieldValue.equals("direct")){
+                baseTrademarkApplication.setSignDirect(true);
+
+            }
+            appFieldReadable = "Application Signature type";
+
+        }
+
+
 
 
 

@@ -190,6 +190,9 @@ public class BaseTrademarkApplication  {
     private  String appSignatoryPosition;
     private String appSignatoryPhone;
 
+    private String signatureType;
+    private boolean signDirect;
+
 
 
 
@@ -857,6 +860,22 @@ public class BaseTrademarkApplication  {
 
     public void setAppSignatoryPhone(String appSignatoryPhone) {
         this.appSignatoryPhone = appSignatoryPhone;
+    }
+
+    public String getSignatureType() {
+        return signatureType;
+    }
+
+    public void setSignatureType(String signatureType) {
+        this.signatureType = signatureType;
+    }
+
+    public boolean isSignDirect() {
+        return signDirect;
+    }
+
+    public void setSignDirect(boolean signDirect) {
+        this.signDirect = signDirect;
     }
 
     @Override

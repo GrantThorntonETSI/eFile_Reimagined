@@ -1995,7 +1995,7 @@ public class ApplicationFlowController {
         selectedDescription.setContactNames(selectedGSDescrption);
         model.addAttribute("selectedGoods_Services",selectedDescription);
 
-
+        model.addAttribute("signatureType",baseTrademarkApplication.getSignatureType());
 
 
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
