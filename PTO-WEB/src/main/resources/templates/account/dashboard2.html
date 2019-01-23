@@ -147,12 +147,23 @@
                                                                     </th:block>
 
                                                                     <td th:text="${app.getFilingStatus()}">Draft</td>
-                                                                    <th:block th:if="${app.isTradeMarkUploaded() == true}">
-                                                                        <td><img th:src="${app.getTradeMark().getTrademarkImagePath()}" style="max-width: 55px; max-height: 33px;"></td>
+
+                                                                    <th:block th:if="${app.isStandardTextMark() == true}">
+                                                                        <td ><span style="max-width: 55px; max-height: 33px; margin:0 auto;font-family: Palatino, Garamond, Bookman, Avant Garde; font-size:.9em;text-align:center;margin-bottom:0;" th:text="${app.getTradeMark().getTrademarkStandardCharacterText()}"></span></td>
+
                                                                     </th:block>
-                                                                    <th:block th:if="${app.isTradeMarkUploaded() == false}">
-                                                                        <td></td>
+
+                                                                    <th:block th:if="${app.isStandardTextMark() == false}">
+                                                                        <th:block th:if="${app.isTradeMarkUploaded() == true}">
+                                                                            <td><img th:src="${app.getTradeMark().getTrademarkImagePath()}" style="max-width: 55px; max-height: 33px;"></td>
+                                                                        </th:block>
+                                                                        <th:block th:if="${app.isTradeMarkUploaded() == false}">
+                                                                            <td></td>
+                                                                        </th:block>
+
                                                                     </th:block>
+
+
                                                                 </tr>
                                                             </th:block>
                                                             </tbody>

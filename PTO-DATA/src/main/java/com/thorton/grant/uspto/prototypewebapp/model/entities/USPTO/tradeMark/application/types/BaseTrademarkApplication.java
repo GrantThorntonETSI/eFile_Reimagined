@@ -184,6 +184,8 @@ public class BaseTrademarkApplication  {
 
 
 
+    private boolean standardTextMark;
+
 
     public boolean isAttorneyPoolEmpty() {
 
@@ -785,6 +787,14 @@ public class BaseTrademarkApplication  {
 
     public void setTradeMarkUploaded(boolean tradeMarkUploaded) {
         this.tradeMarkUploaded = tradeMarkUploaded;
+    }
+
+    public boolean isStandardTextMark() {
+        return standardTextMark;
+    }
+
+    public void setStandardTextMark(boolean standardTextMark) {
+        this.standardTextMark = standardTextMark;
     }
 
     @Override

@@ -535,13 +535,15 @@ public class ApplicationService  extends  BaseRESTapiService{
         baseTrademarkApplication.getTradeMark().setTrademarkDesignType(markType);
 
 
-
         //////////////////////////////////////////////////////////
         // find contact via email from PTOUser
         // create a copy of the contact object
         // add the copy of the contact to the application object
         // save application object
         ///////////////////////////////////////////////////////////
+        if(markType.equals("Standard Character")){
+            baseTrademarkApplication.setStandardTextMark(true);
+        }
 
 
 
