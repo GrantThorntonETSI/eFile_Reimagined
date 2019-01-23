@@ -483,12 +483,12 @@
                                                                 <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                     <p class="sr-only">Enclose the signature in forward slashes</p>
                                                                     <label for="signature"><span class="weight600">&#42;</span> Signature</label>
-                                                                    <input type="text" class="form-control" placeholder="/Signature/" id="signature" required>
+                                                                    <input type="text" class="form-control" th:value="${baseTrademarkApplication.getApplicationSignature()}" placeholder="/Signature/" id="signature" required>
                                                                 </div>
                                                                 <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                     <p class="sr-only">Enter the date in the following format: 20:36:14 May 30, 2019 E.T.</p>
                                                                     <label for="datesigned">Date Signed</label>
-                                                                    <textarea type="text" rows="2" class="form-control" placeholder="20:36:14 May 30, 2019 E.T." id="datesigned"></textarea>
+                                                                    <textarea type="text" rows="2" class="form-control" th:text="${baseTrademarkApplication.getApplicationDateSignedDisplay()}" placeholder="20:36:14 May 30, 2019 E.T." id="datesigned"></textarea>
                                                                 </div>
                                                                 <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                     <label for="signatoryname"><span class="weight600">&#42;</span> Signatory&#8217;s Name</label>
@@ -853,7 +853,7 @@
 
                 var dateDisplay = formatDate(date);
                 $('#datesigned').val(dateDisplay);
-                saveAppSignature(sigVal,date, dateDisplay);
+                saveAppSignature(sigVal,date.getMilliseconds(), dateDisplay);
                 $("#nextButton").attr("disabled", false);
 
             }
