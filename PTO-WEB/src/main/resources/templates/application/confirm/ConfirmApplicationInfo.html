@@ -607,7 +607,7 @@
                 <button type="button" class="btn btn-sm btn-default fill prev" id="prevButton" value="previous">Previous</button>
             </div>
             <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next" disabled>Next
+                <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next">Next
                     <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
             </div>
         </div>
@@ -953,6 +953,7 @@
            if(sPhoneVal !=""){
                  saveAppDeclarationField("app-sign-phone", sPhoneVal);
            }
+           checkActivateLink();
         });
 
         $('#signatoryname').focusout(function () {
@@ -961,6 +962,7 @@
             if(sNameVal !=""){
                 saveAppDeclarationField("app-sign-name", sNameVal);
             }
+            checkActivateLink();
         });
 
         $('#signatoryposition').focusout(function () {
@@ -968,19 +970,14 @@
            if(sPositionVal != ""){
                saveAppDeclarationField("app-sign-pos", sPositionVal);
            }
+
+           checkActivateLink();
         });
 
 
 
 
 
-
-        $('#acceptreview').click(function () {
-
-           // call auto save here
-           $('#nextButton').attr("disabled", false);
-
-        });
 
         // create action event listeners for the sign direct check boxes
 
@@ -1234,6 +1231,17 @@
 
         //return day + ' ' + monthNames[monthIndex] + ' ' + year;
     }
+
+
+
+    function checkActivateLink() {
+
+
+        if($('#signature').val() !="" && $('#signatoryname').val()!="" && $('#signatoryposition').val()!=""){
+            $('#nextButton').attr("disabled",false);
+        }
+    }
+
 
 
 

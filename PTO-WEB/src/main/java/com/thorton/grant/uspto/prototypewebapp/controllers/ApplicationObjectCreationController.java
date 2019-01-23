@@ -772,7 +772,7 @@ public class ApplicationObjectCreationController {
             }
 
         }
-
+        model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
         //return "application/MarkDetailsDesignWText";
         return "application/mark/MarkDetailsUpload";
     }
@@ -873,7 +873,7 @@ public class ApplicationObjectCreationController {
             }
 
         }
-
+        model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
         return "application/mark/MarkDetailsDesignWText";
         //return "application/MarkDetailsUpload";
     }
