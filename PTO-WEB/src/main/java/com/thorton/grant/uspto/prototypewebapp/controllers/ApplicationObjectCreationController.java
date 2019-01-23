@@ -1225,7 +1225,7 @@ public class ApplicationObjectCreationController {
                 phrase = new Phrase("2. Your serial number. ",boldFontSmall);
                 paragraph = new Paragraph();
                 paragraph.add(phrase);
-                paragraph.add("Your application was assigned serial number"+baseTrademarkApplication.getTrademarkName()+". You must refer to your serial number in all communications about your application.");
+                paragraph.add("Your application was assigned serial number "+baseTrademarkApplication.getTrademarkName()+". You must refer to your serial number in all communications about your application.");
                 document.add(paragraph);
 
 
