@@ -492,15 +492,15 @@
                                                                 </div>
                                                                 <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                     <label for="signatoryname"><span class="weight600">&#42;</span> Signatory&#8217;s Name</label>
-                                                                    <input type="text" class="form-control" id="signatoryname" required>
+                                                                    <input type="text"  class="form-control"  th:value="${baseTrademarkApplication.getAppSignatoryName()}" id="signatoryname" required>
                                                                 </div>
                                                                 <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
                                                                     <label for="signatoryphone">Signatory&#8217;s Phone Number</label>
-                                                                    <input type="text" class="form-control" id="signatoryphone">
+                                                                    <input type="text" class="form-control" th:value="${baseTrademarkApplication.getAppSignatoryPhone()}" id="signatoryphone">
                                                                 </div>
                                                                 <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                     <label for="signatoryposition"><span class="weight600">&#42;</span> Signatory&#8217;s Position</label>
-                                                                    <input type="text" class="form-control" id="signatoryposition" required>
+                                                                    <input type="text" class="form-control"  th:value="${baseTrademarkApplication.getAppSignatoryPosition()}" id="signatoryposition" required>
                                                                 </div>
                                                             </div><!--end checkbox row-->
                                                         </div>
@@ -854,12 +854,38 @@
                 var dateDisplay = formatDate(date);
                 $('#datesigned').val(dateDisplay);
                 saveAppSignature(sigVal,date.getMilliseconds(), dateDisplay);
-                $("#nextButton").attr("disabled", false);
 
             }
 
 
         });
+
+        $('#signatoryphone').focusout(function () {
+           var sPhoneVal = $(this).val();
+
+           if(sPhoneVal !=""){
+                 saveAppDeclarationField("app-sign-phone", sPhoneVal);
+           }
+        });
+
+        $('#signatoryname').focusout(function () {
+            var sNameVal = $(this).val();
+
+            if(sNameVal !=""){
+                saveAppDeclarationField("app-sign-name", sNameVal);
+            }
+        });
+
+        $('#signatoryposition').focusout(function () {
+           var sPositionVal = $(this).val();
+           if(sPositionVal != ""){
+               saveAppDeclarationField("app-sign-pos", sPositionVal);
+           }
+        });
+
+
+
+
 
 
         $('#acceptreview').click(function () {

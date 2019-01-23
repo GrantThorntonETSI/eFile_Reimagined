@@ -660,5 +660,55 @@ public class ApplicationService  extends  BaseRESTapiService{
     }
 
 
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/application/signDeclare/{fieldName}/{fieldValue}/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> saveApplicatoinSignDeclareFields(@PathVariable String fieldName ,@PathVariable String fieldValue,  @PathVariable String appInternalID){
+
+        //////////////////////////////////////////////////////////
+        // retrieve application using passed internal id
+        //////////////////////////////////////////////////////////
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+
+        String appFieldReadable = "";
+        if(fieldName.equals("app-sign-name")){
+            // ptoUser.setState(param); // sets state code
+            baseTrademarkApplication.setAppSignatoryName(fieldValue);
+            appFieldReadable = "Application Signatory Name";
+
+        }
+
+        if(fieldName.equals("app-sign-pos")){
+            // ptoUser.setState(param); // sets state code
+            baseTrademarkApplication.setAppSignatoryPosition(fieldValue);
+            appFieldReadable = "Application Signatory Position";
+
+        }
+
+        if(fieldName.equals("app-sign-phone")){
+            // ptoUser.setState(param); // sets state code
+            baseTrademarkApplication.setAppSignatoryPhone(fieldValue);
+            appFieldReadable = "Application Signatory Phone number";
+
+        }
+
+
+
+
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+        ////////////////////////////////////////////////
+        // start generating response
+        ////////////////////////////////////////////////
+
+        String responseMsg = appFieldReadable+" has been saved";
+
+        //return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+        return buildResponseEnity("200", responseMsg);
+    }
+
+
 
 }
