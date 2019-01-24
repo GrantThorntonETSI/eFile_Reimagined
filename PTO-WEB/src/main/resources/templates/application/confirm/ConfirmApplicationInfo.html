@@ -522,7 +522,14 @@
                                                                 <p class="weight600">Read the following statements before signing. Acknowledge the statements by checking the boxes and signing below.</p>
                                                                 <div class="row">
                                                                     <div class="col-xs-12 form-group form-group-md">
-                                                                        <input class="form-check-input checkmark" type="checkbox" value="court" tabindex="0" aria-labelledby="courtdecree" id="courtd">
+
+                                                                        <th:block th:if="${baseTrademarkApplication.isDeclarationApplicantIsOwner() == true}">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="court" tabindex="0" aria-labelledby="courtdecree" id="courtd" checked>
+                                                                        </th:block>
+                                                                        <th:block th:if="${baseTrademarkApplication.isDeclarationApplicantIsOwner() == false}">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="court" tabindex="0" aria-labelledby="courtdecree" id="courtd">
+                                                                        </th:block>
+
                                                                         <label class="form-check-label form-check long" for="courtd" id="courtdec"><span class="radio notspecial small" id="courtdecree">The signatory believes that the applicant is the owner of the trademark/service mark sought to be registered;</span></label>
                                                                     </div>
                                                                     <div class="col-xs-12 form-group form-group-md">
@@ -974,6 +981,39 @@
            checkActivateLink();
         });
 
+
+
+        $('#courtd').click(function () {
+            if($(this).is(":checked")){
+                saveAppDeclarationField("declare-app-owner", "yes");
+            }
+            else{
+                saveAppDeclarationField("declare-app-owner", "no");
+            }
+
+
+        });
+
+        $('#ttabmade').click(function () {
+
+        });
+
+        $('#conflict').click(function () {
+
+        });
+
+
+        $('#earlieruse').click(function () {
+
+        });
+
+        $('#earlierusey').click(function () {
+
+        });
+
+        $('#earlierusex').click(function () {
+
+        });
 
 
 

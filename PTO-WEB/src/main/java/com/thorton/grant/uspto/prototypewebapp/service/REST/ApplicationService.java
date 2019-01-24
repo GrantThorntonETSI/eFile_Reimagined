@@ -707,6 +707,21 @@ public class ApplicationService  extends  BaseRESTapiService{
 
 
 
+        if(fieldName.equals("declare-app-owner")){
+            // ptoUser.setState(param); // sets state code
+
+            if(fieldValue.equals("yes")){
+               baseTrademarkApplication.setDeclarationApplicantIsOwner(true);
+
+            }
+            if(fieldValue.equals("no")){
+                baseTrademarkApplication.setDeclarationApplicantIsOwner(false);
+
+            }
+
+            appFieldReadable = "Mark has Meaning";
+
+        }
 
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
