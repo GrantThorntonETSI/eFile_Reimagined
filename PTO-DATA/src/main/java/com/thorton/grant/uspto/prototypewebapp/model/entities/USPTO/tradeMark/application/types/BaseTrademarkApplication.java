@@ -193,14 +193,14 @@ public class BaseTrademarkApplication  {
     private String signatureType;
     private boolean signDirect;
 
+    // declaration fields
 
-
-
-
-
-
-
-
+    private boolean declarationApplicantIsOwner;  // check box 1
+    private boolean declarationMarkInUse;   // check box 2
+    private boolean declarationMarkInUseSpecimen; // check box 3
+    private boolean declarationConcurrentUser; // check box 4
+    private boolean declarationEvidenceSupport;  // check box 5
+    private boolean declarationWarningFalseStatement; // check box 6
 
 
 
@@ -876,6 +876,54 @@ public class BaseTrademarkApplication  {
 
     public void setSignDirect(boolean signDirect) {
         this.signDirect = signDirect;
+    }
+
+    public boolean isDeclarationApplicantIsOwner() {
+        return declarationApplicantIsOwner;
+    }
+
+    public void setDeclarationApplicantIsOwner(boolean declarationApplicantIsOwner) {
+        this.declarationApplicantIsOwner = declarationApplicantIsOwner;
+    }
+
+    public boolean isDeclarationMarkInUse() {
+        return declarationMarkInUse;
+    }
+
+    public void setDeclarationMarkInUse(boolean declarationMarkInUse) {
+        this.declarationMarkInUse = declarationMarkInUse;
+    }
+
+    public boolean isDeclarationMarkInUseSpecimen() {
+        return declarationMarkInUseSpecimen;
+    }
+
+    public void setDeclarationMarkInUseSpecimen(boolean declarationMarkInUseSpecimen) {
+        this.declarationMarkInUseSpecimen = declarationMarkInUseSpecimen;
+    }
+
+    public boolean isDeclarationConcurrentUser() {
+        return declarationConcurrentUser;
+    }
+
+    public void setDeclarationConcurrentUser(boolean declarationConcurrentUser) {
+        this.declarationConcurrentUser = declarationConcurrentUser;
+    }
+
+    public boolean isDeclarationEvidenceSupport() {
+        return declarationEvidenceSupport;
+    }
+
+    public void setDeclarationEvidenceSupport(boolean declarationEvidenceSupport) {
+        this.declarationEvidenceSupport = declarationEvidenceSupport;
+    }
+
+    public boolean isDeclarationWarningFalseStatement() {
+        return declarationWarningFalseStatement;
+    }
+
+    public void setDeclarationWarningFalseStatement(boolean declarationWarningFalseStatement) {
+        this.declarationWarningFalseStatement = declarationWarningFalseStatement;
     }
 
     @Override
