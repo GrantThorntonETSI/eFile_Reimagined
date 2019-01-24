@@ -719,9 +719,91 @@ public class ApplicationService  extends  BaseRESTapiService{
 
             }
 
-            appFieldReadable = "Mark has Meaning";
+            appFieldReadable = "Application Declaration";
 
         }
+
+
+        if(fieldName.equals("declare-mark-inUse")){
+            // ptoUser.setState(param); // sets state code
+
+            if(fieldValue.equals("yes")){
+                baseTrademarkApplication.setDeclarationMarkInUse(true);
+
+            }
+            if(fieldValue.equals("no")){
+                baseTrademarkApplication.setDeclarationMarkInUse(false);
+
+            }
+
+            appFieldReadable = "Application Declaration";
+
+        }
+
+        if(fieldName.equals("declare-mark-inUse-spec")){
+            // ptoUser.setState(param); // sets state code
+
+            if(fieldValue.equals("yes")){
+                baseTrademarkApplication.setDeclarationMarkInUseSpecimen(true);
+
+            }
+            if(fieldValue.equals("no")){
+                baseTrademarkApplication.setDeclarationMarkInUseSpecimen(false);
+
+            }
+
+            appFieldReadable = "Application Declaration";
+
+        }
+
+        if(fieldName.equals("declare-concurrent-user")){
+            // ptoUser.setState(param); // sets state code
+
+            if(fieldValue.equals("yes")){
+                baseTrademarkApplication.setDeclarationConcurrentUser(true);
+
+            }
+            if(fieldValue.equals("no")){
+                baseTrademarkApplication.setDeclarationConcurrentUser(false);
+
+            }
+
+            appFieldReadable = "Application Declaration";
+
+        }
+
+        if(fieldName.equals("declare-evidence-support")){
+            // ptoUser.setState(param); // sets state code
+
+            if(fieldValue.equals("yes")){
+                baseTrademarkApplication.setDeclarationEvidenceSupport(true);
+
+            }
+            if(fieldValue.equals("no")){
+                baseTrademarkApplication.setDeclarationEvidenceSupport(false);
+
+            }
+
+            appFieldReadable = "Application Declaration";
+
+        }
+
+        if(fieldName.equals("declare-warning-false")){
+            // ptoUser.setState(param); // sets state code
+
+            if(fieldValue.equals("yes")){
+                baseTrademarkApplication.setDeclarationWarningFalseStatement(true);
+
+            }
+            if(fieldValue.equals("no")){
+                baseTrademarkApplication.setDeclarationWarningFalseStatement(false);
+
+            }
+
+            appFieldReadable = "Application Declaration";
+
+        }
+
 
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);

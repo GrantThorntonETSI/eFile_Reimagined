@@ -533,23 +533,58 @@
                                                                         <label class="form-check-label form-check long" for="courtd" id="courtdec"><span class="radio notspecial small" id="courtdecree">The signatory believes that the applicant is the owner of the trademark/service mark sought to be registered;</span></label>
                                                                     </div>
                                                                     <div class="col-xs-12 form-group form-group-md">
-                                                                        <input class="form-check-input checkmark" type="checkbox" value="ttab" tabindex="0" aria-labelledby="priorttab" id="ttabmade">
+
+
+                                                                        <th:block th:if="${baseTrademarkApplication.isDeclarationMarkInUse() == true}">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="ttab" tabindex="0" aria-labelledby="priorttab" id="ttabmade" checked>
+                                                                        </th:block>
+                                                                        <th:block th:if="${baseTrademarkApplication.isDeclarationMarkInUse() == false}">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="ttab" tabindex="0" aria-labelledby="priorttab" id="ttabmade">
+                                                                        </th:block>
+
+
                                                                         <label class="form-check-label form-check long" for="ttabmade" id="ttabdecision"><span class="radio notspecial small" id="priorttab">The mark is in use in commerce on or in connection with the goods/services in the application;</span></label>
                                                                     </div>
                                                                     <div class="col-xs-12 form-group form-group-md">
-                                                                        <input class="form-check-input checkmark" type="checkbox" value="conflicting" tabindex="0" aria-labelledby="conflictingreg" id="conflict">
+
+                                                                        <th:block th:if="${baseTrademarkApplication.isDeclarationMarkInUseSpecimen() == true}">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="conflicting" tabindex="0" aria-labelledby="conflictingreg" id="conflict" checked>
+                                                                        </th:block>
+                                                                        <th:block th:if="${baseTrademarkApplication.isDeclarationMarkInUseSpecimen() == false}">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="conflicting" tabindex="0" aria-labelledby="conflictingreg" id="conflict">
+                                                                        </th:block>
+
                                                                         <label class="form-check-label form-check long" for="conflict" id="conflictowner"><span class="radio notspecial small" id="conflictingreg">The specimen(s) shows the mark as used on or in connection with the goods/services in the application; and</span></label>
                                                                     </div>
                                                                     <div class="col-xs-12 form-group form-group-md">
-                                                                        <input class="form-check-input checkmark" type="checkbox" value="earlier" tabindex="0" aria-labelledby="early" id="earlieruse">
+                                                                        <th:block th:if="${baseTrademarkApplication.isDeclarationConcurrentUser() == true}">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="earlier" tabindex="0" aria-labelledby="early" id="earlieruse"checked>
+                                                                        </th:block>
+                                                                        <th:block th:if="${baseTrademarkApplication.isDeclarationConcurrentUser() == false}">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="earlier" tabindex="0" aria-labelledby="early" id="earlieruse">
+                                                                        </th:block>
+
                                                                         <label class="form-check-label form-check long" for="earlieruse" id="firstcommerce"><span class="radio notspecial small" id="early">To the best of the signatory&#8217;s knowledge and belief, the facts recited in the application are accurate. To the best of the signatory&#8217;s knowledge and belief, no other persons, except, if applicable, concurrent users, have the right to use the mark in commerce, either in the identical form or in such near resemblance as to be likely, when used on or in connection with the goods/services of such other persons, to cause confusion or mistake, or to deceive.</span></label>
                                                                     </div>
                                                                     <div class="col-xs-12 form-group form-group-md">
-                                                                        <input class="form-check-input checkmark" type="checkbox" value="earlier4" tabindex="0" aria-labelledby="earlyu" id="earlierusey">
+                                                                        <th:block th:if="${baseTrademarkApplication.isDeclarationEvidenceSupport() == true}">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="earlier4" tabindex="0" aria-labelledby="earlyu" id="earlierusey" checked>
+                                                                        </th:block>
+                                                                        <th:block th:if="${baseTrademarkApplication.isDeclarationEvidenceSupport() == false}">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="earlier4" tabindex="0" aria-labelledby="earlyu" id="earlierusey">
+                                                                        </th:block>
+
                                                                         <label class="form-check-label form-check long" for="earlierusey" id="firstcommercefour"><span class="radio notspecial small" id="earlyu">To the best of the signatory&#8217;s knowledge, information, and belief, formed after an inquiry reasonable under the circumstances, the allegations and other factual contentions made above have evidentiary support.</span></label>
                                                                     </div>
                                                                     <div class="col-xs-12 form-group form-group-md">
-                                                                        <input class="form-check-input checkmark" type="checkbox" value="earlier5" tabindex="0" aria-labelledby="earlyx" id="earlierusex">
+
+                                                                        <th:block th:if="${baseTrademarkApplication.isDeclarationWarningFalseStatement() == true}">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="earlier5" tabindex="0" aria-labelledby="earlyx" id="earlierusex" checked>
+                                                                        </th:block>
+                                                                        <th:block th:if="${baseTrademarkApplication.isDeclarationWarningFalseStatement() == false}">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="earlier5" tabindex="0" aria-labelledby="earlyx" id="earlierusex">
+                                                                        </th:block>
+
                                                                         <label class="form-check-label form-check long" for="earlierusex" id="firstcommercefive"><span class="radio notspecial small" id="earlyx">The signatory being warned that willful false statements and the like are punishable by fine or imprisonment, or both, under 18 U.S.C. &#167; 1001, and that such willful false statements and the like may jeopardize the validity of the application or submission or any registration resulting therefrom, declares that all statements made of his/her own knowledge are true and all statements made on information and belief are believed to be true.</span></label>
                                                                     </div>
                                                                 </div><!--end checkbox row-->
@@ -996,22 +1031,60 @@
 
         $('#ttabmade').click(function () {
 
+            if($(this).is(":checked")){
+                saveAppDeclarationField("declare-mark-inUse", "yes");
+            }
+            else{
+                saveAppDeclarationField("declare-mark-inUse", "no");
+            }
+
+
         });
 
         $('#conflict').click(function () {
+
+            if($(this).is(":checked")){
+                saveAppDeclarationField("declare-mark-inUse-spec", "yes");
+            }
+            else{
+                saveAppDeclarationField("declare-mark-inUse-spec", "no");
+            }
+
 
         });
 
 
         $('#earlieruse').click(function () {
 
+            if($(this).is(":checked")){
+                saveAppDeclarationField("declare-concurrent-user", "yes");
+            }
+            else{
+                saveAppDeclarationField("declare-concurrent-user", "no");
+            }
+
+
         });
 
         $('#earlierusey').click(function () {
 
+            if($(this).is(":checked")){
+                saveAppDeclarationField("declare-evidence-support", "yes");
+            }
+            else{
+                saveAppDeclarationField("declare-evidence-support", "no");
+            }
+
         });
 
         $('#earlierusex').click(function () {
+
+            if($(this).is(":checked")){
+                saveAppDeclarationField("declare-warning-false", "yes");
+            }
+            else{
+                saveAppDeclarationField("declare-warning-false", "no");
+            }
 
         });
 
