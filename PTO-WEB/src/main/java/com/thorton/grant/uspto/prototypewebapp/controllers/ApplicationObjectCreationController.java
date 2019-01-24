@@ -1140,6 +1140,75 @@ public class ApplicationObjectCreationController {
     }
 
 
+    // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
+    @PostMapping(value = "/mark/js/add")
+    public ResponseEntity addMarkJSupload(
+            @RequestParam(name="file", required=false) MultipartFile file,
+            @RequestParam (name="appID")String AppInternalID,
+            Model model
+    ) {
+
+        System.out.println("Mark image js file upload!!!! ");
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID( AppInternalID);
+
+        String filePath ="";
+        if(file != null){
+            System.out.println("file is not null");
+
+            if(file.isEmpty() == false) {
+                System.out.println("file is not empty !!!!!!!!!!!!!!!");
+
+
+                try {
+                    String image_path = storageService.store(file);
+                    filePath = "/files/"+image_path;
+
+                    baseTrademarkApplication.getTradeMark().setTrademarkImagePath("/files/"+image_path);
+                    //model.addAttribute("markImagePath",baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+                }
+                catch ( StorageException ex){
+                   // model.addAttribute("message", "ERROR: Mark Image upload failed due to error: "+ex );
+                    // return "forward:/mark/designWithText/?trademarkID="+trademarkInternalID;
+                    buildResponseEnity("420", "{error:" +"ERROR: Mark Image upload failed due to error: "+ex+"}");
+
+                }
+
+                // generate black and white version and store path
+
+                try {
+                    String BWimagePath = storageService.storeBW(file);
+
+                    baseTrademarkApplication.getTradeMark().setTrademarkBWImagePath("/files/"+BWimagePath);
+                    //model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+
+                }
+                catch ( StorageException ex){
+                    //model.addAttribute("message", "ERROR: BW Mark Image upload failed due to error: "+ex );
+                    // return "forward:/mark/designWithText/?trademarkID="+trademarkInternalID;
+                    buildResponseEnity("420", "{error:" +"ERROR: BW Mark Image upload failed due to error: "+ex+"}");
+
+                }
+                baseTrademarkApplication.setTradeMarkUploaded(true);
+                baseTradeMarkApplicationService.save(baseTrademarkApplication);
+                baseTradeMarkApplicationService.save(baseTrademarkApplication);
+            }
+
+        }
+        else{
+            System.out.println("file object is null");
+        }
+
+
+        return buildResponseEnity("200", "{image-url:" +filePath+"}");
+
+        //return ResponseEntity.ok().build();
+
+    }
+
+
+
 
     @RequestMapping({"/application/success"})
     public String applicaitonSucces(WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {

@@ -94,28 +94,33 @@
                                     <span ><img th:src="@{/resources/images/image_placeholder_icon.png}" style="position: relative; left:-5px; min-width: 555px; max-width: 555px; max-height: 333px; min-height: 333px;"  id="markImage" /></span></p>
 
                                 <!--Start Dropzone-->
-                                <div class="col-xs-12 form-group form-group-md">
-                                    <form action="/Mark/add" method="post" enctype="multipart/form-data" id="addNewMark" class="form-horizontal" aria-labelledby="markinfo">
-                                        <fieldset>
-                                            <legend class="sr-only"><span>File upload</span></legend>
-                                            <div class="form-group form-group-md">
-                                                <label class="small upload-drop-zone" for="file"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Select a File</label>
-                                                <input type="file" id="file" name="file" class="form-control">
+                                <div class="col-xs-12 form-group form-group-md"><!--toggle 'yes' radio-->
+                                    <div class="col-xs-12">
+                                        <p id="upimagetwo">Provide an image of your specimen:</p>
+                                        <form method="post"  target="hidden-iframe" id="addNewMark"  action="/mark/js/add"   enctype="multipart/form-data"  aria-labelledby="title">
+                                            <div>
+                                                <label class="small upload-drop-zone" for="file" id="upimgtwo"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Click here to select file to upload.</label>
+                                                <input type="file" id="file" name="file" class="form-control" aria-labelledby="upimgtwo upimagetwo">
                                             </div><!-- Drop Zone -->
-                                            <input  style=" position:relative; display: none; width: 1px; height:1px;" name="AppInternalID" id="appInternalIDForm"   value="" />
+                                        </form>
+                                    </div>
 
-                                        </fieldset>
-                                        <button type="submit" id="addOwnerConfirm" class="btn btn-sm" >Upload file</button>
-                                    </form>
-                                    <div class="row">
-                                        <div class="js-upload-finished col-xs-12 col-md-10 col-lg-8">
-                                            <p id="uploaded">Processed files</p>
-                                            <div class="list-group">
-                                                <a href="#" class="list-group-item list-group-item-success" aria-labelledby="uploaded"></a>
-                                            </div>
+
+
+                                    <div class="col-xs-12">
+                                        <div class="center">
+
+                                            <div type="button" form="addNewMark"  file-id="file", img-id="markImage" spinner-id="mark-spinner" class="btn btn-sm submitMark" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Mark</b><span><i class="fa fa-spinner fa-spin"  id="mark-spinner" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
                                         </div>
-                                    </div><!-- Upload Finished -->
+
+                                    </div>
+
                                 </div>
+
+
+
+
+
                             </div>
                         </div>
                     </div><!--END col-->
@@ -379,6 +384,54 @@
 
         }
 
+
+
+        $(".submitMark").click(function() {
+
+
+
+            var formID = $(this).attr("form");
+
+
+            var fileInputId = $(this).attr("file-id");
+
+            var imageId = $(this).attr("img-id");
+
+            var spinnerID = $(this).attr("spinner-id");
+            $('#'+spinnerID).show();
+            var fileInput = document.getElementById(fileInputId);
+            var file = fileInput.files[0];
+            var formData = new FormData();
+            formData.append('file', file);
+            formData.append('appID', appInternalID);
+
+
+            var url = $("#"+formID).attr("action");
+            // Get the selected files from the input.
+            // get form url
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: formData, // serializes the form's elements.
+                async: true,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(data)
+                {
+                    // we will return the the file url
+                    // call jquery and set it in the img div
+                    var imgPath = parsePathFromResponse(data);
+                    $('#'+imageId).attr("src", imgPath);
+                    $("#"+spinnerID).hide();
+                    //$("#cat-spec-img").fadeIn(500);
+                }
+            });
+
+
+            return false; // avoid to execute the actual submit of the form.
+        });
+
     });
 
 
@@ -480,6 +533,17 @@
 
     }
 
+
+    function parsePathFromResponse(response){
+        var index = response.indexOf("image-url:");
+        index = index+10;
+        response = response.substring(index);
+
+
+        var index2 = response.indexOf("}");
+        response = response.substring(0, index2);
+        return response;
+    }
 
 </script>
 
