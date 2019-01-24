@@ -75,10 +75,10 @@ public class PathController {
         model.addAttribute("account",credentials);
 
         if(ptoUser.isProfileComplete()){
-              return "forward:accounts/dashboard";
+              return "redirect:accounts/dashboard";
         }
         else {
-            return "forward:accounts/userHome";
+            return "redirect:accounts/userHome";
         }
 
     }
