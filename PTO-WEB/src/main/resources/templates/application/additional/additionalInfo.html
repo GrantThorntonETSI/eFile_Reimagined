@@ -351,8 +351,36 @@
                                                     <div class="col-xs-12 form-group form-group-md">
                                                         <div class="col-xs-12 form-group form-group-md">
                                                             <p class="weight600" role="heading" aria-level="3">Upload supporting documents.</p>
-                                                            <label class="small upload-drop-zone" for="filethree"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload a File</label>
-                                                            <input type="file" id="filethree" name="file" class="form-control">
+
+                                                            <form method="post"  target="hidden-iframe"  id="concurrentInfoForm"  action="/concurrent/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
+                                                                <div class="form-group form-group-md">
+                                                                    <p class="weight600" role="heading" aria-level="3">Optional upload.</p>
+                                                                    <label class="small upload-drop-zone" for="concurrentInfo"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload a File</label>
+                                                                    <input type="file" id="concurrentInfo" name="file" class="form-control">
+                                                                </div><!-- Drop Zone -->
+                                                            </form>
+
+                                                            <div class="col-xs-12">
+                                                                <div class="center">
+                                                                    <div class="speciman-image" id="concurrent-info-img-container" style="">
+
+                                                                        <img id="concurrent-info-img" alt="" class="img-responsive"/>
+                                                                    </div>
+
+
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="col-xs-12">
+                                                                <div class="center">
+
+                                                                    <div type="button"  id="concurrent-info-img-upload" class="btn btn-sm" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload File</b><span><i class="fa fa-spinner fa-spin" id="concurrent-info-img-upload-spinner" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                                                </div>
+
+                                                            </div>
+
+
                                                         </div><!-- Drop Zone -->
                                                         <div class="col-xs-12 form-group form-group-md">
                                                             <label for="additional2" class="weight600">Description of the uploaded file.</label>
