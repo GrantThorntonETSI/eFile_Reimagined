@@ -87,19 +87,19 @@
                                         <p class="weight600" id="inuse">Is the mark currently in use? <a href="#" data-toggle="tooltip" title="" class="glyphicon glyphicon-info-sign test" data-placement="right" data-original-title="In use means you are already using your trademark in commerce. Commerce means the buying and selling of goods and services"></a></p>
                                         <div role="radiogroup" aria-labelledby="inuse" class="form-group form-group-md">
                                             <div class="radio">
-                                                <input type="radio" name="markinuse" id="inlineRadio21" value="yes" tabindex="0" style="position: relative; bottom: -5px; margin-left: 15px;"> <label for="inlineRadio21" class="radio-inline">Yes, the mark is in use with all of the selected goods/services</label>
+                                                <label for="inlineRadio21" class="radio-inline radiocontainer">Yes, the mark is in use with all of the selected goods/services<input type="radio" name="markinuse" id="inlineRadio21" value="yes" tabindex="0"><span class="checkmark"></span></label>
                                             </div>
                                             <div class="radio">
-                                                <input type="radio" name="markinuse" id="inlineRadio022" value="no" tabindex="0" style="position: relative; bottom: -5px; margin-left: 15px;" > <label for="inlineRadio022" class="radio-inline">No, the mark is not in use with all of the selected goods/services</label>
+                                                <label for="inlineRadio022" class="radio-inline radiocontainer">No, the mark is not in use with all of the selected goods/services<input type="radio" name="markinuse" id="inlineRadio022" value="no" tabindex="0"><span class="checkmark"></span></label>
                                             </div>
                                         </div><!--END radiogroup-->
                                         <p class="weight600" id="foreigninuse">Do you have a registration and/or pending application in a foreign country for same goods/services?</p>
                                         <div role="radiogroup" aria-labelledby="foreigninuse">
                                             <div class="radio form-group form-group-md">
-                                                <input type="radio" name="foreigninuse" id="inlineRadio23" value="yes" tabindex="0" style="position: relative; bottom: -5px; margin-left: 15px;"><label for="inlineRadio23" class="radio-inline">Yes</label>
+                                                <label for="inlineRadio23" class="radio-inline radiocontainer">Yes<input type="radio" name="foreigninuse" id="inlineRadio23" value="yes" tabindex="0"><span class="checkmark"></span></label>
                                             </div>
                                             <div class="radio">
-                                                <input type="radio" name="foreigninuse" id="inlineRadio024" value="no" tabindex="0" style="position: relative; bottom: -5px; margin-left: 15px;"><label for="inlineRadio024" class="radio-inline">No</label>
+                                                <label for="inlineRadio024" class="radio-inline radiocontainer">No<input type="radio" name="foreigninuse" id="inlineRadio024" value="no" tabindex="0"><span class="checkmark"></span></label>
                                             </div>
                                         </div><!--END radiogroup-->
                                     </div>
@@ -393,7 +393,7 @@
        if(hasFappSet){
 
            if(hasFapp == false){
-               $('#inlineRadio024').click();
+               $('#inlineRadio024').attr("checked", true);
                $('#nextButton').attr("disabled", false);
            }
            else {
@@ -406,12 +406,12 @@
         if(inUseSet){
 
             if(inUse == false){
-                $('#inlineRadio022').click();
+                $('#inlineRadio022').attr("checked", true);
                 $('#nextButton').attr("disabled", false);
 
             }
             else {
-                $('#inlineRadio21').click();
+                $('#inlineRadio21').attr("checked", true);
                 $('#nextButton').attr("disabled", false);
 
             }
