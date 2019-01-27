@@ -84,12 +84,25 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12" id="declarationsignature">
-                        <div class="lead">
-                            <p>Selecting edit will take you back to the appropriate section in the application.</p>
+                        <div class="card-text noexpand">
+                            <h2 class="card-title weight600">Application Fee</h2>
                         </div>
+                        <div class="lead">
+                            <p id="lead">Your current filing fee is $275 per class. To reduce your filing fee to $225, select &#8220;Return to Application&#8221; and complete the missing fields below.</p>
+                        </div>
+                        <button type="button" class="btn-sm btn-success fill">Return to Application</button>
+                        <ul>
+                            <li>Color Claimed as a Feature</li>
+                            <li>Colors Claimed</li>
+                            <li>Color Location Statement</li>
+                        </ul>
                         <div class="card-text noexpand">
                             <h2 class="card-title weight600">Review Application</h2>
                         </div>
+
+
+
+
                         <form action="" method="post" >
                             <fieldset>
                                 <div class="row">
@@ -328,8 +341,7 @@
                                                             </div>
                                                             <div class="col-xs-12 col-sm-8 checkmargin">
                                                                 <p class="weight600" th:text="${baseTrademarkApplication.primaryLawyer.getEmail()}">john.smith@gmail.com</p>
-                                                                <input class="form-check-input checkmark" type="checkbox" value="authorizedemail" tabindex="0" aria-labelledby="authem" id="authemail">
-                                                                <label class="form-check-label form-check long" for="authemail" id="emauth"><span class="radio notspecial small" id="authem">Authorized</span></label>
+
                                                             </div>
                                                         </div>
                                                     </div>
