@@ -1999,6 +1999,60 @@ public class ApplicationFlowController {
 
 
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
+
+
+
+        // check base application for missed teas fields
+
+
+        ArrayList<String> missedTEAsFields = new ArrayList<>();
+        if(baseTrademarkApplication.getTradeMark().getTrademarkDesignType().equals("Standard Character") == false){
+            if(baseTrademarkApplication.getTradeMark().isColorClaimSet() == false){
+                missedTEAsFields.add("Color Claim");
+            }
+
+        }
+        if(baseTrademarkApplication.getTradeMark().isTranslationSet() == false){
+            missedTEAsFields.add("Translation");
+        }
+
+        if(baseTrademarkApplication.getTradeMark().isTranlierationSet() == false){
+            missedTEAsFields.add("Transliteration");
+        }
+
+        if(baseTrademarkApplication.getTradeMark().isPriorRegistratoinSet() == true){
+            if(baseTrademarkApplication.getTradeMark().getPriorRegistrationNumber() == "" || baseTrademarkApplication.getTradeMark().getPriorRegistrationNumber() == null){
+                missedTEAsFields.add("Prior Registration Number");
+
+            }
+        }
+
+        if(baseTrademarkApplication.getTradeMark().isNamePortraitSet() == true){
+            if(baseTrademarkApplication.getTradeMark().isConsentFileUploaded() == false){
+                missedTEAsFields.add("Name Portrait Signature Consent File");
+            }
+
+            if(baseTrademarkApplication.getTradeMark().isNPSLivingPerson()){
+
+            }
+
+        }
+
+       // for each filing basis
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         return "application/teas/ReviewTeasInfo";
 
     }
