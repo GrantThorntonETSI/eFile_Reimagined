@@ -92,9 +92,10 @@
                         </div>
                         <button type="button" class="btn-sm btn-success" style="background-color: darkgreen; border-color: darkgreen;">Return to Application</button>
                         <ul>
-                            <li>Color Claimed as a Feature</li>
-                            <li>Colors Claimed</li>
-                            <li>Color Location Statement</li>
+                            <th:block th:each="TEASfield : ${missedTEAsFields}">
+                                <li th:text="${TEASfield}">Color Claimed as a Feature</li>
+                            </th:block>
+
                         </ul>
                         <div class="card-text noexpand">
                             <h2 class="card-title weight600">Review Application</h2>

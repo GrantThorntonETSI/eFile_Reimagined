@@ -16,6 +16,7 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.fo
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.GSClassCategory;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.GoodAndService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.TradeMark;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.ManagedContact;
@@ -2039,6 +2040,43 @@ public class ApplicationFlowController {
         }
 
        // for each filing basis
+        ArrayList<GSClassCategory> gsClassCategories = baseTrademarkApplication.getGoodAndServicesCategories();
+        for(Iterator<GSClassCategory> iter = gsClassCategories.iterator(); iter.hasNext(); ) {
+            GSClassCategory current = iter.next();
+            ArrayList<GoodAndService> goodAndServices = current.getGoodAndServices();
+            for(Iterator<GoodAndService> iter2 = goodAndServices.iterator(); iter2.hasNext(); ) {
+                 GoodAndService goodAndService = iter2.next();
+
+                if(goodAndService.isMarkInUse() == true){
+                    if(goodAndService.getFirstGSDate() == null){
+                        missedTEAsFields.add(goodAndService.getClassDescription()+" - "+"first in use date");
+
+                    }
+                    if(goodAndService.getFirstCommerceDate() == null){
+                        missedTEAsFields.add(goodAndService.getClassDescription()+" - "+"first in commerce date");
+                    }
+
+                }
+
+                if(goodAndService.isForeignRegistration()){
+                    if(goodAndService.getFrExpirationDate() == null){
+                        missedTEAsFields.add(goodAndService.getClassDescription()+" - "+"Foreign Registration Expiration date");
+
+                    }
+
+                    if(goodAndService.getFrRenewlDate() == null){
+
+                        missedTEAsFields.add(goodAndService.getClassDescription()+" - "+"Foreign Registration Renewal date");
+
+                    }
+
+
+                }
+
+
+
+            }
+        }
 
 
 
@@ -2049,8 +2087,7 @@ public class ApplicationFlowController {
 
 
 
-
-
+        model.addAttribute("missedTEAsFields",missedTEAsFields);
 
 
         return "application/teas/ReviewTeasInfo";
