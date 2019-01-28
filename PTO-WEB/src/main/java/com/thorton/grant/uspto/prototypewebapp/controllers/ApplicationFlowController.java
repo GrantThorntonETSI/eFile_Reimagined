@@ -2006,6 +2006,8 @@ public class ApplicationFlowController {
         // check base application for missed teas fields
 
 
+        String returnLink ="../../application/MarkDetails/?trademarkID=";
+
         ArrayList<String> missedTEAsFields = new ArrayList<>();
         if(baseTrademarkApplication.getTradeMark().getTrademarkDesignType().equals("Standard Character") == false){
             if(baseTrademarkApplication.getTradeMark().isColorClaimSet() == false){
@@ -2039,6 +2041,10 @@ public class ApplicationFlowController {
 
         }
 
+
+        if(missedTEAsFields.size() == 0){
+            returnLink = "../../application/filingBasisStart/?trademarkID=";
+        }
        // for each filing basis
         ArrayList<GSClassCategory> gsClassCategories = baseTrademarkApplication.getGoodAndServicesCategories();
         for(Iterator<GSClassCategory> iter = gsClassCategories.iterator(); iter.hasNext(); ) {
@@ -2070,12 +2076,45 @@ public class ApplicationFlowController {
 
                     }
 
+                    if(goodAndService.getFrCertImagePath() == null){
+
+                        missedTEAsFields.add(goodAndService.getClassDescription()+" - "+"Foreign Registration Certificate");
+                    }
+
 
                 }
 
 
 
+                if(goodAndService.isPendingFA()){
+                    if(goodAndService.getFaFilingDate()== null){
+                        missedTEAsFields.add(goodAndService.getClassDescription()+" - "+"Foreign Application Filing date");
+
+                    }
+
+                    if(goodAndService.getFrRegistartionNumber()== null){
+
+                        missedTEAsFields.add(goodAndService.getClassDescription()+" - "+"Foreign Application Application number");
+
+                    }
+
+
+                }
+
+
+
+
+
             }
+        }
+        // end goods and services loops
+
+        if(missedTEAsFields.size() == 0){
+            returnLink = "../../application/confirmInfo/?trademarkID=";
+        }
+        if(baseTrademarkApplication.isSignDirect() == false){
+
+            missedTEAsFields.add("Applicant Signature");
         }
 
 
@@ -2087,7 +2126,11 @@ public class ApplicationFlowController {
 
 
 
+
+
         model.addAttribute("missedTEAsFields",missedTEAsFields);
+
+        model.addAttribute("returnLink","");
 
 
         return "application/teas/ReviewTeasInfo";

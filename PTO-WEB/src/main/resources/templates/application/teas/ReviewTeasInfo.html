@@ -90,7 +90,7 @@
                         <div class="lead">
                             <p id="lead" style="font-weight: bold;">Your current filing fee is $275 per class. To reduce your filing fee to $225, select &#8220;Return to Application&#8221; and complete the missing fields below.</p>
                         </div>
-                        <button type="button" class="btn-sm btn-success" style="background-color: darkgreen; border-color: darkgreen;">Return to Application</button>
+                        <button type="button" class="btn-sm btn-success  review-application" style="background-color: darkgreen; border-color: darkgreen;">Return to Application</button>
                         <ul>
                             <th:block th:each="TEASfield : ${missedTEAsFields}">
                                 <li th:text="${TEASfield}">Color Claimed as a Feature</li>
@@ -484,6 +484,8 @@
 
     var signatureType = /*[[${signatureType}]]*/ 'User Name';
 
+    var returnLink = /*[[${returnLink}]]*/ 'User Name';
+
     /*]]>*/
 </script>
 
@@ -536,6 +538,8 @@
 
     var bsLink6_active =  "../../application/confirmInfo/?trademarkID="+appInternalID;
     var bsLink6_done =  "../../application/confirmInfo/?trademarkID="+appInternalID;
+
+    returnLink = returnLink+appInternalID;
     ////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -640,7 +644,12 @@
 
         });
 
+        $('.review-application').click(function () {
 
+                location.href=returnLink;
+
+
+        });
 
         //////////////////////////////////////////////////////////////////////
         // set mark image based on persisted values
