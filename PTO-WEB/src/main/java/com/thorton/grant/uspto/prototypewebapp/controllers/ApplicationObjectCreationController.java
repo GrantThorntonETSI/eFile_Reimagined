@@ -1514,16 +1514,36 @@ public class ApplicationObjectCreationController {
                 }
 
 
+                // add fee type information and signture information
+                table.addCell("FEE INFORMATION");
+                table.addCell("");
+                table.addCell("APPLICATOIN FILING OPTION");
+                if(baseTrademarkApplication.getBaseFee() == 225){
+                    table.addCell("TEAS PLUS");
 
+                }
+                else {
+                    table.addCell("TEAS RF");
+                }
+                table.addCell("NUMBER OF CLASSES");
+                table.addCell(baseTrademarkApplication.getTotalNumberOfclasses());
+                table.addCell("APPLICATION FOR REGISTRATION PER CLASS");
+                table.addCell(String.valueOf(baseTrademarkApplication.getBaseFee()));
+                table.addCell("*TOTAL FEE DUE");
+                table.addCell(String.valueOf(baseTrademarkApplication.getBaseFee()*Integer.valueOf(baseTrademarkApplication.getTotalNumberOfclasses())));
 
-
-
-
-
-
-
-
-
+                table.addCell("SIGNATURE INFORMATION");
+                table.addCell("");
+                table.addCell("SIGNATURE");
+                table.addCell(baseTrademarkApplication.getApplicationSignature());
+                table.addCell("SIGNATORY'S NAME");
+                table.addCell(baseTrademarkApplication.getAppSignatoryName());
+                table.addCell("SIGNATORY'S POSITION");
+                table.addCell(baseTrademarkApplication.getAppSignatoryPosition());
+                table.addCell("SIGNATORY's PHONE NUMBER");
+                table.addCell(baseTrademarkApplication.getAppSignatoryPhone());
+                table.addCell("DATE SIGNED");
+                table.addCell(baseTrademarkApplication.getApplicationDateSignedDisplay());
 
 
                 document.add(table);
