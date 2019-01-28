@@ -203,6 +203,11 @@ public class BaseTrademarkApplication  {
     private boolean declarationWarningFalseStatement; // check box 6
 
 
+    // fee variables
+
+    private Integer baseFee = 275;
+
+
 
     public boolean isAttorneyPoolEmpty() {
 
@@ -712,7 +717,7 @@ public class BaseTrademarkApplication  {
     public String getExtraFeeCalculationString(){
 
         if(getUniqueClassNumberforGS().size() > 0){
-            return"("+ (getUniqueClassNumberforGS().size()-1)+")$"+((getUniqueClassNumberforGS().size()-1)*275);
+            return"("+ (getUniqueClassNumberforGS().size()-1)+")$"+((getUniqueClassNumberforGS().size()-1)*baseFee);
         }
         else {
             return "(0)$0";
@@ -725,7 +730,7 @@ public class BaseTrademarkApplication  {
     public String getBasicFeeCalculationString(){
 
 
-            return "$275";
+            return "$"+String.valueOf(baseFee);
 
 
 
@@ -750,10 +755,10 @@ public class BaseTrademarkApplication  {
     public String getTotalFeeString(){
         String val = "";
                 if(getUniqueClassNumberforGS().size() > 0){
-                  val=  (275+Integer.valueOf(getUniqueClassNumberforGS().size()-1)*275)+"";
+                  val=  (baseFee+Integer.valueOf(getUniqueClassNumberforGS().size()-1)*baseFee)+"";
                 }
                 else{
-                    val = "275";
+                    val = String.valueOf(baseFee);
 
                 }
 
@@ -763,10 +768,10 @@ public class BaseTrademarkApplication  {
     public String getTotalFeeAmount(){
         String val = "";
         if(getUniqueClassNumberforGS().size() > 0){
-            val=  (275+Integer.valueOf(getUniqueClassNumberforGS().size()-1)*275)+"";
+            val=  (baseFee+Integer.valueOf(getUniqueClassNumberforGS().size()-1)*baseFee)+"";
         }
         else{
-            val = "275";
+            val = String.valueOf(baseFee);
 
         }
 
@@ -924,6 +929,14 @@ public class BaseTrademarkApplication  {
 
     public void setDeclarationWarningFalseStatement(boolean declarationWarningFalseStatement) {
         this.declarationWarningFalseStatement = declarationWarningFalseStatement;
+    }
+
+    public Integer getBaseFee() {
+        return baseFee;
+    }
+
+    public void setBaseFee(Integer baseFee) {
+        this.baseFee = baseFee;
     }
 
     @Override

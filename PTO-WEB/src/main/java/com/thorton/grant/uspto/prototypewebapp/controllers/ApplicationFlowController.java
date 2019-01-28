@@ -1966,7 +1966,7 @@ public class ApplicationFlowController {
             baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
         }
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
 
         if( baseTrademarkApplication.getTradeMark() != null) {
             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
@@ -1980,7 +1980,7 @@ public class ApplicationFlowController {
 
 
         }
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
         boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
         boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
 
@@ -2117,20 +2117,21 @@ public class ApplicationFlowController {
             missedTEAsFields.add("Applicant Signature");
         }
 
+       boolean passedValidation = false;
+        if(missedTEAsFields.size() == 0){
+            passedValidation = true;
+            // update Base application base price
+           baseTrademarkApplication.setBaseFee(225);
 
+        }
 
-
-
-
-
-
-
-
-
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
         model.addAttribute("missedTEAsFields",missedTEAsFields);
 
-        model.addAttribute("returnLink","");
+        model.addAttribute("returnLink",returnLink);
+        model.addAttribute("passedValidation",passedValidation);
 
 
         return "application/teas/ReviewTeasInfo";

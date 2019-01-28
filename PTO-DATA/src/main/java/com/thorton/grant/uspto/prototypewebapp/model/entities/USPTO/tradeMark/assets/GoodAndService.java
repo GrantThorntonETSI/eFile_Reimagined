@@ -207,9 +207,9 @@ public class GoodAndService {
 
         String identification = "";
         if(markInUse == true){
-            if(firstCommerceDate != null || firstGSDate != null){
+
                 identification = identification+"SECTION 1(a), ";
-            }
+
             if(pendingFA == true){
                 identification = identification+"SECTION 44(d), ";
             }
