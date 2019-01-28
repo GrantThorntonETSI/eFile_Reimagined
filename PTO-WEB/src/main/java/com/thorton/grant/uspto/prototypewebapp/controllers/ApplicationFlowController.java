@@ -1924,6 +1924,86 @@ public class ApplicationFlowController {
 
 
 
+    @RequestMapping({"/application/confirmTEASInfo"})
+    public String confirmApplicationTEASInfo(WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
+        // get owner info
+
+
+        // get email and get PTOUser object from repository
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+        model.addAttribute("hostBean", hostBean);
+        String applcationLookupID = trademarkInternalID;
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+        //////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////
+        baseTrademarkApplication.setLastViewModel("application/confirm/ConfirmApplicationInfo");
+        ArrayList<String> sectionStatus = baseTrademarkApplication.getSectionStatus();
+        sectionStatus.set(0,"done");
+        sectionStatus.set(1,"done");
+        sectionStatus.set(2,"done");
+        sectionStatus.set(3,"done");
+        sectionStatus.set(4,"done");
+        sectionStatus.set(5,"active");
+        baseTrademarkApplication.setSectionStatus(sectionStatus);
+        //////////////////////////////////////////////////////////////////////////////////////
+
+
+        if(baseTrademarkApplication.getTradeMark() == null){
+            TradeMark tradeMark = new TradeMark();
+            tradeMark.setTrademarkDesignType("");
+            baseTrademarkApplication.setTradeMark(tradeMark);
+            baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+        }
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+
+        }
+        else{
+            model.addAttribute("markImagePath","");
+
+            model.addAttribute("markImagePathBW","");
+
+
+        }
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+        boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+        boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+
+        ArrayList<String> selectedGSDescrption = new ArrayList<>();
+        for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+            GoodAndService current = iter.next();
+            selectedGSDescrption.add(current.getClassDescription());
+        }
+        ContactsDisplayDTO selectedDescription = new ContactsDisplayDTO();
+        selectedDescription.setContactNames(selectedGSDescrption);
+        model.addAttribute("selectedGoods_Services",selectedDescription);
+
+        model.addAttribute("signatureType",baseTrademarkApplication.getSignatureType());
+
+
+        model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
+        return "application/teas/ReviewTeasInfo";
+
+    }
+
+
     @RequestMapping({"/application/confirmInfo"})
     public String confirmApplicationInfo(WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
         // get owner info
