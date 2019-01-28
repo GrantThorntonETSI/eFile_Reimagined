@@ -244,8 +244,6 @@ public class PathController {
     }
 
 
-
-
     @RequestMapping({"/aboutUs"})
     public String info(){
 
@@ -267,4 +265,9 @@ public class PathController {
 
         return "owner/index";
     }
+
+
+
+
+
 }
