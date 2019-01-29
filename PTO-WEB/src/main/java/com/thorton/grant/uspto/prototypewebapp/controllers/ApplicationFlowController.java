@@ -2071,12 +2071,44 @@ public class ApplicationFlowController {
         }
 
         if(baseTrademarkApplication.getTradeMark().isNamePortraitSet() == true){
-            if(baseTrademarkApplication.getTradeMark().isConsentFileUploaded() == false){
-                missedTEAsFields.add("Name Portrait Signature Consent File");
+
+
+            if(baseTrademarkApplication.getTradeMark().isPortrait()){
+                if(baseTrademarkApplication.getTradeMark().getPortraitFirstName() == null){
+                    missedTEAsFields.add("Name/Portrait/Signature Portrait - first name");
+                }
+                if(baseTrademarkApplication.getTradeMark().getPortraitLastName() == null){
+                    missedTEAsFields.add("Name/Portrait/Signature Portrait - last name");
+                }
+
+            }
+            if(baseTrademarkApplication.getTradeMark().isName()){
+
+                if(baseTrademarkApplication.getTradeMark().getNameFirstName() == null){
+                    missedTEAsFields.add("Name/Portrait/Signature Name- first name");
+                }
+                if(baseTrademarkApplication.getTradeMark().getNameLastName() == null){
+                    missedTEAsFields.add("Name/Portrait/Signature Name - last name");
+                }
+
+
+            }
+            if(baseTrademarkApplication.getTradeMark().isSignature()){
+
+                if(baseTrademarkApplication.getTradeMark().getSignatureFirstName() == null){
+                    missedTEAsFields.add("Name/Portrait/Signature Signature - first name");
+                }
+                if(baseTrademarkApplication.getTradeMark().getSignatureLastName() == null){
+                    missedTEAsFields.add("Name/Portrait/Signature Signature - last name");
+                }
+
+
             }
 
-            if(baseTrademarkApplication.getTradeMark().isNPSLivingPerson()){
-
+            if(baseTrademarkApplication.getTradeMark().isNPSLivingPerson() == true){
+                if(baseTrademarkApplication.getTradeMark().isConsentFileUploaded() == false){
+                    missedTEAsFields.add("Name Portrait Signature Consent File");
+                }
             }
 
         }
