@@ -2064,10 +2064,13 @@ public class ApplicationFlowController {
         }
 
         if(baseTrademarkApplication.getTradeMark().isPriorRegistratoinSet() == true){
-            if(baseTrademarkApplication.getTradeMark().getPriorRegistrationNumber() == "" || baseTrademarkApplication.getTradeMark().getPriorRegistrationNumber() == null){
-                missedTEAsFields.add("Prior Registration Number");
+            if(baseTrademarkApplication.getTradeMark().isPriorRegistratoin() == true){
+                if(baseTrademarkApplication.getTradeMark().getPriorRegistrationNumber() == "" || baseTrademarkApplication.getTradeMark().getPriorRegistrationNumber() == null){
+                    missedTEAsFields.add("Prior Registration Number");
 
+                }
             }
+
         }
 
         if(baseTrademarkApplication.getTradeMark().isNamePortraitSet() == true){
