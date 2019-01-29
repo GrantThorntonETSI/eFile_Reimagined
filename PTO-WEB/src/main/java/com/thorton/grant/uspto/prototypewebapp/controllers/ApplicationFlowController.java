@@ -2006,7 +2006,11 @@ public class ApplicationFlowController {
         // check base application for missed teas fields
 
 
-        String returnLink ="../../application/MarkDetails/?trademarkID=";
+        String returnLink ="../../mark/designWithTextDetails/?trademarkID=";
+
+        if(baseTrademarkApplication.getTradeMark().getTrademarkDesignType().equals("Standard Character")){
+            returnLink ="../../mark/standard/?trademarkID=";
+        }
 
         ArrayList<String> missedTEAsFields = new ArrayList<>();
         if(baseTrademarkApplication.getTradeMark().getTrademarkDesignType().equals("Standard Character") == false){
