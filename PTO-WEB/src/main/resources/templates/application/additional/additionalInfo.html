@@ -840,6 +840,57 @@
             return false; // avoid to execute the actual submit of the form.
         });
 
+        $("#concurrent-info-img-upload").click(function() {
+
+
+            // static know value
+            var formID = "concurrentInfoForm";
+            // static know value
+            var fileInputId = "concurrentInfo";
+            // static know value
+            var imageId = "concurrent-info-img";
+            // static know value
+            var spinnerID = "concurrent-info-img-upload-spinner"
+
+
+            $('#'+spinnerID).show();
+
+
+
+            var fileInput = document.getElementById(fileInputId);
+            var file = fileInput.files[0];
+            var formData = new FormData();
+            formData.append('file', file);
+            formData.append('appID', appInternalID);
+
+            // static known value
+            var url = "/concurrent/specimen/add";
+
+
+            // Get the selected files from the input.
+            // get form url
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: formData, // serializes the form's elements.
+                async: true,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(data)
+                {
+                    // we will return the the file url
+                    // call jquery and set it in the img div
+                    var imgPath = parsePathFromResponse(data);
+                    $('#'+imageId).attr("src", imgPath);
+                    $("#"+spinnerID).hide();
+                    //$("#cat-spec-img").fadeIn(500);
+                }
+            });
+
+
+            return false; // avoid to execute the actual submit of the form.
+        });
 
 
 

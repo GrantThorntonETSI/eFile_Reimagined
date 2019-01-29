@@ -167,6 +167,8 @@ public class BaseTrademarkApplication  {
     private String miscInformation;
     private String miscInfoImagePath;
 
+    private String concurrentUseEvidenceFilePath;
+
 
 
 
@@ -900,6 +902,16 @@ public class BaseTrademarkApplication  {
     }
 
     public boolean isDeclarationMarkInUseSpecimen() {
+
+        // check each good and services and see if each has an specimen
+        for(Iterator<GoodAndService> iter = goodAndServices.iterator(); iter.hasNext(); ) {
+            GoodAndService current = iter.next();
+            if(current.getSampleImagePath() == null){
+                declarationMarkInUseSpecimen = false;
+            }
+        }
+
+
         return declarationMarkInUseSpecimen;
     }
 
@@ -937,6 +949,14 @@ public class BaseTrademarkApplication  {
 
     public void setBaseFee(Integer baseFee) {
         this.baseFee = baseFee;
+    }
+
+    public String getConcurrentUseEvidenceFilePath() {
+        return concurrentUseEvidenceFilePath;
+    }
+
+    public void setConcurrentUseEvidenceFilePath(String concurrentUseEvidenceFilePath) {
+        this.concurrentUseEvidenceFilePath = concurrentUseEvidenceFilePath;
     }
 
     @Override
