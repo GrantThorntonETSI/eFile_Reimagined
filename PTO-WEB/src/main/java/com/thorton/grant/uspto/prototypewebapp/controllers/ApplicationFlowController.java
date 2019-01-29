@@ -2031,9 +2031,36 @@ public class ApplicationFlowController {
         if(baseTrademarkApplication.getTradeMark().isTranslationSet() == false){
             missedTEAsFields.add("Translation");
         }
+        else {
+            if(baseTrademarkApplication.getTradeMark().isForeignLanguageTranslationWording() == true){
+                if(baseTrademarkApplication.getTradeMark().getForeignLanguageTranslationOriginalText() == null){
+                    missedTEAsFields.add("Translation - foreign language text");
+                }
+                if(baseTrademarkApplication.getTradeMark().getForeignLanguageTranslationUSText() == null){
+                    missedTEAsFields.add("Translation - foreign language translated text");
+                }
+                if(baseTrademarkApplication.getTradeMark().getForeignLanguageType_translation() == null){
+                    missedTEAsFields.add("Translation - foreign language type");
+                }
+
+            }
+        }
 
         if(baseTrademarkApplication.getTradeMark().isTranlierationSet() == false){
             missedTEAsFields.add("Transliteration");
+        }
+        else {
+            if(baseTrademarkApplication.getTradeMark().isForeignLanguateTransliterationWording() == true){
+                if(baseTrademarkApplication.getTradeMark().getForeignLanguateTransliterationOriginalText() == null){
+                    missedTEAsFields.add("Transliteration - foreign language text");
+                }
+                if(baseTrademarkApplication.getTradeMark().getForeignLanguateTransliterationUSText() == null){
+                    missedTEAsFields.add("Transliteration - foreign language transliterated text");
+                }
+                if(baseTrademarkApplication.getTradeMark().getForeignLanguageType_transliteration() == null){
+                    missedTEAsFields.add("Transliteration - foreign language type");
+                }
+            }
         }
 
         if(baseTrademarkApplication.getTradeMark().isPriorRegistratoinSet() == true){
