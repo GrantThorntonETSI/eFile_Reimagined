@@ -2187,10 +2187,7 @@ public class ApplicationFlowController {
         if(missedTEAsFields.size() == 0){
             returnLink = "../../application/confirmInfo/?trademarkID=";
         }
-        if(baseTrademarkApplication.isSignDirect() == false){
 
-            missedTEAsFields.add("Applicant Signature");
-        }
 
        boolean passedValidation = false;
         if(missedTEAsFields.size() == 0){
