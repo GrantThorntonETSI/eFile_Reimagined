@@ -168,6 +168,15 @@ public class BaseTrademarkApplication  {
     private String miscInfoImagePath;
 
     private boolean concurrentUse;
+    private boolean concurrentTypeCourtDecree;
+    private boolean concurrentTypePriorDecision;
+    private boolean concurrentTypeWrittenConsent;
+    private boolean concurrentTypeEarlierFirstUse;
+
+    private boolean concurrentTypeSet;
+
+
+
     private String concurrentUseEvidenceFilePath;
 
 
@@ -966,6 +975,46 @@ public class BaseTrademarkApplication  {
 
     public void setConcurrentUse(boolean concurrentUse) {
         this.concurrentUse = concurrentUse;
+    }
+
+    public boolean isConcurrentTypeCourtDecree() {
+        return concurrentTypeCourtDecree;
+    }
+
+    public void setConcurrentTypeCourtDecree(boolean concurrentTypeCourtDecree) {
+        this.concurrentTypeCourtDecree = concurrentTypeCourtDecree;
+    }
+
+    public boolean isConcurrentTypePriorDecision() {
+        return concurrentTypePriorDecision;
+    }
+
+    public void setConcurrentTypePriorDecision(boolean concurrentTypePriorDecision) {
+        this.concurrentTypePriorDecision = concurrentTypePriorDecision;
+    }
+
+    public boolean isConcurrentTypeWrittenConsent() {
+        return concurrentTypeWrittenConsent;
+    }
+
+    public void setConcurrentTypeWrittenConsent(boolean concurrentTypeWrittenConsent) {
+        this.concurrentTypeWrittenConsent = concurrentTypeWrittenConsent;
+    }
+
+    public boolean isConcurrentTypeEarlierFirstUse() {
+        return concurrentTypeEarlierFirstUse;
+    }
+
+    public void setConcurrentTypeEarlierFirstUse(boolean concurrentTypeEarlierFirstUse) {
+        this.concurrentTypeEarlierFirstUse = concurrentTypeEarlierFirstUse;
+    }
+
+    public boolean isConcurrentTypeSet() {
+        return concurrentTypeSet;
+    }
+
+    public void setConcurrentTypeSet(boolean concurrentTypeSet) {
+        this.concurrentTypeSet = concurrentTypeSet;
     }
 
     @Override

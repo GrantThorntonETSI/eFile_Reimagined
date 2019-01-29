@@ -849,7 +849,7 @@ $(document).ready(function(){
 		}
 	});
 	//hide / show concurrent uses
-	$('div#hideshowconcurrentuses').css('display','none');
+
 	$('input#courtd, input#ttabmade, input#conflict, input#earlieruse').change(function() {
 		if(this.checked == true){
 			$('div#hideshowconcurrentuses').show( 'fast' );

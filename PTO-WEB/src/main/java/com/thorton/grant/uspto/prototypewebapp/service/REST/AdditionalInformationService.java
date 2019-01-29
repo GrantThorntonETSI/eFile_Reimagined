@@ -67,8 +67,80 @@ public class AdditionalInformationService extends  BaseRESTapiService {
 
 
 
+        if(fieldName.equals("ai-concurrent-type-court")){
+            // ptoUser.setState(param); // sets state code
+
+            if(fieldValue.equals("yes")){
+
+                baseTrademarkApplication.setConcurrentTypeCourtDecree(true);
+                baseTrademarkApplication.setConcurrentTypeSet(true);
+            }
+            if(fieldValue.equals("no")){
+                baseTrademarkApplication.setConcurrentTypeCourtDecree(false);
+                baseTrademarkApplication.setConcurrentTypeSet(false);
+
+            }
+
+            appFieldReadable = "Concurrent Use Type ";
 
 
+        }
+
+        if(fieldName.equals("ai-concurrent-type-prior")){
+            // ptoUser.setState(param); // sets state code
+
+            if(fieldValue.equals("yes")){
+
+                baseTrademarkApplication.setConcurrentTypePriorDecision(true);
+                baseTrademarkApplication.setConcurrentTypeSet(true);
+            }
+            if(fieldValue.equals("no")){
+                baseTrademarkApplication.setConcurrentTypePriorDecision(false);
+                baseTrademarkApplication.setConcurrentTypeSet(false);
+
+            }
+
+            appFieldReadable = "Concurrent Use Type ";
+
+
+        }
+
+        if(fieldName.equals("ai-concurrent-type-written")){
+            // ptoUser.setState(param); // sets state code
+
+            if(fieldValue.equals("yes")){
+
+                baseTrademarkApplication.setConcurrentTypeWrittenConsent(true);
+                baseTrademarkApplication.setConcurrentTypeSet(true);
+            }
+            if(fieldValue.equals("no")){
+                baseTrademarkApplication.setConcurrentTypeWrittenConsent(false);
+                baseTrademarkApplication.setConcurrentTypeSet(false);
+
+            }
+
+            appFieldReadable = "Concurrent Use Type ";
+
+
+        }
+        if(fieldName.equals("ai-concurrent-type-earlier")){
+            // ptoUser.setState(param); // sets state code
+
+            if(fieldValue.equals("yes")){
+
+                baseTrademarkApplication.setConcurrentTypeEarlierFirstUse(true);
+                baseTrademarkApplication.setConcurrentTypeSet(true);
+            }
+            if(fieldValue.equals("no")){
+                baseTrademarkApplication.setConcurrentTypeEarlierFirstUse(false);
+                baseTrademarkApplication.setConcurrentTypeSet(false);
+
+            }
+
+            appFieldReadable = "Concurrent Use Type ";
+
+
+        }
         String responseMsg = appFieldReadable+" has been saved";
 
         //return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
