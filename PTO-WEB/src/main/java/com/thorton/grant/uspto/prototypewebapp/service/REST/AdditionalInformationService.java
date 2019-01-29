@@ -46,6 +46,26 @@ public class AdditionalInformationService extends  BaseRESTapiService {
 
         }
 
+        if(fieldName.equals("ai-concurrent-use")){
+            // ptoUser.setState(param); // sets state code
+
+            if(fieldValue.equals("yes")){
+
+                baseTrademarkApplication.setConcurrentUse(true);
+                baseTrademarkApplication.setDeclarationConcurrentUser(true);
+            }
+            if(fieldValue.equals("no")){
+                baseTrademarkApplication.setConcurrentUse(false);
+                baseTrademarkApplication.setDeclarationConcurrentUser(false);
+
+            }
+
+            appFieldReadable = "Concurrent Use Declaration";
+
+
+        }
+
+
 
 
 

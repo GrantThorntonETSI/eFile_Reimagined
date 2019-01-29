@@ -787,6 +787,8 @@
 
         });
 
+
+
         // java script upload for additional info misc info
         $("#additional-file-upload").click(function() {
 
@@ -838,6 +840,19 @@
 
 
             return false; // avoid to execute the actual submit of the form.
+        });
+
+
+
+
+        $('#concurruse').click(function () {
+            if(this.checked == true){
+                saveAdditionalInfo("ai-concurrent-use", "yes", appInternalID);
+            }
+            else {
+                saveAdditionalInfo("ai-concurrent-use", "no", appInternalID);
+            }
+
         });
 
         $("#concurrent-info-img-upload").click(function() {
