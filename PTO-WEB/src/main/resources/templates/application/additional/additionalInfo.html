@@ -163,10 +163,22 @@
                                                                     <input class="form-check-input checkmark" type="checkbox" value="anotherform" tabindex="0" aria-labelledby="useanother" id="useanotherform">
                                                                     <label class="form-check-label form-check" for="useanotherform" id="another"><span class="radio notspecial" id="useanother">Use in Another Form</span></label>
                                                                 </div>
-                                                                <div class="col-xs-12 col-md-7">
-                                                                    <input class="form-check-input checkmark" type="checkbox" value="concurrentuse" tabindex="0" aria-labelledby="conuse" id="concurruse">
-                                                                    <label class="form-check-label form-check" for="concurruse" id="concurrent"><span class="radio notspecial" id="conuse">Concurrent Use</span></label>
-                                                                </div>
+                                                                <th:block th:if="${baseTrademarkApplication.isConcurrentUse() == true}">
+                                                                    <div class="col-xs-12 col-md-7">
+                                                                        <input class="form-check-input checkmark" type="checkbox" value="concurrentuse" tabindex="0" aria-labelledby="conuse" id="concurruse" checked>
+                                                                        <label class="form-check-label form-check" for="concurruse" id="concurrent"><span class="radio notspecial" id="conuse">Concurrent Use</span></label>
+                                                                    </div>
+
+                                                                </th:block>
+
+                                                                <th:block th:if="${baseTrademarkApplication.isConcurrentUse() == false}">
+                                                                    <div class="col-xs-12 col-md-7">
+                                                                        <input class="form-check-input checkmark" type="checkbox" value="concurrentuse" tabindex="0" aria-labelledby="conuse" id="concurruse">
+                                                                        <label class="form-check-label form-check" for="concurruse" id="concurrent"><span class="radio notspecial" id="conuse">Concurrent Use</span></label>
+                                                                    </div>
+
+                                                                </th:block>
+
                                                             </div>
                                                         </div>
                                                     </div><!--end checkbox row-->
