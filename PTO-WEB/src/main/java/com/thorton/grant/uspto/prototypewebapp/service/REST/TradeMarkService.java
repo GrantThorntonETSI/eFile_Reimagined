@@ -69,6 +69,7 @@ public class TradeMarkService extends BaseRESTapiService {
             // ptoUser.setState(param); // sets state code
 
            baseTrademarkApplication.getTradeMark().setMarkColorClaimBW(true);
+           baseTrademarkApplication.getTradeMark().setAcceptBWmarkSet(true);
             appFieldReadable = "Accept BW Drawing ";
 
         }

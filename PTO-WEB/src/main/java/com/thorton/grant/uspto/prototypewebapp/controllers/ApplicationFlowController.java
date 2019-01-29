@@ -2011,7 +2011,20 @@ public class ApplicationFlowController {
         ArrayList<String> missedTEAsFields = new ArrayList<>();
         if(baseTrademarkApplication.getTradeMark().getTrademarkDesignType().equals("Standard Character") == false){
             if(baseTrademarkApplication.getTradeMark().isColorClaimSet() == false){
-                missedTEAsFields.add("Color Claim");
+
+
+                missedTEAsFields.add("Mark Color Claim");
+            }
+            else {
+                if(baseTrademarkApplication.getTradeMark().isMarkColorClaimBW()){
+
+                    if(baseTrademarkApplication.getTradeMark().isAcceptBWmarkSet() == false){
+                        missedTEAsFields.add("Accept B&W Mark");
+                    }
+                }
+                if(baseTrademarkApplication.getTradeMark().getMarkDescription() == null){
+                        missedTEAsFields.add("Mark Color/B&W Description");
+                }
             }
 
         }

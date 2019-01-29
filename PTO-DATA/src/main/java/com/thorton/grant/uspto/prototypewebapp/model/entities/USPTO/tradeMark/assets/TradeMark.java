@@ -54,7 +54,7 @@ public class TradeMark extends BaseEntity {
     private String markBWDescription;
 
     private boolean colorClaimSet;
-
+    private boolean acceptBWmarkSet;
 
 
 
@@ -668,6 +668,14 @@ public class TradeMark extends BaseEntity {
 
     public void setStandardCharacterMark(boolean standardCharacterMark) {
         this.standardCharacterMark = standardCharacterMark;
+    }
+
+    public boolean isAcceptBWmarkSet() {
+        return acceptBWmarkSet;
+    }
+
+    public void setAcceptBWmarkSet(boolean acceptBWmarkSet) {
+        this.acceptBWmarkSet = acceptBWmarkSet;
     }
 
     @Override
