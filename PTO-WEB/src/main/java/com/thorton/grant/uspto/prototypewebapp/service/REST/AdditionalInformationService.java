@@ -143,6 +143,8 @@ public class AdditionalInformationService extends  BaseRESTapiService {
         }
         String responseMsg = appFieldReadable+" has been saved";
 
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
         //return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
         return buildResponseEnity("200", responseMsg);
     }
