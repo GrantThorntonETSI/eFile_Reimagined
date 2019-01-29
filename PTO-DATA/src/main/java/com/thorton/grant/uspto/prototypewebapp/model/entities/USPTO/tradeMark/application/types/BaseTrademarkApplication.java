@@ -167,6 +167,7 @@ public class BaseTrademarkApplication  {
     private String miscInformation;
     private String miscInfoImagePath;
 
+    private boolean concurrentUse;
     private String concurrentUseEvidenceFilePath;
 
 
@@ -957,6 +958,14 @@ public class BaseTrademarkApplication  {
 
     public void setConcurrentUseEvidenceFilePath(String concurrentUseEvidenceFilePath) {
         this.concurrentUseEvidenceFilePath = concurrentUseEvidenceFilePath;
+    }
+
+    public boolean isConcurrentUse() {
+        return concurrentUse;
+    }
+
+    public void setConcurrentUse(boolean concurrentUse) {
+        this.concurrentUse = concurrentUse;
     }
 
     @Override
