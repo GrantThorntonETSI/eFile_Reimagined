@@ -883,4 +883,557 @@ $(document).ready(function(){
 	//END signature method
 
 
+	//grid view checkboxes In-Use 1(a)
+	//Gridview In-Use 1(a) Form Reveal
+	$(document).on('change', 'input#otherformfirst, input#otherformcommerce', function() {
+		$(this).parent().siblings('div#yesinuse1atwo').css('display','block' );
+	});
+	//END Gridview In-Use 1(a) Form Reveal
+
+	//Toggle 1(a) + 1(b)
+	$('#gridview table tbody tr td:nth-child(2) input').change(function() {
+		$(this).parent().next('td').children('label').children('span').addClass('special');
+		$(this).parent().next('td').children('input').prop({
+			disabled: true,
+			checked: false,
+		});
+		$(this).parent().siblings('td').children('input').attr('aria-disabled', 'true');
+	});
+	$('#gridview table tbody tr th:nth-child(2) input').change(function() {
+		$(this).parent().next('th').children('label').children('span').addClass('special');
+		$(this).parent().next('th').children('input').prop({
+			disabled: true,
+			checked: false,
+		});
+		$(this).parent().next('th').children('input').attr('aria-disabled', 'true');
+	});
+	$('#gridview table tbody tr td:nth-child(3) input').change(function() {
+		$(this).parent().prev('td').children('label').children('span').addClass('special');
+		$(this).parent().prev('td').children('input').prop({
+			disabled: true,
+			checked: false,
+		});
+		$(this).parent().siblings('td').children('input').attr('aria-disabled', 'true');
+	});
+	$('#gridview table tbody tr th:nth-child(3) input').change(function() {
+		$(this).parent().prev('th').children('label').children('span').addClass('special');
+		$(this).parent().prev('th').children('input').prop({
+			disabled: true,
+			checked: false,
+		});
+		$(this).parent().prev('th').children('input').attr('aria-disabled', 'true');
+	});
+	//END Toggle 1(a) + 1(b)
+
+	//user selects In-Use 1(a) classname and adjacent checkbox
+	$(document).on('change', '#gridview table tbody tr th:nth-child(2) input', function() { //Classnames 2nd checkbox
+		var b 	= 	$( '#gridview table tbody tr th:nth-child(1) input:checked' ); //Classnames 1st checkbox, checked
+		var p 	= 	$( '#gridview table tbody tr th:nth-child(2) input:checked' ); //Classnames 2nd checkbox, checked
+		var q	=	$( '#gridview table thead tr:nth-child(2) th:nth-child(2) input' ); //In-Use 1(a) checkbox
+		//var newrow = $( "<tr class='inuse1aone'><td colspan='5'><div id='yesinuse1aone' class='form-group'><!--toggle 1(a) one--><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md matchlabelheightdiv'><label for='otherformfirst' class='matchlabelheight'>In-Use 1(a) Date of First Use Anywhere</label><input type='date' class='form-control' id='otherformfirst' value=''></div><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><label for='otherformcommerce'>In-Use 1(a) Date of First Use in Commerce</label><input type='date' class='form-control' id='otherformcommerce' value=''></div><div id='yesinuse1atwo' class='col-xs-12 form-group'><!--toggle 1(a) two--><div class='row'><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><p id='upimage'>Provide an image of your specimen:</p><div><label class='small upload-drop-zone' for='specimenfile' id='upimg'><span class='glyphicon glyphicon-upload' aria-hidden='true'></span> <br>Drag and drop files or click here to upload.</label><input type='file' id='specimenfile' class='form-control' aria-labelledby='upimg upimage'></div><!-- Drop Zone --></div><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><label for='specdescripthree'>Provide a description of your specimen:</label><textarea id='specdescripthree' class='form-control'></textarea></div></div></div></div></td></tr>" );
+		console.log('#gridview table tbody tr th:nth-child(2) input');
+		if ($(this).prop('checked')) {
+			$(q).prop({
+				checked: true,
+			});
+			$(this).parent().prev('th').children('input').prop({
+				checked: true,
+			});
+			//$(this).parent().parent().after(newrow);
+			$('div#yesinuse1atwo').css('display','none');
+		}
+		if (this.checked == false) {
+			$(q).prop({
+				checked: false,
+			});
+			$(this).parent().parent().next('tr').remove();
+		}
+	});
+	//user selects Intent-to-Use 1(b) classname and adjacent checkbox
+	$(document).on('change', '#gridview table tbody tr th:nth-child(3) input', function() { //Classnames 3rd checkbox
+		var b 	= 	$( '#gridview table tbody tr th:nth-child(1) input:checked' ); //Classnames 1st checkbox, checked
+		var p 	= 	$( '#gridview table tbody tr th:nth-child(3) input:checked' ); //Classnames 3rd checkbox, checked
+		var q	=	$( '#gridview table thead tr:nth-child(2) th:nth-child(3) input' ); //Intent-to-Use 1(b) checkbox
+		if ($(this).prop('checked')) {
+			$(q).prop({
+				checked: true,
+			});
+			$(this).parent().prev('th').prev('th').children('input').prop({
+				checked: true,
+			});
+		}
+		if (this.checked == false) {
+			$(q).prop({
+				checked: false,
+			});
+		}
+	});
+	//user selects Foreign Application 44(d) classname and adjacent checkbox
+	$(document).on('change', '#gridview table tbody tr th:nth-child(4) input', function() { //Classnames 3rd checkbox
+		var b 	= 	$( '#gridview table tbody tr th:nth-child(1) input:checked' ); //Classnames 1st checkbox, checked
+		var p 	= 	$( '#gridview table tbody tr th:nth-child(3) input:checked' ); //Classnames 3rd checkbox, checked
+		var q	=	$( '#gridview table thead tr:nth-child(2) th:nth-child(4) input' ); //Foreign Application 44(d) checkbox
+		//var newrow = $( "<tr class='inuse1aone'><td colspan='5'><div id='yesinuse1aone' class='form-group'><!--toggle 1(a) one--><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md matchlabelheightdiv'><label for='otherformfirst' class='matchlabelheight'>Foreign Application 44(d) Date of First Use Anywhere</label><input type='date' class='form-control' id='otherformfirst' value=''></div><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><label for='otherformcommerce'>Foreign Application 44(d) Date of First Use in Commerce</label><input type='date' class='form-control' id='otherformcommerce' value=''></div><div id='yesinuse1atwo' class='col-xs-12 form-group'><div class='row'><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><p id='upimage'>Provide an image of your specimen:</p><div><label class='small upload-drop-zone' for='specimenfile' id='upimg'><span class='glyphicon glyphicon-upload' aria-hidden='true'></span> <br>Drag and drop files or click here to upload.</label><input type='file' id='specimenfile' class='form-control' aria-labelledby='upimg upimage'></div><!-- Drop Zone --></div><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><label for='specdescripthree'>Provide a description of your specimen:</label><textarea id='specdescripthree' class='form-control'></textarea></div></div></div></div></td></tr>" );
+		if ($(this).prop('checked')) {
+			$(q).prop({
+				checked: true,
+			});
+			$(this).parent().prev('th').prev('th').prev('th').children('input').prop({
+				checked: true,
+			});
+			//$(this).parent().parent().after(newrow);
+			$('div#yesinuse1atwo').css('display','none');
+		}
+		if (this.checked == false) {
+			$(q).prop({
+				checked: false,
+			});
+			$(this).parent().parent().next('tr').remove();
+		}
+	});
+	//user selects Foreign Registration 44(e) classname and adjacent checkbox
+	$(document).on('change', '#gridview table tbody tr th:nth-child(5) input', function() { //Classnames 3rd checkbox
+		var b 	= 	$( '#gridview table tbody tr th:nth-child(1) input:checked' ); //Classnames 1st checkbox, checked
+		var p 	= 	$( '#gridview table tbody tr th:nth-child(3) input:checked' ); //Classnames 3rd checkbox, checked
+		var q	=	$( '#gridview table thead tr:nth-child(2) th:nth-child(5) input' ); //Foreign Registration 44(e) checkbox
+		//var newrow = $( "<tr class='inuse1aone'><td colspan='5'><div id='yesinuse1aone' class='form-group'><!--toggle 1(a) one--><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md matchlabelheightdiv'><label for='otherformfirst' class='matchlabelheight'>Foreign Registration 44(e) Date of First Use Anywhere</label><input type='date' class='form-control' id='otherformfirst' value=''></div><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><label for='otherformcommerce'>Foreign Registration 44(e) Date of First Use in Commerce</label><input type='date' class='form-control' id='otherformcommerce' value=''></div><div id='yesinuse1atwo' class='col-xs-12 form-group'><div class='row'><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><p id='upimage'>Provide an image of your specimen:</p><div><label class='small upload-drop-zone' for='specimenfile' id='upimg'><span class='glyphicon glyphicon-upload' aria-hidden='true'></span> <br>Drag and drop files or click here to upload.</label><input type='file' id='specimenfile' class='form-control' aria-labelledby='upimg upimage'></div><!-- Drop Zone --></div><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><label for='specdescripthree'>Provide a description of your specimen:</label><textarea id='specdescripthree' class='form-control'></textarea></div></div></div></div></td></tr>" );
+		if ($(this).prop('checked')) {
+			$(q).prop({
+				checked: true,
+			});
+			$(this).parent().prev('th').prev('th').prev('th').prev('th').children('input').prop({
+				checked: true,
+			});
+			//$(this).parent().parent().after(newrow);
+			$('div#yesinuse1atwo').css('display','none');
+		}
+		if (this.checked == false) {
+			$(q).prop({
+				checked: false,
+			});
+			$(this).parent().parent().next('tr').remove();
+		}
+	});
+	//END user selects classname and adjacent checkbox
+
+	$( '#gridview table thead tr:nth-child(2) th:nth-child(2) input' ).change(function() { //In-Use 1(a) checkbox
+		var b 	= 	$( '#gridview table tbody tr th:nth-child(1) input:checked' ); //Classnames 1st checkbox, checked
+		var p 	= 	$( '#gridview table tbody tr th:nth-child(2) input' ); //Classnames 2nd checkbox
+		var pp	=	$( '#gridview table tbody tr th:nth-child(3) input' );
+		var c 	= 	$( '#gridview table tbody tr th:nth-child(1) input' ); //Classnames 1st checkbox
+		var y	=	$( '#gridview table thead tr:nth-child(2) th:nth-child(3) input' ); //Intent-To-Use 1(b) checkbox
+		var d 	= 	$( '#gridview table tbody tr td:nth-child(3) input' ); //GS 2nd checkbox
+		var dd 	= 	$( '#gridview table tbody tr td:nth-child(2) input' ); //GS 1st checkbox
+		//var newrow = $( "<tr class='inuse1aone'><td colspan='5'><div id='yesinuse1aone' class='form-group'><!--toggle 1(a) one--><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md matchlabelheightdiv'><label for='otherformfirst' class='matchlabelheight'>In-Use 1(a) Date of First Use Anywhere</label><input type='date' class='form-control' id='otherformfirst' value=''></div><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><label for='otherformcommerce'>In-Use 1(a) Date of First Use in Commerce</label><input type='date' class='form-control' id='otherformcommerce' value=''></div><div id='yesinuse1atwo' class='col-xs-12 form-group'><!--toggle 1(a) two--><div class='row'><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><p id='upimage'>Provide an image of your specimen:</p><div><label class='small upload-drop-zone' for='specimenfile' id='upimg'><span class='glyphicon glyphicon-upload' aria-hidden='true'></span> <br>Drag and drop files or click here to upload.</label><input type='file' id='specimenfile' class='form-control' aria-labelledby='upimg upimage'></div><!-- Drop Zone --></div><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><label for='specdescripthree'>Provide a description of your specimen:</label><textarea id='specdescripthree' class='form-control'></textarea></div></div></div></div></td></tr>" );
+		//var newrowgs1a = $( "<tr class='optionalupload'><td colspan='5'><div id='yesinuse1aone' class='form-group'><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md matchlabelheightdiv'><label for='otherformfirst' class='matchlabelheight'>In-Use 1(a) Date of First Use Anywhere</label><input type='date' class='form-control' id='otherformfirst' value=''></div><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><label for='otherformcommerce'>In-Use 1(a) Date of First Use in Commerce</label><input type='date' class='form-control' id='otherformcommerce' value=''></div><div id='optionuploadone' class='col-xs-12'><div class='row'><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><input class='form-check-input checkmark' type='checkbox' value='' tabindex='0' id='optionupload'><label class='form-check-label form-check' for='optionupload'><span class='radio notspecial'>Only one specimen is required per class. Click here to add a specimen to this good / service.</span></label></div><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md' id='optionuploadtwo'><p id='upimage'>Provide an image of your specimen:</p><div><label class='small upload-drop-zone' for='specimenfile' id='upimg'><span class='glyphicon glyphicon-upload' aria-hidden='true'></span> <br>Drag and drop files or click here to upload.</label><input type='file' id='specimenfile' class='form-control' aria-labelledby='upimg upimage'></div></div></div></div></div></td></tr>" );
+		//user selects classnames then selects In-Use 1(a)
+		if ($(b).prop('checked')) {
+			$(b).parent().next('th').children('input').prop({
+				checked: true,
+			});
+			//$( document ).find($(b).prop('checked',true)).parent().parent().after(newrow);
+			$('div#yesinuse1atwo').css('display','none');
+			console.log(dd);
+		}
+		//user selects In-Use 1(a) and all Classnames + GSs are selected
+		else if ($(b).prop('checked',false)) {
+			$(p).prop({
+				checked: true,
+			});
+			$(b).prop({
+				checked: true,
+			});
+			$(c).prop({
+				checked: true,
+			});
+			$(dd).prop({
+				checked: true,
+			});
+			//$(dd).parent().parent().after(newrow);
+			//$( document ).find('tr:contains(Class)').after(newrowgs1a);
+			$('div#yesinuse1atwo').css('display','none');
+			$('div#optionuploadtwo').css('display','block');
+		}
+		//disable
+		if ($(this).prop('checked')) {
+			$(y).prop({
+				disabled: true,
+				checked: false,
+			});
+			$(y).attr('aria-disabled', 'true');
+			$( '#gridview table thead tr:nth-child(2) th:nth-child(3) label span' ).addClass('special');
+			$(pp).prop({
+				disabled: true,
+				checked: false,
+			});
+			$(pp).attr('aria-disabled', 'true');
+			$( '#gridview table tbody tr th:nth-child(3) label span' ).addClass('special');
+			$(d).prop({
+				disabled: true,
+				checked: false,
+			});
+			$(d).attr('aria-disabled', 'true');
+			$( '#gridview table tbody tr td:nth-child(3) label span' ).addClass('special');
+		}
+
+		if (this.checked == false) {
+			$(b).parent().next('th').children('input').prop({
+				checked: false,
+			});
+			$(p).prop({
+				checked: false,
+			});
+			$(dd).prop({
+				checked: false,
+			});
+			$(y).prop({
+				disabled: false,
+			});
+			$( '#gridview table thead tr:nth-child(2) th:nth-child(3) label span' ).removeClass('special');
+			$(pp).prop({
+				disabled: false,
+			});
+			$(pp).attr('aria-disabled', 'false');
+			$( '#gridview table tbody tr th:nth-child(3) label span' ).removeClass('special');
+			$(d).prop({
+				disabled: false,
+			});
+			$(d).attr('aria-disabled', 'false');
+			$( '#gridview table tbody tr td:nth-child(3) label span' ).removeClass('special');
+			$(c).prop({
+				checked: false,
+			});
+			$( document ).find('.inuse1aone').remove('.inuse1aone');
+			$('div#optionuploadtwo').css('display','none');
+			$( document ).find('.optionalupload').remove('.optionalupload');
+		}
+	});
+
+	//grid view checkboxes Intent-to-Use 1(b)
+	$( '#gridview table thead tr:nth-child(2) th:nth-child(3) input' ).change(function() { //Intent-to-Use 1(b) checkbox
+		var b 	= 	$( '#gridview table tbody tr th:nth-child(1) input:checked' ); //Classnames 1st checkbox, checked
+		var p 	= 	$( '#gridview table tbody tr th:nth-child(3) input' ); //Classnames 3rd checkbox
+		var c 	= 	$( '#gridview table tbody tr th:nth-child(1) input' ); //Classnames 1st checkbox
+		var d 	= 	$( '#gridview table tbody tr td:nth-child(2) input' ); //GS 1st checkbox
+		var dd 	= 	$( '#gridview table tbody tr td:nth-child(3) input' ); //GS 2nd checkbox
+		var ee	=	$( '#gridview table thead tr:nth-child(2) th:nth-child(2) input' )
+		var ff	=	$( '#gridview table tbody tr th:nth-child(2) input' ); //Classnames 2nd checkbox
+		//user selects classnames then selects Intent-to-Use 1(b)
+		if ($(b).prop('checked')) {
+			$(b).parent().next('th').next('th').children('input').prop({
+				checked: true,
+			});
+			$(b).parent().next('th').children('input').prop({  //disable
+				disabled: true,
+				checked: false,
+			});
+			$(d).parent().parent().next('.optionalupload').hide('.optionalupload');
+			//disable
+			$(d).prop({
+				disabled: true,
+				checked: false,
+			});
+			$(d).attr('aria-disabled', 'true');
+			$( '#gridview table tbody tr td:nth-child(2) label span' ).addClass('special');
+			$(ff).prop({
+				disabled: true,
+				checked: false,
+			});
+			$(ff).attr('aria-disabled', 'true');
+			$( '#gridview table tbody tr th:nth-child(2) label span' ).addClass('special');
+			$(b).parent().next('th').children('input').attr('aria-disabled', 'true');
+			$( '#gridview table tbody tr th:nth-child(2) label span' ).addClass('special');
+			$( '#gridview table thead tr:nth-child(2) th:nth-child(2) label span' ).addClass('special');
+		}
+		//user selects Intent-to-Use 1(b) and all Classnames + GSs are selected
+		else if($(b).prop('checked',false)) {
+			$(p).prop({
+				checked: true,
+			});
+			$(b).prop({
+				checked: true,
+			});
+			$(c).prop({
+				checked: true,
+			});
+			$(dd).prop({
+				checked: true,
+			});
+			//disable
+			$(b).parent().next('th').children('input').prop({
+				disabled: true,
+				checked: false,
+			});
+			$(d).parent().parent().next('.optionalupload').hide('.optionalupload');
+			$(d).prop({
+				disabled: true,
+				checked: false,
+			});
+			$(d).attr('aria-disabled', 'true');
+			$( '#gridview table tbody tr td:nth-child(2) label span' ).addClass('special');
+
+			$(ee).prop({
+				disabled: true,
+				checked: false,
+			});
+			$(ee).attr('aria-disabled', 'true');
+			$( '#gridview table thead tr:nth-child(2) th:nth-child(2) label span' ).addClass('special');
+
+			$(ff).prop({
+				disabled: true,
+				checked: false,
+			});
+			$(ff).attr('aria-disabled', 'true');
+			$( '#gridview table tbody tr th:nth-child(2) label span' ).addClass('special');
+
+			$(b).parent().next('th').children('input').attr('aria-disabled', 'true');
+			$( '#gridview table tbody tr th:nth-child(2) label span' ).addClass('special');
+			//disable
+			$( '#gridview table thead tr:nth-child(2) th:nth-child(2) label span' ).addClass('special');
+		}
+		if (this.checked == false) {
+			$(p).prop({
+				checked: false,
+			});
+			$(b).prop({
+				checked: false,
+			});
+			$(c).prop({
+				checked: false,
+			});
+			$(dd).prop({
+				checked: false,
+			});
+			//enable
+			$(d).prop({
+				disabled: false,
+			});
+			$(d).attr('aria-disabled', 'false');
+			$( '#gridview table tbody tr td:nth-child(2) label span' ).removeClass('special');
+			$(ee).prop({
+				disabled: false,
+			});
+			$(ee).attr('aria-disabled', 'false');
+			$( '#gridview table thead tr:nth-child(2) th:nth-child(2) label span' ).removeClass('special');
+			$(ff).prop({
+				disabled: false,
+			});
+			$(ff).attr('aria-disabled', 'false');
+			$( '#gridview table tbody tr th:nth-child(2) label span' ).removeClass('special');
+
+			$(b).parent().next('th').children('input').attr('aria-disabled', 'false');
+			$( '#gridview table tbody tr th:nth-child(2) label span' ).removeClass('special');
+			$( '#gridview table thead tr:nth-child(2) th:nth-child(2) label span' ).removeClass('special');
+		}
+	});
+
+	//grid view checkboxes Foreign Application 44(d)
+	$( '#gridview table thead tr:nth-child(2) th:nth-child(4) input' ).change(function() { //Foreign Application 44(d) checkbox
+		var b 	= 	$( '#gridview table tbody tr th:nth-child(1) input:checked' ); //Classnames 1st checkbox, checked
+		var p 	= 	$( '#gridview table tbody tr th:nth-child(4) input' ); //Classnames 4th checkbox
+		var c 	= 	$( '#gridview table tbody tr th:nth-child(1) input' ); //Classnames 1st checkbox
+		var dd 	= 	$( '#gridview table tbody tr td:nth-child(4) input' ); //GS 3rd checkbox
+		//var newrow = $( "<tr class='foreignapp'><td colspan='5'><div class='form-group'><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><label for='country'>Foreign Application Country</label><select class='form-control' id='country'><option value='Select'>Select</option><option value='Mexico'>Mexico</option><option value='Canada'>Canada</option><option value='United Kingdom'>United Kingdom</option></select></div><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><label for='foreignappno'>Foreign Application Number</label><input type='textarea' class='form-control' id='foreignappno' value=''></div><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><label for='foreignappdate'>Foreign Application Filing Date</label><input type='date' class='form-control' id='foreignappdate' value=''></div></div></td></tr>" );
+		//var newrowgs44d = $( "<tr class='optionalupload'><td colspan='5'><div id='yesinuse1aone' class='form-group'><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md matchlabelheightdiv'><label for='otherformfirst' class='matchlabelheight'>Foreign Application 44(d) Date of First Use Anywhere</label><input type='date' class='form-control' id='otherformfirst' value=''></div><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><label for='otherformcommerce'>Foreign Application 44(d) Date of First Use in Commerce</label><input type='date' class='form-control' id='otherformcommerce' value=''></div><div id='optionuploadone' class='col-xs-12'><div class='row'><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><input class='form-check-input checkmark' type='checkbox' value='' tabindex='0' id='optionupload'><label class='form-check-label form-check' for='optionupload'><span class='radio notspecial'>Only one specimen is required per class. Click here to add a specimen to this good / service.</span></label></div><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md' id='optionuploadtwo'><p id='upimage'>Provide an image of your specimen:</p><div><label class='small upload-drop-zone' for='specimenfile' id='upimg'><span class='glyphicon glyphicon-upload' aria-hidden='true'></span> <br>Drag and drop files or click here to upload.</label><input type='file' id='specimenfile' class='form-control' aria-labelledby='upimg upimage'></div></div></div></div></div></td></tr>" );
+		//user selects classnames then selects Foreign Application 44(d)
+		if ($(b).prop('checked')) {
+			$(b).parent().next('th').next('th').next('th').children('input').prop({
+				checked: true,
+			});
+			//$( document ).find($(b).prop('checked',true)).parent().parent().after(newrow);
+		}
+		//user selects Foreign Application 44(d) and all Classnames  + GSs are selected
+		else if ($(b).prop('checked',false)) {
+			$(p).prop({
+				checked: true,
+			});
+			$(b).prop({
+				checked: true,
+			});
+			$(c).prop({
+				checked: true,
+			});
+			$(dd).prop({
+				checked: true,
+			});
+			//$(dd).parent().parent().after(newrowgs44d);
+			//$( document ).find('tr:contains(Class)').after(newrow);
+			$('div#yesinuse1atwo').css('display','none');
+			$('div#optionuploadtwo').css('display','block');
+		}
+		if (this.checked == false) {
+			$(p).prop({
+				checked: false,
+			});
+			$(dd).prop({
+				checked: false,
+			});
+			$(c).prop({
+				checked: false,
+			});
+			$(b).parent().parent().siblings('.foreignapp').remove('.foreignapp');
+			$( document ).find('.inuse1aone').remove('.inuse1aone');
+			$('div#optionuploadtwo').css('display','none');
+			$( document ).find('.optionalupload').remove('.optionalupload')
+		}
+	});
+
+	//grid view checkboxes Foreign Registration 44(e)
+	$( '#gridview table thead tr:nth-child(2) th:nth-child(5) input' ).change(function() { //Foreign Registration 44(e) checkbox
+		var b 	= 	$( '#gridview table tbody tr th:nth-child(1) input:checked' ); //Classnames 1st checkbox, checked
+		var p 	= 	$( '#gridview table tbody tr th:nth-child(5) input' ); //Classnames 5th checkbox
+		var c 	= 	$( '#gridview table tbody tr th:nth-child(1) input' ); //Classnames 1st checkbox
+		var dd 	= 	$( '#gridview table tbody tr td:nth-child(5) input' ); //GS 4th checkbox
+		//var newrow = $( "<tr class='foreignregi'><td colspan='5'><div class='form-group'><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><label for='country'>Foreign Registration Country</label><select class='form-control' id='country'><option value='Select'>Select</option><option value='Mexico'>Mexico</option><option value='Canada'>Canada</option><option value='United Kingdom'>United Kingdom</option></select></div><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><label for='foreignappno'>Foreign Registration Number</label><input type='textarea' class='form-control' id='foreignappno' value=''></div><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><label for='foreignappdate'>Foreign Registration Exp. Date</label><input type='date' class='form-control' id='foreignappdate' value=''></div><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><p id='upimage'>Provide an image of your specimen:</p><div><label class='small upload-drop-zone' for='specimenfile' id='upimg'><span class='glyphicon glyphicon-upload' aria-hidden='true'></span> <br>Drag and drop files or click here to upload.</label><input type='file' id='specimenfile' class='form-control' aria-labelledby='upimg upimage'></div></div></div></td></tr>" );
+		//var newrowgs44e = $( "<tr class='optionalupload'><td colspan='5'><div id='yesinuse1aone' class='form-group'><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md matchlabelheightdiv'><label for='otherformfirst' class='matchlabelheight'>Foreign Registration 44(e) Date of First Use Anywhere</label><input type='date' class='form-control' id='otherformfirst' value=''></div><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><label for='otherformcommerce'>Foreign Registration 44(e) Date of First Use in Commerce</label><input type='date' class='form-control' id='otherformcommerce' value=''></div><div id='optionuploadone' class='col-xs-12'><div class='row'><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><input class='form-check-input checkmark' type='checkbox' value='' tabindex='0' id='optionupload'><label class='form-check-label form-check' for='optionupload'><span class='radio notspecial'>Only one specimen is required per class. Click here to add a specimen to this good / service.</span></label></div><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md' id='optionuploadtwo'><p id='upimage'>Provide an image of your specimen:</p><div><label class='small upload-drop-zone' for='specimenfile' id='upimg'><span class='glyphicon glyphicon-upload' aria-hidden='true'></span> <br>Drag and drop files or click here to upload.</label><input type='file' id='specimenfile' class='form-control' aria-labelledby='upimg upimage'></div></div></div></div></div></td></tr>" );
+		//user selects classnames then selects Foreign Registration 44(e)
+		if ($(b).prop('checked')) {
+			$(b).parent().next('th').next('th').next('th').next('th').children('input').prop({
+				checked: true,
+			});
+			//$( document ).find($(b).prop('checked',true)).parent().parent().after(newrow);
+		}
+		//user selects Foreign Registration 44(e) and all Classnames + GSs are selected
+		else if ($(b).prop('checked',false)) {
+			$(p).prop({
+				checked: true,
+			});
+			$(b).prop({
+				checked: true,
+			});
+			$(c).prop({
+				checked: true,
+			});
+			$(dd).prop({
+				checked: true,
+			});
+			//$(dd).parent().parent().after(newrowgs44e);
+			//$( document ).find('tr:contains(Class)').after(newrow);
+			$('div#yesinuse1atwo').css('display','none');
+			$('div#optionuploadtwo').css('display','block');
+		}
+		if (this.checked == false) {
+			$(p).prop({
+				checked: false,
+			});
+			$(c).prop({
+				checked: false,
+			});
+			$(dd).prop({
+				checked: false,
+			});
+			$(b).parent().parent().siblings('.foreignregi').remove('.foreignregi');
+			$( document ).find('.inuse1aone').remove('.inuse1aone');
+			$('div#optionuploadtwo').css('display','none');
+			$( document ).find('.optionalupload').remove('.optionalupload')
+		}
+	});
+
+	//grid view GS checkboxes In-Use 1(a)
+	$(document).on('change', 'input#optionupload', function() {
+		if (this.checked == true) {
+			$('div#optionuploadtwo').css('display','block');
+		}
+		else if (this.checked == false) {
+			$('div#optionuploadtwo').css('display','none');
+		}
+	});
+	$( '#gridview table tbody tr td:nth-child(2) input' ).change(function() { //In-Use 1(a) GS checkbox
+		var c 	= 	$( '#gridview table tbody tr th:nth-child(1) input' ); //Classname 1st checkbox
+		//var newrow = $( "<tr class='optionalupload'><td colspan='5'><div id='yesinuse1aone' class='form-group'><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md matchlabelheightdiv'><label for='otherformfirst' class='matchlabelheight'>In-Use 1(a) Date of First Use Anywhere</label><input type='date' class='form-control' id='otherformfirst' value=''></div><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><label for='otherformcommerce'>In-Use 1(a) Date of First Use in Commerce</label><input type='date' class='form-control' id='otherformcommerce' value=''></div><div id='optionuploadone' class='col-xs-12'><div class='row'><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><input class='form-check-input checkmark' type='checkbox' value='' tabindex='0' id='optionupload'><label class='form-check-label form-check' for='optionupload'><span class='radio notspecial'>Only one specimen is required per class. Click here to add a specimen to this good / service.</span></label></div><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md' id='optionuploadtwo'><p id='upimage'>Provide an image of your specimen:</p><div><label class='small upload-drop-zone' for='specimenfile' id='upimg'><span class='glyphicon glyphicon-upload' aria-hidden='true'></span> <br>Drag and drop files or click here to upload.</label><input type='file' id='specimenfile' class='form-control' aria-labelledby='upimg upimage'></div></div></div></div></div></td></tr>" );
+		if (this.checked == true) {
+			//$(this).parent().parent().after(newrow);
+			$('div#optionuploadtwo').css('display','none');
+			$( this ).parent().parent().prev('tr:contains(Class)').children('th:contains(Class)').children('input').prop({
+				checked: true,
+			});
+			$( this ).parent().parent().prev('tr:contains(Class)').children('th:contains(Class)').next('th').children('input').prop({
+				checked: true,
+			});
+		}
+		else if (this.checked == false) {
+			$(this).parent().parent().siblings('.optionalupload').remove('.optionalupload');
+			$( this ).parent().parent().prev('tr:contains(Class)').children('th:contains(Class)').children('input').prop({
+				checked: false,
+			});
+			$( this ).parent().parent().prev('tr:contains(Class)').children('th:contains(Class)').next('th').children('input').prop({
+				checked: false,
+			});
+			$('div#optionuploadtwo').css('display','none');
+		}
+	});
+
+	//grid view GS checkboxes Intent-to-Use 1(b)
+	$( '#gridview table tbody tr td:nth-child(3) input' ).change(function() { //Intent-to-Use 1(b) GS checkbox
+		var c 	= 	$( '#gridview table tbody tr th:nth-child(1) input' ); //Classname 1st checkbox
+		if (this.checked == true) {
+			$( this ).parent().parent().prev('tr:contains(Class)').children('th:contains(Class)').children('input').prop({
+				checked: true,
+			});
+			$( this ).parent().parent().prev('tr:contains(Class)').children('th:contains(Class)').next('th').next('th').children('input').prop({
+				checked: true,
+			});
+		}
+		else if (this.checked == false) {
+			$( this ).parent().parent().prev('tr:contains(Class)').children('th:contains(Class)').children('input').prop({
+				checked: false,
+			});
+			$( this ).parent().parent().prev('tr:contains(Class)').children('th:contains(Class)').next('th').next('th').children('input').prop({
+				checked: false,
+			});
+		}
+	});
+
+	//grid view GS checkboxes Foreign Application 44(d)
+	$( '#gridview table tbody tr td:nth-child(4) input' ).change(function() { //Foreign Application 44(d) GS checkbox
+		var c 	= 	$( '#gridview table tbody tr th:nth-child(1) input' ); //Classname 1st checkbox
+		//var newrow = $( "<tr class='optionalupload'><td colspan='5'><div id='yesinuse1aone' class='form-group'><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md matchlabelheightdiv'><label for='otherformfirst' class='matchlabelheight'>Foreign Application 44(d) Date of First Use Anywhere</label><input type='date' class='form-control' id='otherformfirst' value=''></div><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><label for='otherformcommerce'>Foreign Application 44(d) Date of First Use in Commerce</label><input type='date' class='form-control' id='otherformcommerce' value=''></div><div id='optionuploadone' class='col-xs-12'><div class='row'><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><input class='form-check-input checkmark' type='checkbox' value='' tabindex='0' id='optionupload'><label class='form-check-label form-check' for='optionupload'><span class='radio notspecial'>Only one specimen is required per class. Click here to add a specimen to this good / service.</span></label></div><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md' id='optionuploadtwo'><p id='upimage'>Provide an image of your specimen:</p><div><label class='small upload-drop-zone' for='specimenfile' id='upimg'><span class='glyphicon glyphicon-upload' aria-hidden='true'></span> <br>Drag and drop files or click here to upload.</label><input type='file' id='specimenfile' class='form-control' aria-labelledby='upimg upimage'></div></div></div></div></div></td></tr>" );
+		if (this.checked == true) {
+			//$(this).parent().parent().after(newrow);
+			$('div#optionuploadtwo').css('display','none');
+			$( this ).parent().parent().prev('tr:contains(Class)').children('th:contains(Class)').children('input').prop({
+				checked: true,
+			});
+			$( this ).parent().parent().prev('tr:contains(Class)').children('th:contains(Class)').next('th').next('th').next('th').children('input').prop({
+				checked: true,
+			});
+		}
+		else if (this.checked == false) {
+			$(this).parent().parent().siblings('.optionalupload').remove('.optionalupload');
+			$( this ).parent().parent().prev('tr:contains(Class)').children('th:contains(Class)').children('input').prop({
+				checked: false,
+			});
+			$( this ).parent().parent().prev('tr:contains(Class)').children('th:contains(Class)').next('th').next('th').next('th').children('input').prop({
+				checked: false,
+			});
+			$('div#optionuploadtwo').css('display','none');
+		}
+	});
+
+	//grid view GS checkboxes Foreign Registration 44(e)
+	$( '#gridview table tbody tr td:nth-child(5) input' ).change(function() { //Foreign Registration 44(e) GS checkbox
+		var c 	= 	$( '#gridview table tbody tr th:nth-child(1) input' ); //Classname 1st checkbox
+		//var newrow = $( "<tr class='optionalupload'><td colspan='5'><div id='yesinuse1aone' class='form-group'><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md matchlabelheightdiv'><label for='otherformfirst' class='matchlabelheight'>Foreign Registration 44(e) Date of First Use Anywhere</label><input type='date' class='form-control' id='otherformfirst' value=''></div><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><label for='otherformcommerce'>Foreign Registration 44(e) Date of First Use in Commerce</label><input type='date' class='form-control' id='otherformcommerce' value=''></div><div id='optionuploadone' class='col-xs-12'><div class='row'><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md'><input class='form-check-input checkmark' type='checkbox' value='' tabindex='0' id='optionupload'><label class='form-check-label form-check' for='optionupload'><span class='radio notspecial'>Only one specimen is required per class. Click here to add a specimen to this good / service.</span></label></div><div class='col-xs-12 col-md-6 col-lg-6 form-group form-group-md' id='optionuploadtwo'><p id='upimage'>Provide an image of your specimen:</p><div><label class='small upload-drop-zone' for='specimenfile' id='upimg'><span class='glyphicon glyphicon-upload' aria-hidden='true'></span> <br>Drag and drop files or click here to upload.</label><input type='file' id='specimenfile' class='form-control' aria-labelledby='upimg upimage'></div></div></div></div></div></td></tr>" );
+		if (this.checked == true) {
+			//$(this).parent().parent().after(newrow);
+			$('div#optionuploadtwo').css('display','none');
+			$( this ).parent().parent().prev('tr:contains(Class)').children('th:contains(Class)').children('input').prop({
+				checked: true,
+			});
+			$( this ).parent().parent().prev('tr:contains(Class)').children('th:contains(Class)').next('th').next('th').next('th').next('th').children('input').prop({
+				checked: true,
+			});
+		}
+		else if (this.checked == false) {
+			$(this).parent().parent().siblings('.optionalupload').remove('.optionalupload');
+			$( this ).parent().parent().prev('tr:contains(Class)').children('th:contains(Class)').children('input').prop({
+				checked: false,
+			});
+			$( this ).parent().parent().prev('tr:contains(Class)').children('th:contains(Class)').next('th').next('th').next('th').next('th').children('input').prop({
+				checked: false,
+			});
+			$('div#optionuploadtwo').css('display','none');
+		}
+	});
+
 });

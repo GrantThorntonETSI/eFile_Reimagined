@@ -2258,6 +2258,9 @@
 
     var bsLink6_active =  "../../application/confirmInfo/?trademarkID="+appInternalID;
     var bsLink6_done =  "../../application/confirmInfo/?trademarkID="+appInternalID;
+
+
+    var gridViewLink =  "../../application/gridViewFilingBasisUpload/?trademarkID="+appInternalID;
     ////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -2359,6 +2362,11 @@
 
         preventFutureDate();
 
+
+        $('#pagelayout').change(function () {
+           // set to grid view
+            location.href=gridViewLink;
+        });
 
         //////////////////////////////////////////////////////////////////////
         // set mark image based on persisted values

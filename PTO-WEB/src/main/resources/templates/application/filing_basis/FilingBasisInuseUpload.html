@@ -1549,7 +1549,7 @@
     var bsLink6_active =  "../../application/confirmInfo/?trademarkID="+appInternalID;
     var bsLink6_done =  "../../application/confirmInfo/?trademarkID="+appInternalID;
     ////////////////////////////////////////////////////////////////////////////////////
-
+    var gridViewLink =  "../../application/gridViewFilingBasisUpload/?trademarkID="+appInternalID;
 </script>
 
 
@@ -1647,7 +1647,10 @@
         });
 
 
-
+        $('#pagelayout').change(function () {
+            // set to grid view
+            location.href=gridViewLink;
+        });
 
         preventFutureDate();
 

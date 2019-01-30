@@ -1843,6 +1843,78 @@ public class ApplicationFlowController {
 
 
 
+    @RequestMapping({"/application/gridViewFilingBasisUpload"})
+    public String filingBasisUploadGridView(WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
+        // get owner info
+
+
+        System.out.println("999999999999999999999999999999999999999999999999999999");
+
+        // get email and get PTOUser object from repository
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+        model.addAttribute("hostBean", hostBean);
+        String applcationLookupID = trademarkInternalID;
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+        baseTrademarkApplication.setLastViewModel("application/filing_basis/FilingBasisGridUpload");
+
+        if(baseTrademarkApplication.getTradeMark() == null){
+            TradeMark tradeMark = new TradeMark();
+            tradeMark.setTrademarkDesignType("");
+            baseTrademarkApplication.setTradeMark(tradeMark);
+            baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+        }
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+
+        }
+        else{
+            model.addAttribute("markImagePath","");
+
+            model.addAttribute("markImagePathBW","");
+
+
+        }
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+        boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+        boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+
+        ArrayList<String> selectedGSDescrption = new ArrayList<>();
+        for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+            GoodAndService current = iter.next();
+            selectedGSDescrption.add(current.getClassDescription());
+        }
+        ContactsDisplayDTO selectedDescription = new ContactsDisplayDTO();
+        selectedDescription.setContactNames(selectedGSDescrption);
+        model.addAttribute("selectedGoods_Services",selectedDescription);
+
+
+
+
+        model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
+        return "application/filing_basis/FilingBasisGridUpload";
+
+    }
+
+
+
+
     @RequestMapping({"/application/additionalInfoUpload"})
     public String additionalInfoUpload(WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
         // get owner info
