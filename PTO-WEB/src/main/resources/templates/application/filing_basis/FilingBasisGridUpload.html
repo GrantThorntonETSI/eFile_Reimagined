@@ -135,14 +135,295 @@
 
 
 
+                                <th:block th:if="${baseTrademarkApplication.isMarkHasForeignRegistration() == true}">
+                                    <th scope="col" colspan="1" aria-label="Apply Foreign Application 44(d) to classes">
+                                        <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" id="fa44d" checked>
+                                        <label class="form-check-label form-check" for="fa44d"><span class="radio notspecial">&nbsp;</span></label>
+                                    </th>
+                                    <th scope="col" colspan="1" aria-label="Apply Foreign Registration 44(e) to classes">
+                                        <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" id="fr44e" checked>
+                                        <label class="form-check-label form-check" for="fr44e"><span class="radio notspecial">&nbsp;</span></label>
+                                    </th>
+                                </th:block>
 
-                                <th scope="col" colspan="1" aria-label="Apply Foreign Application 44(d) to classes">
-                                    <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" id="fa44d">
-                                    <label class="form-check-label form-check" for="fa44d"><span class="radio notspecial">&nbsp;</span></label></th>
-                                <th scope="col" colspan="1" aria-label="Apply Foreign Registration 44(e) to classes">
-                                    <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" id="fr44e">
-                                    <label class="form-check-label form-check" for="fr44e"><span class="radio notspecial">&nbsp;</span></label></th>
+                                <th:block th:if="${baseTrademarkApplication.isMarkHasForeignRegistration() == false}">
+                                    <th scope="col" colspan="1" aria-label="Apply Foreign Application 44(d) to classes">
+                                        <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" id="fa44d">
+                                        <label class="form-check-label form-check" for="fa44d"><span class="radio notspecial">&nbsp;</span></label>
+                                    </th>
+                                    <th scope="col" colspan="1" aria-label="Apply Foreign Registration 44(e) to classes">
+                                        <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" id="fr44e">
+                                        <label class="form-check-label form-check" for="fr44e"><span class="radio notspecial">&nbsp;</span></label>
+                                    </th>
+
+                                </th:block>
+
+
+
+
                             </tr>
+                            <th:block th:if="${baseTrademarkApplication.isMarkInUseForAllGS() == true}">
+                                <tr class="optionalupload">
+                                    <td colspan="5">
+                                        <div id="yesinuse1aone" class="form-group">
+                                            <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md matchlabelheightdiv">
+                                                <label for="otherformfirst" class="matchlabelheight">In-Use 1(a) Date of First Use Anywhere</label>
+                                                <input type="date" class="form-control" id="otherformfirst" value="">
+                                            </div>
+                                            <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md">
+                                                <label for="otherformcommerce">In-Use 1(a) Date of First Use in Commerce</label>
+                                                <input type="date" class="form-control" id="otherformcommerce" value="">
+                                            </div>
+                                            <div id="optionuploadone" class="col-xs-12">
+                                                <div class="row">
+
+                                                    <div class="col-xs-12 form-group form-group-md" id="optionuploadtwo" style="display: block;">
+                                                        <p id="upimage">Provide an image of your specimen:</p>
+                                                        <div>
+                                                            <label class="small upload-drop-zone" for="specimenfile" id="upimg" style="min-height: 111px;"><span class="glyphicon glyphicon-upload" aria-hidden="true" style="margin-top: 22px;"></span> <br>Drag and drop files or click here to upload.</label>
+                                                            <input type="file" id="specimenfile" class="form-control" aria-labelledby="upimg upimage">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-xs-12">
+                                                        <div class="center">
+                                                            <div class="speciman-image" id="gs-spec-img" style="">
+
+                                                                <img    alt="" class="img-responsive"/>
+                                                            </div>
+
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="col-xs-12">
+                                                        <div class="center">
+
+                                                            <div type="button"  class="btn btn-sm submitGSSpecimen" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Specimen</b><span><i class="fa fa-spinner fa-spin"   style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </th:block>
+
+                            <th:block th:if="${baseTrademarkApplication.isMarkInUseForAllGS() == false}">
+                                <tr class="optionalupload" style="display: none;">
+                                    <td colspan="5">
+                                        <div id="yesinuse1aone" class="form-group">
+                                            <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md matchlabelheightdiv">
+                                                <label for="otherformfirst" class="matchlabelheight">In-Use 1(a) Date of First Use Anywhere</label>
+                                                <input type="date" class="form-control" id="otherformfirst" value="">
+                                            </div>
+                                            <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md">
+                                                <label for="otherformcommerce">In-Use 1(a) Date of First Use in Commerce</label>
+                                                <input type="date" class="form-control" id="otherformcommerce" value="">
+                                            </div>
+                                            <div id="optionuploadone" class="col-xs-12">
+                                                <div class="row">
+
+                                                    <div class="col-xs-12 form-group form-group-md" id="optionuploadtwo" style="display: block;">
+                                                        <p id="upimage">Provide an image of your specimen:</p>
+                                                        <div>
+                                                            <label class="small upload-drop-zone" for="specimenfile" id="upimg" style="min-height: 111px;"><span class="glyphicon glyphicon-upload" aria-hidden="true" style="margin-top: 22px;"></span> <br>Drag and drop files or click here to upload.</label>
+                                                            <input type="file" id="specimenfile" class="form-control" aria-labelledby="upimg upimage">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-xs-12">
+                                                        <div class="center">
+                                                            <div class="speciman-image" id="gs-spec-img" style="">
+
+                                                                <img    alt="" class="img-responsive"/>
+                                                            </div>
+
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="col-xs-12">
+                                                        <div class="center">
+
+                                                            <div type="button"  class="btn btn-sm submitGSSpecimen" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Specimen</b><span><i class="fa fa-spinner fa-spin"   style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </th:block>
+
+
+                            <th:block th:if="${baseTrademarkApplication.isMarkHasForeignRegistration() == true}">
+                                <tr class="foreignregi">
+                                    <td colspan="5">
+                                        <div class="form-group">
+                                            <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md">
+                                                <label for="country">Foreign Registration Country</label>
+                                                <select class="form-control" id="country">
+                                                    <option value="Select">Select</option>
+                                                    <option value="Mexico">Mexico</option>
+                                                    <option value="Canada">Canada</option>
+                                                    <option value="United Kingdom">United Kingdom</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md">
+                                                <label for="foreignappno">Foreign Registration Number</label>
+                                                <input type="textarea" class="form-control" id="foreignappno" value=""></div>
+
+                                            <div class="col-xs-12 form-group form-group-md">
+                                                <p id="upimage">Provide an image of your registration certificate</p>
+                                                <div>
+                                                    <label class="small upload-drop-zone" for="specimenfile" id="upimg" style="min-height: 111px;"><span class="glyphicon glyphicon-upload" aria-hidden="true" style="margin-top: 22px;"></span> <br>Drag and drop files or click here to upload.</label>
+                                                    <input type="file" id="specimenfile" class="form-control" aria-labelledby="upimg upimage">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xs-12">
+                                                <div class="center">
+                                                    <div class="speciman-image" id="gs-spec-img" style="">
+
+                                                        <img    alt="" class="img-responsive"/>
+                                                    </div>
+
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-xs-12">
+                                                <div class="center">
+
+                                                    <div type="button"  class="btn btn-sm submitGSSpecimen" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Specimen</b><span><i class="fa fa-spinner fa-spin"   style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-xs-6 col-md-6 col-lg-6 form-group form-group-md">
+                                                <label for="foreignappdate">Foreign Registration Exp. Date</label>
+                                                <input type="date" class="form-control" id="foreignappdate" value="">
+                                            </div>
+
+
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr class="foreignapp">
+                                    <td colspan="5">
+                                        <div class="form-group">
+                                            <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md">
+                                                <label for="country">Foreign Application Country</label>
+                                                <select class="form-control" id="country">
+                                                    <option value="Select">Select</option>
+                                                    <option value="Mexico">Mexico</option>
+                                                    <option value="Canada">Canada</option>
+                                                    <option value="United Kingdom">United Kingdom</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md">
+                                                <label for="foreignappno">Foreign Application Number</label>
+                                                <input type="textarea" class="form-control" id="foreignappno" value="">
+                                            </div>
+                                            <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md">
+                                                <label for="foreignappdate">Foreign Application Filing Date</label>
+                                                <input type="date" class="form-control" id="foreignappdate" value="">
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </th:block>
+
+                            <th:block th:if="${baseTrademarkApplication.isMarkHasForeignRegistration() == false}">
+
+                                <tr class="foreignregi" style="display: none;">
+                                    <td colspan="5">
+                                        <div class="form-group">
+                                            <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md">
+                                                <label for="country">Foreign Registration Country</label>
+                                                <select class="form-control" id="country">
+                                                    <option value="Select">Select</option>
+                                                    <option value="Mexico">Mexico</option>
+                                                    <option value="Canada">Canada</option>
+                                                    <option value="United Kingdom">United Kingdom</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md">
+                                                <label for="foreignappno">Foreign Registration Number</label>
+                                                <input type="textarea" class="form-control" id="foreignappno" value=""></div>
+
+                                            <div class="col-xs-12  form-group form-group-md">
+                                                <p id="upimage">Provide an image of your registration certificate</p>
+                                                <div>
+                                                    <label class="small upload-drop-zone" for="specimenfile" id="upimg" style="min-height: 111px;"><span class="glyphicon glyphicon-upload" aria-hidden="true" style="margin-top: 22px;"></span> <br>Drag and drop files or click here to upload.</label>
+                                                    <input type="file" id="specimenfile" class="form-control" aria-labelledby="upimg upimage">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xs-12">
+                                                <div class="center">
+                                                    <div class="speciman-image" id="gs-spec-img" style="">
+
+                                                        <img    alt="" class="img-responsive"/>
+                                                    </div>
+
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-xs-12">
+                                                <div class="center">
+
+                                                    <div type="button"  class="btn btn-sm submitGSSpecimen" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Specimen</b><span><i class="fa fa-spinner fa-spin"   style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-xs-6 col-md-6 col-lg-6 form-group form-group-md">
+                                                <label for="foreignappdate">Foreign Registration Exp. Date</label>
+                                                <input type="date" class="form-control" id="foreignappdate" value="">
+                                            </div>
+
+
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr class="foreignapp" style="display: none;">
+                                    <td colspan="5">
+                                        <div class="form-group">
+                                            <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md">
+                                                <label for="country">Foreign Application Country</label>
+                                                <select class="form-control" id="country">
+                                                    <option value="Select">Select</option>
+                                                    <option value="Mexico">Mexico</option>
+                                                    <option value="Canada">Canada</option>
+                                                    <option value="United Kingdom">United Kingdom</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md">
+                                                <label for="foreignappno">Foreign Application Number</label>
+                                                <input type="textarea" class="form-control" id="foreignappno" value="">
+                                            </div>
+                                            <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md">
+                                                <label for="foreignappdate">Foreign Application Filing Date</label>
+                                                <input type="date" class="form-control" id="foreignappdate" value="">
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </th:block>
+
                             </thead>
                             <tbody>
                             <tr>
@@ -172,125 +453,86 @@
                                         <label class="form-check-label form-check" for="itu1bclass025col"><span class="radio notspecial">&nbsp;</span></label>
                                     </th>
                                 </th:block>
+                                <th:block th:if="${baseTrademarkApplication.isMarkHasForeignRegistration() == true}">
+                                    <th scope="col" colspan="1" aria-label="Apply Foreign Application 44(d) to goods and services">
+                                        <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" id="fa44dclass025col" checked>
+                                        <label class="form-check-label form-check" for="fa44dclass025col"><span class="radio notspecial">&nbsp;</span></label>
+                                    </th>
+                                    <th scope="col" colspan="1" aria-label="Apply Foreign Registration 44(e) to goods and services">
+                                        <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" id="fr44eclass025col" checked>
+                                        <label class="form-check-label form-check" for="fr44eclass025col"><span class="radio notspecial">&nbsp;</span></label>
+                                    </th>
+                                </th:block>
 
-                                <th scope="col" colspan="1" aria-label="Apply Foreign Application 44(d) to goods and services">
-                                    <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" id="fa44dclass025col">
-                                    <label class="form-check-label form-check" for="fa44dclass025col"><span class="radio notspecial">&nbsp;</span></label>
-                                </th>
-                                <th scope="col" colspan="1" aria-label="Apply Foreign Registration 44(e) to goods and services">
-                                    <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" id="fr44eclass025col">
-                                    <label class="form-check-label form-check" for="fr44eclass025col"><span class="radio notspecial">&nbsp;</span></label>
-                                </td>
+                                <th:block th:if="${baseTrademarkApplication.isMarkHasForeignRegistration() == false}">
+                                    <th scope="col" colspan="1" aria-label="Apply Foreign Application 44(d) to goods and services">
+                                        <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" id="fa44dclass025col">
+                                        <label class="form-check-label form-check" for="fa44dclass025col"><span class="radio notspecial">&nbsp;</span></label>
+                                    </th>
+                                    <th scope="col" colspan="1" aria-label="Apply Foreign Registration 44(e) to goods and services">
+                                        <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" id="fr44eclass025col">
+                                        <label class="form-check-label form-check" for="fr44eclass025col"><span class="radio notspecial">&nbsp;</span></label>
+                                    </th>
+                                </th:block>
+
                             </tr>
 
-                            <th:block th:if="${baseTrademarkApplication.isMarkInUseForAllGS() == true}">
-                                <tr class="optionalupload">
-                                    <td colspan="5">
-                                        <div id="yesinuse1aone" class="form-group">
-                                            <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md matchlabelheightdiv">
-                                                <label for="otherformfirst" class="matchlabelheight">In-Use 1(a) Date of First Use Anywhere</label>
-                                                <input type="date" class="form-control" id="otherformfirst" value="">
-                                            </div>
-                                            <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md">
-                                                <label for="otherformcommerce">In-Use 1(a) Date of First Use in Commerce</label>
-                                                <input type="date" class="form-control" id="otherformcommerce" value="">
-                                            </div>
-                                            <div id="optionuploadone" class="col-xs-12">
-                                                <div class="row">
-
-                                                    <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md" id="optionuploadtwo" style="display: block;">
-                                                        <p id="upimage">Provide an image of your specimen:</p>
-                                                        <div>
-                                                            <label class="small upload-drop-zone" for="specimenfile" id="upimg" style="min-height: 111px;"><span class="glyphicon glyphicon-upload" aria-hidden="true" style="margin-top: 22px;"></span> <br>Drag and drop files or click here to upload.</label>
-                                                            <input type="file" id="specimenfile" class="form-control" aria-labelledby="upimg upimage">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </th:block>
 
 
-                            <tr class="foreignregi">
-                                <td colspan="5">
-                                    <div class="form-group">
-                                        <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md">
-                                            <label for="country">Foreign Registration Country</label>
-                                            <select class="form-control" id="country">
-                                                <option value="Select">Select</option>
-                                                <option value="Mexico">Mexico</option>
-                                                <option value="Canada">Canada</option>
-                                                <option value="United Kingdom">United Kingdom</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md">
-                                            <label for="foreignappno">Foreign Registration Number</label>
-                                            <input type="textarea" class="form-control" id="foreignappno" value=""></div>
-
-                                        <div class="col-xs-6 col-md-6 col-lg-6 form-group form-group-md">
-                                            <p id="upimage">Provide an image of your registration certificate</p>
-                                            <div>
-                                                <label class="small upload-drop-zone" for="specimenfile" id="upimg" style="min-height: 111px;"><span class="glyphicon glyphicon-upload" aria-hidden="true" style="margin-top: 22px;"></span> <br>Drag and drop files or click here to upload.</label>
-                                                <input type="file" id="specimenfile" class="form-control" aria-labelledby="upimg upimage">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-6 col-md-6 col-lg-6 form-group form-group-md">
-                                            <label for="foreignappdate">Foreign Registration Exp. Date</label>
-                                            <input type="date" class="form-control" id="foreignappdate" value="">
-                                        </div>
-
-
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr class="foreignapp">
-                                <td colspan="5">
-                                    <div class="form-group">
-                                        <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md">
-                                            <label for="country">Foreign Application Country</label>
-                                            <select class="form-control" id="country">
-                                                <option value="Select">Select</option>
-                                                <option value="Mexico">Mexico</option>
-                                                <option value="Canada">Canada</option>
-                                                <option value="United Kingdom">United Kingdom</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md">
-                                            <label for="foreignappno">Foreign Application Number</label>
-                                            <input type="textarea" class="form-control" id="foreignappno" value="">
-                                        </div>
-                                        <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md">
-                                            <label for="foreignappdate">Foreign Application Filing Date</label>
-                                            <input type="date" class="form-control" id="foreignappdate" value="">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
 
                             <tr>
                                 <td>
                                     <span style="margin-left: 22px;">Aprons</span>
                                 </td>
-                                <td>
-                                    <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" id="iu1aclass025gs1">
-                                    <label class="form-check-label form-check" for="iu1aclass025gs1"><span class="radio notspecial">&nbsp;</span></label>
-                                </td>
-                                <td>
-                                    <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" id="itu1bclass025gs1">
-                                    <label class="form-check-label form-check" for="itu1bclass025gs1"><span class="radio notspecial">&nbsp;</span></label>
-                                </td>
-                                <td>
-                                    <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" id="fa44dclass025gs1">
-                                    <label class="form-check-label form-check" for="fa44dclass025gs1"><span class="radio notspecial">&nbsp;</span></label>
-                                </td>
-                                <td>
-                                    <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" id="fr44eclass025gs1">
-                                    <label class="form-check-label form-check" for="fr44eclass025gs1"><span class="radio notspecial">&nbsp;</span></label>
-                                </td>
+
+                                <th:block th:if="${baseTrademarkApplication.isMarkInUseForAllGS() == true}">
+                                    <td>
+                                        <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" id="iu1aclass025gs1" checked>
+                                        <label class="form-check-label form-check" for="iu1aclass025gs1"><span class="radio notspecial">&nbsp;</span></label>
+                                    </td>
+                                    <td>
+                                        <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" id="itu1bclass025gs1">
+                                        <label class="form-check-label form-check" for="itu1bclass025gs1"><span class="radio notspecial">&nbsp;</span></label>
+                                    </td>
+
+                                </th:block>
+                                <th:block th:if="${baseTrademarkApplication.isMarkInUseForAllGS() == false}">
+                                    <td>
+                                        <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" id="iu1aclass025gs1">
+                                        <label class="form-check-label form-check" for="iu1aclass025gs1"><span class="radio notspecial">&nbsp;</span></label>
+                                    </td>
+                                    <td>
+                                        <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" id="itu1bclass025gs1" checked>
+                                        <label class="form-check-label form-check" for="itu1bclass025gs1"><span class="radio notspecial">&nbsp;</span></label>
+                                    </td>
+
+                                </th:block>
+
+                                <th:block th:if="${baseTrademarkApplication.isMarkHasForeignRegistration() == true}">
+                                    <td>
+                                        <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" id="fa44dclass025gs1" checked>
+                                        <label class="form-check-label form-check" for="fa44dclass025gs1"><span class="radio notspecial">&nbsp;</span></label>
+                                    </td>
+                                    <td>
+                                        <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" id="fr44eclass025gs1" checked>
+                                        <label class="form-check-label form-check" for="fr44eclass025gs1"><span class="radio notspecial">&nbsp;</span></label>
+                                    </td>
+                                </th:block>
+
+
+                                <th:block th:if="${baseTrademarkApplication.isMarkHasForeignRegistration() == false}">
+                                    <td>
+                                        <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" id="fa44dclass025gs1">
+                                        <label class="form-check-label form-check" for="fa44dclass025gs1"><span class="radio notspecial">&nbsp;</span></label>
+                                    </td>
+                                    <td>
+                                        <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" id="fr44eclass025gs1">
+                                        <label class="form-check-label form-check" for="fr44eclass025gs1"><span class="radio notspecial">&nbsp;</span></label>
+                                    </td>
+                                </th:block>
+
+
+
                             </tr>
 
                         </table>
