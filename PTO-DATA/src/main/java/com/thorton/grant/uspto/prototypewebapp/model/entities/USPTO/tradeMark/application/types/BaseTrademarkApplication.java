@@ -118,6 +118,7 @@ public class BaseTrademarkApplication  {
     private boolean tradeMarkUploaded;
 
 
+
     @OneToMany(cascade =  CascadeType.ALL)
     @Nullable
     private Set<OfficeActions> actions;
