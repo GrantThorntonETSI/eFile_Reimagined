@@ -173,20 +173,21 @@
                                             </div>
                                             <div id="optionuploadone" class="col-xs-12">
                                                 <div class="row">
-
-                                                    <div class="col-xs-12 form-group form-group-md" id="optionuploadtwo" style="display: block;">
-                                                        <p id="upimage">Provide an image of your specimen:</p>
-                                                        <div>
-                                                            <label class="small upload-drop-zone" for="specimenfile" id="upimg" style="min-height: 111px;"><span class="glyphicon glyphicon-upload" aria-hidden="true" style="margin-top: 22px;"></span> <br>Click here to upload.</label>
-                                                            <input type="file" id="specimenfile" class="form-control" aria-labelledby="upimg upimage">
+                                                    <form method="post"  target="hidden-iframe" id="app-specimen-form"  action="/application/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
+                                                        <div class="col-xs-12 form-group form-group-md" id="optionuploadtwo" style="display: block;">
+                                                            <p id="upimage">Provide an image of your specimen:</p>
+                                                            <div>
+                                                                <label class="small upload-drop-zone" for="app-specimenfile" id="upimg" style="min-height: 111px;"><span class="glyphicon glyphicon-upload" aria-hidden="true" style="margin-top: 22px;"></span> <br>Click here to upload.</label>
+                                                                <input type="file" id="app-specimenfile" class="form-control" aria-labelledby="upimg upimage">
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    </form>
 
                                                     <div class="col-xs-12">
                                                         <div class="center">
-                                                            <div class="speciman-image" id="gs-spec-img" style="">
+                                                            <div class="speciman-image"  style="">
 
-                                                                <img    alt="" class="img-responsive"/>
+                                                                <img id="app-spec-img"   alt="" class="img-responsive"/>
                                                             </div>
 
 
@@ -197,7 +198,7 @@
                                                     <div class="col-xs-12">
                                                         <div class="center">
 
-                                                            <div type="button"  class="btn btn-sm submitGSSpecimen" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Specimen</b><span><i class="fa fa-spinner fa-spin"   style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                                            <div type="button" form="app-specimen-form" gs-id="" file-id="app-specimenfile" gs-img-id="app-spec-img", spinner-id="app-spec-spinner"  class="btn btn-sm submitAppSpecimen" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Specimen</b><span><i class="fa fa-spinner fa-spin"  id="app-spec-spinner" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
                                                         </div>
 
                                                     </div>
@@ -223,19 +224,21 @@
                                             <div id="optionuploadone" class="col-xs-12">
                                                 <div class="row">
 
-                                                    <div class="col-xs-12 form-group form-group-md" id="optionuploadtwo" style="display: block;">
-                                                        <p id="upimage">Provide an image of your specimen:</p>
-                                                        <div>
-                                                            <label class="small upload-drop-zone" for="specimenfile" id="upimg" style="min-height: 111px;"><span class="glyphicon glyphicon-upload" aria-hidden="true" style="margin-top: 22px;"></span> <br>Click here to upload.</label>
-                                                            <input type="file" id="specimenfile" class="form-control" aria-labelledby="upimg upimage">
+                                                    <form method="post"  target="hidden-iframe" id="app-specimen-form"  action="/applicatioin/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
+                                                        <div class="col-xs-12 form-group form-group-md" id="optionuploadtwo" style="display: block;">
+                                                            <p id="upimage">Provide an image of your specimen:</p>
+                                                            <div>
+                                                                <label class="small upload-drop-zone" for="app-specimenfile" id="upimg" style="min-height: 111px;"><span class="glyphicon glyphicon-upload" aria-hidden="true" style="margin-top: 22px;"></span> <br>Click here to upload.</label>
+                                                                <input type="file" id="app-specimenfile" class="form-control" aria-labelledby="upimg upimage">
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    </form>
 
                                                     <div class="col-xs-12">
                                                         <div class="center">
-                                                            <div class="speciman-image" id="gs-spec-img" style="">
+                                                            <div class="speciman-image"  style="">
 
-                                                                <img    alt="" class="img-responsive"/>
+                                                                <img id="app-spec-img"   alt="" class="img-responsive"/>
                                                             </div>
 
 
@@ -246,7 +249,7 @@
                                                     <div class="col-xs-12">
                                                         <div class="center">
 
-                                                            <div type="button"  class="btn btn-sm submitGSSpecimen" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Specimen</b><span><i class="fa fa-spinner fa-spin"   style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                                            <div type="button" form="app-specimen-form" gs-id="" file-id="app-specimenfile" gs-img-id="app-spec-img", spinner-id="app-spec-spinner"  class="btn btn-sm submitAppSpecimen" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Specimen</b><span><i class="fa fa-spinner fa-spin"  id="app-spec-spinner" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
                                                         </div>
 
                                                     </div>
@@ -1120,6 +1123,8 @@
     var markText = /*[[${baseTrademarkApplication.tradeMark.trademarkStandardCharacterText}]]*/ 'User Name';
     var breadCrumbStatus = /*[[${breadCrumbStatus}]]*/ 'User Name';
 
+    var inUse =  /*[[${baseTrademarkApplication.markInUseForAllGS}]]*/ 'User Name';
+
     /*]]>*/
 </script>
 
@@ -1159,6 +1164,15 @@
     var bsLink6_active =  "../../application/confirmInfo/?trademarkID="+appInternalID;
     var bsLink6_done =  "../../application/confirmInfo/?trademarkID="+appInternalID;
     ////////////////////////////////////////////////////////////////////////////////////
+
+
+
+    var guidedViewLink =  "../../application/FilingBasisUpload/?trademarkID="+appInternalID;
+
+    if(inUse){
+        guidedViewLink = "../../application/inUseFilingBasisUpload/?trademarkID="+appInternalID;
+
+    }
 
 </script>
 
@@ -1257,7 +1271,10 @@
         });
 
 
-
+        $('#pagelayout').change(function () {
+            // set to grid view
+            location.href=guidedViewLink;
+        });
 
         preventFutureDate();
 
@@ -1673,12 +1690,12 @@
 
 
         // this is the id of the submit button
-        $(".submitGSSpecimen").click(function() {
+        $(".submitAppSpecimen").click(function() {
 
 
 
             var formID = $(this).attr("form");
-            var gsID = $(this).attr("gs-id");
+            //var gsID = $(this).attr("gs-id");
 
             var fileInputId = $(this).attr("file-id");
 
@@ -1691,7 +1708,7 @@
             var formData = new FormData();
             formData.append('file', file);
             formData.append('appID', appInternalID);
-            formData.append('gsID',gsID);
+            //formData.append('gsID',gsID);
 
             var url = $("#"+formID).attr("action");
             // Get the selected files from the input.
@@ -1709,6 +1726,8 @@
                     // we will return the the file url
                     // call jquery and set it in the img div
                     var imgPath = parsePathFromResponse(data);
+
+
 
 
                     $('#'+imageId).attr("src", imgPath);
