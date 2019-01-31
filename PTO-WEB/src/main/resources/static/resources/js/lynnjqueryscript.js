@@ -1436,4 +1436,18 @@ $(document).ready(function(){
 		}
 	});
 
+
+
+
+	//toggle save more labels
+	$('.togglesavemore').change(function() {
+		if(this.checked == true){
+			$( document ).find('span.subtle').removeClass('visuallyremoved');
+			$( document ).find('#on').removeClass('visuallyhidden');
+		}
+		else if(this.checked == false) {
+			$( document ).find('span.subtle').addClass( 'visuallyremoved' );
+		}
+	});
+
 });

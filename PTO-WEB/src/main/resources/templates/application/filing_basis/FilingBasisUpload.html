@@ -80,6 +80,13 @@
                 <div class="row">
                     <div class="col-xs-8">
                         <h1>Filing Basis</h1>
+                        <p class="instructions" id="costsavingoptions">Reduce Fee Mode</p>
+                        <div role="switch" aria-describedby="#costsavingoptions" aria-label="turn reduce fee labels on or off">
+                            <label class="switch">
+                                <input class="togglesavemore" type="checkbox">
+                                <span class="slider"><span class="visuallyhidden" id="on">On</span> <span id="off">Off</span></span>
+                            </label>
+                        </div>
                     </div>
                     <div class="col-xs-4">
                         <label for="pagelayout">Page Layout</label>
@@ -165,7 +172,7 @@
                                                             <div class="card-text noexpand">
                                                                 <h2 class="card-title weight600" th:text="${Good_Service.getClassDescription()}">Bar Soap</h2>
                                                             </div>
-                                                            <p id="commerce">Are you currently using the mark on  goods/services in commerce?</p>
+                                                            <p id="commerce">Are you currently using the mark on  goods/services in commerce?<span class="label label-info subtle visuallyremoved">Reduce Fee</span></p>
 
                                                             <th:block th:if="${Good_Service.isMarkInUseSet() == true}">
                                                                 <div role="radiogroup" aria-labelledby="commerce" class="form-group form-group-md" th:if="${Good_Service.isMarkInUse() == true}">
@@ -190,11 +197,11 @@
                                                             <!--mark is in use section -->
                                                             <div id="yescommerce" class="form-group form-group-md" th:if="${Good_Service.isMarkInUse() == true}" style=""><!--toggle 'yes' radio-->
                                                                 <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                                    <label  th:attr="name=${Good_Service.getInternalID()}">When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
+                                                                    <label  th:attr="name=${Good_Service.getInternalID()}">When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                                     <input type="date" class="form-control gs-date"   th:value="${Good_Service.getFirstGSDateDisplay()}" >
                                                                 </div>
                                                                 <div class="col-xs-12 col-md-6 form-group form-group-md matchlabelheightdiv">
-                                                                    <label  class="matchlabelheight"  th:attr="name=${Good_Service.getInternalID()}" >When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
+                                                                    <label  class="matchlabelheight"  th:attr="name=${Good_Service.getInternalID()}" >When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                                     <input type="date" class="form-control mark-date"   th:value="${Good_Service.getFirstCommerceDateDisplay()}" name="commercedate" value="">
                                                                 </div>
 
@@ -1493,11 +1500,11 @@
                                                             <!-- mark is not in use section, optional, unhidden by the user  -->
                                                             <div id="yescommerce" class="form-group form-group-md" th:if="${Good_Service.isMarkInUse() == false}" style="display: none;"><!--toggle 'yes' radio-->
                                                                 <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                                    <label  th:attr="name=${Good_Service.getInternalID()}" >When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
+                                                                    <label  th:attr="name=${Good_Service.getInternalID()}" >When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                                     <input type="date" class="form-control gs-date" value="">
                                                                 </div>
                                                                 <div class="col-xs-12 col-md-6 form-group form-group-md matchlabelheightdiv">
-                                                                    <label  class="matchlabelheight"  th:attr="name=${Good_Service.getInternalID()}">When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip" th:attr="name=${Good_Service.getInternalID()}" title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
+                                                                    <label  class="matchlabelheight"  th:attr="name=${Good_Service.getInternalID()}">When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip" th:attr="name=${Good_Service.getInternalID()}" title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                                     <input type="date" class="form-control mark-date"    name="commercedate"  value="">
                                                                 </div>
                                                                 <div class="col-xs-12 form-group form-group-md">
