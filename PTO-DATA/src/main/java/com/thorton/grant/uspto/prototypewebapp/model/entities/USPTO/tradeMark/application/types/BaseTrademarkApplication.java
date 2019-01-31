@@ -221,6 +221,11 @@ public class BaseTrademarkApplication  {
     private Integer baseFee = 275;
 
 
+    // TEAS fields
+    private boolean validateTEASFields = false;
+
+
+
 
     public boolean isAttorneyPoolEmpty() {
 
@@ -1016,6 +1021,14 @@ public class BaseTrademarkApplication  {
 
     public void setConcurrentTypeSet(boolean concurrentTypeSet) {
         this.concurrentTypeSet = concurrentTypeSet;
+    }
+
+    public boolean isValidateTEASFields() {
+        return validateTEASFields;
+    }
+
+    public void setValidateTEASFields(boolean validateTEASFields) {
+        this.validateTEASFields = validateTEASFields;
     }
 
     @Override

@@ -83,6 +83,13 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <h1>Attorney Information</h1>
+                        <p class="instructions" id="costsavingoptions">Reduce Fee Mode</p>
+                        <div role="switch" aria-describedby="#costsavingoptions" aria-label="turn reduce fee labels on or off">
+                            <label class="switch">
+                                <input class="togglesavemore" type="checkbox">
+                                <span class="slider"><span class="visuallyhidden" id="on">On</span> <span id="off">Off</span></span>
+                            </label>
+                        </div>
                     </div>
 
                 </div>
@@ -521,7 +528,7 @@
                         <fieldset aria-labelledby="affiliation">
                             <div class="row">
                                 <div class="form-group form-group-md col-xs-12">
-
+                                    <label for="attorney-bar-standing"><span class="weight600">&#42;</span>Attorney Bar Info</label>
                                     <select class="form-control" id="attorney-bar-standing" th:field="*{attorneyAffiliation}">
                                         <option value="Select">Select</option>
                                         <option value="usaffiliation">US Attorney in good standing</option>
@@ -589,7 +596,7 @@
                                         </select>
                                     </div>
                                     <div class="form-group form-group-md col-xs-12 col-md-5">
-                                        <label for="bar-membership-number">Membership Number</label>
+                                        <label for="bar-membership-number">Membership Number <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                         <input type="text" class="form-control" id="bar-membership-number" name="attorneyBarMembershipNumber" value="">
                                     </div>
                                     <div class="form-group form-group-md col-xs-12 col-md-4">
@@ -759,7 +766,9 @@
 
 
         var breadCrumbStatus = /*[[${breadCrumbStatus}]]*/ 'User Name';
-        //alert(breadCrumbStatus);
+
+        var validateTEAS =  /*[[${baseTrademarkApplication.isValidateTEASFields()}]]*/ 'User Name';
+
 
 
 
@@ -839,7 +848,9 @@
 
         $('.glyphicon-remove').click();
 
-
+        if(validateTEAS == true){
+            $('input.togglesavemore').click();
+        }
         preventFutureDate();
 
         setBreadCrumb(breadCrumbStatus);

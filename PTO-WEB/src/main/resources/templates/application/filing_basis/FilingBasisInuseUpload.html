@@ -1515,7 +1515,7 @@
     var markType = /*[[${baseTrademarkApplication.tradeMark.trademarkDesignType}]]*/ 'User Name';
     var markText = /*[[${baseTrademarkApplication.tradeMark.trademarkStandardCharacterText}]]*/ 'User Name';
     var breadCrumbStatus = /*[[${breadCrumbStatus}]]*/ 'User Name';
-
+    var validateTEAS =  /*[[${baseTrademarkApplication.isValidateTEASFields()}]]*/ 'User Name';
     /*]]>*/
 </script>
 
@@ -1587,7 +1587,9 @@
             $(this).toggleClass("glyphicon-triangle-right").toggleClass("glyphicon-triangle-bottom");
         });
 
-
+        if(validateTEAS == true){
+            $('input.togglesavemore').click();
+        }
 
         $('[data-toggle="tooltip"]').tooltip();
 

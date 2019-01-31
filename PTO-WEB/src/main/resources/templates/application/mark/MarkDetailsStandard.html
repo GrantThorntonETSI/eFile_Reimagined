@@ -808,6 +808,7 @@
 
     var host = host_name+":"+host_port;
     var breadCrumbStatus = /*[[${breadCrumbStatus}]]*/ 'User Name';
+    var validateTEAS =  /*[[${baseTrademarkApplication.isValidateTEASFields()}]]*/ 'User Name';
 
 
     /*]]>*/
@@ -877,6 +878,10 @@
 
 
         }, 500)
+
+        if(validateTEAS == true){
+            $('input.togglesavemore').click();
+        }
 
         //////////////////////////////////////////////////////////////////////
         // set mark image based on persisted values

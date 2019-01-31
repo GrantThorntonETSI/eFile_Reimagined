@@ -818,6 +818,32 @@ public class ApplicationService  extends  BaseRESTapiService{
         return buildResponseEnity("200", responseMsg);
     }
 
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/application/TEASOpt/{fieldValue}/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> saveApplicatoinTEASOpt(@PathVariable String fieldValue , @PathVariable String appInternalID){
+
+        //////////////////////////////////////////////////////////
+        // retrieve application using passed internal id
+        //////////////////////////////////////////////////////////
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+
+
+        baseTrademarkApplication.setValidateTEASFields(true);
+
+
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+        ////////////////////////////////////////////////
+        // start generating response
+        ////////////////////////////////////////////////
+
+        String responseMsg = "TEAS field level validation has been set to TRUE for the current application.";
+        return buildResponseEnity("200", responseMsg);
+
+    }
 
 
 }
