@@ -178,11 +178,11 @@
 
                                                         <div id="yescommerce" class="form-group form-group-md"  style=""><!--toggle 'yes' radio-->
                                                             <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                                <label  th:attr="name=${Good_Service.getInternalID()}">When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
+                                                                <label  th:attr="name=${Good_Service.getInternalID()}">When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                                 <input type="date" class="form-control gs-date"   th:value="${Good_Service.getFirstGSDateDisplay()}" >
                                                             </div>
                                                             <div class="col-xs-12 col-md-6 form-group form-group-md matchlabelheightdiv">
-                                                                <label  class="matchlabelheight"  th:attr="name=${Good_Service.getInternalID()}" >When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
+                                                                <label  class="matchlabelheight"  th:attr="name=${Good_Service.getInternalID()}" >When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                                 <input type="date" class="form-control mark-date"   th:value="${Good_Service.getFirstCommerceDateDisplay()}" name="commercedate" value="">
                                                             </div>
 
@@ -339,7 +339,7 @@
                                                                         <p class="weight600" id="foreignapplication">Foreign Application Information:</p>
                                                                     </div>
                                                                     <div class="form-group form-group-md col-xs-12">
-                                                                        <label for="country">Country:</label>
+                                                                        <label for="country">Country: <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                                         <select class="form-control fa-country" id="country" th:attr="gs-id=${Good_Service.getInternalID()}">
                                                                             <option value="">Select</option>
                                                                             <option value="B2">AFGHANISTAN</option>
@@ -583,11 +583,11 @@
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group form-group-md col-xs-12">
-                                                                        <label for="appnumber">Foreign application number:</label>
+                                                                        <label for="appnumber">Foreign application number: <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                                         <input type="text" class="form-control fa-app-number" th:attr="gs-id=${Good_Service.getInternalID()}"  id="appnumber">
                                                                     </div>
                                                                     <div class="form-group form-group-md col-xs-12">
-                                                                        <label for="application-date">Foreign application filing date:</label>
+                                                                        <label for="application-date">Foreign application filing date: <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                                         <input type="date" class="form-control fa-filing-date" th:attr="gs-id=${Good_Service.getInternalID()}" id="application-date" name="applicationdate" value="">
                                                                     </div>
                                                                 </div><!--pending foreign-->
@@ -603,7 +603,7 @@
                                                                             <p class="weight600" id="foreignapplication">Foreign Application Information:</p>
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12">
-                                                                            <label for="country">Country:</label>
+                                                                            <label for="country">Country: <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                                             <select class="form-control fa-country" id="country" th:attr="gs-id=${Good_Service.getInternalID()},gs-value=${Good_Service.getFaCountry()}">
                                                                                 <option value="">Select</option>
                                                                                 <option value="B2">AFGHANISTAN</option>
@@ -847,11 +847,11 @@
                                                                             </select>
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12">
-                                                                            <label for="appnumber">Foreign application number:</label>
+                                                                            <label for="appnumber">Foreign application number: <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                                             <input type="text" class="form-control fa-app-number" id="appnumber" th:attr="gs-id=${Good_Service.getInternalID()}"  th:value="${Good_Service.getFaRegistrationNumber()}">
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12">
-                                                                            <label for="application-date">Foreign application filing date:</label>
+                                                                            <label for="application-date">Foreign application filing date: <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                                             <input type="date" class="form-control fa-filing-date" th:attr="gs-id=${Good_Service.getInternalID()}" th:value="${Good_Service.getFAFilingDateDisplay()}" id="application-date" name="applicationdate" value="">
                                                                         </div>
                                                                     </div><!--pending foreign-->
@@ -867,7 +867,7 @@
                                                                         <p class="weight600" id="foreignregistration">Foreign Registration Information:</p>
                                                                     </div>
                                                                     <div class="form-group form-group-md col-xs-12" aria-labelledby="foreignregistration">
-                                                                        <label for="countrytwo">Country:</label>
+                                                                        <label for="countrytwo">Country: <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                                         <select class="form-control fr-country" id="countrytwo"  th:attr="gs-id=${Good_Service.getInternalID()}">
                                                                             <option value="">Select</option>
                                                                             <option value="B2">AFGHANISTAN</option>
@@ -1111,21 +1111,21 @@
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group form-group-md col-xs-12">
-                                                                        <label for="appnumbertwo">Foreign registration number:</label>
+                                                                        <label for="appnumbertwo">Foreign registration number: <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                                         <input type="text" class="form-control fr-reg-number" id="appnumbertwo" th:attr="gs-id=${Good_Service.getInternalID()}">
                                                                     </div>
                                                                     <div class="form-group form-group-md col-xs-12">
-                                                                        <label for="reg-date">Foreign registration expiration date:</label>
+                                                                        <label for="reg-date">Foreign registration expiration date: <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                                         <input type="date" class="form-control fr-expire-date" id="reg-date" name="regdate" value="" th:attr="gs-id=${Good_Service.getInternalID()}">
                                                                     </div>
                                                                     <div class="form-group form-group-md col-xs-12">
-                                                                        <label for="renew-date">Foreign registration renewal date (if applicable):</label>
+                                                                        <label for="renew-date">Foreign registration renewal date (if applicable): <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                                         <input type="date" class="form-control fr-renewal-date" id="renew-date" name="renewdate" value="" th:attr="gs-id=${Good_Service.getInternalID()}">
                                                                     </div>
                                                                     <!--need to load ids and required info into the divs and buttons   -->
                                                                     <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service.getFRCertImageFormID()}"  action="/fb/foreignReg/add"  enctype="multipart/form-data"  aria-labelledby="title">
                                                                         <div class="form-group form-group-md col-xs-12">
-                                                                            <p id="upimagethree">Provide an image of foreign registration certificate:</p>
+                                                                            <p id="upimagethree">Provide an image of foreign registration certificate: <span class="label label-info subtle visuallyremoved">Reduce Fee</span></p>
                                                                             <div>
                                                                                 <label class="small upload-drop-zone" th:attr="for=${Good_Service.getFRCertFileID()}" id="upimgtwo"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span></label>
                                                                                 <input type="file"  th:attr="id=${Good_Service.getFRCertFileID()}" name="specimenfileupload" class="form-control" aria-labelledby="upimgtwo upimagethree">
@@ -1165,7 +1165,7 @@
                                                                             <p class="weight600" id="foreignregistration">Foreign Registration Information:</p>
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12" aria-labelledby="foreignregistration">
-                                                                            <label for="countrytwo">Country:</label>
+                                                                            <label for="countrytwo">Country: <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                                             <select class="form-control fr-country" id="countrytwo"  th:attr="gs-id=${Good_Service.getInternalID()}, gs-value=${Good_Service.getFrCountry()}">
                                                                                 <option value="">Select</option>
                                                                                 <option value="B2">AFGHANISTAN</option>
@@ -1409,21 +1409,21 @@
                                                                             </select>
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12">
-                                                                            <label for="appnumbertwo">Foreign registration number:</label>
+                                                                            <label for="appnumbertwo">Foreign registration number: <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                                             <input type="text" class="form-control fr-reg-number" id="appnumbertwo"  th:attr="gs-id=${Good_Service.getInternalID()}" th:value="${Good_Service.getFrRegistartionNumber()}">
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12">
-                                                                            <label for="reg-date">Foreign registration expiration date:</label>
+                                                                            <label for="reg-date">Foreign registration expiration date: <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                                             <input type="date" class="form-control fr-expire-date" id="reg-date" name="regdate" value="" th:attr="gs-id=${Good_Service.getInternalID()}" th:value="${Good_Service.getFRexpirationDateDisplay()}">
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12">
-                                                                            <label for="renew-date">Foreign registration renewal date (if applicable):</label>
+                                                                            <label for="renew-date">Foreign registration renewal date (if applicable): <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                                             <input type="date" class="form-control fr-renewal-date" id="renew-date" name="renewdate" value="" th:attr="gs-id=${Good_Service.getInternalID()}" th:value="${Good_Service.getFRrenewalDateDisplay()}">
                                                                         </div>
                                                                         <!--need to load ids and required info into the divs and buttons   -->
                                                                         <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service.getFRCertImageFormID()}"  action="/fb/foreignReg/add"  enctype="multipart/form-data"  aria-labelledby="title">
                                                                             <div class="form-group form-group-md col-xs-12">
-                                                                                <p id="upimagethree">Provide an image of foreign registration certificate:</p>
+                                                                                <p id="upimagethree">Provide an image of foreign registration certificate: <span class="label label-info subtle visuallyremoved">Reduce Fee</span></p>
                                                                                 <div>
                                                                                     <label class="small upload-drop-zone" th:attr="for=${Good_Service.getFRCertFileID()}" id="upimgtwo"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span></label>
                                                                                     <input type="file"  th:attr="id=${Good_Service.getFRCertFileID()}" name="specimenfileupload" class="form-control" aria-labelledby="upimgtwo upimagethree">
