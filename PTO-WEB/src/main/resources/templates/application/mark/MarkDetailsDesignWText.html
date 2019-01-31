@@ -92,6 +92,13 @@
                 <div class="col-xs-12">
                     <h1 th:text="${baseTrademarkApplication.tradeMark.getTradeMarkPageTitle()}"></h1>
                     <p class="required" style="position: relative; right:-15px;"><span class="weight600">&#42; = Required</span></p>
+                    <p class="instructions" id="costsavingoptions">Reduce Fee Mode</p>
+                    <div role="switch" aria-describedby="#costsavingoptions" aria-label="turn reduce fee labels on or off">
+                        <label class="switch">
+                            <input class="togglesavemore" type="checkbox">
+                            <span class="slider"><span class="visuallyhidden" id="on">On</span> <span id="off">Off</span></span>
+                        </label>
+                    </div>
                 </div>
 
             </div>
@@ -141,10 +148,10 @@
                                                     <img id="colorMarkInline" src="" style="position: relative; left:-5px; max-width: 250px; max-height: 200px; margin-bottom: 20px; margin-top: 11px;" />
                                                     <br>
 
-                                                    <label>Identify the colors in your mark.</label>
+                                                    <label>Identify the colors in your mark. <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                     <textarea id="mark-color-description" rows="3" class="form-control" th:text="${baseTrademarkApplication.tradeMark.markColors}"></textarea>
                                                     <h3 class="weight600">Mark Description</h3>
-                                                    <b>Enter the description of the mark including the location of the colors. <a href="#" data-toggle="tooltip" title="If the mark is a color mark, the description must include the nature and location of the color; i.e., you must specifically state where each color is located within the mark." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></b>
+                                                    <b>Enter the description of the mark including the location of the colors. <a href="#" data-toggle="tooltip" title="If the mark is a color mark, the description must include the nature and location of the color; i.e., you must specifically state where each color is located within the mark." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduce Fee</span></b>
                                                     <textarea id="mark-color-claim" rows="3" class="form-control" placeholder="This mark consists of" th:text="${baseTrademarkApplication.tradeMark.markColorDescription}"></textarea>
                                                 </div>
 
@@ -160,7 +167,7 @@
                                                         <span class="sr-only">Warning:</span>
                                                         Submitting a color drawing with no claim to color could result in a refusal and delay the examination process.
                                                     </div>
-                                                    <h3 class="weight600">Mark Description</h3>
+                                                    <h3 class="weight600">Mark Description <span class="label label-info subtle visuallyremoved">Reduce Fee</span></h3>
                                                      Provide a description of the mark.
                                                     <textarea id="mark-BW-description" rows="3" class="form-control" placeholder="" th:text="${baseTrademarkApplication.tradeMark.markBWDescription}"></textarea>
                                                 </div>
@@ -183,7 +190,7 @@
                                                         <img id="colorMarkInline" src="" style="position: relative; left:-5px; max-width: 250px; max-height: 200px; margin-bottom: 20px; margin-top: 11px;" />
                                                         <br>
 
-                                                        <label>Identify the colors in your mark.</label>
+                                                        <label>Identify the colors in your mark. <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                         <textarea id="mark-color-description" rows="3" class="form-control" th:text="${baseTrademarkApplication.tradeMark.markColors}"></textarea>
                                                         <h3 class="weight600">Mark Description</h3>
                                                         <b><span class="weight600">&#42;</span> Enter the description of the mark including the location of the colors. <a href="#" data-toggle="tooltip" title="If the mark is a color mark, the description must include the nature and location of the color; i.e., you must specifically state where each color is located within the mark." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></b>
@@ -221,7 +228,7 @@
                                                         <img id="colorMarkInline" src="" style="position: relative; left:-5px; max-width: 250px; max-height: 200px; margin-bottom: 20px; margin-top: 11px;" />
                                                         <br>
 
-                                                        <label>Identify the colors in your mark.</label>
+                                                        <label>Identify the colors in your mark. <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                         <textarea id="mark-color-description" rows="3" class="form-control" th:text="${baseTrademarkApplication.tradeMark.markColors}"></textarea>
                                                         <h3 class="weight600">Mark Description</h3>
                                                         <b><span class="weight600">&#42;</span> Enter the description of the mark including the location of the colors. <a href="#" data-toggle="tooltip" title="If the mark is a color mark, the description must include the nature and location of the color; i.e., you must specifically state where each color is located within the mark." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></b>
@@ -278,7 +285,7 @@
 
                                                 </div><!--END radiogroup-->
                                                 <div id="yestranslation" style="display: none;"><!--toggle 'yes' radio-->
-                                                    <h3 >Enter the foreign language and the translation.</h3>
+                                                    <h3 >Enter the foreign language and the translation. <span class="label label-info subtle visuallyremoved">Reduce Fee</span></h3>
                                                     <div class="form-group form-group-md col-xs-12 col-md-3">
                                                         <b for="language">Language</b>
                                                         <select class="form-control" id="language" th:field="${baseTrademarkApplication.tradeMark.foreignLanguageType_translation}">
@@ -312,7 +319,7 @@
                                                         <label for="inlineRadio4" class="radio-inline radiocontainer" id="2">No<input type="radio" name="foreignradio" id="inlineRadio4" value="no"><span class="checkmark"></span></label>
                                                     </div><!--END radiogroup-->
                                                     <div id="yestranslation"><!--toggle 'yes' radio-->
-                                                        <h3 class="weight600">Enter the foreign language and the translation.</h3>
+                                                        <h3 class="weight600">Enter the foreign language and the translation. <span class="label label-info subtle visuallyremoved">Reduce Fee</span></h3>
                                                         <div class="form-group form-group-md col-xs-12 col-md-3">
                                                             <b for="language">Language</b>
                                                             <select class="form-control" id="language" th:field="${baseTrademarkApplication.tradeMark.foreignLanguageType_translation}">
@@ -345,7 +352,7 @@
                                                         <label for="inlineRadio4" class="radio-inline radiocontainer" id="2">No<input type="radio" name="foreignradio" id="inlineRadio4" value="no" checked><span class="checkmark"></span></label>
                                                     </div><!--END radiogroup-->
                                                     <div id="yestranslation" style="display: none;"><!--toggle 'yes' radio-->
-                                                        <h3 class="weight600">Enter the foreign language and the translation.</h3>
+                                                        <h3 class="weight600">Enter the foreign language and the translation. <span class="label label-info subtle visuallyremoved">Reduce Fee</span></h3>
                                                         <div class="form-group form-group-md col-xs-12 col-md-3">
                                                             <b for="language">Language</b>
                                                             <select class="form-control" id="language" th:field="${baseTrademarkApplication.tradeMark.foreignLanguageType_translation}">
@@ -399,7 +406,7 @@
                                                     <label for="inlineRadio6" class="radio-inline radiocontainer" id="4">No<input type="radio" name="nonlatradio" id="inlineRadio6" value="no"><span class="checkmark"></span></label>
                                                 </div>
                                                 <div id="yestransliteration" style="display: none"><!--toggle 'yes' radio-->
-                                                    <h3 >Enter the transliteration of the mark.</h3>
+                                                    <h3 >Enter the transliteration of the mark. <span class="label label-info subtle visuallyremoved">Reduce Fee</span></h3>
                                                     <div class="form-group form-group-md col-xs-12 col-md-3">
                                                         <b>Language</b>
                                                         <select class="form-control" id="languagetranslit" th:field="${baseTrademarkApplication.tradeMark.foreignLanguageType_transliteration}">
@@ -431,7 +438,7 @@
                                                         <label for="inlineRadio6" class="radio-inline radiocontainer" id="4">No<input type="radio" name="nonlatradio" id="inlineRadio6" value="no"><span class="checkmark"></span></label>
                                                     </div>
                                                     <div id="yestransliteration" style=""><!--toggle 'yes' radio-->
-                                                        <h3 class="weight600">Enter the transliteration of the mark.</h3>
+                                                        <h3 class="weight600">Enter the transliteration of the mark. <span class="label label-info subtle visuallyremoved">Reduce Fee</span></h3>
                                                         <div class="form-group form-group-md col-xs-12 col-md-3">
                                                             <b>Language</b>
                                                             <select class="form-control" id="languagetranslit" th:field="${baseTrademarkApplication.tradeMark.foreignLanguageType_transliteration}">
@@ -462,7 +469,7 @@
                                                         <label for="inlineRadio6" class="radio-inline radiocontainer" id="4">No<input type="radio" name="nonlatradio" id="inlineRadio6" value="no" checked><span class="checkmark"></span></label>
                                                     </div>
                                                     <div id="yestransliteration" style="display: none;"><!--toggle 'yes' radio-->
-                                                        <h3 class="weight600">Enter the transliteration of the mark.</h3>
+                                                        <h3 class="weight600">Enter the transliteration of the mark. <span class="label label-info subtle visuallyremoved">Reduce Fee</span></h3>
                                                         <div class="form-group form-group-md col-xs-12 col-md-3">
                                                             <b>Language</b>
                                                             <select class="form-control" id="languagetranslit" th:field="${baseTrademarkApplication.tradeMark.foreignLanguageType_transliteration}">
@@ -514,7 +521,7 @@
 
 
                                                     <div id="yesnps" role="region" aria-labelledby="translit" style="display: none;">
-                                                        <p id="whichnps">Identify which of the following it contains:</p>
+                                                        <p id="whichnps">Identify which of the following it contains: <span class="label label-info subtle visuallyremoved">Reduce Fee</span></p>
 
                                                         <input class="form-check-input checkmark" type="checkbox" value="" role="checkbox" aria-checked="false" tabindex="0" aria-labelledby="checkname" id="namechecked">
                                                         <label class="form-check-label form-check" for="namechecked" id="checkname"><span class="radio notspecial">Name</span></label>
@@ -634,7 +641,7 @@
 
 
                                                     <div id="yesnps" role="region" aria-labelledby="translit" style="">
-                                                        <p id="whichnps">Identify which of the following it contains:</p>
+                                                        <p id="whichnps">Identify which of the following it contains: <span class="label label-info subtle visuallyremoved">Reduce Fee</span></p>
 
                                                         <input class="form-check-input checkmark" type="checkbox" value="" role="checkbox" aria-checked="false" tabindex="0" aria-labelledby="checkname" id="namechecked">
                                                         <label class="form-check-label form-check" for="namechecked" id="checkname"><span class="radio notspecial">Name</span></label>
@@ -753,7 +760,7 @@
 
 
                                                     <div id="yesnps" role="region" aria-labelledby="translit" style="display: none;">
-                                                        <p id="whichnps">Identify which of the following it contains:</p>
+                                                        <p id="whichnps">Identify which of the following it contains: <span class="label label-info subtle visuallyremoved">Reduce Fee</span></p>
 
                                                         <input class="form-check-input checkmark" type="checkbox" value="" role="checkbox" aria-checked="false" tabindex="0" aria-labelledby="checkname" id="namechecked">
                                                         <label class="form-check-label form-check" for="namechecked" id="checkname"><span class="radio notspecial">Name</span></label>
