@@ -224,7 +224,7 @@
                                             <div id="optionuploadone" class="col-xs-12">
                                                 <div class="row">
 
-                                                    <form method="post"  target="hidden-iframe" id="app-specimen-form"  action="/applicatioin/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
+                                                    <form method="post"  target="hidden-iframe" id="app-specimen-form"  action="/application/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
                                                         <div class="col-xs-12 form-group form-group-md" id="optionuploadtwo" style="display: block;">
                                                             <p id="upimage">Provide an image of your specimen:</p>
                                                             <div>
@@ -513,14 +513,17 @@
                                                 <label for="foreignappno">Foreign Registration Number</label>
                                                 <input type="textarea" class="form-control" id="app-fr-number" value=""></div>
 
-                                            <div class="col-xs-12 form-group form-group-md">
-                                                <p id="upimage">Provide an image of your registration certificate</p>
-                                                <div>
-                                                    <label class="small upload-drop-zone" for="specimenfile" id="upimg" style="min-height: 111px;"><span class="glyphicon glyphicon-upload" aria-hidden="true" style="margin-top: 22px;"></span> <br>Click here to upload.</label>
-                                                    <input type="file" id="app-fr-cert" class="form-control" aria-labelledby="upimg upimage">
-                                                </div>
-                                            </div>
+                                            <form method="post"  target="hidden-iframe" id="app-fr-cert-form"  action="/application/frCert/add"  enctype="multipart/form-data"  aria-labelledby="title">
+                                                <div class="col-xs-12 form-group form-group-md">
+                                                    <p id="upimage">Provide an image of your registration certificate</p>
 
+                                                        <div>
+                                                            <label class="small upload-drop-zone" for="app-fr-cert" id="" style="min-height: 111px;"><span class="glyphicon glyphicon-upload" aria-hidden="true" style="margin-top: 22px;"></span> <br>Click here to upload.</label>
+                                                            <input type="file" id="app-fr-cert" class="form-control" aria-labelledby="upimg upimage">
+                                                        </div>
+
+                                                </div>
+                                            </form>
                                             <div class="col-xs-12">
                                                 <div class="center">
                                                     <div class="speciman-image" style="">
@@ -536,7 +539,7 @@
                                             <div class="col-xs-12">
                                                 <div class="center">
 
-                                                    <div type="button"  class="btn btn-sm submitAppRegCert" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Certificate</b><span><i class="fa fa-spinner fa-spin"   style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                                    <div type="button"  form="app-fr-cert-form" gs-id="" file-id="app-fr-cert" gs-img-id="app-fr-reg-cert-img", spinner-id="app-fr-cert-spinner"   class="btn btn-sm submitAppRegCert" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Certificate</b><span><i class="fa fa-spinner fa-spin" id="app-fr-cert-spinner"  style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
                                                 </div>
 
                                             </div>
@@ -2103,7 +2106,7 @@
                                                         <div class="center">
                                                             <div class="speciman-image" id="gs-spec-img" style="">
 
-                                                                <img    alt="" class="img-responsive"/>
+                                                                <img  th:src="${Good_Service.getFrCertImagePath()}"  alt="" class="img-responsive"/>
                                                             </div>
 
 
@@ -3019,6 +3022,56 @@
         });
 
 
+        // this is the id of the submit button
+        $(".submitAppRegCert").click(function() {
+
+
+
+            var formID = $(this).attr("form");
+            //var gsID = $(this).attr("gs-id");
+
+            var fileInputId = $(this).attr("file-id");
+
+            var imageId = $(this).attr("gs-img-id");
+
+            var spinnerID = $(this).attr("spinner-id");
+            $('#'+spinnerID).show();
+            var fileInput = document.getElementById(fileInputId);
+            var file = fileInput.files[0];
+            var formData = new FormData();
+            formData.append('file', file);
+            formData.append('appID', appInternalID);
+            //formData.append('gsID',gsID);
+
+            var url = $("#"+formID).attr("action");
+            // Get the selected files from the input.
+            // get form url
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: formData, // serializes the form's elements.
+                async: true,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(data)
+                {
+                    // we will return the the file url
+                    // call jquery and set it in the img div
+                    var imgPath = parsePathFromResponse(data);
+
+
+
+
+                    $('#'+imageId).attr("src", imgPath);
+                    $("#"+spinnerID).hide();
+                    //$("#cat-spec-img").fadeIn(500);
+                }
+            });
+
+
+            return false; // avoid to execute the actual submit of the form.
+        });
 
 
     });
