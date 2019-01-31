@@ -462,7 +462,19 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         if(fbField.equals("gs-pfr-country")){
             // ptoUser.setState(param); // sets state code
 
-            baseTrademarkApplication.findGSbyInternalID(gsID).setFrCountry(fbValue);
+            if(gsID.equals("all")){
+
+                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+
+                    GoodAndService current = iter.next();
+                    current.setFrCountry(fbValue);
+                }
+            }
+            else {
+                baseTrademarkApplication.findGSbyInternalID(gsID).setFrCountry(fbValue);
+            }
+
+
 
             appFieldReadable = "Filing Basis Foreign Registration Country";
 
@@ -470,28 +482,57 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
         if(fbField.equals("gs-pfr-reg-Number")){
             // ptoUser.setState(param); // sets state code
+            if(gsID.equals("all")){
 
-            baseTrademarkApplication.findGSbyInternalID(gsID).setFrRegistartionNumber(fbValue);
+                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+
+                    GoodAndService current = iter.next();
+                    current.setFrRegistartionNumber(fbValue);
+                }
+            }
+            else {
+                baseTrademarkApplication.findGSbyInternalID(gsID).setFrRegistartionNumber(fbValue);
+            }
+
+
 
             appFieldReadable = "Filing Basis Foreign Registration Number";
 
         }
 
         if(fbField.equals("gs-pfr-exp-date")){
-            // ptoUser.setState(param); // sets state code
+            if(gsID.equals("all")){
 
-            // baseTrademarkApplication.findGSbyInternalID(gsID).setFaRegistrationNumber(fbValue);
+                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
 
-            try {
-                DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-                Date date = format.parse(fbValue);
-                baseTrademarkApplication.findGSbyInternalID(gsID).setFrExpirationDate(date);
+                    GoodAndService current = iter.next();
+                    try {
+                        DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+                        Date date = format.parse(fbValue);
+                        current.setFrExpirationDate(date);
 
+                    }
+                    catch(Exception ex){
+                        return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
+
+                    }
+                }
             }
-            catch(Exception ex){
-                return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
+            else {
+                try {
+                    DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+                    Date date = format.parse(fbValue);
+                    baseTrademarkApplication.findGSbyInternalID(gsID).setFrExpirationDate(date);
 
+                }
+                catch(Exception ex){
+                    return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
+
+                }
             }
+
+
+
             appFieldReadable = "Filing Basis Foreign Registration Expiration Date";
 
         }
