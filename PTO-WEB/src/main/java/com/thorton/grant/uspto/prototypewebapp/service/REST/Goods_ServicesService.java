@@ -423,7 +423,21 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         if(fbField.equals("gs-pfa-country")){
             // ptoUser.setState(param); // sets state code
 
+
+            if(gsID.equals("all")){
+
+                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+
+                    GoodAndService current = iter.next();
+                    current.setFaCountry(fbValue);
+                }
+            }
+            else {
                 baseTrademarkApplication.findGSbyInternalID(gsID).setFaCountry(fbValue);
+
+            }
+
+
 
             appFieldReadable = "Filing Basis Pending Foreign Application Country";
 
@@ -433,7 +447,20 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         if(fbField.equals("gs-pfa-app-Number")){
             // ptoUser.setState(param); // sets state code
 
-            baseTrademarkApplication.findGSbyInternalID(gsID).setFaRegistrationNumber(fbValue);
+            if(gsID.equals("all")){
+
+                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+
+                    GoodAndService current = iter.next();
+                    current.setFaRegistrationNumber(fbValue);
+                }
+            }
+            else {
+                baseTrademarkApplication.findGSbyInternalID(gsID).setFaRegistrationNumber(fbValue);
+
+            }
+
+
 
             appFieldReadable = "Filing Basis Pending Foreign Application Number";
 
@@ -441,20 +468,39 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
 
         if(fbField.equals("gs-pfa-filing-date")){
-            // ptoUser.setState(param); // sets state code
+            if(gsID.equals("all")){
 
-           // baseTrademarkApplication.findGSbyInternalID(gsID).setFaRegistrationNumber(fbValue);
+                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
 
-            try {
-                DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-                Date date = format.parse(fbValue);
-                baseTrademarkApplication.findGSbyInternalID(gsID).setFaFilingDate(date);
+                    GoodAndService current = iter.next();
+
+                    try {
+                        DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+                        Date date = format.parse(fbValue);
+                        current.setFaFilingDate(date);
+
+                    }
+                    catch(Exception ex){
+                        return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
+
+                    }
+                }
+            }
+            else {
+                try {
+                    DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+                    Date date = format.parse(fbValue);
+                    baseTrademarkApplication.findGSbyInternalID(gsID).setFaFilingDate(date);
+
+                }
+                catch(Exception ex){
+                    return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
+
+                }
 
             }
-            catch(Exception ex){
-                return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
 
-            }
+
             appFieldReadable = "Filing Basis  Pending Foreign Application Filing Date";
 
         }
