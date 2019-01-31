@@ -113,7 +113,7 @@
                                     <section aria-label="color claim">
                                         <div class="card-text">
                                             <div role="heading" aria-level="2">
-                                                <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#colorclaim" aria-controls="colorclaim" aria-expanded="false" id="colorbtn"><span class="glyphicon glyphicon-triangle-right"></span>Color Claim</button>
+                                                <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#colorclaim" aria-controls="colorclaim" aria-expanded="false" id="colorbtn"><span class="glyphicon glyphicon-triangle-right"></span><span id="toggleglyphcolor" class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Color Claim</button>
                                             </div>
                                         </div>
                                         <div id="colorclaim" class="collapse Accordion-panel" role="region" aria-labelledby="colorclaimbtn">
@@ -278,7 +278,7 @@
 
                                                 </div><!--END radiogroup-->
                                                 <div id="yestranslation" style="display: none;"><!--toggle 'yes' radio-->
-                                                    <h3 class="weight600">Enter the foreign language and the translation.</h3>
+                                                    <h3 >Enter the foreign language and the translation.</h3>
                                                     <div class="form-group form-group-md col-xs-12 col-md-3">
                                                         <b for="language">Language</b>
                                                         <select class="form-control" id="language" th:field="${baseTrademarkApplication.tradeMark.foreignLanguageType_translation}">
@@ -399,7 +399,7 @@
                                                     <label for="inlineRadio6" class="radio-inline radiocontainer" id="4">No<input type="radio" name="nonlatradio" id="inlineRadio6" value="no"><span class="checkmark"></span></label>
                                                 </div>
                                                 <div id="yestransliteration" style="display: none"><!--toggle 'yes' radio-->
-                                                    <h3 class="weight600">Enter the transliteration of the mark.</h3>
+                                                    <h3 >Enter the transliteration of the mark.</h3>
                                                     <div class="form-group form-group-md col-xs-12 col-md-3">
                                                         <b>Language</b>
                                                         <select class="form-control" id="languagetranslit" th:field="${baseTrademarkApplication.tradeMark.foreignLanguageType_transliteration}">
