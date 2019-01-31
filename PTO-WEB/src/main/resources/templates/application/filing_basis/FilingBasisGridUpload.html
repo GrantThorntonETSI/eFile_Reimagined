@@ -165,11 +165,11 @@
                                         <div id="yesinuse1aone" class="form-group">
                                             <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md matchlabelheightdiv">
                                                 <label for="otherformfirst" class="matchlabelheight">In-Use 1(a) Date of First Use Anywhere</label>
-                                                <input type="date" class="form-control" id="otherformfirst" value="">
+                                                <input type="date" class="form-control" id="app-first-use-date" value="">
                                             </div>
                                             <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md">
                                                 <label for="otherformcommerce">In-Use 1(a) Date of First Use in Commerce</label>
-                                                <input type="date" class="form-control" id="otherformcommerce" value="">
+                                                <input type="date" class="form-control" id="app-first-commerce-date" value="">
                                             </div>
                                             <div id="optionuploadone" class="col-xs-12">
                                                 <div class="row">
@@ -187,7 +187,7 @@
                                                         <div class="center">
                                                             <div class="speciman-image"  style="">
 
-                                                                <img id="app-spec-img"   alt="" class="img-responsive"/>
+                                                                <img id="app-spec-img"  alt="" class="img-responsive"/>
                                                             </div>
 
 
@@ -486,7 +486,7 @@
                                             <div id="yesinuse1aone" class="form-group">
                                                 <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md matchlabelheightdiv">
                                                     <label for="otherformfirst" class="matchlabelheight">In-Use 1(a) Date of First Use Anywhere</label>
-                                                    <input type="date" class="form-control" id="otherformfirst" value="">
+                                                    <input type="date" class="form-control" id="otherformfirst" value=""  >
                                                 </div>
                                                 <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md">
                                                     <label for="otherformcommerce">In-Use 1(a) Date of First Use in Commerce</label>
@@ -507,7 +507,7 @@
                                                             <div class="center">
                                                                 <div class="speciman-image" id="gs-spec-img" style="">
 
-                                                                    <img    alt="" class="img-responsive"/>
+                                                                    <img   th:src="${Good_Service_class.getClassCategoryImagePath()}"  alt="" class="img-responsive"/>
                                                                 </div>
 
 
@@ -556,7 +556,7 @@
                                                             <div class="center">
                                                                 <div class="speciman-image" id="gs-spec-img" style="">
 
-                                                                    <img    alt="" class="img-responsive"/>
+                                                                    <img th:src="${Good_Service_class.getClassCategoryImagePath()}"   alt="" class="img-responsive"/>
                                                                 </div>
 
 
@@ -806,11 +806,11 @@
                                                 <div id="yesinuse1aone" class="form-group">
                                                     <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md matchlabelheightdiv">
                                                         <label for="otherformfirst" class="matchlabelheight">In-Use 1(a) Date of First Use Anywhere</label>
-                                                        <input type="date" class="form-control" id="otherformfirst" value="">
+                                                        <input type="date" class="form-control" id="otherformfirst"  th:value="${Good_Service.getFirstGSDateDisplay()}">
                                                     </div>
                                                     <div class="col-xs-12 col-md-6 col-lg-6 form-group form-group-md">
                                                         <label for="otherformcommerce">In-Use 1(a) Date of First Use in Commerce</label>
-                                                        <input type="date" class="form-control" id="otherformcommerce" value="">
+                                                        <input type="date" class="form-control" id="otherformcommerce"  th:value="${Good_Service.getFirstCommerceDateDisplay()}">
                                                     </div>
                                                     <div id="optionuploadone" class="col-xs-12">
                                                         <div class="row">
@@ -827,7 +827,7 @@
                                                                 <div class="center">
                                                                     <div class="speciman-image" id="gs-spec-img" style="">
 
-                                                                        <img    alt="" class="img-responsive"/>
+                                                                        <img  th:src="${Good_Service.getSampleImagePath()}"   alt="" class="img-responsive"/>
                                                                     </div>
 
 
@@ -1633,6 +1633,23 @@
         })
 
 
+        $('#app-first-use-date').change(function () {
+
+            var gsId = "all";
+
+            var date = $(this).val();
+
+            addFilingBasisInfoToGoodAndService("fb-gs-date",date,gsId,appInternalID);
+
+        });
+
+        $('#app-first-commerce-date').change(function () {
+            var gsId = "all";
+
+            var date = $(this).val();
+
+            addFilingBasisInfoToGoodAndService("fb-mark-date",date,gsId,appInternalID);
+        });
 
 
         ////////////////////////////////////////////////////////////////////////////////

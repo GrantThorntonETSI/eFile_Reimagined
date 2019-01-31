@@ -250,15 +250,40 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         if(fbField.equals("fb-gs-date")){
             // ptoUser.setState(param); // sets state code
 
+            if(gsID.equals("all")){
 
-            try {
-                DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-                Date date = format.parse(fbValue);
-                baseTrademarkApplication.findGSbyInternalID(gsID).setFirstGSDate(date);
+                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+
+                    GoodAndService current = iter.next();
+
+                    try {
+                        DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+                        Date date = format.parse(fbValue);
+                        current.setFirstGSDate(date);
+
+                    }
+                    catch(Exception ex){
+                        return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
+
+                    }
+
+                }
 
             }
-            catch(Exception ex){
-                return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
+            else {
+
+                try {
+                    DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+                    Date date = format.parse(fbValue);
+                    baseTrademarkApplication.findGSbyInternalID(gsID).setFirstGSDate(date);
+
+                }
+                catch(Exception ex){
+                    return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
+
+                }
+
+
 
             }
             appFieldReadable = "Filing Basis First Good and Services Date";
@@ -269,17 +294,39 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         if(fbField.equals("fb-mark-date")){
             // ptoUser.setState(param); // sets state code
 
+           if (gsID.equals("all")){
 
-            try {
-                DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-                Date date = format.parse(fbValue);
-                baseTrademarkApplication.findGSbyInternalID(gsID).setFirstCommerceDate(date);
+               for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
 
-            }
-            catch(Exception ex){
-                return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
+                   GoodAndService current = iter.next();
 
-            }
+                   try {
+                       DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+                       Date date = format.parse(fbValue);
+                       current.setFirstCommerceDate(date);
+                   }
+                   catch(Exception ex){
+                       return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
+
+                   }
+
+               }
+
+           }
+           else {
+               try {
+                   DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+                   Date date = format.parse(fbValue);
+                   baseTrademarkApplication.findGSbyInternalID(gsID).setFirstCommerceDate(date);
+
+               }
+               catch(Exception ex){
+                   return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
+
+               }
+
+
+           }
             appFieldReadable = "Filing Basis First Commerce Date";
 
         }
