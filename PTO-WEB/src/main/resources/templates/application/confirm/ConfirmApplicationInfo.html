@@ -89,8 +89,37 @@
                         </div>
                     </div>
                 </div>
+
+
+
+
                 <div class="row">
                     <div class="col-xs-12" id="declarationsignature">
+                        <div class="card-text noexpand">
+                            <h2 class="card-title weight600">Application Fee</h2>
+                        </div>
+
+                        <th:block th:if="${passedValidation == false}">
+                            <div class="lead">
+                                <p id="lead" style="font-weight: bold;">Your current filing fee is $275 per class. To reduce your filing fee to $225, select &#8220;Return to Application&#8221; and complete the missing fields below.</p>
+                            </div>
+                            <button type="button" class="btn-sm btn-success  review-application" style="background-color: darkgreen; border-color: darkgreen;">Return to Application</button>
+                            <ul>
+                                <th:block th:each="TEASfield : ${missedTEAsFields}">
+                                    <li th:text="${TEASfield}">Color Claimed as a Feature</li>
+                                </th:block>
+
+                            </ul>
+                        </th:block>
+
+                        <th:block th:if="${passedValidation == true}">
+                            <div class="lead">
+                                <p id="lead" style="font-weight: bold;">You are currently filing as TEAs Plus and receiving the lowest possible fee.</p>
+                            </div>
+
+
+                        </th:block>
+
 
                         <div class="card-text noexpand">
                             <h2 class="card-title weight600">Review Application</h2>
