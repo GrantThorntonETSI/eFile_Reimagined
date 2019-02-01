@@ -999,8 +999,17 @@
 
         $('#appInternalIDForm').val(appInternalID);
 
+        //////////////////////////////////////////////////////////////////
+        // persistence rendering logic for TEAS plus field labels
+        //////////////////////////////////////////////////////////////////
         if(validateTEAS == true){
-            $('input.togglesavemore').click();
+            $('input.togglesavemore').attr("checked",true);
+            $( document ).find('span.subtle').removeClass('visuallyremoved');
+            $( document ).find('#on').removeClass('visuallyhidden');
+
+        }
+        else{
+            $( document ).find('span.subtle').addClass( 'visuallyremoved' );
         }
         //////////////////////////////////////////////////////////////////////
         // set mark image based on persisted values

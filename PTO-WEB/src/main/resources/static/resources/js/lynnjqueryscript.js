@@ -1444,10 +1444,75 @@ $(document).ready(function(){
 		if(this.checked == true){
 			$( document ).find('span.subtle').removeClass('visuallyremoved');
 			$( document ).find('#on').removeClass('visuallyhidden');
+			setTEASValidatioOption("yes");
 		}
 		else if(this.checked == false) {
 			$( document ).find('span.subtle').addClass( 'visuallyremoved' );
+			setTEASValidatioOption("no");
 		}
 	});
 
 });
+
+
+
+function setTEASValidatioOption(option) {
+
+
+
+
+
+	//alert(field_name_prefix);
+	// send state, and token to server
+	// token will be generated in the controller and added to the view
+	// similar to how access token works ...a token is tied to a user
+	// access token will be passed in through model
+	//
+	// var tokenValue = '${token}';  // token is the model attribute name
+	// we are not using secured tokens for the prototype
+	// we will secure it by adding ssl and https support
+
+	//var field_value = $(this).val();
+	//alert(field_value);
+
+	$.ajax({
+		url: "../../REST/apiGateway/application/TEASOpt/"+option+"/"+appInternalID,
+		type: 'GET',
+		success: function(data){
+
+			// parse out status msg:
+			var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+			var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+			if(s_code.trim() == "200"){
+				//if(data.contains("status: 200")){
+				// show confirmation check mark on form
+				//$('#toggle').delay(1000).click();
+				$(".autoSaveMessageArea span").fadeOut(500);
+				setTimeout(function() {
+					// after 1000 ms we add the class animated to the login/register card
+					$(".autoSaveMessageArea span").text(s_msg);
+					$(".autoSaveMessageArea span").fadeIn(1000);
+				}, 500);
+
+			}
+
+
+		},
+		error: function(data) {
+
+			console.log(data);
+
+		}
+
+	});
+
+
+
+	////////////////////////////////////////////////////////////////////////////////
+	// end of contact information 'State' auto save ////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////
+
+
+}

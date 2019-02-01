@@ -828,9 +828,17 @@ public class ApplicationService  extends  BaseRESTapiService{
         //////////////////////////////////////////////////////////
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+        String responseMsg = "";
 
+        if(fieldValue.equals("yes")){
+            baseTrademarkApplication.setValidateTEASFields(true);
+            responseMsg = "TEAS field level validation has been set to TRUE for the current application.";
+        }
+        else {
+            baseTrademarkApplication.setValidateTEASFields(false);
+            responseMsg = "TEAS field level validation has been set to FALSE for the current application.";
+        }
 
-        baseTrademarkApplication.setValidateTEASFields(true);
 
 
 
@@ -840,7 +848,6 @@ public class ApplicationService  extends  BaseRESTapiService{
         // start generating response
         ////////////////////////////////////////////////
 
-        String responseMsg = "TEAS field level validation has been set to TRUE for the current application.";
         return buildResponseEnity("200", responseMsg);
 
     }

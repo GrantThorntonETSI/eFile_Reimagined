@@ -848,13 +848,28 @@
 
         $('.glyphicon-remove').click();
 
+        //////////////////////////////////////////////////////////////////
+        // persistence rendering logic for TEAS plus field labels
+        //////////////////////////////////////////////////////////////////
         if(validateTEAS == true){
-            $('input.togglesavemore').click();
-        }
-        preventFutureDate();
+            $('input.togglesavemore').attr("checked",true);
+            $( document ).find('span.subtle').removeClass('visuallyremoved');
+            $( document ).find('#on').removeClass('visuallyhidden');
 
+        }
+        else{
+            $( document ).find('span.subtle').addClass( 'visuallyremoved' );
+        }
+        //////////////////////////////////////////////////////////////////
+        // prevent future dates for date input fields
+        //////////////////////////////////////////////////////////////////
+        preventFutureDate();
+        //////////////////////////////////////////////////////////////////
+        // set bread crumb based on application status
+        //////////////////////////////////////////////////////////////////
         setBreadCrumb(breadCrumbStatus);
 
+        // bread crumb click event handlers
         $('#bs-link1').click(function () {
            var url = $(this).attr("href");
            if(url != undefined){
@@ -903,6 +918,13 @@
             }
 
         });
+
+
+
+
+        //////////////////////////////////////////////////////////////////////
+        // AJAx auto save triggers
+        //////////////////////////////////////////////////////////////////////
 
         ////////////////////////////////////////////////////////////
         // show and hide attorney form actions
