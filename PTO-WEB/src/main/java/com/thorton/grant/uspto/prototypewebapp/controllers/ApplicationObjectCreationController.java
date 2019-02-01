@@ -1246,6 +1246,7 @@ public class ApplicationObjectCreationController {
 
                     baseTrademarkApplication.setConcurrentUseEvidenceFilePath(filePath);
                     baseTrademarkApplication.setDeclarationEvidenceSupport(true);
+                    baseTrademarkApplication.setDeclarationEvidenceSupportSet(true);
 
 
                     // model.addAttribute("markImagePath",baseTrademarkApplication.getTradeMark().getTrademarkImagePath());

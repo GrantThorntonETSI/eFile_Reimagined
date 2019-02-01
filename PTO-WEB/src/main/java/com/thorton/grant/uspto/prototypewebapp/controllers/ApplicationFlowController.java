@@ -2310,7 +2310,7 @@ public class ApplicationFlowController {
             TradeMark tradeMark = new TradeMark();
             tradeMark.setTrademarkDesignType("");
             baseTrademarkApplication.setTradeMark(tradeMark);
-            baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
 
         }
 
@@ -2327,7 +2327,7 @@ public class ApplicationFlowController {
 
 
         }
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
         boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
         boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
 
@@ -2345,6 +2345,15 @@ public class ApplicationFlowController {
 
 
 
+        // check if all declarations set,
+        // if so, update base price
+
+        if( baseTrademarkApplication.isDeclarationMarkInUseSet() == false || baseTrademarkApplication.isDeclarationApplicantIsOwnerSet() == false || baseTrademarkApplication.isDeclarationConcurrentUserSet() == false || baseTrademarkApplication.isDeclarationEvidenceSupportSet() == false || baseTrademarkApplication.isDeclarationMarkInUseSpecimenSet() == false || baseTrademarkApplication.isDeclarationWarningFalseStatementSet() == false){
+            baseTrademarkApplication.setBaseFee(275);
+        }
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
         return "application/confirm/ConfirmPayment";

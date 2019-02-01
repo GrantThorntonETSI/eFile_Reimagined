@@ -735,6 +735,7 @@ public class ApplicationService  extends  BaseRESTapiService{
                 baseTrademarkApplication.setDeclarationMarkInUse(false);
 
             }
+            baseTrademarkApplication.setDeclarationMarkInUseSet(true);
 
             appFieldReadable = "Application Declaration";
 
@@ -751,7 +752,7 @@ public class ApplicationService  extends  BaseRESTapiService{
                 baseTrademarkApplication.setDeclarationMarkInUseSpecimen(false);
 
             }
-
+            baseTrademarkApplication.setDeclarationMarkInUseSpecimenSet(true);
             appFieldReadable = "Application Declaration";
 
         }
@@ -768,6 +769,7 @@ public class ApplicationService  extends  BaseRESTapiService{
 
             }
 
+            baseTrademarkApplication.setDeclarationConcurrentUserSet(true);
             appFieldReadable = "Application Declaration";
 
         }
@@ -786,6 +788,7 @@ public class ApplicationService  extends  BaseRESTapiService{
 
             appFieldReadable = "Application Declaration";
 
+            baseTrademarkApplication.setDeclarationEvidenceSupportSet(true);
         }
 
         if(fieldName.equals("declare-warning-false")){
@@ -800,6 +803,7 @@ public class ApplicationService  extends  BaseRESTapiService{
 
             }
 
+            baseTrademarkApplication.setDeclarationWarningFalseStatementSet(true);
             appFieldReadable = "Application Declaration";
 
         }

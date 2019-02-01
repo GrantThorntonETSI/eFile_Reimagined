@@ -154,6 +154,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                     current.setMarkInUseSet(true);
                 }
                 baseTrademarkApplication.setDeclarationMarkInUse(true);
+                baseTrademarkApplication.setDeclarationMarkInUseSet(true);
             }
             else {
                 if(baseTrademarkApplication.isMarkAllgsSet() == false){
@@ -173,6 +174,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                 }
                 // we need to loop though all gs and set its in use to false
                 baseTrademarkApplication.setDeclarationMarkInUse(false);
+                baseTrademarkApplication.setDeclarationMarkInUseSet(true);
 
             }
             appFieldReadable = "Filing Basis mark in use option";

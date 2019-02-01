@@ -59,6 +59,7 @@ public class AdditionalInformationService extends  BaseRESTapiService {
                 baseTrademarkApplication.setDeclarationConcurrentUser(false);
 
             }
+            baseTrademarkApplication.setDeclarationConcurrentUserSet(true);
 
             appFieldReadable = "Concurrent Use Declaration";
 

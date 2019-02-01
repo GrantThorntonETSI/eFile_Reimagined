@@ -209,11 +209,26 @@ public class BaseTrademarkApplication  {
     // declaration fields
 
     private boolean declarationApplicantIsOwner;  // check box 1
+    private boolean declarationApplicantIsOwnerSet;
+
     private boolean declarationMarkInUse;   // check box 2
+    private boolean declarationMarkInUseSet;
+
     private boolean declarationMarkInUseSpecimen; // check box 3
+    private boolean declarationMarkInUseSpecimenSet;
+
     private boolean declarationConcurrentUser; // check box 4
+    private boolean declarationConcurrentUserSet;
+
+
+
+
     private boolean declarationEvidenceSupport;  // check box 5
+    private boolean declarationEvidenceSupportSet;
+
+
     private boolean declarationWarningFalseStatement; // check box 6
+    private boolean declarationWarningFalseStatementSet;
 
 
     // fee variables
@@ -1029,6 +1044,54 @@ public class BaseTrademarkApplication  {
 
     public void setValidateTEASFields(boolean validateTEASFields) {
         this.validateTEASFields = validateTEASFields;
+    }
+
+    public boolean isDeclarationApplicantIsOwnerSet() {
+        return declarationApplicantIsOwnerSet;
+    }
+
+    public void setDeclarationApplicantIsOwnerSet(boolean declarationApplicantIsOwnerSet) {
+        this.declarationApplicantIsOwnerSet = declarationApplicantIsOwnerSet;
+    }
+
+    public boolean isDeclarationMarkInUseSet() {
+        return declarationMarkInUseSet;
+    }
+
+    public void setDeclarationMarkInUseSet(boolean declarationMarkInUseSet) {
+        this.declarationMarkInUseSet = declarationMarkInUseSet;
+    }
+
+    public boolean isDeclarationMarkInUseSpecimenSet() {
+        return declarationMarkInUseSpecimenSet;
+    }
+
+    public void setDeclarationMarkInUseSpecimenSet(boolean declarationMarkInUseSpecimenSet) {
+        this.declarationMarkInUseSpecimenSet = declarationMarkInUseSpecimenSet;
+    }
+
+    public boolean isDeclarationConcurrentUserSet() {
+        return declarationConcurrentUserSet;
+    }
+
+    public void setDeclarationConcurrentUserSet(boolean declarationConcurrentUserSet) {
+        this.declarationConcurrentUserSet = declarationConcurrentUserSet;
+    }
+
+    public boolean isDeclarationEvidenceSupportSet() {
+        return declarationEvidenceSupportSet;
+    }
+
+    public void setDeclarationEvidenceSupportSet(boolean declarationEvidenceSupportSet) {
+        this.declarationEvidenceSupportSet = declarationEvidenceSupportSet;
+    }
+
+    public boolean isDeclarationWarningFalseStatementSet() {
+        return declarationWarningFalseStatementSet;
+    }
+
+    public void setDeclarationWarningFalseStatementSet(boolean declarationWarningFalseStatementSet) {
+        this.declarationWarningFalseStatementSet = declarationWarningFalseStatementSet;
     }
 
     @Override
