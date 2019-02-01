@@ -2095,6 +2095,11 @@ public class ApplicationFlowController {
                         missedTEAsFields.add("Accept B&W Mark");
                     }
                 }
+                else {
+                    if(baseTrademarkApplication.getTradeMark().getMarkColors() == null){
+                        missedTEAsFields.add("Mark Color Claim - Mark color");
+                    }
+                }
                 if(baseTrademarkApplication.getTradeMark().getMarkDescription() == null){
                     missedTEAsFields.add("Mark Color/B&W Description");
                 }
