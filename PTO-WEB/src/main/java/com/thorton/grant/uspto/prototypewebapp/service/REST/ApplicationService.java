@@ -718,7 +718,7 @@ public class ApplicationService  extends  BaseRESTapiService{
                 baseTrademarkApplication.setDeclarationApplicantIsOwner(false);
 
             }
-
+            baseTrademarkApplication.setDeclarationApplicantIsOwnerSet(true);
             appFieldReadable = "Application Declaration";
 
         }
