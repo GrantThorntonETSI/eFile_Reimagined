@@ -2100,7 +2100,8 @@ public class ApplicationFlowController {
 
 
         if(baseTrademarkApplication.getPrimaryOwner().getOwnersubType().equals("Individual")){
-            if(baseTrademarkApplication.getPrimaryOwner().getCitizenShip() == null){
+
+            if(baseTrademarkApplication.getPrimaryOwner().getCitizenShip() == null || baseTrademarkApplication.getPrimaryOwner().getCitizenShip().equals("")){
                 missedTEAsFields.add("Owner - Country of Citizenship");
             }
 
@@ -2113,14 +2114,14 @@ public class ApplicationFlowController {
                 baseTrademarkApplication.getPrimaryOwner().getOwnersubType().equals("Trust") ||
                 baseTrademarkApplication.getPrimaryOwner().getOwnersubType().equals("Estate")
         ){
-            if(baseTrademarkApplication.getPrimaryOwner().getState() == null){
+            if(baseTrademarkApplication.getPrimaryOwner().getState() == null || baseTrademarkApplication.getPrimaryOwner().getState().equals("")){
                 missedTEAsFields.add("Owner - State Where Legally Organized ");
             }
         }
 
         if(baseTrademarkApplication.getPrimaryOwner().getOwnersubType().equals("Corporation")){
 
-            if(baseTrademarkApplication.getPrimaryOwner().getState() == null){
+            if(baseTrademarkApplication.getPrimaryOwner().getOwnerOrganizationState() == null ||baseTrademarkApplication.getPrimaryOwner().getOwnerOrganizationState().equals("") ){
                 missedTEAsFields.add("Owner - State Where Legally Incorporated");
             }
 
@@ -2128,7 +2129,7 @@ public class ApplicationFlowController {
 
 
         if(baseTrademarkApplication.getPrimaryOwner().getOwnersubType().contains("Foreign")){
-            if(baseTrademarkApplication.getPrimaryOwner().getCountry() == null){
+            if(baseTrademarkApplication.getPrimaryOwner().getCountry() == null || baseTrademarkApplication.getPrimaryOwner().getCountry().equals("")){
                 missedTEAsFields.add("Owner - Country where Legally Incorporated");
             }
 

@@ -391,6 +391,7 @@ public class ApplicationObjectCreationController {
             owner.setOwnerType(newOwnerContactFormDTO.getOwnerType());
         }
         if(newOwnerContactFormDTO.getOwnerCitizenShip()!= null){
+
             owner.setCitizenShip(newOwnerContactFormDTO.getOwnerCitizenShip());
         }
         owner.setCountry(newOwnerContactFormDTO.getOwnerAddressCountry());
