@@ -37,7 +37,7 @@
                                 </select>
                             </div>
                             <div class="form-group form-group-md col-xs-12 col-sm-6 col-lg-4">
-                                <label for="stateoforg"><span class="weight600">&#42;</span>Country of Incorporation</label>
+                                <label for="stateoforg">Country of Incorporation <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                 <select class="form-control" id="stateoforg" th:field="*{ownerCitizenShip}"  required>
                                     <option value="">Select</option>
                                     <option value="B2">AFGHANISTAN</option>
@@ -645,7 +645,7 @@
     var selectedContacts = /*[[${selectedOwners.ContactEmails}]]*/ 'User Name';
     var ownerOpt = /*[[${baseTrademarkApplication.isOwnerSet()}]]*/ 'User Name';
 
-
+    var validateTEAS =  /*[[${baseTrademarkApplication.isValidateTEASFields()}]]*/ 'User Name';
     /*]]>*/
 </script>
 
@@ -687,7 +687,15 @@
         if(attorneyOpt == false){
             prevLinkURL = prevLinkURLAttorneyFalse;
         }
+        if(validateTEAS == true){
+            $('input.togglesavemore').attr("checked",true);
+            $( document ).find('span.subtle').removeClass('visuallyremoved');
+            $( document ).find('#on').removeClass('visuallyhidden');
 
+        }
+        else{
+            $( document ).find('span.subtle').addClass( 'visuallyremoved' );
+        }
 
 
         $('#prevButton').click(function () {
