@@ -49,8 +49,8 @@
                                 </select>
                             </div>
                             <div class="form-group form-group-md col-xs-12 col-sm-6 col-lg-4">
-                                <label for="stateoforg"><span class="weight600">&#42;</span>State Where Legally Organized</label>
-                                <select class="form-control" id="stateoforg" th:field="*{ownerState}"  required>
+                                <label for="stateoforg">State Where Legally Organized <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
+                                <select class="form-control" id="stateoforg" th:field="*{ownerState}" >
                                     <option value="">Select</option>
                                     <option value="Select">Select</option>
                                     <option value="AL">Alabama</option>
@@ -890,6 +890,7 @@
     var host = host_name+":"+host_port;
     var selectedContacts = /*[[${selectedOwners.ContactEmails}]]*/ 'User Name';
     var ownerOpt = /*[[${baseTrademarkApplication.isOwnerSet()}]]*/ 'User Name';
+    var validateTEAS =  /*[[${baseTrademarkApplication.isValidateTEASFields()}]]*/ 'User Name';
 
     /*]]>*/
 </script>
@@ -931,6 +932,18 @@
 
         if(attorneyOpt == false){
             prevLinkURL = prevLinkURLAttorneyFalse;
+        }
+        //////////////////////////////////////////////////////////////////
+        // persistence rendering logic for TEAS plus field labels
+        //////////////////////////////////////////////////////////////////
+        if(validateTEAS == true){
+            $('input.togglesavemore').attr("checked",true);
+            $( document ).find('span.subtle').removeClass('visuallyremoved');
+            $( document ).find('#on').removeClass('visuallyhidden');
+
+        }
+        else{
+            $( document ).find('span.subtle').addClass( 'visuallyremoved' );
         }
 
 
