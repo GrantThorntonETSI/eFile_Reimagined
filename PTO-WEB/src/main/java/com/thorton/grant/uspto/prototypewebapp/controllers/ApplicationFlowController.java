@@ -2094,6 +2094,47 @@ public class ApplicationFlowController {
         // for foreign corp - country of in corporation
 
 
+        if(missedTEAsFields.size() == 0){
+            returnLink ="../../application/OwnerSetView/?trademarkID=";
+        }
+
+
+        if(baseTrademarkApplication.getPrimaryOwner().getOwnersubType().equals("Individual")){
+            if(baseTrademarkApplication.getPrimaryOwner().getCitizenShip() == null){
+                missedTEAsFields.add("Owner - Country of Citizenship");
+            }
+
+        }
+
+        if(baseTrademarkApplication.getPrimaryOwner().getOwnersubType().equals("Limited Liability Company") ||
+                baseTrademarkApplication.getPrimaryOwner().getOwnersubType().equals("Partnership") ||
+                baseTrademarkApplication.getPrimaryOwner().getOwnersubType().equals("Limited Partnership") ||
+                baseTrademarkApplication.getPrimaryOwner().getOwnersubType().equals("Joint Venture") ||
+                baseTrademarkApplication.getPrimaryOwner().getOwnersubType().equals("Trust") ||
+                baseTrademarkApplication.getPrimaryOwner().getOwnersubType().equals("Estate")
+        ){
+            if(baseTrademarkApplication.getPrimaryOwner().getState() == null){
+                missedTEAsFields.add("Owner - State Where Legally Organized ");
+            }
+        }
+
+        if(baseTrademarkApplication.getPrimaryOwner().getOwnersubType().equals("Corporation")){
+
+            if(baseTrademarkApplication.getPrimaryOwner().getState() == null){
+                missedTEAsFields.add("Owner - State Where Legally Incorporated");
+            }
+
+        }
+
+
+        if(baseTrademarkApplication.getPrimaryOwner().getOwnersubType().contains("Foreign")){
+            if(baseTrademarkApplication.getPrimaryOwner().getCountry() == null){
+                missedTEAsFields.add("Owner - Country where Legally Incorporated");
+            }
+
+        }
+
+
 
 
 
