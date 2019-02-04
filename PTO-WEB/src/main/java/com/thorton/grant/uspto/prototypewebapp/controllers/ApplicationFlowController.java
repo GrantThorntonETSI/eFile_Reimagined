@@ -2075,6 +2075,9 @@ public class ApplicationFlowController {
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
 
 
+        // TEAS field validation
+
+
         String returnLink ="../../mark/designWithTextDetails/?trademarkID=";
 
         if(baseTrademarkApplication.getTradeMark().getTrademarkDesignType().equals("Standard Character")){
@@ -2083,6 +2086,12 @@ public class ApplicationFlowController {
 
         ArrayList<String> missedTEAsFields = new ArrayList<>();
         if(baseTrademarkApplication.getTradeMark().getTrademarkDesignType().equals("Standard Character") == false){
+
+
+            if(baseTrademarkApplication.getTradeMark().getMarkLiteral() == null){
+                missedTEAsFields.add("Mark Literal");
+
+            }
             if(baseTrademarkApplication.getTradeMark().isColorClaimSet() == false){
 
 
