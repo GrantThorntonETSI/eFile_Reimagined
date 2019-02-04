@@ -2114,12 +2114,13 @@ public class ApplicationFlowController {
                 baseTrademarkApplication.getPrimaryOwner().getOwnersubType().equals("Trust") ||
                 baseTrademarkApplication.getPrimaryOwner().getOwnersubType().equals("Estate")
         ){
-            if(baseTrademarkApplication.getPrimaryOwner().getState() == null || baseTrademarkApplication.getPrimaryOwner().getState().equals("")){
+            if(baseTrademarkApplication.getPrimaryOwner().getOwnerOrganizationState()== null || baseTrademarkApplication.getPrimaryOwner().getOwnerOrganizationState().equals("")){
                 missedTEAsFields.add("Owner - State Where Legally Organized ");
             }
         }
 
         if(baseTrademarkApplication.getPrimaryOwner().getOwnersubType().equals("Corporation")){
+
 
             if(baseTrademarkApplication.getPrimaryOwner().getOwnerOrganizationState() == null ||baseTrademarkApplication.getPrimaryOwner().getOwnerOrganizationState().equals("") ){
                 missedTEAsFields.add("Owner - State Where Legally Incorporated");
@@ -2129,7 +2130,7 @@ public class ApplicationFlowController {
 
 
         if(baseTrademarkApplication.getPrimaryOwner().getOwnersubType().contains("Foreign")){
-            if(baseTrademarkApplication.getPrimaryOwner().getCountry() == null || baseTrademarkApplication.getPrimaryOwner().getCountry().equals("")){
+            if(baseTrademarkApplication.getPrimaryOwner().getOwnerOrganizationState() == null || baseTrademarkApplication.getPrimaryOwner().getOwnerOrganizationState().equals("")){
                 missedTEAsFields.add("Owner - Country where Legally Incorporated");
             }
 
