@@ -2076,6 +2076,18 @@ public class ApplicationFlowController {
 
 
         // TEAS field validation
+        // check attorney TEAS fields  bar #
+
+
+        // check owner TEAS fields  (individual -citizen ship)
+        // all others (state where organized)/ corp state of incorporation
+        // for foreign corp - country of in corporation
+
+
+
+
+
+
 
 
         String returnLink ="../../mark/designWithTextDetails/?trademarkID=";
@@ -2199,6 +2211,15 @@ public class ApplicationFlowController {
                 if(baseTrademarkApplication.getTradeMark().isConsentFileUploaded() == false){
                     missedTEAsFields.add("Name Portrait Signature Consent File");
                 }
+            }
+
+        }
+
+        if(baseTrademarkApplication.getTradeMark().isPriorRegistratoin() == true){
+            if(baseTrademarkApplication.getTradeMark().getPriorRegistrationNumber() == null){
+
+                missedTEAsFields.add("Mark Disclaimer - Prior Registration Number");
+
             }
 
         }
