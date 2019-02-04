@@ -2076,7 +2076,17 @@ public class ApplicationFlowController {
 
 
         // TEAS field validation
+
+        String returnLink = "";
+        ArrayList<String> missedTEAsFields = new ArrayList<>();
         // check attorney TEAS fields  bar #
+        if(baseTrademarkApplication.isAttorneyFiling() == true){
+
+            if(baseTrademarkApplication.getPrimaryLawyer().getMembershipNumber() == null){
+                missedTEAsFields.add("Attorney Bar Membership Number");
+                returnLink ="../../application/AttorneySet/?trademarkID=";
+            }
+        }
 
 
         // check owner TEAS fields  (individual -citizen ship)
@@ -2088,15 +2098,17 @@ public class ApplicationFlowController {
 
 
 
+        if(missedTEAsFields.size() == 0){
+            returnLink ="../../mark/designWithTextDetails/?trademarkID=";
+        }
 
 
-        String returnLink ="../../mark/designWithTextDetails/?trademarkID=";
 
         if(baseTrademarkApplication.getTradeMark().getTrademarkDesignType().equals("Standard Character")){
             returnLink ="../../mark/standard/?trademarkID=";
         }
 
-        ArrayList<String> missedTEAsFields = new ArrayList<>();
+
         if(baseTrademarkApplication.getTradeMark().getTrademarkDesignType().equals("Standard Character") == false){
 
 
