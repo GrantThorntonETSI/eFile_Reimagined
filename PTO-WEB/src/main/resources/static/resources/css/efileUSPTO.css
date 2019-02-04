@@ -257,10 +257,14 @@ ul#lowernav .dropdown-menu>li>a  {
 #firstli  {
     padding-top:3px!important;
 }
-#lastli  {
-    padding-bottom:3px!important;
+ul#lowernav li.dropdown ul.dropdown-menu li#lastli  {
+    padding-bottom:1px;
+    padding-top:1px;
+    border-bottom:0;
+    font-weight:600;
+    background-color:#009CDE!important;
 }
-ul#lowernav .dropdown-menu>li  {
+ul#lowernav .dropdown-menu li  {
     color: #333;
     display: block;
     padding: 0 20px;
@@ -269,7 +273,18 @@ ul#lowernav .dropdown-menu>li  {
     line-height: 3.7em;
     white-space: nowrap;
 }
+ul#lowernav li.dropdown ul.dropdown-menu li  {
+    color: #fff;
+    background-color: #9BB8D3!important;
+    border-bottom:1px solid #ddd;
+    border-top: none;
+}
+ul#lowernav li.dropdown ul.dropdown-menu {
+    -webkit-box-shadow: 0 0 0 0 rgba(0,0,0,0)!important;
+    box-shadow: 0 0 0 0 rgba(0,0,0,0)!important;
+}
 /* end dropdown no links (fees)*/
+
 ul#lowernav .dropdown-menu>li>a:hover  {
     color: #333;
     background-color: transparent!important;
@@ -2053,3 +2068,6 @@ input:checked + .slider:before {
 .subtle{
     margin-left:5px;
 }
+
+
+

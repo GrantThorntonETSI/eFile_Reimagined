@@ -782,6 +782,10 @@ public class BaseTrademarkApplication  {
 
 
     public String getTotalNumberOfclasses(){
+
+        if(getUniqueClassNumberforGS().size() == 0){
+            return "1";
+        }
         return getUniqueClassNumberforGS().size()+"";
     }
 
