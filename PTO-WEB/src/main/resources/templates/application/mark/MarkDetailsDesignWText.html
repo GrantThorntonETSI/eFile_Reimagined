@@ -266,7 +266,7 @@
                                     <section aria-label="translation">
                                         <div class="card-text">
                                             <div role="heading" aria-level="2">
-                                                <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#translation" aria-controls="translation" aria-expanded="false" id="translatesbtn"><span class="glyphicon glyphicon-triangle-right"></span> Translation</button>
+                                                <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#translation" aria-controls="translation" aria-expanded="false" id="translatesbtn"><span class="glyphicon glyphicon-triangle-right"></span><span id="toggleglyph" class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Translation</button>
                                             </div>
                                         </div>
                                         <div id="translation" class="collapse Accordion-panel" role="region" aria-labelledby="translationbtn">
@@ -389,7 +389,7 @@
                                     <section aria-label="transliteration">
                                         <div class="card-text">
                                             <div role="heading" aria-level="2">
-                                                <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#transliteration" aria-controls="transliteration" aria-expanded="false" id="translitbtn"><span class="glyphicon glyphicon-triangle-right"></span> Transliteration</button>
+                                                <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#transliteration" aria-controls="transliteration" aria-expanded="false" id="translitbtn"><span class="glyphicon glyphicon-triangle-right"></span><span id="toggleglyph" class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Transliteration</button>
                                             </div>
                                         </div>
                                         <div id="transliteration" class="collapse Accordion-panel" role="region" aria-labelledby="translitbtn">
@@ -1115,13 +1115,6 @@
 
 
 
-        //////////////////////////////////////////////////////////////////////
-        // added for integration
-        // right triang\le accodian toggle
-        //////////////////////////////////////////////////////////////////////
-        $('.glyphicon').click(function () {
-            $(this).toggleClass("glyphicon-triangle-right").toggleClass("glyphicon-triangle-bottom");
-        });
         //////////////////////////////////////////////////////////////////////
         // activate tool tip
         //////////////////////////////////////////////////////////////////////
