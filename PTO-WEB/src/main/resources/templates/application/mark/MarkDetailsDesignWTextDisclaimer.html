@@ -91,6 +91,13 @@
             <div class="row" style="position: relative;right:-15px; ">
                 <div class="col-xs-12">
                     <h1  th:text="${baseTrademarkApplication.tradeMark.getTradeMarkPageTitle()}"></h1>
+                    <p class="instructions" id="costsavingoptions">Reduce Fee Mode</p>
+                    <div role="switch" aria-describedby="#costsavingoptions" aria-label="turn reduce fee labels on or off">
+                        <label class="switch">
+                            <input class="togglesavemore" type="checkbox">
+                            <span class="slider"><span class="visuallyhidden" id="on">On</span> <span id="off">Off</span></span>
+                        </label>
+                    </div>
 
                 </div>
             </div>
@@ -207,7 +214,7 @@
                                                     </div><!--END radiogroup-->
                                                     <div id="yespriordiv" role="region" aria-labelledby="prioreg" class="form-group form-group-md" style="display: none;">
                                                         <div class="col-xs-12 col-md-9">
-                                                            <label for="yesprior">Enter prior U.S. registration numbers.</label>
+                                                            <label for="yesprior">Enter prior U.S. registration numbers. <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                             <input type="text" class="form-control" id="yesprior" th:value="${baseTrademarkApplication.tradeMark.priorRegistrationNumber}" >
                                                         </div>
                                                         <div class="col-xs-12 col-md-3">
@@ -227,7 +234,7 @@
                                                         </div><!--END radiogroup-->
                                                         <div id="yespriordiv" role="region" aria-labelledby="prioreg" class="form-group form-group-md" style="">
                                                             <div class="col-xs-12 col-md-9">
-                                                                <label for="yesprior">Enter prior U.S. registration numbers.</label>
+                                                                <label for="yesprior">Enter prior U.S. registration numbers. <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                                 <input type="text" class="form-control" id="yesprior" th:value="${baseTrademarkApplication.tradeMark.priorRegistrationNumber}" >
                                                             </div>
                                                             <div class="col-xs-12 col-md-3">
@@ -246,7 +253,7 @@
                                                         </div><!--END radiogroup-->
                                                         <div id="yespriordiv" role="region" aria-labelledby="prioreg" class="form-group form-group-md" style="display: none;">
                                                             <div class="col-xs-12 col-md-9">
-                                                                <label for="yesprior">Enter prior U.S. registration numbers.</label>
+                                                                <label for="yesprior">Enter prior U.S. registration numbers. <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                                 <input type="text" class="form-control" id="yesprior" th:value="${baseTrademarkApplication.tradeMark.priorRegistrationNumber}" >
                                                             </div>
                                                             <div class="col-xs-12 col-md-3">
@@ -406,7 +413,7 @@
 
     var breadCrumbStatus = /*[[${breadCrumbStatus}]]*/ 'User Name';
 
-
+    var validateTEAS =  /*[[${baseTrademarkApplication.isValidateTEASFields()}]]*/ 'User Name';
 
     /*]]>*/
 </script>
@@ -632,6 +639,18 @@
             }
 
         });
+        //////////////////////////////////////////////////////////////////
+        // persistence rendering logic for TEAS plus field labels
+        //////////////////////////////////////////////////////////////////
+        if(validateTEAS == true){
+            $('input.togglesavemore').attr("checked",true);
+            $( document ).find('span.subtle').removeClass('visuallyremoved');
+            $( document ).find('#on').removeClass('visuallyhidden');
+
+        }
+        else{
+            $( document ).find('span.subtle').addClass( 'visuallyremoved' );
+        }
 
 
 
