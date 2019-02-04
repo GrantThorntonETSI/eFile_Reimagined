@@ -84,6 +84,13 @@
                 <div class="row">
                     <div class="col-xs-6">
                         <h1>Owner Information</h1>
+                        <p class="instructions" id="costsavingoptions">Reduce Fee Mode</p>
+                        <div role="switch" aria-describedby="#costsavingoptions" aria-label="turn reduce fee labels on or off">
+                            <label class="switch">
+                                <input class="togglesavemore" type="checkbox">
+                                <span class="slider"><span class="visuallyhidden" id="on">On</span> <span id="off">Off</span></span>
+                            </label>
+                        </div>
                     </div>
 
                 </div>
@@ -316,7 +323,7 @@
     var selectedContacts = /*[[${selectedOwners.ContactEmails}]]*/ 'User Name';
 
     var breadCrumbStatus = /*[[${breadCrumbStatus}]]*/ 'User Name';
-
+    var validateTEAS =  /*[[${baseTrademarkApplication.isValidateTEASFields()}]]*/ 'User Name';
 
     /*]]>*/
 </script>
@@ -518,6 +525,15 @@
 
         });
 
+        if(validateTEAS == true){
+            $('input.togglesavemore').attr("checked",true);
+            $( document ).find('span.subtle').removeClass('visuallyremoved');
+            $( document ).find('#on').removeClass('visuallyhidden');
+
+        }
+        else{
+            $( document ).find('span.subtle').addClass( 'visuallyremoved' );
+        }
 
         if(isEntityTypeSet){
             if(isForeignEntity){

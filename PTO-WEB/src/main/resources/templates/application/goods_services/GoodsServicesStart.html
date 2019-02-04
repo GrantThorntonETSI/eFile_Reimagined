@@ -82,7 +82,13 @@
                 <!--START goods and services table-->
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6  img-fluid">
-                       <embed th:src="@{/resources/video/GS-services.mp4}" autostart="false" width="333" height="222">
+
+
+                        <video width="333" height="222" controls >
+                            <source th:src="@{/resources/video/GS-services.mp4}" type="video/mp4">
+
+                            Your browser does not support the video tag.
+                        </video>
 
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
