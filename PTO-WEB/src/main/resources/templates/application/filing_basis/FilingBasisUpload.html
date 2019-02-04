@@ -172,20 +172,20 @@
 
                                                             <th:block th:if="${Good_Service.isMarkInUseSet() == true}">
                                                                 <div role="radiogroup" aria-labelledby="commerce" class="form-group form-group-md" th:if="${Good_Service.isMarkInUse() == true}">
-                                                                    <label for="mark-in-use-radio-yes" class="radio-inline radiocontainer">Yes<input type="radio"  th:attr="name=${Good_Service.getInternalID()}" id="mark-in-use-radio-yes" value="yes" tabindex="0"  class="mark-in-use-radio" checked ><span class="checkmark"></span></label>
-                                                                    <label for="mark-in-use-radio-no" class="radio-inline radiocontainer">No<input type="radio"  th:attr="name=${Good_Service.getInternalID()}" id="mark-in-use-radio-no" value="no" tabindex="0" class="mark-in-use-radio"><span class="checkmark"></span></label>
+                                                                    <label  th:attr="for=${Good_Service.getInUseRadioIDYes()}"class="radio-inline radiocontainer">Yes<input type="radio"  th:attr="name=${Good_Service.getInternalID()},id=${Good_Service.getInUseRadioIDYes()}" value="yes" tabindex="0"  class="mark-in-use-radio" checked ><span class="checkmark"></span></label>
+                                                                    <label th:attr="for=${Good_Service.getInUseRadioIDNo()}"  class="radio-inline radiocontainer">No<input type="radio"  th:attr="name=${Good_Service.getInternalID()},id=${Good_Service.getInUseRadioIDNo()}"  value="no" tabindex="0" class="mark-in-use-radio"><span class="checkmark"></span></label>
                                                                 </div><!--END radiogroup-->
                                                                 <div role="radiogroup" aria-labelledby="commerce" class="form-group form-group-md" th:if="${Good_Service.isMarkInUse() == false}">
-                                                                    <label for="mark-in-use-radio-yes" class="radio-inline radiocontainer">Yes<input type="radio"  th:attr="name=${Good_Service.getInternalID()}" id="mark-in-use-radio-yes" value="yes" tabindex="0"  class="mark-in-use-radio" ><span class="checkmark"></span></label>
-                                                                    <label for="mark-in-use-radio-no" class="radio-inline radiocontainer">No<input type="radio"  th:attr="name=${Good_Service.getInternalID()}" id="mark-in-use-radio-no" value="no" tabindex="0" class="mark-in-use-radio" checked><span class="checkmark"></span></label>
+                                                                    <label th:attr="for=${Good_Service.getInUseRadioIDYes()}"class="radio-inline radiocontainer">Yes<input type="radio"  th:attr="name=${Good_Service.getInternalID()},id=${Good_Service.getInUseRadioIDYes()}"  value="yes" tabindex="0"  class="mark-in-use-radio" ><span class="checkmark"></span></label>
+                                                                    <label th:attr="for=${Good_Service.getInUseRadioIDNo()}"  class="radio-inline radiocontainer">No<input type="radio"  th:attr="name=${Good_Service.getInternalID()},id=${Good_Service.getInUseRadioIDNo()}"  value="no" tabindex="0" class="mark-in-use-radio" checked><span class="checkmark"></span></label>
                                                                 </div><!--END radiogroup-->
 
                                                             </th:block>
 
                                                             <th:block th:if="${Good_Service.isMarkInUseSet() == false}">
                                                                 <div role="radiogroup" aria-labelledby="commerce" class="form-group form-group-md" >
-                                                                    <label for="mark-in-use-radio-yes" class="radio-inline radiocontainer">Yes<input type="radio"  th:attr="name=${Good_Service.getInternalID()}" id="mark-in-use-radio-yes" value="yes" tabindex="0"  class="mark-in-use-radio"><span class="checkmark"></span></label>
-                                                                    <label for="mark-in-use-radio-no" class="radio-inline radiocontainer">No<input type="radio"  th:attr="name=${Good_Service.getInternalID()}" id="mark-in-use-radio-no" value="no" tabindex="0" class="mark-in-use-radio"><span class="checkmark"></span></label>
+                                                                    <label th:attr="for=${Good_Service.getInUseRadioIDYes()}"class="radio-inline radiocontainer">Yes<input type="radio"  th:attr="name=${Good_Service.getInternalID()},id=${Good_Service.getInUseRadioIDYes()}" value="yes" tabindex="0"  class="mark-in-use-radio"><span class="checkmark"></span></label>
+                                                                    <label th:attr="for=${Good_Service.getInUseRadioIDNo()}"  class="radio-inline radiocontainer">No<input type="radio"  th:attr="name=${Good_Service.getInternalID()},id=${Good_Service.getInUseRadioIDNo()}"  value="no" tabindex="0" class="mark-in-use-radio"><span class="checkmark"></span></label>
                                                                 </div><!--END radiogroup-->
                                                             </th:block>
 
@@ -2658,12 +2658,11 @@
 
          $('input.mark-in-use-radio').click(function () {
 
-
              $(this).parent().parent().next().css('display','none');
 
              var gsID= $(this).attr("name");
 
-             if($(this).attr("id") == "mark-in-use-radio-yes"){
+             if($(this).attr("id").indexOf("RadioYES") > 0 ){
                  // yes readio click
                  if(this.checked == true){
                      $(this).parent().parent().next().show(500);

@@ -51,6 +51,11 @@ public class GoodAndService {
     public String getpnaID(){
         return internalID+"pna";
     }
+
+
+    public String getInUseRadioIDYes(){ return  internalID+"inUseRadioYES";}
+
+    public String getInUseRadioIDNo(){ return  internalID+"inUseRadioNO";}
     ////////////////////////////////////////////////////////
     // foreign application fields
     ////////////////////////////////////////////////////////
