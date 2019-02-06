@@ -580,7 +580,7 @@
                                 </select>
                             </div>
                             <div class="form-group form-group-md col-md-12 col-lg-8">
-                                <label for="ownerAddress1"><span class="weight600">&#42;</span>Address Line 1</label>
+                                <label for="ownerAddress1">Address Line 1</label>
                                 <input type="text" class="form-control" id="ownerAddress1" >
                             </div>
                             <div class="form-group form-group-md col-md-12 col-lg-8">
@@ -692,7 +692,7 @@
                     <div class="inlinebuttons btn-group btn-group-justified  owner-form-buttons" role="nav" aria-label="view previous or next page" id="prevnxt">
 
                         <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next" >Done
+                            <button type="button" class="btn btn-sm btn-primary fill next" id="doneButton" value="next" >Done
                                 <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
                                 </div>
                             </button>
@@ -720,7 +720,7 @@
     var host_name= /*[[${hostBean.host}]]*/ 'User Name';
     var host_port= /*[[${hostBean.port}]]*/ 'User Name';
     var host = host_name+":"+host_port;
-
+    var nextLinkURL = "../../../../application/OwnerSetView/?trademarkID="+appInternalID;
 
     /*]]>*/
 </script>
@@ -735,7 +735,16 @@
             // after 1000 ms we add the class animated to the login/register card
             $('.content').fadeIn(500);
         }, 500);
+
+
+
+        $('#doneButton').click(function () {
+            location.href=nextLinkURL;
+        });
     });
+
+
+
 
 
 </script>
