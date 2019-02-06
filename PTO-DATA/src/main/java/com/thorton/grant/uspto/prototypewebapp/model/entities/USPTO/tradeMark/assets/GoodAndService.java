@@ -435,6 +435,17 @@ public class GoodAndService {
         return "Class "+classNumber;
     }
 
+
+    public boolean isGSSpecimenSet(){
+
+        if(getSampleImagePath() == null){
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

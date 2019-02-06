@@ -1492,9 +1492,19 @@ input[type="radio"]:focus + label span.checkmark::after {
     font-size:.75em;
     line-height: .8em;
 }
-.upload-drop-zone span.glyphicon-upload {
+.upload-drop-zone span.glyphicon-upload, .upload-drop-zone span.glyphicon-check {
     font-size:3em;
     line-height: .8em;
+}
+.upload-drop-zone span.glyphicon-check {
+    line-height: 1.42em;
+}
+#fileDisplayArea img {
+    overflow:hidden;
+}
+.fileDisplayArea img {
+    max-width:50%;
+    overflow:hidden;
 }
 .alert-warning {
     background-image: none;
@@ -1502,7 +1512,21 @@ input[type="radio"]:focus + label span.checkmark::after {
 .filename {
     font-size:.8em;
     display: inline-block;
-    padding: 0 7px;
+    padding: 3px 7px;
+    display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-wrap: break-word;
+    word-wrap:break-word;
+    -webkit-columns: 1;
+    -moz-columns: 1;
+    columns: 1;
+    -webkit-column-width: 100px;
+    -moz-column-width: 100px;
+    word-break:break-all;
+    width:60%;
+    float: left;
 }
 .alert-success {
     background-image:none!important;

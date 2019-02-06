@@ -116,4 +116,16 @@ public class GSClassCategory {
     public void setClassCategoryDescr(String classCategoryDescr) {
         this.classCategoryDescr = classCategoryDescr;
     }
+
+
+    public boolean isCategorySpecimenSet(){
+
+        if(classCategoryImagePath == null){
+            return false;
+        }
+        else {
+            return true;
+        }
+
+    }
 }
