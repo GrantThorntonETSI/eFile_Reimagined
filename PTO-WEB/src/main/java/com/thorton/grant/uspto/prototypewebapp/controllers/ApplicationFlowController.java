@@ -940,7 +940,7 @@ public class ApplicationFlowController {
 
         model.addAttribute("hostBean", hostBean);
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
-        return "application/owner/OwnerSetView";
+        return "application/owner/OwnerSetView2";
 
     }
 
