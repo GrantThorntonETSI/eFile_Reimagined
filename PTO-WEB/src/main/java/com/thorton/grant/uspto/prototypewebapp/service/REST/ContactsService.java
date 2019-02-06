@@ -4,7 +4,11 @@ import com.thorton.grant.uspto.prototypewebapp.config.host.bean.endPoint.HostBea
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.participants.LawyerService;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.participants.OwnerService;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 
 import org.springframework.http.ResponseEntity;
@@ -194,6 +198,117 @@ public class ContactsService extends  BaseRESTapiService {
         return buildResponseEnity("200", responseMsg);
     }
 
+
+
+
+
+
+    // need to add app id variable
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/contacts/owner/update/{contact_email}/{contact_field_name}/{contact_field_value}")
+    @ResponseBody
+    ResponseEntity<String> updateOwnerContact(@PathVariable String contact_email,@PathVariable String contact_field_name, @PathVariable String contact_field_value, @RequestParam("trademarkID") String trademarkInternalID ){
+
+        String appFieldReadable = "Owner contact";
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+        ////////////////////////////////////////////////////////////////////////////////////////////////
+        // check for valid security session ...as new contacts are added for PTOUser with valid sessions
+        ////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+        if(contact_field_name.equals("first-name")){
+            baseTrademarkApplication.findOwnerByEmail(contact_email).setFirstName(contact_field_value);
+            appFieldReadable = "Contact First Name ";
+
+        }
+
+        if(contact_field_name.equals("middle-name")){
+            baseTrademarkApplication.findOwnerByEmail(contact_email).setMidlleName(contact_field_value);
+            appFieldReadable = "Contact Middle Name ";
+
+        }
+        if(contact_field_name.equals("last-name")){
+            baseTrademarkApplication.findOwnerByEmail(contact_email).setLastName(contact_field_value);
+            appFieldReadable = "Contact Last Name ";
+        }
+
+
+        if(contact_field_name.equals("citizenship" )){
+            baseTrademarkApplication.findOwnerByEmail(contact_email).setCitizenShip(contact_field_value);
+            appFieldReadable = "Contact Citizenship ";
+
+        }
+
+        if(contact_field_name.equals("email" )){
+            baseTrademarkApplication.findOwnerByEmail(contact_email).setEmail(contact_field_value);
+            appFieldReadable = "Contact Email ";
+
+        }
+
+        if(contact_field_name.equals("address1" )){
+            baseTrademarkApplication.findOwnerByEmail(contact_email).setAddress(contact_field_value);
+            appFieldReadable = "Contact Street Address  ";
+
+        }
+
+        if(contact_field_name.equals("city" )){
+            baseTrademarkApplication.findOwnerByEmail(contact_email).setCity(contact_field_value);
+            appFieldReadable = "Contact City  ";
+
+        }
+
+        if(contact_field_name.equals("state" )){
+            baseTrademarkApplication.findOwnerByEmail(contact_email).setState(contact_field_value);
+            appFieldReadable = "Contact State  ";
+
+        }
+
+        if(contact_field_name.equals("zipcode" )){
+            baseTrademarkApplication.findOwnerByEmail(contact_email).setZipcode(contact_field_value);
+            appFieldReadable = "Contact Zipcode  ";
+
+        }
+
+        if(contact_field_name.equals("phone" )){
+            baseTrademarkApplication.findOwnerByEmail(contact_email).setPrimaryPhonenumber(contact_field_value);
+            appFieldReadable = "Contact Phone number ";
+
+        }
+
+        if(contact_field_name.equals("web" )){
+            baseTrademarkApplication.findOwnerByEmail(contact_email).setWebSiteURL(contact_field_value);
+            appFieldReadable = "Contact Phone number ";
+
+        }
+
+        if(contact_field_name.equals("country" )){
+            baseTrademarkApplication.findOwnerByEmail(contact_email).setCountry(contact_field_value);
+            appFieldReadable = "Contact Address Country ";
+
+        }
+
+
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+
+        ////////////////////////////////////////////////
+        // start generating response
+        ////////////////////////////////////////////////
+
+        String responseMsg = appFieldReadable+" has been saved";
+        return buildResponseEnity("200", responseMsg);
+
+
+
+
+
+    }
 
 
 }
