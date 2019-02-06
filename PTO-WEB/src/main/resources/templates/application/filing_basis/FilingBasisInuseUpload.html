@@ -119,47 +119,62 @@
                                 </div>
                                 <div class="row">
                                     <div class="form-group form-group-md col-xs-12">
-                                        <div class="row">
-                                            <section aria-label="class image and description">
-                                                <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service_class.getClassCategporyImpageFormID()}"  action="/class/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
-                                                    <div class="col-xs-12 col-md-6">
-                                                        <p id="upimage">Provide an image of your specimen:</p>
-                                                        <div>
-                                                            <label class="small upload-drop-zone" th:attr="for=${Good_Service_class.classFileInputID}" id="upimg"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Click here to select file for upload.</label>
-                                                            <input type="file" th:attr="id=${Good_Service_class.classFileInputID}" name="file" class="form-control">
-                                                        </div><!-- Drop Zone -->
-                                                    </div>
-
-
-
-                                                </form>
-                                                <div class="col-xs-12 col-md-6">
-                                                    <label th:attr="for=${Good_Service_class.classSpecDescID}" >Provide a description of your specimen:</label>
-                                                    <textarea  th:attr="id=${Good_Service_class.classSpecDescID},cat-num=${Good_Service_class.getClassCategoryNumber()}"  th:text="${Good_Service_class.getClassCategoryDescr()}" rows="4"  class="form-control class-spec-desc-ta"></textarea>
-                                                </div>
-                                                <div class="col-xs-12">
-                                                    <div class="center">
-                                                        <div class="speciman-image" id="cat-spec-img" style="">
-
-                                                            <img  th:attr="src=${Good_Service_class.classCategoryImagePath}, id=${Good_Service_class.classImageID}"  alt="" class="img-responsive"/>
-                                                        </div>
-
-
-                                                    </div>
-
+                                        div class="row">
+                                        <section aria-label="class image and description">
+                                            <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service_class.getClassCategporyImpageFormID()}"  action="/class/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
+                                                <div class="col-xs-4">
+                                                    <p id="upimage">Provide an image of your specimen:</p>
+                                                    <div>
+                                                        <label class="small upload-drop-zone" th:attr="for=${Good_Service_class.classFileInputID}" id="upimg"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Click here to select file for upload.</label>
+                                                        <input type="file" th:attr="id=${Good_Service_class.classFileInputID}" name="file" class="form-control">
+                                                    </div><!-- Drop Zone -->
                                                 </div>
 
-                                                <div class="col-xs-12">
-                                                    <div class="center">
 
-                                                        <div type="button" th:attr="form=${Good_Service_class.getClassCategporyImpageFormID()},cat-num=${Good_Service_class.getClassCategoryNumber()}, file-id=${Good_Service_class.classFileInputID}, class-img-id=${Good_Service_class.classImageID}, spinner-id=${Good_Service_class.classUploadSpinnerID}" class="btn btn-sm submitCCSpecimen" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Specimen</b><span><i class="fa fa-spinner fa-spin"  th:attr="id=${Good_Service_class.classUploadSpinnerID}" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
-                                                    </div>
+
+                                            </form>
+
+                                            <div class="col-xs-4">
+                                                <div >
+
+                                                    <p class="text-center"><span class="glyphicon glyphicon-picture"></span><br><br>
+
+                                                        <span id="mark-img-container" style="">
+
+                                                                   <th:block th:if="${Good_Service_class.isCategorySpecimenSet() == false}">
+                                                                          <img  th:attr="id=${Good_Service_class.classImageID}" th:src="@{/resources/images/image_placeholder_icon.png}" style="position: relative; left:-5px; min-width: 222px; max-width: 222px; max-height: 111px; min-height: 111px;"  id="markImage" />
+
+                                                                   </th:block>
+
+                                                                    <th:block th:if="${Good_Service_class.isCategorySpecimenSet() == true}">
+                                                                           <img  th:attr="src=${Good_Service_class.getClassCategoryImagePath()},id=${Good_Service_class.classImageID}"  style="position: relative; left:-5px; min-width: 222px; max-width: 222px; max-height: 111px; min-height: 111px;"  id="markImage" />
+
+                                                                   </th:block>
+
+
+                                                                </span>
+                                                    </p>
 
                                                 </div>
 
-                                            </section>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <label th:attr="for=${Good_Service_class.classSpecDescID}" >Provide a description of your specimen:</label>
+                                                <textarea  th:attr="id=${Good_Service_class.classSpecDescID},cat-num=${Good_Service_class.getClassCategoryNumber()}"  th:text="${Good_Service_class.getClassCategoryDescr()}" rows="4"  class="form-control class-spec-desc-ta"></textarea>
+                                            </div>
 
-                                        </div>
+
+                                            <div class="col-xs-12">
+                                                <div class="center">
+
+                                                    <div type="button" th:attr="form=${Good_Service_class.getClassCategporyImpageFormID()},cat-num=${Good_Service_class.getClassCategoryNumber()}, file-id=${Good_Service_class.classFileInputID}, class-img-id=${Good_Service_class.classImageID}, spinner-id=${Good_Service_class.classUploadSpinnerID}" class="btn btn-sm submitCCSpecimen" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Specimen</b><span><i class="fa fa-spinner fa-spin"  th:attr="id=${Good_Service_class.classUploadSpinnerID}" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                                </div>
+
+                                            </div>
+
+                                        </section>
+
+                                    </div>
 
                                         <th:block th:each="Good_Service: ${Good_Service_class.getGoodAndServices()}">
                                             <div class="row">
@@ -185,13 +200,8 @@
 
 
                                                             <th:block th:if="${Good_Service.isProvideSample() == false}">
-                                                                <div class="col-xs-12 form-group form-group-md">
-                                                                    <input class="form-check-input checkmark provide-spec" type="checkbox" value="yes" tabindex="0"  th:attr="id=${Good_Service.getInternalID()}" >
-                                                                    <label class="form-check-label form-check long"  th:attr="for=${Good_Service.getInternalID()}"><span class="radio notspecial small">Check here to provide a specimen for this individual good/service.</span></label>
-                                                                </div>
-
-                                                                <div id="yesspecimenone" class="form-group form-group-md" style="display: none;"><!--toggle 'yes' radio-->
-                                                                    <div class="col-xs-12 col-md-6">
+                                                                <div id="yesspecimenone" class="form-group form-group-md"    style="display: none"><!--toggle 'yes' radio-->
+                                                                    <div class="col-xs-4">
                                                                         <p id="upimagetwo">Provide an image of your specimen:</p>
                                                                         <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service.getGSImpageFormID()}"  action="/gs/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
                                                                             <div>
@@ -200,22 +210,40 @@
                                                                             </div><!-- Drop Zone -->
                                                                         </form>
                                                                     </div>
-                                                                    <div class="col-xs-12 col-md-6">
-                                                                        <label th:attr="for=${Good_Service.getGSSpecDescID()}">Provide a description of your specimen:</label>
-                                                                        <textarea  th:attr="id=${Good_Service.getGSSpecDescID()}"  rows="4"   class="form-control spec-description"></textarea>
-                                                                    </div>
+                                                                    <div class="col-xs-4">
+                                                                        <div>
+                                                                            <div class="speciman-image"  style="">
 
-                                                                    <div class="col-xs-12">
-                                                                        <div class="center">
-                                                                            <div class="speciman-image" id="gs-spec-img" style="">
+                                                                                <p class="text-center"><span class="glyphicon glyphicon-picture"></span><br><br>
 
-                                                                                <img  th:attr="src=${Good_Service.sampleImagePath}, id=${Good_Service.getGSImageID()}"  alt="" class="img-responsive"/>
+                                                                                    <span style="">
+
+                                                                                           <th:block th:if="${Good_Service.isGSSpecimenSet() == false}">
+                                                                                                  <img  th:attr="id=${Good_Service.getGSImageID()}" th:src="@{/resources/images/image_placeholder_icon.png}" style="position: relative; left:-5px; min-width: 222px; max-width: 222px; max-height: 111px; min-height: 111px;"  id="markImage" />
+
+                                                                                           </th:block>
+
+                                                                                            <th:block th:if="${Good_Service.isGSSpecimenSet() == true}">
+                                                                                                   <img  th:attr="src=${Good_Service.getSampleImagePath()},id=${Good_Service.getGSImageID()}"  style="position: relative; left:-5px; min-width: 222px; max-width: 222px; max-height: 111px; min-height: 111px;"  id="markImage" />
+
+                                                                                           </th:block>
+
+
+                                                                                        </span>
+                                                                                </p>
                                                                             </div>
 
 
                                                                         </div>
 
                                                                     </div>
+                                                                    <div class="col-xs-4">
+                                                                        <label th:attr="for=${Good_Service.getGSSpecDescID()}">Provide a description of your specimen:</label>
+                                                                        <textarea  th:attr="id=${Good_Service.getGSSpecDescID()}"  rows="4"   class="form-control spec-description"></textarea>
+                                                                    </div>
+
+
+
 
                                                                     <div class="col-xs-12">
                                                                         <div class="center">
@@ -227,37 +255,53 @@
 
                                                                 </div>
                                                             </th:block>
+
                                                             <th:block th:if="${Good_Service.isProvideSample() == true}">
-                                                                <div class="col-xs-12 form-group form-group-md">
-                                                                    <input class="form-check-input checkmark provide-spec" type="checkbox" aria-checked="true"  aria-labelledby="provide-spec-label" value="yes" tabindex="0"  th:attr="id=${Good_Service.getInternalID()}" checked>
-                                                                    <label class="form-check-label form-check long" id="provide-spec-label"  th:attr="for=${Good_Service.getInternalID()}"><span class="radio notspecial small">Check here to provide a specimen for this individual good/service.</span></label>
-                                                                </div>
-                                                                <div id="yesspecimenone" class="form-group form-group-md" style=""><!--toggle 'yes' radio-->
-                                                                    <div class="col-xs-12 col-md-6">
+                                                                <div id="yesspecimenone" class="form-group form-group-md"    style=""><!--toggle 'yes' radio-->
+                                                                    <div class="col-xs-4">
                                                                         <p id="upimagetwo">Provide an image of your specimen:</p>
                                                                         <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service.getGSImpageFormID()}"  action="/gs/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
                                                                             <div>
-                                                                                <label class="small upload-drop-zone" th:attr="for=${Good_Service.getGSFileInputID()}" id="upimgtwo"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Drag and drop files or click here to upload.</label>
+                                                                                <label class="small upload-drop-zone" th:attr="for=${Good_Service.getGSFileInputID()}" id="upimgtwo"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Click here to upload.</label>
                                                                                 <input type="file" th:attr="id=${Good_Service.getGSFileInputID()}" name="file" class="form-control" aria-labelledby="upimgtwo upimagetwo">
                                                                             </div><!-- Drop Zone -->
                                                                         </form>
                                                                     </div>
-                                                                    <div class="col-xs-12 col-md-6">
-                                                                        <label th:attr="for=${Good_Service.getGSSpecDescID()}">Provide a description of your specimen:</label>
-                                                                        <textarea  th:attr="id=${Good_Service.getGSSpecDescID()}"  rows="4"   class="form-control spec-description"></textarea>
-                                                                    </div>
+                                                                    <div class="col-xs-4">
+                                                                        <div>
+                                                                            <div class="speciman-image"  style="">
 
-                                                                    <div class="col-xs-12">
-                                                                        <div class="center">
-                                                                            <div class="speciman-image" id="gs-spec-img" style="">
+                                                                                <p class="text-center"><span class="glyphicon glyphicon-picture"></span><br><br>
 
-                                                                                <img  th:attr="src=${Good_Service.sampleImagePath}, id=${Good_Service.getGSImageID()}"  alt="" class="img-responsive"/>
+                                                                                    <span style="">
+
+                                                                                           <th:block th:if="${Good_Service.isGSSpecimenSet() == false}">
+                                                                                                  <img  th:attr="id=${Good_Service.getGSImageID()}" th:src="@{/resources/images/image_placeholder_icon.png}" style="position: relative; left:-5px; min-width: 222px; max-width: 222px; max-height: 111px; min-height: 111px;"  id="markImage" />
+
+                                                                                           </th:block>
+
+                                                                                            <th:block th:if="${Good_Service.isGSSpecimenSet() == true}">
+                                                                                                   <img  th:attr="src=${Good_Service.getSampleImagePath()},id=${Good_Service.getGSImageID()}"  style="position: relative; left:-5px; min-width: 222px; max-width: 222px; max-height: 111px; min-height: 111px;"  id="markImage" />
+
+                                                                                           </th:block>
+
+
+                                                                                        </span>
+                                                                                </p>
                                                                             </div>
 
 
                                                                         </div>
 
                                                                     </div>
+                                                                    <div class="col-xs-4">
+                                                                        <label th:attr="for=${Good_Service.getGSSpecDescID()}">Provide a description of your specimen:</label>
+                                                                        <textarea  th:attr="id=${Good_Service.getGSSpecDescID()}"  rows="4"   class="form-control spec-description"></textarea>
+                                                                    </div>
+
+
+
+
 
                                                                     <div class="col-xs-12">
                                                                         <div class="center">
@@ -269,7 +313,6 @@
 
                                                                 </div>
                                                             </th:block>
-
 
 
 
@@ -1120,7 +1163,7 @@
                                                                     </div>
                                                                     <!--need to load ids and required info into the divs and buttons   -->
                                                                     <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service.getFRCertImageFormID()}"  action="/fb/foreignReg/add"  enctype="multipart/form-data"  aria-labelledby="title">
-                                                                        <div class="form-group form-group-md col-xs-12">
+                                                                        <div class="form-group form-group-md col-xs-6">
                                                                             <p id="upimagethree">Provide an image of foreign registration certificate: <span class="label label-info subtle visuallyremoved">Reduce Fee</span></p>
                                                                             <div>
                                                                                 <label class="small upload-drop-zone" th:attr="for=${Good_Service.getFRCertFileID()}" id="upimgtwo"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span></label>
@@ -1128,17 +1171,34 @@
                                                                             </div><!-- Drop Zone -->
                                                                         </div>
                                                                     </form>
-                                                                    <div class="col-xs-12">
-                                                                        <div class="center">
-                                                                            <div class="speciman-image" id="misc-info-img-container" style="">
+                                                                    <div class="col-xs-6">
+                                                                        <div>
+                                                                            <div class="speciman-image"  style="margin-top: 22px;">
 
-                                                                                <img  th:attr="src=${Good_Service.getFrCertImagePath()}, id=${Good_Service.getFRCertImageID()}" alt="" class="img-responsive"/>
+                                                                                <p class="text-center"><span class="glyphicon glyphicon-picture"></span><br><br>
+
+                                                                                    <span style="">
+
+                                                                                           <th:block th:if="${Good_Service.isFRcertUploaded() == false}">
+                                                                                                  <img  th:attr="id=${Good_Service.getFRCertImageID()}" th:src="@{/resources/images/image_placeholder_icon.png}" style="position: relative; left:-5px; min-width: 222px; max-width: 222px; max-height: 111px; min-height: 111px;"  id="markImage" />
+
+                                                                                           </th:block>
+
+                                                                                            <th:block th:if="${Good_Service.isFRcertUploaded()== true}">
+                                                                                                   <img   th:attr="src=${Good_Service.getFrCertImagePath()}, id=${Good_Service.getFRCertImageID()}"  style="position: relative; left:-5px; min-width: 222px; max-width: 222px; max-height: 111px; min-height: 111px;"  id="markImage" />
+
+                                                                                           </th:block>
+
+
+                                                                                        </span>
+                                                                                </p>
                                                                             </div>
 
 
                                                                         </div>
 
                                                                     </div>
+
 
                                                                     <div class="col-xs-12">
                                                                         <div class="center">
@@ -1418,7 +1478,7 @@
                                                                         </div>
                                                                         <!--need to load ids and required info into the divs and buttons   -->
                                                                         <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service.getFRCertImageFormID()}"  action="/fb/foreignReg/add"  enctype="multipart/form-data"  aria-labelledby="title">
-                                                                            <div class="form-group form-group-md col-xs-12">
+                                                                            <div class="form-group form-group-md col-xs-6">
                                                                                 <p id="upimagethree">Provide an image of foreign registration certificate: <span class="label label-info subtle visuallyremoved">Reduce Fee</span></p>
                                                                                 <div>
                                                                                     <label class="small upload-drop-zone" th:attr="for=${Good_Service.getFRCertFileID()}" id="upimgtwo"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span></label>
@@ -1426,17 +1486,34 @@
                                                                                 </div><!-- Drop Zone -->
                                                                             </div>
                                                                         </form>
-                                                                        <div class="col-xs-12">
-                                                                            <div class="center">
-                                                                                <div class="speciman-image" id="misc-info-img-container" style="">
+                                                                        <div class="col-xs-6">
+                                                                            <div>
+                                                                                <div class="speciman-image"  style="margin-top: 22px;">
 
-                                                                                    <img  th:attr="src=${Good_Service.getFrCertImagePath()}, id=${Good_Service.getFRCertImageID()}" alt="" class="img-responsive"/>
+                                                                                    <p class="text-center"><span class="glyphicon glyphicon-picture"></span><br><br>
+
+                                                                                        <span style="">
+
+                                                                                           <th:block th:if="${Good_Service.isFRcertUploaded() == false}">
+                                                                                                  <img  th:attr="id=${Good_Service.getFRCertImageID()}" th:src="@{/resources/images/image_placeholder_icon.png}" style="position: relative; left:-5px; min-width: 222px; max-width: 222px; max-height: 111px; min-height: 111px;"  id="markImage" />
+
+                                                                                           </th:block>
+
+                                                                                            <th:block th:if="${Good_Service.isFRcertUploaded()== true}">
+                                                                                                   <img   th:attr="src=${Good_Service.getFrCertImagePath()}, id=${Good_Service.getFRCertImageID()}"  style="position: relative; left:-5px; min-width: 222px; max-width: 222px; max-height: 111px; min-height: 111px;"  id="markImage" />
+
+                                                                                           </th:block>
+
+
+                                                                                        </span>
+                                                                                    </p>
                                                                                 </div>
 
 
                                                                             </div>
 
                                                                         </div>
+
 
                                                                         <div class="col-xs-12">
                                                                             <div class="center">
