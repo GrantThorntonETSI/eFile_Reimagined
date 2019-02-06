@@ -252,7 +252,7 @@
                                                                                     <span style="">
 
                                                                                            <th:block th:if="${Good_Service.isGSSpecimenSet() == false}">
-                                                                                                  <img  th:attr="id=${Good_Service_class.classImageID}" th:src="@{/resources/images/image_placeholder_icon.png}" style="position: relative; left:-5px; min-width: 222px; max-width: 222px; max-height: 111px; min-height: 111px;"  id="markImage" />
+                                                                                                  <img  th:attr="id=${Good_Service.getGSImageID()}" th:src="@{/resources/images/image_placeholder_icon.png}" style="position: relative; left:-5px; min-width: 222px; max-width: 222px; max-height: 111px; min-height: 111px;"  id="markImage" />
 
                                                                                            </th:block>
 
@@ -309,7 +309,7 @@
                                                                                         <span style="">
 
                                                                                            <th:block th:if="${Good_Service.isGSSpecimenSet() == false}">
-                                                                                                  <img  th:attr="id=${Good_Service_class.classImageID}" th:src="@{/resources/images/image_placeholder_icon.png}" style="position: relative; left:-5px; min-width: 222px; max-width: 222px; max-height: 111px; min-height: 111px;"  id="markImage" />
+                                                                                                  <img  th:attr="id=${Good_Service.getGSImageID()}" th:src="@{/resources/images/image_placeholder_icon.png}" style="position: relative; left:-5px; min-width: 222px; max-width: 222px; max-height: 111px; min-height: 111px;"  id="markImage" />
 
                                                                                            </th:block>
 
@@ -1582,7 +1582,7 @@
                                                                                     <span style="">
 
                                                                                            <th:block th:if="${Good_Service.isGSSpecimenSet() == false}">
-                                                                                                  <img  th:attr="id=${Good_Service_class.classImageID}" th:src="@{/resources/images/image_placeholder_icon.png}" style="position: relative; left:-5px; min-width: 222px; max-width: 222px; max-height: 111px; min-height: 111px;"  id="markImage" />
+                                                                                                  <img  th:attr="id=${Good_Service.getGSImageID()}" th:src="@{/resources/images/image_placeholder_icon.png}" style="position: relative; left:-5px; min-width: 222px; max-width: 222px; max-height: 111px; min-height: 111px;"  id="markImage" />
 
                                                                                            </th:block>
 
@@ -2201,7 +2201,7 @@
                                                                         </div>
                                                                         <!--need to load ids and required info into the divs and buttons   -->
                                                                         <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service.getFRCertImageFormID()}"  action="/fb/foreignReg/add"  enctype="multipart/form-data"  aria-labelledby="title">
-                                                                            <div class="form-group form-group-md col-xs-12">
+                                                                            <div class="form-group form-group-md col-xs-6">
                                                                                 <p id="upimagethree">Provide an image of foreign registration certificate: <span class="label label-info subtle visuallyremoved">Reduce Fee</span></p>
                                                                                 <div>
                                                                                     <label class="small upload-drop-zone" th:attr="for=${Good_Service.getFRCertFileID()}" id="upimgtwo"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span></label>
@@ -2209,17 +2209,34 @@
                                                                                 </div><!-- Drop Zone -->
                                                                             </div>
                                                                         </form>
-                                                                        <div class="col-xs-12">
-                                                                            <div class="center">
-                                                                                <div class="speciman-image" id="misc-info-img-container" style="">
+                                                                        <div class="col-xs-6">
+                                                                            <div>
+                                                                                <div class="speciman-image"  style="margin-top: 22px;">
 
-                                                                                    <img  th:attr="src=${Good_Service.getFrCertImagePath()}, id=${Good_Service.getFRCertImageID()}" alt="" class="img-responsive"/>
+                                                                                    <p class="text-center"><span class="glyphicon glyphicon-picture"></span><br><br>
+
+                                                                                        <span style="">
+
+                                                                                           <th:block th:if="${Good_Service.isFRcertUploaded() == false}">
+                                                                                                  <img  th:attr="id=${Good_Service.getFrCertImagePath()}" th:src="@{/resources/images/image_placeholder_icon.png}" style="position: relative; left:-5px; min-width: 222px; max-width: 222px; max-height: 111px; min-height: 111px;"  id="markImage" />
+
+                                                                                           </th:block>
+
+                                                                                            <th:block th:if="${Good_Service.isFRcertUploaded()== true}">
+                                                                                                   <img   th:attr="src=${Good_Service.getFrCertImagePath()}, id=${Good_Service.getFRCertImageID()}"  style="position: relative; left:-5px; min-width: 222px; max-width: 222px; max-height: 111px; min-height: 111px;"  id="markImage" />
+
+                                                                                           </th:block>
+
+
+                                                                                        </span>
+                                                                                    </p>
                                                                                 </div>
 
 
                                                                             </div>
 
                                                                         </div>
+
 
                                                                         <div class="col-xs-12">
                                                                             <div class="center">
@@ -2905,7 +2922,9 @@
                     // we will return the the file url
                     // call jquery and set it in the img div
                     var imgPath = parsePathFromResponse(data);
+alert(imgPath);
 
+alert(imageId);
 
                     $('#'+imageId).attr("src", imgPath);
                     $("#"+spinnerID).hide();
