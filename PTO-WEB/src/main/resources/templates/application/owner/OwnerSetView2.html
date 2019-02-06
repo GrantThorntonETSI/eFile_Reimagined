@@ -118,7 +118,7 @@
 
                                                                 <div class="row">
                                                                     <div class="col-xs-12 col-md-4">
-                                                                        <p class="panel-title number weight600"><button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" th:attr="data-target='#'+${owner.id}"  aria-controls="jbabos" aria-expanded="false" id="jbabosbtn"><span class="glyphicon glyphicon-triangle-right"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Jackie Babos</button></p>
+                                                                        <p class="panel-title number weight600"><button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" th:attr="data-target='#'+${owner.id}"  th:text="${owner.getOwnerDisplayname()}" aria-controls="jbabos" aria-expanded="false" id="jbabosbtn"><span class="glyphicon glyphicon-triangle-right"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Jackie Babos</button></p>
                                                                     </div>
                                                                     <div class="col-xs-12 col-md-5 email">
                                                                         <p th:text="${owner.getEmail()}">jackie.babos@us.gt.com</p>
@@ -464,9 +464,13 @@
 
 
 
-        // set add owner link
 
-        $('#addOwnerLink').prop("href", prevLinkURL);
+        $('#addOwnerLink').click(function () {
+
+            location.href=prevLinkURL;
+        });
+
+
 
 
         /////////////////////////////////////////////////////////////////////////
