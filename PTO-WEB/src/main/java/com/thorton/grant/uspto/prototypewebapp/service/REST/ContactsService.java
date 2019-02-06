@@ -205,9 +205,9 @@ public class ContactsService extends  BaseRESTapiService {
 
     // need to add app id variable
     @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
-    @RequestMapping(method = GET, value="/REST/apiGateway/contacts/owner/update/{contact_email}/{contact_field_name}/{contact_field_value}")
+    @RequestMapping(method = GET, value="/REST/apiGateway/application/owner/update/{contact_email}/{contact_field_name}/{contact_field_value}/{trademarkInternalID}")
     @ResponseBody
-    ResponseEntity<String> updateOwnerContact(@PathVariable String contact_email,@PathVariable String contact_field_name, @PathVariable String contact_field_value, @RequestParam("trademarkID") String trademarkInternalID ){
+    ResponseEntity<String> updateOwnerContact(@PathVariable String contact_email,@PathVariable String contact_field_name, @PathVariable String contact_field_value, @PathVariable String trademarkInternalID ){
 
         String appFieldReadable = "Owner contact";
 
@@ -217,9 +217,6 @@ public class ContactsService extends  BaseRESTapiService {
         ////////////////////////////////////////////////////////////////////////////////////////////////
         // check for valid security session ...as new contacts are added for PTOUser with valid sessions
         ////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
 
         if(contact_field_name.equals("first-name")){
             baseTrademarkApplication.findOwnerByEmail(contact_email).setFirstName(contact_field_value);
@@ -249,7 +246,11 @@ public class ContactsService extends  BaseRESTapiService {
             appFieldReadable = "Contact Email ";
 
         }
+        if(contact_field_name.equals("country" )){
+            baseTrademarkApplication.findOwnerByEmail(contact_email).setCountry(contact_field_value);
+            appFieldReadable = "Contact Address Country ";
 
+        }
         if(contact_field_name.equals("address1" )){
             baseTrademarkApplication.findOwnerByEmail(contact_email).setAddress(contact_field_value);
             appFieldReadable = "Contact Street Address  ";
@@ -286,11 +287,7 @@ public class ContactsService extends  BaseRESTapiService {
 
         }
 
-        if(contact_field_name.equals("country" )){
-            baseTrademarkApplication.findOwnerByEmail(contact_email).setCountry(contact_field_value);
-            appFieldReadable = "Contact Address Country ";
 
-        }
 
 
 

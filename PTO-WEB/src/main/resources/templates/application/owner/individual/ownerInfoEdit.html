@@ -742,13 +742,145 @@
             location.href=nextLinkURL;
         });
 
+        var ownerEmail = $('#ownerEmail').val();
+
+
+        $('#first-name').focusout(function () {
+            var value = $(this).val();
+           saveOwnerInfo(ownerEmail, "first-name",value, appInternalID);
+        });
+
+        $('#middle-name').focusout(function () {
+            var value = $(this).val();
+            saveOwnerInfo(ownerEmail, "middle-name",value, appInternalID);
+        });
+
+        $('#last-name').focusout(function () {
+            var value = $(this).val();
+            saveOwnerInfo(ownerEmail, "last-name",value, appInternalID);
+        });
+
+        $('#suffix').change(function () {
+            var value = $(this).val();
+            saveOwnerInfo(ownerEmail, "suffix",value, appInternalID);
+        });
 
 
 
+        $('#owner-citizenship').change(function () {
+            var value = $(this).val();
+            saveOwnerInfo(ownerEmail, "citizenship",value, appInternalID);
+        });
 
+        $('#ownerEmail').focusout(function () {
+            var value = $(this).val();
+            saveOwnerInfo(ownerEmail, "email",value, appInternalID);
+        });
+
+
+        $('#OwnerAddressCountry').change(function () {
+            var value = $(this).val();
+            saveOwnerInfo(ownerEmail, "country",value, appInternalID);
+        });
+
+        $('#ownerAddress1').focusout(function () {
+            var value = $(this).val();
+            saveOwnerInfo(ownerEmail, "address1",value, appInternalID);
+        });
+
+        $('#ownerCity').focusout(function () {
+            var value = $(this).val();
+            saveOwnerInfo(ownerEmail, "city",value, appInternalID);
+        });
+
+        $('#ownerState').change(function () {
+            var value = $(this).val();
+            saveOwnerInfo(ownerEmail, "state",value, appInternalID);
+        });
+
+
+        $('#ownerZipcode').focusout(function () {
+            var value = $(this).val();
+            saveOwnerInfo(ownerEmail, "zipcode",value, appInternalID);
+        });
+
+
+        $('#webaddress').focusout(function () {
+            var value = $(this).val();
+            saveOwnerInfo(ownerEmail, "web",value, appInternalID);
+        });
+
+        $('#phone').focusout(function () {
+            var value = $(this).val();
+            saveOwnerInfo(ownerEmail, "phone",value, appInternalID);
+        });
         // ajax auto save
     });
 
+
+
+    function saveOwnerInfo(contact_email, field_name, field_value) {
+
+        //////////////////////////////////////////////////////////////////////////////////////
+        // we need REST controller of finding a contact by its email
+        // this needs to be implemented on the PTOUser object
+        //////////////////////////////////////////////////////////////////////////////////////
+        var contact_field_name = "application-contact-add-confirm";
+
+        $.ajax({
+
+            url: "../../../../../REST/apiGateway/application/owner/update/"+contact_email+"/"+field_name+"/"+field_value+"/"+appInternalID,
+
+            type: 'GET',
+            success: function(data){
+
+
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                if(s_code.trim() == "200"){
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function() {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+
+
+
+
+                }
+                else{
+                    //$('.circle-loader').fadeOut(100);
+                    //$('.x-mark').fadeIn(500);
+                    //$(".validationMsgArea span").text(s_msg);
+                    //$(".validationMsgArea span").css('color','red');
+                }
+
+            },
+            error: function(data) {
+
+                //$('.circle-loader').fadeOut(100);
+                //$('.x-mark').fadeIn(500);
+
+                console.log(data);
+                // set message to div area ...fields can not be left null
+                //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                //$(".validationMsgArea span").css('color','red');
+            }
+
+        });
+
+    } // end of function
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 

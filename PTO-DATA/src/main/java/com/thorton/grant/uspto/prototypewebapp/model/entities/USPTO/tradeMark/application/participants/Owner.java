@@ -189,7 +189,14 @@ public class Owner extends Contact{
     }
 
     public String getOwnerDisplayname() {
-        return ownerDisplayname;
+
+        if(getFirstName() == null || getLastName() == null){
+            return getOwnerName();
+        }
+        else {
+            return getFirstName() + " " + getLastName();
+        }
+
     }
 
     public void setOwnerDisplayname(String ownerDisplayname) {
