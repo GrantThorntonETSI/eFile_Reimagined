@@ -352,7 +352,7 @@
         var bsLink6_active =  "../../application/confirmInfo/?trademarkID="+appInternalID;
         var bsLink6_done =  "../../application/confirmInfo/?trademarkID="+appInternalID;
         ////////////////////////////////////////////////////////////////////////////////////
-
+        var ownerEditURL =  "../../application/owner/Ind/edit/?trademarkID="+appInternalID;
 
 
     </script>
@@ -565,6 +565,17 @@
                 }
                 ownerPoolSize--;
 
+
+            });
+
+
+
+
+            $('.material-icons').click(function () {
+
+                if($(this).html() == "contacts"){
+                    location.href=ownerEditURL;
+                }
 
             });
 
