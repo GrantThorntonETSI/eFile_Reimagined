@@ -28,6 +28,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -485,8 +486,8 @@ public class ApplicationFlowController {
 
 
     // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
-    @RequestMapping({"/application/owner/Ind/edit"})
-    public String ownerIndvUSInfoEdit(WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
+    @RequestMapping({"/application/owner/Ind/edit/{email}"})
+    public String ownerIndvUSInfoEdit(WebRequest request, Model model, @PathVariable String email, @RequestParam("trademarkID") String trademarkInternalID) {
 
         // create a new application and tie it to user then save it to repository
         // create attorneyDTO + to model
@@ -502,9 +503,15 @@ public class ApplicationFlowController {
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
 
 
+        Owner owner = baseTrademarkApplication.findOwnerByEmail(email);
+
+        model.addAttribute("owner", owner);
+
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
         model.addAttribute("hostBean", hostBean);
+
+
 
 
 
