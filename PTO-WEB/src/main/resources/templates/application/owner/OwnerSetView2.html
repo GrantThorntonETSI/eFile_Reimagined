@@ -96,7 +96,7 @@
                                 <p id="lead" class="weight600">Trademark Application Owner Details</p>
                             </div>
                             <div class="col-xs-12 col-md-6 col-lg-4">
-                                <button type="button" class="btn-sm btn-success add">Add Additional Owner</button>
+                                <button type="button" class="btn-sm btn-success add" id="addOwnerLink">Add Additional Owner</button>
                             </div>
                         </div>
                         <form action="" method="post" >
@@ -105,64 +105,78 @@
                                     <div class="col-xs-12">
                                         <!--START selected panels-->
                                         <!--panel one-->
-                                        <div class="panel-group">
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 col-sm-9 col-md-10">
-                                                            <div class="row">
-                                                                <div class="col-xs-12 col-md-4">
-                                                                    <p class="panel-title number weight600"><button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#jbabos" aria-controls="jbabos" aria-expanded="false" id="jbabosbtn"><span class="glyphicon glyphicon-triangle-right"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Jackie Babos</button></p>
-                                                                </div>
-                                                                <div class="col-xs-12 col-md-5 email">
-                                                                    <p>jackie.babos@us.gt.com</p>
-                                                                </div>
-                                                                <div class="col-xs-12 col-md-3">
-                                                                    <p>Individual</p>
-                                                                </div>
-                                                            </div>
-                                                            <div id="jbabos" class="collapse Accordion-panel" role="region" aria-labelledby="jbabosbtn">
-                                                                <div class="Accordion" role="region">
-                                                                    <div class="row">
-                                                                        <div class="col-xs-12 col-md-6 col-lg-8">
-                                                                            <p id="jbabostype">Owner Address</p>
-                                                                            <div aria-labelledby="jbabostype">
-                                                                                <div class="form-group form-group-md">
-                                                                                    <span style="color:black;">1115 reserver champion drive, rockvile md 20850</span>
 
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-xs-12 col-md-6 col-lg-8">
-                                                                            <p id="jbabosnameofothertype">Owner Contact Info</p>
-                                                                            <div aria-labelledby="jbabosnameofothertype">
-                                                                                <div class="form-group form-group-md" style="color:black;">
-                                                                                    <span>email: lzhang421@gmail.com</span>
-                                                                                    </br>
-                                                                                    <span>phone: 581-777-3333</span>
 
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+
+
+                                        <th:block th:each="owner : ${baseTrademarkApplication.owners}">
+                                            <div class="panel-group">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-9 col-md-10">
+
+                                                                <div class="row">
+                                                                    <div class="col-xs-12 col-md-4">
+                                                                        <p class="panel-title number weight600"><button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" th:attr="data-target='#'+${owner.id}"  aria-controls="jbabos" aria-expanded="false" id="jbabosbtn"><span class="glyphicon glyphicon-triangle-right"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Jackie Babos</button></p>
                                                                     </div>
+                                                                    <div class="col-xs-12 col-md-5 email">
+                                                                        <p th:text="${owner.getEmail()}">jackie.babos@us.gt.com</p>
+                                                                    </div>
+                                                                    <div class="col-xs-12 col-md-3">
+                                                                        <p th:text="${owner.getOwnersubType()}">Individual</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div th:attr="id=${owner.id}"  class="collapse Accordion-panel" role="region" aria-labelledby="jbabosbtn">
+                                                                    <div class="Accordion" role="region">
+                                                                        <div class="row">
+                                                                            <div class="col-xs-12 col-md-6 col-lg-8">
+                                                                                <p id="jbabostype">Owner Address Info</p>
+                                                                                <div aria-labelledby="jbabostype">
+                                                                                    <div class="form-group form-group-md">
+                                                                                        <span style="color: black;" th:text="${owner.address}+' '+${owner.city}+', '+${owner.state}+' '+${owner.zipcode}"> 1115 Reserve Champion Drive, Rockville MD 20850</span>
+
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-xs-12 col-md-6 col-lg-8">
+                                                                                <p id="jbabosnameofothertype">Owner Contact Info</p>
+                                                                                <div aria-labelledby="jbabosnameofothertype">
+                                                                                    <div class="form-group form-group-md" style="color:black;">
+                                                                                        <span th:text="${owner.getEmail()}">email: lzhang421@gmail.com</span>
+                                                                                        </br>
+                                                                                        <span th:text="${owner.getPrimaryPhonenumber()}">phone: 581-777-3333</span>
+
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
 
 
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="col-xs-12 col-sm-3 col-md-2 inlinebuttons btn-group btn-group-justified" aria-label="edit or remove contact">
+                                                                <div class="btn-group">
+                                                                    <button type="button" class="btn btn-sm btn-success owner-edit" aria-label="edit contact" th:attr="owner-email=${owner.getEmail()}">Edit</button>
+                                                                </div>
+                                                                <div class="btn-group">
+                                                                    <button type="button" class="btn btn-sm btn-primary close remove-owner" th:attr="contact-email=${owner.getEmail()}" aria-label="close contact"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-xs-12 col-sm-3 col-md-2 inlinebuttons btn-group btn-group-justified" aria-label="edit or remove contact">
-                                                            <div class="btn-group">
-                                                                <button type="button" class="btn btn-sm btn-success" aria-label="edit contact">Edit</button>
-                                                            </div>
-                                                            <div class="btn-group">
-                                                                <button type="button" class="btn btn-sm btn-primary close" aria-label="close contact"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
-                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!--panel two-->
+                                            <!--panel two-->
+
+                                        </th:block>
+
+
+
 
                                         <!--END selected panels-->
                                     </div>
@@ -459,33 +473,6 @@
         /////////////////////////////////////////////////////////////////////////
 
 
-        /////////////////////////////////////////////////////////////////////////
-        // add new owner
-        /////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////
-        // load correspoinding owner form into modal on open
-        ////////////////////////////////////////////////////////////////
-        $('#addNewOwnerModal').on('shown.bs.modal', function () {
-
-            $.post(newOwnerLink, function(data){
-
-                $("#addNewOwnerModalBody").html(data).fadeIn();
-
-            });
-
-        });
-
-
-        $('#addNewOwnerModal').on('hidden.bs.modal', function () {
-
-            // clean up dynamically loaded html
-            $("#addNewOwnerModalBody").html("").fadeIn();
-
-            $("#ownerEntityForm").html("").fadeIn();
-
-        });
-
-
 
         // all text notification should go away by itself
 
@@ -500,8 +487,8 @@
         // remove owner - hide and auto save
         $('.remove-owner').click(function () {
             //alert($(this).parent().parent().parent().html());
-            $(this).parent().parent().parent().fadeOut(500);
-            $(this).parent().parent().parent().parent().next().fadeOut(500);
+            $(this).parent().parent().parent().parent().fadeOut(500);
+            $(this).parent().parent().parent().parent().parent().next().fadeOut(500);
             var contactEmail = $(this).attr("contact-email");
             //alert(contactEmail);
             // make call to remove attorney from application
@@ -519,12 +506,11 @@
 
 
 
-        $('.material-icons').click(function () {
+        $('.owner-edit').click(function () {
             var ownerEmail = $(this).attr("owner-email");
 
-            if($(this).html() == "contacts"){
                 location.href=ownerEditURL+ownerEmail+"/?trademarkID="+appInternalID;;
-            }
+
 
         });
 
