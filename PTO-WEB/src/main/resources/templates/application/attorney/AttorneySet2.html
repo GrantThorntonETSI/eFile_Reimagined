@@ -91,7 +91,7 @@
 
 
                 <div class="row" >
-                    <div class="col-sm-4">
+                    <div class="col-xs-12">
                         <h5><b>Select one of the following attorneys to be the primary attorney.</b></h5>
                     </div>
                     <div class="col-sm-2">
@@ -106,7 +106,14 @@
                             <div class="col-xs-12 col-md-6 col-lg-8 leadtext">
                                 <p id="lead" class="weight600">Trademark Application Attorney Details</p>
                             </div>
-                            <div class="col-xs-12 col-md-6 col-lg-4">
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col-xs-6 col-md-6 col-lg-4">
+                                <button type="button" class="btn-sm btn-success add" disabled>Confirm Primary Attorney</button>
+                            </div>
+                            <div class="col-xs-6 col-md-6 col-lg-4">
                                 <button type="button" class="btn-sm btn-success add">Add Additional Attorney</button>
                             </div>
                         </div>
@@ -125,13 +132,18 @@
                                                         <div class="row">
                                                             <div class="col-xs-12 col-sm-9 col-md-10">
                                                                 <div class="row">
+                                                                    <div class="col-xs-12 col-md-1">
+                                                                        <input  th:if="${lawyer.isPrimary() == true}" class="primaryLawyer" style="position: relative; bottom: -5px;"  type="radio" name="primaryAttorney" checked>
+                                                                        <input  th:if="${lawyer.isPrimary() == false}" class="primaryLawyer" style="position: relative; bottom: -5px;"  type="radio" name="primaryAttorney" >
+                                                                    </div>
                                                                     <div class="col-xs-12 col-md-4">
-                                                                        <p class="panel-title number weight600"><button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#jbabos" aria-controls="jbabos" aria-expanded="false" th:text="${lawyer.getFirstName()}+' '+${lawyer.getLastName()}"><span class="glyphicon glyphicon-triangle-right"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Jackie Babos</button></p>
+                                                                        <p class="panel-title number weight600"><button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#jbabos" aria-controls="jbabos" aria-expanded="false"  th:text="${lawyer.getFirstName()}+' '+${lawyer.getLastName()}" id="jbabosbtn"><span class="glyphicon glyphicon-triangle-right"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Jackie Babos</button></p>
+
                                                                     </div>
                                                                     <div class="col-xs-12 col-md-5 email">
                                                                         <p th:text="${lawyer.getEmail()}">jackie.babos@us.gt.com</p>
                                                                     </div>
-                                                                    <div class="col-xs-12 col-md-3">
+                                                                    <div class="col-xs-12 col-md-4">
                                                                         <p th:text="${lawyer.getLawFirmName()}">Individual</p>
                                                                     </div>
                                                                 </div>
@@ -187,8 +199,8 @@
                                                                 <div class="btn-group">
                                                                     <button type="button" class="btn btn-sm btn-success" aria-label="edit contact">Edit</button>
                                                                 </div>
-                                                                <div class="btn-group">
-                                                                    <button type="button" class="btn btn-sm btn-primary close" aria-label="close contact"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                                                                <div class="btn-group"  th:attr="primary-attorney=${lawyer.isPrimary()}">
+                                                                    <button type="button" class="btn btn-sm btn-primary close remove-attorney" aria-label="close contact" th:attr="contact-email=${lawyer.getEmail()}" ><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -225,7 +237,7 @@
                 <button type="button" class="btn btn-sm btn-default fill prev" id="prevButton" value="previous">Previous</button>
             </div>
             <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next" disabled>Next
+                <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next">Next
                     <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
             </div>
         </div>
@@ -505,16 +517,6 @@
 
 
         });
-
-
-// show attorney affiliation area
-        // sort and redraw to line up columns
-        $('[data-toggle="tooltip"]').tooltip();
-
-
-
-
-
         /////////////////////////////////////////////////
         // check each radio button in accordian..
         // if any is checked .. enable confirm and next buttons
@@ -572,8 +574,8 @@
         // remove attorney hide and auto save
         $('.remove-attorney').click(function () {
             //alert($(this).parent().parent().parent().html());
-            $(this).parent().parent().parent().fadeOut(500);
-            $(this).parent().parent().parent().parent().next().fadeOut(500);
+            $(this).parent().parent().parent().parent().fadeOut(500);
+            $(this).parent().parent().parent().parent().parent().next().fadeOut(500);
             var contactEmail = $(this).attr("contact-email");
             //alert(contactEmail);
             // make call to remove attorney from application

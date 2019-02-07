@@ -317,17 +317,6 @@ public class BaseTrademarkApplication  {
         return lawyer;
     }
 
-    public Lawyer findAttorneyContactByDisplayName(String name){
-        Lawyer lawyer = null;
-        for(Iterator<Lawyer> iter = availableLawyers.iterator(); iter.hasNext(); ) {
-            Lawyer current = iter.next();
-
-            if((current.getFirstName()+" "+current.getLastName()).equals(name)){
-                lawyer = current;
-            }
-        }
-        return lawyer;
-    }
 
 
     @Nullable
@@ -423,14 +412,6 @@ public class BaseTrademarkApplication  {
 
     public Long getId() {
         return id;
-    }
-
-    public void copyAvailableLawyers(Set<Lawyer> availableLawyers){
-
-        for(Iterator<Lawyer> iter = availableLawyers.iterator(); iter.hasNext(); ) {
-           this.availableLawyers.add(new Lawyer( iter.next() ));
-        }
-
     }
 
 
