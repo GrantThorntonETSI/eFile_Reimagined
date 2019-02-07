@@ -548,6 +548,45 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
         }
 
+        if(fbField.equals("gs-pfr-reg-date")){
+            if(gsID.equals("all")){
+
+                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+
+                    GoodAndService current = iter.next();
+
+                    try {
+                        DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+                        Date date = format.parse(fbValue);
+                        current.setFrRegistrationDate(date);
+
+                    }
+                    catch(Exception ex){
+                        return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
+
+                    }
+                }
+            }
+            else {
+                try {
+                    DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+                    Date date = format.parse(fbValue);
+                    baseTrademarkApplication.findGSbyInternalID(gsID).setFrRegistrationDate(date);
+
+                }
+                catch(Exception ex){
+                    return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
+
+                }
+
+            }
+
+
+            appFieldReadable = "Filing Basis  Pending Foreign Application Filing Date";
+
+        }
+
+
         if(fbField.equals("gs-pfr-exp-date")){
             if(gsID.equals("all")){
 

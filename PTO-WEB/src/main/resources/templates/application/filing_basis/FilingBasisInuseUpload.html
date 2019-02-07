@@ -1155,7 +1155,7 @@
                                                                     </div>
                                                                     <div class="form-group form-group-md col-xs-12">
                                                                         <label for="reg-date">Foreign registration date: <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
-                                                                        <input type="date" class="form-control fr-expire-date" id="reg-date" name="regdate" value="" th:attr="gs-id=${Good_Service.getInternalID()}" th:value="${Good_Service.getFrRegistrationDate()}">
+                                                                        <input type="date" class="form-control fr-reg-date" id="reg-date" name="regdate" value="" th:attr="gs-id=${Good_Service.getInternalID()}" th:value="${Good_Service.getFrRegistrationDate()}">
                                                                     </div>
                                                                     <div class="form-group form-group-md col-xs-12">
                                                                         <label for="reg-date">Foreign registration expiration date: <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
@@ -1474,7 +1474,7 @@
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12">
                                                                             <label for="reg-date">Foreign registration date: <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
-                                                                            <input type="date" class="form-control fr-expire-date" id="reg-date" name="regdate" value="" th:attr="gs-id=${Good_Service.getInternalID()}" th:value="${Good_Service.getFrRegistrationDate()}">
+                                                                            <input type="date" class="form-control fr-reg-date" id="reg-date" name="regdate" value="" th:attr="gs-id=${Good_Service.getInternalID()}" th:value="${Good_Service.getFrRegistrationDate()}">
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12">
                                                                             <label for="reg-date">Foreign registration expiration date: <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
@@ -1990,6 +1990,15 @@
             addFilingBasisInfoToGoodAndService("gs-pfr-reg-Number", value, gsID, appInternalID);
 
         });
+        $('input.fr-reg-date').focusout(function () {
+            var gsID= $(this).attr("gs-id");
+            var value = $(this).val();
+            addFilingBasisInfoToGoodAndService("gs-pfr-reg-date", value, gsID, appInternalID);
+
+        });
+
+
+
         $('input.fr-expire-date').focusout(function () {
             var gsID= $(this).attr("gs-id");
             var value = $(this).val();
