@@ -262,6 +262,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                         DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
                         Date date = format.parse(fbValue);
                         current.setFirstGSDate(date);
+                        current.setFirstGSDateSet(true);
 
                     }
                     catch(Exception ex){
@@ -278,6 +279,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                     DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
                     Date date = format.parse(fbValue);
                     baseTrademarkApplication.findGSbyInternalID(gsID).setFirstGSDate(date);
+                    baseTrademarkApplication.findGSbyInternalID(gsID).setFirstGSDateSet(true);
 
                 }
                 catch(Exception ex){
@@ -306,6 +308,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                        DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
                        Date date = format.parse(fbValue);
                        current.setFirstCommerceDate(date);
+                       current.setFirstCommerceDateSet(true);
                    }
                    catch(Exception ex){
                        return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
@@ -320,7 +323,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                    DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
                    Date date = format.parse(fbValue);
                    baseTrademarkApplication.findGSbyInternalID(gsID).setFirstCommerceDate(date);
-
+                   baseTrademarkApplication.findGSbyInternalID(gsID).setFirstCommerceDateSet(true);
                }
                catch(Exception ex){
                    return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
@@ -329,6 +332,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
 
            }
+
             appFieldReadable = "Filing Basis First Commerce Date";
 
         }

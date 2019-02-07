@@ -295,6 +295,8 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+
+                                                        <th:block th:if="${Good_Service.isFirstGSDateSet() == true}">
                                                             <div class="col-xs-12">
                                                                 <div class="row">
                                                                     <div class="col-xs-12 col-sm-4">
@@ -305,6 +307,9 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                        </th:block>
+
+                                                        <th:block th:if="${Good_Service.isFirstCommerceDateSet() == true}">
                                                             <div class="col-xs-12">
                                                                 <div class="row">
                                                                     <div class="col-xs-12 col-sm-4">
@@ -319,6 +324,9 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                        </th:block>
+
+
                                                     </th:block>
                                                 </th:block>
                                                 <!--//gs + basis data review-->

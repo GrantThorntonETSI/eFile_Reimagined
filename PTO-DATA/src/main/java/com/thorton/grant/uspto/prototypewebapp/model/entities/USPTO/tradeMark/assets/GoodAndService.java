@@ -27,7 +27,11 @@ public class GoodAndService {
     private boolean markInUseSet;
 
     private Date firstGSDate;
+    private boolean firstGSDateSet;
+
     private Date firstCommerceDate;
+    private boolean firstCommerceDateSet;
+
 
     private String classSpecimenImgPath;
     private String classSpecimenDescr;
@@ -471,6 +475,22 @@ public class GoodAndService {
         else {
             return true;
         }
+    }
+
+    public boolean isFirstGSDateSet() {
+        return firstGSDateSet;
+    }
+
+    public void setFirstGSDateSet(boolean firstGSDateSet) {
+        this.firstGSDateSet = firstGSDateSet;
+    }
+
+    public boolean isFirstCommerceDateSet() {
+        return firstCommerceDateSet;
+    }
+
+    public void setFirstCommerceDateSet(boolean firstCommerceDateSet) {
+        this.firstCommerceDateSet = firstCommerceDateSet;
     }
 
     @Override
