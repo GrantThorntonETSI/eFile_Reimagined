@@ -555,6 +555,8 @@
             // enable next link ..
             // enable next url ...
             $('#nextButton').attr("disabled",false);
+            disableConfirmWidgetLink();
+
 
 
 
@@ -608,6 +610,12 @@
     function enableConfirmWidgetLink() {
 
         $('#confirm-link-widget').css("background-color", "rgb(52, 152, 219)");
+
+    }
+
+    function disableConfirmWidgetLink() {
+
+        $('#confirm-link-widget').css("background-color", "rgb(128, 128, 128)");
 
     }
 

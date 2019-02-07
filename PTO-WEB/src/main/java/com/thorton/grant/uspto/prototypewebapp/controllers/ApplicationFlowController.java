@@ -2454,18 +2454,18 @@ public class ApplicationFlowController {
 
                 if(goodAndService.isMarkInUse() == true){
                     if(goodAndService.getFirstGSDate() == null){
-                        missedTEAsFields.add("first in use date");
+                        missedTEAsFields.add("Goods and Services - first in use date");
 
                     }
                     if(goodAndService.getFirstCommerceDate() == null){
-                        missedTEAsFields.add("first in commerce date");
+                        missedTEAsFields.add("Goods and Services - first in commerce date");
                     }
 
                 }
 
                 if(goodAndService.isForeignRegistration()){
                     if(goodAndService.getFrExpirationDate() == null){
-                        missedTEAsFields.add("Foreign Registration Expiration date");
+                        missedTEAsFields.add("Goods and Services - Foreign Registration Expiration date");
 
                     }
 
@@ -2477,7 +2477,7 @@ public class ApplicationFlowController {
 
                     if(goodAndService.getFrCertImagePath() == null){
 
-                        missedTEAsFields.add("Foreign Registration Certificate");
+                        missedTEAsFields.add("Goods and Services - Foreign Registration Certificate");
                     }
 
 
@@ -2487,13 +2487,13 @@ public class ApplicationFlowController {
 
                 if(goodAndService.isPendingFA()){
                     if(goodAndService.getFaFilingDate()== null){
-                        missedTEAsFields.add("Foreign Application Filing date");
+                        missedTEAsFields.add("Goods and Services - Foreign Application Filing date");
 
                     }
 
                     if(goodAndService.getFrRegistartionNumber()== null){
 
-                        missedTEAsFields.add("Foreign Application Application number");
+                        missedTEAsFields.add("Goods and Services - Foreign Application Application number");
 
                     }
 
