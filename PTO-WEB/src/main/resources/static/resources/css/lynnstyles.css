@@ -1384,13 +1384,15 @@ button#moreoptionsbtn {
 div[role="switch"] {
 	display:inline-block;
 }
+#on, #off {
+	color:#fff;
+	font-size: 13px;
+}
 #on {
-	margin-left: 5px;
-	color:#666;
+	margin-left: 18px;
 }
 #off {
-	margin-left: 6px;
-	color:#666;
+	margin-left: 5px;
 }
 #costsavingoptions {
 	color:#808080;
@@ -1398,11 +1400,10 @@ div[role="switch"] {
 .switch {
 	position: relative;
 	display: inline-block;
-	width: 64px;
+	width: 90px;
 	height: 38px;
 	margin-bottom:0;
 	margin-top:1.5em;
-	margin-bottom: -.09em;
 }
 .switch input {
 	opacity: 0;
@@ -1416,11 +1417,11 @@ div[role="switch"] {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: #eee;
+	background-color: #aaa;
 	-webkit-transition: .4s;
 	transition: .4s;
 	padding-top: 7px;
-	border-radius: 2px;
+	border-radius: 19px;
 }
 .slider:before {
 	position: absolute;
@@ -1430,18 +1431,29 @@ div[role="switch"] {
 	left: 5px;
 	bottom: 5px;
 	background-color: #fff;
-	-webkit-transition: .4s;
-	transition: .4s;
-	border-radius: 1px;
+	-webkit-transition: .2s;
+	transition: .2s;
+	border-radius: 14px;
 }
 input:checked + .slider {
-	background-color: #dff0d8;
+	background-color: #004C97;
 }
 input:checked + .slider:before {
-	-webkit-transform: translateX(26px);
-	-ms-transform: translateX(26px);
-	transform: translateX(26px);
+	-webkit-transform: translateX(52px);
+	-ms-transform: translateX(52px);
+	transform: translateX(52px);
 }
+input:checked + .slider #off {
+	color: #004C97;
+}
+.subtle{
+	margin-left:5px;
+}
+
+
+
+
+
 /* SPINNER */
 .loader {
 	border: 4px solid #f3f3f3;
