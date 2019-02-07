@@ -369,6 +369,153 @@ public class ApplicationFlowController {
 
 
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+    // controller for AttorneySet page
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+    // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
+    @RequestMapping({"/application/attorney/edit/{email}"})
+    public String attorneyEdit(WebRequest request, Model model, @PathVariable String email, @RequestParam("trademarkID") String trademarkInternalID) {
+
+        // create a new application and tie it to user then save it to repository
+        // create attorneyDTO + to model
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+
+
+        /////////////////////////////////////////////
+        // load my contacts list for thyemleaf
+        /////////////////////////////////////////////
+        ArrayList<String> contactNames = new ArrayList<>();
+        ArrayList<String> contactEmails = new ArrayList<>();
+        ArrayList<String> contactFirms = new ArrayList<>();
+        Lawyer lawyer = null;
+
+        for(Iterator<Lawyer> iter = ptoUser.getMyLawyers().iterator(); iter.hasNext(); ) {
+            lawyer = iter.next();
+            contactNames.add(lawyer.getFirstName()+" "+lawyer.getLastName());
+            contactEmails.add(lawyer.getEmail());
+            contactFirms.add(lawyer.getLawFirmName());
+
+        }
+        Collections.reverse(contactNames);
+        Collections.reverse(contactEmails);
+        Collections.reverse(contactFirms);
+        ContactsDisplayDTO contactsDisplayDTO = new ContactsDisplayDTO();
+        contactsDisplayDTO.setContactNames(contactNames);
+        contactsDisplayDTO.setContactEmails(contactEmails);
+        contactsDisplayDTO.setContactFirms(contactFirms);
+        model.addAttribute("myContacts", contactsDisplayDTO);
+        SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
+
+///////////////////////////////////////////
+        // load my contacts list for thyemleaf
+        ////////////////////////////////////////////
+        ArrayList<String> contactNamesMC = new ArrayList<>();
+        ArrayList<String> contactEmailsMC = new ArrayList<>();
+        ArrayList<String> contactSubTypesMC = new ArrayList<>();
+        ManagedContact managedContact = null;
+
+        for(Iterator<ManagedContact> iter = ptoUser.getMyManagedContacts().iterator(); iter.hasNext(); ) {
+            managedContact = iter.next();
+            if(managedContact.getContactType() == "attorney") {
+                contactNamesMC.add(managedContact.getDisplayName());
+                contactEmailsMC.add(managedContact.getEmail());
+                contactSubTypesMC.add(managedContact.getContactType());
+            }
+
+        }
+        Collections.reverse(contactNamesMC);
+        Collections.reverse(contactEmailsMC);
+        Collections.reverse(contactSubTypesMC);
+        ContactsDisplayDTO mcDisplayDTO = new ContactsDisplayDTO();
+        mcDisplayDTO.setContactNames(contactNamesMC);
+        mcDisplayDTO.setContactEmails(contactEmailsMC);
+        mcDisplayDTO.setContactEntitySubType(contactSubTypesMC);
+        model.addAttribute("myManagedContacts", mcDisplayDTO);
+
+        // set empty selected contacts for thymeleaf
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+        ArrayList<String> selectedContactNames = new ArrayList<>();
+        for(Iterator<Lawyer> iter = baseTrademarkApplication.getAvailableLawyers().iterator(); iter.hasNext(); ) {
+            Lawyer current = iter.next();
+            selectedContactNames.add(current.getFirstName()+" "+current.getLastName());
+        }
+        ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
+        selectedAttorneyDisplayDTO.setContactNames(selectedContactNames);
+        model.addAttribute("selectedAttorneys",selectedAttorneyDisplayDTO);
+        baseTrademarkApplication.setLastViewModel("application/attorney/AttorneySet");
+
+        if(trademarkInternalID.equals("new")) {
+
+            BaseTrademarkApplication trademarkApplication = new BaseTrademarkApplication();
+
+            trademarkApplication.setAttorneySet(false);
+            trademarkApplication.setAttorneyFiling(false);
+
+            trademarkApplication.setOwnerEmail(ptoUser.getEmail());
+
+            baseTradeMarkApplicationService.save(trademarkApplication);
+            trademarkApplication.setTrademarkName("my_first_trademark");
+            trademarkApplication.setApplicationInternalID(UUID.randomUUID().toString());
+            counter++;
+            trademarkApplication.setTrademarkName(""+counter);
+            ptoUser.addApplication(trademarkApplication); // adds to myApplications Collection
+            ptoUserService.save(ptoUser);
+            model.addAttribute("baseTrademarkApplication", trademarkApplication);
+
+
+
+
+            model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
+
+        }
+        else{
+
+            ////////////////////////////////////////////////////////////////////////////
+            // existing trade  mark application
+            ////////////////////////////////////////////////////////////////////////////
+            // loaded baseTradeMarkapplication by internal id and add to model
+            ////////////////////////////////////////////////////////////////////////////
+            // BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+            // we are already setting this value in the begging for selected contacts rendering
+            /////////////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////
+            // add relationship (i.e grey out the correspondant contacts table)
+            // we can do this when rendering the contacts table rows ...
+            // do a check and insert different HTML for the row
+            //////////////////////////////////////////////////////////////////////////
+
+            ////////////////////////////////////////////////////////////////////////////////////////////
+            // add selected contacts display info to model
+            ////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+            // baseTrademarkApplication.setLastViewModel("application/AttorneyStart");
+
+            model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+            model.addAttribute("lawyerPool", baseTrademarkApplication.getAvailableLawyers());
+
+
+        }
+
+
+
+        model.addAttribute("hostBean", hostBean);
+        model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
+        return "application/attorney/AttorneyEdit";
+
+    }
+
 
 
 

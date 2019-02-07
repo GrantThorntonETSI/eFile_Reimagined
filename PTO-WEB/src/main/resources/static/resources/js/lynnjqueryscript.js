@@ -372,7 +372,6 @@ $(document).ready(function(){
 	//end prior options
 
 
-	$('div#yesattorneyfiling').css('display','none');
 	$('input#inlineRadio015').change(function() {
 		if(this.checked == true){
 			$('div#yesattorneyfiling').show( 500 );

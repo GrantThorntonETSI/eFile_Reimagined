@@ -197,7 +197,7 @@
                                                             </div>
                                                             <div class="col-xs-12 col-sm-3 col-md-2 inlinebuttons btn-group btn-group-justified" aria-label="edit or remove contact">
                                                                 <div class="btn-group">
-                                                                    <button type="button" class="btn btn-sm btn-success" aria-label="edit contact">Edit</button>
+                                                                    <button type="button" class="btn btn-sm btn-success  attorney-edit" aria-label="edit contact" th:attr="contact-email=${lawyer.getEmail()}">Edit</button>
                                                                 </div>
                                                                 <div class="btn-group"  th:attr="primary-attorney=${lawyer.isPrimary()}">
                                                                     <button type="button" class="btn btn-sm btn-primary close remove-attorney" aria-label="close contact" th:attr="contact-email=${lawyer.getEmail()}" ><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
@@ -347,7 +347,7 @@
     var bsLink6_done =  "../../application/confirmInfo/?trademarkID="+appInternalID;
 
 
-
+    var attorneyEditURL =  "../../application/attorney/edit/";
 
 </script>
 
@@ -589,6 +589,13 @@
 
         });
 
+        $('.attorney-edit').click(function () {
+            var attorneyEmail = $(this).attr("contact-email");
+
+            location.href=attorneyEditURL+attorneyEmail+"/?trademarkID="+appInternalID;;
+
+
+        });
 
 
 

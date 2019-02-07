@@ -82,35 +82,20 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <h1>Attorney Information</h1>
-                        <p class="instructions" id="costsavingoptions">Reduce Fee Mode</p>
-                        <div role="switch" aria-describedby="#costsavingoptions" aria-label="turn reduce fee labels on or off">
-                            <label class="switch">
-                                <input class="togglesavemore" type="checkbox">
-                                <span class="slider"><span class="visuallyhidden" id="on">On</span> <span id="off">Off</span></span>
-                            </label>
-                        </div>
+                        <h1>Edit Attorney Information</h1>
+
                     </div>
 
                 </div>
-                <p class="required"><span class="weight600">&#42; = Required</span></p>
-                <!--START Attorney Information Form-->
+
                 <div class="card-text">
                     <h2 class="card-title weight600" id="attorneyinfo">Attorney Information</h2>
                 </div>
-                <p id="attorneyfiling">Is an Attorney filing this application?</p>
-
-                    <div role="radiogroup" aria-labelledby="attorneyfiling">
-                        <label for="inlineRadio015" class="radio-inline radiocontainer">Yes<input type="radio" name="attorneyfilingradio" id="inlineRadio015" value="yes"><span class="checkmark"></span></label>
-
-                        <label for="inlineRadio016" class="radio-inline radiocontainer">No<input type="radio" name="attorneyfilingradio" id="inlineRadio016" value="no"><span class="checkmark"></span></label>
-                    </div><!--END radiogroup-->
 
 
 
+                <div id="yesattorneyfiling" role="region" aria-labelledby="attorneyfiling">
 
-                <div id="yesattorneyfiling" role="region" aria-labelledby="attorneyfiling" style="display: none;">
-                    <form method="post" id="addNewAttorneyForm" action="/attorney/add" onsubmit="return validateAttorneyForm();" enctype="multipart/form-data" th:object="${addNewAttorneyContactFormDTO}" aria-labelledby="title">
                         <fieldset aria-labelledby="attorneyinfo">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-lg-12">
@@ -122,20 +107,20 @@
                                     <input type="text" class="form-control" id="title"><!--Needs th:field= attribute to capture this value on submit-->
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                    <label for="attorney-first-name"><span class="weight600">&#42;</span> First Name</label>
-                                    <input type="text" class="form-control" id="attorney-first-name" th:field="*{firstName}" name="first" placeholder="" required>
+                                    <label for="attorney-first-name">First Name</label>
+                                    <input type="text" class="form-control" id="attorney-first-name" name="first" placeholder="" >
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                     <label for="Attorney-middle-name">Middle Name</label>
-                                    <input type="text" class="form-control" id="Attorney-middle-name" th:field="*{middleName}">
+                                    <input type="text" class="form-control" id="Attorney-middle-name" >
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
-                                    <label for="attorney-last-name"><span class="weight600">&#42;</span> Last Name</label>
-                                    <input type="text" class="form-control" id="attorney-last-name" th:field="*{lastName}" required>
+                                    <label for="attorney-last-name">Last Name</label>
+                                    <input type="text" class="form-control" id="attorney-last-name"  >
                                 </div>
                                 <div class="form-group form-group-md col-xs-5 col-sm-3">
                                     <label for="suffix">Suffix</label>
-                                    <select class="form-control" id="suffix" th:field="*{suffix}">
+                                    <select class="form-control" id="suffix" >
                                         <option value="select">Select</option>
                                         <option value="Sr.">Sr.</option>
                                         <option value="I">I</option>
@@ -151,7 +136,7 @@
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-5">
                                     <label for="attorney-lawfirm-name"><span class="weight600"></span> Firm</label>
-                                    <input type="text" class="form-control" id="attorney-lawfirm-name" th:field="*{lawFirmName}" placeholder="">
+                                    <input type="text" class="form-control" id="attorney-lawfirm-name" placeholder="">
                                 </div>
                             </div>
                         </fieldset><!--END Attorney Information-->
@@ -162,8 +147,8 @@
                         <fieldset aria-labelledby="attorneycontact">
                             <div class="row">
                                 <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-5">
-                                    <label for="attorney-country"><span class="weight600">&#42;</span> Country / US Territory</label>
-                                    <select class="form-control" id="attorney-country" th:field="*{attorneyAddressCountry}" required>
+                                    <label for="attorney-country"> Country / US Territory</label>
+                                    <select class="form-control" id="attorney-country" >
                                         <option value="">Select</option>
                                         <option value="X1">UNITED STATES OF AMERICA</option>
                                         <option value="B2">AFGHANISTAN</option>
@@ -407,24 +392,24 @@
                                     </select>
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-7">
-                                    <label for="attorney-address1"><span class="weight600">&#42;</span> Address Line 1</label>
-                                    <input type="text" class="form-control" id="attorney-address1" th:field="*{attorneyAddress1}" required>
+                                    <label for="attorney-address1"> Address Line 1</label>
+                                    <input type="text" class="form-control" id="attorney-address1" >
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-xl-6">
                                     <label for="attorney-address2">Address Line 2</label>
-                                    <input type="text" class="form-control" id="attorney-address2" th:field="*{attorneyAddress2}">
+                                    <input type="text" class="form-control" id="attorney-address2" >
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-xl-6">
                                     <label for="attorney-address3">Address Line 3</label>
-                                    <input type="text" class="form-control" id="attorney-address3" th:field="*{attorneyAddress3}">
+                                    <input type="text" class="form-control" id="attorney-address3" >
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
-                                    <label for="attorney-city"><span class="weight600">&#42;</span>City</label>
-                                    <input type="text" class="form-control" id="attorney-city" th:field="*{attorneyCity}" required>
+                                    <label for="attorney-city">City</label>
+                                    <input type="text" class="form-control" id="attorney-city" >
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
-                                    <label for="attorney-state"><span class="weight600">&#42;</span>State</label>
-                                    <select class="form-control" id="attorney-state" th:field="*{attorneyState}" required>
+                                    <label for="attorney-state">State</label>
+                                    <select class="form-control" id="attorney-state">
                                         <option value="">Select</option>
                                         <option  value="AL">Alabama</option>
                                         <option  value="AK">Alaska</option>
@@ -480,12 +465,12 @@
                                     </select>
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
-                                    <label for="attorney-zipcode"><span class="weight600">&#42;</span> Zip Code</label>
-                                    <input type="text" class="form-control" id="attorney-zipcode" placeholder="" th:field="*{attorneyZipcode}" required>
+                                    <label for="attorney-zipcode">Zip Code</label>
+                                    <input type="text" class="form-control" id="attorney-zipcode" placeholder="" >
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-5 col-lg-5">
                                     <label for="attorney-email"><span class="weight600">&#42;</span> Email Address</label>
-                                    <input type="text" class="form-control" id="attorney-email" placeholder="email Address" th:field="*{attorneyEmail}" required>
+                                    <input type="text" class="form-control" id="attorney-email" placeholder="email Address" >
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-3 col-lg-3">
                                     <label for="attorney-phonenumbertype">Phone Type</label>
@@ -498,8 +483,8 @@
                                     </select>
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-4">
-                                    <label for="attorney-phone"><span class="weight600">&#42;</span> Phone Number</label>
-                                    <input type="text" class="form-control" id="attorney-phone" placeholder="" th:field="*{attorneyPhone}" required>
+                                    <label for="attorney-phone">Phone Number</label>
+                                    <input type="text" class="form-control" id="attorney-phone" placeholder="" >
                                 </div>
                                 <div class="col-xs-12">
                                     <button type="button" class="btn-sm btn-success add ctr">Additional Number</button>
@@ -514,7 +499,7 @@
                             <div class="row">
                                 <div class="form-group form-group-md col-xs-12">
                                     <label for="docket-id">If applicable, enter the attorney docket or reference number.</label>
-                                    <input type="text" class="form-control" id="docket-id" th:field="*{attorneyDocketNumber}"/>
+                                    <input type="text" class="form-control" id="docket-id" />
                                 </div>
                                 <div class="col">
                                     <button type="button" class="btn-sm btn-success add ctr" >Additional Docket or Reference Number</button>
@@ -528,8 +513,8 @@
                         <fieldset aria-labelledby="affiliation">
                             <div class="row">
                                 <div class="form-group form-group-md col-xs-12">
-                                    <label for="attorney-bar-standing"><span class="weight600">&#42;</span>Attorney Bar Info</label>
-                                    <select class="form-control" id="attorney-bar-standing" th:field="*{attorneyAffiliation}">
+                                    <label for="attorney-bar-standing">Attorney Bar Info</label>
+                                    <select class="form-control" id="attorney-bar-standing">
                                         <option value="Select">Select</option>
                                         <option value="usaffiliation">US Attorney in good standing</option>
                                         <option value="canadianaffiliation">Canadian agent or attorney</option>
@@ -649,15 +634,12 @@
                                     <label for="applicantCAFalse" class="radio-inline"><input type="radio" name="applicantCA" value="false" id="applicantCAFalse">No</label>
                                 </div><!--END radiogroup-->
                             </div><!--END canadian affiliation-->
-                            <div class="row" style="display:none; max-height: 1px;">
-                                <input id="appInternalIDForm" type="text" th:field="*{appInternalID}"   class="form-control"   style=" width:1px;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-                            </div>
+
 
 
                         </fieldset><!--END Affiliation Information-->
 
 
-                    </form><!--END Attorney Form-->
 
                 </div><!--END attorney toggle area-->
 
@@ -727,90 +709,90 @@
 
 
 
-    <!--load model attribute for Jquery consumption  -->
-    <script th:inline="javascript">
+<!--load model attribute for Jquery consumption  -->
+<script th:inline="javascript">
 
-        /*<![CDATA[*/
-
-
-        var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
-        var attorneyOpt = /*[[${baseTrademarkApplication.isAttorneyFiling()}]]*/ 'User Name';
-
-        var ownerOpt = /*[[${baseTrademarkApplication.isOwnerSet()}]]*/ 'User Name';
+    /*<![CDATA[*/
 
 
-        var isAttorneyOptionSet = /*[[${isAttorneyOptionSet}]]*/ 'User Name';
+    var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
+    var attorneyOpt = /*[[${baseTrademarkApplication.isAttorneyFiling()}]]*/ 'User Name';
+
+    var ownerOpt = /*[[${baseTrademarkApplication.isOwnerSet()}]]*/ 'User Name';
 
 
-
-        var isAttorneyFiling = /*[[${isAttorneyFiling}]]*/ 'User Name';
+    var isAttorneyOptionSet = /*[[${isAttorneyOptionSet}]]*/ 'User Name';
 
 
 
-        var isAttorneyPoolEmpty = /*[[${baseTrademarkApplication.isAttorneyPoolEmpty()}]]*/ 'User Name';
-
-
-        var host_name= /*[[${hostBean.host}]]*/ 'User Name';
-        var host_port= /*[[${hostBean.port}]]*/ 'User Name';
+    var isAttorneyFiling = /*[[${isAttorneyFiling}]]*/ 'User Name';
 
 
 
-        var managedContactNames = /*[[${myManagedContacts.ContactNames}]]*/ 'User Name';
-        var managedContactEmails = /*[[${myManagedContacts.ContactEmails}]]*/ 'User Name';
-        var managedContactTypes = /*[[${myManagedContacts.contactEntitySubType}]]*/ 'User Name';
+    var isAttorneyPoolEmpty = /*[[${baseTrademarkApplication.isAttorneyPoolEmpty()}]]*/ 'User Name';
 
-        var selectedContacts = /*[[${selectedAttorneys.ContactEmails}]]*/ 'User Name';
 
-        var host = host_name+":"+host_port;
+    var host_name= /*[[${hostBean.host}]]*/ 'User Name';
+    var host_port= /*[[${hostBean.port}]]*/ 'User Name';
 
 
 
-        var breadCrumbStatus = /*[[${breadCrumbStatus}]]*/ 'User Name';
+    var managedContactNames = /*[[${myManagedContacts.ContactNames}]]*/ 'User Name';
+    var managedContactEmails = /*[[${myManagedContacts.ContactEmails}]]*/ 'User Name';
+    var managedContactTypes = /*[[${myManagedContacts.contactEntitySubType}]]*/ 'User Name';
 
-        var validateTEAS =  /*[[${baseTrademarkApplication.isValidateTEASFields()}]]*/ 'User Name';
+    var selectedContacts = /*[[${selectedAttorneys.ContactEmails}]]*/ 'User Name';
 
-
-
-
-        /*]]>*/
-    </script>
+    var host = host_name+":"+host_port;
 
 
-    <script>
 
-        var nextLinkURL = "../../application/AttorneySet/?trademarkID="+appInternalID;
-        var prevLinkURL = "../../accounts/dashboard";
+    var breadCrumbStatus = /*[[${breadCrumbStatus}]]*/ 'User Name';
 
-        var nextLinkURLAttorneyFalse = "../../application/OwnerStart/?trademarkID="+appInternalID;
-
-        var bsLink1 = "../../application/OwnerSetView/?trademarkID="+appInternalID;
-
-        var bsLink2_active =  "../../application/MarkDetails/?trademarkID="+appInternalID;
-        var bsLink2_done =  "../../application/MarkDetails/?trademarkID="+appInternalID;
-
-        var bsLink3_active =  "../../application/goodsAndServicesStart/?trademarkID="+appInternalID;
-        var bsLink3_done =  "../../application/goodsAndServicesReview/?trademarkID="+appInternalID;
+    var validateTEAS =  /*[[${baseTrademarkApplication.isValidateTEASFields()}]]*/ 'User Name';
 
 
 
 
-        var bsLink4_active = "../../application/filingBasisStart/?trademarkID="+appInternalID;
-        var bsLink4_done = "../../application/filingBasisStart/?trademarkID="+appInternalID;
+    /*]]>*/
+</script>
+
+
+<script>
+
+    var nextLinkURL = "../../application/AttorneySet/?trademarkID="+appInternalID;
+    var prevLinkURL = "../../accounts/dashboard";
+
+    var nextLinkURLAttorneyFalse = "../../application/OwnerStart/?trademarkID="+appInternalID;
+
+    var bsLink1 = "../../application/OwnerSetView/?trademarkID="+appInternalID;
+
+    var bsLink2_active =  "../../application/MarkDetails/?trademarkID="+appInternalID;
+    var bsLink2_done =  "../../application/MarkDetails/?trademarkID="+appInternalID;
+
+    var bsLink3_active =  "../../application/goodsAndServicesStart/?trademarkID="+appInternalID;
+    var bsLink3_done =  "../../application/goodsAndServicesReview/?trademarkID="+appInternalID;
 
 
 
-        var bsLink5_active =  "../../application/additionalInfoUpload/?trademarkID="+appInternalID;
-        var bsLink5_done =  "../../application/additionalInfoUpload/?trademarkID="+appInternalID;
+
+    var bsLink4_active = "../../application/filingBasisStart/?trademarkID="+appInternalID;
+    var bsLink4_done = "../../application/filingBasisStart/?trademarkID="+appInternalID;
+
+
+
+    var bsLink5_active =  "../../application/additionalInfoUpload/?trademarkID="+appInternalID;
+    var bsLink5_done =  "../../application/additionalInfoUpload/?trademarkID="+appInternalID;
 
 
 
 
-        var bsLink6_active =  "../../application/confirmInfo/?trademarkID="+appInternalID;
-        var bsLink6_done =  "../../application/confirmInfo/?trademarkID="+appInternalID;
+    var bsLink6_active =  "../../application/confirmInfo/?trademarkID="+appInternalID;
+    var bsLink6_done =  "../../application/confirmInfo/?trademarkID="+appInternalID;
 
 
 
-    </script>
+</script>
 
 
 
@@ -877,10 +859,10 @@
 
         // bread crumb click event handlers
         $('#bs-link1').click(function () {
-           var url = $(this).attr("href");
-           if(url != undefined){
-               //location.href=url;
-           }
+            var url = $(this).attr("href");
+            if(url != undefined){
+                //location.href=url;
+            }
 
         });
 
@@ -987,32 +969,32 @@
 
         $('#nextButtonFormPaging').click(function () {
             //location.href=nextLinkURL;
-           if($('#inlineRadio016').is(":checked")){
+            if($('#inlineRadio016').is(":checked")){
 
-               location.href=nextLinkURL;
-           }
-           else{
-               // check if yes radio is clicked
-               if($('#inlineRadio015').is(":checked")) {
+                location.href=nextLinkURL;
+            }
+            else{
+                // check if yes radio is clicked
+                if($('#inlineRadio015').is(":checked")) {
 
-                   // start check fields
+                    // start check fields
 
-                   // if all fields are empty
-                   // and lawyer pool not empty
-                   // send to next page
+                    // if all fields are empty
+                    // and lawyer pool not empty
+                    // send to next page
 
-                   if (isAttorneyPoolEmpty == false) {
-                       // call jquery click
-                       // set next link to attorney view
-                       // activate link
-                       location.href=nextLinkURL;
-                       //$('#nextButtonFormPaging').attr("disabled",false);
+                    if (isAttorneyPoolEmpty == false) {
+                        // call jquery click
+                        // set next link to attorney view
+                        // activate link
+                        location.href=nextLinkURL;
+                        //$('#nextButtonFormPaging').attr("disabled",false);
 
 
-                   }
-               } // we will handle turning the button to submit in another jquery
+                    }
+                } // we will handle turning the button to submit in another jquery
 
-           }
+            }
         });
 
 
@@ -1163,10 +1145,10 @@
         var errorMsg = "";
         // check if contact attempted to add already in application
         for(var a=0; a < selectedContacts.length; a++){
-           if($('#attorney-email').val() == selectedContacts[a]){
-               formError = true;
-               errorMsg = "this new contact is already added to this application as an attorney.";
-           }
+            if($('#attorney-email').val() == selectedContacts[a]){
+                formError = true;
+                errorMsg = "this new contact is already added to this application as an attorney.";
+            }
         }
 
 
