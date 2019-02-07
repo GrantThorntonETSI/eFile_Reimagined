@@ -548,6 +548,11 @@ public class ApplicationService  extends  BaseRESTapiService{
         ///////////////////////////////////////////////////////////
         if(markType.equals("Standard Character")){
             baseTrademarkApplication.setStandardTextMark(true);
+            baseTrademarkApplication.getTradeMark().setStandardCharacterMark(true);
+        }
+        else {
+            baseTrademarkApplication.setStandardTextMark(false);
+            baseTrademarkApplication.getTradeMark().setStandardCharacterMark(false);
         }
 
 
