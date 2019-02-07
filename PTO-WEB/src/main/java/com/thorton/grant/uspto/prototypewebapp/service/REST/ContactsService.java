@@ -201,6 +201,120 @@ public class ContactsService extends  BaseRESTapiService {
 
 
 
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/application/attorney/update/{contact_email}/{contact_field_name}/{contact_field_value}/{trademarkInternalID}")
+    @ResponseBody
+    ResponseEntity<String> updateAttorneyContact(@PathVariable String contact_email,@PathVariable String contact_field_name, @PathVariable String contact_field_value, @PathVariable String trademarkInternalID ){
+
+        String appFieldReadable = "Attorney contact";
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+        // verify authentication is valid before moving on ....
+        // have to have a valid session
+
+        if(contact_field_name.equals("attorney-first-name")){
+            baseTrademarkApplication.findContactByEmail(contact_email).setFirstName(contact_field_value);
+            appFieldReadable = "Attorney First Name ";
+
+        }
+
+        if(contact_field_name.equals("attorney-middle-name")){
+            baseTrademarkApplication.findContactByEmail(contact_email).setMidlleName(contact_field_value);
+            appFieldReadable = "Attorney Middle Name ";
+
+        }
+        if(contact_field_name.equals("attorney-last-name")){
+            baseTrademarkApplication.findContactByEmail(contact_email).setLastName(contact_field_value);
+            appFieldReadable = "Attorney Last Name ";
+        }
+        if(contact_field_name.equals("attorney-lawfirm-name" )){
+            baseTrademarkApplication.findContactByEmail(contact_email).setLawFirmName(contact_field_value);
+            appFieldReadable = "Attorney Law Firm Name ";
+
+        }
+
+        if(contact_field_name.equals("attorney-country" )){
+            baseTrademarkApplication.findContactByEmail(contact_email).setCountry(contact_field_value);
+            appFieldReadable = "Attorney Address Country ";
+
+        }
+        if(contact_field_name.equals("attorney-address1" )){
+            baseTrademarkApplication.findContactByEmail(contact_email).setAddress1(contact_field_value);
+            appFieldReadable = "Attorney Address ";
+
+        }
+
+        if(contact_field_name.equals("attorney-city" )){
+            baseTrademarkApplication.findContactByEmail(contact_email).setCity(contact_field_value);
+            appFieldReadable = "Attorney Address City ";
+
+        }
+
+        if(contact_field_name.equals("attorney-state" )){
+            baseTrademarkApplication.findContactByEmail(contact_email).setState(contact_field_value);
+            appFieldReadable = "Attorney Address State ";
+
+        }
+
+        if(contact_field_name.equals("attorney-zipcode" )){
+            baseTrademarkApplication.findContactByEmail(contact_email).setZipcode(contact_field_value);
+            appFieldReadable = "Attorney Address Zipcode ";
+
+        }
+
+        if(contact_field_name.equals("attorney-phone" )){
+            baseTrademarkApplication.findContactByEmail(contact_email).setPrimaryPhonenumber(contact_field_value);
+            appFieldReadable = "Attorney Phone Number ";
+
+        }
+
+        if(contact_field_name.equals("docket-id" )){
+            baseTrademarkApplication.findContactByEmail(contact_email).setDocketNumber(contact_field_value);
+            appFieldReadable = "Attorney Docket Number ";
+
+        }
+
+        if(contact_field_name.equals("attorney-bar-standing" )){
+            baseTrademarkApplication.findContactByEmail(contact_email).setAffiliationStatus(contact_field_value);
+            appFieldReadable = "Attorney Bar Standing status ";
+
+        }
+
+        if(contact_field_name.equals("attorney-bar-jurisdiction" )){
+            baseTrademarkApplication.findContactByEmail(contact_email).setBarJurisdiction(contact_field_value);
+            appFieldReadable = "Attorney Bar Jurisdiction ";
+
+        }
+
+        if(contact_field_name.equals("attorney-bar-membership" )){
+            baseTrademarkApplication.findContactByEmail(contact_email).setMembershipNumber(contact_field_value);
+            appFieldReadable = "Attorney Bar Membership Number ";
+
+        }
+
+        if(contact_field_name.equals("attorney-admission-date" )){
+            //baseTrademarkApplication.findContactByEmail(contact_email).setBarAdmissionDate(contact_field_value);
+            appFieldReadable = "Attorney Bar Admission Date ";
+
+        }
+
+
+       baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+
+        ////////////////////////////////////////////////
+        // start generating response
+        ////////////////////////////////////////////////
+
+        String responseMsg = appFieldReadable+" has been saved";
+        return buildResponseEnity("200", responseMsg);
+    }
+
+
+
+
 
 
     // need to add app id variable
