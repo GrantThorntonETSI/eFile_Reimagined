@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	var e = $( window ).height();
+	$('footer').css('position','relative').css('top',e).css('margin-top','0');
 	//START expand / collapse glyphicon
 	$("button#optionsbtn").click(function() {
 		$( 'button#optionsbtn span' ).toggleClass('visuallyremoved');
