@@ -111,7 +111,7 @@
                         <div class="row">
 
                             <div class="col-xs-6 col-md-6 col-lg-4">
-                                <button type="button" class="btn-sm btn-success add" id="confirm-link-widget">Confirm Primary Attorney</button>
+                                <button type="button" class="btn-sm btn-success add" id="confirm-link-widget" style=" color: white; background-color: rgb(128, 128, 128);">Confirm Primary Attorney</button>
                             </div>
                             <div class="col-xs-6 col-md-6 col-lg-4">
                                 <button type="button" class="btn-sm btn-success add" id="addAttorneyLink">Add Additional Attorney</button>
@@ -538,10 +538,6 @@
 
 
             var field_value =  $(this).parent().next().next().children().html();
-
-            alert(field_value);
-
-
             if(field_value != "") {
                 // set email to confirm button property
                 $('#confirm-link-widget').attr("primary-attorney-email", field_value);
