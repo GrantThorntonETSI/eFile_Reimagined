@@ -1802,7 +1802,7 @@ public class ApplicationObjectCreationController {
             recieptFilePath  = "/files-pdf/"+recieptFilePath;
 
             baseTrademarkApplication.setRecieptFilePath(recieptFilePath);
-            baseTrademarkApplication.setFilingStatus("Filed");
+            baseTrademarkApplication.setFilingStatus("Submitted");
             baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
         }
