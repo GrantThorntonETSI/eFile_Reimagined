@@ -85,6 +85,7 @@ public class GoodAndService {
     // foreign registration fields
     private String frCountry;
     private String frRegistartionNumber;
+    private Date   frRegistrationDate;
     private Date  frExpirationDate;
     private Date  frRenewlDate;
 
@@ -151,6 +152,23 @@ public class GoodAndService {
 
         return firstGSDate;
 
+    }
+
+    public Date getFrRegistrationDate() {
+        return frRegistrationDate;
+    }
+
+    public void setFrRegistrationDate(Date frRegistrationDate) {
+        this.frRegistrationDate = frRegistrationDate;
+    }
+
+    public String  getFRregistrationDateDisplay(){
+        if(frRegistrationDate != null) {
+            return frRegistrationDate.toString().substring(0, 10);
+        }
+        else {
+            return "";
+        }
     }
 
     public String getFirstGSDateDisplay() {
