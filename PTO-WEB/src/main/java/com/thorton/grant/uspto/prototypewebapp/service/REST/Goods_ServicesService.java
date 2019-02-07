@@ -582,7 +582,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
             }
 
 
-            appFieldReadable = "Filing Basis  Pending Foreign Application Filing Date";
+            appFieldReadable = "Filing Basis Foreign Registration Date";
 
         }
 
