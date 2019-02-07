@@ -451,34 +451,8 @@ public class ApplicationFlowController {
         ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
         selectedAttorneyDisplayDTO.setContactNames(selectedContactNames);
         model.addAttribute("selectedAttorneys",selectedAttorneyDisplayDTO);
-        baseTrademarkApplication.setLastViewModel("application/attorney/AttorneySet");
-
-        if(trademarkInternalID.equals("new")) {
-
-            BaseTrademarkApplication trademarkApplication = new BaseTrademarkApplication();
-
-            trademarkApplication.setAttorneySet(false);
-            trademarkApplication.setAttorneyFiling(false);
-
-            trademarkApplication.setOwnerEmail(ptoUser.getEmail());
-
-            baseTradeMarkApplicationService.save(trademarkApplication);
-            trademarkApplication.setTrademarkName("my_first_trademark");
-            trademarkApplication.setApplicationInternalID(UUID.randomUUID().toString());
-            counter++;
-            trademarkApplication.setTrademarkName(""+counter);
-            ptoUser.addApplication(trademarkApplication); // adds to myApplications Collection
-            ptoUserService.save(ptoUser);
-            model.addAttribute("baseTrademarkApplication", trademarkApplication);
 
 
-
-
-            model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
-
-
-        }
-        else{
 
             ////////////////////////////////////////////////////////////////////////////
             // existing trade  mark application
@@ -498,20 +472,23 @@ public class ApplicationFlowController {
             // add selected contacts display info to model
             ////////////////////////////////////////////////////////////////////////////////////////////
 
+            Lawyer attorney = baseTrademarkApplication.findContactByEmail(email);
 
 
-            // baseTrademarkApplication.setLastViewModel("application/AttorneyStart");
-
+            model.addAttribute("attorney", attorney);
             model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
             model.addAttribute("lawyerPool", baseTrademarkApplication.getAvailableLawyers());
 
 
-        }
+
 
 
 
         model.addAttribute("hostBean", hostBean);
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
+
+
+
         return "application/attorney/AttorneyEdit";
 
     }

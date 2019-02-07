@@ -108,19 +108,19 @@
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                     <label for="attorney-first-name">First Name</label>
-                                    <input type="text" class="form-control" id="attorney-first-name" name="first" placeholder="" >
+                                    <input type="text" class="form-control" id="attorney-first-name" name="first" placeholder="" th:value="${attorney.getFirstName()}" >
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                     <label for="Attorney-middle-name">Middle Name</label>
-                                    <input type="text" class="form-control" id="Attorney-middle-name" >
+                                    <input type="text" class="form-control" id="Attorney-middle-name" th:value="${attorney.getMidlleName()}">
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
                                     <label for="attorney-last-name">Last Name</label>
-                                    <input type="text" class="form-control" id="attorney-last-name"  >
+                                    <input type="text" class="form-control" id="attorney-last-name" th:value="${attorney.getLastName()}">
                                 </div>
                                 <div class="form-group form-group-md col-xs-5 col-sm-3">
                                     <label for="suffix">Suffix</label>
-                                    <select class="form-control" id="suffix" >
+                                    <select class="form-control" id="suffix" th:field="${attorney.suffix}">
                                         <option value="select">Select</option>
                                         <option value="Sr.">Sr.</option>
                                         <option value="I">I</option>
@@ -136,7 +136,7 @@
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-5">
                                     <label for="attorney-lawfirm-name"><span class="weight600"></span> Firm</label>
-                                    <input type="text" class="form-control" id="attorney-lawfirm-name" placeholder="">
+                                    <input type="text" class="form-control" id="attorney-lawfirm-name" placeholder="" th:value="${attorney.lawFirmName}">
                                 </div>
                             </div>
                         </fieldset><!--END Attorney Information-->
@@ -148,7 +148,7 @@
                             <div class="row">
                                 <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-5">
                                     <label for="attorney-country"> Country / US Territory</label>
-                                    <select class="form-control" id="attorney-country" >
+                                    <select class="form-control" id="attorney-country"  th:field="${attorney.country}" >
                                         <option value="">Select</option>
                                         <option value="X1">UNITED STATES OF AMERICA</option>
                                         <option value="B2">AFGHANISTAN</option>
@@ -393,7 +393,7 @@
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-7">
                                     <label for="attorney-address1"> Address Line 1</label>
-                                    <input type="text" class="form-control" id="attorney-address1" >
+                                    <input type="text" class="form-control" id="attorney-address1" th:value="${attorney.address1}">
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-xl-6">
                                     <label for="attorney-address2">Address Line 2</label>
@@ -405,11 +405,11 @@
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
                                     <label for="attorney-city">City</label>
-                                    <input type="text" class="form-control" id="attorney-city" >
+                                    <input type="text" class="form-control" id="attorney-city" th:value="${attorney.city}">
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
                                     <label for="attorney-state">State</label>
-                                    <select class="form-control" id="attorney-state">
+                                    <select class="form-control" id="attorney-state" th:field="${attorney.state}">
                                         <option value="">Select</option>
                                         <option  value="AL">Alabama</option>
                                         <option  value="AK">Alaska</option>
@@ -466,11 +466,11 @@
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
                                     <label for="attorney-zipcode">Zip Code</label>
-                                    <input type="text" class="form-control" id="attorney-zipcode" placeholder="" >
+                                    <input type="text" class="form-control" id="attorney-zipcode" placeholder="" th:value="${attorney.zipcode}" >
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-5 col-lg-5">
-                                    <label for="attorney-email"><span class="weight600">&#42;</span> Email Address</label>
-                                    <input type="text" class="form-control" id="attorney-email" placeholder="email Address" >
+                                    <label for="attorney-email">Email Address</label>
+                                    <input type="text" class="form-control" id="attorney-email" placeholder="email Address" th:value="${attorney.email}" >
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-3 col-lg-3">
                                     <label for="attorney-phonenumbertype">Phone Type</label>
@@ -484,11 +484,9 @@
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-4">
                                     <label for="attorney-phone">Phone Number</label>
-                                    <input type="text" class="form-control" id="attorney-phone" placeholder="" >
+                                    <input type="text" class="form-control" id="attorney-phone" placeholder="" th:value="${attorney.primaryPhonenumber}" >
                                 </div>
-                                <div class="col-xs-12">
-                                    <button type="button" class="btn-sm btn-success add ctr">Additional Number</button>
-                                </div>
+
                             </div>
                         </fieldset><!--END Contact Attorney Information-->
                         <!--START Docket Reference Information-->
@@ -499,11 +497,9 @@
                             <div class="row">
                                 <div class="form-group form-group-md col-xs-12">
                                     <label for="docket-id">If applicable, enter the attorney docket or reference number.</label>
-                                    <input type="text" class="form-control" id="docket-id" />
+                                    <input type="text" class="form-control" id="docket-id" th:value="${attorney.docketNumber}">
                                 </div>
-                                <div class="col">
-                                    <button type="button" class="btn-sm btn-success add ctr" >Additional Docket or Reference Number</button>
-                                </div>
+
                             </div>
                         </fieldset><!--END Docket Reference Information-->
                         <!--START Affiliation Information-->
@@ -514,7 +510,7 @@
                             <div class="row">
                                 <div class="form-group form-group-md col-xs-12">
                                     <label for="attorney-bar-standing">Attorney Bar Info</label>
-                                    <select class="form-control" id="attorney-bar-standing">
+                                    <select class="form-control" id="attorney-bar-standing" th:field="${attorney.affiliationStatus}">
                                         <option value="Select">Select</option>
                                         <option value="usaffiliation">US Attorney in good standing</option>
                                         <option value="canadianaffiliation">Canadian agent or attorney</option>
@@ -525,7 +521,7 @@
                                 <div class="row">
                                     <div class="form-group form-group-md col-xs-12 col-md-3">
                                         <label for="attorney-bar-jurisdiction">Bar Jurisdiction</label>
-                                        <select class="form-control" id="attorney-bar-jurisdiction" name="attorneyBarJurisdiction">
+                                        <select class="form-control" id="attorney-bar-jurisdiction" name="attorneyBarJurisdiction" th:field="${attorney.barJurisdiction}">
                                             <option value="">Select</option>
                                             <option value="AL">Alabama</option>
                                             <option value="AK">Alaska</option>
@@ -582,16 +578,21 @@
                                     </div>
                                     <div class="form-group form-group-md col-xs-12 col-md-5">
                                         <label for="bar-membership-number">Membership Number <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
-                                        <input type="text" class="form-control" id="bar-membership-number" name="attorneyBarMembershipNumber" value="">
+                                        <input type="text" class="form-control" id="bar-membership-number" name="attorneyBarMembershipNumber" value="" th:value="${attorney.membershipNumber}">
                                     </div>
                                     <div class="form-group form-group-md col-xs-12 col-md-4">
                                         <label for="bar-membership-date">Date of Admission</label>
-                                        <input type="date" class="form-control" id="bar-membership-date" name="attorneyBarAdmissionDate" value="">
+                                        <input type="date" class="form-control" id="bar-membership-date" name="attorneyBarAdmissionDate" value="" th:value="${attorney.barAdmissionDate}">
                                     </div>
                                 </div>
                                 <h4 class="weight600">Acknowledgement of Certification in Good Standing</h4>
                                 <input class="form-check-input checkmark" type="checkbox" value="" aria-checked="false" tabindex="0" aria-labelledby="userAccept-label" id="user-accept-checkbox" name="user-accept-checkbox">
                                 <label class="form-check-label form-check long" for="user-accept-checkbox" id="userAccept-label"><span class="radio notspecial">I certify that this attorney is in good standing with a bar of the highest court of any US State, the District of Columbia, the US Commonwealths or US Territories.</span></label>
+                                <div class="row">
+                                    <div class="js-upload-finished col-xs-12 col-md-10 col-lg-8">
+                                     <img th:src="${attorney.barCertificateImageKey}" class="img-responsive">
+                                </div><!--END US affiliation-->
+
                                 <div>
                                     <label class="small long upload-drop-zone" for="file"><span class="glyphicon glyphicon-upload"></span> <br>
                                         Upload bar credentials, including certificate of good standing from highest court of a state, commonwealth, territory or possession, or of the District of Columbia evidencing that you are a memeber of the bar of such court and are in good standing.</label>
