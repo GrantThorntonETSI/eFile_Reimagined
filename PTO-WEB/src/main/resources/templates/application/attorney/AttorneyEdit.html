@@ -511,7 +511,7 @@
                                 <div class="form-group form-group-md col-xs-12">
                                     <label for="attorney-bar-standing">Attorney Bar Info</label>
                                     <select class="form-control" id="attorney-bar-standing" th:field="${attorney.affiliationStatus}">
-                                        <option value="Select">Select</option>
+                                        <option value="">Select</option>
                                         <option value="usaffiliation">US Attorney in good standing</option>
                                         <option value="canadianaffiliation">Canadian agent or attorney</option>
                                     </select>
@@ -1121,19 +1121,116 @@
             }
         });
 
+        var attEmail = $('#attorney-email').val();
+
+    $('#attorney-first-name').focusout(function () {
+        var value = $(this).val();
+        saveAttorneyInfo(attEmail, "attorney-first-name",value, appInternalID);
+
+    });
+
+
+    $('#attorney-middle-name').focusout(function () {
+        var value = $(this).val();
+        saveAttorneyInfo(attEmail, "attorney-middle-name",value, appInternalID);
+
+    });
+
+
+    $('#attorney-last-name').focusout(function () {
+        var value = $(this).val();
+        saveAttorneyInfo(attEmail, "attorney-last-name",value, appInternalID);
+
+    });
+
+    $('#suffix').change(function () {
+        var value = $(this).val();
+        saveAttorneyInfo(attEmail, "suffix", value, appInternalID);
+    });
+
+    $('#attorney-lawfirm-name').focusout(function () {
+        var value = $(this).val();
+        saveAttorneyInfo(attEmail, "attorney-lawfirm-name",value, appInternalID);
+
+    });
+
+
+    $('#attorney-country').change(function () {
+        var value = $(this).val();
+        saveAttorneyInfo(attEmail, "attorney-country",value, appInternalID);
+    });
 
 
 
+    $('#attorney-address1').focusout(function () {
+        var value = $(this).val();
+        saveAttorneyInfo(attEmail, "attorney-address1",value, appInternalID);
+
+    });
+
+
+    $('#attorney-city').focusout(function () {
+        var value = $(this).val();
+        saveAttorneyInfo(attEmail, "attorney-city",value, appInternalID);
+
+    });
+
+    $('#attorney-state').change(function () {
+        var value = $(this).val();
+        saveAttorneyInfo(attEmail, "attorney-state",value, appInternalID);
+    });
+
+    $('#attorney-zipcode').focusout(function () {
+        var value = $(this).val();
+        saveAttorneyInfo(attEmail, "attorney-zipcode",value, appInternalID);
+
+    });
+
+
+    $('#attorney-email').focusout(function () {
+        var value = $(this).val();
+        saveAttorneyInfo(attEmail, "attorney-email",value, appInternalID);
+
+    });
 
 
 
+    $('#attorney-phone').focusout(function () {
+        var value = $(this).val();
+        saveAttorneyInfo(attEmail, "attorney-phone",value, appInternalID);
+
+    });
 
 
+    $('#docket-id').focusout(function () {
+        var value = $(this).val();
+        saveAttorneyInfo(attEmail, "docket-id",value, appInternalID);
+
+    });
+
+    $('#attorney-bar-standing').change(function () {
+        var value = $(this).val();
+        saveAttorneyInfo(attEmail, "attorney-bar-standing",value, appInternalID);
+    });
+
+    $('#attorney-bar-jurisdiction').change(function () {
+        var value = $(this).val();
+        saveAttorneyInfo(attEmail, "attorney-bar-jurisdiction",value, appInternalID);
+    });
+
+    $('#bar-membership-number').focusout(function () {
+        var value = $(this).val();
+        saveAttorneyInfo(attEmail, "attorney-bar-membership",value, appInternalID);
+
+    });
 
 
 
 
     }); // end of document ready()
+
+
+
 
 
 

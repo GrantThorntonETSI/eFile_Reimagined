@@ -300,7 +300,11 @@ public class ContactsService extends  BaseRESTapiService {
 
         }
 
+        if(contact_field_name.equals("attorney-email" )){
+            baseTrademarkApplication.findContactByEmail(contact_email).setEmail(contact_field_value);
+            appFieldReadable = "Attorney Email ";
 
+        }
        baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
 
