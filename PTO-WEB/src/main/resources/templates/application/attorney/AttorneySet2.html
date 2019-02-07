@@ -111,10 +111,10 @@
                         <div class="row">
 
                             <div class="col-xs-6 col-md-6 col-lg-4">
-                                <button type="button" class="btn-sm btn-success add" disabled>Confirm Primary Attorney</button>
+                                <button type="button" class="btn-sm btn-success add" id="confirm-link-widget">Confirm Primary Attorney</button>
                             </div>
                             <div class="col-xs-6 col-md-6 col-lg-4">
-                                <button type="button" class="btn-sm btn-success add">Add Additional Attorney</button>
+                                <button type="button" class="btn-sm btn-success add" id="addAttorneyLink">Add Additional Attorney</button>
                             </div>
                         </div>
                         <form action="" method="post" >
@@ -534,9 +534,12 @@
 
 
 
-        $('#accordionExample').on('click', 'input.primaryLawyer', function () {
+        $('input.primaryLawyer').click(function () {
 
-            var field_value =  $(this).parent().next().next().next().children().html();
+
+            var field_value =  $(this).parent().next().next().children().html();
+
+            alert(field_value);
 
 
             if(field_value != "") {
@@ -545,7 +548,9 @@
 
             }
             enableConfirmWidgetLink();
+
         });
+
         $('#confirm-link-widget').click( function () {
             // alert("!!!!!!!!!!!!!");
             //alert($(this).attr("primary-attorney-email"));

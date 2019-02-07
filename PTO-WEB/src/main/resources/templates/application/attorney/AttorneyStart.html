@@ -1032,11 +1032,11 @@
         if(isAttorneyOptionSet == true){
 
             if(isAttorneyFiling == true){
-                if(isAttorneyPoolEmpty == false){
+                if(isAttorneyPoolEmpty == true){
                     // call jquery click
                     // set next link to attorney view
                     // activate link
-                    $('#inlineRadio015').attr("checked", true);
+                    $('#inlineRadio015').click();
                     $('#formSubmitNextButtonGroup').fadeOut();
                     $('#formPagingNextButtonGroup').fadeIn();
                     $('#nextButtonFormPaging').attr("disabled",false);
@@ -1045,6 +1045,10 @@
                 else {
                     // fade in submit button???
                     // how to handel toggling between upload and next button
+                    $('#inlineRadio015').click();
+                    $('#formSubmitNextButtonGroup').fadeIn();
+                    $('#formPagingNextButtonGroup').fadeOut();
+                    $('#nextButtonFormPaging').attr("disabled",false);
                 }
 
             }
