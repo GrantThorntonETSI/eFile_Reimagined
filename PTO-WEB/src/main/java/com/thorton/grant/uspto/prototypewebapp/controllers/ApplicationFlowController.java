@@ -2454,30 +2454,30 @@ public class ApplicationFlowController {
 
                 if(goodAndService.isMarkInUse() == true){
                     if(goodAndService.getFirstGSDate() == null){
-                        missedTEAsFields.add(goodAndService.getClassDescription()+" - "+"first in use date");
+                        missedTEAsFields.add("first in use date");
 
                     }
                     if(goodAndService.getFirstCommerceDate() == null){
-                        missedTEAsFields.add(goodAndService.getClassDescription()+" - "+"first in commerce date");
+                        missedTEAsFields.add("first in commerce date");
                     }
 
                 }
 
                 if(goodAndService.isForeignRegistration()){
                     if(goodAndService.getFrExpirationDate() == null){
-                        missedTEAsFields.add(goodAndService.getClassDescription()+" - "+"Foreign Registration Expiration date");
+                        missedTEAsFields.add("Foreign Registration Expiration date");
 
                     }
 
                     if(goodAndService.getFrRenewlDate() == null){
 
-                        missedTEAsFields.add(goodAndService.getClassDescription()+" - "+"Foreign Registration Renewal date");
+                        missedTEAsFields.add("Foreign Registration Renewal date");
 
                     }
 
                     if(goodAndService.getFrCertImagePath() == null){
 
-                        missedTEAsFields.add(goodAndService.getClassDescription()+" - "+"Foreign Registration Certificate");
+                        missedTEAsFields.add("Foreign Registration Certificate");
                     }
 
 
@@ -2487,13 +2487,13 @@ public class ApplicationFlowController {
 
                 if(goodAndService.isPendingFA()){
                     if(goodAndService.getFaFilingDate()== null){
-                        missedTEAsFields.add(goodAndService.getClassDescription()+" - "+"Foreign Application Filing date");
+                        missedTEAsFields.add("Foreign Application Filing date");
 
                     }
 
                     if(goodAndService.getFrRegistartionNumber()== null){
 
-                        missedTEAsFields.add(goodAndService.getClassDescription()+" - "+"Foreign Application Application number");
+                        missedTEAsFields.add("Foreign Application Application number");
 
                     }
 
