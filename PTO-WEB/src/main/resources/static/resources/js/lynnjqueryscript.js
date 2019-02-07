@@ -482,7 +482,7 @@ $(document).ready(function(){
 		$( 'div#nametype' ).show( 500 );
 	});
 	//start entity options (import concept)
-	$('#autofill').css('display','none');
+
 	$('#autofillForeign').css('display','none');
 	$('#entype').on('change',function(){
 		$('#container').empty();

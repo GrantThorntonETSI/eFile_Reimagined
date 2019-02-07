@@ -647,17 +647,10 @@
         </div>
         <div class="inlinebuttons btn-group btn-group-justified  owner-paging-buttons" role="nav" aria-label="view previous or next page" id="prevnxt">
             <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-default fill prev" id="prevButton" value="previous">Previous</button>
-            </div>
-
-
-            <div class="btn-group" id="formSubmitNextButtonGroup" style="display: none;">
-                <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next" disabled>Next
-                    <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
-            </div>
-            <div class="btn-group" id="formPagingNextButtonGroup" >
-                <button type="button" class="btn btn-sm btn-primary fill next" id="nextButtonFormPaging" value="next" disabled>Next
-                    <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
+                <button type="button" class="btn btn-sm btn-primary fill next" id="doneButton" value="next" >Done
+                    <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                    </div>
+                </button>
             </div>
         </div>
     </main>
@@ -715,6 +708,9 @@
     /*<![CDATA[*/
 
 
+
+
+
     var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
     var attorneyOpt = /*[[${baseTrademarkApplication.isAttorneyFiling()}]]*/ 'User Name';
 
@@ -760,7 +756,7 @@
 
 <script>
 
-    var nextLinkURL = "../../application/AttorneySet/?trademarkID="+appInternalID;
+    var nextLinkURL = "../../../../application/AttorneySet/?trademarkID="+appInternalID;
     var prevLinkURL = "../../accounts/dashboard";
 
     var nextLinkURLAttorneyFalse = "../../application/OwnerStart/?trademarkID="+appInternalID;
@@ -834,6 +830,9 @@
         // expand fee drop down
         $('a.dropdown-toggle').click();
 
+        $('#doneButton').click(function () {
+            location.href=nextLinkURL;
+        });
 
 
         //////////////////////////////////////////////////////////////////
