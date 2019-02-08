@@ -1183,6 +1183,7 @@
 
         if(this.checked == true){
             $(this).parent().parent().next().fadeIn(500);
+            saveAdditionalInfo("ai-misc-info-opt", "yes", appInternalID);
 
         }
 
@@ -1192,8 +1193,12 @@
 
 
     $('#inlineRadio046').click(function () {
+        if(this.checked == true){
+            $(this).parent().parent().next().fadeOut(500);
 
-        $(this).parent().parent().next().fadeOut(500);
+            saveAdditionalInfo("ai-misc-info-opt", "no", appInternalID);
+        }
+
     });
 
 

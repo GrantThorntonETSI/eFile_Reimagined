@@ -39,6 +39,30 @@ public class AdditionalInformationService extends  BaseRESTapiService {
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
 
+
+        if(fieldName.equals("ai-misc-info-opt")){
+            // ptoUser.setState(param); // sets state code
+
+            if(fieldValue.equals("yes")){
+
+                baseTrademarkApplication.setProvideMiscInfo(true);
+                baseTrademarkApplication.setProvideMiscInfoFlagSet(true);
+
+            }
+            if(fieldValue.equals("no")){
+                baseTrademarkApplication.setProvideMiscInfo(false);
+                baseTrademarkApplication.setProvideMiscInfoFlagSet(true);
+
+            }
+
+
+            appFieldReadable = "Miscellaneous Info option";
+
+
+        }
+
+
+
         if(fieldName.equals("ai-misc-statement")){
             // ptoUser.setState(param); // sets state code
             baseTrademarkApplication.setMiscInformation(fieldValue);

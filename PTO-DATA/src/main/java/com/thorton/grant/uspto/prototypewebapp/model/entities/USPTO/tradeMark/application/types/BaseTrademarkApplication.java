@@ -165,8 +165,8 @@ public class BaseTrademarkApplication  {
 
 
     //additional info fields
-    private boolean provideAdditionalInfo;
-    private boolean provideAdditionalFlagSet;
+    private boolean provideMiscInfo;
+    private boolean provideMiscInfoFlagSet;
 
 
 
@@ -1086,20 +1086,20 @@ public class BaseTrademarkApplication  {
         this.declarationWarningFalseStatementSet = declarationWarningFalseStatementSet;
     }
 
-    public boolean isProvideAdditionalInfo() {
-        return provideAdditionalInfo;
+    public boolean isProvideMiscInfo() {
+        return provideMiscInfo;
     }
 
-    public void setProvideAdditionalInfo(boolean provideAdditionalInfo) {
-        this.provideAdditionalInfo = provideAdditionalInfo;
+    public void setProvideMiscInfo(boolean provideMiscInfo) {
+        this.provideMiscInfo = provideMiscInfo;
     }
 
-    public boolean isProvideAdditionalFlagSet() {
-        return provideAdditionalFlagSet;
+    public boolean isProvideMiscInfoFlagSet() {
+        return provideMiscInfoFlagSet;
     }
 
-    public void setProvideAdditionalFlagSet(boolean provideAdditionalFlagSet) {
-        this.provideAdditionalFlagSet = provideAdditionalFlagSet;
+    public void setProvideMiscInfoFlagSet(boolean provideMiscInfoFlagSet) {
+        this.provideMiscInfoFlagSet = provideMiscInfoFlagSet;
     }
 
     @Override
