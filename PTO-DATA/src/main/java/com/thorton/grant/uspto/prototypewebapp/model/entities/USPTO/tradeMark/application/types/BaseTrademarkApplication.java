@@ -165,6 +165,13 @@ public class BaseTrademarkApplication  {
 
 
     //additional info fields
+    private boolean provideAdditionalInfo;
+    private boolean provideAdditionalFlagSet;
+
+
+
+
+
     private String miscInformation;
     private String miscInfoImagePath;
 
@@ -1077,6 +1084,22 @@ public class BaseTrademarkApplication  {
 
     public void setDeclarationWarningFalseStatementSet(boolean declarationWarningFalseStatementSet) {
         this.declarationWarningFalseStatementSet = declarationWarningFalseStatementSet;
+    }
+
+    public boolean isProvideAdditionalInfo() {
+        return provideAdditionalInfo;
+    }
+
+    public void setProvideAdditionalInfo(boolean provideAdditionalInfo) {
+        this.provideAdditionalInfo = provideAdditionalInfo;
+    }
+
+    public boolean isProvideAdditionalFlagSet() {
+        return provideAdditionalFlagSet;
+    }
+
+    public void setProvideAdditionalFlagSet(boolean provideAdditionalFlagSet) {
+        this.provideAdditionalFlagSet = provideAdditionalFlagSet;
     }
 
     @Override

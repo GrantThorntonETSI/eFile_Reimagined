@@ -1454,6 +1454,27 @@ $(document).ready(function(){
 		}
 	});
 
+
+	//start uncommoninfo options
+	$('div#yesnotpreviously').css('display','none');
+	$('input#inlineRadio045').change(function() {
+		if(this.checked == true){
+			$('div#yesnotpreviously').show( 'fast' );
+		}
+		else {
+			$('div#yesnotpreviously').hide( 'fast' );
+		}
+	});
+	$('input#inlineRadio046').change(function() {
+		if(this.checked == true){
+			$('div#yesnotpreviously').hide( 'fast' );
+		}
+		else {
+			$('div#yesnotpreviously').show( 'fast' );
+		}
+	});
+	//end uncommoninfo options
+
 });
 
 
