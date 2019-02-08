@@ -185,7 +185,8 @@ $(document).ready(function(){
 	//Initialize tooltip
 	$("body").tooltip({
 		selector: "[data-toggle='tooltip']",
-		container: "body"
+		container: "body",
+		placement : 'bottom auto'
 	});
 	//Initialize popover
 
