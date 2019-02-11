@@ -814,6 +814,22 @@ public class ApplicationService  extends  BaseRESTapiService{
         }
 
 
+        if(fieldName.equals("declare-noOther-has-right")){
+            // ptoUser.setState(param); // sets state code
+
+            if(fieldValue.equals("yes")){
+                baseTrademarkApplication.setDeclarationNoOtherHasRight(true);
+
+
+            }
+            if(fieldValue.equals("no")){
+                baseTrademarkApplication.setDeclarationNoOtherHasRight(false);
+     }
+            baseTrademarkApplication.setDeclarationNoOtherHasRightSet(true);
+            appFieldReadable = "Application Declaration";
+
+        }
+
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
 

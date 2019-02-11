@@ -271,14 +271,16 @@ public class BaseTrademarkApplication  {
     private boolean declarationConcurrentUser; // check box 4
     private boolean declarationConcurrentUserSet;
 
+    private boolean declarationNoOtherHasRight; // check box 5
+    private boolean declarationNoOtherHasRightSet;
 
 
 
-    private boolean declarationEvidenceSupport;  // check box 5
+    private boolean declarationEvidenceSupport;  // check box 6
     private boolean declarationEvidenceSupportSet;
 
 
-    private boolean declarationWarningFalseStatement; // check box 6
+    private boolean declarationWarningFalseStatement; // check box 7
     private boolean declarationWarningFalseStatementSet;
 
 
@@ -1304,6 +1306,22 @@ public class BaseTrademarkApplication  {
 
     public void setTimePeriodConcurrentUser(String timePeriodConcurrentUser) {
         this.timePeriodConcurrentUser = timePeriodConcurrentUser;
+    }
+
+    public boolean isDeclarationNoOtherHasRight() {
+        return declarationNoOtherHasRight;
+    }
+
+    public void setDeclarationNoOtherHasRight(boolean declarationNoOtherHasRight) {
+        this.declarationNoOtherHasRight = declarationNoOtherHasRight;
+    }
+
+    public boolean isDeclarationNoOtherHasRightSet() {
+        return declarationNoOtherHasRightSet;
+    }
+
+    public void setDeclarationNoOtherHasRightSet(boolean declarationNoOtherHasRightSet) {
+        this.declarationNoOtherHasRightSet = declarationNoOtherHasRightSet;
     }
 
     @Override
