@@ -99,7 +99,7 @@ public class TradeMarkService extends BaseRESTapiService {
 
         if(markField.equals("mark-color-description")){
             // ptoUser.setState(param); // sets state code
-            baseTrademarkApplication.getTradeMark().setMarkColorDescription(markValue);
+            baseTrademarkApplication.getTradeMark().setMarkColorDescription("This mark consists of "+markValue);
             appFieldReadable = "Mark Colors Description";
 
         }
