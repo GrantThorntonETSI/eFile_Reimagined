@@ -102,7 +102,10 @@ public class AdditionalInformationService extends  BaseRESTapiService {
             }
             if(fieldValue.equals("no")){
                 baseTrademarkApplication.setConcurrentTypeCourtDecree(false);
-                baseTrademarkApplication.setConcurrentTypeSet(false);
+                if(baseTrademarkApplication.isConcurrentTypeEarlierFirstUse() == false && baseTrademarkApplication.isConcurrentTypePriorDecision() == false && baseTrademarkApplication.isConcurrentTypeWrittenConsent() == false){
+                    baseTrademarkApplication.setConcurrentTypeSet(false);
+                }
+
 
             }
 
@@ -121,7 +124,10 @@ public class AdditionalInformationService extends  BaseRESTapiService {
             }
             if(fieldValue.equals("no")){
                 baseTrademarkApplication.setConcurrentTypePriorDecision(false);
-                baseTrademarkApplication.setConcurrentTypeSet(false);
+                if(baseTrademarkApplication.isConcurrentTypeEarlierFirstUse() == false && baseTrademarkApplication.isConcurrentTypeCourtDecree() == false && baseTrademarkApplication.isConcurrentTypeWrittenConsent() == false){
+                    baseTrademarkApplication.setConcurrentTypeSet(false);
+                }
+
 
             }
 
@@ -140,7 +146,10 @@ public class AdditionalInformationService extends  BaseRESTapiService {
             }
             if(fieldValue.equals("no")){
                 baseTrademarkApplication.setConcurrentTypeWrittenConsent(false);
-                baseTrademarkApplication.setConcurrentTypeSet(false);
+                if(baseTrademarkApplication.isConcurrentTypeEarlierFirstUse() == false && baseTrademarkApplication.isConcurrentTypePriorDecision() == false && baseTrademarkApplication.isConcurrentTypeCourtDecree() == false){
+                    baseTrademarkApplication.setConcurrentTypeSet(false);
+                }
+
 
             }
 
@@ -158,7 +167,10 @@ public class AdditionalInformationService extends  BaseRESTapiService {
             }
             if(fieldValue.equals("no")){
                 baseTrademarkApplication.setConcurrentTypeEarlierFirstUse(false);
-                baseTrademarkApplication.setConcurrentTypeSet(false);
+                if(baseTrademarkApplication.isConcurrentTypeCourtDecree() == false && baseTrademarkApplication.isConcurrentTypePriorDecision() == false && baseTrademarkApplication.isConcurrentTypeWrittenConsent() == false){
+                    baseTrademarkApplication.setConcurrentTypeSet(false);
+                }
+
 
             }
 
