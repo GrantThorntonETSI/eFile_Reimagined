@@ -114,7 +114,7 @@ public class ApplicationService  extends  BaseRESTapiService{
             }
             else {
                 baseTrademarkApplication.setOwnerType("Foreign");
-                baseTrademarkApplication.setOwnerSubType("Foreign Corporation");
+                baseTrademarkApplication.setOwnerSubType("Corporation");
                 baseTrademarkApplication.setForeignEnityFiling(true);
                 baseTrademarkApplication.setEntityTypeSet(true);
 
