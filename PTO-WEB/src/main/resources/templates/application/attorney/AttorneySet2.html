@@ -200,7 +200,7 @@
                                                                     <button type="button" class="btn btn-sm btn-success  attorney-edit" aria-label="edit contact" th:attr="contact-email=${lawyer.getEmail()}">Edit</button>
                                                                 </div>
                                                                 <div class="btn-group"  th:attr="primary-attorney=${lawyer.isPrimary()}">
-                                                                    <button type="button" class="btn btn-sm btn-primary close remove-attorney" aria-label="close contact" th:attr="contact-email=${lawyer.getEmail()}" style=" pointer-events: none;" ><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                                                                    <button type="button" class="btn btn-sm btn-primary close remove-attorney" aria-label="close contact" th:attr="contact-email=${lawyer.getEmail()}"  ><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -389,7 +389,7 @@
         }, 500);
 
 
-
+        $('.remove-attorney').unbind('hover');
 
         setBreadCrumb(breadCrumbStatus);
 
