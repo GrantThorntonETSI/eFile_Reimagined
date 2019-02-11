@@ -200,6 +200,37 @@ public class BaseTrademarkApplication  {
 
     private String concurrentUseEvidenceFilePath;
 
+    private String concurentEvidenceDescription;
+
+    private String GeoAreaMarkInCommerce;
+
+    private String modeOfUse;
+
+    private String ttabProceedingNumber;
+
+    private String concurrentUserRegistrationNumber;
+
+
+    private String concurrentUserName;
+
+    private String concurrentUserCountry;
+
+    private String concurrentUserAddress1;
+    private String concurrentUserCity;
+
+    private String concurrentUserState;
+    private String concurrentUserZipcode;
+
+    private String concurrentUserGoodsAndService;
+
+    private String GeoAreaConcurrentUser;
+    private String modeOfuseConcurrentUser;
+
+    private String timePeriodConcurrentUser;
+
+
+
+
 
 
 
@@ -1153,6 +1184,126 @@ public class BaseTrademarkApplication  {
 
     public void setConcurrentTypeEarlierFirstUseSet(boolean concurrentTypeEarlierFirstUseSet) {
         this.concurrentTypeEarlierFirstUseSet = concurrentTypeEarlierFirstUseSet;
+    }
+
+    public String getConcurentEvidenceDescription() {
+        return concurentEvidenceDescription;
+    }
+
+    public void setConcurentEvidenceDescription(String concurentEvidenceDescription) {
+        this.concurentEvidenceDescription = concurentEvidenceDescription;
+    }
+
+    public String getGeoAreaMarkInCommerce() {
+        return GeoAreaMarkInCommerce;
+    }
+
+    public void setGeoAreaMarkInCommerce(String geoAreaMarkInCommerce) {
+        GeoAreaMarkInCommerce = geoAreaMarkInCommerce;
+    }
+
+    public String getModeOfUse() {
+        return modeOfUse;
+    }
+
+    public void setModeOfUse(String modeOfUse) {
+        this.modeOfUse = modeOfUse;
+    }
+
+    public String getTtabProceedingNumber() {
+        return ttabProceedingNumber;
+    }
+
+    public void setTtabProceedingNumber(String ttabProceedingNumber) {
+        this.ttabProceedingNumber = ttabProceedingNumber;
+    }
+
+    public String getConcurrentUserRegistrationNumber() {
+        return concurrentUserRegistrationNumber;
+    }
+
+    public void setConcurrentUserRegistrationNumber(String concurrentUserRegistrationNumber) {
+        this.concurrentUserRegistrationNumber = concurrentUserRegistrationNumber;
+    }
+
+    public String getConcurrentUserName() {
+        return concurrentUserName;
+    }
+
+    public void setConcurrentUserName(String concurrentUserName) {
+        this.concurrentUserName = concurrentUserName;
+    }
+
+    public String getConcurrentUserCountry() {
+        return concurrentUserCountry;
+    }
+
+    public void setConcurrentUserCountry(String concurrentUserCountry) {
+        this.concurrentUserCountry = concurrentUserCountry;
+    }
+
+    public String getConcurrentUserAddress1() {
+        return concurrentUserAddress1;
+    }
+
+    public void setConcurrentUserAddress1(String concurrentUserAddress1) {
+        this.concurrentUserAddress1 = concurrentUserAddress1;
+    }
+
+    public String getConcurrentUserCity() {
+        return concurrentUserCity;
+    }
+
+    public void setConcurrentUserCity(String concurrentUserCity) {
+        this.concurrentUserCity = concurrentUserCity;
+    }
+
+    public String getConcurrentUserState() {
+        return concurrentUserState;
+    }
+
+    public void setConcurrentUserState(String concurrentUserState) {
+        this.concurrentUserState = concurrentUserState;
+    }
+
+    public String getConcurrentUserZipcode() {
+        return concurrentUserZipcode;
+    }
+
+    public void setConcurrentUserZipcode(String concurrentUserZipcode) {
+        this.concurrentUserZipcode = concurrentUserZipcode;
+    }
+
+    public String getConcurrentUserGoodsAndService() {
+        return concurrentUserGoodsAndService;
+    }
+
+    public void setConcurrentUserGoodsAndService(String concurrentUserGoodsAndService) {
+        this.concurrentUserGoodsAndService = concurrentUserGoodsAndService;
+    }
+
+    public String getGeoAreaConcurrentUser() {
+        return GeoAreaConcurrentUser;
+    }
+
+    public void setGeoAreaConcurrentUser(String geoAreaConcurrentUser) {
+        GeoAreaConcurrentUser = geoAreaConcurrentUser;
+    }
+
+    public String getModeOfuseConcurrentUser() {
+        return modeOfuseConcurrentUser;
+    }
+
+    public void setModeOfuseConcurrentUser(String modeOfuseConcurrentUser) {
+        this.modeOfuseConcurrentUser = modeOfuseConcurrentUser;
+    }
+
+    public String getTimePeriodConcurrentUser() {
+        return timePeriodConcurrentUser;
+    }
+
+    public void setTimePeriodConcurrentUser(String timePeriodConcurrentUser) {
+        this.timePeriodConcurrentUser = timePeriodConcurrentUser;
     }
 
     @Override
