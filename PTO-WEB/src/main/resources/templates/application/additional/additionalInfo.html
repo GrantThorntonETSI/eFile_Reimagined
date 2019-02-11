@@ -574,7 +574,7 @@
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-7 form-group form-group-md">
                                                                             <label for="concurrentfiles">Registration Issued/Applications Files by Concurrent User</label>
-                                                                            <textarea id="concurrentfiles" rows="1" class="form-control"></textarea>
+                                                                            <textarea id="concurrentfiles" rows="1" class="form-control" th:text="${baseTrademarkApplication.getConcurrentUserRegistrationNumber()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12">
                                                                             <input class="form-check-input checkmark" type="checkbox" value="noconcurrentfiles" tabindex="0" aria-labelledby="noconcurrentfile" id="noconcurrentfiles">
@@ -723,7 +723,7 @@
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-7 form-group form-group-md">
                                                                             <label for="concurrentfiles">Registration Issued/Applications Files by Concurrent User</label>
-                                                                            <textarea id="concurrentfiles" rows="1" class="form-control"></textarea>
+                                                                            <textarea id="concurrentfiles" rows="1" class="form-control" th:text="${baseTrademarkApplication.getConcurrentUserRegistrationNumber()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12">
                                                                             <input class="form-check-input checkmark" type="checkbox" value="noconcurrentfiles" tabindex="0" aria-labelledby="noconcurrentfile" id="noconcurrentfiles">
@@ -948,7 +948,7 @@
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-7 form-group form-group-md">
                                                                             <label for="concurrentfiles">Registration Issued/Applications Files by Concurrent User</label>
-                                                                            <textarea id="concurrentfiles" rows="1" class="form-control"></textarea>
+                                                                            <textarea id="concurrentfiles" rows="1" class="form-control" th:text="${baseTrademarkApplication.getConcurrentUserRegistrationNumber()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12">
                                                                             <input class="form-check-input checkmark" type="checkbox" value="noconcurrentfiles" tabindex="0" aria-labelledby="noconcurrentfile" id="noconcurrentfiles">
@@ -1097,7 +1097,7 @@
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-7 form-group form-group-md">
                                                                             <label for="concurrentfiles">Registration Issued/Applications Files by Concurrent User</label>
-                                                                            <textarea id="concurrentfiles" rows="1" class="form-control"></textarea>
+                                                                            <textarea id="concurrentfiles" rows="1" class="form-control" th:text="${baseTrademarkApplication.getConcurrentUserRegistrationNumber()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12">
                                                                             <input class="form-check-input checkmark" type="checkbox" value="noconcurrentfiles" tabindex="0" aria-labelledby="noconcurrentfile" id="noconcurrentfiles">
@@ -1706,16 +1706,18 @@
         saveAdditionalInfo("ai-concurrent-geo-commerce", value, appInternalID);
     });
 
+    $('#ttab').focusout(function () {
+        var value = $(this).val();
+
+        saveAdditionalInfo("ai-concurrent-ttab-num", value, appInternalID);
+    });
 
 
+    $('#concurrentfiles').focusout(function () {
+        var value = $(this).val();
 
-
-        $('#ttab').focusout(function () {
-            var value = $(this).val();
-
-            saveAdditionalInfo("ai-concurrent-ttab-num", value, appInternalID);
-        });
-
+        saveAdditionalInfo("ai-concurrent-reg-num", value, appInternalID);
+    });
 
 
 
