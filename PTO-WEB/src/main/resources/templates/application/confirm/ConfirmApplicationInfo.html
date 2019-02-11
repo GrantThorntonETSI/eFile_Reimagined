@@ -504,8 +504,20 @@
                                                                     </div>
                                                                     <div class="col-xs-12 form-group form-group-md">
                                                                         <input class="form-check-input checkmark" type="checkbox" value="earlier" tabindex="0" aria-labelledby="early" id="earlieruse">
-                                                                        <label class="form-check-label form-check long" for="earlieruse" id="firstcommerce"><span class="radio notspecial small" id="early">To the best of the signatory&#8217;s knowledge and belief, the facts recited in the application are accurate. To the best of the signatory&#8217;s knowledge and belief, no other persons, except, if applicable, concurrent users, have the right to use the mark in commerce, either in the identical form or in such near resemblance as to be likely, when used on or in connection with the goods/services of such other persons, to cause confusion or mistake, or to deceive.</span><span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
+                                                                        <label class="form-check-label form-check long" for="earlieruse" id="firstcommerce"><span class="radio notspecial small" id="early">To the best of the signatory&#8217;s knowledge and belief, the facts recited in the application are accurate. </span><span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
                                                                     </div>
+
+                                                                    <div class="col-xs-12 form-group form-group-md">
+                                                                        <th:block th:if="${baseTrademarkApplication.isDeclarationNoOtherHasRight() == true}">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="earlier" tabindex="0" aria-labelledby="early" id="noOtherHasRightCheckbox"checked>
+                                                                        </th:block>
+                                                                        <th:block th:if="${baseTrademarkApplication.isDeclarationNoOtherHasRight() == false}">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="earlier" tabindex="0" aria-labelledby="early" id="noOtherHasRightCheckbox">
+                                                                        </th:block>
+
+                                                                        <label class="form-check-label form-check long" for="noOtherHasRight" id="noOtherHasRight"><span class="radio notspecial small" id="early"> To the best of the signatory&#8217;s knowledge and belief, no other persons, except, if applicable, concurrent users, have the right to use the mark in commerce, either in the identical form or in such near resemblance as to be likely, when used on or in connection with the goods/services of such other persons, to cause confusion or mistake, or to deceive.</span> <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
+                                                                    </div>
+
                                                                     <div class="col-xs-12 form-group form-group-md">
                                                                         <input class="form-check-input checkmark" type="checkbox" value="earlier4" tabindex="0" aria-labelledby="earlyu" id="earlierusey">
                                                                         <label class="form-check-label form-check long" for="earlierusey" id="firstcommercefour"><span class="radio notspecial small" id="earlyu">To the best of the signatory&#8217;s knowledge, information, and belief, formed after an inquiry reasonable under the circumstances, the allegations and other factual contentions made above have evidentiary support.</span><span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
