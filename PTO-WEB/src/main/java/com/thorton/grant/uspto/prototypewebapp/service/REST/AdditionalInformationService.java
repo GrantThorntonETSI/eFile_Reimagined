@@ -196,7 +196,13 @@ public class AdditionalInformationService extends  BaseRESTapiService {
             appFieldReadable = "Concurrent Use Mode of use";
 
         }
+        if(fieldName.equals("ai-concurrent-geo-commerce")){
+            // ptoUser.setState(param); // sets state code
 
+            baseTrademarkApplication.setGeoAreaMarkInCommerce(fieldValue);
+            appFieldReadable = "Concurrent Use Geographic Area in Commerce";
+
+        }
 
         String responseMsg = appFieldReadable+" has been saved";
 
