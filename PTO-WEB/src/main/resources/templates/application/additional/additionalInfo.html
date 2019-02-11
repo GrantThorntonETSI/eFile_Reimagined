@@ -554,7 +554,7 @@
                                                                 </div><!-- Drop Zone -->
                                                                 <div class="col-xs-12 form-group form-group-md">
                                                                     <label for="additional2" class="weight600">Description of the uploaded file.</label>
-                                                                    <textarea id="additional2" rows="3" class="form-control"></textarea>
+                                                                    <textarea id="additional2" rows="3" class="form-control" th:text="${baseTrademarkApplication.getConcurentEvidenceDescription()}"></textarea>
                                                                 </div>
                                                                 <div class="col-xs-12 form-group form-group-md">
                                                                     <label for="geographic" class="weight600">Geographic Area where you are using the mark in commerce:</label>
@@ -562,7 +562,7 @@
                                                                 </div>
                                                                 <div class="col-xs-12 form-group form-group-md">
                                                                     <label for="mode" class="weight600">Mode of Use:</label>
-                                                                    <textarea id="mode" rows="3" class="form-control"></textarea>
+                                                                    <textarea id="mode" rows="3" class="form-control" th:text="${baseTrademarkApplication.getModeOfUse()}"></textarea>
                                                                 </div>
                                                                 <div class="col-xs-12 form-group form-group-md holdsaconcregapp">
 
@@ -701,7 +701,7 @@
                                                                 </div><!-- Drop Zone -->
                                                                 <div class="col-xs-12 form-group form-group-md">
                                                                     <label for="additional2" class="weight600">Description of the uploaded file.</label>
-                                                                    <textarea id="additional2" rows="3" class="form-control"></textarea>
+                                                                    <textarea id="additional2" rows="3" class="form-control" th:text="${baseTrademarkApplication.getConcurentEvidenceDescription()}"></textarea>
                                                                 </div>
                                                                 <div class="col-xs-12 form-group form-group-md">
                                                                     <label for="geographic" class="weight600">Geographic Area where you are using the mark in commerce:</label>
@@ -709,7 +709,7 @@
                                                                 </div>
                                                                 <div class="col-xs-12 form-group form-group-md">
                                                                     <label for="mode" class="weight600">Mode of Use:</label>
-                                                                    <textarea id="mode" rows="3" class="form-control"></textarea>
+                                                                    <textarea id="mode" rows="3" class="form-control" th:text="${baseTrademarkApplication.getModeOfUse()}"></textarea>
                                                                 </div>
                                                                 <div class="col-xs-12 form-group form-group-md holdsaconcregapp">
 
@@ -1075,7 +1075,7 @@
                                                                 </div><!-- Drop Zone -->
                                                                 <div class="col-xs-12 form-group form-group-md">
                                                                     <label for="additional2" class="weight600">Description of the uploaded file.</label>
-                                                                    <textarea id="additional2" rows="3" class="form-control"></textarea>
+                                                                    <textarea id="additional2" rows="3" class="form-control" th:text="${baseTrademarkApplication.getConcurentEvidenceDescription()}"></textarea>
                                                                 </div>
                                                                 <div class="col-xs-12 form-group form-group-md">
                                                                     <label for="geographic" class="weight600">Geographic Area where you are using the mark in commerce:</label>
@@ -1083,7 +1083,7 @@
                                                                 </div>
                                                                 <div class="col-xs-12 form-group form-group-md">
                                                                     <label for="mode" class="weight600">Mode of Use:</label>
-                                                                    <textarea id="mode" rows="3" class="form-control"></textarea>
+                                                                    <textarea id="mode" rows="3" class="form-control" th:text="${baseTrademarkApplication.getModeOfUse()}"></textarea>
                                                                 </div>
                                                                 <div class="col-xs-12 form-group form-group-md holdsaconcregapp">
 
@@ -1685,6 +1685,19 @@
     });
 
 
+
+    $('#additional2').focusout(function () {
+       var value = $(this).val();
+
+        saveAdditionalInfo("ai-concurrent-image-desc", value, appInternalID);
+    });
+
+
+        $('#mode').focusout(function () {
+            var value = $(this).val();
+
+            saveAdditionalInfo("ai-concurrent-mode", value, appInternalID);
+        });
 
 
 

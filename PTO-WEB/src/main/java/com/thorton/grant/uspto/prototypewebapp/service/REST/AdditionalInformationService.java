@@ -178,6 +178,26 @@ public class AdditionalInformationService extends  BaseRESTapiService {
 
 
         }
+
+
+        if(fieldName.equals("ai-concurrent-image-desc")){
+            // ptoUser.setState(param); // sets state code
+
+            baseTrademarkApplication.setConcurentEvidenceDescription(fieldValue);
+            appFieldReadable = "Concurrent Use Evidence Description ";
+
+        }
+
+
+        if(fieldName.equals("ai-concurrent-mode")){
+            // ptoUser.setState(param); // sets state code
+
+            baseTrademarkApplication.setModeOfUse(fieldValue);
+            appFieldReadable = "Concurrent Use Mode of use";
+
+        }
+
+
         String responseMsg = appFieldReadable+" has been saved";
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
