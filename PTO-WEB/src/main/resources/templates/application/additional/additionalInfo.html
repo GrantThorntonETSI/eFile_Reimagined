@@ -570,7 +570,7 @@
 
                                                                         <div class="col-xs-12 col-md-7 form-group form-group-md">
                                                                             <label for="ttab">Provide <span class="uppercase">ttab</span> Proceeding Number:</label>
-                                                                            <textarea id="ttab" rows="1" class="form-control"></textarea>
+                                                                            <textarea id="ttab" rows="1" class="form-control" th:text="${baseTrademarkApplication.getTtabProceedingNumber()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-7 form-group form-group-md">
                                                                             <label for="concurrentfiles">Registration Issued/Applications Files by Concurrent User</label>
@@ -719,7 +719,7 @@
 
                                                                         <div class="col-xs-12 col-md-7 form-group form-group-md">
                                                                             <label for="ttab">Provide <span class="uppercase">ttab</span> Proceeding Number:</label>
-                                                                            <textarea id="ttab" rows="1" class="form-control"></textarea>
+                                                                            <textarea id="ttab" rows="1" class="form-control" th:text="${baseTrademarkApplication.getTtabProceedingNumber()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-7 form-group form-group-md">
                                                                             <label for="concurrentfiles">Registration Issued/Applications Files by Concurrent User</label>
@@ -944,7 +944,7 @@
 
                                                                         <div class="col-xs-12 col-md-7 form-group form-group-md">
                                                                             <label for="ttab">Provide <span class="uppercase">ttab</span> Proceeding Number:</label>
-                                                                            <textarea id="ttab" rows="1" class="form-control"></textarea>
+                                                                            <textarea id="ttab" rows="1" class="form-control" th:text="${baseTrademarkApplication.getTtabProceedingNumber()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-7 form-group form-group-md">
                                                                             <label for="concurrentfiles">Registration Issued/Applications Files by Concurrent User</label>
@@ -1093,7 +1093,7 @@
 
                                                                         <div class="col-xs-12 col-md-7 form-group form-group-md">
                                                                             <label for="ttab">Provide <span class="uppercase">ttab</span> Proceeding Number:</label>
-                                                                            <textarea id="ttab" rows="1" class="form-control"></textarea>
+                                                                            <textarea id="ttab" rows="1" class="form-control" th:text="${baseTrademarkApplication.getTtabProceedingNumber()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-7 form-group form-group-md">
                                                                             <label for="concurrentfiles">Registration Issued/Applications Files by Concurrent User</label>
@@ -1708,6 +1708,13 @@
 
 
 
+
+
+        $('#ttab').focusout(function () {
+            var value = $(this).val();
+
+            saveAdditionalInfo("ai-concurrent-ttab-num", value, appInternalID);
+        });
 
 
 

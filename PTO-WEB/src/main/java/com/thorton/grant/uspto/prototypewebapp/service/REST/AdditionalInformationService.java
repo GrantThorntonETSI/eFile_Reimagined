@@ -204,6 +204,15 @@ public class AdditionalInformationService extends  BaseRESTapiService {
 
         }
 
+
+        if(fieldName.equals("ai-concurrent-ttab-num")){
+            // ptoUser.setState(param); // sets state code
+
+            baseTrademarkApplication.setTtabProceedingNumber(fieldValue);
+            appFieldReadable = "Concurrent Use TTAB proceeding number";
+
+        }
+
         String responseMsg = appFieldReadable+" has been saved";
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
