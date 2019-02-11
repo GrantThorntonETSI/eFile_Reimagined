@@ -105,50 +105,151 @@
                             <div class="row">
                                 <div class="col-xs-12" >
 
-                                    <p id="notprevious" style="margin-left: 15px;">Do you need to provide additional information about your mark?</p>
+                                    <p id="notprevious" style="margin-left: 15px;">Do you need to provide additional information about your mark?</p>w
 
-                                    <div role="radiogroup" aria-labelledby="notprevious" class="form-group form-group-md" style="margin-left: 15px;">
-                                        <label for="inlineRadio045" class="radio-inline radiocontainer">Yes<input type="radio" name="uncommoninfo" id="inlineRadio045" value="yes" tabindex="0"><span class="checkmark"></span></label>
-                                        <label for="inlineRadio046" class="radio-inline radiocontainer">No<input type="radio" name="uncommoninfo" id="inlineRadio046" value="no" tabindex="0"><span class="checkmark"></span></label>
-                                    </div><!--END radiogroup-->
+                                    <th:block  th:if="${baseTrademarkApplication.isProvideMiscInfoFlagSet() == false}">
+                                        <div role="radiogroup" aria-labelledby="notprevious" class="form-group form-group-md" style="margin-left: 15px;">
+                                            <label for="inlineRadio045" class="radio-inline radiocontainer">Yes<input type="radio" name="uncommoninfo" id="inlineRadio045" value="yes" tabindex="0"><span class="checkmark"></span></label>
+                                            <label for="inlineRadio046" class="radio-inline radiocontainer">No<input type="radio" name="uncommoninfo" id="inlineRadio046" value="no" tabindex="0"><span class="checkmark"></span></label>
+                                        </div><!--END radiogroup-->
 
 
-                                    <div id="additonalInfoBlock" style="display: none;">
-                                        <!--Start Dropzone-->
-                                        <div class="col-xs-12 form-group form-group-md" style="margin-left: 3px; margin-right: 3px;">
-                                            <label for="ta2" class="weight600">Provide the additional information.</label>
-                                            <textarea id="ta2" rows="3" class="form-control" th:text="${baseTrademarkApplication.getMiscInformation()}"></textarea>
+                                        <div id="additonalInfoBlock" style="display: none;">
+                                            <!--Start Dropzone-->
+                                            <div class="col-xs-12 form-group form-group-md" style="margin-left: 3px; margin-right: 3px;">
+                                                <label for="ta2" class="weight600">Provide the additional information.</label>
+                                                <textarea id="ta2" rows="3" class="form-control" th:text="${baseTrademarkApplication.getMiscInformation()}"></textarea>
 
-                                            <form method="post"  target="hidden-iframe"  id="misc-file-form"  action="/misc/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
-                                                <div class="form-group form-group-md">
-                                                    <p class="weight600" role="heading" aria-level="3">Optional upload.</p>
-                                                    <label class="small upload-drop-zone" for="misc-file-input"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload a File</label>
-                                                    <input type="file" id="misc-file-input" name="file" class="form-control" >
-                                                </div><!-- Drop Zone -->
-                                            </form>
+                                                <form method="post"  target="hidden-iframe"  id="misc-file-form"  action="/misc/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
+                                                    <div class="form-group form-group-md">
+                                                        <p class="weight600" role="heading" aria-level="3">Optional upload.</p>
+                                                        <label class="small upload-drop-zone" for="misc-file-input"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload a File</label>
+                                                        <input type="file" id="misc-file-input" name="file" class="form-control" >
+                                                    </div><!-- Drop Zone -->
+                                                </form>
 
-                                            <div class="col-xs-12">
-                                                <div class="center">
-                                                    <div class="speciman-image" id="misc-info-img-container" style="">
+                                                <div class="col-xs-12">
+                                                    <div class="center">
+                                                        <div class="speciman-image" id="misc-info-img-container" style="">
 
-                                                        <img id="misc-info-img" th:attr="src=${baseTrademarkApplication.getMiscInfoImagePath()}" alt="" class="img-responsive"/>
+                                                            <img id="misc-info-img" th:attr="src=${baseTrademarkApplication.getMiscInfoImagePath()}" alt="" class="img-responsive"/>
+                                                        </div>
+
+
                                                     </div>
 
-
                                                 </div>
 
-                                            </div>
+                                                <div class="col-xs-12">
+                                                    <div class="center">
 
-                                            <div class="col-xs-12">
-                                                <div class="center">
+                                                        <div type="button"  id="additional-file-upload" class="btn btn-sm" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload File</b><span><i class="fa fa-spinner fa-spin" id="misc-file-upload-spinner" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                                    </div>
 
-                                                    <div type="button"  id="additional-file-upload" class="btn btn-sm" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload File</b><span><i class="fa fa-spinner fa-spin" id="misc-file-upload-spinner" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
                                                 </div>
-
                                             </div>
+
                                         </div>
 
-                                    </div>
+
+                                    </th:block>
+                                    <th:block  th:if="${baseTrademarkApplication.isProvideMiscInfoFlagSet() == true}">
+                                        <th:block  th:if="${baseTrademarkApplication.isProvideMiscInfo() == true}">
+
+                                            <div role="radiogroup" aria-labelledby="notprevious" class="form-group form-group-md" style="margin-left: 15px;">
+                                                <label for="inlineRadio045" class="radio-inline radiocontainer">Yes<input type="radio" name="uncommoninfo" id="inlineRadio045" value="yes" tabindex="0"><span class="checkmark" checked></span></label>
+                                                <label for="inlineRadio046" class="radio-inline radiocontainer">No<input type="radio" name="uncommoninfo" id="inlineRadio046" value="no" tabindex="0"><span class="checkmark"></span></label>
+                                            </div><!--END radiogroup-->
+
+
+                                            <div id="additonalInfoBlock" style="">
+                                                <!--Start Dropzone-->
+                                                <div class="col-xs-12 form-group form-group-md" style="margin-left: 3px; margin-right: 3px;">
+                                                    <label for="ta2" class="weight600">Provide the additional information.</label>
+                                                    <textarea id="ta2" rows="3" class="form-control" th:text="${baseTrademarkApplication.getMiscInformation()}"></textarea>
+
+                                                    <form method="post"  target="hidden-iframe"  id="misc-file-form"  action="/misc/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
+                                                        <div class="form-group form-group-md">
+                                                            <p class="weight600" role="heading" aria-level="3">Optional upload.</p>
+                                                            <label class="small upload-drop-zone" for="misc-file-input"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload a File</label>
+                                                            <input type="file" id="misc-file-input" name="file" class="form-control" >
+                                                        </div><!-- Drop Zone -->
+                                                    </form>
+
+                                                    <div class="col-xs-12">
+                                                        <div class="center">
+                                                            <div class="speciman-image" id="misc-info-img-container" style="">
+
+                                                                <img id="misc-info-img" th:attr="src=${baseTrademarkApplication.getMiscInfoImagePath()}" alt="" class="img-responsive"/>
+                                                            </div>
+
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="col-xs-12">
+                                                        <div class="center">
+
+                                                            <div type="button"  id="additional-file-upload" class="btn btn-sm" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload File</b><span><i class="fa fa-spinner fa-spin" id="misc-file-upload-spinner" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+
+                                        </th:block>
+
+                                        <th:block  th:if="${baseTrademarkApplication.isProvideMiscInfo() == false}">
+                                            <div role="radiogroup" aria-labelledby="notprevious" class="form-group form-group-md" style="margin-left: 15px;">
+                                                <label for="inlineRadio045" class="radio-inline radiocontainer">Yes<input type="radio" name="uncommoninfo" id="inlineRadio045" value="yes" tabindex="0"><span class="checkmark"></span></label>
+                                                <label for="inlineRadio046" class="radio-inline radiocontainer">No<input type="radio" name="uncommoninfo" id="inlineRadio046" value="no" tabindex="0"><span class="checkmark" checked></span></label>
+                                            </div><!--END radiogroup-->
+
+
+                                            <div id="additonalInfoBlock" style="display: none;">
+                                                <!--Start Dropzone-->
+                                                <div class="col-xs-12 form-group form-group-md" style="margin-left: 3px; margin-right: 3px;">
+                                                    <label for="ta2" class="weight600">Provide the additional information.</label>
+                                                    <textarea id="ta2" rows="3" class="form-control" th:text="${baseTrademarkApplication.getMiscInformation()}"></textarea>
+
+                                                    <form method="post"  target="hidden-iframe"  id="misc-file-form"  action="/misc/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
+                                                        <div class="form-group form-group-md">
+                                                            <p class="weight600" role="heading" aria-level="3">Optional upload.</p>
+                                                            <label class="small upload-drop-zone" for="misc-file-input"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload a File</label>
+                                                            <input type="file" id="misc-file-input" name="file" class="form-control" >
+                                                        </div><!-- Drop Zone -->
+                                                    </form>
+
+                                                    <div class="col-xs-12">
+                                                        <div class="center">
+                                                            <div class="speciman-image" id="misc-info-img-container" style="">
+
+                                                                <img id="misc-info-img" th:attr="src=${baseTrademarkApplication.getMiscInfoImagePath()}" alt="" class="img-responsive"/>
+                                                            </div>
+
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="col-xs-12">
+                                                        <div class="center">
+
+                                                            <div type="button"  id="additional-file-upload" class="btn btn-sm" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload File</b><span><i class="fa fa-spinner fa-spin" id="misc-file-upload-spinner" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+
+                                        </th:block>
+                                    </th:block>
+
 
                                 </div>
                                 <div class="form-group form-group-md col-xs-12">
