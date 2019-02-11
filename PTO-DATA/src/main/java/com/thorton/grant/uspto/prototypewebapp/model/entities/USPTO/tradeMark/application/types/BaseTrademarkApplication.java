@@ -176,10 +176,23 @@ public class BaseTrademarkApplication  {
     private String miscInfoImagePath;
 
     private boolean concurrentUse;
+    private boolean concurrentUseSet;
+
     private boolean concurrentTypeCourtDecree;
+    private boolean concurrentTypeCourtDecreeSet;
+
+
     private boolean concurrentTypePriorDecision;
+    private boolean concurrentTypePriorDecisionSet;
+
     private boolean concurrentTypeWrittenConsent;
+    private boolean concurrentTypeWrittenConsentSet;
+
+
     private boolean concurrentTypeEarlierFirstUse;
+    private boolean concurrentTypeEarlierFirstUseSet;
+
+
 
     private boolean concurrentTypeSet;
 
@@ -1100,6 +1113,46 @@ public class BaseTrademarkApplication  {
 
     public void setProvideMiscInfoFlagSet(boolean provideMiscInfoFlagSet) {
         this.provideMiscInfoFlagSet = provideMiscInfoFlagSet;
+    }
+
+    public boolean isConcurrentUseSet() {
+        return concurrentUseSet;
+    }
+
+    public void setConcurrentUseSet(boolean concurrentUseSet) {
+        this.concurrentUseSet = concurrentUseSet;
+    }
+
+    public boolean isConcurrentTypeCourtDecreeSet() {
+        return concurrentTypeCourtDecreeSet;
+    }
+
+    public void setConcurrentTypeCourtDecreeSet(boolean concurrentTypeCourtDecreeSet) {
+        this.concurrentTypeCourtDecreeSet = concurrentTypeCourtDecreeSet;
+    }
+
+    public boolean isConcurrentTypePriorDecisionSet() {
+        return concurrentTypePriorDecisionSet;
+    }
+
+    public void setConcurrentTypePriorDecisionSet(boolean concurrentTypePriorDecisionSet) {
+        this.concurrentTypePriorDecisionSet = concurrentTypePriorDecisionSet;
+    }
+
+    public boolean isConcurrentTypeWrittenConsentSet() {
+        return concurrentTypeWrittenConsentSet;
+    }
+
+    public void setConcurrentTypeWrittenConsentSet(boolean concurrentTypeWrittenConsentSet) {
+        this.concurrentTypeWrittenConsentSet = concurrentTypeWrittenConsentSet;
+    }
+
+    public boolean isConcurrentTypeEarlierFirstUseSet() {
+        return concurrentTypeEarlierFirstUseSet;
+    }
+
+    public void setConcurrentTypeEarlierFirstUseSet(boolean concurrentTypeEarlierFirstUseSet) {
+        this.concurrentTypeEarlierFirstUseSet = concurrentTypeEarlierFirstUseSet;
     }
 
     @Override

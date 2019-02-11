@@ -442,376 +442,757 @@
                                             </section>
                                         </div>
                                     </div><!--END use in another form-->
-                                    <div class="row" id="cc">
-                                        <div class="col-sm-12">
-                                            <section aria-label="Concurrent Use">
-                                                <div class="card-text noexpand">
-                                                    <h2 class="card-title weight600">Concurrent Use</h2>
-                                                </div>
-                                                <p class="weight600" style="margin-left: 11px; margin-right:11px;">The following situations are rare and are not relevant for most applicants. If none of these apply to you, click next.</p>
-                                                <div class="row" style="margin-left: 11px; margin-right:11px;">
-                                                    <div class="wide">
-                                                        <div class="row">
-                                                            <th:block  th:if="${baseTrademarkApplication.isConcurrentTypeCourtDecree() == true}">
-                                                                <div class="col-xs-12">
-                                                                    <input class="form-check-input checkmark" type="checkbox" value="court" tabindex="0" aria-labelledby="courtdecree" id="courtd" checked>
-                                                                    <label class="form-check-label form-check long" for="courtd" id="courtdec"><span class="radio notspecial small match" id="courtdecree">Court Decree</span></label>
-                                                                </div>
-                                                            </th:block>
-
-                                                            <th:block  th:if="${baseTrademarkApplication.isConcurrentTypeCourtDecree() == false}">
-                                                                <div class="col-xs-12">
-                                                                    <input class="form-check-input checkmark" type="checkbox" value="court" tabindex="0" aria-labelledby="courtdecree" id="courtd">
-                                                                    <label class="form-check-label form-check long" for="courtd" id="courtdec"><span class="radio notspecial small match" id="courtdecree">Court Decree</span></label>
-                                                                </div>
-                                                            </th:block>
 
 
-                                                            <th:block  th:if="${baseTrademarkApplication.isConcurrentTypePriorDecision() == true}">
-                                                                <div class="col-xs-12">
-                                                                    <input class="form-check-input checkmark" type="checkbox" value="ttab" tabindex="0" aria-labelledby="priorttab" id="ttabmade" checked>
-                                                                    <label class="form-check-label form-check long" for="ttabmade" id="ttabdecision"><span class="radio notspecial small" id="priorttab">Prior decision made by the Trademark Trial and Apeal Board (TTAB)</span></label>
-                                                                </div>
-                                                            </th:block>
-
-                                                            <th:block  th:if="${baseTrademarkApplication.isConcurrentTypePriorDecision() == false}">
-                                                                <div class="col-xs-12">
-                                                                    <input class="form-check-input checkmark" type="checkbox" value="ttab" tabindex="0" aria-labelledby="priorttab" id="ttabmade">
-                                                                    <label class="form-check-label form-check long" for="ttabmade" id="ttabdecision"><span class="radio notspecial small" id="priorttab">Prior decision made by the Trademark Trial and Apeal Board (TTAB)</span></label>
-                                                                </div>
-                                                            </th:block>
-                                                            <th:block  th:if="${baseTrademarkApplication.isConcurrentTypeWrittenConsent() == true}">
-                                                                <div class="col-xs-12">
-                                                                    <input class="form-check-input checkmark" type="checkbox" value="conflicting" tabindex="0" aria-labelledby="conflictingreg" id="conflict" checked>
-                                                                    <label class="form-check-label form-check long" for="conflict" id="conflictowner"><span class="radio notspecial small" id="conflictingreg">Written Consent signed by owner of conflicting registrations</span></label>
-                                                                </div>
-                                                            </th:block>
-
-                                                            <th:block  th:if="${baseTrademarkApplication.isConcurrentTypeWrittenConsent() == false}">
-                                                                <div class="col-xs-12">
-                                                                    <input class="form-check-input checkmark" type="checkbox" value="conflicting" tabindex="0" aria-labelledby="conflictingreg" id="conflict">
-                                                                    <label class="form-check-label form-check long" for="conflict" id="conflictowner"><span class="radio notspecial small" id="conflictingreg">Written Consent signed by owner of conflicting registrations</span></label>
-                                                                </div>
-                                                            </th:block>
-
-                                                            <th:block  th:if="${baseTrademarkApplication.isConcurrentTypeEarlierFirstUse() == true}">
-                                                                <div class="col-xs-12">
-                                                                    <input class="form-check-input checkmark" type="checkbox" value="earlier" tabindex="0" aria-labelledby="early" id="earlieruse" checked>
-                                                                    <label class="form-check-label form-check long" for="earlieruse" id="firstcommerce"><span class="radio notspecial small match" id="early">Earlier date of first use in commerce</span></label>
-                                                                </div>
-                                                            </th:block>
-
-                                                            <th:block  th:if="${baseTrademarkApplication.isConcurrentTypeEarlierFirstUse()  == false}">
-                                                                <div class="col-xs-12">
-                                                                    <input class="form-check-input checkmark" type="checkbox" value="earlier" tabindex="0" aria-labelledby="early" id="earlieruse">
-                                                                    <label class="form-check-label form-check long" for="earlieruse" id="firstcommerce"><span class="radio notspecial small match" id="early">Earlier date of first use in commerce</span></label>
-                                                                </div>
-                                                            </th:block>
-
-                                                        </div>
+                                    <th:block th:if="${baseTrademarkApplication.isConcurrentUse() == true}">
+                                        <div class="row" id="cc">
+                                            <div class="col-sm-12">
+                                                <section aria-label="Concurrent Use">
+                                                    <div class="card-text noexpand">
+                                                        <h2 class="card-title weight600">Concurrent Use</h2>
                                                     </div>
-                                                </div><!--end checkbox row-->
+                                                    <p class="weight600" style="margin-left: 11px; margin-right:11px;">The following situations are rare and are not relevant for most applicants. If none of these apply to you, click next.</p>
+                                                    <div class="row" style="margin-left: 11px; margin-right:11px;">
+                                                        <div class="wide">
+                                                            <div class="row">
+                                                                <th:block  th:if="${baseTrademarkApplication.isConcurrentTypeCourtDecree() == true}">
+                                                                    <div class="col-xs-12">
+                                                                        <input class="form-check-input checkmark" type="checkbox" value="court" tabindex="0" aria-labelledby="courtdecree" id="courtd" checked>
+                                                                        <label class="form-check-label form-check long" for="courtd" id="courtdec"><span class="radio notspecial small match" id="courtdecree">Court Decree</span></label>
+                                                                    </div>
+                                                                </th:block>
 
-                                                <th:block th:if="${baseTrademarkApplication.isConcurrentTypeSet() == true}">
-                                                    <div class="row" id="hideshowconcurrentuses">
-                                                        <!--Start Dropzone-->
-                                                        <div class="col-xs-12 form-group form-group-md">
+                                                                <th:block  th:if="${baseTrademarkApplication.isConcurrentTypeCourtDecree() == false}">
+                                                                    <div class="col-xs-12">
+                                                                        <input class="form-check-input checkmark" type="checkbox" value="court" tabindex="0" aria-labelledby="courtdecree" id="courtd">
+                                                                        <label class="form-check-label form-check long" for="courtd" id="courtdec"><span class="radio notspecial small match" id="courtdecree">Court Decree</span></label>
+                                                                    </div>
+                                                                </th:block>
+
+
+                                                                <th:block  th:if="${baseTrademarkApplication.isConcurrentTypePriorDecision() == true}">
+                                                                    <div class="col-xs-12">
+                                                                        <input class="form-check-input checkmark" type="checkbox" value="ttab" tabindex="0" aria-labelledby="priorttab" id="ttabmade" checked>
+                                                                        <label class="form-check-label form-check long" for="ttabmade" id="ttabdecision"><span class="radio notspecial small" id="priorttab">Prior decision made by the Trademark Trial and Apeal Board (TTAB)</span></label>
+                                                                    </div>
+                                                                </th:block>
+
+                                                                <th:block  th:if="${baseTrademarkApplication.isConcurrentTypePriorDecision() == false}">
+                                                                    <div class="col-xs-12">
+                                                                        <input class="form-check-input checkmark" type="checkbox" value="ttab" tabindex="0" aria-labelledby="priorttab" id="ttabmade">
+                                                                        <label class="form-check-label form-check long" for="ttabmade" id="ttabdecision"><span class="radio notspecial small" id="priorttab">Prior decision made by the Trademark Trial and Apeal Board (TTAB)</span></label>
+                                                                    </div>
+                                                                </th:block>
+                                                                <th:block  th:if="${baseTrademarkApplication.isConcurrentTypeWrittenConsent() == true}">
+                                                                    <div class="col-xs-12">
+                                                                        <input class="form-check-input checkmark" type="checkbox" value="conflicting" tabindex="0" aria-labelledby="conflictingreg" id="conflict" checked>
+                                                                        <label class="form-check-label form-check long" for="conflict" id="conflictowner"><span class="radio notspecial small" id="conflictingreg">Written Consent signed by owner of conflicting registrations</span></label>
+                                                                    </div>
+                                                                </th:block>
+
+                                                                <th:block  th:if="${baseTrademarkApplication.isConcurrentTypeWrittenConsent() == false}">
+                                                                    <div class="col-xs-12">
+                                                                        <input class="form-check-input checkmark" type="checkbox" value="conflicting" tabindex="0" aria-labelledby="conflictingreg" id="conflict">
+                                                                        <label class="form-check-label form-check long" for="conflict" id="conflictowner"><span class="radio notspecial small" id="conflictingreg">Written Consent signed by owner of conflicting registrations</span></label>
+                                                                    </div>
+                                                                </th:block>
+
+                                                                <th:block  th:if="${baseTrademarkApplication.isConcurrentTypeEarlierFirstUse() == true}">
+                                                                    <div class="col-xs-12">
+                                                                        <input class="form-check-input checkmark" type="checkbox" value="earlier" tabindex="0" aria-labelledby="early" id="earlieruse" checked>
+                                                                        <label class="form-check-label form-check long" for="earlieruse" id="firstcommerce"><span class="radio notspecial small match" id="early">Earlier date of first use in commerce</span></label>
+                                                                    </div>
+                                                                </th:block>
+
+                                                                <th:block  th:if="${baseTrademarkApplication.isConcurrentTypeEarlierFirstUse()  == false}">
+                                                                    <div class="col-xs-12">
+                                                                        <input class="form-check-input checkmark" type="checkbox" value="earlier" tabindex="0" aria-labelledby="early" id="earlieruse">
+                                                                        <label class="form-check-label form-check long" for="earlieruse" id="firstcommerce"><span class="radio notspecial small match" id="early">Earlier date of first use in commerce</span></label>
+                                                                    </div>
+                                                                </th:block>
+
+                                                            </div>
+                                                        </div>
+                                                    </div><!--end checkbox row-->
+
+                                                    <th:block th:if="${baseTrademarkApplication.isConcurrentTypeSet() == true}">
+                                                        <div class="row" id="hideshowconcurrentuses">
+                                                            <!--Start Dropzone-->
                                                             <div class="col-xs-12 form-group form-group-md">
-                                                                <p class="weight600" role="heading" aria-level="3">Upload supporting documents.</p>
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <p class="weight600" role="heading" aria-level="3">Upload supporting documents.</p>
 
-                                                                <form method="post"  target="hidden-iframe"  id="concurrentInfoForm"  action="/concurrent/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
-                                                                    <div class="form-group form-group-md">
-                                                                        <p class="weight600" role="heading" aria-level="3">Optional upload.</p>
-                                                                        <label class="small upload-drop-zone" for="concurrentInfo"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload a File</label>
-                                                                        <input type="file" id="concurrentInfo" name="file" class="form-control">
-                                                                    </div><!-- Drop Zone -->
-                                                                </form>
+                                                                    <form method="post"  target="hidden-iframe"  id="concurrentInfoForm"  action="/concurrent/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
+                                                                        <div class="form-group form-group-md">
+                                                                            <p class="weight600" role="heading" aria-level="3">Optional upload.</p>
+                                                                            <label class="small upload-drop-zone" for="concurrentInfo"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload a File</label>
+                                                                            <input type="file" id="concurrentInfo" name="file" class="form-control">
+                                                                        </div><!-- Drop Zone -->
+                                                                    </form>
 
-                                                                <div class="col-xs-12">
-                                                                    <div class="center">
-                                                                        <div class="speciman-image" id="concurrent-info-img-container" style="">
+                                                                    <div class="col-xs-12">
+                                                                        <div class="center">
+                                                                            <div class="speciman-image" id="concurrent-info-img-container" style="">
 
-                                                                            <img id="concurrent-info-img" th:src="${baseTrademarkApplication.getConcurrentUseEvidenceFilePath()}" alt="" class="img-responsive"/>
+                                                                                <img id="concurrent-info-img" th:src="${baseTrademarkApplication.getConcurrentUseEvidenceFilePath()}" alt="" class="img-responsive"/>
+                                                                            </div>
+
+
                                                                         </div>
 
-
                                                                     </div>
 
-                                                                </div>
-
-                                                                <div class="col-xs-12">
-                                                                    <div class="center">
-
-                                                                        <div type="button"  id="concurrent-info-img-upload" class="btn btn-sm" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload File</b><span><i class="fa fa-spinner fa-spin" id="concurrent-info-img-upload-spinner" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
-                                                                    </div>
-
-                                                                </div>
-
-
-                                                            </div><!-- Drop Zone -->
-                                                            <div class="col-xs-12 form-group form-group-md">
-                                                                <label for="additional2" class="weight600">Description of the uploaded file.</label>
-                                                                <textarea id="additional2" rows="3" class="form-control"></textarea>
-                                                            </div>
-                                                            <div class="col-xs-12 form-group form-group-md">
-                                                                <label for="geographic" class="weight600">Geographic Area where you are using the mark in commerce:</label>
-                                                                <textarea id="geographic" rows="3" class="form-control"></textarea>
-                                                            </div>
-                                                            <div class="col-xs-12 form-group form-group-md">
-                                                                <label for="mode" class="weight600">Mode of Use:</label>
-                                                                <textarea id="mode" rows="3" class="form-control"></textarea>
-                                                            </div>
-                                                            <div class="col-xs-12 form-group form-group-md holdsaconcregapp">
-
-                                                                <div class="row">
-
-                                                                    <div class="col-xs-12 col-md-7 form-group form-group-md">
-                                                                        <label for="ttab">Provide <span class="uppercase">ttab</span> Proceeding Number:</label>
-                                                                        <textarea id="ttab" rows="1" class="form-control"></textarea>
-                                                                    </div>
-                                                                    <div class="col-xs-12 col-md-7 form-group form-group-md">
-                                                                        <label for="concurrentfiles">Registration Issued/Applications Files by Concurrent User</label>
-                                                                        <textarea id="concurrentfiles" rows="1" class="form-control"></textarea>
-                                                                    </div>
                                                                     <div class="col-xs-12">
-                                                                        <input class="form-check-input checkmark" type="checkbox" value="noconcurrentfiles" tabindex="0" aria-labelledby="noconcurrentfile" id="noconcurrentfiles">
-                                                                        <label class="form-check-label form-check long" for="noconcurrentfiles" id="nofiles"><span class="radio notspecial small" id="noconcurrentfile">Concurrent User does not have a Registration/Application with USPTO</span></label>
-                                                                    </div>
-                                                                    <div class="col-xs-12 col-md-7 form-group form-group-md">
-                                                                        <label for="concurrentname">Concurrent User&#8217;s Name</label>
-                                                                        <textarea id="concurrentname" rows="1" class="form-control"></textarea>
-                                                                    </div>
-                                                                    <div class="col-xs-12 form-group form-group-md">
-                                                                        <p class="weight600" role="heading" aria-level="3">Concurrent User&#8217;s Address:</p>
-                                                                    </div>
-                                                                    <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-5">
-                                                                        <label for="concurrent-country">Country / US Territory</label>
-                                                                        <select class="form-control" id="concurrent-country">
-                                                                            <option value="Select">Select</option>
-                                                                            <option value="1">UNITED STATES OF AMERICA</option>
-                                                                            <option value="B2">AFGHANISTAN</option>
-                                                                            <option value="B3">ALBANIA</option>
-                                                                            <option value="C9">BELGIUM</option>
-                                                                            <option value="D5">BRAZIL</option>
-                                                                            <option value="E3">CAMBODIA</option>
-                                                                            <option value="E4">CAMEROON</option>
-                                                                            <option value="G7">DENMARK</option>
-                                                                            <option value="G8">DOMINICAN REPUBLIC</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-7">
-                                                                        <label for="concurrent-address1">Address Line 1</label>
-                                                                        <input type="text" class="form-control" id="attorney-address1">
-                                                                    </div>
-                                                                    <div class="form-group form-group-md col-xs-12 col-xl-6">
-                                                                        <label for="concurrent-address2">Address Line 2</label>
-                                                                        <input type="text" class="form-control" id="concurrent-address2">
-                                                                    </div>
-                                                                    <div class="form-group form-group-md col-xs-12 col-xl-6">
-                                                                        <label for="concurrent-address3">Address Line 3</label>
-                                                                        <input type="text" class="form-control" id="concurrent-address3">
-                                                                    </div>
-                                                                    <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
-                                                                        <label for="concurrent-city">City</label>
-                                                                        <input type="text" class="form-control" id="concurrent-city">
-                                                                    </div>
-                                                                    <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
-                                                                        <label for="concurrent-state">State</label>
-                                                                        <select class="form-control" id="concurrent-state">
-                                                                            <option value="Select">Select</option>
-                                                                            <option value="MD">Maryland</option>
-                                                                            <option value="NC">North Carolina</option>
-                                                                            <option value="4">Virginia</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
-                                                                        <label for="concurrent-zipcode">Zip Code</label>
-                                                                        <input type="text" class="form-control" id="concurrent-zipcode" placeholder="">
-                                                                    </div>
-                                                                    <div class="col-xs-12 form-group form-group-md">
-                                                                        <label for="gs">Goods/Services:</label>
-                                                                        <textarea id="gs" rows="3" class="form-control"></textarea>
-                                                                    </div>
-                                                                    <div class="col-xs-12 form-group form-group-md">
-                                                                        <label for="area">Geographic Area of concurrent user:</label>
-                                                                        <textarea id="area" rows="3" class="form-control"></textarea>
-                                                                    </div>
-                                                                    <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                                        <label for="concurrentmode">Concurrent User Mode of Use:</label>
-                                                                        <textarea id="concurrentmode" rows="1" class="form-control"></textarea>
-                                                                    </div>
-                                                                    <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                                        <label for="timeuse">Time Periods of Use</label>
-                                                                        <textarea id="timeuse" rows="1" class="form-control"></textarea>
-                                                                    </div>
-                                                                </div>
-                                                            </div><!--END holdsaconcregapp-->
+                                                                        <div class="center">
 
-
-                                                            <div class="appendaconcregapp"></div>
-                                                            <div class="col-xs-12" role="group" aria-label="Add or delete additional application/registration">
-                                                                <div class="col-xs-12">
-                                                                    <button type="button" class="btn-sm btn-success add ctr" id="addconcregapp">Add Additional Registration/Application</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </th:block>
-
-                                                <th:block th:if="${baseTrademarkApplication.isConcurrentTypeSet() == false}">
-                                                    <div class="row" id="hideshowconcurrentuses" style="display: none;">
-                                                        <!--Start Dropzone-->
-                                                        <div class="col-xs-12 form-group form-group-md">
-                                                            <div class="col-xs-12 form-group form-group-md">
-                                                                <p class="weight600" role="heading" aria-level="3">Upload supporting documents.</p>
-
-                                                                <form method="post"  target="hidden-iframe"  id="concurrentInfoForm"  action="/concurrent/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
-                                                                    <div class="form-group form-group-md">
-                                                                        <p class="weight600" role="heading" aria-level="3">Optional upload.</p>
-                                                                        <label class="small upload-drop-zone" for="concurrentInfo"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload a File</label>
-                                                                        <input type="file" id="concurrentInfo" name="file" class="form-control">
-                                                                    </div><!-- Drop Zone -->
-                                                                </form>
-
-                                                                <div class="col-xs-12">
-                                                                    <div class="center">
-                                                                        <div class="speciman-image" id="concurrent-info-img-container" style="">
-
-                                                                            <img id="concurrent-info-img" th:src="${baseTrademarkApplication.getConcurrentUseEvidenceFilePath()}" alt="" class="img-responsive"/>
+                                                                            <div type="button"  id="concurrent-info-img-upload" class="btn btn-sm" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload File</b><span><i class="fa fa-spinner fa-spin" id="concurrent-info-img-upload-spinner" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
                                                                         </div>
 
-
                                                                     </div>
 
+
+                                                                </div><!-- Drop Zone -->
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <label for="additional2" class="weight600">Description of the uploaded file.</label>
+                                                                    <textarea id="additional2" rows="3" class="form-control"></textarea>
                                                                 </div>
-
-                                                                <div class="col-xs-12">
-                                                                    <div class="center">
-
-                                                                        <div type="button"  id="concurrent-info-img-upload" class="btn btn-sm" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload File</b><span><i class="fa fa-spinner fa-spin" id="concurrent-info-img-upload-spinner" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
-                                                                    </div>
-
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <label for="geographic" class="weight600">Geographic Area where you are using the mark in commerce:</label>
+                                                                    <textarea id="geographic" rows="3" class="form-control"></textarea>
                                                                 </div>
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <label for="mode" class="weight600">Mode of Use:</label>
+                                                                    <textarea id="mode" rows="3" class="form-control"></textarea>
+                                                                </div>
+                                                                <div class="col-xs-12 form-group form-group-md holdsaconcregapp">
 
+                                                                    <div class="row">
 
-                                                            </div><!-- Drop Zone -->
-                                                            <div class="col-xs-12 form-group form-group-md">
-                                                                <label for="additional2" class="weight600">Description of the uploaded file.</label>
-                                                                <textarea id="additional2" rows="3" class="form-control"></textarea>
-                                                            </div>
-                                                            <div class="col-xs-12 form-group form-group-md">
-                                                                <label for="geographic" class="weight600">Geographic Area where you are using the mark in commerce:</label>
-                                                                <textarea id="geographic" rows="3" class="form-control"></textarea>
-                                                            </div>
-                                                            <div class="col-xs-12 form-group form-group-md">
-                                                                <label for="mode" class="weight600">Mode of Use:</label>
-                                                                <textarea id="mode" rows="3" class="form-control"></textarea>
-                                                            </div>
-                                                            <div class="col-xs-12 form-group form-group-md holdsaconcregapp">
-
-
-
-                                                                <div class="row">
-
-                                                                    <div class="col-xs-12 col-md-7 form-group form-group-md">
-                                                                        <label for="ttab">Provide <span class="uppercase">ttab</span> Proceeding Number:</label>
-                                                                        <textarea id="ttab" rows="1" class="form-control"></textarea>
+                                                                        <div class="col-xs-12 col-md-7 form-group form-group-md">
+                                                                            <label for="ttab">Provide <span class="uppercase">ttab</span> Proceeding Number:</label>
+                                                                            <textarea id="ttab" rows="1" class="form-control"></textarea>
+                                                                        </div>
+                                                                        <div class="col-xs-12 col-md-7 form-group form-group-md">
+                                                                            <label for="concurrentfiles">Registration Issued/Applications Files by Concurrent User</label>
+                                                                            <textarea id="concurrentfiles" rows="1" class="form-control"></textarea>
+                                                                        </div>
+                                                                        <div class="col-xs-12">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="noconcurrentfiles" tabindex="0" aria-labelledby="noconcurrentfile" id="noconcurrentfiles">
+                                                                            <label class="form-check-label form-check long" for="noconcurrentfiles" id="nofiles"><span class="radio notspecial small" id="noconcurrentfile">Concurrent User does not have a Registration/Application with USPTO</span></label>
+                                                                        </div>
+                                                                        <div class="col-xs-12 col-md-7 form-group form-group-md">
+                                                                            <label for="concurrentname">Concurrent User&#8217;s Name</label>
+                                                                            <textarea id="concurrentname" rows="1" class="form-control"></textarea>
+                                                                        </div>
+                                                                        <div class="col-xs-12 form-group form-group-md">
+                                                                            <p class="weight600" role="heading" aria-level="3">Concurrent User&#8217;s Address:</p>
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-5">
+                                                                            <label for="concurrent-country">Country / US Territory</label>
+                                                                            <select class="form-control" id="concurrent-country">
+                                                                                <option value="Select">Select</option>
+                                                                                <option value="1">UNITED STATES OF AMERICA</option>
+                                                                                <option value="B2">AFGHANISTAN</option>
+                                                                                <option value="B3">ALBANIA</option>
+                                                                                <option value="C9">BELGIUM</option>
+                                                                                <option value="D5">BRAZIL</option>
+                                                                                <option value="E3">CAMBODIA</option>
+                                                                                <option value="E4">CAMEROON</option>
+                                                                                <option value="G7">DENMARK</option>
+                                                                                <option value="G8">DOMINICAN REPUBLIC</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-7">
+                                                                            <label for="concurrent-address1">Address Line 1</label>
+                                                                            <input type="text" class="form-control" id="attorney-address1">
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-xl-6">
+                                                                            <label for="concurrent-address2">Address Line 2</label>
+                                                                            <input type="text" class="form-control" id="concurrent-address2">
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-xl-6">
+                                                                            <label for="concurrent-address3">Address Line 3</label>
+                                                                            <input type="text" class="form-control" id="concurrent-address3">
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
+                                                                            <label for="concurrent-city">City</label>
+                                                                            <input type="text" class="form-control" id="concurrent-city">
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
+                                                                            <label for="concurrent-state">State</label>
+                                                                            <select class="form-control" id="concurrent-state">
+                                                                                <option value="Select">Select</option>
+                                                                                <option value="MD">Maryland</option>
+                                                                                <option value="NC">North Carolina</option>
+                                                                                <option value="4">Virginia</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
+                                                                            <label for="concurrent-zipcode">Zip Code</label>
+                                                                            <input type="text" class="form-control" id="concurrent-zipcode" placeholder="">
+                                                                        </div>
+                                                                        <div class="col-xs-12 form-group form-group-md">
+                                                                            <label for="gs">Goods/Services:</label>
+                                                                            <textarea id="gs" rows="3" class="form-control"></textarea>
+                                                                        </div>
+                                                                        <div class="col-xs-12 form-group form-group-md">
+                                                                            <label for="area">Geographic Area of concurrent user:</label>
+                                                                            <textarea id="area" rows="3" class="form-control"></textarea>
+                                                                        </div>
+                                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                                                            <label for="concurrentmode">Concurrent User Mode of Use:</label>
+                                                                            <textarea id="concurrentmode" rows="1" class="form-control"></textarea>
+                                                                        </div>
+                                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                                                            <label for="timeuse">Time Periods of Use</label>
+                                                                            <textarea id="timeuse" rows="1" class="form-control"></textarea>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="col-xs-12 col-md-7 form-group form-group-md">
-                                                                        <label for="concurrentfiles">Registration Issued/Applications Files by Concurrent User</label>
-                                                                        <textarea id="concurrentfiles" rows="1" class="form-control"></textarea>
-                                                                    </div>
+                                                                </div><!--END holdsaconcregapp-->
+
+
+                                                                <div class="appendaconcregapp"></div>
+                                                                <div class="col-xs-12" role="group" aria-label="Add or delete additional application/registration">
                                                                     <div class="col-xs-12">
-                                                                        <input class="form-check-input checkmark" type="checkbox" value="noconcurrentfiles" tabindex="0" aria-labelledby="noconcurrentfile" id="noconcurrentfiles">
-                                                                        <label class="form-check-label form-check long" for="noconcurrentfiles" id="nofiles"><span class="radio notspecial small" id="noconcurrentfile">Concurrent User does not have a Registration/Application with USPTO</span></label>
+                                                                        <button type="button" class="btn-sm btn-success add ctr" id="addconcregapp">Add Additional Registration/Application</button>
                                                                     </div>
-                                                                    <div class="col-xs-12 col-md-7 form-group form-group-md">
-                                                                        <label for="concurrentname">Concurrent User&#8217;s Name</label>
-                                                                        <textarea id="concurrentname" rows="1" class="form-control"></textarea>
-                                                                    </div>
-                                                                    <div class="col-xs-12 form-group form-group-md">
-                                                                        <p class="weight600" role="heading" aria-level="3">Concurrent User&#8217;s Address:</p>
-                                                                    </div>
-                                                                    <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-5">
-                                                                        <label for="concurrent-country">Country / US Territory</label>
-                                                                        <select class="form-control" id="concurrent-country">
-                                                                            <option value="Select">Select</option>
-                                                                            <option value="1">UNITED STATES OF AMERICA</option>
-                                                                            <option value="B2">AFGHANISTAN</option>
-                                                                            <option value="B3">ALBANIA</option>
-                                                                            <option value="C9">BELGIUM</option>
-                                                                            <option value="D5">BRAZIL</option>
-                                                                            <option value="E3">CAMBODIA</option>
-                                                                            <option value="E4">CAMEROON</option>
-                                                                            <option value="G7">DENMARK</option>
-                                                                            <option value="G8">DOMINICAN REPUBLIC</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-7">
-                                                                        <label for="concurrent-address1">Address Line 1</label>
-                                                                        <input type="text" class="form-control" id="attorney-address1">
-                                                                    </div>
-                                                                    <div class="form-group form-group-md col-xs-12 col-xl-6">
-                                                                        <label for="concurrent-address2">Address Line 2</label>
-                                                                        <input type="text" class="form-control" id="concurrent-address2">
-                                                                    </div>
-                                                                    <div class="form-group form-group-md col-xs-12 col-xl-6">
-                                                                        <label for="concurrent-address3">Address Line 3</label>
-                                                                        <input type="text" class="form-control" id="concurrent-address3">
-                                                                    </div>
-                                                                    <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
-                                                                        <label for="concurrent-city">City</label>
-                                                                        <input type="text" class="form-control" id="concurrent-city">
-                                                                    </div>
-                                                                    <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
-                                                                        <label for="concurrent-state">State</label>
-                                                                        <select class="form-control" id="concurrent-state">
-                                                                            <option value="Select">Select</option>
-                                                                            <option value="MD">Maryland</option>
-                                                                            <option value="NC">North Carolina</option>
-                                                                            <option value="4">Virginia</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
-                                                                        <label for="concurrent-zipcode">Zip Code</label>
-                                                                        <input type="text" class="form-control" id="concurrent-zipcode" placeholder="">
-                                                                    </div>
-                                                                    <div class="col-xs-12 form-group form-group-md">
-                                                                        <label for="gs">Goods/Services:</label>
-                                                                        <textarea id="gs" rows="3" class="form-control"></textarea>
-                                                                    </div>
-                                                                    <div class="col-xs-12 form-group form-group-md">
-                                                                        <label for="area">Geographic Area of concurrent user:</label>
-                                                                        <textarea id="area" rows="3" class="form-control"></textarea>
-                                                                    </div>
-                                                                    <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                                        <label for="concurrentmode">Concurrent User Mode of Use:</label>
-                                                                        <textarea id="concurrentmode" rows="1" class="form-control"></textarea>
-                                                                    </div>
-                                                                    <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                                        <label for="timeuse">Time Periods of Use</label>
-                                                                        <textarea id="timeuse" rows="1" class="form-control"></textarea>
-                                                                    </div>
-                                                                </div>
-                                                            </div><!--END holdsaconcregapp-->
-
-
-                                                            <div class="appendaconcregapp"></div>
-                                                            <div class="col-xs-12" role="group" aria-label="Add or delete additional application/registration">
-                                                                <div class="col-xs-12">
-                                                                    <button type="button" class="btn-sm btn-success add ctr" id="addconcregapp">Add Additional Registration/Application</button>
                                                                 </div>
                                                             </div>
                                                         </div>
+
+                                                    </th:block>
+
+                                                    <th:block th:if="${baseTrademarkApplication.isConcurrentTypeSet() == false}">
+                                                        <div class="row" id="hideshowconcurrentuses" style="display: none;">
+                                                            <!--Start Dropzone-->
+                                                            <div class="col-xs-12 form-group form-group-md">
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <p class="weight600" role="heading" aria-level="3">Upload supporting documents.</p>
+
+                                                                    <form method="post"  target="hidden-iframe"  id="concurrentInfoForm"  action="/concurrent/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
+                                                                        <div class="form-group form-group-md">
+                                                                            <p class="weight600" role="heading" aria-level="3">Optional upload.</p>
+                                                                            <label class="small upload-drop-zone" for="concurrentInfo"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload a File</label>
+                                                                            <input type="file" id="concurrentInfo" name="file" class="form-control">
+                                                                        </div><!-- Drop Zone -->
+                                                                    </form>
+
+                                                                    <div class="col-xs-12">
+                                                                        <div class="center">
+                                                                            <div class="speciman-image" id="concurrent-info-img-container" style="">
+
+                                                                                <img id="concurrent-info-img" th:src="${baseTrademarkApplication.getConcurrentUseEvidenceFilePath()}" alt="" class="img-responsive"/>
+                                                                            </div>
+
+
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="col-xs-12">
+                                                                        <div class="center">
+
+                                                                            <div type="button"  id="concurrent-info-img-upload" class="btn btn-sm" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload File</b><span><i class="fa fa-spinner fa-spin" id="concurrent-info-img-upload-spinner" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                                                        </div>
+
+                                                                    </div>
+
+
+                                                                </div><!-- Drop Zone -->
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <label for="additional2" class="weight600">Description of the uploaded file.</label>
+                                                                    <textarea id="additional2" rows="3" class="form-control"></textarea>
+                                                                </div>
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <label for="geographic" class="weight600">Geographic Area where you are using the mark in commerce:</label>
+                                                                    <textarea id="geographic" rows="3" class="form-control"></textarea>
+                                                                </div>
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <label for="mode" class="weight600">Mode of Use:</label>
+                                                                    <textarea id="mode" rows="3" class="form-control"></textarea>
+                                                                </div>
+                                                                <div class="col-xs-12 form-group form-group-md holdsaconcregapp">
+
+
+
+                                                                    <div class="row">
+
+                                                                        <div class="col-xs-12 col-md-7 form-group form-group-md">
+                                                                            <label for="ttab">Provide <span class="uppercase">ttab</span> Proceeding Number:</label>
+                                                                            <textarea id="ttab" rows="1" class="form-control"></textarea>
+                                                                        </div>
+                                                                        <div class="col-xs-12 col-md-7 form-group form-group-md">
+                                                                            <label for="concurrentfiles">Registration Issued/Applications Files by Concurrent User</label>
+                                                                            <textarea id="concurrentfiles" rows="1" class="form-control"></textarea>
+                                                                        </div>
+                                                                        <div class="col-xs-12">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="noconcurrentfiles" tabindex="0" aria-labelledby="noconcurrentfile" id="noconcurrentfiles">
+                                                                            <label class="form-check-label form-check long" for="noconcurrentfiles" id="nofiles"><span class="radio notspecial small" id="noconcurrentfile">Concurrent User does not have a Registration/Application with USPTO</span></label>
+                                                                        </div>
+                                                                        <div class="col-xs-12 col-md-7 form-group form-group-md">
+                                                                            <label for="concurrentname">Concurrent User&#8217;s Name</label>
+                                                                            <textarea id="concurrentname" rows="1" class="form-control"></textarea>
+                                                                        </div>
+                                                                        <div class="col-xs-12 form-group form-group-md">
+                                                                            <p class="weight600" role="heading" aria-level="3">Concurrent User&#8217;s Address:</p>
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-5">
+                                                                            <label for="concurrent-country">Country / US Territory</label>
+                                                                            <select class="form-control" id="concurrent-country">
+                                                                                <option value="Select">Select</option>
+                                                                                <option value="1">UNITED STATES OF AMERICA</option>
+                                                                                <option value="B2">AFGHANISTAN</option>
+                                                                                <option value="B3">ALBANIA</option>
+                                                                                <option value="C9">BELGIUM</option>
+                                                                                <option value="D5">BRAZIL</option>
+                                                                                <option value="E3">CAMBODIA</option>
+                                                                                <option value="E4">CAMEROON</option>
+                                                                                <option value="G7">DENMARK</option>
+                                                                                <option value="G8">DOMINICAN REPUBLIC</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-7">
+                                                                            <label for="concurrent-address1">Address Line 1</label>
+                                                                            <input type="text" class="form-control" id="attorney-address1">
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-xl-6">
+                                                                            <label for="concurrent-address2">Address Line 2</label>
+                                                                            <input type="text" class="form-control" id="concurrent-address2">
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-xl-6">
+                                                                            <label for="concurrent-address3">Address Line 3</label>
+                                                                            <input type="text" class="form-control" id="concurrent-address3">
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
+                                                                            <label for="concurrent-city">City</label>
+                                                                            <input type="text" class="form-control" id="concurrent-city">
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
+                                                                            <label for="concurrent-state">State</label>
+                                                                            <select class="form-control" id="concurrent-state">
+                                                                                <option value="Select">Select</option>
+                                                                                <option value="MD">Maryland</option>
+                                                                                <option value="NC">North Carolina</option>
+                                                                                <option value="4">Virginia</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
+                                                                            <label for="concurrent-zipcode">Zip Code</label>
+                                                                            <input type="text" class="form-control" id="concurrent-zipcode" placeholder="">
+                                                                        </div>
+                                                                        <div class="col-xs-12 form-group form-group-md">
+                                                                            <label for="gs">Goods/Services:</label>
+                                                                            <textarea id="gs" rows="3" class="form-control"></textarea>
+                                                                        </div>
+                                                                        <div class="col-xs-12 form-group form-group-md">
+                                                                            <label for="area">Geographic Area of concurrent user:</label>
+                                                                            <textarea id="area" rows="3" class="form-control"></textarea>
+                                                                        </div>
+                                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                                                            <label for="concurrentmode">Concurrent User Mode of Use:</label>
+                                                                            <textarea id="concurrentmode" rows="1" class="form-control"></textarea>
+                                                                        </div>
+                                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                                                            <label for="timeuse">Time Periods of Use</label>
+                                                                            <textarea id="timeuse" rows="1" class="form-control"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div><!--END holdsaconcregapp-->
+
+
+                                                                <div class="appendaconcregapp"></div>
+                                                                <div class="col-xs-12" role="group" aria-label="Add or delete additional application/registration">
+                                                                    <div class="col-xs-12">
+                                                                        <button type="button" class="btn-sm btn-success add ctr" id="addconcregapp">Add Additional Registration/Application</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </th:block>
+
+
+                                                </section>
+                                            </div>
+                                        </div><!--END concurrent use-->
+
+                                    </th:block>
+
+                                    <th:block th:if="${baseTrademarkApplication.isConcurrentUse() == false}">
+                                        <div class="row" id="cc" style="display: none;">
+                                            <div class="col-sm-12">
+                                                <section aria-label="Concurrent Use">
+                                                    <div class="card-text noexpand">
+                                                        <h2 class="card-title weight600">Concurrent Use</h2>
                                                     </div>
+                                                    <p class="weight600" style="margin-left: 11px; margin-right:11px;">The following situations are rare and are not relevant for most applicants. If none of these apply to you, click next.</p>
+                                                    <div class="row" style="margin-left: 11px; margin-right:11px;">
+                                                        <div class="wide">
+                                                            <div class="row">
+                                                                <th:block  th:if="${baseTrademarkApplication.isConcurrentTypeCourtDecree() == true}">
+                                                                    <div class="col-xs-12">
+                                                                        <input class="form-check-input checkmark" type="checkbox" value="court" tabindex="0" aria-labelledby="courtdecree" id="courtd" checked>
+                                                                        <label class="form-check-label form-check long" for="courtd" id="courtdec"><span class="radio notspecial small match" id="courtdecree">Court Decree</span></label>
+                                                                    </div>
+                                                                </th:block>
 
-                                                </th:block>
+                                                                <th:block  th:if="${baseTrademarkApplication.isConcurrentTypeCourtDecree() == false}">
+                                                                    <div class="col-xs-12">
+                                                                        <input class="form-check-input checkmark" type="checkbox" value="court" tabindex="0" aria-labelledby="courtdecree" id="courtd">
+                                                                        <label class="form-check-label form-check long" for="courtd" id="courtdec"><span class="radio notspecial small match" id="courtdecree">Court Decree</span></label>
+                                                                    </div>
+                                                                </th:block>
 
 
-                                            </section>
-                                        </div>
-                                    </div><!--END concurrent use-->
+                                                                <th:block  th:if="${baseTrademarkApplication.isConcurrentTypePriorDecision() == true}">
+                                                                    <div class="col-xs-12">
+                                                                        <input class="form-check-input checkmark" type="checkbox" value="ttab" tabindex="0" aria-labelledby="priorttab" id="ttabmade" checked>
+                                                                        <label class="form-check-label form-check long" for="ttabmade" id="ttabdecision"><span class="radio notspecial small" id="priorttab">Prior decision made by the Trademark Trial and Apeal Board (TTAB)</span></label>
+                                                                    </div>
+                                                                </th:block>
+
+                                                                <th:block  th:if="${baseTrademarkApplication.isConcurrentTypePriorDecision() == false}">
+                                                                    <div class="col-xs-12">
+                                                                        <input class="form-check-input checkmark" type="checkbox" value="ttab" tabindex="0" aria-labelledby="priorttab" id="ttabmade">
+                                                                        <label class="form-check-label form-check long" for="ttabmade" id="ttabdecision"><span class="radio notspecial small" id="priorttab">Prior decision made by the Trademark Trial and Apeal Board (TTAB)</span></label>
+                                                                    </div>
+                                                                </th:block>
+                                                                <th:block  th:if="${baseTrademarkApplication.isConcurrentTypeWrittenConsent() == true}">
+                                                                    <div class="col-xs-12">
+                                                                        <input class="form-check-input checkmark" type="checkbox" value="conflicting" tabindex="0" aria-labelledby="conflictingreg" id="conflict" checked>
+                                                                        <label class="form-check-label form-check long" for="conflict" id="conflictowner"><span class="radio notspecial small" id="conflictingreg">Written Consent signed by owner of conflicting registrations</span></label>
+                                                                    </div>
+                                                                </th:block>
+
+                                                                <th:block  th:if="${baseTrademarkApplication.isConcurrentTypeWrittenConsent() == false}">
+                                                                    <div class="col-xs-12">
+                                                                        <input class="form-check-input checkmark" type="checkbox" value="conflicting" tabindex="0" aria-labelledby="conflictingreg" id="conflict">
+                                                                        <label class="form-check-label form-check long" for="conflict" id="conflictowner"><span class="radio notspecial small" id="conflictingreg">Written Consent signed by owner of conflicting registrations</span></label>
+                                                                    </div>
+                                                                </th:block>
+
+                                                                <th:block  th:if="${baseTrademarkApplication.isConcurrentTypeEarlierFirstUse() == true}">
+                                                                    <div class="col-xs-12">
+                                                                        <input class="form-check-input checkmark" type="checkbox" value="earlier" tabindex="0" aria-labelledby="early" id="earlieruse" checked>
+                                                                        <label class="form-check-label form-check long" for="earlieruse" id="firstcommerce"><span class="radio notspecial small match" id="early">Earlier date of first use in commerce</span></label>
+                                                                    </div>
+                                                                </th:block>
+
+                                                                <th:block  th:if="${baseTrademarkApplication.isConcurrentTypeEarlierFirstUse()  == false}">
+                                                                    <div class="col-xs-12">
+                                                                        <input class="form-check-input checkmark" type="checkbox" value="earlier" tabindex="0" aria-labelledby="early" id="earlieruse">
+                                                                        <label class="form-check-label form-check long" for="earlieruse" id="firstcommerce"><span class="radio notspecial small match" id="early">Earlier date of first use in commerce</span></label>
+                                                                    </div>
+                                                                </th:block>
+
+                                                            </div>
+                                                        </div>
+                                                    </div><!--end checkbox row-->
+
+                                                    <th:block th:if="${baseTrademarkApplication.isConcurrentTypeSet() == true}">
+                                                        <div class="row" id="hideshowconcurrentuses">
+                                                            <!--Start Dropzone-->
+                                                            <div class="col-xs-12 form-group form-group-md">
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <p class="weight600" role="heading" aria-level="3">Upload supporting documents.</p>
+
+                                                                    <form method="post"  target="hidden-iframe"  id="concurrentInfoForm"  action="/concurrent/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
+                                                                        <div class="form-group form-group-md">
+                                                                            <p class="weight600" role="heading" aria-level="3">Optional upload.</p>
+                                                                            <label class="small upload-drop-zone" for="concurrentInfo"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload a File</label>
+                                                                            <input type="file" id="concurrentInfo" name="file" class="form-control">
+                                                                        </div><!-- Drop Zone -->
+                                                                    </form>
+
+                                                                    <div class="col-xs-12">
+                                                                        <div class="center">
+                                                                            <div class="speciman-image" id="concurrent-info-img-container" style="">
+
+                                                                                <img id="concurrent-info-img" th:src="${baseTrademarkApplication.getConcurrentUseEvidenceFilePath()}" alt="" class="img-responsive"/>
+                                                                            </div>
+
+
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="col-xs-12">
+                                                                        <div class="center">
+
+                                                                            <div type="button"  id="concurrent-info-img-upload" class="btn btn-sm" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload File</b><span><i class="fa fa-spinner fa-spin" id="concurrent-info-img-upload-spinner" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                                                        </div>
+
+                                                                    </div>
+
+
+                                                                </div><!-- Drop Zone -->
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <label for="additional2" class="weight600">Description of the uploaded file.</label>
+                                                                    <textarea id="additional2" rows="3" class="form-control"></textarea>
+                                                                </div>
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <label for="geographic" class="weight600">Geographic Area where you are using the mark in commerce:</label>
+                                                                    <textarea id="geographic" rows="3" class="form-control"></textarea>
+                                                                </div>
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <label for="mode" class="weight600">Mode of Use:</label>
+                                                                    <textarea id="mode" rows="3" class="form-control"></textarea>
+                                                                </div>
+                                                                <div class="col-xs-12 form-group form-group-md holdsaconcregapp">
+
+                                                                    <div class="row">
+
+                                                                        <div class="col-xs-12 col-md-7 form-group form-group-md">
+                                                                            <label for="ttab">Provide <span class="uppercase">ttab</span> Proceeding Number:</label>
+                                                                            <textarea id="ttab" rows="1" class="form-control"></textarea>
+                                                                        </div>
+                                                                        <div class="col-xs-12 col-md-7 form-group form-group-md">
+                                                                            <label for="concurrentfiles">Registration Issued/Applications Files by Concurrent User</label>
+                                                                            <textarea id="concurrentfiles" rows="1" class="form-control"></textarea>
+                                                                        </div>
+                                                                        <div class="col-xs-12">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="noconcurrentfiles" tabindex="0" aria-labelledby="noconcurrentfile" id="noconcurrentfiles">
+                                                                            <label class="form-check-label form-check long" for="noconcurrentfiles" id="nofiles"><span class="radio notspecial small" id="noconcurrentfile">Concurrent User does not have a Registration/Application with USPTO</span></label>
+                                                                        </div>
+                                                                        <div class="col-xs-12 col-md-7 form-group form-group-md">
+                                                                            <label for="concurrentname">Concurrent User&#8217;s Name</label>
+                                                                            <textarea id="concurrentname" rows="1" class="form-control"></textarea>
+                                                                        </div>
+                                                                        <div class="col-xs-12 form-group form-group-md">
+                                                                            <p class="weight600" role="heading" aria-level="3">Concurrent User&#8217;s Address:</p>
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-5">
+                                                                            <label for="concurrent-country">Country / US Territory</label>
+                                                                            <select class="form-control" id="concurrent-country">
+                                                                                <option value="Select">Select</option>
+                                                                                <option value="1">UNITED STATES OF AMERICA</option>
+                                                                                <option value="B2">AFGHANISTAN</option>
+                                                                                <option value="B3">ALBANIA</option>
+                                                                                <option value="C9">BELGIUM</option>
+                                                                                <option value="D5">BRAZIL</option>
+                                                                                <option value="E3">CAMBODIA</option>
+                                                                                <option value="E4">CAMEROON</option>
+                                                                                <option value="G7">DENMARK</option>
+                                                                                <option value="G8">DOMINICAN REPUBLIC</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-7">
+                                                                            <label for="concurrent-address1">Address Line 1</label>
+                                                                            <input type="text" class="form-control" id="attorney-address1">
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-xl-6">
+                                                                            <label for="concurrent-address2">Address Line 2</label>
+                                                                            <input type="text" class="form-control" id="concurrent-address2">
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-xl-6">
+                                                                            <label for="concurrent-address3">Address Line 3</label>
+                                                                            <input type="text" class="form-control" id="concurrent-address3">
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
+                                                                            <label for="concurrent-city">City</label>
+                                                                            <input type="text" class="form-control" id="concurrent-city">
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
+                                                                            <label for="concurrent-state">State</label>
+                                                                            <select class="form-control" id="concurrent-state">
+                                                                                <option value="Select">Select</option>
+                                                                                <option value="MD">Maryland</option>
+                                                                                <option value="NC">North Carolina</option>
+                                                                                <option value="4">Virginia</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
+                                                                            <label for="concurrent-zipcode">Zip Code</label>
+                                                                            <input type="text" class="form-control" id="concurrent-zipcode" placeholder="">
+                                                                        </div>
+                                                                        <div class="col-xs-12 form-group form-group-md">
+                                                                            <label for="gs">Goods/Services:</label>
+                                                                            <textarea id="gs" rows="3" class="form-control"></textarea>
+                                                                        </div>
+                                                                        <div class="col-xs-12 form-group form-group-md">
+                                                                            <label for="area">Geographic Area of concurrent user:</label>
+                                                                            <textarea id="area" rows="3" class="form-control"></textarea>
+                                                                        </div>
+                                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                                                            <label for="concurrentmode">Concurrent User Mode of Use:</label>
+                                                                            <textarea id="concurrentmode" rows="1" class="form-control"></textarea>
+                                                                        </div>
+                                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                                                            <label for="timeuse">Time Periods of Use</label>
+                                                                            <textarea id="timeuse" rows="1" class="form-control"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div><!--END holdsaconcregapp-->
+
+
+                                                                <div class="appendaconcregapp"></div>
+                                                                <div class="col-xs-12" role="group" aria-label="Add or delete additional application/registration">
+                                                                    <div class="col-xs-12">
+                                                                        <button type="button" class="btn-sm btn-success add ctr" id="addconcregapp">Add Additional Registration/Application</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </th:block>
+
+                                                    <th:block th:if="${baseTrademarkApplication.isConcurrentTypeSet() == false}">
+                                                        <div class="row" id="hideshowconcurrentuses" style="display: none;">
+                                                            <!--Start Dropzone-->
+                                                            <div class="col-xs-12 form-group form-group-md">
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <p class="weight600" role="heading" aria-level="3">Upload supporting documents.</p>
+
+                                                                    <form method="post"  target="hidden-iframe"  id="concurrentInfoForm"  action="/concurrent/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
+                                                                        <div class="form-group form-group-md">
+                                                                            <p class="weight600" role="heading" aria-level="3">Optional upload.</p>
+                                                                            <label class="small upload-drop-zone" for="concurrentInfo"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload a File</label>
+                                                                            <input type="file" id="concurrentInfo" name="file" class="form-control">
+                                                                        </div><!-- Drop Zone -->
+                                                                    </form>
+
+                                                                    <div class="col-xs-12">
+                                                                        <div class="center">
+                                                                            <div class="speciman-image" id="concurrent-info-img-container" style="">
+
+                                                                                <img id="concurrent-info-img" th:src="${baseTrademarkApplication.getConcurrentUseEvidenceFilePath()}" alt="" class="img-responsive"/>
+                                                                            </div>
+
+
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="col-xs-12">
+                                                                        <div class="center">
+
+                                                                            <div type="button"  id="concurrent-info-img-upload" class="btn btn-sm" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload File</b><span><i class="fa fa-spinner fa-spin" id="concurrent-info-img-upload-spinner" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                                                        </div>
+
+                                                                    </div>
+
+
+                                                                </div><!-- Drop Zone -->
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <label for="additional2" class="weight600">Description of the uploaded file.</label>
+                                                                    <textarea id="additional2" rows="3" class="form-control"></textarea>
+                                                                </div>
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <label for="geographic" class="weight600">Geographic Area where you are using the mark in commerce:</label>
+                                                                    <textarea id="geographic" rows="3" class="form-control"></textarea>
+                                                                </div>
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <label for="mode" class="weight600">Mode of Use:</label>
+                                                                    <textarea id="mode" rows="3" class="form-control"></textarea>
+                                                                </div>
+                                                                <div class="col-xs-12 form-group form-group-md holdsaconcregapp">
+
+
+
+                                                                    <div class="row">
+
+                                                                        <div class="col-xs-12 col-md-7 form-group form-group-md">
+                                                                            <label for="ttab">Provide <span class="uppercase">ttab</span> Proceeding Number:</label>
+                                                                            <textarea id="ttab" rows="1" class="form-control"></textarea>
+                                                                        </div>
+                                                                        <div class="col-xs-12 col-md-7 form-group form-group-md">
+                                                                            <label for="concurrentfiles">Registration Issued/Applications Files by Concurrent User</label>
+                                                                            <textarea id="concurrentfiles" rows="1" class="form-control"></textarea>
+                                                                        </div>
+                                                                        <div class="col-xs-12">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="noconcurrentfiles" tabindex="0" aria-labelledby="noconcurrentfile" id="noconcurrentfiles">
+                                                                            <label class="form-check-label form-check long" for="noconcurrentfiles" id="nofiles"><span class="radio notspecial small" id="noconcurrentfile">Concurrent User does not have a Registration/Application with USPTO</span></label>
+                                                                        </div>
+                                                                        <div class="col-xs-12 col-md-7 form-group form-group-md">
+                                                                            <label for="concurrentname">Concurrent User&#8217;s Name</label>
+                                                                            <textarea id="concurrentname" rows="1" class="form-control"></textarea>
+                                                                        </div>
+                                                                        <div class="col-xs-12 form-group form-group-md">
+                                                                            <p class="weight600" role="heading" aria-level="3">Concurrent User&#8217;s Address:</p>
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-5">
+                                                                            <label for="concurrent-country">Country / US Territory</label>
+                                                                            <select class="form-control" id="concurrent-country">
+                                                                                <option value="Select">Select</option>
+                                                                                <option value="1">UNITED STATES OF AMERICA</option>
+                                                                                <option value="B2">AFGHANISTAN</option>
+                                                                                <option value="B3">ALBANIA</option>
+                                                                                <option value="C9">BELGIUM</option>
+                                                                                <option value="D5">BRAZIL</option>
+                                                                                <option value="E3">CAMBODIA</option>
+                                                                                <option value="E4">CAMEROON</option>
+                                                                                <option value="G7">DENMARK</option>
+                                                                                <option value="G8">DOMINICAN REPUBLIC</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-7">
+                                                                            <label for="concurrent-address1">Address Line 1</label>
+                                                                            <input type="text" class="form-control" id="attorney-address1">
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-xl-6">
+                                                                            <label for="concurrent-address2">Address Line 2</label>
+                                                                            <input type="text" class="form-control" id="concurrent-address2">
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-xl-6">
+                                                                            <label for="concurrent-address3">Address Line 3</label>
+                                                                            <input type="text" class="form-control" id="concurrent-address3">
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
+                                                                            <label for="concurrent-city">City</label>
+                                                                            <input type="text" class="form-control" id="concurrent-city">
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
+                                                                            <label for="concurrent-state">State</label>
+                                                                            <select class="form-control" id="concurrent-state">
+                                                                                <option value="Select">Select</option>
+                                                                                <option value="MD">Maryland</option>
+                                                                                <option value="NC">North Carolina</option>
+                                                                                <option value="4">Virginia</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
+                                                                            <label for="concurrent-zipcode">Zip Code</label>
+                                                                            <input type="text" class="form-control" id="concurrent-zipcode" placeholder="">
+                                                                        </div>
+                                                                        <div class="col-xs-12 form-group form-group-md">
+                                                                            <label for="gs">Goods/Services:</label>
+                                                                            <textarea id="gs" rows="3" class="form-control"></textarea>
+                                                                        </div>
+                                                                        <div class="col-xs-12 form-group form-group-md">
+                                                                            <label for="area">Geographic Area of concurrent user:</label>
+                                                                            <textarea id="area" rows="3" class="form-control"></textarea>
+                                                                        </div>
+                                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                                                            <label for="concurrentmode">Concurrent User Mode of Use:</label>
+                                                                            <textarea id="concurrentmode" rows="1" class="form-control"></textarea>
+                                                                        </div>
+                                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                                                            <label for="timeuse">Time Periods of Use</label>
+                                                                            <textarea id="timeuse" rows="1" class="form-control"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div><!--END holdsaconcregapp-->
+
+
+                                                                <div class="appendaconcregapp"></div>
+                                                                <div class="col-xs-12" role="group" aria-label="Add or delete additional application/registration">
+                                                                    <div class="col-xs-12">
+                                                                        <button type="button" class="btn-sm btn-success add ctr" id="addconcregapp">Add Additional Registration/Application</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </th:block>
+
+
+                                                </section>
+                                            </div>
+                                        </div><!--END concurrent use-->
+
+                                    </th:block>
+
+
                                 </div><!--END formgroup-->
                             </div>
                         </fieldset>
@@ -1187,8 +1568,9 @@
         });
 
 
-        $('#courtdec').click(function () {
+        $('#courtd').click(function () {
             if(this.checked == true){
+
                 saveAdditionalInfo("ai-concurrent-type-court", "yes", appInternalID);
             }
             else {

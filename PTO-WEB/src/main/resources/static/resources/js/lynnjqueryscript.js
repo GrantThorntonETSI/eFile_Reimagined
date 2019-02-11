@@ -728,7 +728,7 @@ $(document).ready(function(){
 			$('#uaf').hide( 'fast' );
 		}
 	});
-	$('div#cc').css('display','none');
+
 	$('input#concurruse').change(function() {
 		if(this.checked == true){
 			$('#cc').show( 'fast' );
