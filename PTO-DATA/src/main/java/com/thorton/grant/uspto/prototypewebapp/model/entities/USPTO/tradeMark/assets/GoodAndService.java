@@ -92,16 +92,33 @@ public class GoodAndService {
     private Date   frRegistrationDate;
     private Date  frExpirationDate;
     private Date  frRenewlDate;
-
     private String frCertImagePath;
 
 
 
+    // class level fields that propogates up
+
+    public boolean atLeastOneGoodInCommerceClassFlag;
+
+    public boolean  provideSpecimenForAllGS;
 
 
 
+    public boolean isAtLeastOneGoodInCommerceClassFlag() {
+        return atLeastOneGoodInCommerceClassFlag;
+    }
 
+    public void setAtLeastOneGoodInCommerceClassFlag(boolean atLeastOneGoodInCommerceClassFlag) {
+        this.atLeastOneGoodInCommerceClassFlag = atLeastOneGoodInCommerceClassFlag;
+    }
 
+    public boolean isProvideSpecimenForAllGS() {
+        return provideSpecimenForAllGS;
+    }
+
+    public void setProvideSpecimenForAllGS(boolean provideSpecimenForAllGS) {
+        this.provideSpecimenForAllGS = provideSpecimenForAllGS;
+    }
 
     public String getClassNumber() {
         return classNumber;
@@ -517,4 +534,7 @@ public class GoodAndService {
                 ", sampleDescription='" + sampleDescription + '\'' +
                 '}';
     }
+
+
+
 }

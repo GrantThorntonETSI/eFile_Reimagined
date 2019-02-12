@@ -26,6 +26,18 @@ public class GSClassCategory {
     private String classCategoryDescr;
 
 
+
+    public boolean atLeastOneGoodInCommerce;
+
+    public boolean atLeastOneGoodInCommerceSet;
+
+    public boolean provideSpecimenForAll;
+
+    public boolean provideSpecimenForAllset;
+
+
+
+
     @Nullable
     public ArrayList<GoodAndService> getGoodAndServices() {
 
@@ -127,5 +139,38 @@ public class GSClassCategory {
             return true;
         }
 
+    }
+
+
+    public boolean isAtLeastOneGoodInCommerce() {
+        return atLeastOneGoodInCommerce;
+    }
+
+    public void setAtLeastOneGoodInCommerce(boolean atLeastOneGoodInCommerce) {
+        this.atLeastOneGoodInCommerce = atLeastOneGoodInCommerce;
+    }
+
+    public boolean isAtLeastOneGoodInCommerceSet() {
+        return atLeastOneGoodInCommerceSet;
+    }
+
+    public void setAtLeastOneGoodInCommerceSet(boolean atLeastOneGoodInCommerceSet) {
+        this.atLeastOneGoodInCommerceSet = atLeastOneGoodInCommerceSet;
+    }
+
+    public boolean isProvideSpecimenForAll() {
+        return provideSpecimenForAll;
+    }
+
+    public void setProvideSpecimenForAll(boolean provideSpecimenForAll) {
+        this.provideSpecimenForAll = provideSpecimenForAll;
+    }
+
+    public boolean isProvideSpecimenForAllset() {
+        return provideSpecimenForAllset;
+    }
+
+    public void setProvideSpecimenForAllset(boolean provideSpecimenForAllset) {
+        this.provideSpecimenForAllset = provideSpecimenForAllset;
     }
 }

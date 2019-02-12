@@ -923,7 +923,9 @@ public class ApplicationObjectCreationController {
 
                         if(current.getClassNumber().equals(classCategoryNumber)){
                             current.setClassSpecimenImgPath(filePath);
-                            //goods_servicesService.save(current);
+                            current.setSampleImagePath(filePath);
+                            current.setSampleUploaded(true);
+
                         }
                     }
                     model.addAttribute("markImagePath",baseTrademarkApplication.getTradeMark().getTrademarkImagePath());

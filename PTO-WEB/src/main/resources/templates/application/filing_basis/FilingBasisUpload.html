@@ -108,38 +108,53 @@
                             <div class="card-text noexpand blue">
                                 <h2 class="card-title weight600" th:text="${Good_Service_class.getClassNumberDisplay()}">Class 003</h2>
                             </div>
-
-                                <fieldset>
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <div class="lead">
-                                                <p style="font-weight: bold;">Provide a specimen for all goods/services within the class. Only one specimen is required per class.</p>
-                                            </div>
-                                        </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="lead">
+                                        <p style="font-weight: bold;">Only one specimen is required per class.</p>
                                     </div>
-                                    <div class="row">
-                                        <div class="form-group form-group-md col-xs-12">
-                                            <div class="row">
-                                                <section aria-label="class image and description">
-                                                    <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service_class.getClassCategporyImpageFormID()}"  action="/class/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
-                                                        <div class="col-xs-4">
-                                                            <p id="upimage">Provide an image of your specimen:</p>
-                                                            <div>
-                                                                <label class="small upload-drop-zone" th:attr="for=${Good_Service_class.classFileInputID}" id="upimg"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Click here to select file for upload.</label>
-                                                                <input type="file" th:attr="id=${Good_Service_class.classFileInputID}" name="file" class="form-control">
-                                                            </div><!-- Drop Zone -->
-                                                        </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <p >Are you currently using the mark on in commerce for at least one of the good/services in this class?<span class="label label-info subtle visuallyremoved">Reduce Fee</span></p>
+                                    <label  class="radio-inline radiocontainer">Yes<input type="radio"   value="yes" tabindex="0"  class="mark-in-use-radio-classLevel-yes" name="inUseClassLevel"><span class="checkmark"></span></label>
+                                    <label  class="radio-inline radiocontainer">No<input type="radio"  value="no" tabindex="0" class="mark-in-use-radio-classLevel-no" name="inUseClassLevel"><span class="checkmark"></span></label>
+
+
+                                </div>
+                            </div>
+
+                            <div class="row" style="display: none;">
+                                <div class="col-xs-12">
+                                    <p>Would you like to provide a specimen for all good/services within this class?<span class="label label-info subtle visuallyremoved">Reduce Fee</span></p>
+                                    <label  class="radio-inline radiocontainer">Yes<input type="radio"   value="yes" tabindex="0"  class="provide-spec-all-class-yes"  ><span class="checkmark"></span></label>
+                                    <label   class="radio-inline radiocontainer">No<input type="radio"  value="no" tabindex="0" class="provide-spec-all-class-no"><span class="checkmark"></span></label>
+
+
+                                </div>
+                            </div>
+                            <div class="row" style="display: none;">
+                                <section aria-label="class image and description">
+                                    <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service_class.getClassCategporyImpageFormID()}"  action="/class/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
+                                        <div class="col-xs-4">
+                                            <p id="upimage">Provide an image of your specimen:</p>
+                                            <div>
+                                                <label class="small upload-drop-zone" th:attr="for=${Good_Service_class.classFileInputID}" id="upimg"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Click here to select file for upload.</label>
+                                                <input type="file" th:attr="id=${Good_Service_class.classFileInputID}" name="file" class="form-control">
+                                            </div><!-- Drop Zone -->
+                                        </div>
 
 
 
-                                                    </form>
+                                    </form>
 
-                                                    <div class="col-xs-4">
-                                                        <div >
+                                    <div class="col-xs-4">
+                                        <div >
 
-                                                            <p class="text-center"><br><br>
+                                            <p class="text-center"><br><br>
 
-                                                                <span id="mark-img-container" style="">
+                                                <span id="mark-img-container" style="">
 
                                                                    <th:block th:if="${Good_Service_class.isCategorySpecimenSet() == false}">
                                                                           <img  th:attr="id=${Good_Service_class.classImageID}" th:src="@{/resources/images/image_placeholder_icon.png}" style="position: relative; left:-5px; min-width: 222px; max-width: 222px; max-height: 111px; min-height: 111px;"  id="markImage" />
@@ -153,28 +168,38 @@
 
 
                                                                 </span>
-                                                            </p>
+                                            </p>
 
-                                                        </div>
+                                        </div>
 
-                                                    </div>
-                                                    <div class="col-xs-4">
-                                                        <label th:attr="for=${Good_Service_class.classSpecDescID}" >Provide a description of your specimen:</label>
-                                                        <textarea  th:attr="id=${Good_Service_class.classSpecDescID},cat-num=${Good_Service_class.getClassCategoryNumber()}"  th:text="${Good_Service_class.getClassCategoryDescr()}" rows="4"  class="form-control class-spec-desc-ta"></textarea>
-                                                    </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label th:attr="for=${Good_Service_class.classSpecDescID}" >Provide a description of your specimen:</label>
+                                        <textarea  th:attr="id=${Good_Service_class.classSpecDescID},cat-num=${Good_Service_class.getClassCategoryNumber()}"  th:text="${Good_Service_class.getClassCategoryDescr()}" rows="4"  class="form-control class-spec-desc-ta"></textarea>
+                                    </div>
 
 
-                                                    <div class="col-xs-12">
-                                                        <div class="center">
+                                    <div class="col-xs-12">
+                                        <div class="center">
 
-                                                            <div type="button" th:attr="form=${Good_Service_class.getClassCategporyImpageFormID()},cat-num=${Good_Service_class.getClassCategoryNumber()}, file-id=${Good_Service_class.classFileInputID}, class-img-id=${Good_Service_class.classImageID}, spinner-id=${Good_Service_class.classUploadSpinnerID}" class="btn btn-sm submitCCSpecimen" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Specimen</b><span><i class="fa fa-spinner fa-spin"  th:attr="id=${Good_Service_class.classUploadSpinnerID}" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
-                                                        </div>
+                                            <div type="button" th:attr="form=${Good_Service_class.getClassCategporyImpageFormID()},cat-num=${Good_Service_class.getClassCategoryNumber()}, file-id=${Good_Service_class.classFileInputID}, class-img-id=${Good_Service_class.classImageID}, spinner-id=${Good_Service_class.classUploadSpinnerID}" class="btn btn-sm submitCCSpecimen" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Specimen</b><span><i class="fa fa-spinner fa-spin"  th:attr="id=${Good_Service_class.classUploadSpinnerID}" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                        </div>
 
-                                                    </div>
+                                    </div>
 
-                                                </section>
+                                </section>
 
-                                            </div>
+                            </div>
+
+                            <!-- end of class level  -->
+
+                            <!-- start of goods and services level -->
+
+                                <fieldset>
+
+                                    <div class="row">
+                                        <div class="form-group form-group-md col-xs-12">
+
 
                                             <th:block th:each="Good_Service: ${Good_Service_class.getGoodAndServices()}">
                                                 <div class="row">
@@ -2976,9 +3001,6 @@
                     // we will return the the file url
                     // call jquery and set it in the img div
                     var imgPath = parsePathFromResponse(data);
-alert(imgPath);
-
-alert(imageId);
 
                     $('#'+imageId).attr("src", imgPath);
                     $("#"+spinnerID).hide();
@@ -3039,7 +3061,34 @@ alert(imageId);
         });
 
 
+        $('.mark-in-use-radio-classLevel-yes').click(function () {
 
+            $(this).parent().parent().parent().next().fadeIn(500);
+
+        });
+
+
+        $('.mark-in-use-radio-classLevel-no').click(function () {
+
+            $(this).parent().parent().parent().next().fadeOut(500);
+
+        });
+
+
+
+
+        $('.provide-spec-all-class-yes').click(function () {
+
+            $(this).parent().parent().parent().next().fadeIn(500);
+
+        });
+
+
+        $('.provide-spec-all-class-no').click(function () {
+
+            $(this).parent().parent().parent().next().fadeOut(500);
+
+        });
 
     });
 
