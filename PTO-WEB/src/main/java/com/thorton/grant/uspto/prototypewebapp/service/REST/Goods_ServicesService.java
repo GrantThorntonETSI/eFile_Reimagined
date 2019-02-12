@@ -689,6 +689,110 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
+        if(ccField.equals("cc-in-use-one")){
+            // ptoUser.setState(param); // sets state code
+            if(ccValue.equals("yes")){
+
+                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                    GoodAndService current = iter.next();
+
+                    if(current.getClassNumber().equals(ccNumber)){
+                       current.setAtLeastOneGoodInCommerceClassFlag(true);
+                       current.setAtLeastOneGoodInCommerceClassFlagSet(true);
+
+
+                    }
+                }
+
+            }
+            else {
+                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                    GoodAndService current = iter.next();
+
+                    if(current.getClassNumber().equals(ccNumber)){
+                        current.setAtLeastOneGoodInCommerceClassFlag(false);
+                        current.setAtLeastOneGoodInCommerceClassFlagSet(true);
+
+
+                    }
+                }
+
+            }
+
+
+            appFieldReadable = "Class level option";
+
+        }
+
+        if(ccField.equals("cc-specimen-class-opt")){
+            // ptoUser.setState(param); // sets state code
+            if(ccValue.equals("yes")){
+
+                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                    GoodAndService current = iter.next();
+
+                    if(current.getClassNumber().equals(ccNumber)){
+                        current.setProvideSpecimenForAllGS(true);
+                        current.setProvideSpecimenForAllGSSet(true);
+
+
+                    }
+                }
+
+            }
+            else {
+                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                    GoodAndService current = iter.next();
+
+                    if(current.getClassNumber().equals(ccNumber)){
+                        current.setProvideSpecimenForAllGS(false);
+                        current.setProvideSpecimenForAllGSSet(true);
+
+                    }
+                }
+
+            }
+
+
+            appFieldReadable = "Class level option";
+
+        }
+
+
+        if(ccField.equals("cc-specimen-class-opt")){
+            // ptoUser.setState(param); // sets state code
+            if(ccValue.equals("yes")){
+
+                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                    GoodAndService current = iter.next();
+
+                    if(current.getClassNumber().equals(ccNumber)){
+                        current.setProvideSpecimenForAllGS(true);
+                        current.setProvideSpecimenForAllGSSet(true);
+
+
+                    }
+                }
+
+            }
+            else {
+                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                    GoodAndService current = iter.next();
+
+                    if(current.getClassNumber().equals(ccNumber)){
+                        current.setProvideSpecimenForAllGS(false);
+                        current.setProvideSpecimenForAllGSSet(true);
+
+
+                    }
+                }
+
+            }
+
+
+            appFieldReadable = "Class level option";
+
+        }
 
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);

@@ -115,46 +115,126 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <p >Are you currently using the mark on in commerce for at least one of the good/services in this class?<span class="label label-info subtle visuallyremoved">Reduce Fee</span></p>
-                                    <label  class="radio-inline radiocontainer">Yes<input type="radio"   value="yes" tabindex="0"  class="mark-in-use-radio-classLevel-yes" name="inUseClassLevel"><span class="checkmark"></span></label>
-                                    <label  class="radio-inline radiocontainer">No<input type="radio"  value="no" tabindex="0" class="mark-in-use-radio-classLevel-no" name="inUseClassLevel"><span class="checkmark"></span></label>
 
-
-                                </div>
-                            </div>
-
-                            <div class="row" style="display: none;">
-                                <div class="col-xs-12">
-                                    <p>Would you like to provide a specimen for all good/services within this class?<span class="label label-info subtle visuallyremoved">Reduce Fee</span></p>
-                                    <label  class="radio-inline radiocontainer">Yes<input type="radio"   value="yes" tabindex="0"  class="provide-spec-all-class-yes"  ><span class="checkmark"></span></label>
-                                    <label   class="radio-inline radiocontainer">No<input type="radio"  value="no" tabindex="0" class="provide-spec-all-class-no"><span class="checkmark"></span></label>
-
-
-                                </div>
-                            </div>
-                            <div class="row" style="display: none;">
-                                <section aria-label="class image and description">
-                                    <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service_class.getClassCategporyImpageFormID()}"  action="/class/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
-                                        <div class="col-xs-4">
-                                            <p id="upimage">Provide an image of your specimen:</p>
-                                            <div>
-                                                <label class="small upload-drop-zone" th:attr="for=${Good_Service_class.classFileInputID}" id="upimg"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Click here to select file for upload.</label>
-                                                <input type="file" th:attr="id=${Good_Service_class.classFileInputID}" name="file" class="form-control">
-                                            </div><!-- Drop Zone -->
+                            <th:block  th:if="${Good_Service_class.atLeastOneGoodInCommerceSet == true}">
+                                <th:block   th:if="${Good_Service_class.isAtLeastOneGoodInCommerce() == true}">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <p >Are you currently using the mark on in commerce for at least one of the good/services in this class?<span class="label label-info subtle visuallyremoved">Reduce Fee</span></p>
+                                            <label  class="radio-inline radiocontainer">Yes<input type="radio"  th:attr="cat-num=${Good_Service_class.getClassCategoryNumber()}" value="yes" tabindex="0"  class="mark-in-use-radio-classLevel-yes" name="inUseClassLevel" checked><span class="checkmark"></span></label>
+                                            <label  class="radio-inline radiocontainer">No<input type="radio" th:attr="cat-num=${Good_Service_class.getClassCategoryNumber()}" value="no" tabindex="0" class="mark-in-use-radio-classLevel-no" name="inUseClassLevel"><span class="checkmark"></span></label>
                                         </div>
+                                    </div>
+
+                                    <th:block   th:if="${Good_Service_class.isProvideSpecimenForAllset() == true}">
+                                        <th:block   th:if="${Good_Service_class.isProvideSpecimenForAll() == true}">
+                                            <div class="row" style="">
+                                                <div class="col-xs-12">
+                                                    <p>Would you like to provide a specimen for all good/services within this class?<span class="label label-info subtle visuallyremoved">Reduce Fee</span></p>
+                                                    <label  class="radio-inline radiocontainer">Yes<input type="radio" th:attr="cat-num=${Good_Service_class.getClassCategoryNumber()}"  value="yes" tabindex="0"  class="provide-spec-all-class-yes" name="provideSpecimenbClassLevel" checked><span class="checkmark"></span></label>
+                                                    <label   class="radio-inline radiocontainer">No<input type="radio"th:attr="cat-num=${Good_Service_class.getClassCategoryNumber()}"  value="no" tabindex="0" class="provide-spec-all-class-no" name="provideSpecimenbClassLevel"><span class="checkmark"></span></label>
+                                                </div>
+                                            </div>
+                                        </th:block>
+
+                                        <th:block   th:if="${Good_Service_class.isProvideSpecimenForAll() == false}">
+                                            <div class="row" style="">
+                                                <div class="col-xs-12">
+                                                    <p>Would you like to provide a specimen for all good/services within this class?<span class="label label-info subtle visuallyremoved">Reduce Fee</span></p>
+                                                    <label  class="radio-inline radiocontainer">Yes<input type="radio" th:attr="cat-num=${Good_Service_class.getClassCategoryNumber()}"  value="yes" tabindex="0"  class="provide-spec-all-class-yes" name="provideSpecimenbClassLevel"><span class="checkmark"></span></label>
+                                                    <label   class="radio-inline radiocontainer">No<input type="radio"th:attr="cat-num=${Good_Service_class.getClassCategoryNumber()}"  value="no" tabindex="0" class="provide-spec-all-class-no" name="provideSpecimenbClassLevel" checked><span class="checkmark"></span></label>
+                                                </div>
+                                            </div>
+                                        </th:block>
+                                    </th:block>
+
+                                    <th:block   th:if="${Good_Service_class.isProvideSpecimenForAllset() == false}">
+                                        <div class="row" style="">
+                                            <div class="col-xs-12">
+                                                <p>Would you like to provide a specimen for all good/services within this class?<span class="label label-info subtle visuallyremoved">Reduce Fee</span></p>
+                                                <label  class="radio-inline radiocontainer">Yes<input type="radio" th:attr="cat-num=${Good_Service_class.getClassCategoryNumber()}"  value="yes" tabindex="0"  class="provide-spec-all-class-yes" name="provideSpecimenbClassLevel" ><span class="checkmark"></span></label>
+                                                <label   class="radio-inline radiocontainer">No<input type="radio"th:attr="cat-num=${Good_Service_class.getClassCategoryNumber()}"  value="no" tabindex="0" class="provide-spec-all-class-no" name="provideSpecimenbClassLevel"><span class="checkmark"></span></label>
+
+
+                                            </div>
+                                        </div>
+                                    </th:block>
 
 
 
-                                    </form>
+                                </th:block>
 
-                                    <div class="col-xs-4">
-                                        <div >
+                                <th:block   th:if="${Good_Service_class.isAtLeastOneGoodInCommerce() == false}">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <p >Are you currently using the mark on in commerce for at least one of the good/services in this class?<span class="label label-info subtle visuallyremoved">Reduce Fee</span></p>
+                                            <label  class="radio-inline radiocontainer">Yes<input type="radio"  th:attr="cat-num=${Good_Service_class.getClassCategoryNumber()}" value="yes" tabindex="0"  class="mark-in-use-radio-classLevel-yes" name="inUseClassLevel"><span class="checkmark"></span></label>
+                                            <label  class="radio-inline radiocontainer">No<input type="radio" th:attr="cat-num=${Good_Service_class.getClassCategoryNumber()}" value="no" tabindex="0" class="mark-in-use-radio-classLevel-no" name="inUseClassLevel" checked><span class="checkmark"></span></label>
+                                        </div>
+                                    </div>
 
-                                            <p class="text-center"><br><br>
+                                    <div class="row" style="display: none;">
+                                        <div class="col-xs-12">
+                                            <p>Would you like to provide a specimen for all good/services within this class?<span class="label label-info subtle visuallyremoved">Reduce Fee</span></p>
+                                            <label  class="radio-inline radiocontainer">Yes<input type="radio" th:attr="cat-num=${Good_Service_class.getClassCategoryNumber()}"  value="yes" tabindex="0"  class="provide-spec-all-class-yes" name="provideSpecimenbClassLevel" ><span class="checkmark"></span></label>
+                                            <label   class="radio-inline radiocontainer">No<input type="radio"th:attr="cat-num=${Good_Service_class.getClassCategoryNumber()}"  value="no" tabindex="0" class="provide-spec-all-class-no" name="provideSpecimenbClassLevel"><span class="checkmark"></span></label>
 
-                                                <span id="mark-img-container" style="">
+
+                                        </div>
+                                    </div>
+
+
+                                </th:block>
+                            </th:block>
+
+                            <th:block   th:if="${Good_Service_class.atLeastOneGoodInCommerceSet== false}">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <p >Are you currently using the mark on in commerce for at least one of the good/services in this class?<span class="label label-info subtle visuallyremoved">Reduce Fee</span></p>
+                                        <label  class="radio-inline radiocontainer">Yes<input type="radio"  th:attr="cat-num=${Good_Service_class.getClassCategoryNumber()}" value="yes" tabindex="0"  class="mark-in-use-radio-classLevel-yes" name="inUseClassLevel"><span class="checkmark"></span></label>
+                                        <label  class="radio-inline radiocontainer">No<input type="radio" th:attr="cat-num=${Good_Service_class.getClassCategoryNumber()}" value="no" tabindex="0" class="mark-in-use-radio-classLevel-no" name="inUseClassLevel"><span class="checkmark"></span></label>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="display: none;">
+                                    <div class="col-xs-12">
+                                        <p>Would you like to provide a specimen for all good/services within this class?<span class="label label-info subtle visuallyremoved">Reduce Fee</span></p>
+                                        <label  class="radio-inline radiocontainer">Yes<input type="radio" th:attr="cat-num=${Good_Service_class.getClassCategoryNumber()}"  value="yes" tabindex="0"  class="provide-spec-all-class-yes" name="provideSpecimenbClassLevel"  ><span class="checkmark"></span></label>
+                                        <label   class="radio-inline radiocontainer">No<input type="radio"th:attr="cat-num=${Good_Service_class.getClassCategoryNumber()}"  value="no" tabindex="0" class="provide-spec-all-class-no" name="provideSpecimenbClassLevel"><span class="checkmark"></span></label>
+
+
+                                    </div>
+                                </div>
+                            </th:block>
+
+
+
+
+
+
+
+                            <th:block   th:if="${Good_Service_class.isProvideSpecimenForAll() == true}">
+                                <div class="row" style="">
+                                    <section aria-label="class image and description">
+                                        <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service_class.getClassCategporyImpageFormID()}"  action="/class/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
+                                            <div class="col-xs-4">
+                                                <p id="upimage">Provide an image of your specimen:</p>
+                                                <div>
+                                                    <label class="small upload-drop-zone" th:attr="for=${Good_Service_class.classFileInputID}" id="upimg"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Click here to select file for upload.</label>
+                                                    <input type="file" th:attr="id=${Good_Service_class.classFileInputID}" name="file" class="form-control">
+                                                </div><!-- Drop Zone -->
+                                            </div>
+
+
+
+                                        </form>
+
+                                        <div class="col-xs-4">
+                                            <div >
+
+                                                <p class="text-center"><br><br>
+
+                                                    <span id="mark-img-container" style="">
 
                                                                    <th:block th:if="${Good_Service_class.isCategorySpecimenSet() == false}">
                                                                           <img  th:attr="id=${Good_Service_class.classImageID}" th:src="@{/resources/images/image_placeholder_icon.png}" style="position: relative; left:-5px; min-width: 222px; max-width: 222px; max-height: 111px; min-height: 111px;"  id="markImage" />
@@ -168,28 +248,94 @@
 
 
                                                                 </span>
-                                            </p>
+                                                </p>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <label th:attr="for=${Good_Service_class.classSpecDescID}" >Provide a description of your specimen:</label>
+                                            <textarea  th:attr="id=${Good_Service_class.classSpecDescID},cat-num=${Good_Service_class.getClassCategoryNumber()}"  th:text="${Good_Service_class.getClassCategoryDescr()}" rows="4"  class="form-control class-spec-desc-ta"></textarea>
+                                        </div>
+
+
+                                        <div class="col-xs-12">
+                                            <div class="center">
+
+                                                <div type="button" th:attr="form=${Good_Service_class.getClassCategporyImpageFormID()},cat-num=${Good_Service_class.getClassCategoryNumber()}, file-id=${Good_Service_class.classFileInputID}, class-img-id=${Good_Service_class.classImageID}, spinner-id=${Good_Service_class.classUploadSpinnerID}" class="btn btn-sm submitCCSpecimen" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Specimen</b><span><i class="fa fa-spinner fa-spin"  th:attr="id=${Good_Service_class.classUploadSpinnerID}" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                            </div>
 
                                         </div>
 
-                                    </div>
-                                    <div class="col-xs-4">
-                                        <label th:attr="for=${Good_Service_class.classSpecDescID}" >Provide a description of your specimen:</label>
-                                        <textarea  th:attr="id=${Good_Service_class.classSpecDescID},cat-num=${Good_Service_class.getClassCategoryNumber()}"  th:text="${Good_Service_class.getClassCategoryDescr()}" rows="4"  class="form-control class-spec-desc-ta"></textarea>
-                                    </div>
+                                    </section>
+
+                                </div>
+                            </th:block>
+
+                            <th:block   th:if="${Good_Service_class.isProvideSpecimenForAll() == false}">
+                                <div class="row" style="display: none;">
+                                    <section aria-label="class image and description">
+                                        <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service_class.getClassCategporyImpageFormID()}"  action="/class/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
+                                            <div class="col-xs-4">
+                                                <p id="upimage">Provide an image of your specimen:</p>
+                                                <div>
+                                                    <label class="small upload-drop-zone" th:attr="for=${Good_Service_class.classFileInputID}" id="upimg"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Click here to select file for upload.</label>
+                                                    <input type="file" th:attr="id=${Good_Service_class.classFileInputID}" name="file" class="form-control">
+                                                </div><!-- Drop Zone -->
+                                            </div>
 
 
-                                    <div class="col-xs-12">
-                                        <div class="center">
 
-                                            <div type="button" th:attr="form=${Good_Service_class.getClassCategporyImpageFormID()},cat-num=${Good_Service_class.getClassCategoryNumber()}, file-id=${Good_Service_class.classFileInputID}, class-img-id=${Good_Service_class.classImageID}, spinner-id=${Good_Service_class.classUploadSpinnerID}" class="btn btn-sm submitCCSpecimen" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Specimen</b><span><i class="fa fa-spinner fa-spin"  th:attr="id=${Good_Service_class.classUploadSpinnerID}" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                        </form>
+
+                                        <div class="col-xs-4">
+                                            <div >
+
+                                                <p class="text-center"><br><br>
+
+                                                    <span id="mark-img-container" style="">
+
+                                                                   <th:block th:if="${Good_Service_class.isCategorySpecimenSet() == false}">
+                                                                          <img  th:attr="id=${Good_Service_class.classImageID}" th:src="@{/resources/images/image_placeholder_icon.png}" style="position: relative; left:-5px; min-width: 222px; max-width: 222px; max-height: 111px; min-height: 111px;"  id="markImage" />
+
+                                                                   </th:block>
+
+                                                                    <th:block th:if="${Good_Service_class.isCategorySpecimenSet() == true}">
+                                                                           <img  th:attr="src=${Good_Service_class.getClassCategoryImagePath()},id=${Good_Service_class.classImageID}"  style="position: relative; left:-5px; min-width: 222px; max-width: 222px; max-height: 111px; min-height: 111px;"  id="markImage" />
+
+                                                                   </th:block>
+
+
+                                                                </span>
+                                                </p>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <label th:attr="for=${Good_Service_class.classSpecDescID}" >Provide a description of your specimen:</label>
+                                            <textarea  th:attr="id=${Good_Service_class.classSpecDescID},cat-num=${Good_Service_class.getClassCategoryNumber()}"  th:text="${Good_Service_class.getClassCategoryDescr()}" rows="4"  class="form-control class-spec-desc-ta"></textarea>
                                         </div>
 
-                                    </div>
 
-                                </section>
+                                        <div class="col-xs-12">
+                                            <div class="center">
 
-                            </div>
+                                                <div type="button" th:attr="form=${Good_Service_class.getClassCategporyImpageFormID()},cat-num=${Good_Service_class.getClassCategoryNumber()}, file-id=${Good_Service_class.classFileInputID}, class-img-id=${Good_Service_class.classImageID}, spinner-id=${Good_Service_class.classUploadSpinnerID}" class="btn btn-sm submitCCSpecimen" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Specimen</b><span><i class="fa fa-spinner fa-spin"  th:attr="id=${Good_Service_class.classUploadSpinnerID}" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                            </div>
+
+                                        </div>
+
+                                    </section>
+
+                                </div>
+                            </th:block>
+
+
+
+
+
+
 
                             <!-- end of class level  -->
 
@@ -3065,12 +3211,22 @@
 
             $(this).parent().parent().parent().next().fadeIn(500);
 
+            var catNum= $(this).attr("cat-num");
+
+            addFilingBasisInfoToClassCategory("cc-in-use-one", "yes", catNum, appInternalID);
+
+
+
         });
 
 
         $('.mark-in-use-radio-classLevel-no').click(function () {
 
             $(this).parent().parent().parent().next().fadeOut(500);
+
+            var catNum= $(this).attr("cat-num");
+
+            addFilingBasisInfoToClassCategory("cc-in-use-one", "no", catNum, appInternalID);
 
         });
 
@@ -3081,12 +3237,21 @@
 
             $(this).parent().parent().parent().next().fadeIn(500);
 
+            var catNum= $(this).attr("cat-num");
+
+            addFilingBasisInfoToClassCategory("cc-specimen-class-opt", "yes", catNum, appInternalID);
+
         });
 
 
         $('.provide-spec-all-class-no').click(function () {
 
             $(this).parent().parent().parent().next().fadeOut(500);
+
+            var catNum= $(this).attr("cat-num");
+
+            addFilingBasisInfoToClassCategory("cc-specimen-class-opt", "no", catNum, appInternalID);
+
 
         });
 

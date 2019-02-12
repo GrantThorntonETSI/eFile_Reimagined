@@ -99,8 +99,11 @@ public class GoodAndService {
     // class level fields that propogates up
 
     public boolean atLeastOneGoodInCommerceClassFlag;
+    public boolean  atLeastOneGoodInCommerceClassFlagSet;
 
     public boolean  provideSpecimenForAllGS;
+
+    public boolean  provideSpecimenForAllGSSet;
 
 
 
@@ -510,6 +513,24 @@ public class GoodAndService {
         this.firstCommerceDateSet = firstCommerceDateSet;
     }
 
+    public boolean isAtLeastOneGoodInCommerceClassFlagSet() {
+        return atLeastOneGoodInCommerceClassFlagSet;
+    }
+
+    public void setAtLeastOneGoodInCommerceClassFlagSet(boolean atLeastOneGoodInCommerceClassFlagSet) {
+        this.atLeastOneGoodInCommerceClassFlagSet = atLeastOneGoodInCommerceClassFlagSet;
+    }
+
+    public boolean isProvideSpecimenForAllGSSet() {
+        return provideSpecimenForAllGSSet;
+    }
+
+    public void setProvideSpecimenForAllGSSet(boolean provideSpecimenForAllGSSet) {
+        this.provideSpecimenForAllGSSet = provideSpecimenForAllGSSet;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -518,11 +539,12 @@ public class GoodAndService {
         return id.equals(that.id) &&
                 classNumber.equals(that.classNumber);
     }
-
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
     public int hashCode() {
         return Objects.hash(id, classNumber);
     }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public String toString() {
@@ -534,6 +556,7 @@ public class GoodAndService {
                 ", sampleDescription='" + sampleDescription + '\'' +
                 '}';
     }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 

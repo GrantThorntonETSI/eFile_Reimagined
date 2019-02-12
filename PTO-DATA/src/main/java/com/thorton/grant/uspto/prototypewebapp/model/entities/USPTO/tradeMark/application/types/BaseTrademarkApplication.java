@@ -678,6 +678,13 @@ public class BaseTrademarkApplication  {
                     gsClassCategory.addGoodAndService(current);
                     gsClassCategory.setClassCategoryImagePath(current.getClassSpecimenImgPath());
                     gsClassCategory.setClassCategoryDescr(current.getClassSpecimenDescr());
+                    gsClassCategory.setAtLeastOneGoodInCommerce(current.isAtLeastOneGoodInCommerceClassFlag());
+                    gsClassCategory.setAtLeastOneGoodInCommerceSet(current.isAtLeastOneGoodInCommerceClassFlagSet());
+                    gsClassCategory.setProvideSpecimenForAll(current.isProvideSpecimenForAllGS());
+                    gsClassCategory.setProvideSpecimenForAllset(current.isProvideSpecimenForAllGSSet());
+
+
+
                 }
             }
             Collections.sort(gsClassCategory.getGoodAndServices(), new CustomComparator());
