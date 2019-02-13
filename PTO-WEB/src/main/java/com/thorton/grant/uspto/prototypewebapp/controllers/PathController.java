@@ -50,7 +50,7 @@ public class PathController {
         // get owner info
         System.out.println("#############################################################");
 
-        return "public/index2";
+        return "public/index";
 
         //return "registrationConfirm/VerificationEmail";
     }
@@ -225,7 +225,7 @@ public class PathController {
         String server_message = "You have Successfully logged out.";
         model.addAttribute("message", server_message);
 
-        return "public/index2";
+        return "public/index";
 
     }
     ///////////////////////////////////
