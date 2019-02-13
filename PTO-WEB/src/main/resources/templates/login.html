@@ -104,7 +104,7 @@
         <main class="col-xs-12 col-sm-6 col-md-6 col-lg-4" id="loginform">
             <!--START Content Div-->
             <div>
-                <form action="" method="post" >
+                <form id="login-form-main" th:action="@{/login}" method="post" >
                     <fieldset aria-label="login">
                         <div class="headlinecontainer">
                             <h1><img th:src="@{/resources/images/logo_top.png}" alt="USPTO eFile Reimagined"> &#124; eFile Reimagined</h1>
@@ -113,13 +113,13 @@
                         <div class="maincontainer">
                             <div class="form-group form-group-md">
                                 <label for="uname"><b>Email Address</b></label>
-                                <input type="text" class="form-control" placeholder="Enter Email Address" name="uname" required>
+                                <input type="email" class="form-control" placeholder="" name="username" required>
                             </div>
                             <div class="form-group form-group-md">
                                 <label for="psw"><b>Password</b></label>
-                                <input type="password" class="form-control" placeholder="Enter Password" name="psw" required>
+                                <input   type="password" class="form-control" name="password" placeholder="" required>
                             </div>
-                            <button type="submit" class="btn btn-md btn-primary">Login</button>
+                            <button type="submit" form="login-form-main" class="btn btn-md btn-primary">Login</button>
                         </div>
 
                         <div class="maincontainer bottom">
@@ -140,7 +140,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body">
-                            <form action="" method="post" >
+                            <form id="login-form" th:action="@{/login}" method="post" >
                                 <fieldset aria-label="login">
                                     <div class="headlinecontainer">
                                         <h1><img th:src="@{/resources/images/usptologo.png}" alt="USPTO eFile Reimagined"> &#124; eFile Reimagined</h1>
@@ -149,13 +149,13 @@
                                     <div class="maincontainer">
                                         <div class="form-group form-group-md">
                                             <label for="uname"><b>Email Address</b></label>
-                                            <input type="text" class="form-control" placeholder="Enter Email Address" name="uname" required>
+                                            <input type="email" class="form-control" placeholder="" name="username" required>
                                         </div>
                                         <div class="form-group form-group-md">
                                             <label for="psw"><b>Password</b></label>
-                                            <input type="password" class="form-control" placeholder="Enter Password" name="psw" required>
+                                            <input   type="password" class="form-control" name="password" placeholder="" required>
                                         </div>
-                                        <button type="submit" class="btn btn-md btn-primary">Login</button>
+                                        <button type="submit" form="login-form" class="btn btn-md btn-primary">Login</button>
                                     </div>
 
                                     <div class="maincontainer bottom">
@@ -200,7 +200,36 @@
 </footer>
 </body>
 
+<script type="text/javascript" src="https://nebula-cdn.kampyle.com/wu/451129/onsite/embed.js" async></script>
 
+<!-- Start of Async Drift Code -->
+<script>
+    "use strict";
+
+    !function() {
+        var t = window.driftt = window.drift = window.driftt || [];
+        if (!t.init) {
+            if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+            t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ],
+                t.factory = function(e) {
+                    return function() {
+                        var n = Array.prototype.slice.call(arguments);
+                        return n.unshift(e), t.push(n), t;
+                    };
+                }, t.methods.forEach(function(e) {
+                t[e] = t.factory(e);
+            }), t.load = function(t) {
+                var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+                o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+                var i = document.getElementsByTagName("script")[0];
+                i.parentNode.insertBefore(o, i);
+            };
+        }
+    }();
+    drift.SNIPPET_VERSION = '0.3.1';
+    drift.load('b5xdchmzc38b');
+</script>
+<!-- End of Async Drift Code -->
 
 
 </html>
