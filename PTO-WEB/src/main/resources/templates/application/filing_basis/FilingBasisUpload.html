@@ -3221,9 +3221,14 @@
 
 
         $('.mark-in-use-radio-classLevel-no').click(function () {
+            $(this).parent().parent().parent().next().children('input').each(function () {
+                $(this).attr("checked", false);
+            });
 
             $(this).parent().parent().parent().next().fadeOut(500);
 
+
+            $(this).parent().parent().parent().next().next().fadeOut(500);
             var catNum= $(this).attr("cat-num");
 
             addFilingBasisInfoToClassCategory("cc-in-use-one", "no", catNum, appInternalID);

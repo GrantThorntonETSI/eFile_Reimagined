@@ -1672,7 +1672,9 @@ public class ApplicationObjectCreationController {
                         table.addCell(current2.getIdentification());
                         if(current2.getSampleImagePath() != null){
                             table.addCell("Specimen Sample");
-                            table.addCell(current2.getSampleImagePhysicalPath());
+
+                            Image specimenImg = Image.getInstance(current2.getSampleImagePhysicalPath());
+                            table.addCell(specimenImg);
                         }
 
                     }
