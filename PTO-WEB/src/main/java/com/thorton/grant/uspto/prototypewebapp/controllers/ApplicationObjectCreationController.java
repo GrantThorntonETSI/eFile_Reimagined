@@ -926,6 +926,7 @@ public class ApplicationObjectCreationController {
                             current.setClassSpecimenImgPath(filePath);
                             current.setSampleImagePath(filePath);
                             current.setSampleUploaded(true);
+                            current.setRootStoragePath(storageService.getRootPath());
 
                         }
                     }
@@ -990,9 +991,12 @@ public class ApplicationObjectCreationController {
                     // baseTrademarkApplication.getc("/files/"+image_path);
                     filePath = "/files/"+image_path;
 
+
+
+
                     baseTrademarkApplication.findGSbyInternalID(gsID).setSampleImagePath(filePath);
                     baseTrademarkApplication.findGSbyInternalID(gsID).setSampleUploaded(true);
-
+                    baseTrademarkApplication.findGSbyInternalID(gsID).setRootStoragePath(storageService.getRootPath());
                     model.addAttribute("markImagePath",baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
                 }
                 catch ( StorageException ex){
@@ -1319,6 +1323,7 @@ public class ApplicationObjectCreationController {
                         current.setSampleImagePath(filePath);
                         current.setClassSpecimenImgPath(filePath);
                         current.setProvideSample(true);
+                        current.setRootStoragePath(storageService.getRootPath());
 
                     }
 
@@ -1665,6 +1670,10 @@ public class ApplicationObjectCreationController {
                         table.addCell(current2.getClassDescription());
                         table.addCell("FILING BASIS");
                         table.addCell(current2.getIdentification());
+                        if(current2.getSampleImagePath() != null){
+                            table.addCell("Specimen Sample");
+                            table.addCell(current2.getSampleImagePhysicalPath());
+                        }
 
                     }
 

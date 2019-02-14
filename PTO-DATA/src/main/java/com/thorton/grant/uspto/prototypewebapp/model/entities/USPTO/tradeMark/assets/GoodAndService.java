@@ -40,6 +40,11 @@ public class GoodAndService {
 
     private String sampleImagePath;
 
+    private String rootStoragePath;
+
+
+
+
     private boolean sampleUploaded;
 
     private String sampleDescription;
@@ -528,6 +533,30 @@ public class GoodAndService {
     public void setProvideSpecimenForAllGSSet(boolean provideSpecimenForAllGSSet) {
         this.provideSpecimenForAllGSSet = provideSpecimenForAllGSSet;
     }
+
+    public String getRootStoragePath() {
+        return rootStoragePath;
+    }
+
+    public void setRootStoragePath(String rootStoragePath) {
+        this.rootStoragePath = rootStoragePath;
+    }
+
+
+
+
+    public String getSampleImagePhysicalPath(){
+
+
+        String path = getSampleImagePath();
+
+
+        path = path.replace("/files", this.rootStoragePath);
+
+        return path;
+    }
+
+
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////
