@@ -91,6 +91,13 @@
             <div class="row" style="position: relative; right:-15px;">
                 <div class="col-xs-12">
                     <h1>Additional Information</h1>
+                    <p class="instructions" id="costsavingoptions">Reduce Fee Mode</p>
+                    <div role="switch" aria-describedby="#costsavingoptions" aria-label="turn reduce fee labels on or off">
+                        <label class="switch">
+                            <input class="togglesavemore" type="checkbox">
+                            <span class="slider"><span class="visuallyhidden" id="on">On</span> <span id="off">Off</span></span>
+                        </label>
+                    </div>
                 </div>
 
             </div>
@@ -356,7 +363,7 @@
                                                     <th:block th:if="${baseTrademarkApplication.isSupplementalRegister() == true}">
                                                         <div>
                                                             <p class="weight600" style="margin-left: 11px; margin-right:11px;">You are seeking registration on the <a href="#">Principal Register</a>. <a role="button" class="Accordion-trigger link" data-toggle="collapse" data-target="#register2" aria-controls="register2" aria-expanded="false" id="register2btn">Edit</a></p>
-                                                            <div id="register2" class="collapse Accordion-panel" role="region" aria-labelledby="register2btn" style="margin-left: 11px; margin-right:11px;">
+                                                            <div id="register2" class="collapse Accordion-panel" role="region" aria-labelledby="register2btn" style="margin-left: 11px; margin-right:11px;" aria-expanded="true">
                                                                 <div class="Accordion">
                                                                     <div role="radiogroup" aria-labelledby="disclaim" class="form-group form-group-md">
                                                                         <label for="inlineRadio031" class="radio-inline radiocontainer">Principal<input type="radio" name="principalregister" id="inlineRadio031" value="principal" tabindex="0" ><span class="checkmark"></span></label>
@@ -400,7 +407,7 @@
                                                             <div id="register2" class="collapse Accordion-panel" role="region" aria-labelledby="register2btn" style="margin-left: 11px; margin-right:11px;">
                                                                 <div class="Accordion">
                                                                     <div role="radiogroup" aria-labelledby="disclaim" class="form-group form-group-md">
-                                                                        <label for="inlineRadio031" class="radio-inline radiocontainer">Principal<input type="radio" name="principalregister" id="inlineRadio031" value="principal" tabindex="0" checked><span class="checkmark"></span></label>
+                                                                        <label for="inlineRadio031" class="radio-inline radiocontainer">Principal <span class="label label-info subtle visuallyremoved">Reduce Fee</span><input type="radio" name="principalregister" id="inlineRadio031" value="principal" tabindex="0" checked><span class="checkmark"></span></label>
                                                                         <label for="inlineRadio032" class="radio-inline radiocontainer">Supplemental<input type="radio" name="principalregister" id="inlineRadio032" value="supplemental" tabindex="0"><span class="checkmark"></span></label>
                                                                     </div><!--END radiogroup-->
                                                                 </div>
@@ -422,7 +429,7 @@
                                                             <div id="register2" class="collapse Accordion-panel" role="region" aria-labelledby="register2btn" style="margin-left: 11px; margin-right:11px;">
                                                                 <div class="Accordion">
                                                                     <div role="radiogroup" aria-labelledby="disclaim" class="form-group form-group-md">
-                                                                        <label for="inlineRadio031" class="radio-inline radiocontainer">Principal<input type="radio" name="principalregister" id="inlineRadio031" value="principal" tabindex="0" ><span class="checkmark"></span></label>
+                                                                        <label for="inlineRadio031" class="radio-inline radiocontainer">Principal <span class="label label-info subtle visuallyremoved">Reduce Fee</span><input type="radio" name="principalregister" id="inlineRadio031" value="principal" tabindex="0" ><span class="checkmark"></span></label>
                                                                         <label for="inlineRadio032" class="radio-inline radiocontainer">Supplemental<input type="radio" name="principalregister" id="inlineRadio032" value="supplemental" tabindex="0" checked><span class="checkmark"></span></label>
                                                                     </div><!--END radiogroup-->
                                                                 </div>
@@ -1373,6 +1380,7 @@
     var markText = /*[[${baseTrademarkApplication.tradeMark.trademarkStandardCharacterText}]]*/ 'User Name';
 
     var breadCrumbStatus = /*[[${breadCrumbStatus}]]*/ 'User Name';
+    var validateTEAS =  /*[[${baseTrademarkApplication.isValidateTEASFields()}]]*/ 'User Name';
 
     /*]]>*/
 </script>
@@ -1449,6 +1457,19 @@
         $('a.dropdown-toggle').click();
 
 
+        //////////////////////////////////////////////////////////////////
+        // persistence rendering logic for TEAS plus field labels
+        //////////////////////////////////////////////////////////////////
+        if(validateTEAS == true){
+            $('input.togglesavemore').attr("checked",true);
+            $( document ).find('span.subtle').removeClass('visuallyremoved');
+            $( document ).find('#on').removeClass('visuallyhidden');
+
+        }
+        else{
+            $( document ).find('span.subtle').addClass( 'visuallyremoved' );
+        }
+        //////////////////////////////////////////////////////////////////
 
         $('#appInternalIDForm').val(appInternalID);
         //////////////////////////////////////////////////////////////////////
@@ -1862,16 +1883,31 @@
     });
 
 
-        $('#inlineRadio031').click(function () {
+    $('#inlineRadio031').click(function () {
 
-            if(this.checked == true){
+        if(this.checked == true){
 
-                saveRegistarInfo("ai-principal-reg", "yes", appInternalID);
+            saveRegistarInfo("ai-principal-reg", "yes", appInternalID);
 
-            }
+        }
 
 
-        });
+    });
+
+    $('#typeregi').click(function () {
+        if(this.checked == true){
+
+            saveRegistarInfo("ai-register-type-set", "yes", appInternalID);
+
+        }
+        else {
+            saveRegistarInfo("ai-register-type-set", "no", appInternalID);
+        }
+
+    });
+
+
+
 
 
     }); // end of document ready

@@ -48,7 +48,15 @@ public class AdditionalInformationService extends  BaseRESTapiService {
             }
         }
 
+        if(fieldName.equals("ai-register-type-set")){
+            if(fieldValue.equals("yes")) {
 
+                baseTrademarkApplication.setRegisterTypeSet(true);
+            }
+            else {
+                baseTrademarkApplication.setRegisterTypeSet(false);
+            }
+        }
         String responseMsg = "{{server-message:"+appFieldReadable+" has been saved}";
 
         // new return message structure
