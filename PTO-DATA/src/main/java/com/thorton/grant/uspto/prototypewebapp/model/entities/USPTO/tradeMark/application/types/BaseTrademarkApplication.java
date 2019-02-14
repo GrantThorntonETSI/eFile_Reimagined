@@ -236,6 +236,8 @@ public class BaseTrademarkApplication  {
 
     private boolean supplementalRegister = false;
 
+    private boolean registerTypeSet;
+
 
 
 
@@ -1345,6 +1347,14 @@ public class BaseTrademarkApplication  {
 
     public boolean isSupplementalRegister() {
         return supplementalRegister;
+    }
+
+    public boolean isRegisterTypeSet() {
+        return registerTypeSet;
+    }
+
+    public void setRegisterTypeSet(boolean registerTypeSet) {
+        this.registerTypeSet = registerTypeSet;
     }
 
     public void setSupplementalRegister(boolean supplementalRegister) {

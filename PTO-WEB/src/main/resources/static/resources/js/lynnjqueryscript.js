@@ -701,7 +701,7 @@ $(document).ready(function(){
 	});
 
 	//START additional info checkboxes
-	$('div#tr').css('display','none');
+
 	$('input#typeregi').change(function() {
 		if(this.checked == true){
 			$('#tr').show( 'fast' );

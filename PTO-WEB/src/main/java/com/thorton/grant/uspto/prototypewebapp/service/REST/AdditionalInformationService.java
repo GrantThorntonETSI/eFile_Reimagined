@@ -33,6 +33,7 @@ public class AdditionalInformationService extends  BaseRESTapiService {
             if(fieldValue.equals("yes")){
                 baseTrademarkApplication.setSupplementalRegister(true);
                 baseTrademarkApplication.setPrincipalRegister(false);
+                baseTrademarkApplication.setRegisterTypeSet(true);
                 baseTrademarkApplication.setBaseFee(275);
             }
         }
@@ -42,6 +43,7 @@ public class AdditionalInformationService extends  BaseRESTapiService {
             if(fieldValue.equals("yes")){
                 baseTrademarkApplication.setSupplementalRegister(false);
                 baseTrademarkApplication.setPrincipalRegister(true);
+                baseTrademarkApplication.setRegisterTypeSet(true);
                 baseTrademarkApplication.setBaseFee(225);
             }
         }
