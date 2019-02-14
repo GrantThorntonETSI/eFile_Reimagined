@@ -1475,6 +1475,27 @@ $(document).ready(function(){
 	});
 	//end uncommoninfo options
 
+
+
+	//START additional info page supplemental register checked
+	$('input[type=radio]#inlineRadio032').change(function() {
+
+		if(this.checked == true){
+
+			$('#tr div.alert').addClass('visuallyadded');
+			$('#tr div.alert').removeClass('visuallyremoved');
+		}
+	});
+	$('input[type=radio]#inlineRadio031').change(function() {
+
+		if(this.checked == true){
+
+			$('#tr div.alert').addClass('visuallyremoved');
+			$('#tr div.alert').removeClass('visuallyadded');
+		}
+	});
+	//END additional info page supplemental register checked
+
 });
 
 

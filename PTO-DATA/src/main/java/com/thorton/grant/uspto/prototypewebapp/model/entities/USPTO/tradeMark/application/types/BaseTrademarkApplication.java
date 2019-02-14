@@ -232,6 +232,10 @@ public class BaseTrademarkApplication  {
 
 
 
+    private boolean principalRegister = true;
+
+    private boolean supplementalRegister = false;
+
 
 
 
@@ -1329,6 +1333,22 @@ public class BaseTrademarkApplication  {
 
     public void setDeclarationNoOtherHasRightSet(boolean declarationNoOtherHasRightSet) {
         this.declarationNoOtherHasRightSet = declarationNoOtherHasRightSet;
+    }
+
+    public boolean isPrincipalRegister() {
+        return principalRegister;
+    }
+
+    public void setPrincipalRegister(boolean principalRegister) {
+        this.principalRegister = principalRegister;
+    }
+
+    public boolean isSupplementalRegister() {
+        return supplementalRegister;
+    }
+
+    public void setSupplementalRegister(boolean supplementalRegister) {
+        this.supplementalRegister = supplementalRegister;
     }
 
     @Override

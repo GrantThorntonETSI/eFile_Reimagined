@@ -266,20 +266,20 @@
                                                             <div class="row">
                                                                 <div class="col-xs-12 col-md-5">
                                                                     <input class="form-check-input checkmark" type="checkbox" value="typeofregister" tabindex="0" aria-labelledby="typeregister" id="typeregi">
-                                                                    <label class="form-check-label form-check" for="typeregi" id="typereg"><span class="radio notspecial" id="typeregister">Type of Register</span></label>
+                                                                    <label class="form-check-label form-check" for="typeregi" id="typereg"><span class="radio notspecial" id="typeregister">Type of Register <a href="#" data-toggle="tooltip" title="The Principal Register is the primary register for all trademarks. When a mark has been registered on the Principal Register, the mark is entitled to certain rights provided by federal law. The Supplemental Register is a listing of non-mark designations (such as descriptive words) that are &#8220;capable&#8221; of eventually becoming a &#8220;mark.&#8221;" class="glyphicon glyphicon-info-sign test" data-placement="right"></a></span></label>
                                                                 </div>
                                                                 <div class="col-xs-12 col-md-7">
                                                                     <input class="form-check-input checkmark" type="checkbox" value="2f" tabindex="0" aria-labelledby="distinctivenesss" id="distinct">
-                                                                    <label class="form-check-label form-check" for="distinct" id="claimdistinct"><span class="radio notspecial" id="distinctivenesss">2(f) Claim of Acquired Distinctiveness</span></label>
+                                                                    <label class="form-check-label form-check" for="distinct" id="claimdistinct"><span class="radio notspecial" id="distinctivenesss">2(f) Claim of Acquired Distinctiveness <a href="#" data-toggle="tooltip" title="A section 2(f) claim of Acquired Distinctiveness is &#8220;proof&#8221; that the Mark has become distinctive as applied to the goods or services in commerce. Distinctive in this instance means the Mark has acquired a special significance so that to the public, it is apparent the product or service is produced or provided by a particular manufacturer. See TMEP &#167;1212 for more information." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></span></label>
                                                                 </div>
                                                                 <div class="col-xs-12 col-md-5">
                                                                     <input class="form-check-input checkmark" type="checkbox" value="anotherform" tabindex="0" aria-labelledby="useanother" id="useanotherform">
-                                                                    <label class="form-check-label form-check" for="useanotherform" id="another"><span class="radio notspecial" id="useanother">Use in Another Form</span></label>
+                                                                    <label class="form-check-label form-check" for="useanotherform" id="another"><span class="radio notspecial" id="useanother">Use in Another Form <a href="#" data-toggle="tooltip" title="Use in Another form allows you to make a claim to separable elements or (some part) of the Mark. Make this claim only if the Mark was used in a different form other than that sought to be registered. The dates will appear in the record for general information." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></span></label>
                                                                 </div>
                                                                 <th:block th:if="${baseTrademarkApplication.isConcurrentUse() == true}">
                                                                     <div class="col-xs-12 col-md-7">
                                                                         <input class="form-check-input checkmark" type="checkbox" value="concurrentuse" tabindex="0" aria-labelledby="conuse" id="concurruse" checked>
-                                                                        <label class="form-check-label form-check" for="concurruse" id="concurrent"><span class="radio notspecial" id="conuse">Concurrent Use</span></label>
+                                                                        <label class="form-check-label form-check" for="concurruse" id="concurrent"><span class="radio notspecial" id="conuse">Concurrent Use <a href="#" data-toggle="tooltip" title="A Concurrent use claim is used to request a geographically restricted registration. Make this claim only if you are seeking registration for a specified geographical area in the United States and list one or more parties who have rights in the Mark in other geographical areas of the United States. See TMEP &#167;1207.04(a) for more information." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></span></label>
                                                                     </div>
 
                                                                 </th:block>
@@ -287,7 +287,7 @@
                                                                 <th:block th:if="${baseTrademarkApplication.isConcurrentUse() == false}">
                                                                     <div class="col-xs-12 col-md-7">
                                                                         <input class="form-check-input checkmark" type="checkbox" value="concurrentuse" tabindex="0" aria-labelledby="conuse" id="concurruse">
-                                                                        <label class="form-check-label form-check" for="concurruse" id="concurrent"><span class="radio notspecial" id="conuse">Concurrent Use</span></label>
+                                                                        <label class="form-check-label form-check" for="concurruse" id="concurrent"><span class="radio notspecial" id="conuse">Concurrent Use <a href="#" data-toggle="tooltip" title="A Concurrent use claim is used to request a geographically restricted registration. Make this claim only if you are seeking registration for a specified geographical area in the United States and list one or more parties who have rights in the Mark in other geographical areas of the United States. See TMEP &#167;1207.04(a) for more information." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></span></label>
                                                                     </div>
 
                                                                 </th:block>
@@ -312,15 +312,51 @@
                                                         <p>The Principal Register is the primary register for all trademarks. When a mark has been registered on the Principal Register, the mark is entitled to certain rights provided by federal law. The Supplemental Register is a listing of non-mark designations (such as descriptive words) that are &#8220;capable&#8221; of eventually becoming a &#8220;mark.&#8221;</p>
                                                     </div>
                                                 </div>
-                                                <p class="weight600" style="margin-left: 11px; margin-right:11px;">You are seeking registration on the <a href="#">Principal Register</a>. <a role="button" class="Accordion-trigger link" data-toggle="collapse" data-target="#register2" aria-controls="register2" aria-expanded="false" id="register2btn">Edit</a></p>
-                                                <div id="register2" class="collapse Accordion-panel" role="region" aria-labelledby="register2btn" style="margin-left: 11px; margin-right:11px;">
-                                                    <div class="Accordion">
-                                                        <div role="radiogroup" aria-labelledby="disclaim" class="form-group form-group-md">
-                                                            <label for="inlineRadio031" class="radio-inline radiocontainer">Principal<input type="radio" name="principalregister" id="inlineRadio031" value="principal" tabindex="0"><span class="checkmark"></span></label>
-                                                            <label for="inlineRadio032" class="radio-inline radiocontainer">Supplemental<input type="radio" name="principalregister" id="inlineRadio032" value="supplemental" tabindex="0"><span class="checkmark"></span></label>
-                                                        </div><!--END radiogroup-->
+                                                <th:block th:if="${baseTrademarkApplication.isPrincipalRegister() == true}">
+                                                    <div>
+                                                        <p class="weight600" style="margin-left: 11px; margin-right:11px;">You are seeking registration on the <a href="#">Principal Register</a>. <a role="button" class="Accordion-trigger link" data-toggle="collapse" data-target="#register2" aria-controls="register2" aria-expanded="false" id="register2btn">Edit</a></p>
+                                                        <div id="register2" class="collapse Accordion-panel" role="region" aria-labelledby="register2btn" style="margin-left: 11px; margin-right:11px;">
+                                                            <div class="Accordion">
+                                                                <div role="radiogroup" aria-labelledby="disclaim" class="form-group form-group-md">
+                                                                    <label for="inlineRadio031" class="radio-inline radiocontainer">Principal<input type="radio" name="principalregister" id="inlineRadio031" value="principal" tabindex="0" checked><span class="checkmark"></span></label>
+                                                                    <label for="inlineRadio032" class="radio-inline radiocontainer">Supplemental<input type="radio" name="principalregister" id="inlineRadio032" value="supplemental" tabindex="0"><span class="checkmark"></span></label>
+                                                                </div><!--END radiogroup-->
+                                                            </div>
+                                                        </div>
+
                                                     </div>
-                                                </div>
+
+                                                    <div class="alert alert-warning visuallyremoved" role="alert" style="margin-left: 11px;">
+                                                        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+                                                        <span class="sr-only">Warning:</span>
+                                                        Applications on the Supplemental Register do not qualify for the lowest filing fee per class.
+                                                    </div>
+
+                                                </th:block>
+
+                                                <th:block th:if="${baseTrademarkApplication.isSupplementalRegister() == true}">
+                                                    <div>
+                                                        <p class="weight600" style="margin-left: 11px; margin-right:11px;">You are seeking registration on the <a href="#">Principal Register</a>. <a role="button" class="Accordion-trigger link" data-toggle="collapse" data-target="#register2" aria-controls="register2" aria-expanded="false" id="register2btn">Edit</a></p>
+                                                        <div id="register2" class="collapse Accordion-panel" role="region" aria-labelledby="register2btn" style="margin-left: 11px; margin-right:11px;">
+                                                            <div class="Accordion">
+                                                                <div role="radiogroup" aria-labelledby="disclaim" class="form-group form-group-md">
+                                                                    <label for="inlineRadio031" class="radio-inline radiocontainer">Principal<input type="radio" name="principalregister" id="inlineRadio031" value="principal" tabindex="0" ><span class="checkmark"></span></label>
+                                                                    <label for="inlineRadio032" class="radio-inline radiocontainer">Supplemental<input type="radio" name="principalregister" id="inlineRadio032" value="supplemental" tabindex="0" checked><span class="checkmark"></span></label>
+                                                                </div><!--END radiogroup-->
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="alert alert-warning visuallyadded" role="alert"  style="margin-left: 11px;">
+                                                        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+                                                        <span class="sr-only">Warning:</span>
+                                                        Applications on the Supplemental Register do not qualify for the lowest filing fee per class.
+                                                    </div>
+
+
+                                                </th:block>
+
+
                                             </section>
                                         </div>
                                     </div><!--END register-->
