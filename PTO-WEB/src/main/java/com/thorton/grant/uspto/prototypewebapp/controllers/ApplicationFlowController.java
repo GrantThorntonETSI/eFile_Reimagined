@@ -2507,11 +2507,19 @@ public class ApplicationFlowController {
             }
         }
         // end goods and services loops
+        if(missedTEAsFields.size() == 0){
+            returnLink = "../../application/additionalInfoUpload/?trademarkID=";
+        }
+
+
+        if(baseTrademarkApplication.isPrincipalRegister() == false){
+            missedTEAsFields.add("Type of Register ");
+        }
+
 
         if(missedTEAsFields.size() == 0){
             returnLink = "../../application/confirmInfo/?trademarkID=";
         }
-
 
         boolean passedValidation = false;
         if(missedTEAsFields.size() == 0){

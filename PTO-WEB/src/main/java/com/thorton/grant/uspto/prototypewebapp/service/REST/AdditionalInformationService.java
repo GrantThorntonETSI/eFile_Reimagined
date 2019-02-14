@@ -21,6 +21,48 @@ public class AdditionalInformationService extends  BaseRESTapiService {
 
 
     @CrossOrigin(origins = {"https://localhost","https://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/additionalInfo/update/registar/{fieldName}/{fieldValue}/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> updateApplicationRegistar(@PathVariable String fieldName , @PathVariable String fieldValue, @PathVariable String appInternalID){
+
+        String appFieldReadable = "Register Type";
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+
+        if(fieldName.equals("ai-supplemental-reg")){
+            if(fieldValue.equals("yes")){
+                baseTrademarkApplication.setSupplementalRegister(true);
+                baseTrademarkApplication.setPrincipalRegister(false);
+                baseTrademarkApplication.setBaseFee(275);
+            }
+        }
+
+
+        if(fieldName.equals("ai-principal-reg")){
+            if(fieldValue.equals("yes")){
+                baseTrademarkApplication.setSupplementalRegister(false);
+                baseTrademarkApplication.setPrincipalRegister(true);
+                baseTrademarkApplication.setBaseFee(225);
+            }
+        }
+
+
+        String responseMsg = "{{server-message:"+appFieldReadable+" has been saved}";
+
+        // new return message structure
+
+        //  return buildResponseEnity("200", "{image-url:" +filePath+"}");
+        // {server-msg:xxxxx},{fee-display-html:xxxx},{total-class-html:xxxxx},{total-extra-class-html:xxxx},{extra-class-fee-info-html:xxxxxx},{extra-class-fee-calc-html},{basic-fee-calc-html:xxxxx},{fee-total-html}
+        responseMsg+=",{fee-display-html:"+baseTrademarkApplication.getTotalFeeString()+"}"+",{total-class-html:"+baseTrademarkApplication.getTotalNumberOfclasses()+"}"+",{total-extra-class-html:"+baseTrademarkApplication.getNumberOfExtraClasses()+"}"+",{basic-fee-calc-html:"+baseTrademarkApplication.getBasicFeeCalculationString()+"}"+",{extra-class-fee-calc-html:"+baseTrademarkApplication.getExtraFeeCalculationString()+"}}";
+        //return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+        return buildResponseEnity("200", responseMsg);
+
+
+
+    }
+
+
+    @CrossOrigin(origins = {"https://localhost","https://efile-reimagined.com"})
     @RequestMapping(method = GET, value="/REST/apiGateway/additionalInfo/update/{fieldName}/{fieldValue}/{appInternalID}")
     @ResponseBody
     ResponseEntity<String> updateApplicationFields(@PathVariable String fieldName , @PathVariable String fieldValue, @PathVariable String appInternalID){
