@@ -5,12 +5,13 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+
 import com.thorton.grant.uspto.prototypewebapp.config.host.bean.endPoint.HostBean;
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
-import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.asset.GoodsAndServicesService;
+
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.ContactsDisplayDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.form.NewAttorneyContactFormDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.form.NewOwnerContactFormDTO;
@@ -24,7 +25,7 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.as
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.ManagedContact;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
-import com.thorton.grant.uspto.prototypewebapp.service.REST.Goods_ServicesService;
+
 import com.thorton.grant.uspto.prototypewebapp.service.storage.StorageService;
 import com.thorton.grant.uspto.prototypewebapp.service.storage.error.StorageException;
 import org.springframework.context.ApplicationContext;
@@ -1374,7 +1375,12 @@ public class ApplicationObjectCreationController {
                     String image_path = storageService.store(file);
                     filePath = "/files/"+image_path;
 
+
+                    System.out.println("storage root:"+storageService.getRootPath());
+                    System.out.println("file path server :"+filePath);
+
                     baseTrademarkApplication.getTradeMark().setTrademarkImagePath("/files/"+image_path);
+                    baseTrademarkApplication.getTradeMark().setBaseStoragePath(storageService.getRootPath());
                     //model.addAttribute("markImagePath",baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
                 }
                 catch ( StorageException ex){
@@ -1589,7 +1595,12 @@ public class ApplicationObjectCreationController {
                 table.addCell("MARK INFORMATION");
                 table.addCell("");
                 table.addCell("MARK");
-                table.addCell(baseTrademarkApplication.getTradeMark().getMarkDescription());
+                // create image file
+                String markImagePath = baseTrademarkApplication.getTradeMark().getMarkImagePhysicalPath();
+
+                Image markImg = Image.getInstance(markImagePath);
+
+                table.addCell(markImg);
                 table.addCell("STANDARD CHARACTERS");
                 if(baseTrademarkApplication.getTradeMark().getTrademarkDesignType().equals("Standard Characters")){
                     table.addCell("YES");
@@ -1605,8 +1616,8 @@ public class ApplicationObjectCreationController {
                 table.addCell(baseTrademarkApplication.getTradeMark().getMarkLiteral());
 
 
-                table.addCell("MARK STATEMENT");
-                table.addCell("The mark consists of "+baseTrademarkApplication.getTradeMark().getTrademarkDesignType()+","+colorClaimString +" claim of any particular font style, size, or color.");
+                table.addCell("Mark Description");
+                table.addCell(baseTrademarkApplication.getTradeMark().getMarkDescription());
 
                 table.addCell("APPLICATION INFORMATION");
                 table.addCell("");

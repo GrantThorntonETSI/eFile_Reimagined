@@ -29,6 +29,8 @@ public class TradeMark extends BaseEntity {
     private String trademarkImagePath;
     private String trademarkBWImagePath;
 
+    private String baseStoragePath;
+
     private String trademarkConsentFilePath; // pdf or .doc
 
 
@@ -662,6 +664,17 @@ public class TradeMark extends BaseEntity {
 
     }
 
+    public String getBaseStoragePath() {
+        return baseStoragePath;
+    }
+
+    public void setBaseStoragePath(String baseStoragePath) {
+        this.baseStoragePath = baseStoragePath;
+    }
+
+
+
+
     public boolean isStandardCharacterMark() {
         return standardCharacterMark;
     }
@@ -677,6 +690,20 @@ public class TradeMark extends BaseEntity {
     public void setAcceptBWmarkSet(boolean acceptBWmarkSet) {
         this.acceptBWmarkSet = acceptBWmarkSet;
     }
+
+
+    public String getMarkImagePhysicalPath(){
+
+
+        String path = getMarkImageDisplayPath();
+
+
+        path = path.replace("/files", this.baseStoragePath);
+
+        return path;
+    }
+
+
 
     @Override
     public boolean equals(Object o) {
