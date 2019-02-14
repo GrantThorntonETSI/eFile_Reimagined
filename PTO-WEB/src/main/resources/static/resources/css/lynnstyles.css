@@ -34,12 +34,15 @@ main#loginform {
 	background-color: #009CDE;
 	padding:0;
 }
-#loginform button {
+#loginform button, #loginmodal button {
 	margin: 0 auto;
 	margin-top: 2em;
 	margin-bottom: 2.9em;
 }
-#loginform .headlinecontainer {
+#loginmodal button {
+	margin-top: 3.5em;
+}
+.headlinecontainer {
 	text-align: center;
 	margin: 3em 0 .8em 0;
 	color:#fff;
@@ -50,11 +53,17 @@ main#loginform {
 	width: 2.5em;
 	vertical-align: middle;
 }
-#loginform .maincontainer {
+.headlinecontainer h1 {
+	font-size: .8em;
+}
+.headlinecontainer h2 {
+	margin-top: 1em;
+}
+.maincontainer {
 	padding: 1em 6em;
 	padding-top:0;
 }
-#loginform .maincontainer.bottom {
+.maincontainer.bottom {
 	height: 4.2em;
 	background-color:#eee;
 	padding:1em;
@@ -63,8 +72,6 @@ main#loginform {
 	margin-bottom: .0;
 	line-height: 2.2em;
 }
-
-
 .insertform {
 	background-color:#fff;
 	padding-left:0;
@@ -770,12 +777,8 @@ td:focus {
 	-moz-border-top-left-radius:2px;
 	border-top-left-radius:2px;
 }
-#dashsectionscontainer, #landingpagecontainer  {
+#dashsectionscontainer  {
 	padding: 0 27px 0 27px;
-}
-#landingpagecontainer  {
-	background-color: #555;
-	color:#fff;
 }
 #landingpagecontent .col-sm-6  {
 	min-height: 10em;
@@ -789,6 +792,12 @@ td:focus {
 	-webkit-border-radius:2px;
 	-moz-border-radius:2px;
 	border-radius:2px;
+	-webkit-border-top-left-radius:0;
+	-moz-border-top-left-radius:0;
+	border-top-left-radius:0;
+	-webkit-border-top-right-radius:0;
+	-moz-border-top-right-radius:0;
+	border-top-right-radius:0;
 }
 #landingpagecontent h2  {
 	font-size: 1.5em;
@@ -808,7 +817,15 @@ td:focus {
 #landingpagemain h1 {
 	margin-bottom: .3em;
 }
-main#landingpagemain {
+#landingpagemain {
+	background-color: #555;
+	color:#fff;
+	padding:5em;
+	-webkit-border-radius:3em;
+	-moz-border-radius:3em;
+	border-radius:3em;
+}
+main #loginform .landingpagemain {
 	background-color: #555;
 	padding:5em;
 	-webkit-border-radius:1.3em;
@@ -1329,7 +1346,7 @@ label.disabled span {
 #reviewattorney .btn-success {
 	padding: 5px 10px;
 }
-#editowner .btn-group > .btn:last-child, #reviewattorney .btn-group > .btn:last-child {
+#editowner .btn-group > .btn:last-child, #reviewattorney .btn-group > .btn:last-child, #userprofilepage .btn-group > .btn:last-child {
 	border-radius: 3px;
 }
 .inlinebuttons button {
@@ -1496,6 +1513,11 @@ button#moreoptionsbtn {
 	max-width:600px;
 	margin:0 auto;
 }
+.addphoneinitial {
+	width: 50%!important;
+	margin: 0 auto!important;
+	float: none!important;
+}
 /*toggle button*/
 #designwithtext .required {
 	vertical-align: text-bottom;
@@ -1656,9 +1678,6 @@ input:checked + .slider #off {
 	margin: 0;
 	margin-top: -6px;
 	font-size:2.8em
-}
-#loginmodal button {
-	margin-top: 3.5em;
 }
 #loginform #loginmodal label {
 	color: #004C97;
@@ -2118,13 +2137,13 @@ button[type=submit] {
 	margin:.1em;
 	color:#333/*#fff*/;
 }
-#gsselected button.close, #dashboardmain button.close, #editowner button.close, #reviewattorney button.close {
+#gsselected button.close, #dashboardmain button.close, #editowner button.close, #reviewattorney button.close, #userprofilepage button.close {
 	font-size: 1.45em;
 	color:#111;
 	margin: 0 auto;
 	height:1em;
 }
-#editowner button.close, #reviewattorney button.close {
+#editowner button.close, #reviewattorney button.close, #userprofilepage button.close {
 	font-size: 3em;
 	height:1.06em;
 }
@@ -2434,6 +2453,15 @@ footer #megamenu ul {
 	.inlinebuttons {
 		width: 61%;
 	}
+	#userprofilepage fieldset .inlinebuttons {
+		width: 41%!important;
+		margin-top:2em;
+		margin-bottom:2em;
+	}
+	#userprofilepage fieldset#preferences .inlinebuttons {
+		width: 100%!important;
+		margin-top:.5em;
+	}
 }
 @media (max-width: 768px) {
 	.btn-success.add.ctr {
@@ -2650,7 +2678,6 @@ footer #megamenu ul {
 		width:60%;
 	}
 }
-
 
 #on{
 	position: relative;

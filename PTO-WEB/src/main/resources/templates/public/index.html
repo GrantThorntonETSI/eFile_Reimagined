@@ -97,7 +97,7 @@
 </div>
 
 <div class="container-fluid">
-    <div class="row content">
+    <div class="row content" style="display: none;">
         <main class="col-xs-12 col-sm-10 col-md-10 col-lg-11" id="landingpagemain">
             <!--START Content Div-->
             <div class="row">
@@ -147,13 +147,13 @@
             <div class="modal fade" id="loginmodal" tabindex="0" role="dialog" aria-labelledby="loginmodaltwo">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
+                        <div class="modal-header" style="background-color: white; border: none;">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body">
                             <form id="login-form" th:action="@{/login}" method="post" >
                                 <fieldset aria-label="login">
-                                    <div class="headlinecontainer">
+                                    <div class="headlinecontainer" style="color:#04196A;">
                                         <h1><img th:src="@{/resources/images/usptologo.png}" alt="USPTO eFile Reimagined"> &#124; eFile Reimagined</h1>
                                         <h2 class="weight600">Log In</h2>
                                     </div>
@@ -172,7 +172,7 @@
 
                                     <div class="maincontainer bottom">
                                         <div class="psw">
-                                            <p><a href="/registration">New</a> user? </p>
+                                            <p><a href="/registration">New user?</a>  </p>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -294,5 +294,17 @@
     drift.load('b5xdchmzc38b');
 </script>
 <!-- End of Async Drift Code -->
-</body>
+
+
+<script>
+    $(document).ready(function() {
+
+        setTimeout(function () {
+            // after 1000 ms we add the class animated to the login/register card
+            $('.content').fadeIn(500);
+        }, 500);
+    });
+
+</script>
+    </body>
 </html>
