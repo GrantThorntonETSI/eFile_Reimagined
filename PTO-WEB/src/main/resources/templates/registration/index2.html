@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/lynnFragmentNoSession :: layout (~{::body},'registration')}" xmlns="http://www.w3.org/1999/html">
+<head >
+    <meta charset="UTF-8">
+    <title>Registration Home Page</title>
+</head>
+<body>
+
+<!-- End Navbar -->
+<div class="content" style="display: none;" >
+    <div class="container-fluid" >
+        <div class="row content">
+            <main class="col-xs-12 col-sm-8 col-md-8 col-lg-7">
+                <!--START Content Div-->
+                <div class="row">
+                    <div class="col-xs-12 text-left">
+                        <h1>Create an Account</h1>
+                        <p class="required">Already have an account? <a href="/login">Sign in</a></p>
+                        <p class="required"><span class="weight600">&#42; = Required</span></p>
+                        <!--START Create Account Form-->
+                        <div class="card-text noexpand">
+                            <h2 class="card-title weight600" id="accountdetails">Account Details</h2>
+                        </div>
+
+                        <form method="post"  action="/newUser" id="registration-form" name="registration-form" th:object="${userCredentialsDTO}">
+                            <!--START Create Account Form-->
+                            <fieldset aria-label="enter account details">
+                                <div class="row">
+                                    <div class="form-group form-group-md col-xs-12 col-md-6">
+                                        <label for="email"><span class="weight600">&#42;</span>Email Address <a href="#" data-toggle="tooltip" title="The USPTO will use this email address to send correspondence regarding this application or registration. It is critical to ensure this email address is current." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
+                                        <input type="text" class="form-control" id="email" th:field="*{email}"  required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
+                                        <label for="firstname"><span class="weight600">&#42;</span>First Name</label>
+                                        <input type="text" class="form-control" id="firstname" th:field="*{firstName}"  required>
+                                    </div>
+                                    <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
+                                        <label for="middlename">Middle Name</label>
+                                        <input type="text" class="form-control" id="middlename">
+                                    </div>
+                                    <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
+                                        <label for="lastname"><span class="weight600">&#42;</span>Last Name</label>
+                                        <input type="text" class="form-control" id="lastname" th:field="*{lastName}"  required>
+                                    </div>
+                                    <div class="form-group form-group-md col-xs-4">
+                                        <label for="suffix">Suffix</label>
+                                        <select class="form-control" id="suffix">
+                                            <option value="Select">Select</option>
+                                            <option value="Sr.">Sr.</option>
+                                            <option value="I">I</option>
+                                            <option value="II">II</option>
+                                            <option value="III">III</option>
+                                            <option value="IV">IV</option>
+                                            <option value="V">V</option>
+                                            <option value="VI">VI</option>
+                                            <option value="Jr.">Jr.</option>
+                                            <option value="VII">VII</option>
+                                            <option value="VIII">VIII</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group form-group-md col-xs-12 col-md-6 col-lg-6">
+                                        <label for="password"><span class="weight600">&#42;</span>Password</label>
+                                        <input  class="form-control" id="password" type="password"  th:field="*{password}"  required>
+                                    </div>
+                                    <div class="form-group form-group-md col-xs-12 col-md-6 col-lg-6">
+                                        <label for="password-confirm"><span class="weight600">&#42;</span>Confirm Password</label>
+                                        <input  class="form-control" id="password-confirm" type="password" th:field="*{password_confirm}" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <input class="form-check-input checkmark confirmDisclaimerCheckbox" type="checkbox" value="" tabindex="0" aria-labelledby="termsagree" id="agreement">
+                                        <label class="form-check-label form-check form-check-left" for="agreement"><span class="radio notspecial" id="termsagree">I understand and agree with USPTO&#8217;s <a href="https://www.uspto.gov/terms-use-uspto-websites">Terms of Use</a> and <a href="https://www.uspto.gov/privacy-policy">Privacy Policy</a></span></label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form><!--END Additional Information Form-->
+                    </div><!--END Content Div-->
+                </div>
+                <div class="inlinebuttons btn-group btn-group-justified" role="nav" aria-label="view previous or next page" id="prevnxt">
+                    <div class="btn-group">
+
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-sm btn-primary fill next registrationSubmit"  type="submit" form="registration-form" value="next" disabled>Register
+                            <div class="round">
+                                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </main><!--MAIN-->
+        </div><!--END container div-->
+
+
+
+    </div>
+</div>
+
+
+
+<!-- Disclaimer Modal -->
+
+
+    <!-- end of disclaimer modal -->
+
+
+
+    <script>
+        $(document).ready(function() {
+            //$('.content').hide();
+            setTimeout(function() {
+                // after 1000 ms we add the class animated to the login/register card
+                $('.content').fadeIn('slow');
+            }, 600);
+            //////////////////////////////////////////////////////////////
+            // show tooltip
+            //////////////////////////////////////////////////////////////
+            $('[data-toggle="tooltip"]').tooltip();
+
+
+
+            $('.disclaimerAcceptButton').click( function () {
+
+                $('.confirmDisclaimerCheckbox').prop('disabled', false)
+                $('.confirmDisclaimerCheckbox').prop('checked', true);
+                $('.registrationSubmit').prop('disabled', false);
+            });
+
+
+            $('.confirmDisclaimerCheckbox').click( function () {
+
+                $('.confirmDisclaimerCheckbox').prop('disabled', false)
+                $('.confirmDisclaimerCheckbox').prop('checked', true);
+                $('.registrationSubmit').prop('disabled', false);
+            });
+
+            var allowsubmit = false;
+
+            //on keypress
+            $('#password-confirm').keyup(function(e){
+                //get values
+                var pass = $('#password').val();
+                var confpass = $(this).val();
+
+                //check the strings
+                if(pass == confpass){
+                    //if both are same remove the error and allow to submit
+                    $('.autoSaveMessageArea').text('');
+                    allowsubmit = true;
+                }else{
+                    //if not matching show error and not allow to submit
+                    $('.autoSaveMessageArea').text('Password and Password confirm do not match.');
+                    allowsubmit = false;
+                }
+            });
+
+            //jquery form submit
+            $('#setAccountPW').submit(function(){
+
+                var pass = $('#password').val();
+                var confpass = $('#password-confirm').val();
+
+                //just to make sure once again during submit
+                //if both are true then only allow submit
+                if(pass == confpass){
+                    allowsubmit = true;
+                }
+                if(allowsubmit){
+                    return true;
+                }else{
+                    return false;
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

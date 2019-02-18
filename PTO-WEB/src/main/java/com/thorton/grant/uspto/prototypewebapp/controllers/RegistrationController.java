@@ -49,7 +49,7 @@ public class RegistrationController {
         model.addAttribute("userCredentialsDTO", registrationDTO);
 
 
-        return "registration/index";
+        return "registration/index2";
 
     }
 
