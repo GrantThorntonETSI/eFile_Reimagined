@@ -68,7 +68,9 @@ public class UserAccountController {
         // check if user have address information set.
 
 
-        return "account/userHome";
+        //return "account/userHome";
+
+        return "account/userProfile";
     }
 
 

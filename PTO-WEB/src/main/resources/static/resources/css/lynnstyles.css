@@ -81,6 +81,10 @@ p {
 	margin-bottom: .7em;
 	line-height: 1.5em;
 }
+#preferences p {
+	margin-top: .2em;
+	margin-bottom: 1em;
+}
 a {
 	color: #004C97;
 }
@@ -769,7 +773,7 @@ td:focus {
 	-moz-border-top-left-radius:0;
 	border-top-left-radius:0;
 }
-#announcements .dashsection panel-heading {
+#announcements .dashsection .panel-heading {
 	-webkit-border-top-right-radius:2px;
 	-moz-border-top-right-radius:2px;
 	border-top-right-radius:2px;
@@ -806,9 +810,16 @@ td:focus {
 #landingpagecontent p  {
 	margin-top: .5em;
 }
-#landingpagecontent .glyphicon  {
+#landingpagecontent .glyphicon   {
 	font-size: 1.4em;
 	margin-bottom:.5em;
+}
+#userprofilepage .panel-default>.panel-body .glyphicon   {
+	text-align:center;
+	width:100%;
+	font-size: 2.2em;
+	margin-bottom: .5em;
+	top:0;
 }
 #landingpagecontent .text  {
 	font-size: 1.5em;
@@ -1104,7 +1115,7 @@ label a:hover {
 	-moz-box-shadow:    rgb(0,156,222);
 	box-shadow:         rgb(0,156,222);
 }
-.panel-heading {
+.panel-heading, .panel-body {
 	background-image:none!important;
 	font-size:.9em;
 }
@@ -1317,6 +1328,13 @@ label.disabled span {
 	position:relative;
 	width:100%;
 }
+.modal .inlinebuttons .btn-group button {
+	margin:0 1em;
+	width:90%;
+}
+.modal .inlinebuttons {
+	margin-bottom:.6em;
+}
 .inlinebuttons#prevnxt {
 	width:200px;
 	margin-right: 0;
@@ -1403,6 +1421,17 @@ div[role="radio"]:focus {
 .btn-sm {
 	min-height:38px;
 	min-width: 38px;
+}
+.btn-xs {
+	min-height:38px;
+	min-width: 38px;
+	font-size:.85em!important;
+	padding:1px .8em;
+}
+.panel-body .btn-xs {
+	font-size:1em!important;
+	margin-top:1.5em;
+	margin-bottom:1.5em;
 }
 .btn-default {
 	color: #444;
@@ -1513,8 +1542,29 @@ button#moreoptionsbtn {
 	max-width:600px;
 	margin:0 auto;
 }
+#preferences .btn-sm {
+	margin-bottom:2em;
+	min-width:14em;
+}
+#preferences .btn-xs {
+	margin-top: .8em;
+	margin-bottom: 1em;
+	min-width:14em;
+}
+#preferences .modal .btn-sm {
+	margin-bottom: 0;
+}
+#preferences .modal-title {
+	line-height: 3em;
+}
+#preferences label {
+	margin-top: 1.5em;
+}
+#preferences .modal-body {
+	padding-bottom: 3em;
+}
 .addphoneinitial {
-	width: 50%!important;
+	width: 60%!important;
 	margin: 0 auto!important;
 	float: none!important;
 }
@@ -1615,6 +1665,15 @@ input:checked + .slider #off {
 	100% { transform: rotate(360deg); }
 }
 /* MODALS */
+.modal-footer {
+	border-top: none;
+}
+.modal-header {
+	border-bottom: none;
+}
+.modal-header .close {
+	margin-top: -4px!important;
+}
 .modal-content {
 	-webkit-border-top-left-radius: 		0;
 	-webkit-border-top-right-radius: 		0;
@@ -1889,7 +1948,7 @@ input[type="checkbox"]{
 	cursor:pointer;
 	line-height: 1.02em;
 }
-.form-check span.radio.special {
+.form-check span.radio.special, .radio-inline.radiocontainer.special, .radiocontainer.special {
 	opacity: 0.5;
 	-moz-opacity: 0.5;
 }
@@ -2125,7 +2184,7 @@ button[type=submit] {
 	max-width: 100%;
 }
 /* START GSselected, Dashboard, Editowner, Reviewattorney panels */
-#gsselected .panel-heading h4, #gsselected .panel-heading p, #dashboardmain .panel-heading h4, #dashboardmain .panel-heading p, #editowner .panel-heading h4, #editowner .panel-heading p, #reviewattorney .panel-heading h4, #reviewattorney .panel-heading p {
+#gsselected .panel-heading h4, #gsselected .panel-heading p, #dashboardmain .panel-heading h4, #dashboardmain .panel-heading p, #editowner .panel-heading h4, #editowner .panel-heading p, #reviewattorney .panel-heading h4, #reviewattorney .panel-heading p, #userprofilepage .panel-heading p, #userprofilepage .panel-body p {
 	display:inline-block;
 	font-size: 1.3em;
 }
@@ -2133,7 +2192,7 @@ button[type=submit] {
 	color:#333;
 	font-weight:600;
 }
-#gsselected .panel-heading h4, #gsselected .panel-heading p, #dashboardmain .panel-heading h4, #dashboardmain .panel-heading p, #editowner .panel-heading p, #reviewattorney .panel-heading p {
+#gsselected .panel-heading h4, #gsselected .panel-heading p, #dashboardmain .panel-heading h4, #dashboardmain .panel-heading p, #editowner .panel-heading p, #reviewattorney .panel-heading p, #reviewattorney .panel-heading p {
 	margin:.1em;
 	color:#333/*#fff*/;
 }
@@ -2180,7 +2239,7 @@ button[type=submit] {
 	word-break:break-all;
 	min-height: 149px;
 }
-#gsselected .panel-heading, #dashboardmain .panel-heading, #editowner .panel-heading, #reviewattorney .panel-heading {
+#gsselected .panel-heading, #dashboardmain .panel-heading, #editowner .panel-heading, #reviewattorney .panel-heading, #userprofilepage .panel-body {
 	-webkit-border-top-left-radius: 		0;
 	-webkit-border-top-right-radius: 		0;
 	-webkit-border-bottom-left-radius: 		0;
@@ -2197,13 +2256,21 @@ button[type=submit] {
 	background-color: #D9D9D6;
 	padding: 14px 15px;
 }
-#gsselected .panel-default, #dashboardmain .panel-default, #editowner .panel-default, #reviewattorney .panel-default {
+#userprofilepage .panel-heading {
+	-webkit-border-top-left-radius: 	0;
+	-moz-border-top-left-radius: 		0;
+	border-top-left-radius: 			0;
+	-webkit-border-top-right-radius: 	0;
+	-moz-border-top-right-radius: 		0;
+	border-top-right-radius: 			0;
+}
+#gsselected .panel-default, #dashboardmain .panel-default, #editowner .panel-default, #reviewattorney .panel-default, #userprofilepage .panel-default {
 	border:none!important;
 }
-#gsselected .panel-title p, #dashboardmain .panel-title p, #editowner .panel-title p, #reviewattorney .panel-title p {
+#gsselected .panel-title p, #dashboardmain .panel-title p, #editowner .panel-title p, #reviewattorney .panel-title p, #userprofilepage .panel-title p {
 	font-size: 1.3em!important;
 }
-#gsselected .panel-group, #editowner .panel-group, #reviewattorney .panel-group {
+#gsselected .panel-group, #editowner .panel-group, #reviewattorney .panel-group, #userprofilepage .panel-group {
 	margin-bottom: 1.5em;
 	padding:0;
 	overflow-wrap: break-word;
@@ -2216,6 +2283,12 @@ button[type=submit] {
 	-webkit-hyphens: auto;
 	hyphens: auto;
 	white-space: normal;
+}
+#userprofilepage .panel-heading {
+	min-height: 8.5em;
+}
+#userprofilepage .panel-body {
+	min-height: 26.5em;
 }
 #editowner .panel-group .email, #reviewattorney .panel-group .email {
 	-ms-hyphens: none;
@@ -2232,21 +2305,39 @@ button[type=submit] {
 	margin-bottom:12px;
 	padding-top:0;
 }
-#gsselected .panel-group .panel, #dashboardmain .panel-group .panel, #editowner .panel-group .panel, #reviewattorney .panel-group .panel {
+#gsselected .panel-group .panel, #dashboardmain .panel-group .panel, #editowner .panel-group .panel, #reviewattorney .panel-group .panel, #userprofilepage .panel-group .panel {
 	-webkit-border-radius: 	2px;
 	-moz-border-radius: 	2px;
 	border-radius: 			2px;
 }
-#gsselected .panel-default>.panel-heading, #dashboardmain .panel-default>.panel-heading, #editowner .panel-default>.panel-heading, #reviewattorney .panel-default>.panel-heading {
+#gsselected .panel-default>.panel-heading, #dashboardmain .panel-default>.panel-heading, #editowner .panel-default>.panel-heading, #reviewattorney .panel-default>.panel-heading, #userprofilepage .panel-default>.panel-heading, #userprofilepage .panel-default>.panel-body {
 	color:#333/*#FFF*/;
 	background-color:#eee/*#F3D54E*/;
 	font-size:.8em;
 	width: 100%;
 	border:none!important;
 }
-#editowner .panel-default>.panel-heading, #reviewattorney .panel-default>.panel-heading {
+#editowner .panel-default>.panel-heading, #reviewattorney .panel-default>.panel-heading, #userprofilepage .panel-default>.panel-heading, #userprofilepage .panel-default>.panel-body {
 	background-color:transparent;
 	border:1px solid #eee!important;
+}
+#userprofilepage .panel-default>.panel-heading {
+	border-bottom:none!important;
+}
+#userprofilepage .panel-default>.panel-body {
+	border-top:none!important;
+}
+#userprofilepage .panel-default>.panel-heading label.radio-inline {
+	margin-left: -.25em;
+	margin-bottom: 2em;
+	margin-top: 1em;
+}
+#userprofilepage .panel-default>.panel-body span {
+	font-weight: 600;
+	-ms-hyphens: none;
+	-moz-hyphens: none;
+	-webkit-hyphens: none;
+	hyphens: none;
 }
 #dashboardmain .panel-default>.panel-heading {
 	background-color:#F3D54E;
@@ -2257,11 +2348,11 @@ button[type=submit] {
 #gsselected .panel-default>.panel-heading .name, #dashboardmain .panel-default>.panel-heading .name, #editowner .panel-default>.panel-heading .name, #reviewattorney .panel-default>.panel-heading .name {
 	color:#EEEEE;
 }
-#gsselected .panel-default>.panel-heading, #dashboardmain .panel-default>.panel-heading, #editowner .panel-default>.panel-heading, #reviewattorney .panel-default>.panel-heading {
+#gsselected .panel-default>.panel-heading, #dashboardmain .panel-default>.panel-heading {
 	color:#EEEEEE;
 	letter-spacing: 0.03em;
 }
-#gsselected .panel, #dashboardmain .panel, #editowner .panel, #reviewattorney .panel {
+#gsselected .panel, #dashboardmain .panel, #editowner .panel, #reviewattorney .panel, #userprofilepage .panel {
 	-webkit-box-shadow: 0 0 0 rgba(0,0,0,0);
 	box-shadow: 0 0 0 rgba(0,0,0,0);
 }
@@ -2458,6 +2549,9 @@ footer #megamenu ul {
 		margin-top:2em;
 		margin-bottom:2em;
 	}
+	#userprofilepage .modal .inlinebuttons {
+		margin-bottom:.6em;
+	}
 	#userprofilepage fieldset#preferences .inlinebuttons {
 		width: 100%!important;
 		margin-top:.5em;
@@ -2632,11 +2726,25 @@ footer #megamenu ul {
 		display:none;
 	}
 }
+@media (min-width: 1200px) {
+	#userprofilepage div#one .panel-default>.panel-body, #userprofilepage div#one .panel-default>.panel-heading   {
+		border-right: none!important;
+	}
+	#userprofilepage div#three .panel-default>.panel-body, #userprofilepage div#three .panel-default>.panel-heading {
+		border-left: none!important;
+	}
+}
 @media (max-width: 1199px) {
 	btn.fill, .btn-success.fill, .btn-default.fill  {
 		margin:0 auto;
 		margin-top:.8em;
 		margin-bottom:0;
+	}
+	#userprofilepage .panel-heading {
+		min-height: 6em;
+	}
+	#userprofilepage .panel-body {
+		min-height: 11em;
 	}
 }
 @media (min-width: 1200px) and (max-width: 1287px) {
@@ -2662,6 +2770,10 @@ footer #megamenu ul {
 		background-size: contain;
 		background-size:95%;
 	}
+	#preferences .btn-xs {
+		margin-top: 0;
+		margin-bottom: 1em;
+	}
 }
 @media (orientation: portrait) {
 	.stickycomponents {
@@ -2676,6 +2788,17 @@ footer #megamenu ul {
 @media (min-width: 2150px) {
 	.wide {
 		width:60%;
+	}
+	#userprofilepage .panel-body {
+		min-height: 20em;
+	}
+}
+@media (min-width: 1800px) {
+	#userprofilepage .panel-heading {
+		min-height: 6em;
+	}
+	#userprofilepage .panel-body {
+		min-height: 22em;
 	}
 }
 
