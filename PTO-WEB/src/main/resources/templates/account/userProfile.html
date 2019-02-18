@@ -313,7 +313,7 @@
                                     </div>
                                     <div class="form-group form-group-md col-xs-12 col-lg-8">
                                         <label for="address1"><span class="weight600">&#42;</span>Address Line 1</label>
-                                        <input type="text" id="address1" type="text" name="address" class="form-control" th:value="${user.address}">
+                                        <input type="text" id="address1"  name="address" class="form-control" th:value="${user.address}">
                                     </div>
                                     <div class="form-group form-group-md col-xs-12 col-lg-8">
                                         <label for="addressline2">Address Line 2</label>
@@ -527,10 +527,10 @@
                                                     <div class="col-xs-12">
                                                         <label for="inlineRadio047" class="radio-inline radiocontainer"><h3 class="panel-title number email">Email</h3>
                                                               <th:block th:if="${user.isUseTwoFactorAuthentication() == true }">
-                                                                  <input type="radio" name="twostepauthentication" id="inlineRadio047" value="" tabindex="0" checked>
+                                                                  <input type="radio" name="twostepauthentication" id="emailAuthenticator" value="" tabindex="0" checked>
                                                               </th:block>
                                                             <th:block th:if="${user.isUseTwoFactorAuthentication() == false }">
-                                                                <input type="radio" name="twostepauthentication" id="inlineRadio047" value="" tabindex="0">
+                                                                <input type="radio" name="twostepauthentication" id="emailAuthenticator" value="" tabindex="0">
                                                             </th:block>
 
                                                             <span class="checkmark"></span>
@@ -601,13 +601,13 @@
                                         <!--//panel three-->
                                         <div class="col-xs-12">
                                             <th:block th:if="${user.isUseTwoFactorAuthentication() == true}">
-                                                <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" aria-labelledby="termsagree" id="authenticate" checked>
+                                                <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" aria-labelledby="termsagree" id="useTwoFactor"  checked>
                                             </th:block>
                                             <th:block th:if="${user.isUseTwoFactorAuthentication() == false}">
-                                                <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" aria-labelledby="termsagree" id="authenticate">
+                                                <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" aria-labelledby="termsagree" id="useTwoFactor">
                                             </th:block>
 
-                                            <label class="form-check-label form-check form-check-left" for="authenticate">
+                                            <label class="form-check-label form-check form-check-left" for="useTwoFactor">
                                                 <span class="radio notspecial">I want to use the two-step authentication method every time I sign in.</span>
                                             </label>
                                         </div>
