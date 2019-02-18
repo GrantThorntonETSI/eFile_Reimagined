@@ -17,7 +17,7 @@
                     <div class="col-xs-12 text-left">
                         <h1 id="userprofile">User Profile</h1>
                         <p class="required"><span class="weight600">&#42; = Required</span></p>
-                        <div class="row alert">
+                        <div class="row alert"  th:if="${user.isProfileComplete() == false}">
                             <div class="col-xs-12 col-sm-6 alert alert-warning" role="alert">
                                 <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
                                 <span class="sr-only">Notification:</span>
@@ -32,16 +32,16 @@
                             <fieldset aria-labelledby="accountinfo">
                                 <div class="row">
                                     <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
-                                        <label for="firstname"><span class="weight600">&#42;</span>First Name</label>
-                                        <input type="text" class="form-control" id="firstname" required>
+                                        <label for="firstname">First Name</label>
+                                        <input type="text" id="firstName" placeholder="" class="form-control" th:value="${user.firstName}" >
                                     </div>
                                     <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
                                         <label for="middlename">Middle Name</label>
-                                        <input type="text" class="form-control" id="middlename">
+                                        <input type="text" id="middleName" placeholder="" class="form-control" th:value="${user.midlleName}" >
                                     </div>
                                     <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
-                                        <label for="lastname"><span class="weight600">&#42;</span>Last Name</label>
-                                        <input type="text" class="form-control" id="lastname" required>
+                                        <label for="lastname">Last Name</label>
+                                        <input type="text" id="lastName" placeholder="" class="form-control"  th:value="${user.lastName}">
                                     </div>
                                     <div class="form-group form-group-md col-xs-4">
                                         <label for="suffix">Suffix</label>
@@ -68,8 +68,8 @@
                             <fieldset aria-labelledby="contactinfo">
                                 <div class="row">
                                     <div class="form-group form-group-md col-xs-12 col-lg-6">
-                                        <label for="countryterritory"><span class="weight600">&#42;</span>Country/US Territory</label>
-                                        <select class="form-control" id="countryterritory" required>
+                                        <label for="country"><span class="weight600">&#42;</span>Country/US Territory</label>
+                                        <select class="form-control" id="country" name="country" th:field="*{user.country}" >
                                             <option value="1">UNITED STATES OF AMERICA</option>
                                             <option value="B2">AFGHANISTAN</option>
                                             <option value="B3">ALBANIA</option>
@@ -312,8 +312,8 @@
                                         </select>
                                     </div>
                                     <div class="form-group form-group-md col-xs-12 col-lg-8">
-                                        <label for="addressline1"><span class="weight600">&#42;</span>Address Line 1</label>
-                                        <input type="text" class="form-control" id="addressline1" required>
+                                        <label for="address1"><span class="weight600">&#42;</span>Address Line 1</label>
+                                        <input type="text" id="address1" type="text" name="address" class="form-control" th:value="${user.address}">
                                     </div>
                                     <div class="form-group form-group-md col-xs-12 col-lg-8">
                                         <label for="addressline2">Address Line 2</label>
@@ -325,15 +325,15 @@
                                     </div>
                                     <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
                                         <label for="city"><span class="weight600">&#42;</span>City</label>
-                                        <input type="text" class="form-control" id="city" required>
+                                        <input type="text" id="city" name="City" class="form-control" th:value="${user.city}" >
                                     </div>
                                     <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
-                                        <label for="stateprovinceterritory"><span class="weight600">&#42;</span>State/Province/Territory</label>
-                                        <input type="text" class="form-control" id="stateprovinceterritory" required>
+                                        <label for="state"><span class="weight600">&#42;</span>State/Province/Territory</label>
+                                        <input type="text" class="form-control" id="state" name="State" th:field="*{user.state}">
                                     </div>
                                     <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
                                         <label for="zipcode"><span class="weight600">&#42;</span>Zip/Postal Code</label>
-                                        <input type="text" class="form-control" id="zipcode" placeholder="XXXXX" required>
+                                        <input type="text" id="zipcode" name="Zipcode" class="form-control" th:value="${user.zipcode}" >
                                     </div>
                                     <div class="form-group form-group-md col-xs-12 col-md-6">
                                         <label for="altemail">Alternate Email Address <a href="#" data-toggle="tooltip" title="The USPTO will use this email address to send correspondence regarding this application or registration. It is critical to ensure this email address is current." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
@@ -352,8 +352,8 @@
                                                 </select>
                                             </div>
                                             <div class="form-group form-group-md col-xs-12 col-md-6 col-lg-6">
-                                                <label for="phonenumber">Phone Number</label>
-                                                <input type="text" class="form-control" id="phonenumber">
+                                                <label for="phone">Phone Number</label>
+                                                <input type="text" id="phone" name="Phone" class="form-control"  th:value="${user.primaryPhonenumber}" >
                                             </div>
                                             <div class="form-group form-group-md col-xs-12 col-md-2 col-lg-2">
                                                 <label for="extension">Ext.</label>
@@ -525,7 +525,16 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
                                                     <div class="col-xs-12">
-                                                        <label for="inlineRadio047" class="radio-inline radiocontainer"><h3 class="panel-title number email">Email</h3><input type="radio" name="twostepauthentication" id="inlineRadio047" value="" tabindex="0"><span class="checkmark"></span></label>
+                                                        <label for="inlineRadio047" class="radio-inline radiocontainer"><h3 class="panel-title number email">Email</h3>
+                                                              <th:block th:if="${user.isUseTwoFactorAuthentication() == true }">
+                                                                  <input type="radio" name="twostepauthentication" id="inlineRadio047" value="" tabindex="0" checked>
+                                                              </th:block>
+                                                            <th:block th:if="${user.isUseTwoFactorAuthentication() == false }">
+                                                                <input type="radio" name="twostepauthentication" id="inlineRadio047" value="" tabindex="0">
+                                                            </th:block>
+
+                                                            <span class="checkmark"></span>
+                                                        </label>
                                                     </div>
                                                 </div>
                                                 <div class="panel-body col-lg-4 email">
@@ -591,8 +600,16 @@
                                         </div>
                                         <!--//panel three-->
                                         <div class="col-xs-12">
-                                            <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" aria-labelledby="termsagree" id="authenticate">
-                                            <label class="form-check-label form-check form-check-left" for="authenticate"><span class="radio notspecial">I want to use the two-step authentication method every time I sign in.</label>
+                                            <th:block th:if="${user.isUseTwoFactorAuthentication() == true}">
+                                                <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" aria-labelledby="termsagree" id="authenticate" checked>
+                                            </th:block>
+                                            <th:block th:if="${user.isUseTwoFactorAuthentication() == false}">
+                                                <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" aria-labelledby="termsagree" id="authenticate">
+                                            </th:block>
+
+                                            <label class="form-check-label form-check form-check-left" for="authenticate">
+                                                <span class="radio notspecial">I want to use the two-step authentication method every time I sign in.</span>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -603,7 +620,7 @@
                             </div>
                             <fieldset aria-labelledby="view">
                                 <div role="radiogroup" aria-labelledby="color" class="form-group form-group-md" >
-                                    <label for="inlineRadio050" class="form-group form-group-md radiocontainer">Guided User View<input type="radio" name="view" id="inlineRadio050" value="yes" tabindex="0"><span class="checkmark"></span></label>
+                                    <label for="inlineRadio050" class="form-group form-group-md radiocontainer">Guided User View<input type="radio" name="view" id="inlineRadio050" value="yes" tabindex="0" checked><span class="checkmark"></span></label>
                                     <label for="inlineRadio051" class="form-group form-group-md radiocontainer special">Experienced User View<input type="radio" name="view" id="inlineRadio051" value="no" tabindex="0" disabled aria-disabled="true"><span class="checkmark"></span></label>
                                 </div><!--END radiogroup-->
                             </fieldset>

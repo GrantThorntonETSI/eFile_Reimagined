@@ -57,7 +57,7 @@
 
                         <div class="form-group">
                             <label class="small" style="margin-top: 10px;"><b>First Name</b></label>
-                            <input type="text"   id="firstName" placeholder="first name" class="form-control" th:value="${user.firstName}" style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;"  >
+                            <input type="text"   id="firstName" placeholder="" class="form-control" th:value="${user.firstName}" style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;"  >
 
 
                         </div>
@@ -86,7 +86,7 @@
 
                         <div class="form-group">
                             <label class="small" style="margin-top: 10px;"><b>Last Name</b></label>
-                            <input type="text"   id="lastName" placeholder="lastName" class="form-control"  th:value="${user.lastName}" style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;"  >
+                            <input type="text"   id="lastName" placeholder="" class="form-control"  th:value="${user.lastName}" style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;"  >
 
 
                         </div>
@@ -479,7 +479,7 @@
 
                         <div class="form-group">
                             <label class="small" style="margin-top: 10px;"><b>State</b><b style="color: red;">*</b></label>
-                            <select  class="form-control custom-select" name="State" th:field="*{user.state}" style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;">
+                            <select  class="form-control custom-select" id="state" name="State" th:field="*{user.state}" style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;">
                                 <option  value="">Select</option>
                                 <option  value="AL">Alabama</option>
                                 <option  value="AK">Alaska</option>
@@ -873,7 +873,7 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <span style="position: relative; bottom:-2px; left:5px;">
-                                            <input  class="form-check-input checkmark fa-check" type="checkbox"  value="" role="checkbox" aria-checked="true" tabindex="0" aria-labelledby="2factorcheck-label" th:if="${user.isUseTwoFactorAuthentication() == true}"id="useTwoFactor" name="useTwoFactor" checked>
+                                            <input  class="form-check-input checkmark fa-check" type="checkbox"  value="" role="checkbox" aria-checked="true" tabindex="0" aria-labelledby="2factorcheck-label" th:if="${user.isUseTwoFactorAuthentication() == true}" id="useTwoFactor" name="useTwoFactor" checked>
                                              <input class="form-check-input checkmark" type="checkbox"  value="" role="checkbox" aria-checked="false" tabindex="0" aria-labelledby="2factorcheck-label" th:if="${user.isUseTwoFactorAuthentication() == false}"id="useTwoFactor" name="useTwoFactor">
                                             <label class="form-check-label form-check" for="useTwoFactor" id="2factorcheck-label"><span class="radio notspecial">I want to use the two-step authentication method every time I sign in.</span></label>
                                         </span>&nbsp;&nbsp;<span><b></b></span>
