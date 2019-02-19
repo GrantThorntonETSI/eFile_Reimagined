@@ -108,13 +108,7 @@
                             <div class="card-text noexpand blue">
                                 <h2 class="card-title weight600" th:text="${Good_Service_class.getClassNumberDisplay()}">Class 003</h2>
                             </div>
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <div class="lead">
-                                        <p style="font-weight: bold;">Only one specimen is required per class.</p>
-                                    </div>
-                                </div>
-                            </div>
+
 
                             <th:block  th:if="${Good_Service_class.atLeastOneGoodInCommerceSet == true}">
                                 <th:block   th:if="${Good_Service_class.isAtLeastOneGoodInCommerce() == true}">
@@ -214,7 +208,16 @@
 
 
                             <th:block   th:if="${Good_Service_class.isProvideSpecimenForAll() == true}">
+
                                 <div class="row" style="">
+
+                                    <div class="row" style="margin-left: 15px;">
+                                        <div class="col-xs-12">
+                                            <div class="lead">
+                                                <p style="font-weight: bold;">Only one specimen is required per class.</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <section aria-label="class image and description">
                                         <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service_class.getClassCategporyImpageFormID()}"  action="/class/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
                                             <div class="col-xs-4">
@@ -273,7 +276,16 @@
                             </th:block>
 
                             <th:block   th:if="${Good_Service_class.isProvideSpecimenForAll() == false}">
+
                                 <div class="row" style="display: none;">
+                                    <div class="row" style="margin-left: 15px;">
+                                        <div class="col-xs-12">
+                                            <div class="lead">
+                                                <p style="font-weight: bold;">Only one specimen is required per class.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <section aria-label="class image and description">
                                         <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service_class.getClassCategporyImpageFormID()}"  action="/class/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
                                             <div class="col-xs-4">

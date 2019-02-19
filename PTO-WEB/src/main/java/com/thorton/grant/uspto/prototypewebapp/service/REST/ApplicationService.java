@@ -857,11 +857,11 @@ public class ApplicationService  extends  BaseRESTapiService{
 
         if(fieldValue.equals("yes")){
             baseTrademarkApplication.setValidateTEASFields(true);
-            responseMsg = "TEAS field level validation has been set to TRUE for the current application.";
+            responseMsg = "Reduced fee validation has been set to TRUE for the current application.";
         }
         else {
             baseTrademarkApplication.setValidateTEASFields(false);
-            responseMsg = "TEAS field level validation has been set to FALSE for the current application.";
+            responseMsg = "Reduced fee level validation has been set to FALSE for the current application.";
         }
 
 

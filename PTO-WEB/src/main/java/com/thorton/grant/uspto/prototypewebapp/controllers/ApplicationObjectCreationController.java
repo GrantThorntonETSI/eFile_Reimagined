@@ -1473,6 +1473,8 @@ public class ApplicationObjectCreationController {
             Font boldFontSmall = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD);
             Font normalFont = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL);
 
+            Font standardCharacterFont = new Font(Font.FontFamily.ZAPFDINGBATS, 36, Font.NORMAL);
+
             try {
                 PdfWriter.getInstance(document, byteArrayOutputStream);
                 document.open();
@@ -1601,13 +1603,23 @@ public class ApplicationObjectCreationController {
                 table.addCell("");
                 table.addCell("MARK");
                 // create image file
-                String markImagePath = baseTrademarkApplication.getTradeMark().getMarkImagePhysicalPath();
 
-                Image markImg = Image.getInstance(markImagePath);
+                if(baseTrademarkApplication.getTradeMark().getTrademarkDesignType().equals("Standard Character") == false){
 
-                table.addCell(markImg);
+                    String markImagePath = baseTrademarkApplication.getTradeMark().getMarkImagePhysicalPath();
+
+                    Image markImg = Image.getInstance(markImagePath);
+                    table.addCell(markImg);
+                }
+                else {
+
+                    table.addCell(baseTrademarkApplication.getTradeMark().getTrademarkStandardCharacterText());
+
+                }
+
+
                 table.addCell("STANDARD CHARACTERS");
-                if(baseTrademarkApplication.getTradeMark().getTrademarkDesignType().equals("Standard Characters")){
+                if(baseTrademarkApplication.getTradeMark().getTrademarkDesignType().equals("Standard Character")){
                     table.addCell("YES");
                     table.addCell("USPTO-GENERATED IMAGE");
                     table.addCell("YES");
@@ -1672,7 +1684,6 @@ public class ApplicationObjectCreationController {
                         table.addCell(current2.getIdentification());
                         if(current2.getSampleImagePath() != null){
                             table.addCell("Specimen Sample");
-
                             Image specimenImg = Image.getInstance(current2.getSampleImagePhysicalPath());
                             table.addCell(specimenImg);
                         }

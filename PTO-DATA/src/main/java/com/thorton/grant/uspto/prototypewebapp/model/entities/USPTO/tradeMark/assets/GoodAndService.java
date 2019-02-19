@@ -556,6 +556,16 @@ public class GoodAndService {
         return path;
     }
 
+    public boolean is1B(){
+
+        boolean retVal = false;
+
+        if(this.getIdentification().contains("1(b)")){
+            retVal = true;
+        }
+        return  retVal;
+    }
+
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
