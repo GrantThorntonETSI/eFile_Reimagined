@@ -259,7 +259,7 @@
 
 
                                                 <div class="col-xs-12 float">
-                                                    <h3 class="overline">Goods and Services and Filing Basis Information</h3>
+                                                    <h3 class="overline weight600">Goods and Services and Filing Basis Information</h3>
                                                     <span class="overline"><a href="#" id="mark-fb-edit">Edit</a></span>
                                                     <br clear="all">
                                                 </div>
@@ -270,7 +270,7 @@
                                                                 <h4>International Class</h4>
                                                             </div>
                                                             <div class="col-xs-12 col-sm-8">
-                                                                <p class="weight600" th:text="${class.getClassNumberDisplay()}">003</p>
+                                                                <p class="" th:text="${class.getClassNumberDisplay()}">003</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -279,20 +279,20 @@
                                                             <div class="col-xs-12">
                                                                 <div class="row">
                                                                     <div class="col-xs-12 col-sm-4">
-                                                                        <h4>Identification</h4>
+                                                                        <h4>Filing Basis</h4>
                                                                     </div>
                                                                     <div class="col-xs-12 col-sm-8">
-                                                                        <p class="weight600"th:text="${Good_Service.getIdentification()}">SECTION 1(a)</p>
+                                                                        <p class=""th:text="${Good_Service.getIdentification()}">SECTION 1(a)</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-xs-12">
                                                                 <div class="row">
                                                                     <div class="col-xs-12 col-sm-4">
-                                                                        <h4>Description</h4>
+                                                                        <h4>Identification</h4>
                                                                     </div>
                                                                     <div class="col-xs-12 col-sm-8">
-                                                                        <p class="weight600" th:text="${Good_Service.getClassDescription()}">Bar Soap</p>
+                                                                        <p class="" th:text="${Good_Service.getClassDescription()}">Bar Soap</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -304,7 +304,7 @@
                                                                         <h4>Intent to Use</h4>
                                                                     </div>
                                                                     <div class="col-xs-12 col-sm-8">
-                                                                        <p class="weight600">The applicant has a bona fide intention, and is entitled, to use the mark in commerce on or in connection with the identified goods/services. (15 U.S.C. Section 1051(b)).</p>
+                                                                        <p class="">The applicant has a bona fide intention, and is entitled, to use the mark in commerce on or in connection with the identified goods/services. (15 U.S.C. Section 1051(b)).</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -333,7 +333,7 @@
                                                                             <h4>First Use Anywhere Date</h4>
                                                                         </div>
                                                                         <div class="col-xs-12 col-sm-8">
-                                                                            <p class="weight600">At least as early as <span th:text="${Good_Service.getFirstGSDateDisplay()}">12/21/2012</span></p>
+                                                                            <p class="">At least as early as <span th:text="${Good_Service.getFirstGSDateDisplay()}">12/21/2012</span></p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -346,7 +346,7 @@
                                                                             <h4>First Use In Commerce Date</h4>
                                                                         </div>
                                                                         <div class="col-xs-12 col-sm-8">
-                                                                            <p class="weight600">At least as early as <span th:text="${Good_Service.getFirstCommerceDateDisplay()}">12/21/2012</span></p>
+                                                                            <p class="">At least as early as <span th:text="${Good_Service.getFirstCommerceDateDisplay()}">12/21/2012</span></p>
                                                                         </div>
                                                                         <div class="col-xs-12">
                                                                             <p class="small form-group">In International <span th:text="${Good_Service.getClassNumberDisplay()}"></span>, the mark was first used by the applicant or the applicant&#8217;s related company or licensee predecessor in interest at least as early as <span th:text="${Good_Service.getFirstGSDateDisplay()}">07/22/2017</span>, and first used in commerce at least as early as <span th:text="${Good_Service.getFirstCommerceDateDisplay()}">07/22/2017</span>, and is now in use in such commerce. The applicant is submitting one(or more) specimen(s) showing the mark as used in commerce on or in connection with any item in the class of listed goods/services, consisting of a(n) packaging for listed goods/services.<br><br>
@@ -500,9 +500,9 @@
                                                             <select class="form-control" id="signmethod">
                                                                 <option value="Select">Select Signature Method</option>
                                                                 <option value="direct">Sign Directly</option>
-                                                                <option value="handwritten">Print and Upload Handwritten Signature</option>
-                                                                <option value="send">Send to Second Party for Signature</option>
-                                                                <option value="unsigned">Submit Unsigned</option>
+                                                                <option value="handwritten" disabled>Print and Upload Handwritten Signature</option>
+                                                                <option value="send" disabled>Send to Second Party for Signature</option>
+                                                                <option value="unsigned" disabled>Submit Unsigned</option>
                                                             </select>
                                                         </div>
                                                     </div>
