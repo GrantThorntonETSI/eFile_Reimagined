@@ -776,8 +776,8 @@ $(document).ready(function(){
 		}
 	});
 	//whole or in part
-	$('div#yeswhole').css('display','none');
-	$('div#yespart').css('display','none');
+
+
 	$('input#inlineRadio035').change(function() {
 		if(this.checked == true){
 			$('div#yeswhole').show( 'fast' );

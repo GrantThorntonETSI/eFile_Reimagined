@@ -239,10 +239,12 @@ public class BaseTrademarkApplication  {
     private boolean inheritantlyDistinctiveSet;
 
     private boolean inheritantlyWhole;
-    private boolean inheritantlyWholeSet;
+
 
     private boolean inheritantlyPart;
-    private boolean inheritantlyPartSet;
+
+    private boolean wholePartSet;
+
 
 
 
@@ -1435,14 +1437,6 @@ public class BaseTrademarkApplication  {
         this.inheritantlyWhole = inheritantlyWhole;
     }
 
-    public boolean isInheritantlyWholeSet() {
-        return inheritantlyWholeSet;
-    }
-
-    public void setInheritantlyWholeSet(boolean inheritantlyWholeSet) {
-        this.inheritantlyWholeSet = inheritantlyWholeSet;
-    }
-
     public boolean isInheritantlyPart() {
         return inheritantlyPart;
     }
@@ -1451,12 +1445,12 @@ public class BaseTrademarkApplication  {
         this.inheritantlyPart = inheritantlyPart;
     }
 
-    public boolean isInheritantlyPartSet() {
-        return inheritantlyPartSet;
+    public boolean isWholePartSet() {
+        return wholePartSet;
     }
 
-    public void setInheritantlyPartSet(boolean inheritantlyPartSet) {
-        this.inheritantlyPartSet = inheritantlyPartSet;
+    public void setWholePartSet(boolean wholePartSet) {
+        this.wholePartSet = wholePartSet;
     }
 
     @Override

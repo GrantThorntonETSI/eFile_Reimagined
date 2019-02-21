@@ -504,13 +504,13 @@
                                                                     <label for="inlineRadio035" class="radio-inline radiocontainer">Whole<input type="radio" name="wholepartradio" id="inlineRadio035" value="whole" tabindex="0"><span class="checkmark"></span></label>
                                                                     <label for="inlineRadio036" class="radio-inline radiocontainer">In part<input type="radio" name="wholepartradio" id="inlineRadio036" value="inpart" tabindex="0"><span class="checkmark"></span></label>
                                                                 </div><!--END radiogroup-->
-                                                                <div id="yespart" class="form-group"><!--toggle 'yes' radio-->
+                                                                <div id="yespart" class="form-group" style="display: none;"><!--toggle 'yes' radio-->
                                                                     <div class="form-group form-group-md">
                                                                         <label for="partmark" class="weight600">Which part of the mark?</label>
                                                                         <textarea id="partmark" rows="1" class="form-control"></textarea>
                                                                     </div>
                                                                 </div>
-                                                                <div id="yeswhole" class="form-group"><!--toggle 'yes' radio-->
+                                                                <div id="yeswhole" class="form-group" style="display: none;"><!--toggle 'yes' radio-->
                                                                     <div class="form-group form-group-md">
                                                                         <p>What is your claim based on?</p>
                                                                         <div class="wide">
@@ -612,13 +612,13 @@
                                                                         <label for="inlineRadio035" class="radio-inline radiocontainer">Whole<input type="radio" name="wholepartradio" id="inlineRadio035" value="whole" tabindex="0"><span class="checkmark"></span></label>
                                                                         <label for="inlineRadio036" class="radio-inline radiocontainer">In part<input type="radio" name="wholepartradio" id="inlineRadio036" value="inpart" tabindex="0"><span class="checkmark"></span></label>
                                                                     </div><!--END radiogroup-->
-                                                                    <div id="yespart" class="form-group"><!--toggle 'yes' radio-->
+                                                                    <div id="yespart" class="form-group" style="display: none;"><!--toggle 'yes' radio-->
                                                                         <div class="form-group form-group-md">
                                                                             <label for="partmark" class="weight600">Which part of the mark?</label>
                                                                             <textarea id="partmark" rows="1" class="form-control"></textarea>
                                                                         </div>
                                                                     </div>
-                                                                    <div id="yeswhole" class="form-group"><!--toggle 'yes' radio-->
+                                                                    <div id="yeswhole" class="form-group" style="display: none;"><!--toggle 'yes' radio-->
                                                                         <div class="form-group form-group-md">
                                                                             <p>What is your claim based on?</p>
                                                                             <div class="wide">
@@ -696,34 +696,92 @@
                                                                 <div id="yesdistict" class="form-group" style=""><!--toggle 'yes' radio-->
                                                                     <div class="form-group form-group-md">
                                                                         <p>Is this for the whole mark, or part of the mark?</p>
+
+
                                                                         <div role="radiogroup" aria-labelledby="disclm" class="form-group form-group-md">
-                                                                            <label for="inlineRadio035" class="radio-inline radiocontainer">Whole<input type="radio" name="wholepartradio" id="inlineRadio035" value="whole" tabindex="0"><span class="checkmark"></span></label>
-                                                                            <label for="inlineRadio036" class="radio-inline radiocontainer">In part<input type="radio" name="wholepartradio" id="inlineRadio036" value="inpart" tabindex="0"><span class="checkmark"></span></label>
+                                                                            <th:block th:if="${baseTrademarkApplication.isInheritantlyWhole() == true}">
+                                                                                <label for="inlineRadio035" class="radio-inline radiocontainer">Whole<input type="radio" name="wholepartradio" id="inlineRadio035" value="whole" tabindex="0" checked><span class="checkmark"></span></label>
+                                                                            </th:block>
+
+                                                                            <th:block th:if="${baseTrademarkApplication.isInheritantlyWhole() == false}">
+                                                                                <label for="inlineRadio035" class="radio-inline radiocontainer">Whole<input type="radio" name="wholepartradio" id="inlineRadio035" value="whole" tabindex="0"><span class="checkmark"></span></label>
+                                                                            </th:block>
+
+
+
+                                                                            <th:block th:if="${baseTrademarkApplication.isInheritantlyPart() == true}">
+                                                                                <label for="inlineRadio036" class="radio-inline radiocontainer">In part<input type="radio" name="wholepartradio" id="inlineRadio036" value="inpart" tabindex="0"checked><span class="checkmark"></span></label>
+                                                                            </th:block>
+                                                                            <th:block th:if="${baseTrademarkApplication.isInheritantlyPart() == false}">
+                                                                                <label for="inlineRadio036" class="radio-inline radiocontainer">In part<input type="radio" name="wholepartradio" id="inlineRadio036" value="inpart" tabindex="0"><span class="checkmark"></span></label>
+                                                                            </th:block>
+
                                                                         </div><!--END radiogroup-->
-                                                                        <div id="yespart" class="form-group"><!--toggle 'yes' radio-->
-                                                                            <div class="form-group form-group-md">
-                                                                                <label for="partmark" class="weight600">Which part of the mark?</label>
-                                                                                <textarea id="partmark" rows="1" class="form-control"></textarea>
+
+
+                                                                        <th:block th:if="${baseTrademarkApplication.isInheritantlyPart() == true}">
+                                                                            <div id="yespart" class="form-group" style=""><!--toggle 'yes' radio-->
+                                                                                <div class="form-group form-group-md">
+                                                                                    <label for="partmark" class="weight600">Which part of the mark?</label>
+                                                                                    <textarea id="partmark" rows="1" class="form-control"></textarea>
+                                                                                </div>
                                                                             </div>
-                                                                        </div>
-                                                                        <div id="yeswhole" class="form-group"><!--toggle 'yes' radio-->
-                                                                            <div class="form-group form-group-md">
-                                                                                <p>What is your claim based on?</p>
-                                                                                <div class="wide">
-                                                                                    <div class="row">
-                                                                                        <div class="col-xs-4 col-md-3 col-lg-3 form-group form-group-md">
-                                                                                            <label for="inlineRadio037" class="radio-inline radiocontainer">Evidence<input type="radio" name="wholepartradiosub" id="inlineRadio037" value="evidence" tabindex="0"><span class="checkmark"></span></label>
-                                                                                        </div>
-                                                                                        <div class="col-xs-8 col-md-4 col-lg-4 form-group form-group-md">
-                                                                                            <label for="inlineRadio038" class="radio-inline radiocontainer">Prior Registrations<input type="radio" name="wholepartradiosub" id="inlineRadio038" value="prioregistrations" tabindex="0"><span class="checkmark"></span></label>
-                                                                                        </div>
-                                                                                        <div class="col-xs-12 col-md-5 col-lg-5 form-group form-group-md">
-                                                                                            <label for="inlineRadio039" class="radio-inline radiocontainer">Five or more years of use<input type="radio" name="wholepartradiosub" id="inlineRadio039" value="fivepluyears" tabindex="0"><span class="checkmark"></span></label>
+
+                                                                        </th:block>
+
+                                                                        <th:block th:if="${baseTrademarkApplication.isInheritantlyPart() == false}">
+                                                                            <div id="yespart" class="form-group" style="display: none;"><!--toggle 'yes' radio-->
+                                                                                <div class="form-group form-group-md">
+                                                                                    <label for="partmark" class="weight600">Which part of the mark?</label>
+                                                                                    <textarea id="partmark" rows="1" class="form-control"></textarea>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </th:block>
+
+
+                                                                        <th:block th:if="${baseTrademarkApplication.isWholePartSet() == true}">
+                                                                            <div id="yeswhole" class="form-group" style=""><!--toggle 'yes' radio-->
+                                                                                <div class="form-group form-group-md">
+                                                                                    <p>What is your claim based on?</p>
+                                                                                    <div class="wide">
+                                                                                        <div class="row">
+                                                                                            <div class="col-xs-4 col-md-3 col-lg-3 form-group form-group-md">
+                                                                                                <label for="inlineRadio037" class="radio-inline radiocontainer">Evidence<input type="radio" name="wholepartradiosub" id="inlineRadio037" value="evidence" tabindex="0"><span class="checkmark"></span></label>
+                                                                                            </div>
+                                                                                            <div class="col-xs-8 col-md-4 col-lg-4 form-group form-group-md">
+                                                                                                <label for="inlineRadio038" class="radio-inline radiocontainer">Prior Registrations<input type="radio" name="wholepartradiosub" id="inlineRadio038" value="prioregistrations" tabindex="0"><span class="checkmark"></span></label>
+                                                                                            </div>
+                                                                                            <div class="col-xs-12 col-md-5 col-lg-5 form-group form-group-md">
+                                                                                                <label for="inlineRadio039" class="radio-inline radiocontainer">Five or more years of use<input type="radio" name="wholepartradiosub" id="inlineRadio039" value="fivepluyears" tabindex="0"><span class="checkmark"></span></label>
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
+                                                                        </th:block>
+
+                                                                        <th:block th:if="${baseTrademarkApplication.isWholePartSet() == false}">
+                                                                            <div id="yeswhole" class="form-group" style="display: none;"><!--toggle 'yes' radio-->
+                                                                                <div class="form-group form-group-md">
+                                                                                    <p>What is your claim based on?</p>
+                                                                                    <div class="wide">
+                                                                                        <div class="row">
+                                                                                            <div class="col-xs-4 col-md-3 col-lg-3 form-group form-group-md">
+                                                                                                <label for="inlineRadio037" class="radio-inline radiocontainer">Evidence<input type="radio" name="wholepartradiosub" id="inlineRadio037" value="evidence" tabindex="0"><span class="checkmark"></span></label>
+                                                                                            </div>
+                                                                                            <div class="col-xs-8 col-md-4 col-lg-4 form-group form-group-md">
+                                                                                                <label for="inlineRadio038" class="radio-inline radiocontainer">Prior Registrations<input type="radio" name="wholepartradiosub" id="inlineRadio038" value="prioregistrations" tabindex="0"><span class="checkmark"></span></label>
+                                                                                            </div>
+                                                                                            <div class="col-xs-12 col-md-5 col-lg-5 form-group form-group-md">
+                                                                                                <label for="inlineRadio039" class="radio-inline radiocontainer">Five or more years of use<input type="radio" name="wholepartradiosub" id="inlineRadio039" value="fivepluyears" tabindex="0"><span class="checkmark"></span></label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </th:block>
+
 
                                                                         <div id="yesevidence" class="form-group" style="display: none;"><!--toggle 'yes' radio-->
 
@@ -787,13 +845,13 @@
                                                                             <label for="inlineRadio035" class="radio-inline radiocontainer">Whole<input type="radio" name="wholepartradio" id="inlineRadio035" value="whole" tabindex="0"><span class="checkmark"></span></label>
                                                                             <label for="inlineRadio036" class="radio-inline radiocontainer">In part<input type="radio" name="wholepartradio" id="inlineRadio036" value="inpart" tabindex="0"><span class="checkmark"></span></label>
                                                                         </div><!--END radiogroup-->
-                                                                        <div id="yespart" class="form-group"><!--toggle 'yes' radio-->
+                                                                        <div id="yespart" class="form-group" style="display: none;"><!--toggle 'yes' radio-->
                                                                             <div class="form-group form-group-md">
                                                                                 <label for="partmark" class="weight600">Which part of the mark?</label>
                                                                                 <textarea id="partmark" rows="1" class="form-control"></textarea>
                                                                             </div>
                                                                         </div>
-                                                                        <div id="yeswhole" class="form-group"><!--toggle 'yes' radio-->
+                                                                        <div id="yeswhole" class="form-group" style="display: none;"><!--toggle 'yes' radio-->
                                                                             <div class="form-group form-group-md">
                                                                                 <p>What is your claim based on?</p>
                                                                                 <div class="wide">
@@ -2334,8 +2392,19 @@
 
     });
 
+    $('#inlineRadio035').click(function () {
 
-    }); // end of document ready
+        saveAdditionalInfo("ai-whole-distinct", "yes", appInternalID);
+
+    });
+    $('#inlineRadio036').click(function () {
+
+        saveAdditionalInfo("ai-part-distinct", "yes", appInternalID);
+
+    });
+
+
+}); // end of document ready
 
     function saveUncommonType(field_name_prefix, field_value, appInternalID) {
         $.ajax({

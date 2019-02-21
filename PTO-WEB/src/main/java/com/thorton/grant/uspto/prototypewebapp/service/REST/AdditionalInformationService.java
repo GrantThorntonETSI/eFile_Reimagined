@@ -308,6 +308,49 @@ public class AdditionalInformationService extends  BaseRESTapiService {
         }
 
 
+        if(fieldName.equals("ai-whole-distinct")){
+            // ptoUser.setState(param); // sets state code
+
+            if(fieldValue.equals("yes")){
+
+                baseTrademarkApplication.setInheritantlyWhole(true);
+                baseTrademarkApplication.setWholePartSet(true);
+
+            }
+            if(fieldValue.equals("no")){
+                baseTrademarkApplication.setInheritantlyWhole(false);
+
+
+            }
+
+            appFieldReadable = "Claim of inherently distinctive Whole";
+
+
+        }
+
+
+        if(fieldName.equals("ai-part-distinct")){
+            // ptoUser.setState(param); // sets state code
+
+            if(fieldValue.equals("yes")){
+
+                baseTrademarkApplication.setInheritantlyPart(true);
+                baseTrademarkApplication.setWholePartSet(true);
+
+            }
+            if(fieldValue.equals("no")){
+                baseTrademarkApplication.setInheritantlyPart(false);
+
+
+            }
+
+            appFieldReadable = "Claim of inherently distinctive Part";
+
+
+        }
+
+
+
         String responseMsg = appFieldReadable+" has been saved";
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
