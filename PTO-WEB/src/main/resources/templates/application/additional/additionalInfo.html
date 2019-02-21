@@ -511,11 +511,48 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div id="yesevidence" class="form-group"><!--toggle 'yes' radio-->
-                                                                <p class="weight600" role="heading" aria-level="3">Upload evidence.</p>
-                                                                <label class="small upload-drop-zone" for="filetwo"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload a File</label>
-                                                                <input type="filetwo" id="filevidence" name="file-evidence" class="form-control">
+
+
+
+
+
+                                                            <div id="yesevidence" class="form-group" style="display: none;"><!--toggle 'yes' radio-->
+
+                                                                <form method="post"  target="hidden-iframe"  id="distinctEvidenceForm"  action="/distinctive/evidence/add"  enctype="multipart/form-data"  aria-labelledby="title">
+                                                                    <p class="weight600" role="heading" aria-level="3">Upload evidence.</p>
+                                                                    <label class="small upload-drop-zone" for="distinctEvidence"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload a File</label>
+                                                                    <input type="file" id="distinctEvidence" name="file-evidence" class="form-control"  style="display: none">
+                                                                </form>
+
+
+                                                                <div class="col-xs-12">
+                                                                    <div class="center">
+                                                                        <div class="speciman-image" id="distinctEvidence-img-container" style="">
+
+                                                                            <img id="distinctEvidence-img" alt="" th:src="${baseTrademarkApplication.getDistinctiveEvidenceFilePath()}" class="img-responsive"/>
+                                                                        </div>
+
+
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="col-xs-12">
+                                                                    <div class="center">
+
+                                                                        <div type="button"  id="distinctEvidence-img-upload" class="btn btn-sm" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload File</b><span><i class="fa fa-spinner fa-spin" id="distinctEvidence-img-upload-spinner" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                                                    </div>
+
+                                                                </div>
+
+
                                                             </div><!-- Drop Zone -->
+
+
+
+
+
+
                                                             <div class="row" id="yespriors">
                                                                 <div class="col-xs-12 col-md-6 col-lg-8 form-group holdsaprior"><!--toggle 'yes' radio-->
                                                                     <label for="prioregnumbers" class="weight600">Enter prior registration numbers.</label>
@@ -1811,6 +1848,57 @@
 
 
 
+        $("#distinctEvidence-img-upload").click(function() {
+
+
+            // static know value
+            var formID = "distinctEvidenceForm";
+            // static know value
+            var fileInputId = "distinctEvidence";
+            // static know value
+            var imageId = "distinctEvidence-img";
+            // static know value
+            var spinnerID = "distinctEvidence-img-upload-spinner"
+
+
+            $('#'+spinnerID).show();
+
+
+
+            var fileInput = document.getElementById(fileInputId);
+            var file = fileInput.files[0];
+            var formData = new FormData();
+            formData.append('file', file);
+            formData.append('appID', appInternalID);
+
+            // static known value
+            var url = "/distinctive/evidence/add";
+
+
+            // Get the selected files from the input.
+            // get form url
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: formData, // serializes the form's elements.
+                async: true,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(data)
+                {
+                    // we will return the the file url
+                    // call jquery and set it in the img div
+                    var imgPath = parsePathFromResponse(data);
+                    $('#'+imageId).attr("src", imgPath);
+                    $("#"+spinnerID).hide();
+                    //$("#cat-spec-img").fadeIn(500);
+                }
+            });
+
+
+            return false; // avoid to execute the actual submit of the form.
+        });
 
 
 

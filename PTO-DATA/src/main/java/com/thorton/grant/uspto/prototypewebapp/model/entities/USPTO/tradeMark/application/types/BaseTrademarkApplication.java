@@ -202,6 +202,9 @@ public class BaseTrademarkApplication  {
 
     private String concurentEvidenceDescription;
 
+
+
+
     private String GeoAreaMarkInCommerce;
 
     private String modeOfUse;
@@ -228,6 +231,9 @@ public class BaseTrademarkApplication  {
 
     private String timePeriodConcurrentUser;
 
+    // 2f claim fields
+
+    private String distinctiveEvidenceFilePath;
 
 
 
@@ -1377,6 +1383,14 @@ public class BaseTrademarkApplication  {
 
     public void setSupplementalRegister(boolean supplementalRegister) {
         this.supplementalRegister = supplementalRegister;
+    }
+
+    public String getDistinctiveEvidenceFilePath() {
+        return distinctiveEvidenceFilePath;
+    }
+
+    public void setDistinctiveEvidenceFilePath(String distinctiveEvidenceFilePath) {
+        this.distinctiveEvidenceFilePath = distinctiveEvidenceFilePath;
     }
 
     @Override

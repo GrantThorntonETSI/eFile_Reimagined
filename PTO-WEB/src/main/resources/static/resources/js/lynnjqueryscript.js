@@ -819,7 +819,7 @@ $(document).ready(function(){
 		}
 	});
 	//evidence
-	$('div#yesevidence').css('display','none');
+
 	$('div#yespriors').css('display','none');
 	$('input#inlineRadio037').change(function() {
 		if(this.checked == true){
