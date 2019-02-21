@@ -404,6 +404,17 @@ public class AdditionalInformationService extends  BaseRESTapiService {
 
         }
 
+
+        if(fieldName.equals("ai-claim-distinct-PR-number")){
+            // ptoUser.setState(param); // sets state code
+
+            baseTrademarkApplication.setDistinctClaimBasedPriorRegNumber(fieldValue);
+
+            appFieldReadable = "Distinct Claim Prior Registration Number";
+
+
+        }
+
         String responseMsg = appFieldReadable+" has been saved";
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);

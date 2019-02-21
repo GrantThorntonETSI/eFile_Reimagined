@@ -820,7 +820,6 @@ $(document).ready(function(){
 	});
 	//evidence
 
-	$('div#yespriors').css('display','none');
 	$('input#inlineRadio037').change(function() {
 		if(this.checked == true){
 			$('div#yesevidence').show( 'fast' );

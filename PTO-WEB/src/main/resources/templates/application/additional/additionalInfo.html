@@ -879,21 +879,39 @@
 
                                                                         </th:block>
 
-
-                                                                        <div class="row" id="yespriors">
-                                                                            <div class="col-xs-12 col-md-6 col-lg-8 form-group holdsaprior"><!--toggle 'yes' radio-->
-                                                                                <label for="prioregnumbers" class="weight600">Enter prior registration numbers.</label>
-                                                                                <input type="text" class="form-control" id="prioregnumbers">
-                                                                            </div>
-                                                                            <div class="appendaprior"></div>
-                                                                            <div class="col-xs-12 col-lg-4 btn-group" role="group" id="pluspriors" aria-label="Add or delete additional prior registration numbers">
-                                                                                <div class="row">
-                                                                                    <div class="col-xs-12">
-                                                                                        <button type="button" class="btn-sm btn-success add ctr" id="addprior">Add number</button>
+                                                                        <th:block th:if="${baseTrademarkApplication.isDistinctClaimBasedPriorReg() == true}">
+                                                                            <div class="row" id="yespriors" style="">
+                                                                                <div class="col-xs-12 col-md-6 col-lg-8 form-group holdsaprior"><!--toggle 'yes' radio-->
+                                                                                    <label for="prioregnumbers" class="weight600">Enter prior registration numbers.</label>
+                                                                                    <input type="text" class="form-control" id="prioregnumbers" th:text="${baseTrademarkApplication.getDistinctClaimBasedPriorRegNumber()}">
+                                                                                </div>
+                                                                                <div class="appendaprior"></div>
+                                                                                <div class="col-xs-12 col-lg-4 btn-group" role="group" id="pluspriors" aria-label="Add or delete additional prior registration numbers">
+                                                                                    <div class="row">
+                                                                                        <div class="col-xs-12">
+                                                                                            <button type="button" class="btn-sm btn-success add ctr" id="addprior">Add number</button>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
+                                                                        </th:block>
+                                                                        <th:block th:if="${baseTrademarkApplication.isDistinctClaimBasedPriorReg() == false}">
+                                                                            <div class="row" id="yespriors" style="display: none;">
+                                                                                <div class="col-xs-12 col-md-6 col-lg-8 form-group holdsaprior"><!--toggle 'yes' radio-->
+                                                                                    <label for="prioregnumbers" class="weight600">Enter prior registration numbers.</label>
+                                                                                    <input type="text" class="form-control" id="prioregnumbers">
+                                                                                </div>
+                                                                                <div class="appendaprior"></div>
+                                                                                <div class="col-xs-12 col-lg-4 btn-group" role="group" id="pluspriors" aria-label="Add or delete additional prior registration numbers">
+                                                                                    <div class="row">
+                                                                                        <div class="col-xs-12">
+                                                                                            <button type="button" class="btn-sm btn-success add ctr" id="addprior">Add number</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </th:block>
+
                                                                     </div>
                                                                 </div>
                                                             </th:block>
@@ -2491,6 +2509,12 @@
 
         saveAdditionalInfo("ai-claim-distinct-FIVE", "yes", appInternalID);
 
+    });
+
+    $('#prioregnumbers').focusout(function () {
+        var value = $(this).val();
+
+        saveAdditionalInfo("ai-claim-distinct-PR-number", value, appInternalID);
     });
 
     }); // end of document ready
