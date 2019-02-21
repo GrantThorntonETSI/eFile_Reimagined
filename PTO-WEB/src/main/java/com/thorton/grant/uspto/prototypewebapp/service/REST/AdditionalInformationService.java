@@ -350,6 +350,16 @@ public class AdditionalInformationService extends  BaseRESTapiService {
         }
 
 
+        if(fieldName.equals("ai-part-claim-desc")){
+            // ptoUser.setState(param); // sets state code
+
+            baseTrademarkApplication.setInPartClaimDescription(fieldValue);
+
+            appFieldReadable = "Claim of inherently distinctive Part Description";
+
+
+        }
+
 
         String responseMsg = appFieldReadable+" has been saved";
 

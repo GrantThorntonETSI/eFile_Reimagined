@@ -239,11 +239,12 @@ public class BaseTrademarkApplication  {
     private boolean inheritantlyDistinctiveSet;
 
     private boolean inheritantlyWhole;
-
-
     private boolean inheritantlyPart;
-
     private boolean wholePartSet;
+
+    private String inPartClaimDescription;
+
+
 
 
 
@@ -1451,6 +1452,14 @@ public class BaseTrademarkApplication  {
 
     public void setWholePartSet(boolean wholePartSet) {
         this.wholePartSet = wholePartSet;
+    }
+
+    public String getInPartClaimDescription() {
+        return inPartClaimDescription;
+    }
+
+    public void setInPartClaimDescription(String inPartClaimDescription) {
+        this.inPartClaimDescription = inPartClaimDescription;
     }
 
     @Override

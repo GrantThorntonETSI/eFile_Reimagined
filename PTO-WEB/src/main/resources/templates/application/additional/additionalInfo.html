@@ -723,7 +723,7 @@
                                                                             <div id="yespart" class="form-group" style=""><!--toggle 'yes' radio-->
                                                                                 <div class="form-group form-group-md">
                                                                                     <label for="partmark" class="weight600">Which part of the mark?</label>
-                                                                                    <textarea id="partmark" rows="1" class="form-control"></textarea>
+                                                                                    <textarea id="partmark" rows="1" class="form-control" th:text="${baseTrademarkApplication.getInPartClaimDescription()}"></textarea>
                                                                                 </div>
                                                                             </div>
 
@@ -2404,7 +2404,14 @@
     });
 
 
-}); // end of document ready
+    $('#partmark').focusout(function () {
+        var value = $(this).val();
+
+        saveAdditionalInfo("ai-part-claim-desc", value, appInternalID);
+    });
+
+
+    }); // end of document ready
 
     function saveUncommonType(field_name_prefix, field_value, appInternalID) {
         $.ajax({
