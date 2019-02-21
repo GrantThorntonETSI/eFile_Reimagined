@@ -161,6 +161,10 @@
     var host = host_name+":"+host_port;
     var breadCrumbStatus = /*[[${breadCrumbStatus}]]*/ 'User Name';
 
+    var markType = /*[[${markType}]]*/ 'User Name';
+
+    //alert(markType);
+
 
     /*]]>*/
 </script>
@@ -170,6 +174,15 @@
 <script>
 
     var nextLinkURL = "../../mark/designWithTextDetails/?trademarkID="+appInternalID;
+
+    if(markType == 'Trademark Details - Stylized'){
+        nextLinkURL = "../../mark/designStylizedDetails/?trademarkID="+appInternalID;
+    }
+    if(markType == 'Trademark Details - Design Only' ){
+        nextLinkURL = "../../mark/designOnlyDetails/?trademarkID="+appInternalID;
+    }
+
+
     var prevLinkURL = "../../application/MarkDetails/?trademarkID="+appInternalID;
     ////////////////////////////////////////////////////////////////////////////////////
     // bred crumb links
