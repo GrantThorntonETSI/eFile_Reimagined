@@ -232,7 +232,7 @@ public class BaseTrademarkApplication  {
     private String timePeriodConcurrentUser;
 
     // 2f claim fields
-    private String distinctiveEvidenceFilePath;
+
     private  boolean claimDistinctiveness;
 
     private boolean inheritantlyDistinctive;
@@ -243,6 +243,18 @@ public class BaseTrademarkApplication  {
     private boolean wholePartSet;
 
     private String inPartClaimDescription;
+
+    private boolean distinctClaimBasedEvidence;
+    private String distinctiveEvidenceFilePath;
+
+    private boolean distinctClaimBasedPriorReg;
+    private String distinctClaimBasedPriorRegNumber;
+
+
+    private boolean distinctClaimBasedFiveYOU;
+
+
+
 
 
 
@@ -1460,6 +1472,38 @@ public class BaseTrademarkApplication  {
 
     public void setInPartClaimDescription(String inPartClaimDescription) {
         this.inPartClaimDescription = inPartClaimDescription;
+    }
+
+    public boolean isDistinctClaimBasedEvidence() {
+        return distinctClaimBasedEvidence;
+    }
+
+    public void setDistinctClaimBasedEvidence(boolean distinctClaimBasedEvidence) {
+        this.distinctClaimBasedEvidence = distinctClaimBasedEvidence;
+    }
+
+    public boolean isDistinctClaimBasedPriorReg() {
+        return distinctClaimBasedPriorReg;
+    }
+
+    public void setDistinctClaimBasedPriorReg(boolean distinctClaimBasedPriorReg) {
+        this.distinctClaimBasedPriorReg = distinctClaimBasedPriorReg;
+    }
+
+    public String getDistinctClaimBasedPriorRegNumber() {
+        return distinctClaimBasedPriorRegNumber;
+    }
+
+    public void setDistinctClaimBasedPriorRegNumber(String distinctClaimBasedPriorRegNumber) {
+        this.distinctClaimBasedPriorRegNumber = distinctClaimBasedPriorRegNumber;
+    }
+
+    public boolean isDistinctClaimBasedFiveYOU() {
+        return distinctClaimBasedFiveYOU;
+    }
+
+    public void setDistinctClaimBasedFiveYOU(boolean distinctClaimBasedFiveYOU) {
+        this.distinctClaimBasedFiveYOU = distinctClaimBasedFiveYOU;
     }
 
     @Override

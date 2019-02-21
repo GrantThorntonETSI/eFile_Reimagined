@@ -360,6 +360,49 @@ public class AdditionalInformationService extends  BaseRESTapiService {
 
         }
 
+        if(fieldName.equals("ai-claim-distinct-evidence")){
+            // ptoUser.setState(param); // sets state code
+
+            if(fieldValue.equals("yes")){
+
+               baseTrademarkApplication.setDistinctClaimBasedEvidence(true);
+               baseTrademarkApplication.setDistinctClaimBasedPriorReg(false);
+              baseTrademarkApplication.setDistinctClaimBasedFiveYOU(false);
+            }
+
+            appFieldReadable = "Distinctive Claim Base";
+
+
+        }
+        if(fieldName.equals("ai-claim-distinct-PR")){
+            // ptoUser.setState(param); // sets state code
+
+            if(fieldValue.equals("yes")){
+
+                baseTrademarkApplication.setDistinctClaimBasedEvidence(false);
+                baseTrademarkApplication.setDistinctClaimBasedPriorReg(true);
+                baseTrademarkApplication.setDistinctClaimBasedFiveYOU(false);
+            }
+
+            appFieldReadable = "Distinctive Claim Base";
+
+
+        }
+
+        if(fieldName.equals("ai-claim-distinct-FIVE")){
+            // ptoUser.setState(param); // sets state code
+
+            if(fieldValue.equals("yes")){
+
+                baseTrademarkApplication.setDistinctClaimBasedEvidence(false);
+                baseTrademarkApplication.setDistinctClaimBasedPriorReg(false);
+                baseTrademarkApplication.setDistinctClaimBasedFiveYOU(true);
+            }
+
+            appFieldReadable = "Distinctive Claim Base";
+
+
+        }
 
         String responseMsg = appFieldReadable+" has been saved";
 

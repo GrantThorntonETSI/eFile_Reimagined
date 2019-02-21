@@ -746,15 +746,42 @@
                                                                                     <p>What is your claim based on?</p>
                                                                                     <div class="wide">
                                                                                         <div class="row">
-                                                                                            <div class="col-xs-4 col-md-3 col-lg-3 form-group form-group-md">
-                                                                                                <label for="inlineRadio037" class="radio-inline radiocontainer">Evidence<input type="radio" name="wholepartradiosub" id="inlineRadio037" value="evidence" tabindex="0"><span class="checkmark"></span></label>
-                                                                                            </div>
-                                                                                            <div class="col-xs-8 col-md-4 col-lg-4 form-group form-group-md">
-                                                                                                <label for="inlineRadio038" class="radio-inline radiocontainer">Prior Registrations<input type="radio" name="wholepartradiosub" id="inlineRadio038" value="prioregistrations" tabindex="0"><span class="checkmark"></span></label>
-                                                                                            </div>
-                                                                                            <div class="col-xs-12 col-md-5 col-lg-5 form-group form-group-md">
-                                                                                                <label for="inlineRadio039" class="radio-inline radiocontainer">Five or more years of use<input type="radio" name="wholepartradiosub" id="inlineRadio039" value="fivepluyears" tabindex="0"><span class="checkmark"></span></label>
-                                                                                            </div>
+                                                                                            <th:block th:if="${baseTrademarkApplication.isDistinctClaimBasedEvidence() == true}">
+                                                                                                <div class="col-xs-4 col-md-3 col-lg-3 form-group form-group-md">
+                                                                                                    <label for="inlineRadio037" class="radio-inline radiocontainer">Evidence<input type="radio" name="wholepartradiosub" id="inlineRadio037" value="evidence" tabindex="0" checked><span class="checkmark"></span></label>
+                                                                                                </div>
+                                                                                            </th:block>
+                                                                                            <th:block th:if="${baseTrademarkApplication.isDistinctClaimBasedEvidence() == false}">
+                                                                                                <div class="col-xs-4 col-md-3 col-lg-3 form-group form-group-md">
+                                                                                                    <label for="inlineRadio037" class="radio-inline radiocontainer">Evidence<input type="radio" name="wholepartradiosub" id="inlineRadio037" value="evidence" tabindex="0"><span class="checkmark"></span></label>
+                                                                                                </div>
+                                                                                            </th:block>
+
+
+                                                                                            <th:block th:if="${baseTrademarkApplication.isDistinctClaimBasedPriorReg()== true}">
+                                                                                                <div class="col-xs-8 col-md-4 col-lg-4 form-group form-group-md">
+                                                                                                    <label for="inlineRadio038" class="radio-inline radiocontainer">Prior Registrations<input type="radio" name="wholepartradiosub" id="inlineRadio038" value="prioregistrations" tabindex="0" checked><span class="checkmark"></span></label>
+                                                                                                </div>
+                                                                                            </th:block>
+
+                                                                                            <th:block th:if="${baseTrademarkApplication.isDistinctClaimBasedPriorReg()== false}">
+                                                                                                <div class="col-xs-8 col-md-4 col-lg-4 form-group form-group-md">
+                                                                                                    <label for="inlineRadio038" class="radio-inline radiocontainer">Prior Registrations<input type="radio" name="wholepartradiosub" id="inlineRadio038" value="prioregistrations" tabindex="0"><span class="checkmark"></span></label>
+                                                                                                </div>
+                                                                                            </th:block>
+
+                                                                                            <th:block th:if="${baseTrademarkApplication.isDistinctClaimBasedFiveYOU()== true}">
+                                                                                                <div class="col-xs-12 col-md-5 col-lg-5 form-group form-group-md">
+                                                                                                    <label for="inlineRadio039" class="radio-inline radiocontainer">Five or more years of use<input type="radio" name="wholepartradiosub" id="inlineRadio039" value="fivepluyears" tabindex="0" checked><span class="checkmark"></span></label>
+                                                                                                </div>
+                                                                                            </th:block>
+
+                                                                                            <th:block th:if="${baseTrademarkApplication.isDistinctClaimBasedFiveYOU()== false}">
+                                                                                                <div class="col-xs-12 col-md-5 col-lg-5 form-group form-group-md">
+                                                                                                    <label for="inlineRadio039" class="radio-inline radiocontainer">Five or more years of use<input type="radio" name="wholepartradiosub" id="inlineRadio039" value="fivepluyears" tabindex="0"><span class="checkmark"></span></label>
+                                                                                                </div>
+                                                                                            </th:block>
+
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -782,38 +809,76 @@
                                                                             </div>
                                                                         </th:block>
 
+                                                                        <th:block th:if="${baseTrademarkApplication.isDistinctClaimBasedEvidence() == true}">
+                                                                            <div id="yesevidence" class="form-group" style=""><!--toggle 'yes' radio-->
 
-                                                                        <div id="yesevidence" class="form-group" style="display: none;"><!--toggle 'yes' radio-->
-
-                                                                            <form method="post"  target="hidden-iframe"  id="distinctEvidenceForm"  action="/distinctive/evidence/add"  enctype="multipart/form-data"  aria-labelledby="title">
-                                                                                <p class="weight600" role="heading" aria-level="3">Upload evidence.</p>
-                                                                                <label class="small upload-drop-zone" for="distinctEvidence"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload a File</label>
-                                                                                <input type="file" id="distinctEvidence" name="file-evidence" class="form-control"  style="display: none">
-                                                                            </form>
+                                                                                <form method="post"  target="hidden-iframe"  id="distinctEvidenceForm"  action="/distinctive/evidence/add"  enctype="multipart/form-data"  aria-labelledby="title">
+                                                                                    <p class="weight600" role="heading" aria-level="3">Upload evidence.</p>
+                                                                                    <label class="small upload-drop-zone" for="distinctEvidence"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload a File</label>
+                                                                                    <input type="file" id="distinctEvidence" name="file-evidence" class="form-control"  style="display: none">
+                                                                                </form>
 
 
-                                                                            <div class="col-xs-12">
-                                                                                <div class="center">
-                                                                                    <div class="speciman-image" id="distinctEvidence-img-container" style="">
+                                                                                <div class="col-xs-12">
+                                                                                    <div class="center">
+                                                                                        <div class="speciman-image" id="distinctEvidence-img-container" style="">
 
-                                                                                        <img id="distinctEvidence-img" alt="" th:src="${baseTrademarkApplication.getDistinctiveEvidenceFilePath()}" class="img-responsive"/>
+                                                                                            <img id="distinctEvidence-img" alt="" th:src="${baseTrademarkApplication.getDistinctiveEvidenceFilePath()}" class="img-responsive"/>
+                                                                                        </div>
+
+
                                                                                     </div>
 
+                                                                                </div>
+
+                                                                                <div class="col-xs-12">
+                                                                                    <div class="center">
+
+                                                                                        <div type="button"  id="distinctEvidence-img-upload" class="btn btn-sm" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload File</b><span><i class="fa fa-spinner fa-spin" id="distinctEvidence-img-upload-spinner" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                                                                    </div>
 
                                                                                 </div>
 
-                                                                            </div>
 
-                                                                            <div class="col-xs-12">
-                                                                                <div class="center">
+                                                                            </div><!-- Drop Zone -->
 
-                                                                                    <div type="button"  id="distinctEvidence-img-upload" class="btn btn-sm" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload File</b><span><i class="fa fa-spinner fa-spin" id="distinctEvidence-img-upload-spinner" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                                                        </th:block>
+
+                                                                        <th:block th:if="${baseTrademarkApplication.isDistinctClaimBasedEvidence() == false}">
+                                                                            <div id="yesevidence" class="form-group" style="display: none;"><!--toggle 'yes' radio-->
+
+                                                                                <form method="post"  target="hidden-iframe"  id="distinctEvidenceForm"  action="/distinctive/evidence/add"  enctype="multipart/form-data"  aria-labelledby="title">
+                                                                                    <p class="weight600" role="heading" aria-level="3">Upload evidence.</p>
+                                                                                    <label class="small upload-drop-zone" for="distinctEvidence"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload a File</label>
+                                                                                    <input type="file" id="distinctEvidence" name="file-evidence" class="form-control"  style="display: none">
+                                                                                </form>
+
+
+                                                                                <div class="col-xs-12">
+                                                                                    <div class="center">
+                                                                                        <div class="speciman-image" id="distinctEvidence-img-container" style="">
+
+                                                                                            <img id="distinctEvidence-img" alt="" th:src="${baseTrademarkApplication.getDistinctiveEvidenceFilePath()}" class="img-responsive"/>
+                                                                                        </div>
+
+
+                                                                                    </div>
+
                                                                                 </div>
 
-                                                                            </div>
+                                                                                <div class="col-xs-12">
+                                                                                    <div class="center">
+
+                                                                                        <div type="button"  id="distinctEvidence-img-upload" class="btn btn-sm" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload File</b><span><i class="fa fa-spinner fa-spin" id="distinctEvidence-img-upload-spinner" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                                                                    </div>
+
+                                                                                </div>
 
 
-                                                                        </div><!-- Drop Zone -->
+                                                                            </div><!-- Drop Zone -->
+
+                                                                        </th:block>
+
 
                                                                         <div class="row" id="yespriors">
                                                                             <div class="col-xs-12 col-md-6 col-lg-8 form-group holdsaprior"><!--toggle 'yes' radio-->
@@ -2410,6 +2475,23 @@
         saveAdditionalInfo("ai-part-claim-desc", value, appInternalID);
     });
 
+    $('#inlineRadio037').click(function () {
+
+        saveAdditionalInfo("ai-claim-distinct-evidence", "yes", appInternalID);
+
+    });
+
+    $('#inlineRadio038').click(function () {
+
+        saveAdditionalInfo("ai-claim-distinct-PR", "yes", appInternalID);
+
+    });
+
+    $('#inlineRadio039').click(function () {
+
+        saveAdditionalInfo("ai-claim-distinct-FIVE", "yes", appInternalID);
+
+    });
 
     }); // end of document ready
 
