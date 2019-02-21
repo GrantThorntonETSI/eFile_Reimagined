@@ -354,7 +354,7 @@ public class ApplicationFlowController {
             // baseTrademarkApplication.setLastViewModel("application/AttorneyStart");
 
             model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
-            model.addAttribute("lawyerPool", baseTrademarkApplication.getAvailableLawyers());
+            model.addAttribute("lawyerPool", baseTrademarkApplication.getAvailableLawyersExcludePrimary());
 
 
         }

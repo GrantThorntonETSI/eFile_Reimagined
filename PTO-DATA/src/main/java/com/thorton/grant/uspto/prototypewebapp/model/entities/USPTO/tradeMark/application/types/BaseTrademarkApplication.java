@@ -350,6 +350,24 @@ public class BaseTrademarkApplication  {
         return availableLawyers;
     }
 
+
+
+    public Set<Lawyer> getAvailableLawyersExcludePrimary() {
+
+      Set<Lawyer> lawyerPool = new HashSet<>();
+        Lawyer lawyer = null;
+        for(Iterator<Lawyer> iter = availableLawyers.iterator(); iter.hasNext(); ) {
+            Lawyer current = iter.next();
+
+            if(current.isPrimary() == false){
+                lawyerPool.add(current);
+            }
+        }
+
+
+        return lawyerPool;
+    }
+
     public void setAvailableLawyers(@Nullable Set<Lawyer> availableLawyers) {
 
         this.availableLawyers = availableLawyers;
