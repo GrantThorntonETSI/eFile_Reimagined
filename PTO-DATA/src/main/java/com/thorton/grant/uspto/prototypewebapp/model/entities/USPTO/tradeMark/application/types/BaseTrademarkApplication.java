@@ -235,6 +235,15 @@ public class BaseTrademarkApplication  {
     private String distinctiveEvidenceFilePath;
     private  boolean claimDistinctiveness;
 
+    private boolean inheritantlyDistinctive;
+    private boolean inheritantlyDistinctiveSet;
+
+    private boolean inheritantlyWhole;
+    private boolean inheritantlyWholeSet;
+
+    private boolean inheritantlyPart;
+    private boolean inheritantlyPartSet;
+
 
 
 
@@ -1400,6 +1409,54 @@ public class BaseTrademarkApplication  {
 
     public void setClaimDistinctiveness(boolean claimDistinctiveness) {
         this.claimDistinctiveness = claimDistinctiveness;
+    }
+
+    public boolean isInheritantlyDistinctive() {
+        return inheritantlyDistinctive;
+    }
+
+    public void setInheritantlyDistinctive(boolean inheritantlyDistinctive) {
+        this.inheritantlyDistinctive = inheritantlyDistinctive;
+    }
+
+    public boolean isInheritantlyDistinctiveSet() {
+        return inheritantlyDistinctiveSet;
+    }
+
+    public void setInheritantlyDistinctiveSet(boolean inheritantlyDistinctiveSet) {
+        this.inheritantlyDistinctiveSet = inheritantlyDistinctiveSet;
+    }
+
+    public boolean isInheritantlyWhole() {
+        return inheritantlyWhole;
+    }
+
+    public void setInheritantlyWhole(boolean inheritantlyWhole) {
+        this.inheritantlyWhole = inheritantlyWhole;
+    }
+
+    public boolean isInheritantlyWholeSet() {
+        return inheritantlyWholeSet;
+    }
+
+    public void setInheritantlyWholeSet(boolean inheritantlyWholeSet) {
+        this.inheritantlyWholeSet = inheritantlyWholeSet;
+    }
+
+    public boolean isInheritantlyPart() {
+        return inheritantlyPart;
+    }
+
+    public void setInheritantlyPart(boolean inheritantlyPart) {
+        this.inheritantlyPart = inheritantlyPart;
+    }
+
+    public boolean isInheritantlyPartSet() {
+        return inheritantlyPartSet;
+    }
+
+    public void setInheritantlyPartSet(boolean inheritantlyPartSet) {
+        this.inheritantlyPartSet = inheritantlyPartSet;
     }
 
     @Override

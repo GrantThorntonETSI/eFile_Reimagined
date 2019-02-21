@@ -740,7 +740,7 @@ $(document).ready(function(){
 	//END additional info checkboxes
 
 	//start distinctive options
-	$('div#yesdistict').css('display','none');
+
 	$('input#inlineRadio033').change(function() {
 		if(this.checked == true){
 			$('div#yesdistict').show( 'fast' );
