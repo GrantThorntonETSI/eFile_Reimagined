@@ -710,7 +710,7 @@ $(document).ready(function(){
 			$('#tr').hide( 'fast' );
 		}
 	});
-	$('div#cad').css('display','none');
+
 	$('input#distinct').change(function() {
 		if(this.checked == true){
 			$('#cad').show( 'fast' );

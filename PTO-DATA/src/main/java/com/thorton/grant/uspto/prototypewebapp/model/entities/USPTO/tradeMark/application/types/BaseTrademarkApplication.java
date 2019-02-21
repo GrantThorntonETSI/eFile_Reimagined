@@ -232,12 +232,13 @@ public class BaseTrademarkApplication  {
     private String timePeriodConcurrentUser;
 
     // 2f claim fields
-
     private String distinctiveEvidenceFilePath;
+    private  boolean claimDistinctiveness;
 
 
 
 
+    // type of register fields
     private boolean principalRegister = true;
 
     private boolean supplementalRegister = false;
@@ -1391,6 +1392,14 @@ public class BaseTrademarkApplication  {
 
     public void setDistinctiveEvidenceFilePath(String distinctiveEvidenceFilePath) {
         this.distinctiveEvidenceFilePath = distinctiveEvidenceFilePath;
+    }
+
+    public boolean isClaimDistinctiveness() {
+        return claimDistinctiveness;
+    }
+
+    public void setClaimDistinctiveness(boolean claimDistinctiveness) {
+        this.claimDistinctiveness = claimDistinctiveness;
     }
 
     @Override

@@ -288,13 +288,27 @@
 
                                                                 </th:block>
 
+                                                                <th:block th:if="${baseTrademarkApplication.isClaimDistinctiveness() == true}">
+                                                                    <div class="col-xs-12 col-md-7">
+                                                                        <input class="form-check-input checkmark" type="checkbox" value="2f" tabindex="0" aria-labelledby="distinctivenesss" id="distinct" checked>
+                                                                        <label class="form-check-label form-check" for="distinct" id="claimdistinct"><span class="radio notspecial" id="distinctivenesss">2(f) Claim of Acquired Distinctiveness <a href="#" data-toggle="tooltip" title="A section 2(f) claim of Acquired Distinctiveness is &#8220;proof&#8221; that the Mark has become distinctive as applied to the goods or services in commerce. Distinctive in this instance means the Mark has acquired a special significance so that to the public, it is apparent the product or service is produced or provided by a particular manufacturer. See TMEP &#167;1212 for more information." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></span></label>
+                                                                    </div>
+
+                                                                </th:block>
+
+
+                                                                <th:block th:if="${baseTrademarkApplication.isClaimDistinctiveness() == false}">
+                                                                    <div class="col-xs-12 col-md-7">
+                                                                        <input class="form-check-input checkmark" type="checkbox" value="2f" tabindex="0" aria-labelledby="distinctivenesss" id="distinct">
+                                                                        <label class="form-check-label form-check" for="distinct" id="claimdistinct"><span class="radio notspecial" id="distinctivenesss">2(f) Claim of Acquired Distinctiveness <a href="#" data-toggle="tooltip" title="A section 2(f) claim of Acquired Distinctiveness is &#8220;proof&#8221; that the Mark has become distinctive as applied to the goods or services in commerce. Distinctive in this instance means the Mark has acquired a special significance so that to the public, it is apparent the product or service is produced or provided by a particular manufacturer. See TMEP &#167;1212 for more information." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></span></label>
+                                                                    </div>
+
+                                                                </th:block>
 
 
 
-                                                                <div class="col-xs-12 col-md-7">
-                                                                    <input class="form-check-input checkmark" type="checkbox" value="2f" tabindex="0" aria-labelledby="distinctivenesss" id="distinct">
-                                                                    <label class="form-check-label form-check" for="distinct" id="claimdistinct"><span class="radio notspecial" id="distinctivenesss">2(f) Claim of Acquired Distinctiveness <a href="#" data-toggle="tooltip" title="A section 2(f) claim of Acquired Distinctiveness is &#8220;proof&#8221; that the Mark has become distinctive as applied to the goods or services in commerce. Distinctive in this instance means the Mark has acquired a special significance so that to the public, it is apparent the product or service is produced or provided by a particular manufacturer. See TMEP &#167;1212 for more information." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></span></label>
-                                                                </div>
+
+
                                                                 <div class="col-xs-12 col-md-5">
                                                                     <input class="form-check-input checkmark" type="checkbox" value="anotherform" tabindex="0" aria-labelledby="useanother" id="useanotherform">
                                                                     <label class="form-check-label form-check" for="useanotherform" id="another"><span class="radio notspecial" id="useanother">Use in Another Form <a href="#" data-toggle="tooltip" title="Use in Another form allows you to make a claim to separable elements or (some part) of the Mark. Make this claim only if the Mark was used in a different form other than that sought to be registered. The dates will appear in the record for general information." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></span></label>
@@ -461,118 +475,230 @@
 
 
 
+                                    <th:block th:if="${baseTrademarkApplication.isClaimDistinctiveness() == false}">
+                                        <div class="row" id="cad" style="display: none;">
+                                            <div class="col-sm-12">
+                                                <section aria-label="distinctiveness">
+                                                    <div class="card-text">
+                                                        <div role="heading" aria-level="2">
+                                                            <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#distinctiveness" aria-controls="distinctiveness" aria-expanded="false" id="distinctivenessbtn"><span class="glyphicon glyphicon-triangle-right"></span><span id="toggleglyph" class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> 2(f) Claim of Acquired Distinctiveness</button>
+                                                        </div>
+                                                    </div>
+                                                    <div id="distinctiveness" class="collapse Accordion-panel" role="region" aria-labelledby="distinctivenessbtn" style="margin-left: 11px; margin-right:11px;">
+                                                        <div class="Accordion">
+                                                            <p>A mark that is widely used by others is not distinctive. A trademark on the Principal Register must be distinctive enough to unambiguously identify the mark owner as the source of the goods or services provided under the mark. If a mark is not inherently distinctive because the wording is descriptive, geographically descriptive, or a surname, the mark owner must show that the mark has acquired distinctiveness through evidence, ownership of a same/similar mark on the Principal Register, or five years&#8217; use.</p>
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin-left: 11px; margin-right:11px;">
+                                                        <p id="disclm" >Are you claiming that your mark is inherently distinctive?</p>                                                            <div role="radiogroup" aria-labelledby="disclm" class="form-group form-group-md">
+                                                        <label for="inlineRadio033" class="radio-inline radiocontainer">Yes<input type="radio" name="distinctradio" id="inlineRadio033" value="yes" tabindex="0"><span class="checkmark"></span></label>
+                                                        <label for="inlineRadio034" class="radio-inline radiocontainer">No<input type="radio" name="distinctradio" id="inlineRadio034" value="no" tabindex="0"><span class="checkmark"></span></label>
+                                                    </div><!--END radiogroup-->
 
-                                    <div class="row" id="cad">
-                                        <div class="col-sm-12">
-                                            <section aria-label="distinctiveness">
-                                                <div class="card-text">
-                                                    <div role="heading" aria-level="2">
-                                                        <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#distinctiveness" aria-controls="distinctiveness" aria-expanded="false" id="distinctivenessbtn"><span class="glyphicon glyphicon-triangle-right"></span><span id="toggleglyph" class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> 2(f) Claim of Acquired Distinctiveness</button>
-                                                    </div>
-                                                </div>
-                                                <div id="distinctiveness" class="collapse Accordion-panel" role="region" aria-labelledby="distinctivenessbtn" style="margin-left: 11px; margin-right:11px;">
-                                                    <div class="Accordion">
-                                                        <p>A mark that is widely used by others is not distinctive. A trademark on the Principal Register must be distinctive enough to unambiguously identify the mark owner as the source of the goods or services provided under the mark. If a mark is not inherently distinctive because the wording is descriptive, geographically descriptive, or a surname, the mark owner must show that the mark has acquired distinctiveness through evidence, ownership of a same/similar mark on the Principal Register, or five years&#8217; use.</p>
-                                                    </div>
-                                                </div>
-                                                <div style="margin-left: 11px; margin-right:11px;">
-                                                    <p id="disclm" >Are you claiming that your mark is inherently distinctive?</p>                                                            <div role="radiogroup" aria-labelledby="disclm" class="form-group form-group-md">
-                                                    <label for="inlineRadio033" class="radio-inline radiocontainer">Yes<input type="radio" name="distinctradio" id="inlineRadio033" value="yes" tabindex="0"><span class="checkmark"></span></label>
-                                                    <label for="inlineRadio034" class="radio-inline radiocontainer">No<input type="radio" name="distinctradio" id="inlineRadio034" value="no" tabindex="0"><span class="checkmark"></span></label>
-                                                </div><!--END radiogroup-->
-                                                    <div id="yesdistict" class="form-group" ><!--toggle 'yes' radio-->
-                                                        <div class="form-group form-group-md">
-                                                            <p>Is this for the whole mark, or part of the mark?</p>
-                                                            <div role="radiogroup" aria-labelledby="disclm" class="form-group form-group-md">
-                                                                <label for="inlineRadio035" class="radio-inline radiocontainer">Whole<input type="radio" name="wholepartradio" id="inlineRadio035" value="whole" tabindex="0"><span class="checkmark"></span></label>
-                                                                <label for="inlineRadio036" class="radio-inline radiocontainer">In part<input type="radio" name="wholepartradio" id="inlineRadio036" value="inpart" tabindex="0"><span class="checkmark"></span></label>
-                                                            </div><!--END radiogroup-->
-                                                            <div id="yespart" class="form-group"><!--toggle 'yes' radio-->
-                                                                <div class="form-group form-group-md">
-                                                                    <label for="partmark" class="weight600">Which part of the mark?</label>
-                                                                    <textarea id="partmark" rows="1" class="form-control"></textarea>
+
+
+                                                        <div id="yesdistict" class="form-group" ><!--toggle 'yes' radio-->
+                                                            <div class="form-group form-group-md">
+                                                                <p>Is this for the whole mark, or part of the mark?</p>
+                                                                <div role="radiogroup" aria-labelledby="disclm" class="form-group form-group-md">
+                                                                    <label for="inlineRadio035" class="radio-inline radiocontainer">Whole<input type="radio" name="wholepartradio" id="inlineRadio035" value="whole" tabindex="0"><span class="checkmark"></span></label>
+                                                                    <label for="inlineRadio036" class="radio-inline radiocontainer">In part<input type="radio" name="wholepartradio" id="inlineRadio036" value="inpart" tabindex="0"><span class="checkmark"></span></label>
+                                                                </div><!--END radiogroup-->
+                                                                <div id="yespart" class="form-group"><!--toggle 'yes' radio-->
+                                                                    <div class="form-group form-group-md">
+                                                                        <label for="partmark" class="weight600">Which part of the mark?</label>
+                                                                        <textarea id="partmark" rows="1" class="form-control"></textarea>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div id="yeswhole" class="form-group"><!--toggle 'yes' radio-->
-                                                                <div class="form-group form-group-md">
-                                                                    <p>What is your claim based on?</p>
-                                                                    <div class="wide">
+                                                                <div id="yeswhole" class="form-group"><!--toggle 'yes' radio-->
+                                                                    <div class="form-group form-group-md">
+                                                                        <p>What is your claim based on?</p>
+                                                                        <div class="wide">
+                                                                            <div class="row">
+                                                                                <div class="col-xs-4 col-md-3 col-lg-3 form-group form-group-md">
+                                                                                    <label for="inlineRadio037" class="radio-inline radiocontainer">Evidence<input type="radio" name="wholepartradio" id="inlineRadio037" value="evidence" tabindex="0"><span class="checkmark"></span></label>
+                                                                                </div>
+                                                                                <div class="col-xs-8 col-md-4 col-lg-4 form-group form-group-md">
+                                                                                    <label for="inlineRadio038" class="radio-inline radiocontainer">Prior Registrations<input type="radio" name="wholepartradio" id="inlineRadio038" value="prioregistrations" tabindex="0"><span class="checkmark"></span></label>
+                                                                                </div>
+                                                                                <div class="col-xs-12 col-md-5 col-lg-5 form-group form-group-md">
+                                                                                    <label for="inlineRadio039" class="radio-inline radiocontainer">Five or more years of use<input type="radio" name="wholepartradio" id="inlineRadio039" value="fivepluyears" tabindex="0"><span class="checkmark"></span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div id="yesevidence" class="form-group" style="display: none;"><!--toggle 'yes' radio-->
+
+                                                                    <form method="post"  target="hidden-iframe"  id="distinctEvidenceForm"  action="/distinctive/evidence/add"  enctype="multipart/form-data"  aria-labelledby="title">
+                                                                        <p class="weight600" role="heading" aria-level="3">Upload evidence.</p>
+                                                                        <label class="small upload-drop-zone" for="distinctEvidence"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload a File</label>
+                                                                        <input type="file" id="distinctEvidence" name="file-evidence" class="form-control"  style="display: none">
+                                                                    </form>
+
+
+                                                                    <div class="col-xs-12">
+                                                                        <div class="center">
+                                                                            <div class="speciman-image" id="distinctEvidence-img-container" style="">
+
+                                                                                <img id="distinctEvidence-img" alt="" th:src="${baseTrademarkApplication.getDistinctiveEvidenceFilePath()}" class="img-responsive"/>
+                                                                            </div>
+
+
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="col-xs-12">
+                                                                        <div class="center">
+
+                                                                            <div type="button"  id="distinctEvidence-img-upload" class="btn btn-sm" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload File</b><span><i class="fa fa-spinner fa-spin" id="distinctEvidence-img-upload-spinner" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                                                        </div>
+
+                                                                    </div>
+
+
+                                                                </div><!-- Drop Zone -->
+
+                                                                <div class="row" id="yespriors">
+                                                                    <div class="col-xs-12 col-md-6 col-lg-8 form-group holdsaprior"><!--toggle 'yes' radio-->
+                                                                        <label for="prioregnumbers" class="weight600">Enter prior registration numbers.</label>
+                                                                        <input type="text" class="form-control" id="prioregnumbers">
+                                                                    </div>
+                                                                    <div class="appendaprior"></div>
+                                                                    <div class="col-xs-12 col-lg-4 btn-group" role="group" id="pluspriors" aria-label="Add or delete additional prior registration numbers">
                                                                         <div class="row">
-                                                                            <div class="col-xs-4 col-md-3 col-lg-3 form-group form-group-md">
-                                                                                <label for="inlineRadio037" class="radio-inline radiocontainer">Evidence<input type="radio" name="wholepartradio" id="inlineRadio037" value="evidence" tabindex="0"><span class="checkmark"></span></label>
+                                                                            <div class="col-xs-12">
+                                                                                <button type="button" class="btn-sm btn-success add ctr" id="addprior">Add number</button>
                                                                             </div>
-                                                                            <div class="col-xs-8 col-md-4 col-lg-4 form-group form-group-md">
-                                                                                <label for="inlineRadio038" class="radio-inline radiocontainer">Prior Registrations<input type="radio" name="wholepartradio" id="inlineRadio038" value="prioregistrations" tabindex="0"><span class="checkmark"></span></label>
-                                                                            </div>
-                                                                            <div class="col-xs-12 col-md-5 col-lg-5 form-group form-group-md">
-                                                                                <label for="inlineRadio039" class="radio-inline radiocontainer">Five or more years of use<input type="radio" name="wholepartradio" id="inlineRadio039" value="fivepluyears" tabindex="0"><span class="checkmark"></span></label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-
-
-
-
-                                                            <div id="yesevidence" class="form-group" style="display: none;"><!--toggle 'yes' radio-->
-
-                                                                <form method="post"  target="hidden-iframe"  id="distinctEvidenceForm"  action="/distinctive/evidence/add"  enctype="multipart/form-data"  aria-labelledby="title">
-                                                                    <p class="weight600" role="heading" aria-level="3">Upload evidence.</p>
-                                                                    <label class="small upload-drop-zone" for="distinctEvidence"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload a File</label>
-                                                                    <input type="file" id="distinctEvidence" name="file-evidence" class="form-control"  style="display: none">
-                                                                </form>
-
-
-                                                                <div class="col-xs-12">
-                                                                    <div class="center">
-                                                                        <div class="speciman-image" id="distinctEvidence-img-container" style="">
-
-                                                                            <img id="distinctEvidence-img" alt="" th:src="${baseTrademarkApplication.getDistinctiveEvidenceFilePath()}" class="img-responsive"/>
-                                                                        </div>
-
-
-                                                                    </div>
-
-                                                                </div>
-
-                                                                <div class="col-xs-12">
-                                                                    <div class="center">
-
-                                                                        <div type="button"  id="distinctEvidence-img-upload" class="btn btn-sm" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload File</b><span><i class="fa fa-spinner fa-spin" id="distinctEvidence-img-upload-spinner" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
-                                                                    </div>
-
-                                                                </div>
-
-
-                                                            </div><!-- Drop Zone -->
-
-
-
-
-
-
-                                                            <div class="row" id="yespriors">
-                                                                <div class="col-xs-12 col-md-6 col-lg-8 form-group holdsaprior"><!--toggle 'yes' radio-->
-                                                                    <label for="prioregnumbers" class="weight600">Enter prior registration numbers.</label>
-                                                                    <input type="text" class="form-control" id="prioregnumbers">
-                                                                </div>
-                                                                <div class="appendaprior"></div>
-                                                                <div class="col-xs-12 col-lg-4 btn-group" role="group" id="pluspriors" aria-label="Add or delete additional prior registration numbers">
-                                                                    <div class="row">
-                                                                        <div class="col-xs-12">
-                                                                            <button type="button" class="btn-sm btn-success add ctr" id="addprior">Add number</button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </section>
-                                        </div>
-                                    </div><!--END distinctiveness-->
+                                                </section>
+                                            </div>
+                                        </div><!--END distinctiveness-->
+                                    </th:block>
+
+                                    <th:block th:if="${baseTrademarkApplication.isClaimDistinctiveness() == true}">
+                                        <div class="row" id="cad" style="">
+                                            <div class="col-sm-12">
+                                                <section aria-label="distinctiveness">
+                                                    <div class="card-text">
+                                                        <div role="heading" aria-level="2">
+                                                            <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#distinctiveness" aria-controls="distinctiveness" aria-expanded="false" id="distinctivenessbtn"><span class="glyphicon glyphicon-triangle-right"></span><span id="toggleglyph" class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> 2(f) Claim of Acquired Distinctiveness</button>
+                                                        </div>
+                                                    </div>
+                                                    <div id="distinctiveness" class="collapse Accordion-panel" role="region" aria-labelledby="distinctivenessbtn" style="margin-left: 11px; margin-right:11px;">
+                                                        <div class="Accordion">
+                                                            <p>A mark that is widely used by others is not distinctive. A trademark on the Principal Register must be distinctive enough to unambiguously identify the mark owner as the source of the goods or services provided under the mark. If a mark is not inherently distinctive because the wording is descriptive, geographically descriptive, or a surname, the mark owner must show that the mark has acquired distinctiveness through evidence, ownership of a same/similar mark on the Principal Register, or five years&#8217; use.</p>
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin-left: 11px; margin-right:11px;">
+                                                        <p id="disclm" >Are you claiming that your mark is inherently distinctive?</p>                                                            <div role="radiogroup" aria-labelledby="disclm" class="form-group form-group-md">
+                                                        <label for="inlineRadio033" class="radio-inline radiocontainer">Yes<input type="radio" name="distinctradio" id="inlineRadio033" value="yes" tabindex="0"><span class="checkmark"></span></label>
+                                                        <label for="inlineRadio034" class="radio-inline radiocontainer">No<input type="radio" name="distinctradio" id="inlineRadio034" value="no" tabindex="0"><span class="checkmark"></span></label>
+                                                    </div><!--END radiogroup-->
+
+
+
+                                                        <div id="yesdistict" class="form-group" ><!--toggle 'yes' radio-->
+                                                            <div class="form-group form-group-md">
+                                                                <p>Is this for the whole mark, or part of the mark?</p>
+                                                                <div role="radiogroup" aria-labelledby="disclm" class="form-group form-group-md">
+                                                                    <label for="inlineRadio035" class="radio-inline radiocontainer">Whole<input type="radio" name="wholepartradio" id="inlineRadio035" value="whole" tabindex="0"><span class="checkmark"></span></label>
+                                                                    <label for="inlineRadio036" class="radio-inline radiocontainer">In part<input type="radio" name="wholepartradio" id="inlineRadio036" value="inpart" tabindex="0"><span class="checkmark"></span></label>
+                                                                </div><!--END radiogroup-->
+                                                                <div id="yespart" class="form-group"><!--toggle 'yes' radio-->
+                                                                    <div class="form-group form-group-md">
+                                                                        <label for="partmark" class="weight600">Which part of the mark?</label>
+                                                                        <textarea id="partmark" rows="1" class="form-control"></textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <div id="yeswhole" class="form-group"><!--toggle 'yes' radio-->
+                                                                    <div class="form-group form-group-md">
+                                                                        <p>What is your claim based on?</p>
+                                                                        <div class="wide">
+                                                                            <div class="row">
+                                                                                <div class="col-xs-4 col-md-3 col-lg-3 form-group form-group-md">
+                                                                                    <label for="inlineRadio037" class="radio-inline radiocontainer">Evidence<input type="radio" name="wholepartradio" id="inlineRadio037" value="evidence" tabindex="0"><span class="checkmark"></span></label>
+                                                                                </div>
+                                                                                <div class="col-xs-8 col-md-4 col-lg-4 form-group form-group-md">
+                                                                                    <label for="inlineRadio038" class="radio-inline radiocontainer">Prior Registrations<input type="radio" name="wholepartradio" id="inlineRadio038" value="prioregistrations" tabindex="0"><span class="checkmark"></span></label>
+                                                                                </div>
+                                                                                <div class="col-xs-12 col-md-5 col-lg-5 form-group form-group-md">
+                                                                                    <label for="inlineRadio039" class="radio-inline radiocontainer">Five or more years of use<input type="radio" name="wholepartradio" id="inlineRadio039" value="fivepluyears" tabindex="0"><span class="checkmark"></span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div id="yesevidence" class="form-group" style="display: none;"><!--toggle 'yes' radio-->
+
+                                                                    <form method="post"  target="hidden-iframe"  id="distinctEvidenceForm"  action="/distinctive/evidence/add"  enctype="multipart/form-data"  aria-labelledby="title">
+                                                                        <p class="weight600" role="heading" aria-level="3">Upload evidence.</p>
+                                                                        <label class="small upload-drop-zone" for="distinctEvidence"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload a File</label>
+                                                                        <input type="file" id="distinctEvidence" name="file-evidence" class="form-control"  style="display: none">
+                                                                    </form>
+
+
+                                                                    <div class="col-xs-12">
+                                                                        <div class="center">
+                                                                            <div class="speciman-image" id="distinctEvidence-img-container" style="">
+
+                                                                                <img id="distinctEvidence-img" alt="" th:src="${baseTrademarkApplication.getDistinctiveEvidenceFilePath()}" class="img-responsive"/>
+                                                                            </div>
+
+
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="col-xs-12">
+                                                                        <div class="center">
+
+                                                                            <div type="button"  id="distinctEvidence-img-upload" class="btn btn-sm" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload File</b><span><i class="fa fa-spinner fa-spin" id="distinctEvidence-img-upload-spinner" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                                                        </div>
+
+                                                                    </div>
+
+
+                                                                </div><!-- Drop Zone -->
+
+                                                                <div class="row" id="yespriors">
+                                                                    <div class="col-xs-12 col-md-6 col-lg-8 form-group holdsaprior"><!--toggle 'yes' radio-->
+                                                                        <label for="prioregnumbers" class="weight600">Enter prior registration numbers.</label>
+                                                                        <input type="text" class="form-control" id="prioregnumbers">
+                                                                    </div>
+                                                                    <div class="appendaprior"></div>
+                                                                    <div class="col-xs-12 col-lg-4 btn-group" role="group" id="pluspriors" aria-label="Add or delete additional prior registration numbers">
+                                                                        <div class="row">
+                                                                            <div class="col-xs-12">
+                                                                                <button type="button" class="btn-sm btn-success add ctr" id="addprior">Add number</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                        </div><!--END distinctiveness-->
+                                    </th:block>
+
+
+
+
+
+
+
+
+
                                     <div class="row" id="uaf">
                                         <div class="col-sm-12">
                                             <section aria-label="Use in Another Form">
@@ -1986,11 +2112,23 @@
     $('#typeregi').click(function () {
         if(this.checked == true){
 
-            saveRegistarInfo("ai-register-type-set", "yes", appInternalID);
+            saveUncommonType("ai-register-type-set", "yes", appInternalID);
 
         }
         else {
-            saveRegistarInfo("ai-register-type-set", "no", appInternalID);
+            saveUncommonType("ai-register-type-set", "no", appInternalID);
+        }
+
+    });
+
+    $('#distinct').click(function () {
+        if(this.checked == true){
+
+            saveUncommonType("ai-distinctivenss-claim", "yes", appInternalID);
+
+        }
+        else {
+            saveUncommonType("ai-distinctivenss-claim", "no", appInternalID);
         }
 
     });
@@ -1998,12 +2136,11 @@
 
 
 
-
     }); // end of document ready
 
-    function saveRegistarInfo(field_name_prefix, field_value, appInternalID) {
+    function saveUncommonType(field_name_prefix, field_value, appInternalID) {
         $.ajax({
-            url: "../../REST/apiGateway/additionalInfo/update/registar/"+field_name_prefix+"/"+field_value+"/"+appInternalID,
+            url: "../../REST/apiGateway/additionalInfo/update/uncommonType/"+field_name_prefix+"/"+field_value+"/"+appInternalID,
             type: 'GET',
             success: function(data){
 

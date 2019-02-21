@@ -21,7 +21,7 @@ public class AdditionalInformationService extends  BaseRESTapiService {
 
 
     @CrossOrigin(origins = {"https://localhost","https://efile-reimagined.com"})
-    @RequestMapping(method = GET, value="/REST/apiGateway/additionalInfo/update/registar/{fieldName}/{fieldValue}/{appInternalID}")
+    @RequestMapping(method = GET, value="/REST/apiGateway/additionalInfo/update/uncommonType/{fieldName}/{fieldValue}/{appInternalID}")
     @ResponseBody
     ResponseEntity<String> updateApplicationRegistar(@PathVariable String fieldName , @PathVariable String fieldValue, @PathVariable String appInternalID){
 
@@ -57,6 +57,21 @@ public class AdditionalInformationService extends  BaseRESTapiService {
                 baseTrademarkApplication.setRegisterTypeSet(false);
             }
         }
+
+        if(fieldName.equals("ai-distinctivenss-claim")){
+            if(fieldValue.equals("yes")) {
+
+                baseTrademarkApplication.setClaimDistinctiveness(true);
+            }
+            else {
+                baseTrademarkApplication.setClaimDistinctiveness(false);
+            }
+
+            appFieldReadable = "2f Claim ";
+        }
+
+
+
         String responseMsg = "{{server-message:"+appFieldReadable+" has been saved}";
 
         // new return message structure
