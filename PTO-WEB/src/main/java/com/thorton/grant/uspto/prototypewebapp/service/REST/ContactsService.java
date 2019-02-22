@@ -338,21 +338,37 @@ public class ContactsService extends  BaseRESTapiService {
 
         if(contact_field_name.equals("first-name")){
             baseTrademarkApplication.findOwnerByEmail(contact_email).setFirstName(contact_field_value);
-            appFieldReadable = "Contact First Name ";
+            appFieldReadable = "OwnerFirst Name ";
 
         }
 
         if(contact_field_name.equals("middle-name")){
             baseTrademarkApplication.findOwnerByEmail(contact_email).setMidlleName(contact_field_value);
-            appFieldReadable = "Contact Middle Name ";
+            appFieldReadable = "Owner Middle Name ";
 
         }
         if(contact_field_name.equals("last-name")){
             baseTrademarkApplication.findOwnerByEmail(contact_email).setLastName(contact_field_value);
-            appFieldReadable = "Contact Last Name ";
+            appFieldReadable = "OwnerLast Name ";
         }
 
+        if(contact_field_name.equals("owner-name-corp")){
+            baseTrademarkApplication.findOwnerByEmail(contact_email).setOwnerName(contact_field_value);
+            appFieldReadable = "Owner Name";
 
+        }
+
+        if(contact_field_name.equals("owner-type-additional-name")){
+            baseTrademarkApplication.findOwnerByEmail(contact_email).setOwnerType(contact_field_value);
+            appFieldReadable = "Owner Additional Name Type";
+
+        }
+
+        if(contact_field_name.equals("state-of-organization")){
+            baseTrademarkApplication.findOwnerByEmail(contact_email).setOwnerOrganizationState(contact_field_value);
+            appFieldReadable = "Owner State of Organization";
+
+        }
         if(contact_field_name.equals("citizenship" )){
             baseTrademarkApplication.findOwnerByEmail(contact_email).setCitizenShip(contact_field_value);
             appFieldReadable = "Contact Citizenship ";

@@ -513,7 +513,7 @@
                                 <div class="row">
                                     <div class="form-group form-group-md col-xs-12 col-md-6">
                                         <label for="ownerEmail">Email Address <a href="#" data-toggle="tooltip" title="The USPTO will use this email address to send correspondence regarding this application or registration. It is critical to ensure this email address is current." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
-                                        <input type="text" class="form-control" id="ownerEmail" >
+                                        <input type="text" class="form-control" id="ownerEmail"  th:value="${owner.email}" >
                                     </div>
                                     <div class="form-group form-group-md col-xs-12 col-md-6">
                                         <label for="webaddress">Website Address</label>
@@ -603,34 +603,25 @@
         });
 
         var ownerEmail = $('#ownerEmail').val();
+al
 
-
-        $('#first-name').focusout(function () {
+        $('#ownername').focusout(function () {
             var value = $(this).val();
-            saveOwnerInfo(ownerEmail, "first-name",value, appInternalID);
+            saveOwnerInfo(ownerEmail, "owner-name-corp",value, appInternalID);
         });
 
-        $('#middle-name').focusout(function () {
+        $('#additionalname').change(function () {
             var value = $(this).val();
-            saveOwnerInfo(ownerEmail, "middle-name",value, appInternalID);
-        });
-
-        $('#last-name').focusout(function () {
-            var value = $(this).val();
-            saveOwnerInfo(ownerEmail, "last-name",value, appInternalID);
-        });
-
-        $('#suffix').change(function () {
-            var value = $(this).val();
-            saveOwnerInfo(ownerEmail, "suffix",value, appInternalID);
+            saveOwnerInfo(ownerEmail, "owner-type-additional-name",value, appInternalID);
         });
 
 
-
-        $('#owner-citizenship').change(function () {
+        $('#stateoforg').change(function () {
             var value = $(this).val();
-            saveOwnerInfo(ownerEmail, "citizenship",value, appInternalID);
+            saveOwnerInfo(ownerEmail, "state-of-organization",value, appInternalID);
         });
+
+
 
         $('#ownerEmail').focusout(function () {
             var value = $(this).val();
@@ -665,10 +656,6 @@
         });
 
 
-        $('#webaddress').focusout(function () {
-            var value = $(this).val();
-            saveOwnerInfo(ownerEmail, "web",value, appInternalID);
-        });
 
         $('#phone').focusout(function () {
             var value = $(this).val();
