@@ -98,11 +98,11 @@
                                 <div class="row">
                                     <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-4">
                                         <label for="ownername">Owner Name</label>
-                                        <input type="text" class="form-control"  id="ownername" >
+                                        <input type="text" class="form-control"  id="ownername" th:value="${owner.ownerDisplayname}" >
                                     </div>
                                     <div class="form-group form-group-md col-xs-12 col-sm-6 col-lg-4">
                                         <label for="additionalname">Additional Name</label>
-                                        <select class="form-control" id="additionalname">
+                                        <select class="form-control" id="additionalname"   th:field="${owner.ownerType}">
                                             <option value="">Select</option>
                                             <option value="DBA">Doing Business As (DBA)</option>
                                             <option value="TA">Trading As (TA)</option>
@@ -112,7 +112,7 @@
                                     </div>
                                     <div class="form-group form-group-md col-xs-12 col-sm-6 col-lg-4">
                                         <label for="stateoforg">State of Incorporation <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
-                                        <select class="form-control" id="stateoforg"  >
+                                        <select class="form-control" id="stateoforg" th:field="${owner.ownerOrganizationState}" >
                                             <option value="">Select</option>
                                             <option value="Select">Select</option>
                                             <option value="AL">Alabama</option>
@@ -182,7 +182,7 @@
                                 <div class="row">
                                     <div class="form-group form-group-md col-md-12 col-lg-7">
                                         <label for="OwnerAddressCountry">ountry/US Territory</label>
-                                        <select class="form-control" id="OwnerAddressCountry" name="territory" >
+                                        <select class="form-control" id="OwnerAddressCountry" name="territory"  th:field="${owner.country}">
                                             <option value="">Select</option>
                                             <option value="X1">UNITED STATES OF AMERICA</option>
                                             <option value="B2">AFGHANISTAN</option>
@@ -427,7 +427,7 @@
                                     </div>
                                     <div class="form-group form-group-md col-md-12 col-lg-8">
                                         <label for="ownerAddress1">Address Line 1</label>
-                                        <input type="text" class="form-control" id="ownerAddress1" >
+                                        <input type="text" class="form-control" id="ownerAddress1" th:value="${owner.address1}">
                                     </div>
                                     <div class="form-group form-group-md col-md-12 col-lg-8">
                                         <label for="addressline2">Address Line 2</label>
@@ -439,11 +439,11 @@
                                     </div>
                                     <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
                                         <label for="ownerCity">City</label>
-                                        <input type="text" class="form-control" id="ownerCity" >
+                                        <input type="text" class="form-control" id="ownerCity" th:value="${owner.city}" >
                                     </div>
                                     <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
                                         <label for="ownerState">State</label>
-                                        <select class="form-control" id="ownerState" >
+                                        <select class="form-control" id="ownerState" th:field="${owner.state}" >
                                             <option value="">Select</option>
                                             <option value="AL">Alabama</option>
                                             <option value="AK">Alaska</option>
@@ -500,7 +500,7 @@
                                     </div>
                                     <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
                                         <label for="ownerZipcode">Zip Code</label>
-                                        <input type="text" class="form-control" id="ownerZipcode" placeholder="" >
+                                        <input type="text" class="form-control" id="ownerZipcode" placeholder="" th:value="${owner.zipcode}" >
                                     </div>
                                 </div>
                             </fieldset>
@@ -533,7 +533,7 @@
                                             </div>
                                             <div class="form-group form-group-md col-xs-12 col-md-6 col-lg-6">
                                                 <label for="phone">Phone Number</label>
-                                                <input type="text" class="form-control" id="phone">
+                                                <input type="text" class="form-control" id="phone" th:value="${owner.primaryPhonenumber}">
                                             </div>
                                             <div class="form-group form-group-md col-xs-12 col-md-2 col-lg-2">
                                                 <label for="extension">Ext.</label>
@@ -542,12 +542,19 @@
                                         </div>
                                     </div>
 
-                                    <div class="row" style="display:none; max-height: 1px;">
-                                        <input id="appInternalIDForm" type="text"   class="form-control"   style=" width:1px;">
-                                    </div>
+
                                 </div>
                             </fieldset>
+                            <div class="inlinebuttons btn-group btn-group-justified  owner-form-buttons" role="nav" aria-label="view previous or next page" id="prevnxt">
 
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-primary fill next" id="doneButton" value="next" >Done
+                                    <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                                    </div>
+                                </button>
+                            </div>
+
+                        </div>
                         <!--END Additional Information Form-->
 
                     </div><!--END Content Div-->
