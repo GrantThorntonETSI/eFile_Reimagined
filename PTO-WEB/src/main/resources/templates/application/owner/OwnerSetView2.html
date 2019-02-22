@@ -160,7 +160,7 @@
 
                                                             <div class="col-xs-12 col-sm-3 col-md-2 inlinebuttons btn-group btn-group-justified" aria-label="edit or remove contact">
                                                                 <div class="btn-group">
-                                                                    <button type="button" class="btn btn-sm btn-success owner-edit" aria-label="edit contact" th:attr="owner-email=${owner.getEmail()}">Edit</button>
+                                                                    <button type="button" class="btn btn-sm btn-success owner-edit" aria-label="edit contact" th:attr="owner-email=${owner.getEmail()},owner-type=${owner.getOwnersubType()}">Edit</button>
                                                                 </div>
                                                                 <div class="btn-group">
 
@@ -315,8 +315,8 @@
     var bsLink6_active =  "../../application/confirmInfo/?trademarkID="+appInternalID;
     var bsLink6_done =  "../../application/confirmInfo/?trademarkID="+appInternalID;
     ////////////////////////////////////////////////////////////////////////////////////
-    var ownerEditURL =  "../../application/owner/Ind/edit/";
-
+    var ownerEditURLIndividal =  "../../application/owner/Ind/edit/";
+    var ownerEditURLCorp =  "../../application/owner/corp/edit/";
 
 </script>
 
@@ -515,8 +515,19 @@
 
         $('.owner-edit').click(function () {
             var ownerEmail = $(this).attr("owner-email");
+            var ownerType =  $(this).attr("owner-type");
 
-                location.href=ownerEditURL+ownerEmail+"/?trademarkID="+appInternalID;;
+            // set owner edit url based on owner type
+            //alert(ownerType);
+            var url ="";
+            if(ownerType == "Corporation"){
+                url = ownerEditURLCorp;
+            }
+            if(ownerType == "Individual"){
+                url = ownerEditURLIndividal;
+            }
+
+            location.href=url+ownerEmail+"/?trademarkID="+appInternalID;;
 
 
         });
