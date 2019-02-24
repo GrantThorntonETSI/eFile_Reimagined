@@ -98,11 +98,11 @@
                             <div class="row">
                                 <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-4">
                                     <label for="ownername">Owner Name</label>
-                                    <input type="text" class="form-control"  id="ownername" >
+                                    <input type="text" class="form-control"  id="ownername"  th:value="${owner.ownerDisplayname}">
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-6 col-lg-4">
                                     <label for="additionalname">Additional Name</label>
-                                    <select class="form-control" id="additionalname" >
+                                    <select class="form-control" id="additionalname" th:field="${owner.ownerType}">
                                         <option value="Select">Select</option>
                                         <option value="DBA">Doing Business As (DBA)</option>
                                         <option value="TA">Trading As (TA)</option>
@@ -112,7 +112,7 @@
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-6 col-lg-4">
                                     <label for="stateoforg">State Where Legally Organized <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>
-                                    <select class="form-control" id="stateoforg"  >
+                                    <select class="form-control" id="stateoforg"  th:field="${owner.ownerOrganizationState}" >
                                         <option value="">Select</option>
                                         <option value="Select">Select</option>
                                         <option value="AL">Alabama</option>
@@ -176,7 +176,7 @@
                             <h2 class="card-title weight600" id="proprietorinfo">Executor Information</h2>
                         </div>
                         <p id="disclaim">Provide the executors of the estate. You can add up to 10.</p>
-                        <label><b style="color: red">&#42;</b>Select Entity Type</label>
+                        <label>Select Entity Type</label>
 
                         <span>
                                 <select  id="domestic-entity-dropdown-partner" class="form-control" name="nameType"   style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;">
@@ -461,13 +461,13 @@
                             <fieldset aria-labelledby="proprietorinfo" id="none-individual-partner-entity" style="display: none;">
                                 <div class="row">
                                     <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
-                                        <label for="ownername"><b style="color: red">&#42;</b>Owner Name</label>
-                                        <input id="owner-name" type="text"   class="form-control rounded-borders"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                                        <label for="ownername">Owner Name</label>
+                                        <input id="owner-name" type="text"   class="form-control rounded-borders"  style="" >
                                     </div>
                                     <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
-                                        <label><b style="color: red">&#42;</b>Type</label>
+                                        <label>Type</label>
                                         <span>
-                                    <select  id="owner-type" class="form-control" name="nameType"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                    <select  id="owner-type" class="form-control" name="nameType"   style="">
                                         <option value="">Select</option>
                                         <option value="DBA">Doing Business As(DBA)</option>
                                         <option value="TA">Trading As(TA)</option>
@@ -481,7 +481,7 @@
 
                                     <div class="form-group form-group-md col-xs-6">
                                         <label>State where legally organized</label>
-                                        <select  id="owner-state"   class="form-control" name="State"  >
+                                        <select  id="owner-state"   class="form-control" name="State"  th:field="${owner.ownerOrganizationState}">
                                             <option  value="">Select</option>
                                             <option  value="AL">Alabama</option>
                                             <option  value="AK">Alaska</option>
@@ -550,7 +550,7 @@
                             <div class="row">
                                 <div class="form-group form-group-md col-md-12 col-lg-7">
                                     <label for="OwnerAddressCountry">Country/US Territory</label>
-                                    <select class="form-control" id="OwnerAddressCountry" name="territory" >
+                                    <select class="form-control" id="OwnerAddressCountry" name="territory" th:field="${owner.country}" >
                                         <option value="">Select</option>
                                         <option value="X1">UNITED STATES OF AMERICA</option>
                                         <option value="B2">AFGHANISTAN</option>
@@ -795,7 +795,7 @@
                                 </div>
                                 <div class="form-group form-group-md col-md-12 col-lg-8">
                                     <label for="ownerAddress1">Address Line 1</label>
-                                    <input type="text" class="form-control" id="ownerAddress1" >
+                                    <input type="text" class="form-control" id="ownerAddress1" th:value="${owner.address1}" >
                                 </div>
                                 <div class="form-group form-group-md col-md-12 col-lg-8">
                                     <label for="addressline2">Address Line 2</label>
@@ -807,11 +807,11 @@
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
                                     <label for="ownerCity">City</label>
-                                    <input type="text" class="form-control" id="ownerCity" >
+                                    <input type="text" class="form-control" id="ownerCity" th:value="${owner.city}">
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
                                     <label for="ownerState">State</label>
-                                    <select class="form-control" id="ownerState" >
+                                    <select class="form-control" id="ownerState" th:field="${owner.state}">
                                         <option value="">Select</option>
                                         <option value="AL">Alabama</option>
                                         <option value="AK">Alaska</option>
@@ -868,7 +868,7 @@
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
                                     <label for="ownerZipcode">Zip Code</label>
-                                    <input type="text" class="form-control" id="ownerZipcode" placeholder=""
+                                    <input type="text" class="form-control" id="ownerZipcode" placeholder=""  th:value="${owner.zipcode}">
                                 </div>
                             </div>
                         </fieldset>
@@ -881,11 +881,11 @@
                             <div class="row">
                                 <div class="form-group form-group-md col-xs-12 col-md-6">
                                     <label for="ownerEmail">Email Address <a href="#" data-toggle="tooltip" title="The USPTO will use this email address to send correspondence regarding this application or registration. It is critical to ensure this email address is current." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
-                                    <input type="text" class="form-control" id="ownerEmail"  >
+                                    <input type="text" class="form-control" id="ownerEmail"   th:value="${owner.email}" >
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-6">
                                     <label for="webaddress">Website Address</label>
-                                    <input type="text" class="form-control" id="webaddress" >
+                                    <input type="text" class="form-control" id="webaddress"  th:value="${owner.webSiteURL}">
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-12">
@@ -901,7 +901,7 @@
                                         </div>
                                         <div class="form-group form-group-md col-xs-12 col-md-6 col-lg-6">
                                             <label for="phone">Phone Number</label>
-                                            <input type="text" class="form-control" id="phone" >
+                                            <input type="text" class="form-control" id="phone" th:value="${owner.primaryPhonenumber}">
                                         </div>
                                         <div class="form-group form-group-md col-xs-12 col-md-2 col-lg-2">
                                             <label for="extension">Ext.</label>
