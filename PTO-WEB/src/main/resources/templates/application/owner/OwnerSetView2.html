@@ -319,6 +319,7 @@
     var ownerEditURLCorp =  "../../application/owner/corp/edit/";
     var ownerEditURLEstate =  "../../application/owner/estate/edit/";
     var ownerEditURLsolp =  "../../application/owner/solp/edit/";
+    var ownerEditURLllc =  "../../application/owner/llc/edit/";
 
 </script>
 
@@ -533,6 +534,10 @@
             }
             if(ownerType == "Sole Proprietorship"){
                 url = ownerEditURLsolp;
+            }
+
+            if(ownerType == "Limited Liability Company"){
+                url = ownerEditURLllc;
             }
             location.href=url+ownerEmail+"/?trademarkID="+appInternalID;;
 
