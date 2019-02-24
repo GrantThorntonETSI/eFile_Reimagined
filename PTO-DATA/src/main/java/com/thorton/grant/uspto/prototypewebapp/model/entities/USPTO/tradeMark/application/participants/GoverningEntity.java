@@ -33,6 +33,11 @@ public class GoverningEntity {
 
     private String organizationState;
 
+    ////////////////////////////////////////////////////////////////
+    // denotes if the governing entity is a body or a person
+    ////////////////////////////////////////////////////////////////
+    private boolean personEntity;
+
 
     public String getEntityName() {
         return entityName;
@@ -120,5 +125,13 @@ public class GoverningEntity {
 
     public void setOrganizationState(String organizationState) {
         this.organizationState = organizationState;
+    }
+
+    public boolean isPersonEntity() {
+        return personEntity;
+    }
+
+    public void setPersonEntity(boolean personEntity) {
+        this.personEntity = personEntity;
     }
 }
