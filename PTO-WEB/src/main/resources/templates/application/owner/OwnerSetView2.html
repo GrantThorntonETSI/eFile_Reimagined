@@ -317,6 +317,8 @@
     ////////////////////////////////////////////////////////////////////////////////////
     var ownerEditURLIndividal =  "../../application/owner/Ind/edit/";
     var ownerEditURLCorp =  "../../application/owner/corp/edit/";
+    var ownerEditURLEstate =  "../../application/owner/estate/edit/";
+    var ownerEditURLsolp =  "../../application/owner/solp/edit/";
 
 </script>
 
@@ -526,7 +528,12 @@
             if(ownerType == "Individual"){
                 url = ownerEditURLIndividal;
             }
-
+            if(ownerType == "Estate"){
+                url = ownerEditURLEstate;
+            }
+            if(ownerType == "Sole Proprietorship"){
+                url = ownerEditURLsolp;
+            }
             location.href=url+ownerEmail+"/?trademarkID="+appInternalID;;
 
 
