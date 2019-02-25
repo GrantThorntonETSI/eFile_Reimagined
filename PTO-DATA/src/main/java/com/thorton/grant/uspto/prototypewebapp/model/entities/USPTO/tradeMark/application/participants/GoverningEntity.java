@@ -134,4 +134,12 @@ public class GoverningEntity {
     public void setPersonEntity(boolean personEntity) {
         this.personEntity = personEntity;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

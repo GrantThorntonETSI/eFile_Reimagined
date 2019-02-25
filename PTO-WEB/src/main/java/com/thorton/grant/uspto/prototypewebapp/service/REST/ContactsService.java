@@ -6,6 +6,7 @@ import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.participants.LawyerService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.participants.OwnerService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.GoverningEntity;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
@@ -16,6 +17,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Iterator;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -423,8 +426,6 @@ public class ContactsService extends  BaseRESTapiService {
 
 
 
-
-
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
 
@@ -441,5 +442,102 @@ public class ContactsService extends  BaseRESTapiService {
 
     }
 
+    // need to add app id variable
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/application/GoverningEntity/update/{contact_email}/{contact_field_name}/{contact_field_value}/{entityID}/{trademarkInternalID}")
+    @ResponseBody
+    ResponseEntity<String> updateOwnerPartnerEnityContact(@PathVariable String contact_email,@PathVariable String contact_field_name, @PathVariable String contact_field_value,@PathVariable String entityID, @PathVariable String trademarkInternalID ){
+
+        String appFieldReadable = "Governing Entity";
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+        ////////////////////////////////////////////////////////////////////////////////////////////////
+        // check for valid security session ...as new contacts are added for PTOUser with valid sessions
+        ////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+        if(contact_field_name.equals("owner-estate-executor-name" )){
+            for(Iterator<GoverningEntity> iter = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().iterator(); iter.hasNext(); ) {
+                GoverningEntity current = iter.next();
+
+                if(current.getId().equals(entityID)){
+                    current.setEntityName(contact_field_value);
+                }
+            }
+
+        }
+
+        if(contact_field_name.equals("owner-estate-executorstate-of-organization" )){
+            for(Iterator<GoverningEntity> iter = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().iterator(); iter.hasNext(); ) {
+                GoverningEntity current = iter.next();
+
+                if(current.getId().equals(entityID)){
+                    current.setOrganizationState(contact_field_value);
+                }
+            }
+
+        }
+
+        if(contact_field_name.equals("owner-estate-executor-first-name" )){
+            for(Iterator<GoverningEntity> iter = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().iterator(); iter.hasNext(); ) {
+                GoverningEntity current = iter.next();
+
+                if(current.getId().equals(entityID)){
+                    current.setFirstName(contact_field_value);
+                }
+            }
+
+        }
+
+        if(contact_field_name.equals("owner-estate-executor-last-name" )){
+            for(Iterator<GoverningEntity> iter = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().iterator(); iter.hasNext(); ) {
+                GoverningEntity current = iter.next();
+
+                if(current.getId().equals(entityID)){
+                    current.setLastName(contact_field_value);
+                }
+            }
+
+        }
+
+        if(contact_field_name.equals("owner-estate-executor-middle-name" )){
+            for(Iterator<GoverningEntity> iter = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().iterator(); iter.hasNext(); ) {
+                GoverningEntity current = iter.next();
+
+                if(current.getId().equals(entityID)){
+                    current.setMiddleName(contact_field_value);
+                }
+            }
+
+        }
+
+        if(contact_field_name.equals("owner-estate-executor-citizenship" )){
+            for(Iterator<GoverningEntity> iter = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().iterator(); iter.hasNext(); ) {
+                GoverningEntity current = iter.next();
+
+                if(current.getId().equals(entityID)){
+                    current.setEntityCitizenship(contact_field_value);
+                }
+            }
+
+        }
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+
+        ////////////////////////////////////////////////
+        // start generating response
+        ////////////////////////////////////////////////
+
+        String responseMsg = appFieldReadable+" has been saved";
+        return buildResponseEnity("200", responseMsg);
+
+
+
+
+
+    }
 
 }
