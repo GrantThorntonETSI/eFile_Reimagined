@@ -699,6 +699,8 @@ public class ApplicationFlowController {
 
         model.addAttribute("owner", owner);
 
+        model.addAttribute("governingEntity", owner.getGoverningEntities());
+
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
         model.addAttribute("hostBean", hostBean);
