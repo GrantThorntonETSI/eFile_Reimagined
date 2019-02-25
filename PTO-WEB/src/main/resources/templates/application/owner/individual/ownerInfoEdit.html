@@ -124,10 +124,10 @@
                                             <option value="VIII">VIII</option>
                                         </select>
                                     </div>
-                                    <div class="form-group form-group-md col-xs-12">
+                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-4">
                                         <p class="weight600"></p>
                                     </div>
-                                    <div class="form-group form-group-md col-xs-6">
+                                    <div class="form-group form-group-md col-xs-6 ">
                                         <label for="owner-type">Add additional name if I do business as/or trading under a different name:</label>
                                         <select class="form-control" name="nameType"   id="owner-type"  th:field="${owner.ownerType}"><!--Needs th:attribute-->
                                             <option value="">Select</option>
@@ -139,7 +139,7 @@
                                     </div>
                                     <div class="form-group form-group-md col-xs-6" id="nametype">
                                         <label for="nameoftype">Name</label>
-                                        <input type="text" class="form-control" id="nameoftype" name="nameoftype"><!--needs th:attribute-->
+                                        <input type="text" class="form-control" id="nameoftype" name="nameoftype"  th:value="${owner.ownerAdditionalName}"  ><!--needs th:attribute-->
                                     </div>
                                     <div class="form-group form-group-md col-xs-7">
                                         <label for="owner-citizenship">Country of Citizenship <a href="#" data-toggle="tooltip" title="If you have dual citizenship only enter the citizenship you would like printed in the Official Gazette." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> <span class="label label-info subtle ">Reduce Fee</span></label>

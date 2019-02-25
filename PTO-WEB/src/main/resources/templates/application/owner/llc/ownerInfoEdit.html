@@ -100,7 +100,7 @@
                                     <label for="ownername">Owner Name</label>
                                     <input type="text" class="form-control"  id="ownername" th:value="${owner.ownerDisplayname}">
                                 </div>
-                                <div class="form-group form-group-md col-xs-12 col-sm-6 col-lg-4">
+                                <div class="form-group form-group-md col-xs-6">
                                     <label for="additionalname">Additional Name</label>
                                     <select class="form-control" id="additionalname"  th:field="${owner.ownerType}">
                                         <option value="">Select</option>
@@ -109,6 +109,10 @@
                                         <option value="AKA">Also Known As (AKA)</option>
                                         <option value="Formerly">Formerly</option>
                                     </select>
+                                </div>
+                                <div class="form-group form-group-md col-xs-6" id="nametype">
+                                    <label for="nameoftype">Name</label>
+                                    <input type="text" class="form-control" id="nameoftype" name="nameoftype"  th:value="${owner.ownerAdditionalName}"  ><!--needs th:attribute-->
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-6 col-lg-4">
                                     <label for="stateoforg">State Where Legally Organized<span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>

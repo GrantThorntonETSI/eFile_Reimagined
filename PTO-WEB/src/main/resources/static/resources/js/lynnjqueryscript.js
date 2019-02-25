@@ -480,7 +480,7 @@ $(document).ready(function(){
 	});
 	//end affiliation options
 	//start nameoftypeofbusiness options
-	$( 'div#nametype' ).css('display','none');
+
 	$( '#type' ).on('change',function(){
 		$( 'div#nametype' ).show( 500 );
 	});

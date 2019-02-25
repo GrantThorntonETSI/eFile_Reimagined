@@ -26,7 +26,7 @@
                                 <label for="ownername"><span class="weight600">&#42;</span>Owner Name</label>
                                 <input type="text" class="form-control"  id="ownername" th:field="*{ownerName}" required>
                             </div>
-                            <div class="form-group form-group-md col-xs-12 col-sm-6 col-lg-4">
+                            <div class="form-group form-group-md col-xs-6">
                                 <label for="additionalname">Additional Name</label>
                                 <select class="form-control" id="additionalname" th:field="*{ownerType}">
                                     <option value="">Select</option>
@@ -36,7 +36,7 @@
                                     <option value="Formerly">Formerly</option>
                                 </select>
                             </div>
-                            <div class="form-group form-group-md col-xs-12 col-sm-6 col-lg-4" id="nametype">
+                            <div class="form-group form-group-md col-xs-6" id="nametype">
                                 <label for="nameoftype">Name</label>
                                 <input type="text" class="form-control" id="nameoftype" name="nameoftype"  th:field="*{ownerAdditionalName}"  ><!--needs th:attribute-->
                             </div>

@@ -101,19 +101,12 @@ public class ApplicationObjectCreationController {
         UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
         UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
 
-        System.out.println("1111111111111111111111111111111111111111111111111111111111111111111111111111111");
-        System.out.println("app internal id : "+newAttorneyContactFormDTO.getAppInternalID());
-        System.out.println("1111111111111111111111111111111111111111111111111111111111111111111111111111111");
         String tempAppId = newAttorneyContactFormDTO.getAppInternalID();
         if(tempAppId.contains(",")){
             int index = tempAppId.indexOf(",");
             tempAppId = tempAppId.substring(0, index);
             newAttorneyContactFormDTO.setAppInternalID(tempAppId);
         }
-
-        System.out.println("22222222222222222222222222222222222222222222222222222222222222222222222222222222");
-        System.out.println("app internal id : "+newAttorneyContactFormDTO.getAppInternalID());
-        System.out.println("222222222222222222222222222222222222222222222222222222222222222222222222222222222");
 
 
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
@@ -333,9 +326,6 @@ public class ApplicationObjectCreationController {
         UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
         UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
 
-        System.out.println("1111111111111111111111111111111111111111111111111111111111111111111111111111111");
-        System.out.println("app internal id : "+newOwnerContactFormDTO.getAppInternalID());
-        System.out.println("1111111111111111111111111111111111111111111111111111111111111111111111111111111");
         String tempAppId = newOwnerContactFormDTO.getAppInternalID();
         if(tempAppId.contains(",")){
             int index = tempAppId.indexOf(",");
@@ -343,9 +333,6 @@ public class ApplicationObjectCreationController {
             newOwnerContactFormDTO.setAppInternalID(tempAppId);
         }
 
-        System.out.println("22222222222222222222222222222222222222222222222222222222222222222222222222222222");
-        System.out.println("app internal id : "+newOwnerContactFormDTO.getAppInternalID());
-        System.out.println("222222222222222222222222222222222222222222222222222222222222222222222222222222222");
 
 
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
@@ -366,7 +353,6 @@ public class ApplicationObjectCreationController {
         baseTrademarkApplication.setOwnerSubType(null);
         baseTrademarkApplication.setOwnerType(null);
 
-        System.out.println("OWNER SUB TYPE : "+owner.getOwnersubType());
         // transfer and reset owner type and subtype
 
         if(newOwnerContactFormDTO.getFirstName()!= null){
@@ -391,6 +377,12 @@ public class ApplicationObjectCreationController {
         if(newOwnerContactFormDTO.getOwnerType() != null){
             owner.setOwnerType(newOwnerContactFormDTO.getOwnerType());
         }
+
+        if(newOwnerContactFormDTO.getOwnerAdditionalName()!= null) {
+            owner.setOwnerAdditionalName(newOwnerContactFormDTO.getOwnerAdditionalName());
+        }
+
+
         if(newOwnerContactFormDTO.getOwnerCitizenShip()!= null){
 
             owner.setCitizenShip(newOwnerContactFormDTO.getOwnerCitizenShip());
