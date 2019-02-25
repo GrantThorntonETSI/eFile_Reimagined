@@ -1085,6 +1085,12 @@
             var value = $(this).val();
             saveOwnerInfo(ownerEmail, "phone",value, appInternalID);
         });
+
+        $('#nameoftype').focusout(function () {
+
+            var value = $(this).val();
+            saveOwnerInfo(ownerEmail, "additional-name",value, appInternalID);
+        });
         // ajax auto save
     });
 

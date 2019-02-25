@@ -1087,6 +1087,12 @@
             saveOwnerInfo(ownerEmail, "phone",value, appInternalID);
         });
         // ajax auto save
+
+        $('#nameoftype').focusout(function () {
+
+            var value = $(this).val();
+            saveOwnerInfo(ownerEmail, "additional-name",value, appInternalID);
+        });
     });
 
 
