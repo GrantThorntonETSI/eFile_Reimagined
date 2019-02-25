@@ -327,6 +327,8 @@
 
     var ownerEditURLpartnership =  "../../application/owner/partner/edit/";
 
+    var ownerEditURLtrust =  "../../application/owner/trust/edit/";
+
 </script>
 
 <!--load model attribute for Jquery consumption  -->
@@ -558,7 +560,9 @@
                 url = ownerEditURLpartnership;
             }
 
-
+            if(ownerType == "Trust"){
+                url = ownerEditURLtrust;
+            }
 
             location.href=url+ownerEmail+"/?trademarkID="+appInternalID;;
 
