@@ -321,6 +321,8 @@
     var ownerEditURLsolp =  "../../application/owner/solp/edit/";
     var ownerEditURLllc =  "../../application/owner/llc/edit/";
 
+    var ownerEditURLJoinVenture =  "../../application/owner/jv/edit/";
+
 </script>
 
 <!--load model attribute for Jquery consumption  -->
@@ -539,6 +541,15 @@
             if(ownerType == "Limited Liability Company"){
                 url = ownerEditURLllc;
             }
+
+            if(ownerType == "Joint Venture"){
+                url = ownerEditURLJoinVenture;
+            }
+
+
+
+
+
             location.href=url+ownerEmail+"/?trademarkID="+appInternalID;;
 
 
