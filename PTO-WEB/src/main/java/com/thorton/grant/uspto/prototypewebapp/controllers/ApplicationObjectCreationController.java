@@ -517,11 +517,13 @@ public class ApplicationObjectCreationController {
                 governingEntity.setEntityName(partner.getPartnerName());
                 governingEntity.setDisplayName(partner.getPartnerName());
                 governingEntity.setCollapseID(partner.getPartnerName().replaceAll("[^A-Za-z0-9]", ""));
+                governingEntity.setPersonEntity(false);
             }
             if(partner.getFirstName() != "" ){
                 governingEntity.setFirstName(partner.getFirstName());
                 governingEntity.setDisplayName(partner.getFirstName()+" "+partner.getLastName());
                 governingEntity.setCollapseID((partner.getFirstName()+partner.getLastName()).replaceAll("[^A-Za-z0-9]", ""));
+                governingEntity.setPersonEntity(true);
             }
             if(partner.getLastName() != ""){
                 governingEntity.setLastName(partner.getLastName());
