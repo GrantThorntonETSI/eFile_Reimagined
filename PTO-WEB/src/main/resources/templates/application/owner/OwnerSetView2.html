@@ -323,6 +323,10 @@
 
     var ownerEditURLJoinVenture =  "../../application/owner/jv/edit/";
 
+    var ownerEditURLLLP =  "../../application/owner/llp/edit/";
+
+    var ownerEditURLpartnership =  "../../application/owner/partner/edit/";
+
 </script>
 
 <!--load model attribute for Jquery consumption  -->
@@ -546,7 +550,13 @@
                 url = ownerEditURLJoinVenture;
             }
 
+            if(ownerType == "Limited Partnership"){
+                url = ownerEditURLLLP;
+            }
 
+            if(ownerType == "Partnership"){
+                url = ownerEditURLpartnership;
+            }
 
 
 
