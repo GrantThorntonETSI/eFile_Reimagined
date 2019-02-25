@@ -463,7 +463,7 @@ public class ContactsService extends  BaseRESTapiService {
             for(Iterator<GoverningEntity> iter = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().iterator(); iter.hasNext(); ) {
                 GoverningEntity current = iter.next();
 
-                if(current.getId().equals(entityID)){
+                if(String.valueOf(current.getId()).equals(entityID)){
                     current.setEntityName(contact_field_value);
                 }
             }
@@ -474,7 +474,9 @@ public class ContactsService extends  BaseRESTapiService {
             for(Iterator<GoverningEntity> iter = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().iterator(); iter.hasNext(); ) {
                 GoverningEntity current = iter.next();
 
-                if(current.getId().equals(entityID)){
+
+                if(String.valueOf(current.getId()).equals(entityID)){
+
                     current.setOrganizationState(contact_field_value);
                 }
             }
@@ -485,7 +487,7 @@ public class ContactsService extends  BaseRESTapiService {
             for(Iterator<GoverningEntity> iter = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().iterator(); iter.hasNext(); ) {
                 GoverningEntity current = iter.next();
 
-                if(current.getId().equals(entityID)){
+                if(String.valueOf(current.getId()).equals(entityID)){
                     current.setFirstName(contact_field_value);
                 }
             }
@@ -496,7 +498,7 @@ public class ContactsService extends  BaseRESTapiService {
             for(Iterator<GoverningEntity> iter = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().iterator(); iter.hasNext(); ) {
                 GoverningEntity current = iter.next();
 
-                if(current.getId().equals(entityID)){
+                if(String.valueOf(current.getId()).equals(entityID)){
                     current.setLastName(contact_field_value);
                 }
             }
@@ -507,7 +509,7 @@ public class ContactsService extends  BaseRESTapiService {
             for(Iterator<GoverningEntity> iter = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().iterator(); iter.hasNext(); ) {
                 GoverningEntity current = iter.next();
 
-                if(current.getId().equals(entityID)){
+                if(String.valueOf(current.getId()).equals(entityID)){
                     current.setMiddleName(contact_field_value);
                 }
             }
@@ -518,7 +520,7 @@ public class ContactsService extends  BaseRESTapiService {
             for(Iterator<GoverningEntity> iter = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().iterator(); iter.hasNext(); ) {
                 GoverningEntity current = iter.next();
 
-                if(current.getId().equals(entityID)){
+                if(String.valueOf(current.getId()).equals(entityID)){
                     current.setEntityCitizenship(contact_field_value);
                 }
             }
