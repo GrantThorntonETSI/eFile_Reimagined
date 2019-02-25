@@ -78,9 +78,9 @@
                                     <option value="formerly">Formerly</option>
                                 </select>
                             </div>
-                            <div class="form-group form-group-md col-xs-6" id="nametype">
+                            <div class="form-group form-group-md col-xs-12 col-sm-6 col-lg-4" id="nametype">
                                 <label for="nameoftype">Name</label>
-                                <input type="text" class="form-control" id="nameoftype" name="nameoftype"><!--needs th:attribute-->
+                                <input type="text" class="form-control" id="nameoftype" name="nameoftype"  th:field="*{ownerAdditionalName}"  ><!--needs th:attribute-->
                             </div>
                             <div class="form-group form-group-md col-xs-7">
                                 <label for="owner-citizenship">Country of Citizenship <a href="#" data-toggle="tooltip" title="If you have dual citizenship only enter the citizenship you would like printed in the Official Gazette." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> <span class="label label-info subtle visuallyremoved">Reduce Fee</span></label>

@@ -109,7 +109,17 @@ $(document).ready(function(){
     //START initialize Dashboard datable one
     var tableone = $('#dashboardtableone').DataTable({
         "fnDrawCallback": function( oSettings ) {
-
+        },
+        'sDom': '<"toolbar">lfrtip',
+        "language": {
+            "search": "<span class='glyphicon glyphicon-search' aria-hidden='true'></span><span class='sr-only'>search</span>",
+            "lengthMenu": "<span class='glyphicon glyphicon-filter' aria-hidden='true'></span><span class='sr-only'>select number of entries to display</span> <select>"+
+                '<option value="10">10</option>'+
+                '<option value="25">25</option>'+
+                '<option value="50">50</option>'+
+                '<option value="100">100</option>'+
+                '<option value="-1">All</option>'+
+                '</select>'
         },
         'autoWidth': false,
         'responsive': true,
@@ -134,7 +144,17 @@ $(document).ready(function(){
     //START initialize Dashboard datable two
     var tabletwo = $('#dashboardtabletwo').DataTable({
         "fnDrawCallback": function( oSettings ) {
-
+        },
+        'sDom': '<"toolbartwo">lfrtip',
+        "language": {
+            "search": "<span class='glyphicon glyphicon-search' aria-hidden='true'></span><span class='sr-only'>search</span>",
+            "lengthMenu": "<span class='glyphicon glyphicon-filter' aria-hidden='true'></span><span class='sr-only'>select number of entries to display</span> <select>"+
+                '<option value="10">10</option>'+
+                '<option value="25">25</option>'+
+                '<option value="50">50</option>'+
+                '<option value="100">100</option>'+
+                '<option value="-1">All</option>'+
+                '</select>'
         },
         'autoWidth': false,
         'responsive': true,
@@ -160,6 +180,26 @@ $(document).ready(function(){
     });
     //END initialize Dashboard datable two
 
+    //Dashboard datatables ellipsis menu tableone
+    $("div.toolbar").html('<div class="dropdown"><button class="btn btn-xs dropdown-toggle" type="button" id="dropdownMenucolvis" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical"></span></button><ul class="dropdown-menu" aria-labelledby="dropdownMenucolvis"><li class="dropdown-header">Toggle columns</li><li><a class="toggle-vis" data-column="0">Serial#</a></li><li><a class="toggle-vis" data-column="1">Registration#</a></li><li><a class="toggle-vis" data-column="2">Owner</a></li><li><a class="toggle-vis" data-column="3">Status</a></li><li><a class="toggle-vis" data-column="4">Mark</a></li></ul></div>');
+    $('a.toggle-vis').on( 'click', function (e) {
+        e.preventDefault();
+        var column = tableone.column( $(this).attr('data-column') );
+        column.visible( ! column.visible() );
+        console.log($(this).attr('data-column'));
+    });
+    //END dashboard datatables ellipsis menu tableone
+
+    //Dashboard datatables ellipsis menu tabletwo
+    $("div.toolbartwo").html('<div class="dropdown"><button class="btn btn-xs dropdown-toggle" type="button" id="dropdownMenucolvis" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical"></span></button><ul class="dropdown-menu" aria-labelledby="dropdownMenucolvis"><li class="dropdown-header">Toggle columns</li><li><a class="toggle-vistwo" data-column="0">Serial#</a></li><li><a class="toggle-vistwo" data-column="1">Registration#</a></li><li><a class="toggle-vistwo" data-column="2">Mark</a></li><li><a class="toggle-vistwo" data-column="3">Owner</a></li><li><a class="toggle-vistwo" data-column="4">Due Date</a></li><li><a class="toggle-vistwo" data-column="5">Status</a></li><li><a class="toggle-vistwo" data-column="6">Action</a></li></ul></div>');
+    $('a.toggle-vistwo').on( 'click', function (e) {
+        e.preventDefault();
+        var column = tabletwo.column( $(this).attr('data-column') );
+        column.visible( ! column.visible() );
+        console.log($(this).attr('data-column'));
+    });
+    //END dashboard datatables ellipsis menu tabletwo
+
     //.dashsection height = #announcedashsection height
     var h = $( 'div#announcedashsection' );
     var y = $( 'div#announce' );
@@ -182,8 +222,8 @@ $(document).ready(function(){
     //end close (x) gs + editowner + reviewattorney panels
 
     //START set initial checkboxes
-    //$('input[type=checkbox]').attr('checked',false);
-    //$('input[type=radio]').attr('checked',false);
+    $('input[type=checkbox]').attr('checked',false);
+    $('input[type=radio]').attr('checked',false);
     $('input[type=checkbox]#authemail, input[type=radio]#inlineRadio044').not(this).prop('checked', true);
     $('input[type=radio]#inlineRadio031').prop('checked', true);
     //if ($('input[type=checkbox]#authemail').prop('checked')) {
@@ -1309,10 +1349,22 @@ $(document).ready(function(){
     $( 'button#addphone' ).on('click',function(){
         $( '.phones:eq(0)' ).clone().appendTo( '.appendphone' );
     });
-    $( '#resetphone' ).click(function () {
+    $( '#resetphone' ).on('click',function() {
         $( '.appendphone .phones' ).remove( '.phones:eq(0)' );
     });
     //END additional phone
+
+    //START additional phone rev
+    $( document ).on('click','button#addphone2',function(){
+        $( 'div.phones:eq(0)' ).clone().appendTo( '.appendphones' );
+        $( 'div.phones' ).last().find('input').val('');
+        $( '.appendphones .resetphone2' ).removeClass( 'visuallyremoved' );
+        $( this ).removeClass( '.addphoneinitial' );
+    });
+    $( document ).on('click','.resetphonebtn',function(){
+        $( this ).parent().parent().parent().remove();
+    });
+    //END additional phone rev
 
     //START additional docket
     $( 'button#addocket' ).click(function(){
@@ -1432,7 +1484,7 @@ $(document).ready(function(){
     //END additional concurrent app/reg
 
     //START modals
-    $('#tradeservmodal','#collectivemodal','#collectivemembmodal').on('shown.bs.modal', function () {
+    $('#tradeservmodal','#collectivemodal','#collectivemembmodal','#loginmodal','#emailmodal','#securitymodal','#passwordmodal').on('shown.bs.modal', function () {
         $('.btn-success').focus();
     })
     //END modals
