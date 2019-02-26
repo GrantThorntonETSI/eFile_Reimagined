@@ -89,6 +89,9 @@ a {
 	color: #004C97;
 	cursor: pointer;
 }
+a.not-allowed {
+	cursor: not-allowed!important;
+}
 p#showmarktxt {
 	font-family: Palatino, Garamond, Bookman, Avant Garde;
 	font-size:2em;
@@ -1586,6 +1589,7 @@ button#moreoptionsbtn {
 	color:#9BB8D3;
 	height: .8em;
 	margin:0;
+	background-color:transparent;
 }
 #dashboardtableone_wrapper div.toolbar .btn-xs .glyphicon, #dashboardtabletwo_wrapper div.toolbartwo .btn-xs .glyphicon {
 	top: -6px;
@@ -2253,6 +2257,10 @@ button[type=submit] {
 	display: table-cell;
 	vertical-align: middle;
 }
+.js-upload-finished .alert-success {
+	background-color: #D4EB8E;
+	border-color: #D4EB8E;
+}
 .js-upload-finished {
 	margin:0 auto;
 	float:none;
@@ -2261,6 +2269,18 @@ button[type=submit] {
 	padding-top: 10px;
 	display: inline-block;
 	width:100%;
+	background-color:#F3D54E;
+	color:#333;
+}
+.js-upload-finished a.list-group-item-success:hover, .js-upload-finished a.list-group-item-success:focus {
+	background-color:#F3D54E;
+	color:#333;
+}
+.js-upload-finished .list-group-item-success:last-child, .js-upload-finished .list-group-item-success:first-child {
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	border:0;
 }
 /* IMAGES */
 #goodservideo .bgimg {
@@ -2903,7 +2923,6 @@ footer #megamenu ul {
 		min-height: 22em;
 	}
 }
-
 
 #on{
 	position: relative;
