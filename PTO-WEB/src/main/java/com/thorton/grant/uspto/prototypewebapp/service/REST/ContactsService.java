@@ -430,6 +430,11 @@ public class ContactsService extends  BaseRESTapiService {
 
         }
 
+        if(contact_field_name.equals("additional-name-type" )){
+            baseTrademarkApplication.findOwnerByEmail(contact_email).setOwnerType(contact_field_value);
+            appFieldReadable = "Contact Additional Name ";
+
+        }
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
 

@@ -96,8 +96,8 @@
                                 </select>
                             </div>
                             <div class="form-group form-group-md col-xs-6">
-                                <label for="additionalname">Additional Name</label>
-                                <select class="form-control" id="additionalname" th:field="*{ownerType}">
+                                <label for="additional-name-type">Additional Name</label>
+                                <select class="form-control" id="additional-name-type" th:field="*{ownerType}">
                                     <option value="Select">Select</option>
                                     <option value="DBA">Doing Business As (DBA)</option>
                                     <option value="TA">Trading As (TA)</option>
@@ -105,7 +105,7 @@
                                     <option value="Formerly">Formerly</option>
                                 </select>
                             </div>
-                            <div class="form-group form-group-md col-xs-6" id="nametype">
+                            <div class="form-group form-group-md col-xs-6" id="additionalNameValue" style="display: none;">
                                 <label for="nameoftype">Name</label>
                                 <input type="text" class="form-control" id="nameoftype" name="nameoftype"  th:field="*{ownerAdditionalName}"  ><!--needs th:attribute-->
                             </div>
@@ -410,7 +410,7 @@
                                 <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
                                     <label><b style="color: red">&#42;</b>Type</label>
                                     <span>
-                                    <select  id="owner-type" class="form-control" name="nameType" th:field="*{partnerDTOs[__${itemStat.index}__].type}"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                    <select  id="owner-type-pr" class="form-control" name="nameType" th:field="*{partnerDTOs[__${itemStat.index}__].type}"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                         <option value="">Select</option>
                                         <option value="DBA">Doing Business As(DBA)</option>
                                         <option value="TA">Trading As(TA)</option>
@@ -1038,7 +1038,9 @@
         });
 
 
-
+        $('#additional-name-type').change(function () {
+            $('#additionalNameValue').show(500);
+        });
 
 
 
@@ -1203,7 +1205,7 @@
     function enableNoneIndiviualRequiredfields(){
         $('#owner-name').prop("required", true);
 
-        $('#owner-type').prop("required", true);
+        $('#owner-type-pr').prop("required", true);
         $('#owner-state').prop("required", true);
     }
 

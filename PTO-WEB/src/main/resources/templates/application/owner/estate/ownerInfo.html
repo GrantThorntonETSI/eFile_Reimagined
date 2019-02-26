@@ -98,8 +98,8 @@
                                 </select>
                             </div>
                             <div class="form-group form-group-md col-xs-6">
-                                <label for="additionalname">Additional Name</label>
-                                <select class="form-control" id="additionalname" th:field="*{ownerType}">
+                                <label for="additional-name-type">Additional Name</label>
+                                <select class="form-control" id="additional-name-type" th:field="*{ownerType}">
                                     <option value="Select">Select</option>
                                     <option value="DBA">Doing Business As (DBA)</option>
                                     <option value="TA">Trading As (TA)</option>
@@ -107,7 +107,7 @@
                                     <option value="Formerly">Formerly</option>
                                 </select>
                             </div>
-                            <div class="form-group form-group-md col-xs-6" id="nametype">
+                            <div class="form-group form-group-md col-xs-6" id="additionalNameValue" style="display: none;">
                                 <label for="nameoftype">Name</label>
                                 <input type="text" class="form-control" id="nameoftype" name="nameoftype"  th:field="*{ownerAdditionalName}"  ><!--needs th:attribute-->
                             </div>
@@ -1075,7 +1075,13 @@
                 enableNoneIndiviualRequiredfields();
             }
             //saveProjectInfo("set-Owner-entity-types", "US"+"+"+subtype_val, appInternalID); // static from radio buttton
-        })
+        });
+
+        $('#additional-name-type').change(function () {
+            $('#additionalNameValue').show(500);
+        });
+
+
         ////////////////////////////////////////////////////
         // set server specific link urls
         // set links for traversal buttons
