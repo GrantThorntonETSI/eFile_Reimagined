@@ -112,6 +112,8 @@ public class TradeMark extends BaseEntity {
     private String signatureLastName;
 
     private boolean isNPSLivingPerson;
+    private boolean NPSLivingPersonSet;
+
 
 
 
@@ -725,6 +727,14 @@ public class TradeMark extends BaseEntity {
 
     public void setTrademarkConsentDownLoadPath(String trademarkConsentDownLoadPath) {
         this.trademarkConsentDownLoadPath = trademarkConsentDownLoadPath;
+    }
+
+    public boolean isNPSLivingPersonSet() {
+        return NPSLivingPersonSet;
+    }
+
+    public void setNPSLivingPersonSet(boolean NPSLivingPersonSet) {
+        this.NPSLivingPersonSet = NPSLivingPersonSet;
     }
 
     @Override

@@ -850,6 +850,8 @@ public class ApplicationObjectCreationController {
                     boolean isSignature = baseTrademarkApplication.getTradeMark().isSignature();
                     boolean isPortrait =  baseTrademarkApplication.getTradeMark().isPortrait();
                     boolean isNPSLivingPerson =  baseTrademarkApplication.getTradeMark().isNPSLivingPerson();
+                    boolean isNPSLivingPersonSet = baseTrademarkApplication.getTradeMark().isNPSLivingPersonSet();
+
 
                     model.addAttribute("markColorClaim", colorClaim);
                     model.addAttribute("markColorClaimBW", acceptBW);
@@ -860,6 +862,7 @@ public class ApplicationObjectCreationController {
                     model.addAttribute("isSignature", isSignature );
                     model.addAttribute("isPortrait", isPortrait );
                     model.addAttribute("isNPSLivingPerson", isNPSLivingPerson );
+                    model.addAttribute("isNPSLivingPersonSet", isNPSLivingPersonSet);
                 }
                 catch ( StorageException ex){
                     model.addAttribute("message", "ERROR: Mark Image upload failed due to error: "+ex );
@@ -875,6 +878,9 @@ public class ApplicationObjectCreationController {
             }
 
         }
+
+
+
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
         return "application/mark/MarkDetailsDesignWText";
         //return "application/MarkDetailsUpload";

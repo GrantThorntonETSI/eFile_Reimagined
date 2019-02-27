@@ -592,8 +592,8 @@
 
                                                         <p id="individualiving">Is this of a living individual?</p>
                                                         <div role="radiogroup" class="form-group form-group-md" aria-labelledby="individualiving">
-                                                            <label for="inlineRadio17" class="radio-inline"><input type="radio" name="livindividualradio" id="inlineRadio17" value="yes">Yes</label>
-                                                            <label for="inlineRadio18" class="radio-inline"><input type="radio" name="livindividualradio" id="inlineRadio18" value="no">No</label>
+                                                            <label for="inlineRadio17" class="radio-inline radiocontainer">Yes<input type="radio" name="livindividualradio" id="inlineRadio17" value="yes"><span class="checkmark"></span></label>
+                                                            <label for="inlineRadio18" class="radio-inline radiocontainer">No<input type="radio" name="livindividualradio" id="inlineRadio18" value="no"><span class="checkmark"></span></label>
                                                         </div><!--END radiogroup-->
 
                                                         <th:block th:if="${baseTrademarkApplication.tradeMark.consentFileUploaded == false}">
@@ -772,8 +772,9 @@
 
                                                         <p id="individualiving">Is this of a living individual?</p>
                                                         <div role="radiogroup" class="form-group form-group-md" aria-labelledby="individualiving">
-                                                            <label for="inlineRadio17" class="radio-inline"><input type="radio" name="livindividualradio" id="inlineRadio17" value="yes">Yes</label>
-                                                            <label for="inlineRadio18" class="radio-inline"><input type="radio" name="livindividualradio" id="inlineRadio18" value="no">No</label>
+
+                                                            <label for="inlineRadio17" class="radio-inline radiocontainer">Yes<input type="radio" name="livindividualradio" id="inlineRadio17" value="yes"><span class="checkmark"></span></label>
+                                                            <label for="inlineRadio18" class="radio-inline radiocontainer">No<input type="radio" name="livindividualradio" id="inlineRadio18" value="no"><span class="checkmark"></span></label>
                                                         </div><!--END radiogroup-->
 
                                                         <th:block th:if="${baseTrademarkApplication.tradeMark.consentFileUploaded == false}">
@@ -949,8 +950,8 @@
 
                                                         <p id="individualiving">Is this of a living individual?</p>
                                                         <div role="radiogroup" class="form-group form-group-md" aria-labelledby="individualiving">
-                                                            <label for="inlineRadio17" class="radio-inline"><input type="radio" name="livindividualradio" id="inlineRadio17" value="yes">Yes</label>
-                                                            <label for="inlineRadio18" class="radio-inline"><input type="radio" name="livindividualradio" id="inlineRadio18" value="no">No</label>
+                                                            <label for="inlineRadio17" class="radio-inline radiocontainer">Yes<input type="radio" name="livindividualradio" id="inlineRadio17" value="yes"><span class="checkmark"></span></label>
+                                                            <label for="inlineRadio18" class="radio-inline radiocontainer">No<input type="radio" name="livindividualradio" id="inlineRadio18" value="no"><span class="checkmark"></span></label>
                                                         </div><!--END radiogroup-->
                                                         <th:block th:if="${baseTrademarkApplication.tradeMark.consentFileUploaded == false}">
 
@@ -1094,7 +1095,7 @@
     var isPortrait = /*[[${isPortrait}]]*/ 'User Name';
 
     var isNPSLivingPerson = /*[[${isNPSLivingPerson}]]*/ 'User Name';
-
+    var isNPSLivingPersonSet = /*[[${isNPSLivingPersonSet}]]*/ 'User Name';
 
     var host = host_name+":"+host_port;
     var breadCrumbStatus = /*[[${breadCrumbStatus}]]*/ 'User Name';
@@ -1265,15 +1266,22 @@
 
         }
 
-        if(isNPSLivingPerson == true){
-            $('#inlineRadio017').click();
 
-        }
-        else {
-            if(isNPSLivingPerson == false){
-                $('#inlineRadio018').click();
+        if(isNPSLivingPersonSet == true){
+
+            if(isNPSLivingPerson == true){
+                $('#inlineRadio17').attr("checked", true);
+                $('#yesliving').show();
+
+            }
+            else {
+                if(isNPSLivingPerson == false){
+                    $('#inlineRadio18').attr("checked", true);
+                    $('#yesliving').hide();
+                }
             }
         }
+
 
 
 

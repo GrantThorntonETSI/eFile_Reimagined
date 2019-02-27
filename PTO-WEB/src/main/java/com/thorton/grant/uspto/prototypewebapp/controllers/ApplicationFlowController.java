@@ -1700,6 +1700,7 @@ public class ApplicationFlowController {
         boolean isSignature = baseTrademarkApplication.getTradeMark().isSignature();
         boolean isPortrait =  baseTrademarkApplication.getTradeMark().isPortrait();
         boolean isNPSLivingPerson =  baseTrademarkApplication.getTradeMark().isNPSLivingPerson();
+        boolean isNPSLivingPersonSet = baseTrademarkApplication.getTradeMark().isNPSLivingPersonSet();
 
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
@@ -1711,7 +1712,7 @@ public class ApplicationFlowController {
         model.addAttribute("isSignature", isSignature );
         model.addAttribute("isPortrait", isPortrait );
         model.addAttribute("isNPSLivingPerson", isNPSLivingPerson );
-
+        model.addAttribute("isNPSLivingPersonSet", isNPSLivingPersonSet);
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
         return "application/mark/MarkDetailsDesignWText";
 
