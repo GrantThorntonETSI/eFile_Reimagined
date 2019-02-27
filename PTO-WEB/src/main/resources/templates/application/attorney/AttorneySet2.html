@@ -92,7 +92,7 @@
 
                 <div class="row" >
                     <div class="col-xs-12">
-                        <h5><b>Select one of the following attorneys to be the primary attorney.</b></h5>
+                        <h5><b>Please Select the Primary Attorney/Attorney of Record.</b></h5>
                     </div>
                     <div class="col-sm-2">
                     </div>
@@ -110,9 +110,7 @@
                         </div>
                         <div class="row">
 
-                            <div class="col-xs-6 col-md-6 col-lg-4">
-                                <button type="button" class="btn-sm btn-success add" id="confirm-link-widget" style=" color: white; background-color: rgb(128, 128, 128);">Confirm Primary Attorney</button>
-                            </div>
+
                             <div class="col-xs-6 col-md-6 col-lg-4">
                                 <button type="button" class="btn-sm btn-success add" id="addAttorneyLink">Add Additional Attorney</button>
                             </div>
@@ -625,10 +623,14 @@
             var field_value =  $(this).parent().next().next().children().html();
             if(field_value != "") {
                 // set email to confirm button property
-                $('#confirm-link-widget').attr("primary-attorney-email", field_value);
+                //$('#confirm-link-widget').attr("primary-attorney-email", field_value);
+                setPrimaryAttorneyApplication(field_value, appInternalID);
 
+                $('#nextButton').attr("disabled",false);
+
+                $(this).parent().parent().parent().parent().parent().parent().effect("highlight", {}, 5000);
             }
-            enableConfirmWidgetLink();
+           // enableConfirmWidgetLink();
 
         });
 
