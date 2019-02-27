@@ -338,6 +338,7 @@ public class TradeMarkService extends BaseRESTapiService {
             if(markValue.equals("no")){
                 baseTrademarkApplication.getTradeMark().setNPSLivingPerson(false);
                 baseTrademarkApplication.getTradeMark().setNPSLivingPersonSet(true);
+                baseTrademarkApplication.getTradeMark().setConsentFileUploaded(false);
             }
 
             appFieldReadable = "Mark NPS - Living Person";
