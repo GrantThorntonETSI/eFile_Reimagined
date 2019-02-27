@@ -28,6 +28,10 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCrede
 
 import com.thorton.grant.uspto.prototypewebapp.service.storage.StorageService;
 import com.thorton.grant.uspto.prototypewebapp.service.storage.error.StorageException;
+import org.jodconverter.LocalConverter;
+import org.jodconverter.filter.text.PageSelectorFilter;
+import org.jodconverter.office.LocalOfficeManager;
+import org.jodconverter.office.LocalOfficeUtils;
 import org.springframework.context.ApplicationContext;
 
 import org.springframework.http.HttpHeaders;
@@ -832,6 +836,8 @@ public class ApplicationObjectCreationController {
                     String file_path = storageService.store(file);
 
                     baseTrademarkApplication.getTradeMark().setTrademarkConsentFilePath("/files/"+file_path);
+                    baseTrademarkApplication.getTradeMark().setTrademarkConsentDownLoadPath("/files-server/"+file_path);
+                    baseTrademarkApplication.getTradeMark().setTrademarkConsentFileName(file.getOriginalFilename());
                     baseTrademarkApplication.getTradeMark().setConsentFileUploaded(true);
                     boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
                     boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();

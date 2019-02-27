@@ -143,10 +143,7 @@ object#selected {
 	content: ''!important;
 	font-size:.8em;
 }
-.label-info {
-	background-color:#dff0d8;
-	color: #555
-}
+
 #dashboardmain .img-thumbnail, #dashboardmain .thumbnail {
 	margin: 0 auto;
 	float: none;
@@ -1123,10 +1120,10 @@ label a:hover {
 	margin:0 auto;
 	float:none;
 }
-#uploaded .img-responsive {
-	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.20);
-	-moz-box-shadow: 	0 1px 2px rgba(0,0,0,.20);
-	box-shadow: 		0 1px 2px rgba(0,0,0,.20);
+.img-responsive {
+	-webkit-box-shadow: 0 0 0 rgba(0,0,0,0);
+	-moz-box-shadow: 	0 0 0 rgba(0,0,0,0);
+	box-shadow: 		0 0 0 rgba(0,0,0,0);
 }
 .list-group {
 	-webkit-box-shadow: 0 0 0 rgba(0,0,0,0);
@@ -1415,6 +1412,10 @@ label.disabled span {
 .close {
 	opacity:1.0;
 	-moz-opacity: 1.0;
+	-webkit-box-shadow: rgb(0,0,0);
+	-moz-box-shadow:    rgb(0,0,0);
+	box-shadow:         rgb(0,0,0);
+	text-shadow: 0 0 0 transparent;
 }
 .resetphonebtn {
 	margin: 0 auto;
@@ -1904,7 +1905,8 @@ div[role="heading"] button {
 	color: #333;
 }
 .Accordion-trigger:active, .Accordion-trigger:focus, .Accordion-trigger:active:focus {
-	outline-offset: 4px;
+	outline: 0!important;
+	outline: 0;
 }
 #uploaded .Accordion p {
 	padding-left:40px;
@@ -2207,11 +2209,7 @@ p#upimage {
 .upload-drop-zone span.glyphicon-check {
 	line-height: 1.42em;
 }
-#fileDisplayArea img {
-	overflow:hidden;
-}
 .fileDisplayArea img {
-	max-width:50%;
 	overflow:hidden;
 }
 .alert-warning {
@@ -2226,25 +2224,6 @@ p#upimage {
 	box-shadow: inset 0 0 0 rgba(0,0,0,0), 0 0 0 rgba(0,0,0,0);
 	border-radius: 2px;
 }
-.filename {
-	font-size:.8em;
-	display: inline-block;
-	padding: 3px 7px;
-	display: -webkit-flex;
-	-webkit-flex-wrap: wrap;
-	display: flex;
-	flex-wrap: wrap;
-	overflow-wrap: break-word;
-	word-wrap:break-word;
-	-webkit-columns: 1;
-	-moz-columns: 1;
-	columns: 1;
-	-webkit-column-width: 100px;
-	-moz-column-width: 100px;
-	word-break:break-all;
-	width:60%;
-	float: left;
-}
 .alert-success {
 	background-image:none!important;
 }
@@ -2258,19 +2237,94 @@ button[type=submit] {
 	vertical-align: middle;
 }
 .js-upload-finished .alert-success {
-	background-color: #D4EB8E;
-	border-color: #D4EB8E;
+	background-color: #808080;
+	border-color: #808080;
+	color:#EEEEEE;
+	font-weight:400;
 }
 .js-upload-finished {
 	margin:0 auto;
 	float:none;
 }
+.fileholder .linkholder {
+	/*overflow-wrap: break-word;
+	word-wrap: break-word;
+	-ms-word-break: break-all;
+	word-break: break-all;
+	word-break: break-word;
+	-ms-hyphens: auto;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+	white-space: normal;*/
+	overflow: hidden;
+	text-overflow: ellipsis;
+	/*max-height: 38px;*/
+}
+.fileholder div {
+	padding: 1em 0;
+}
+.fileholder div.row {
+	padding: 0;
+}
+.fileholder div img, .fileholder div button, .fileholder span, .fileholder a {
+	float: none!important;
+	height:38px;
+	font-size:.8em;
+}
+.fileholder div img, .fileholder span {
+	margin:0 auto;
+	display:block;
+}
+.fileholder .img-thumbnail {
+	border:0;
+	-webkit-border-radius: 2px 2px 2px 2px;
+	-moz-border-radius: 2px 2px 2px 2px;
+	border-radius: 2px 2px 2px 2px;
+}
+.fileholder span.glyphicon {
+	line-height: 1.4em;
+}
+.fileholder a {
+	color:#fff;
+}
+.fileholder {
+	padding:0 1.5em;
+	min-height: 38px;
+}
+.fileholder div button {
+	font-size: 2em!important;
+	height: 38px!important;
+	color: #F3D54E!important;
+	-moz-opacity: 1.0!important;
+	opacity: 1.0!important;
+}
+.fileholder div .close:active:focus, .fileholder div .close:focus   {
+	outline: 1px solid #DDD!important;
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -4px;
+	-webkit-box-shadow: rgb(0,0,0);
+	-moz-box-shadow:    rgb(0,0,0);
+	box-shadow:         rgb(0,0,0);
+}
+.fileholder div .close:hover   {
+	color: #ddd;
+	-moz-opacity: 1.0;
+	opacity: 1.0;
+}
+.js-upload-finished .badge {
+	border-radius: 24px;
+	padding: .5em 1em!important;
+	display: table!important;
+	height:auto!important;
+	margin-top: .4em!important;
+}
 .js-upload-finished .list-group-item-success {
-	padding-top: 10px;
 	display: inline-block;
+	background-color:#9BB8D3;
 	width:100%;
-	background-color:#F3D54E;
 	color:#333;
+	border:none;
 }
 .js-upload-finished a.list-group-item-success:hover, .js-upload-finished a.list-group-item-success:focus {
 	background-color:#F3D54E;
@@ -2921,6 +2975,9 @@ footer #megamenu ul {
 	}
 	#userprofilepage .panel-body {
 		min-height: 22em;
+	}
+	.js-upload-finished, .upload-drop-zone {
+		width:50%;
 	}
 }
 

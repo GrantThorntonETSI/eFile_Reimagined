@@ -31,7 +31,7 @@ public class TradeMark extends BaseEntity {
 
     private String baseStoragePath;
 
-    private String trademarkConsentFilePath; // pdf or .doc
+
 
 
     private String trademarkStandardCharacterText;
@@ -87,6 +87,14 @@ public class TradeMark extends BaseEntity {
     private boolean namePortraitSet;
 
     private boolean consentFileUploaded = false;
+
+    private String trademarkConsentFilePath; // pdf or .doc
+
+    private String trademarkConsentFileName;
+    private String trademarkConsentDownLoadPath;
+
+
+
 
     private boolean isName;
     private String nameFirstName;
@@ -703,7 +711,21 @@ public class TradeMark extends BaseEntity {
         return path;
     }
 
+    public String getTrademarkConsentFileName() {
+        return trademarkConsentFileName;
+    }
 
+    public void setTrademarkConsentFileName(String trademarkConsentFileName) {
+        this.trademarkConsentFileName = trademarkConsentFileName;
+    }
+
+    public String getTrademarkConsentDownLoadPath() {
+        return trademarkConsentDownLoadPath;
+    }
+
+    public void setTrademarkConsentDownLoadPath(String trademarkConsentDownLoadPath) {
+        this.trademarkConsentDownLoadPath = trademarkConsentDownLoadPath;
+    }
 
     @Override
     public boolean equals(Object o) {
