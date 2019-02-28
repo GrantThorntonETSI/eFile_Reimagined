@@ -144,7 +144,7 @@
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
-                                            <button type="button" class="btn-sm btn-success fill" id="autofill">Select from Contacts</button>
+                                            <button type="button" class="btn-sm btn-success fill" id="autofill" style="display: none;">Select from Contacts</button>
 
                                         </div>
                                         <div class="embed-responsive-item" id="ownerEntityForm" style="position: relative; bottom:-222px;" >
@@ -222,7 +222,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12">
-                                        <button type="button" class="btn-sm btn-success fill" id="autofillForeign">Select from Contacts</button>
+                                        <button type="button" class="btn-sm btn-success fill" id="autofillForeign" style="display: none;">Select from Contacts</button>
 
                                     </div>
                                     <div class="embed-responsive-item" id="ownerEntityForeignForm" style="position: relative; bottom:-222px;" >
@@ -644,6 +644,8 @@
                 // remove
 
             });
+
+            $('#autofill').show(500);
             saveProjectInfo("set-Owner-entity-types", "US"+"+"+subtype_val, appInternalID); // static from radio buttton
 
 
@@ -669,6 +671,8 @@
                 // remove
 
             });
+
+            $('#autofillForeign').show(500);
 
             saveProjectInfo("set-Owner-entity-types", "in"+"+"+"Corporation+Foreign", appInternalID); // static from radio buttton
         });
