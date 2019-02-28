@@ -1751,6 +1751,7 @@
 
 
         preventFutureDate();
+        preventPastDate();
 
 
         //////////////////////////////////////////////////////////////////////
@@ -2378,6 +2379,7 @@
 
 
 
+
     function preventFutureDate() {
         var dtToday = new Date();
 
@@ -2405,9 +2407,45 @@
 
         var maxDateFA = year + '-' + faMonth + '-' + day;
 
-        $('input.fa-filing-date').attr('max', maxDateFA);
+        //$('input.fa-filing-date').attr('max', maxDateFA);
 
         $('input.fr-reg-date').attr('max', maxDate);
+    }
+
+    function preventPastDate() {
+        var dtToday = new Date();
+
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+
+        if(month < 10)
+            month = '0' + month.toString();
+        if(day < 10)
+            day = '0' + day.toString();
+
+        var maxDate = year + '-' + month + '-' + day;
+
+        $('input.gs-date').attr('max', maxDate);
+        $('input.mark-date').attr('max', maxDate);
+
+        var faMonth = dtToday.getMonth()+7;
+        if(faMonth > 12){
+            faMonth = faMonth - 12;
+        }
+        else{
+            year = year -1;
+        }
+
+
+        if(faMonth < 10)
+            faMonth = '0' + faMonth.toString();
+
+        var maxDateFA = year + '-' + faMonth + '-' + day;
+
+        $('input.fa-filing-date').attr('min', maxDateFA);
+
+        //$('input.fr-reg-date').attr('max', maxDate);
     }
 
 
