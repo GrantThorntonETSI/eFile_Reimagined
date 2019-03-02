@@ -953,9 +953,9 @@ public class ApplicationObjectCreationController {
         }
 
 
-        return buildResponseEnity("200", "{image-url:" +filePath+"}");
+        //return buildResponseEnity("200", "{image-url:" +filePath+"}");
 
-        //return ResponseEntity.ok().build();
+        return buildResponseEnity("200", "{image-url:" +filePath+"}, {image-name:" +file.getOriginalFilename()+"}");
 
     }
 

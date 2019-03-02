@@ -121,6 +121,11 @@ public class GSClassCategory {
         return getClassCategoryNumber()+"classUploadSpinnerID";
     }
 
+    public String getClassSpecDownloadLinkID(){
+        return getClassCategoryNumber()+"classSpecDownloadID";
+
+    }
+
     public String getClassCategoryDescr() {
         return classCategoryDescr;
     }
