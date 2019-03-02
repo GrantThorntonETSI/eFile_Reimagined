@@ -126,6 +126,15 @@ public class GSClassCategory {
 
     }
 
+
+    public boolean isClassSpecConsentUploaded(){
+
+        boolean retVal = false;
+        if(classCategoryImagePath != null){
+            retVal =true;
+        }
+        return retVal;
+    }
     public String getClassCategoryDescr() {
         return classCategoryDescr;
     }
