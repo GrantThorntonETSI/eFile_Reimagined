@@ -1418,7 +1418,6 @@ public class ApplicationObjectCreationController {
                 }
                 baseTrademarkApplication.setTradeMarkUploaded(true);
                 baseTradeMarkApplicationService.save(baseTrademarkApplication);
-                baseTradeMarkApplicationService.save(baseTrademarkApplication);
             }
 
         }
@@ -1484,6 +1483,65 @@ public class ApplicationObjectCreationController {
 
 
         return buildResponseEnity("200", "{image-url:" +filePath+"}");
+
+        //return ResponseEntity.ok().build();
+
+    }
+
+
+    // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
+    @PostMapping(value = "/Mark/consent/js/add")
+    public ResponseEntity npsConsentJSupload(
+            @RequestParam(name="file", required=false) MultipartFile file,
+            @RequestParam (name="appID")String AppInternalID,
+            Model model
+    ) {
+
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID( AppInternalID);
+
+        String filePath ="";
+        if(file != null){
+            System.out.println("file is not null");
+
+            if(file.isEmpty() == false) {
+                System.out.println("file is not empty !!!!!!!!!!!!!!!");
+
+
+
+                try {
+                    String file_path = storageService.store(file);
+
+                    baseTrademarkApplication.getTradeMark().setTrademarkConsentFilePath("/files/"+file_path);
+                    baseTrademarkApplication.getTradeMark().setTrademarkConsentDownLoadPath("/files-server/"+file_path);
+
+                    filePath="/files-server/"+file_path;
+                    baseTrademarkApplication.getTradeMark().setTrademarkConsentFileName(file.getOriginalFilename());
+                    baseTrademarkApplication.getTradeMark().setConsentFileUploaded(true);
+
+                }
+                catch ( StorageException ex){
+
+
+
+                }
+
+
+                baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+            }
+
+        }
+        else{
+            System.out.println("file object is null");
+        }
+
+
+
+
+        return buildResponseEnity("200", "{image-url:" +filePath+"}, {image-name:" +file.getOriginalFilename()+"}");
 
         //return ResponseEntity.ok().build();
 
