@@ -1150,6 +1150,8 @@
     var isPortrait = /*[[${isPortrait}]]*/ 'User Name';
 
     var isNPSLivingPerson = /*[[${isNPSLivingPerson}]]*/ 'User Name';
+    var isNPSLivingPersonSet = /*[[${isNPSLivingPersonSet}]]*/ 'User Name';
+    var isConsentUploaded = /*[[${isConsentUploaded}]]*/ 'User Name';
 
 
     var host = host_name+":"+host_port;
@@ -1321,15 +1323,31 @@
 
         }
 
-        if(isNPSLivingPerson == true){
-            $('#inlineRadio017').click();
 
-        }
-        else {
-            if(isNPSLivingPerson == false){
-                $('#inlineRadio018').click();
+        if(isNPSLivingPersonSet == true){
+
+            if(isNPSLivingPerson == true){
+                $('#inlineRadio17').attr("checked", true);
+                if(isConsentUploaded){
+                    $('#npsConsent').show();
+                    $('#yesliving').hide();
+                }
+                else {
+                    $('#yesliving').show();
+                    $('#npsConsent').hide();
+                }
+
+
+            }
+            else {
+                if(isNPSLivingPerson == false){
+                    $('#inlineRadio18').attr("checked", true);
+                    $('#yesliving').hide();
+                    $('#npsConsent').hide();
+                }
             }
         }
+
 
 
 

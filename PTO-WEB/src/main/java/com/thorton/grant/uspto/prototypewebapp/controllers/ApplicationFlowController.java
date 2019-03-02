@@ -1702,6 +1702,12 @@ public class ApplicationFlowController {
         boolean isNPSLivingPerson =  baseTrademarkApplication.getTradeMark().isNPSLivingPerson();
         boolean isNPSLivingPersonSet = baseTrademarkApplication.getTradeMark().isNPSLivingPersonSet();
 
+        boolean isConsentUploaded = false;
+
+        if(baseTrademarkApplication.getTradeMark().getTrademarkConsentFilePath() != null && baseTrademarkApplication.getTradeMark().getTrademarkConsentFilePath() != ""){
+            isConsentUploaded = true;
+        }
+
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
         model.addAttribute("translationFW", translationFW);
@@ -1713,6 +1719,9 @@ public class ApplicationFlowController {
         model.addAttribute("isPortrait", isPortrait );
         model.addAttribute("isNPSLivingPerson", isNPSLivingPerson );
         model.addAttribute("isNPSLivingPersonSet", isNPSLivingPersonSet);
+
+        model.addAttribute("isConsentUploaded", isConsentUploaded);
+
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
         return "application/mark/MarkDetailsDesignWText";
 
@@ -1763,6 +1772,13 @@ public class ApplicationFlowController {
         boolean isSignature = baseTrademarkApplication.getTradeMark().isSignature();
         boolean isPortrait =  baseTrademarkApplication.getTradeMark().isPortrait();
         boolean isNPSLivingPerson =  baseTrademarkApplication.getTradeMark().isNPSLivingPerson();
+        boolean isNPSLivingPersonSet = baseTrademarkApplication.getTradeMark().isNPSLivingPersonSet();
+
+        boolean isConsentUploaded = false;
+
+        if(baseTrademarkApplication.getTradeMark().getTrademarkConsentFilePath() != null && baseTrademarkApplication.getTradeMark().getTrademarkConsentFilePath() != ""){
+            isConsentUploaded = true;
+        }
 
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
@@ -1774,7 +1790,12 @@ public class ApplicationFlowController {
         model.addAttribute("isSignature", isSignature );
         model.addAttribute("isPortrait", isPortrait );
         model.addAttribute("isNPSLivingPerson", isNPSLivingPerson );
+        model.addAttribute("isNPSLivingPersonSet", isNPSLivingPersonSet);
+
+        model.addAttribute("isConsentUploaded", isConsentUploaded);
+
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
+
         return "application/mark/MarkDetailsStandard";
 
     }
@@ -1827,6 +1848,13 @@ public class ApplicationFlowController {
         boolean isSignature = baseTrademarkApplication.getTradeMark().isSignature();
         boolean isPortrait =  baseTrademarkApplication.getTradeMark().isPortrait();
         boolean isNPSLivingPerson =  baseTrademarkApplication.getTradeMark().isNPSLivingPerson();
+        boolean isNPSLivingPersonSet = baseTrademarkApplication.getTradeMark().isNPSLivingPersonSet();
+
+        boolean isConsentUploaded = false;
+
+        if(baseTrademarkApplication.getTradeMark().getTrademarkConsentFilePath() != null && baseTrademarkApplication.getTradeMark().getTrademarkConsentFilePath() != ""){
+            isConsentUploaded = true;
+        }
 
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
@@ -1838,6 +1866,9 @@ public class ApplicationFlowController {
         model.addAttribute("isSignature", isSignature );
         model.addAttribute("isPortrait", isPortrait );
         model.addAttribute("isNPSLivingPerson", isNPSLivingPerson );
+        model.addAttribute("isNPSLivingPersonSet", isNPSLivingPersonSet);
+
+        model.addAttribute("isConsentUploaded", isConsentUploaded);
 
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
         return "application/mark/MarkDetailsDesignOnly";
@@ -1892,6 +1923,13 @@ public class ApplicationFlowController {
         boolean isSignature = baseTrademarkApplication.getTradeMark().isSignature();
         boolean isPortrait =  baseTrademarkApplication.getTradeMark().isPortrait();
         boolean isNPSLivingPerson =  baseTrademarkApplication.getTradeMark().isNPSLivingPerson();
+        boolean isNPSLivingPersonSet = baseTrademarkApplication.getTradeMark().isNPSLivingPersonSet();
+
+        boolean isConsentUploaded = false;
+
+        if(baseTrademarkApplication.getTradeMark().getTrademarkConsentFilePath() != null && baseTrademarkApplication.getTradeMark().getTrademarkConsentFilePath() != ""){
+            isConsentUploaded = true;
+        }
 
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
@@ -1903,6 +1941,9 @@ public class ApplicationFlowController {
         model.addAttribute("isSignature", isSignature );
         model.addAttribute("isPortrait", isPortrait );
         model.addAttribute("isNPSLivingPerson", isNPSLivingPerson );
+        model.addAttribute("isNPSLivingPersonSet", isNPSLivingPersonSet);
+
+        model.addAttribute("isConsentUploaded", isConsentUploaded);
 
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
         return "application/mark/MarkDetailsStylized";
