@@ -358,6 +358,11 @@ public class GoodAndService {
     public String getFRCertUploadSpinnerID(){
         return  getInternalID()+"FRCertSpinner";
     }
+
+    public String getGSspecDownloadLinkID(){
+
+        return  getInternalID()+"gsSpecDownloadID";
+    }
     ////////////////////////////////////////////////////////
 
 
