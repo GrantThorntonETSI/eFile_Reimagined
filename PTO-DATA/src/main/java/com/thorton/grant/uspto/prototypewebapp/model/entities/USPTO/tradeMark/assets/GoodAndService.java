@@ -363,6 +363,12 @@ public class GoodAndService {
 
         return  getInternalID()+"gsSpecDownloadID";
     }
+
+
+    public String getFRcertDownloadID(){
+
+        return  getInternalID()+"frCertDownloadID";
+    }
     ////////////////////////////////////////////////////////
 
 

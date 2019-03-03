@@ -1020,8 +1020,8 @@ public class ApplicationObjectCreationController {
         }
 
 
-        return buildResponseEnity("200", "{image-url:" +filePath+"}");
-
+        //return buildResponseEnity("200", "{image-url:" +filePath+"}");
+        return buildResponseEnity("200", "{image-url:" +filePath+"}, {image-name:" +file.getOriginalFilename()+"}");
         //return ResponseEntity.ok().build();
 
     }
@@ -1083,8 +1083,8 @@ public class ApplicationObjectCreationController {
         }
 
 
-        return buildResponseEnity("200", "{image-url:" +filePath+"}");
-
+        //return buildResponseEnity("200", "{image-url:" +filePath+"}");
+        return buildResponseEnity("200", "{image-url:" +filePath+"}, {image-name:" +file.getOriginalFilename()+"}");
         //return ResponseEntity.ok().build();
 
     }
@@ -1152,7 +1152,8 @@ public class ApplicationObjectCreationController {
         }
 
 
-        return buildResponseEnity("200", "{image-url:" +filePath+"}");
+       // return buildResponseEnity("200", "{image-url:" +filePath+"}");
+        return buildResponseEnity("200", "{image-url:" +filePath+"}, {image-name:" +file.getOriginalFilename()+"}");
 
         //return ResponseEntity.ok().build();
 
