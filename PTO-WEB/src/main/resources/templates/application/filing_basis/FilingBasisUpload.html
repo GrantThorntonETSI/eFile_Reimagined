@@ -2024,11 +2024,11 @@
                                                             <div id="yescommerce" class="form-group form-group-md" th:if="${Good_Service.isMarkInUse() == false}" style="display: none;"><!--toggle 'yes' radio-->
                                                                 <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                     <label  th:attr="name=${Good_Service.getInternalID()}" >When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                                    <input type="date" class="form-control gs-date" value="" style="margin-top: 15px;">
+                                                                    <input type="date" class="form-control gs-date" value="" >
                                                                 </div>
                                                                 <div class="col-xs-12 col-md-6 form-group form-group-md matchlabelheightdiv">
                                                                     <label  class="matchlabelheight"  th:attr="name=${Good_Service.getInternalID()}">When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip" th:attr="name=${Good_Service.getInternalID()}" title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                                    <input type="date" class="form-control mark-date"    name="commercedate"  value="" style="margin-top: 15px;">
+                                                                    <input type="date" class="form-control mark-date"    name="commercedate"  value="" >
                                                                 </div>
                                                                 <div class="col-xs-12 form-group form-group-md">
                                                                     <input class="form-check-input checkmark provide-spec" type="checkbox" value="yes" tabindex="0"  th:attr="id=${Good_Service.getInternalID()}" >
