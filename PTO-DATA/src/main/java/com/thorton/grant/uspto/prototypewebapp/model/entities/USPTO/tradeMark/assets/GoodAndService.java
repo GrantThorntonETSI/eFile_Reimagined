@@ -505,7 +505,7 @@ public class GoodAndService {
     }
 
     public boolean isFRcertUploaded(){
-        if(frCertImagePath == null){
+        if(frCertImagePath == null || frCertImagePath.equals("")){
             return false;
         }
         else {
