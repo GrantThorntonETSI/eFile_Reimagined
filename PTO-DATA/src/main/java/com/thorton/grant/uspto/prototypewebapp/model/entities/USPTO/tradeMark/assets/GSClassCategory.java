@@ -23,6 +23,8 @@ public class GSClassCategory {
 
     private String classCategoryImagePath;
 
+    private String classCategoryImageName;
+
     private String classCategoryDescr;
 
 
@@ -186,5 +188,13 @@ public class GSClassCategory {
 
     public void setProvideSpecimenForAllset(boolean provideSpecimenForAllset) {
         this.provideSpecimenForAllset = provideSpecimenForAllset;
+    }
+
+    public String getClassCategoryImageName() {
+        return classCategoryImageName;
+    }
+
+    public void setClassCategoryImageName(String classCategoryImageName) {
+        this.classCategoryImageName = classCategoryImageName;
     }
 }

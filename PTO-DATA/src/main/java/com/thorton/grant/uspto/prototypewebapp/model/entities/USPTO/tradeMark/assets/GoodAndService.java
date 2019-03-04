@@ -34,11 +34,14 @@ public class GoodAndService {
 
 
     private String classSpecimenImgPath;
+    private String classSpecimenImgName;
+
     private String classSpecimenDescr;
 
     private boolean provideSample;
 
     private String sampleImagePath;
+    private String sampleImageName;
 
     private String rootStoragePath;
 
@@ -577,7 +580,21 @@ public class GoodAndService {
         return  retVal;
     }
 
+    public String getClassSpecimenImgName() {
+        return classSpecimenImgName;
+    }
 
+    public void setClassSpecimenImgName(String classSpecimenImgName) {
+        this.classSpecimenImgName = classSpecimenImgName;
+    }
+
+    public String getSampleImageName() {
+        return sampleImageName;
+    }
+
+    public void setSampleImageName(String sampleImageName) {
+        this.sampleImageName = sampleImageName;
+    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////

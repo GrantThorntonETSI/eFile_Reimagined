@@ -930,7 +930,9 @@ public class ApplicationObjectCreationController {
 
                         if(current.getClassNumber().equals(classCategoryNumber)){
                             current.setClassSpecimenImgPath(filePath);
+                            current.setClassSpecimenImgName(file.getOriginalFilename());
                             current.setSampleImagePath(filePath);
+                            current.setSampleImageName(file.getOriginalFilename());
                             current.setSampleUploaded(true);
                             current.setRootStoragePath(storageService.getRootPath());
 
@@ -1001,6 +1003,7 @@ public class ApplicationObjectCreationController {
 
 
                     baseTrademarkApplication.findGSbyInternalID(gsID).setSampleImagePath(filePath);
+                    baseTrademarkApplication.findGSbyInternalID(gsID).setSampleImageName(file.getOriginalFilename());
                     baseTrademarkApplication.findGSbyInternalID(gsID).setSampleUploaded(true);
                     baseTrademarkApplication.findGSbyInternalID(gsID).setRootStoragePath(storageService.getRootPath());
                     model.addAttribute("markImagePath",baseTrademarkApplication.getTradeMark().getTrademarkImagePath());

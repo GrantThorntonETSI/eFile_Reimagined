@@ -740,6 +740,7 @@ public class BaseTrademarkApplication  {
                 if(gsClassCategory.getClassCategoryNumber() == Integer.valueOf(current.getClassNumber())){
                     gsClassCategory.addGoodAndService(current);
                     gsClassCategory.setClassCategoryImagePath(current.getClassSpecimenImgPath());
+                    gsClassCategory.setClassCategoryImageName(current.getSampleImageName());
                     gsClassCategory.setClassCategoryDescr(current.getClassSpecimenDescr());
                     gsClassCategory.setAtLeastOneGoodInCommerce(current.isAtLeastOneGoodInCommerceClassFlag());
                     gsClassCategory.setAtLeastOneGoodInCommerceSet(current.isAtLeastOneGoodInCommerceClassFlagSet());
