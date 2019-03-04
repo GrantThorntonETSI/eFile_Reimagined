@@ -3572,6 +3572,7 @@
                         // we will return the the file url
                         // call jquery and set it in the img div
                         var imgPath = parsePathFromResponse(data);
+
                         var fileName = parseNameFromResponse(data);
                         $('#'+dLinkID).text(fileName);
                         $('#'+imageId).attr("src", imgPath);

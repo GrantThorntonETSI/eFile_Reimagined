@@ -200,6 +200,12 @@ public class BaseTrademarkApplication  {
 
     private String concurrentUseEvidenceFilePath;
 
+    private String concurrentUseEvidenceFileName;
+
+    private boolean concurrentEvidentFileTypeWord;
+
+
+
     private String concurentEvidenceDescription;
 
 
@@ -246,6 +252,8 @@ public class BaseTrademarkApplication  {
 
     private boolean distinctClaimBasedEvidence;
     private String distinctiveEvidenceFilePath;
+
+    private String distinctiveEvidenceFileName;
 
     private boolean distinctClaimBasedPriorReg;
     private String distinctClaimBasedPriorRegNumber;
@@ -1504,6 +1512,30 @@ public class BaseTrademarkApplication  {
 
     public void setDistinctClaimBasedFiveYOU(boolean distinctClaimBasedFiveYOU) {
         this.distinctClaimBasedFiveYOU = distinctClaimBasedFiveYOU;
+    }
+
+    public boolean isConcurrentEvidentFileTypeWord() {
+        return concurrentEvidentFileTypeWord;
+    }
+
+    public void setConcurrentEvidentFileTypeWord(boolean concurrentEvidentFileTypeWord) {
+        this.concurrentEvidentFileTypeWord = concurrentEvidentFileTypeWord;
+    }
+
+    public String getConcurrentUseEvidenceFileName() {
+        return concurrentUseEvidenceFileName;
+    }
+
+    public void setConcurrentUseEvidenceFileName(String concurrentUseEvidenceFileName) {
+        this.concurrentUseEvidenceFileName = concurrentUseEvidenceFileName;
+    }
+
+    public String getDistinctiveEvidenceFileName() {
+        return distinctiveEvidenceFileName;
+    }
+
+    public void setDistinctiveEvidenceFileName(String distinctiveEvidenceFileName) {
+        this.distinctiveEvidenceFileName = distinctiveEvidenceFileName;
     }
 
     @Override

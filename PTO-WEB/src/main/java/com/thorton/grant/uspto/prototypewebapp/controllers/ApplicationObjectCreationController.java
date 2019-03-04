@@ -1238,6 +1238,7 @@ public class ApplicationObjectCreationController {
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID( AppInternalID);
 
         String filePath ="";
+        String fileType="";
         if(file != null){
             System.out.println("file is not null");
 
@@ -1254,12 +1255,21 @@ public class ApplicationObjectCreationController {
                     // file path returned to client in response
 
                     // server redraw should render the image file path from category object
+                    if(file.getOriginalFilename().contains(".doc") || file.getOriginalFilename().contains(".DOC")){
+                        fileType = "word";
+                        baseTrademarkApplication.setConcurrentEvidentFileTypeWord(true);
+                    }
+                    else {
+                        fileType = "pdf";
+                        baseTrademarkApplication.setConcurrentEvidentFileTypeWord(false);
+                    }
 
 
                     // baseTrademarkApplication.getc("/files/"+image_path);
-                    filePath = "/files/"+image_path;
+                    filePath = "/files-server/"+image_path;
 
                     baseTrademarkApplication.setConcurrentUseEvidenceFilePath(filePath);
+                    baseTrademarkApplication.setConcurrentUseEvidenceFileName(file.getOriginalFilename());
                     baseTrademarkApplication.setDeclarationEvidenceSupport(true);
                     baseTrademarkApplication.setDeclarationEvidenceSupportSet(true);
 
@@ -1281,8 +1291,8 @@ public class ApplicationObjectCreationController {
         }
 
 
-        return buildResponseEnity("200", "{image-url:" +filePath+"}");
-
+        //return buildResponseEnity("200", "{image-url:" +filePath+"}");
+        return buildResponseEnity("200", "{image-url:" +filePath+"}, {image-name:" +file.getOriginalFilename()+"}, {image-type:" +fileType+"}");
         //return ResponseEntity.ok().build();
 
     }
@@ -1463,6 +1473,7 @@ public class ApplicationObjectCreationController {
                     filePath = "/files/"+image_path;
 
                      baseTrademarkApplication.setDistinctiveEvidenceFilePath(filePath);
+                     baseTrademarkApplication.setDistinctiveEvidenceFileName(file.getOriginalFilename());
 
 
 
