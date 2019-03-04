@@ -1067,6 +1067,7 @@ public class ApplicationObjectCreationController {
                     filePath = "/files/"+image_path;
 
                     baseTrademarkApplication.findGSbyInternalID(gsID).setFrCertImagePath(filePath);
+                    baseTrademarkApplication.findGSbyInternalID(gsID).setFrCertImageName(file.getOriginalFilename());
 
 
 

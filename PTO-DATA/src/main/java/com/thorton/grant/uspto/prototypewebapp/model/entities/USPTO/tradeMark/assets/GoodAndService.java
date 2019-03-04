@@ -102,6 +102,8 @@ public class GoodAndService {
     private Date  frRenewlDate;
     private String frCertImagePath;
 
+    private String frCertImageName;
+
 
 
     // class level fields that propogates up
@@ -594,6 +596,14 @@ public class GoodAndService {
 
     public void setSampleImageName(String sampleImageName) {
         this.sampleImageName = sampleImageName;
+    }
+
+    public String getFrCertImageName() {
+        return frCertImageName;
+    }
+
+    public void setFrCertImageName(String frCertImageName) {
+        this.frCertImageName = frCertImageName;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
