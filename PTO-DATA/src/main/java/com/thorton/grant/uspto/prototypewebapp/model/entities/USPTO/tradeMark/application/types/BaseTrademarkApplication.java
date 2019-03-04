@@ -174,6 +174,13 @@ public class BaseTrademarkApplication  {
 
     private String miscInformation;
     private String miscInfoImagePath;
+    private String miscInfoImageName;
+    private boolean miscInfoImageTypeWord;
+
+    public boolean  miscInfoImageUploaded;
+
+
+
 
     private boolean concurrentUse;
     private boolean concurrentUseSet;
@@ -1537,6 +1544,30 @@ public class BaseTrademarkApplication  {
 
     public void setDistinctiveEvidenceFileName(String distinctiveEvidenceFileName) {
         this.distinctiveEvidenceFileName = distinctiveEvidenceFileName;
+    }
+
+    public boolean isMiscInfoImageTypeWord() {
+        return miscInfoImageTypeWord;
+    }
+
+    public void setMiscInfoImageTypeWord(boolean miscInfoImageTypeWord) {
+        this.miscInfoImageTypeWord = miscInfoImageTypeWord;
+    }
+
+    public String getMiscInfoImageName() {
+        return miscInfoImageName;
+    }
+
+    public void setMiscInfoImageName(String miscInfoImageName) {
+        this.miscInfoImageName = miscInfoImageName;
+    }
+
+    public boolean isMiscInfoImageUploaded() {
+        return miscInfoImageUploaded;
+    }
+
+    public void setMiscInfoImageUploaded(boolean miscInfoImageUploaded) {
+        this.miscInfoImageUploaded = miscInfoImageUploaded;
     }
 
     @Override

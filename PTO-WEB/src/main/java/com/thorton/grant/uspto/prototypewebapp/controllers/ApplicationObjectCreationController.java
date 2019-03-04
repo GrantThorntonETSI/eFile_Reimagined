@@ -1180,6 +1180,7 @@ public class ApplicationObjectCreationController {
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID( AppInternalID);
 
         String filePath ="";
+        String fileType="";
         if(file != null){
             System.out.println("file is not null");
 
@@ -1196,12 +1197,23 @@ public class ApplicationObjectCreationController {
                     // file path returned to client in response
 
                     // server redraw should render the image file path from category object
+                    if(file.getOriginalFilename().contains(".doc") || file.getOriginalFilename().contains(".DOC")){
+                        fileType = "word";
+                        baseTrademarkApplication.setMiscInfoImageTypeWord(true);
+                    }
+                    else {
+                        fileType = "pdf";
+                        baseTrademarkApplication.setMiscInfoImageTypeWord(false);
+                    }
 
 
                     // baseTrademarkApplication.getc("/files/"+image_path);
-                    filePath = "/files/"+image_path;
+                    filePath = "/files-server/"+image_path;
 
                     baseTrademarkApplication.setMiscInfoImagePath(filePath);
+                    baseTrademarkApplication.setMiscInfoImageName(file.getOriginalFilename());
+                    baseTrademarkApplication.setMiscInfoImageUploaded(true);
+                    //baseTrademarkApplication.setProvideMiscInfo(true);
 
 
                    // model.addAttribute("markImagePath",baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
@@ -1221,8 +1233,8 @@ public class ApplicationObjectCreationController {
         }
 
 
-        return buildResponseEnity("200", "{image-url:" +filePath+"}");
-
+        //return buildResponseEnity("200", "{image-url:" +filePath+"}");
+        return buildResponseEnity("200", "{image-url:" +filePath+"}, {image-name:" +file.getOriginalFilename()+"}, {image-type:" +fileType+"}");
         //return ResponseEntity.ok().build();
 
     }
