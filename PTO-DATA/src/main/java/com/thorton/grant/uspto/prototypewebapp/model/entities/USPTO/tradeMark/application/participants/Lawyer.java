@@ -22,6 +22,14 @@ public class Lawyer extends Contact {
 
 
     private String AffiliationStatus;
+    private boolean AffiliationStatusSet;
+    private boolean affliationUS;
+
+
+
+
+
+
     private String barJurisdiction;
     private String MembershipNumber;
     private Date BarAdmissionDate;
@@ -219,6 +227,22 @@ public class Lawyer extends Contact {
 
     public void setCollapseID(String collapseID) {
         this.collapseID = collapseID;
+    }
+
+    public boolean isAffiliationStatusSet() {
+        return AffiliationStatusSet;
+    }
+
+    public void setAffiliationStatusSet(boolean affiliationStatusSet) {
+        AffiliationStatusSet = affiliationStatusSet;
+    }
+
+    public boolean isAffliationUS() {
+        return affliationUS;
+    }
+
+    public void setAffliationUS(boolean affliationUS) {
+        this.affliationUS = affliationUS;
     }
 
     @Override

@@ -472,8 +472,7 @@ $(document).ready(function(){
 	//END toggle radio buttons content
 
 	//start affiliation options
-	$('div#usaffiliation').css('display','none');
-	$('div#canadianaffiliation').css('display','none');
+
 	$('#attorney-bar-standing').change(function(){
 		$('.hidethis').hide( 500 );
 		$('#' + $(this).val()).show( 500 );

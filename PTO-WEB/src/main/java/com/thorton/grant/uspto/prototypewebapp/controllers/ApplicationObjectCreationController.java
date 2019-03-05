@@ -238,6 +238,13 @@ public class ApplicationObjectCreationController {
         }
         if(newAttorneyContactFormDTO.getAttorneyAffiliation()!= null){
             lawyer.setAffiliationStatus(newAttorneyContactFormDTO.getAttorneyAffiliation());
+            lawyer.setAffiliationStatusSet(true);
+            if(newAttorneyContactFormDTO.getAttorneyAffiliation().contains("usaffiliation")){
+                    lawyer.setAffliationUS(true);
+            }
+            else {
+                lawyer.setAffliationUS(false);
+            }
         }
         if(newAttorneyContactFormDTO.getAttorneyBarJurisdiction()!= null){
             lawyer.setBarJurisdiction(newAttorneyContactFormDTO.getAttorneyBarJurisdiction());
