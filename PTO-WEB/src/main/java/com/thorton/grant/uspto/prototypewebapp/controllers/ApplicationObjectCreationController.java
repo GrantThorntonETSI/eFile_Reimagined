@@ -1615,7 +1615,7 @@ public class ApplicationObjectCreationController {
                     filePath = "/files/"+image_path;
 
                     // need to also send over attorney email as part of email update
-                    baseTrademarkApplication.setDistinctiveEvidenceFileName(file.getOriginalFilename());
+                    baseTrademarkApplication.findContactByEmail(email).setBarCertificateImageFileName(file.getOriginalFilename());
 
 
 

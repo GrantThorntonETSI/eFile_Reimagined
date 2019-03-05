@@ -599,7 +599,7 @@
 
                                                         <label class="small long upload-drop-zone" for="attorney-bar-file-input"><span class="glyphicon glyphicon-upload"></span> <br>
                                                             Upload bar credentials, including certificate of good standing from highest court of a state, commonwealth, territory or possession, or of the District of Columbia evidencing that you are a memeber of the bar of such court and are in good standing.</label>
-                                                        <input type="file" id="attorney-bar-file-input" name="file" class="form-control" style="display: none;"  accept=".doc,.docx,.pdf" >
+                                                        <input type="file" id="attorney-bar-file-input" name="file" class="form-control" style="display: none;"   >
 
                                                     </form>
                                                 </div>
@@ -619,7 +619,7 @@
                                                                             </button>
                                                                         </div>
                                                                         <div class="col-xs-4 linkholder" style="margin-left: 15px;">
-                                                                            <a id="attorney-bar-img-dlink">download-link</a>
+                                                                            <a id="attorney-bar-img-dlink"  th:text="${attorney.getBarCertificateImageFileName()}">download-link</a>
 
                                                                         </div>
                                                                         <div class="col-xs-2" style="margin-left: 33px;">
@@ -650,7 +650,7 @@
 
                                                         <label class="small long upload-drop-zone" for="attorney-bar-file-input"><span class="glyphicon glyphicon-upload"></span> <br>
                                                             Upload bar credentials, including certificate of good standing from highest court of a state, commonwealth, territory or possession, or of the District of Columbia evidencing that you are a memeber of the bar of such court and are in good standing.</label>
-                                                        <input type="file" id="attorney-bar-file-input" name="file" class="form-control" style="display: none;"  accept=".doc,.docx,.pdf" >
+                                                        <input type="file" id="attorney-bar-file-input" name="file" class="form-control" style="display: none;"   >
 
                                                     </form>
                                                 </div>
@@ -806,7 +806,7 @@
 
                                                     <label class="small long upload-drop-zone" for="attorney-bar-file-input"><span class="glyphicon glyphicon-upload"></span> <br>
                                                         Upload bar credentials, including certificate of good standing from highest court of a state, commonwealth, territory or possession, or of the District of Columbia evidencing that you are a memeber of the bar of such court and are in good standing.</label>
-                                                    <input type="file" id="attorney-bar-file-input" name="file" class="form-control" style="display: none;"  accept=".doc,.docx,.pdf" >
+                                                    <input type="file" id="attorney-bar-file-input" name="file" class="form-control" style="display: none;"  >
 
                                                 </form>
                                             </div>
@@ -1639,6 +1639,74 @@
 
 
 
+        $("#attorney-bar-img-upload").click(function() {
+
+
+
+            var currentButton = $(this);
+            // static know value
+            //var formID = "distinctEvidenceForm";
+            // static know value
+            var fileInputId = "attorney-bar-file-input";
+            // static know value
+            var imageId = "attorney-bar-img";
+            // static know value
+            var spinnerID = "attorney-bar-file-upload-spinner"
+
+            var dLinkID = "attorney-bar-img-dlink";
+
+
+            $('#'+spinnerID).show();
+
+
+
+            var fileInput = document.getElementById(fileInputId);
+            var file = fileInput.files[0];
+            var formData = new FormData();
+            formData.append('file', file);
+            formData.append('appID', appInternalID);
+            formData.append('email', attEmail);
+            // static known value
+            var url = "/attorney/cert/update";
+
+
+            // Get the selected files from the input.
+            // get form url
+            setTimeout(function () {
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: formData, // serializes the form's elements.
+                    async: true,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(data)
+                    {
+                        // we will return the the file url
+                        // call jquery and set it in the img div
+                        var imgPath = parsePathFromResponse(data);
+                        var fileName = parseNameFromResponse(data);
+                        $('#'+dLinkID).text(fileName);
+                        $('#'+imageId).attr("src", imgPath);
+                        $("#"+spinnerID).hide();
+                        //$("#cat-spec-img").fadeIn(500);
+                    }
+                });
+                $(currentButton).parent().parent().prev().show(500);
+                //alert($(this).parent().parent().html());
+                $(currentButton).parent().parent().prev().prev().hide(500);
+                $(currentButton).parent().parent().hide(500);
+
+
+            }, 1000);
+
+            return false; // avoid to execute the actual submit of the form.
+        });
+
+
+
+
 
         $('.attorney-bar-img-close').click(function () {
 
@@ -1656,6 +1724,28 @@
 
 
 
+    function parsePathFromResponse(response){
+        var index = response.indexOf("image-url:");
+        index = index+10;
+        response = response.substring(index);
+
+
+        var index2 = response.indexOf("}");
+        response = response.substring(0, index2);
+        return response;
+    }
+
+    function parseNameFromResponse(response){
+
+        var index = response.indexOf("image-name:");
+        index = index+11;
+        response = response.substring(index);
+
+
+        var index2 = response.indexOf("}");
+        response = response.substring(0, index2);
+        return response;
+    }
 
 
 

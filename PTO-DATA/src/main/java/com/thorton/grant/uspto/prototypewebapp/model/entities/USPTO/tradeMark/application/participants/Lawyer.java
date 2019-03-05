@@ -35,6 +35,8 @@ public class Lawyer extends Contact {
     private Date BarAdmissionDate;
     private String BarCertificateImageKey; // its the name of the file
 
+    private String BarCertificateImageFileName; // its the name of the file
+
     private boolean BarCertificateImageUploaded; // its the name of the file
 
 
@@ -256,6 +258,14 @@ public class Lawyer extends Contact {
 
     public void setBarCertificateImageUploaded(boolean barCertificateImageUploaded) {
         BarCertificateImageUploaded = barCertificateImageUploaded;
+    }
+
+    public String getBarCertificateImageFileName() {
+        return BarCertificateImageFileName;
+    }
+
+    public void setBarCertificateImageFileName(String barCertificateImageFileName) {
+        BarCertificateImageFileName = barCertificateImageFileName;
     }
 
     @Override
