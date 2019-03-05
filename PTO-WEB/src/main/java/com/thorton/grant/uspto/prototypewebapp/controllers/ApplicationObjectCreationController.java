@@ -220,6 +220,7 @@ public class ApplicationObjectCreationController {
                   try {
                       storageService.store(file);
                       lawyer.setBarCertificateImageUploaded(true);
+                      lawyer.setBarCertificateImageFileName(file.getOriginalFilename());
 
                   }
                   catch ( StorageException ex){

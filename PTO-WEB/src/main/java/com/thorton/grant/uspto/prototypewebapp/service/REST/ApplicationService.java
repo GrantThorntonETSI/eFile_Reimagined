@@ -396,7 +396,7 @@ public class ApplicationService  extends  BaseRESTapiService{
            }
            baseTrademarkApplication.setPrimaryLawyer(primaryAttorney);
            primaryAttorney.setPrimary(true);
-           baseTrademarkApplication.setLastViewModel("application/attorney/AttorneySet");
+           baseTrademarkApplication.setLastViewModel("application/attorney/AttorneySet2");
            baseTrademarkApplication.setAttorneyCollapseID(primaryAttorney.getFirstName()+primaryAttorney.getLastName());
            baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
