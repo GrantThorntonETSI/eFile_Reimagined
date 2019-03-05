@@ -219,6 +219,7 @@ public class ApplicationObjectCreationController {
                   lawyer.setBarCertificateImageKey("/files/"+storageService.getCounter()+file.getOriginalFilename());
                   try {
                       storageService.store(file);
+                      lawyer.setBarCertificateImageUploaded(true);
 
                   }
                   catch ( StorageException ex){

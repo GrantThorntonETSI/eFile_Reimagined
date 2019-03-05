@@ -35,6 +35,11 @@ public class Lawyer extends Contact {
     private Date BarAdmissionDate;
     private String BarCertificateImageKey; // its the name of the file
 
+    private boolean BarCertificateImageUploaded; // its the name of the file
+
+
+
+
     private String CanadianAgentName;
     private boolean isApplicantCA;
 
@@ -243,6 +248,14 @@ public class Lawyer extends Contact {
 
     public void setAffliationUS(boolean affliationUS) {
         this.affliationUS = affliationUS;
+    }
+
+    public boolean isBarCertificateImageUploaded() {
+        return BarCertificateImageUploaded;
+    }
+
+    public void setBarCertificateImageUploaded(boolean barCertificateImageUploaded) {
+        BarCertificateImageUploaded = barCertificateImageUploaded;
     }
 
     @Override
