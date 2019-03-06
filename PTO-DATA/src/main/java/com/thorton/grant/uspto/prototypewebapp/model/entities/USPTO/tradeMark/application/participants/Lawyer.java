@@ -268,6 +268,16 @@ public class Lawyer extends Contact {
         BarCertificateImageFileName = barCertificateImageFileName;
     }
 
+
+    public String getBarAdmissionDateDisplay() {
+        if( getBarAdmissionDate() != null) {
+            return getBarAdmissionDate().toString().substring(0, 10);
+        }
+        else {
+            return "";
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

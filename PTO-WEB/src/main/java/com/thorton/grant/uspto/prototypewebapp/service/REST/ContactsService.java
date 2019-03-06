@@ -18,7 +18,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
+import java.util.Locale;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -297,8 +301,19 @@ public class ContactsService extends  BaseRESTapiService {
 
         }
 
-        if(contact_field_name.equals("attorney-admission-date" )){
+        if(contact_field_name.equals("attorney-bar-membership-date" )){
             //baseTrademarkApplication.findContactByEmail(contact_email).setBarAdmissionDate(contact_field_value);
+            try {
+                DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+                Date date = format.parse(contact_field_value);
+                baseTrademarkApplication.findContactByEmail(contact_email).setBarAdmissionDate(date);
+
+            }
+            catch(Exception ex){
+                return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
+
+            }
+
             appFieldReadable = "Attorney Bar Admission Date ";
 
         }

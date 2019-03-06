@@ -586,7 +586,7 @@
                                             </div>
                                             <div class="form-group form-group-md col-xs-12 col-md-4">
                                                 <label for="bar-membership-date">Date of Admission</label>
-                                                <input type="date" class="form-control" id="bar-membership-date" name="attorneyBarAdmissionDate" value="" th:value="${attorney.barAdmissionDate}">
+                                                <input type="date" class="form-control" id="bar-membership-date" name="attorneyBarAdmissionDate" value="" th:value="${attorney.getBarAdmissionDateDisplay()}">
                                             </div>
                                         </div>
                                         <h4 class="weight600">Acknowledgement of Certification in Good Standing</h4>
@@ -1635,88 +1635,95 @@
 
     });
 
+        $('input#bar-membership-date').change(function () {
 
 
-
-
-        $("#attorney-bar-img-upload").click(function() {
-
-
-
-            var currentButton = $(this);
-            // static know value
-            //var formID = "distinctEvidenceForm";
-            // static know value
-            var fileInputId = "attorney-bar-file-input";
-            // static know value
-            var imageId = "attorney-bar-img";
-            // static know value
-            var spinnerID = "attorney-bar-file-upload-spinner"
-
-            var dLinkID = "attorney-bar-img-dlink";
-
-
-            $('#'+spinnerID).show();
-
-
-
-            var fileInput = document.getElementById(fileInputId);
-            var file = fileInput.files[0];
-            var formData = new FormData();
-            formData.append('file', file);
-            formData.append('appID', appInternalID);
-            formData.append('email', attEmail);
-            // static known value
-            var url = "/attorney/cert/update";
-
-
-            // Get the selected files from the input.
-            // get form url
-            setTimeout(function () {
-                $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: formData, // serializes the form's elements.
-                    async: true,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    success: function(data)
-                    {
-                        // we will return the the file url
-                        // call jquery and set it in the img div
-                        var imgPath = parsePathFromResponse(data);
-                        var fileName = parseNameFromResponse(data);
-                        $('#'+dLinkID).text(fileName);
-                        $('#'+imageId).attr("src", imgPath);
-                        $("#"+spinnerID).hide();
-                        //$("#cat-spec-img").fadeIn(500);
-                    }
-                });
-                $(currentButton).parent().parent().prev().show(500);
-                //alert($(this).parent().parent().html());
-                $(currentButton).parent().parent().prev().prev().hide(500);
-                $(currentButton).parent().parent().hide(500);
-
-
-            }, 1000);
-
-            return false; // avoid to execute the actual submit of the form.
+            var date = $(this).val();
+            saveAttorneyInfo(attEmail, "attorney-bar-membership-date",value, appInternalID);
         });
 
 
 
 
 
-        $('.attorney-bar-img-close').click(function () {
+    $("#attorney-bar-img-upload").click(function() {
 
 
-            $(this).parent().parent().parent().parent().parent().parent().parent().hide(500);
 
-            $(this).parent().parent().parent().parent().parent().parent().parent().prev().show(500);
-            $(this).parent().parent().parent().parent().parent().parent().parent().next().show(500);
+        var currentButton = $(this);
+        // static know value
+        //var formID = "distinctEvidenceForm";
+        // static know value
+        var fileInputId = "attorney-bar-file-input";
+        // static know value
+        var imageId = "attorney-bar-img";
+        // static know value
+        var spinnerID = "attorney-bar-file-upload-spinner"
 
-        });
+        var dLinkID = "attorney-bar-img-dlink";
+
+
+        $('#'+spinnerID).show();
+
+
+
+        var fileInput = document.getElementById(fileInputId);
+        var file = fileInput.files[0];
+        var formData = new FormData();
+        formData.append('file', file);
+        formData.append('appID', appInternalID);
+        formData.append('email', attEmail);
+        // static known value
+        var url = "/attorney/cert/update";
+
+
+        // Get the selected files from the input.
+        // get form url
+        setTimeout(function () {
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: formData, // serializes the form's elements.
+                async: true,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(data)
+                {
+                    // we will return the the file url
+                    // call jquery and set it in the img div
+                    var imgPath = parsePathFromResponse(data);
+                    var fileName = parseNameFromResponse(data);
+                    $('#'+dLinkID).text(fileName);
+                    $('#'+imageId).attr("src", imgPath);
+                    $("#"+spinnerID).hide();
+                    //$("#cat-spec-img").fadeIn(500);
+                }
+            });
+            $(currentButton).parent().parent().prev().show(500);
+            //alert($(this).parent().parent().html());
+            $(currentButton).parent().parent().prev().prev().hide(500);
+            $(currentButton).parent().parent().hide(500);
+
+
+        }, 1000);
+
+        return false; // avoid to execute the actual submit of the form.
+    });
+
+
+
+
+
+    $('.attorney-bar-img-close').click(function () {
+
+
+        $(this).parent().parent().parent().parent().parent().parent().parent().hide(500);
+
+        $(this).parent().parent().parent().parent().parent().parent().parent().prev().show(500);
+        $(this).parent().parent().parent().parent().parent().parent().parent().next().show(500);
+
+    });
 
 
 
