@@ -1288,7 +1288,7 @@ public class ApplicationFlowController {
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication  baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
 
-        baseTrademarkApplication.setLastViewModel("application/owner/OwnerSetView");
+        baseTrademarkApplication.setLastViewModel("application/owner/OwnerSetView2");
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         // add contacts display info to model
