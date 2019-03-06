@@ -302,7 +302,7 @@ public class ApplicationFlowController {
         ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
         selectedAttorneyDisplayDTO.setContactNames(selectedContactNames);
         model.addAttribute("selectedAttorneys",selectedAttorneyDisplayDTO);
-        baseTrademarkApplication.setLastViewModel("application/attorney/AttorneySet");
+        baseTrademarkApplication.setLastViewModel("application/attorney/AttorneySet2");
 
         if(trademarkInternalID.equals("new")) {
 
@@ -2707,7 +2707,7 @@ public class ApplicationFlowController {
 
             if(baseTrademarkApplication.getPrimaryLawyer().getMembershipNumber() == null){
                 missedTEAsFields.add("Attorney Bar Membership Number");
-                returnLink ="../../application/AttorneySet/?trademarkID=";
+                returnLink ="../../application/AttorneySet2/?trademarkID=";
             }
         }
 

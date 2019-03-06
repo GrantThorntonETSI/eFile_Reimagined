@@ -277,11 +277,6 @@ public class ContactsService extends  BaseRESTapiService {
 
         }
 
-        if(contact_field_name.equals("docket-id" )){
-            baseTrademarkApplication.findContactByEmail(contact_email).setDocketNumber(contact_field_value);
-            appFieldReadable = "Attorney Docket Number ";
-
-        }
 
         if(contact_field_name.equals("attorney-bar-standing" )){
             baseTrademarkApplication.findContactByEmail(contact_email).setAffiliationStatus(contact_field_value);
@@ -335,6 +330,52 @@ public class ContactsService extends  BaseRESTapiService {
     }
 
 
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/application/attorney/update/additional/{contact_email}/{contact_field_name}/{contact_field_value}/{contact_field_index}/{trademarkInternalID}")
+    @ResponseBody
+    ResponseEntity<String> updateAttorneyContactAdditionalFields(@PathVariable String contact_email,@PathVariable String contact_field_name, @PathVariable String contact_field_value,  @PathVariable int contact_field_index, @PathVariable String trademarkInternalID ){
+
+        String appFieldReadable = "Attorney contact";
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+        // verify authentication is valid before moving on ....
+        // have to have a valid session
+
+        int returnIndex= 0;
+
+        if(contact_field_name.equals("docket-number-add" )){
+            if(contact_field_index == -1){ // adding new docket number
+                baseTrademarkApplication.findContactByEmail(contact_email).addDocketNumber(contact_field_value);
+                returnIndex = baseTrademarkApplication.findContactByEmail(contact_email).getDocketNumberList().size()-1;
+            }
+            else {
+                baseTrademarkApplication.findContactByEmail(contact_email).getDocketNumberList().set(contact_field_index, contact_field_value);
+                returnIndex = contact_field_index;
+            }
+
+            appFieldReadable = "Attorney Docket Number ";
+
+        }
+
+        if(contact_field_name.equals("docket-number-remove" )){
+            String docNumber = baseTrademarkApplication.findContactByEmail(contact_email).getDocketNumberList().get(contact_field_index);
+            baseTrademarkApplication.findContactByEmail(contact_email).removeDocketNumber(docNumber);
+
+        }
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+
+        ////////////////////////////////////////////////
+        // start generating response
+        ////////////////////////////////////////////////
+
+        String responseMsg = appFieldReadable+" has been saved";
+        //return buildResponseEnity("200", responseMsg);
+        return buildResponseEnity("200", "{index:" +returnIndex+"}, {message:" +responseMsg+"}");
+    }
 
 
 

@@ -1342,12 +1342,12 @@ $(document).ready(function(){
 	$( document ).on('click','button#addocketref',function(){
 		$( 'div.docket:eq(0)' ).clone().appendTo( '.appenddocket' );
 		$( 'div.docket' ).last().find('input').val('');
+		$( 'div.docket' ).last().find('[docket-index]').removeAttr("docket-index");
+
 		$( '.appenddocket .resetdkt' ).removeClass( 'visuallyremoved' );
 		$( this ).removeClass( '.addinitial' );
 	});
-	$( document ).on('click','.resetdktrefbtn',function(){
-		$( this ).parent().parent().remove();
-	});
+
 	//END additional docket
 
 	//START additional containsname

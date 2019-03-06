@@ -513,32 +513,34 @@
                         <div class="card-text">
                             <h2 class="card-title weight600" id="docketreference">Docket or Reference Number</h2>
                         </div>
+                        <fieldset aria-labelledby="docketreference">
+
+                            <th:block th:each="docketNumber, iter: ${attorney.getDocketNumberList()}">
+
+                                    <div class="row docket">
+                                        <div class="form-group form-group-md col-xs-9">
+                                            <label>If applicable, enter the attorney docket or reference number.</label>
+                                            <input type="text" class="form-control docket-id"  th:attr="docket-index=${iter.index}" th:value="${docketNumber}">
+                                        </div>
+                                        <div class="form-group form-group-md  resetdkt col-xs-3"  style="bottom: -30px; left:-111px;">
+                                            <button type="button" class="btn btn-sm close resetdktrefbtn" th:attr="docket-index=${iter.index}" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                                        </div>
+                                    </div>
 
 
-                        <th:block th:each="docketNumber: ${attorney.getDocketNumberList()}">
-                            <fieldset aria-labelledby="docketreference">
-                                <div class="row docket">
-                                    <div class="form-group form-group-md col-xs-9">
-                                        <label for="docket-id">If applicable, enter the attorney docket or reference number.</label>
-                                        <input type="text" class="form-control" id="docket-id" th:value="${docketNumber}">
-                                    </div>
-                                    <div class="form-group form-group-md visuallyremoved resetdkt col-xs-3"  style="bottom: -30px; left:-111px;">
-                                        <button type="button" class="btn btn-sm close resetdktrefbtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
-                                    </div>
-                                </div>
-                                <div class="appenddocket"></div>
-                                <div class="form-group form-group-md col-xs-12">
-                                    <div class="row">
-                                        <div class="inlinebuttons btn-group btn-group-justified">
-                                            <div class="btn-group col-xs-6">
-                                                <button type="button" class="btn btn-sm btn-success addinitial" id="addocketref" aria-label="add docket or reference number">Add Number</button>
-                                            </div>
+                            </th:block>
+
+                            <div class="appenddocket"></div>
+                            <div class="form-group form-group-md col-xs-12">
+                                <div class="row">
+                                    <div class="inlinebuttons btn-group btn-group-justified">
+                                        <div class="btn-group col-xs-6">
+                                            <button type="button" class="btn btn-sm btn-success addinitial" id="addocketref" aria-label="add docket or reference number">Add Number</button>
                                         </div>
                                     </div>
                                 </div>
-                            </fieldset><!--END Docket Reference Information-->
-                        </th:block>
-
+                            </div>
+                        </fieldset><!--END Docket Reference Information-->
                         <!--START Affiliation Information-->
                         <div class="card-text">
                             <h2 class="card-title weight600" id="affiliation">Affiliation Information</h2>
@@ -1651,10 +1653,33 @@
     });
 
 
-    $('#docket-id').focusout(function () {
+    $('#yesattorneyfiling').on('focusout', 'input.docket-id', function () {
         var value = $(this).val();
-        saveAttorneyInfo(attEmail, "docket-id",value, appInternalID);
 
+        var index = $(this).attr('docket-index');
+
+        if(index == null){
+            index = -1;
+        }
+        var newIndex = saveAttorneyInfoAdditonal(attEmail, "docket-number-add", value ,index);
+        if(newIndex != index){  // we are adding a new row
+            $(this).attr('docket-index', newIndex)
+        }
+    });
+
+    //attorney docket number remove
+    $( document ).on('click','.resetdktrefbtn',function(){
+
+        var index = $(this).parent().prev().find('input').attr("docket-index");
+        var value = "xxxxx";
+
+
+        if(index >= 0){
+            var newIndex = saveAttorneyInfoAdditonal(attEmail, "docket-number-remove", value,index);
+        }
+
+
+        $( this ).parent().parent().remove();
     });
 
     $('#attorney-bar-standing').change(function () {
@@ -1793,6 +1818,29 @@
     }
 
 
+    function parseIndexValueFromResponse(response){
+
+        var index = response.indexOf("index:");
+        index = index+6;
+        response = response.substring(index);
+
+
+        var index2 = response.indexOf("}");
+        response = response.substring(0, index2);
+        return response;
+    }
+
+    function parseMessageFromResponse(response){
+
+        var index = response.indexOf("message:");
+        index = index+8;
+        response = response.substring(index);
+
+
+        var index2 = response.indexOf("}");
+        response = response.substring(0, index2);
+        return response;
+    }
 
     // validation function
     function validateAttorneyForm()
@@ -2015,7 +2063,55 @@
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    function saveAttorneyInfoAdditonal(contact_email, field_name, field_value, fieldIndex) {
 
+        //////////////////////////////////////////////////////////////////////////////////////
+        // we need REST controller of finding a contact by its email
+        // this needs to be implemented on the PTOUser object
+        //////////////////////////////////////////////////////////////////////////////////////
+
+        $.ajax({
+
+            url: "../../../../REST/apiGateway/application/attorney/update/additional/"+contact_email+"/"+field_name+"/"+field_value+"/"+fieldIndex+"/"+appInternalID,
+
+            type: 'GET',
+            success: function(data){
+
+
+                fieldIndex= parseIndexValueFromResponse(data);
+                var serverMessage = parseMessageFromResponse(data)
+
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function() {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(serverMessage);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+
+
+
+
+
+
+            },
+            error: function(data) {
+
+                //$('.circle-loader').fadeOut(100);
+                //$('.x-mark').fadeIn(500);
+
+                console.log(data);
+                // set message to div area ...fields can not be left null
+                //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                //$(".validationMsgArea span").css('color','red');
+            }
+
+        });
+
+        return fieldIndex;
+
+    } // end of function
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
