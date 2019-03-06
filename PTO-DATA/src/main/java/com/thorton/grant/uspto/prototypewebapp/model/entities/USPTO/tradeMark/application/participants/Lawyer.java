@@ -6,11 +6,27 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 public class Lawyer extends Contact {
+
+
+    public Lawyer() {
+        docketNumberList = new ArrayList<>();
+    }
+
+    // object copy constructor
+    public Lawyer(Lawyer lawyer) {
+        this.setEmail(lawyer.getEmail());
+        this.setFirstName(lawyer.getFirstName());
+        this.setLastName(lawyer.getLastName());
+        this.setLawFirmName(lawyer.getLawFirmName());
+        this.setBarLicense(lawyer.getBarLicense());
+        this.setBarJurisdiction(lawyer.getBarJurisdiction());
+        this.setClient(lawyer.getClient());
+        this.setPrimary(lawyer.isPrimary());
+    }
 
     private boolean isPrimary;
     private boolean validBarAssociation; // affiliation
@@ -19,6 +35,8 @@ public class Lawyer extends Contact {
     private String barLicense;
 
     private String docketNumber;
+    // support multiple docket numbers
+    private ArrayList<String> docketNumberList;
 
 
     private String AffiliationStatus;
@@ -57,20 +75,6 @@ public class Lawyer extends Contact {
 
 
 
-    public Lawyer() {
-    }
-
-    // object copy constructor
-    public Lawyer(Lawyer lawyer) {
-        this.setEmail(lawyer.getEmail());
-        this.setFirstName(lawyer.getFirstName());
-        this.setLastName(lawyer.getLastName());
-        this.setLawFirmName(lawyer.getLawFirmName());
-        this.setBarLicense(lawyer.getBarLicense());
-        this.setBarJurisdiction(lawyer.getBarJurisdiction());
-        this.setClient(lawyer.getClient());
-        this.setPrimary(lawyer.isPrimary());
-    }
 
     @OneToOne
     private BaseTrademarkApplication primaryCase;
@@ -277,6 +281,25 @@ public class Lawyer extends Contact {
             return "";
         }
     }
+
+    public ArrayList<String> getDocketNumberList() {
+        return docketNumberList;
+    }
+
+    public void setDocketNumberList(ArrayList<String> docketNumberList) {
+        this.docketNumberList = docketNumberList;
+    }
+
+    public void addDocketNumber(String dNumber){
+
+        docketNumberList.add(dNumber);
+    }
+
+    public void removeDocketNumber(String dNumber){
+        docketNumberList.remove(dNumber);
+    }
+
+
 
     @Override
     public boolean equals(Object o) {

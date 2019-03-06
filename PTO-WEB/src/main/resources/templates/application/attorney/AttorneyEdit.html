@@ -514,27 +514,31 @@
                             <h2 class="card-title weight600" id="docketreference">Docket or Reference Number</h2>
                         </div>
 
-                        <fieldset aria-labelledby="docketreference">
-                            <div class="row docket">
-                                <div class="form-group form-group-md col-xs-9">
-                                    <label for="docket-id">If applicable, enter the attorney docket or reference number.</label>c6
-                                    <input type="text" class="form-control" id="docket-id" th:value="${attorney.getDocketNumber()}">
+
+                        <th:block th:each="docketNumber: ${attorney.getDocketNumberList()}">
+                            <fieldset aria-labelledby="docketreference">
+                                <div class="row docket">
+                                    <div class="form-group form-group-md col-xs-9">
+                                        <label for="docket-id">If applicable, enter the attorney docket or reference number.</label>
+                                        <input type="text" class="form-control" id="docket-id" th:value="${docketNumber}">
+                                    </div>
+                                    <div class="form-group form-group-md visuallyremoved resetdkt col-xs-3"  style="bottom: -30px; left:-111px;">
+                                        <button type="button" class="btn btn-sm close resetdktrefbtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                                    </div>
                                 </div>
-                                <div class="form-group form-group-md visuallyremoved resetdkt col-xs-3"  style="bottom: -30px; left:-111px;">
-                                    <button type="button" class="btn btn-sm close resetdktrefbtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
-                                </div>
-                            </div>
-                            <div class="appenddocket"></div>
-                            <div class="form-group form-group-md col-xs-12">
-                                <div class="row">
-                                    <div class="inlinebuttons btn-group btn-group-justified">
-                                        <div class="btn-group col-xs-6">
-                                            <button type="button" class="btn btn-sm btn-success addinitial" id="addocketref" aria-label="add docket or reference number">Add Number</button>
+                                <div class="appenddocket"></div>
+                                <div class="form-group form-group-md col-xs-12">
+                                    <div class="row">
+                                        <div class="inlinebuttons btn-group btn-group-justified">
+                                            <div class="btn-group col-xs-6">
+                                                <button type="button" class="btn btn-sm btn-success addinitial" id="addocketref" aria-label="add docket or reference number">Add Number</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </fieldset><!--END Docket Reference Information-->
+                            </fieldset><!--END Docket Reference Information-->
+                        </th:block>
+
                         <!--START Affiliation Information-->
                         <div class="card-text">
                             <h2 class="card-title weight600" id="affiliation">Affiliation Information</h2>

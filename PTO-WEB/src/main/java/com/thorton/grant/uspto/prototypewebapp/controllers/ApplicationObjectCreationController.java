@@ -236,7 +236,8 @@ public class ApplicationObjectCreationController {
             lawyer.setPrimaryPhonenumber(newAttorneyContactFormDTO.getAttorneyPhone());
         }
         if(newAttorneyContactFormDTO.getAttorneyDocketNumber()!= null){
-            lawyer.setDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber());
+           // lawyer.setDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber());
+            lawyer.addDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber());
         }
         if(newAttorneyContactFormDTO.getAttorneyAffiliation()!= null){
             lawyer.setAffiliationStatus(newAttorneyContactFormDTO.getAttorneyAffiliation());
