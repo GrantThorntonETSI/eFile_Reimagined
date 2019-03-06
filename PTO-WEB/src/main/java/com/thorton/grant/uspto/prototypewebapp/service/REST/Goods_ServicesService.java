@@ -261,7 +261,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                     GoodAndService current = iter.next();
 
                     try {
-                        DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+                        DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
                         Date date = format.parse(fbValue);
                         current.setFirstGSDate(date);
                         current.setFirstGSDateSet(true);
@@ -278,7 +278,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
             else {
 
                 try {
-                    DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+                    DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
                     Date date = format.parse(fbValue);
                     baseTrademarkApplication.findGSbyInternalID(gsID).setFirstGSDate(date);
                     baseTrademarkApplication.findGSbyInternalID(gsID).setFirstGSDateSet(true);
@@ -306,8 +306,10 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
                    GoodAndService current = iter.next();
 
+
+
                    try {
-                       DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+                       DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
                        Date date = format.parse(fbValue);
                        current.setFirstCommerceDate(date);
                        current.setFirstCommerceDateSet(true);
@@ -322,7 +324,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
            }
            else {
                try {
-                   DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+                   DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
                    Date date = format.parse(fbValue);
                    baseTrademarkApplication.findGSbyInternalID(gsID).setFirstCommerceDate(date);
                    baseTrademarkApplication.findGSbyInternalID(gsID).setFirstCommerceDateSet(true);
@@ -483,7 +485,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                     GoodAndService current = iter.next();
 
                     try {
-                        DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+                        DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
                         Date date = format.parse(fbValue);
                         current.setFaFilingDate(date);
 
@@ -496,7 +498,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
             }
             else {
                 try {
-                    DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+                    DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
                     Date date = format.parse(fbValue);
                     baseTrademarkApplication.findGSbyInternalID(gsID).setFaFilingDate(date);
 
@@ -562,7 +564,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                     GoodAndService current = iter.next();
 
                     try {
-                        DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+                        DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
                         Date date = format.parse(fbValue);
                         current.setFrRegistrationDate(date);
 
@@ -575,7 +577,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
             }
             else {
                 try {
-                    DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+                    DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
                     Date date = format.parse(fbValue);
                     baseTrademarkApplication.findGSbyInternalID(gsID).setFrRegistrationDate(date);
 
@@ -600,7 +602,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
                     GoodAndService current = iter.next();
                     try {
-                        DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+                        DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
                         Date date = format.parse(fbValue);
                         current.setFrExpirationDate(date);
 
@@ -613,7 +615,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
             }
             else {
                 try {
-                    DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+                    DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
                     Date date = format.parse(fbValue);
                     baseTrademarkApplication.findGSbyInternalID(gsID).setFrExpirationDate(date);
 
@@ -636,7 +638,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
             // baseTrademarkApplication.findGSbyInternalID(gsID).setFaRegistrationNumber(fbValue);
 
             try {
-                DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+                DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
                 Date date = format.parse(fbValue);
                 baseTrademarkApplication.findGSbyInternalID(gsID).setFrRenewlDate(date);
 

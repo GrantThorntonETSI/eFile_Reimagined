@@ -263,7 +263,7 @@ public class ApplicationObjectCreationController {
             System.out.println("Date value : "+string);
             if(string.length() < 10){
                 try {
-                    DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+                    DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
                     Date date = format.parse(string);
 
                     lawyer.setBarAdmissionDate(date);
