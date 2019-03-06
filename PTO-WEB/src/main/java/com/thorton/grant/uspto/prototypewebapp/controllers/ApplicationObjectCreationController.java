@@ -24,6 +24,7 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.as
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.GoodAndService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.ManagedContact;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PhoneNumber;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 
 import com.thorton.grant.uspto.prototypewebapp.service.storage.StorageService;
@@ -234,7 +235,21 @@ public class ApplicationObjectCreationController {
 
         if(newAttorneyContactFormDTO.getAttorneyPhone() != null){
             lawyer.setPrimaryPhonenumber(newAttorneyContactFormDTO.getAttorneyPhone());
+
+            // create new phone object and add it to attorney, also get type and extension values
+            // make sure form DTO supports type and extension values
+            PhoneNumber phoneNumber = new PhoneNumber();
+            phoneNumber.setPhoneNumber(newAttorneyContactFormDTO.getAttorneyPhone());
+            //phoneNumber.setPhoneType(newAttorneyContactFormDTO.);
+            phoneNumber.setPhoneType(newAttorneyContactFormDTO.getAttorneyPhoneType());
+            phoneNumber.setExtension(newAttorneyContactFormDTO.getAttorneyPhoneExtension());
+
+            lawyer.addPhoneNumber(phoneNumber);
+
         }
+
+
+
         if(newAttorneyContactFormDTO.getAttorneyDocketNumber()!= null){
            // lawyer.setDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber());
             lawyer.addDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber());

@@ -492,11 +492,11 @@
                                     <div class="col-xs-12">
                                         <div class="form-group form-group-md col-xs-6 col-sm-3">
                                             <label for="attorney-phonenumbertype">Phone Type</label>
-                                            <select class="form-control" id="attorney-phonenumbertype"><!--Needs th:field= attribute to capture this value on submit-->
+                                            <select class="form-control" id="attorney-phonenumbertype" th:field="*{attorneyPhoneType}"><!--Needs th:field= attribute to capture this value on submit-->
                                                 <option value="Type">Type</option>
                                                 <option value="Cell">Cell</option>
                                                 <option value="Home">Home</option>
-                                                <option value="4">Work</option>
+                                                <option value="Work">Work</option>
                                                 <option value="Fax">Fax</option>
                                             </select>
                                         </div>
@@ -506,7 +506,7 @@
                                         </div>
                                         <div class="form-group form-group-md col-xs-9 col-sm-3">
                                             <label for="attorney-ext">Ext.</label>
-                                            <input type="text" class="form-control" id="attorney-ext">
+                                            <input type="text" class="form-control" id="attorney-ext" th:field="*{attorneyPhoneExtension}">
                                         </div>
                                         <div class="col-xs-3 col-sm-2 form-group form-group-md visuallyremoved resetphone2">
                                             <button type="button" class="btn btn-sm close resetphonebtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>

@@ -32,6 +32,10 @@ public class NewAttorneyContactFormDTO {
 
 
     private String attorneyPhone;
+    private String attorneyPhoneType;
+    private String attorneyPhoneExtension;
+
+
 
     private String attorneyDocketNumber;
 
@@ -231,5 +235,22 @@ public class NewAttorneyContactFormDTO {
 
     public void setApplicantCA(String applicantCA) {
         this.applicantCA = applicantCA;
+    }
+
+
+    public String getAttorneyPhoneType() {
+        return attorneyPhoneType;
+    }
+
+    public void setAttorneyPhoneType(String attorneyPhoneType) {
+        this.attorneyPhoneType = attorneyPhoneType;
+    }
+
+    public String getAttorneyPhoneExtension() {
+        return attorneyPhoneExtension;
+    }
+
+    public void setAttorneyPhoneExtension(String attorneyPhoneExtension) {
+        this.attorneyPhoneExtension = attorneyPhoneExtension;
     }
 }

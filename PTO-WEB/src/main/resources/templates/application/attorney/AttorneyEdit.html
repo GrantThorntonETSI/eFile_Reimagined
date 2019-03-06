@@ -471,31 +471,40 @@
                                     <label for="attorney-email">Email Address</label>
                                     <input type="text" class="form-control" id="attorney-email" placeholder="email Address" th:value="${attorney.email}" >
                                 </div>
-                                <div class="row phones">
-                                    <div class="col-xs-12">
-                                        <div class="form-group form-group-md col-xs-6 col-sm-3">
-                                            <label for="attorney-phonenumbertype">Phone Type</label>
-                                            <select class="form-control" id="attorney-phonenumbertype"><!--Needs th:field= attribute to capture this value on submit-->
-                                                <option value="Type">Type</option>
-                                                <option value="Cell">Cell</option>
-                                                <option value="Home">Home</option>
-                                                <option value="4">Work</option>
-                                                <option value="Fax">Fax</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group form-group-md col-xs-6 col-sm-4">
-                                            <label for="attorney-phone">Phone Number</label>
-                                            <input type="text" class="form-control" id="attorney-phone" th:value="${attorney.primaryPhonenumber}">
-                                        </div>
-                                        <div class="form-group form-group-md col-xs-9 col-sm-3">
-                                            <label for="attorney-ext">Ext.</label>
-                                            <input type="text" class="form-control" id="attorney-ext">
-                                        </div>
-                                        <div class="col-xs-3 col-sm-2 form-group form-group-md visuallyremoved resetphone2" style="">
-                                            <button type="button" class="btn btn-sm close resetphonebtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+
+
+                                <th:block th:each="phoneNumber, iter: ${attorney.getPhoneNumbers()}">
+                                    <div class="row phones">
+                                        <div class="col-xs-12">
+                                            <div class="form-group form-group-md col-xs-6 col-sm-3">
+                                                <label>Phone Type</label>
+                                                <select class="form-control attorney-phonenumbertype" th:attr="phone-index=${iter.index}"><!--Needs th:field= attribute to capture this value on submit-->
+                                                    <option  th:value="${phoneNumber.phoneType}"  th:text="${phoneNumber.phoneType}" selected ></option>
+                                                    <option value="Type">Type</option>
+                                                    <option value="Cell">Cell</option>
+                                                    <option value="Home">Home</option>
+                                                    <option value="Work">Work</option>
+                                                    <option value="Fax">Fax</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group form-group-md col-xs-6 col-sm-4">
+                                                <label>Phone Number</label>
+                                                <input type="text" class="form-control attorney-phone"  th:value="${phoneNumber.getPhoneNumber()}" th:attr="phone-index=${iter.index}">
+                                            </div>
+                                            <div class="form-group form-group-md col-xs-9 col-sm-3">
+                                                <label >Ext.</label>
+                                                <input type="text" class="form-control attorney-ext"  th:value="${phoneNumber.getExtension()}" th:attr="phone-index=${iter.index}">
+                                            </div>
+                                            <div class="col-xs-3 col-sm-2 form-group form-group-md visuallyremoved resetphone2" style="">
+                                                <button type="button" class="btn btn-sm close resetphonebtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+
+                                </th:block>
+
+
+
                                 <div class="appendphones"></div>
                                 <div class="form-group form-group-md col-xs-12" aria-label="add additional phone number">
                                     <div class="row">
