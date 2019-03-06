@@ -467,23 +467,44 @@
                                     <label for="attorney-zipcode">Zip Code</label>
                                     <input type="text" class="form-control" id="attorney-zipcode" placeholder="" th:value="${attorney.zipcode}" >
                                 </div>
-                                <div class="form-group form-group-md col-xs-12 col-md-5 col-lg-5">
+                                <div class="form-group form-group-md col-xs-12 col-md-7 col-lg-7">
                                     <label for="attorney-email">Email Address</label>
                                     <input type="text" class="form-control" id="attorney-email" placeholder="email Address" th:value="${attorney.email}" >
                                 </div>
-                                <div class="form-group form-group-md col-xs-12 col-md-3 col-lg-3">
-                                    <label for="attorney-phonenumbertype">Phone Type</label>
-                                    <select class="form-control" id="attorney-phonenumbertype"><!--Needs th:field= attribute to capture this value on submit-->
-                                        <option value="Type">Type</option>
-                                        <option value="Cell">Cell</option>
-                                        <option value="Home">Home</option>
-                                        <option value="4">Work</option>
-                                        <option value="Fax">Fax</option>
-                                    </select>
+                                <div class="row phones">
+                                    <div class="col-xs-12">
+                                        <div class="form-group form-group-md col-xs-6 col-sm-3">
+                                            <label for="attorney-phonenumbertype">Phone Type</label>
+                                            <select class="form-control" id="attorney-phonenumbertype"><!--Needs th:field= attribute to capture this value on submit-->
+                                                <option value="Type">Type</option>
+                                                <option value="Cell">Cell</option>
+                                                <option value="Home">Home</option>
+                                                <option value="4">Work</option>
+                                                <option value="Fax">Fax</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group form-group-md col-xs-6 col-sm-4">
+                                            <label for="attorney-phone">Phone Number</label>
+                                            <input type="text" class="form-control" id="attorney-phone" th:value="${attorney.primaryPhonenumber}">
+                                        </div>
+                                        <div class="form-group form-group-md col-xs-9 col-sm-3">
+                                            <label for="attorney-ext">Ext.</label>
+                                            <input type="text" class="form-control" id="attorney-ext">
+                                        </div>
+                                        <div class="col-xs-3 col-sm-2 form-group form-group-md visuallyremoved resetphone2" style="bottom: -30px; left:-111px;">
+                                            <button type="button" class="btn btn-sm close resetphonebtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-4">
-                                    <label for="attorney-phone">Phone Number</label>
-                                    <input type="text" class="form-control" id="attorney-phone" placeholder="" th:value="${attorney.primaryPhonenumber}" >
+                                <div class="appendphones"></div>
+                                <div class="form-group form-group-md col-xs-12" aria-label="add additional phone number">
+                                    <div class="row">
+                                        <div class="inlinebuttons btn-group btn-group-justified">
+                                            <div class="btn-group col-xs-6">
+                                                <button type="button" class="btn btn-sm btn-success addphoneinitial" id="addphone2" aria-label="add number">Add Number</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
@@ -492,13 +513,26 @@
                         <div class="card-text">
                             <h2 class="card-title weight600" id="docketreference">Docket or Reference Number</h2>
                         </div>
-                        <fieldset aria-labelledby="docketreference">
-                            <div class="row">
-                                <div class="form-group form-group-md col-xs-12">
-                                    <label for="docket-id">If applicable, enter the attorney docket or reference number.</label>
-                                    <input type="text" class="form-control" id="docket-id" th:value="${attorney.docketNumber}">
-                                </div>
 
+                        <fieldset aria-labelledby="docketreference">
+                            <div class="row docket">
+                                <div class="form-group form-group-md col-xs-9">
+                                    <label for="docket-id">If applicable, enter the attorney docket or reference number.</label>
+                                    <input type="text" class="form-control" id="docket-id" th:value="${attorney.getDocketNumber()}">
+                                </div>
+                                <div class="form-group form-group-md visuallyremoved resetdkt col-xs-3">
+                                    <button type="button" class="btn btn-sm close resetdktrefbtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                                </div>
+                            </div>
+                            <div class="appenddocket"></div>
+                            <div class="form-group form-group-md col-xs-12">
+                                <div class="row">
+                                    <div class="inlinebuttons btn-group btn-group-justified">
+                                        <div class="btn-group col-xs-6">
+                                            <button type="button" class="btn btn-sm btn-success addinitial" id="addocketref" aria-label="add docket or reference number">Add Number</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </fieldset><!--END Docket Reference Information-->
                         <!--START Affiliation Information-->
