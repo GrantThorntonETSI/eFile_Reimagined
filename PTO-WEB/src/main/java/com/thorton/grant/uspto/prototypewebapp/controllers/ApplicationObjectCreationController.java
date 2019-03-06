@@ -260,8 +260,7 @@ public class ApplicationObjectCreationController {
 
             String string = newAttorneyContactFormDTO.getAttorneyBarAdmissionDate();
 
-            System.out.println("Date value : "+string);
-            if(string.length() < 10){
+
                 try {
                     DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
                     Date date = format.parse(string);
@@ -272,7 +271,7 @@ public class ApplicationObjectCreationController {
 
                     model.addAttribute("message", "ERROR: Could not save Bar Admission Date, invalid Date format.");
                 }
-            }
+
 
         }
 
