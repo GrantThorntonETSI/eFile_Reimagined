@@ -179,9 +179,9 @@
                                                                                     <span> Bar Jurisdiction: </span>
                                                                                     <span th:text="${baseTrademarkApplication.getPrimaryLawyer().getBarJurisdiction()}"></span> <br>
                                                                                     <span> Bar Admission Date: </span>
-                                                                                    <span th:text="${baseTrademarkApplication.getPrimaryLawyer().getBarAdmissionDate()}"></span><br>
+                                                                                    <span th:text="${baseTrademarkApplication.getPrimaryLawyer().getBarAdmissionDateDisplay()}"></span><br>
                                                                                     <span> Bar Certificate:</span><br>
-                                                                                    <img th:attr="src=${baseTrademarkApplication.getPrimaryLawyer().getBarCertificateImageKey()}"/>
+                                                                                    <img th:attr="src=${baseTrademarkApplication.getPrimaryLawyer().getBarCertificateImageKey()}"  class="img-responsive" />
 
 
                                                                                 </div>
