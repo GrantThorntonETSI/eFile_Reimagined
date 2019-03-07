@@ -80,31 +80,7 @@ $(document).ready(function(){
 	});
 	//END expand / collapse glyphicon
 
-	//START initialize Goods + Services datable
-	var table = $('#goodsandservices').DataTable({
-		"fnDrawCallback": function( oSettings ) {
-			$( '#goodsandservices input[type=checkbox]' ).each(function() {
-				var x = $( 'input[type=checkbox]' ).index( this );
-				$( this ).attr('id', 'a' + x);
-			});
-			$( '#goodsandservices label' ).each(function() {
-				var y = $( this ).siblings( 'input[type=checkbox]' ).attr('id');
-				$( this ).attr('for', y);
-			});
-		},
-		"autoWidth": false,
-		"responsive": true,
-		"columns": [
-			{ "width": "25%" },
-			{ "width": "25%" },
-			{ "width": "25%" },
-			{ "width": "25%" },
-		],
-		"columnDefs": [
-			{ className: "centertxt", "targets": [ 0 ] }
-		]
-	});
-	//END initialize Goods + Services datable
+
 
 	//START initialize Dashboard datable one
 	var tableone = $('#dashboardtableone').DataTable({

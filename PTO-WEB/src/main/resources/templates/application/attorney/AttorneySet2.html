@@ -135,7 +135,7 @@
 
                                                                 </div>
                                                                 <div class="col-xs-12 col-md-4">
-                                                                    <p class="panel-title number weight600"><button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#jbabos" aria-controls="jbabos" aria-expanded="false"  th:text="${baseTrademarkApplication.getPrimaryLawyer().getFirstName()}+' '+${baseTrademarkApplication.getPrimaryLawyer().getLastName()}" id="jbabosbtn"><span class="glyphicon glyphicon-triangle-right"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Jackie Babos</button></p>
+                                                                    <p class="panel-title number weight600"><button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" th:attr="data-target='#'+${baseTrademarkApplication.getPrimaryLawyer().collapseID}"  data-target="#jbabos" aria-controls="jbabos" aria-expanded="false"  th:text="${baseTrademarkApplication.getPrimaryLawyer().getFirstName()}+' '+${baseTrademarkApplication.getPrimaryLawyer().getLastName()}" id="jbabosbtn"><span class="glyphicon glyphicon-triangle-right"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Jackie Babos</button></p>
 
                                                                 </div>
                                                                 <div class="col-xs-12 col-md-5 email">
@@ -145,7 +145,7 @@
                                                                     <p th:text="${baseTrademarkApplication.getPrimaryLawyer().getLawFirmName()}">Individual</p>
                                                                 </div>
                                                             </div>
-                                                            <div id="jbabos" class="collapse Accordion-panel" role="region" aria-labelledby="jbabosbtn">
+                                                            <div th:attr="id=${baseTrademarkApplication.getPrimaryLawyer().collapseID}"  class="collapse Accordion-panel" role="region" aria-labelledby="jbabosbtn">
                                                                 <div class="Accordion" role="region">
                                                                     <div class="row">
                                                                         <div class="col-xs-12 col-md-6 col-lg-8">
@@ -227,7 +227,7 @@
                                                                         <input  class="primaryLawyer" style="position: relative; bottom: -5px;"  type="radio" name="primaryAttorney" >
                                                                     </div>
                                                                     <div class="col-xs-12 col-md-4">
-                                                                        <p class="panel-title number weight600"><button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#jbabos" aria-controls="jbabos" aria-expanded="false"  th:text="${lawyer.getFirstName()}+' '+${lawyer.getLastName()}" id="jbabosbtn"><span class="glyphicon glyphicon-triangle-right"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Jackie Babos</button></p>
+                                                                        <p class="panel-title number weight600"><button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" th:attr="data-target='#'+${lawyer.collapseID}" aria-controls="jbabos" aria-expanded="false"  th:text="${lawyer.getFirstName()}+' '+${lawyer.getLastName()}" id="jbabosbtn"><span class="glyphicon glyphicon-triangle-right"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Jackie Babos</button></p>
 
                                                                     </div>
                                                                     <div class="col-xs-12 col-md-5 email">
@@ -237,7 +237,7 @@
                                                                         <p th:text="${lawyer.getLawFirmName()}">Individual</p>
                                                                     </div>
                                                                 </div>
-                                                                <div id="jbabos" class="collapse Accordion-panel" role="region" aria-labelledby="jbabosbtn">
+                                                                <div th:attr="id=${lawyer.collapseID}" class="collapse Accordion-panel" role="region" aria-labelledby="jbabosbtn">
                                                                     <div class="Accordion" role="region">
                                                                         <div class="row">
                                                                             <div class="col-xs-12 col-md-6 col-lg-8">
