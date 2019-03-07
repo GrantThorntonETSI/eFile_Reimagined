@@ -480,7 +480,7 @@
                                                 <label>Phone Type</label>
                                                 <select class="form-control attorney-phonenumbertype" th:attr="phone-index=${iter.index}"><!--Needs th:field= attribute to capture this value on submit-->
                                                     <option  th:value="${phoneNumber.phoneType}"  th:text="${phoneNumber.phoneType}" selected ></option>
-                                                    <option value="Type">Type</option>
+                                                    <option value="">Type</option>
                                                     <option value="Cell">Cell</option>
                                                     <option value="Home">Home</option>
                                                     <option value="Work">Work</option>
@@ -495,8 +495,8 @@
                                                 <label >Ext.</label>
                                                 <input type="text" class="form-control attorney-ext"  th:value="${phoneNumber.getExtension()}" th:attr="phone-index=${iter.index}">
                                             </div>
-                                            <div class="col-xs-3 col-sm-2 form-group form-group-md visuallyremoved resetphone2" style="">
-                                                <button type="button" class="btn btn-sm close resetphonebtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                                            <div class="col-xs-3 col-sm-2 form-group form-group-md  resetphone2" style="">
+                                                <button type="button" class="btn btn-sm close resetphonebtn" value="" th:attr="phone-index=${iter.index}" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
                                             </div>
                                         </div>
                                     </div>
@@ -1663,6 +1663,10 @@
     });
 
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
     $('#yesattorneyfiling').on('focusout', 'input.docket-id', function () {
         var value = $(this).val();
 
@@ -1695,7 +1699,7 @@
         $( this ).parent().parent().remove();
     });
 
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -1711,6 +1715,23 @@
 
         var phoneInput = $(this);
          saveAttorneyInfoAdditonalPhone(attEmail, "attorney-phone-number-add", value ,index, phoneInput);
+
+
+
+    });
+
+
+    $('#yesattorneyfiling').on('change', 'select.attorney-phonenumbertype', function () {
+        var value = $(this).val();
+
+        var index = $(this).attr('phone-index');
+
+        if(index == null){
+            index = -1;
+        }
+
+        var phoneInput = $(this);
+        saveAttorneyInfoAdditonalPhoneType(attEmail, "attorney-phone-type-add", value ,index, phoneInput);
 
 
 
@@ -2219,11 +2240,71 @@
 
 
 
-        return fieldIndex;
-
     } // end of function
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+    function saveAttorneyInfoAdditonalPhoneType(contact_email, field_name, field_value, fieldIndex, phoneInput) {
+
+        //////////////////////////////////////////////////////////////////////////////////////
+        // we need REST controller of finding a contact by its email
+        // this needs to be implemented on the PTOUser object
+        //////////////////////////////////////////////////////////////////////////////////////
+
+        $.ajax({
+
+            url: "../../../../REST/apiGateway/application/attorney/update/additional/"+contact_email+"/"+field_name+"/"+field_value+"/"+fieldIndex+"/"+appInternalID,
+
+            type: 'GET',
+            success: function(data){
+
+                var newIndex = parseIndexValueFromResponse(data);
+
+                var serverMessage = parseMessageFromResponse(data)
+
+                if(newIndex != fieldIndex){  // we are adding a new row
+                    $(phoneInput).attr('phone-index', newIndex);
+                    // we need to set the siblings with new index attribute as well
+
+
+
+                    $(phoneInput).parent().next().find('input').attr("phone-index", newIndex);
+                    $(phoneInput).parent().next().next().find('input').attr("phone-index", newIndex);
+                }
+
+
+
+                $(".autoSaveMessageArea span").fadeOut(500);
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $(".autoSaveMessageArea span").text(serverMessage);
+                    $(".autoSaveMessageArea span").fadeIn(1000);
+                }, 500);
+
+
+
+
+
+
+
+            },
+            error: function(data) {
+
+                //$('.circle-loader').fadeOut(100);
+                //$('.x-mark').fadeIn(500);
+
+                console.log(data);
+                // set message to div area ...fields can not be left null
+                //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                //$(".validationMsgArea span").css('color','red');
+            }
+
+        });
+
+
+
+    } // end of function
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // helper functions
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////

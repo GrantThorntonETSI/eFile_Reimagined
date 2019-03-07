@@ -372,7 +372,7 @@ public class ContactsService extends  BaseRESTapiService {
 
 
             if(contact_field_index == -1){ // adding new docket number
-                System.out.println("current phone number list size : "+ baseTrademarkApplication.findContactByEmail(contact_email).getPhoneNumbers().size());
+
                 PhoneNumber phoneNumber = new PhoneNumber();
                 phoneNumber.setPhoneNumber(contact_field_value);
                 Lawyer currentAttorney = baseTrademarkApplication.findContactByEmail(contact_email);
@@ -393,6 +393,35 @@ public class ContactsService extends  BaseRESTapiService {
             }
 
             appFieldReadable = "Attorney Phone Number ";
+
+        }
+
+        if(contact_field_name.equals("attorney-phone-type-add" )){
+
+
+
+            if(contact_field_index == -1){ // adding new docket number
+
+                PhoneNumber phoneNumber = new PhoneNumber();
+                phoneNumber.setPhoneType(contact_field_value);
+                Lawyer currentAttorney = baseTrademarkApplication.findContactByEmail(contact_email);
+                currentAttorney.addPhoneNumber(phoneNumber);
+
+
+                returnIndex = currentAttorney.getPhoneNumbers().size()-1;
+
+                // System.out.println("return index value: "+returnIndex);
+
+
+
+            }
+            else {
+                baseTrademarkApplication.findContactByEmail(contact_email).getPhoneNumbers().get(contact_field_index).setPhoneType(contact_field_value);
+
+                returnIndex = contact_field_index;
+            }
+
+            appFieldReadable = "Attorney Phone Number Type ";
 
         }
 
