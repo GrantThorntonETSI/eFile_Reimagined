@@ -181,7 +181,7 @@ $(document).ready(function(){
 	//END initialize Dashboard datable two
 
 	//Dashboard datatables ellipsis menu tableone
-	$("div.toolbar").html('<div class="dropdown"><button class="btn btn-xs dropdown-toggle" type="button" id="dropdownMenucolvis" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical" role="img" aria-label="toggle columns visibility"></span></button><ul class="dropdown-menu" aria-labelledby="dropdownMenucolvis"><li class="dropdown-header">Toggle columns</li><li><a class="toggle-vis" data-column="0">Serial#</a></li><li><a class="toggle-vis" data-column="1">Registration#</a></li><li><a class="toggle-vis" data-column="2">Owner</a></li><li><a class="toggle-vis" data-column="3">Status</a></li><li><a class="toggle-vis" data-column="4">Mark</a></li></ul></div>');
+    $("div.toolbar").html('<div class="dropdown"><button class="btn btn-xs dropdown-toggle" type="button" id="dropdownMenucolvis" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical" role="img" aria-label="toggle columns visibility"></span></button><ul class="dropdown-menu" aria-labelledby="dropdownMenucolvis"><li class="dropdown-header">Toggle Columns</li><li><a class="toggle-vis" data-column="0"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Serial#</a></li><li><a class="toggle-vis" data-column="1"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Registration#</a></li><li><a class="toggle-vis" data-column="2"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Owner</a></li><li><a class="toggle-vis" data-column="3"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Status</a></li><li><a class="toggle-vis" data-column="4"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Mark</a></li></ul></div>');
 	$('a.toggle-vis').on( 'click', function (e) {
 		e.preventDefault();
 		var column = tableone.column( $(this).attr('data-column') );
@@ -191,7 +191,7 @@ $(document).ready(function(){
 	//END dashboard datatables ellipsis menu tableone
 
 	//Dashboard datatables ellipsis menu tabletwo
-	$("div.toolbartwo").html('<div class="dropdown"><button class="btn btn-xs dropdown-toggle" type="button" id="dropdownMenucolvis" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical role="img" aria-label="toggle column visibility""></span></button><ul class="dropdown-menu" aria-labelledby="dropdownMenucolvis"><li class="dropdown-header">Toggle columns</li><li><a class="toggle-vistwo" data-column="0">Serial#</a></li><li><a class="toggle-vistwo" data-column="1">Registration#</a></li><li><a class="toggle-vistwo" data-column="2">Mark</a></li><li><a class="toggle-vistwo" data-column="3">Owner</a></li><li><a class="toggle-vistwo" data-column="4">Due Date</a></li><li><a class="toggle-vistwo" data-column="5">Status</a></li><li><a class="toggle-vistwo" data-column="6">Action</a></li></ul></div>');
+    $("div.toolbartwo").html('<div class="dropdown"><button class="btn btn-xs dropdown-toggle" type="button" id="dropdownMenucolvis" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical role="img" aria-label="toggle column visibility""></span></button><ul class="dropdown-menu" aria-labelledby="dropdownMenucolvis"><li class="dropdown-header">Toggle Columns</li><li><a class="toggle-vistwo" data-column="0"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Serial#</a></li><li><a class="toggle-vistwo" data-column="1"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Registration#</a></li><li><a class="toggle-vistwo" data-column="2"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Mark</a></li><li><a class="toggle-vistwo" data-column="3"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Owner</a></li><li><a class="toggle-vistwo" data-column="4"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Due Date</a></li><li><a class="toggle-vistwo" data-column="5"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Status</a></li><li><a class="toggle-vistwo" data-column="6"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Action</a></li></ul></div>');
 	$('a.toggle-vistwo').on( 'click', function (e) {
 		e.preventDefault();
 		var column = tabletwo.column( $(this).attr('data-column') );
@@ -1176,7 +1176,11 @@ $(document).ready(function(){
 	}
 	$('a.fromcontact').click(togglecontacts);
 	//start toggle glyphicon contacts widget
-
+    //start toggle glyphicon dashboard toggle menu widget
+    function togglecolumnselection() {
+        $( this ).find('span.glyphicon-eye-open').toggleClass( 'visuallyhidden' ).attr('aria-label','show this column');
+    }
+    $('a.toggle-vis').click(togglecolumnselection);
 	//end toggle glyphicon contacts widget
 
 	//start close (x) fees
