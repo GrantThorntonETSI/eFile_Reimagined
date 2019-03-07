@@ -11,68 +11,73 @@ public class NewOwnerContactFormDTO {
         this.partnerDTOs =  new ArrayList<>();
     }
 
+
     private String firstName;
-private String middleName;
-private String lastName;
-private String suffix;
+    private String middleName;
+    private String lastName;
+    private String suffix;
 
 
-private String ownerType;
+    private String ownerType;
 
-private String ownerCitizenShip;
+    private String ownerCitizenShip;
 
-private String OwnerAddressCountry;
-private String ownerAddress1;
+    private String OwnerAddressCountry;
+    private String ownerAddress1;
 
-private String ownerAddress2;
+    private String ownerAddress2;
 
-private String ownerAddress3;
+    private String ownerAddress3;
 
-private String ownerCity;
+    private String ownerCity;
 
-private String ownerState;
+    private String ownerState;
 
-private String ownerZipcode;
+    private String ownerZipcode;
 
-private String ownerEmail;
+    private String ownerEmail;
 
-private String ownerWebSite;
+    private String ownerWebSite;
 
-private String ownerPhone;
-
-
-
-
-//////////////////////////////////////////////
-// owner sole proprietorship
-//////////////////////////////////////////////
-
-private String ownerName;
-
-private String ownerAdditionalName; // this is basically a enum
-
-private String ownerOrganizationState;
-
-
-
-//////////////////////////////////////////////
-// owner - Partnership
-//////////////////////////////////////////////
-private List<partnerDTO>  partnerDTOs;
-
-public void addPartner(partnerDTO partner){
-    this.partnerDTOs.add(partner);
-}
+    private String ownerPhone;
 
 
 
 
+    //////////////////////////////////////////////
+    // owner sole proprietorship
+    //////////////////////////////////////////////
 
-//////////////////////////////////////////////
-// application id tied to the owner,
-// i.e this owner is assigned
-//////////////////////////////////////////////
-private String appInternalID;
+    private String ownerName;
+
+    private String ownerAdditionalName; // this is basically a enum
+
+    private String ownerOrganizationState;
+
+    private String solpFirstName;
+    private String solpLAstName;
+    private String solpMiddleName;
+
+
+
+    //////////////////////////////////////////////
+    // owner - Partnership
+    //////////////////////////////////////////////
+    private List<partnerDTO>  partnerDTOs;
+
+    public void addPartner(partnerDTO partner){
+        this.partnerDTOs.add(partner);
+    }
+
+
+
+
+
+    //////////////////////////////////////////////
+    // application id tied to the owner,
+    // i.e this owner is assigned
+    //////////////////////////////////////////////
+    private String appInternalID;
 
 
 
@@ -234,6 +239,30 @@ private String appInternalID;
 
     public void setOwnerOrganizationState(String ownerOrganizationState) {
         this.ownerOrganizationState = ownerOrganizationState;
+    }
+
+    public String getSolpFirstName() {
+        return solpFirstName;
+    }
+
+    public void setSolpFirstName(String solpFirstName) {
+        this.solpFirstName = solpFirstName;
+    }
+
+    public String getSolpLAstName() {
+        return solpLAstName;
+    }
+
+    public void setSolpLAstName(String solpLAstName) {
+        this.solpLAstName = solpLAstName;
+    }
+
+    public String getSolpMiddleName() {
+        return solpMiddleName;
+    }
+
+    public void setSolpMiddleName(String solpMiddleName) {
+        this.solpMiddleName = solpMiddleName;
     }
 
     public List<partnerDTO> getPartnerDTOs() {

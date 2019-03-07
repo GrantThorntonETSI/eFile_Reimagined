@@ -183,15 +183,15 @@
                             <div class="row">
                                 <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
                                     <label for="first-name">First Name</label>
-                                    <input type="text" class="form-control" id="first-name" th:value="${owner.firstName}">
+                                    <input type="text" class="form-control" id="first-name" th:value="${owner.getOwnerSolpFirstName()}">
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
                                     <label for="middle-name">Middle Name</label>
-                                    <input type="text" class="form-control" id="middle-name" th:value="${owner.midlleName}">
+                                    <input type="text" class="form-control" id="middle-name" th:value="${owner.getOwnerSolpMiddleName()}">
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
                                     <label for="last-name">Last Name</label>
-                                    <input type="text" class="form-control" id="last-name"  th:value="${owner.lastName}">
+                                    <input type="text" class="form-control" id="last-name"  th:value="${owner.getOwnerSolpLastName()}">
                                 </div>
                                 <div class="form-group form-group-md col-xs-6">
                                     <label for="suffix">Suffix</label>

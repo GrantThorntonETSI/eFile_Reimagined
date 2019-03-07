@@ -56,6 +56,12 @@ public class Owner extends Contact{
 
     private String ownerOrganizationState;
 
+    private String ownerSolpFirstName;
+
+    private String ownerSolpLastName;
+
+    private String ownerSolpMiddleName;
+
 
     private String ownerDisplayname;
 
@@ -222,6 +228,30 @@ public class Owner extends Contact{
 
     public void setPrimaryApplication(BaseTrademarkApplication primaryApplication) {
         this.primaryApplication = primaryApplication;
+    }
+
+    public String getOwnerSolpFirstName() {
+        return ownerSolpFirstName;
+    }
+
+    public void setOwnerSolpFirstName(String ownerSolpFirstName) {
+        this.ownerSolpFirstName = ownerSolpFirstName;
+    }
+
+    public String getOwnerSolpLastName() {
+        return ownerSolpLastName;
+    }
+
+    public void setOwnerSolpLastName(String ownerSolpLastName) {
+        this.ownerSolpLastName = ownerSolpLastName;
+    }
+
+    public String getOwnerSolpMiddleName() {
+        return ownerSolpMiddleName;
+    }
+
+    public void setOwnerSolpMiddleName(String ownerSolpMiddleName) {
+        this.ownerSolpMiddleName = ownerSolpMiddleName;
     }
 
     @Override

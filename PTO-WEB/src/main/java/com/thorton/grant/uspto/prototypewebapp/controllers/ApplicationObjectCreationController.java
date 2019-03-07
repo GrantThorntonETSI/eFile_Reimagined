@@ -514,6 +514,17 @@ public class ApplicationObjectCreationController {
             owner.setOwnerName(newOwnerContactFormDTO.getOwnerName());
             owner.setOwnerDisplayname(newOwnerContactFormDTO.getOwnerName());
         }
+        if(newOwnerContactFormDTO.getSolpFirstName() !=  null){
+            owner.setOwnerSolpFirstName(newOwnerContactFormDTO.getSolpFirstName());
+        }
+
+        if(newOwnerContactFormDTO.getSolpLAstName()!=  null){
+            owner.setOwnerSolpLastName(newOwnerContactFormDTO.getSolpLAstName());
+        }
+
+        if(newOwnerContactFormDTO.getSolpMiddleName()!=  null){
+            owner.setOwnerSolpMiddleName(newOwnerContactFormDTO.getSolpMiddleName());
+        }
 
         if(newOwnerContactFormDTO.getOwnerAdditionalName() !=  null){
             owner.setOwnerAdditionalName(newOwnerContactFormDTO.getOwnerAdditionalName());
