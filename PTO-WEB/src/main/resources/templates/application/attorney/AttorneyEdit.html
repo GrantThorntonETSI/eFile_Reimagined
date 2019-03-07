@@ -1755,7 +1755,18 @@
         });
 
 
+        $( document ).on('click','.resetphonebtn',function(){
 
+            var index = $(this).parent().prev().find('input').attr("phone-index");
+            var value = "xxxxx";
+
+            var input = $(this);
+            if(index >= 0){
+                saveAttorneyInfoAdditonalPhone(attEmail, "attorney-phone-number-remove", value,index,input);
+            }
+
+            $( this ).parent().parent().parent().remove();
+        });
 
 
 

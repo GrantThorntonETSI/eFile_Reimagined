@@ -1255,9 +1255,7 @@ $(document).ready(function(){
 		$( '.appendphones .resetphone2' ).removeClass( 'visuallyremoved' );
 		$( this ).removeClass( '.addphoneinitial' );
 	});
-	$( document ).on('click','.resetphonebtn',function(){
-		$( this ).parent().parent().parent().remove();
-	});
+
 	//END additional phone
 
 	//START concurrent use, 2(f) Claim

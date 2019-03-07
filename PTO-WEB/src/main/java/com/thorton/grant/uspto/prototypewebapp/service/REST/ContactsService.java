@@ -454,6 +454,14 @@ public class ContactsService extends  BaseRESTapiService {
 
         }
 
+        if(contact_field_name.equals("attorney-phone-number-remove" )){
+            PhoneNumber phoneNumber = baseTrademarkApplication.findContactByEmail(contact_email).getPhoneNumbers().get(contact_field_index);
+            baseTrademarkApplication.findContactByEmail(contact_email).removePhoneNumber(phoneNumber);
+
+            appFieldReadable = "Attorney Phone Number";
+
+        }
+
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
 
