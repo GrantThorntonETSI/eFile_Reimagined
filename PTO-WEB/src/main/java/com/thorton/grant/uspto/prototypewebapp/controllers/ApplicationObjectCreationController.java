@@ -1939,8 +1939,14 @@ public class ApplicationObjectCreationController {
                     table.addCell(baseTrademarkApplication.getPrimaryOwner().getOwnerEntityCountryOfOrigin());
                     table.addCell("ZIP/POSTAL CODE");
                     table.addCell(baseTrademarkApplication.getPrimaryLawyer().getZipcode());
-                    table.addCell("PHONE");
-                    table.addCell(baseTrademarkApplication.getPrimaryLawyer().getPrimaryPhonenumber());
+
+                    for(int a =0; a < baseTrademarkApplication.getPrimaryLawyer().getPhoneNumbers().size(); a++){
+                        table.addCell("PHONE");
+                        table.addCell(baseTrademarkApplication.getPrimaryLawyer().getPhoneNumbers().get(a).getPhoneType()+" "+baseTrademarkApplication.getPrimaryLawyer().getPhoneNumbers().get(a).getPhoneNumber()+" - "+baseTrademarkApplication.getPrimaryLawyer().getPhoneNumbers().get(a).getExtension());
+                    }
+
+
+
                     table.addCell("FAX");
                     table.addCell("");
                     table.addCell("EMAIL ADDRESS");

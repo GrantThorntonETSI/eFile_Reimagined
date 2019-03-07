@@ -412,16 +412,24 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-xs-12">
-                                                        <div class="row">
-                                                            <div class="col-xs-12 col-sm-4">
-                                                                <h4>Phone Number</h4>
-                                                            </div>
-                                                            <div class="col-xs-12 col-sm-8">
-                                                                <p class="weight600"th:text="${baseTrademarkApplication.primaryLawyer.getPrimaryPhonenumber()}">123 Main Street  <br>Alexandria VA 22313</p>
+
+
+                                                    <th:block th:each="number : ${baseTrademarkApplication.primaryLawyer.getPhoneNumbers()}">
+
+                                                        <div class="col-xs-12">
+                                                            <div class="row">
+                                                                <div class="col-xs-12 col-sm-4">
+                                                                    <h4>Phone Number</h4>
+                                                                </div>
+                                                                <div class="col-xs-12 col-sm-8">
+                                                                    <p class="weight600" th:text="${number.phoneType}+' '+${number.phoneNumber}+' - '+${number.extension}">123 Main Street  <br>Alexandria VA 22313</p>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+
+
+
+                                                    </th:block>
 
                                                     <div class="col-xs-12">
                                                         <div class="row">
