@@ -1271,6 +1271,7 @@ $(document).ready(function(){
 	$( document ).on('click','button#addphone2',function(){
 		$( 'div.phones:eq(0)' ).clone().appendTo( '.appendphones' );
 		$( 'div.phones' ).last().find('input').val('');
+		$( 'div.phones' ).last().find('[phone-index]').removeAttr("phone-index");
 		$( '.appendphones .resetphone2' ).removeClass( 'visuallyremoved' );
 		$( this ).removeClass( '.addphoneinitial' );
 	});

@@ -12,6 +12,7 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.ap
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PhoneNumber;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -362,6 +363,36 @@ public class ContactsService extends  BaseRESTapiService {
         if(contact_field_name.equals("docket-number-remove" )){
             String docNumber = baseTrademarkApplication.findContactByEmail(contact_email).getDocketNumberList().get(contact_field_index);
             baseTrademarkApplication.findContactByEmail(contact_email).removeDocketNumber(docNumber);
+
+        }
+
+
+        if(contact_field_name.equals("attorney-phone-number-add" )){
+
+
+
+            if(contact_field_index == -1){ // adding new docket number
+                System.out.println("current phone number list size : "+ baseTrademarkApplication.findContactByEmail(contact_email).getPhoneNumbers().size());
+                PhoneNumber phoneNumber = new PhoneNumber();
+                phoneNumber.setPhoneNumber(contact_field_value);
+                Lawyer currentAttorney = baseTrademarkApplication.findContactByEmail(contact_email);
+                currentAttorney.addPhoneNumber(phoneNumber);
+
+
+                returnIndex = currentAttorney.getPhoneNumbers().size()-1;
+
+               // System.out.println("return index value: "+returnIndex);
+
+
+
+            }
+            else {
+                baseTrademarkApplication.findContactByEmail(contact_email).getPhoneNumbers().get(contact_field_index).setPhoneNumber(contact_field_value);
+
+                returnIndex = contact_field_index;
+            }
+
+            appFieldReadable = "Attorney Phone Number ";
 
         }
 

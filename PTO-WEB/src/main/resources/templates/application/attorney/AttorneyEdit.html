@@ -1569,8 +1569,9 @@
             $( '#attorney-state' ).val('' );
             $( 'input#attorney-zipcode' ).val( '' );
             $( 'input#attorney-email' ).val( '' );
-            $( 'input#attorney-phonenumbertype' ).val( );
-            $( 'input#attorney-phone' ).val( '' );
+            $( 'input.attorney-phonenumbertype' ).val( );
+            $( 'input.attorney-phone' ).val( '' );
+            $( 'input.attorney-ext' ).val( '' );
 
             $('#formSubmitNextButtonGroup').fadeOut();
             $('#formPagingNextButtonGroup').fadeIn();
@@ -1670,28 +1671,59 @@
         if(index == null){
             index = -1;
         }
-        var newIndex = saveAttorneyInfoAdditonal(attEmail, "docket-number-add", value ,index);
-        if(newIndex != index){  // we are adding a new row
-            $(this).attr('docket-index', newIndex)
-        }
+
+        var input = $(this);
+         saveAttorneyInfoAdditonalDocket(attEmail, "docket-number-add", value ,index, input);
+
     });
 
-    //attorney docket number remove
+
+
+
+        //attorney docket number remove
     $( document ).on('click','.resetdktrefbtn',function(){
 
         var index = $(this).parent().prev().find('input').attr("docket-index");
         var value = "xxxxx";
 
-
+        var input = $(this);
         if(index >= 0){
-            var newIndex = saveAttorneyInfoAdditonal(attEmail, "docket-number-remove", value,index);
+            var newIndex = saveAttorneyInfoAdditonalDocket(attEmail, "docket-number-remove", value,index,input);
         }
 
 
         $( this ).parent().parent().remove();
     });
 
-    $('#attorney-bar-standing').change(function () {
+
+
+
+
+
+    $('#yesattorneyfiling').on('focusout', 'input.attorney-phone', function () {
+        var value = $(this).val();
+
+        var index = $(this).attr('phone-index');
+
+        if(index == null){
+            index = -1;
+        }
+
+        var phoneInput = $(this);
+         saveAttorneyInfoAdditonalPhone(attEmail, "attorney-phone-number-add", value ,index, phoneInput);
+
+
+
+    });
+
+
+
+
+
+
+
+
+        $('#attorney-bar-standing').change(function () {
         var value = $(this).val();
         saveAttorneyInfo(attEmail, "attorney-bar-standing",value, appInternalID);
     });
@@ -2072,7 +2104,7 @@
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    function saveAttorneyInfoAdditonal(contact_email, field_name, field_value, fieldIndex) {
+    function saveAttorneyInfoAdditonalDocket(contact_email, field_name, field_value, fieldIndex, input) {
 
         //////////////////////////////////////////////////////////////////////////////////////
         // we need REST controller of finding a contact by its email
@@ -2086,8 +2118,8 @@
             type: 'GET',
             success: function(data){
 
+                var newIndex= parseIndexValueFromResponse(data);
 
-                fieldIndex= parseIndexValueFromResponse(data);
                 var serverMessage = parseMessageFromResponse(data)
 
                     $(".autoSaveMessageArea span").fadeOut(500);
@@ -2096,6 +2128,74 @@
                         $(".autoSaveMessageArea span").text(serverMessage);
                         $(".autoSaveMessageArea span").fadeIn(1000);
                     }, 500);
+
+
+
+                if(newIndex != fieldIndex){  // we are adding a new row
+                    $(input).attr('docket-index', newIndex)
+                }
+
+
+
+            },
+            error: function(data) {
+
+                //$('.circle-loader').fadeOut(100);
+                //$('.x-mark').fadeIn(500);
+
+                console.log(data);
+                // set message to div area ...fields can not be left null
+                //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                //$(".validationMsgArea span").css('color','red');
+            }
+
+        });
+
+
+
+        return fieldIndex;
+
+    } // end of function
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+    function saveAttorneyInfoAdditonalPhone(contact_email, field_name, field_value, fieldIndex, phoneInput) {
+
+        //////////////////////////////////////////////////////////////////////////////////////
+        // we need REST controller of finding a contact by its email
+        // this needs to be implemented on the PTOUser object
+        //////////////////////////////////////////////////////////////////////////////////////
+
+        $.ajax({
+
+            url: "../../../../REST/apiGateway/application/attorney/update/additional/"+contact_email+"/"+field_name+"/"+field_value+"/"+fieldIndex+"/"+appInternalID,
+
+            type: 'GET',
+            success: function(data){
+
+                var newIndex = parseIndexValueFromResponse(data);
+
+                var serverMessage = parseMessageFromResponse(data)
+
+                if(newIndex != fieldIndex){  // we are adding a new row
+                    $(phoneInput).attr('phone-index', newIndex);
+                    // we need to set the siblings with new index attribute as well
+
+
+
+                    $(phoneInput).parent().prev().find('select').attr("phone-index", newIndex);
+                    $(phoneInput).parent().next().find('input').attr("phone-index", newIndex);
+                }
+
+
+
+                $(".autoSaveMessageArea span").fadeOut(500);
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $(".autoSaveMessageArea span").text(serverMessage);
+                    $(".autoSaveMessageArea span").fadeIn(1000);
+                }, 500);
 
 
 
@@ -2117,11 +2217,12 @@
 
         });
 
+
+
         return fieldIndex;
 
     } // end of function
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // helper functions
