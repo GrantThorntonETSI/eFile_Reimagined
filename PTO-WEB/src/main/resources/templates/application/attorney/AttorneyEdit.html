@@ -1664,6 +1664,7 @@
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //add additional docket number
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -1701,7 +1702,24 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //add additional phone number fields
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    $('#yesattorneyfiling').on('change', 'select.attorney-phonenumbertype', function () {
+        var value = $(this).val();
 
+        var index = $(this).attr('phone-index');
+
+        if(index == null){
+            index = -1;
+        }
+
+        var phoneInput = $(this);
+        saveAttorneyInfoAdditonalPhoneType(attEmail, "attorney-phone-type-add", value ,index, phoneInput);
+
+
+
+    });
 
 
     $('#yesattorneyfiling').on('focusout', 'input.attorney-phone', function () {
@@ -1720,22 +1738,23 @@
 
     });
 
+        $('#yesattorneyfiling').on('focusout', 'input.attorney-ext', function () {
+            var value = $(this).val();
 
-    $('#yesattorneyfiling').on('change', 'select.attorney-phonenumbertype', function () {
-        var value = $(this).val();
+            var index = $(this).attr('phone-index');
 
-        var index = $(this).attr('phone-index');
+            if(index == null){
+                index = -1;
+            }
 
-        if(index == null){
-            index = -1;
-        }
-
-        var phoneInput = $(this);
-        saveAttorneyInfoAdditonalPhoneType(attEmail, "attorney-phone-type-add", value ,index, phoneInput);
-
+            var phoneInput = $(this);
+            saveAttorneyInfoAdditonalPhoneExt(attEmail, "attorney-phone-ext-add", value ,index, phoneInput);
 
 
-    });
+
+        });
+
+
 
 
 
@@ -2242,7 +2261,67 @@
 
     } // end of function
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    function saveAttorneyInfoAdditonalPhoneExt(contact_email, field_name, field_value, fieldIndex, phoneInput) {
 
+        //////////////////////////////////////////////////////////////////////////////////////
+        // we need REST controller of finding a contact by its email
+        // this needs to be implemented on the PTOUser object
+        //////////////////////////////////////////////////////////////////////////////////////
+
+        $.ajax({
+
+            url: "../../../../REST/apiGateway/application/attorney/update/additional/"+contact_email+"/"+field_name+"/"+field_value+"/"+fieldIndex+"/"+appInternalID,
+
+            type: 'GET',
+            success: function(data){
+
+                var newIndex = parseIndexValueFromResponse(data);
+
+                var serverMessage = parseMessageFromResponse(data)
+
+                if(newIndex != fieldIndex){  // we are adding a new row
+                    $(phoneInput).attr('phone-index', newIndex);
+                    // we need to set the siblings with new index attribute as well
+
+
+
+                    $(phoneInput).parent().prev().find('input').attr("phone-index", newIndex);
+                    $(phoneInput).parent().prev().prev.find('select').attr("phone-index", newIndex);
+                }
+
+
+
+                $(".autoSaveMessageArea span").fadeOut(500);
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $(".autoSaveMessageArea span").text(serverMessage);
+                    $(".autoSaveMessageArea span").fadeIn(1000);
+                }, 500);
+
+
+
+
+
+
+
+            },
+            error: function(data) {
+
+                //$('.circle-loader').fadeOut(100);
+                //$('.x-mark').fadeIn(500);
+
+                console.log(data);
+                // set message to div area ...fields can not be left null
+                //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                //$(".validationMsgArea span").css('color','red');
+            }
+
+        });
+
+
+
+    } // end of function
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     function saveAttorneyInfoAdditonalPhoneType(contact_email, field_name, field_value, fieldIndex, phoneInput) {
 
