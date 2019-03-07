@@ -130,7 +130,8 @@
                                                         <div class="col-xs-12 col-sm-9 col-md-10">
                                                             <div class="row">
                                                                 <div class="col-xs-12 col-md-1">
-                                                                    <input  class="primaryLawyer" style="position: relative; bottom: -5px;"  type="radio" name="primaryAttorney" checked>
+
+                                                                   <input  class="primaryLawyer" style="position: relative; bottom: -5px;"  type="radio" name="primaryAttorney" checked>
 
                                                                 </div>
                                                                 <div class="col-xs-12 col-md-4">
@@ -162,7 +163,14 @@
                                                                                 <div class="form-group form-group-md" style="color:black;">
                                                                                     email: <span th:text="${baseTrademarkApplication.getPrimaryLawyer().getEmail()}">email: lzhang421@gmail.com</span>
                                                                                     </br>
-                                                                                    phone: <span th:text="${baseTrademarkApplication.getPrimaryLawyer().getPrimaryPhonenumber()}">phone: 581-777-3333</span>
+
+                                                                                    <th:block th:each="number : ${baseTrademarkApplication.getPrimaryLawyer().getPhoneNumbers()}">
+
+                                                                                       phone:
+                                                                                           <span th:text="${number.phoneType}">Type</span>  <span th:text="${number.phoneNumber}"></span> - <span th:text="${number.extension}"> </span>
+                                                                                        <br>
+                                                                                    </th:block>
+
 
                                                                                 </div>
                                                                             </div>
@@ -215,8 +223,8 @@
                                                             <div class="col-xs-12 col-sm-9 col-md-10">
                                                                 <div class="row">
                                                                     <div class="col-xs-12 col-md-1">
-                                                                        <input  th:if="${lawyer.isPrimary() == true}" class="primaryLawyer" style="position: relative; bottom: -5px;"  type="radio" name="primaryAttorney" checked>
-                                                                        <input  th:if="${lawyer.isPrimary() == false}" class="primaryLawyer" style="position: relative; bottom: -5px;"  type="radio" name="primaryAttorney" >
+
+                                                                        <input  class="primaryLawyer" style="position: relative; bottom: -5px;"  type="radio" name="primaryAttorney" >
                                                                     </div>
                                                                     <div class="col-xs-12 col-md-4">
                                                                         <p class="panel-title number weight600"><button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#jbabos" aria-controls="jbabos" aria-expanded="false"  th:text="${lawyer.getFirstName()}+' '+${lawyer.getLastName()}" id="jbabosbtn"><span class="glyphicon glyphicon-triangle-right"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Jackie Babos</button></p>
@@ -247,7 +255,12 @@
                                                                                     <div class="form-group form-group-md" style="color:black;">
                                                                                         email: <span th:text="${lawyer.getEmail()}">email: lzhang421@gmail.com</span>
                                                                                         </br>
-                                                                                        phone: <span th:text="${lawyer.getPrimaryPhonenumber()}">phone: 581-777-3333</span>
+                                                                                        <th:block th:each="number : ${lawyer.getPhoneNumbers()}">
+
+                                                                                            phone:
+                                                                                            <span th:text="${number.phoneType}">Type</span>  <span th:text="${number.phoneNumber}"></span> - <span th:text="${number.extension}"> </span>
+                                                                                            <br>
+                                                                                        </th:block>
 
                                                                                     </div>
                                                                                 </div>

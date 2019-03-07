@@ -806,7 +806,7 @@ $(document).ready(function(){
 		}
 	});
 	//yes, contains name is checked
-	$('div#yescontainsname').hide();
+
 	$('#namechecked').change(function() {
 		if(this.checked == true){
 			$('div#yescontainsname').show( 'fast' );
@@ -816,7 +816,7 @@ $(document).ready(function(){
 		}
 	});
 	//yes, contains portrait is checked
-	$('div#yescontainsportrait').hide();
+
 	$('#portraitchecked').change(function() {
 		if(this.checked == true){
 			$('div#yescontainsportrait').show( 'fast' );
@@ -826,7 +826,7 @@ $(document).ready(function(){
 		}
 	});
 	//yes, contains signature is checked
-	$('div#yescontainssignature').hide();
+
 	$('#signaturechecked').change(function() {
 		if(this.checked == true){
 			$('div#yescontainssignature').show( 'fast' );
@@ -836,7 +836,7 @@ $(document).ready(function(){
 		}
 	});
 	//yes, consent required is checked
-	$('div#yesliving').hide();
+
 	$('#inlineRadio17').change(function() {
 		if(this.checked == true){
 			$('div#yesliving').show( 'fast' );
@@ -1147,26 +1147,6 @@ $(document).ready(function(){
 		$( loadsign ).css('display','block');
 	});
 	//END signature method
-
-	//START fill from contacts values -- attorney
-	function clearform() {
-		$( 'input#attorney-first-name' ).val( '' );
-		$( 'input#title' ).val( '' );
-		$( 'input#attorney-last-name' ).val( '' );
-		$( '#suffix' ).val( '');
-		$( 'input#attorney-lawfirm-name' ).val( '' );
-		$( '#attorney-country' ).val( '' );
-		$( '#attorney-country' ).val( );
-		$( 'input#attorney-address1' ).val( '' );
-		$( 'input#attorney-city' ).val( '' );
-		$( '#attorney-state' ).val('' );
-		$( 'input#attorney-zipcode' ).val( '' );
-		$( 'input#attorney-email' ).val( '' );
-		$( 'input#attorney-phonenumbertype' ).val( '');
-		$( 'input#attorney-phone' ).val( '' );
-		$( '#mydata2' ).find('span.glyphicon-ok-sign').removeClass( 'glyphicon-ok-sign' ).parent().parent().css('background-color','#9BB8D3').siblings().css('background-color','#9BB8D3');
-	}
-	$( "a#clearform" ).click(clearform);
 
 	//END fill from contacts values -- attorney
 
