@@ -254,6 +254,18 @@ public class ApplicationObjectCreationController {
            // lawyer.setDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber());
             lawyer.addDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber());
         }
+        if(newAttorneyContactFormDTO.getAttorneyDocketNumber()!= null){
+            // lawyer.setDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber());
+            lawyer.addDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber());
+        }
+        if(newAttorneyContactFormDTO.getAttorneyDocketNumber2()!= null){
+            // lawyer.setDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber());
+            lawyer.addDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber2());
+        }
+        if(newAttorneyContactFormDTO.getAttorneyDocketNumber3()!= null){
+            // lawyer.setDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber());
+            lawyer.addDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber3());
+        }
         if(newAttorneyContactFormDTO.getAttorneyAffiliation()!= null){
             lawyer.setAffiliationStatus(newAttorneyContactFormDTO.getAttorneyAffiliation());
             lawyer.setAffiliationStatusSet(true);

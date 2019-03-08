@@ -518,7 +518,7 @@
                                     <div class="row">
                                         <div class="inlinebuttons btn-group btn-group-justified">
                                             <div class="btn-group col-xs-6">
-                                                <button type="button" class="btn btn-sm btn-success addphoneinitial" id="addphone2" aria-label="add number">Add Number</button>
+                                                <button type="button" class="btn btn-sm btn-success addphoneinitial" id="addphone2" aria-label="add number">Add Phone Number</button>
                                             </div>
                                         </div>
                                     </div>
@@ -528,25 +528,55 @@
                         </fieldset><!--END Contact Attorney Information-->
                         <!--START Docket Reference Information-->
                         <div class="card-text">
-                            <h2 class="card-title weight600" id="docketreference">Docket or Reference Number</h2>
+
+                            <div role="heading" aria-level="2">
+                                <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#docket-section" aria-controls="docket-section" aria-expanded="false" id="dcoketbtn"><span class="glyphicon glyphicon-triangle-right"></span><span id="toggleglyph" class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Docket or Reference Number</button>
+                            </div>
+                        </div>
+                        <div id="docket-section" class="collapse Accordion-panel" role="region" aria-labelledby="dcoketbtn">
+                            <div class="Accordion">
+                                <p>You may add total of 3 Docket Numbers when creating an new attorney, and you may add more docket numbers in the application attorney edit module.</p>
+                            </div>
                         </div>
 
                         <fieldset aria-labelledby="docketreference">
-                            <div class="row docket">
+                            <div class="row docket" id="docket1">
                                 <div class="form-group form-group-md col-xs-9">
-                                    <label for="docket-id">If applicable, enter the attorney docket or reference number.</label>
-                                    <input type="text" class="form-control" id="docket-id" th:field="*{attorneyDocketNumber}">
+                                    <label for="docket-id1">If applicable, enter the attorney docket or reference number.</label>
+                                    <input type="text" class="form-control" id="docket-id1" th:field="*{attorneyDocketNumber}">
                                 </div>
                                 <div class="form-group form-group-md visuallyremoved resetdkt col-xs-3" style="bottom: -30px; left:-111px;">
                                     <button type="button" class="btn btn-sm close resetdktrefbtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
                                 </div>
                             </div>
-                            <div class="appenddocket"></div>
+                            <div class="appenddocket">
+                                <div class="row docket" id="docket2"  style="display: none;">
+                                    <div class="form-group form-group-md col-xs-9">
+                                        <label for="docket-id2">If applicable, enter the attorney docket or reference number.</label>
+                                        <input type="text" class="form-control" id="docket-id2" th:field="*{attorneyDocketNumber2}">
+                                    </div>
+                                    <div class="form-group form-group-md  resetdkt col-xs-3" style="bottom: -30px; left:-111px;">
+                                        <button type="button" class="btn btn-sm close resetdktrefbtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                                    </div>
+                                </div>
+
+                                <div class="row docket" id="docket3" style="display: none;">
+                                    <div class="form-group form-group-md col-xs-9">
+                                        <label for="docket-id3">If applicable, enter the attorney docket or reference number.</label>
+                                        <input type="text" class="form-control" id="docket-id3"  th:field="*{attorneyDocketNumber3}">
+                                    </div>
+                                    <div class="form-group form-group-md resetdkt col-xs-3" style="bottom: -30px; left:-111px;">
+                                        <button type="button" class="btn btn-sm close resetdktrefbtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                                    </div>
+                                </div>
+
+
+                            </div>
                             <div class="form-group form-group-md col-xs-12">
                                 <div class="row">
                                     <div class="inlinebuttons btn-group btn-group-justified">
                                         <div class="btn-group col-xs-6">
-                                            <button type="button" class="btn btn-sm btn-success addinitial" id="addocketref" aria-label="add docket or reference number">Add Number</button>
+                                            <button type="button" class="btn btn-sm btn-success addinitialDocket" id="addocketrefButton" aria-label="add docket or reference number">Add Docket Number</button>
                                         </div>
                                     </div>
                                 </div>
@@ -839,7 +869,7 @@
         var bsLink6_active =  "../../application/confirmInfo/?trademarkID="+appInternalID;
         var bsLink6_done =  "../../application/confirmInfo/?trademarkID="+appInternalID;
 
-
+        var activeDocketNumberCount = 1;
 
     </script>
 
@@ -1178,10 +1208,29 @@
 
 
 
+        $('#addocketrefButton').click(function () {
+
+           activeDocketNumberCount++;
+
+
+            if(activeDocketNumberCount == 2){
+                $('#docket2').show(500);
+           }
+           if(activeDocketNumberCount == 3){
+               $('#docket3').show(500);
+           }
+
+        });
 
 
 
+        //attorney docket number remove
+        $( document ).on('click','.resetdktrefbtn',function(){
 
+            activeDocketNumberCount--;
+            $( this ).parent().parent().hide(500);
+
+        });
 
 
 

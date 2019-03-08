@@ -1,6 +1,6 @@
 package com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.form;
 
-import java.util.Date;
+
 
 public class NewAttorneyContactFormDTO {
 
@@ -38,6 +38,8 @@ public class NewAttorneyContactFormDTO {
 
 
     private String attorneyDocketNumber;
+    private String attorneyDocketNumber2;
+    private String attorneyDocketNumber3;
 
     private String attorneyAffiliation;
 
@@ -177,8 +179,26 @@ public class NewAttorneyContactFormDTO {
         return attorneyDocketNumber;
     }
 
+
+
     public void setAttorneyDocketNumber(String attorneyDocketNumber) {
         this.attorneyDocketNumber = attorneyDocketNumber;
+    }
+
+    public String getAttorneyDocketNumber2() {
+        return attorneyDocketNumber2;
+    }
+
+    public void setAttorneyDocketNumber2(String attorneyDocketNumber2) {
+        this.attorneyDocketNumber2 = attorneyDocketNumber2;
+    }
+
+    public String getAttorneyDocketNumber3() {
+        return attorneyDocketNumber3;
+    }
+
+    public void setAttorneyDocketNumber3(String attorneyDocketNumber3) {
+        this.attorneyDocketNumber3 = attorneyDocketNumber3;
     }
 
     public String getAttorneyAffiliation() {
@@ -253,4 +273,6 @@ public class NewAttorneyContactFormDTO {
     public void setAttorneyPhoneExtension(String attorneyPhoneExtension) {
         this.attorneyPhoneExtension = attorneyPhoneExtension;
     }
+
+
 }
