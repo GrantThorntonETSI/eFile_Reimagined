@@ -519,7 +519,7 @@
                                     <div class="col-xs-12">
                                         <div class="form-group form-group-md col-xs-6 col-sm-3">
                                             <label for="attorney-phonenumbertype">Phone Type</label>
-                                            <select class="form-control" id="attorney-phonenumbertype2" ><!--Needs th:field= attribute to capture this value on submit-->
+                                            <select class="form-control" id="attorney-phonenumbertype2" th:field="*{attorneyPhoneType2}"><!--Needs th:field= attribute to capture this value on submit-->
                                                 <option value="">Type</option>
                                                 <option value="Cell">Cell</option>
                                                 <option value="Home">Home</option>
@@ -529,11 +529,11 @@
                                         </div>
                                         <div class="form-group form-group-md col-xs-6 col-sm-4">
                                             <label for="attorney-phone">Phone Number</label>
-                                            <input type="text" class="form-control" id="attorney-phone2" >
+                                            <input type="text" class="form-control" id="attorney-phone2" th:field="*{attorneyPhone2}">
                                         </div>
                                         <div class="form-group form-group-md col-xs-9 col-sm-3">
                                             <label for="attorney-ext">Ext.</label>
-                                            <input type="text" class="form-control" id="attorney-ext2" >
+                                            <input type="text" class="form-control" id="attorney-ext2" th:field="*{attorneyPhoneExtension2}">
                                         </div>
                                         <div class="col-xs-3 col-sm-2 form-group form-group-md  resetphone2">
                                             <button type="button" class="btn btn-sm close resetphonebtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
@@ -545,7 +545,7 @@
                                     <div class="col-xs-12">
                                         <div class="form-group form-group-md col-xs-6 col-sm-3">
                                             <label for="attorney-phonenumbertype">Phone Type</label>
-                                            <select class="form-control" id="attorney-phonenumbertype3" ><!--Needs th:field= attribute to capture this value on submit-->
+                                            <select class="form-control" id="attorney-phonenumbertype3" th:field="*{attorneyPhoneType3}"><!--Needs th:field= attribute to capture this value on submit-->
                                                 <option value="">Type</option>
                                                 <option value="Cell">Cell</option>
                                                 <option value="Home">Home</option>
@@ -555,11 +555,11 @@
                                         </div>
                                         <div class="form-group form-group-md col-xs-6 col-sm-4">
                                             <label for="attorney-phone">Phone Number</label>
-                                            <input type="text" class="form-control" id="attorney-phone3" >
+                                            <input type="text" class="form-control" id="attorney-phone3" th:field="*{attorneyPhone3}">
                                         </div>
                                         <div class="form-group form-group-md col-xs-9 col-sm-3">
                                             <label for="attorney-ext">Ext.</label>
-                                            <input type="text" class="form-control" id="attorney-ext3" >
+                                            <input type="text" class="form-control" id="attorney-ext3" th:field="*{attorneyPhoneExtension3}">
                                         </div>
                                         <div class="col-xs-3 col-sm-2 form-group form-group-md  resetphone2">
                                             <button type="button" class="btn btn-sm close resetphonebtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>

@@ -233,7 +233,7 @@ public class ApplicationObjectCreationController {
 
         }
 
-        if(newAttorneyContactFormDTO.getAttorneyPhone() != null){
+        if(newAttorneyContactFormDTO.getAttorneyPhone() != null && newAttorneyContactFormDTO.getAttorneyPhone().equals("") == false){
             lawyer.setPrimaryPhonenumber(newAttorneyContactFormDTO.getAttorneyPhone());
 
             // create new phone object and add it to attorney, also get type and extension values
@@ -248,22 +248,52 @@ public class ApplicationObjectCreationController {
 
         }
 
+        if(newAttorneyContactFormDTO.getAttorneyPhone2() != null && newAttorneyContactFormDTO.getAttorneyPhone2().equals("") == false){
 
 
-        if(newAttorneyContactFormDTO.getAttorneyDocketNumber()!= null){
+            // create new phone object and add it to attorney, also get type and extension values
+            // make sure form DTO supports type and extension values
+            PhoneNumber phoneNumber = new PhoneNumber();
+            phoneNumber.setPhoneNumber(newAttorneyContactFormDTO.getAttorneyPhone2());
+            //phoneNumber.setPhoneType(newAttorneyContactFormDTO.);
+            phoneNumber.setPhoneType(newAttorneyContactFormDTO.getAttorneyPhoneType2());
+            phoneNumber.setExtension(newAttorneyContactFormDTO.getAttorneyPhoneExtension2());
+
+            lawyer.addPhoneNumber(phoneNumber);
+
+        }
+        if(newAttorneyContactFormDTO.getAttorneyPhone3() != null && newAttorneyContactFormDTO.getAttorneyPhone3().equals("") == false){
+
+
+            // create new phone object and add it to attorney, also get type and extension values
+            // make sure form DTO supports type and extension values
+            PhoneNumber phoneNumber = new PhoneNumber();
+            phoneNumber.setPhoneNumber(newAttorneyContactFormDTO.getAttorneyPhone3());
+            //phoneNumber.setPhoneType(newAttorneyContactFormDTO.);
+            phoneNumber.setPhoneType(newAttorneyContactFormDTO.getAttorneyPhoneType3());
+            phoneNumber.setExtension(newAttorneyContactFormDTO.getAttorneyPhoneExtension3());
+
+            lawyer.addPhoneNumber(phoneNumber);
+
+        }
+
+        if(newAttorneyContactFormDTO.getAttorneyDocketNumber()!= null && newAttorneyContactFormDTO.getAttorneyDocketNumber().equals("") == false){
            // lawyer.setDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber());
+
+            System.out.println("docket number 1 :"+newAttorneyContactFormDTO.getAttorneyDocketNumber()+"/");
             lawyer.addDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber());
         }
-        if(newAttorneyContactFormDTO.getAttorneyDocketNumber()!= null){
+
+        if(newAttorneyContactFormDTO.getAttorneyDocketNumber2()!= null && newAttorneyContactFormDTO.getAttorneyDocketNumber2().equals("") == false){
+
+
             // lawyer.setDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber());
-            lawyer.addDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber());
-        }
-        if(newAttorneyContactFormDTO.getAttorneyDocketNumber2()!= null){
-            // lawyer.setDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber());
+            System.out.println("docket number 2 :"+newAttorneyContactFormDTO.getAttorneyDocketNumber2()+"/");
             lawyer.addDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber2());
         }
-        if(newAttorneyContactFormDTO.getAttorneyDocketNumber3()!= null){
+        if(newAttorneyContactFormDTO.getAttorneyDocketNumber3()!= null && newAttorneyContactFormDTO.getAttorneyDocketNumber3().equals("") == false){
             // lawyer.setDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber());
+            System.out.println("docket number 3 :"+newAttorneyContactFormDTO.getAttorneyDocketNumber3()+"/");
             lawyer.addDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber3());
         }
         if(newAttorneyContactFormDTO.getAttorneyAffiliation()!= null){

@@ -472,6 +472,33 @@
                                     <input type="text" class="form-control" id="attorney-email" placeholder="email Address" th:value="${attorney.email}" >
                                 </div>
 
+                                <div class="row phones" style="display: none;">
+                                    <div class="col-xs-12">
+                                        <div class="form-group form-group-md col-xs-6 col-sm-3">
+                                            <label>Phone Type</label>
+                                            <select class="form-control attorney-phonenumbertype" ><!--Needs th:field= attribute to capture this value on submit-->
+
+                                                <option value="">Type</option>
+                                                <option value="Cell">Cell</option>
+                                                <option value="Home">Home</option>
+                                                <option value="Work">Work</option>
+                                                <option value="Fax">Fax</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group form-group-md col-xs-6 col-sm-4">
+                                            <label>Phone Number</label>
+                                            <input type="text" class="form-control attorney-phone" >
+                                        </div>
+                                        <div class="form-group form-group-md col-xs-9 col-sm-3">
+                                            <label >Ext.</label>
+                                            <input type="text" class="form-control attorney-ext"  >
+                                        </div>
+                                        <div class="col-xs-3 col-sm-2 form-group form-group-md  resetphone2" style="">
+                                            <button type="button" class="btn btn-sm close resetphonebtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+
 
                                 <th:block th:each="phoneNumber, iter: ${attorney.getPhoneNumbers()}">
                                     <div class="row phones">
@@ -523,6 +550,18 @@
                             <h2 class="card-title weight600" id="docketreference">Docket or Reference Number</h2>
                         </div>
                         <fieldset aria-labelledby="docketreference">
+
+
+
+                            <div class="row docket" style="display: none;">
+                                <div class="form-group form-group-md col-xs-9">
+                                    <label>If applicable, enter the attorney docket or reference number.</label>
+                                    <input type="text" class="form-control docket-id"  >
+                                </div>
+                                <div class="form-group form-group-md  resetdkt col-xs-3"  style="bottom: -30px; left:-111px;">
+                                    <button type="button" class="btn btn-sm close resetdktrefbtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                                </div>
+                            </div>
 
                             <th:block th:each="docketNumber, iter: ${attorney.getDocketNumberList()}">
 
@@ -1695,9 +1734,9 @@
         if(index >= 0){
             var newIndex = saveAttorneyInfoAdditonalDocket(attEmail, "docket-number-remove", value,index,input);
         }
+        $( this ).parent().parent().hide(500);
 
-
-        $( this ).parent().parent().remove();
+        $( this ).parent().parent().remove(500);
     });
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1764,8 +1803,8 @@
             if(index >= 0){
                 saveAttorneyInfoAdditonalPhone(attEmail, "attorney-phone-number-remove", value,index,input);
             }
-
-            $( this ).parent().parent().parent().remove();
+            $( this ).parent().parent().parent().hide(500);
+            $( this ).parent().parent().parent().remove(500);
         });
 
 
@@ -1878,6 +1917,31 @@
         $(this).parent().parent().parent().parent().parent().parent().parent().prev().show(500);
         $(this).parent().parent().parent().parent().parent().parent().parent().next().show(500);
 
+    });
+
+
+
+    //START additional docket
+    $( document ).on('click','button#addocketref',function(){
+        $( 'div.docket:eq(0)' ).clone().appendTo( '.appenddocket' );
+        $( 'div.docket' ).last().find('input').val('');
+        $( 'div.docket' ).last().find('[docket-index]').removeAttr("docket-index");
+        $( 'div.docket' ).last().show(500);
+
+        $( '.appenddocket .resetdkt' ).removeClass( 'visuallyremoved' );
+        $( this ).removeClass( '.addinitial' );
+    });
+
+
+    //START additional phone
+    $( document ).on('click','button#addphone2',function(){
+        $( 'div.phones:eq(0)' ).clone().appendTo( '.appendphones' );
+        $( 'div.phones' ).last().find('input').val('');
+        $( 'div.phones' ).last().find('[phone-index]').removeAttr("phone-index");
+        $( 'div.phones' ).last().show(500);
+
+        $( '.appendphones .resetphone2' ).removeClass( 'visuallyremoved' );
+        $( this ).removeClass( '.addphoneinitial' );
     });
 
 

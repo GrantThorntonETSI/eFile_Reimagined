@@ -35,6 +35,14 @@ public class NewAttorneyContactFormDTO {
     private String attorneyPhoneType;
     private String attorneyPhoneExtension;
 
+    private String attorneyPhone2;
+    private String attorneyPhoneType2;
+    private String attorneyPhoneExtension2;
+
+    private String attorneyPhone3;
+    private String attorneyPhoneType3;
+    private String attorneyPhoneExtension3;
+
 
 
     private String attorneyDocketNumber;
@@ -274,5 +282,51 @@ public class NewAttorneyContactFormDTO {
         this.attorneyPhoneExtension = attorneyPhoneExtension;
     }
 
+    public String getAttorneyPhone2() {
+        return attorneyPhone2;
+    }
 
+    public void setAttorneyPhone2(String attorneyPhone2) {
+        this.attorneyPhone2 = attorneyPhone2;
+    }
+
+    public String getAttorneyPhoneType2() {
+        return attorneyPhoneType2;
+    }
+
+    public void setAttorneyPhoneType2(String attorneyPhoneType2) {
+        this.attorneyPhoneType2 = attorneyPhoneType2;
+    }
+
+    public String getAttorneyPhoneExtension2() {
+        return attorneyPhoneExtension2;
+    }
+
+    public void setAttorneyPhoneExtension2(String attorneyPhoneExtension2) {
+        this.attorneyPhoneExtension2 = attorneyPhoneExtension2;
+    }
+
+    public String getAttorneyPhone3() {
+        return attorneyPhone3;
+    }
+
+    public void setAttorneyPhone3(String attorneyPhone3) {
+        this.attorneyPhone3 = attorneyPhone3;
+    }
+
+    public String getAttorneyPhoneType3() {
+        return attorneyPhoneType3;
+    }
+
+    public void setAttorneyPhoneType3(String attorneyPhoneType3) {
+        this.attorneyPhoneType3 = attorneyPhoneType3;
+    }
+
+    public String getAttorneyPhoneExtension3() {
+        return attorneyPhoneExtension3;
+    }
+
+    public void setAttorneyPhoneExtension3(String attorneyPhoneExtension3) {
+        this.attorneyPhoneExtension3 = attorneyPhoneExtension3;
+    }
 }

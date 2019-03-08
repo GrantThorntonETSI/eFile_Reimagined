@@ -1227,15 +1227,6 @@ $(document).ready(function(){
 	});
 	//edit owner accordion button toggle
 
-	//START additional phone
-	$( document ).on('click','button#addphone2',function(){
-		$( 'div.phones:eq(0)' ).clone().appendTo( '.appendphones' );
-		$( 'div.phones' ).last().find('input').val('');
-		$( 'div.phones' ).last().find('[phone-index]').removeAttr("phone-index");
-		$( '.appendphones .resetphone2' ).removeClass( 'visuallyremoved' );
-		$( this ).removeClass( '.addphoneinitial' );
-	});
-
 	//END additional phone
 
 	//START concurrent use, 2(f) Claim
@@ -1296,16 +1287,6 @@ $(document).ready(function(){
 	});
 	//end additional registration no earlieruse
 	//END concurrent use, 2(f) Claim add/remove
-
-	//START additional docket
-	$( document ).on('click','button#addocketref',function(){
-		$( 'div.docket:eq(0)' ).clone().appendTo( '.appenddocket' );
-		$( 'div.docket' ).last().find('input').val('');
-		$( 'div.docket' ).last().find('[docket-index]').removeAttr("docket-index");
-
-		$( '.appenddocket .resetdkt' ).removeClass( 'visuallyremoved' );
-		$( this ).removeClass( '.addinitial' );
-	});
 
 	//END additional docket
 
