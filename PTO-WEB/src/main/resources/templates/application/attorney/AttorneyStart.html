@@ -488,7 +488,7 @@
                                     <input type="text" class="form-control" id="attorney-email" placeholder="email Address" th:field="*{attorneyEmail}" required>
                                 </div>
 
-                                <div class="row phones">
+                                <div class="row phones" id="phone1">
                                     <div class="col-xs-12">
                                         <div class="form-group form-group-md col-xs-6 col-sm-3">
                                             <label for="attorney-phonenumbertype">Phone Type</label>
@@ -513,12 +513,67 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="appendphones"></div>
+                                <div class="appendphones">
+
+                                    <div class="row phones" id="phone2" style="display: none">
+                                    <div class="col-xs-12">
+                                        <div class="form-group form-group-md col-xs-6 col-sm-3">
+                                            <label for="attorney-phonenumbertype">Phone Type</label>
+                                            <select class="form-control" id="attorney-phonenumbertype2" ><!--Needs th:field= attribute to capture this value on submit-->
+                                                <option value="">Type</option>
+                                                <option value="Cell">Cell</option>
+                                                <option value="Home">Home</option>
+                                                <option value="Work">Work</option>
+                                                <option value="Fax">Fax</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group form-group-md col-xs-6 col-sm-4">
+                                            <label for="attorney-phone">Phone Number</label>
+                                            <input type="text" class="form-control" id="attorney-phone2" >
+                                        </div>
+                                        <div class="form-group form-group-md col-xs-9 col-sm-3">
+                                            <label for="attorney-ext">Ext.</label>
+                                            <input type="text" class="form-control" id="attorney-ext2" >
+                                        </div>
+                                        <div class="col-xs-3 col-sm-2 form-group form-group-md  resetphone2">
+                                            <button type="button" class="btn btn-sm close resetphonebtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row phones" id="phone3" style="display: none">
+                                    <div class="col-xs-12">
+                                        <div class="form-group form-group-md col-xs-6 col-sm-3">
+                                            <label for="attorney-phonenumbertype">Phone Type</label>
+                                            <select class="form-control" id="attorney-phonenumbertype3" ><!--Needs th:field= attribute to capture this value on submit-->
+                                                <option value="">Type</option>
+                                                <option value="Cell">Cell</option>
+                                                <option value="Home">Home</option>
+                                                <option value="Work">Work</option>
+                                                <option value="Fax">Fax</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group form-group-md col-xs-6 col-sm-4">
+                                            <label for="attorney-phone">Phone Number</label>
+                                            <input type="text" class="form-control" id="attorney-phone3" >
+                                        </div>
+                                        <div class="form-group form-group-md col-xs-9 col-sm-3">
+                                            <label for="attorney-ext">Ext.</label>
+                                            <input type="text" class="form-control" id="attorney-ext3" >
+                                        </div>
+                                        <div class="col-xs-3 col-sm-2 form-group form-group-md  resetphone2">
+                                            <button type="button" class="btn btn-sm close resetphonebtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                </div>
                                 <div class="form-group form-group-md col-xs-12" aria-label="add additional phone number">
                                     <div class="row">
                                         <div class="inlinebuttons btn-group btn-group-justified">
                                             <div class="btn-group col-xs-6">
-                                                <button type="button" class="btn btn-sm btn-success addphoneinitial" id="addphone2" aria-label="add number">Add Phone Number</button>
+                                                <button type="button" class="btn btn-sm btn-success addphoneinitial" id="addphoneNumberButton" aria-label="add number">Add Phone Number</button>
                                             </div>
                                         </div>
                                     </div>
@@ -870,6 +925,7 @@
         var bsLink6_done =  "../../application/confirmInfo/?trademarkID="+appInternalID;
 
         var activeDocketNumberCount = 1;
+        var activePhoneNumberCount = 1;
 
     </script>
 
@@ -1206,7 +1262,7 @@
 
 
 
-
+        // attorney docket number add
 
         $('#addocketrefButton').click(function () {
 
@@ -1232,6 +1288,32 @@
 
         });
 
+
+
+        // phone number add
+
+        $('#addphoneNumberButton').click(function () {
+
+            activePhoneNumberCount++;
+
+
+            if(activePhoneNumberCount == 2){
+                $('#phone2').show(500);
+            }
+            if(activePhoneNumberCount == 3){
+                $('#phone3').show(500);
+            }
+
+        });
+
+        //attorney docket number remove
+        $( document ).on('click','.resetphonebtn',function(){
+
+            activePhoneNumberCount--;
+            $( this ).parent().parent().parent().hide(500);
+
+
+        });
 
 
 
