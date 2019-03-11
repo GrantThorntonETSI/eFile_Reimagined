@@ -1218,6 +1218,19 @@ $(document).ready(function(){
 	});
 	//end show managed contacts from nav
 
+
+    //search managed contacts
+    $("#contactsearch").on("keyup", function() {
+
+
+        var value = $(this).val().toLowerCase();
+
+        $("#contactssearch tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+    //search managed contacts
+
 	//edit owner accordion button toggle
 	$('#editowner button.Accordion-trigger, #reviewattorney button.Accordion-trigger').click(function() {
 		//$( this ).children('span.glyphicon-chevron-right').toggleClass('visuallyremoved');
