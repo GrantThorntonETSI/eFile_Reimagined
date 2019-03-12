@@ -647,13 +647,7 @@ public class ContactsService extends  BaseRESTapiService {
         }
 
         if(contact_field_name.equals("owner-estate-executor-first-name" )){
-            for(Iterator<GoverningEntity> iter = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().iterator(); iter.hasNext(); ) {
-                GoverningEntity current = iter.next();
 
-                if(String.valueOf(current.getId()).equals(entityID)){
-                    current.setFirstName(contact_field_value);
-                }
-            }
 
 
             // entity id is the entity index here
@@ -664,35 +658,23 @@ public class ContactsService extends  BaseRESTapiService {
         }
 
         if(contact_field_name.equals("owner-estate-executor-last-name" )){
-            for(Iterator<GoverningEntity> iter = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().iterator(); iter.hasNext(); ) {
-                GoverningEntity current = iter.next();
+            GoverningEntity governingEntity = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().get(Integer.valueOf(entityID));
+            governingEntity.setLastName(contact_field_value);
 
-                if(String.valueOf(current.getId()).equals(entityID)){
-                    current.setLastName(contact_field_value);
-                }
-            }
+
 
         }
 
         if(contact_field_name.equals("owner-estate-executor-middle-name" )){
-            for(Iterator<GoverningEntity> iter = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().iterator(); iter.hasNext(); ) {
-                GoverningEntity current = iter.next();
 
-                if(String.valueOf(current.getId()).equals(entityID)){
-                    current.setMiddleName(contact_field_value);
-                }
-            }
-
+            GoverningEntity governingEntity = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().get(Integer.valueOf(entityID));
+            governingEntity.setMiddleName(contact_field_value);
         }
 
         if(contact_field_name.equals("owner-estate-executor-citizenship" )){
-            for(Iterator<GoverningEntity> iter = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().iterator(); iter.hasNext(); ) {
-                GoverningEntity current = iter.next();
 
-                if(String.valueOf(current.getId()).equals(entityID)){
-                    current.setEntityCitizenship(contact_field_value);
-                }
-            }
+            GoverningEntity governingEntity = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().get(Integer.valueOf(entityID));
+            governingEntity.setEntityCitizenship(contact_field_value);
 
         }
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
