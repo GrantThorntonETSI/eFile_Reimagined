@@ -623,27 +623,13 @@ public class ContactsService extends  BaseRESTapiService {
 
 
         if(contact_field_name.equals("owner-estate-executor-name" )){
-            for(Iterator<GoverningEntity> iter = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().iterator(); iter.hasNext(); ) {
-                GoverningEntity current = iter.next();
-
-                if(String.valueOf(current.getId()).equals(entityID)){
-                    current.setEntityName(contact_field_value);
-                }
-            }
-
+            GoverningEntity governingEntity = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().get(Integer.valueOf(entityID));
+            governingEntity.setEntityName(contact_field_value);
         }
 
         if(contact_field_name.equals("owner-estate-executorstate-of-organization" )){
-            for(Iterator<GoverningEntity> iter = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().iterator(); iter.hasNext(); ) {
-                GoverningEntity current = iter.next();
-
-
-                if(String.valueOf(current.getId()).equals(entityID)){
-
-                    current.setOrganizationState(contact_field_value);
-                }
-            }
-
+            GoverningEntity governingEntity = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().get(Integer.valueOf(entityID));
+            governingEntity.setOrganizationState(contact_field_value);
         }
 
         if(contact_field_name.equals("owner-estate-executor-first-name" )){

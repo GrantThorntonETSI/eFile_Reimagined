@@ -1374,31 +1374,42 @@
             saveOwnerInfo(ownerEmail, "owner-name-corp",value, appInternalID);
         });
 
-        $('.ge-name').focusout(function () {
-            var value = $(this).val();
-            var entityID = $(this).attr("entity-id");
-            saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-name",value, entityID,appInternalID);
-        });
 
 
-        $('.ge-state').change(function () {
-            var value = $(this).val();
+        $('#partnerEntitydynamicFormArea').on('focusout', 'input.ge-name', function () {
+            var value = $(this).val();''
 
-            var entityID = $(this).attr("entity-id");
-            saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executorstate-of-organization",value, entityID, appInternalID);
-        });
+            var entityIndex = $(this).attr("entity-index");
 
+            if(entityIndex  == null){
+                entityIndex  = -1;
+            }
 
-        $('.ge-first-name').focusout(function () {
-            var value = $(this).val();
-           // var entityID = $(this).attr("entity-id");
-
-
-            //alert(entityIndex);
+            saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-name",value, entityIndex, appInternalID);
 
 
 
         });
+
+
+
+
+        $('#partnerEntitydynamicFormArea').on('change', 'input.ge-state', function () {
+            var value = $(this).val();''
+
+            var entityIndex = $(this).attr("entity-index");
+
+            if(entityIndex  == null){
+                entityIndex  = -1;
+            }
+
+            saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executorstate-of-organization",value, entityIndex, appInternalID);
+
+
+
+        });
+
+
 
         $('#partnerEntitydynamicFormArea').on('focusout', 'input.ge-first-name', function () {
             var value = $(this).val();''
