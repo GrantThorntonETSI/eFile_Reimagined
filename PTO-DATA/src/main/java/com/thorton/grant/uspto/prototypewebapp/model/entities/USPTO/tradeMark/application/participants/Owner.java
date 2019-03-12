@@ -4,16 +4,14 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.ap
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class Owner extends Contact{
 
     public Owner() {
 
-       governingEntities = new HashSet<>();
+       governingEntities = new ArrayList<>();
 
 
     }
@@ -27,7 +25,7 @@ public class Owner extends Contact{
 
 
     @OneToMany(cascade = CascadeType.ALL)
-    private Set<GoverningEntity> governingEntities;
+    private List<GoverningEntity> governingEntities;
 
 
 
@@ -151,11 +149,11 @@ public class Owner extends Contact{
     }
 
 
-    public Set<GoverningEntity> getGoverningEntities() {
+    public List<GoverningEntity> getGoverningEntities() {
         return governingEntities;
     }
 
-    public void setGoverningEntities(Set<GoverningEntity> governingEntities) {
+    public void setGoverningEntities(List<GoverningEntity> governingEntities) {
         this.governingEntities = governingEntities;
     }
 
