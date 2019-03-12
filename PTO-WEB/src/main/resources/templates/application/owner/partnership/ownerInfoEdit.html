@@ -1391,40 +1391,56 @@
 
         $('.ge-first-name').focusout(function () {
             var value = $(this).val();
-            var entityID = $(this).attr("entity-id");
+           // var entityID = $(this).attr("entity-id");
+
+
+            //alert(entityIndex);
+
+
+
+        });
+
+        $('#partnerEntitydynamicFormArea').on('focusout', 'input.ge-first-name', function () {
+            var value = $(this).val();''
 
             var entityIndex = $(this).attr("entity-index");
-            alert(entityIndex);
+
+            if(entityIndex  == null){
+                entityIndex  = -1;
+            }
+
+            saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-first-name",value, entityIndex, appInternalID);
 
 
-            saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-first-name",value, entityID, appInternalID);
+
         });
+
+
 
         $('.ge-last-name').focusout(function () {
             var value = $(this).val();
-            var entityID = $(this).attr("entity-id");
+           // var entityID = $(this).attr("entity-id");
             var entityIndex = $(this).attr("entity-index");
-            alert(entityIndex);
 
-            saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-last-name",value, entityID, appInternalID);
+
+            saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-last-name",value, entityIndex, appInternalID);
         });
 
         $('.ge-middle-name').focusout(function () {
             var value = $(this).val();
-            var entityID = $(this).attr("entity-id");
+
             var entityIndex = $(this).attr("entity-index");
             alert(entityIndex);
-
-            saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-middle-name",value, entityID, appInternalID);
+            saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-middle-name",value, entityIndex, appInternalID);
         });
 
         $('.ge-citizenship').change(function () {
             var value = $(this).val();
-            var entityID = $(this).attr("entity-id");
-            var entityIndex = $(this).attr("entity-index");
-            alert(entityIndex);
 
-            saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-citizenship",value,  entityID,appInternalID);
+            var entityIndex = $(this).attr("entity-index");
+
+
+            saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-citizenship",value,  enable,appInternalID);
         });
 
 

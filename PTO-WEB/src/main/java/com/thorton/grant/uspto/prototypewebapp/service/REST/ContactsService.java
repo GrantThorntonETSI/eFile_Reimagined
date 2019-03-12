@@ -655,6 +655,12 @@ public class ContactsService extends  BaseRESTapiService {
                 }
             }
 
+
+            // entity id is the entity index here
+            GoverningEntity governingEntity = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().get(Integer.valueOf(entityID));
+            governingEntity.setFirstName(contact_field_value);
+
+
         }
 
         if(contact_field_name.equals("owner-estate-executor-last-name" )){
