@@ -550,9 +550,9 @@
                                     <button type="button" class="btn btn-sm close resetpartnerbtn" aria-label="remove this partner"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
                                 </div>
                                 <div class="col-xs-12 form-group form-group-md">
-                                    <label><b style="color: red">*</b>Select entity type</label>
+                                    <label>Select entity type</label>
                                     <span>
-                                                    <select id="domestic-entity-dropdown-partner" class="form-control" name="nameType" style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;">
+                                                    <select id="domestic-entity-dropdown-partner" class="form-control" name="nameType">
                                                         <option id="opt-none" value="none"></option>
                                                         <option id="opt-domestic-ind" value="Individual">Individual</option>
                                                         <option id="opt-domestic-soleP" value="Sole Proprietorship">Sole Proprietorship</option>
@@ -568,16 +568,16 @@
                                     <fieldset aria-labelledby="proprietorinfo" id="individual-partner-entity-new" style="display: none;">
                                         <div class="row">
                                             <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
-                                                <label for="partner-first-name"><span class="weight600">*</span>First name</label>
-                                                <input type="text" id="partner-first-name"  class="form-control"  required value="">
+                                                <label>First name</label>
+                                                <input type="text"   class="form-control ge-first-name"  required value="">
                                             </div>
                                             <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
-                                                <label for="partner-middle-name">Middle name</label>
-                                                <input type="text" id="partner-middle-name"  class="form-control"  value="">
+                                                <label >Middle name</label>
+                                                <input type="text" class="form-control ge-middle-name"  value="">
                                             </div>
                                             <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
-                                                <label for="partner-last-name"><span class="weight600">*</span>Last name</label>
-                                                <input id="partner-last-name" type="text"  class="form-control"  required value="">
+                                                <label >Last name</label>
+                                                <input  type="text"  class="form-control ge-last-name"  required value="">
                                             </div>
                                             <div class="form-group form-group-md col-xs-6">
                                                 <label for="partner-suffix">Suffix</label>
@@ -585,8 +585,8 @@
 
                                             </div>
                                             <div class="form-group form-group-md col-xs-6">
-                                                <label for="partner-citizenship"><span class="weight600">*</span>Country of citizenship</label>
-                                                <select id="partner-citizenship" class="form-control" name="partnerDTOs[0].citizenShip" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required="">
+                                                <label >Country of citizenship</label>
+                                                <select class="form-control ge-citizenship"  required="">
                                                     <option value="">Select</option>
                                                     <option value="UNITED STATES OF AMERICA">United States of America</option>
                                                     <option value="AFGHANISTAN">Afghanistan</option>
@@ -835,25 +835,25 @@
                                     <fieldset aria-labelledby="proprietorinfo" id="none-individual-partner-entity-new" style="display: none;">
                                         <div class="row">
                                             <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
-                                                <label for="ownername"><b style="color: red">*</b>Owner name</label>
-                                                <input id="owner-name" type="text" class="form-control rounded-borders"  required  value="">
+                                                <label for="ownername">Owner name</label>
+                                                <input type="text" class="form-control rounded-borders ge-name"  required  value="">
                                             </div>
                                             <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
-                                                <label><b style="color: red">*</b>Type</label>
+                                                <label>Type</label>
                                                 <span>
-                                                                <select id="owner-type" class="form-control" >
-                                                                    <option value="">Select</option>
-                                                                    <option value="DBA">Doing Business As(DBA)</option>
-                                                                    <option value="TA">Trading As(TA)</option>
-                                                                    <option value="AKA">Also Known As(AKA)</option>
-                                                                    <option value="F">Formerly</option>
+                                                        <select  class="form-control ge-name-type" >
+                                                            <option value="">Select</option>
+                                                            <option value="DBA">Doing Business As(DBA)</option>
+                                                            <option value="TA">Trading As(TA)</option>
+                                                            <option value="AKA">Also Known As(AKA)</option>
+                                                            <option value="F">Formerly</option>
 
-                                                                </select>
-                                                            </span>
+                                                        </select>
+                                                </span>
                                             </div>
                                             <div class="form-group form-group-md col-xs-6">
-                                                <label><b style="color: red">*</b>State where legally organized</label>
-                                                <select id="owner-state" class="form-control" >
+                                                <label>State where legally organized</label>
+                                                <select  class="form-control ge-state">
                                                     <option value="">Select</option>
                                                     <option value="Alabama">Alabama</option>
                                                     <option value="Alaska">Alaska</option>
