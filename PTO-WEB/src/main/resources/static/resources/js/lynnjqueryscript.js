@@ -1225,7 +1225,9 @@ $(document).ready(function(){
 
         var value = $(this).val().toLowerCase();
 
+
         $("#contactssearch tr").filter(function() {
+
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
     });

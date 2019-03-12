@@ -194,15 +194,46 @@ public class Goods_ServicesService  extends BaseRESTapiService{
             }
             else {
 
+
+
+
                 if(baseTrademarkApplication.isMarkFappSet() == false) {
+
                     baseTrademarkApplication.setMarkHasForeignRegistration(false);
                     baseTrademarkApplication.setMarkFappSet(true);
+
                 }
                 else {
-                    if(baseTrademarkApplication.isMarkHasForeignRegistration()== false){
-                        return buildResponseEnity("444", "");
-                    }
+                    // if mark foreign is set ...
+                    // we need to unset it
+                    // we need to unset all of the foreign application/registration settings and fields
+
                     baseTrademarkApplication.setMarkHasForeignRegistration(false);
+
+                    // for each filing basis, also set this value for foreign app and foreign registration
+                    for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServicesList().iterator(); iter.hasNext(); ) {
+                         GoodAndService current = iter.next();
+
+                         // unset foreign application for each good and service
+
+                         current.setFrCertImageName(null);current.setFaCountry(null);
+                        current.setFaRegistrationNumber(null);
+                        current.setFaFilingDate(null);
+                        current.setPendingFA(false);
+                        //unset foreign registration for each good and service
+                        current.setFrCountry(null);
+                        current.setFrRegistartionNumber(null);
+                        current.setFrRegistrationDate(null);
+                        current.setFrExpirationDate(null);
+                        current.setFrRenewlDate(null);
+                        current.setFrCertImagePath(null);
+                         current.setForeignRegistration(false);
+
+
+
+
+                    }
+
                 }
 
             }
