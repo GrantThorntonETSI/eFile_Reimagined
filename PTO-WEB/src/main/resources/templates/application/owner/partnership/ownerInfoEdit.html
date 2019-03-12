@@ -194,25 +194,25 @@
 
                                                 <th:block th:if="${exceuter.isPersonEntity() == true}">
                                                     <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
-                                                        <label for="executor-first-name">First Name</label>
-                                                        <input type="text" id="executor-first-name" name="firstName" class="form-control" th:value="${exceuter.firstName}"  th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}" >
+                                                        <label >First Name</label>
+                                                        <input type="text"  name="firstName" class="form-control ge-first-name" th:value="${exceuter.firstName}"  th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}" >
                                                     </div>
                                                     <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
-                                                        <label for="executor-middle-name">Middle Name</label>
-                                                        <input type="text" id="executor-middle-name" name="middleName" class="form-control" th:value="${exceuter.middleName}"  th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}">
+                                                        <label >Middle Name</label>
+                                                        <input type="text"  name="middleName" class="form-control ge-middle-name" th:value="${exceuter.middleName}"  th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}">
                                                     </div>
                                                     <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
-                                                        <label for="executor-last-name">Last Name</label>
-                                                        <input id="executor-last-name" type="text"  name="lastName" class="form-control" th:value="${exceuter.lastName}"   th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}">
+                                                        <label >Last Name</label>
+                                                        <input  type="text"  name="lastName" class="form-control ge-last-name" th:value="${exceuter.lastName}"   th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}">
                                                     </div>
                                                     <div class="form-group form-group-md col-xs-6">
-                                                        <label for="executor-suffix">Suffix</label>
-                                                        <input  class="form-control" id="executor-suffix"  name="suffix" />
+                                                        <label>Suffix</label>
+                                                        <input  class="form-control ge-suffix"  name="suffix" />
 
                                                     </div>
                                                     <div class="form-group form-group-md col-xs-6">
-                                                        <label for="executor-citizenship">Country of Citizenship</label>
-                                                        <select   id="executor-citizenship"  class="form-control" name="owner-citizenship" >
+                                                        <label >Country of Citizenship</label>
+                                                        <select    class="form-control ge-citizenship" name="owner-citizenship" >
                                                             <option th:value="${exceuter.entityCitizenship}"  th:text="${exceuter.entityCitizenship}" selected  th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}"></option>
                                                             <option value="UNITED STATES OF AMERICA">UNITED STATES OF AMERICA</option>
                                                             <option value="AFGHANISTAN">AFGHANISTAN</option>
@@ -460,13 +460,13 @@
 
                                                 <th:block th:if="${exceuter.isPersonEntity() == false}">
                                                         <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
-                                                            <label for="ownername">Owner Name</label>
-                                                            <input id="executor-name" type="text"   class="form-control rounded-borders"  style="" th:value="${exceuter.displayName}" th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}">
+                                                            <label >Owner Name</label>
+                                                            <input  type="text"   class="form-control rounded-borders ge-name"  style="" th:value="${exceuter.displayName}" th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}">
                                                         </div>
                                                         <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
                                                             <label>Type</label>
                                                             <span>
-                                                                <select  id="executor-name-type" class="form-control" name="nameType"   style="" >
+                                                                <select  class="form-control ge-name-type" name="nameType"   style="" >
                                                                     <option value="">Select</option>
                                                                     <option value="DBA">Doing Business As(DBA)</option>
                                                                     <option value="TA">Trading As(TA)</option>
@@ -480,7 +480,7 @@
 
                                                         <div class="form-group form-group-md col-xs-6">
                                                             <label>State where legally organized</label>
-                                                            <select  id="executor-state"   class="form-control" name="State" th:attr="entity-index=${iter.index}" >
+                                                            <select     class="form-control ge-state" name="State" th:attr="entity-index=${iter.index}" >
                                                                 <option  th:value="${exceuter.organizationState}"  th:text="${exceuter.organizationState}"  th:attr="entity-id=${exceuter.id}"selected></option>
                                                                 <option  value="">Select</option>
                                                                 <option  value="Alabama">Alabama</option>
@@ -853,7 +853,7 @@
                                             </div>
                                             <div class="form-group form-group-md col-xs-6">
                                                 <label><b style="color: red">*</b>State where legally organized</label>
-                                                <select id="owner-state" class="form-control" name="partnerDTOs[0].state" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required="">
+                                                <select id="owner-state" class="form-control" >
                                                     <option value="">Select</option>
                                                     <option value="Alabama">Alabama</option>
                                                     <option value="Alaska">Alaska</option>
@@ -916,7 +916,7 @@
                         <!--END hidden content-->
                         <div class="appendpartner col-xs-12"></div>
                         <div class="row" id="hideshow_addpartner">
-                            <script type="application/javascript" src="js/add_partner.js"></script>
+
                             <div class="col-xs-12 form-group form-group-md" aria-label="add a partner">
                                 <div class="inlinebuttons btn-group btn-group-justified">
                                     <div class="btn-group col-xs-6">
@@ -1369,19 +1369,19 @@
         var ownerEmail = $('#ownerEmail').val();
 
 
-        $('#ownername').focusout(function () {
+        $('.ownername').focusout(function () {
             var value = $(this).val();
             saveOwnerInfo(ownerEmail, "owner-name-corp",value, appInternalID);
         });
 
-        $('#executor-name').focusout(function () {
+        $('.ge-name').focusout(function () {
             var value = $(this).val();
             var entityID = $(this).attr("entity-id");
             saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-name",value, entityID,appInternalID);
         });
 
 
-        $('#executor-state').change(function () {
+        $('.ge-state').change(function () {
             var value = $(this).val();
 
             var entityID = $(this).attr("entity-id");
@@ -1389,27 +1389,41 @@
         });
 
 
-        $('#executor-first-name').focusout(function () {
+        $('.ge-first-name').focusout(function () {
             var value = $(this).val();
             var entityID = $(this).attr("entity-id");
+
+            var entityIndex = $(this).attr("entity-index");
+            alert(entityIndex);
+
+
             saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-first-name",value, entityID, appInternalID);
         });
 
-        $('#executor-last-name').focusout(function () {
+        $('.ge-last-name').focusout(function () {
             var value = $(this).val();
             var entityID = $(this).attr("entity-id");
+            var entityIndex = $(this).attr("entity-index");
+            alert(entityIndex);
+
             saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-last-name",value, entityID, appInternalID);
         });
 
-        $('#executor-middle-name').focusout(function () {
+        $('.ge-middle-name').focusout(function () {
             var value = $(this).val();
             var entityID = $(this).attr("entity-id");
+            var entityIndex = $(this).attr("entity-index");
+            alert(entityIndex);
+
             saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-middle-name",value, entityID, appInternalID);
         });
 
-        $('#executor-citizenship').change(function () {
+        $('.ge-citizenship').change(function () {
             var value = $(this).val();
             var entityID = $(this).attr("entity-id");
+            var entityIndex = $(this).attr("entity-index");
+            alert(entityIndex);
+
             saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-citizenship",value,  entityID,appInternalID);
         });
 
