@@ -17,13 +17,27 @@ $(document).ready(function(){
 			}
 			
 			else {
-				$('div.addpartnership').show('fast')
+				$('div.addpartnership').show('fast');
+                $( 'div.addpartnership .resetpartner' ).removeClass( 'visuallyremoved' ).css('border-top','1px solid #ddd').css('margin-bottom','.4em');
 				}
 			});
-			$( document ).on('click','.resetpartnerbtn',function(){
-				$( this ).parent().parent().parent().remove();
+
+			$( document ).on('click','.addpartnership .resetpartnerbtn',function(){
+				var resetselects = [ 'Select' ];
+				var resettype = jQuery.makeArray( resetselects );
+				$( 'div.addpartnership' ).find('select').val(resetselects[0]);
+				$( 'div.addpartnership' ).find('input').val('');
+				$( 'div.addpartnership' ).last().find('#individual-partner-entity-new').css('display','none');
+				$( 'div.addpartnership' ).last().find('#none-individual-partner-entity-new').css('display','none');
+				$( this ).parent().parent().hide('fast');
 			});
-		//END hide / show append partner
+			$( document ).on('click','.appendpartner .resetpartnerbtn',function(){
+				$( this ).parent().parent().remove();
+			});
+			//END hide / show append partner
+
+
+
 		$(document).on('change', '#domestic-entity-dropdown-partner', function() {
 			var subtype_val = this.value;
 			function fadeOutPartnerInfo(){
