@@ -121,7 +121,7 @@
                     <label><b style="color: red">&#42;</b>Select Entity Type</label>
 
                     <span>
-                                <select  id="domestic-entity-dropdown-partner" class="form-control" name="nameType"   style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;">
+                                <select  id="domestic-entity-dropdown-partner" class="form-control" name="nameType"  >
                                         <option id="opt-none" value="none"  ></option>
                                         <option id="opt-domestic-ind" value="Individual"  >Individual</option>
                                         <option id="opt-domestic-soleP" value="Sole Proprietorship" >Sole Proprietorship</option>
@@ -137,24 +137,24 @@
                         <div class="row">
                             <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
                                 <label for="partner-first-name"><span class="weight600">&#42;</span>First Name</label>
-                                <input type="text" id="partner-first-name" th:field="*{partnerDTOs[__${itemStat.index}__].firstName}" name="firstName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                                <input type="text" id="partner-first-name" th:field="*{partnerDTOs[__${itemStat.index}__].firstName}" name="firstName" class="form-control"  required>
                             </div>
                             <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
                                 <label for="partner-middle-name">Middle Name</label>
-                                <input type="text"  th:field="*{partnerDTOs[__${itemStat.index}__].middleName}" id="partner-middle-name" name="middleName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                <input type="text"  th:field="*{partnerDTOs[__${itemStat.index}__].middleName}" id="partner-middle-name" name="middleName" class="form-control" >
                             </div>
                             <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
                                 <label for="partner-last-name"><span class="weight600">&#42;</span>Last Name</label>
-                                <input id="partner-last-name" type="text" th:field="*{partnerDTOs[__${itemStat.index}__].lastName}"  name="lastName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                                <input id="partner-last-name" type="text" th:field="*{partnerDTOs[__${itemStat.index}__].lastName}"  name="lastName" class="form-control"  required>
                             </div>
                             <div class="form-group form-group-md col-xs-6">
                                 <label for="partner-suffix">Suffix</label>
-                                <input  class="form-control" id="partner-suffix" th:field="*{partnerDTOs[__${itemStat.index}__].suffix}" name="suffix" style="  border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"/>
+                                <input  class="form-control" id="partner-suffix" th:field="*{partnerDTOs[__${itemStat.index}__].suffix}" name="suffix" />
 
                             </div>
                             <div class="form-group form-group-md col-xs-6">
                                 <label for="partner-citizenship"><span class="weight600">&#42;</span>Country of Citizenship</label>
-                                <select   th:field="*{partnerDTOs[__${itemStat.index}__].citizenShip}" id="partner-citizenship"  class="form-control" name="owner-citizenship"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                                <select   th:field="*{partnerDTOs[__${itemStat.index}__].citizenShip}" id="partner-citizenship"  class="form-control" name="owner-citizenship"   required>
                                     <option value="">Select</option>
                                     <option value="UNITED STATES OF AMERICA">UNITED STATES OF AMERICA</option>
                                     <option value="AFGHANISTAN">AFGHANISTAN</option>
@@ -405,12 +405,12 @@
                         <div class="row">
                             <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
                                 <label for="ownername"><b style="color: red">&#42;</b>Owner Name</label>
-                                <input id="owner-name" type="text" th:field="*{partnerDTOs[__${itemStat.index}__].partnerName}"  class="form-control rounded-borders"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                                <input id="partner-owner-name" type="text" th:field="*{partnerDTOs[__${itemStat.index}__].partnerName}"  class="form-control rounded-borders"   required>
                             </div>
                             <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
                             <label><b style="color: red">&#42;</b>Type</label>
                             <span>
-                                    <select  id="owner-type" class="form-control" name="nameType" th:field="*{partnerDTOs[__${itemStat.index}__].type}"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                    <select  id="partner-owner-name-type" class="form-control" name="nameType" th:field="*{partnerDTOs[__${itemStat.index}__].type}"  >
                                         <option value="">Select</option>
                                         <option value="DBA">Doing Business As(DBA)</option>
                                         <option value="TA">Trading As(TA)</option>
@@ -424,7 +424,7 @@
 
                             <div class="form-group form-group-md col-xs-6">
                                 <label><b style="color: red">&#42;</b>State where legally organized</label>
-                                <select  id="owner-state" th:field="*{partnerDTOs[__${itemStat.index}__].state}"  class="form-control" name="State"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                                <select  id="partner-owner-name-state" th:field="*{partnerDTOs[__${itemStat.index}__].state}"  class="form-control" name="State"  required>
                                     <option  value="">Select</option>
                                     <option  value="Alabama">Alabama</option>
                                     <option  value="Alaska">Alaska</option>
@@ -1186,28 +1186,32 @@
 
 
     function disableNoneIndiviualRequiredfields(){
-        $('#owner-name').prop("required", false);
+        $('#partner-owner-name').prop("required", false);
 
-        $('#owner-type').prop("required", false);
-        $('#owner-state').prop("required", false);
+        $('#partner-owner-type').prop("required", false);
+        $('#partner-owner-state').prop("required", false);
     }
 
     function enableNoneIndiviualRequiredfields(){
-        $('#owner-name').prop("required", true);
+        $('#partner-owner-name').prop("required", true);
 
-        $('#owner-type').prop("required", true);
-        $('#owner-state').prop("required", true);
+        $('#partner-owner-type').prop("required", true);
+        $('#partner-owner-stat').prop("required", true);p
     }
 
 
     function disableIndiviualRequiredfields(){
         $('#partner-first-name').prop("required", false);
         $('#partner-last-name').prop("required", false);
+
+        $('#partner-citizenship').prop("required", false);
     }
 
     function enableIndiviualRequiredfields() {
         $('#partner-first-name').prop("required", true);
         $('#partner-last-name').prop("required", true);
+
+        $('#partner-citizenship').prop("required", true);
     }
 
 
