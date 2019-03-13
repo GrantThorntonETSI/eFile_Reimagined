@@ -23,6 +23,10 @@ public class GoverningEntity {
 
     private String collapseID;
 
+    private boolean primaryGoverningEntity;
+
+
+
 
 
     private String suffix;
@@ -141,5 +145,14 @@ public class GoverningEntity {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+
+    public boolean isPrimaryGoverningEntity() {
+        return primaryGoverningEntity;
+    }
+
+    public void setPrimaryGoverningEntity(boolean primaryGoverningEntity) {
+        this.primaryGoverningEntity = primaryGoverningEntity;
     }
 }

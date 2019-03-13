@@ -188,9 +188,21 @@
 
 
                                     <fieldset aria-labelledby="proprietorinfo" id="individual-partner-entity" style="">
-                                        <div class="row">
+
 
                                             <th:block th:each="exceuter, iter : ${governingEntity}">
+
+                                                <div class="row">
+
+
+                                                    <th:block th:if="${exceuter.isPrimaryGoverningEntity() == false}">
+                                                        <div class="form-group form-group-md col-xs-12 removepartner">
+                                                            <button type="button" class="btn btn-sm close removepartner" aria-label="remove this partner"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                                                        </div>
+
+                                                    </th:block>
+
+
 
                                                 <th:block th:if="${exceuter.isPersonEntity() == true}">
                                                     <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
@@ -537,10 +549,11 @@
 
                                                             </select>
                                                         </div>
+                                                </th:block>
 
-                                            </th:block>
+                                                </div>  <!--end of partner row from server  -->
                                     </th:block>
-                                </div>
+
                             </fieldset>
 
 
@@ -1404,6 +1417,7 @@
         var ownerEmail = $('#ownerEmail').val();
 
 
+        //END hide / show append partner
         $('#ownername').focusout(function () {
             var value = $(this).val();
 
@@ -1526,6 +1540,42 @@
 
 
         });
+
+
+
+        // remove for server generated partner code
+        $( document ).on('click','button.removepartner',function(){
+            var index =  $(this).parent().parent().find('input').attr('entity-index');
+
+            var value = "xxxxx";
+
+            var input = $(this);
+            if(index >= 0){
+
+                saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-remove",value, index, input);
+            }
+
+            $( this ).parent().parent().hide('fast');
+
+        });
+
+
+
+
+       // remove for js generated partner code
+
+        $( document ).on('click','.addpartnership .resetpartnerbtn',function(){
+
+            alert(  $(this).parent().parent().find('input').attr('entity-index'));
+            var resetselects = [ 'Select' ];
+            var resettype = jQuery.makeArray( resetselects );
+            $( 'div.addpartnership' ).find('select').val(resetselects[0]);
+            $( 'div.addpartnership' ).find('input').val('');
+            $( 'div.addpartnership' ).last().find('#individual-partner-entity-new').css('display','none');
+            $( 'div.addpartnership' ).last().find('#none-individual-partner-entity-new').css('display','none');
+            $( this ).parent().parent().hide('fast');
+        });
+
 
 
 

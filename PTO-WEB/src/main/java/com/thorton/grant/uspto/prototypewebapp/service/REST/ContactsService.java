@@ -763,6 +763,24 @@ public class ContactsService extends  BaseRESTapiService {
             }
 
         }
+
+
+        if(contact_field_name.equals("owner-estate-executor-remove" )){
+            if(Integer.valueOf(entityID) != -1) { // adding new docket number
+
+
+                GoverningEntity governingEntity =  baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().get(Integer.valueOf(entityID));
+                baseTrademarkApplication.findOwnerByEmail(contact_email).deleteGoverningEntity(governingEntity);
+
+                returnIndex =  Integer.valueOf(entityID);
+
+            }
+
+
+        }
+
+
+
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
 

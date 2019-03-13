@@ -585,6 +585,7 @@ public class ApplicationObjectCreationController {
             partnerDTO partner = partnerDTOS.get(0);
 
             GoverningEntity governingEntity = new GoverningEntity();
+            governingEntity.setPrimaryGoverningEntity(true);
 
             if(partner.getPartnerName() != ""){
                 governingEntity.setEntityName(partner.getPartnerName());
