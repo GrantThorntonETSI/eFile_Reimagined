@@ -1085,15 +1085,7 @@ $(document).ready(function(){
 	//START entity options (import concept)
 	//us form
 
-	$('#entype').on('change',function(){
-		$('#container').empty();//maybe use detach
-		$('footer').css('display','none');
-		var include = ('js/' + $(this).val() + '.js');
-		$.getScript( include );
-		$('#autofill').show( 'fast' );
-		$('footer').css('display','block');
-	});
-	//foreign form
+
 
 	$('#entypeforeignbahamas').on('change',function(){
 		$('#containerforeign').empty();//maybe use detach

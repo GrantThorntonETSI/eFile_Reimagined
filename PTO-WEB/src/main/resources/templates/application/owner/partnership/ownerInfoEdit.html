@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{fragments/efileApplicationAttorneyFragment :: layout (~{::body},'user')}" xmlns="http://www.w3.org/1999/html">
+      th:replace="~{fragments/efileApplicationMarkFragment :: layout (~{::body},'user')}" xmlns="http://www.w3.org/1999/html">
 <head >
     <meta charset="UTF-8">
     <title>Owner Information</title>
@@ -93,7 +93,7 @@
                         <div class="card-text">
                             <h2 class="card-title weight600" id="ownerinfo">Owner Information</h2>
                         </div>
-
+                        <div id="partnerEntitydynamicFormArea">
                         <fieldset aria-labelledby="ownerinfo">
                             <div class="row">
                                 <div class="form-group form-group-md col-xs-6">
@@ -182,7 +182,7 @@
                             <h2 class="card-title weight600" id="proprietorinfo">General partner information</h2>
                         </div>
 
-                        <div id="partnerEntitydynamicFormArea">
+
                             <!--for each governing entity -->
                             <!-- output section based on personEntity true false value -->
 
@@ -461,7 +461,7 @@
                                                 <th:block th:if="${exceuter.isPersonEntity() == false}">
                                                         <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
                                                             <label >Owner Name</label>
-                                                            <input  type="text"   class="form-control rounded-borders ge-name"  style="" th:value="${exceuter.displayName}" th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}">
+                                                            <input  type="text"   class="form-control rounded-borders ge-name"  style="" th:value="${exceuter.entityName}" th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}">
                                                         </div>
                                                         <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
                                                             <label>Type</label>
@@ -542,7 +542,7 @@
                                     </th:block>
                                 </div>
                             </fieldset>
-                        </div>
+
 
                         <div class="col-xs-12 form-group form-group-md">
                             <div class="row addpartnership" style="display: none;">
@@ -1309,6 +1309,7 @@
                                 </div>
                             </div>
                         </fieldset>
+                        </div>
                         <div class="inlinebuttons btn-group btn-group-justified  owner-form-buttons" role="nav" aria-label="view previous or next page" id="prevnxt">
 
                             <div class="btn-group">
@@ -1331,6 +1332,7 @@
 
     </main>
 </div>
+</div>
 
 <!--load model attribute for Jquery consumption  -->
 <script th:inline="javascript">
@@ -1351,6 +1353,39 @@
 
 
 
+<script>
+
+
+
+    var bsLink1 = "../../application/OwnerSetView/?trademarkID="+appInternalID;
+
+    var bsLink2_active =  "../../application/MarkDetails/?trademarkID="+appInternalID;
+    var bsLink2_done =  "../../application/MarkDetails/?trademarkID="+appInternalID;
+
+    var bsLink3_active =  "../../application/goodsAndServicesStart/?trademarkID="+appInternalID;
+    var bsLink3_done =  "../../application/goodsAndServicesReview/?trademarkID="+appInternalID;
+
+
+
+
+    var bsLink4_active = "../../application/filingBasisStart/?trademarkID="+appInternalID;
+    var bsLink4_done = "../../application/filingBasisStart/?trademarkID="+appInternalID;
+
+
+
+    var bsLink5_active =  "../../application/additionalInfoUpload/?trademarkID="+appInternalID;
+    var bsLink5_done =  "../../application/additionalInfoUpload/?trademarkID="+appInternalID;
+
+
+
+
+    var bsLink6_active =  "../../application/confirmInfo/?trademarkID="+appInternalID;
+    var bsLink6_done =  "../../application/confirmInfo/?trademarkID="+appInternalID;
+
+
+
+</script>
+
 
 <script>
     $(document).ready(function() {
@@ -1369,8 +1404,11 @@
         var ownerEmail = $('#ownerEmail').val();
 
 
-        $('.ownername').focusout(function () {
+        $('#ownername').focusout(function () {
             var value = $(this).val();
+
+
+
             saveOwnerInfo(ownerEmail, "owner-name-corp",value, appInternalID);
         });
 
@@ -1385,7 +1423,9 @@
                 entityIndex  = -1;
             }
 
-            saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-name",value, entityIndex, appInternalID);
+            var userInput = $(this);
+
+            saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-name",value, entityIndex, userInput);
 
 
 
@@ -1394,7 +1434,7 @@
 
 
 
-        $('#partnerEntitydynamicFormArea').on('change', 'input.ge-state', function () {
+        $('#partnerEntitydynamicFormArea').on('change', 'select.ge-state', function () {
             var value = $(this).val();
 
             var entityIndex = $(this).attr("entity-index");
@@ -1402,8 +1442,9 @@
             if(entityIndex  == null){
                 entityIndex  = -1;
             }
+            var userInput = $(this);
 
-            saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executorstate-of-organization",value, entityIndex, appInternalID);
+            saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executorstate-of-organization",value, entityIndex, userInput);
 
 
 
@@ -1411,8 +1452,10 @@
 
 
 
-        $('#partnerEntitydynamicFormArea').on('focusout', 'input.ge-first-name', function () {
+        $(document ).on('focusout', 'input.ge-first-name', function () {
             var value = $(this).val();
+
+            //alert(value);
 
             var entityIndex = $(this).attr("entity-index");
 
@@ -1420,7 +1463,10 @@
                 entityIndex  = -1;
             }
 
-            saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-first-name",value, entityIndex, appInternalID);
+            var userInput = $(this);
+
+
+            saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-first-name",value, entityIndex, userInput);
 
 
 
@@ -1437,8 +1483,8 @@
             if(entityIndex  == null){
                 entityIndex  = -1;
             }
-
-            saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-last-name",value, entityIndex, appInternalID);
+            var userInput = $(this);
+            saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-last-name",value, entityIndex, userInput);
 
 
 
@@ -1454,7 +1500,9 @@
                 entityIndex  = -1;
             }
 
-            saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-middle-name",value, entityIndex, appInternalID);
+            var userInput = $(this);
+
+            saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-middle-name",value, entityIndex, userInput);
 
 
 
@@ -1471,9 +1519,9 @@
                 entityIndex  = -1;
             }
 
+            var userInput = $(this);
 
-
-            saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-citizenship",value, entityIndex, appInternalID);
+            saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-citizenship",value, entityIndex, userInput);
 
 
 
@@ -1547,10 +1595,125 @@
             saveOwnerInfo(ownerEmail, "additional-name-type",value, appInternalID);
         });
         // ajax auto save
+
+
+
+
     });
 
 
+    function parsePathFromResponse(response){
+        var index = response.indexOf("image-url:");
+        index = index+10;
+        response = response.substring(index);
 
+
+        var index2 = response.indexOf("}");
+        response = response.substring(0, index2);
+        return response;
+    }
+
+    function parseNameFromResponse(response){
+
+        var index = response.indexOf("image-name:");
+        index = index+11;
+        response = response.substring(index);
+
+
+        var index2 = response.indexOf("}");
+        response = response.substring(0, index2);
+        return response;
+    }
+
+
+    function parseIndexValueFromResponse(response){
+
+        var index = response.indexOf("index:");
+        index = index+6;
+        response = response.substring(index);
+
+
+        var index2 = response.indexOf("}");
+        response = response.substring(0, index2);
+        return response;
+    }
+
+    function parseMessageFromResponse(response){
+
+        var index = response.indexOf("message:");
+        index = index+8;
+        response = response.substring(index);
+
+
+        var index2 = response.indexOf("}");
+        response = response.substring(0, index2);
+        return response;
+    }
+
+    function saveOwnerGoverningEntityInfo(contact_email, field_name, field_value, entityID, input) {
+
+        //////////////////////////////////////////////////////////////////////////////////////
+        // we need REST controller of finding a contact by its email
+        // this needs to be implemented on the PTOUser object
+        //////////////////////////////////////////////////////////////////////////////////////
+
+
+        $.ajax({
+
+            url: "../../../../../REST/apiGateway/application/GoverningEntity/update/"+contact_email+"/"+field_name+"/"+field_value+"/"+entityID+"/"+appInternalID,
+
+            type: 'GET',
+            success: function(data){
+
+
+
+                // parse out status msg:
+
+                var newIndex= parseIndexValueFromResponse(data);
+
+
+
+                var serverMessage = parseMessageFromResponse(data)
+
+                $(".autoSaveMessageArea span").fadeOut(500);
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $(".autoSaveMessageArea span").text(serverMessage);
+                    $(".autoSaveMessageArea span").fadeIn(1000);
+                }, 500);
+
+
+
+                if(newIndex != entityID){  // we are adding a new row
+
+
+                   // alert(field_name);
+                    $(input).parent().parent().find("input").attr("entity-index", newIndex);
+
+                    $(input).parent().parent().find("select").attr("entity-index", newIndex);
+
+                }
+
+
+
+
+
+            },
+            error: function(data) {
+
+                //$('.circle-loader').fadeOut(100);
+                //$('.x-mark').fadeIn(500);
+
+                console.log(data);
+                // set message to div area ...fields can not be left null
+                //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                //$(".validationMsgArea span").css('color','red');
+            }
+
+        });
+
+    } // end of function
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     function saveOwnerInfo(contact_email, field_name, field_value) {
 
         //////////////////////////////////////////////////////////////////////////////////////
@@ -1558,6 +1721,8 @@
         // this needs to be implemented on the PTOUser object
         //////////////////////////////////////////////////////////////////////////////////////
         var contact_field_name = "application-contact-add-confirm";
+
+
 
         $.ajax({
 
@@ -1614,67 +1779,7 @@
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    function saveOwnerGoverningEntityInfo(contact_email, field_name, field_value, entityID) {
 
-        //////////////////////////////////////////////////////////////////////////////////////
-        // we need REST controller of finding a contact by its email
-        // this needs to be implemented on the PTOUser object
-        //////////////////////////////////////////////////////////////////////////////////////
-        var contact_field_name = "application-contact-add-confirm";
-
-        $.ajax({
-
-            url: "../../../../../REST/apiGateway/application/GoverningEntity/update/"+contact_email+"/"+field_name+"/"+field_value+"/"+entityID+"/"+appInternalID,
-
-            type: 'GET',
-            success: function(data){
-
-
-
-                // parse out status msg:
-                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
-
-                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
-
-                if(s_code.trim() == "200"){
-                    //if(data.contains("status: 200")){
-                    // show confirmation check mark on form
-                    //$('#toggle').delay(1000).click();
-                    $(".autoSaveMessageArea span").fadeOut(500);
-                    setTimeout(function() {
-                        // after 1000 ms we add the class animated to the login/register card
-                        $(".autoSaveMessageArea span").text(s_msg);
-                        $(".autoSaveMessageArea span").fadeIn(1000);
-                    }, 500);
-
-
-
-
-
-                }
-                else{
-                    //$('.circle-loader').fadeOut(100);
-                    //$('.x-mark').fadeIn(500);
-                    //$(".validationMsgArea span").text(s_msg);
-                    //$(".validationMsgArea span").css('color','red');
-                }
-
-            },
-            error: function(data) {
-
-                //$('.circle-loader').fadeOut(100);
-                //$('.x-mark').fadeIn(500);
-
-                console.log(data);
-                // set message to div area ...fields can not be left null
-                //$(".validationMsgArea span").text("You can not leave any fields empty.");
-                //$(".validationMsgArea span").css('color','red');
-            }
-
-        });
-
-    } // end of function
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     function setBreadCrumb(bsStatusArrayList){
 
         for(var a=0; a< bsStatusArrayList.length; a++){

@@ -344,7 +344,7 @@ public class ContactsService extends  BaseRESTapiService {
         // verify authentication is valid before moving on ....
         // have to have a valid session
 
-        int returnIndex= 0;
+        int returnIndex= -1;
 
         if(contact_field_name.equals("docket-number-add" )){
             if(contact_field_index == -1){ // adding new docket number
@@ -620,47 +620,147 @@ public class ContactsService extends  BaseRESTapiService {
         // check for valid security session ...as new contacts are added for PTOUser with valid sessions
         ////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+        Integer returnIndex = -1;
 
         if(contact_field_name.equals("owner-estate-executor-name" )){
-            GoverningEntity governingEntity = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().get(Integer.valueOf(entityID));
-            governingEntity.setEntityName(contact_field_value);
+
+            if(Integer.valueOf(entityID) == -1){ // adding new docket number
+
+                GoverningEntity governingEntity = new GoverningEntity();
+                governingEntity.setEntityName(contact_field_value);
+                governingEntity.setDisplayName(contact_field_value);
+                governingEntity.setPersonEntity(false);
+                Owner owner = baseTrademarkApplication.findOwnerByEmail(contact_email);
+                owner.addGoverningEnity(governingEntity);
+
+                returnIndex =  owner.getGoverningEntities().size()-1;
+
+                // System.out.println("return index value: "+returnIndex);
+
+
+
+            }
+            else {
+                GoverningEntity governingEntity = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().get(Integer.valueOf(entityID));
+                governingEntity.setEntityName(contact_field_value);
+                returnIndex = Integer.valueOf(entityID);
+            }
+
         }
 
         if(contact_field_name.equals("owner-estate-executorstate-of-organization" )){
-            GoverningEntity governingEntity = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().get(Integer.valueOf(entityID));
-            governingEntity.setOrganizationState(contact_field_value);
+
+            if(Integer.valueOf(entityID) == -1) { // adding new docket number
+
+
+                GoverningEntity governingEntity = new GoverningEntity();
+                governingEntity.setOrganizationState(contact_field_value);
+                governingEntity.setPersonEntity(false);
+                Owner owner = baseTrademarkApplication.findOwnerByEmail(contact_email);
+                owner.addGoverningEnity(governingEntity);
+
+
+                returnIndex =  owner.getGoverningEntities().size()-1;
+
+
+
+            }
+            else{
+                GoverningEntity governingEntity = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().get(Integer.valueOf(entityID));
+                governingEntity.setOrganizationState(contact_field_value);
+                returnIndex = Integer.valueOf(entityID);
+            }
+
         }
 
         if(contact_field_name.equals("owner-estate-executor-first-name" )){
 
+            if(Integer.valueOf(entityID) == -1) { // adding new docket number
+                GoverningEntity governingEntity = new GoverningEntity();
+                governingEntity.setFirstName(contact_field_value);
+                governingEntity.setPersonEntity(true);
 
+                Owner owner = baseTrademarkApplication.findOwnerByEmail(contact_email);
+                owner.addGoverningEnity(governingEntity);
+
+                returnIndex =  owner.getGoverningEntities().size()-1;
+
+            }
+            else {
+                GoverningEntity governingEntity = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().get(Integer.valueOf(entityID));
+                governingEntity.setFirstName(contact_field_value);
+                returnIndex = Integer.valueOf(entityID);
+            }
 
             // entity id is the entity index here
-            GoverningEntity governingEntity = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().get(Integer.valueOf(entityID));
-            governingEntity.setFirstName(contact_field_value);
+
 
 
         }
 
         if(contact_field_name.equals("owner-estate-executor-last-name" )){
-            GoverningEntity governingEntity = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().get(Integer.valueOf(entityID));
-            governingEntity.setLastName(contact_field_value);
+
+            if(Integer.valueOf(entityID) == -1) { // adding new docket number
+                GoverningEntity governingEntity = new GoverningEntity();
+                governingEntity.setLastName(contact_field_value);
+                governingEntity.setPersonEntity(true);
+
+                Owner owner = baseTrademarkApplication.findOwnerByEmail(contact_email);
+                owner.addGoverningEnity(governingEntity);
+
+                returnIndex =  owner.getGoverningEntities().size()-1;
+
+            }
+            else {
+                GoverningEntity governingEntity = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().get(Integer.valueOf(entityID));
+                governingEntity.setLastName(contact_field_value);
+                returnIndex = Integer.valueOf(entityID);
+            }
+
+
 
 
 
         }
 
         if(contact_field_name.equals("owner-estate-executor-middle-name" )){
+            if(Integer.valueOf(entityID) == -1) { // adding new docket number
+                GoverningEntity governingEntity = new GoverningEntity();
+                governingEntity.setMiddleName(contact_field_value);
+                governingEntity.setPersonEntity(true);
 
-            GoverningEntity governingEntity = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().get(Integer.valueOf(entityID));
-            governingEntity.setMiddleName(contact_field_value);
+                Owner owner = baseTrademarkApplication.findOwnerByEmail(contact_email);
+                owner.addGoverningEnity(governingEntity);
+
+                returnIndex =  owner.getGoverningEntities().size()-1;
+
+            }
+            else {
+                GoverningEntity governingEntity = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().get(Integer.valueOf(entityID));
+                governingEntity.setMiddleName(contact_field_value);
+                returnIndex = Integer.valueOf(entityID);
+            }
+
         }
 
         if(contact_field_name.equals("owner-estate-executor-citizenship" )){
+            if(Integer.valueOf(entityID) == -1) { // adding new docket number
+                GoverningEntity governingEntity = new GoverningEntity();
+                governingEntity.setEntityCitizenship(contact_field_value);
+                governingEntity.setPersonEntity(true);
 
-            GoverningEntity governingEntity = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().get(Integer.valueOf(entityID));
-            governingEntity.setEntityCitizenship(contact_field_value);
+                Owner owner = baseTrademarkApplication.findOwnerByEmail(contact_email);
+                owner.addGoverningEnity(governingEntity);
+
+                returnIndex =  owner.getGoverningEntities().size()-1;
+
+            }
+            else {
+                GoverningEntity governingEntity = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().get(Integer.valueOf(entityID));
+                governingEntity.setEntityCitizenship(contact_field_value);
+                returnIndex = Integer.valueOf(entityID);
+
+            }
 
         }
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
@@ -671,7 +771,8 @@ public class ContactsService extends  BaseRESTapiService {
         ////////////////////////////////////////////////
 
         String responseMsg = appFieldReadable+" has been saved";
-        return buildResponseEnity("200", responseMsg);
+        //return buildResponseEnity("200", responseMsg);
+        return buildResponseEnity("200", "{index:" +returnIndex+"}, {message:" +responseMsg+"}");
 
 
 

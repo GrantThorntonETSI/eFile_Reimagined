@@ -1187,31 +1187,46 @@
 
     function disableNoneIndiviualRequiredfields(){
         $('#partner-owner-name').prop("required", false);
+        $('#partner-owner-name').val("");
 
         $('#partner-owner-name-type').prop("required", false);
+        $('#partner-owner-name-type').val("");
+
+
         $('#partner-owner-name-state').prop("required", false);
+        $('#partner-owner-name-state').val("");
     }
 
     function enableNoneIndiviualRequiredfields(){
         $('#partner-owner-name').prop("required", true);
+        $('#partner-owner-name').val("");
 
         $('#partner-owner-name-type').prop("required", true);
-        $('#partner-owner-name-state').prop("required", true);p
+        $('#partner-owner-name-type').val("");
+        $('#partner-owner-name-state').prop("required", true);
+        $('#partner-owner-name-state').val("");
+
+
     }
 
 
     function disableIndiviualRequiredfields(){
         $('#partner-first-name').prop("required", false);
+        $('#partner-first-name').val("");
         $('#partner-last-name').prop("required", false);
-
+        $('#partner-last-name').val("");
         $('#partner-citizenship').prop("required", false);
+        $('#partner-citizenship').val("");
     }
 
     function enableIndiviualRequiredfields() {
         $('#partner-first-name').prop("required", true);
+        $('#partner-first-name').val("");
         $('#partner-last-name').prop("required", true);
+        $('#partner-last-name').val("");
 
         $('#partner-citizenship').prop("required", true);
+        $('#partner-citizenship').val("");
     }
 
 
