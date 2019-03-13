@@ -212,7 +212,7 @@
                                                     </div>
                                                     <div class="form-group form-group-md col-xs-6">
                                                         <label >Country of Citizenship</label>
-                                                        <select    class="form-control ge-citizenship" name="owner-citizenship" >
+                                                        <select    class="form-control ge-citizenship" name="owner-citizenship"  th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}">
                                                             <option th:value="${exceuter.entityCitizenship}"  th:text="${exceuter.entityCitizenship}" selected  th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}"></option>
                                                             <option value="UNITED STATES OF AMERICA">UNITED STATES OF AMERICA</option>
                                                             <option value="AFGHANISTAN">AFGHANISTAN</option>
@@ -1377,7 +1377,7 @@
 
 
         $('#partnerEntitydynamicFormArea').on('focusout', 'input.ge-name', function () {
-            var value = $(this).val();''
+            var value = $(this).val();
 
             var entityIndex = $(this).attr("entity-index");
 
@@ -1395,7 +1395,7 @@
 
 
         $('#partnerEntitydynamicFormArea').on('change', 'input.ge-state', function () {
-            var value = $(this).val();''
+            var value = $(this).val();
 
             var entityIndex = $(this).attr("entity-index");
 
@@ -1412,7 +1412,7 @@
 
 
         $('#partnerEntitydynamicFormArea').on('focusout', 'input.ge-first-name', function () {
-            var value = $(this).val();''
+            var value = $(this).val();
 
             var entityIndex = $(this).attr("entity-index");
 
@@ -1430,7 +1430,7 @@
 
 
         $('#partnerEntitydynamicFormArea').on('focusout', 'input.ge-last-name', function () {
-            var value = $(this).val();''
+            var value = $(this).val();
 
             var entityIndex = $(this).attr("entity-index");
 
@@ -1446,7 +1446,7 @@
 
 
         $('#partnerEntitydynamicFormArea').on('focusout', 'input.ge-middle-name', function () {
-            var value = $(this).val();''
+            var value = $(this).val();
 
             var entityIndex = $(this).attr("entity-index");
 
@@ -1462,14 +1462,16 @@
 
 
 
-        $('#partnerEntitydynamicFormArea').on('focusout', 'input.ge-citizenship', function () {
-            var value = $(this).val();''
+        $('#partnerEntitydynamicFormArea').on('change', 'select.ge-citizenship', function () {
+            var value = $(this).val();
 
             var entityIndex = $(this).attr("entity-index");
 
             if(entityIndex  == null){
                 entityIndex  = -1;
             }
+
+
 
             saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-executor-citizenship",value, entityIndex, appInternalID);
 
