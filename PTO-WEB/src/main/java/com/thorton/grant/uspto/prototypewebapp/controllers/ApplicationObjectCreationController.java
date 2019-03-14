@@ -577,6 +577,7 @@ public class ApplicationObjectCreationController {
 
 
         // crate partner if partner fields are not null
+        // process primary partner
         List<partnerDTO> partnerDTOS = newOwnerContactFormDTO.getPartnerDTOs();
         if(partnerDTOS.size() > 0){
 
@@ -627,6 +628,65 @@ public class ApplicationObjectCreationController {
             // }
 
         }
+
+        if(newOwnerContactFormDTO.getPartner_first_name2() != null && newOwnerContactFormDTO.getPartner_last_name2() != null && newOwnerContactFormDTO.getPartner_citizen2() != null){
+            if(newOwnerContactFormDTO.getPartner_first_name2().equals("") == false && newOwnerContactFormDTO.getPartner_last_name2().equals("") == false && newOwnerContactFormDTO.getPartner_citizen2().equals("") == false){
+                GoverningEntity governingEntity = new GoverningEntity();
+                governingEntity.setFirstName(newOwnerContactFormDTO.getPartner_first_name2());
+                governingEntity.setLastName(newOwnerContactFormDTO.getPartner_last_name2());
+                governingEntity.setMiddleName(newOwnerContactFormDTO.getPartner_middle_name2());
+                governingEntity.setSuffix(newOwnerContactFormDTO.getPartner_suffix2());
+                governingEntity.setEntityCitizenship(newOwnerContactFormDTO.getPartner_citizen2());
+                governingEntity.setPersonEntity(true);
+                owner.addGoverningEnity(governingEntity);
+            }
+
+        }
+
+        if(newOwnerContactFormDTO.getPartner_name2() != null && newOwnerContactFormDTO.getPartner_state_org2() != null){
+
+            if(newOwnerContactFormDTO.getPartner_name2().equals("") == false && newOwnerContactFormDTO.getPartner_state_org2().equals("") == false){
+                GoverningEntity governingEntity = new GoverningEntity();
+                governingEntity.setEntityName(newOwnerContactFormDTO.getPartner_name2());
+                governingEntity.setOrganizationState(newOwnerContactFormDTO.getPartner_state_org2());
+                governingEntity.setPersonEntity(false);
+
+                owner.addGoverningEnity(governingEntity);
+            }
+
+        }
+
+        if(newOwnerContactFormDTO.getPartner_first_name3() != null && newOwnerContactFormDTO.getPartner_last_name3() != null && newOwnerContactFormDTO.getPartner_citizen3() != null){
+            if(newOwnerContactFormDTO.getPartner_first_name3().equals("") == false && newOwnerContactFormDTO.getPartner_last_name3().equals("") == false && newOwnerContactFormDTO.getPartner_citizen3().equals("") == false){
+                GoverningEntity governingEntity = new GoverningEntity();
+                governingEntity.setFirstName(newOwnerContactFormDTO.getPartner_first_name3());
+                governingEntity.setLastName(newOwnerContactFormDTO.getPartner_last_name3());
+                governingEntity.setMiddleName(newOwnerContactFormDTO.getPartner_middle_name3());
+                governingEntity.setSuffix(newOwnerContactFormDTO.getPartner_suffix3());
+                governingEntity.setEntityCitizenship(newOwnerContactFormDTO.getPartner_citizen3());
+                governingEntity.setPersonEntity(true);
+                owner.addGoverningEnity(governingEntity);
+            }
+
+        }
+
+        if(newOwnerContactFormDTO.getPartner_name3() != null && newOwnerContactFormDTO.getPartner_state_org3() != null){
+
+            if(newOwnerContactFormDTO.getPartner_name3().equals("") == false && newOwnerContactFormDTO.getPartner_state_org3().equals("") == false){
+                GoverningEntity governingEntity = new GoverningEntity();
+                governingEntity.setEntityName(newOwnerContactFormDTO.getPartner_name3());
+                governingEntity.setOrganizationState(newOwnerContactFormDTO.getPartner_state_org3());
+                governingEntity.setPersonEntity(false);
+
+                owner.addGoverningEnity(governingEntity);
+            }
+
+        }
+
+
+
+
+        // process additoanl partners
 
 
         if(baseTrademarkApplication.getOwners().size() == 0){
