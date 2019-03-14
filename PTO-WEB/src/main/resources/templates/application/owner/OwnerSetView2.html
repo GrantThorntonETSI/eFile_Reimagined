@@ -118,7 +118,17 @@
 
                                                                 <div class="row">
                                                                     <div class="col-xs-12 col-md-4">
-                                                                        <p class="panel-title number weight600"><button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" th:attr="data-target='#'+${owner.id}"  th:text="${owner.getOwnerDisplayname()}" aria-controls="jbabos" aria-expanded="false" id="jbabosbtn"><span class="glyphicon glyphicon-triangle-right"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Jackie Babos</button></p>
+
+                                                                        <th:block th:if="${owner.isGoverningEntitiesTypeOwner() == true}" >
+
+                                                                            <p class="panel-title number weight600"><button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" th:attr="data-target='#'+${owner.id}"  th:text="${owner.getOwnerName()}" aria-controls="jbabos" aria-expanded="false" id="jbabosbtn"><span class="glyphicon glyphicon-triangle-right"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Jackie Babos</button></p>
+                                                                        </th:block>
+
+                                                                        <th:block th:if="${owner.isGoverningEntitiesTypeOwner() == false}" >
+
+                                                                            <p class="panel-title number weight600"><button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" th:attr="data-target='#'+${owner.id}"  th:text="${owner.getOwnerDisplayname()}" aria-controls="jbabos" aria-expanded="false" id="jbabosbtn"><span class="glyphicon glyphicon-triangle-right"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Jackie Babos</button></p>
+                                                                        </th:block>
+
                                                                     </div>
                                                                     <div class="col-xs-12 col-md-5 email">
                                                                         <p th:text="${owner.getEmail()}">jackie.babos@us.gt.com</p>
@@ -164,7 +174,7 @@
                                                                                             <div class="form-group form-group-md" style="color:black;">
                                                                                                 <th:block th:if="${goveringEntity.isPersonEntity() == true}" >
 
-                                                                                                    name: <span th:text="${goveringEntity.firstName}+' '+${goveringEntity.middleName}+','+${goveringEntity.lastName}">email: lzhang421@gmail.com</span>
+                                                                                                    name: <span th:text="${goveringEntity.firstName}+' '+${goveringEntity.lastName}">email: lzhang421@gmail.com</span>
                                                                                                     </br>
                                                                                                     Citizenship : <span th:text="${goveringEntity.getEntityCitizenship()}">phone: 581-777-3333</span>
                                                                                                 </th:block>
