@@ -69,6 +69,29 @@ public class NewOwnerContactFormDTO {
         this.partnerDTOs.add(partner);
     }
 
+    private String partner_first_name2;
+    private String partner_last_name2;
+    private String partner_middle_name2;
+    private String partner_suffix2;
+    private String partner_citizen2;
+
+    private String partner_name2;
+    private String partner_state_org2;
+    private String partner_alt_name2;
+    private String partner_alt_type2;
+
+
+    private String partner_first_name3;
+    private String partner_last_name3;
+    private String partner_middle_name3;
+    private String partner_suffix3;
+    private String partner_citizen3;
+
+    private String partner_name3;
+    private String partner_state_org3;
+    private String partner_alt_name3;
+    private String partner_alt_type3;
+
 
 
 
@@ -271,5 +294,149 @@ public class NewOwnerContactFormDTO {
 
     public void setPartnerDTOs(List<partnerDTO> partnerDTOs) {
         this.partnerDTOs = partnerDTOs;
+    }
+
+    public String getPartner_first_name2() {
+        return partner_first_name2;
+    }
+
+    public void setPartner_first_name2(String partner_first_name2) {
+        this.partner_first_name2 = partner_first_name2;
+    }
+
+    public String getPartner_last_name2() {
+        return partner_last_name2;
+    }
+
+    public void setPartner_last_name2(String partner_last_name2) {
+        this.partner_last_name2 = partner_last_name2;
+    }
+
+    public String getPartner_middle_name2() {
+        return partner_middle_name2;
+    }
+
+    public void setPartner_middle_name2(String partner_middle_name2) {
+        this.partner_middle_name2 = partner_middle_name2;
+    }
+
+    public String getPartner_suffix2() {
+        return partner_suffix2;
+    }
+
+    public void setPartner_suffix2(String partner_suffix2) {
+        this.partner_suffix2 = partner_suffix2;
+    }
+
+    public String getPartner_citizen2() {
+        return partner_citizen2;
+    }
+
+    public void setPartner_citizen2(String partner_citizen2) {
+        this.partner_citizen2 = partner_citizen2;
+    }
+
+    public String getPartner_name2() {
+        return partner_name2;
+    }
+
+    public void setPartner_name2(String partner_name2) {
+        this.partner_name2 = partner_name2;
+    }
+
+    public String getPartner_state_org2() {
+        return partner_state_org2;
+    }
+
+    public void setPartner_state_org2(String partner_state_org2) {
+        this.partner_state_org2 = partner_state_org2;
+    }
+
+    public String getPartner_alt_name2() {
+        return partner_alt_name2;
+    }
+
+    public void setPartner_alt_name2(String partner_alt_name2) {
+        this.partner_alt_name2 = partner_alt_name2;
+    }
+
+    public String getPartner_alt_type2() {
+        return partner_alt_type2;
+    }
+
+    public void setPartner_alt_type2(String partner_alt_type2) {
+        this.partner_alt_type2 = partner_alt_type2;
+    }
+
+    public String getPartner_first_name3() {
+        return partner_first_name3;
+    }
+
+    public void setPartner_first_name3(String partner_first_name3) {
+        this.partner_first_name3 = partner_first_name3;
+    }
+
+    public String getPartner_last_name3() {
+        return partner_last_name3;
+    }
+
+    public void setPartner_last_name3(String partner_last_name3) {
+        this.partner_last_name3 = partner_last_name3;
+    }
+
+    public String getPartner_middle_name3() {
+        return partner_middle_name3;
+    }
+
+    public void setPartner_middle_name3(String partner_middle_name3) {
+        this.partner_middle_name3 = partner_middle_name3;
+    }
+
+    public String getPartner_suffix3() {
+        return partner_suffix3;
+    }
+
+    public void setPartner_suffix3(String partner_suffix3) {
+        this.partner_suffix3 = partner_suffix3;
+    }
+
+    public String getPartner_citizen3() {
+        return partner_citizen3;
+    }
+
+    public void setPartner_citizen3(String partner_citizen3) {
+        this.partner_citizen3 = partner_citizen3;
+    }
+
+    public String getPartner_name3() {
+        return partner_name3;
+    }
+
+    public void setPartner_name3(String partner_name3) {
+        this.partner_name3 = partner_name3;
+    }
+
+    public String getPartner_state_org3() {
+        return partner_state_org3;
+    }
+
+    public void setPartner_state_org3(String partner_state_org3) {
+        this.partner_state_org3 = partner_state_org3;
+    }
+
+    public String getPartner_alt_name3() {
+        return partner_alt_name3;
+    }
+
+    public void setPartner_alt_name3(String partner_alt_name3) {
+        this.partner_alt_name3 = partner_alt_name3;
+    }
+
+    public String getPartner_alt_type3() {
+        return partner_alt_type3;
+    }
+
+    public void setPartner_alt_type3(String partner_alt_type3) {
+        this.partner_alt_type3 = partner_alt_type3;
     }
 }
