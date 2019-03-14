@@ -818,22 +818,22 @@
 
                                 <tbody>
                                     <tr class="row">
-                                        <td class="list-group-item col-xs-6"></td>
-                                        <td class="list-group-item inner-addon right-addon col-xs-6"><i class="glyphicon glyphicon-search" aria-hidden="true"></i><input type="text" class="form-control" id="contactsearch" placeholder="" aria-label="search"></td>
+                                        <td tabindex="0" class="list-group-item col-xs-6"></td>
+                                        <td tabindex="0" class="list-group-item inner-addon right-addon col-xs-6"><i class="glyphicon glyphicon-search" aria-hidden="true"></i><input type="text" class="form-control" id="contactsearch" placeholder="" aria-label="search"></td>
                                     </tr>
                                     <tr class="row">
-                                        <td>
+                                        <td class="nopadding" colspan="2">
                                             <table class="list-group table" role="grid" id="contactssearch">
 
                                                 <tbody class="scroll">
-                                                <th:block th:each="contact : ${user.getAttorneyManagedContact()}">
+                                                    <th:block th:each="contact : ${user.getAttorneyManagedContact()}">
 
-                                                    <tr class="row">
-                                                        <td class="list-group-item col-xs-6"><a href="#" class="fromcontact" id="managedContactFillFormAction" ><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><span class="glyphicon glyphicon-ok-sign visuallyremoved" aria-hidden="true"></span></a> <b th:text="${contact.displayName}">Avo Reed</b></td>
-                                                        <td class="list-group-item col-xs-6" th:text="${contact.email}">avo.reid@us.gt.com</td>
-                                                    </tr>
+                                                        <tr class="row">
+                                                            <td tabindex="0" class="list-group-item col-xs-6"><a href="#" class="fromcontact" id="managedContactFillFormAction" ><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><span class="glyphicon glyphicon-ok-sign visuallyremoved" aria-hidden="true"></span></a> <b th:text="${contact.displayName}">Avo Reed</b></td>
+                                                            <td tabindex="0" class="list-group-item col-xs-6" th:text="${contact.email}">avo.reid@us.gt.com</td>
+                                                        </tr>
 
-                                                </th:block>
+                                                    </th:block>
                                                 </tbody>
 
 
@@ -948,8 +948,7 @@
         var bsLink6_active =  "../../application/confirmInfo/?trademarkID="+appInternalID;
         var bsLink6_done =  "../../application/confirmInfo/?trademarkID="+appInternalID;
 
-        var activeDocketNumberCount = 1;
-        var activePhoneNumberCount = 1;
+
 
     </script>
 
@@ -981,7 +980,8 @@
             $('.content').fadeIn(500);
         }, 500);
 
-
+        var activeDocketNumberCount = 1;
+        var activePhoneNumberCount = 1;
 
         $('#appInternalIDForm').val(appInternalID);
 
@@ -1297,7 +1297,14 @@
                 $('#docket2').show(500);
            }
            if(activeDocketNumberCount == 3){
-               $('#docket3').show(500);
+
+               if($('#docket3').is(':visible')){
+                   $('#docket2').show(500);
+               }
+               else {
+                   $('#docket3').show(500);
+               }
+
            }
 
         });
@@ -1325,7 +1332,15 @@
                 $('#phone2').show(500);
             }
             if(activePhoneNumberCount == 3){
-                $('#phone3').show(500);
+
+                if($('#phone3').is(':visible')){
+                    $('#phone2').show(500);
+                }
+                else {
+                    $('#phone3').show(500);
+                }
+
+
             }
 
         });
