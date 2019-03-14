@@ -27,6 +27,10 @@ public class Owner extends Contact{
     @OneToMany(cascade = CascadeType.ALL)
     private List<GoverningEntity> governingEntities;
 
+    private boolean governingEntitiesTypeOwner;
+
+    private String governingEntitiesDisplayName;
+
 
 
     private String ownerType;
@@ -250,6 +254,22 @@ public class Owner extends Contact{
 
     public void setOwnerSolpMiddleName(String ownerSolpMiddleName) {
         this.ownerSolpMiddleName = ownerSolpMiddleName;
+    }
+
+    public boolean isGoverningEntitiesTypeOwner() {
+        return governingEntitiesTypeOwner;
+    }
+
+    public void setGoverningEntitiesTypeOwner(boolean governingEntitiesTypeOwner) {
+        this.governingEntitiesTypeOwner = governingEntitiesTypeOwner;
+    }
+
+    public String getGoverningEntitiesDisplayName() {
+        return governingEntitiesDisplayName;
+    }
+
+    public void setGoverningEntitiesDisplayName(String governingEntitiesDisplayName) {
+        this.governingEntitiesDisplayName = governingEntitiesDisplayName;
     }
 
     @Override

@@ -586,6 +586,10 @@ public class ApplicationObjectCreationController {
 
             GoverningEntity governingEntity = new GoverningEntity();
             governingEntity.setPrimaryGoverningEntity(true);
+            owner.setGoverningEntitiesTypeOwner(true);
+
+            // will update this logic later
+            owner.setGoverningEntitiesDisplayName("General partners");
 
             if(partner.getPartnerName() != ""){
                 governingEntity.setEntityName(partner.getPartnerName());

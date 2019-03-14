@@ -1937,6 +1937,169 @@
 
         });
 
+        // reveal toggle for partner 2
+
+        $('#domestic-entity-dropdown-partner2').change( function () {
+
+
+            var subtype_val = this.value;
+            if(subtype_val == "none"){
+                //fade out every thing
+
+            }
+            if(subtype_val == "Individual"){
+
+                $('#none-individual-partner-entity2').fadeOut(1000);
+                $('#individual-partner-entity2').fadeIn(1000);
+
+
+            }
+            if(subtype_val == "Sole Proprietorship") {
+                $('#none-individual-partner-entity2').fadeOut(1000);
+
+                $('#individual-partner-entity2').fadeIn(1000);  // same owner entity fields as individual
+
+            }
+
+            if(subtype_val == "Limited Liability Company"){
+
+                $('#individual-partner-entity2').fadeOut(1000);  // same owner entity fields as individual
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity2').fadeIn(1000);
+                }, 1000);
+
+
+            }
+            if(subtype_val == "Partnership"){
+                $('#individual-partner-entity2').fadeOut(1000);  // same owner entity fields as individual
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity2').fadeIn(1000);
+                }, 1000);
+
+            }
+
+            if(subtype_val == "Joint Venture"){
+                $('#individual-partner-entity2').fadeOut(1000);  // same owner entity fields as individual
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity2').fadeIn(1000);
+                }, 1000);
+
+            }
+
+            if(subtype_val == "Trust"){
+
+                $('#individual-partner-entity2').fadeOut(1000);  // same owner entity fields as individual
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity2').fadeIn(1000);
+                }, 1000);
+
+            }
+
+            if(subtype_val == "Estate"){
+
+                $('#individual-partner-entity2').fadeOut(1000);  // same owner entity fields as individual
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity2').fadeIn(1000);
+                }, 1000);
+
+            }
+
+
+
+
+
+            //saveProjectInfo("set-Owner-entity-types", "US"+"+"+subtype_val, appInternalID); // static from radio buttton
+        });
+
+
+
+        // reveal toggle for partner 3
+
+
+        $('#domestic-entity-dropdown-partner3').change( function () {
+
+
+            var subtype_val = this.value;
+            if(subtype_val == "none"){
+                //fade out every thing
+
+            }
+            if(subtype_val == "Individual"){
+
+                $('#none-individual-partner-entity3').fadeOut(1000);
+                $('#individual-partner-entity3').fadeIn(1000);
+
+
+            }
+            if(subtype_val == "Sole Proprietorship") {
+                $('#none-individual-partner-entity3').fadeOut(1000);
+
+                $('#individual-partner-entity3').fadeIn(1000);  // same owner entity fields as individual
+
+            }
+
+            if(subtype_val == "Limited Liability Company"){
+
+                $('#individual-partner-entity3').fadeOut(1000);  // same owner entity fields as individual
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity3').fadeIn(1000);
+                }, 1000);
+
+
+            }
+            if(subtype_val == "Partnership"){
+                $('#individual-partner-entity3').fadeOut(1000);  // same owner entity fields as individual
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity3').fadeIn(1000);
+                }, 1000);
+
+            }
+
+            if(subtype_val == "Joint Venture"){
+                $('#individual-partner-entity3').fadeOut(1000);  // same owner entity fields as individual
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity3').fadeIn(1000);
+                }, 1000);
+
+            }
+
+            if(subtype_val == "Trust"){
+
+                $('#individual-partner-entity3').fadeOut(1000);  // same owner entity fields as individual
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity3').fadeIn(1000);
+                }, 1000);
+
+            }
+
+            if(subtype_val == "Estate"){
+
+                $('#individual-partner-entity3').fadeOut(1000);  // same owner entity fields as individual
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity3').fadeIn(1000);
+                }, 1000);
+
+            }
+
+
+
+
+
+            //saveProjectInfo("set-Owner-entity-types", "US"+"+"+subtype_val, appInternalID); // static from radio buttton
+        });
+
+
+
 
 
 

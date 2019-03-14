@@ -130,6 +130,8 @@
                                                                 <div th:attr="id=${owner.id}"  class="collapse Accordion-panel" role="region" aria-labelledby="jbabosbtn">
                                                                     <div class="Accordion" role="region">
                                                                         <div class="row">
+
+
                                                                             <div class="col-xs-12 col-md-6 col-lg-8">
                                                                                 <p id="jbabostype">Owner Address Info</p>
                                                                                 <div aria-labelledby="jbabostype">
@@ -139,6 +141,7 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
+
                                                                             <div class="col-xs-12 col-md-6 col-lg-8">
                                                                                 <p id="jbabosnameofothertype">Owner Contact Info</p>
                                                                                 <div aria-labelledby="jbabosnameofothertype">
@@ -150,6 +153,45 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
+
+                                                                            <th:block th:if="${owner.isGoverningEntitiesTypeOwner() == true}" >
+
+                                                                                <div class="col-xs-12 col-md-6 col-lg-8">
+                                                                                    <p th:text="${owner.getGoverningEntitiesDisplayName()}"></p>
+                                                                                    <div>
+                                                                                        <th:block th:each="goveringEntity : ${owner.getGoverningEntities()}">
+
+                                                                                            <div class="form-group form-group-md" style="color:black;">
+                                                                                                <th:block th:if="${goveringEntity.isPersonEntity() == true}" >
+
+                                                                                                    name: <span th:text="${goveringEntity.firstName}+' '+${goveringEntity.middleName}+','+${goveringEntity.lastName}">email: lzhang421@gmail.com</span>
+                                                                                                    </br>
+                                                                                                    Citizenship : <span th:text="${goveringEntity.getEntityCitizenship()}">phone: 581-777-3333</span>
+                                                                                                </th:block>
+
+                                                                                                <th:block th:if="${goveringEntity.isPersonEntity() == false}" >
+                                                                                                    name: <span th:text="${goveringEntity.entityName}">email: lzhang421@gmail.com</span>
+                                                                                                    </br>
+                                                                                                    State of Organization: <span th:text="${goveringEntity.organizationState}">phone: 581-777-3333</span>
+                                                                                                </th:block>
+
+
+
+                                                                                            </div>
+                                                                                        </th:block>
+
+
+                                                                                    </div>
+                                                                                </div>
+
+
+
+
+                                                                            </th:block>
+
+
+
+
                                                                         </div>
 
 
