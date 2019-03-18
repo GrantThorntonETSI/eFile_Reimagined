@@ -144,29 +144,30 @@
 
                    </div>
 
+
                     <div id="partnerEntitydynamicFormArea" th:each="partner, itemStat : *{partnerDTOs}">
                         <fieldset aria-labelledby="proprietorinfo" id="individual-partner-entity" style="display: none;">
                             <div class="row">
                                 <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
                                     <label for="partner-first-name"><span class="weight600">&#42;</span>First Name</label>
-                                    <input type="text" id="partner-first-name" th:field="*{partnerDTOs[__${itemStat.index}__].firstName}" name="firstName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                                    <input type="text" id="partner-first-name" th:field="*{partnerDTOs[__${itemStat.index}__].firstName}" name="firstName" class="form-control"  required>
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
                                     <label for="partner-middle-name">Middle Name</label>
-                                    <input type="text"  th:field="*{partnerDTOs[__${itemStat.index}__].middleName}" id="partner-middle-name" name="middleName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                    <input type="text"  th:field="*{partnerDTOs[__${itemStat.index}__].middleName}" id="partner-middle-name" name="middleName" class="form-control" >
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
                                     <label for="partner-last-name"><span class="weight600">&#42;</span>Last Name</label>
-                                    <input id="partner-last-name" type="text" th:field="*{partnerDTOs[__${itemStat.index}__].lastName}"  name="lastName" class="form-control" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                                    <input id="partner-last-name" type="text" th:field="*{partnerDTOs[__${itemStat.index}__].lastName}"  name="lastName" class="form-control"  required>
                                 </div>
                                 <div class="form-group form-group-md col-xs-6">
                                     <label for="partner-suffix">Suffix</label>
-                                    <input  class="form-control" id="partner-suffix" th:field="*{partnerDTOs[__${itemStat.index}__].suffix}" name="suffix" style="  border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;"/>
+                                    <input  class="form-control" id="partner-suffix" th:field="*{partnerDTOs[__${itemStat.index}__].suffix}" name="suffix" />
 
                                 </div>
                                 <div class="form-group form-group-md col-xs-6">
                                     <label for="partner-citizenship"><span class="weight600">&#42;</span>Country of Citizenship</label>
-                                    <select   th:field="*{partnerDTOs[__${itemStat.index}__].citizenShip}" id="partner-citizenship"  class="form-control" name="owner-citizenship"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
+                                    <select   th:field="*{partnerDTOs[__${itemStat.index}__].citizenShip}" id="partner-citizenship"  class="form-control" name="owner-citizenship"   required>
                                         <option value="">Select</option>
                                         <option value="UNITED STATES OF AMERICA">UNITED STATES OF AMERICA</option>
                                         <option value="AFGHANISTAN">AFGHANISTAN</option>
@@ -415,28 +416,15 @@
 
                         <fieldset aria-labelledby="proprietorinfo" id="none-individual-partner-entity" style="display: none;">
                             <div class="row">
-                                <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
+                                <div class="form-group form-group-md col-xs-6">
                                     <label for="ownername"><b style="color: red">&#42;</b>Owner Name</label>
-                                    <input id="owner-name" type="text" th:field="*{partnerDTOs[__${itemStat.index}__].partnerName}"  class="form-control rounded-borders"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" required>
-                                </div>
-                                <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
-                                    <label><b style="color: red">&#42;</b>Type</label>
-                                    <span>
-                                    <select  id="owner-type" class="form-control" name="nameType" th:field="*{partnerDTOs[__${itemStat.index}__].type}"   style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-                                        <option value="">Select</option>
-                                        <option value="DBA">Doing Business As(DBA)</option>
-                                        <option value="TA">Trading As(TA)</option>
-                                        <option value="AKA">Also Known As(AKA)</option>
-                                        <option value="F">Formerly</option>
-
-                                    </select>
-                                </span>
+                                    <input id="partner-owner-name" type="text" th:field="*{partnerDTOs[__${itemStat.index}__].partnerName}"  class="form-control rounded-borders"   required>
                                 </div>
 
 
                                 <div class="form-group form-group-md col-xs-6">
                                     <label><b style="color: red">&#42;</b>State where legally organized</label>
-                                    <select  id="owner-state" th:field="*{partnerDTOs[__${itemStat.index}__].state}"  class="form-control" name="State"  style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;" >
+                                    <select  id="partner-owner-name-state" th:field="*{partnerDTOs[__${itemStat.index}__].state}"  class="form-control" name="State"  required>
                                         <option  value="">Select</option>
                                         <option  value="Alabama">Alabama</option>
                                         <option  value="Alaska">Alaska</option>
@@ -490,13 +478,809 @@
                                         <option value="Wisconsin">Wisconsin</option>
                                         <option value="Wyoming">Wyoming</option>
 
-
                                     </select>
                                 </div>
+
+                                <div class="form-group form-group-md col-xs-6">
+                                    <label><b style="color: red">&#42;</b>Type</label>
+                                    <span>
+                                    <select  id="partner-owner-name-type" class="form-control partner-owner-name-type" name="nameType" th:field="*{partnerDTOs[__${itemStat.index}__].type}"  >
+                                            <option value="">Select</option>
+                                            <option value="Doing Business As(DBA)">Doing Business As(DBA)</option>
+                                            <option value="Trading As(TA)">Trading As(TA)</option>
+                                            <option value="Also Known As(AKA)">Also Known As(AKA)</option>
+                                            <option value="Formerly">Formerly</option>
+
+                                    </select>
+                                </span>
+                                </div>
+
+                                <div class="form-group form-group-md col-xs-6" id="partner-add-Name-value" style="display: none;">
+                                    <label for="nameoftype">Name</label>
+                                    <input type="text" class="form-control" id="partner-add-name" name="nameoftype"  th:field="*{partnerDTOs[__${itemStat.index}__].alternateName}"><!--needs th:attribute-->
+                                </div>
+
+
 
                             </div>
                         </fieldset>
                     </div> <!-- end of arrary dto object -->
+
+
+
+                    <!-- additional partners area -->
+
+                    <div id="partnerEntitydynamicFormArea2"   style="margin-top: 15px;display: none;">
+
+                        <div class="form-group form-group-md col-xs-12 resetpartner" style="border-top: 1px solid rgb(221, 221, 221); margin-bottom: 0.4em;">
+                            <button type="button" class="btn btn-sm close removePartner" aria-label="remove this partner"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                        </div>
+
+                        <label>Select Entity Type</label>
+                        <span>
+                                <select  id="domestic-entity-dropdown-partner2" class="form-control" name="nameType"  >
+                                        <option  value="none"  ></option>
+                                        <option  value="Individual"  >Individual</option>
+                                        <option  value="Sole Proprietorship" >Sole Proprietorship</option>
+                                        <option  value="Limited Liability Company" >Limited Liability Company</option>
+                                        <option   value="Partnership" >Partnership</option>
+                                        <option  value="Joint Venture">Joint Venture</option>
+                                        <option  value="Trust">Trust</option>
+                                        <option  value="Estate">Estate</option>
+                                </select>
+                        </span>
+                        <fieldset aria-labelledby="proprietorinfo" id="individual-partner-entity2" style="display: none;">
+                            <div class="row">
+                                <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
+                                    <label for="partner-first-name"><span class="weight600">&#42;</span>First Name</label>
+                                    <input type="text" id="partner-first-name2"  name="firstName" class="form-control" th:field="*{partner_first_name2}" >
+                                </div>
+                                <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
+                                    <label for="partner-middle-name">Middle Name</label>
+                                    <input type="text"   id="partner-middle-name2" name="middleName" class="form-control" th:field="*{partner_middle_name2}">
+                                </div>
+                                <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
+                                    <label for="partner-last-name"><span class="weight600">&#42;</span>Last Name</label>
+                                    <input id="partner-last-name2" type="text"  name="lastName" class="form-control"  th:field="*{partner_last_name2}" >
+                                </div>
+                                <div class="form-group form-group-md col-xs-6">
+                                    <label for="partner-suffix">Suffix</label>
+                                    <input  class="form-control" id="partner-suffix2" name="suffix"  th:field="*{partner_suffix2}" />
+
+                                </div>
+                                <div class="form-group form-group-md col-xs-6">
+                                    <label for="partner-citizenship"><span class="weight600">&#42;</span>Country of Citizenship</label>
+                                    <select    id="partner-citizenship2"  class="form-control" name="owner-citizenship"  th:field="*{partner_citizen2}" >
+                                        <option value="">Select</option>
+                                        <option value="UNITED STATES OF AMERICA">UNITED STATES OF AMERICA</option>
+                                        <option value="AFGHANISTAN">AFGHANISTAN</option>
+                                        <option value="ALBANIA">ALBANIA</option>
+                                        <option value="ALGERIA">ALGERIA</option>
+                                        <option value="AMERICAN SAMOA">AMERICAN SAMOA</option>
+                                        <option value="ANDORRA">ANDORRA</option>
+                                        <option value="ANGOLA">ANGOLA</option>
+                                        <option value="ANGUILLA">ANGUILLA</option>
+                                        <option value="ANTARCTICA">ANTARCTICA</option>
+                                        <option value="ANTIGUA AND BARBUDA">ANTIGUA AND BARBUDA</option>
+                                        <option value="ARGENTINA">ARGENTINA</option>
+                                        <option value="ARMENIA">ARMENIA</option>
+                                        <option value="ARUBA">ARUBA</option>
+                                        <option value="AUSTRALIA">AUSTRALIA</option>
+                                        <option value="AUSTRIA">AUSTRIA</option>
+                                        <option value="AZERBAIJAN">AZERBAIJAN</option>
+                                        <option value="BAHAMAS">BAHAMAS</option>
+                                        <option value="BAHRAIN">BAHRAIN</option>
+                                        <option value="BANGLADESH">BANGLADESH</option>
+                                        <option value="BARBADOS">BARBADOS</option>
+                                        <option value="BELARUS">BELARUS</option>
+                                        <option value="BELGIUM">BELGIUM</option>
+                                        <option value="BELIZE">BELIZE</option>
+                                        <option value="BENIN">BENIN</option>
+                                        <option value="BERMUDA">BERMUDA</option>
+                                        <option value="BHUTAN">BHUTAN</option>
+                                        <option value="BOLIVIA">BOLIVIA</option>
+                                        <option value="BOSNIA AND HERZEGOVINA">BOSNIA AND HERZEGOVINA</option>
+                                        <option value="BOTSWANA">BOTSWANA</option>
+                                        <option value="BOUVET ISLAND">BOUVET ISLAND</option>
+                                        <option value="BRAZIL">BRAZIL</option>
+                                        <option value="BRITISH INDIAN OCEAN TERRITORY">BRITISH INDIAN OCEAN TERRITORY</option>
+                                        <option value="BRUNEI DARUSSALAM">BRUNEI DARUSSALAM</option>
+                                        <option value="BULGARIA">BULGARIA</option>
+                                        <option value="BURKINA FASO">BURKINA FASO</option>
+                                        <option value="BURUNDI">BURUNDI</option>
+                                        <option value="CANADA">CANADA</option>
+                                        <option value="CAMBODIA">CAMBODIA</option>
+                                        <option value="CAMEROON">CAMEROON</option>
+                                        <option value="CAPE VERDE">CAPE VERDE</option>
+                                        <option value="CAYMAN ISLANDS">CAYMAN ISLANDS</option>
+                                        <option value="CENTRAL AFRICAN REPUBLIC">CENTRAL AFRICAN REPUBLIC</option>
+                                        <option value="CHAD">CHAD</option>
+                                        <option value="CHILE">CHILE</option>
+                                        <option value="CHINA">CHINA</option>
+                                        <option value="CHRISTMAS ISLAND<">CHRISTMAS ISLAND</option>
+                                        <option value="COCOS (KEELING) ISLANDS">COCOS (KEELING) ISLANDS</option>
+                                        <option value="COLOMBIA">COLOMBIA</option>
+                                        <option value="COMOROS">COMOROS</option>
+                                        <option value="CONGO">CONGO</option>
+                                        <option value="CONGO, THE DEMOCRATIC REPUBLIC OF THE">CONGO, THE DEMOCRATIC REPUBLIC OF THE</option>
+                                        <option value="COOK ISLANDS">COOK ISLANDS</option>
+                                        <option value="COSTA RICA">COSTA RICA</option>
+                                        <option value="COTE D'IVOIRE">COTE D'IVOIRE</option>
+                                        <option value="CROATIA">CROATIA</option>
+                                        <option value="CUBA">CUBA</option>
+                                        <option value="CYPRUS">CYPRUS</option>
+                                        <option value="CZECH REPUBLIC">CZECH REPUBLIC</option>
+                                        <option value="DENMARK">DENMARK</option>
+                                        <option value="DJIBOUTI">DJIBOUTI</option>
+                                        <option value="DOMINICA">DOMINICA</option>
+                                        <option value="DOMINICAN REPUBLIC">DOMINICAN REPUBLIC</option>
+                                        <option value="EAST TIMOR">EAST TIMOR</option>
+                                        <option value="ECUADOR">ECUADOR</option>
+                                        <option value="EGYPT">EGYPT</option>
+                                        <option value="EL SALVADOR">EL SALVADOR</option>
+                                        <option value="EQUATORIAL GUINEA">EQUATORIAL GUINEA</option>
+                                        <option value="ERITREA">ERITREA</option>
+                                        <option value="ESTONIA">ESTONIA</option>
+                                        <option value="ETHIOPIA">ETHIOPIA</option>
+                                        <option value="FALKLAND ISLANDS (MALVINAS)">FALKLAND ISLANDS (MALVINAS)</option>
+                                        <option value="FAROE ISLANDS">FAROE ISLANDS</option>
+                                        <option value="FIJI">FIJI</option>
+                                        <option value="FINLAND">FINLAND</option>
+                                        <option value="FRANCE">FRANCE</option>
+                                        <option value="FRENCH GUIANA">FRENCH GUIANA</option>
+                                        <option value="FRENCH POLYNESIA">FRENCH POLYNESIA</option>
+                                        <option value="FRENCH SOUTHERN TERRITORIES">FRENCH SOUTHERN TERRITORIES</option>
+                                        <option value="GABON">GABON</option>
+                                        <option value="GAMBIA">GAMBIA</option>
+                                        <option value="GEORGIA">GEORGIA</option>
+                                        <option value="GERMANY">GERMANY</option>
+                                        <option value="GHANA">GHANA</option>
+                                        <option value="GIBRALTAR">GIBRALTAR</option>
+                                        <option value="GREECE">GREECE</option>
+                                        <option value="GREENLAND">GREENLAND</option>
+                                        <option value="GRENADA">GRENADA</option>
+                                        <option value="GUADELOUPE">GUADELOUPE</option>
+                                        <option value="GUAM<">GUAM</option>
+                                        <option value="GUATEMALA">GUATEMALA</option>
+                                        <option value="GUINEA">GUINEA</option>
+                                        <option value="GUINEA-BISSAU">GUINEA-BISSAU</option>
+                                        <option value="GUYANA">GUYANA</option>
+                                        <option value="HAITI">HAITI</option>
+                                        <option value="HEARD ISLAND AND MCDONALD ISLANDS">HEARD ISLAND AND MCDONALD ISLANDS</option>
+                                        <option value="HOLY SEE (VATICAN CITY STATE)">HOLY SEE (VATICAN CITY STATE)</option>
+                                        <option value="HONDURAS">HONDURAS</option>
+                                        <option value="HONG KONG">HONG KONG</option>
+                                        <option value="HUNGARY">HUNGARY</option>
+                                        <option value="ICELAND">ICELAND</option>
+                                        <option value="INDIA">INDIA</option>
+                                        <option value="INDONESIA">INDONESIA</option>
+                                        <option value="IRAN, ISLAMIC REPUBLIC OF">IRAN, ISLAMIC REPUBLIC OF</option>
+                                        <option value="IRAQ">IRAQ</option>
+                                        <option value="IRELAND">IRELAND</option>
+                                        <option value="ISRAEL">ISRAEL</option>
+                                        <option value="ITALY">ITALY</option>
+                                        <option value="JAMAICA">JAMAICA</option>
+                                        <option value="JAPAN">JAPAN</option>
+                                        <option value="JORDAN">JORDAN</option>
+                                        <option value="KAZAKSTAN">KAZAKSTAN</option>
+                                        <option value="KENYA">KENYA</option>
+                                        <option value="KIRIBATI">KIRIBATI</option>
+                                        <option value="KOREA, DEMOCRATIC PEOPLE'S REPUBLIC OF">KOREA, DEMOCRATIC PEOPLE'S REPUBLIC OF</option>
+                                        <option value="KOREA, REPUBLIC OF">KOREA, REPUBLIC OF</option>
+                                        <option value="KUWAIT">KUWAIT</option>
+                                        <option value="KYRGYZSTAN">KYRGYZSTAN</option>
+                                        <option value="LAO PEOPLE'S DEMOCRATIC REPUBLIC">LAO PEOPLE'S DEMOCRATIC REPUBLIC</option>
+                                        <option value="LATVIA">LATVIA</option>
+                                        <option value="LEBANON">LEBANON</option>
+                                        <option value="LESOTHO">LESOTHO</option>
+                                        <option value="LIBERIA">LIBERIA</option>
+                                        <option value="LIBYAN ARAB JAMAHIRIYA">LIBYAN ARAB JAMAHIRIYA</option>
+                                        <option value="LIECHTENSTEIN">LIECHTENSTEIN</option>
+                                        <option value="LITHUANIA">LITHUANIA</option>
+                                        <option value="LUXEMBOURG">LUXEMBOURG</option>
+                                        <option value="MACAU">MACAU</option>
+                                        <option value="MACEDONIA, FORMER YUGOSLAV REP. OF">MACEDONIA, FORMER YUGOSLAV REP. OF</option>
+                                        <option value="MADAGASCAR">MADAGASCAR</option>
+                                        <option value="MALAWI">MALAWI</option>
+                                        <option value="MALAYSIA">MALAYSIA</option>
+                                        <option value="MALAYSIA">MALDIVES</option>
+                                        <option value="MALI">MALI</option>
+                                        <option value="MALTA">MALTA</option>
+                                        <option value="MARSHALL ISLANDS">MARSHALL ISLANDS</option>
+                                        <option value="MARTINIQUE">MARTINIQUE</option>
+                                        <option value="MAURITANIA">MAURITANIA</option>
+                                        <option value="MAURITIUS">MAURITIUS</option>
+                                        <option value="MAYOTTE">MAYOTTE</option>
+                                        <option value="MEXICO">MEXICO</option>
+                                        <option value="MICRONESIA, FEDERATED STATES OF">MICRONESIA, FEDERATED STATES OF</option>
+                                        <option value="MOLDOVA, REPUBLIC OF">MOLDOVA, REPUBLIC OF</option>
+                                        <option value="MONACO">MONACO</option>
+                                        <option value="MONGOLIA">MONGOLIA</option>
+                                        <option value="MONTSERRAT">MONTSERRAT</option>
+                                        <option value="MOROCCO">MOROCCO</option>
+                                        <option value="MOZAMBIQUE">MOZAMBIQUE</option>
+                                        <option value="MYANMAR">MYANMAR</option>
+                                        <option value="NAMIBIA">NAMIBIA</option>
+                                        <option value="NAURU">NAURU</option>
+                                        <option value="NEPAL">NEPAL</option>
+                                        <option value="NETHERLANDS">NETHERLANDS</option>
+                                        <option value="NETHERLANDS ANTILLES">NETHERLANDS ANTILLES</option>
+                                        <option value="NEW CALEDONIA">NEW CALEDONIA</option>
+                                        <option value="NEW ZEALAND">NEW ZEALAND</option>
+                                        <option value="NICARAGUA">NICARAGUA</option>
+                                        <option value="NIGER">NIGER</option>
+                                        <option value="NIGERIA">NIGERIA</option>
+                                        <option value="NIUE">NIUE</option>
+                                        <option value="NORFOLK ISLAND">NORFOLK ISLAND</option>
+                                        <option value="NORTHERN MARIANA ISLANDS">NORTHERN MARIANA ISLANDS</option>
+                                        <option value="NORWAY">NORWAY</option>
+                                        <option value="OMAN">OMAN</option>
+                                        <option value="PAKISTAN">PAKISTAN</option>
+                                        <option value="PALAU">PALAU</option>
+                                        <option value="PALESTINIAN TERRITORY, OCCUPIED">PALESTINIAN TERRITORY, OCCUPIED</option>
+                                        <option value="PANAMA">PANAMA</option>
+                                        <option value="PAPUA NEW GUINEA">PAPUA NEW GUINEA</option>
+                                        <option value="PARAGUAY">PARAGUAY</option>
+                                        <option value="PERU">PERU</option>
+                                        <option value="PHILIPPINES">PHILIPPINES</option>
+                                        <option value="PITCAIRN">PITCAIRN</option>
+                                        <option value="POLAND">POLAND</option>
+                                        <option value="PORTUGAL">PORTUGAL</option>
+                                        <option value="PUERTO RICO">PUERTO RICO</option>
+                                        <option value="QATAR">QATAR</option>
+                                        <option value="REUNION">REUNION</option>
+                                        <option value="ROMANIA">ROMANIA</option>
+                                        <option value="RUSSIAN FEDERATION">RUSSIAN FEDERATION</option>
+                                        <option value="RWANDA">RWANDA</option>
+                                        <option value="SAINT HELENA">SAINT HELENA</option>
+                                        <option value="SAINT KITTS AND NEVIS">SAINT KITTS AND NEVIS</option>
+                                        <option value="SAINT LUCIA">SAINT LUCIA</option>
+                                        <option value="SAINT PIERRE AND MIQUELON">SAINT PIERRE AND MIQUELON</option>
+                                        <option value="SAINT VINCENT AND THE GRENADINES">SAINT VINCENT AND THE GRENADINES</option>
+                                        <option value="SAMOA">SAMOA</option>
+                                        <option value="SAN MARINO">SAN MARINO</option>
+                                        <option value="SAO TOME AND PRINCIPE">SAO TOME AND PRINCIPE</option>
+                                        <option value="SAUDI ARABIA">SAUDI ARABIA</option>
+                                        <option value="SENEGAL">SENEGAL</option>
+                                        <option value="SEYCHELLES">SEYCHELLES</option>
+                                        <option value="SIERRA LEONE">SIERRA LEONE</option>
+                                        <option value="INGAPORE">SINGAPORE</option>
+                                        <option value="SLOVAKIA">SLOVAKIA</option>
+                                        <option value="SLOVENIA">SLOVENIA</option>
+                                        <option value="SOLOMON ISLANDS">SOLOMON ISLANDS</option>
+                                        <option value="SOMALIA">SOMALIA</option>
+                                        <option value="SOUTH AFRICA">SOUTH AFRICA</option>
+                                        <option value="SOUTH GEORGIA/SO. SANDWICH ISLANDS">SOUTH GEORGIA/SO. SANDWICH ISLANDS</option>
+                                        <option value="SPAIN">SPAIN</option>
+                                        <option value="SRI LANKA">SRI LANKA</option>
+                                        <option value="SUDAN">SUDAN</option>
+                                        <option value="SURINAME">SURINAME</option>
+                                        <option value="SVALBARD AND JAN MAYEN">SVALBARD AND JAN MAYEN</option>
+                                        <option value="SWAZILAND">SWAZILAND</option>
+                                        <option value="SWEDEN">SWEDEN</option>
+                                        <option value="SWITZERLAND">SWITZERLAND</option>
+                                        <option value="SYRIAN ARAB REPUBLIC">SYRIAN ARAB REPUBLIC</option>
+                                        <option value="TAIWAN">TAIWAN</option>
+                                        <option value="TAJIKISTAN">TAJIKISTAN</option>
+                                        <option value="TANZANIA, UNITED REPUBLIC OF">TANZANIA, UNITED REPUBLIC OF</option>
+                                        <option value="THAILAND">THAILAND</option>
+                                        <option value="TOGO">TOGO</option>
+                                        <option value="TOKELAU">TOKELAU</option>
+                                        <option value="TONGA">TONGA</option>
+                                        <option value="TRINIDAD AND TOBAGO">TRINIDAD AND TOBAGO</option>
+                                        <option value="TUNISIA">TUNISIA</option>
+                                        <option value="TURKEY">TURKEY</option>
+                                        <option value="TURKMENISTAN">TURKMENISTAN</option>
+                                        <option value="TURKS AND CAICOS ISLANDS">TURKS AND CAICOS ISLANDS</option>
+                                        <option value="TUVALU">TUVALU</option>
+                                        <option value="UGANDA">UGANDA</option>
+                                        <option value="UKRAINE">UKRAINE</option>
+                                        <option value="UNITED ARAB EMIRATES">UNITED ARAB EMIRATES</option>
+                                        <option value="UNITED KINGDOM">UNITED KINGDOM</option>
+                                        <option value="UNITED STATES MINOR OUTLYING ISLANDS">UNITED STATES MINOR OUTLYING ISLANDS</option>
+                                        <option value="URUGUAY">URUGUAY</option>
+                                        <option value="UZBEKISTAN">UZBEKISTAN</option>
+                                        <option value="VANUATU">VANUATU</option>
+                                        <option value="VENEZUELA">VENEZUELA</option>
+                                        <option value="VIET NAM">VIET NAM</option>
+                                        <option value="VIRGIN ISLANDS, BRITISH">VIRGIN ISLANDS, BRITISH</option>
+                                        <option value="VIRGIN ISLANDS, U.S.">VIRGIN ISLANDS, U.S.</option>
+                                        <option value="WALLIS AND FUTUNA">WALLIS AND FUTUNA</option>
+                                        <option value="WESTERN SAHARA">WESTERN SAHARA</option>
+                                        <option value="YEMEN<">YEMEN</option>
+                                        <option value="YUGOSLAVIA">YUGOSLAVIA</option>
+                                        <option value="ZAMBIA">ZAMBIA</option>
+                                        <option value="ZIMBABWE">ZIMBABWE</option>
+                                        <option value="UNKNOWN">UNKNOWN</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset aria-labelledby="proprietorinfo" id="none-individual-partner-entity2" style="display: none;">
+                            <div class="row">
+                                <div class="form-group form-group-md col-xs-6">
+                                    <label for="ownername"><b style="color: red">&#42;</b>Owner Name</label>
+                                    <input id="partner-owner-name2" type="text"  class="form-control rounded-borders"  th:field="*{partner_name2}"  >
+                                </div>
+                                <div class="form-group form-group-md col-xs-6">
+                                    <label><b style="color: red">&#42;</b>State where legally organized</label>
+                                    <select  id="partner-owner-name-state2"  class="form-control" name="State"  th:field="*{partner_state_org2}"  >
+                                        <option  value="">Select</option>
+                                        <option  value="Alabama">Alabama</option>
+                                        <option  value="Alaska">Alaska</option>
+                                        <option value="Arizona">Arizona</option>
+                                        <option value="Arkansas">Arkansas</option>
+                                        <option value="California">California</option>
+                                        <option value="Colorado">Colorado</option>
+                                        <option value="Connecticut">Connecticut</option>
+                                        <option value="Delaware">Delaware</option>
+                                        <option value="District of Columbia">District of Columbia</option>
+                                        <option value="Florida">Florida</option>
+                                        <option value="Georgia">Georgia</option>
+                                        <option value="Hawaii">Hawaii</option>
+                                        <option value="Idaho">Idaho</option>
+                                        <option value="Illinois">Illinois</option>
+                                        <option value="Indiana">Indiana</option>
+                                        <option value="Iowa">Iowa</option>
+                                        <option value="Kansas">Kansas</option>
+                                        <option value="Kentucky">Kentucky</option>
+                                        <option value="Louisiana">Louisiana</option>
+                                        <option value="Maine">Maine</option>
+                                        <option value="Maryland">Maryland</option>
+                                        <option value="Massachusetts">Massachusetts</option>
+                                        <option value="Michigan">Michigan</option>
+                                        <option value="Minnesota">Minnesota</option>
+                                        <option value="Mississippi">Mississippi</option>
+                                        <option value="Missouri">Missouri</option>
+                                        <option value="Montana">Montana</option>
+                                        <option value="Nebraska">Nebraska</option>
+                                        <option value="Nevada">Nevada</option>
+                                        <option value="New Hampshire">New Hampshire</option>
+                                        <option value="New Jersey">New Jersey</option>
+                                        <option value="New Mexico">New Mexico</option>
+                                        <option value="New York">New York</option>
+                                        <option value="North Carolina">North Carolina</option>
+                                        <option value="North Dakota">North Dakota</option>
+                                        <option value="Ohio">Ohio</option>
+                                        <option value="Oklahoma">Oklahoma</option>
+                                        <option value="Oregon">Oregon</option>
+                                        <option value="Pennsylvania">Pennsylvania</option>
+                                        <option value="Rhode Island">Rhode Island</option>
+                                        <option value="South Carolina">South Carolina</option>
+                                        <option value="South Dakota">South Dakota</option>
+                                        <option value="Tennessee">Tennessee</option>
+                                        <option value="Texas">Texas</option>
+                                        <option value="Utah">Utah</option>
+                                        <option value="Vermont">Vermont</option>
+                                        <option value="Virginia">Virginia</option>
+                                        <option value="Washington">Washington</option>
+                                        <option value="West Virginia">West Virginia</option>
+                                        <option value="Wisconsin">Wisconsin</option>
+                                        <option value="Wyoming">Wyoming</option>
+
+                                    </select>
+                                </div>
+
+
+
+                                <div class="form-group form-group-md col-xs-6">
+                                    <label><b style="color: red">&#42;</b>Type</label>
+                                    <span>
+                                        <select  id="partner-owner-name-type2" class="form-control partner-owner-name-type" name="nameType"   th:field="*{partner_alt_type2}" >
+                                            <option value="">Select</option>
+                                            <option value="Doing Business As(DBA)">Doing Business As(DBA)</option>
+                                            <option value="Trading As(TA)">Trading As(TA)</option>
+                                            <option value="Also Known As(AKA)">Also Known As(AKA)</option>
+                                            <option value="Formerly">Formerly</option>
+
+                                        </select>
+                                     </span>
+                                </div>
+                                <div class="form-group form-group-md col-xs-6" id="partner-add-Name-value2" style="display: none;">
+                                    <label for="nameoftype">Name</label>
+                                    <input type="text" class="form-control" id="partner-add-name2" name="nameoftype"  ><!--needs th:attribute-->
+                                </div>
+
+
+
+
+
+                            </div>
+                        </fieldset>
+                    </div> <!-- end of arrary dto object -->
+
+                    <div id="partnerEntitydynamicFormArea3"   style="margin-top: 15px; display: none;">
+
+                        <div class="form-group form-group-md col-xs-12 resetpartner" style="border-top: 1px solid rgb(221, 221, 221); margin-bottom: 0.4em;">
+                            <button type="button" class="btn btn-sm close removePartner" aria-label="remove this partner"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                        </div>
+
+                        <label>Select Entity Type</label>
+                        <span>
+                                <select  id="domestic-entity-dropdown-partner3" class="form-control" name="nameType"  >
+                                        <option  value="none"  ></option>
+                                        <option  value="Individual"  >Individual</option>
+                                        <option  value="Sole Proprietorship" >Sole Proprietorship</option>
+                                        <option  value="Limited Liability Company" >Limited Liability Company</option>
+                                        <option   value="Partnership" >Partnership</option>
+                                        <option  value="Joint Venture">Joint Venture</option>
+                                        <option  value="Trust">Trust</option>
+                                        <option  value="Estate">Estate</option>
+                                </select>
+                        </span>
+                        <fieldset aria-labelledby="proprietorinfo" id="individual-partner-entity3" style="display: none;">
+                            <div class="row">
+                                <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
+                                    <label for="partner-first-name"><span class="weight600">&#42;</span>First Name</label>
+                                    <input type="text" id="partner-first-name3"  name="firstName" class="form-control"  th:field="*{partner_first_name3}">
+                                </div>
+                                <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
+                                    <label for="partner-middle-name">Middle Name</label>
+                                    <input type="text"   id="partner-middle-name3" name="middleName" class="form-control" th:field="*{partner_middle_name3}">
+                                </div>
+                                <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
+                                    <label for="partner-last-name"><span class="weight600">&#42;</span>Last Name</label>
+                                    <input id="partner-last-name3" type="text"  name="lastName" class="form-control"  th:field="*{partner_last_name3}" >
+                                </div>
+                                <div class="form-group form-group-md col-xs-6">
+                                    <label for="partner-suffix">Suffix</label>
+                                    <input  class="form-control" id="partner-suffix3" name="suffix"  th:field="*{partner_suffix3}" />
+
+                                </div>
+                                <div class="form-group form-group-md col-xs-6">
+                                    <label for="partner-citizenship"><span class="weight600">&#42;</span>Country of Citizenship</label>
+                                    <select    id="partner-citizenship3"  class="form-control" name="owner-citizenship"  th:field="*{partner_citizen3}" >
+                                        <option value="">Select</option>
+                                        <option value="UNITED STATES OF AMERICA">UNITED STATES OF AMERICA</option>
+                                        <option value="AFGHANISTAN">AFGHANISTAN</option>
+                                        <option value="ALBANIA">ALBANIA</option>
+                                        <option value="ALGERIA">ALGERIA</option>
+                                        <option value="AMERICAN SAMOA">AMERICAN SAMOA</option>
+                                        <option value="ANDORRA">ANDORRA</option>
+                                        <option value="ANGOLA">ANGOLA</option>
+                                        <option value="ANGUILLA">ANGUILLA</option>
+                                        <option value="ANTARCTICA">ANTARCTICA</option>
+                                        <option value="ANTIGUA AND BARBUDA">ANTIGUA AND BARBUDA</option>
+                                        <option value="ARGENTINA">ARGENTINA</option>
+                                        <option value="ARMENIA">ARMENIA</option>
+                                        <option value="ARUBA">ARUBA</option>
+                                        <option value="AUSTRALIA">AUSTRALIA</option>
+                                        <option value="AUSTRIA">AUSTRIA</option>
+                                        <option value="AZERBAIJAN">AZERBAIJAN</option>
+                                        <option value="BAHAMAS">BAHAMAS</option>
+                                        <option value="BAHRAIN">BAHRAIN</option>
+                                        <option value="BANGLADESH">BANGLADESH</option>
+                                        <option value="BARBADOS">BARBADOS</option>
+                                        <option value="BELARUS">BELARUS</option>
+                                        <option value="BELGIUM">BELGIUM</option>
+                                        <option value="BELIZE">BELIZE</option>
+                                        <option value="BENIN">BENIN</option>
+                                        <option value="BERMUDA">BERMUDA</option>
+                                        <option value="BHUTAN">BHUTAN</option>
+                                        <option value="BOLIVIA">BOLIVIA</option>
+                                        <option value="BOSNIA AND HERZEGOVINA">BOSNIA AND HERZEGOVINA</option>
+                                        <option value="BOTSWANA">BOTSWANA</option>
+                                        <option value="BOUVET ISLAND">BOUVET ISLAND</option>
+                                        <option value="BRAZIL">BRAZIL</option>
+                                        <option value="BRITISH INDIAN OCEAN TERRITORY">BRITISH INDIAN OCEAN TERRITORY</option>
+                                        <option value="BRUNEI DARUSSALAM">BRUNEI DARUSSALAM</option>
+                                        <option value="BULGARIA">BULGARIA</option>
+                                        <option value="BURKINA FASO">BURKINA FASO</option>
+                                        <option value="BURUNDI">BURUNDI</option>
+                                        <option value="CANADA">CANADA</option>
+                                        <option value="CAMBODIA">CAMBODIA</option>
+                                        <option value="CAMEROON">CAMEROON</option>
+                                        <option value="CAPE VERDE">CAPE VERDE</option>
+                                        <option value="CAYMAN ISLANDS">CAYMAN ISLANDS</option>
+                                        <option value="CENTRAL AFRICAN REPUBLIC">CENTRAL AFRICAN REPUBLIC</option>
+                                        <option value="CHAD">CHAD</option>
+                                        <option value="CHILE">CHILE</option>
+                                        <option value="CHINA">CHINA</option>
+                                        <option value="CHRISTMAS ISLAND<">CHRISTMAS ISLAND</option>
+                                        <option value="COCOS (KEELING) ISLANDS">COCOS (KEELING) ISLANDS</option>
+                                        <option value="COLOMBIA">COLOMBIA</option>
+                                        <option value="COMOROS">COMOROS</option>
+                                        <option value="CONGO">CONGO</option>
+                                        <option value="CONGO, THE DEMOCRATIC REPUBLIC OF THE">CONGO, THE DEMOCRATIC REPUBLIC OF THE</option>
+                                        <option value="COOK ISLANDS">COOK ISLANDS</option>
+                                        <option value="COSTA RICA">COSTA RICA</option>
+                                        <option value="COTE D'IVOIRE">COTE D'IVOIRE</option>
+                                        <option value="CROATIA">CROATIA</option>
+                                        <option value="CUBA">CUBA</option>
+                                        <option value="CYPRUS">CYPRUS</option>
+                                        <option value="CZECH REPUBLIC">CZECH REPUBLIC</option>
+                                        <option value="DENMARK">DENMARK</option>
+                                        <option value="DJIBOUTI">DJIBOUTI</option>
+                                        <option value="DOMINICA">DOMINICA</option>
+                                        <option value="DOMINICAN REPUBLIC">DOMINICAN REPUBLIC</option>
+                                        <option value="EAST TIMOR">EAST TIMOR</option>
+                                        <option value="ECUADOR">ECUADOR</option>
+                                        <option value="EGYPT">EGYPT</option>
+                                        <option value="EL SALVADOR">EL SALVADOR</option>
+                                        <option value="EQUATORIAL GUINEA">EQUATORIAL GUINEA</option>
+                                        <option value="ERITREA">ERITREA</option>
+                                        <option value="ESTONIA">ESTONIA</option>
+                                        <option value="ETHIOPIA">ETHIOPIA</option>
+                                        <option value="FALKLAND ISLANDS (MALVINAS)">FALKLAND ISLANDS (MALVINAS)</option>
+                                        <option value="FAROE ISLANDS">FAROE ISLANDS</option>
+                                        <option value="FIJI">FIJI</option>
+                                        <option value="FINLAND">FINLAND</option>
+                                        <option value="FRANCE">FRANCE</option>
+                                        <option value="FRENCH GUIANA">FRENCH GUIANA</option>
+                                        <option value="FRENCH POLYNESIA">FRENCH POLYNESIA</option>
+                                        <option value="FRENCH SOUTHERN TERRITORIES">FRENCH SOUTHERN TERRITORIES</option>
+                                        <option value="GABON">GABON</option>
+                                        <option value="GAMBIA">GAMBIA</option>
+                                        <option value="GEORGIA">GEORGIA</option>
+                                        <option value="GERMANY">GERMANY</option>
+                                        <option value="GHANA">GHANA</option>
+                                        <option value="GIBRALTAR">GIBRALTAR</option>
+                                        <option value="GREECE">GREECE</option>
+                                        <option value="GREENLAND">GREENLAND</option>
+                                        <option value="GRENADA">GRENADA</option>
+                                        <option value="GUADELOUPE">GUADELOUPE</option>
+                                        <option value="GUAM<">GUAM</option>
+                                        <option value="GUATEMALA">GUATEMALA</option>
+                                        <option value="GUINEA">GUINEA</option>
+                                        <option value="GUINEA-BISSAU">GUINEA-BISSAU</option>
+                                        <option value="GUYANA">GUYANA</option>
+                                        <option value="HAITI">HAITI</option>
+                                        <option value="HEARD ISLAND AND MCDONALD ISLANDS">HEARD ISLAND AND MCDONALD ISLANDS</option>
+                                        <option value="HOLY SEE (VATICAN CITY STATE)">HOLY SEE (VATICAN CITY STATE)</option>
+                                        <option value="HONDURAS">HONDURAS</option>
+                                        <option value="HONG KONG">HONG KONG</option>
+                                        <option value="HUNGARY">HUNGARY</option>
+                                        <option value="ICELAND">ICELAND</option>
+                                        <option value="INDIA">INDIA</option>
+                                        <option value="INDONESIA">INDONESIA</option>
+                                        <option value="IRAN, ISLAMIC REPUBLIC OF">IRAN, ISLAMIC REPUBLIC OF</option>
+                                        <option value="IRAQ">IRAQ</option>
+                                        <option value="IRELAND">IRELAND</option>
+                                        <option value="ISRAEL">ISRAEL</option>
+                                        <option value="ITALY">ITALY</option>
+                                        <option value="JAMAICA">JAMAICA</option>
+                                        <option value="JAPAN">JAPAN</option>
+                                        <option value="JORDAN">JORDAN</option>
+                                        <option value="KAZAKSTAN">KAZAKSTAN</option>
+                                        <option value="KENYA">KENYA</option>
+                                        <option value="KIRIBATI">KIRIBATI</option>
+                                        <option value="KOREA, DEMOCRATIC PEOPLE'S REPUBLIC OF">KOREA, DEMOCRATIC PEOPLE'S REPUBLIC OF</option>
+                                        <option value="KOREA, REPUBLIC OF">KOREA, REPUBLIC OF</option>
+                                        <option value="KUWAIT">KUWAIT</option>
+                                        <option value="KYRGYZSTAN">KYRGYZSTAN</option>
+                                        <option value="LAO PEOPLE'S DEMOCRATIC REPUBLIC">LAO PEOPLE'S DEMOCRATIC REPUBLIC</option>
+                                        <option value="LATVIA">LATVIA</option>
+                                        <option value="LEBANON">LEBANON</option>
+                                        <option value="LESOTHO">LESOTHO</option>
+                                        <option value="LIBERIA">LIBERIA</option>
+                                        <option value="LIBYAN ARAB JAMAHIRIYA">LIBYAN ARAB JAMAHIRIYA</option>
+                                        <option value="LIECHTENSTEIN">LIECHTENSTEIN</option>
+                                        <option value="LITHUANIA">LITHUANIA</option>
+                                        <option value="LUXEMBOURG">LUXEMBOURG</option>
+                                        <option value="MACAU">MACAU</option>
+                                        <option value="MACEDONIA, FORMER YUGOSLAV REP. OF">MACEDONIA, FORMER YUGOSLAV REP. OF</option>
+                                        <option value="MADAGASCAR">MADAGASCAR</option>
+                                        <option value="MALAWI">MALAWI</option>
+                                        <option value="MALAYSIA">MALAYSIA</option>
+                                        <option value="MALAYSIA">MALDIVES</option>
+                                        <option value="MALI">MALI</option>
+                                        <option value="MALTA">MALTA</option>
+                                        <option value="MARSHALL ISLANDS">MARSHALL ISLANDS</option>
+                                        <option value="MARTINIQUE">MARTINIQUE</option>
+                                        <option value="MAURITANIA">MAURITANIA</option>
+                                        <option value="MAURITIUS">MAURITIUS</option>
+                                        <option value="MAYOTTE">MAYOTTE</option>
+                                        <option value="MEXICO">MEXICO</option>
+                                        <option value="MICRONESIA, FEDERATED STATES OF">MICRONESIA, FEDERATED STATES OF</option>
+                                        <option value="MOLDOVA, REPUBLIC OF">MOLDOVA, REPUBLIC OF</option>
+                                        <option value="MONACO">MONACO</option>
+                                        <option value="MONGOLIA">MONGOLIA</option>
+                                        <option value="MONTSERRAT">MONTSERRAT</option>
+                                        <option value="MOROCCO">MOROCCO</option>
+                                        <option value="MOZAMBIQUE">MOZAMBIQUE</option>
+                                        <option value="MYANMAR">MYANMAR</option>
+                                        <option value="NAMIBIA">NAMIBIA</option>
+                                        <option value="NAURU">NAURU</option>
+                                        <option value="NEPAL">NEPAL</option>
+                                        <option value="NETHERLANDS">NETHERLANDS</option>
+                                        <option value="NETHERLANDS ANTILLES">NETHERLANDS ANTILLES</option>
+                                        <option value="NEW CALEDONIA">NEW CALEDONIA</option>
+                                        <option value="NEW ZEALAND">NEW ZEALAND</option>
+                                        <option value="NICARAGUA">NICARAGUA</option>
+                                        <option value="NIGER">NIGER</option>
+                                        <option value="NIGERIA">NIGERIA</option>
+                                        <option value="NIUE">NIUE</option>
+                                        <option value="NORFOLK ISLAND">NORFOLK ISLAND</option>
+                                        <option value="NORTHERN MARIANA ISLANDS">NORTHERN MARIANA ISLANDS</option>
+                                        <option value="NORWAY">NORWAY</option>
+                                        <option value="OMAN">OMAN</option>
+                                        <option value="PAKISTAN">PAKISTAN</option>
+                                        <option value="PALAU">PALAU</option>
+                                        <option value="PALESTINIAN TERRITORY, OCCUPIED">PALESTINIAN TERRITORY, OCCUPIED</option>
+                                        <option value="PANAMA">PANAMA</option>
+                                        <option value="PAPUA NEW GUINEA">PAPUA NEW GUINEA</option>
+                                        <option value="PARAGUAY">PARAGUAY</option>
+                                        <option value="PERU">PERU</option>
+                                        <option value="PHILIPPINES">PHILIPPINES</option>
+                                        <option value="PITCAIRN">PITCAIRN</option>
+                                        <option value="POLAND">POLAND</option>
+                                        <option value="PORTUGAL">PORTUGAL</option>
+                                        <option value="PUERTO RICO">PUERTO RICO</option>
+                                        <option value="QATAR">QATAR</option>
+                                        <option value="REUNION">REUNION</option>
+                                        <option value="ROMANIA">ROMANIA</option>
+                                        <option value="RUSSIAN FEDERATION">RUSSIAN FEDERATION</option>
+                                        <option value="RWANDA">RWANDA</option>
+                                        <option value="SAINT HELENA">SAINT HELENA</option>
+                                        <option value="SAINT KITTS AND NEVIS">SAINT KITTS AND NEVIS</option>
+                                        <option value="SAINT LUCIA">SAINT LUCIA</option>
+                                        <option value="SAINT PIERRE AND MIQUELON">SAINT PIERRE AND MIQUELON</option>
+                                        <option value="SAINT VINCENT AND THE GRENADINES">SAINT VINCENT AND THE GRENADINES</option>
+                                        <option value="SAMOA">SAMOA</option>
+                                        <option value="SAN MARINO">SAN MARINO</option>
+                                        <option value="SAO TOME AND PRINCIPE">SAO TOME AND PRINCIPE</option>
+                                        <option value="SAUDI ARABIA">SAUDI ARABIA</option>
+                                        <option value="SENEGAL">SENEGAL</option>
+                                        <option value="SEYCHELLES">SEYCHELLES</option>
+                                        <option value="SIERRA LEONE">SIERRA LEONE</option>
+                                        <option value="INGAPORE">SINGAPORE</option>
+                                        <option value="SLOVAKIA">SLOVAKIA</option>
+                                        <option value="SLOVENIA">SLOVENIA</option>
+                                        <option value="SOLOMON ISLANDS">SOLOMON ISLANDS</option>
+                                        <option value="SOMALIA">SOMALIA</option>
+                                        <option value="SOUTH AFRICA">SOUTH AFRICA</option>
+                                        <option value="SOUTH GEORGIA/SO. SANDWICH ISLANDS">SOUTH GEORGIA/SO. SANDWICH ISLANDS</option>
+                                        <option value="SPAIN">SPAIN</option>
+                                        <option value="SRI LANKA">SRI LANKA</option>
+                                        <option value="SUDAN">SUDAN</option>
+                                        <option value="SURINAME">SURINAME</option>
+                                        <option value="SVALBARD AND JAN MAYEN">SVALBARD AND JAN MAYEN</option>
+                                        <option value="SWAZILAND">SWAZILAND</option>
+                                        <option value="SWEDEN">SWEDEN</option>
+                                        <option value="SWITZERLAND">SWITZERLAND</option>
+                                        <option value="SYRIAN ARAB REPUBLIC">SYRIAN ARAB REPUBLIC</option>
+                                        <option value="TAIWAN">TAIWAN</option>
+                                        <option value="TAJIKISTAN">TAJIKISTAN</option>
+                                        <option value="TANZANIA, UNITED REPUBLIC OF">TANZANIA, UNITED REPUBLIC OF</option>
+                                        <option value="THAILAND">THAILAND</option>
+                                        <option value="TOGO">TOGO</option>
+                                        <option value="TOKELAU">TOKELAU</option>
+                                        <option value="TONGA">TONGA</option>
+                                        <option value="TRINIDAD AND TOBAGO">TRINIDAD AND TOBAGO</option>
+                                        <option value="TUNISIA">TUNISIA</option>
+                                        <option value="TURKEY">TURKEY</option>
+                                        <option value="TURKMENISTAN">TURKMENISTAN</option>
+                                        <option value="TURKS AND CAICOS ISLANDS">TURKS AND CAICOS ISLANDS</option>
+                                        <option value="TUVALU">TUVALU</option>
+                                        <option value="UGANDA">UGANDA</option>
+                                        <option value="UKRAINE">UKRAINE</option>
+                                        <option value="UNITED ARAB EMIRATES">UNITED ARAB EMIRATES</option>
+                                        <option value="UNITED KINGDOM">UNITED KINGDOM</option>
+                                        <option value="UNITED STATES MINOR OUTLYING ISLANDS">UNITED STATES MINOR OUTLYING ISLANDS</option>
+                                        <option value="URUGUAY">URUGUAY</option>
+                                        <option value="UZBEKISTAN">UZBEKISTAN</option>
+                                        <option value="VANUATU">VANUATU</option>
+                                        <option value="VENEZUELA">VENEZUELA</option>
+                                        <option value="VIET NAM">VIET NAM</option>
+                                        <option value="VIRGIN ISLANDS, BRITISH">VIRGIN ISLANDS, BRITISH</option>
+                                        <option value="VIRGIN ISLANDS, U.S.">VIRGIN ISLANDS, U.S.</option>
+                                        <option value="WALLIS AND FUTUNA">WALLIS AND FUTUNA</option>
+                                        <option value="WESTERN SAHARA">WESTERN SAHARA</option>
+                                        <option value="YEMEN<">YEMEN</option>
+                                        <option value="YUGOSLAVIA">YUGOSLAVIA</option>
+                                        <option value="ZAMBIA">ZAMBIA</option>
+                                        <option value="ZIMBABWE">ZIMBABWE</option>
+                                        <option value="UNKNOWN">UNKNOWN</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset aria-labelledby="proprietorinfo" id="none-individual-partner-entity3" style="display: none;">
+                            <div class="row">
+                                <div class="form-group form-group-md col-xs-6">
+                                    <label for="ownername"><b style="color: red">&#42;</b>Owner Name</label>
+                                    <input id="partner-owner-name3" type="text"  class="form-control rounded-borders"   th:field="*{partner_name3}"  >
+                                </div>
+
+
+                                <div class="form-group form-group-md col-xs-6">
+                                    <label><b style="color: red">&#42;</b>State where legally organized</label>
+                                    <select  id="partner-owner-name-state3"  class="form-control" name="State"   th:field="*{partner_state_org3}" >
+                                        <option  value="">Select</option>
+                                        <option  value="Alabama">Alabama</option>
+                                        <option  value="Alaska">Alaska</option>
+                                        <option value="Arizona">Arizona</option>
+                                        <option value="Arkansas">Arkansas</option>
+                                        <option value="California">California</option>
+                                        <option value="Colorado">Colorado</option>
+                                        <option value="Connecticut">Connecticut</option>
+                                        <option value="Delaware">Delaware</option>
+                                        <option value="District of Columbia">District of Columbia</option>
+                                        <option value="Florida">Florida</option>
+                                        <option value="Georgia">Georgia</option>
+                                        <option value="Hawaii">Hawaii</option>
+                                        <option value="Idaho">Idaho</option>
+                                        <option value="Illinois">Illinois</option>
+                                        <option value="Indiana">Indiana</option>
+                                        <option value="Iowa">Iowa</option>
+                                        <option value="Kansas">Kansas</option>
+                                        <option value="Kentucky">Kentucky</option>
+                                        <option value="Louisiana">Louisiana</option>
+                                        <option value="Maine">Maine</option>
+                                        <option value="Maryland">Maryland</option>
+                                        <option value="Massachusetts">Massachusetts</option>
+                                        <option value="Michigan">Michigan</option>
+                                        <option value="Minnesota">Minnesota</option>
+                                        <option value="Mississippi">Mississippi</option>
+                                        <option value="Missouri">Missouri</option>
+                                        <option value="Montana">Montana</option>
+                                        <option value="Nebraska">Nebraska</option>
+                                        <option value="Nevada">Nevada</option>
+                                        <option value="New Hampshire">New Hampshire</option>
+                                        <option value="New Jersey">New Jersey</option>
+                                        <option value="New Mexico">New Mexico</option>
+                                        <option value="New York">New York</option>
+                                        <option value="North Carolina">North Carolina</option>
+                                        <option value="North Dakota">North Dakota</option>
+                                        <option value="Ohio">Ohio</option>
+                                        <option value="Oklahoma">Oklahoma</option>
+                                        <option value="Oregon">Oregon</option>
+                                        <option value="Pennsylvania">Pennsylvania</option>
+                                        <option value="Rhode Island">Rhode Island</option>
+                                        <option value="South Carolina">South Carolina</option>
+                                        <option value="South Dakota">South Dakota</option>
+                                        <option value="Tennessee">Tennessee</option>
+                                        <option value="Texas">Texas</option>
+                                        <option value="Utah">Utah</option>
+                                        <option value="Vermont">Vermont</option>
+                                        <option value="Virginia">Virginia</option>
+                                        <option value="Washington">Washington</option>
+                                        <option value="West Virginia">West Virginia</option>
+                                        <option value="Wisconsin">Wisconsin</option>
+                                        <option value="Wyoming">Wyoming</option>
+
+                                    </select>
+                                </div>
+
+                                <div class="form-group form-group-md col-xs-6">
+                                    <label><b style="color: red">&#42;</b>Type</label>
+                                    <span>
+                                        <select  id="partner-owner-name-type3" class="form-control partner-owner-name-type" name="nameType"   th:field="*{partner_alt_type3}"  >
+                                                <option value="">Select</option>
+                                                <option value="Doing Business As(DBA)">Doing Business As(DBA)</option>
+                                                <option value="Trading As(TA)">Trading As(TA)</option>
+                                                <option value="Also Known As(AKA)">Also Known As(AKA)</option>
+                                                <option value="Formerly">Formerly</option>
+
+                                        </select>
+                                    </span>
+                                </div>
+
+                                <div class="form-group form-group-md col-xs-6" id="partner-add-Name-value3" style="display: none;">
+                                    <label for="nameoftype">Name</label>
+                                    <input type="text" class="form-control" id="partner-add-name3" name="nameoftype"  ><!--needs th:attribute-->
+                                </div>
+
+
+
+
+
+                            </div>
+                        </fieldset>
+                    </div> <!-- end of arrary dto object -->
+                    <div class="appendpartner col-xs-12"></div>
+                    <div class="row" id="hideshow_addpartner">
+
+                        <div class="col-xs-12 form-group form-group-md" aria-label="add a partner">
+                            <div class="inlinebuttons btn-group btn-group-justified">
+                                <div class="btn-group col-xs-6">
+                                    <button type="button" class="btn btn-sm btn-success addPartnerNewOwner" id="addpartner">Add Partner</button>
+                                </div>
+                            </div>
+                        </div><!--// add button-->
+                    </div><!--// hide / show add partner-->
 
                     <!--END Sole Proprietor Information Form-->
                     <!--START Owner Address Information Form-->
@@ -941,6 +1725,8 @@
             $('.content').fadeIn(500);
         }, 500);
 
+        var activePartners = 1;
+
         ///////////////////////////////////////////////////////////////////////////////
         // initialize hover text on Owner Name Information
         ///////////////////////////////////////////////////////////////////////////////
@@ -1078,6 +1864,9 @@
 
 
 
+        $('#additional-name-type').change(function () {
+            $('#additionalNameValue').show(500);
+        });
 
 
         // load partner div
@@ -1188,11 +1977,206 @@
         });
 
 
-        $('#additional-name-type').change(function () {
-            $('#additionalNameValue').show(500);
+        $('.addPartnerNewOwner').click(function () {
+            activePartners++;
+            if(activePartners == 2){
+                $('#partnerEntitydynamicFormArea2').show('fast');
+
+            }
+
+
+            if(activePartners == 3){
+
+                if($('#partnerEntitydynamicFormArea3').is(':visible')){
+                    $('#partnerEntitydynamicFormArea2').show('fast');
+                }
+                else {
+                    $('#partnerEntitydynamicFormArea3').show('fast');
+                }
+
+
+
+            }
+
+
+
+        });
+
+        $('.removePartner').click(function () {
+            activePartners--;
+            $(this).parent().next().next().next().hide('fast');
+            $(this).parent().next().next().next().next().hide('fast');
+            $(this).parent().parent().hide('fast');
+
+        });
+
+        // reveal toggle for partner 2
+
+        $('#domestic-entity-dropdown-partner2').change( function () {
+
+
+            var subtype_val = this.value;
+            if(subtype_val == "none"){
+                //fade out every thing
+
+            }
+            if(subtype_val == "Individual"){
+
+                $('#none-individual-partner-entity2').fadeOut(1000);
+                $('#individual-partner-entity2').fadeIn(1000);
+
+
+            }
+            if(subtype_val == "Sole Proprietorship") {
+                $('#none-individual-partner-entity2').fadeOut(1000);
+
+                $('#individual-partner-entity2').fadeIn(1000);  // same owner entity fields as individual
+
+            }
+
+            if(subtype_val == "Limited Liability Company"){
+
+                $('#individual-partner-entity2').fadeOut(1000);  // same owner entity fields as individual
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity2').fadeIn(1000);
+                }, 1000);
+
+
+            }
+            if(subtype_val == "Partnership"){
+                $('#individual-partner-entity2').fadeOut(1000);  // same owner entity fields as individual
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity2').fadeIn(1000);
+                }, 1000);
+
+            }
+
+            if(subtype_val == "Joint Venture"){
+                $('#individual-partner-entity2').fadeOut(1000);  // same owner entity fields as individual
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity2').fadeIn(1000);
+                }, 1000);
+
+            }
+
+            if(subtype_val == "Trust"){
+
+                $('#individual-partner-entity2').fadeOut(1000);  // same owner entity fields as individual
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity2').fadeIn(1000);
+                }, 1000);
+
+            }
+
+            if(subtype_val == "Estate"){
+
+                $('#individual-partner-entity2').fadeOut(1000);  // same owner entity fields as individual
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity2').fadeIn(1000);
+                }, 1000);
+
+            }
+
+
+
+
+
+            //saveProjectInfo("set-Owner-entity-types", "US"+"+"+subtype_val, appInternalID); // static from radio buttton
         });
 
 
+
+        // reveal toggle for partner 3
+
+
+        $('#domestic-entity-dropdown-partner3').change( function () {
+
+
+            var subtype_val = this.value;
+            if(subtype_val == "none"){
+                //fade out every thing
+
+            }
+            if(subtype_val == "Individual"){
+
+                $('#none-individual-partner-entity3').hide(500);
+                $('#individual-partner-entity3').show(500);
+
+
+            }
+            if(subtype_val == "Sole Proprietorship") {
+                $('#none-individual-partner-entity3').hide(500);
+
+                $('#individual-partner-entity3').show(500);  // same owner entity fields as individual
+
+            }
+
+            if(subtype_val == "Limited Liability Company"){
+
+                $('#individual-partner-entity3').hide(500);  // same owner entity fields as individual
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity3').show(500);
+                }, 1000);
+
+
+            }
+            if(subtype_val == "Partnership"){
+                $('#individual-partner-entity3').hide(500);  // same owner entity fields as individual
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity3').show(500);
+                }, 1000);
+
+            }
+
+            if(subtype_val == "Joint Venture"){
+                $('#individual-partner-entity3').hide(500);  // same owner entity fields as individual
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity3').show(500);
+                }, 1000);
+
+            }
+
+            if(subtype_val == "Trust"){
+
+                $('#individual-partner-entity3').hide(500);  // same owner entity fields as individual
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity3').show(500);
+                }, 1000);
+
+            }
+
+            if(subtype_val == "Estate"){
+
+                $('#individual-partner-entity3').hide(500);  // same owner entity fields as individual
+                setTimeout(function() {
+                    // after 1000 ms we add the class animated to the login/register card
+                    $('#none-individual-partner-entity3').show(500);
+                }, 1000);
+
+            }
+
+
+
+
+
+            //saveProjectInfo("set-Owner-entity-types", "US"+"+"+subtype_val, appInternalID); // static from radio buttton
+        });
+
+
+        $('.partner-owner-name-type').change(function () {
+
+            $(this).parent().parent().next().show(500);
+
+        });
 
 
 
@@ -1201,7 +2185,6 @@
         // set links for traversal buttons
         ////////////////////////////////////////////////////
         //alert(window.location.href);
-
 
     });
 
@@ -1230,37 +2213,55 @@
     }
 
 
-
     function fadeOutPartnerInfo(){
 
-        $('#individual-partner-entity').fadeOut(1000);
-        $('#none-individual-partner-entity').fadeOut(1000);
+        $('#individual-partner-entity').hide(500);
+        $('#none-individual-partner-entity').hide(500);
     }
 
 
     function disableNoneIndiviualRequiredfields(){
-        $('#owner-name').prop("required", false);
+        $('#partner-owner-name').prop("required", false);
+        $('#partner-owner-name').val("");
 
-        $('#owner-type').prop("required", false);
-        $('#owner-state').prop("required", false);
+        $('#partner-owner-name-type').prop("required", false);
+        $('#partner-owner-name-type').val("");
+
+
+        $('#partner-owner-name-state').prop("required", false);
+        $('#partner-owner-name-state').val("");
     }
 
     function enableNoneIndiviualRequiredfields(){
-        $('#owner-name').prop("required", true);
+        $('#partner-owner-name').prop("required", true);
+        $('#partner-owner-name').val("");
 
-        $('#owner-type').prop("required", true);
-        $('#owner-state').prop("required", true);
+        $('#partner-owner-name-type').prop("required", true);
+        $('#partner-owner-name-type').val("");
+        $('#partner-owner-name-state').prop("required", true);
+        $('#partner-owner-name-state').val("");
+
+
     }
 
 
     function disableIndiviualRequiredfields(){
         $('#partner-first-name').prop("required", false);
+        $('#partner-first-name').val("");
         $('#partner-last-name').prop("required", false);
+        $('#partner-last-name').val("");
+        $('#partner-citizenship').prop("required", false);
+        $('#partner-citizenship').val("");
     }
 
     function enableIndiviualRequiredfields() {
         $('#partner-first-name').prop("required", true);
+        $('#partner-first-name').val("");
         $('#partner-last-name').prop("required", true);
+        $('#partner-last-name').val("");
+
+        $('#partner-citizenship').prop("required", true);
+        $('#partner-citizenship').val("");
     }
 
 
