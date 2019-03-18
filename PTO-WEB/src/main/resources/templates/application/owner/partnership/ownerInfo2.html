@@ -34,7 +34,7 @@
                 <form method="post" id="addNewOwnerForm" action="/owner/add"  onsubmit="return validateOwnerForm();" th:object="${addNewOwnerContactFormDTO}" aria-labelledby="ownerinfo">
                     <fieldset aria-labelledby="ownerinfo">
                         <div class="row">
-                            <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-4">
+                            <div class="form-group form-group-md col-xs-6">
                                 <label for="ownername"><span class="weight600">&#42;</span>Owner Name</label>
                                 <input type="text" class="form-control"  id="ownername" th:field="*{ownerName}" required>
                             </div>
@@ -403,22 +403,9 @@
 
                     <fieldset aria-labelledby="proprietorinfo" id="none-individual-partner-entity" style="display: none;">
                         <div class="row">
-                            <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
+                            <div class="form-group form-group-md col-xs-6">
                                 <label for="ownername"><b style="color: red">&#42;</b>Owner Name</label>
                                 <input id="partner-owner-name" type="text" th:field="*{partnerDTOs[__${itemStat.index}__].partnerName}"  class="form-control rounded-borders"   required>
-                            </div>
-                            <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
-                            <label><b style="color: red">&#42;</b>Type</label>
-                            <span>
-                                    <select  id="partner-owner-name-type" class="form-control" name="nameType" th:field="*{partnerDTOs[__${itemStat.index}__].type}"  >
-                                        <option value="">Select</option>
-                                        <option value="DBA">Doing Business As(DBA)</option>
-                                        <option value="TA">Trading As(TA)</option>
-                                        <option value="AKA">Also Known As(AKA)</option>
-                                        <option value="F">Formerly</option>
-
-                                    </select>
-                                </span>
                             </div>
 
 
@@ -480,6 +467,27 @@
 
                                 </select>
                             </div>
+
+                            <div class="form-group form-group-md col-xs-6">
+                                <label><b style="color: red">&#42;</b>Type</label>
+                                <span>
+                                    <select  id="partner-owner-name-type" class="form-control partner-owner-name-type" name="nameType" th:field="*{partnerDTOs[__${itemStat.index}__].type}"  >
+                                        <option value="">Select</option>
+                                        <option value="DBA">Doing Business As(DBA)</option>
+                                        <option value="TA">Trading As(TA)</option>
+                                        <option value="AKA">Also Known As(AKA)</option>
+                                        <option value="F">Formerly</option>
+
+                                    </select>
+                                </span>
+                            </div>
+
+                            <div class="form-group form-group-md col-xs-6" id="partner-add-Name-value" style="display: none;">
+                                <label for="nameoftype">Name</label>
+                                <input type="text" class="form-control" id="partner-add-name" name="nameoftype"  ><!--needs th:attribute-->
+                            </div>
+
+
 
                         </div>
                     </fieldset>
@@ -778,25 +786,10 @@
 
                         <fieldset aria-labelledby="proprietorinfo" id="none-individual-partner-entity2" style="display: none;">
                             <div class="row">
-                                <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
+                                <div class="form-group form-group-md col-xs-6">
                                     <label for="ownername"><b style="color: red">&#42;</b>Owner Name</label>
                                     <input id="partner-owner-name2" type="text"  class="form-control rounded-borders"  th:field="*{partner_name2}"  >
                                 </div>
-                                <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
-                                    <label><b style="color: red">&#42;</b>Type</label>
-                                    <span>
-                                    <select  id="partner-owner-name-type2" class="form-control" name="nameType"   th:field="*{partner_alt_type2}" >
-                                        <option value="">Select</option>
-                                        <option value="DBA">Doing Business As(DBA)</option>
-                                        <option value="TA">Trading As(TA)</option>
-                                        <option value="AKA">Also Known As(AKA)</option>
-                                        <option value="F">Formerly</option>
-
-                                    </select>
-                                </span>
-                                </div>
-
-
                                 <div class="form-group form-group-md col-xs-6">
                                     <label><b style="color: red">&#42;</b>State where legally organized</label>
                                     <select  id="partner-owner-name-state2"  class="form-control" name="State"  th:field="*{partner_state_org2}"  >
@@ -855,6 +848,30 @@
 
                                     </select>
                                 </div>
+
+
+
+                                <div class="form-group form-group-md col-xs-6">
+                                    <label><b style="color: red">&#42;</b>Type</label>
+                                    <span>
+                                        <select  id="partner-owner-name-type2" class="form-control partner-owner-name-type" name="nameType"   th:field="*{partner_alt_type2}" >
+                                            <option value="">Select</option>
+                                            <option value="DBA">Doing Business As(DBA)</option>
+                                            <option value="TA">Trading As(TA)</option>
+                                            <option value="AKA">Also Known As(AKA)</option>
+                                            <option value="F">Formerly</option>
+
+                                        </select>
+                                     </span>
+                                </div>
+                                <div class="form-group form-group-md col-xs-6" id="partner-add-Name-value2" style="display: none;">
+                                    <label for="nameoftype">Name</label>
+                                    <input type="text" class="form-control" id="partner-add-name2" name="nameoftype"  ><!--needs th:attribute-->
+                                </div>
+
+
+
+
 
                             </div>
                         </fieldset>
@@ -1149,22 +1166,9 @@
 
                         <fieldset aria-labelledby="proprietorinfo" id="none-individual-partner-entity3" style="display: none;">
                             <div class="row">
-                                <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
+                                <div class="form-group form-group-md col-xs-6">
                                     <label for="ownername"><b style="color: red">&#42;</b>Owner Name</label>
-                                    <input id="partner-owner-name3" type="text"  class="form-control rounded-borders"   th:field="*{partner_name3}"   >
-                                </div>
-                                <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
-                                    <label><b style="color: red">&#42;</b>Type</label>
-                                    <span>
-                                    <select  id="partner-owner-name-type3" class="form-control" name="nameType"   th:field="*{partner_alt_type3}"  >
-                                        <option value="">Select</option>
-                                        <option value="DBA">Doing Business As(DBA)</option>
-                                        <option value="TA">Trading As(TA)</option>
-                                        <option value="AKA">Also Known As(AKA)</option>
-                                        <option value="F">Formerly</option>
-
-                                    </select>
-                                </span>
+                                    <input id="partner-owner-name3" type="text"  class="form-control rounded-borders"   th:field="*{partner_name3}"  >
                                 </div>
 
 
@@ -1226,6 +1230,29 @@
 
                                     </select>
                                 </div>
+
+                                <div class="form-group form-group-md col-xs-6">
+                                    <label><b style="color: red">&#42;</b>Type</label>
+                                    <span>
+                                        <select  id="partner-owner-name-type3" class="form-control partner-owner-name-type" name="nameType"   th:field="*{partner_alt_type3}"  >
+                                            <option value="">Select</option>
+                                            <option value="DBA">Doing Business As(DBA)</option>
+                                            <option value="TA">Trading As(TA)</option>
+                                            <option value="AKA">Also Known As(AKA)</option>
+                                            <option value="F">Formerly</option>
+
+                                        </select>
+                                    </span>
+                                </div>
+
+                                <div class="form-group form-group-md col-xs-6" id="partner-add-Name-value3" style="display: none;">
+                                    <label for="nameoftype">Name</label>
+                                    <input type="text" class="form-control" id="partner-add-name3" name="nameoftype"  ><!--needs th:attribute-->
+                                </div>
+
+
+
+
 
                             </div>
                         </fieldset>
@@ -2031,62 +2058,62 @@
             }
             if(subtype_val == "Individual"){
 
-                $('#none-individual-partner-entity3').fadeOut(1000);
-                $('#individual-partner-entity3').fadeIn(1000);
+                $('#none-individual-partner-entity3').hide(500);
+                $('#individual-partner-entity3').show(500);
 
 
             }
             if(subtype_val == "Sole Proprietorship") {
-                $('#none-individual-partner-entity3').fadeOut(1000);
+                $('#none-individual-partner-entity3').hide(500);
 
-                $('#individual-partner-entity3').fadeIn(1000);  // same owner entity fields as individual
+                $('#individual-partner-entity3').show(500);  // same owner entity fields as individual
 
             }
 
             if(subtype_val == "Limited Liability Company"){
 
-                $('#individual-partner-entity3').fadeOut(1000);  // same owner entity fields as individual
+                $('#individual-partner-entity3').hide(500);  // same owner entity fields as individual
                 setTimeout(function() {
                     // after 1000 ms we add the class animated to the login/register card
-                    $('#none-individual-partner-entity3').fadeIn(1000);
+                    $('#none-individual-partner-entity3').show(500);
                 }, 1000);
 
 
             }
             if(subtype_val == "Partnership"){
-                $('#individual-partner-entity3').fadeOut(1000);  // same owner entity fields as individual
+                $('#individual-partner-entity3').hide(500);  // same owner entity fields as individual
                 setTimeout(function() {
                     // after 1000 ms we add the class animated to the login/register card
-                    $('#none-individual-partner-entity3').fadeIn(1000);
+                    $('#none-individual-partner-entity3').show(500);
                 }, 1000);
 
             }
 
             if(subtype_val == "Joint Venture"){
-                $('#individual-partner-entity3').fadeOut(1000);  // same owner entity fields as individual
+                $('#individual-partner-entity3').hide(500);  // same owner entity fields as individual
                 setTimeout(function() {
                     // after 1000 ms we add the class animated to the login/register card
-                    $('#none-individual-partner-entity3').fadeIn(1000);
+                    $('#none-individual-partner-entity3').show(500);
                 }, 1000);
 
             }
 
             if(subtype_val == "Trust"){
 
-                $('#individual-partner-entity3').fadeOut(1000);  // same owner entity fields as individual
+                $('#individual-partner-entity3').hide(500);  // same owner entity fields as individual
                 setTimeout(function() {
                     // after 1000 ms we add the class animated to the login/register card
-                    $('#none-individual-partner-entity3').fadeIn(1000);
+                    $('#none-individual-partner-entity3').show(500);
                 }, 1000);
 
             }
 
             if(subtype_val == "Estate"){
 
-                $('#individual-partner-entity3').fadeOut(1000);  // same owner entity fields as individual
+                $('#individual-partner-entity3').hide(500);  // same owner entity fields as individual
                 setTimeout(function() {
                     // after 1000 ms we add the class animated to the login/register card
-                    $('#none-individual-partner-entity3').fadeIn(1000);
+                    $('#none-individual-partner-entity3').show(500);
                 }, 1000);
 
             }
@@ -2099,7 +2126,11 @@
         });
 
 
+     $('.partner-owner-name-type').change(function () {
 
+            $(this).parent().parent().next().show(500);
+
+        });
 
 
 
@@ -2139,8 +2170,8 @@
 
     function fadeOutPartnerInfo(){
 
-        $('#individual-partner-entity').fadeOut(1000);
-        $('#none-individual-partner-entity').fadeOut(1000);
+        $('#individual-partner-entity').hide(500);
+        $('#none-individual-partner-entity').hide(500);
     }
 
 
