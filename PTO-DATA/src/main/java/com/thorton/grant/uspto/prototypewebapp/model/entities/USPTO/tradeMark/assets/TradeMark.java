@@ -3,6 +3,7 @@ package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.a
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.base.BaseEntity;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -45,7 +46,11 @@ public class TradeMark extends BaseEntity {
 
 
     // color claim fields
+    @Nullable
     private boolean markColorClaim;
+    private boolean markColorClaimSet;
+
+
     private String markColors;
     private String markColorDescription;
 
@@ -736,6 +741,15 @@ public class TradeMark extends BaseEntity {
     public void setNPSLivingPersonSet(boolean NPSLivingPersonSet) {
         this.NPSLivingPersonSet = NPSLivingPersonSet;
     }
+
+    public boolean isMarkColorClaimSet() {
+        return markColorClaimSet;
+    }
+
+    public void setMarkColorClaimSet(boolean markColorClaimSet) {
+        this.markColorClaimSet = markColorClaimSet;
+    }
+
 
     @Override
     public boolean equals(Object o) {

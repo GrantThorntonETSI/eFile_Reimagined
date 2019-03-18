@@ -112,7 +112,7 @@
 
                     <fieldset>
                         <div class="form-group form-group-md col-xs-12">
-                            <p class="required weight600" aria-level="3">Mark Literal</p>
+                            <p class="required weight600" aria-level="3">Mark Literal<span class="label label-info subtle visuallyremoved">Reduced Fee</span></p>
                             <label for="mark-literal">Enter the words, letters and numbers appearing in the mark. <a href="#" data-toggle="tooltip" title="Any entry in this field that is not found in the mark image will not be considered part of the mark." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
                             <textarea id="mark-literal" rows="3" class="form-control" th:text="${baseTrademarkApplication.tradeMark.markLiteral}"></textarea>
                             <div class="row">
@@ -1142,6 +1142,10 @@
 
     var colorClaim = /*[[${markColorClaim}]]*/ 'User Name';
 
+    alert(colorClaim);
+
+
+
     var acceptBW = /*[[${markColorClaimBW}]]*/ 'User Name';
 
     var translationFW = /*[[${translationFW}]]*/ 'User Name';
@@ -1252,7 +1256,11 @@
         // set mark image based on persisted values
         //////////////////////////////////////////////////////////////////////
         if(colorClaim == null){
+
+            alert("111111111");
             if(image_path != null){
+
+                alert("!!!!!");
                 $('[data-toggle="popover"]').popover({
                     title : false,
                     html : true,
