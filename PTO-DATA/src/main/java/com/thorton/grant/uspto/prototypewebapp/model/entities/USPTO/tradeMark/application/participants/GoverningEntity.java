@@ -12,7 +12,10 @@ public class GoverningEntity {
     private Long id;
 
     private String entityName;
-    private String entityType;
+    private String entityAlternateNameType;
+
+    private String entityAlternateName;
+
 
     private String firstName;
 
@@ -51,12 +54,12 @@ public class GoverningEntity {
         this.entityName = entityName;
     }
 
-    public String getEntityType() {
-        return entityType;
+    public String getEntityAlternateNameType() {
+        return entityAlternateNameType;
     }
 
-    public void setEntityType(String entityType) {
-        this.entityType = entityType;
+    public void setEntityAlternateNameType(String entityAlternateNameType) {
+        this.entityAlternateNameType = entityAlternateNameType;
     }
 
     public String getFirstName() {
@@ -154,5 +157,14 @@ public class GoverningEntity {
 
     public void setPrimaryGoverningEntity(boolean primaryGoverningEntity) {
         this.primaryGoverningEntity = primaryGoverningEntity;
+    }
+
+
+    public String getEntityAlternateName() {
+        return entityAlternateName;
+    }
+
+    public void setEntityAlternateName(String entityAlternateName) {
+        this.entityAlternateName = entityAlternateName;
     }
 }

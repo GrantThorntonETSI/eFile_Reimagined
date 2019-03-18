@@ -484,7 +484,7 @@
 
                             <div class="form-group form-group-md col-xs-6" id="partner-add-Name-value" style="display: none;">
                                 <label for="nameoftype">Name</label>
-                                <input type="text" class="form-control" id="partner-add-name" name="nameoftype"  ><!--needs th:attribute-->
+                                <input type="text" class="form-control" id="partner-add-name" name="nameoftype"  th:field="*{partnerDTOs[__${itemStat.index}__].alternateName}"><!--needs th:attribute-->
                             </div>
 
 
@@ -1610,7 +1610,7 @@
                             <th:block th:if="${baseTrademarkApplication.isAttorneyFiling() == true}">
                                 <div class="form-group form-group-md col-xs-12 col-md-6">
                                     <label for="ownerEmail">Email Address <a href="#" data-toggle="tooltip" title="The USPTO will use this email address to send correspondence regarding this application or registration. It is critical to ensure this email address is current." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
-                                    <input type="text" class="form-control" id="ownerEmail" th:field="*{ownerEmail}" >
+                                    <input type="text" class="form-control" id="ownerEmail" th:field="*{ownerEmail}"  >
                                 </div>
 
                             </th:block>

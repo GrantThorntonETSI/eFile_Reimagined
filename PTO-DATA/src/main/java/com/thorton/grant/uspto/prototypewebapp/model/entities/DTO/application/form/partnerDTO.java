@@ -12,6 +12,10 @@ public class partnerDTO {
     private String state;
 
     private String type;
+
+    private String alternateName;
+
+
     private String suffix;
 
     private String citizenShip;
@@ -78,5 +82,13 @@ public class partnerDTO {
 
     public void setSuffix(String suffix) {
         this.suffix = suffix;
+    }
+
+    public String getAlternateName() {
+        return alternateName;
+    }
+
+    public void setAlternateName(String alternateName) {
+        this.alternateName = alternateName;
     }
 }

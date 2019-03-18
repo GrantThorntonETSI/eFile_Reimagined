@@ -621,8 +621,12 @@ public class ApplicationObjectCreationController {
                 governingEntity.setOrganizationState(partner.getState());
             }
             if(partner.getType() != ""){
-                governingEntity.setEntityType(partner.getType());
+                governingEntity.setEntityAlternateNameType(partner.getType());
             }
+            if(partner.getAlternateName() != ""){
+                governingEntity.setEntityAlternateName(partner.getAlternateName());
+            }
+
 
             owner.addGoverningEnity(governingEntity);
             // }
@@ -649,6 +653,8 @@ public class ApplicationObjectCreationController {
                 GoverningEntity governingEntity = new GoverningEntity();
                 governingEntity.setEntityName(newOwnerContactFormDTO.getPartner_name2());
                 governingEntity.setOrganizationState(newOwnerContactFormDTO.getPartner_state_org2());
+                governingEntity.setEntityAlternateNameType(newOwnerContactFormDTO.getPartner_alt_type2());
+                governingEntity.setEntityAlternateName(newOwnerContactFormDTO.getPartner_alt_name2());
                 governingEntity.setPersonEntity(false);
 
                 owner.addGoverningEnity(governingEntity);
@@ -676,6 +682,8 @@ public class ApplicationObjectCreationController {
                 GoverningEntity governingEntity = new GoverningEntity();
                 governingEntity.setEntityName(newOwnerContactFormDTO.getPartner_name3());
                 governingEntity.setOrganizationState(newOwnerContactFormDTO.getPartner_state_org3());
+                governingEntity.setEntityAlternateNameType(newOwnerContactFormDTO.getPartner_alt_type3());
+                governingEntity.setEntityAlternateName(newOwnerContactFormDTO.getPartner_alt_name3());
                 governingEntity.setPersonEntity(false);
 
                 owner.addGoverningEnity(governingEntity);

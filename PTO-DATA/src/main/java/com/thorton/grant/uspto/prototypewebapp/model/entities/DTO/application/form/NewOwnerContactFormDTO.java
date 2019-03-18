@@ -75,6 +75,9 @@ public class NewOwnerContactFormDTO {
     private String partner_suffix2;
     private String partner_citizen2;
 
+
+
+
     private String partner_name2;
     private String partner_state_org2;
     private String partner_alt_name2;
