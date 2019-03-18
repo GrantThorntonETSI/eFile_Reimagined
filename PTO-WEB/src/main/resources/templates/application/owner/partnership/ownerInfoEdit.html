@@ -1478,7 +1478,43 @@
 
         // ge alternate name type auto save
 
+        $('#partnerEntitydynamicFormArea').on('change', 'select.partner-owner-name-type', function () {
+            var value = $(this).val();
+
+            var entityIndex = $(this).attr("entity-index");
+
+            if(entityIndex  == null){
+                entityIndex  = -1;
+            }
+            var userInput = $(this);
+
+            saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-partner-name-type",value, entityIndex, userInput);
+
+
+
+        });
+
         // ge alternate name value auto save
+        $('#partnerEntitydynamicFormArea').on('change', 'select.partner-alt-name', function () {
+            var value = $(this).val();
+
+            var entityIndex = $(this).attr("entity-index");
+
+            if(entityIndex  == null){
+                entityIndex  = -1;
+            }
+            var userInput = $(this);
+
+            saveOwnerGoverningEntityInfo(ownerEmail, "owner-estate-partner-name-value",value, entityIndex, userInput);
+
+
+
+        });
+
+
+
+
+
 
 
 

@@ -673,6 +673,59 @@ public class ContactsService extends  BaseRESTapiService {
 
         }
 
+
+        if(contact_field_name.equals("owner-estate-partner-name-type" )){
+
+            if(Integer.valueOf(entityID) == -1) { // adding new docket number
+
+
+                GoverningEntity governingEntity = new GoverningEntity();
+                governingEntity.setEntityAlternateNameType(contact_field_value);
+                governingEntity.setPersonEntity(false);
+                Owner owner = baseTrademarkApplication.findOwnerByEmail(contact_email);
+                owner.addGoverningEnity(governingEntity);
+
+
+                returnIndex =  owner.getGoverningEntities().size()-1;
+
+
+
+            }
+            else{
+                GoverningEntity governingEntity = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().get(Integer.valueOf(entityID));
+                governingEntity.setEntityAlternateNameType(contact_field_value);
+                returnIndex = Integer.valueOf(entityID);
+            }
+
+        }
+
+        if(contact_field_name.equals("owner-estate-partner-name-value" )){
+
+            if(Integer.valueOf(entityID) == -1) { // adding new docket number
+
+
+                GoverningEntity governingEntity = new GoverningEntity();
+                governingEntity.setEntityAlternateName(contact_field_value);
+                governingEntity.setPersonEntity(false);
+                Owner owner = baseTrademarkApplication.findOwnerByEmail(contact_email);
+                owner.addGoverningEnity(governingEntity);
+
+
+                returnIndex =  owner.getGoverningEntities().size()-1;
+
+
+
+            }
+            else{
+                GoverningEntity governingEntity = baseTrademarkApplication.findOwnerByEmail(contact_email).getGoverningEntities().get(Integer.valueOf(entityID));
+                governingEntity.setEntityAlternateName(contact_field_value);
+                returnIndex = Integer.valueOf(entityID);
+            }
+
+        }
+
+
+
         if(contact_field_name.equals("owner-estate-executor-first-name" )){
 
             if(Integer.valueOf(entityID) == -1) { // adding new docket number
