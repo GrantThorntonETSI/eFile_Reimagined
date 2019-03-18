@@ -161,10 +161,10 @@
                                 <div class="form-group form-group-md col-xs-6">
                                     <label for="additional-name-type">Additional Name</label>
                                     <select class="form-control" id="additional-name-type" th:field="${owner.ownerType}">
-                                        <option value="Select">Select</option>
-                                        <option value="DBA">Doing Business As (DBA)</option>
-                                        <option value="TA">Trading As (TA)</option>
-                                        <option value="AKA">Also Known As (AKA)</option>
+                                        <option value="">Select</option>
+                                        <option value="Doing Business As(DBA)">Doing Business As(DBA)</option>
+                                        <option value="Trading As(TA)">Trading As(TA)</option>
+                                        <option value="Also Known As(AKA)">Also Known As(AKA)</option>
                                         <option value="Formerly">Formerly</option>
                                     </select>
                                 </div>
@@ -538,12 +538,13 @@
                                                         <div class="form-group form-group-md col-xs-6">
                                                             <label>Type</label>
                                                             <span>
-                                                                <select  class="form-control ge-name-type" name="nameType"   style="" th:value="${exceuter.getEntityAlternateNameType()}">
+                                                                <select  class="form-control ge-name-type" name="nameType"   style="" >
+                                                                    <option th:value="${exceuter.getEntityAlternateNameType()}" th:text="${exceuter.getEntityAlternateNameType()}" selected>Select</option>
                                                                     <option value="">Select</option>
-                                                                    <option value="DBA">Doing Business As(DBA)</option>
-                                                                    <option value="TA">Trading As(TA)</option>
-                                                                    <option value="AKA">Also Known As(AKA)</option>
-                                                                    <option value="F">Formerly</option>
+                                                                    <option value="Doing Business As(DBA)">Doing Business As(DBA)</option>
+                                                                    <option value="Trading As(TA)">Trading As(TA)</option>
+                                                                    <option value="Also Known As(AKA)">Also Known As(AKA)</option>
+                                                                    <option value="Formerly">Formerly</option>
 
                                                                 </select>
                                                             </span>
@@ -551,7 +552,7 @@
 
                                                     <div class="form-group form-group-md col-xs-6" style="">
                                                         <label for="nameoftype">Name</label>
-                                                        <input type="text" class="form-control partner-add-name"  name="nameoftype" th:value="${exceuter.getEntityAlternateName()}"   th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}"><!--needs th:attribute-->
+                                                        <input type="text" class="form-control partner-alt-name"  name="nameoftype" th:value="${exceuter.getEntityAlternateName()}"   th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}"><!--needs th:attribute-->
                                                     </div>
 
 
@@ -854,22 +855,9 @@
                                     </fieldset>
                                     <fieldset aria-labelledby="proprietorinfo" id="none-individual-partner-entity-new" style="display: none;">
                                         <div class="row">
-                                            <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
+                                            <div class="form-group form-group-md col-xs-6">
                                                 <label for="ownername">Owner name</label>
                                                 <input type="text" class="form-control rounded-borders ge-name"  required  value="">
-                                            </div>
-                                            <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
-                                                <label>Type</label>
-                                                <span>
-                                                        <select  class="form-control ge-name-type" >
-                                                            <option value="">Select</option>
-                                                            <option value="DBA">Doing Business As(DBA)</option>
-                                                            <option value="TA">Trading As(TA)</option>
-                                                            <option value="AKA">Also Known As(AKA)</option>
-                                                            <option value="F">Formerly</option>
-
-                                                        </select>
-                                                </span>
                                             </div>
                                             <div class="form-group form-group-md col-xs-6">
                                                 <label>State where legally organized</label>
@@ -928,6 +916,23 @@
                                                     <option value="Wyoming">Wyoming</option>
                                                 </select>
                                             </div>
+                                            <div class="form-group form-group-md col-xs-6">
+                                                <label>Type</label>
+                                                <span>
+                                                        <select  class="form-control ge-name-type" >
+                                                              <option value="">Select</option>
+                                                                    <option value="Doing Business As(DBA)">Doing Business As(DBA)</option>
+                                                                    <option value="Trading As(TA)">Trading As(TA)</option>
+                                                                    <option value="Also Known As(AKA)">Also Known As(AKA)</option>
+                                                                    <option value="Formerly">Formerly</option>
+                                                        </select>
+                                                </span>
+                                            </div>
+                                            <div class="form-group form-group-md col-xs-6" style="">
+                                                <label for="nameoftype">Name</label>
+                                                <input type="text" class="form-control partner-alt-name"  name="nameoftype" ><!--needs th:attribute-->
+                                            </div>
+
                                         </div>
                                     </fieldset>
                                 </div> <!-- end of arrary dto object -->
