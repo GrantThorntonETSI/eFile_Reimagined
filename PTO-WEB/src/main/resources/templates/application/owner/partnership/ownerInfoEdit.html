@@ -538,7 +538,7 @@
                                                         <div class="form-group form-group-md col-xs-6">
                                                             <label>Type</label>
                                                             <span>
-                                                                <select  class="form-control ge-name-type" name="nameType"   style="" >
+                                                                <select  class="form-control ge-name-type" name="nameType"   style="" th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}">
                                                                     <option th:value="${exceuter.getEntityAlternateNameType()}" th:text="${exceuter.getEntityAlternateNameType()}" selected>Select</option>
                                                                     <option value="">Select</option>
                                                                     <option value="Doing Business As(DBA)">Doing Business As(DBA)</option>
@@ -1475,6 +1475,13 @@
 
 
         });
+
+        // ge alternate name type auto save
+
+        // ge alternate name value auto save
+
+
+
 
 
 

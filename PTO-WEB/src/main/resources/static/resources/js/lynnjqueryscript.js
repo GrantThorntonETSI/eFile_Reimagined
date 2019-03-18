@@ -198,8 +198,7 @@ $(document).ready(function(){
 	//end close (x) gs + editowner + reviewattorney panels
 
 	//START set initial checkboxes
-	$('input[type=checkbox]').attr('checked',false);
-	$('input[type=radio]').attr('checked',false);
+
 	$('input[type=checkbox]#authemail, input[type=radio]#inlineRadio044').not(this).prop('checked', true);
 	$('input[type=radio]#inlineRadio031').prop('checked', true);
 	//if ($('input[type=checkbox]#authemail').prop('checked')) {
