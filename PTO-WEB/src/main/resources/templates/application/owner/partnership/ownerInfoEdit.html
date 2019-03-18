@@ -1478,7 +1478,7 @@
 
         // ge alternate name type auto save
 
-        $('#partnerEntitydynamicFormArea').on('change', 'select.partner-owner-name-type', function () {
+        $('#partnerEntitydynamicFormArea').on('change', 'select.ge-name-type', function () {
             var value = $(this).val();
 
             var entityIndex = $(this).attr("entity-index");
@@ -1495,7 +1495,7 @@
         });
 
         // ge alternate name value auto save
-        $('#partnerEntitydynamicFormArea').on('change', 'select.partner-alt-name', function () {
+        $('#partnerEntitydynamicFormArea').on('focusout', 'input.partner-alt-name', function () {
             var value = $(this).val();
 
             var entityIndex = $(this).attr("entity-index");
