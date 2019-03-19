@@ -97,11 +97,11 @@
                         <fieldset aria-labelledby="ownerinfo">
                             <div class="row">
                                 <div class="form-group form-group-md col-xs-6">
-                                    <label for="ownername">Owner Name</label>
+                                    <label for="ownername"><span class="weight600">&#42;</span>Owner Name</label>
                                     <input type="text" class="form-control"  id="ownername"  th:value="${owner.ownerDisplayname}">
                                 </div>
                                 <div class="form-group form-group-md col-xs-6">
-                                    <label for="stateoforg">State Where Legally Organized <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
+                                    <label for="stateoforg"><span class="weight600">&#42;</span>State Where Legally Organized <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
                                     <select class="form-control" id="stateoforg"  th:field="${owner.ownerOrganizationState}" >
                                         <option value="">Select</option>
                                         <option value="Select">Select</option>
@@ -201,7 +201,7 @@
 
                                     <th:block th:if="${exceuter.isPersonEntity() == true}">
                                         <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
-                                            <label >First Name</label>
+                                            <label><span class="weight600">&#42;</span>First Name</label>
                                             <input type="text"  name="firstName" class="form-control ge-first-name" th:value="${exceuter.firstName}"  th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}" >
                                         </div>
                                         <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
@@ -209,7 +209,7 @@
                                             <input type="text"  name="middleName" class="form-control ge-middle-name" th:value="${exceuter.middleName}"  th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}">
                                         </div>
                                         <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
-                                            <label >Last Name</label>
+                                            <label ><span class="weight600">&#42;</span>Last Name</label>
                                             <input  type="text"  name="lastName" class="form-control ge-last-name" th:value="${exceuter.lastName}"   th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}">
                                         </div>
                                         <div class="form-group form-group-md col-xs-6">
@@ -218,7 +218,7 @@
 
                                         </div>
                                         <div class="form-group form-group-md col-xs-6">
-                                            <label >Country of Citizenship</label>
+                                            <label > <span class="weight600">&#42;</span>Country of Citizenship</label>
                                             <select    class="form-control ge-citizenship" name="owner-citizenship"  th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}">
                                                 <option th:value="${exceuter.entityCitizenship}"  th:text="${exceuter.entityCitizenship}" selected  th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}"></option>
                                                 <option value="UNITED STATES OF AMERICA">UNITED STATES OF AMERICA</option>
@@ -467,12 +467,12 @@
 
                                     <th:block th:if="${exceuter.isPersonEntity() == false}">
                                         <div class="form-group form-group-md col-xs-6">
-                                            <label >Owner Name</label>
+                                            <label ><span class="weight600">&#42;</span>Owner Name</label>
                                             <input  type="text"   class="form-control rounded-borders ge-name"  style="" th:value="${exceuter.entityName}" th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}">
                                         </div>
 
                                         <div class="form-group form-group-md col-xs-6">
-                                            <label>State where legally organized</label>
+                                            <label><span class="weight600">&#42;</span>State where legally organized</label>
                                             <select     class="form-control ge-state" name="State" th:attr="entity-index=${iter.index}" >
                                                 <option  th:value="${exceuter.organizationState}"  th:text="${exceuter.organizationState}"  th:attr="entity-id=${exceuter.id}"selected></option>
                                                 <option  value="">Select</option>
@@ -584,7 +584,7 @@
                                     <fieldset aria-labelledby="proprietorinfo" id="individual-partner-entity-new" style="display: none;">
                                         <div class="row">
                                             <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
-                                                <label>First name</label>
+                                                <label><span class="weight600">&#42;</span>First name</label>
                                                 <input type="text"   class="form-control ge-first-name"  required value="">
                                             </div>
                                             <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
@@ -592,7 +592,7 @@
                                                 <input type="text" class="form-control ge-middle-name"  value="">
                                             </div>
                                             <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
-                                                <label >Last name</label>
+                                                <label ><span class="weight600">&#42;</span>Last name</label>
                                                 <input  type="text"  class="form-control ge-last-name"  required value="">
                                             </div>
                                             <div class="form-group form-group-md col-xs-6">
@@ -601,7 +601,7 @@
 
                                             </div>
                                             <div class="form-group form-group-md col-xs-6">
-                                                <label >Country of citizenship</label>
+                                                <label ><span class="weight600">&#42;</span>Country of citizenship</label>
                                                 <select class="form-control ge-citizenship"  required="">
                                                     <option value="">Select</option>
                                                     <option value="UNITED STATES OF AMERICA">United States of America</option>
@@ -851,11 +851,11 @@
                                     <fieldset aria-labelledby="proprietorinfo" id="none-individual-partner-entity-new" style="display: none;">
                                         <div class="row">
                                             <div class="form-group form-group-md col-xs-6">
-                                                <label for="ownername">Owner name</label>
+                                                <label for="ownername"><span class="weight600">&#42;</span>Owner name</label>
                                                 <input type="text" class="form-control rounded-borders ge-name"  required  value="">
                                             </div>
                                             <div class="form-group form-group-md col-xs-6">
-                                                <label>State where legally organized</label>
+                                                <label><span class="weight600">&#42;</span>State where legally organized</label>
                                                 <select  class="form-control ge-state">
                                                     <option value="">Select</option>
                                                     <option value="Alabama">Alabama</option>
@@ -958,7 +958,7 @@
                         <fieldset aria-labelledby="addressinfo">
                             <div class="row">
                                 <div class="form-group form-group-md col-md-12 col-lg-7">
-                                    <label for="OwnerAddressCountry">Country/US Territory</label>
+                                    <label for="OwnerAddressCountry"><span class="weight600">&#42;</span>Country/US Territory</label>
                                     <select class="form-control" id="OwnerAddressCountry" name="territory" th:field="${owner.country}" >
                                         <option value="">Select</option>
                                         <option value="UNITED STATES OF AMERICA">UNITED STATES OF AMERICA</option>
@@ -1204,7 +1204,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group form-group-md col-md-12 col-lg-8">
-                                    <label for="ownerAddress1">Address Line 1</label>
+                                    <label for="ownerAddress1"><span class="weight600">&#42;</span>Address Line 1</label>
                                     <input type="text" class="form-control" id="ownerAddress1" th:value="${owner.address1}" >
                                 </div>
                                 <div class="form-group form-group-md col-md-12 col-lg-8">
@@ -1216,11 +1216,11 @@
                                     <input type="text" class="form-control" id="addressline3" >
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
-                                    <label for="ownerCity">City</label>
+                                    <label for="ownerCity"><span class="weight600">&#42;</span>City</label>
                                     <input type="text" class="form-control" id="ownerCity" th:value="${owner.city}">
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
-                                    <label for="ownerState">State</label>
+                                    <label for="ownerState"><span class="weight600">&#42;</span>State</label>
                                     <select class="form-control" id="ownerState" th:field="${owner.state}">
                                         <option value="">Select</option>
                                         <option value="AL">Alabama</option>
@@ -1277,7 +1277,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
-                                    <label for="ownerZipcode">Zip Code</label>
+                                    <label for="ownerZipcode"><span class="weight600">&#42;</span>Zip Code</label>
                                     <input type="text" class="form-control" id="ownerZipcode" placeholder=""  th:value="${owner.zipcode}">
                                 </div>
                             </div>
@@ -1290,7 +1290,7 @@
                         <fieldset aria-labelledby="additionalinfo">
                             <div class="row">
                                 <div class="form-group form-group-md col-xs-12 col-md-6">
-                                    <label for="ownerEmail">Email Address <a href="#" data-toggle="tooltip" title="The USPTO will use this email address to send correspondence regarding this application or registration. It is critical to ensure this email address is current." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
+                                    <label for="ownerEmail"><span class="weight600">&#42;</span>Email Address <a href="#" data-toggle="tooltip" title="The USPTO will use this email address to send correspondence regarding this application or registration. It is critical to ensure this email address is current." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
                                     <input type="text" class="form-control" id="ownerEmail"   th:value="${owner.email}" >
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-6">
