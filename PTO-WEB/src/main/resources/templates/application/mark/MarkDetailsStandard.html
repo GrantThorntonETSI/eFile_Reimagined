@@ -1072,15 +1072,6 @@
 
 
 
-        $( '#togglepop' ).click(function() {
-            $( this ).toggleClass( 'focus' );
-            $(this).html() === '<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Hide My Mark'
-                ? $(this).html('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Show My Mark')
-                : $(this).html('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Hide My Mark');
-        });
-
-
-
         //////////////////////////////////////////////////////////////////////
         // added for integration
         // right triang\le accodian toggle
@@ -1231,29 +1222,6 @@
 
 
         });
-
-
-        //////////////////////////////////////////////////////////////////////
-        // toggle between color or bw local
-        //////////////////////////////////////////////////////////////////////
-        $('#inlineRadio2').click(function () {
-
-            $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_pathBW+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
-
-
-            $('#colorMarkBWInline').attr("src",image_pathBW );
-
-        });
-        //////////////////////////////////////////////////////////////////////
-        // toggle between color or bw local
-        //////////////////////////////////////////////////////////////////////
-        $('#inlineRadio1').click(function () {
-            $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
-
-            $('#colorMarkInline').attr("src",image_path );
-        });
-
-
 
 
 

@@ -644,7 +644,7 @@ $(document).ready(function(){
 	//END basis input label height match upload label
 
 	//Placeholder as editable text
-	$('textarea#ta2, textarea#ta5').val('This mark consists of');
+	//$('textarea#ta2, textarea#ta5').val('This mark consists of');
 	//Placeholder as editable text
 
 	//Placeholder as editable text edit owner
@@ -678,7 +678,7 @@ $(document).ready(function(){
 		title : false,
 		html : true,
 		placement : 'bottom auto',
-		content : '<div class="media"><img src="images/stylized_alt2.gif" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
+		content : '<div class="media"><span class="glyphicon glyphicon-picture" aria-hidden="true" style="min-width:77px;width:80px;margin:0 auto;"></span></div>'
 	});
 	$( '#togglepop' ).click(function() {
 		$( this ).toggleClass( 'focus' );
