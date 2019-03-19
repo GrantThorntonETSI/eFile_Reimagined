@@ -175,6 +175,26 @@ public class ApplicationFlowController {
             ContactsDisplayDTO selectedAttorneyDisplayDTO2 = new ContactsDisplayDTO();
             selectedAttorneyDisplayDTO2.setContactEmails(selectedContactEmails2 );
             model.addAttribute("selectedAttorneys",selectedAttorneyDisplayDTO2);
+
+
+            boolean colorClaim= false;
+            boolean acceptBW = false;
+            boolean colorClaimSet = false;
+            boolean standardCharacterMark = false;
+
+
+            model.addAttribute("markImagePath","");
+
+            model.addAttribute("markImagePathBW","");
+
+
+
+
+
+            model.addAttribute("markColorClaim", colorClaim);
+            model.addAttribute("markColorClaimBW", acceptBW);
+            model.addAttribute("colorClaimSet", colorClaimSet);
+            model.addAttribute("standardCharacterMark ", standardCharacterMark );
             model.addAttribute("breadCrumbStatus", trademarkApplication.getSectionStatus());
 
 
@@ -204,6 +224,35 @@ public class ApplicationFlowController {
             ContactsDisplayDTO selectedAttorneyDisplayDTO2 = new ContactsDisplayDTO();
             selectedAttorneyDisplayDTO2.setContactEmails(selectedContactEmails2 );
             model.addAttribute("selectedAttorneys",selectedAttorneyDisplayDTO2);
+
+
+            boolean colorClaim= false;
+            boolean acceptBW = false;
+            boolean colorClaimSet = false;
+            boolean standardCharacterMark = false;
+
+            if( baseTrademarkApplication.getTradeMark() != null) {
+                model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+                model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+                colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+                acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+                colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+                standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+            }
+            else{
+                model.addAttribute("markImagePath","");
+
+                model.addAttribute("markImagePathBW","");
+
+            }
+
+
+
+            model.addAttribute("markColorClaim", colorClaim);
+            model.addAttribute("markColorClaimBW", acceptBW);
+            model.addAttribute("colorClaimSet", colorClaimSet);
+            model.addAttribute("standardCharacterMark ", standardCharacterMark );
 
             model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
 
@@ -360,6 +409,34 @@ public class ApplicationFlowController {
         }
 
 
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
+
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+        }
+        else{
+            model.addAttribute("markImagePath","");
+
+            model.addAttribute("markImagePathBW","");
+
+        }
+
+
+
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
+
 
         model.addAttribute("hostBean", hostBean);
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
@@ -483,6 +560,34 @@ public class ApplicationFlowController {
 
 
 
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
+
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+        }
+        else{
+            model.addAttribute("markImagePath","");
+
+            model.addAttribute("markImagePathBW","");
+
+        }
+
+
+
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
+
 
         model.addAttribute("hostBean", hostBean);
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
@@ -562,6 +667,36 @@ public class ApplicationFlowController {
         selectedAttorneyDisplayDTO.setContactEmails(selectedContactNames);
         model.addAttribute("selectedOwners",selectedAttorneyDisplayDTO);
 
+
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
+
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+        }
+        else{
+            model.addAttribute("markImagePath","");
+
+            model.addAttribute("markImagePathBW","");
+
+        }
+
+
+
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
+
+
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
         return "application/owner/OwnerStart";
     }
@@ -636,6 +771,34 @@ public class ApplicationFlowController {
         model.addAttribute("hostBean", hostBean);
 
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
+
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+        }
+        else{
+            model.addAttribute("markImagePath","");
+
+            model.addAttribute("markImagePathBW","");
+
+        }
+
+
+
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
+
 
 
 
@@ -672,7 +835,33 @@ public class ApplicationFlowController {
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
 
 
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
 
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+        }
+        else{
+            model.addAttribute("markImagePath","");
+
+            model.addAttribute("markImagePathBW","");
+
+        }
+
+
+
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
 
         return "application/owner/corp/ownerInfoEdit";
     }
@@ -707,7 +896,33 @@ public class ApplicationFlowController {
 
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
 
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
 
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+        }
+        else{
+            model.addAttribute("markImagePath","");
+
+            model.addAttribute("markImagePathBW","");
+
+        }
+
+
+
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
 
 
         return "application/owner/estate/ownerInfoEdit";
@@ -742,7 +957,33 @@ public class ApplicationFlowController {
 
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
 
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
 
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+        }
+        else{
+            model.addAttribute("markImagePath","");
+
+            model.addAttribute("markImagePathBW","");
+
+        }
+
+
+
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
 
 
         return "application/owner/solP/ownerInfoEdit";
@@ -778,6 +1019,33 @@ public class ApplicationFlowController {
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
 
 
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
+
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+        }
+        else{
+            model.addAttribute("markImagePath","");
+
+            model.addAttribute("markImagePathBW","");
+
+        }
+
+
+
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
 
 
         return "application/owner/llc/ownerInfoEdit";
@@ -813,7 +1081,33 @@ public class ApplicationFlowController {
 
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
 
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
 
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+        }
+        else{
+            model.addAttribute("markImagePath","");
+
+            model.addAttribute("markImagePathBW","");
+
+        }
+
+
+
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
 
 
         return "application/owner/jointVC/ownerInfoEdit";
@@ -853,8 +1147,33 @@ public class ApplicationFlowController {
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
 
 
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
+
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+        }
+        else{
+            model.addAttribute("markImagePath","");
+
+            model.addAttribute("markImagePathBW","");
+
+        }
 
 
+
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
         return "application/owner/llp/ownerInfoEdit";
     }
 
@@ -888,8 +1207,33 @@ public class ApplicationFlowController {
 
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
 
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
+
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+        }
+        else{
+            model.addAttribute("markImagePath","");
+
+            model.addAttribute("markImagePathBW","");
+
+        }
 
 
+
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
 
         return "application/owner/partnership/ownerInfoEdit";
     }
@@ -926,7 +1270,33 @@ public class ApplicationFlowController {
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
 
 
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
 
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+        }
+        else{
+            model.addAttribute("markImagePath","");
+
+            model.addAttribute("markImagePathBW","");
+
+        }
+
+
+
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
 
         return "application/owner/trust/ownerInfoEdit";
     }
@@ -1350,6 +1720,34 @@ public class ApplicationFlowController {
 
         model.addAttribute("hostBean", hostBean);
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
+
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
+
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+        }
+        else{
+            model.addAttribute("markImagePath","");
+
+            model.addAttribute("markImagePathBW","");
+
+        }
+
+
+
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
         return "application/owner/OwnerSetView2";
 
     }
@@ -1514,14 +1912,23 @@ public class ApplicationFlowController {
 
         NewAttorneyContactFormDTO attorneyContactFormDTO = new NewAttorneyContactFormDTO();
         model.addAttribute("addNewAttorneyContactFormDTO", attorneyContactFormDTO);
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
 
 
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
 
-        // mark image widget display info
         if( baseTrademarkApplication.getTradeMark() != null) {
             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
             model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
         }
         else{
             model.addAttribute("markImagePath","");
@@ -1530,11 +1937,7 @@ public class ApplicationFlowController {
 
         }
 
-        boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
-        boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
 
-        boolean colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
-        boolean standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
 
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
@@ -1596,9 +1999,19 @@ public class ApplicationFlowController {
 
         }
 
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
+
         if( baseTrademarkApplication.getTradeMark() != null) {
             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
             model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
         }
         else{
             model.addAttribute("markImagePath","");
@@ -1607,11 +2020,7 @@ public class ApplicationFlowController {
 
         }
 
-        boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
-        boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
 
-        boolean colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
-        boolean standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
 
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
@@ -1647,9 +2056,19 @@ public class ApplicationFlowController {
         baseTrademarkApplication.setLastViewModel("application/mark/MarkDetailsUpload");
 
 
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
+
         if( baseTrademarkApplication.getTradeMark() != null) {
             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
             model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
         }
         else{
             model.addAttribute("markImagePath","");
@@ -1658,17 +2077,12 @@ public class ApplicationFlowController {
 
         }
 
-        boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
-        boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
 
-        boolean colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
-        boolean standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
 
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
         model.addAttribute("colorClaimSet", colorClaimSet);
         model.addAttribute("standardCharacterMark ", standardCharacterMark );
-
 
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
@@ -1704,29 +2118,34 @@ public class ApplicationFlowController {
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
         baseTrademarkApplication.setLastViewModel("application/mark/MarkDetailsDesignWText");
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
 
         if( baseTrademarkApplication.getTradeMark() != null) {
             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
             model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
 
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
         }
         else{
             model.addAttribute("markImagePath","");
 
             model.addAttribute("markImagePathBW","");
 
-
         }
 
 
 
-
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
-        boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
-        boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
-        boolean colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
-        boolean standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
-
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
 
         boolean translationFW = baseTrademarkApplication.getTradeMark().isForeignLanguageTranslationWording();
         boolean transliterationFW = baseTrademarkApplication.getTradeMark().isForeignLanguateTransliterationWording();
@@ -1792,21 +2211,34 @@ public class ApplicationFlowController {
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
 
         baseTrademarkApplication.setLastViewModel("application/mark/MarkDetailsStandard");
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
+
         if( baseTrademarkApplication.getTradeMark() != null) {
             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
             model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
         }
         else{
             model.addAttribute("markImagePath","");
 
             model.addAttribute("markImagePathBW","");
+
         }
 
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
-        boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
-        boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
-        boolean colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
-        boolean standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+
+
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
 
 
         boolean translationFW = baseTrademarkApplication.getTradeMark().isForeignLanguageTranslationWording();
@@ -1825,10 +2257,6 @@ public class ApplicationFlowController {
             isConsentUploaded = true;
         }
 
-        model.addAttribute("markColorClaim", colorClaim);
-        model.addAttribute("markColorClaimBW", acceptBW);
-        model.addAttribute("colorClaimSet", colorClaimSet);
-        model.addAttribute("standardCharacterMark", standardCharacterMark);
 
         model.addAttribute("translationFW", translationFW);
         model.addAttribute("translitFW", transliterationFW);
@@ -1868,28 +2296,34 @@ public class ApplicationFlowController {
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
         baseTrademarkApplication.setLastViewModel("application/mark/MarkDetailsDesignWText");
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
 
         if( baseTrademarkApplication.getTradeMark() != null) {
             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
             model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
 
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
         }
         else{
             model.addAttribute("markImagePath","");
 
             model.addAttribute("markImagePathBW","");
 
-
         }
 
 
 
-
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
-        boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
-        boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
-        boolean colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
-        boolean standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
 
         boolean translationFW = baseTrademarkApplication.getTradeMark().isForeignLanguageTranslationWording();
         boolean transliterationFW = baseTrademarkApplication.getTradeMark().isForeignLanguateTransliterationWording();
@@ -1906,13 +2340,6 @@ public class ApplicationFlowController {
         if(baseTrademarkApplication.getTradeMark().getTrademarkConsentFilePath() != null && baseTrademarkApplication.getTradeMark().getTrademarkConsentFilePath() != ""){
             isConsentUploaded = true;
         }
-
-        model.addAttribute("markColorClaim", colorClaim);
-        model.addAttribute("markColorClaimBW", acceptBW);
-        model.addAttribute("colorClaimSet", colorClaimSet);
-        model.addAttribute("standardCharacterMark", standardCharacterMark);
-
-
 
         model.addAttribute("translationFW", translationFW);
         model.addAttribute("translitFW", transliterationFW);
@@ -1951,28 +2378,34 @@ public class ApplicationFlowController {
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
         baseTrademarkApplication.setLastViewModel("application/mark/MarkDetailsDesignWText");
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
 
         if( baseTrademarkApplication.getTradeMark() != null) {
             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
             model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
 
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
         }
         else{
             model.addAttribute("markImagePath","");
 
             model.addAttribute("markImagePathBW","");
 
-
         }
 
 
 
-
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
-        boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
-        boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
-        boolean colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
-        boolean standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
 
 
 
@@ -1992,10 +2425,6 @@ public class ApplicationFlowController {
             isConsentUploaded = true;
         }
 
-        model.addAttribute("markColorClaim", colorClaim);
-        model.addAttribute("markColorClaimBW", acceptBW);
-        model.addAttribute("colorClaimSet", colorClaimSet);
-        model.addAttribute("standardCharacterMark", standardCharacterMark);
 
         model.addAttribute("translationFW", translationFW);
         model.addAttribute("translitFW", transliterationFW);
@@ -2067,9 +2496,20 @@ public class ApplicationFlowController {
 
 
 
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
+
         if( baseTrademarkApplication.getTradeMark() != null) {
             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
             model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
         }
         else{
             model.addAttribute("markImagePath","");
@@ -2078,16 +2518,13 @@ public class ApplicationFlowController {
 
         }
 
-        boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
-        boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
 
-        boolean colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
-        boolean standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
 
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
         model.addAttribute("colorClaimSet", colorClaimSet);
         model.addAttribute("standardCharacterMark ", standardCharacterMark );
+
         model.addAttribute("markType", baseTrademarkApplication.getTradeMark().getTradeMarkPageTitle());
 
 
@@ -2100,7 +2537,7 @@ public class ApplicationFlowController {
         model.addAttribute("markHasMeaning", markHasMeaning);
 
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
         return "application/mark/MarkDetailsDesignWTextDisclaimer";
 
     }
@@ -2146,10 +2583,19 @@ public class ApplicationFlowController {
         }
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
 
         if( baseTrademarkApplication.getTradeMark() != null) {
             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
             model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
         }
         else{
             model.addAttribute("markImagePath","");
@@ -2158,11 +2604,7 @@ public class ApplicationFlowController {
 
         }
 
-        boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
-        boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
 
-        boolean colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
-        boolean standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
 
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
@@ -2212,26 +2654,35 @@ public class ApplicationFlowController {
 
         }
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
 
         if( baseTrademarkApplication.getTradeMark() != null) {
             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
             model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
 
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
         }
         else{
             model.addAttribute("markImagePath","");
 
             model.addAttribute("markImagePathBW","");
 
-
         }
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
-        boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
-        boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
 
 
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
+
+
 
         ArrayList<String> selectedGSDescrption = new ArrayList<>();
         for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
@@ -2288,24 +2739,34 @@ public class ApplicationFlowController {
         }
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
+
         if( baseTrademarkApplication.getTradeMark() != null) {
             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
             model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
 
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
         }
         else{
             model.addAttribute("markImagePath","");
 
             model.addAttribute("markImagePathBW","");
 
-
         }
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
-        boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
-        boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+
 
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
+
 
         ArrayList<String> selectedGSIDs = new ArrayList<>();
         for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
@@ -2366,25 +2827,35 @@ public class ApplicationFlowController {
 
         }
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
 
         if( baseTrademarkApplication.getTradeMark() != null) {
             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
             model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
 
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
         }
         else{
             model.addAttribute("markImagePath","");
 
             model.addAttribute("markImagePathBW","");
 
-
         }
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
-        boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
-        boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+
 
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
+
+
 
         ArrayList<String> selectedGSDescrption = new ArrayList<>();
         for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
@@ -2434,25 +2905,35 @@ public class ApplicationFlowController {
 
         }
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
 
         if( baseTrademarkApplication.getTradeMark() != null) {
             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
             model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
 
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
         }
         else{
             model.addAttribute("markImagePath","");
 
             model.addAttribute("markImagePathBW","");
 
-
         }
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
-        boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
-        boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+
 
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
+
+
 
         ArrayList<String> selectedGSDescrption = new ArrayList<>();
         for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
@@ -2504,25 +2985,33 @@ public class ApplicationFlowController {
 
         }
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
 
         if( baseTrademarkApplication.getTradeMark() != null) {
             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
             model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
 
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
         }
         else{
             model.addAttribute("markImagePath","");
 
             model.addAttribute("markImagePathBW","");
 
-
         }
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
-        boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
-        boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+
 
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
 
         ArrayList<String> selectedGSDescrption = new ArrayList<>();
         for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
@@ -2575,25 +3064,35 @@ public class ApplicationFlowController {
 
         }
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
 
         if( baseTrademarkApplication.getTradeMark() != null) {
             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
             model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
 
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
         }
         else{
             model.addAttribute("markImagePath","");
 
             model.addAttribute("markImagePathBW","");
 
-
         }
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
-        boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
-        boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+
 
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
+
+
 
         ArrayList<String> selectedGSDescrption = new ArrayList<>();
         for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
@@ -2658,25 +3157,34 @@ public class ApplicationFlowController {
 
         }
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
 
         if( baseTrademarkApplication.getTradeMark() != null) {
             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
             model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
 
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
         }
         else{
             model.addAttribute("markImagePath","");
 
             model.addAttribute("markImagePathBW","");
 
-
         }
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
-        boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
-        boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+
 
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
+
 
         ArrayList<String> selectedGSDescrption = new ArrayList<>();
         for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
@@ -2740,25 +3248,34 @@ public class ApplicationFlowController {
 
         }
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
 
         if( baseTrademarkApplication.getTradeMark() != null) {
             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
             model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
 
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
         }
         else{
             model.addAttribute("markImagePath","");
 
             model.addAttribute("markImagePathBW","");
 
-
         }
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
-        boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
-        boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+
 
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
+
 
         ArrayList<String> selectedGSDescrption = new ArrayList<>();
         for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
