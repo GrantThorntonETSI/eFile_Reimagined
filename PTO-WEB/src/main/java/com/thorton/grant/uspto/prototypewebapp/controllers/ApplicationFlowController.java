@@ -1693,6 +1693,8 @@ public class ApplicationFlowController {
         boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
         boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
         boolean colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+        boolean standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+
 
         boolean translationFW = baseTrademarkApplication.getTradeMark().isForeignLanguageTranslationWording();
         boolean transliterationFW = baseTrademarkApplication.getTradeMark().isForeignLanguateTransliterationWording();
@@ -1714,7 +1716,7 @@ public class ApplicationFlowController {
         model.addAttribute("markColorClaimBW", acceptBW);
 
         model.addAttribute("colorClaimSet", colorClaimSet);
-
+        model.addAttribute("standardCharacterMark", standardCharacterMark);
 
 
         model.addAttribute("translationFW", translationFW);
@@ -1772,7 +1774,7 @@ public class ApplicationFlowController {
         boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
         boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
         boolean colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
-
+        boolean standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
 
 
         boolean translationFW = baseTrademarkApplication.getTradeMark().isForeignLanguageTranslationWording();
@@ -1794,7 +1796,7 @@ public class ApplicationFlowController {
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
         model.addAttribute("colorClaimSet", colorClaimSet);
-
+        model.addAttribute("standardCharacterMark", standardCharacterMark);
 
         model.addAttribute("translationFW", translationFW);
         model.addAttribute("translitFW", transliterationFW);
@@ -1855,7 +1857,7 @@ public class ApplicationFlowController {
         boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
         boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
         boolean colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
-
+        boolean standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
 
         boolean translationFW = baseTrademarkApplication.getTradeMark().isForeignLanguageTranslationWording();
         boolean transliterationFW = baseTrademarkApplication.getTradeMark().isForeignLanguateTransliterationWording();
@@ -1876,6 +1878,9 @@ public class ApplicationFlowController {
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
         model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark", standardCharacterMark);
+
+
 
         model.addAttribute("translationFW", translationFW);
         model.addAttribute("translitFW", transliterationFW);
@@ -1935,7 +1940,7 @@ public class ApplicationFlowController {
         boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
         boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
         boolean colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
-
+        boolean standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
 
 
 
@@ -1958,6 +1963,7 @@ public class ApplicationFlowController {
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
         model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark", standardCharacterMark);
 
         model.addAttribute("translationFW", translationFW);
         model.addAttribute("translitFW", transliterationFW);
@@ -2044,10 +2050,13 @@ public class ApplicationFlowController {
         boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
         boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
         boolean colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+        boolean standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
 
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
         model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
+
 
         boolean activeDisclaimer = baseTrademarkApplication.getTradeMark().isActvieDisclaimer();
         boolean priorRegistration = baseTrademarkApplication.getTradeMark().isPriorRegistratoin();
