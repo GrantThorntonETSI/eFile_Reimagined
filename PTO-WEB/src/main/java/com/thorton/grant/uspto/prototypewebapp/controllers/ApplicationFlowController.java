@@ -1629,14 +1629,19 @@ public class ApplicationFlowController {
 
             model.addAttribute("markImagePathBW","");
 
-
         }
 
         boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
         boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
 
+        boolean colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+        boolean standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
+
 
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());

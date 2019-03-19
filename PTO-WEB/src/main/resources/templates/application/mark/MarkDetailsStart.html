@@ -95,7 +95,7 @@
                     </div>
                     <div id="markoptions" class="collapse Accordion-panel" role="region" aria-labelledby="optionsbtn">
                         <div class="Accordion form-group form-group-md">
-                            <p><span class="weight600">&#42;</span> Which of the following types best describes the mark you want to apply for?</p>
+                            <p>Which of the following types best describes the mark you want to apply for? <a href="#" data-toggle="tooltip" title="" class="glyphicon glyphicon-info-sign test" data-placement="right" data-original-title="(Note: To file a certification mark, you must deselect all other mark types.)"></a></p>
                             <input class="form-check-input checkmark" type="checkbox" value="Certification" tabindex="0" aria-labelledby="certificationcheck" id="certcheck">
                             <label class="form-check-label form-check hasinfo" for="certcheck" id="certcheck2"><span class="radio notspecial" id="certificationcheck">Certification</span></label><a href="#" data-toggle="modal" data-target="#tradeservmodal"><span class="glyphicon glyphicon-info-sign" aria-hidden="true" aria-label="more info about certification marks"></span></a>
                             <!-- Modal -->
@@ -570,18 +570,10 @@
             $(this).toggleClass("glyphicon-triangle-right").toggleClass("glyphicon-triangle-bottom");
         });
 
-        $('[data-toggle="popover"]').popover({
-            title : false,
-            html : true,
-            content : '<div class="media"><img src="../../resources/images/placeholder-icon.jpg" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
-        });
 
-        $( '#togglepop' ).click(function() {
-            $( this ).toggleClass( 'focus' );
-            $(this).html() === '<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Hide My Mark'
-                ? $(this).html('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Show My Mark')
-                : $(this).html('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Hide My Mark');
-        });
+
+
+
 
 
         $('[data-toggle="tooltip"]').tooltip();
