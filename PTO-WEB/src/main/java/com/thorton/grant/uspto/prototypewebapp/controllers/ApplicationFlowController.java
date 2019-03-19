@@ -715,6 +715,128 @@ public class ApplicationFlowController {
 
 
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+    // controller for AttorneySet page
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+    @Transactional
+    @RequestMapping({"/application/OwnerSetView","application/OwnerSetView"})
+    public String applicationOwnerView
+    (WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
+
+        // create a new application and tie it to user then save it to repository
+        // create attorneyDTO + to model
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication  baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+        baseTrademarkApplication.setLastViewModel("application/owner/OwnerSetView2");
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        // add contacts display info to model
+        ////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        // create new check
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        // check if user has LoadContinueUrl set ...
+        // in the web url that triggers, you get that from an iteration of
+        // myTradeMarks on the dashboard
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////
+        // load my contacts list for thyemleaf
+        ////////////////////////////////////////////
+        ArrayList<String> contactNamesMC = new ArrayList<>();
+        ArrayList<String> contactEmailsMC = new ArrayList<>();
+        ArrayList<String> contactSubTypesMC = new ArrayList<>();
+        ManagedContact managedContact = null;
+
+        for(Iterator<ManagedContact> iter = ptoUser.getMyManagedContacts().iterator(); iter.hasNext(); ) {
+            managedContact = iter.next();
+            if(managedContact.getContactType() == "owner"){
+                contactNamesMC.add(managedContact.getDisplayName());
+                contactEmailsMC.add(managedContact.getEmail());
+                contactSubTypesMC.add(managedContact.getContactType());
+            }
+
+
+        }
+        Collections.reverse(contactNamesMC);
+        Collections.reverse(contactEmailsMC);
+        Collections.reverse(contactSubTypesMC);
+        ContactsDisplayDTO mcDisplayDTO = new ContactsDisplayDTO();
+        mcDisplayDTO.setContactNames(contactNamesMC);
+        mcDisplayDTO.setContactEmails(contactEmailsMC);
+        mcDisplayDTO.setContactEntitySubType(contactSubTypesMC);
+        model.addAttribute("myManagedContacts", mcDisplayDTO);
+
+
+
+
+        ArrayList<String> selectedContactNames = new ArrayList<>();
+        for(Iterator<Owner> iter = baseTrademarkApplication.getOwners().iterator(); iter.hasNext(); ) {
+            Owner current = iter.next();
+            selectedContactNames.add(current.getFirstName()+" "+current.getLastName());
+        }
+        ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
+        selectedAttorneyDisplayDTO.setContactNames(selectedContactNames);
+        model.addAttribute("selectedOwners",selectedAttorneyDisplayDTO);
+
+
+
+
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
+
+        model.addAttribute("hostBean", hostBean);
+        model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
+
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
+        String markType = "";
+        String markText ="";
+
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+            markType = baseTrademarkApplication.getTradeMark().getTrademarkDesignType();
+            markText = baseTrademarkApplication.getTradeMark().getTrademarkStandardCharacterText();
+        }
+        else{
+            model.addAttribute("markImagePath","");
+            model.addAttribute("markImagePathBW","");
+
+        }
+
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
+        model.addAttribute("markType", markType);
+        model.addAttribute("markText",markText);
+
+
+        return "application/owner/OwnerSetView2";
+
+    }
+
+
+
 
     // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
     @RequestMapping({"/application/owner/Ind/info"})
@@ -782,6 +904,7 @@ public class ApplicationFlowController {
         model.addAttribute("hostBean", hostBean);
 
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
+
         boolean colorClaim= false;
         boolean acceptBW = false;
         boolean colorClaimSet = false;
@@ -1683,123 +1806,6 @@ public class ApplicationFlowController {
 
 
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////
-    // controller for AttorneySet page
-    /////////////////////////////////////////////////////////////////////////////////////////////////
-    @Transactional
-    @RequestMapping({"/application/OwnerSetView","application/OwnerSetView"})
-    public String applicationOwnerView
-    (WebRequest request, Model model, @RequestParam("trademarkID") String trademarkInternalID) {
-
-        // create a new application and tie it to user then save it to repository
-        // create attorneyDTO + to model
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
-        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
-        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
-        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
-
-        model.addAttribute("user", ptoUser);
-        model.addAttribute("account",credentials);
-        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
-        BaseTrademarkApplication  baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
-
-        baseTrademarkApplication.setLastViewModel("application/owner/OwnerSetView2");
-
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        // add contacts display info to model
-        ////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-        /////////////////////////////////////////////////////////////////////////////////////////////
-        // create new check
-        /////////////////////////////////////////////////////////////////////////////////////////////
-        // check if user has LoadContinueUrl set ...
-        // in the web url that triggers, you get that from an iteration of
-        // myTradeMarks on the dashboard
-        /////////////////////////////////////////////////////////////////////////////////////////////
-        //////////////////////////////////////
-        // load my contacts list for thyemleaf
-        ////////////////////////////////////////////
-        ArrayList<String> contactNamesMC = new ArrayList<>();
-        ArrayList<String> contactEmailsMC = new ArrayList<>();
-        ArrayList<String> contactSubTypesMC = new ArrayList<>();
-        ManagedContact managedContact = null;
-
-        for(Iterator<ManagedContact> iter = ptoUser.getMyManagedContacts().iterator(); iter.hasNext(); ) {
-            managedContact = iter.next();
-            if(managedContact.getContactType() == "owner"){
-                contactNamesMC.add(managedContact.getDisplayName());
-                contactEmailsMC.add(managedContact.getEmail());
-                contactSubTypesMC.add(managedContact.getContactType());
-            }
-
-
-        }
-        Collections.reverse(contactNamesMC);
-        Collections.reverse(contactEmailsMC);
-        Collections.reverse(contactSubTypesMC);
-        ContactsDisplayDTO mcDisplayDTO = new ContactsDisplayDTO();
-        mcDisplayDTO.setContactNames(contactNamesMC);
-        mcDisplayDTO.setContactEmails(contactEmailsMC);
-        mcDisplayDTO.setContactEntitySubType(contactSubTypesMC);
-        model.addAttribute("myManagedContacts", mcDisplayDTO);
-
-
-
-
-        ArrayList<String> selectedContactNames = new ArrayList<>();
-        for(Iterator<Owner> iter = baseTrademarkApplication.getOwners().iterator(); iter.hasNext(); ) {
-            Owner current = iter.next();
-            selectedContactNames.add(current.getFirstName()+" "+current.getLastName());
-        }
-        ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
-        selectedAttorneyDisplayDTO.setContactNames(selectedContactNames);
-        model.addAttribute("selectedOwners",selectedAttorneyDisplayDTO);
-
-
-
-
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
-
-
-        model.addAttribute("hostBean", hostBean);
-        model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
-
-        boolean colorClaim= false;
-        boolean acceptBW = false;
-        boolean colorClaimSet = false;
-        boolean standardCharacterMark = false;
-
-        if( baseTrademarkApplication.getTradeMark() != null) {
-            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
-            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
-            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
-            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
-
-            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
-            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
-        }
-        else{
-            model.addAttribute("markImagePath","");
-
-            model.addAttribute("markImagePathBW","");
-
-        }
-
-
-
-        model.addAttribute("markColorClaim", colorClaim);
-        model.addAttribute("markColorClaimBW", acceptBW);
-        model.addAttribute("colorClaimSet", colorClaimSet);
-        model.addAttribute("standardCharacterMark ", standardCharacterMark );
-        return "application/owner/OwnerSetView2";
-
-    }
-
-
-
 
 
 
@@ -1966,8 +1972,6 @@ public class ApplicationFlowController {
         boolean acceptBW = false;
         boolean colorClaimSet = false;
         boolean standardCharacterMark = false;
-        String markType = "";
-        String markText ="";
 
         if( baseTrademarkApplication.getTradeMark() != null) {
             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
@@ -1977,22 +1981,20 @@ public class ApplicationFlowController {
 
             colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
             standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
-            markType = baseTrademarkApplication.getTradeMark().getTrademarkDesignType();
-            markText = baseTrademarkApplication.getTradeMark().getTrademarkStandardCharacterText();
         }
         else{
             model.addAttribute("markImagePath","");
+
             model.addAttribute("markImagePathBW","");
 
         }
+
+
 
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
         model.addAttribute("colorClaimSet", colorClaimSet);
         model.addAttribute("standardCharacterMark ", standardCharacterMark );
-        model.addAttribute("markType", markType);
-        model.addAttribute("markText",markText);
-
         ////////////////////////////////////////////////////////////////////////////////////
         ArrayList<String> selectedGSDescrption = new ArrayList<>();
         for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
