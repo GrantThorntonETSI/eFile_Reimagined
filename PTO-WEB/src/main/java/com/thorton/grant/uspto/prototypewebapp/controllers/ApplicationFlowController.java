@@ -2146,27 +2146,34 @@ public class ApplicationFlowController {
         }
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
+
         if( baseTrademarkApplication.getTradeMark() != null) {
             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
             model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
-
         }
         else{
             model.addAttribute("markImagePath","");
 
             model.addAttribute("markImagePathBW","");
 
-
         }
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
         boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
         boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
-        boolean searchDB = baseTrademarkApplication.isSearchExistingGSdatabase();
 
-
+        boolean colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+        boolean standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
 
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
+
+
+
+
+
+        boolean searchDB = baseTrademarkApplication.isSearchExistingGSdatabase();
         model.addAttribute("searchDB", searchDB);
 
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
