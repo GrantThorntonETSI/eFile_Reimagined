@@ -48,7 +48,7 @@ public class TradeMark extends BaseEntity {
     // color claim fields
     @Nullable
     private boolean markColorClaim;
-    private boolean markColorClaimSet;
+
 
 
     private String markColors;
@@ -740,14 +740,6 @@ public class TradeMark extends BaseEntity {
 
     public void setNPSLivingPersonSet(boolean NPSLivingPersonSet) {
         this.NPSLivingPersonSet = NPSLivingPersonSet;
-    }
-
-    public boolean isMarkColorClaimSet() {
-        return markColorClaimSet;
-    }
-
-    public void setMarkColorClaimSet(boolean markColorClaimSet) {
-        this.markColorClaimSet = markColorClaimSet;
     }
 
 

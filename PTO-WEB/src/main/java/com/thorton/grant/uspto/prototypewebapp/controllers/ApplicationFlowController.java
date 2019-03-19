@@ -1595,7 +1595,7 @@ public class ApplicationFlowController {
 
         model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
         return "application/mark/MarkDetailsStart";
-        //return "registrationConfirm/VerificationEmail";
+
     }
 
     @RequestMapping({"/mark/designWithText"})
@@ -1692,6 +1692,8 @@ public class ApplicationFlowController {
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
         boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
         boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+        boolean colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+
         boolean translationFW = baseTrademarkApplication.getTradeMark().isForeignLanguageTranslationWording();
         boolean transliterationFW = baseTrademarkApplication.getTradeMark().isForeignLanguateTransliterationWording();
         boolean containsSignatureName = baseTrademarkApplication.getTradeMark().isContainNamePortaitSignature();
@@ -1710,6 +1712,11 @@ public class ApplicationFlowController {
 
         model.addAttribute("markColorClaim", colorClaim);
         model.addAttribute("markColorClaimBW", acceptBW);
+
+        model.addAttribute("colorClaimSet", colorClaimSet);
+
+
+
         model.addAttribute("translationFW", translationFW);
         model.addAttribute("translitFW", transliterationFW);
         model.addAttribute("containsSignatureName", containsSignatureName );
