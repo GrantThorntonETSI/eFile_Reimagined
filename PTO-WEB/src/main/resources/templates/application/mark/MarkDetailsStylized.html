@@ -1142,11 +1142,15 @@
 
     var colorClaim = /*[[${markColorClaim}]]*/ 'User Name';
 
-    alert(colorClaim);
-
-
-
     var acceptBW = /*[[${markColorClaimBW}]]*/ 'User Name';
+
+
+
+    var colorClaimSet = /*[[${colorClaimSet}]]*/ 'User Name';
+
+
+
+
 
     var translationFW = /*[[${translationFW}]]*/ 'User Name';
 
@@ -1255,70 +1259,57 @@
         //////////////////////////////////////////////////////////////////////
         // set mark image based on persisted values
         //////////////////////////////////////////////////////////////////////
-        if(colorClaim == null){
-
-            alert("111111111");
+        if(colorClaimSet == false){
             if(image_path != null){
 
-                alert("!!!!!");
-                $('[data-toggle="popover"]').popover({
-                    title : false,
-                    html : true,
-                    content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
-                });
-
-            }
-            // set color claim to true be default when its not set yet
-
-            $('#inlineRadio1').click();
-        }
-
-        if(colorClaim == false){
-
-            if(acceptBW == true){
-                // $('#inlineRadio2').click();
-                // $('#bwmark').click();
-
-                $('[data-toggle="popover"]').popover({
-                    title : false,
-                    html : true,
-                    content : '<div class="media"><img src="'+image_pathBW+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
-                });
-
-                $('#colorMarkBWInline').attr("src", image_pathBW);
+                $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
 
             }
             else{
+                $( '#togglepop' ).attr('data-content', '<div class="media"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span></div>');
+            }
+            // set color claim to true be default when its not set yet
+
+
+        }
+        else {
+
+            if(colorClaim == false){
+
+                if(acceptBW == true){
+                    // $('#inlineRadio2').click();
+                    // $('#bwmark').click();
+
+                    $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_pathBW+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+                    $('#colorMarkBWInline').attr("src", image_pathBW);
+
+                }
+                else{
+                    if(image_path != null){
+
+                        $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+                        $('#colorMarkInline').attr("src", image_path);
+
+
+                    }
+
+                }
+
+            }
+            if(colorClaim == true){
+                // $('#inlineRadio1').click();
                 if(image_path != null){
 
-                    $('[data-toggle="popover"]').popover({
-                        title : false,
-                        html : true,
-                        content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
-                    });
-
+                    $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
                     $('#colorMarkInline').attr("src", image_path);
 
 
                 }
             }
 
+
         }
-        if(colorClaim == true){
-            // $('#inlineRadio1').click();
-            if(image_path != null){
-
-                $('[data-toggle="popover"]').popover({
-                    title : false,
-                    html : true,
-                    content : '<div class="media"><img src="'+image_path+'" style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>'
-                });
-                $('#colorMarkInline').attr("src", image_path);
-
-
-            }
-        }
-
 
 
         if(isName == true){
@@ -1360,31 +1351,10 @@
             }
         }
 
-
-
-
-
-
-
-
-        $( '#togglepop' ).click(function() {
-            $( this ).toggleClass( 'focus' );
-            $(this).html() === '<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Hide My Mark'
-                ? $(this).html('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Show My Mark')
-                : $(this).html('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Hide My Mark');
-        });
-
-
-
         //////////////////////////////////////////////////////////////////////
         // activate tool tip
         //////////////////////////////////////////////////////////////////////
         $('[data-toggle="tooltip"]').tooltip();
-
-
-
-        $('[data-toggle="tooltip"]').tooltip();
-
 
 
         setBreadCrumb(breadCrumbStatus);

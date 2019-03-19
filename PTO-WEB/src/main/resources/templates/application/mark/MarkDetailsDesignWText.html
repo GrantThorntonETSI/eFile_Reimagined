@@ -1296,7 +1296,9 @@
 
             }
             // set color claim to true be default when its not set yet
-
+            else{
+                $( '#togglepop' ).attr('data-content', '<div class="media"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span></div>');
+            }
 
         }
         else {
@@ -1384,6 +1386,10 @@
 
 
         setBreadCrumb(breadCrumbStatus);
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+
 
         $('#bs-link1').click(function () {
             var url = $(this).attr("href");
