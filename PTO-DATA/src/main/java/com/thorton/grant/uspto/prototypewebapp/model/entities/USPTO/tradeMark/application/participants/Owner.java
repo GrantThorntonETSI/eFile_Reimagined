@@ -37,6 +37,12 @@ public class Owner extends Contact{
 
     private String ownerEnityType;
 
+    private boolean foreignEntityOwner;
+
+
+
+
+
     private String ownersubType;
 
     private String webSiteURL;
@@ -270,6 +276,14 @@ public class Owner extends Contact{
 
     public void setGoverningEntitiesDisplayName(String governingEntitiesDisplayName) {
         this.governingEntitiesDisplayName = governingEntitiesDisplayName;
+    }
+
+    public boolean isForeignEntityOwner() {
+        return foreignEntityOwner;
+    }
+
+    public void setForeignEntityOwner(boolean foreignEntityOwner) {
+        this.foreignEntityOwner = foreignEntityOwner;
     }
 
     @Override
