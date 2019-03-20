@@ -13,7 +13,7 @@ public class StorageProperties {
 
     // load this value from property file
 
-   //rivate String location = "C:\\images\\attorney";
+    //private String location = "C:\\images\\attorney";
 
     public String getLocation() {
         return location;
