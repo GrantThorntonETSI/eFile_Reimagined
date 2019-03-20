@@ -1251,7 +1251,7 @@
 
 
 
-                                    <div class="row" id="uaf">
+                                    <div class="row" id="uaf" style="display: none">
                                         <div class="col-sm-12">
                                             <section aria-label="Use in Another Form">
                                                 <div class="card-text noexpand">
@@ -1262,20 +1262,20 @@
                                                     <label for="inlineRadio040" class="radio-inline radiocontainer">Yes<input type="radio" name="formradio" id="inlineRadio040" value="yes" tabindex="0"><span class="checkmark"></span></label>
                                                     <label for="inlineRadio041" class="radio-inline radiocontainer">No<input type="radio" name="formradio" id="inlineRadio041" value="no" tabindex="0"><span class="checkmark"></span></label>
                                                 </div><!--END radiogroup-->
-                                                    <div id="yesotherform" class="form-group" ><!--toggle 'yes' radio-->
+                                                    <div id="yesotherform" class="form-group" style="display: none;"><!--toggle 'yes' radio-->
                                                         <div class="form-group form-group-md">
                                                             <p class="">Is this for the whole mark, or part of the mark?</p>
                                                             <div role="radiogroup" aria-labelledby="disclm" class="form-group form-group-md">
                                                                 <label for="inlineRadio042" class="radio-inline radiocontainer">Whole<input type="radio" name="wholepartradio" id="inlineRadio042" value="whole" tabindex="0"><span class="checkmark"></span></label>
                                                                 <label for="inlineRadio043" class="radio-inline radiocontainer">In part<input type="radio" name="wholepartradio" id="inlineRadio043" value="inpart" tabindex="0"><span class="checkmark"></span></label>
                                                             </div><!--END radiogroup-->
-                                                            <div id="yespartother" class="form-group"><!--toggle 'yes' radio-->
+                                                            <div id="yespartother" class="form-group" style="display: none"><!--toggle 'yes' radio-->
                                                                 <div class="form-group form-group-md">
                                                                     <label for="partmark" class="">Which part of the mark?</label>
                                                                     <textarea id="partmark" rows="1" class="form-control"></textarea>
                                                                 </div>
                                                             </div>
-                                                            <div id="yeswholeother" class="form-group"><!--toggle 'yes' radio-->
+                                                            <div id="yeswholeother" class="form-group" style="display: none;"><!--toggle 'yes' radio-->
                                                                 <div class="form-group form-group-md">
                                                                     <div class="row">
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md matchlabelheightdiv">
@@ -1310,14 +1310,14 @@
                                                             <div class="row">
                                                                 <th:block  th:if="${baseTrademarkApplication.isConcurrentTypeCourtDecree() == true}">
                                                                     <div class="col-xs-12">
-                                                                        <input class="form-check-input checkmark" type="checkbox" value="court" tabindex="0" aria-labelledby="courtdecree" id="courtd" checked>
+                                                                        <input class="form-check-input checkmark concurrent-use" type="checkbox" value="court" tabindex="0" aria-labelledby="courtdecree" id="courtd" checked>
                                                                         <label class="form-check-label form-check long" for="courtd" id="courtdec"><span class="radio notspecial small match" id="courtdecree">Court Decree</span></label>
                                                                     </div>
                                                                 </th:block>
 
                                                                 <th:block  th:if="${baseTrademarkApplication.isConcurrentTypeCourtDecree() == false}">
                                                                     <div class="col-xs-12">
-                                                                        <input class="form-check-input checkmark" type="checkbox" value="court" tabindex="0" aria-labelledby="courtdecree" id="courtd">
+                                                                        <input class="form-check-input checkmark concurrent-use" type="checkbox" value="court" tabindex="0" aria-labelledby="courtdecree" id="courtd">
                                                                         <label class="form-check-label form-check long" for="courtd" id="courtdec"><span class="radio notspecial small match" id="courtdecree">Court Decree</span></label>
                                                                     </div>
                                                                 </th:block>
@@ -1325,41 +1325,41 @@
 
                                                                 <th:block  th:if="${baseTrademarkApplication.isConcurrentTypePriorDecision() == true}">
                                                                     <div class="col-xs-12">
-                                                                        <input class="form-check-input checkmark" type="checkbox" value="ttab" tabindex="0" aria-labelledby="priorttab" id="ttabmade" checked>
+                                                                        <input class="form-check-input checkmark concurrent-use" type="checkbox" value="ttab" tabindex="0" aria-labelledby="priorttab" id="ttabmade" checked>
                                                                         <label class="form-check-label form-check long" for="ttabmade" id="ttabdecision"><span class="radio notspecial small" id="priorttab">Prior decision made by the Trademark Trial and Apeal Board (TTAB)</span></label>
                                                                     </div>
                                                                 </th:block>
 
                                                                 <th:block  th:if="${baseTrademarkApplication.isConcurrentTypePriorDecision() == false}">
                                                                     <div class="col-xs-12">
-                                                                        <input class="form-check-input checkmark" type="checkbox" value="ttab" tabindex="0" aria-labelledby="priorttab" id="ttabmade">
+                                                                        <input class="form-check-input checkmark concurrent-use" type="checkbox" value="ttab" tabindex="0" aria-labelledby="priorttab" id="ttabmade">
                                                                         <label class="form-check-label form-check long" for="ttabmade" id="ttabdecision"><span class="radio notspecial small" id="priorttab">Prior decision made by the Trademark Trial and Apeal Board (TTAB)</span></label>
                                                                     </div>
                                                                 </th:block>
                                                                 <th:block  th:if="${baseTrademarkApplication.isConcurrentTypeWrittenConsent() == true}">
                                                                     <div class="col-xs-12">
-                                                                        <input class="form-check-input checkmark" type="checkbox" value="conflicting" tabindex="0" aria-labelledby="conflictingreg" id="conflict" checked>
+                                                                        <input class="form-check-input checkmark concurrent-use" type="checkbox" value="conflicting" tabindex="0" aria-labelledby="conflictingreg" id="conflict" checked>
                                                                         <label class="form-check-label form-check long" for="conflict" id="conflictowner"><span class="radio notspecial small" id="conflictingreg">Written Consent signed by owner of conflicting registrations</span></label>
                                                                     </div>
                                                                 </th:block>
 
                                                                 <th:block  th:if="${baseTrademarkApplication.isConcurrentTypeWrittenConsent() == false}">
                                                                     <div class="col-xs-12">
-                                                                        <input class="form-check-input checkmark" type="checkbox" value="conflicting" tabindex="0" aria-labelledby="conflictingreg" id="conflict">
+                                                                        <input class="form-check-input checkmark concurrent-use" type="checkbox" value="conflicting" tabindex="0" aria-labelledby="conflictingreg" id="conflict">
                                                                         <label class="form-check-label form-check long" for="conflict" id="conflictowner"><span class="radio notspecial small" id="conflictingreg">Written Consent signed by owner of conflicting registrations</span></label>
                                                                     </div>
                                                                 </th:block>
 
                                                                 <th:block  th:if="${baseTrademarkApplication.isConcurrentTypeEarlierFirstUse() == true}">
                                                                     <div class="col-xs-12">
-                                                                        <input class="form-check-input checkmark" type="checkbox" value="earlier" tabindex="0" aria-labelledby="early" id="earlieruse" checked>
+                                                                        <input class="form-check-input checkmark concurrent-use" type="checkbox" value="earlier" tabindex="0" aria-labelledby="early" id="earlieruse" checked>
                                                                         <label class="form-check-label form-check long" for="earlieruse" id="firstcommerce"><span class="radio notspecial small match" id="early">Earlier date of first use in commerce</span></label>
                                                                     </div>
                                                                 </th:block>
 
                                                                 <th:block  th:if="${baseTrademarkApplication.isConcurrentTypeEarlierFirstUse()  == false}">
                                                                     <div class="col-xs-12">
-                                                                        <input class="form-check-input checkmark" type="checkbox" value="earlier" tabindex="0" aria-labelledby="early" id="earlieruse">
+                                                                        <input class="form-check-input checkmark concurrent-use" type="checkbox" value="earlier" tabindex="0" aria-labelledby="early" id="earlieruse">
                                                                         <label class="form-check-label form-check long" for="earlieruse" id="firstcommerce"><span class="radio notspecial small match" id="early">Earlier date of first use in commerce</span></label>
                                                                     </div>
                                                                 </th:block>
@@ -2924,6 +2924,53 @@
 
         saveAdditionalInfo("ai-claim-distinct-PR-number", value, appInternalID);
     });
+
+
+    $('#courtd').click(function () {
+
+        if(this.checked == true){
+            $('#hideshowconcurrentuses').show(500);
+        }
+        else {
+            $('#hideshowconcurrentuses').hide(500);
+        }
+
+    });
+
+    $('#ttabdecision').click(function () {
+
+        if(this.checked == true){
+            $('#hideshowconcurrentuses').show(500);
+        }
+        else {
+            $('#hideshowconcurrentuses').hide(500);
+        }
+
+    });
+
+    $('#conflictowner').click(function () {
+
+        if(this.checked == true){
+            $('#hideshowconcurrentuses').show(500);
+        }
+        else {
+            $('#hideshowconcurrentuses').hide(500);
+        }
+
+    });
+
+    $('#firstcommerce').click(function () {
+
+        if(this.checked == true){
+            $('#hideshowconcurrentuses').show(500);
+        }
+        else {
+            $('#hideshowconcurrentuses').hide(500);
+        }
+
+    });
+
+
 
     }); // end of document ready
 
