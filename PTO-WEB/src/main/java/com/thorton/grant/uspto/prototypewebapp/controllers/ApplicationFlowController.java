@@ -3559,19 +3559,21 @@ public class ApplicationFlowController {
 
                 if(goodAndService.isMarkInUse() == true){
                     if(goodAndService.getFirstGSDate() == null){
+                        if(missedTEAsFields.size() == 0){
+                            returnLink = "../../application/inUseFilingBasisUpload/?trademarkID=";
+                        }
+
                         missedTEAsFields.add("first in use date - "+goodAndService.getClassDescription());
 
 
-                        if(missedTEAsFields.size() == 0){
-                            returnLink = "../../application/inUseFilingBasisUpload/?trademarkID=";
-                        }
 
                     }
                     if(goodAndService.getFirstCommerceDate() == null){
-                        missedTEAsFields.add("first in commerce date - "+goodAndService.getClassDescription());
                         if(missedTEAsFields.size() == 0){
                             returnLink = "../../application/inUseFilingBasisUpload/?trademarkID=";
                         }
+                        missedTEAsFields.add("first in commerce date - "+goodAndService.getClassDescription());
+
                     }
 
                 }
@@ -3580,26 +3582,20 @@ public class ApplicationFlowController {
 
                 if(goodAndService.isForeignRegistration()){
                     if(goodAndService.getFrExpirationDate() == null){
-                        missedTEAsFields.add("Foreign Registration Expiration date - "+goodAndService.getClassDescription());
                         if(missedTEAsFields.size() == 0){
-                            //returnLink = "../../application/inUseFilingBasisUpload/?trademarkID=";
-
-                            if(missedTEAsFields.size() == 0){
-                                if(goodAndService.isMarkInUse() == true){
-                                    returnLink = "../../application/inUseFilingBasisUpload/?trademarkID=";
-                                }
-                                else {
-                                    returnLink = "../../application/inUseFilingBasisUpload/?trademarkID=";
-                                }
-
+                            if(goodAndService.isMarkInUse() == true){
+                                returnLink = "../../application/inUseFilingBasisUpload/?trademarkID=";
                             }
+                            else {
+                                returnLink = "../../application/inUseFilingBasisUpload/?trademarkID=";
+                            }
+
                         }
+                        missedTEAsFields.add("Foreign Registration Expiration date - "+goodAndService.getClassDescription());
 
                     }
 
                     if(goodAndService.getFrRenewlDate() == null){
-
-                        missedTEAsFields.add("Foreign Registration Renewal date - "+goodAndService.getClassDescription());
                         if(missedTEAsFields.size() == 0){
                             if(goodAndService.isMarkInUse() == true){
                                 returnLink = "../../application/inUseFilingBasisUpload/?trademarkID=";
@@ -3609,12 +3605,12 @@ public class ApplicationFlowController {
                             }
 
                         }
+                        missedTEAsFields.add("Foreign Registration Renewal date - "+goodAndService.getClassDescription());
+
 
                     }
 
                     if(goodAndService.getFrCertImagePath() == null){
-
-                        missedTEAsFields.add("Foreign Registration Certificate - "+goodAndService.getClassDescription());
                         if(missedTEAsFields.size() == 0){
                             if(goodAndService.isMarkInUse() == true){
                                 returnLink = "../../application/inUseFilingBasisUpload/?trademarkID=";
@@ -3624,6 +3620,8 @@ public class ApplicationFlowController {
                             }
 
                         }
+                        missedTEAsFields.add("Foreign Registration Certificate - "+goodAndService.getClassDescription());
+
                     }
 
 
@@ -3633,7 +3631,6 @@ public class ApplicationFlowController {
 
                 if(goodAndService.isPendingFA()){
                     if(goodAndService.getFaFilingDate()== null){
-                        missedTEAsFields.add("Foreign Application Filing date - "+goodAndService.getClassDescription());
                         if(missedTEAsFields.size() == 0){
                             if(goodAndService.isMarkInUse() == true){
                                 returnLink = "../../application/inUseFilingBasisUpload/?trademarkID=";
@@ -3643,12 +3640,12 @@ public class ApplicationFlowController {
                             }
 
                         }
+                        missedTEAsFields.add("Foreign Application Filing date - "+goodAndService.getClassDescription());
+
 
                     }
 
                     if(goodAndService.getFrRegistartionNumber()== null){
-
-                        missedTEAsFields.add("Foreign Application Application number - "+goodAndService.getClassDescription());
                         if(missedTEAsFields.size() == 0){
                             if(goodAndService.isMarkInUse() == true){
                                 returnLink = "../../application/inUseFilingBasisUpload/?trademarkID=";
@@ -3658,6 +3655,8 @@ public class ApplicationFlowController {
                             }
 
                         }
+                        missedTEAsFields.add("Foreign Application Application number - "+goodAndService.getClassDescription());
+
 
                     }
 
