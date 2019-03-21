@@ -252,16 +252,36 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-xs-12">
-                                                        <div class="row">
-                                                            <div class="col-xs-12 col-sm-4">
-                                                                <h4>Citizenship</h4>
-                                                            </div>
-                                                            <div class="col-xs-12 col-sm-8">
-                                                                <p class="weight600" th:text="${owner.getOwnerEntityCountryOfOrigin()}">United States of America</p>
+
+                                                    <th:block th:if="${owner.isGoverningEntitiesTypeOwner() == true}">
+                                                        <div class="col-xs-12">
+                                                            <div class="row">
+                                                                <div class="col-xs-12 col-sm-4">
+                                                                    <h4>State where legally organized</h4>
+                                                                </div>
+                                                                <div class="col-xs-12 col-sm-8">
+                                                                    <p class="weight600" th:text="${owner.getOwnerOrganizationState()}">United States of America</p>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+
+                                                    </th:block>
+
+                                                    <th:block th:if="${owner.isGoverningEntitiesTypeOwner() == false}">
+
+                                                        <div class="col-xs-12">
+                                                            <div class="row">
+                                                                <div class="col-xs-12 col-sm-4">
+                                                                    <h4>Citizenship</h4>
+                                                                </div>
+                                                                <div class="col-xs-12 col-sm-8">
+                                                                    <p class="weight600" th:text="${owner.getOwnerEntityCountryOfOrigin()}">United States of America</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </th:block>
+
                                                     <div class="col-xs-12">
                                                         <div class="row">
                                                             <div class="col-xs-12 col-sm-4">
@@ -496,18 +516,47 @@
                                                             <div class="col-xs-12 col-sm-8">
                                                                 <p class="weight600" th:text="${baseTrademarkApplication.primaryOwner.getOwnersubType()}">Individual</p>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-xs-12">
-                                                        <div class="row">
-                                                            <div class="col-xs-12 col-sm-4">
-                                                                <h4>Citizenship</h4>
-                                                            </div>
                                                             <div class="col-xs-12 col-sm-8">
-                                                                <p class="weight600" th:text="${baseTrademarkApplication.primaryOwner.getOwnerEntityCountryOfOrigin()}">United States of America</p>
+                                                                <th:block th:if="${baseTrademarkApplication.primaryOwner.isGoverningEntitiesTypeOwner() == true}">
+                                                                    <p class="weight600" th:text="${baseTrademarkApplication.primaryOwner.getLegalLanguaguePartner()}">
+
+
+                                                                    </p>
+
+                                                                </th:block>
                                                             </div>
                                                         </div>
                                                     </div>
+
+                                                    <th:block th:if="${baseTrademarkApplication.primaryOwner.isGoverningEntitiesTypeOwner() == true}">
+                                                        <div class="col-xs-12">
+                                                            <div class="row">
+                                                                <div class="col-xs-12 col-sm-4">
+                                                                    <h4>State where legally organized</h4>
+                                                                </div>
+                                                                <div class="col-xs-12 col-sm-8">
+                                                                    <p class="weight600" th:text="${baseTrademarkApplication.primaryOwner.getOwnerOrganizationState()}">United States of America</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </th:block>
+
+                                                    <th:block th:if="${baseTrademarkApplication.primaryOwner.isGoverningEntitiesTypeOwner() == false}">
+
+                                                        <div class="col-xs-12">
+                                                            <div class="row">
+                                                                <div class="col-xs-12 col-sm-4">
+                                                                    <h4>Citizenship</h4>
+                                                                </div>
+                                                                <div class="col-xs-12 col-sm-8">
+                                                                    <p class="weight600" th:text="${baseTrademarkApplication.primaryOwner.getOwnerEntityCountryOfOrigin()}">United States of America</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </th:block>
+
                                                     <div class="col-xs-12">
                                                         <div class="row">
                                                             <div class="col-xs-12 col-sm-4">
