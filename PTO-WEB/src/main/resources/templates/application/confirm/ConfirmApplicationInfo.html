@@ -222,7 +222,7 @@
                                                 </div>
 
                                                 <!--we need to do a for each for the owners   -->
-                                                <th:block th:each="owner : ${baseTrademarkApplication.getOwners()}">
+                                                <th:block th:each="owner : ${baseTrademarkApplication.owners}">
                                                     <div class="col-xs-12">
                                                         <div class="row">
                                                             <div class="col-xs-12 col-sm-4">
@@ -243,19 +243,9 @@
                                                             </div>
                                                             <div class="col-xs-12 col-sm-8">
                                                                 <th:block th:if="${owner.isGoverningEntitiesTypeOwner() == true}">
-                                                                    <p class="weight600" th:text="${owner.getOwnerDisplayname()+', a partnership organized under the laws of '+owner.getOwnerOrganizationState()+', composed of ' }">
+                                                                    <p class="weight600" th:text="${owner.getLegalLanguaguePartner()}">
 
-                                                                       <th:block th:each="partner, index : ${owner.getGoverningEntities()}">
-                                                                            <th:block th:if="${partner.isPersonEntity() == true}">
-                                                                                <span th:text="${partner.getFirstName()+' '+partner.getLastName()}"></span>
 
-                                                                            </th:block>
-                                                                           <th:block th:if="${partner.isPersonEntity() == false}">
-                                                                               <span th:text="${partner.getEntityName()}"></span>
-                                                                           </th:block>
-                                                                               and
-                                                                       </th:block>
-                                                                    whom are U.S citizens.
                                                                     </p>
 
                                                                 </th:block>

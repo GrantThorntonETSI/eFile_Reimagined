@@ -282,6 +282,25 @@ public class Owner extends Contact{
         return foreignEntityOwner;
     }
 
+    public String getLegalLanguaguePartner(){
+
+        String partnerList ="";
+        for(int a =0; a < governingEntities.size(); a++){
+            if(governingEntities.get(a).isPersonEntity() == true){
+                partnerList = partnerList + governingEntities.get(a).getFirstName()+" "+governingEntities.get(a).getLastName();
+
+            }
+            else {
+                partnerList = partnerList + governingEntities.get(a).getEntityName();
+            }
+            if(a != governingEntities.size() -1){
+                partnerList = partnerList + " and ";
+            }
+
+        }
+        return  ownerDisplayname+", a partnership organized under the laws of "+ownerOrganizationState+", composed of "+partnerList+", whom are all U.S. citizens";
+    }
+
     public void setForeignEntityOwner(boolean foreignEntityOwner) {
         this.foreignEntityOwner = foreignEntityOwner;
     }

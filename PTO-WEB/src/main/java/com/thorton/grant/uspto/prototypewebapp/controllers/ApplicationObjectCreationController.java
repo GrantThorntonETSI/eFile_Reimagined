@@ -697,6 +697,8 @@ public class ApplicationObjectCreationController {
         // process additoanl partners
 
 
+
+
         if(baseTrademarkApplication.getOwners().size() == 0){
             //owner.setPrimaryApplication(baseTrademarkApplication);
             baseTrademarkApplication.setPrimaryOwner(owner);
