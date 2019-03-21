@@ -241,6 +241,25 @@
                                                             <div class="col-xs-12 col-sm-8">
                                                                 <p class="weight600" th:text="${owner.getOwnersubType()}">Individual</p>
                                                             </div>
+                                                            <div class="col-xs-12 col-sm-8">
+                                                                <th:block th:if="${owner.isGoverningEntitiesTypeOwner() == true}">
+                                                                    <p class="weight600" th:text="${owner.getOwnerDisplayname()+', a partnership organized under the laws of '+owner.getOwnerOrganizationState()+', composed of ' }">
+
+                                                                       <th:block th:each="partner, index : ${owner.getGoverningEntities()}">
+                                                                            <th:block th:if="${partner.isPersonEntity() == true}">
+                                                                                <span th:text="${partner.getFirstName()+' '+partner.getLastName()}"></span>
+
+                                                                            </th:block>
+                                                                           <th:block th:if="${partner.isPersonEntity() == false}">
+                                                                               <span th:text="${partner.getEntityName()}"></span>
+                                                                           </th:block>
+                                                                               and
+                                                                       </th:block>
+                                                                    whom are U.S citizens.
+                                                                    </p>
+
+                                                                </th:block>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-xs-12">
