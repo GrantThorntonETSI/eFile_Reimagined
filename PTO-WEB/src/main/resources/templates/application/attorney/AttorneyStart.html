@@ -644,7 +644,7 @@
                         <fieldset aria-labelledby="affiliation">
                             <div class="row">
                                 <div class="form-group form-group-md col-xs-12">
-                                    <label for="attorney-bar-standing"><span class="weight600">&#42;</span>Attorney Bar Info</label>
+                                    <label for="attorney-bar-standing"><span class="weight600">&#42;</span>Attorney Bar Info <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
                                     <select class="form-control" id="attorney-bar-standing" th:field="*{attorneyAffiliation}" required>
                                         <option value="">Select</option>
                                         <option value="usaffiliation">U.S. Attorney in good standing</option>
@@ -655,7 +655,7 @@
                             <div id="usaffiliation" role="region" aria-labelledby="affiliation" class="hidethis" style="display: none;">
                                 <div class="row">
                                     <div class="form-group form-group-md col-xs-12 col-md-3">
-                                        <label for="attorney-bar-jurisdiction">Bar Jurisdiction</label>
+                                        <label for="attorney-bar-jurisdiction">Bar Jurisdiction <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
                                         <select class="form-control" id="attorney-bar-jurisdiction" name="attorneyBarJurisdiction">
                                             <option value="">Select</option>
                                             <option value="AL">Alabama</option>
@@ -716,11 +716,11 @@
                                         <input type="text" class="form-control" id="bar-membership-number" name="attorneyBarMembershipNumber" value="">
                                     </div>
                                     <div class="form-group form-group-md col-xs-12 col-md-4">
-                                        <label for="bar-membership-date">Date of Admission</label>
+                                        <label for="bar-membership-date">Date of Admission <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
                                         <input type="date" class="form-control" id="bar-membership-date" name="attorneyBarAdmissionDate" value="">
                                     </div>
                                 </div>
-                                <h4 class="weight600">Acknowledgement of Certification in Good Standing</h4>
+                                <h4 class="weight600">Acknowledgement of Certification in Good Standing <span class="label label-info subtle visuallyremoved">Reduced Fee</span></h4>
                                 <input class="form-check-input checkmark" type="checkbox" value="" aria-checked="false" tabindex="0" aria-labelledby="userAccept-label" id="user-accept-checkbox" name="user-accept-checkbox">
                                 <label class="form-check-label form-check long" for="user-accept-checkbox" id="userAccept-label"><span class="radio notspecial">I certify that this attorney is in good standing with a bar of the highest court of any US State, the District of Columbia, the US Commonwealths or US Territories.</span></label>
                                 <div>

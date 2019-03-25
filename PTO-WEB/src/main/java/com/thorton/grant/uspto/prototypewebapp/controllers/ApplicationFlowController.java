@@ -3351,10 +3351,26 @@ public class ApplicationFlowController {
         // check attorney TEAS fields  bar #
         if(baseTrademarkApplication.isAttorneyFiling() == true){
 
-            if(baseTrademarkApplication.getPrimaryLawyer().getMembershipNumber() == null){
-                missedTEAsFields.add("Attorney Bar Membership Number");
+
+            if(baseTrademarkApplication.getPrimaryLawyer().getBarJurisdiction() == null){
+                missedTEAsFields.add("Attorney bar jurisdiction");
                 returnLink ="../../application/AttorneySet2/?trademarkID=";
             }
+            if(baseTrademarkApplication.getPrimaryLawyer().getMembershipNumber() == null){
+                missedTEAsFields.add("Attorney bar membership number");
+                returnLink ="../../application/AttorneySet2/?trademarkID=";
+            }
+            if(baseTrademarkApplication.getPrimaryLawyer().getBarAdmissionDate() == null){
+                missedTEAsFields.add("Attorney bar membership admission date");
+                returnLink ="../../application/AttorneySet2/?trademarkID=";
+            }
+
+            if(baseTrademarkApplication.getPrimaryLawyer().getBarCertificateImageKey() == null){
+                missedTEAsFields.add("Attorney bar membership certificate");
+                returnLink ="../../application/AttorneySet2/?trademarkID=";
+            }
+
+
         }
 
 
@@ -3371,7 +3387,7 @@ public class ApplicationFlowController {
         if(baseTrademarkApplication.getPrimaryOwner().getOwnersubType().equals("Individual")){
 
             if(baseTrademarkApplication.getPrimaryOwner().getCitizenShip() == null || baseTrademarkApplication.getPrimaryOwner().getCitizenShip().equals("")){
-                missedTEAsFields.add("Owner - Country of Citizenship");
+                missedTEAsFields.add("Owner - country of citizenship");
             }
 
         }
@@ -3384,7 +3400,7 @@ public class ApplicationFlowController {
                 baseTrademarkApplication.getPrimaryOwner().getOwnersubType().equals("Estate")
         ){
             if(baseTrademarkApplication.getPrimaryOwner().getOwnerOrganizationState()== null || baseTrademarkApplication.getPrimaryOwner().getOwnerOrganizationState().equals("")){
-                missedTEAsFields.add("Owner - State Where Legally Organized ");
+                missedTEAsFields.add("Owner - state where legally organized ");
             }
         }
 
@@ -3392,7 +3408,7 @@ public class ApplicationFlowController {
 
 
             if(baseTrademarkApplication.getPrimaryOwner().getOwnerOrganizationState() == null ||baseTrademarkApplication.getPrimaryOwner().getOwnerOrganizationState().equals("") ){
-                missedTEAsFields.add("Owner - State Where Legally Incorporated");
+                missedTEAsFields.add("Owner - state where legally incorporated");
             }
 
         }
@@ -3400,7 +3416,7 @@ public class ApplicationFlowController {
 
         if(baseTrademarkApplication.getPrimaryOwner().getOwnersubType().contains("Foreign")){
             if(baseTrademarkApplication.getPrimaryOwner().getOwnerOrganizationState() == null || baseTrademarkApplication.getPrimaryOwner().getOwnerOrganizationState().equals("")){
-                missedTEAsFields.add("Owner - Country where Legally Incorporated");
+                missedTEAsFields.add("Owner - country where legally incorporated");
             }
 
         }
@@ -3425,28 +3441,28 @@ public class ApplicationFlowController {
 
 
             if(baseTrademarkApplication.getTradeMark().getMarkLiteral() == null){
-                missedTEAsFields.add("Mark Literal");
+                missedTEAsFields.add("Mark literal");
 
             }
             if(baseTrademarkApplication.getTradeMark().isColorClaimSet() == false){
 
 
-                missedTEAsFields.add("Mark Color Claim");
+                missedTEAsFields.add("Mark color claim");
             }
             else {
                 if(baseTrademarkApplication.getTradeMark().isMarkColorClaimBW()){
 
                     if(baseTrademarkApplication.getTradeMark().isAcceptBWmarkSet() == false){
-                        missedTEAsFields.add("Accept B&W Mark");
+                        missedTEAsFields.add("Accept B&W mark");
                     }
                 }
                 else {
                     if(baseTrademarkApplication.getTradeMark().getMarkColors() == null){
-                        missedTEAsFields.add("Mark Color Claim - Mark color");
+                        missedTEAsFields.add("Mark color claim - mark color");
                     }
                 }
                 if(baseTrademarkApplication.getTradeMark().getMarkDescription() == null){
-                    missedTEAsFields.add("Mark Color/B&W Description");
+                    missedTEAsFields.add("Mark color/B&W description");
                 }
             }
 
@@ -3489,7 +3505,7 @@ public class ApplicationFlowController {
         if(baseTrademarkApplication.getTradeMark().isPriorRegistratoinSet() == true){
             if(baseTrademarkApplication.getTradeMark().isPriorRegistratoin() == true){
                 if(baseTrademarkApplication.getTradeMark().getPriorRegistrationNumber() == "" || baseTrademarkApplication.getTradeMark().getPriorRegistrationNumber() == null){
-                    missedTEAsFields.add("Prior Registration Number");
+                    missedTEAsFields.add("Prior registration number");
 
                 }
             }
@@ -3542,7 +3558,7 @@ public class ApplicationFlowController {
         if(baseTrademarkApplication.getTradeMark().isPriorRegistratoin() == true){
             if(baseTrademarkApplication.getTradeMark().getPriorRegistrationNumber() == null){
 
-                missedTEAsFields.add("Mark Disclaimer - Prior Registration Number");
+                missedTEAsFields.add("Mark disclaimer - prior registration number");
 
             }
 
@@ -3591,7 +3607,7 @@ public class ApplicationFlowController {
                             }
 
                         }
-                        missedTEAsFields.add("Foreign Registration Expiration date - "+goodAndService.getClassDescription());
+                        missedTEAsFields.add("Foreign registration expiration date - "+goodAndService.getClassDescription());
 
                     }
 
@@ -3605,7 +3621,7 @@ public class ApplicationFlowController {
                             }
 
                         }
-                        missedTEAsFields.add("Foreign Registration Renewal date - "+goodAndService.getClassDescription());
+                        missedTEAsFields.add("Foreign registration renewal date - "+goodAndService.getClassDescription());
 
 
                     }
@@ -3620,7 +3636,7 @@ public class ApplicationFlowController {
                             }
 
                         }
-                        missedTEAsFields.add("Foreign Registration Certificate - "+goodAndService.getClassDescription());
+                        missedTEAsFields.add("Foreign registration certificate - "+goodAndService.getClassDescription());
 
                     }
 
@@ -3640,7 +3656,7 @@ public class ApplicationFlowController {
                             }
 
                         }
-                        missedTEAsFields.add("Foreign Application Filing date - "+goodAndService.getClassDescription());
+                        missedTEAsFields.add("Foreign application filing date - "+goodAndService.getClassDescription());
 
 
                     }
@@ -3655,7 +3671,7 @@ public class ApplicationFlowController {
                             }
 
                         }
-                        missedTEAsFields.add("Foreign Application Application number - "+goodAndService.getClassDescription());
+                        missedTEAsFields.add("Foreign application application number - "+goodAndService.getClassDescription());
 
 
                     }
@@ -3676,7 +3692,7 @@ public class ApplicationFlowController {
 
 
         if(baseTrademarkApplication.isPrincipalRegister() == false){
-            missedTEAsFields.add("Type of Register ");
+            missedTEAsFields.add("Type of register ");
         }
 
 
