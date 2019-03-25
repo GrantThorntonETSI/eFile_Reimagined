@@ -472,7 +472,7 @@
 
                                                 <th:block th:if="${exceuter.isPersonEntity() == false}">
                                                         <div class="form-group form-group-md col-xs-6">
-                                                            <label ><span class="weight600">&#42;</span>Owner Name</label>
+                                                            <label ><span class="weight600">&#42;</span>General partner name</label>
                                                             <input  type="text"   class="form-control rounded-borders ge-name"  style="" th:value="${exceuter.entityName}" th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}">
                                                         </div>
 
@@ -535,26 +535,6 @@
 
                                                         </select>
                                                     </div>
-                                                        <div class="form-group form-group-md col-xs-6">
-                                                            <label>Type</label>
-                                                            <span>
-                                                                <select  class="form-control ge-name-type" name="nameType"   style="" th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}">
-                                                                    <option th:value="${exceuter.getEntityAlternateNameType()}" th:text="${exceuter.getEntityAlternateNameType()}" selected>Select</option>
-                                                                    <option value="">Select</option>
-                                                                    <option value="Doing Business As(DBA)">Doing Business As(DBA)</option>
-                                                                    <option value="Trading As(TA)">Trading As(TA)</option>
-                                                                    <option value="Also Known As(AKA)">Also Known As(AKA)</option>
-                                                                    <option value="Formerly">Formerly</option>
-
-                                                                </select>
-                                                            </span>
-                                                        </div>
-
-                                                    <div class="form-group form-group-md col-xs-6" style="">
-                                                        <label for="nameoftype">Name</label>
-                                                        <input type="text" class="form-control partner-alt-name"  name="nameoftype" th:value="${exceuter.getEntityAlternateName()}"   th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}"><!--needs th:attribute-->
-                                                    </div>
-
 
 
                                                 </th:block>
@@ -856,7 +836,7 @@
                                     <fieldset aria-labelledby="proprietorinfo" id="none-individual-partner-entity-new" style="display: none;">
                                         <div class="row">
                                             <div class="form-group form-group-md col-xs-6">
-                                                <label for="ownername"><span class="weight600">&#42;</span>Owner name</label>
+                                                <label for="ownername"><span class="weight600">&#42;</span>General partner name</label>
                                                 <input type="text" class="form-control rounded-borders ge-name"  required  value="">
                                             </div>
                                             <div class="form-group form-group-md col-xs-6">
@@ -915,22 +895,6 @@
                                                     <option value="Wisconsin">Wisconsin</option>
                                                     <option value="Wyoming">Wyoming</option>
                                                 </select>
-                                            </div>
-                                            <div class="form-group form-group-md col-xs-6">
-                                                <label>Type</label>
-                                                <span>
-                                                        <select  class="form-control ge-name-type" >
-                                                              <option value="">Select</option>
-                                                                    <option value="Doing Business As(DBA)">Doing Business As(DBA)</option>
-                                                                    <option value="Trading As(TA)">Trading As(TA)</option>
-                                                                    <option value="Also Known As(AKA)">Also Known As(AKA)</option>
-                                                                    <option value="Formerly">Formerly</option>
-                                                        </select>
-                                                </span>
-                                            </div>
-                                            <div class="form-group form-group-md col-xs-6" style="">
-                                                <label for="nameoftype">Name</label>
-                                                <input type="text" class="form-control partner-alt-name"  name="nameoftype" ><!--needs th:attribute-->
                                             </div>
 
                                         </div>

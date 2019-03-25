@@ -404,7 +404,7 @@
                     <fieldset aria-labelledby="proprietorinfo" id="none-individual-partner-entity" style="display: none;">
                         <div class="row">
                             <div class="form-group form-group-md col-xs-6">
-                                <label for="ownername"><b style="color: red">&#42;</b>Owner Name</label>
+                                <label for="ownername"><b style="color: red">&#42;</b>General partner name</label>
                                 <input id="partner-owner-name" type="text" th:field="*{partnerDTOs[__${itemStat.index}__].partnerName}"  class="form-control rounded-borders"   required>
                             </div>
 
@@ -466,25 +466,6 @@
                                     <option value="Wyoming">Wyoming</option>
 
                                 </select>
-                            </div>
-
-                            <div class="form-group form-group-md col-xs-6">
-                                <label><b style="color: red">&#42;</b>Type</label>
-                                <span>
-                                    <select  id="partner-owner-name-type" class="form-control partner-owner-name-type" name="nameType" th:field="*{partnerDTOs[__${itemStat.index}__].type}"  >
-                                            <option value="">Select</option>
-                                            <option value="Doing Business As(DBA)">Doing Business As(DBA)</option>
-                                            <option value="Trading As(TA)">Trading As(TA)</option>
-                                            <option value="Also Known As(AKA)">Also Known As(AKA)</option>
-                                            <option value="Formerly">Formerly</option>
-
-                                    </select>
-                                </span>
-                            </div>
-
-                            <div class="form-group form-group-md col-xs-6" id="partner-add-Name-value" style="display: none;">
-                                <label for="nameoftype">Name</label>
-                                <input type="text" class="form-control" id="partner-add-name" name="nameoftype"  th:field="*{partnerDTOs[__${itemStat.index}__].alternateName}"><!--needs th:attribute-->
                             </div>
 
 
@@ -787,7 +768,7 @@
                         <fieldset aria-labelledby="proprietorinfo" id="none-individual-partner-entity2" style="display: none;">
                             <div class="row">
                                 <div class="form-group form-group-md col-xs-6">
-                                    <label for="ownername"><b style="color: red">&#42;</b>Owner Name</label>
+                                    <label for="ownername"><b style="color: red">&#42;</b>General partner name</label>
                                     <input id="partner-owner-name2" type="text"  class="form-control rounded-borders"  th:field="*{partner_name2}"  >
                                 </div>
                                 <div class="form-group form-group-md col-xs-6">
@@ -850,24 +831,6 @@
                                 </div>
 
 
-
-                                <div class="form-group form-group-md col-xs-6">
-                                    <label><b style="color: red">&#42;</b>Type</label>
-                                    <span>
-                                        <select  id="partner-owner-name-type2" class="form-control partner-owner-name-type" name="nameType"   th:field="*{partner_alt_type2}" >
-                                            <option value="">Select</option>
-                                            <option value="Doing Business As(DBA)">Doing Business As(DBA)</option>
-                                            <option value="Trading As(TA)">Trading As(TA)</option>
-                                            <option value="Also Known As(AKA)">Also Known As(AKA)</option>
-                                            <option value="Formerly">Formerly</option>
-
-                                        </select>
-                                     </span>
-                                </div>
-                                <div class="form-group form-group-md col-xs-6" id="partner-add-Name-value2" style="display: none;">
-                                    <label for="nameoftype">Name</label>
-                                    <input type="text" class="form-control" id="partner-add-name2" name="nameoftype"  ><!--needs th:attribute-->
-                                </div>
 
 
 
@@ -1167,7 +1130,7 @@
                         <fieldset aria-labelledby="proprietorinfo" id="none-individual-partner-entity3" style="display: none;">
                             <div class="row">
                                 <div class="form-group form-group-md col-xs-6">
-                                    <label for="ownername"><b style="color: red">&#42;</b>Owner Name</label>
+                                    <label for="ownername"><b style="color: red">&#42;</b>General partner name</label>
                                     <input id="partner-owner-name3" type="text"  class="form-control rounded-borders"   th:field="*{partner_name3}"  >
                                 </div>
 
@@ -1230,27 +1193,6 @@
 
                                     </select>
                                 </div>
-
-                                <div class="form-group form-group-md col-xs-6">
-                                    <label><b style="color: red">&#42;</b>Type</label>
-                                    <span>
-                                        <select  id="partner-owner-name-type3" class="form-control partner-owner-name-type" name="nameType"   th:field="*{partner_alt_type3}"  >
-                                                <option value="">Select</option>
-                                                <option value="Doing Business As(DBA)">Doing Business As(DBA)</option>
-                                                <option value="Trading As(TA)">Trading As(TA)</option>
-                                                <option value="Also Known As(AKA)">Also Known As(AKA)</option>
-                                                <option value="Formerly">Formerly</option>
-
-                                        </select>
-                                    </span>
-                                </div>
-
-                                <div class="form-group form-group-md col-xs-6" id="partner-add-Name-value3" style="display: none;">
-                                    <label for="nameoftype">Name</label>
-                                    <input type="text" class="form-control" id="partner-add-name3" name="nameoftype"  ><!--needs th:attribute-->
-                                </div>
-
-
 
 
 

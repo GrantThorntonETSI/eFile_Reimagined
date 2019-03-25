@@ -3282,6 +3282,8 @@
 
          $('input.mark-in-use-radio').click(function () {
 
+
+
              $(this).parent().parent().next().css('display','none');
 
              var gsID= $(this).attr("name");
@@ -3308,6 +3310,11 @@
                  else {
                      $(this).parent().parent().next().show(500);
                  }
+
+                 // go through the child radio set
+                 // and check all nos
+                 // and disable yes
+
              }
 
 
@@ -3604,7 +3611,7 @@
 
 
 
-        $('.mark-in-use-radio-classLevel-yes').click(function () {
+        $('.mark-in-use-radio-classLevel-yes').on('click',function () {
 
             $(this).parent().parent().parent().next().fadeIn(500);
 
@@ -3613,14 +3620,39 @@
             addFilingBasisInfoToClassCategory("cc-in-use-one", "yes", catNum, appInternalID);
 
 
+            $(this).parent().parent().parent().next().next().next().find("input").each(function () {
+
+
+
+                var htmlText = $(this).parent().html();
+                if(htmlText.indexOf("inUseRadioYES") > 0){
+                    $(this).attr("disabled", false);
+
+                }
+                else{
+                    if(htmlText.indexOf("inUseRadioNO") > 0){
+                        // $(this).attr("checked", false);
+
+                        alert($(this).html());
+                       $(this).attr("checked", false);
+
+                    }
+
+                }
+
+
+
+            });
+
+
 
         });
 
 
-        $('.mark-in-use-radio-classLevel-no').click(function () {
-            $(this).parent().parent().parent().next().children('input').each(function () {
-                $(this).attr("checked", false);
-            });
+        $('.mark-in-use-radio-classLevel-no').on( 'click',function () {
+           // $(this).parent().parent().parent().next().children('input').each(function () {
+           //     $(this).attr("checked", false);
+           // });
 
             $(this).parent().parent().parent().next().fadeOut(500);
 
@@ -3629,6 +3661,38 @@
             var catNum= $(this).attr("cat-num");
 
             addFilingBasisInfoToClassCategory("cc-in-use-one", "no", catNum, appInternalID);
+
+
+
+                // check if yes is already checked
+
+
+
+            $(this).parent().parent().parent().next().next().next().find("input").each(function () {
+
+                var htmlText = $(this).parent().html();
+
+
+                if(htmlText.indexOf("inUseRadioYES") > 0){
+                    $(this).attr("checked", false);
+                    $(this).attr("disabled", true);
+                    //alert(htmlText);
+                }
+
+                if(htmlText.indexOf("inUseRadioNO") > 0){
+
+                   $(this).attr("checked", true);
+                    //alert(htmlText);
+
+                   // $(this).click();
+
+
+                }
+
+
+
+            });
+
 
         });
 

@@ -732,6 +732,8 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                     if(current.getClassNumber().equals(ccNumber)){
                        current.setAtLeastOneGoodInCommerceClassFlag(true);
                        current.setAtLeastOneGoodInCommerceClassFlagSet(true);
+                       //current.setMarkInUse(true);
+                       //current.setMarkInUseSet(true);
 
 
                     }
@@ -745,12 +747,18 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                     if(current.getClassNumber().equals(ccNumber)){
                         current.setAtLeastOneGoodInCommerceClassFlag(false);
                         current.setAtLeastOneGoodInCommerceClassFlagSet(true);
+                        current.setMarkInUse(false);
+                        current.setMarkInUseSet(true);
 
 
                     }
                 }
 
             }
+
+            // we need to loop through each goods and services and update its in use flag
+
+
 
 
             appFieldReadable = "Class level option";
