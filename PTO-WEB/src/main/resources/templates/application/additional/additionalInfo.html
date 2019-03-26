@@ -2824,6 +2824,32 @@
         saveAdditionalInfo("ai-concurrent-reg-num", value, appInternalID);
     });
 
+    $('#noconcurrentfiles').click(function () {
+
+        if(this.checked == true){
+            saveAdditionalInfo("ai-concurrent-no-registration", 'yes', appInternalID);
+        }
+        else {
+            saveAdditionalInfo("ai-concurrent-no-registration", 'no', appInternalID);
+        }
+    });
+
+
+    $('#concurrentname').focusout(function () {
+        var value = $(this).val();
+
+        saveAdditionalInfo("ai-concurrent-user-name", value, appInternalID);
+    });
+
+
+
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // type o
+
+
 
     $('#inlineRadio032').click(function () {
 
@@ -2975,6 +3001,65 @@
     }); // end of document ready
 
     function saveUncommonType(field_name_prefix, field_value, appInternalID) {
+        $.ajax({
+            url: "../../REST/apiGateway/additionalInfo/update/uncommonType/"+field_name_prefix+"/"+field_value+"/"+appInternalID,
+            type: 'GET',
+            success: function(data){
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                if(s_code.trim() == "200"){
+
+                    var msg = parseValuesFromResponse(s_msg, "server-message");
+
+                    var feeDisplay = parseValuesFromResponse(s_msg, "fee-display-html");
+                    var previousFeeDisplay = $('#fee-display').text();
+                    if(feeDisplay != previousFeeDisplay){
+                        $('#fee-display').effect("highlight", {}, 3000);
+                    }
+                    $('#fee-display').text(feeDisplay);
+
+
+
+                    var basicCalc = parseValuesFromResponse(s_msg, "basic-fee-calc-html");
+                    $('#basic-fee-calc').text(basicCalc);
+
+                    var extraCalc = parseValuesFromResponse(s_msg, "extra-class-fee-calc-html");
+                    $('#extra-fee-calc').text(extraCalc);
+
+                    var feeTotal = parseValuesFromResponse(s_msg,"total-fee-html");
+                    $('#total-fees').text(feeTotal);
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function() {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+            },
+            error: function(data) {
+
+                console.log(data);
+
+            }
+
+        });
+
+
+
+    }
+
+
+    function saveRegistarInfo(field_name_prefix, field_value, appInternalID) {
         $.ajax({
             url: "../../REST/apiGateway/additionalInfo/update/uncommonType/"+field_name_prefix+"/"+field_value+"/"+appInternalID,
             type: 'GET',

@@ -226,6 +226,9 @@ public class BaseTrademarkApplication  {
 
     private String concurrentUserRegistrationNumber;
 
+    private boolean concurrentUserNoRegistrationClaim;
+    private boolean concurrentUserNoRegistrationClaimSet;
+
 
     private String concurrentUserName;
 
@@ -243,6 +246,9 @@ public class BaseTrademarkApplication  {
     private String modeOfuseConcurrentUser;
 
     private String timePeriodConcurrentUser;
+
+
+
 
     // 2f claim fields
 
@@ -1568,6 +1574,22 @@ public class BaseTrademarkApplication  {
 
     public void setMiscInfoImageUploaded(boolean miscInfoImageUploaded) {
         this.miscInfoImageUploaded = miscInfoImageUploaded;
+    }
+
+    public boolean isConcurrentUserNoRegistrationClaim() {
+        return concurrentUserNoRegistrationClaim;
+    }
+
+    public void setConcurrentUserNoRegistrationClaim(boolean concurrentUserNoRegistrationClaim) {
+        this.concurrentUserNoRegistrationClaim = concurrentUserNoRegistrationClaim;
+    }
+
+    public boolean isConcurrentUserNoRegistrationClaimSet() {
+        return concurrentUserNoRegistrationClaimSet;
+    }
+
+    public void setConcurrentUserNoRegistrationClaimSet(boolean concurrentUserNoRegistrationClaimSet) {
+        this.concurrentUserNoRegistrationClaimSet = concurrentUserNoRegistrationClaimSet;
     }
 
     @Override

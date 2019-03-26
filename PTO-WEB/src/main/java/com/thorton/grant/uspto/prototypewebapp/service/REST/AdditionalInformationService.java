@@ -123,7 +123,7 @@ public class AdditionalInformationService extends  BaseRESTapiService {
             }
 
 
-            appFieldReadable = "Miscellaneous Info option";
+            appFieldReadable = "Miscellaneous info option";
 
 
         }
@@ -133,7 +133,7 @@ public class AdditionalInformationService extends  BaseRESTapiService {
         if(fieldName.equals("ai-misc-statement")){
             // ptoUser.setState(param); // sets state code
             baseTrademarkApplication.setMiscInformation(fieldValue);
-            appFieldReadable = "Miscellaneous Statement";
+            appFieldReadable = "Miscellaneous statement";
 
         }
 
@@ -152,7 +152,7 @@ public class AdditionalInformationService extends  BaseRESTapiService {
             }
             baseTrademarkApplication.setDeclarationConcurrentUserSet(true);
 
-            appFieldReadable = "Concurrent Use Declaration";
+            appFieldReadable = "Concurrent use declaration";
 
 
         }
@@ -176,7 +176,7 @@ public class AdditionalInformationService extends  BaseRESTapiService {
 
             }
 
-            appFieldReadable = "Concurrent Use Type ";
+            appFieldReadable = "Concurrent use type ";
 
 
         }
@@ -198,7 +198,7 @@ public class AdditionalInformationService extends  BaseRESTapiService {
 
             }
 
-            appFieldReadable = "Concurrent Use Type ";
+            appFieldReadable = "Concurrent use type ";
 
 
         }
@@ -220,7 +220,7 @@ public class AdditionalInformationService extends  BaseRESTapiService {
 
             }
 
-            appFieldReadable = "Concurrent Use Type ";
+            appFieldReadable = "Concurrent use type ";
 
 
         }
@@ -241,7 +241,7 @@ public class AdditionalInformationService extends  BaseRESTapiService {
 
             }
 
-            appFieldReadable = "Concurrent Use Type ";
+            appFieldReadable = "Concurrent use type ";
 
 
         }
@@ -251,7 +251,7 @@ public class AdditionalInformationService extends  BaseRESTapiService {
             // ptoUser.setState(param); // sets state code
 
             baseTrademarkApplication.setConcurentEvidenceDescription(fieldValue);
-            appFieldReadable = "Concurrent Use Evidence Description ";
+            appFieldReadable = "Concurrent use evidence description ";
 
         }
 
@@ -260,14 +260,14 @@ public class AdditionalInformationService extends  BaseRESTapiService {
             // ptoUser.setState(param); // sets state code
 
             baseTrademarkApplication.setModeOfUse(fieldValue);
-            appFieldReadable = "Concurrent Use Mode of use";
+            appFieldReadable = "Concurrent use mode of use";
 
         }
         if(fieldName.equals("ai-concurrent-geo-commerce")){
             // ptoUser.setState(param); // sets state code
 
             baseTrademarkApplication.setGeoAreaMarkInCommerce(fieldValue);
-            appFieldReadable = "Concurrent Use Geographic Area in Commerce";
+            appFieldReadable = "Concurrent use geographic area in commerce";
 
         }
 
@@ -276,16 +276,48 @@ public class AdditionalInformationService extends  BaseRESTapiService {
             // ptoUser.setState(param); // sets state code
 
             baseTrademarkApplication.setTtabProceedingNumber(fieldValue);
-            appFieldReadable = "Concurrent Use TTAB proceeding number";
+            appFieldReadable = "Concurrent use TTAB proceeding number";
 
         }
         if(fieldName.equals("ai-concurrent-reg-num")){
             // ptoUser.setState(param); // sets state code
 
             baseTrademarkApplication.setConcurrentUserRegistrationNumber(fieldValue);
-            appFieldReadable = "Concurrent User Registration number";
+            appFieldReadable = "Concurrent user registration number";
 
         }
+        if(fieldName.equals("ai-concurrent-user-name")){
+            // ptoUser.setState(param); // sets state code
+
+            baseTrademarkApplication.setConcurrentUserName(fieldValue);
+            appFieldReadable = "Concurrent user name";
+
+        }
+
+        if(fieldName.equals("ai-concurrent-no-registration")){
+            // ptoUser.setState(param); // sets state code
+
+            if(fieldValue.equals("no")){
+                baseTrademarkApplication.setConcurrentUserNoRegistrationClaim(true);
+                baseTrademarkApplication.setConcurrentUserNoRegistrationClaimSet(true);
+            }
+            else {
+                baseTrademarkApplication.setConcurrentUserNoRegistrationClaim(false);
+                baseTrademarkApplication.setConcurrentUserNoRegistrationClaimSet(true);
+            }
+
+
+            baseTrademarkApplication.setConcurrentUserName(fieldValue);
+            appFieldReadable = "Concurrent claim no registration";
+
+        }
+
+
+
+
+        //////////////////////////////////////////////////////////////////////////////
+
+
 
 
         if(fieldName.equals("ai-inheritantly-distinct")){
@@ -323,7 +355,7 @@ public class AdditionalInformationService extends  BaseRESTapiService {
 
             }
 
-            appFieldReadable = "Claim of inherently distinctive Whole";
+            appFieldReadable = "Claim of inherently distinctive whole";
 
 
         }
@@ -344,7 +376,7 @@ public class AdditionalInformationService extends  BaseRESTapiService {
 
             }
 
-            appFieldReadable = "Claim of inherently distinctive Part";
+            appFieldReadable = "Claim of inherently distinctive part";
 
 
         }
@@ -355,7 +387,7 @@ public class AdditionalInformationService extends  BaseRESTapiService {
 
             baseTrademarkApplication.setInPartClaimDescription(fieldValue);
 
-            appFieldReadable = "Claim of inherently distinctive Part Description";
+            appFieldReadable = "Claim of inherently distinctive part description";
 
 
         }
@@ -370,7 +402,7 @@ public class AdditionalInformationService extends  BaseRESTapiService {
               baseTrademarkApplication.setDistinctClaimBasedFiveYOU(false);
             }
 
-            appFieldReadable = "Distinctive Claim Base";
+            appFieldReadable = "Distinctive claim base";
 
 
         }
@@ -384,7 +416,7 @@ public class AdditionalInformationService extends  BaseRESTapiService {
                 baseTrademarkApplication.setDistinctClaimBasedFiveYOU(false);
             }
 
-            appFieldReadable = "Distinctive Claim Base";
+            appFieldReadable = "Distinctive claim base";
 
 
         }
@@ -399,7 +431,7 @@ public class AdditionalInformationService extends  BaseRESTapiService {
                 baseTrademarkApplication.setDistinctClaimBasedFiveYOU(true);
             }
 
-            appFieldReadable = "Distinctive Claim Base";
+            appFieldReadable = "Distinctive claim base";
 
 
         }
@@ -410,7 +442,7 @@ public class AdditionalInformationService extends  BaseRESTapiService {
 
             baseTrademarkApplication.setDistinctClaimBasedPriorRegNumber(fieldValue);
 
-            appFieldReadable = "Distinct Claim Prior Registration Number";
+            appFieldReadable = "Distinct claim prior registration number";
 
 
         }
