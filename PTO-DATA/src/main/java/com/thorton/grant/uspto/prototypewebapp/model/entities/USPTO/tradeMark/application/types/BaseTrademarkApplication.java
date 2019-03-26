@@ -210,6 +210,7 @@ public class BaseTrademarkApplication  {
     private String concurrentUseEvidenceFileName;
 
     private boolean concurrentEvidentFileTypeWord;
+    private boolean concurrentUseEvidenceFileUploaded;
 
 
 
@@ -1590,6 +1591,14 @@ public class BaseTrademarkApplication  {
 
     public void setConcurrentUserNoRegistrationClaimSet(boolean concurrentUserNoRegistrationClaimSet) {
         this.concurrentUserNoRegistrationClaimSet = concurrentUserNoRegistrationClaimSet;
+    }
+
+    public boolean isConcurrentUseEvidenceFileUploaded() {
+        return concurrentUseEvidenceFileUploaded;
+    }
+
+    public void setConcurrentUseEvidenceFileUploaded(boolean concurrentUseEvidenceFileUploaded) {
+        this.concurrentUseEvidenceFileUploaded = concurrentUseEvidenceFileUploaded;
     }
 
     @Override

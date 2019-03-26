@@ -297,7 +297,7 @@ public class AdditionalInformationService extends  BaseRESTapiService {
         if(fieldName.equals("ai-concurrent-no-registration")){
             // ptoUser.setState(param); // sets state code
 
-            if(fieldValue.equals("no")){
+            if(fieldValue.equals("yes")){
                 baseTrademarkApplication.setConcurrentUserNoRegistrationClaim(true);
                 baseTrademarkApplication.setConcurrentUserNoRegistrationClaimSet(true);
             }
