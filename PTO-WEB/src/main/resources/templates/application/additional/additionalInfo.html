@@ -1883,7 +1883,7 @@
                                                                         </div>
                                                                         <div class="col-xs-12 form-group form-group-md">
                                                                             <label for="gs">Goods/Services:</label>
-                                                                            <textarea id="gs" rows="3" class="form-control"></textarea>
+                                                                            <textarea id="gs" rows="3" class="form-control" th:value="${baseTrademarkApplication.getConcurrentUserGoodsAndService()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 form-group form-group-md">
                                                                             <label for="area">Geographic Area of concurrent user:</label>
@@ -2360,7 +2360,7 @@
                                                                         </div>
                                                                         <div class="col-xs-12 form-group form-group-md">
                                                                             <label for="gs">Goods/Services:</label>
-                                                                            <textarea id="gs" rows="3" class="form-control"></textarea>
+                                                                            <textarea id="gs" rows="3" class="form-control" th:value="${baseTrademarkApplication.getConcurrentUserGoodsAndService()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 form-group form-group-md">
                                                                             <label for="area">Geographic Area of concurrent user:</label>
@@ -2988,7 +2988,7 @@
                                                                         </div>
                                                                         <div class="col-xs-12 form-group form-group-md">
                                                                             <label for="gs">Goods/Services:</label>
-                                                                            <textarea id="gs" rows="3" class="form-control"></textarea>
+                                                                            <textarea id="gs" rows="3" class="form-control" th:value="${baseTrademarkApplication.getConcurrentUserGoodsAndService()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 form-group form-group-md">
                                                                             <label for="area">Geographic Area of concurrent user:</label>
@@ -3439,7 +3439,7 @@
                                                                         </div>
                                                                         <div class="col-xs-12 form-group form-group-md">
                                                                             <label for="gs">Goods/Services:</label>
-                                                                            <textarea id="gs" rows="3" class="form-control"></textarea>
+                                                                            <textarea id="gs" rows="3" class="form-control" th:value="${baseTrademarkApplication.getConcurrentUserGoodsAndService()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 form-group form-group-md">
                                                                             <label for="area">Geographic Area of concurrent user:</label>
@@ -4202,6 +4202,10 @@
     });
 
 
+    $('#gs').focusout(function () {
+        var value = $(this).val();
+        saveAdditionalInfo("ai-concurrent-gs", value, appInternalID);
+    });
 
 
 

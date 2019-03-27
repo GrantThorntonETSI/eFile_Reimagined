@@ -352,6 +352,15 @@ public class AdditionalInformationService extends  BaseRESTapiService {
 
         }
 
+        if(fieldName.equals("ai-concurrent-gs")){
+            // ptoUser.setState(param); // sets state code
+
+            baseTrademarkApplication.setConcurrentUserGoodsAndService(fieldValue);
+            appFieldReadable = "Concurrent goods and services";
+
+        }
+
+
         //////////////////////////////////////////////////////////////////////////////
 
 
