@@ -375,6 +375,14 @@ public class AdditionalInformationService extends  BaseRESTapiService {
             appFieldReadable = "Concurrent mode of use";
 
         }
+
+        if(fieldName.equals("ai-concurrent-time-use")){
+            // ptoUser.setState(param); // sets state code
+
+            baseTrademarkApplication.setTimePeriodConcurrentUser(fieldValue);
+            appFieldReadable = "Concurrent period of use";
+
+        }
         //////////////////////////////////////////////////////////////////////////////
 
 
