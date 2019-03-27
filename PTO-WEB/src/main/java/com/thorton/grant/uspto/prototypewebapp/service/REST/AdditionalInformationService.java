@@ -514,6 +514,28 @@ public class AdditionalInformationService extends  BaseRESTapiService {
 
 
         }
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        if(fieldName.equals("ai-use-another-form")){
+            // ptoUser.setState(param); // sets state code
+
+            if(fieldValue.equals("yes")){
+
+                baseTrademarkApplication.setUseInAnotherForm(true);
+
+            }
+            if(fieldValue.equals("no")){
+                baseTrademarkApplication.setUseInAnotherForm(false);
+
+
+            }
+
+
+            appFieldReadable = "Use in another form declaration";
+
+
+        }
+
 
         String responseMsg = appFieldReadable+" has been saved";
 

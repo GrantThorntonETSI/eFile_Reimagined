@@ -378,6 +378,10 @@
 
 
                                 </div>
+
+
+
+                                <!--start of rare and uncommon sections check boxes top level -->
                                 <div class="form-group form-group-md col-xs-12">
                                     <div class="row">
                                         <div class="col-xs-12">
@@ -426,12 +430,30 @@
 
 
 
+                                                                <th:block th:if="${baseTrademarkApplication.isUseInAnotherForm() == true}">
+
+                                                                    <div class="col-xs-12 col-md-5">
+                                                                        <input class="form-check-input checkmark" type="checkbox" value="anotherform" tabindex="0" aria-labelledby="useanother" id="useanotherform" checked>
+                                                                        <label class="form-check-label form-check" for="useanotherform" id="another"><span class="radio notspecial" id="useanother">Use in Another Form <a href="#" data-toggle="tooltip" title="Use in Another form allows you to make a claim to separable elements or (some part) of the Mark. Make this claim only if the Mark was used in a different form other than that sought to be registered. The dates will appear in the record for general information." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></span></label>
+                                                                    </div>
+
+                                                                </th:block>
+
+                                                                <th:block th:if="${baseTrademarkApplication.isUseInAnotherForm() == false}">
+
+                                                                    <div class="col-xs-12 col-md-5">
+                                                                        <input class="form-check-input checkmark" type="checkbox" value="anotherform" tabindex="0" aria-labelledby="useanother" id="useanotherform">
+                                                                        <label class="form-check-label form-check" for="useanotherform" id="another"><span class="radio notspecial" id="useanother">Use in Another Form <a href="#" data-toggle="tooltip" title="Use in Another form allows you to make a claim to separable elements or (some part) of the Mark. Make this claim only if the Mark was used in a different form other than that sought to be registered. The dates will appear in the record for general information." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></span></label>
+                                                                    </div>
+
+                                                                </th:block>
 
 
-                                                                <div class="col-xs-12 col-md-5">
-                                                                    <input class="form-check-input checkmark" type="checkbox" value="anotherform" tabindex="0" aria-labelledby="useanother" id="useanotherform">
-                                                                    <label class="form-check-label form-check" for="useanotherform" id="another"><span class="radio notspecial" id="useanother">Use in Another Form <a href="#" data-toggle="tooltip" title="Use in Another form allows you to make a claim to separable elements or (some part) of the Mark. Make this claim only if the Mark was used in a different form other than that sought to be registered. The dates will appear in the record for general information." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></span></label>
-                                                                </div>
+
+
+
+
+
                                                                 <th:block th:if="${baseTrademarkApplication.isConcurrentUse() == true}">
                                                                     <div class="col-xs-12 col-md-7">
                                                                         <input class="form-check-input checkmark" type="checkbox" value="concurrentuse" tabindex="0" aria-labelledby="conuse" id="concurruse" checked>
@@ -3780,68 +3802,6 @@
 
         //ajax auto save and file upload
 
-        $('#ta2').focusout(function () {
-            // save text
-            var textValue = $(this).val();
-            saveAdditionalInfo("ai-misc-statement", textValue, appInternalID);
-
-
-        });
-
-
-
-
-
-
-        $('#concurruse').click(function () {
-            if(this.checked == true){
-                saveAdditionalInfo("ai-concurrent-use", "yes", appInternalID);
-            }
-            else {
-                saveAdditionalInfo("ai-concurrent-use", "no", appInternalID);
-            }
-
-        });
-
-
-        $('#courtd').click(function () {
-            if(this.checked == true){
-
-                saveAdditionalInfo("ai-concurrent-type-court", "yes", appInternalID);
-            }
-            else {
-                saveAdditionalInfo("ai-concurrent-type-court", "no", appInternalID);
-            }
-        });
-
-        $('#ttabmade').click(function () {
-            if(this.checked == true){
-                saveAdditionalInfo("ai-concurrent-type-prior", "yes", appInternalID);
-            }
-            else {
-                saveAdditionalInfo("ai-concurrent-type-prior", "no", appInternalID);
-            }
-        });
-
-
-        $('#conflict').click(function () {
-            if(this.checked == true){
-                saveAdditionalInfo("ai-concurrent-type-written", "yes", appInternalID);
-            }
-            else {
-                saveAdditionalInfo("ai-concurrent-type-written", "no", appInternalID);
-            }
-        });
-        $('#earlieruse').click(function () {
-            if(this.checked == true){
-                saveAdditionalInfo("ai-concurrent-type-earlier", "yes", appInternalID);
-            }
-            else {
-                saveAdditionalInfo("ai-concurrent-type-earlier", "no", appInternalID);
-            }
-        });
-
-
         // java script upload for additional info misc info
         $("#additional-file-upload").click(function() {
 
@@ -3927,6 +3887,126 @@
             $(this).parent().parent().parent().parent().parent().parent().parent().next().show(500);
 
         });
+
+
+
+        $('#ta2').focusout(function () {
+            // save text
+            var textValue = $(this).val();
+            saveAdditionalInfo("ai-misc-statement", textValue, appInternalID);
+
+
+        });
+
+
+
+
+        $('#useanotherform').click(function () {
+            if(this.checked == true){
+                saveAdditionalInfo("ai-use-another-form", "yes", appInternalID);
+            }
+            else {
+                saveAdditionalInfo("ai-use-another-form", "no", appInternalID);
+            }
+
+        });
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+        $('#concurruse').click(function () {
+            if(this.checked == true){
+                saveAdditionalInfo("ai-concurrent-use", "yes", appInternalID);
+            }
+            else {
+                saveAdditionalInfo("ai-concurrent-use", "no", appInternalID);
+            }
+
+        });
+
+
+        $('#courtd').click(function () {
+            if(this.checked == true){
+
+                saveAdditionalInfo("ai-concurrent-type-court", "yes", appInternalID);
+            }
+            else {
+                saveAdditionalInfo("ai-concurrent-type-court", "no", appInternalID);
+            }
+        });
+
+        $('#ttabmade').click(function () {
+            if(this.checked == true){
+                saveAdditionalInfo("ai-concurrent-type-prior", "yes", appInternalID);
+            }
+            else {
+                saveAdditionalInfo("ai-concurrent-type-prior", "no", appInternalID);
+            }
+        });
+
+
+        $('#conflict').click(function () {
+            if(this.checked == true){
+                saveAdditionalInfo("ai-concurrent-type-written", "yes", appInternalID);
+            }
+            else {
+                saveAdditionalInfo("ai-concurrent-type-written", "no", appInternalID);
+            }
+        });
+        $('#earlieruse').click(function () {
+            if(this.checked == true){
+                saveAdditionalInfo("ai-concurrent-type-earlier", "yes", appInternalID);
+            }
+            else {
+                saveAdditionalInfo("ai-concurrent-type-earlier", "no", appInternalID);
+            }
+        });
+
+        $('#courtd').click(function () {
+
+            if(this.checked == true){
+                $('#hideshowconcurrentuses').show(500);
+            }
+            else {
+                $('#hideshowconcurrentuses').hide(500);
+            }
+
+        });
+
+        $('#ttabdecision').click(function () {
+
+            if(this.checked == true){
+                $('#hideshowconcurrentuses').show(500);
+            }
+            else {
+                $('#hideshowconcurrentuses').hide(500);
+            }
+
+        });
+
+        $('#conflictowner').click(function () {
+
+            if(this.checked == true){
+                $('#hideshowconcurrentuses').show(500);
+            }
+            else {
+                $('#hideshowconcurrentuses').hide(500);
+            }
+
+        });
+
+        $('#firstcommerce').click(function () {
+
+            if(this.checked == true){
+                $('#hideshowconcurrentuses').show(500);
+            }
+            else {
+                $('#hideshowconcurrentuses').hide(500);
+            }
+
+        });
+
 
 
 
@@ -4224,6 +4304,17 @@
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+    $('#typeregi').click(function () {
+        if(this.checked == true){
+
+            saveUncommonType("ai-register-type-set", "yes", appInternalID);
+
+        }
+        else {
+            saveUncommonType("ai-register-type-set", "no", appInternalID);
+        }
+
+    });
 
 
     $('#inlineRadio032').click(function () {
@@ -4249,18 +4340,7 @@
 
     });
 
-    $('#typeregi').click(function () {
-        if(this.checked == true){
-
-            saveUncommonType("ai-register-type-set", "yes", appInternalID);
-
-        }
-        else {
-            saveUncommonType("ai-register-type-set", "no", appInternalID);
-        }
-
-    });
-
+     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     $('#distinct').click(function () {
         if(this.checked == true){
 
@@ -4272,6 +4352,9 @@
         }
 
     });
+
+
+
 
     $('#inlineRadio033').click(function () {
 
@@ -4327,49 +4410,7 @@
     });
 
 
-    $('#courtd').click(function () {
 
-        if(this.checked == true){
-            $('#hideshowconcurrentuses').show(500);
-        }
-        else {
-            $('#hideshowconcurrentuses').hide(500);
-        }
-
-    });
-
-    $('#ttabdecision').click(function () {
-
-        if(this.checked == true){
-            $('#hideshowconcurrentuses').show(500);
-        }
-        else {
-            $('#hideshowconcurrentuses').hide(500);
-        }
-
-    });
-
-    $('#conflictowner').click(function () {
-
-        if(this.checked == true){
-            $('#hideshowconcurrentuses').show(500);
-        }
-        else {
-            $('#hideshowconcurrentuses').hide(500);
-        }
-
-    });
-
-    $('#firstcommerce').click(function () {
-
-        if(this.checked == true){
-            $('#hideshowconcurrentuses').show(500);
-        }
-        else {
-            $('#hideshowconcurrentuses').hide(500);
-        }
-
-    });
 
 
 

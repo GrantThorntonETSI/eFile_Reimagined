@@ -181,7 +181,7 @@ public class BaseTrademarkApplication  {
 
 
 
-
+    // concurrent use fields
     private boolean concurrentUse;
     private boolean concurrentUseSet;
 
@@ -290,6 +290,14 @@ public class BaseTrademarkApplication  {
     private boolean supplementalRegister = false;
 
     private boolean registerTypeSet;
+
+
+
+    // use in another form fields
+
+    private boolean useInAnotherForm;
+
+
 
 
 
@@ -1599,6 +1607,14 @@ public class BaseTrademarkApplication  {
 
     public void setConcurrentUseEvidenceFileUploaded(boolean concurrentUseEvidenceFileUploaded) {
         this.concurrentUseEvidenceFileUploaded = concurrentUseEvidenceFileUploaded;
+    }
+
+    public boolean isUseInAnotherForm() {
+        return useInAnotherForm;
+    }
+
+    public void setUseInAnotherForm(boolean useInAnotherForm) {
+        this.useInAnotherForm = useInAnotherForm;
     }
 
     @Override
