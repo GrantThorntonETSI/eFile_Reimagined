@@ -578,6 +578,10 @@ public class ApplicationObjectCreationController {
             owner.setOwnerOrganizationState(newOwnerContactFormDTO.getOwnerOrganizationState());
         }
 
+        if(baseTrademarkApplication.isForeignEnityFiling()){
+            owner.setOwnerOrganizationState("BAHAMAS");
+        }
+
 
         // crate partner if partner fields are not null
         // process primary partner
