@@ -1887,7 +1887,7 @@
                                                                         </div>
                                                                         <div class="col-xs-12 form-group form-group-md">
                                                                             <label for="area">Geographic Area of concurrent user:</label>
-                                                                            <textarea id="area" rows="3" class="form-control"></textarea>
+                                                                            <textarea id="area" rows="3" class="form-control" th:value="${baseTrademarkApplication.getGeoAreaConcurrentUser()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                             <label for="concurrentmode">Concurrent User Mode of Use:</label>
@@ -2364,7 +2364,7 @@
                                                                         </div>
                                                                         <div class="col-xs-12 form-group form-group-md">
                                                                             <label for="area">Geographic Area of concurrent user:</label>
-                                                                            <textarea id="area" rows="3" class="form-control"></textarea>
+                                                                            <textarea id="area" rows="3" class="form-control" th:value="${baseTrademarkApplication.getGeoAreaConcurrentUser()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                             <label for="concurrentmode">Concurrent User Mode of Use:</label>
@@ -2992,7 +2992,7 @@
                                                                         </div>
                                                                         <div class="col-xs-12 form-group form-group-md">
                                                                             <label for="area">Geographic Area of concurrent user:</label>
-                                                                            <textarea id="area" rows="3" class="form-control"></textarea>
+                                                                            <textarea id="area" rows="3" class="form-control" th:value="${baseTrademarkApplication.getGeoAreaConcurrentUser()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                             <label for="concurrentmode">Concurrent User Mode of Use:</label>
@@ -3443,7 +3443,7 @@
                                                                         </div>
                                                                         <div class="col-xs-12 form-group form-group-md">
                                                                             <label for="area">Geographic Area of concurrent user:</label>
-                                                                            <textarea id="area" rows="3" class="form-control"></textarea>
+                                                                            <textarea id="area" rows="3" class="form-control" th:value="${baseTrademarkApplication.getGeoAreaConcurrentUser()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                             <label for="concurrentmode">Concurrent User Mode of Use:</label>
@@ -4207,7 +4207,10 @@
         saveAdditionalInfo("ai-concurrent-gs", value, appInternalID);
     });
 
-
+    $('#area').focusout(function () {
+        var value = $(this).val();
+        saveAdditionalInfo("ai-concurrent-geo-area", value, appInternalID);
+    });
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // type o
