@@ -299,6 +299,13 @@ public class BaseTrademarkApplication  {
     private boolean useInAnotherFormCurrent;
     private boolean useInAnotherFormCurrentSet;
 
+    private boolean userInAnotherFormWhole;
+    private boolean useInAnotherFormPart;
+    private boolean userInAnotherFormWholePartSet;
+
+
+
+
 
 
 
@@ -1633,6 +1640,30 @@ public class BaseTrademarkApplication  {
 
     public void setUseInAnotherFormCurrentSet(boolean useInAnotherFormCurrentSet) {
         this.useInAnotherFormCurrentSet = useInAnotherFormCurrentSet;
+    }
+
+    public boolean isUserInAnotherFormWhole() {
+        return userInAnotherFormWhole;
+    }
+
+    public void setUserInAnotherFormWhole(boolean userInAnotherFormWhole) {
+        this.userInAnotherFormWhole = userInAnotherFormWhole;
+    }
+
+    public boolean isUseInAnotherFormPart() {
+        return useInAnotherFormPart;
+    }
+
+    public void setUseInAnotherFormPart(boolean useInAnotherFormPart) {
+        this.useInAnotherFormPart = useInAnotherFormPart;
+    }
+
+    public boolean isUserInAnotherFormWholePartSet() {
+        return userInAnotherFormWholePartSet;
+    }
+
+    public void setUserInAnotherFormWholePartSet(boolean userInAnotherFormWholePartSet) {
+        this.userInAnotherFormWholePartSet = userInAnotherFormWholePartSet;
     }
 
     @Override
