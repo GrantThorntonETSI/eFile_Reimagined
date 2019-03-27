@@ -4179,27 +4179,30 @@
     $('#concurrent-country').change(function () {
         var value = $(this).val();
         saveAdditionalInfo("ai-concurrent-user-country", value, appInternalID);
-    })
+    });
 
 
-    $('#concurrent-address1').change(function () {
+    $('#concurrent-address1').focus(function () {
         var value = $(this).val();
         saveAdditionalInfo("ai-concurrent-user-address1", value, appInternalID);
-    })
+    });
 
-    $('#concurrent-city').change(function () {
+    $('#concurrent-city').focusout(function () {
         var value = $(this).val();
         saveAdditionalInfo("ai-concurrent-user-city", value, appInternalID);
-    })
+    });
     $('#concurrent-state').change(function () {
         var value = $(this).val();
         saveAdditionalInfo("ai-concurrent-user-state", value, appInternalID);
-    })
+    });
 
-    $('#concurrent-zipcode').change(function () {
+    $('#concurrent-zipcode').focusout(function () {
         var value = $(this).val();
         saveAdditionalInfo("ai-concurrent-user-zip", value, appInternalID);
-    })
+    });
+
+
+
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
