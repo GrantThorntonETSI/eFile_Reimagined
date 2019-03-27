@@ -1891,7 +1891,7 @@
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                             <label for="concurrentmode">Concurrent User Mode of Use:</label>
-                                                                            <textarea id="concurrentmode" rows="1" class="form-control"></textarea>
+                                                                            <textarea id="concurrentmode" rows="1" class="form-control" th:value="${baseTrademarkApplication.getModeOfuseConcurrentUser()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                             <label for="timeuse">Time Periods of Use</label>
@@ -2368,7 +2368,7 @@
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                             <label for="concurrentmode">Concurrent User Mode of Use:</label>
-                                                                            <textarea id="concurrentmode" rows="1" class="form-control"></textarea>
+                                                                            <textarea id="concurrentmode" rows="1" class="form-control" th:value="${baseTrademarkApplication.getModeOfuseConcurrentUser()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                             <label for="timeuse">Time Periods of Use</label>
@@ -2996,7 +2996,7 @@
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                             <label for="concurrentmode">Concurrent User Mode of Use:</label>
-                                                                            <textarea id="concurrentmode" rows="1" class="form-control"></textarea>
+                                                                            <textarea id="concurrentmode" rows="1" class="form-control" th:value="${baseTrademarkApplication.getModeOfuseConcurrentUser()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                             <label for="timeuse">Time Periods of Use</label>
@@ -3447,7 +3447,7 @@
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                             <label for="concurrentmode">Concurrent User Mode of Use:</label>
-                                                                            <textarea id="concurrentmode" rows="1" class="form-control"></textarea>
+                                                                            <textarea id="concurrentmode" rows="1" class="form-control" th:value="${baseTrademarkApplication.getModeOfuseConcurrentUser()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                             <label for="timeuse">Time Periods of Use</label>
@@ -4210,6 +4210,10 @@
     $('#area').focusout(function () {
         var value = $(this).val();
         saveAdditionalInfo("ai-concurrent-geo-area", value, appInternalID);
+    });
+    $('#concurrentmode').focusout(function () {
+        var value = $(this).val();
+        saveAdditionalInfo("ai-concurrent-mode-use", value, appInternalID);
     });
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

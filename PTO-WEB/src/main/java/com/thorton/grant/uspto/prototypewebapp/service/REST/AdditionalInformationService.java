@@ -367,6 +367,14 @@ public class AdditionalInformationService extends  BaseRESTapiService {
             appFieldReadable = "Concurrent geographic area";
 
         }
+
+        if(fieldName.equals("ai-concurrent-mode-use")){
+            // ptoUser.setState(param); // sets state code
+
+            baseTrademarkApplication.setModeOfuseConcurrentUser(fieldValue);
+            appFieldReadable = "Concurrent mode of use";
+
+        }
         //////////////////////////////////////////////////////////////////////////////
 
 
