@@ -344,6 +344,14 @@ public class AdditionalInformationService extends  BaseRESTapiService {
 
         }
 
+        if(fieldName.equals("ai-concurrent-user-zip")){
+            // ptoUser.setState(param); // sets state code
+
+            baseTrademarkApplication.setConcurrentUserZipcode(fieldValue);
+            appFieldReadable = "Concurrent user zip code";
+
+        }
+
         //////////////////////////////////////////////////////////////////////////////
 
 
