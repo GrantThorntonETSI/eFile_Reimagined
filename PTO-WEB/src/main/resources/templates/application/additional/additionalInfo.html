@@ -1280,40 +1280,98 @@
                                                         <h2 class="card-title weight600">Use in Another Form</h2>
                                                     </div>
                                                     <div style="margin-left: 11px; margin-right:11px;">
-                                                        <p class="" id="otherform">Is the mark (or part of the mark) currently in use in another form?</p>                                                            <div role="radiogroup" aria-labelledby="otherform" class="form-group form-group-md">
-                                                        <label for="inlineRadio040" class="radio-inline radiocontainer">Yes<input type="radio" name="formradio" id="inlineRadio040" value="yes" tabindex="0"><span class="checkmark"></span></label>
-                                                        <label for="inlineRadio041" class="radio-inline radiocontainer">No<input type="radio" name="formradio" id="inlineRadio041" value="no" tabindex="0"><span class="checkmark"></span></label>
+                                                    <p class="" id="otherform">Is the mark (or part of the mark) currently in use in another form?</p>
+                                                    <div role="radiogroup" aria-labelledby="otherform" class="form-group form-group-md">
+
+
+                                                        <th:block th:if="${baseTrademarkApplication.isUseInAnotherFormCurrentSet() == true}">
+
+                                                            <th:block th:if="${baseTrademarkApplication.isUseInAnotherFormCurrent() == true}">
+                                                                <label for="inlineRadio040" class="radio-inline radiocontainer">Yes<input type="radio" name="formradio" id="inlineRadio040" value="yes" tabindex="0" checked><span class="checkmark"></span></label>
+                                                                <label for="inlineRadio041" class="radio-inline radiocontainer">No<input type="radio" name="formradio" id="inlineRadio041" value="no" tabindex="0"><span class="checkmark"></span></label>
+                                                            </th:block>
+
+                                                            <th:block th:if="${baseTrademarkApplication.isUseInAnotherFormCurrent() == false}">
+                                                                <label for="inlineRadio040" class="radio-inline radiocontainer">Yes<input type="radio" name="formradio" id="inlineRadio040" value="yes" tabindex="0"><span class="checkmark"></span></label>
+                                                                <label for="inlineRadio041" class="radio-inline radiocontainer">No<input type="radio" name="formradio" id="inlineRadio041" value="no" tabindex="0"checked><span class="checkmark"></span></label>
+                                                            </th:block>
+                                                        </th:block>
+
+                                                        <th:block th:if="${baseTrademarkApplication.isUseInAnotherFormCurrentSet() == false}">
+
+                                                            <label for="inlineRadio040" class="radio-inline radiocontainer">Yes<input type="radio" name="formradio" id="inlineRadio040" value="yes" tabindex="0"><span class="checkmark"></span></label>
+                                                            <label for="inlineRadio041" class="radio-inline radiocontainer">No<input type="radio" name="formradio" id="inlineRadio041" value="no" tabindex="0"><span class="checkmark"></span></label>
+                                                        </th:block>
+
                                                     </div><!--END radiogroup-->
-                                                        <div id="yesotherform" class="form-group" style="display: none;"><!--toggle 'yes' radio-->
-                                                            <div class="form-group form-group-md">
-                                                                <p class="">Is this for the whole mark, or part of the mark?</p>
-                                                                <div role="radiogroup" aria-labelledby="disclm" class="form-group form-group-md">
-                                                                    <label for="inlineRadio042" class="radio-inline radiocontainer">Whole<input type="radio" name="wholepartradio" id="inlineRadio042" value="whole" tabindex="0"><span class="checkmark"></span></label>
-                                                                    <label for="inlineRadio043" class="radio-inline radiocontainer">In part<input type="radio" name="wholepartradio" id="inlineRadio043" value="inpart" tabindex="0"><span class="checkmark"></span></label>
-                                                                </div><!--END radiogroup-->
-                                                                <div id="yespartother" class="form-group" style="display: none"><!--toggle 'yes' radio-->
-                                                                    <div class="form-group form-group-md">
-                                                                        <label for="partmark" class="">Which part of the mark?</label>
-                                                                        <textarea id="partmark" rows="1" class="form-control"></textarea>
+
+
+                                                        <th:block th:if="${baseTrademarkApplication.isUseInAnotherFormCurrent() == true}">
+                                                            <div id="yesotherform" class="form-group" style=""><!--toggle 'yes' radio-->
+                                                                <div class="form-group form-group-md">
+                                                                    <p class="">Is this for the whole mark, or part of the mark?</p>
+                                                                    <div role="radiogroup" aria-labelledby="disclm" class="form-group form-group-md">
+                                                                        <label for="inlineRadio042" class="radio-inline radiocontainer">Whole<input type="radio" name="wholepartradio" id="inlineRadio042" value="whole" tabindex="0"><span class="checkmark"></span></label>
+                                                                        <label for="inlineRadio043" class="radio-inline radiocontainer">In part<input type="radio" name="wholepartradio" id="inlineRadio043" value="inpart" tabindex="0"><span class="checkmark"></span></label>
+                                                                    </div><!--END radiogroup-->
+                                                                    <div id="yespartother" class="form-group" style="display: none"><!--toggle 'yes' radio-->
+                                                                        <div class="form-group form-group-md">
+                                                                            <label for="partmark" class="">Which part of the mark?</label>
+                                                                            <textarea id="partmark" rows="1" class="form-control"></textarea>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div id="yeswholeother" class="form-group" style="display: none;"><!--toggle 'yes' radio-->
-                                                                    <div class="form-group form-group-md">
-                                                                        <div class="row">
-                                                                            <div class="col-xs-12 col-md-6 form-group form-group-md matchlabelheightdiv">
-                                                                                <label for="otherformfirst" class="matchlabelheight">Provide date of first use in another form:</label>
-                                                                                <input type="date" class="form-control" id="otherformfirst" name="otherformfirst" value="">
-                                                                            </div>
-                                                                            <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                                                <label for="otherformcommerce" id="getit">Provide date of first use in commerce in another form:</label>
-                                                                                <input type="date" class="form-control" id="otherformcommerce" name="otherformcommerce" value="">
+                                                                    <div id="yeswholeother" class="form-group" style="display: none;"><!--toggle 'yes' radio-->
+                                                                        <div class="form-group form-group-md">
+                                                                            <div class="row">
+                                                                                <div class="col-xs-12 col-md-6 form-group form-group-md matchlabelheightdiv">
+                                                                                    <label for="otherformfirst" class="matchlabelheight">Provide date of first use in another form:</label>
+                                                                                    <input type="date" class="form-control" id="otherformfirst" name="otherformfirst" value="">
+                                                                                </div>
+                                                                                <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                                                                    <label for="otherformcommerce" id="getit">Provide date of first use in commerce in another form:</label>
+                                                                                    <input type="date" class="form-control" id="otherformcommerce" name="otherformcommerce" value="">
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
                                                     </div>
+                                                        </th:block>
+
+                                                        <th:block th:if="${baseTrademarkApplication.isUseInAnotherFormCurrent() == false}">
+                                                            <div id="yesotherform" class="form-group" style="display: none;"><!--toggle 'yes' radio-->
+                                                                <div class="form-group form-group-md">
+                                                                    <p class="">Is this for the whole mark, or part of the mark?</p>
+                                                                    <div role="radiogroup" aria-labelledby="disclm" class="form-group form-group-md">
+                                                                        <label for="inlineRadio042" class="radio-inline radiocontainer">Whole<input type="radio" name="wholepartradio" id="inlineRadio042" value="whole" tabindex="0"><span class="checkmark"></span></label>
+                                                                        <label for="inlineRadio043" class="radio-inline radiocontainer">In part<input type="radio" name="wholepartradio" id="inlineRadio043" value="inpart" tabindex="0"><span class="checkmark"></span></label>
+                                                                    </div><!--END radiogroup-->
+                                                                    <div id="yespartother" class="form-group" style="display: none"><!--toggle 'yes' radio-->
+                                                                        <div class="form-group form-group-md">
+                                                                            <label for="partmark" class="">Which part of the mark?</label>
+                                                                            <textarea id="partmark" rows="1" class="form-control"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="yeswholeother" class="form-group" style="display: none;"><!--toggle 'yes' radio-->
+                                                                        <div class="form-group form-group-md">
+                                                                            <div class="row">
+                                                                                <div class="col-xs-12 col-md-6 form-group form-group-md matchlabelheightdiv">
+                                                                                    <label for="otherformfirst" class="matchlabelheight">Provide date of first use in another form:</label>
+                                                                                    <input type="date" class="form-control" id="otherformfirst" name="otherformfirst" value="">
+                                                                                </div>
+                                                                                <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                                                                    <label for="otherformcommerce" id="getit">Provide date of first use in commerce in another form:</label>
+                                                                                    <input type="date" class="form-control" id="otherformcommerce" name="otherformcommerce" value="">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                    </div>
+                                                        </th:block>
+
                                                 </section>
                                             </div>
                                         </div><!--END use in another form-->
@@ -3948,6 +4006,7 @@
 
 
         });
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -3960,6 +4019,13 @@
                 saveAdditionalInfo("ai-use-another-form", "no", appInternalID);
             }
 
+        });
+
+        $('#inlineRadio040').click(function () {
+            saveAdditionalInfo("ai-use-another-form-current", "yes", appInternalID);
+        });
+        $('#inlineRadio041').click(function () {
+            saveAdditionalInfo("ai-use-another-form-current", "no", appInternalID);
         });
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

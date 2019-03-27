@@ -296,6 +296,8 @@ public class BaseTrademarkApplication  {
     // use in another form fields
 
     private boolean useInAnotherForm;
+    private boolean useInAnotherFormCurrent;
+    private boolean useInAnotherFormCurrentSet;
 
 
 
@@ -1615,6 +1617,22 @@ public class BaseTrademarkApplication  {
 
     public void setUseInAnotherForm(boolean useInAnotherForm) {
         this.useInAnotherForm = useInAnotherForm;
+    }
+
+    public boolean isUseInAnotherFormCurrent() {
+        return useInAnotherFormCurrent;
+    }
+
+    public void setUseInAnotherFormCurrent(boolean useInAnotherFormCurrent) {
+        this.useInAnotherFormCurrent = useInAnotherFormCurrent;
+    }
+
+    public boolean isUseInAnotherFormCurrentSet() {
+        return useInAnotherFormCurrentSet;
+    }
+
+    public void setUseInAnotherFormCurrentSet(boolean useInAnotherFormCurrentSet) {
+        this.useInAnotherFormCurrentSet = useInAnotherFormCurrentSet;
     }
 
     @Override
