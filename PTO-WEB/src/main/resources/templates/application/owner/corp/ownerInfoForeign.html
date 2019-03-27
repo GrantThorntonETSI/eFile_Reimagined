@@ -716,7 +716,7 @@
         });
 
         //populate form from managed contacts
-        $('button#autofill').on('click',function() {
+        $('button#autofillForeign').on('click',function() {
             $( '#mydata2' ).css('visibility','visible');
             $( '#mydata2 .collapse' ).collapse('show').fadeIn( 'slow','swing');
             $( 'button#contactsbtn span#toggleglyphone' ).addClass('visuallyremoved');
@@ -742,6 +742,8 @@
 
 
         $('a.fromcontact').click(function () {
+
+
 
             $('#formPagingNextButtonGroup').fadeOut();
             $('#formSubmitNextButtonGroup').fadeIn();

@@ -7,7 +7,7 @@
 </head>
 <body>
 
-
+<div class="container-fluid">
 <!-- End Navbar -->
 <div class="row content" id="attorney" style="display: none;">
     <!--page content goes here -->
@@ -251,6 +251,7 @@
     </main>
 
 </div>
+</div>
 
 
 <div class="container-fluid stickycomponents">
@@ -271,31 +272,38 @@
                             <table class="list-group table-fixed" role="grid" aria-label="contacts">
 
                                 <tbody>
-                                    <tr class="row">
-                                        <td class="list-group-item col-xs-6"></td>
-                                        <td class="list-group-item inner-addon right-addon col-xs-6"><i class="glyphicon glyphicon-search" aria-hidden="true"></i><input type="text" class="form-control" id="contactsearch" placeholder="" aria-label="search"></td>
-                                    </tr>
-                                    <tr class="row">
-                                        <td>
-                                            <table class="list-group table" role="grid" id="contactssearch">
+                                <tr class="row">
+                                    <td tabindex="0" class="list-group-item col-xs-6"></td>
+                                    <td tabindex="0" class="list-group-item inner-addon right-addon col-xs-6"><i class="glyphicon glyphicon-search" aria-hidden="true"></i><input type="text" class="form-control" id="contactsearch" placeholder="" aria-label="search"></td>
+                                </tr>
+                                <tr class="row">
+                                    <td class="nopadding" colspan="2">
+                                        <table class="list-group table" role="grid" id="contactssearch">
 
-                                                <tbody class="scroll">
-                                                <th:block th:each="contact : ${user.getOwnerManagedContact()}">
+                                            <tbody class="scroll">
+                                            <th:block th:each="contact : ${user.getOwnerManagedContact()}">
 
-                                                    <tr class="row">
-                                                        <td class="list-group-item col-xs-6"><a href="#" class="fromcontact" id="managedContactFillFormAction" ><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><span class="glyphicon glyphicon-ok-sign visuallyremoved" aria-hidden="true"></span></a> <b th:text="${contact.displayName}">Avo Reed</b></td>
-                                                        <td class="list-group-item col-xs-6" th:text="${contact.email}">avo.reid@us.gt.com</td>
-                                                    </tr>
+                                                <tr class="row">
+                                                    <td tabindex="0" class="list-group-item col-xs-6"><a href="#" class="fromcontact" id="managedContactFillFormAction" ><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><span class="glyphicon glyphicon-ok-sign visuallyremoved" aria-hidden="true"></span></a> <b th:text="${contact.displayName}">Avo Reed</b></td>
+                                                    <td tabindex="0" class="list-group-item col-xs-6" th:text="${contact.email}">avo.reid@us.gt.com</td>
+                                                </tr>
 
-                                                </th:block>
-                                                </tbody>
+                                            </th:block>
+                                            </tbody>
 
 
-                                            </table>
+                                        </table>
 
-                                        </td>
 
-                                    </tr>
+
+
+                                    </td>
+
+                                </tr>
+
+
+
+
                                 </tbody>
 
 
@@ -307,6 +315,7 @@
         </div><!--END row-->
     </div><!--END chats-->
 </div><!--END div container-fluid-->
+
 
 
 
@@ -822,6 +831,9 @@
 
 
                 if(s_code.trim() == "200"){
+
+
+                    alert("$$$$$$$$$$$$$$$$$$");
 
                     //if(data.contains("status: 200")){
                     // show confirmation check mark on form

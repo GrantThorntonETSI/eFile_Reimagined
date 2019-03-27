@@ -1344,8 +1344,8 @@
                                                                     <th:block th:if="${baseTrademarkApplication.isUserInAnotherFormWhole() == true}">
                                                                         <div id="yespartother" class="form-group" style="display: none"><!--toggle 'yes' radio-->
                                                                             <div class="form-group form-group-md">
-                                                                                <label for="partmark" class="">Which part of the mark?</label>
-                                                                                <textarea id="partmark" rows="1" class="form-control"></textarea>
+                                                                                <label for="partmark2" class="">Which part of the mark?</label>
+                                                                                <textarea id="partmark2" rows="1" class="form-control" th:text="${baseTrademarkApplication.getUserInAnotherFormMarkpart()}"></textarea>
                                                                             </div>
                                                                         </div>
 
@@ -1372,8 +1372,8 @@
                                                                     <th:block th:if="${baseTrademarkApplication.isUseInAnotherFormPart()== true}">
                                                                         <div id="yespartother" class="form-group" style=""><!--toggle 'yes' radio-->
                                                                             <div class="form-group form-group-md">
-                                                                                <label for="partmark" class="">Which part of the mark?</label>
-                                                                                <textarea id="partmark" rows="1" class="form-control" th:value="${baseTrademarkApplication.getUserInAnotherFormMarkpart()}"></textarea>
+                                                                                <label for="partmark2" class="">Which part of the mark?</label>
+                                                                                <textarea id="partmark2" rows="1" class="form-control" th:text="${baseTrademarkApplication.getUserInAnotherFormMarkpart()}"></textarea>
                                                                             </div>
                                                                         </div>
 
@@ -1411,8 +1411,8 @@
                                                                     </div><!--END radiogroup-->
                                                                     <div id="yespartother" class="form-group" style="display: none"><!--toggle 'yes' radio-->
                                                                         <div class="form-group form-group-md">
-                                                                            <label for="partmark" class="">Which part of the mark?</label>
-                                                                            <textarea id="partmark" rows="1" class="form-control"></textarea>
+                                                                            <label for="partmark2" class="">Which part of the mark?</label>
+                                                                            <textarea id="partmark2" rows="1" class="form-control"></textarea>
                                                                         </div>
                                                                     </div>
                                                                     <div id="yeswholeother" class="form-group" style="display: none;"><!--toggle 'yes' radio-->
@@ -1461,8 +1461,8 @@
                                                                 </div><!--END radiogroup-->
                                                                 <div id="yespartother" class="form-group" style="display: none"><!--toggle 'yes' radio-->
                                                                     <div class="form-group form-group-md">
-                                                                        <label for="partmark" class="">Which part of the mark?</label>
-                                                                        <textarea id="partmark" rows="1" class="form-control"></textarea>
+                                                                        <label for="partmark2" class="">Which part of the mark?</label>
+                                                                        <textarea id="partmark2" rows="1" class="form-control"></textarea>
                                                                     </div>
                                                                 </div>
                                                                 <div id="yeswholeother" class="form-group" style="display: none;"><!--toggle 'yes' radio-->
@@ -2077,19 +2077,19 @@
                                                                         </div>
                                                                         <div class="col-xs-12 form-group form-group-md">
                                                                             <label for="gs">Goods/Services:</label>
-                                                                            <textarea id="gs" rows="3" class="form-control" th:value="${baseTrademarkApplication.getConcurrentUserGoodsAndService()}"></textarea>
+                                                                            <textarea id="gs" rows="3" class="form-control" th:text="${baseTrademarkApplication.getConcurrentUserGoodsAndService()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 form-group form-group-md">
                                                                             <label for="area">Geographic Area of concurrent user:</label>
-                                                                            <textarea id="area" rows="3" class="form-control" th:value="${baseTrademarkApplication.getGeoAreaConcurrentUser()}"></textarea>
+                                                                            <textarea id="area" rows="3" class="form-control" th:text="${baseTrademarkApplication.getGeoAreaConcurrentUser()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                             <label for="concurrentmode">Concurrent User Mode of Use:</label>
-                                                                            <textarea id="concurrentmode" rows="1" class="form-control" th:value="${baseTrademarkApplication.getModeOfuseConcurrentUser()}"></textarea>
+                                                                            <textarea id="concurrentmode" rows="1" class="form-control" th:text="${baseTrademarkApplication.getModeOfuseConcurrentUser()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                             <label for="timeuse">Time Periods of Use</label>
-                                                                            <textarea id="timeuse" rows="1" class="form-control" th:value="${baseTrademarkApplication.getTimePeriodConcurrentUser()}"></textarea>
+                                                                            <textarea id="timeuse" rows="1" class="form-control" th:text="${baseTrademarkApplication.getTimePeriodConcurrentUser()}"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div><!--END holdsaconcregapp-->
@@ -2554,19 +2554,19 @@
                                                                         </div>
                                                                         <div class="col-xs-12 form-group form-group-md">
                                                                             <label for="gs">Goods/Services:</label>
-                                                                            <textarea id="gs" rows="3" class="form-control" th:value="${baseTrademarkApplication.getConcurrentUserGoodsAndService()}"></textarea>
+                                                                            <textarea id="gs" rows="3" class="form-control" th:text="${baseTrademarkApplication.getConcurrentUserGoodsAndService()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 form-group form-group-md">
                                                                             <label for="area">Geographic Area of concurrent user:</label>
-                                                                            <textarea id="area" rows="3" class="form-control" th:value="${baseTrademarkApplication.getGeoAreaConcurrentUser()}"></textarea>
+                                                                            <textarea id="area" rows="3" class="form-control" th:text="${baseTrademarkApplication.getGeoAreaConcurrentUser()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                             <label for="concurrentmode">Concurrent User Mode of Use:</label>
-                                                                            <textarea id="concurrentmode" rows="1" class="form-control" th:value="${baseTrademarkApplication.getModeOfuseConcurrentUser()}"></textarea>
+                                                                            <textarea id="concurrentmode" rows="1" class="form-control" th:text="${baseTrademarkApplication.getModeOfuseConcurrentUser()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                             <label for="timeuse">Time Periods of Use</label>
-                                                                            <textarea id="timeuse" rows="1" class="form-control" th:value="${baseTrademarkApplication.getTimePeriodConcurrentUser()}"></textarea>
+                                                                            <textarea id="timeuse" rows="1" class="form-control" th:text="${baseTrademarkApplication.getTimePeriodConcurrentUser()}"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div><!--END holdsaconcregapp-->
@@ -3182,19 +3182,19 @@
                                                                         </div>
                                                                         <div class="col-xs-12 form-group form-group-md">
                                                                             <label for="gs">Goods/Services:</label>
-                                                                            <textarea id="gs" rows="3" class="form-control" th:value="${baseTrademarkApplication.getConcurrentUserGoodsAndService()}"></textarea>
+                                                                            <textarea id="gs" rows="3" class="form-control" th:text"${baseTrademarkApplication.getConcurrentUserGoodsAndService()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 form-group form-group-md">
                                                                             <label for="area">Geographic Area of concurrent user:</label>
-                                                                            <textarea id="area" rows="3" class="form-control" th:value="${baseTrademarkApplication.getGeoAreaConcurrentUser()}"></textarea>
+                                                                            <textarea id="area" rows="3" class="form-control" th:text="${baseTrademarkApplication.getGeoAreaConcurrentUser()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                             <label for="concurrentmode">Concurrent User Mode of Use:</label>
-                                                                            <textarea id="concurrentmode" rows="1" class="form-control" th:value="${baseTrademarkApplication.getModeOfuseConcurrentUser()}"></textarea>
+                                                                            <textarea id="concurrentmode" rows="1" class="form-control" th:text="${baseTrademarkApplication.getModeOfuseConcurrentUser()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                             <label for="timeuse">Time Periods of Use</label>
-                                                                            <textarea id="timeuse" rows="1" class="form-control" th:value="${baseTrademarkApplication.getTimePeriodConcurrentUser()}"></textarea>
+                                                                            <textarea id="timeuse" rows="1" class="form-control" th:text="${baseTrademarkApplication.getTimePeriodConcurrentUser()}"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div><!--END holdsaconcregapp-->
@@ -3633,19 +3633,19 @@
                                                                         </div>
                                                                         <div class="col-xs-12 form-group form-group-md">
                                                                             <label for="gs">Goods/Services:</label>
-                                                                            <textarea id="gs" rows="3" class="form-control" th:value="${baseTrademarkApplication.getConcurrentUserGoodsAndService()}"></textarea>
+                                                                            <textarea id="gs" rows="3" class="form-control" th:text="${baseTrademarkApplication.getConcurrentUserGoodsAndService()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 form-group form-group-md">
                                                                             <label for="area">Geographic Area of concurrent user:</label>
-                                                                            <textarea id="area" rows="3" class="form-control" th:value="${baseTrademarkApplication.getGeoAreaConcurrentUser()}"></textarea>
+                                                                            <textarea id="area" rows="3" class="form-control" th:text="${baseTrademarkApplication.getGeoAreaConcurrentUser()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                             <label for="concurrentmode">Concurrent User Mode of Use:</label>
-                                                                            <textarea id="concurrentmode" rows="1" class="form-control" th:value="${baseTrademarkApplication.getModeOfuseConcurrentUser()}"></textarea>
+                                                                            <textarea id="concurrentmode" rows="1" class="form-control" th:text="${baseTrademarkApplication.getModeOfuseConcurrentUser()}"></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                             <label for="timeuse">Time Periods of Use</label>
-                                                                            <textarea id="timeuse" rows="1" class="form-control" th:value="${baseTrademarkApplication.getTimePeriodConcurrentUser()}"></textarea>
+                                                                            <textarea id="timeuse" rows="1" class="form-control" th:text="${baseTrademarkApplication.getTimePeriodConcurrentUser()}"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div><!--END holdsaconcregapp-->
@@ -4102,8 +4102,11 @@
         });
 
 
-        $('#partmark').focusout(function () {
+        $('#partmark2').focusout(function () {
+
+
             var textValue = $(this).val();
+
             saveAdditionalInfo("ai-use-another-form-part-desc", textValue, appInternalID);
         });
 
@@ -4114,7 +4117,7 @@
             saveAdditionalInfo("ai-use-another-form-first-use-date",date,appInternalID);
         });
 
-        $('#otherformfirst').change(function () {
+        $('#otherformcommerce').change(function () {
 
 
             var date = $(this).val();
