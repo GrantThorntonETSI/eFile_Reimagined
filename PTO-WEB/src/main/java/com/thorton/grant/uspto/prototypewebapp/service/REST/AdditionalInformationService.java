@@ -546,7 +546,7 @@ public class AdditionalInformationService extends  BaseRESTapiService {
 
             }
             if(fieldValue.equals("no")){
-                baseTrademarkApplication.setUseInAnotherFormCurrent(true);
+                baseTrademarkApplication.setUseInAnotherFormCurrent(false);
                 baseTrademarkApplication.setUseInAnotherFormCurrentSet(true);
 
 
