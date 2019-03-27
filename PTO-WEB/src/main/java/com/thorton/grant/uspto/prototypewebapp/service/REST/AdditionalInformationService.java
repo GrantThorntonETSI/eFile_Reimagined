@@ -331,6 +331,14 @@ public class AdditionalInformationService extends  BaseRESTapiService {
 
         }
 
+        if(fieldName.equals("ai-concurrent-user-city")){
+            // ptoUser.setState(param); // sets state code
+
+            baseTrademarkApplication.setConcurrentUserCity(fieldValue);
+            appFieldReadable = "Concurrent user city";
+
+        }
+
 
         //////////////////////////////////////////////////////////////////////////////
 

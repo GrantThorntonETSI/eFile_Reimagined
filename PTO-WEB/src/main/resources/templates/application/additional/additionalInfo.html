@@ -1817,7 +1817,7 @@
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
                                                                             <label for="concurrent-city">City</label>
-                                                                            <input type="text" class="form-control" id="concurrent-city">
+                                                                            <input type="text" class="form-control" id="concurrent-city" th:value="${baseTrademarkApplication.getConcurrentUserCity()}">
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
                                                                             <label for="concurrent-state">State</label>
@@ -2245,7 +2245,7 @@
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
                                                                             <label for="concurrent-city">City</label>
-                                                                            <input type="text" class="form-control" id="concurrent-city">
+                                                                            <input type="text" class="form-control" id="concurrent-city" th:value="${baseTrademarkApplication.getConcurrentUserCity()}">
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
                                                                             <label for="concurrent-state">State</label>
@@ -2824,7 +2824,7 @@
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
                                                                             <label for="concurrent-city">City</label>
-                                                                            <input type="text" class="form-control" id="concurrent-city">
+                                                                            <input type="text" class="form-control" id="concurrent-city" th:value="${baseTrademarkApplication.getConcurrentUserCity()}">
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
                                                                             <label for="concurrent-state">State</label>
@@ -3226,7 +3226,7 @@
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
                                                                             <label for="concurrent-city">City</label>
-                                                                            <input type="text" class="form-control" id="concurrent-city">
+                                                                            <input type="text" class="form-control" id="concurrent-city" th:value="${baseTrademarkApplication.getConcurrentUserCity()}">
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
                                                                             <label for="concurrent-state">State</label>
@@ -3986,11 +3986,15 @@
     })
 
 
-        $('#concurrent-address1').change(function () {
-            var value = $(this).val();
-            saveAdditionalInfo("ai-concurrent-user-address1", value, appInternalID);
-        })
+    $('#concurrent-address1').change(function () {
+        var value = $(this).val();
+        saveAdditionalInfo("ai-concurrent-user-address1", value, appInternalID);
+    })
 
+    $('#concurrent-city').change(function () {
+        var value = $(this).val();
+        saveAdditionalInfo("ai-concurrent-user-city", value, appInternalID);
+    })
 
 
 
