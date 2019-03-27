@@ -323,6 +323,13 @@ public class AdditionalInformationService extends  BaseRESTapiService {
         }
 
 
+        if(fieldName.equals("ai-concurrent-user-address1")){
+            // ptoUser.setState(param); // sets state code
+
+            baseTrademarkApplication.setConcurrentUserAddress1(fieldValue);
+            appFieldReadable = "Concurrent user address";
+
+        }
 
 
         //////////////////////////////////////////////////////////////////////////////
