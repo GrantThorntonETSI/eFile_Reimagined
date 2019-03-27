@@ -1373,7 +1373,7 @@
                                                                         <div id="yespartother" class="form-group" style=""><!--toggle 'yes' radio-->
                                                                             <div class="form-group form-group-md">
                                                                                 <label for="partmark" class="">Which part of the mark?</label>
-                                                                                <textarea id="partmark" rows="1" class="form-control"></textarea>
+                                                                                <textarea id="partmark" rows="1" class="form-control" th:value="${baseTrademarkApplication.getUserInAnotherFormMarkpart()}"></textarea>
                                                                             </div>
                                                                         </div>
 
@@ -4087,22 +4087,24 @@
         $('#inlineRadio040').click(function () {
             saveAdditionalInfo("ai-use-another-form-current", "yes", appInternalID);
         });
+
         $('#inlineRadio041').click(function () {
             saveAdditionalInfo("ai-use-another-form-current", "no", appInternalID);
         });
 
         $('#inlineRadio042').click(function () {
             saveAdditionalInfo("ai-use-another-form-whole", "yes", appInternalID);
-
-
-
         });
 
         $('#inlineRadio043').click(function () {
             saveAdditionalInfo("ai-use-another-form-part", "yes", appInternalID);
 
+        });
 
 
+        $('#partmark').focusout(function () {
+            var textValue = $(this).val();
+            saveAdditionalInfo("ai-use-another-form-part-desc", textValue, appInternalID);
         });
 
 

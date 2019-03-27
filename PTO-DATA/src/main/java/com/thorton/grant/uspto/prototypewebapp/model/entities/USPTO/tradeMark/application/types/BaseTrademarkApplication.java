@@ -303,6 +303,15 @@ public class BaseTrademarkApplication  {
     private boolean useInAnotherFormPart;
     private boolean userInAnotherFormWholePartSet;
 
+    private String userInAnotherFormMarkpart;
+
+    private Date  useInAnotherFormFirstUseDate;
+    private Date useInAnotherFormFirstCommerceDate;
+
+
+
+
+
 
 
 
@@ -1664,6 +1673,30 @@ public class BaseTrademarkApplication  {
 
     public void setUserInAnotherFormWholePartSet(boolean userInAnotherFormWholePartSet) {
         this.userInAnotherFormWholePartSet = userInAnotherFormWholePartSet;
+    }
+
+    public String getUserInAnotherFormMarkpart() {
+        return userInAnotherFormMarkpart;
+    }
+
+    public void setUserInAnotherFormMarkpart(String userInAnotherFormMarkpart) {
+        this.userInAnotherFormMarkpart = userInAnotherFormMarkpart;
+    }
+
+    public Date getUseInAnotherFormFirstUseDate() {
+        return useInAnotherFormFirstUseDate;
+    }
+
+    public void setUseInAnotherFormFirstUseDate(Date useInAnotherFormFirstUseDate) {
+        this.useInAnotherFormFirstUseDate = useInAnotherFormFirstUseDate;
+    }
+
+    public Date getUseInAnotherFormFirstCommerceDate() {
+        return useInAnotherFormFirstCommerceDate;
+    }
+
+    public void setUseInAnotherFormFirstCommerceDate(Date useInAnotherFormFirstCommerceDate) {
+        this.useInAnotherFormFirstCommerceDate = useInAnotherFormFirstCommerceDate;
     }
 
     @Override

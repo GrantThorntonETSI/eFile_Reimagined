@@ -585,10 +585,21 @@ public class AdditionalInformationService extends  BaseRESTapiService {
             baseTrademarkApplication.setUserInAnotherFormWholePartSet(true);
 
 
-
-
-
             appFieldReadable = "Use in another form part";
+
+
+        }
+
+        if(fieldName.equals("ai-use-another-form-part-desc")){
+            // ptoUser.setState(param); // sets state code
+
+
+
+            baseTrademarkApplication.setUserInAnotherFormMarkpart(fieldValue);
+
+
+
+            appFieldReadable = "Use in another form which part";
 
 
         }
