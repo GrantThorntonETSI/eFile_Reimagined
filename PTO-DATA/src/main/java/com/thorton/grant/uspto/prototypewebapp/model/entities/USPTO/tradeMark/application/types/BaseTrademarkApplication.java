@@ -1699,6 +1699,24 @@ public class BaseTrademarkApplication  {
         this.useInAnotherFormFirstCommerceDate = useInAnotherFormFirstCommerceDate;
     }
 
+    public String  getUseInAnotherFormFirstUseDateDisplay(){
+        if(useInAnotherFormFirstUseDate != null) {
+            return useInAnotherFormFirstUseDate.toString().substring(0, 10);
+        }
+        else {
+            return "";
+        }
+    }
+
+    public String  getUseInAnotherFormFirstCommerceDateDisplay(){
+        if(useInAnotherFormFirstCommerceDate != null) {
+            return useInAnotherFormFirstCommerceDate.toString().substring(0, 10);
+        }
+        else {
+            return "";
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

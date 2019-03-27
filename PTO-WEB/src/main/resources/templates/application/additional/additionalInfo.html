@@ -1356,11 +1356,11 @@
                                                                                 <div class="row">
                                                                                     <div class="col-xs-12 col-md-6 form-group form-group-md matchlabelheightdiv">
                                                                                         <label for="otherformfirst" class="matchlabelheight">Provide date of first use in another form:</label>
-                                                                                        <input type="date" class="form-control" id="otherformfirst" name="otherformfirst" value="">
+                                                                                        <input type="date" class="form-control" id="otherformfirst" name="otherformfirst"  th:value="${baseTrademarkApplication.getUseInAnotherFormFirstUseDateDisplay()}">
                                                                                     </div>
                                                                                     <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                                         <label for="otherformcommerce" id="getit">Provide date of first use in commerce in another form:</label>
-                                                                                        <input type="date" class="form-control" id="otherformcommerce" name="otherformcommerce" value="">
+                                                                                        <input type="date" class="form-control" id="otherformcommerce" name="otherformcommerce" th:value="${baseTrademarkApplication.getUseInAnotherFormFirstCommerceDateDisplay()}">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -1384,11 +1384,11 @@
                                                                                 <div class="row">
                                                                                     <div class="col-xs-12 col-md-6 form-group form-group-md matchlabelheightdiv">
                                                                                         <label for="otherformfirst" class="matchlabelheight">Provide date of first use in another form:</label>
-                                                                                        <input type="date" class="form-control" id="otherformfirst" name="otherformfirst" value="">
+                                                                                        <input type="date" class="form-control" id="otherformfirst" name="otherformfirst" th:value="${baseTrademarkApplication.getUseInAnotherFormFirstUseDateDisplay()}" >
                                                                                     </div>
                                                                                     <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                                         <label for="otherformcommerce" id="getit">Provide date of first use in commerce in another form:</label>
-                                                                                        <input type="date" class="form-control" id="otherformcommerce" name="otherformcommerce" value="">
+                                                                                        <input type="date" class="form-control" id="otherformcommerce" name="otherformcommerce" th:value="${baseTrademarkApplication.getUseInAnotherFormFirstCommerceDateDisplay()}">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -4107,6 +4107,19 @@
             saveAdditionalInfo("ai-use-another-form-part-desc", textValue, appInternalID);
         });
 
+        $('#otherformfirst').change(function () {
+
+
+            var date = $(this).val();
+            saveAdditionalInfo("ai-use-another-form-first-use-date",date,appInternalID);
+        });
+
+        $('#otherformfirst').change(function () {
+
+
+            var date = $(this).val();
+            saveAdditionalInfo("ai-use-another-form-first-commerce-date",date,appInternalID);
+        });
 
 
 

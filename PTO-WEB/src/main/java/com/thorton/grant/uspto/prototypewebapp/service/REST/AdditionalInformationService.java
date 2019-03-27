@@ -8,6 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 
@@ -603,6 +608,51 @@ public class AdditionalInformationService extends  BaseRESTapiService {
 
 
         }
+
+
+        if(fieldName.equals("ai-use-another-form-first-use-date")){
+
+            try {
+                DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+                Date date = format.parse(fieldValue);
+               baseTrademarkApplication.setUseInAnotherFormFirstUseDate(date);
+            }
+            catch(Exception ex){
+                return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
+
+            }
+
+
+
+
+            appFieldReadable = "Use in another form first in use date";
+
+
+        }
+
+        if(fieldName.equals("ai-use-another-form-first-commerce-date")){
+            // ptoUser.setState(param); // sets state code
+
+
+
+
+            try {
+                DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+                Date date = format.parse(fieldValue);
+                baseTrademarkApplication.setUseInAnotherFormFirstCommerceDate(date);
+            }
+            catch(Exception ex){
+                return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
+
+            }
+
+
+            appFieldReadable = "Use in another form first commerce date";
+
+
+        }
+
+
 
 
 
