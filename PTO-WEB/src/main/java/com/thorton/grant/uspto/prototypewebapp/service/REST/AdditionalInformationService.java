@@ -306,8 +306,6 @@ public class AdditionalInformationService extends  BaseRESTapiService {
                 baseTrademarkApplication.setConcurrentUserNoRegistrationClaimSet(true);
             }
 
-
-            baseTrademarkApplication.setConcurrentUserName(fieldValue);
             appFieldReadable = "Concurrent claim no registration";
 
         }
@@ -338,7 +336,13 @@ public class AdditionalInformationService extends  BaseRESTapiService {
             appFieldReadable = "Concurrent user city";
 
         }
+        if(fieldName.equals("ai-concurrent-user-state")){
+            // ptoUser.setState(param); // sets state code
 
+            baseTrademarkApplication.setConcurrentUserState(fieldValue);
+            appFieldReadable = "Concurrent user state";
+
+        }
 
         //////////////////////////////////////////////////////////////////////////////
 
