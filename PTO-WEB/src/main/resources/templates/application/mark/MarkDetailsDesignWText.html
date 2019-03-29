@@ -297,7 +297,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group form-group-md col-xs-12 col-md-5">
-                                                        <b>The English Translation of</b>
+                                                        <b>The English Translation of the word</b>
                                                         <input type="text" class="form-control" id="engtranslation" th:value="${baseTrademarkApplication.tradeMark.foreignLanguageTranslationOriginalText}" >
                                                     </div>
                                                     <div class="form-group form-group-md col-xs-12 col-md-4">
@@ -331,7 +331,7 @@
                                                             </select>
                                                         </div>
                                                         <div class="form-group form-group-md col-xs-12 col-md-5">
-                                                            <b>The English Translation of</b>
+                                                            <b>The English Translation of the word</b>
                                                             <input type="text" class="form-control" id="engtranslation" th:value="${baseTrademarkApplication.tradeMark.foreignLanguageTranslationOriginalText}" >
                                                         </div>
                                                         <div class="form-group form-group-md col-xs-12 col-md-4">
@@ -364,7 +364,7 @@
                                                             </select>
                                                         </div>
                                                         <div class="form-group form-group-md col-xs-12 col-md-5">
-                                                            <b>The English Translation of</b>
+                                                            <b>The English Translation of the word</b>
                                                             <input type="text" class="form-control" id="engtranslation" th:value="${baseTrademarkApplication.tradeMark.foreignLanguageTranslationOriginalText}" >
                                                         </div>
                                                         <div class="form-group form-group-md col-xs-12 col-md-4">
@@ -401,7 +401,7 @@
 
                                         <th:block th:if="${baseTrademarkApplication.tradeMark.isTranlierationSet() == false}">
                                             <div class="col-xs-12">
-                                                <p id="translit">Does your mark contain foreign wording in non-Latin characters that requires transliteration?</p>
+                                                <p id="translit">Does your mark contain foreign wording in non-Latin characters?</p>
                                                 <div role="radiogroup" aria-labelledby="translit">
                                                     <label for="inlineRadio5" class="radio-inline radiocontainer" id="3">Yes<input type="radio" name="nonlatradio" id="inlineRadio5" value="yes"><span class="checkmark"></span></label>
                                                     <label for="inlineRadio6" class="radio-inline radiocontainer" id="4">No<input type="radio" name="nonlatradio" id="inlineRadio6" value="no"><span class="checkmark"></span></label>
@@ -423,8 +423,9 @@
                                                         <input type="text" class="form-control" id="nonlatranslation" th:value="${baseTrademarkApplication.tradeMark.foreignLanguateTransliterationOriginalText}">
                                                     </div>
                                                     <div class="form-group form-group-md col-xs-12 col-md-12">
-                                                        <b for="inenglish">and this, in English, means</b>
+                                                        <b for="inenglish">and this means</b>
                                                         <input type="text" class="form-control" id="inenglish" th:value="${baseTrademarkApplication.tradeMark.foreignLanguateTransliterationUSText}">
+                                                        <p class="form-group form-group-md">in English.</p>
                                                     </div>
                                                 </div>
 
@@ -433,7 +434,7 @@
                                         <th:block th:if="${baseTrademarkApplication.tradeMark.isTranlierationSet()== true}">
                                             <th:block th:if="${baseTrademarkApplication.tradeMark.foreignLanguateTransliterationWording == true}">
                                                 <div class="col-xs-12">
-                                                    <p id="translit">Does your mark contain foreign wording in non-Latin characters that requires transliteration?</p>
+                                                    <p id="translit">Does your mark contain foreign wording in non-Latin characters?</p>
                                                     <div role="radiogroup" aria-labelledby="translit">
                                                         <label for="inlineRadio5" class="radio-inline radiocontainer" id="3">Yes<input type="radio" name="nonlatradio" id="inlineRadio5" value="yes" checked><span class="checkmark"></span></label>
                                                         <label for="inlineRadio6" class="radio-inline radiocontainer" id="4">No<input type="radio" name="nonlatradio" id="inlineRadio6" value="no"><span class="checkmark"></span></label>
@@ -464,7 +465,7 @@
                                             </th:block>
                                             <th:block th:if="${baseTrademarkApplication.tradeMark.foreignLanguateTransliterationWording == false}">
                                                 <div class="col-xs-12">
-                                                    <p id="translit">Does your mark contain foreign wording in non-Latin characters that requires transliteration?</p>
+                                                    <p id="translit">Does your mark contain foreign wording in non-Latin characters?</p>
                                                     <div role="radiogroup" aria-labelledby="translit">
                                                         <label for="inlineRadio5" class="radio-inline radiocontainer" id="3">Yes<input type="radio" name="nonlatradio" id="inlineRadio5" value="yes"><span class="checkmark"></span></label>
                                                         <label for="inlineRadio6" class="radio-inline radiocontainer" id="4">No<input type="radio" name="nonlatradio" id="inlineRadio6" value="no" checked><span class="checkmark"></span></label>
