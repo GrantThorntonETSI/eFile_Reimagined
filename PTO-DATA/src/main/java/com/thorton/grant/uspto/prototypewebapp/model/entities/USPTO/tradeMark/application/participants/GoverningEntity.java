@@ -29,6 +29,9 @@ public class GoverningEntity {
     private boolean primaryGoverningEntity;
 
 
+    private String governingEntityType;
+
+
 
 
 
@@ -166,5 +169,13 @@ public class GoverningEntity {
 
     public void setEntityAlternateName(String entityAlternateName) {
         this.entityAlternateName = entityAlternateName;
+    }
+
+    public String getGoverningEntityType() {
+        return governingEntityType;
+    }
+
+    public void setGoverningEntityType(String governingEntityType) {
+        this.governingEntityType = governingEntityType;
     }
 }

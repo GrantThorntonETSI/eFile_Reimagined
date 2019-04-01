@@ -16,6 +16,9 @@ public class partnerDTO {
     private String alternateName;
 
 
+    private String partnerType;
+
+
     private String suffix;
 
     private String citizenShip;
@@ -90,5 +93,13 @@ public class partnerDTO {
 
     public void setAlternateName(String alternateName) {
         this.alternateName = alternateName;
+    }
+
+    public String getPartnerType() {
+        return partnerType;
+    }
+
+    public void setPartnerType(String partnerType) {
+        this.partnerType = partnerType;
     }
 }

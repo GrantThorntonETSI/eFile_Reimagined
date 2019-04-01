@@ -117,11 +117,11 @@
                     <div class="card-text">
                         <h2 class="card-title weight600" id="proprietorinfo">General Partners</h2>
                     </div>
-
+                    <div id="partnerEntitydynamicFormArea" th:each="partner, itemStat : *{partnerDTOs}">
                     <label><b style="color: red">&#42;</b>Select Entity Type</label>
 
                     <span>
-                                <select  id="domestic-entity-dropdown-partner" class="form-control" name="nameType"  >
+                                <select  id="domestic-entity-dropdown-partner" class="form-control" name="nameType"  th:field="*{partnerDTOs[__${itemStat.index}__].partnerType}" >
                                         <option id="opt-none" value="none"  ></option>
                                         <option id="opt-domestic-ind" value="Individual"  >Individual</option>
                                         <option id="opt-domestic-soleP" value="Sole Proprietorship" >Sole Proprietorship</option>
@@ -132,7 +132,7 @@
                                         <option id="opt-domestic-est" value="Estate">Estate</option>
                                 </select>
                     </span>
-                <div id="partnerEntitydynamicFormArea" th:each="partner, itemStat : *{partnerDTOs}">
+
                     <fieldset aria-labelledby="proprietorinfo" id="individual-partner-entity" style="display: none;">
                         <div class="row">
                             <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
@@ -486,7 +486,7 @@
 
                         <label>Select Entity Type</label>
                         <span>
-                                <select  id="domestic-entity-dropdown-partner2" class="form-control" name="nameType"  >
+                                <select  id="domestic-entity-dropdown-partner2" class="form-control" name="nameType"  th:field="*{partnerType2}">
                                         <option  value="none"  ></option>
                                         <option  value="Individual"  >Individual</option>
                                         <option  value="Sole Proprietorship" >Sole Proprietorship</option>
@@ -848,7 +848,7 @@
 
                         <label>Select Entity Type</label>
                         <span>
-                                <select  id="domestic-entity-dropdown-partner3" class="form-control" name="nameType"  >
+                                <select  id="domestic-entity-dropdown-partner3" class="form-control" name="nameType"  th:field="*{partnerType3}">
                                         <option  value="none"  ></option>
                                         <option  value="Individual"  >Individual</option>
                                         <option  value="Sole Proprietorship" >Sole Proprietorship</option>

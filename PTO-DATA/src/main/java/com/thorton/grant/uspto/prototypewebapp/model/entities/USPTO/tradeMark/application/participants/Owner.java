@@ -287,18 +287,18 @@ public class Owner extends Contact{
         String partnerList ="";
         for(int a =0; a < governingEntities.size(); a++){
             if(governingEntities.get(a).isPersonEntity() == true){
-                partnerList = partnerList + governingEntities.get(a).getFirstName()+" "+governingEntities.get(a).getLastName();
+                partnerList = partnerList + governingEntities.get(a).getFirstName()+" "+governingEntities.get(a).getLastName()+", "+governingEntities.get(a).getGoverningEntityType()+", Citizen of "+governingEntities.get(a).getEntityCitizenship();
 
             }
             else {
-                partnerList = partnerList + governingEntities.get(a).getEntityName();
+                partnerList = partnerList + governingEntities.get(a).getEntityName()+", "+governingEntities.get(a).getGoverningEntityType()+", state legally organized : "+governingEntities.get(a).getOrganizationState();
             }
             if(a != governingEntities.size() -1){
-                partnerList = partnerList + " and ";
+                partnerList = partnerList + ", ";
             }
 
         }
-        return  ownerDisplayname+", a partnership organized under the laws of "+ownerOrganizationState+", composed of "+partnerList+", whom are all U.S. citizens";
+        return  ownerDisplayname+", a partnership organized under the laws of "+ownerOrganizationState+", composed of "+partnerList+".";
     }
 
     public void setForeignEntityOwner(boolean foreignEntityOwner) {

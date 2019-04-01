@@ -599,6 +599,8 @@ public class ApplicationObjectCreationController {
             // will update this logic later
             owner.setGoverningEntitiesDisplayName("General partners");
 
+            governingEntity.setGoverningEntityType(partner.getPartnerType());
+
             if(partner.getPartnerName() != ""){
                 governingEntity.setEntityName(partner.getPartnerName());
                 governingEntity.setDisplayName(partner.getPartnerName());
@@ -649,6 +651,7 @@ public class ApplicationObjectCreationController {
                 governingEntity.setSuffix(newOwnerContactFormDTO.getPartner_suffix2());
                 governingEntity.setEntityCitizenship(newOwnerContactFormDTO.getPartner_citizen2());
                 governingEntity.setPersonEntity(true);
+                governingEntity.setGoverningEntityType(newOwnerContactFormDTO.getPartnerType2());
                 owner.addGoverningEnity(governingEntity);
             }
 
@@ -662,6 +665,7 @@ public class ApplicationObjectCreationController {
                 governingEntity.setOrganizationState(newOwnerContactFormDTO.getPartner_state_org2());
                 governingEntity.setEntityAlternateNameType(newOwnerContactFormDTO.getPartner_alt_type2());
                 governingEntity.setEntityAlternateName(newOwnerContactFormDTO.getPartner_alt_name2());
+                governingEntity.setGoverningEntityType(newOwnerContactFormDTO.getPartnerType2());
                 governingEntity.setPersonEntity(false);
 
                 owner.addGoverningEnity(governingEntity);
@@ -677,6 +681,7 @@ public class ApplicationObjectCreationController {
                 governingEntity.setMiddleName(newOwnerContactFormDTO.getPartner_middle_name3());
                 governingEntity.setSuffix(newOwnerContactFormDTO.getPartner_suffix3());
                 governingEntity.setEntityCitizenship(newOwnerContactFormDTO.getPartner_citizen3());
+                governingEntity.setGoverningEntityType(newOwnerContactFormDTO.getPartnerType3());
                 governingEntity.setPersonEntity(true);
                 owner.addGoverningEnity(governingEntity);
             }
@@ -691,6 +696,7 @@ public class ApplicationObjectCreationController {
                 governingEntity.setOrganizationState(newOwnerContactFormDTO.getPartner_state_org3());
                 governingEntity.setEntityAlternateNameType(newOwnerContactFormDTO.getPartner_alt_type3());
                 governingEntity.setEntityAlternateName(newOwnerContactFormDTO.getPartner_alt_name3());
+                governingEntity.setGoverningEntityType(newOwnerContactFormDTO.getPartnerType3());
                 governingEntity.setPersonEntity(false);
 
                 owner.addGoverningEnity(governingEntity);

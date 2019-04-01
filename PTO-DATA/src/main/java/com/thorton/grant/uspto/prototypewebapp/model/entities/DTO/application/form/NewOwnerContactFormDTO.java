@@ -69,6 +69,9 @@ public class NewOwnerContactFormDTO {
         this.partnerDTOs.add(partner);
     }
 
+
+    private String partnerType2;
+
     private String partner_first_name2;
     private String partner_last_name2;
     private String partner_middle_name2;
@@ -83,7 +86,7 @@ public class NewOwnerContactFormDTO {
     private String partner_alt_name2;
     private String partner_alt_type2;
 
-
+    private String partnerType3;
     private String partner_first_name3;
     private String partner_last_name3;
     private String partner_middle_name3;
@@ -441,5 +444,21 @@ public class NewOwnerContactFormDTO {
 
     public void setPartner_alt_type3(String partner_alt_type3) {
         this.partner_alt_type3 = partner_alt_type3;
+    }
+
+    public String getPartnerType2() {
+        return partnerType2;
+    }
+
+    public void setPartnerType2(String partnerType2) {
+        this.partnerType2 = partnerType2;
+    }
+
+    public String getPartnerType3() {
+        return partnerType3;
+    }
+
+    public void setPartnerType3(String partnerType3) {
+        this.partnerType3 = partnerType3;
     }
 }
