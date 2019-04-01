@@ -104,6 +104,9 @@
 
                                         <div class="form-group form-group-md col-xs-6">
                                             <label for="stateoforg"><span class="weight600">&#42;</span>Country Where Legally Incorporated <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
+
+
+
                                             <select class="form-control" id="country" th:field="*{owner.ownerOrganizationState}">
                                                 <option value="">Select</option>
                                                 <option value="UNITED STATES OF AMERICA">UNITED STATES OF AMERICA</option>
@@ -704,12 +707,21 @@
                                         <label for="ownerCity"><span class="weight600">&#42;</span>City</label>
                                         <input type="text" class="form-control" id="ownerCity" th:value="${owner.city}" >
                                     </div>
+
+
+
                                     <div class="form-group form-group-md col-xs-4">
                                         <label for="ownerState">State/Province/Territory</label>
                                         <input class="form-control" id="ownerState" th:value="${owner.state}" >
 
 
                                     </div>
+
+
+
+
+
+
                                     <div class="form-group form-group-md col-xs-4">
                                         <label for="ownerZipcode">Zip Code/Postal Code</label>
                                         <input type="text" class="form-control" id="ownerZipcode" placeholder="" th:value="${owner.zipcode}" >
