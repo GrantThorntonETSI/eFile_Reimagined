@@ -106,6 +106,19 @@ public class GSClassCategory {
         return getClassCategoryNumber()+"imageForm";
     }
 
+
+    public String getClassCategoryTopLevelName(){
+
+        return getClassCategoryNumber()+"topLevel";
+    }
+
+
+    public String getClassCategoryInnterLevelName(){
+
+        return getClassCategoryNumber()+"innerLevel";
+    }
+
+
     public String getClassImageID(){
         return getClassCategoryNumber()+"classSpecImg";
     }
