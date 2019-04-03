@@ -272,8 +272,58 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
             }
             if(fbValue.equals("no")){
-                baseTrademarkApplication.findGSbyInternalID(gsID).setMarkInUse(false);
-                baseTrademarkApplication.findGSbyInternalID(gsID).setMarkInUseSet(true);
+
+                // get class category nunber
+                GoodAndService goodAndService = baseTrademarkApplication.findGSbyInternalID(gsID);
+                String catNumber = goodAndService.getClassNumber();
+                int gsCount = 0;
+                int gsNo = 0;
+
+                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                    GoodAndService current = iter.next();
+
+                    if(current.getClassNumber().equals(catNumber)){
+
+                       gsCount++;
+                       if(current.isMarkInUse() == false && current.isMarkInUseSet() == true){
+                           gsNo++;
+                       }
+
+
+
+                    }
+                }
+
+
+                // get class level in use options
+                if(goodAndService.isAtLeastOneGoodInCommerceClassFlag()){
+                    if(gsCount - gsNo > 1){
+
+                        baseTrademarkApplication.findGSbyInternalID(gsID).setMarkInUse(false);
+                        baseTrademarkApplication.findGSbyInternalID(gsID).setMarkInUseSet(true);
+
+                    }
+                    else{
+
+                        return buildResponseEnity("420", "ERROR: Could not save good and service in use options");
+
+                    }
+
+                }
+                else{
+                     baseTrademarkApplication.findGSbyInternalID(gsID).setMarkInUse(false);
+                     baseTrademarkApplication.findGSbyInternalID(gsID).setMarkInUseSet(true);
+                }
+
+                // get number of goods and services in class
+
+                // get number of goods and services in use
+
+                // determine if this one can be set to no
+
+                // return success or failure
+
+
 
             }
 
@@ -732,8 +782,9 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                     if(current.getClassNumber().equals(ccNumber)){
                        current.setAtLeastOneGoodInCommerceClassFlag(true);
                        current.setAtLeastOneGoodInCommerceClassFlagSet(true);
-                       //current.setMarkInUse(true);
-                       //current.setMarkInUseSet(true);
+                        current.setMarkInUse(false);
+                        current.setMarkInUseSet(false);
+
 
 
                     }
