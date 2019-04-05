@@ -5,6 +5,7 @@ import org.springframework.lang.Nullable;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 
 
@@ -26,6 +27,115 @@ public class GSClassCategory {
     private String classCategoryImageName;
 
     private String classCategoryDescr;
+
+
+
+
+    // foreign radio checkboxes
+
+    private boolean pendingFACC;
+
+
+    private boolean foreignRegistrationCC;
+
+
+    private boolean foreignAR_NACC;
+
+
+
+
+    // foreign application fields
+    private String faCountryCC;
+    private String faRegistrationNumberCC;
+    private Date faFilingDateCC;
+
+
+
+
+    // foreign registration fields
+    private String frCountryCC;
+    private String frRegistartionNumberCC;
+    private Date   frRegistrationDateCC;
+    private Date  frExpirationDateCC;
+    private Date  frRenewlDateCC;
+    private String frCertImagePathCC;
+
+    private String frCertImageNameCC;
+    private boolean frCertCCuploaded;
+
+
+    // id functions
+
+    public String getpfaCCID(){
+        return classCategoryNumber+"pfa";
+    }
+
+    public String getpfrCCID(){
+        return classCategoryNumber+"pfr";
+    }
+
+    public String getpnaCCID(){
+        return classCategoryNumber+"pna";
+    }
+
+    ////////////////////////////////////////////////////////
+    // get id functions for goods and services
+    ////////////////////////////////////////////////////////
+    public String getCCImpageFormID(){
+
+
+        return getClassCategoryNumber()+"imageForm";
+    }
+
+    public String getCCImageID(){
+        return getClassCategoryNumber()+"classSpecImg";
+    }
+    public String getCCFileInputID(){
+        return getClassCategoryNumber()+"classFileInputID";
+    }
+
+    public String getCCSpecDescID(){
+        return getClassCategoryNumber()+"classSpecimenDescID";
+    }
+
+
+    public String getCCUploadSpinnerID(){
+
+        return getClassCategoryNumber()+"classUploadSpinnerID";
+    }
+
+    ////////////////////////////////////////////////////////
+    public String getCCFRCertImageFormID(){
+
+        return getClassCategoryNumber()+"FRcertForm";
+    }
+    public String getCCFRCertImageID(){
+        return getClassCategoryNumber()+"FRCertImg";
+    }
+
+    public String getCCFRCertFileID(){
+
+        return getClassCategoryNumber()+"FRCertFile";
+    }
+
+    public String getCCFRCertUploadSpinnerID(){
+        return  getClassCategoryNumber()+"FRCertSpinner";
+    }
+
+    public String getCCspecDownloadLinkID(){
+
+        return  getClassCategoryNumber()+"gsSpecDownloadID";
+    }
+
+
+    public String getCCFRcertDownloadID(){
+
+        return  getClassCategoryNumber()+"frCertDownloadID";
+    }
+
+
+
+    //
 
 
 
@@ -209,5 +319,159 @@ public class GSClassCategory {
 
     public void setClassCategoryImageName(String classCategoryImageName) {
         this.classCategoryImageName = classCategoryImageName;
+    }
+
+    public boolean isPendingFACC() {
+        return pendingFACC;
+    }
+
+    public void setPendingFACC(boolean pendingFACC) {
+        this.pendingFACC = pendingFACC;
+    }
+
+    public boolean isForeignRegistrationCC() {
+        return foreignRegistrationCC;
+    }
+
+    public void setForeignRegistrationCC(boolean foreignRegistrationCC) {
+        this.foreignRegistrationCC = foreignRegistrationCC;
+    }
+
+    public boolean isForeignAR_NACC() {
+        return foreignAR_NACC;
+    }
+
+    public void setForeignAR_NACC(boolean foreignAR_NACC) {
+        this.foreignAR_NACC = foreignAR_NACC;
+    }
+
+    public String getFaCountryCC() {
+        return faCountryCC;
+    }
+
+    public void setFaCountryCC(String faCountryCC) {
+        this.faCountryCC = faCountryCC;
+    }
+
+    public String getFaRegistrationNumberCC() {
+        return faRegistrationNumberCC;
+    }
+
+    public void setFaRegistrationNumberCC(String faRegistrationNumberCC) {
+        this.faRegistrationNumberCC = faRegistrationNumberCC;
+    }
+
+    public Date getFaFilingDateCC() {
+        return faFilingDateCC;
+    }
+
+    public void setFaFilingDateCC(Date faFilingDateCC) {
+        this.faFilingDateCC = faFilingDateCC;
+    }
+
+    public String getFrCountryCC() {
+        return frCountryCC;
+    }
+
+    public void setFrCountryCC(String frCountryCC) {
+        this.frCountryCC = frCountryCC;
+    }
+
+    public String getFrRegistartionNumberCC() {
+        return frRegistartionNumberCC;
+    }
+
+    public void setFrRegistartionNumberCC(String frRegistartionNumberCC) {
+        this.frRegistartionNumberCC = frRegistartionNumberCC;
+    }
+
+    public Date getFrRegistrationDateCC() {
+        return frRegistrationDateCC;
+    }
+
+    public void setFrRegistrationDateCC(Date frRegistrationDateCC) {
+        this.frRegistrationDateCC = frRegistrationDateCC;
+    }
+
+    public Date getFrExpirationDateCC() {
+        return frExpirationDateCC;
+    }
+
+    public void setFrExpirationDateCC(Date frExpirationDateCC) {
+        this.frExpirationDateCC = frExpirationDateCC;
+    }
+
+    public Date getFrRenewlDateCC() {
+        return frRenewlDateCC;
+    }
+
+    public void setFrRenewlDateCC(Date frRenewlDateCC) {
+        this.frRenewlDateCC = frRenewlDateCC;
+    }
+
+    public String getFrCertImagePathCC() {
+        return frCertImagePathCC;
+    }
+
+    public void setFrCertImagePathCC(String frCertImagePathCC) {
+        this.frCertImagePathCC = frCertImagePathCC;
+    }
+
+    public String getFrCertImageNameCC() {
+        return frCertImageNameCC;
+    }
+
+    public void setFrCertImageNameCC(String frCertImageNameCC) {
+        this.frCertImageNameCC = frCertImageNameCC;
+    }
+
+    public boolean isFrCertCCuploaded() {
+        return frCertCCuploaded;
+    }
+
+    public void setFrCertCCuploaded(boolean frCertCCuploaded) {
+        this.frCertCCuploaded = frCertCCuploaded;
+    }
+
+    public String getFaFilingDateCCDisplay(){
+        if(faFilingDateCC != null) {
+            return faFilingDateCC.toString().substring(0, 10);
+        }
+        else {
+            return "";
+        }
+    }
+
+
+    public String getFrREgistrationDateCCDispaly(){
+
+        if(frRegistrationDateCC != null) {
+            return frRegistrationDateCC.toString().substring(0, 10);
+        }
+        else {
+            return "";
+        }
+    }
+
+
+    public String getFrExpireationDateCCDisplay (){
+
+        if(frExpirationDateCC != null) {
+            return frExpirationDateCC.toString().substring(0, 10);
+        }
+        else {
+            return "";
+        }
+    }
+
+
+    public String getFRrenewalDateCCDisplay(){
+        if(frRenewlDateCC != null) {
+            return frRenewlDateCC.toString().substring(0, 10);
+        }
+        else {
+            return "";
+        }
+
     }
 }
