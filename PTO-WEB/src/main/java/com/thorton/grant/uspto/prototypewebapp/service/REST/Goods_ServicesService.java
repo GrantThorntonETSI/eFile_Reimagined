@@ -798,6 +798,8 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                     if(current.getClassNumber().equals(ccNumber)){
                         current.setAtLeastOneGoodInCommerceClassFlag(false);
                         current.setAtLeastOneGoodInCommerceClassFlagSet(true);
+                        current.setProvideSpecimenForAllGS(false);
+                        current.setProvideSpecimenForAllGSSet(false);
                         current.setMarkInUse(false);
                         current.setMarkInUseSet(true);
 

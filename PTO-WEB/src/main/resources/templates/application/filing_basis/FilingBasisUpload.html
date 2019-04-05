@@ -423,6 +423,7 @@
 
 
                                     <th:block  th:if="${Good_Service_class.atLeastOneGoodInCommerceSet == true}">
+
                                         <th:block   th:if="${Good_Service_class.isAtLeastOneGoodInCommerce() == true}">
 
 
@@ -10794,7 +10795,10 @@
 
             addFilingBasisInfoToClassCategory("cc-in-use-one", "yes", catNum, appInternalID);
 
-            $(this).parent().parent().parent().next().next().next().show(500);
+            //$(this).parent().parent().parent().next().next().next().show(500);
+
+
+
             $(this).parent().parent().parent().next().next().next().find("input").each(function () {
 
 
@@ -10834,6 +10838,15 @@
 
 
                 // check if yes is already checked
+            $(this).parent().parent().parent().next().find("input").each(function () {
+
+
+                $(this).attr("checked", false);
+
+
+
+
+            });
 
 
 
