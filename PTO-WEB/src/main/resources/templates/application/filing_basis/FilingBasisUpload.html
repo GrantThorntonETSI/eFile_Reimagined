@@ -12652,14 +12652,15 @@
                     // call auto save yes on foreign application
                     $(this).parent().next().next().show(500);
 
-                    addFilingBasisInfoToGoodAndService("cc-pfr-option", "yes", ccID, appInternalID);
+
+                    addFilingBasisInfoToClassCategory("cc-pfr-option", "yes", ccID, appInternalID);
 
                 }
                 else{
                     // hide parent next div
                     // call auto save no on forgeign application
                     $(this).parent().next().next().fadeOut(500);
-                    addFilingBasisInfoToGoodAndService("cc-pfr-option", "no", ccID, appInternalID);
+                    addFilingBasisInfoToClassCategory("cc-pfr-option", "no", ccID, appInternalID);
 
                 }
 

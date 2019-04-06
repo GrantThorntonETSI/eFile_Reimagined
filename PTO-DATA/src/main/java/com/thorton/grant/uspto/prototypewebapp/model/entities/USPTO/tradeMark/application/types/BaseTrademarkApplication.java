@@ -787,7 +787,10 @@ public class BaseTrademarkApplication  {
                     gsClassCategory.setProvideSpecimenForAll(current.isProvideSpecimenForAllGS());
                     gsClassCategory.setProvideSpecimenForAllset(current.isProvideSpecimenForAllGSSet());
 
+
+                    // new class level options and fields
                     gsClassCategory.setPendingFACC(current.isPendingFAAllGS());
+                    gsClassCategory.setForeignRegistrationCC(current.isForeignRegistration());
 
 
 
