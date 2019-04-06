@@ -906,6 +906,9 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                     if (current.getClassNumber().equals(ccNumber)) {
                         current.setPendingFA(true);
                         current.setPendingFAAllGS(true);
+                        current.setMarkInUse(true);
+                        current.setMarkInUseSet(true);
+
 
 
                     }
@@ -919,7 +922,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                     GoodAndService current = iter.next();
 
                     if (current.getClassNumber().equals(ccNumber)) {
-                        current.setPendingFA(false);
+                        //current.setPendingFA(false);
                         current.setPendingFAAllGS(false);
 
 
@@ -944,6 +947,8 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                         if (current.getClassNumber().equals(ccNumber)) {
                             current.setForeignRegistration(true);
                             current.setForenginRegistrationAllGS(true);
+                            current.setMarkInUse(true);
+                            current.setMarkInUseSet(true);
 
 
                         }
@@ -982,6 +987,8 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                     if (current.getClassNumber().equals(ccNumber)) {
                         current.setForeignAR_NA(true);
                         current.setNA_AllGS(true);
+                        current.setMarkInUse(true);
+                        current.setMarkInUseSet(true);
 
 
                     }
@@ -1020,6 +1027,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                 if (current.getClassNumber().equals(ccNumber)) {
                     current.setFaCountryCC(ccValue);
                     current.setFaCountry(ccValue);
+
 
 
 
