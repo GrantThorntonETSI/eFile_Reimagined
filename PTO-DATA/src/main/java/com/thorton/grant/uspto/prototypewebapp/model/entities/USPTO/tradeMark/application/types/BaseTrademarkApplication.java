@@ -792,6 +792,7 @@ public class BaseTrademarkApplication  {
                     gsClassCategory.setPendingFACC(current.isPendingFAAllGS());
                     gsClassCategory.setForeignRegistrationCC(current.isForeignRegistration());
                     gsClassCategory.setForeignAR_NACC(current.isNA_AllGS());
+                    gsClassCategory.setFaCountryCC(current.getFaCountryCC());
 
 
 

@@ -122,6 +122,11 @@ public class GoodAndService {
     public boolean NA_AllGS;
 
 
+    public String faCountryCC;
+
+
+
+
 
 
 
@@ -621,6 +626,14 @@ public class GoodAndService {
 
     public void setFrCertImageName(String frCertImageName) {
         this.frCertImageName = frCertImageName;
+    }
+
+    public String getFaCountryCC() {
+        return faCountryCC;
+    }
+
+    public void setFaCountryCC(String faCountryCC) {
+        this.faCountryCC = faCountryCC;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////

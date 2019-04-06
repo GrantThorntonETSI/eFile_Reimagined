@@ -12801,8 +12801,8 @@
 
        });
 
-
-        // persistence rendering for fa-country drop down
+        //////////////////////////////////////////
+        // persistence rendering for fa-country drop down and persistence
 
         $('select.fa-country').change(function () {
             var gsID= $(this).attr("gs-id");
@@ -12824,6 +12824,36 @@
 
 
         });
+
+
+
+        // class level equivalent  fa-country drop down and persistence
+        $('select.fa-country-cc').change(function () {
+            var ccID= $(this).attr("cc-id");
+
+            //alert(gsID);
+            var value = $(this).val();
+
+            addFilingBasisInfoToClassCategory("cc-pfa-country", value, ccID, appInternalID);
+
+
+        });
+        $('select').each(function () {
+
+            var countryCode = $(this).attr("cc-value");
+            if(countryCode != "undefined"){
+                $(this).val(countryCode);
+            }
+
+
+
+        });
+
+
+
+
+
+
 
         $('input.fa-app-number').focusout(function () {
             var gsID= $(this).attr("gs-id");

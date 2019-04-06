@@ -1009,6 +1009,29 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
+        if(ccField.equals("cc-pfa-country")) {
+
+            //baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
+
+
+            for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                GoodAndService current = iter.next();
+
+                if (current.getClassNumber().equals(ccNumber)) {
+                    current.setFaCountryCC(ccValue);
+
+
+
+                }
+            }
+
+
+
+
+
+            appFieldReadable = "Filing basis foreign application country Class level Option";
+        }
+
 
 
 
