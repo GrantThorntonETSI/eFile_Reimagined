@@ -12815,17 +12815,6 @@
 
 
         });
-        $('select').each(function () {
-
-            var countryCode = $(this).attr("gs-value");
-            if(countryCode != "undefined"){
-                $(this).val(countryCode);
-            }
-
-
-
-        });
-
 
         ///////////////////////////////////////////////////////////////////////
         // class level equivalent  fa-country drop down and persistence
@@ -12840,11 +12829,22 @@
 
 
         });
+
+
         $('select').each(function () {
 
-            var countryCode = $(this).attr("cc-value");
-            if(countryCode != "undefined"){
+            var countryCode = $(this).attr("gs-value");
+
+            var countryCodeCC = $(this).attr("cc-value");
+
+            if(countryCode != null){
+
                 $(this).val(countryCode);
+            }
+
+            if(countryCodeCC != null){
+
+                $(this).val(countryCodeCC);
             }
 
 
