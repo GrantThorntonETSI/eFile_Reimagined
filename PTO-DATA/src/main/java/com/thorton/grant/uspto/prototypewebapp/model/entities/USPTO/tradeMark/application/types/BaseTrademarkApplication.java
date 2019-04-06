@@ -796,6 +796,8 @@ public class BaseTrademarkApplication  {
                     gsClassCategory.setFaRegistrationNumberCC(current.getFaAppNumberCC());
                     gsClassCategory.setFaFilingDateCC(current.getFaFilingDateCC());
                     gsClassCategory.setFrCountryCC(current.getFrCountryCC());
+                    gsClassCategory.setFrRegistartionNumberCC(current.getFrRegistrationNumberCC());
+
 
 
 

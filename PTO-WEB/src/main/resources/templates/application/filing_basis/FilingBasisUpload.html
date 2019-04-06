@@ -1168,7 +1168,7 @@
                                                 </div>
                                                 <div class="form-group form-group-md col-xs-12">
                                                     <label for="appnumbertwo">Foreign registration number: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                    <input type="text" class="form-control fr-reg-number-CC" id="appnumbertwoCC"  th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}" th:value="${Good_Service_class.getFrRegistartionNumberCC()}">
+                                                    <input type="text" class="form-control fr-reg-number-cc" id="appnumbertwoCC"  th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}" th:value="${Good_Service_class.getFrRegistartionNumberCC()}">
                                                 </div>
                                                 <div class="form-group form-group-md col-xs-12">
                                                     <label for="reg-date">Foreign registration date: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
@@ -2545,7 +2545,7 @@
                                                 </div>
                                                 <div class="form-group form-group-md col-xs-12">
                                                     <label for="appnumbertwo">Foreign registration number: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                    <input type="text" class="form-control fr-reg-number-CC" id="appnumbertwoCC"  th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}" th:value="${Good_Service_class.getFrRegistartionNumberCC()}">
+                                                    <input type="text" class="form-control fr-reg-number-cc" id="appnumbertwoCC"  th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}" th:value="${Good_Service_class.getFrRegistartionNumberCC()}">
                                                 </div>
                                                 <div class="form-group form-group-md col-xs-12">
                                                     <label for="reg-date">Foreign registration date: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
@@ -12942,14 +12942,9 @@
         });
 
 
-
-
-
-
-
-
-
-
+        ///////////////////////////////////////////////////////////////////////
+        // persistence rendering for fr reg number  persistence
+        ///////////////////////////////////////////////////////////////////////
 
         $('input.fr-reg-number').focusout(function () {
             var gsID= $(this).attr("gs-id");
@@ -12959,6 +12954,26 @@
             addFilingBasisInfoToGoodAndService("gs-pfr-reg-Number", value, gsID, appInternalID);
 
         });
+
+        ///////////////////////////////////////////////////////////////////////
+        // class level persistence rendering for fr reg number  persistence
+        ///////////////////////////////////////////////////////////////////////
+        $('input.fr-reg-number-cc').focusout(function () {
+            var ccID= $(this).attr("cc-id");
+
+            //alert(gsID);
+            var value = $(this).val();
+            addFilingBasisInfoToGoodAndService("cc-pfr-reg-Number", value, ccID, appInternalID);
+
+        });
+
+
+
+
+
+
+
+
 
         $('input.fr-reg-date').focusout(function () {
             var gsID= $(this).attr("gs-id");

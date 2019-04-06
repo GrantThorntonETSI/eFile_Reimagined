@@ -1120,9 +1120,32 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
 
 
-            appFieldReadable = "Filing basis foreign application number Class level Option";
+            appFieldReadable = "Filing basis foreign registration country Class level Option";
         }
 
+
+        if(ccField.equals("cc-pfr-reg-Number")) {
+
+            //baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
+
+
+            for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                GoodAndService current = iter.next();
+
+                if (current.getClassNumber().equals(ccNumber)) {
+                     current.setFrRegistartionNumber(ccValue);
+                     current.setFrRegistrationNumberCC(ccValue);
+
+
+                }
+            }
+
+
+
+
+
+            appFieldReadable = "Filing basis foreign registration country Class level Option";
+        }
 
 
 

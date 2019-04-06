@@ -130,6 +130,8 @@ public class GoodAndService {
 
 
     public String frCountryCC;
+    public String frRegistrationNumberCC;
+
 
 
 
@@ -666,6 +668,14 @@ public class GoodAndService {
 
     public void setFrCountryCC(String frCountryCC) {
         this.frCountryCC = frCountryCC;
+    }
+
+    public String getFrRegistrationNumberCC() {
+        return frRegistrationNumberCC;
+    }
+
+    public void setFrRegistrationNumberCC(String frRegistrationNumberCC) {
+        this.frRegistrationNumberCC = frRegistrationNumberCC;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
