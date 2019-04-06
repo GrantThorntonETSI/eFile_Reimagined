@@ -392,7 +392,7 @@
                                                 </div>
                                                 <div class="form-group form-group-md col-xs-12">
                                                     <label for="country">Country: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                    <select class="form-control fa-country-CC" id="countryCC" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">
+                                                    <select class="form-control fa-country-cc" id="countryCC" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">
                                                         <option value="">Select</option>
                                                         <option value="B2">AFGHANISTAN</option>
                                                         <option value="B3">ALBANIA</option>
@@ -636,11 +636,11 @@
                                                 </div>
                                                 <div class="form-group form-group-md col-xs-12">
                                                     <label for="appnumber">Foreign application number: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                    <input type="text" class="form-control fa-app-number-CC" id="appnumberCC"  th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">
+                                                    <input type="text" class="form-control fa-app-number-cc" id="appnumberCC"  th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">
                                                 </div>
                                                 <div class="form-group form-group-md col-xs-12">
                                                     <label for="application-date">Foreign application filing date: <a href="#" data-toggle="tooltip" title="Claim on Section 44(d) priority requires foreign application date to be within 6 month of today's date." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                    <input type="date" class="form-control fa-filing-date-CC" id="application-dateCC" name="applicationdate" value="" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">
+                                                    <input type="date" class="form-control fa-filing-date-cc" id="application-dateCC" name="applicationdate" value="" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">
                                                 </div>
                                             </div><!--pending foreign-->
                                             <div class="appendapending"></div>
@@ -901,7 +901,7 @@
                                                 </div>
                                                 <div class="form-group form-group-md col-xs-12">
                                                     <label for="appnumber">Foreign application number: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                    <input type="text" class="form-control fa-app-number-cc" id="appnumberCC" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}" th:value="${Good_Service_class.getFrRegistartionNumberCC()}">
+                                                    <input type="text" class="form-control fa-app-number-cc" id="appnumberCC" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}" th:value="${Good_Service_class.getFaRegistrationNumberCC()}">
                                                 </div>
                                                 <div class="form-group form-group-md col-xs-12">
                                                     <label for="application-date">Foreign application filing date: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
@@ -1769,7 +1769,7 @@
                                                 </div>
                                                 <div class="form-group form-group-md col-xs-12">
                                                     <label for="country">Country: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                    <select class="form-control fa-country-CC" id="countryCC" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">
+                                                    <select class="form-control fa-country-cc" id="countryCC" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">
                                                         <option value="">Select</option>
                                                         <option value="B2">AFGHANISTAN</option>
                                                         <option value="B3">ALBANIA</option>
@@ -2013,11 +2013,11 @@
                                                 </div>
                                                 <div class="form-group form-group-md col-xs-12">
                                                     <label for="appnumber">Foreign application number: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                    <input type="text" class="form-control fa-app-number-CC" id="appnumberCC"  th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">
+                                                    <input type="text" class="form-control fa-app-number-cc" id="appnumberCC"  th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">
                                                 </div>
                                                 <div class="form-group form-group-md col-xs-12">
                                                     <label for="application-date">Foreign application filing date: <a href="#" data-toggle="tooltip" title="Claim on Section 44(d) priority requires foreign application date to be within 6 month of today's date." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                    <input type="date" class="form-control fa-filing-date-CC" id="application-dateCC" name="applicationdate" value="" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">
+                                                    <input type="date" class="form-control fa-filing-date-cc" id="application-dateCC" name="applicationdate" value="" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">
                                                 </div>
                                             </div><!--pending foreign-->
                                             <div class="appendapending"></div>
@@ -2278,7 +2278,7 @@
                                                 </div>
                                                 <div class="form-group form-group-md col-xs-12">
                                                     <label for="appnumber">Foreign application number: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                    <input type="text" class="form-control fa-app-number-cc" id="appnumberCC" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}" th:value="${Good_Service_class.getFrRegistartionNumberCC()}">
+                                                    <input type="text" class="form-control fa-app-number-cc" id="appnumberCC" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}" th:value="${Good_Service_class.getFaRegistrationNumberCC()}">
                                                 </div>
                                                 <div class="form-group form-group-md col-xs-12">
                                                     <label for="application-date">Foreign application filing date: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
@@ -12801,8 +12801,9 @@
 
        });
 
-        //////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////
         // persistence rendering for fa-country drop down and persistence
+        ///////////////////////////////////////////////////////////////////////
 
         $('select.fa-country').change(function () {
             var gsID= $(this).attr("gs-id");
@@ -12826,8 +12827,9 @@
         });
 
 
-
+        ///////////////////////////////////////////////////////////////////////
         // class level equivalent  fa-country drop down and persistence
+        ///////////////////////////////////////////////////////////////////////
         $('select.fa-country-cc').change(function () {
             var ccID= $(this).attr("cc-id");
 
@@ -12853,7 +12855,9 @@
 
 
 
-
+        ///////////////////////////////////////////////////////////////////////
+        // persistence rendering for fa app number drop down and persistence
+        ///////////////////////////////////////////////////////////////////////
 
         $('input.fa-app-number').focusout(function () {
             var gsID= $(this).attr("gs-id");
@@ -12863,6 +12867,25 @@
             addFilingBasisInfoToGoodAndService("gs-pfa-app-Number", value, gsID, appInternalID);
 
         });
+
+        ///////////////////////////////////////////////////////////////////////
+        // class level equivalent  faapp number down and persistence
+        ///////////////////////////////////////////////////////////////////////
+
+        $('input.fa-app-number-cc').focusout(function () {
+            var ccID= $(this).attr("cc-id");
+
+            //alert(gsID);
+            var value = $(this).val();
+            addFilingBasisInfoToClassCategory("cc-pfa-app-Number", value, ccID, appInternalID);
+
+        });
+
+
+
+
+
+
 
 
         $('input.fa-filing-date').focusout(function () {

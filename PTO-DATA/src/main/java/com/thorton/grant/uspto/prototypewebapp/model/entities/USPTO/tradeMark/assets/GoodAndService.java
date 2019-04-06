@@ -124,6 +124,9 @@ public class GoodAndService {
 
     public String faCountryCC;
 
+    public String faAppNumberCC;
+
+
 
 
 
@@ -634,6 +637,14 @@ public class GoodAndService {
 
     public void setFaCountryCC(String faCountryCC) {
         this.faCountryCC = faCountryCC;
+    }
+
+    public String getFaAppNumberCC() {
+        return faAppNumberCC;
+    }
+
+    public void setFaAppNumberCC(String faAppNumberCC) {
+        this.faAppNumberCC = faAppNumberCC;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////

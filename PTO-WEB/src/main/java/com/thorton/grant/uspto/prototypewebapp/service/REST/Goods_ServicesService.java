@@ -1034,6 +1034,29 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
+        if(ccField.equals("cc-pfa-app-Number")) {
+
+            //baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
+
+
+            for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                GoodAndService current = iter.next();
+
+                if (current.getClassNumber().equals(ccNumber)) {
+                    current.setFaRegistrationNumber(ccValue);
+                    current.setFaAppNumberCC(ccValue);
+
+
+                }
+            }
+
+
+
+
+
+            appFieldReadable = "Filing basis foreign application number Class level Option";
+        }
+
 
 
 
