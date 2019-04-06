@@ -1303,6 +1303,10 @@ public class ApplicationObjectCreationController {
                         if (current.getClassNumber().equals(ccID)) {
                             current.setFrCertImagePath(filePath);
                             current.setFrCertImageName(file.getOriginalFilename());
+                            current.setFrCertImagePathCC(filePath);
+                            current.setFrCertImageNameCC(file.getOriginalFilename());
+                            current.setFrCertUploadedCC(true);
+
 
 
 
