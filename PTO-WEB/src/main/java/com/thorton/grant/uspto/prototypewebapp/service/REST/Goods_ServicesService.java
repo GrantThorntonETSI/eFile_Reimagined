@@ -971,6 +971,42 @@ public class Goods_ServicesService  extends BaseRESTapiService{
             }
 
 
+        if(ccField.equals("cc-pna-option")) {
+
+            //baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
+            if (ccValue.equals("yes")) {
+
+                for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                    GoodAndService current = iter.next();
+
+                    if (current.getClassNumber().equals(ccNumber)) {
+                        current.setForeignAR_NA(true);
+                        current.setNA_AllGS(true);
+
+
+                    }
+                }
+
+
+            }
+            if (ccValue.equals("no")) {
+
+                for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                    GoodAndService current = iter.next();
+
+                    if (current.getClassNumber().equals(ccNumber)) {
+                        current.setForeignAR_NA(false);
+                        current.setNA_AllGS(false);
+
+
+                    }
+                }
+
+
+            }
+
+            appFieldReadable = "Filing basis pending foreign registration Class level Option";
+        }
 
 
 
