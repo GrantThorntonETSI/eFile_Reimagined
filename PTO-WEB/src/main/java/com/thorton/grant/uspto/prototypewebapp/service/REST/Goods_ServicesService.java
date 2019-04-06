@@ -1144,7 +1144,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
 
 
-            appFieldReadable = "Filing basis foreign registration country Class level Option";
+            appFieldReadable = "Filing basis foreign registration number Class level Option";
         }
 
 
