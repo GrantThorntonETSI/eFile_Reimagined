@@ -1259,6 +1259,81 @@ public class ApplicationObjectCreationController {
     }
     ////////////////////////////////////////////////
 
+    // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
+    @PostMapping(value = "/cc/foreignReg/add")
+    public ResponseEntity addCCSfrRegCertImg(
+            @RequestParam(name="file", required=false) MultipartFile file,
+            @RequestParam (name="appID")String AppInternalID,
+            @RequestParam (name="ccID")String ccID,
+            Model model
+    ) {
+
+        System.out.println("GS FR registrton certifcate file upload!!!! ");
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID( AppInternalID);
+
+        String filePath ="";
+        if(file != null){
+            System.out.println("file is not null");
+
+            if(file.isEmpty() == false) {
+                System.out.println("file is not empty !!!!!!!!!!!!!!!");
+
+
+                try {
+                    String image_path = storageService.store(file);
+
+                    // this will be store for each good and service that matches this
+
+                    // on building class categoreis, this value is then copied over
+                    // file path returned to client in response
+
+                    // server redraw should render the image file path from category object
+
+
+                    // baseTrademarkApplication.getc("/files/"+image_path);
+                    filePath = "/files/"+image_path;
+
+
+
+                    for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                        GoodAndService current = iter.next();
+
+                        if (current.getClassNumber().equals(ccID)) {
+                            current.setFrCertImagePath(filePath);
+                            current.setFrCertImageName(file.getOriginalFilename());
+
+
+
+                        }
+                    }
+
+
+
+                }
+                catch ( StorageException ex){
+                    model.addAttribute("message", "ERROR: Mark Image upload failed due to error: "+ex );
+                    // return "forward:/mark/designWithText/?trademarkID="+trademarkInternalID;
+                    return buildResponseEnity("420", "ERROR: Mark Image upload failed due to error: "+ex);
+
+                }
+                baseTradeMarkApplicationService.save(baseTrademarkApplication);
+            }
+
+        }
+        else{
+            System.out.println("file object is null");
+        }
+
+
+        //return buildResponseEnity("200", "{image-url:" +filePath+"}");
+        return buildResponseEnity("200", "{image-url:" +filePath+"}, {image-name:" +file.getOriginalFilename()+"}");
+        //return ResponseEntity.ok().build();
+
+    }
+    ////////////////////////////////////////////////
+
 
 
     // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model

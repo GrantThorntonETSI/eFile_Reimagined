@@ -138,6 +138,12 @@ public class GoodAndService {
     public Date frRenewalDateCC;
 
 
+    public String frCertImagePathCC;
+    public String frCertImageNameCC;
+
+
+    public boolean frCertUploadedCC;
+
 
 
 
@@ -705,6 +711,30 @@ public class GoodAndService {
 
     public void setFrRenewalDateCC(Date frRenewalDateCC) {
         this.frRenewalDateCC = frRenewalDateCC;
+    }
+
+    public String getFrCertImagePathCC() {
+        return frCertImagePathCC;
+    }
+
+    public void setFrCertImagePathCC(String frCertImagePathCC) {
+        this.frCertImagePathCC = frCertImagePathCC;
+    }
+
+    public String getFrCertImageNameCC() {
+        return frCertImageNameCC;
+    }
+
+    public void setFrCertImageNameCC(String frCertImageNameCC) {
+        this.frCertImageNameCC = frCertImageNameCC;
+    }
+
+    public boolean isFrCertUploadedCC() {
+        return frCertUploadedCC;
+    }
+
+    public void setFrCertUploadedCC(boolean frCertUploadedCC) {
+        this.frCertUploadedCC = frCertUploadedCC;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////

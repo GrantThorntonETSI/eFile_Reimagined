@@ -800,6 +800,9 @@ public class BaseTrademarkApplication  {
                     gsClassCategory.setFrRegistrationDateCC(current.getFrRegistrationDateCC());
                     gsClassCategory.setFrExpirationDateCC(current.getFrExpireDateCC());
                     gsClassCategory.setFrRenewlDateCC(current.getFrRenewalDateCC());
+                    gsClassCategory.setFrCertImagePathCC(current.getFrCertImagePathCC());
+                    gsClassCategory.setFrCertImageNameCC(current.getFrCertImageNameCC());
+                    gsClassCategory.setFrCertCCuploaded(current.isFrCertUploadedCC());
 
 
 
