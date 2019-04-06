@@ -129,6 +129,9 @@ public class GoodAndService {
     public Date  faFilingDateCC;
 
 
+    public String frCountryCC;
+
+
 
 
 
@@ -655,6 +658,14 @@ public class GoodAndService {
 
     public void setFaFilingDateCC(Date faFilingDateCC) {
         this.faFilingDateCC = faFilingDateCC;
+    }
+
+    public String getFrCountryCC() {
+        return frCountryCC;
+    }
+
+    public void setFrCountryCC(String frCountryCC) {
+        this.frCountryCC = frCountryCC;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////

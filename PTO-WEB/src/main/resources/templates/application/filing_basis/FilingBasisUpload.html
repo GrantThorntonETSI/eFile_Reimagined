@@ -12916,18 +12916,40 @@
 
         //END additional pending + foreign
 
-        // start foreign registration
+        ///////////////////////////////////////////////////////////////////////
+        // persistence rendering for fr country drop down and persistence
+        ///////////////////////////////////////////////////////////////////////
 
         $('select.fr-country').change(function () {
             var gsID= $(this).attr("gs-id");
-
-            //alert(gsID);
             var value = $(this).val();
 
             addFilingBasisInfoToGoodAndService("gs-pfr-country", value, gsID, appInternalID);
 
 
         });
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        // class level persistence rendering for fr country drop down and persistence
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        $('select.fr-country-cc').change(function () {
+            var ccID= $(this).attr("cc-id");
+            var value = $(this).val();
+
+            addFilingBasisInfoToClassCategory("cc-pfr-country", value, ccID, appInternalID);
+
+
+        });
+
+
+
+
+
+
+
+
+
+
 
         $('input.fr-reg-number').focusout(function () {
             var gsID= $(this).attr("gs-id");
