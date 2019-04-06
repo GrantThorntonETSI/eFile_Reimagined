@@ -799,6 +799,7 @@ public class BaseTrademarkApplication  {
                     gsClassCategory.setFrRegistartionNumberCC(current.getFrRegistrationNumberCC());
                     gsClassCategory.setFrRegistrationDateCC(current.getFrRegistrationDateCC());
                     gsClassCategory.setFrExpirationDateCC(current.getFrExpireDateCC());
+                    gsClassCategory.setFrRenewlDateCC(current.getFrRenewalDateCC());
 
 
 

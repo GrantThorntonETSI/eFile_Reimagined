@@ -13027,6 +13027,11 @@
 
 
 
+
+        ///////////////////////////////////////////////////////////////////////
+        // persistence rendering for fr renewal date  persistence
+        ///////////////////////////////////////////////////////////////////////
+
         $('input.fr-renewal-date').focusout(function () {
             var gsID= $(this).attr("gs-id");
 
@@ -13035,6 +13040,21 @@
             addFilingBasisInfoToGoodAndService("gs-pfr-renew-date", value, gsID, appInternalID);
 
         });
+        ///////////////////////////////////////////////////////////////////////
+        // class level persistence rendering for fr renewal date  persistence
+        ///////////////////////////////////////////////////////////////////////
+        $('input.fr-renewal-date-cc').focusout(function () {
+            var ccID= $(this).attr("cc-id");
+
+
+            var value = $(this).val();
+            addFilingBasisInfoToClassCategory("cc-pfr-renew-date", value, ccID, appInternalID);
+
+        });
+
+
+
+
 
         // end foreign registartion
 

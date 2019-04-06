@@ -135,6 +135,8 @@ public class GoodAndService {
     public Date frRegistrationDateCC;
     public Date frExpireDateCC;
 
+    public Date frRenewalDateCC;
+
 
 
 
@@ -695,6 +697,14 @@ public class GoodAndService {
 
     public void setFrExpireDateCC(Date frExpireDateCC) {
         this.frExpireDateCC = frExpireDateCC;
+    }
+
+    public Date getFrRenewalDateCC() {
+        return frRenewalDateCC;
+    }
+
+    public void setFrRenewalDateCC(Date frRenewalDateCC) {
+        this.frRenewalDateCC = frRenewalDateCC;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////

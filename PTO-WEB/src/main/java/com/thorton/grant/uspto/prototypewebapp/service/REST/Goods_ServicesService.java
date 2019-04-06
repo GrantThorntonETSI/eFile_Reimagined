@@ -1216,6 +1216,38 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
+        if(ccField.equals("cc-pfr-renew-date")) {
+
+            //baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
+
+
+            for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                GoodAndService current = iter.next();
+
+                if (current.getClassNumber().equals(ccNumber)) {
+                    //current.setFaFilingDate(ccValue);
+
+                    try {
+                        DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+                        Date date = format.parse(ccValue);
+                        current.setFrRenewlDate(date);
+                        current.setFrRenewalDateCC(date);
+
+                    }
+                    catch(Exception ex){
+                        return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
+
+                    }
+
+
+
+
+                }
+            }
+
+
+            appFieldReadable = "Filing basis foreign registration  expire date Class level Option";
+        }
 
 
 
