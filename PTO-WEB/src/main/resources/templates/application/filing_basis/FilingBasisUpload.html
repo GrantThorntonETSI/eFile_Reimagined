@@ -12886,7 +12886,9 @@
 
 
 
-
+        ///////////////////////////////////////////////////////////////////////
+        // persistence rendering for fa filing date drop down and persistence
+        ///////////////////////////////////////////////////////////////////////
 
         $('input.fa-filing-date').focusout(function () {
             var gsID= $(this).attr("gs-id");
@@ -12896,6 +12898,21 @@
             addFilingBasisInfoToGoodAndService("gs-pfa-filing-date", value, gsID, appInternalID);
 
         });
+
+        ///////////////////////////////////////////////////////////////////////
+        // class level equivalent  faapp number down and persistence
+        ///////////////////////////////////////////////////////////////////////
+        $('input.fa-filing-date-cc').focusout(function () {
+            var ccID= $(this).attr("cc-id");
+
+            //alert(gsID);
+            var value = $(this).val();
+            addFilingBasisInfoToClassCategory("cc-pfa-filing-date", value, ccID, appInternalID);
+
+        });
+
+
+
 
         //END additional pending + foreign
 

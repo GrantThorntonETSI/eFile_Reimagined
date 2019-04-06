@@ -126,6 +126,8 @@ public class GoodAndService {
 
     public String faAppNumberCC;
 
+    public Date  faFilingDateCC;
+
 
 
 
@@ -645,6 +647,14 @@ public class GoodAndService {
 
     public void setFaAppNumberCC(String faAppNumberCC) {
         this.faAppNumberCC = faAppNumberCC;
+    }
+
+    public Date getFaFilingDateCC() {
+        return faFilingDateCC;
+    }
+
+    public void setFaFilingDateCC(Date faFilingDateCC) {
+        this.faFilingDateCC = faFilingDateCC;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////

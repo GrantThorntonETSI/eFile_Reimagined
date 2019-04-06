@@ -794,6 +794,7 @@ public class BaseTrademarkApplication  {
                     gsClassCategory.setForeignAR_NACC(current.isNA_AllGS());
                     gsClassCategory.setFaCountryCC(current.getFaCountryCC());
                     gsClassCategory.setFaRegistrationNumberCC(current.getFaAppNumberCC());
+                    gsClassCategory.setFaFilingDateCC(current.getFaFilingDateCC());
 
 
 
