@@ -1019,6 +1019,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
                 if (current.getClassNumber().equals(ccNumber)) {
                     current.setFaCountryCC(ccValue);
+                    current.setFaCountry(ccValue);
 
 
 
