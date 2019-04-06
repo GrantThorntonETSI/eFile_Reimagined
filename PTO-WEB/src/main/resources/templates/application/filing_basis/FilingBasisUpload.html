@@ -12973,7 +12973,9 @@
 
 
 
-
+        ///////////////////////////////////////////////////////////////////////
+        // persistence rendering for fr reg date  persistence
+        ///////////////////////////////////////////////////////////////////////
 
         $('input.fr-reg-date').focusout(function () {
             var gsID= $(this).attr("gs-id");
@@ -12981,6 +12983,24 @@
             addFilingBasisInfoToGoodAndService("gs-pfr-reg-date", value, gsID, appInternalID);
 
         });
+
+        ///////////////////////////////////////////////////////////////////////
+        // class level persistence rendering for fr reg date  persistence
+        ///////////////////////////////////////////////////////////////////////
+
+        $('input.fr-reg-date-cc').focusout(function () {
+            var ccID= $(this).attr("cc-id");
+            var value = $(this).val();
+            addFilingBasisInfoToClassCategory("cc-pfr-reg-date", value, ccID, appInternalID);
+
+        });
+
+
+
+
+
+
+
 
         $('input.fr-expire-date').focusout(function () {
             var gsID= $(this).attr("gs-id");
