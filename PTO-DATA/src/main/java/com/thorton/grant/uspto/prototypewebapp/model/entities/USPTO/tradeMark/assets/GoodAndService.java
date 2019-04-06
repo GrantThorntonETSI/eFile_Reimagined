@@ -115,6 +115,23 @@ public class GoodAndService {
 
     public boolean  provideSpecimenForAllGSSet;
 
+    public boolean pendingFAAllGS;
+
+    public boolean forenginRegistrationAllGS;
+
+    public boolean NA_AllGS;
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     public boolean isAtLeastOneGoodInCommerceClassFlag() {
@@ -636,5 +653,27 @@ public class GoodAndService {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+    public boolean isPendingFAAllGS() {
+        return pendingFAAllGS;
+    }
 
+    public void setPendingFAAllGS(boolean pendingFAAllGS) {
+        this.pendingFAAllGS = pendingFAAllGS;
+    }
+
+    public boolean isForenginRegistrationAllGS() {
+        return forenginRegistrationAllGS;
+    }
+
+    public void setForenginRegistrationAllGS(boolean forenginRegistrationAllGS) {
+        this.forenginRegistrationAllGS = forenginRegistrationAllGS;
+    }
+
+    public boolean isNA_AllGS() {
+        return NA_AllGS;
+    }
+
+    public void setNA_AllGS(boolean NA_AllGS) {
+        this.NA_AllGS = NA_AllGS;
+    }
 }

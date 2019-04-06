@@ -467,6 +467,12 @@ public class Goods_ServicesService  extends BaseRESTapiService{
             appFieldReadable = "Filing Basis Pending Foreign Application Option";
 
         }
+        // class level equivalent
+
+
+
+
+
 
         if(fbField.equals("gs-pfr-option")){
             // ptoUser.setState(param); // sets state code
@@ -887,6 +893,49 @@ public class Goods_ServicesService  extends BaseRESTapiService{
             appFieldReadable = "Class level option";
 
         }
+
+
+        if(ccField.equals("cc-pfa-option")){
+
+            //baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
+            if(ccValue.equals("yes")){
+
+                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                    GoodAndService current = iter.next();
+
+                    if(current.getClassNumber().equals(ccNumber)){
+                        current.setPendingFA(true);
+                        current.setPendingFAAllGS(true);
+
+
+                    }
+                }
+
+
+
+
+            }
+            if(ccValue.equals("no")){
+
+                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                    GoodAndService current = iter.next();
+
+                    if(current.getClassNumber().equals(ccNumber)){
+                        current.setPendingFA(false);
+                        current.setPendingFAAllGS(false);
+
+
+                    }
+                }
+
+
+            }
+
+            appFieldReadable = "Filing Basis Pending Foreign Application Option";
+
+        }
+
+
 
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
