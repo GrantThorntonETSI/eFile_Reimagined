@@ -199,6 +199,30 @@ public class TradeMarkService extends BaseRESTapiService {
             if(markValue.equals("no")){
                 baseTrademarkApplication.getTradeMark().setContainNamePortaitSignature(false);
                 baseTrademarkApplication.getTradeMark().setNamePortraitSet(true);
+                baseTrademarkApplication.getTradeMark().setName(false);
+                baseTrademarkApplication.getTradeMark().setPortrait(false);
+                baseTrademarkApplication.getTradeMark().setSignature(false);
+
+                baseTrademarkApplication.getTradeMark().setNameFirstName("");
+                baseTrademarkApplication.getTradeMark().setNameMiddleName("");
+                baseTrademarkApplication.getTradeMark().setNameLastName("");
+
+                baseTrademarkApplication.getTradeMark().setSignatureFirstName("");
+                baseTrademarkApplication.getTradeMark().setSignatureMiddleName("");
+                baseTrademarkApplication.getTradeMark().setSignatureLastName("");
+
+                baseTrademarkApplication.getTradeMark().setPortraitFirstName("");
+                baseTrademarkApplication.getTradeMark().setPortraitMiddleName("");
+                baseTrademarkApplication.getTradeMark().setPortraitLastName("");
+
+                baseTrademarkApplication.getTradeMark().setNPSLivingPerson(false);
+                baseTrademarkApplication.getTradeMark().setNPSLivingPersonSet(false);
+
+
+
+
+
+
 
             }
 
