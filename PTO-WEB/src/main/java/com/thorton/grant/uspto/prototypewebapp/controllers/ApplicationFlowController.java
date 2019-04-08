@@ -3437,13 +3437,19 @@ public class ApplicationFlowController {
         }
 
 
-        if(baseTrademarkApplication.getTradeMark().getTrademarkDesignType().equals("Standard Character") == false){
+        if(baseTrademarkApplication.getTradeMark().getTrademarkDesignType().equals("Standard Character") == true){
 
 
             if(baseTrademarkApplication.getTradeMark().getMarkLiteral() == null){
                 missedTEAsFields.add("Mark literal");
 
             }
+
+
+        }
+
+        if(baseTrademarkApplication.getTradeMark().getTrademarkDesignType().equals("Standard Character") == false){
+
             if(baseTrademarkApplication.getTradeMark().isColorClaimSet() == false){
 
 
@@ -3467,6 +3473,7 @@ public class ApplicationFlowController {
             }
 
         }
+
         if(baseTrademarkApplication.getTradeMark().isTranslationSet() == false){
             missedTEAsFields.add("Translation");
         }
