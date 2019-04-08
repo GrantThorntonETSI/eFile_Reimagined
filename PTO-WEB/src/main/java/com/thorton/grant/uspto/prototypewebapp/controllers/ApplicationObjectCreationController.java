@@ -431,6 +431,7 @@ public class ApplicationObjectCreationController {
 
             owner.setOwnerDisplayname(newOwnerContactFormDTO.getFirstName()+ " "+newOwnerContactFormDTO.getLastName());
             owner.setFirstName(newOwnerContactFormDTO.getFirstName());
+            owner.setPersonTypeOwner(true);
 
 
 
@@ -557,7 +558,8 @@ public class ApplicationObjectCreationController {
             owner.setOwnerDisplayname(newOwnerContactFormDTO.getOwnerName());
 
             // added this logic to prevent citizenship output on review screen
-            owner.setGoverningEntitiesTypeOwner(true);
+            //owner.setGoverningEntitiesTypeOwner(true);
+
         }
         if(newOwnerContactFormDTO.getSolpFirstName() !=  null){
             owner.setOwnerSolpFirstName(newOwnerContactFormDTO.getSolpFirstName());

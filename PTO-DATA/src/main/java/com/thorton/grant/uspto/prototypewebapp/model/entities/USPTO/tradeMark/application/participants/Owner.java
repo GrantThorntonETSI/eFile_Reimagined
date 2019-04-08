@@ -32,6 +32,9 @@ public class Owner extends Contact{
     private String governingEntitiesDisplayName;
 
 
+    private boolean personTypeOwner;
+
+
 
     private String ownerType;
 
@@ -299,6 +302,14 @@ public class Owner extends Contact{
 
         }
         return  ownerDisplayname+", a partnership organized under the laws of "+ownerOrganizationState+", composed of "+partnerList+".";
+    }
+
+    public boolean isPersonTypeOwner() {
+        return personTypeOwner;
+    }
+
+    public void setPersonTypeOwner(boolean personTypeOwner) {
+        this.personTypeOwner = personTypeOwner;
     }
 
     public void setForeignEntityOwner(boolean foreignEntityOwner) {
