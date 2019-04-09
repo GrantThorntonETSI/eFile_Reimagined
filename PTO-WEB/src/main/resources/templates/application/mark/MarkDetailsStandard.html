@@ -1226,7 +1226,22 @@
         });
 
         $('#nextButton').click(function () {
-            location.href=nextLinkURL;
+
+
+            if($('#inlineRadio7').is(":checked")){
+
+               if($('#namechecked').is(":checked")){
+                   location.href=nextLinkURL;
+               }
+               else{
+                   alert("You indicated that your mark contains a name, portrait, or signature. You must select an option, or answer 'No' to the question.");
+               }
+
+            }
+            else{
+                location.href=nextLinkURL;
+            }
+
         });
 
 
@@ -1458,10 +1473,10 @@
 
             if($(this).is(":checked")) {
 
-                saveMarkTextdetails("mark-NPS-portrait", "yes", appInternalID);
-            }
-            else{
-                saveMarkTextdetails("mark-NPS-portrait", "no", appInternalID);
+            saveMarkTextdetails("mark-NPS-portrait", "yes", appInternalID);
+        }
+    else{
+            saveMarkTextdetails("mark-NPS-portrait", "no", appInternalID);
             }
         });
 
