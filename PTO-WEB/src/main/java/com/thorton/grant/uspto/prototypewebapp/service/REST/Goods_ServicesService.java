@@ -148,12 +148,12 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                 baseTrademarkApplication.setMarkInUseForAllGS(true);
                 baseTrademarkApplication.setMarkAllgsSet(true);
                 // we need to loop though all gs and set its in use to true
-                /*
+
                 for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
                     GoodAndService current = iter.next();
-                    current.setMarkInUse(true);
-                    current.setMarkInUseSet(true);
-                }*/
+                    current.setMarkInUse(false);
+                    current.setMarkInUseSet(false);
+                }
                 baseTrademarkApplication.setDeclarationMarkInUse(true);
                 baseTrademarkApplication.setDeclarationMarkInUseSet(true);
             }
