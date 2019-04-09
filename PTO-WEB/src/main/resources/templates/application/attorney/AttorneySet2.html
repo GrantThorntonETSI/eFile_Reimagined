@@ -189,7 +189,17 @@
                                                                                     <span> Bar Admission Date: </span>
                                                                                     <span th:text="${baseTrademarkApplication.getPrimaryLawyer().getBarAdmissionDateDisplay()}"></span><br>
                                                                                     <span> Bar Certificate:</span><br>
-                                                                                    <img th:attr="src=${baseTrademarkApplication.getPrimaryLawyer().getBarCertificateImageKey()}"  class="img-responsive" />
+
+
+                                                                                    <th:block   th:if="${baseTrademarkApplication.getPrimaryLawyer().isBarCertifcatePDF() == true}">
+                                                                                        <embed  id="attorney-bar-img"   class="img-responsive" th:src="${baseTrademarkApplication.getPrimaryLawyer().getBarCertificateImageKey()}"  type="application/pdf" />
+                                                                                    </th:block>
+                                                                                    <th:block   th:if="${baseTrademarkApplication.getPrimaryLawyer().isBarCertifcatePDF() == false}">
+                                                                                        <img th:attr="src=${baseTrademarkApplication.getPrimaryLawyer().getBarCertificateImageKey()}"  class="img-responsive" />
+
+
+                                                                                    </th:block>
+
 
 
                                                                                 </div>
@@ -280,6 +290,15 @@
                                                                                         <span th:text="${lawyer.barAdmissionDate}"></span><br>
                                                                                         <span> Bar Certificate:</span><br>
                                                                                         <img th:attr="src=${lawyer.getBarCertificateImageKey()}"/>
+
+                                                                                        <th:block   th:if="${lawyer.isBarCertifcatePDF() == true}">
+                                                                                            <embed  id="attorney-bar-img"   class="img-responsive" th:src="${lawyer.getBarCertificateImageKey()}"  type="application/pdf" />
+                                                                                        </th:block>
+                                                                                        <th:block   th:if="${lawyer.isBarCertifcatePDF() == false}">
+                                                                                            <img th:attr="src=${lawyer.getBarCertificateImageKey()}"  class="img-responsive" />
+
+
+                                                                                        </th:block>
 
 
                                                                                     </div>

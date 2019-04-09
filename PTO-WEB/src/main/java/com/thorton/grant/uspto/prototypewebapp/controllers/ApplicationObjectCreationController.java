@@ -216,8 +216,27 @@ public class ApplicationObjectCreationController {
 
         if(file != null){
 
+            // check file type and set if uploaded image is a pdf file
+
+
+
+
+
+
               if(file.isEmpty() == false) {
-                  lawyer.setBarCertificateImageKey("/files/"+storageService.getCounter()+file.getOriginalFilename());
+
+                  String fileName = file.getOriginalFilename();
+
+                  if(fileName.endsWith(".pdf") || fileName.endsWith(".PDF")){
+                      lawyer.setBarCertificateImageKey("/files-pdf/"+storageService.getCounter()+file.getOriginalFilename());
+                      lawyer.setBarCertifcatePDF(true);
+                  }
+                  else {
+                      lawyer.setBarCertificateImageKey("/files/"+storageService.getCounter()+file.getOriginalFilename());
+                  }
+
+
+
                   try {
                       storageService.store(file);
                       lawyer.setBarCertificateImageUploaded(true);
