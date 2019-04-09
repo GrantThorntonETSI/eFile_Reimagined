@@ -371,7 +371,12 @@ public class ApplicationObjectCreationController {
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
-        return "forward:/application/AttorneySet/?trademarkID="+trademarkInternalID;
+        //return "forward:/application/AttorneySet/?trademarkID="+trademarkInternalID;
+
+        // try forwarding to the attorney edit page
+        return "forward:/application/attorney/edit/" +lawyer.getEmail() + "/?trademarkID="+trademarkInternalID;
+
+
     }
     ///////////////////////////////////////////////////////////////////////////////
      // end of attorney add

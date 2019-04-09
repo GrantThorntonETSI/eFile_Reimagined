@@ -58,6 +58,13 @@ public class Lawyer extends Contact {
     private boolean BarCertificateImageUploaded; // its the name of the file
 
 
+    // flags if a bar certificate upload was a pdf file
+    private boolean barCertifcatePDF;
+
+
+
+
+
 
 
     private String CanadianAgentName;
@@ -299,7 +306,13 @@ public class Lawyer extends Contact {
         docketNumberList.remove(dNumber);
     }
 
+    public boolean isBarCertifcatePDF() {
+        return barCertifcatePDF;
+    }
 
+    public void setBarCertifcatePDF(boolean barCertifcatePDF) {
+        this.barCertifcatePDF = barCertifcatePDF;
+    }
 
     @Override
     public boolean equals(Object o) {
