@@ -1431,8 +1431,24 @@
         });
 
         $('#nextButton').click(function () {
-            location.href=nextLinkURL;
+
+
+            if($('#inlineRadio7').is(":checked")){
+
+                if($('#namechecked').is(":checked") || $('#signaturechecked').is(":checked")){
+                    location.href=nextLinkURL;
+                }
+                else{
+                    alert("You indicated that your mark contains a name, portrait, or signature. You must select an option, or answer 'No' to the question.");
+                }
+
+            }
+            else{
+                location.href=nextLinkURL;
+            }
+
         });
+
 
         if($('#mark-literal').val()!= ""){
             $('#nextButton').attr("disabled",false);
