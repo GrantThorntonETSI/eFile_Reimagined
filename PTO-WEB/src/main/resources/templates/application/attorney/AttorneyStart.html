@@ -1465,7 +1465,10 @@
                         var img = new Image();
                         // Set the img src
                         img.src = reader.result;
+
+
                         var imgSrc = img.src;
+
                         // display the image on the page
                         $(fileDisplayArea).removeClass('loader').append(img);
                         $( '.upload-drop-zone' ).css('height','115px');
@@ -1484,16 +1487,25 @@
                         reader.readAsDataURL(file);
                     }
                 }
-            } else {
+            }
+            else
+            {
+
                 var reader = new FileReader();
                 reader.onload = function(e) {
                     if (( listlength ) < 2)  {
                         $( fileDisplayArea ).addClass( 'loader' ).html("");
                         // Create a file
                         var dataURL = reader.result;
+
+                        var imgSrc;
+
+                        if(name.indexOf(".pdf") > 0 || name.indexOf(".PDF") > 0){
+                            imgSrc = "../../resources/images/pdf-icon.png"
+                        }
                         $( fileDisplayArea ).removeClass( 'loader' );
                         $( fileDisplayArea ).html( '<span class="glyphicon glyphicon-check"></span>' );
-                        $(holdata).append('<div class="row"><div class="col-xs-2"><button type="button" class="btn btn-sm close" aria-label="remove file selection"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button></div><div class="col-xs-4 linkholder"><a href="' + dataURL + '"aria-labelledby="uploadedfile" download>' + name + '</a></div><div class="col-xs-1 visuallyhidden">' + type + '</div><div class="col-xs-5"><span class="badge alert-success pull-right">Selected File</span></div></div>');
+                        $(holdata).append('<div class="row"><div class="col-xs-2"><button type="button" class="btn btn-sm close" aria-label="remove file selection"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button></div><div class="col-xs-4 linkholder"><a href="'+ imgSrc + '" aria-labelledby="uploadedfile" download>' + name + '</a></div><div class="col-xs-2"><img src="' + imgSrc + '" class="img-thumbnail"></div><div class="col-xs-4"><span class="badge alert-success pull-right">Selected File</span></div></div>');
                         //console.log(dataURL);
                     }
                     if ((listlength) == 1)  {
@@ -1507,6 +1519,19 @@
                     reader.readAsDataURL(file);
                 }
             }
+        });
+
+
+
+        //START remove selected file
+        $(document).on('click', '.js-upload-finished button.close', function() {
+            $( '.hidethis' ).contents().css('display','block');
+            $( '.upload-drop-zone' ).css('height','115px');
+            $( '#usaffiliation .upload-drop-zone' ).css('height','175px');
+            $( '#usaffiliation .upload-drop-zone' ).css('display','block');
+            $( this ).parent().parent().remove();
+            $( 'div.fileDisplayArea img' ).remove();
+            $( 'div.fileDisplayArea' ).html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Select File</div>');
         });
 
 

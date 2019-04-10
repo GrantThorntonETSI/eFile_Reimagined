@@ -742,7 +742,7 @@
 
                                                                             </div>
                                                                             <div class="col-xs-2" style="margin-left: 33px;">
-                                                                                <img  id="attorney-bar-img"   class="img-responsive" th:src="${attorney.barCertificateImageKey}"  />
+                                                                                <embed id="attorney-bar-img"   class="img-responsive" th:src="${attorney.barCertificateImageKey}"  type="image/jpeg" />
                                                                             </div>
 
                                                                         </div>
@@ -802,7 +802,7 @@
 
                                                                         </div>
                                                                         <div class="col-xs-2" style="margin-left: 33px;">
-                                                                            <img  id="attorney-bar-img"   class="img-responsive" th:src="${attorney.barCertificateImageKey}"  />
+                                                                            <embed  id="attorney-bar-img"   class="img-responsive" th:src="${attorney.barCertificateImageKey}"  />
                                                                         </div>
 
                                                                     </div>
@@ -958,7 +958,7 @@
 
                                                                     </div>
                                                                     <div class="col-xs-2" style="margin-left: 33px;">
-                                                                        <img  id="attorney-bar-img"   class="img-responsive" th:src="${attorney.barCertificateImageKey}"  />
+                                                                        <embed  id="attorney-bar-img"   class="img-responsive" th:src="${attorney.barCertificateImageKey}"  />
                                                                     </div>
 
                                                                 </div>
@@ -1122,7 +1122,7 @@
 
                                                                 </div>
                                                                 <div class="col-xs-2" style="margin-left: 33px;">
-                                                                    <img  id="attorney-bar-img"   class="img-responsive" th:src="${attorney.barCertificateImageKey}"  />
+                                                                    <embed  id="attorney-bar-img"   class="img-responsive" th:src="${attorney.barCertificateImageKey}"  />
                                                                 </div>
 
                                                             </div>
@@ -2002,6 +2002,15 @@
                     // call jquery and set it in the img div
                     var imgPath = parsePathFromResponse(data);
                     var fileName = parseNameFromResponse(data);
+
+                    // set image type attribute based on file type
+                    if(imgPath.indexOf(".pdf") > 0 || imgPath.indexOf(".PDF") > 0){
+                        $('#'+imageId).attr("type", "application/pdf");
+                    }
+                    else{
+                        $('#'+imageId).attr("type", "image/jpeg");
+                    }
+
                     $('#'+dLinkID).text(fileName);
                     $('#'+imageId).attr("src", imgPath);
                     $("#"+spinnerID).hide();

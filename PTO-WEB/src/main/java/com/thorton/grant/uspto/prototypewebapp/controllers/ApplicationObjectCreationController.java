@@ -1873,10 +1873,20 @@ public class ApplicationObjectCreationController {
                 try {
                     String image_path = storageService.store(file);
 
+                    String fileName = file.getOriginalFilename();
+
+                    if(fileName.endsWith(".pdf") || fileName.endsWith(".PDF")){
+                        filePath = "/files-pdf/"+image_path;
+                    }
+                    else {
+                        filePath = "/files/"+image_path;
+                    }
 
 
-                    baseTrademarkApplication.findContactByEmail(email).setBarCertificateImageKey("/files/"+image_path);
-                    filePath = "/files/"+image_path;
+
+
+                    baseTrademarkApplication.findContactByEmail(email).setBarCertificateImageKey(filePath);
+
 
                     // need to also send over attorney email as part of email update
                     baseTrademarkApplication.findContactByEmail(email).setBarCertificateImageFileName(file.getOriginalFilename());
