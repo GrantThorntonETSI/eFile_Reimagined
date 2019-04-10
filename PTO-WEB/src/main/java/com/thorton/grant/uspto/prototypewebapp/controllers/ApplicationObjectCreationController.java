@@ -226,19 +226,10 @@ public class ApplicationObjectCreationController {
               if(file.isEmpty() == false) {
 
                   String fileName = file.getOriginalFilename();
-
-                  if(fileName.endsWith(".pdf") || fileName.endsWith(".PDF")){
-                      lawyer.setBarCertificateImageKey("/files-pdf/"+storageService.getCounter()+file.getOriginalFilename());
-                      lawyer.setBarCertifcatePDF(true);
-                  }
-                  else {
-                      lawyer.setBarCertificateImageKey("/files/"+storageService.getCounter()+file.getOriginalFilename());
-                  }
-
-
+                  String imagePath = "";
 
                   try {
-                      storageService.store(file);
+                      imagePath = storageService.store(file);
                       lawyer.setBarCertificateImageUploaded(true);
                       lawyer.setBarCertificateImageFileName(file.getOriginalFilename());
 
@@ -248,6 +239,19 @@ public class ApplicationObjectCreationController {
                       return "forward:/application/start/?trademarkID="+trademarkInternalID;
 
                   }
+
+
+
+                  if(fileName.endsWith(".pdf") || fileName.endsWith(".PDF")){
+                      lawyer.setBarCertificateImageKey("/files-pdf/"+imagePath);
+                      lawyer.setBarCertifcatePDF(true);
+                  }
+                  else {
+                      lawyer.setBarCertificateImageKey("/files/"+imagePath);
+                  }
+
+
+
               }
 
         }
@@ -1872,6 +1876,11 @@ public class ApplicationObjectCreationController {
 
                 try {
                     String image_path = storageService.store(file);
+
+
+                    System.out.println("000000000000000000000000000000000000000000000000000000000000000");
+
+                    System.out.println("image path : "+image_path);
 
                     String fileName = file.getOriginalFilename();
 
