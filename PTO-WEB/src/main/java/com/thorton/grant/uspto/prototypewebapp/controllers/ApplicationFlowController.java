@@ -3436,7 +3436,7 @@ public class ApplicationFlowController {
             returnLink ="../../mark/standard/?trademarkID=";
         }
 
-
+/*
         if(baseTrademarkApplication.getTradeMark().getTrademarkDesignType().equals("Standard Character") == true){
 
 
@@ -3447,6 +3447,8 @@ public class ApplicationFlowController {
 
 
         }
+*/
+
 
         if(baseTrademarkApplication.getTradeMark().getTrademarkDesignType().equals("Standard Character") == false){
 
