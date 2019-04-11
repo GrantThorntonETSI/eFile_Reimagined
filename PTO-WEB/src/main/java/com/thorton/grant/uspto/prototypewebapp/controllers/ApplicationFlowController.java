@@ -3668,7 +3668,7 @@ public class ApplicationFlowController {
 
                     }
 
-                    if(goodAndService.getFrRegistartionNumber()== null){
+                    if(goodAndService.getFaRegistrationNumber()== null){
                         if(missedTEAsFields.size() == 0){
                             if(goodAndService.isMarkInUse() == true){
                                 returnLink = "../../application/inUseFilingBasisUpload/?trademarkID=";

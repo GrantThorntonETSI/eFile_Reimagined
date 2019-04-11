@@ -14,9 +14,9 @@ public class StorageProperties {
     // load this value from property file
     //
 
-    private String location = "C:\\images\\attorney";
+    //private String location = "C:\\images\\attorney";
 
-    // private String location = "/Users/stanikmas_lynn/Documents/GrantThornton/images/";
+    private String location = "/Users/stanikmas_lynn/Documents/GrantThornton/images/";
 
     public String getLocation() {
         return location;

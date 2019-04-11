@@ -394,10 +394,10 @@ public class ApplicationObjectCreationController {
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
-        //return "forward:/application/AttorneySet/?trademarkID="+trademarkInternalID;
+        return "forward:/application/AttorneySet/?trademarkID="+trademarkInternalID;
 
         // try forwarding to the attorney edit page
-        return "forward:/application/attorney/edit/" +lawyer.getEmail() + "/?trademarkID="+trademarkInternalID;
+        //return "forward:/application/attorney/edit/" +lawyer.getEmail() + "/?trademarkID="+trademarkInternalID;
 
 
     }
@@ -1878,7 +1878,6 @@ public class ApplicationObjectCreationController {
                     String image_path = storageService.store(file);
 
 
-                    System.out.println("000000000000000000000000000000000000000000000000000000000000000");
 
                     System.out.println("image path : "+image_path);
 
