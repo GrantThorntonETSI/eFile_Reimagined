@@ -1070,8 +1070,19 @@ $(document).ready(function(){
 	//start affiliation options
 
 	$('#attorney-bar-standing').change(function(){
-		$('.hidethisdiv').hide( 'fast' );
+		//$('.hidethisdiv').hide( 'fast' );
 		$('#' + $(this).val()).show( 'fast' );
+
+		if($(this).val() == "usaffiliation"){
+            $('#user-accept-checkbox').attr("required", true);
+
+			$('#canadianaffiliation').hide( 'fast' );
+		}
+		else{
+			$('#user-accept-checkbox').attr("required", false);
+			$('#usaffiliation').hide( 'fast' );
+		}
+
 	});
 	//end affiliation options
 	//start nameoftypeofbusiness options
