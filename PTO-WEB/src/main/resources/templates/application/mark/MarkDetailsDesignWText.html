@@ -530,7 +530,7 @@
 
 
 
-                                                        <div id="yescontainsname" role="region" aria-labelledby="whichnps" class="form-group form-group-md">
+                                                        <div id="yescontainsname" role="region" aria-labelledby="whichnps" class="form-group form-group-md" style="display: none;">
                                                             <div class="row">
                                                                 <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
                                                                     <label for="name-firstname">First Name</label>
@@ -554,7 +554,7 @@
                                                         <input class="form-check-input checkmark" type="checkbox" value="portrait" aria-checked="false" tabindex="0" id="portraitchecked" aria-labelledby="checkportrait">
                                                         <label class="form-check-label form-check" for="portraitchecked" id="checkportrait"><span class="radio notspecial" id="collect">Portrait</span></label>
 
-                                                        <div id="yescontainsportrait" role="region" aria-labelledby="whichnps" class="form-group form-group-md">
+                                                        <div id="yescontainsportrait" role="region" aria-labelledby="whichnps" class="form-group form-group-md" style="display: none;">
                                                             <div class="row">
                                                                 <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
                                                                     <label for="portrait-firstname">First Name</label>
@@ -578,7 +578,7 @@
                                                         <input class="form-check-input checkmark" type="checkbox" value="signature" aria-checked="false" tabindex="0" aria-labelledby="checksignature" id="signaturechecked">
                                                         <label class="form-check-label form-check" for="signaturechecked" id="checksignature"><span class="radio notspecial" id="collectm">Signature</span></label>
 
-                                                        <div id="yescontainssignature" role="region" aria-labelledby="whichnps" class="form-group form-group-md">
+                                                        <div id="yescontainssignature" role="region" aria-labelledby="whichnps" class="form-group form-group-md" style="display: none;">
                                                             <div class="row">
                                                                 <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
                                                                     <label for="signature-firstname">First Name</label>
@@ -736,7 +736,7 @@
 
 
 
-                                                        <div id="yescontainsname" role="region" aria-labelledby="whichnps" class="form-group form-group-md">
+                                                        <div id="yescontainsname" role="region" aria-labelledby="whichnps" class="form-group form-group-md" style="display: none;">
                                                             <div class="row">
                                                                 <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
                                                                     <label for="name-firstname">First Name</label>
@@ -760,7 +760,7 @@
                                                         <input class="form-check-input checkmark" type="checkbox" value="portrait" aria-checked="false" tabindex="0" id="portraitchecked" aria-labelledby="checkportrait">
                                                         <label class="form-check-label form-check" for="portraitchecked" id="checkportrait"><span class="radio notspecial" id="collect">Portrait</span></label>
 
-                                                        <div id="yescontainsportrait" role="region" aria-labelledby="whichnps" class="form-group form-group-md">
+                                                        <div id="yescontainsportrait" role="region" aria-labelledby="whichnps" class="form-group form-group-md" style="display: none;">
                                                             <div class="row">
                                                                 <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
                                                                     <label for="portrait-firstname">First Name</label>
@@ -784,7 +784,7 @@
                                                         <input class="form-check-input checkmark" type="checkbox" value="signature" aria-checked="false" tabindex="0" aria-labelledby="checksignature" id="signaturechecked">
                                                         <label class="form-check-label form-check" for="signaturechecked" id="checksignature"><span class="radio notspecial" id="collectm">Signature</span></label>
 
-                                                        <div id="yescontainssignature" role="region" aria-labelledby="whichnps" class="form-group form-group-md">
+                                                        <div id="yescontainssignature" role="region" aria-labelledby="whichnps" class="form-group form-group-md" style="display: none;">
                                                             <div class="row">
                                                                 <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
                                                                     <label for="signature-firstname">First Name</label>
@@ -1817,9 +1817,74 @@
             if($(this).is(":checked")) {
 
                 saveMarkTextdetails("mark-NPS-portrait", "yes", appInternalID);
+
+                if($('#namechecked').is(":checked")){
+                    // portrait and named checked
+
+                    if($('#signaturechecked').is("checked")){
+                        // all 3 checked
+                        $('#consent-download').attr("href", npsAllConsentLink);
+
+                    }
+                    else {
+                        // only portrait and name
+                        $('#consent-download').attr("href", nameAndPortraitConsentLink);
+                    }
+
+
+
+                }
+                else{
+
+                    if($('#signaturechecked').is(":checked")){
+                        // portrait and signature are checked
+
+                        $('#consent-download').attr("href", signatureAndPortraitConsentLink);
+
+                    }
+                    else {
+                        // portrait only
+                        $('#consent-download').attr("href", portraitOnlyConsentLink);
+                    }
+
+
+                }
+                /////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
             }
             else{
+                // portrait is unchecked
+
                 saveMarkTextdetails("mark-NPS-portrait", "no", appInternalID);
+                if($('#signaturechecked').is(":checked")){
+
+                    if($('#namechecked').is("checked")){
+                        // signature and name still checked
+                        $('#consent-download').attr("href", nameAndSignatureConsentLink);
+
+                    }
+                    else {
+                        // only  signature checked
+                        $('#consent-download').attr("href", SignatureOnlyConsentLink);
+                    }
+
+                }
+                else{
+                    if($('#namechecked').is("checked")){
+                        //  portrait checked
+                        $('#consent-download').attr("href", nameOnlyConsentLink);
+
+                    }
+                    else {
+                        // only  signature checked
+                        $('#consent-download').attr("href", "");
+                    }
+
+
+                }
+
             }
         });
 
