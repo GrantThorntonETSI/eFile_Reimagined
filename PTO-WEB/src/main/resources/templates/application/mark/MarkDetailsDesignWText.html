@@ -1240,6 +1240,24 @@
     ////////////////////////////////////////////////////////////////////////////////////
 
 
+
+
+    var nameOnlyConsentLink =  "../../resources/documents/Consent_templateName.docx";
+    var SignatureOnlyConsentLink  =  "../../resources/documents/consent_template_signature.docx";
+    var portraitOnlyConsentLink  =  "../../resources/documents/Consent_templatePortrait.docx";
+
+
+    var nameAndSignatureConsentLink  =  "../../resources/documents/consent_template_name_signature.docx";
+
+    var nameAndPortraitConsentLink  =  "../../resources/documents/consent_template_name_portrait.docx";
+
+    var signatureAndPortraitConsentLink  =  "../../resources/documents/consent_template_name_portrait.docx";
+
+    var npsAllConsentLink = "../../resources/documents/consent_template_nps_all.docx";
+
+
+
+
 </script>
 
 
@@ -1720,13 +1738,76 @@
         $('#namechecked').click(function () {
 
             if($(this).is(":checked")) {
-
+            // name checked
                 saveMarkTextdetails("mark-NPS-name", "yes", appInternalID);
+
+                if($('#signaturechecked').is(":checked")){
+                  // signature checked
+
+                    if($('#portraitchecked').is("checked")){
+                        // all 3 checked
+                        $('#consent-download').attr("href", npsAllConsentLink);
+
+                    }
+                    else {
+                        // only name and signature checked
+                        $('#consent-download').attr("href", nameAndSignatureConsentLink);
+                    }
+
+
+
+                }
+                else{
+                    // signature not checked
+                    if($('#portraitchecked').is("checked")){
+                        // portrait and name are checked
+                        $('#consent-download').attr("href", nameAndPortraitConsentLink);
+
+                    }
+                    else {
+                        // only name is checked
+                        $('#consent-download').attr("href", nameOnlyConsentLink);
+                    }
+
+
+                }
+
             }
             else{
+                // name is unchecked ...
+
                 saveMarkTextdetails("mark-NPS-name", "no", appInternalID);
+
+                if($('#signaturechecked').is(":checked")){
+                    // signature is checked
+                    if($('#portraitchecked').is("checked")){
+                        // signature and portrait checked
+                        $('#consent-download').attr("href", signatureAndPortraitConsentLink);
+
+                    }
+                    else {
+                        // only  signature checked
+                        $('#consent-download').attr("href", SignatureOnlyConsentLink);
+                    }
+
+                }
+                else{
+                    if($('#portraitchecked').is("checked")){
+                        //  portrait checked
+                        $('#consent-download').attr("href", portraitOnlyConsentLink);
+
+                    }
+                    else {
+                        // only  signature checked
+                        $('#consent-download').attr("href", "");
+                    }
+
+
+                }
+
             }
         });
+
 
         $('#portraitchecked').click(function () {
 
