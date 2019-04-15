@@ -738,29 +738,6 @@
                                                         </div>
 
 
-                                                        <input class="form-check-input checkmark" type="checkbox" value="portrait" aria-checked="false" tabindex="0" id="portraitchecked" aria-labelledby="checkportrait">
-                                                        <label class="form-check-label form-check" for="portraitchecked" id="checkportrait"><span class="radio notspecial" id="collect">Portrait</span></label>
-
-                                                        <div id="yescontainsportrait" role="region" aria-labelledby="whichnps" class="form-group form-group-md">
-                                                            <div class="row">
-                                                                <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
-                                                                    <label for="portrait-firstname">First Name</label>
-                                                                    <input type="text" class="form-control" id="portrait-firstname" th:value="${baseTrademarkApplication.tradeMark.portraitFirstName}">
-                                                                </div>
-                                                                <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
-                                                                    <label for="portrait-middlename">Middle Name</label>
-                                                                    <input type="text" class="form-control" id="portrait-middlename" th:value="${baseTrademarkApplication.tradeMark.portraitMiddleName}">
-                                                                </div>
-                                                                <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-3">
-                                                                    <label for="portrait-lastname">Last Name</label>
-                                                                    <input type="text" class="form-control" id="portrait-lastname" th:value="${baseTrademarkApplication.tradeMark.portraitLastName}">
-                                                                </div>
-                                                                <div class="form-group form-group-md col-xs-12 col-md-3">
-                                                                    <button type="button" class="btn-sm btn-success add ctr">Add Additional</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
 
                                                         <input class="form-check-input checkmark" type="checkbox" value="signature" aria-checked="false" tabindex="0" aria-labelledby="checksignature" id="signaturechecked">
                                                         <label class="form-check-label form-check" for="signaturechecked" id="checksignature"><span class="radio notspecial" id="collectm">Signature</span></label>
@@ -942,28 +919,6 @@
                                                         </div>
 
 
-                                                        <input class="form-check-input checkmark" type="checkbox" value="portrait" aria-checked="false" tabindex="0" id="portraitchecked" aria-labelledby="checkportrait">
-                                                        <label class="form-check-label form-check" for="portraitchecked" id="checkportrait"><span class="radio notspecial" id="collect">Portrait</span></label>
-
-                                                        <div id="yescontainsportrait" role="region" aria-labelledby="whichnps" class="form-group form-group-md">
-                                                            <div class="row">
-                                                                <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-3">
-                                                                    <label for="portrait-firstname">First Name</label>
-                                                                    <input type="text" class="form-control" id="portrait-firstname" th:value="${baseTrademarkApplication.tradeMark.portraitFirstName}">
-                                                                </div>
-                                                                <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
-                                                                    <label for="portrait-middlename">Middle Name</label>
-                                                                    <input type="text" class="form-control" id="portrait-middlename" th:value="${baseTrademarkApplication.tradeMark.portraitMiddleName}">
-                                                                </div>
-                                                                <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-3">
-                                                                    <label for="portrait-lastname">Last Name</label>
-                                                                    <input type="text" class="form-control" id="portrait-lastname" th:value="${baseTrademarkApplication.tradeMark.portraitLastName}">
-                                                                </div>
-                                                                <div class="form-group form-group-md col-xs-12 col-md-3">
-                                                                    <button type="button" class="btn-sm btn-success add ctr">Add Additional</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
 
 
                                                         <input class="form-check-input checkmark" type="checkbox" value="signature" aria-checked="false" tabindex="0" aria-labelledby="checksignature" id="signaturechecked">
@@ -1221,9 +1176,9 @@
     var bsLink6_done =  "../../application/confirmInfo/?trademarkID="+appInternalID;
 
 
-    var nameOnlyConsentLink =  "../../resources/documents/Consent_template_Name.docx";
-    var portraitOnlyConsentLink  =  "../../resources/documents/Consent_template_Portrait.docx";
-    var nameAndPortraitConsentLink  =  "../../resources/documents/Consent_template__Name_Portrait.docx";
+    var nameOnlyConsentLink =  "../../resources/documents/Consent_templateName.docx";
+    var SignatureOnlyConsentLink  =  "../../resources/documents/consent_template_signature.docx";
+    var nameAndSignatureConsentLink  =  "../../resources/documents/consent_template_name_signature.docx";
     ////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -1333,12 +1288,34 @@
         if(isName == true){
             $('#checkname').click();
 
+            if(isSignature  == true){
+                $('#consent-download').attr("href", nameAndSignatureConsentLink);
+            }
+            else{
+
+                $('#consent-download').attr("href", nameOnlyConsentLink);
+
+            }
+
         }
 
         if(isSignature == true){
             $('#checksignature').click();
 
+            if(isName  == true){
+                $('#consent-download').attr("href", nameAndSignatureConsentLink);
+            }
+            else{
+
+                $('#consent-download').attr("href", SignatureOnlyConsentLink);
+
+            }
+
         }
+
+
+
+        //not valid option for this page
         if(isPortrait == true){
             $('#checkportrait').click();
 
@@ -1709,8 +1686,8 @@
 
                 saveMarkTextdetails("mark-NPS-name", "yes", appInternalID);
 
-                if($('#portraitchecked').is(":checked")){
-                    $('#consent-download').attr("href", nameAndPortraitConsentLink);
+                if($('#signaturechecked').is(":checked")){
+                    $('#consent-download').attr("href", nameAndSignatureConsentLink);
                 }
                 else{
                     $('#consent-download').attr("href", nameOnlyConsentLink);
@@ -1720,8 +1697,8 @@
             else{
                 saveMarkTextdetails("mark-NPS-name", "no", appInternalID);
 
-                if($('#portraitchecked').is(":checked")){
-                    $('#consent-download').attr("href", portraitOnlyConsentLink);
+                if($('#signaturechecked').is(":checked")){
+                    $('#consent-download').attr("href", SignatureOnlyConsentLink );
                 }
                 else{
                     $('#consent-download').attr("href", "");
@@ -1730,38 +1707,30 @@
             }
         });
 
-        $('#portraitchecked').click(function () {
 
-            if($(this).is(":checked")) {
-
-                saveMarkTextdetails("mark-NPS-portrait", "yes", appInternalID);
-
-                if($('#namechecked').is(":checked")){
-                    $('#consent-download').attr("href", nameAndPortraitConsentLink);
-                }
-                else{
-                    $('#consent-download').attr("href", portraitOnlyConsentLink);
-                }
-            }
-            else{
-                saveMarkTextdetails("mark-NPS-portrait", "no", appInternalID);
-                if($('#namechecked').is(":checked")){
-                    $('#consent-download').attr("href", nameOnlyConsentLink);
-                }
-                else{
-                    $('#consent-download').attr("href", "");
-                }
-            }
-        });
 
         $('#signaturechecked').click(function () {
 
             if($(this).is(":checked")) {
 
                 saveMarkTextdetails("mark-NPS-signature", "yes", appInternalID);
+
+                if($('#namechecked').is(":checked")){
+                    $('#consent-download').attr("href", nameAndSignatureConsentLink);
+                }
+                else{
+                    $('#consent-download').attr("href", SignatureOnlyConsentLink);
+                }
             }
             else{
                 saveMarkTextdetails("mark-NPS-signature", "no", appInternalID);
+
+                if($('#namechecked').is(":checked")){
+                    $('#consent-download').attr("href", nameOnlyConsentLink);
+                }
+                else{
+                    $('#consent-download').attr("href", "");
+                }
             }
         });
 
