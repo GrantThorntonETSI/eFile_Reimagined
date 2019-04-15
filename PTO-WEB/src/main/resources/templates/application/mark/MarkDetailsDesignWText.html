@@ -1251,7 +1251,7 @@
 
     var nameAndPortraitConsentLink  =  "../../resources/documents/consent_template_name_portrait.docx";
 
-    var signatureAndPortraitConsentLink  =  "../../resources/documents/consent_template_name_portrait.docx";
+    var signatureAndPortraitConsentLink  =  "../../resources/documents/consent_template_signature_portrait.docx";
 
     var npsAllConsentLink = "../../resources/documents/consent_template_nps_all.docx";
 
@@ -1827,6 +1827,7 @@
 
                     }
                     else {
+
                         // only portrait and name
                         $('#consent-download').attr("href", nameAndPortraitConsentLink);
                     }
@@ -1893,9 +1894,71 @@
             if($(this).is(":checked")) {
 
                 saveMarkTextdetails("mark-NPS-signature", "yes", appInternalID);
+
+                if($('#namechecked').is(":checked")){
+                    // portrait and named checked
+
+                    if($('#portraitchecked').is("checked")){
+                        // all 3 checked
+                        $('#consent-download').attr("href", npsAllConsentLink);
+
+                    }
+                    else {
+
+                        // only signature and name
+                        $('#consent-download').attr("href", nameAndSignatureConsentLink);
+                    }
+
+
+
+                }
+                else{
+
+                    if($('#portraitchecked').is(":checked")){
+                        // portrait and signature are checked
+
+                        $('#consent-download').attr("href", signatureAndPortraitConsentLink);
+
+                    }
+                    else {
+                        // signature only checked
+                        $('#consent-download').attr("href", SignatureOnlyConsentLink);
+                    }
+
+
+                }
+                /////////////////////////////////////////////////////////////////////////////////////////////////
             }
             else{
                 saveMarkTextdetails("mark-NPS-signature", "no", appInternalID);
+
+                if($('#portraitchecked').is(":checked")){
+
+                    if($('#namechecked').is("checked")){
+                        // portraut and name still checked
+                        $('#consent-download').attr("href", nameAndPortraitConsentLink);
+
+                    }
+                    else {
+                        // only  portrait  checked
+                        $('#consent-download').attr("href", portraitOnlyConsentLink);
+                    }
+
+                }
+                else{
+                    if($('#namechecked').is("checked")){
+                        //  portrait checked
+                        $('#consent-download').attr("href", nameOnlyConsentLink);
+
+                    }
+                    else {
+
+                        $('#consent-download').attr("href", "");
+                    }
+
+
+                }
+
             }
         });
 
