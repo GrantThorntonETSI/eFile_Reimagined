@@ -121,12 +121,12 @@
 
                                                                         <th:block th:if="${owner.isGoverningEntitiesTypeOwner() == true}" >
 
-                                                                            <p class="panel-title number weight600"><button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" th:attr="data-target='#'+${owner.id}"  th:text="${owner.getOwnerName()}" aria-controls="jbabos" aria-expanded="false" id="jbabosbtn"><span class="glyphicon glyphicon-triangle-right"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Jackie Babos</button></p>
+                                                                            <p class="panel-title number weight600"><span class="glyphicon glyphicon-triangle-right visuallyadded" data-toggle="collapse" th:attr="data-target='#'+${owner.id}" aria-hidden="true"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved collapsed" data-toggle="collapse" th:attr="data-target='#'+${owner.id}"  aria-hidden="true"></span><button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" th:attr="data-target='#'+${owner.id}"  th:text="${owner.getOwnerName()}" aria-controls="jbabos" aria-expanded="false" id="jbabosbtn"> Jackie Babos</button></p>
                                                                         </th:block>
 
                                                                         <th:block th:if="${owner.isGoverningEntitiesTypeOwner() == false}" >
 
-                                                                            <p class="panel-title number weight600"><button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" th:attr="data-target='#'+${owner.id}"  th:text="${owner.getOwnerDisplayname()}" aria-controls="jbabos" aria-expanded="false" id="jbabosbtn"><span class="glyphicon glyphicon-triangle-right"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Jackie Babos</button></p>
+                                                                            <p class="panel-title number weight600"><span class="glyphicon glyphicon-triangle-right visuallyadded" data-toggle="collapse" th:attr="data-target='#'+${owner.id}" aria-hidden="true"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved collapsed" data-toggle="collapse" th:attr="data-target='#'+${owner.id}"  aria-hidden="true"></span><button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" th:attr="data-target='#'+${owner.id}"  th:text="${owner.getOwnerDisplayname()}" aria-controls="jbabos" aria-expanded="false" id="jbabosbtn"> Jackie Babos</button></p>
                                                                         </th:block>
 
                                                                     </div>
