@@ -1929,13 +1929,27 @@ div[role="heading"] button {
 	hyphens: auto;
 	white-space: normal;
 }
+
+
+/*css for attorney and owner review page accordian trigger glphs  */
 #editowner .Accordion-panel .Accordion-trigger, #reviewattorney .Accordion-panel .Accordion-trigger {
 	margin-top:.5em;
 	font-weight:400;
 }
-#editowner .Accordion, #reviewattorney .Accordion {
+#editowner .panel-title span.glyphicon, #reviewattorney .panel-title span.glyphicon, #editowner .panel-title .Accordion-trigger, #reviewattorney .panel-title .Accordion-trigger {
+	float:left;
 	position:relative;
 }
+#editowner .panel-title span.glyphicon, #reviewattorney .panel-title span.glyphicon {
+	top:4px;
+	cursor:pointer;
+}
+#editowner .panel-title span.glyphicon-triangle-bottom, #reviewattorney .panel-title span.glyphicon-triangle-bottom {
+	display:none;
+}
+
+
+
 .Accordion-trigger.link {
 	color: #337ab7;
 }
