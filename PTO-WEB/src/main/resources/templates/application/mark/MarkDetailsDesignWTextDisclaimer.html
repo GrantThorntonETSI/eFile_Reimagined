@@ -781,13 +781,20 @@
 
         });
 
+        $( document ).on('click','.disclaimer-input',function(){
 
-        $('.disclaimer-input').focusout(function () {
+
             var declaration = $(this).val();
 
             var index = $(this).attr('disclaimer-index');
 
-            saveMarkTextdetailsAdditional("mark-disclaimer-declaration-additional", declaration, index, appInternalID);
+            if(index == null){
+                index = "new";
+            }
+
+            var currentInput = $(this);
+
+            saveMarkTextdetailsAdditional("mark-disclaimer-declaration-additional", declaration, index, appInternalID,currentInput);
         });
 
 
@@ -970,7 +977,7 @@
 
     }
 
-    function saveMarkTextdetailsAdditional(field_name_prefix, field_value, index, appInternalID) {
+    function saveMarkTextdetailsAdditional(field_name_prefix, field_value, index, appInternalID, input) {
 
 
 
@@ -995,57 +1002,24 @@
             success: function(data){
 
                 // parse out status msg:
-                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+                var newIndex= parseIndexValueFromResponse(data);
 
-                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+                var serverMessage = parseMessageFromResponse(data)
 
-                if(s_code.trim() == "200"){
+
                     //if(data.contains("status: 200")){
                     // show confirmation check mark on form
                     //$('#toggle').delay(1000).click();
                     $(".autoSaveMessageArea span").fadeOut(500);
                     setTimeout(function() {
                         // after 1000 ms we add the class animated to the login/register card
-                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").text(serverMessage);
                         $(".autoSaveMessageArea span").fadeIn(1000);
                     }, 500);
 
-                    // animation rendering control
-                    // we are no longer rendering check marks next to the field. auto save displayed in header areaa.
-
-                    /*
-                    if($( "."+field_name_prefix.toLowerCase()+"-animation").css('display') == 'block'){
-
-
-                            $("."+field_name_prefix.toLowerCase()+"-animation").fadeOut(100);
-                            // now we need to create an java back end service that saves this value.
-                            // also add validation on the html  similar to password save
-                            //$('#toggle-'+field_name_prefix.toLowerCase()).delay(100).click();
-
-                            // alert($(this).val());
-                            $("."+field_name_prefix.toLowerCase()+"-animation").fadeIn(1000);
-                            // now we need to create an java back end service that saves this value.
-                            // also add validation on the html  similar to password save
-                            //$("."+field_name_prefix.toLowerCase()+"-animation").delay(1000).click();
+                    if(newIndex != index){  // we are adding a new row
+                        $(input).attr('disclaimer-index', newIndex)
                     }
-                    else {
-
-                            $("."+field_name_prefix.toLowerCase()+"-animation").fadeIn(1000);
-                            // now we need to create an java back end service that saves this value.
-                            // also add validation on the html  similar to password save
-                            //$('#toggle-'+field_name_prefix.toLowerCase()).delay(1000).click();
-                    }*/
-
-
-
-
-                }
-                else{
-                    //$('.circle-loader').fadeOut(100);
-                    //$('.x-mark').fadeIn(500);
-                    //$(".validationMsgArea span").text(s_msg);
-                    //$(".validationMsgArea span").css('color','red');
-                }
 
             },
             error: function(data) {
@@ -1068,6 +1042,32 @@
         ////////////////////////////////////////////////////////////////////////////////
 
 
+    }
+
+
+
+    function parseIndexValueFromResponse(response){
+
+        var index = response.indexOf("index:");
+        index = index+6;
+        response = response.substring(index);
+
+
+        var index2 = response.indexOf("}");
+        response = response.substring(0, index2);
+        return response;
+    }
+
+    function parseMessageFromResponse(response){
+
+        var index = response.indexOf("message:");
+        index = index+8;
+        response = response.substring(index);
+
+
+        var index2 = response.indexOf("}");
+        response = response.substring(0, index2);
+        return response;
     }
 
     function setBreadCrumb(bsStatusArrayList){

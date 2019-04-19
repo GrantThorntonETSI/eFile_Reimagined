@@ -27,13 +27,19 @@ public class TradeMarkService extends BaseRESTapiService {
 
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+        int returnIndex = -1;
 
         if(markField.equals("mark-disclaimer-declaration-additional")){
 
             if(index.equals("new")){
                 baseTrademarkApplication.getTradeMark().addDisclaimerDeclaration(markValue);
+                returnIndex = baseTrademarkApplication.getTradeMark().getDisclaimerDeclarationList().size()-1;
             }
             else {
+                returnIndex  = Integer.valueOf(index);
+                baseTrademarkApplication.getTradeMark().getDisclaimerDeclarationList().set(returnIndex, markValue);
+
+
 
             }
 
@@ -42,7 +48,7 @@ public class TradeMarkService extends BaseRESTapiService {
 
 
         //return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
-        return buildResponseEnity("200", responseMsg);
+        return buildResponseEnity("200", "{index:" +returnIndex+"}, {message:" +responseMsg+"}");
     }
 
 
