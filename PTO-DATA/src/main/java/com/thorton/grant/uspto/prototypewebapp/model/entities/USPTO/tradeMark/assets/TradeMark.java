@@ -18,6 +18,11 @@ import java.util.Objects;
 public class TradeMark extends BaseEntity {
 
 
+    public TradeMark() {
+
+        disclaimerDeclarationList =  new ArrayList<>();
+    }
+
     private String PTOtradeMarkID;
     private String description;
 

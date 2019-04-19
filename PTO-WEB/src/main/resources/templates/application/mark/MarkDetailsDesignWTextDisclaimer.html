@@ -140,7 +140,7 @@
                                                                 </div>
 
                                                                 <label for="yesdisclaim" class="sr-only">No claim is made to the exclusive right to use this part of the mark apart from the mark as shown</label>
-                                                                <input type="text" class="form-control" id="yesdisclaim" aria-label="Enter the portion of your mark that you wish to disclaim." th:value="${baseTrademarkApplication.tradeMark.disclaimerDeclaration}">
+                                                                <input type="text" class="form-control disclaimer-input" id="yesdisclaim"  disclaimer-index="new" aria-label="Enter the portion of your mark that you wish to disclaim." th:value="${baseTrademarkApplication.tradeMark.disclaimerDeclaration}">
 
                                                                 <div class="control-label">
                                                                     <p>apart from the mark as shown.</p>
@@ -175,27 +175,46 @@
                                                         </div><!--END radiogroup-->
                                                         <div id="yesdisclaimer" class="form-group form-group-md form-horizontal"><!--toggle 'yes' radio-->
 
-                                                            <div class="row disclaim">
 
-                                                                <div class="form-group form-group-md col-xs-9" style="margin-left: 15px;">
-                                                                    <div class="control-label">
-                                                                        <p>No claim is made to the exclusive right to use</p>
+                                                            <th:block th:each="discliamer, iter: ${baseTrademarkApplication.tradeMark.getDisclaimerDeclarationList()}">
+                                                                <div class="row disclaim">
+
+                                                                    <div class="form-group form-group-md col-xs-9" style="margin-left: 15px;">
+                                                                        <div class="control-label">
+                                                                            <p>No claim is made to the exclusive right to use</p>
+                                                                        </div>
+
+                                                                        <label for="yesdisclaim" class="sr-only">No claim is made to the exclusive right to use this part of the mark apart from the mark as shown</label>
+                                                                        <input type="text" class="form-control disclaimer-input" id="yesdisclaim" th:attr="disclaimer-index=${iter.index}" aria-label="Enter the portion of your mark that you wish to disclaim." th:value="${discliamer}">
+
+                                                                        <div class="control-label">
+                                                                            <p>apart from the mark as shown.</p>
+                                                                        </div>
                                                                     </div>
 
-                                                                    <label for="yesdisclaim" class="sr-only">No claim is made to the exclusive right to use this part of the mark apart from the mark as shown</label>
-                                                                    <input type="text" class="form-control" id="yesdisclaim" aria-label="Enter the portion of your mark that you wish to disclaim." th:value="${baseTrademarkApplication.tradeMark.disclaimerDeclaration}">
 
-                                                                    <div class="control-label">
-                                                                        <p>apart from the mark as shown.</p>
-                                                                    </div>
+                                                                    <th:block th:if="${iter.index == 0}">
+                                                                        <div class="form-group form-group-md visuallyremoved resetdisclaim col-xs-3"  style="position: relative; bottom:-33px;" >
+                                                                            <button type="button" class="btn btn-sm close resetdisclaimbtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                                                                        </div>
+
+                                                                    </th:block>
+                                                                    <th:block th:unless="${iter.index == 0}">
+                                                                        <div class="form-group form-group-md visuallyadded resetdisclaim col-xs-3"  style="position: relative; bottom:-33px;" >
+                                                                            <button type="button" class="btn btn-sm close resetdisclaimbtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                                                                        </div>
+
+                                                                    </th:block>
+
+
+
+
                                                                 </div>
-
-                                                                <div class="form-group form-group-md visuallyadded resetdisclaim col-xs-3"  style="position: relative; bottom:-33px;" >
-                                                                    <button type="button" class="btn btn-sm close resetdisclaimbtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
-                                                                </div>
+                                                            </th:block>
 
 
-                                                            </div>
+
+
 
                                                             <div class="appenddisclaim"></div>
                                                             <div class="form-group form-group-md col-xs-12">
@@ -226,7 +245,7 @@
                                                                     </div>
 
                                                                     <label for="yesdisclaim" class="sr-only">No claim is made to the exclusive right to use this part of the mark apart from the mark as shown</label>
-                                                                    <input type="text" class="form-control" id="yesdisclaim" aria-label="Enter the portion of your mark that you wish to disclaim." th:value="${baseTrademarkApplication.tradeMark.disclaimerDeclaration}">
+                                                                    <input type="text" class="form-control disclaimer-input" id="yesdisclaim" disclaimer-index="new" aria-label="Enter the portion of your mark that you wish to disclaim." th:value="${baseTrademarkApplication.tradeMark.disclaimerDeclaration}">
 
                                                                     <div class="control-label">
                                                                         <p>apart from the mark as shown.</p>
@@ -763,11 +782,16 @@
         });
 
 
-        $('#yesdisclaim').focusout(function () {
+        $('.disclaimer-input').focusout(function () {
             var declaration = $(this).val();
 
-            saveMarkTextdetails("mark-disclaimer-declaration", declaration, appInternalID);
+            var index = $(this).attr('disclaimer-index');
+
+            saveMarkTextdetailsAdditional("mark-disclaimer-declaration-additional", declaration, index, appInternalID);
         });
+
+
+
 
         $('#yesIndustry').focusout(function () {
             var declaration = $(this).val();
@@ -867,6 +891,106 @@
 
         $.ajax({
             url: "../../REST/apiGateway/mark/update/"+field_name_prefix+"/"+field_value+"/"+appInternalID,
+            type: 'GET',
+            success: function(data){
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                if(s_code.trim() == "200"){
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function() {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                    // animation rendering control
+                    // we are no longer rendering check marks next to the field. auto save displayed in header areaa.
+
+                    /*
+                    if($( "."+field_name_prefix.toLowerCase()+"-animation").css('display') == 'block'){
+
+
+                            $("."+field_name_prefix.toLowerCase()+"-animation").fadeOut(100);
+                            // now we need to create an java back end service that saves this value.
+                            // also add validation on the html  similar to password save
+                            //$('#toggle-'+field_name_prefix.toLowerCase()).delay(100).click();
+
+                            // alert($(this).val());
+                            $("."+field_name_prefix.toLowerCase()+"-animation").fadeIn(1000);
+                            // now we need to create an java back end service that saves this value.
+                            // also add validation on the html  similar to password save
+                            //$("."+field_name_prefix.toLowerCase()+"-animation").delay(1000).click();
+                    }
+                    else {
+
+                            $("."+field_name_prefix.toLowerCase()+"-animation").fadeIn(1000);
+                            // now we need to create an java back end service that saves this value.
+                            // also add validation on the html  similar to password save
+                            //$('#toggle-'+field_name_prefix.toLowerCase()).delay(1000).click();
+                    }*/
+
+
+
+
+                }
+                else{
+                    //$('.circle-loader').fadeOut(100);
+                    //$('.x-mark').fadeIn(500);
+                    //$(".validationMsgArea span").text(s_msg);
+                    //$(".validationMsgArea span").css('color','red');
+                }
+
+            },
+            error: function(data) {
+
+                //$('.circle-loader').fadeOut(100);
+                //$('.x-mark').fadeIn(500);
+
+                console.log(data);
+                // set message to div area ...fields can not be left null
+                //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                //$(".validationMsgArea span").css('color','red');
+            }
+
+        });
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////
+        // end of contact information 'State' auto save ////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+
+
+    }
+
+    function saveMarkTextdetailsAdditional(field_name_prefix, field_value, index, appInternalID) {
+
+
+
+
+
+        //alert(field_name_prefix);
+        // send state, and token to server
+        // token will be generated in the controller and added to the view
+        // similar to how access token works ...a token is tied to a user
+        // access token will be passed in through model
+        //
+        // var tokenValue = '${token}';  // token is the model attribute name
+        // we are not using secured tokens for the prototype
+        // we will secure it by adding ssl and https support
+
+        //var field_value = $(this).val();
+        //alert(field_value);
+
+        $.ajax({
+            url: "../../REST/apiGateway/mark/update/additional/"+field_name_prefix+"/"+field_value+"/"+index+"/"+appInternalID,
             type: 'GET',
             success: function(data){
 

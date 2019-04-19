@@ -17,6 +17,35 @@ public class TradeMarkService extends BaseRESTapiService {
         super(serviceBeanFactory, hostBean);
     }
 
+
+    @CrossOrigin(origins = {"https://localhost","https://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/mark/update/additional/{markField}/{markValue}/{index}/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> addAdditionalTradeMarkFieldsUpdate(@PathVariable String markField , @PathVariable String markValue, @PathVariable String index, @PathVariable String appInternalID) {
+        String appFieldReadable = "";
+        String responseMsg = appFieldReadable+" has been saved";
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+
+        if(markField.equals("mark-disclaimer-declaration-additional")){
+
+            if(index.equals("new")){
+                baseTrademarkApplication.getTradeMark().addDisclaimerDeclaration(markValue);
+            }
+            else {
+
+            }
+
+
+        }
+
+
+        //return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
+        return buildResponseEnity("200", responseMsg);
+    }
+
+
     @CrossOrigin(origins = {"https://localhost","https://efile-reimagined.com"})
     @RequestMapping(method = GET, value="/REST/apiGateway/mark/update/{markField}/{markValue}/{appInternalID}")
     @ResponseBody
@@ -394,13 +423,15 @@ public class TradeMarkService extends BaseRESTapiService {
 
         }
 
+
+        /*  no longer valid code. this field is no longer used for this value
         if(markField.equals("mark-disclaimer-declaration")){
             // ptoUser.setState(param); // sets state code
             baseTrademarkApplication.getTradeMark().setDisclaimerDeclaration(markValue);
 
             appFieldReadable = "Mark Disclaimer Declaration";
 
-        }
+        }*/
 
 
 
