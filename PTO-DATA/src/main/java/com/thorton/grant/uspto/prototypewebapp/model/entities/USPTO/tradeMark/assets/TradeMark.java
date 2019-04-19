@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.Objects;
 
 
@@ -138,12 +139,25 @@ public class TradeMark extends BaseEntity {
 
     private String disclaimerDeclaration;
 
+    private ArrayList<String> disclaimerDeclarationList;
+
+    // this needs to be an array list ...see how we implemented
+    // this for attorney docket number
+
+
+
+
+    // prior registration fields
+
 
 
     private boolean priorRegistratoin;
     private boolean priorRegistratoinSet;
 
     private String priorRegistrationNumber;
+
+
+    // meaning and significance fields
 
     private boolean markWordingHasSignifigance;
     private boolean meaningSet;
@@ -742,6 +756,17 @@ public class TradeMark extends BaseEntity {
         this.NPSLivingPersonSet = NPSLivingPersonSet;
     }
 
+    public ArrayList<String> getDisclaimerDeclarationList() {
+        return disclaimerDeclarationList;
+    }
+
+    public void setDisclaimerDeclarationList(ArrayList<String> disclaimerDeclarationList) {
+        this.disclaimerDeclarationList = disclaimerDeclarationList;
+    }
+
+    public void addDisclaimerDeclaration( String disclaimerDeclaration){
+        disclaimerDeclarationList.add(disclaimerDeclaration);
+    }
 
     @Override
     public boolean equals(Object o) {
