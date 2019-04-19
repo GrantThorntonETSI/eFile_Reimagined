@@ -780,7 +780,9 @@
             saveMarkTextdetails("mark-active-disclaimer", "no", appInternalID);
 
         });
-
+        ///////////////////////////////////////////////////////////////////////
+        // add additional disclaimer js
+        ///////////////////////////////////////////////////////////////////////
         $( document ).on('focusout','input.disclaimer-input',function(){
 
 
@@ -797,7 +799,20 @@
             saveMarkTextdetailsAdditional("mark-disclaimer-declaration-additional", declaration, index, appInternalID,currentInput);
         });
 
+        $( document ).on('click','.resetdisclaimbtn',function(){
 
+            var index = $(this).parent().prev().find('input').attr("disclaimer-index");
+            var value = "xxxxx";
+
+            var input = $(this);
+            if(index >= 0 || index != "new"){
+                var newIndex = saveMarkTextdetailsAdditional("mark-disclaimer-declaration-remove", value,index,appInternalID,input);
+            }
+            $( this ).parent().parent().hide(500);
+
+            //$( this ).parent().parent().remove();
+        });
+        ///////////////////////////////////////////////////////////////////////
 
 
         $('#yesIndustry').focusout(function () {

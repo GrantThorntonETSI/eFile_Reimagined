@@ -45,6 +45,12 @@ public class TradeMarkService extends BaseRESTapiService {
 
 
         }
+        if(markField.equals("mark-disclaimer-declaration-remove")){
+
+            String declaration = baseTrademarkApplication.getTradeMark().getDisclaimerDeclarationList().get(Integer.valueOf(index));
+            baseTrademarkApplication.getTradeMark().getDisclaimerDeclarationList().remove(declaration);
+
+        }
 
 
         //return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;

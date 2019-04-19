@@ -1574,9 +1574,6 @@ $(document).ready(function(){
 		$( '.appenddisclaim .resetdisclaim' ).removeClass( 'visuallyremoved' );
 		$( this ).removeClass( '.addinitial' );
 	});
-	$( document ).on('click','.resetdisclaimbtn',function(){
-		$( this ).parent().parent().remove();
-	});
 
 
 
