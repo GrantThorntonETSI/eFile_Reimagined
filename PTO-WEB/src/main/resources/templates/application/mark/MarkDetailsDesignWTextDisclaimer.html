@@ -139,8 +139,8 @@
                                                                     <p>No claim is made to the exclusive right to use</p>
                                                                 </div>
 
-                                                                <label for="yesdisclaim" class="sr-only">No claim is made to the exclusive right to use this part of the mark apart from the mark as shown</label>
-                                                                <input type="text" class="form-control disclaimer-input" id="yesdisclaim"  disclaimer-index="new" aria-label="Enter the portion of your mark that you wish to disclaim." th:value="${baseTrademarkApplication.tradeMark.disclaimerDeclaration}">
+                                                                <label class="sr-only">No claim is made to the exclusive right to use this part of the mark apart from the mark as shown</label>
+                                                                <input type="text" class="form-control disclaimer-input"  disclaimer-index="new" aria-label="Enter the portion of your mark that you wish to disclaim." th:value="${baseTrademarkApplication.tradeMark.disclaimerDeclaration}">
 
                                                                 <div class="control-label">
                                                                     <p>apart from the mark as shown.</p>
@@ -184,8 +184,8 @@
                                                                             <p>No claim is made to the exclusive right to use</p>
                                                                         </div>
 
-                                                                        <label for="yesdisclaim" class="sr-only">No claim is made to the exclusive right to use this part of the mark apart from the mark as shown</label>
-                                                                        <input type="text" class="form-control disclaimer-input" id="yesdisclaim" th:attr="disclaimer-index=${iter.index}" aria-label="Enter the portion of your mark that you wish to disclaim." th:value="${discliamer}">
+                                                                        <label class="sr-only">No claim is made to the exclusive right to use this part of the mark apart from the mark as shown</label>
+                                                                        <input type="text" class="form-control disclaimer-input"  th:attr="disclaimer-index=${iter.index}" aria-label="Enter the portion of your mark that you wish to disclaim." th:value="${discliamer}">
 
                                                                         <div class="control-label">
                                                                             <p>apart from the mark as shown.</p>
@@ -244,8 +244,8 @@
                                                                         <p>No claim is made to the exclusive right to use</p>
                                                                     </div>
 
-                                                                    <label for="yesdisclaim" class="sr-only">No claim is made to the exclusive right to use this part of the mark apart from the mark as shown</label>
-                                                                    <input type="text" class="form-control disclaimer-input" id="yesdisclaim" disclaimer-index="new" aria-label="Enter the portion of your mark that you wish to disclaim." th:value="${baseTrademarkApplication.tradeMark.disclaimerDeclaration}">
+                                                                    <label  class="sr-only">No claim is made to the exclusive right to use this part of the mark apart from the mark as shown</label>
+                                                                    <input type="text" class="form-control disclaimer-input"  disclaimer-index="new" aria-label="Enter the portion of your mark that you wish to disclaim." th:value="${baseTrademarkApplication.tradeMark.disclaimerDeclaration}">
 
                                                                     <div class="control-label">
                                                                         <p>apart from the mark as shown.</p>
@@ -781,7 +781,7 @@
 
         });
 
-        $( document ).on('click','.disclaimer-input',function(){
+        $( document ).on('focusout','input.disclaimer-input',function(){
 
 
             var declaration = $(this).val();
