@@ -134,17 +134,34 @@
 
                                                     </div><!--END radiogroup-->
                                                     <div id="yesdisclaimer" class="form-group form-group-md form-horizontal" style="display: none;"><!--toggle 'yes' radio-->
-                                                        <div class="col-xs-12 control-label">
-                                                            <p>No claim is made to the exclusive right to use</p>
+
+                                                        <div class="row disclaim">
+                                                            <div class="col-xs-12 control-label">
+                                                                <p>No claim is made to the exclusive right to use</p>
+                                                            </div>
+                                                            <div class="col-xs-12">
+                                                                <label for="yesdisclaim" class="sr-only">No claim is made to the exclusive right to use this part of the mark apart from the mark as shown</label>
+                                                                <input type="text" class="form-control" id="yesdisclaim" aria-label="Enter the portion of your mark that you wish to disclaim." th:value="${baseTrademarkApplication.tradeMark.disclaimerDeclaration}">
+                                                            </div>
+                                                            <div class="col-xs-12 control-label">
+                                                                <p>apart from the mark as shown.</p>
+                                                            </div>
+
                                                         </div>
-                                                        <div class="col-xs-12">
-                                                            <label for="yesdisclaim" class="sr-only">No claim is made to the exclusive right to use this part of the mark apart from the mark as shown</label>
-                                                            <input type="text" class="form-control" id="yesdisclaim" aria-label="Enter the portion of your mark that you wish to disclaim." th:value="${baseTrademarkApplication.tradeMark.disclaimerDeclaration}">
-                                                        </div>
-                                                        <div class="col-xs-12 control-label">
-                                                            <p>apart from the mark as shown.</p>
+
+                                                        <div class="appenddisclaim"></div>
+                                                        <div class="form-group form-group-md col-xs-12">
+                                                            <div class="row">
+                                                                <div class="inlinebuttons btn-group btn-group-justified">
+                                                                    <div class="btn-group col-xs-6">
+                                                                        <button type="button" class="btn btn-sm btn-success addinitial" id="addisclaimer" aria-label="add additional disclaimer">Add Additional Disclaimer</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
+
+
                                                 </th:block>
                                                 <th:block th:if="${baseTrademarkApplication.tradeMark.isDisclaimerSet() == true}">
                                                     <th:block th:if="${baseTrademarkApplication.tradeMark.isActvieDisclaimer() == true}">
@@ -153,17 +170,35 @@
                                                             <label for="inlineRadio010" class="radio-inline radiocontainer">No<input type="radio" name="disclaimradio" id="inlineRadio010" value="no"><span class="checkmark"></span></label>
                                                         </div><!--END radiogroup-->
                                                         <div id="yesdisclaimer" class="form-group form-group-md form-horizontal"><!--toggle 'yes' radio-->
-                                                            <div class="col-xs-12 control-label">
-                                                                <p>No claim is made to the exclusive right to use</p>
+
+                                                            <div class="row disclaim">
+                                                                <div class="col-xs-12 control-label">
+                                                                    <p>No claim is made to the exclusive right to use</p>
+                                                                </div>
+                                                                <div class="col-xs-12">
+                                                                    <label for="yesdisclaim" class="sr-only">No claim is made to the exclusive right to use this part of the mark apart from the mark as shown</label>
+                                                                    <input type="text" class="form-control" id="yesdisclaim" aria-label="Enter the portion of your mark that you wish to disclaim." th:value="${baseTrademarkApplication.tradeMark.disclaimerDeclaration}">
+                                                                </div>
+                                                                <div class="col-xs-12 control-label">
+                                                                    <p>apart from the mark as shown.</p>
+                                                                </div>
+
+
                                                             </div>
-                                                            <div class="col-xs-12">
-                                                                <label for="yesdisclaim" class="sr-only">No claim is made to the exclusive right to use this part of the mark apart from the mark as shown</label>
-                                                                <input type="text" class="form-control" id="yesdisclaim" aria-label="Enter the portion of your mark that you wish to disclaim." th:value="${baseTrademarkApplication.tradeMark.disclaimerDeclaration}">
-                                                            </div>
-                                                            <div class="col-xs-12 control-label">
-                                                                <p>apart from the mark as shown.</p>
+
+                                                            <div class="appenddisclaim"></div>
+                                                            <div class="form-group form-group-md col-xs-12">
+                                                                <div class="row">
+                                                                    <div class="inlinebuttons btn-group btn-group-justified">
+                                                                        <div class="btn-group col-xs-6">
+                                                                            <button type="button" class="btn btn-sm btn-success addinitial" id="addisclaimer" aria-label="add additional disclaimer">Add Additional Disclaimer</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
+
+
                                                     </th:block>
                                                     <th:block th:if="${baseTrademarkApplication.tradeMark.isActvieDisclaimer() == false}">
                                                         <div role="radiogroup" aria-labelledby="disclaim">
@@ -171,20 +206,35 @@
                                                             <label for="inlineRadio010" class="radio-inline radiocontainer">No<input type="radio" name="disclaimradio" id="inlineRadio010" value="no" checked><span class="checkmark"></span></label>
                                                         </div><!--END radiogroup-->
                                                         <div id="yesdisclaimer" class="form-group form-group-md form-horizontal" style="display: none;"><!--toggle 'yes' radio-->
-                                                            <div class="col-xs-12 control-label">
-                                                                <p>No claim is made to the exclusive right to use</p>
+
+                                                            <div class="row disclaim">
+                                                                <div class="col-xs-12 control-label">
+                                                                    <p>No claim is made to the exclusive right to use</p>
+                                                                </div>
+                                                                <div class="col-xs-12">
+                                                                    <label for="yesdisclaim" class="sr-only">No claim is made to the exclusive right to use this part of the mark apart from the mark as shown</label>
+                                                                    <input type="text" class="form-control" id="yesdisclaim" aria-label="Enter the portion of your mark that you wish to disclaim." th:value="${baseTrademarkApplication.tradeMark.disclaimerDeclaration}">
+                                                                </div>
+                                                                <div class="col-xs-12 control-label">
+                                                                    <p>apart from the mark as shown.</p>
+                                                                </div>
+
                                                             </div>
-                                                            <div class="col-xs-12">
-                                                                <label for="yesdisclaim" class="sr-only">No claim is made to the exclusive right to use this part of the mark apart from the mark as shown</label>
-                                                                <input type="text" class="form-control" id="yesdisclaim" aria-label="Enter the portion of your mark that you wish to disclaim." th:value="${baseTrademarkApplication.tradeMark.disclaimerDeclaration}">
-                                                            </div>
-                                                            <div class="col-xs-12 control-label">
-                                                                <p>apart from the mark as shown.</p>
+
+                                                            <div class="appenddisclaim"></div>
+                                                            <div class="form-group form-group-md col-xs-12">
+                                                                <div class="row">
+                                                                    <div class="inlinebuttons btn-group btn-group-justified">
+                                                                        <div class="btn-group col-xs-6">
+                                                                            <button type="button" class="btn btn-sm btn-success addinitial" id="addisclaimer" aria-label="add additional disclaimer">Add Additional Disclaimer</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
+
                                                     </th:block>
                                                 </th:block>
-
 
 
                                             </div>

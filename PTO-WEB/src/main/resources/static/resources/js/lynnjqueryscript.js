@@ -1563,6 +1563,20 @@ $(document).ready(function(){
 	});
 	//END additional transliteration
 
+	//START additional disclaimer
+	$( document ).on('click','button#addisclaimer',function(){
+		$( 'div.disclaim:eq(0)' ).clone().appendTo( '.appenddisclaim' );
+		$( 'div.disclaim' ).last().find('input').val('');
+		$( '.appenddisclaim .resetdisclaim' ).removeClass( 'visuallyremoved' );
+		$( this ).removeClass( '.addinitial' );
+	});
+	$( document ).on('click','.resetdisclaimbtn',function(){
+		$( this ).parent().parent().remove();
+	});
+
+
+
+
 	//START modals
 	$('#tradeservmodal','#collectivemodal','#collectivemembmodal','#loginmodal','#emailmodal','#securitymodal','#passwordmodal').on('shown.bs.modal', function () {
 		$('.btn-success').focus();
