@@ -22,7 +22,7 @@ public class TradeMarkService extends BaseRESTapiService {
     @RequestMapping(method = GET, value="/REST/apiGateway/mark/update/additional/{markField}/{markValue}/{index}/{appInternalID}")
     @ResponseBody
     ResponseEntity<String> addAdditionalTradeMarkFieldsUpdate(@PathVariable String markField , @PathVariable String markValue, @PathVariable String index, @PathVariable String appInternalID) {
-        String appFieldReadable = "";
+        String appFieldReadable = "Mark disclaimer";
         String responseMsg = appFieldReadable+" has been saved";
 
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();

@@ -1567,6 +1567,10 @@ $(document).ready(function(){
 	$( document ).on('click','button#addisclaimer',function(){
 		$( 'div.disclaim:eq(0)' ).clone().appendTo( '.appenddisclaim' );
 		$( 'div.disclaim' ).last().find('input').val('');
+
+		$( 'div.disclaim' ).last().find('[disclaimer-index]').removeAttr("disclaimer-index");
+
+
 		$( '.appenddisclaim .resetdisclaim' ).removeClass( 'visuallyremoved' );
 		$( this ).removeClass( '.addinitial' );
 	});
