@@ -7982,6 +7982,12 @@
                                                                 <th:block th:if="${Good_Service.pendingFA == false}">
                                                                     <div class="row" style="display: none;">
 
+                                                                        <div class="col-xs-12 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service.getFAfilingDateAlertDivID()}" style="display:none;">
+                                                                            <p th:attr="id=${Good_Service.getFAfilingDateAlertMessageID()}"></p>
+                                                                            <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service.getFAfilingDateAlertButtonID()},div-id=${Good_Service.getFAfilingDateAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                                            <br clear="all">
+                                                                        </div>
+
                                                                         <div class="col-xs-12 form-group form-group-md holdsapending" aria-labelledby="foreignapplication">
                                                                             <div class="col-xs-12">
                                                                                 <p class="weight600" id="foreignapplication">Foreign Application Information:</p>
@@ -8246,6 +8252,11 @@
 
                                                                 <th:block th:if="${Good_Service.pendingFA == true}">
                                                                     <div class="row" style="">
+                                                                        <div class="col-xs-12 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service.getFAfilingDateAlertDivID()}" style="display:none;">
+                                                                            <p th:attr="id=${Good_Service.getFAfilingDateAlertMessageID()}"></p>
+                                                                            <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service.getFAfilingDateAlertButtonID()},div-id=${Good_Service.getFAfilingDateAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                                            <br clear="all">
+                                                                        </div>
 
                                                                         <div class="col-xs-12 form-group form-group-md holdsapending" aria-labelledby="foreignapplication">
                                                                             <div class="col-xs-12">
@@ -9411,6 +9422,12 @@
                                                                 <div class="row" style="display: none;">
 
                                                                     <div class="col-xs-12 form-group form-group-md holdsapending" aria-labelledby="foreignapplication">
+
+                                                                        <div class="col-xs-12 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service.getFAfilingDateAlertDivID()}" style="display:none;">
+                                                                            <p th:attr="id=${Good_Service.getFAfilingDateAlertMessageID()}"></p>
+                                                                            <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service.getFAfilingDateAlertButtonID()},div-id=${Good_Service.getFAfilingDateAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                                            <br clear="all">
+                                                                        </div>
                                                                         <div class="col-xs-12">
                                                                             <p class="weight600" id="foreignapplication">Foreign Application Information:</p>
                                                                         </div>
@@ -10634,14 +10651,30 @@
         // persistence rendering for fa filing date drop down and persistence
         ///////////////////////////////////////////////////////////////////////
 
+
+        ///////////////////////////////////////////////////////////////////////
+        // persistence rendering for fa filing date drop down and persistence
+        ///////////////////////////////////////////////////////////////////////
+
         $('input.fa-filing-date').focusout(function () {
             var gsID= $(this).attr("gs-id");
-
-            //alert(gsID);
             var value = $(this).val();
-            addFilingBasisInfoToGoodAndService("gs-pfa-filing-date", value, gsID, appInternalID);
+            var divID = $(this).attr("div-id");
+            var msgID = $(this).attr("message-id");
+            var buttonID = $(this).attr("button-id");
+            var date = $(this);
+            datealert( divID, msgID, buttonID,date,"gs-pfa-filing-date", value, gsID,appInternalID );
 
         });
+
+
+        $('.alert-close').click(function () {
+            var divID = $(this).attr("div-id");
+
+            $('#'+divID).hide('fast');
+
+        });
+
 
         ///////////////////////////////////////////////////////////////////////
         // class level equivalent  faapp number down and persistence
@@ -11698,6 +11731,58 @@
     }
 
 
+    function datealert( divID, messageID, buttonID, date, command, value, gsID, appInteralID  ) {
+
+        function addDays(theDate, days) {
+            return new Date(theDate.getTime() + days*24*60*60*1000);
+        }
+
+        var options = { hour12: false, timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit', timeZoneName: 'short' };
+        var thatz = new Date().toLocaleTimeString('en-US', options);
+        var newDate = addDays(new Date(), 182.5).toLocaleTimeString('en-US', options);
+        var strmin = newDate;
+
+
+        //var validate = date.value;
+        var dateval = Date.parse($(date).val());
+
+        var requireddate = Date.parse(newDate);
+
+        var todaydate = Date.parse(thatz);
+
+
+
+
+        if ((todaydate) < dateval) {
+            if (requireddate < dateval) {
+                // date enetred is greaater then required date, not allowed
+
+                //var b = document.getElementById(divID);
+
+
+
+                $('#'+divID).show('fast');
+                //document.getElementById(divID).style.display = "block";
+                //document.getElementById(messageID).style.display = "block";
+                //document.getElementById(buttonID).style.display = "block";
+                $('#'+buttonID).focus();
+
+
+                $('#'+messageID).text("You cannot claim Section 44(d) priority, because your attempted U.S. filing is outside the 6-month window. (i.e., from when the foreign application was filed). The date must be before " + strmin);
+                // reset input
+                $(date).val('');
+
+            }
+            else{
+                // date entered is less then required date
+                addFilingBasisInfoToGoodAndService(command, value, gsID, appInternalID);
+            }
+        }
+        else {
+            // date enterd is in the past
+            addFilingBasisInfoToGoodAndService(command, value, gsID, appInternalID);
+        }
+    }
 
 </script>
 
