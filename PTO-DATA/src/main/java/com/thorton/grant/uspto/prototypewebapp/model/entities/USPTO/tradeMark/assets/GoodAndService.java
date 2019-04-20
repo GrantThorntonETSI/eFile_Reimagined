@@ -68,6 +68,13 @@ public class GoodAndService {
     public String getInUseRadioIDYes(){ return  internalID+"inUseRadioYES";}
 
     public String getInUseRadioIDNo(){ return  internalID+"inUseRadioNO";}
+
+
+
+    public String getFAfilingDateAlertMessageID(){ return  internalID+"faAlertMessage"; }
+    public String getFAfilingDateAlertButtonID() {return  internalID+"faAlertButton";}
+    public String getFAfilingDateAlertDivID(){return  internalID+"faAlertDIV";}
+
     ////////////////////////////////////////////////////////
     // foreign application fields
     ////////////////////////////////////////////////////////
