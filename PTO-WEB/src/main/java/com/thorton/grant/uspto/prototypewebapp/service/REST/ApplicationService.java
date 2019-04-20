@@ -710,7 +710,39 @@ public class ApplicationService  extends  BaseRESTapiService{
 
         }
 
+        if(fieldName.equals("declare-all")){
 
+            if(fieldValue.equals("yes")){
+                baseTrademarkApplication.setDeclarationApplicantIsOwner(true);
+
+                baseTrademarkApplication.setDeclarationMarkInUse(true);
+                baseTrademarkApplication.setDeclarationSpecimen(true);
+                baseTrademarkApplication.setDeclarationConcurrentUser(true);
+                baseTrademarkApplication.setDeclarationEvidenceSupport(true);
+                baseTrademarkApplication.setDeclarationWarningFalseStatement(true);
+                baseTrademarkApplication.setDeclarationNoOtherHasRight(true);
+            }
+            else {
+                baseTrademarkApplication.setDeclarationApplicantIsOwner(false);
+                baseTrademarkApplication.setDeclarationMarkInUse(false);
+                baseTrademarkApplication.setDeclarationSpecimen(false);
+                baseTrademarkApplication.setDeclarationConcurrentUser(false);
+                baseTrademarkApplication.setDeclarationEvidenceSupport(false);
+                baseTrademarkApplication.setDeclarationWarningFalseStatement(false);
+                baseTrademarkApplication.setDeclarationNoOtherHasRight(false);
+
+            }
+
+            baseTrademarkApplication.setDeclarationApplicantIsOwnerSet(true);
+            baseTrademarkApplication.setDeclarationMarkInUseSet(true);
+            baseTrademarkApplication.setDeclarationSpecimenSet(true);
+            baseTrademarkApplication.setDeclarationConcurrentUserSet(true);
+            baseTrademarkApplication.setDeclarationEvidenceSupportSet(true);
+            baseTrademarkApplication.setDeclarationWarningFalseStatementSet(true);
+            baseTrademarkApplication.setDeclarationNoOtherHasRightSet(true);
+
+            appFieldReadable = "Application Declaration all";
+        }
 
         if(fieldName.equals("declare-app-owner")){
             // ptoUser.setState(param); // sets state code
@@ -750,14 +782,20 @@ public class ApplicationService  extends  BaseRESTapiService{
             // ptoUser.setState(param); // sets state code
 
             if(fieldValue.equals("yes")){
-                baseTrademarkApplication.setDeclarationMarkInUseSpecimen(true);
+                baseTrademarkApplication.setDeclarationSpecimen(true);
+
+
 
             }
             if(fieldValue.equals("no")){
-                baseTrademarkApplication.setDeclarationMarkInUseSpecimen(false);
+                baseTrademarkApplication.setDeclarationSpecimen(false);
+
 
             }
-            baseTrademarkApplication.setDeclarationMarkInUseSpecimenSet(true);
+
+
+
+            baseTrademarkApplication.setDeclarationSpecimenSet(true);
             appFieldReadable = "Application Declaration";
 
         }
@@ -824,7 +862,7 @@ public class ApplicationService  extends  BaseRESTapiService{
             }
             if(fieldValue.equals("no")){
                 baseTrademarkApplication.setDeclarationNoOtherHasRight(false);
-     }
+            }
             baseTrademarkApplication.setDeclarationNoOtherHasRightSet(true);
             appFieldReadable = "Application Declaration";
 

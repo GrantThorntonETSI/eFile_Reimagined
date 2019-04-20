@@ -350,8 +350,8 @@ public class BaseTrademarkApplication  {
     private boolean declarationMarkInUse;   // check box 2
     private boolean declarationMarkInUseSet;
 
-    private boolean declarationMarkInUseSpecimen; // check box 3
-    private boolean declarationMarkInUseSpecimenSet;
+    private boolean declarationSpecimen; // check box 3
+    private boolean declarationSpecimenSet;
 
     private boolean declarationConcurrentUser; // check box 4
     private boolean declarationConcurrentUserSet;
@@ -1100,24 +1100,6 @@ public class BaseTrademarkApplication  {
         this.declarationMarkInUse = declarationMarkInUse;
     }
 
-    public boolean isDeclarationMarkInUseSpecimen() {
-
-        // check each good and services and see if each has an specimen
-        for(Iterator<GoodAndService> iter = goodAndServices.iterator(); iter.hasNext(); ) {
-            GoodAndService current = iter.next();
-            if(current.getSampleImagePath() == null){
-                declarationMarkInUseSpecimen = false;
-            }
-        }
-
-
-        return declarationMarkInUseSpecimen;
-    }
-
-    public void setDeclarationMarkInUseSpecimen(boolean declarationMarkInUseSpecimen) {
-        this.declarationMarkInUseSpecimen = declarationMarkInUseSpecimen;
-    }
-
     public boolean isDeclarationConcurrentUser() {
         return declarationConcurrentUser;
     }
@@ -1230,12 +1212,20 @@ public class BaseTrademarkApplication  {
         this.declarationMarkInUseSet = declarationMarkInUseSet;
     }
 
-    public boolean isDeclarationMarkInUseSpecimenSet() {
-        return declarationMarkInUseSpecimenSet;
+    public boolean isDeclarationSpecimen() {
+        return declarationSpecimen;
     }
 
-    public void setDeclarationMarkInUseSpecimenSet(boolean declarationMarkInUseSpecimenSet) {
-        this.declarationMarkInUseSpecimenSet = declarationMarkInUseSpecimenSet;
+    public void setDeclarationSpecimen(boolean declarationSpecimen) {
+        this.declarationSpecimen = declarationSpecimen;
+    }
+
+    public boolean isDeclarationSpecimenSet() {
+        return declarationSpecimenSet;
+    }
+
+    public void setDeclarationSpecimenSet(boolean declarationSpecimenSet) {
+        this.declarationSpecimenSet = declarationSpecimenSet;
     }
 
     public boolean isDeclarationConcurrentUserSet() {

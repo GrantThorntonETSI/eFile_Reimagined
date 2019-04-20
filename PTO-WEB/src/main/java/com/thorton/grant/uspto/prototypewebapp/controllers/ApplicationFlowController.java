@@ -3795,7 +3795,7 @@ public class ApplicationFlowController {
         // check if all declarations set,
         // if so, update base price
 
-        if( baseTrademarkApplication.isDeclarationMarkInUseSet() == false || baseTrademarkApplication.isDeclarationApplicantIsOwnerSet() == false || baseTrademarkApplication.isDeclarationConcurrentUserSet() == false || baseTrademarkApplication.isDeclarationEvidenceSupportSet() == false || baseTrademarkApplication.isDeclarationMarkInUseSpecimenSet() == false || baseTrademarkApplication.isDeclarationWarningFalseStatementSet() == false){
+        if( baseTrademarkApplication.isDeclarationMarkInUseSet() == false || baseTrademarkApplication.isDeclarationApplicantIsOwnerSet() == false || baseTrademarkApplication.isDeclarationConcurrentUserSet() == false || baseTrademarkApplication.isDeclarationEvidenceSupportSet() == false || baseTrademarkApplication.isDeclarationSpecimenSet() == false || baseTrademarkApplication.isDeclarationWarningFalseStatementSet() == false){
             baseTrademarkApplication.setBaseFee(275);
         }
 

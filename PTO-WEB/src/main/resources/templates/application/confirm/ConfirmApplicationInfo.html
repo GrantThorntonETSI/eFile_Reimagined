@@ -89,10 +89,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
                 <div class="row">
                     <div class="col-xs-12" id="declarationsignature">
                         <div class="card-text noexpand">
@@ -100,35 +96,24 @@
                         </div>
 
                         <th:block th:if="${passedValidation == false}">
-                            <div class="lead">
-                                <p id="lead" style="font-weight: bold;">Your current filing fee is $275 per class. To reduce your filing fee to $225, select &#8220;Return to Application&#8221; and complete the missing fields below.</p>
+                            <div class="leadtext">
+                                <p id="lead">Your current filing fee is $275 per class. To reduce your filing fee to $225, select &#8220;Return to Application&#8221; and complete the missing fields below.</p>
                             </div>
                             <button type="button" class="btn-sm btn-success  review-application" style="background-color: darkgreen; border-color: darkgreen;">Return to Application</button>
                             <ul>
                                 <th:block th:each="TEASfield : ${missedTEAsFields}">
                                     <li th:text="${TEASfield}">Color Claimed as a Feature</li>
                                 </th:block>
-
                             </ul>
                         </th:block>
-
                         <th:block th:if="${passedValidation == true}">
                             <div class="lead">
                                 <p id="lead" style="font-weight: bold;">To ensure that you are paying the lowest possible fee, please accept the relevant declarations.</p>
-
                             </div>
-
-
                         </th:block>
-
-
                         <div class="card-text noexpand">
                             <h2 class="card-title weight600">Review Application</h2>
                         </div>
-
-
-
-
                         <form action="" method="post" >
                             <fieldset>
                                 <div class="row">
@@ -140,8 +125,6 @@
                                                     <span class="overline"><a href="#" id="mark-image-edit">Edit</a></span>
                                                     <br clear="all">
                                                 </div>
-
-
                                                 <th:block th:if="${baseTrademarkApplication.tradeMark.isStandardCharacterMark() == false}">
                                                     <div class="col-xs-12">
                                                         <div class="row">
@@ -166,9 +149,6 @@
                                                         </div>
                                                     </div>
                                                 </th:block>
-
-
-
                                                 <div class="col-xs-12">
                                                     <div class="row">
                                                         <div class="col-xs-12 col-sm-4">
@@ -189,9 +169,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                                 <th:block th:if="${baseTrademarkApplication.getTradeMark().isColorClaimSet() == true}">
-
                                                     <th:block th:if="${baseTrademarkApplication.getTradeMark().isMarkColorClaim() == true}">
                                                         <div class="col-xs-12">
                                                             <div class="row">
@@ -203,24 +181,14 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
-
-
                                                     </th:block>
-
-
                                                 </th:block>
-
-
-
-
                                                 <!--//mark data review-->
                                                 <div class="col-xs-12 float">
                                                     <h3 class="overline">Owner Information</h3>
                                                     <span class="overline"><a href="#" id="mark-owner-edit">Edit</a></span>
                                                     <br clear="all">
                                                 </div>
-
                                                 <!--we need to do a for each for the owners   -->
                                                 <th:block th:each="owner : ${baseTrademarkApplication.owners}">
                                                     <div class="col-xs-12">
@@ -244,15 +212,11 @@
                                                             <div class="col-xs-12 col-sm-8">
                                                                 <th:block th:if="${owner.isGoverningEntitiesTypeOwner() == true}">
                                                                     <p class="weight600" th:text="${owner.getLegalLanguaguePartner()}">
-
-
                                                                     </p>
-
                                                                 </th:block>
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                     <th:block th:if="${owner.isPersonTypeOwner() == false}">
                                                         <div class="col-xs-12">
                                                             <div class="row">
@@ -264,11 +228,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
                                                     </th:block>
-
                                                     <th:block th:if="${owner.isPersonTypeOwner() == true}">
-
                                                         <div class="col-xs-12">
                                                             <div class="row">
                                                                 <div class="col-xs-12 col-sm-4">
@@ -279,9 +240,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
                                                     </th:block>
-
                                                     <div class="col-xs-12">
                                                         <div class="row">
                                                             <div class="col-xs-12 col-sm-4">
@@ -306,12 +265,7 @@
                                                         </div>
                                                     </div>
                                                     <!--//owner data review-->
-
                                                 </th:block>
-
-
-
-
                                                 <div class="col-xs-12 float">
                                                     <h3 class="overline weight600">Goods and Services and Filing Basis Information</h3>
                                                     <span class="overline"><a href="#" id="mark-fb-edit">Edit</a></span>
@@ -330,28 +284,27 @@
                                                     </div>
                                                     <th:block th:each="Good_Service: ${class.getGoodAndServices()}">
 
-                                                            <div class="col-xs-12">
-                                                                <div class="row">
-                                                                    <div class="col-xs-12 col-sm-4">
-                                                                        <h4>Filing Basis</h4>
-                                                                    </div>
-                                                                    <div class="col-xs-12 col-sm-8">
-                                                                        <p class=""th:text="${Good_Service.getIdentification()}">SECTION 1(a)</p>
-                                                                    </div>
+                                                        <div class="col-xs-12">
+                                                            <div class="row">
+                                                                <div class="col-xs-12 col-sm-4">
+                                                                    <h4>Filing Basis</h4>
+                                                                </div>
+                                                                <div class="col-xs-12 col-sm-8">
+                                                                    <p class=""th:text="${Good_Service.getIdentification()}">SECTION 1(a)</p>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-xs-12">
-                                                                <div class="row">
-                                                                    <div class="col-xs-12 col-sm-4">
-                                                                        <h4>Identification</h4>
-                                                                    </div>
-                                                                    <div class="col-xs-12 col-sm-8">
-                                                                        <p class="" th:text="${Good_Service.getClassDescription()}">Bar Soap</p>
-                                                                    </div>
+                                                        </div>
+                                                        <div class="col-xs-12">
+                                                            <div class="row">
+                                                                <div class="col-xs-12 col-sm-4">
+                                                                    <h4>Identification</h4>
+                                                                </div>
+                                                                <div class="col-xs-12 col-sm-8">
+                                                                    <p class="" th:text="${Good_Service.getClassDescription()}">Bar Soap</p>
                                                                 </div>
                                                             </div>
+                                                        </div>
                                                         <th:block th:if="${Good_Service.is1B() == true}">
-
                                                             <div class="col-xs-12">
                                                                 <div class="row">
                                                                     <div class="col-xs-12 col-sm-4">
@@ -362,55 +315,47 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-
                                                         </th:block>
-
-
-                                                            <th:block th:if="${Good_Service.isSampleUploaded() == true}">
-                                                                <div class="col-xs-12">
-                                                                    <div class="row">
-                                                                        <div class="col-xs-12 col-sm-4">
-                                                                            <h4>Specimen Sample</h4>
-                                                                        </div>
-                                                                        <div class="col-xs-12 col-sm-8">
-                                                                            <img th:src="${Good_Service.getSampleImagePath()}" alt="" class="img-responsive">
-                                                                        </div>
+                                                        <th:block th:if="${Good_Service.isSampleUploaded() == true}">
+                                                            <div class="col-xs-12">
+                                                                <div class="row">
+                                                                    <div class="col-xs-12 col-sm-4">
+                                                                        <h4>Specimen Sample</h4>
+                                                                    </div>
+                                                                    <div class="col-xs-12 col-sm-8">
+                                                                        <img th:src="${Good_Service.getSampleImagePath()}" alt="" class="img-responsive">
                                                                     </div>
                                                                 </div>
-                                                            </th:block>
-
-
-                                                            <th:block th:if="${Good_Service.isFirstGSDateSet() == true}">
-                                                                <div class="col-xs-12">
-                                                                    <div class="row">
-                                                                        <div class="col-xs-12 col-sm-4">
-                                                                            <h4>First Use Anywhere Date</h4>
-                                                                        </div>
-                                                                        <div class="col-xs-12 col-sm-8">
-                                                                            <p class="">At least as early as <span th:text="${Good_Service.getFirstGSDateDisplay()}">12/21/2012</span></p>
-                                                                        </div>
+                                                            </div>
+                                                        </th:block>
+                                                        <th:block th:if="${Good_Service.isFirstGSDateSet() == true}">
+                                                            <div class="col-xs-12">
+                                                                <div class="row">
+                                                                    <div class="col-xs-12 col-sm-4">
+                                                                        <h4>First Use Anywhere Date</h4>
+                                                                    </div>
+                                                                    <div class="col-xs-12 col-sm-8">
+                                                                        <p class="">At least as early as <span th:text="${Good_Service.getFirstGSDateDisplay()}">12/21/2012</span></p>
                                                                     </div>
                                                                 </div>
-                                                            </th:block>
-
-                                                            <th:block th:if="${Good_Service.isFirstCommerceDateSet() == true}">
-                                                                <div class="col-xs-12">
-                                                                    <div class="row">
-                                                                        <div class="col-xs-12 col-sm-4">
-                                                                            <h4>First Use In Commerce Date</h4>
-                                                                        </div>
-                                                                        <div class="col-xs-12 col-sm-8">
-                                                                            <p class="">At least as early as <span th:text="${Good_Service.getFirstCommerceDateDisplay()}">12/21/2012</span></p>
-                                                                        </div>
-                                                                        <div class="col-xs-12">
-                                                                            <p class="small form-group">In International <span th:text="${Good_Service.getClassNumberDisplay()}"></span>, the mark was first used by the applicant or the applicant&#8217;s related company or licensee predecessor in interest at least as early as <span th:text="${Good_Service.getFirstGSDateDisplay()}">07/22/2017</span>, and first used in commerce at least as early as <span th:text="${Good_Service.getFirstCommerceDateDisplay()}">07/22/2017</span>, and is now in use in such commerce. The applicant is submitting one(or more) specimen(s) showing the mark as used in commerce on or in connection with any item in the class of listed goods/services, consisting of a(n) packaging for listed goods/services.<br><br>
-                                                                                Use in Commerce: The applicant is using the mark in commerce on or in connection with the identified goods/services. The applicant attaches, or will later submit, one specimen as a JPG/PDF image file showing the mark as used in commerce on or in connection with any item in the class of listed goods/services, regardless of whether the mark itself is in the standard character format or is a stylized or design mark. The specimen image file may be in color, and the image must be in color if color is being claimed as a feature of the mark. &#8221;</p>
-                                                                        </div>
+                                                            </div>
+                                                        </th:block>
+                                                        <th:block th:if="${Good_Service.isFirstCommerceDateSet() == true}">
+                                                            <div class="col-xs-12">
+                                                                <div class="row">
+                                                                    <div class="col-xs-12 col-sm-4">
+                                                                        <h4>First Use In Commerce Date</h4>
+                                                                    </div>
+                                                                    <div class="col-xs-12 col-sm-8">
+                                                                        <p class="">At least as early as <span th:text="${Good_Service.getFirstCommerceDateDisplay()}">12/21/2012</span></p>
+                                                                    </div>
+                                                                    <div class="col-xs-12">
+                                                                        <p class="small form-group">In International <span th:text="${Good_Service.getClassNumberDisplay()}"></span>, the mark was first used by the applicant or the applicant&#8217;s related company or licensee predecessor in interest at least as early as <span th:text="${Good_Service.getFirstGSDateDisplay()}">07/22/2017</span>, and first used in commerce at least as early as <span th:text="${Good_Service.getFirstCommerceDateDisplay()}">07/22/2017</span>, and is now in use in such commerce. The applicant is submitting one(or more) specimen(s) showing the mark as used in commerce on or in connection with any item in the class of listed goods/services, consisting of a(n) packaging for listed goods/services.<br><br>
+                                                                            Use in Commerce: The applicant is using the mark in commerce on or in connection with the identified goods/services. The applicant attaches, or will later submit, one specimen as a JPG/PDF image file showing the mark as used in commerce on or in connection with any item in the class of listed goods/services, regardless of whether the mark itself is in the standard character format or is a stylized or design mark. The specimen image file may be in color, and the image must be in color if color is being claimed as a feature of the mark. &#8221;</p>
                                                                     </div>
                                                                 </div>
-                                                            </th:block>
-
-
+                                                            </div>
+                                                        </th:block>
                                                     </th:block>
                                                 </th:block>
                                                 <!--//gs + basis data review-->
@@ -419,11 +364,7 @@
                                                     <span class="overline"><a href="#" id="mark-cors-link">Edit</a></span>
                                                     <br clear="all">
                                                 </div>
-
-
-
                                                 <th:block th:if="${baseTrademarkApplication.isAttorneyFiling() == true}">
-
                                                     <div class="col-xs-12">
                                                         <div class="row">
                                                             <div class="col-xs-12 col-sm-4">
@@ -446,7 +387,6 @@
                                                             </div>
                                                         </div>
                                                     </th:block>
-
                                                     <div class="col-xs-12">
                                                         <div class="row">
                                                             <div class="col-xs-12 col-sm-4">
@@ -457,10 +397,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
-
                                                     <th:block th:each="number : ${baseTrademarkApplication.primaryLawyer.getPhoneNumbers()}">
-
                                                         <div class="col-xs-12">
                                                             <div class="row">
                                                                 <div class="col-xs-12 col-sm-4">
@@ -471,13 +408,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
-
-
                                                     </th:block>
-
-
-
                                                     <div class="col-xs-12">
                                                         <div class="row">
                                                             <div class="col-xs-12 col-sm-4">
@@ -489,14 +420,10 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                     <!--//owner data review-->
                                                 </th:block>
                                                 <th:block th:if="${baseTrademarkApplication.isAttorneyFiling() == false}">
-
-
                                                     <!--update this with detailed info, name, address and contact info -->
-
                                                     <div class="col-xs-12">
                                                         <div class="row">
                                                             <div class="col-xs-12 col-sm-4">
@@ -507,7 +434,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                     <div class="col-xs-12">
                                                         <div class="row">
                                                             <div class="col-xs-12 col-sm-4">
@@ -518,16 +444,11 @@
                                                             </div>
                                                             <div class="col-xs-12 col-sm-8">
                                                                 <th:block th:if="${baseTrademarkApplication.primaryOwner.isGoverningEntitiesTypeOwner() == true}">
-                                                                    <p class="weight600" th:text="${baseTrademarkApplication.primaryOwner.getLegalLanguaguePartner()}">
-
-
-                                                                    </p>
-
+                                                                    <p class="weight600" th:text="${baseTrademarkApplication.primaryOwner.getLegalLanguaguePartner()}"></p>
                                                                 </th:block>
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                     <th:block th:if="${baseTrademarkApplication.primaryOwner.isGoverningEntitiesTypeOwner() == true}">
                                                         <div class="col-xs-12">
                                                             <div class="row">
@@ -539,11 +460,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
                                                     </th:block>
-
                                                     <th:block th:if="${baseTrademarkApplication.primaryOwner.isGoverningEntitiesTypeOwner() == false}">
-
                                                         <div class="col-xs-12">
                                                             <div class="row">
                                                                 <div class="col-xs-12 col-sm-4">
@@ -554,9 +472,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
                                                     </th:block>
-
                                                     <div class="col-xs-12">
                                                         <div class="row">
                                                             <div class="col-xs-12 col-sm-4">
@@ -564,7 +480,6 @@
                                                             </div>
                                                             <div class="col-xs-12 col-sm-8 checkmargin">
                                                                 <p class="weight600" th:text="${baseTrademarkApplication.primaryOwner.getEmail()}">john.smith@gmail.com</p>
-
                                                             </div>
                                                         </div>
                                                     </div>
@@ -585,7 +500,6 @@
                                                 <div class="row">
                                                     <div class="col-xs-12" role="group" aria-label="accept">
                                                         <div class="col-xs-12">
-
                                                         </div>
                                                     </div>
                                                 </div>
@@ -624,37 +538,36 @@
                                                                 <p class="weight600">Read the following statements before signing. Acknowledge the statements by checking the boxes and signing below. <span class="label label-info subtle visuallyremoved" style="margin-top: 5px;">Reduced Fee</span></p>
                                                                 <div class="row">
                                                                     <div class="col-xs-12 form-group form-group-md">
+                                                                        <input class="form-check-input checkmark" type="checkbox" value="selectall" tabindex="0" aria-labelledby="selall" id="select">
+                                                                        <label class="form-check-label form-check" for="select"><span class="radio notspecial" id="selall">Select all</span></label>
+                                                                    </div>
+                                                                    <div class="col-xs-12 form-group form-group-md">
                                                                         <input class="form-check-input checkmark" type="checkbox" value="court" tabindex="0" aria-labelledby="courtdecree" id="courtd">
-                                                                        <label class="form-check-label form-check long" for="courtd" id="courtdec"><span class="radio notspecial small" id="courtdecree">The signatory believes that the applicant is the owner of the trademark/service mark sought to be registered;</span></label>
+                                                                        <label class="form-check-label form-check" for="courtd" id="courtdec"><span class="radio notspecial" id="courtdecree">The signatory believes that the applicant is the owner of the trademark/service mark sought to be registered;</span></label>
                                                                     </div>
                                                                     <div class="col-xs-12 form-group form-group-md">
                                                                         <input class="form-check-input checkmark" type="checkbox" value="ttab" tabindex="0" aria-labelledby="priorttab" id="ttabmade">
-                                                                        <label class="form-check-label form-check long" for="ttabmade" id="ttabdecision"><span class="radio notspecial small" id="priorttab">The mark is in use in commerce on or in connection with the goods/services in the application;</span></label>
+                                                                        <label class="form-check-label form-check" for="ttabmade" id="ttabdecision"><span class="radio notspecial" id="priorttab">The mark is in use in commerce on or in connection with the goods/services in the application;</span></label>
                                                                     </div>
                                                                     <div class="col-xs-12 form-group form-group-md">
                                                                         <input class="form-check-input checkmark" type="checkbox" value="conflicting" tabindex="0" aria-labelledby="conflictingreg" id="conflict">
-                                                                        <label class="form-check-label form-check long" for="conflict" id="conflictowner"><span class="radio notspecial small" id="conflictingreg">The specimen(s) shows the mark as used on or in connection with the goods/services in the application; and</span></label>
+                                                                        <label class="form-check-label form-check" for="conflict" id="conflictowner"><span class="radio notspecial" id="conflictingreg">The specimen(s) shows the mark as used on or in connection with the goods/services in the application; and</span></label>
                                                                     </div>
                                                                     <div class="col-xs-12 form-group form-group-md">
                                                                         <input class="form-check-input checkmark" type="checkbox" value="earlier" tabindex="0" aria-labelledby="early" id="earlieruse">
-                                                                        <label class="form-check-label form-check long" for="earlieruse" id="firstcommerce"><span class="radio notspecial small" id="early">To the best of the signatory&#8217;s knowledge and belief, the facts recited in the application are accurate. </span></label>
+                                                                        <label class="form-check-label form-check" for="earlieruse" id="firstcommerce"><span class="radio notspecial" id="early">To the best of the signatory&#8217;s knowledge and belief, the facts recited in the application are accurate. </span></label>
                                                                     </div>
-
                                                                     <div class="col-xs-12 form-group form-group-md">
-
                                                                         <input class="form-check-input checkmark" type="checkbox" value="earlier" tabindex="0" aria-labelledby="early" id="noOtherHasRightCheckbox">
-
-
-                                                                        <label class="form-check-label form-check long" for="noOtherHasRightCheckbox" id="noOtherHasRight"><span class="radio notspecial small" id="early"> To the best of the signatory&#8217;s knowledge and belief, no other persons, except, if applicable, concurrent users, have the right to use the mark in commerce, either in the identical form or in such near resemblance as to be likely, when used on or in connection with the goods/services of such other persons, to cause confusion or mistake, or to deceive.</span></label>
+                                                                        <label class="form-check-label form-check" for="noOtherHasRightCheckbox" id="noOtherHasRight"><span class="radio notspecial" id="early"> To the best of the signatory&#8217;s knowledge and belief, no other persons, except, if applicable, concurrent users, have the right to use the mark in commerce, either in the identical form or in such near resemblance as to be likely, when used on or in connection with the goods/services of such other persons, to cause confusion or mistake, or to deceive.</span></label>
                                                                     </div>
-
                                                                     <div class="col-xs-12 form-group form-group-md">
                                                                         <input class="form-check-input checkmark" type="checkbox" value="earlier4" tabindex="0" aria-labelledby="earlyu" id="earlierusey">
-                                                                        <label class="form-check-label form-check long" for="earlierusey" id="firstcommercefour"><span class="radio notspecial small" id="earlyu">To the best of the signatory&#8217;s knowledge, information, and belief, formed after an inquiry reasonable under the circumstances, the allegations and other factual contentions made above have evidentiary support.</span></label>
+                                                                        <label class="form-check-label form-check" for="earlierusey" id="firstcommercefour"><span class="radio notspecial" id="earlyu">To the best of the signatory&#8217;s knowledge, information, and belief, formed after an inquiry reasonable under the circumstances, the allegations and other factual contentions made above have evidentiary support.</span></label>
                                                                     </div>
                                                                     <div class="col-xs-12 form-group form-group-md">
                                                                         <input class="form-check-input checkmark" type="checkbox" value="earlier5" tabindex="0" aria-labelledby="earlyx" id="earlierusex">
-                                                                        <label class="form-check-label form-check long" for="earlierusex" id="firstcommercefive"><span class="radio notspecial small" id="earlyx">The signatory being warned that willful false statements and the like are punishable by fine or imprisonment, or both, under 18 U.S.C. &#167; 1001, and that such willful false statements and the like may jeopardize the validity of the application or submission or any registration resulting therefrom, declares that all statements made of his/her own knowledge are true and all statements made on information and belief are believed to be true.</span></label>
+                                                                        <label class="form-check-label form-check" for="earlierusex" id="firstcommercefive"><span class="radio notspecial" id="earlyx">The signatory being warned that willful false statements and the like are punishable by fine or imprisonment, or both, under 18 U.S.C. &#167; 1001, and that such willful false statements and the like may jeopardize the validity of the application or submission or any registration resulting therefrom, declares that all statements made of his/her own knowledge are true and all statements made on information and belief are believed to be true.</span></label>
                                                                     </div>
                                                                 </div><!--end checkbox row-->
                                                             </div>
@@ -672,8 +585,6 @@
                                                             <p>To electronically sign the application enter any combination of alpha numeric characters between two forward slash symbols (/); e.g., /jane smith/, /rdr/, or /127/). </p>
                                                         </div>
                                                     </div>
-
-
                                                     <div class="col-xs-12">
                                                         <div class="row">
                                                             <div class="col-xs-12 form-group form-group-md">
@@ -719,6 +630,10 @@
                                                                 <p class="weight600">Read the following statements before signing. Acknowledge the statements by checking the boxes and signing below. <span class="label label-info subtle visuallyremoved" style="margin-top: 5px;">Reduced Fee</span></p>
                                                                 <div class="row">
                                                                     <div class="col-xs-12 form-group form-group-md">
+                                                                        <input class="form-check-input checkmark" type="checkbox" value="selectall" tabindex="0" aria-labelledby="selall" id="select">
+                                                                        <label class="form-check-label form-check" for="select"><span class="radio notspecial" id="selall">Select all</span></label>
+                                                                    </div>
+                                                                    <div class="col-xs-12 form-group form-group-md">
 
                                                                         <th:block th:if="${baseTrademarkApplication.isDeclarationApplicantIsOwner() == true}">
                                                                             <input class="form-check-input checkmark" type="checkbox" value="court" tabindex="0" aria-labelledby="courtdecree" id="courtd" checked>
@@ -727,32 +642,36 @@
                                                                             <input class="form-check-input checkmark" type="checkbox" value="court" tabindex="0" aria-labelledby="courtdecree" id="courtd">
                                                                         </th:block>
 
-                                                                        <label class="form-check-label form-check long" for="courtd" id="courtdec"><span class="radio notspecial small" id="courtdecree">The signatory believes that the applicant is the owner of the trademark/service mark sought to be registered;</span></label>
+                                                                        <label class="form-check-label form-check" for="courtd" id="courtdec"><span class="radio notspecial" id="courtdecree">The signatory believes that the applicant is the owner of the trademark/service mark sought to be registered;</span></label>
                                                                     </div>
                                                                     <div class="col-xs-12 form-group form-group-md">
-
-
                                                                         <th:block th:if="${baseTrademarkApplication.isDeclarationMarkInUse() == true}">
                                                                             <input class="form-check-input checkmark" type="checkbox" value="ttab" tabindex="0" aria-labelledby="priorttab" id="ttabmade" checked>
                                                                         </th:block>
                                                                         <th:block th:if="${baseTrademarkApplication.isDeclarationMarkInUse() == false}">
                                                                             <input class="form-check-input checkmark" type="checkbox" value="ttab" tabindex="0" aria-labelledby="priorttab" id="ttabmade">
                                                                         </th:block>
-
-
-                                                                        <label class="form-check-label form-check long" for="ttabmade" id="ttabdecision"><span class="radio notspecial small" id="priorttab">The mark is in use in commerce on or in connection with the goods/services in the application;</span></label>
+                                                                        <label class="form-check-label form-check" for="ttabmade" id="ttabdecision"><span class="radio notspecial" id="priorttab">The mark is in use in commerce on or in connection with the goods/services in the application;</span></label>
                                                                     </div>
+
+
+
                                                                     <div class="col-xs-12 form-group form-group-md">
 
-                                                                        <th:block th:if="${baseTrademarkApplication.isDeclarationMarkInUseSpecimen() == true}">
+                                                                        <th:block th:if="${baseTrademarkApplication.isDeclarationSpecimen() == true}">
                                                                             <input class="form-check-input checkmark" type="checkbox" value="conflicting" tabindex="0" aria-labelledby="conflictingreg" id="conflict" checked>
                                                                         </th:block>
-                                                                        <th:block th:if="${baseTrademarkApplication.isDeclarationMarkInUseSpecimen() == false}">
-                                                                            <input class="form-check-input checkmark" type="checkbox" value="conflicting" tabindex="0" aria-labelledby="conflictingreg" id="conflict">
+                                                                        <th:block th:if="${baseTrademarkApplication.isDeclarationSpecimen() == false}">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="conflicting" tabindex="0" aria-labelledby="conflictingreg" id="conflict" >
                                                                         </th:block>
 
-                                                                        <label class="form-check-label form-check long" for="conflict" id="conflictowner"><span class="radio notspecial small" id="conflictingreg">The specimen(s) shows the mark as used on or in connection with the goods/services in the application; and</span></label>
+                                                                        <label class="form-check-label form-check" for="conflict" id="conflictowner"><span class="radio notspecial" id="conflictingreg">The specimen(s) shows the mark as used on or in connection with the goods/services in the application; and</span></label>
                                                                     </div>
+
+
+
+
+
                                                                     <div class="col-xs-12 form-group form-group-md">
                                                                         <th:block th:if="${baseTrademarkApplication.isDeclarationConcurrentUser() == true}">
                                                                             <input class="form-check-input checkmark" type="checkbox" value="earlier" tabindex="0" aria-labelledby="early" id="earlieruse"checked>
@@ -761,10 +680,8 @@
                                                                             <input class="form-check-input checkmark" type="checkbox" value="earlier" tabindex="0" aria-labelledby="early" id="earlieruse">
                                                                         </th:block>
 
-                                                                        <label class="form-check-label form-check long" for="earlieruse" id="firstcommerce"><span class="radio notspecial small" id="early">To the best of the signatory&#8217;s knowledge and belief, the facts recited in the application are accurate.</span></label>
+                                                                        <label class="form-check-label form-check" for="earlieruse" id="firstcommerce"><span class="radio notspecial" id="early">To the best of the signatory&#8217;s knowledge and belief, the facts recited in the application are accurate.</span></label>
                                                                     </div>
-
-
                                                                     <div class="col-xs-12 form-group form-group-md">
                                                                         <th:block th:if="${baseTrademarkApplication.isDeclarationNoOtherHasRight() == true}">
                                                                             <input class="form-check-input checkmark" type="checkbox" value="earlier" tabindex="0" aria-labelledby="early" id="noOtherHasRightCheckbox"checked>
@@ -772,13 +689,8 @@
                                                                         <th:block th:if="${baseTrademarkApplication.isDeclarationNoOtherHasRight() == false}">
                                                                             <input class="form-check-input checkmark" type="checkbox" value="earlier" tabindex="0" aria-labelledby="early" id="noOtherHasRightCheckbox">
                                                                         </th:block>
-
-                                                                        <label class="form-check-label form-check long" for="noOtherHasRightCheckbox" id="noOtherHasRight"><span class="radio notspecial small" id="early"> To the best of the signatory&#8217;s knowledge and belief, no other persons, except, if applicable, concurrent users, have the right to use the mark in commerce, either in the identical form or in such near resemblance as to be likely, when used on or in connection with the goods/services of such other persons, to cause confusion or mistake, or to deceive.</span></label>
+                                                                        <label class="form-check-label form-check" for="noOtherHasRightCheckbox" id="noOtherHasRight"><span class="radio notspecial" id="early"> To the best of the signatory&#8217;s knowledge and belief, no other persons, except, if applicable, concurrent users, have the right to use the mark in commerce, either in the identical form or in such near resemblance as to be likely, when used on or in connection with the goods/services of such other persons, to cause confusion or mistake, or to deceive.</span></label>
                                                                     </div>
-
-
-
-
                                                                     <div class="col-xs-12 form-group form-group-md">
                                                                         <th:block th:if="${baseTrademarkApplication.isDeclarationEvidenceSupport() == true}">
                                                                             <input class="form-check-input checkmark" type="checkbox" value="earlier4" tabindex="0" aria-labelledby="earlyu" id="earlierusey" checked>
@@ -786,19 +698,16 @@
                                                                         <th:block th:if="${baseTrademarkApplication.isDeclarationEvidenceSupport() == false}">
                                                                             <input class="form-check-input checkmark" type="checkbox" value="earlier4" tabindex="0" aria-labelledby="earlyu" id="earlierusey">
                                                                         </th:block>
-
-                                                                        <label class="form-check-label form-check long" for="earlierusey" id="firstcommercefour"><span class="radio notspecial small" id="earlyu">To the best of the signatory&#8217;s knowledge, information, and belief, formed after an inquiry reasonable under the circumstances, the allegations and other factual contentions made above have evidentiary support.</span></label>
+                                                                        <label class="form-check-label form-check" for="earlierusey" id="firstcommercefour"><span class="radio notspecial" id="earlyu">To the best of the signatory&#8217;s knowledge, information, and belief, formed after an inquiry reasonable under the circumstances, the allegations and other factual contentions made above have evidentiary support.</span></label>
                                                                     </div>
                                                                     <div class="col-xs-12 form-group form-group-md">
-
                                                                         <th:block th:if="${baseTrademarkApplication.isDeclarationWarningFalseStatement() == true}">
                                                                             <input class="form-check-input checkmark" type="checkbox" value="earlier5" tabindex="0" aria-labelledby="earlyx" id="earlierusex" checked>
                                                                         </th:block>
                                                                         <th:block th:if="${baseTrademarkApplication.isDeclarationWarningFalseStatement() == false}">
                                                                             <input class="form-check-input checkmark" type="checkbox" value="earlier5" tabindex="0" aria-labelledby="earlyx" id="earlierusex">
                                                                         </th:block>
-
-                                                                        <label class="form-check-label form-check long" for="earlierusex" id="firstcommercefive"><span class="radio notspecial small" id="earlyx">The signatory being warned that willful false statements and the like are punishable by fine or imprisonment, or both, under 18 U.S.C. &#167; 1001, and that such willful false statements and the like may jeopardize the validity of the application or submission or any registration resulting therefrom, declares that all statements made of his/her own knowledge are true and all statements made on information and belief are believed to be true.</span></label>
+                                                                        <label class="form-check-label form-check" for="earlierusex" id="firstcommercefive"><span class="radio notspecial" id="earlyx">The signatory being warned that willful false statements and the like are punishable by fine or imprisonment, or both, under 18 U.S.C. &#167; 1001, and that such willful false statements and the like may jeopardize the validity of the application or submission or any registration resulting therefrom, declares that all statements made of his/her own knowledge are true and all statements made on information and belief are believed to be true.</span></label>
                                                                     </div>
                                                                 </div><!--end checkbox row-->
                                                             </div>
@@ -848,12 +757,6 @@
                         </form>
                     </div><!--END col-->
                 </div><!--END row-->
-
-
-
-
-
-
             </div>
         </div>
         <!--prev / next buttons-->
@@ -984,6 +887,22 @@
 
     // next link url to enable  for u.s individual href="http://localhost:8080/application/owner/info"
     $(document).ready(function() {
+        //start LS
+        //start select all declarations
+        $(document).on('change','#declarationsignature input#select', function() {
+            var checkboxes  = $('#declarationsignature input#select').parent('div').siblings('div').children('input.checkmark');
+            var selectall = $(this);
+            $.each(checkboxes, function(){
+                //$(this).click();
+                $(this).prop('checked',  $(selectall).prop('checked'));
+            });
+            $(checkboxes).on('click', function(e){
+                $(selectall).prop('checked', false);
+            });
+        });
+        //end select all declarations
+        //end LS
+
         setTimeout(function () {
             $('.content').fadeIn(500);
         }, 500);
@@ -1188,7 +1107,7 @@
 
 
             if(value == "direct"){
-               $('#nextButton').attr("disabled", true);
+                $('#nextButton').attr("disabled", true);
             }
 
             saveAppDeclarationField("app-sign-type", value);
@@ -1216,12 +1135,12 @@
         });
 
         $('#signatoryphone').focusout(function () {
-           var sPhoneVal = $(this).val();
+            var sPhoneVal = $(this).val();
 
-           if(sPhoneVal !=""){
-                 saveAppDeclarationField("app-sign-phone", sPhoneVal);
-           }
-           checkActivateLink();
+            if(sPhoneVal !=""){
+                saveAppDeclarationField("app-sign-phone", sPhoneVal);
+            }
+            checkActivateLink();
         });
 
         $('#signatoryname').focusout(function () {
@@ -1234,13 +1153,28 @@
         });
 
         $('#signatoryposition').focusout(function () {
-           var sPositionVal = $(this).val();
-           if(sPositionVal != ""){
-               saveAppDeclarationField("app-sign-pos", sPositionVal);
-           }
+            var sPositionVal = $(this).val();
+            if(sPositionVal != ""){
+                saveAppDeclarationField("app-sign-pos", sPositionVal);
+            }
 
-           checkActivateLink();
+            checkActivateLink();
         });
+
+
+
+
+        $('#select').click(function () {
+            if($(this).is(":checked")){
+                saveAppDeclarationField("declare-all", "yes");
+            }
+            else{
+                saveAppDeclarationField("declare-all", "no");
+            }
+
+
+        });
+
 
 
 
