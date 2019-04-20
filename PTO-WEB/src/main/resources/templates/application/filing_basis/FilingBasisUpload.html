@@ -11741,7 +11741,7 @@
 
                                                                     <div class="col-xs-12 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service.getFAfilingDateAlertDivID()}" style="display:none;">
                                                                         <p th:attr="id=${Good_Service.getFAfilingDateAlertMessageID()}"></p>
-                                                                        <button type="button" class="close" aria-label="close alert" th:attr="id=${Good_Service.getFAfilingDateAlertButtonID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                                        <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service.getFAfilingDateAlertButtonID()},div-id=${Good_Service.getFAfilingDateAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
                                                                         <br clear="all">
                                                                     </div>
 
@@ -12965,12 +12965,17 @@
             var date = $(this);
             datealert( divID, msgID, buttonID,date,"gs-pfa-filing-date", value, gsID,appInternalID );
 
+        });
 
 
+        $('.alert-close').click(function () {
+            var divID = $(this).attr("div-id");
 
-
+            $('#'+divID).hide('fast');
 
         });
+
+
 
         ///////////////////////////////////////////////////////////////////////
         // class level equivalent  faapp number down and persistence
@@ -14057,7 +14062,7 @@
         if ((todaydate) < dateval) {
             if (requireddate < dateval) {
                 // date enetred is greaater then required date, not allowed
-                alert(divID);
+
                 //var b = document.getElementById(divID);
 
 
@@ -14068,7 +14073,6 @@
                     //document.getElementById(buttonID).style.display = "block";
                     $('#'+buttonID).focus();
 
-                    alert(messageID);
 
                     $('#'+messageID).text("You cannot claim Section 44(d) priority, because your attempted U.S. filing is outside the 6-month window. (i.e., from when the foreign application was filed). The date must be after " + strmin);
                     // reset input
