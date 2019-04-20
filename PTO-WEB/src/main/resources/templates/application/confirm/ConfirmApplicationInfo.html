@@ -630,7 +630,15 @@
                                                                 <p class="weight600">Read the following statements before signing. Acknowledge the statements by checking the boxes and signing below. <span class="label label-info subtle visuallyremoved" style="margin-top: 5px;">Reduced Fee</span></p>
                                                                 <div class="row">
                                                                     <div class="col-xs-12 form-group form-group-md">
-                                                                        <input class="form-check-input checkmark" type="checkbox" value="selectall" tabindex="0" aria-labelledby="selall" id="select">
+
+                                                                        <th:block th:if="${baseTrademarkApplication.isDeclarationAll() == true}">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="selectall" tabindex="0" aria-labelledby="selall" id="select"checked>
+                                                                        </th:block>
+
+                                                                        <th:block th:if="${baseTrademarkApplication.isDeclarationAll() == false}">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="selectall" tabindex="0" aria-labelledby="selall" id="select">
+                                                                        </th:block>
+
                                                                         <label class="form-check-label form-check" for="select"><span class="radio notspecial" id="selall">Select all</span></label>
                                                                     </div>
                                                                     <div class="col-xs-12 form-group form-group-md">

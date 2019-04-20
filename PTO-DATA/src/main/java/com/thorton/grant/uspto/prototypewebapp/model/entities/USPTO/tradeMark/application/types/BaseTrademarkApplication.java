@@ -344,6 +344,8 @@ public class BaseTrademarkApplication  {
 
     // declaration fields
 
+    private boolean declarationAll;
+
     private boolean declarationApplicantIsOwner;  // check box 1
     private boolean declarationApplicantIsOwnerSet;
 
@@ -1724,6 +1726,14 @@ public class BaseTrademarkApplication  {
         else {
             return "";
         }
+    }
+
+    public boolean isDeclarationAll() {
+        return declarationAll;
+    }
+
+    public void setDeclarationAll(boolean declarationAll) {
+        this.declarationAll = declarationAll;
     }
 
     @Override

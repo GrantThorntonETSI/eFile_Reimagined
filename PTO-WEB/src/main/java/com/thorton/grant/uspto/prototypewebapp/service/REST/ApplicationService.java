@@ -721,6 +721,15 @@ public class ApplicationService  extends  BaseRESTapiService{
                 baseTrademarkApplication.setDeclarationEvidenceSupport(true);
                 baseTrademarkApplication.setDeclarationWarningFalseStatement(true);
                 baseTrademarkApplication.setDeclarationNoOtherHasRight(true);
+                baseTrademarkApplication.setDeclarationAll(true);
+
+                baseTrademarkApplication.setDeclarationApplicantIsOwnerSet(true);
+                baseTrademarkApplication.setDeclarationMarkInUseSet(true);
+                baseTrademarkApplication.setDeclarationSpecimenSet(true);
+                baseTrademarkApplication.setDeclarationConcurrentUserSet(true);
+                baseTrademarkApplication.setDeclarationEvidenceSupportSet(true);
+                baseTrademarkApplication.setDeclarationWarningFalseStatementSet(true);
+                baseTrademarkApplication.setDeclarationNoOtherHasRightSet(true);
             }
             else {
                 baseTrademarkApplication.setDeclarationApplicantIsOwner(false);
@@ -730,16 +739,20 @@ public class ApplicationService  extends  BaseRESTapiService{
                 baseTrademarkApplication.setDeclarationEvidenceSupport(false);
                 baseTrademarkApplication.setDeclarationWarningFalseStatement(false);
                 baseTrademarkApplication.setDeclarationNoOtherHasRight(false);
+                baseTrademarkApplication.setDeclarationAll(false);
+
+
+                baseTrademarkApplication.setDeclarationApplicantIsOwnerSet(false);
+                baseTrademarkApplication.setDeclarationMarkInUseSet(false);
+                baseTrademarkApplication.setDeclarationSpecimenSet(false);
+                baseTrademarkApplication.setDeclarationConcurrentUserSet(false);
+                baseTrademarkApplication.setDeclarationEvidenceSupportSet(false);
+                baseTrademarkApplication.setDeclarationWarningFalseStatementSet(false);
+                baseTrademarkApplication.setDeclarationNoOtherHasRightSet(false);
 
             }
 
-            baseTrademarkApplication.setDeclarationApplicantIsOwnerSet(true);
-            baseTrademarkApplication.setDeclarationMarkInUseSet(true);
-            baseTrademarkApplication.setDeclarationSpecimenSet(true);
-            baseTrademarkApplication.setDeclarationConcurrentUserSet(true);
-            baseTrademarkApplication.setDeclarationEvidenceSupportSet(true);
-            baseTrademarkApplication.setDeclarationWarningFalseStatementSet(true);
-            baseTrademarkApplication.setDeclarationNoOtherHasRightSet(true);
+
 
             appFieldReadable = "Application Declaration all";
         }
