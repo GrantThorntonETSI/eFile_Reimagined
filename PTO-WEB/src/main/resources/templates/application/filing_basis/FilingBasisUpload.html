@@ -10299,9 +10299,9 @@
                                                                     <div class="row" style="display: none;">
 
 
-                                                                        <div class="col-xs-12 alert alert-warning visuallyremoved" role="alert" aria-live="assertive" id="alertmin">
-                                                                            <p></p>
-                                                                            <button type="button" class="close" aria-label="close alert" id="alertbtn"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                                        <div class="col-xs-12 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service.getFAfilingDateAlertDivID()}" style="display:none;">
+                                                                            <p th:attr="id=${Good_Service.getFAfilingDateAlertMessageID()}"></p>
+                                                                            <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service.getFAfilingDateAlertButtonID()},div-id=${Good_Service.getFAfilingDateAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
                                                                             <br clear="all">
                                                                         </div>
 
@@ -10570,12 +10570,11 @@
                                                                 <th:block th:if="${Good_Service.pendingFA == true}">
                                                                     <div class="row" style="">
 
-                                                                        <div class="col-xs-12 alert alert-warning visuallyremoved" role="alert" aria-live="assertive" id="alertmin">
-                                                                            <p></p>
-                                                                            <button type="button" class="close" aria-label="close alert" id="alertbtn"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                                        <div class="col-xs-12 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service.getFAfilingDateAlertDivID()}" style="display:none;">
+                                                                            <p th:attr="id=${Good_Service.getFAfilingDateAlertMessageID()}"></p>
+                                                                            <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service.getFAfilingDateAlertButtonID()},div-id=${Good_Service.getFAfilingDateAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
                                                                             <br clear="all">
                                                                         </div>
-
                                                                         <div class="col-xs-12 form-group form-group-md holdsapending" aria-labelledby="foreignapplication">
                                                                             <div class="col-xs-12">
                                                                                 <p class="weight600" id="foreignapplication">Foreign Application Information:</p>
