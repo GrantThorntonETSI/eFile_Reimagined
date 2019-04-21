@@ -14080,7 +14080,7 @@
 
 
 
-        if ((todaydate) < dateval) {
+        if ( todaydate < dateval) {
 
             addFilingBasisInfoToGoodAndService(command, value, gsID, appInternalID);
         }
@@ -14104,6 +14104,10 @@
                 // reset input
                 $(date).val('');
 
+            }
+            else{
+
+                addFilingBasisInfoToGoodAndService(command, value, gsID, appInternalID);
             }
 
         }
