@@ -10734,9 +10734,18 @@
         $('input.fa-filing-date-cc').focusout(function () {
             var ccID= $(this).attr("cc-id");
 
-            //alert(gsID);
             var value = $(this).val();
-            addFilingBasisInfoToClassCategory("cc-pfa-filing-date", value, ccID, appInternalID);
+            var divID = $(this).attr("div-id");
+            var msgID = $(this).attr("message-id");
+            var buttonID = $(this).attr("button-id");
+            var date = $(this);
+
+            var value = $(this).val();
+
+            datealert( divID, msgID, buttonID,date,"cc-pfa-filing-date", value, ccID,appInternalID );
+
+
+
 
         });
 
@@ -11783,7 +11792,8 @@
     }
 
 
-    function datealert( divID, messageID, buttonID, date, command, value, gsID, appInteralID  ) {
+
+    function datealert( divID, messageID, buttonID, date, command, value, id, appInteralID  ) {
 
         function addDays(theDate, days) {
             return new Date(theDate.getTime() + days*24*60*60*1000);
@@ -11807,7 +11817,16 @@
 
         if ( todaydate < dateval) {
 
-            addFilingBasisInfoToGoodAndService(command, value, gsID, appInternalID);
+            if(command == "cc-pfa-filing-date"){
+                addFilingBasisInfoToClassCategory(command, value, id, appInternalID);
+            }
+            else{
+                addFilingBasisInfoToGoodAndService(command, value, id, appInternalID);
+            }
+
+
+
+
         }
         else {
             // date enterd is in the past
@@ -11832,12 +11851,16 @@
             }
             else{
 
-                addFilingBasisInfoToGoodAndService(command, value, gsID, appInternalID);
+                if(command == "cc-pfa-filing-date"){
+                    addFilingBasisInfoToClassCategory(command, value, id, appInternalID);
+                }
+                else{
+                    addFilingBasisInfoToGoodAndService(command, value, id, appInternalID);
+                }
             }
 
         }
     }
-
 </script>
 
 </body>
