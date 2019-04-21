@@ -480,4 +480,18 @@ public class GSClassCategory {
         }
 
     }
+
+
+
+    public boolean onlyOneGS(){
+        boolean retValue = false;
+
+        if(goodAndServices.size() == 1){
+            retValue = true;
+        }
+
+
+        return retValue;
+
+    }
 }
