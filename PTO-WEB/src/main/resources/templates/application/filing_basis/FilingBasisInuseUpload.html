@@ -349,6 +349,11 @@
 
                                         <th:block th:if="${Good_Service_class.isPendingFACC() == false}">
                                             <div class="row" style="display: none;">
+                                                <div class="col-xs-12 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service_class.getFAfilingDateAlertDivID()}" style="display:none;">
+                                                    <p th:attr="id=${Good_Service_class.getFAfilingDateAlertMessageID()}"></p>
+                                                    <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service_class.getFAfilingDateAlertButtonID()},div-id=${Good_Service_class.getFAfilingDateAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                    <br clear="all">
+                                                </div>
 
                                                 <div class="col-xs-12 form-group form-group-md holdsapending" aria-labelledby="foreignapplication">
                                                     <div class="col-xs-12">
@@ -604,7 +609,7 @@
                                                     </div>
                                                     <div class="form-group form-group-md col-xs-12">
                                                         <label for="application-date">Foreign application filing date: <a href="#" data-toggle="tooltip" title="Claim on Section 44(d) priority requires foreign application date to be within 6 month of today's date." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                        <input type="date" class="form-control fa-filing-date-cc" id="application-dateCC" name="applicationdate" value="" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">
+                                                        <input type="date" class="form-control fa-filing-date-cc" id="application-dateCC" name="applicationdate" value="" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}, div-id=${Good_Service_class.getFAfilingDateAlertDivID()}, message-id=${Good_Service_class.getFAfilingDateAlertMessageID()}, button-id=${Good_Service_class.getFAfilingDateAlertButtonID()}">
                                                     </div>
                                                 </div><!--pending foreign-->
                                                 <div class="appendapending"></div>
@@ -614,6 +619,11 @@
 
                                         <th:block th:if="${Good_Service_class.isPendingFACC() == true}">
                                             <div class="row" style="">
+                                                <div class="col-xs-12 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service_class.getFAfilingDateAlertDivID()}" style="display:none;">
+                                                    <p th:attr="id=${Good_Service_class.getFAfilingDateAlertMessageID()}"></p>
+                                                    <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service_class.getFAfilingDateAlertButtonID()},div-id=${Good_Service_class.getFAfilingDateAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                    <br clear="all">
+                                                </div>
 
 
                                                 <div class="col-xs-12 form-group form-group-md holdsapending" aria-labelledby="foreignapplication">
@@ -870,7 +880,7 @@
                                                     </div>
                                                     <div class="form-group form-group-md col-xs-12">
                                                         <label for="application-date">Foreign application filing date: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                        <input type="date" class="form-control fa-filing-date-cc" id="application-dateCC" name="applicationdate" value="" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}" th:value="${Good_Service_class.getFaFilingDateCCDisplay()}">
+                                                        <input type="date" class="form-control fa-filing-date-cc" id="application-dateCC" name="applicationdate" value="" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}, div-id=${Good_Service_class.getFAfilingDateAlertDivID()}, message-id=${Good_Service_class.getFAfilingDateAlertMessageID()}, button-id=${Good_Service_class.getFAfilingDateAlertButtonID()}" th:value="${Good_Service_class.getFaFilingDateCCDisplay()}">
                                                     </div>
                                                 </div><!--pending foreign-->
                                                 <div class="appendapending"></div>
@@ -1733,6 +1743,11 @@
 
                                         <th:block th:if="${Good_Service_class.isPendingFACC() == false}">
                                             <div class="row" style="display: none;">
+                                                <div class="col-xs-12 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service_class.getFAfilingDateAlertDivID()}" style="display:none;">
+                                                    <p th:attr="id=${Good_Service_class.getFAfilingDateAlertMessageID()}"></p>
+                                                    <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service_class.getFAfilingDateAlertButtonID()},div-id=${Good_Service_class.getFAfilingDateAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                    <br clear="all">
+                                                </div>
 
 
                                                 <div class="col-xs-12 form-group form-group-md holdsapending" aria-labelledby="foreignapplication">
@@ -1989,7 +2004,7 @@
                                                     </div>
                                                     <div class="form-group form-group-md col-xs-12">
                                                         <label for="application-date">Foreign application filing date: <a href="#" data-toggle="tooltip" title="Claim on Section 44(d) priority requires foreign application date to be within 6 month of today's date." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                        <input type="date" class="form-control fa-filing-date-cc" id="application-dateCC" name="applicationdate" value="" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">
+                                                        <input type="date" class="form-control fa-filing-date-cc" id="application-dateCC" name="applicationdate" value="" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}, div-id=${Good_Service_class.getFAfilingDateAlertDivID()}, message-id=${Good_Service_class.getFAfilingDateAlertMessageID()}, button-id=${Good_Service_class.getFAfilingDateAlertButtonID()}" >
                                                     </div>
                                                 </div><!--pending foreign-->
                                                 <div class="appendapending"></div>
@@ -1999,6 +2014,11 @@
 
                                         <th:block th:if="${Good_Service_class.isPendingFACC() == true}">
                                             <div class="row" style="">
+                                                <div class="col-xs-12 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service_class.getFAfilingDateAlertDivID()}" style="display:none;">
+                                                    <p th:attr="id=${Good_Service_class.getFAfilingDateAlertMessageID()}"></p>
+                                                    <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service_class.getFAfilingDateAlertButtonID()},div-id=${Good_Service_class.getFAfilingDateAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                    <br clear="all">
+                                                </div>
 
                                                 <div class="col-xs-12 form-group form-group-md holdsapending" aria-labelledby="foreignapplication">
                                                     <div class="col-xs-12">
@@ -2254,7 +2274,7 @@
                                                     </div>
                                                     <div class="form-group form-group-md col-xs-12">
                                                         <label for="application-date">Foreign application filing date: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                        <input type="date" class="form-control fa-filing-date-cc" id="application-dateCC" name="applicationdate" value="" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}" th:value="${Good_Service_class.getFaFilingDateCCDisplay()}">
+                                                        <input type="date" class="form-control fa-filing-date-cc" id="application-dateCC" name="applicationdate" value="" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}, div-id=${Good_Service_class.getFAfilingDateAlertDivID()}, message-id=${Good_Service_class.getFAfilingDateAlertMessageID()}, button-id=${Good_Service_class.getFAfilingDateAlertButtonID()}"  th:value="${Good_Service_class.getFaFilingDateCCDisplay()}">
                                                     </div>
                                                 </div><!--pending foreign-->
                                                 <div class="appendapending"></div>
