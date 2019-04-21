@@ -78,6 +78,12 @@ public class GSClassCategory {
         return classCategoryNumber+"pna";
     }
 
+
+
+    public String getFAfilingDateAlertMessageID(){ return  classCategoryNumber+"faAlertMessage"; }
+    public String getFAfilingDateAlertButtonID() {return  classCategoryNumber+"faAlertButton";}
+    public String getFAfilingDateAlertDivID(){return  classCategoryNumber+"faAlertDIV";}
+
     ////////////////////////////////////////////////////////
     // get id functions for goods and services
     ////////////////////////////////////////////////////////
