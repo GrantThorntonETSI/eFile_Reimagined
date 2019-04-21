@@ -10443,6 +10443,7 @@
                     $(this).parent().next().show(500);
 
                     addFilingBasisInfoToClassCategory("cc-pfa-option", "yes", ccID, appInternalID);
+                    $(this).next().next().next().next().attr("checked", false);
 
 
                 }
@@ -10467,6 +10468,7 @@
 
 
                     addFilingBasisInfoToClassCategory("cc-pfr-option", "yes", ccID, appInternalID);
+                    $(this).next().next().attr("checked", false);
 
                 }
                 else{
@@ -10492,9 +10494,9 @@
                     $(this).parent().next().next().fadeOut(500);
                     $(this).parent().next().fadeOut(500);
 
-                    $(this).prev().prev().attr("disabled", true);
+                    //$(this).prev().prev().attr("disabled", true);
                     $(this).prev().prev().attr("checked", false);
-                    $(this).prev().prev().prev().prev().attr("disabled",true);
+                    //$(this).prev().prev().prev().prev().attr("disabled",true);
                     $(this).prev().prev().prev().prev().attr("checked",false);
                     addFilingBasisInfoToClassCategory("cc-pna-option", "yes", ccID, appInternalID);
 
@@ -10503,8 +10505,8 @@
                     // hide parent next div
                     // call auto save no on forgeign application
                     //$(this).parent().next().next().fadeOut(500);
-                    $(this).prev().prev().attr("disabled", false);
-                    $(this).prev().prev().prev().prev().attr("disabled",false)
+                    //$(this).prev().prev().attr("disabled", false);
+                    //$(this).prev().prev().prev().prev().attr("disabled",false)
                     addFilingBasisInfoToClassCategory("cc-pna-option", "no", ccID, appInternalID);
 
                 }
@@ -10538,8 +10540,8 @@
                     // unhide  parent next div
                     // call auto save yes on foreign application
                     $(this).parent().next().show(500);
-
                     addFilingBasisInfoToGoodAndService("gs-pfa-option", "yes", gsID, appInternalID);
+                    $(this).next().next().next().next().attr("checked", false);
 
                 }
                 else{
@@ -10562,6 +10564,7 @@
                     $(this).parent().next().next().show(500);
 
                     addFilingBasisInfoToGoodAndService("gs-pfr-option", "yes", gsID, appInternalID);
+                    $(this).next().next().attr("checked", false);
 
                 }
                 else{
@@ -10587,9 +10590,9 @@
                     $(this).parent().next().next().fadeOut(500);
                     $(this).parent().next().fadeOut(500);
 
-                    $(this).prev().prev().attr("disabled", true);
+                    // $(this).prev().prev().attr("disabled", true);
                     $(this).prev().prev().attr("checked", false);
-                    $(this).prev().prev().prev().prev().attr("disabled",true);
+                    // $(this).prev().prev().prev().prev().attr("disabled",true);
                     $(this).prev().prev().prev().prev().attr("checked",false);
                     addFilingBasisInfoToGoodAndService("gs-pna-option", "yes", gsID, appInternalID);
 
@@ -10598,8 +10601,8 @@
                     // hide parent next div
                     // call auto save no on forgeign application
                     //$(this).parent().next().next().fadeOut(500);
-                    $(this).prev().prev().attr("disabled", false);
-                    $(this).prev().prev().prev().prev().attr("disabled",false)
+                   //  $(this).prev().prev().attr("disabled", false);
+                   // $(this).prev().prev().prev().prev().attr("disabled",false)
                     addFilingBasisInfoToGoodAndService("gs-pna-option", "no", gsID, appInternalID);
 
                 }
