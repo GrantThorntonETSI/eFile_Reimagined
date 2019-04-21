@@ -315,9 +315,11 @@
                                                 </th:block>
                                                 <label class="form-check-label form-check" th:attr="for=${Good_Service_class.getpfrCCID()}"><span class="radio notspecial small">Foreign Registration</span></label>
 
+                                                <th:block th:if="${Good_Service_class.onlyOneGS() == false}">
+                                                    <input class="form-check-input checkmark-cc" type="checkbox" value="na" tabindex="0" th:attr="id=${Good_Service_class.getpnaCCID()},cc-id=${Good_Service_class.getClassCategoryNumber()}">
+                                                    <label class="form-check-label form-check" th:attr="for=${Good_Service_class.getpnaCCID()}"><span class="radio notspecial small">Not Applicable</span></label>
+                                                </th:block>
 
-                                                <input class="form-check-input checkmark-cc" type="checkbox" value="na" tabindex="0" th:attr="id=${Good_Service_class.getpnaCCID()},cc-id=${Good_Service_class.getClassCategoryNumber()}">
-                                                <label class="form-check-label form-check" th:attr="for=${Good_Service_class.getpnaCCID()}"><span class="radio notspecial small">Not Applicable</span></label>
                                             </div>
                                         </th:block>
 
@@ -1709,9 +1711,12 @@
                                                 </th:block>
                                                 <label class="form-check-label form-check" th:attr="for=${Good_Service_class.getpfrCCID()}"><span class="radio notspecial small">Foreign Registration</span></label>
 
+                                                <th:block th:if="${Good_Service_class.onlyOneGS() == false}">
+                                                    <input class="form-check-input checkmark-cc" type="checkbox" value="na" tabindex="0" th:attr="id=${Good_Service_class.getpnaCCID()},cc-id=${Good_Service_class.getClassCategoryNumber()}">
+                                                    <label class="form-check-label form-check" th:attr="for=${Good_Service_class.getpnaCCID()}"><span class="radio notspecial small">Not Applicable</span></label>
+                                                </th:block>
 
-                                                <input class="form-check-input checkmark-cc" type="checkbox" value="na" tabindex="0" th:attr="id=${Good_Service_class.getpnaCCID()},cc-id=${Good_Service_class.getClassCategoryNumber()}">
-                                                <label class="form-check-label form-check" th:attr="for=${Good_Service_class.getpnaCCID()}"><span class="radio notspecial small">Not Applicable</span></label>
+
                                             </div>
                                         </th:block>
 
@@ -3213,11 +3218,13 @@
                                                                         </th:block>
                                                                         <label class="form-check-label form-check" th:attr="for=${Good_Service.getpfrID()}"><span class="radio notspecial small">Foreign Registration</span></label>
 
-                                                                        <input class="form-check-input checkmark" type="checkbox" value="na" tabindex="0" th:attr="id=${Good_Service.getpnaID()},gs-id=${Good_Service.getInternalID()}">
 
+                                                                        <th:block th:if="${Good_Service_class.onlyOneGS() == false}">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="na" tabindex="0" th:attr="id=${Good_Service.getpnaID()},gs-id=${Good_Service.getInternalID()}">
+                                                                            <label class="form-check-label form-check" th:attr="for=${Good_Service.getpnaID()}"><span class="radio notspecial small">Not Applicable</span></label>
 
+                                                                        </th:block>
 
-                                                                        <label class="form-check-label form-check" th:attr="for=${Good_Service.getpnaID()}"><span class="radio notspecial small">Not Applicable</span></label>
                                                                     </div>
                                                                 </th:block>
 
@@ -4652,11 +4659,11 @@
                                                                         </th:block>
                                                                         <label class="form-check-label form-check" th:attr="for=${Good_Service.getpfrID()}"><span class="radio notspecial small">Foreign Registration</span></label>
 
-                                                                        <input class="form-check-input checkmark" type="checkbox" value="na" tabindex="0" th:attr="id=${Good_Service.getpnaID()},gs-id=${Good_Service.getInternalID()}">
+                                                                        <th:block th:if="${Good_Service_class.onlyOneGS() == false}">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="na" tabindex="0" th:attr="id=${Good_Service.getpnaID()},gs-id=${Good_Service.getInternalID()}">
+                                                                            <label class="form-check-label form-check" th:attr="for=${Good_Service.getpnaID()}"><span class="radio notspecial small">Not Applicable</span></label>
+                                                                        </th:block>
 
-
-
-                                                                        <label class="form-check-label form-check" th:attr="for=${Good_Service.getpnaID()}"><span class="radio notspecial small">Not Applicable</span></label>
                                                                     </div>
                                                                 </th:block>
 
@@ -5601,11 +5608,12 @@
                                                                         </th:block>
                                                                         <label class="form-check-label form-check" th:attr="for=${Good_Service.getpfrID()}"><span class="radio notspecial small">Foreign Registration</span></label>
 
-                                                                        <input class="form-check-input checkmark" type="checkbox" value="na" tabindex="0" th:attr="id=${Good_Service.getpnaID()},gs-id=${Good_Service.getInternalID()}">
 
+                                                                        <th:block th:if="${Good_Service_class.onlyOneGS() == false}">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="na" tabindex="0" th:attr="id=${Good_Service.getpnaID()},gs-id=${Good_Service.getInternalID()}">
+                                                                            <label class="form-check-label form-check" th:attr="for=${Good_Service.getpnaID()}"><span class="radio notspecial small">Not Applicable</span></label>
+                                                                        </th:block>
 
-
-                                                                        <label class="form-check-label form-check" th:attr="for=${Good_Service.getpnaID()}"><span class="radio notspecial small">Not Applicable</span></label>
                                                                     </div>
                                                                 </th:block>
 
@@ -7040,11 +7048,12 @@
                                                                         </th:block>
                                                                         <label class="form-check-label form-check" th:attr="for=${Good_Service.getpfrID()}"><span class="radio notspecial small">Foreign Registration</span></label>
 
-                                                                        <input class="form-check-input checkmark" type="checkbox" value="na" tabindex="0" th:attr="id=${Good_Service.getpnaID()},gs-id=${Good_Service.getInternalID()}">
 
+                                                                        <th:block th:if="${Good_Service_class.onlyOneGS() == false}">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="na" tabindex="0" th:attr="id=${Good_Service.getpnaID()},gs-id=${Good_Service.getInternalID()}">
+                                                                            <label class="form-check-label form-check" th:attr="for=${Good_Service.getpnaID()}"><span class="radio notspecial small">Not Applicable</span></label>
+                                                                        </th:block>
 
-
-                                                                        <label class="form-check-label form-check" th:attr="for=${Good_Service.getpnaID()}"><span class="radio notspecial small">Not Applicable</span></label>
                                                                     </div>
                                                                 </th:block>
 
@@ -7999,11 +8008,12 @@
                                                                         </th:block>
                                                                         <label class="form-check-label form-check" th:attr="for=${Good_Service.getpfrID()}"><span class="radio notspecial small">Foreign Registration</span></label>
 
-                                                                        <input class="form-check-input checkmark" type="checkbox" value="na" tabindex="0" th:attr="id=${Good_Service.getpnaID()},gs-id=${Good_Service.getInternalID()}">
 
+                                                                        <th:block th:if="${Good_Service_class.onlyOneGS() == false}">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="na" tabindex="0" th:attr="id=${Good_Service.getpnaID()},gs-id=${Good_Service.getInternalID()}">
+                                                                            <label class="form-check-label form-check" th:attr="for=${Good_Service.getpnaID()}"><span class="radio notspecial small">Not Applicable</span></label>
+                                                                        </th:block>
 
-
-                                                                        <label class="form-check-label form-check" th:attr="for=${Good_Service.getpnaID()}"><span class="radio notspecial small">Not Applicable</span></label>
                                                                     </div>
                                                                 </th:block>
 
@@ -9439,11 +9449,12 @@
                                                                         </th:block>
                                                                         <label class="form-check-label form-check" th:attr="for=${Good_Service.getpfrID()}"><span class="radio notspecial small">Foreign Registration</span></label>
 
-                                                                        <input class="form-check-input checkmark" type="checkbox" value="na" tabindex="0" th:attr="id=${Good_Service.getpnaID()},gs-id=${Good_Service.getInternalID()}">
 
+                                                                        <th:block th:if="${Good_Service_class.onlyOneGS() == false}">
+                                                                            <input class="form-check-input checkmark" type="checkbox" value="na" tabindex="0" th:attr="id=${Good_Service.getpnaID()},gs-id=${Good_Service.getInternalID()}">
+                                                                            <label class="form-check-label form-check" th:attr="for=${Good_Service.getpnaID()}"><span class="radio notspecial small">Not Applicable</span></label>
+                                                                        </th:block>
 
-
-                                                                        <label class="form-check-label form-check" th:attr="for=${Good_Service.getpnaID()}"><span class="radio notspecial small">Not Applicable</span></label>
                                                                     </div>
                                                                 </th:block>
 
