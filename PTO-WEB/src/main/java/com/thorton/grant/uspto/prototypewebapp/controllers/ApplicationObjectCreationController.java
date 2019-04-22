@@ -482,7 +482,6 @@ public class ApplicationObjectCreationController {
             owner.setAlternameSet(true);
         }
 
-
         if(newOwnerContactFormDTO.getOwnerCitizenShip()!= null){
 
             owner.setCitizenShip(newOwnerContactFormDTO.getOwnerCitizenShip());
