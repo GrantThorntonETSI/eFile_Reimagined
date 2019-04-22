@@ -137,10 +137,22 @@
                                         <option value="formerly">Formerly</option>
                                     </select>
                                 </div>
-                                <div class="form-group form-group-md col-xs-6" id="nametype">
-                                    <label for="nameoftype">Name</label>
-                                    <input type="text" class="form-control" id="nameoftype" name="nameoftype"  th:value="${owner.ownerAdditionalName}"  ><!--needs th:attribute-->
-                                </div>
+
+
+                                <th:block  th:if="${owner.isAlternameSet() == true}">
+                                    <div class="form-group form-group-md col-xs-6" id="nametype">
+                                        <label for="nameoftype">Name</label>
+                                        <input type="text" class="form-control" id="nameoftype" name="nameoftype"  th:value="${owner.ownerAdditionalName}"  ><!--needs th:attribute-->
+                                    </div>
+
+                                </th:block>
+                                <th:block  th:if="${owner.isAlternameSet() == false}">
+                                    <div class="form-group form-group-md col-xs-6" id="nametype" style="display:none;">
+                                        <label for="nameoftype">Name</label>
+                                        <input type="text" class="form-control" id="nameoftype" name="nameoftype"  th:value="${owner.ownerAdditionalName}"  ><!--needs th:attribute-->
+                                    </div>
+                                </th:block>
+
                             </div>
                         </fieldset>
                         <!--END Sole Proprietor Information Form-->

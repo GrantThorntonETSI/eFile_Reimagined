@@ -76,6 +76,9 @@ public class Owner extends Contact{
 
     private String ownerDisplayname;
 
+
+    boolean alternameSet;
+
     @OneToOne
     private BaseTrademarkApplication primaryApplication;
 
@@ -314,6 +317,14 @@ public class Owner extends Contact{
 
     public void setForeignEntityOwner(boolean foreignEntityOwner) {
         this.foreignEntityOwner = foreignEntityOwner;
+    }
+
+    public boolean isAlternameSet() {
+        return alternameSet;
+    }
+
+    public void setAlternameSet(boolean alternameSet) {
+        this.alternameSet = alternameSet;
     }
 
     @Override

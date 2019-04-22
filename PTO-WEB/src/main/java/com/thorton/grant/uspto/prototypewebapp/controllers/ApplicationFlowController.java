@@ -3452,7 +3452,7 @@ public class ApplicationFlowController {
 
         if(baseTrademarkApplication.getTradeMark().getTrademarkDesignType().equals("Standard Character") == false){
 
-            if(baseTrademarkApplication.getTradeMark().isColorClaimSet() == false){
+            if(baseTrademarkApplication.getTradeMark().isMarkColorClaim() == false){
 
 
                 missedTEAsFields.add("Mark color claim");
@@ -3477,7 +3477,7 @@ public class ApplicationFlowController {
         }
 
         if(baseTrademarkApplication.getTradeMark().isTranslationSet() == false){
-            missedTEAsFields.add("Translation");
+            //missedTEAsFields.add("Translation");
         }
         else {
             if(baseTrademarkApplication.getTradeMark().isForeignLanguageTranslationWording() == true){
@@ -3495,7 +3495,7 @@ public class ApplicationFlowController {
         }
 
         if(baseTrademarkApplication.getTradeMark().isTranlierationSet() == false){
-            missedTEAsFields.add("Transliteration");
+           // missedTEAsFields.add("Transliteration");
         }
         else {
             if(baseTrademarkApplication.getTradeMark().isForeignLanguateTransliterationWording() == true){

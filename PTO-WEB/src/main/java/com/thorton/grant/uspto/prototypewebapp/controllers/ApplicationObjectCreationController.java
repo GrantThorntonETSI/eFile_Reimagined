@@ -477,8 +477,9 @@ public class ApplicationObjectCreationController {
             owner.setOwnerType(newOwnerContactFormDTO.getOwnerType());
         }
 
-        if(newOwnerContactFormDTO.getOwnerAdditionalName()!= null) {
+        if(newOwnerContactFormDTO.getOwnerAdditionalName()!= null && newOwnerContactFormDTO.getOwnerAdditionalName().equals("") == false) {
             owner.setOwnerAdditionalName(newOwnerContactFormDTO.getOwnerAdditionalName());
+            owner.setAlternameSet(true);
         }
 
 
@@ -601,9 +602,7 @@ public class ApplicationObjectCreationController {
             owner.setOwnerSolpMiddleName(newOwnerContactFormDTO.getSolpMiddleName());
         }
 
-        if(newOwnerContactFormDTO.getOwnerAdditionalName() !=  null){
-            owner.setOwnerAdditionalName(newOwnerContactFormDTO.getOwnerAdditionalName());
-        }
+
         if(newOwnerContactFormDTO.getOwnerOrganizationState() != null){
             owner.setOwnerOrganizationState(newOwnerContactFormDTO.getOwnerOrganizationState());
         }
