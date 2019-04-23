@@ -2599,10 +2599,6 @@
                                                     </div>
 
 
-
-
-
-
                                                     <th:block th:if="${Good_Service_class.isFrCertCCuploaded() == false}">
                                                         <div class="col-xs-12" style="">
                                                             <form method="post"  target="hidden-iframe" th:attr="id=${ Good_Service_class.getCCFRCertImageFormID()}"  action="/cc/foreignReg/add"  enctype="multipart/form-data"  aria-labelledby="title">
@@ -2612,9 +2608,6 @@
                                                                     <label class="small upload-drop-zone" th:attr="for=${Good_Service_class.getCCFRCertFileID()}" id="upimgtwo"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span></label>
                                                                     <input type="file"  th:attr="id=${Good_Service_class.getCCFRCertFileID()}" name="specimenfileupload" class="form-control" aria-labelledby="upimgtwo upimagethree">
                                                                 </div><!-- Drop Zone -->
-
-
-
 
                                                             </form>
 
@@ -3836,6 +3829,11 @@
 
                                                                             <th:block th:if="${Good_Service.foreignRegistration == true}">
                                                                                 <div class="row" >
+                                                                                    <div class="col-xs-12 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service.getFRregistrationAlertDivID()}" style="display:none;">
+                                                                                        <p th:attr="id=${Good_Service.getFRregistrationDateAlertMessageID()}"></p>
+                                                                                        <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service.getFRregistrationAlertButtonID()},div-id=${Good_Service.getFRregistrationAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                                                        <br clear="all">
+                                                                                    </div>
                                                                                     <div class="col-xs-12 form-group form-group-md holdsaforeign">
                                                                                         <div class="col-xs-12">
                                                                                             <p class="weight600" id="foreignregistration">Foreign Registration Information:</p>
@@ -4221,6 +4219,11 @@
 
                                                                             <th:block th:if="${Good_Service.foreignRegistration == false}">
                                                                                 <div class="row"  style="display: none;">
+                                                                                    <div class="col-xs-12 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service.getFRregistrationAlertDivID()}" style="display:none;">
+                                                                                        <p th:attr="id=${Good_Service.getFRregistrationDateAlertMessageID()}"></p>
+                                                                                        <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service.getFRregistrationAlertButtonID()},div-id=${Good_Service.getFRregistrationAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                                                        <br clear="all">
+                                                                                    </div>
                                                                                     <div class="col-xs-12 form-group form-group-md holdsaforeign">
                                                                                         <div class="col-xs-12">
                                                                                             <p class="weight600" id="foreignregistration">Foreign Registration Information:</p>
@@ -5005,6 +5008,11 @@
 
 
                                                                             <div class="row" style="display: none;">
+                                                                                <div class="col-xs-12 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service.getFRregistrationAlertDivID()}" style="display:none;">
+                                                                                    <p th:attr="id=${Good_Service.getFRregistrationDateAlertMessageID()}"></p>
+                                                                                    <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service.getFRregistrationAlertButtonID()},div-id=${Good_Service.getFRregistrationAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                                                    <br clear="all">
+                                                                                </div>
                                                                                 <div class="col-xs-12 form-group form-group-md holdsaforeign">
                                                                                     <div class="col-xs-12">
                                                                                         <p class="weight600" id="foreignregistration">Foreign Registration Information: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></p>
@@ -6161,6 +6169,11 @@
 
                                                                             <th:block th:if="${Good_Service.foreignRegistration == true}">
                                                                                 <div class="row" >
+                                                                                    <div class="col-xs-12 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service.getFRregistrationAlertDivID()}" style="display:none;">
+                                                                                        <p th:attr="id=${Good_Service.getFRregistrationDateAlertMessageID()}"></p>
+                                                                                        <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service.getFRregistrationAlertButtonID()},div-id=${Good_Service.getFRregistrationAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                                                        <br clear="all">
+                                                                                    </div>
                                                                                     <div class="col-xs-12 form-group form-group-md holdsaforeign">
                                                                                         <div class="col-xs-12">
                                                                                             <p class="weight600" id="foreignregistration">Foreign Registration Information:</p>
@@ -6546,6 +6559,12 @@
 
                                                                             <th:block th:if="${Good_Service.foreignRegistration == false}">
                                                                                 <div class="row"  style="display: none;">
+                                                                                    <div class="col-xs-12 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service.getFRregistrationAlertDivID()}" style="display:none;">
+                                                                                        <p th:attr="id=${Good_Service.getFRregistrationDateAlertMessageID()}"></p>
+                                                                                        <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service.getFRregistrationAlertButtonID()},div-id=${Good_Service.getFRregistrationAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                                                        <br clear="all">
+                                                                                    </div>
+
                                                                                     <div class="col-xs-12 form-group form-group-md holdsaforeign">
                                                                                         <div class="col-xs-12">
                                                                                             <p class="weight600" id="foreignregistration">Foreign Registration Information:</p>
@@ -7330,6 +7349,11 @@
 
 
                                                                             <div class="row" style="display: none;">
+                                                                                <div class="col-xs-12 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service.getFRregistrationAlertDivID()}" style="display:none;">
+                                                                                    <p th:attr="id=${Good_Service.getFRregistrationDateAlertMessageID()}"></p>
+                                                                                    <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service.getFRregistrationAlertButtonID()},div-id=${Good_Service.getFRregistrationAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                                                    <br clear="all">
+                                                                                </div>
                                                                                 <div class="col-xs-12 form-group form-group-md holdsaforeign">
                                                                                     <div class="col-xs-12">
                                                                                         <p class="weight600" id="foreignregistration">Foreign Registration Information: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></p>
@@ -8493,6 +8517,11 @@
 
                                                                         <th:block th:if="${Good_Service.foreignRegistration == true}">
                                                                             <div class="row" >
+                                                                                <div class="col-xs-12 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service.getFRregistrationAlertDivID()}" style="display:none;">
+                                                                                    <p th:attr="id=${Good_Service.getFRregistrationDateAlertMessageID()}"></p>
+                                                                                    <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service.getFRregistrationAlertButtonID()},div-id=${Good_Service.getFRregistrationAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                                                    <br clear="all">
+                                                                                </div>
                                                                                 <div class="col-xs-12 form-group form-group-md holdsaforeign">
                                                                                     <div class="col-xs-12">
                                                                                         <p class="weight600" id="foreignregistration">Foreign Registration Information:</p>
@@ -8878,6 +8907,11 @@
 
                                                                         <th:block th:if="${Good_Service.foreignRegistration == false}">
                                                                             <div class="row"  style="display: none;">
+                                                                                <div class="col-xs-12 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service.getFRregistrationAlertDivID()}" style="display:none;">
+                                                                                    <p th:attr="id=${Good_Service.getFRregistrationDateAlertMessageID()}"></p>
+                                                                                    <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service.getFRregistrationAlertButtonID()},div-id=${Good_Service.getFRregistrationAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                                                    <br clear="all">
+                                                                                </div>
                                                                                 <div class="col-xs-12 form-group form-group-md holdsaforeign">
                                                                                     <div class="col-xs-12">
                                                                                         <p class="weight600" id="foreignregistration">Foreign Registration Information:</p>
@@ -9662,6 +9696,12 @@
 
 
                                                                         <div class="row" style="display: none;">
+                                                                            <div class="col-xs-12 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service.getFRregistrationAlertDivID()}" style="display:none;">
+                                                                                <p th:attr="id=${Good_Service.getFRregistrationDateAlertMessageID()}"></p>
+                                                                                <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service.getFRregistrationAlertButtonID()},div-id=${Good_Service.getFRregistrationAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                                                <br clear="all">
+                                                                            </div>
+
                                                                             <div class="col-xs-12 form-group form-group-md holdsaforeign">
                                                                                 <div class="col-xs-12">
                                                                                     <p class="weight600" id="foreignregistration">Foreign Registration Information: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></p>
@@ -10889,6 +10929,13 @@
 
                                                                 <th:block th:if="${Good_Service.foreignRegistration == true}">
                                                                     <div class="row" >
+
+                                                                        <div class="col-xs-12 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service.getFRregistrationAlertDivID()}" style="display:none;">
+                                                                            <p th:attr="id=${Good_Service.getFRregistrationDateAlertMessageID()}"></p>
+                                                                            <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service.getFRregistrationAlertButtonID()},div-id=${Good_Service.getFRregistrationAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                                            <br clear="all">
+                                                                        </div>
+
                                                                         <div class="col-xs-12 form-group form-group-md holdsaforeign">
                                                                             <div class="col-xs-12">
                                                                                 <p class="weight600" id="foreignregistration">Foreign Registration Information:</p>
@@ -11154,11 +11201,6 @@
                                                                                 <input type="date" class="form-control fr-renewal-date" id="renew-date" name="renewdate" value="" th:attr="gs-id=${Good_Service.getInternalID()}" th:value="${Good_Service.getFRrenewalDateDisplay()}">
                                                                             </div>
 
-
-
-
-
-
                                                                             <th:block th:if="${Good_Service.isFRcertUploaded() == false}">
                                                                                 <div class="col-xs-12" style="">
                                                                                     <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service.getFRCertImageFormID()}"  action="/fb/foreignReg/add"  enctype="multipart/form-data"  aria-labelledby="title">
@@ -11274,6 +11316,12 @@
 
                                                                 <th:block th:if="${Good_Service.foreignRegistration == false}">
                                                                     <div class="row"  style="display: none;">
+                                                                        <div class="col-xs-12 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service.getFRregistrationAlertDivID()}" style="display:none;">
+                                                                            <p th:attr="id=${Good_Service.getFRregistrationDateAlertMessageID()}"></p>
+                                                                            <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service.getFRregistrationAlertButtonID()},div-id=${Good_Service.getFRregistrationAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                                            <br clear="all">
+                                                                        </div>
+
                                                                         <div class="col-xs-12 form-group form-group-md holdsaforeign">
                                                                             <div class="col-xs-12">
                                                                                 <p class="weight600" id="foreignregistration">Foreign Registration Information:</p>
@@ -13146,7 +13194,7 @@
             var buttonID = $(this).attr("button-id");
             var date = $(this);
 
-            datealertPastAndFuture( divID, msgID, buttonID,date,"gs-pfa-filing-date", value, gsID,appInternalID,0);
+            datealertPastAndFuture( divID, msgID, buttonID,date,"gs-pfr-reg-date", value, gsID,appInternalID,0);
            // addFilingBasisInfoToGoodAndService("gs-pfr-reg-date", value, gsID, appInternalID);
 
         });
@@ -13972,10 +14020,6 @@
 
         var maxDateFA = year + '-' + faMonth + '-' + day;
 
-
-        //alert(maxDate);
-
-        //alert(maxDateFA);
 
         $('input.fr-reg-date').attr('max', maxDate);
     }
