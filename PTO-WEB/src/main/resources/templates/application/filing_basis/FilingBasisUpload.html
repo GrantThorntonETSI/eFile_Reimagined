@@ -12065,6 +12065,18 @@
 
 
                                                                 <div class="row" style="display: none;">
+
+                                                                    <!--need to update data model to create id scheme for foreign registration date for goods and services level -->
+
+                                                                    <div class="col-xs-12 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service.getFRregistrationAlertDivID()}" style="display:none;">
+                                                                        <p th:attr="id=${Good_Service.getFRregistrationDateAlertMessageID()}"></p>
+                                                                        <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service.getFRregistrationAlertButtonID()},div-id=${Good_Service.getFRregistrationAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                                        <br clear="all">
+                                                                    </div>
+
+
+
+
                                                                     <div class="col-xs-12 form-group form-group-md holdsaforeign">
                                                                         <div class="col-xs-12">
                                                                             <p class="weight600" id="foreignregistration">Foreign Registration Information: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></p>
@@ -12319,7 +12331,7 @@
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12">
                                                                             <label for="reg-date">Foreign registration date: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                                            <input type="date" class="form-control fr-reg-date" id="reg-date" name="regdate" value="" th:attr="gs-id=${Good_Service.getInternalID()}" th:value="${Good_Service.getFRregistrationDateDisplay()}">
+                                                                            <input type="date" class="form-control fr-reg-date" id="reg-date" name="regdate" value="" th:attr="gs-id=${Good_Service.getInternalID()}, div-id=${Good_Service.getFRregistrationAlertDivID()}, message-id=${Good_Service.getFRregistrationDateAlertMessageID()}, button-id=${Good_Service.getFRregistrationAlertButtonID()}" th:value="${Good_Service.getFRregistrationDateDisplay()}">
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12">
                                                                             <label for="reg-date">Foreign registration expiration date: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
@@ -13024,7 +13036,8 @@
             var msgID = $(this).attr("message-id");
             var buttonID = $(this).attr("button-id");
             var date = $(this);
-            datealert( divID, msgID, buttonID,date,"gs-pfa-filing-date", value, gsID,appInternalID );
+           // datealert( divID, msgID, buttonID,date,"gs-pfa-filing-date", value, gsID,appInternalID );
+            datealertPastAndFuture( divID, msgID, buttonID,date,"gs-pfa-filing-date", value, gsID,appInternalID,-182);
 
         });
 
@@ -13052,7 +13065,7 @@
 
             var value = $(this).val();
 
-            datealert( divID, msgID, buttonID,date,"cc-pfa-filing-date", value, ccID,appInternalID );
+            datealertPastAndFuture( divID, msgID, buttonID,date,"cc-pfa-filing-date", value, ccID,appInternalID,-182);
 
 
 
@@ -13128,7 +13141,13 @@
         $('input.fr-reg-date').focusout(function () {
             var gsID= $(this).attr("gs-id");
             var value = $(this).val();
-            addFilingBasisInfoToGoodAndService("gs-pfr-reg-date", value, gsID, appInternalID);
+            var divID = $(this).attr("div-id");
+            var msgID = $(this).attr("message-id");
+            var buttonID = $(this).attr("button-id");
+            var date = $(this);
+
+            datealertPastAndFuture( divID, msgID, buttonID,date,"gs-pfa-filing-date", value, gsID,appInternalID,0);
+           // addFilingBasisInfoToGoodAndService("gs-pfr-reg-date", value, gsID, appInternalID);
 
         });
 
@@ -13142,6 +13161,9 @@
             addFilingBasisInfoToClassCategory("cc-pfr-reg-date", value, ccID, appInternalID);
 
         });
+
+
+
 
 
 
@@ -13937,8 +13959,8 @@
 
         var maxDate = year + '-' + month + '-' + day;
 
-        $('input.gs-date').attr('max', maxDate);
-        $('input.mark-date').attr('max', maxDate);
+        //$('input.gs-date').attr('max', maxDate);
+        //$('input.mark-date').attr('max', maxDate);
 
         var faMonth = dtToday.getMonth()+7;
         if(faMonth > 12){
@@ -13950,7 +13972,10 @@
 
         var maxDateFA = year + '-' + faMonth + '-' + day;
 
-        //$('input.fa-filing-date').attr('max', maxDateFA);
+
+        //alert(maxDate);
+
+        //alert(maxDateFA);
 
         $('input.fr-reg-date').attr('max', maxDate);
     }
@@ -13969,8 +13994,8 @@
 
         var maxDate = year + '-' + month + '-' + day;
 
-        $('input.gs-date').attr('max', maxDate);
-        $('input.mark-date').attr('max', maxDate);
+        //$('input.gs-date').attr('max', maxDate);
+       // $('input.mark-date').attr('max', maxDate);
 
         var faMonth = dtToday.getMonth()+7;
         if(faMonth > 12){
@@ -14174,6 +14199,148 @@
             }
 
         }
+    }
+
+
+
+
+    function datealertPastAndFuture( divID, messageID, buttonID, date, command, value, id, appInteralID,offset ) {
+
+        function addDays(theDate, days) {
+            return new Date(theDate.getTime() + days*24*60*60*1000);
+        }
+
+        var options = { hour12: false, timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit', timeZoneName: 'short' };
+        var thatz = new Date().toLocaleTimeString('en-US', options);
+        var newDate = addDays(new Date(), offset).toLocaleTimeString('en-US', options);
+        var strmin = newDate;
+
+
+        //var validate = date.value;
+        var dateval = Date.parse($(date).val());
+
+        var requireddate = Date.parse(newDate);
+
+        var todaydate = Date.parse(thatz);
+
+
+        //////////////////////////////////////////
+        if(offset > 0){
+            // prevent future dates
+            if ( todaydate < dateval) {
+
+                if (requireddate >= dateval) {
+                   // date entered is within the future limit
+                    if(command.indexOf("cc-") > 0){
+                        addFilingBasisInfoToClassCategory(command, value, id, appInternalID);
+                    }
+                    else{
+                        addFilingBasisInfoToGoodAndService(command, value, id, appInternalID);
+                    }
+
+                }
+
+                else{
+                    // date entered is beyond the future limit
+
+                    $('#'+divID).show('fast');
+                    $('#'+buttonID).focus();
+                    $('#'+messageID).text("You cannot claim Section 44(d) priority, because your attempted U.S. filing is outside the 6-month window. (i.e., from when the foreign application was filed). The date must be before " + strmin);
+                    // reset input
+                    $(date).val('');
+                }
+
+            }
+            else{
+                // entered date is in the past or today
+
+                if(command == "cc-pfa-filing-date"){
+                    addFilingBasisInfoToClassCategory(command, value, id, appInternalID);
+                }
+                else{
+                    addFilingBasisInfoToGoodAndService(command, value, id, appInternalID);
+                }
+
+
+            }
+
+
+        }
+        //////////////////////////////////////////
+        if(offset == 0){
+            // no future dates
+            if ( todaydate >= dateval) {
+                //////////////////////////////////////////
+                // if entered date is in the past or today
+                //////////////////////////////////////////
+                if(command == "cc-pfa-filing-date"){
+                    addFilingBasisInfoToClassCategory(command, value, id, appInternalID);
+                }
+                else{
+                    addFilingBasisInfoToGoodAndService(command, value, id, appInternalID);
+                }
+
+            }
+            else{
+                //////////////////////////////////////////
+                // if entered date is in the fture
+                //////////////////////////////////////////
+                $('#'+divID).show('fast');
+                $('#'+buttonID).focus();
+                $('#'+messageID).text("You cannot claim Section 44(d) priority, because your attempted U.S. filing is outside the 6-month window. (i.e., from when the foreign application was filed). The date must be before " + strmin);
+                // reset input
+                $(date).val('');
+
+            }
+        }
+
+        //////////////////////////////////////////
+        if(offset <0){
+            // prevent past dates
+            if ( todaydate > dateval) {
+                //////////////////////////////////////////
+                // if entered date is in the past
+                //////////////////////////////////////////
+                if (requireddate > dateval) {
+                    //////////////////////////////////////////
+                    // date enetred is less then required date, i.e further into the past, not allowed
+                    //////////////////////////////////////////
+                    $('#'+divID).show('fast');
+                    $('#'+buttonID).focus();
+                    $('#'+messageID).text("You cannot claim Section 44(d) priority, because your attempted U.S. filing is outside the 6-month window. (i.e., from when the foreign application was filed). The date must be after " + strmin);
+                    // reset input
+                    $(date).val('');
+                }
+                else{
+                    //////////////////////////////////////////
+                    // date entered is in the past but witin limits
+                    //////////////////////////////////////////
+                    if(command == "cc-pfa-filing-date"){
+                        addFilingBasisInfoToClassCategory(command, value, id, appInternalID);
+                    }
+                    else{
+                        addFilingBasisInfoToGoodAndService(command, value, id, appInternalID);
+                    }
+                }
+            }
+            else {
+                //////////////////////////////////////////
+                // date enterd is in the future
+                //////////////////////////////////////////
+
+                if(command == "cc-pfa-filing-date"){
+                    addFilingBasisInfoToClassCategory(command, value, id, appInternalID);
+                }
+                else{
+                    addFilingBasisInfoToGoodAndService(command, value, id, appInternalID);
+                }
+
+            }
+        }
+        //////////////////////////////////////////
+
+
+
     }
 
 </script>

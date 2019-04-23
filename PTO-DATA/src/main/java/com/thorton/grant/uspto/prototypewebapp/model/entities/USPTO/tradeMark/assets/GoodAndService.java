@@ -75,6 +75,12 @@ public class GoodAndService {
     public String getFAfilingDateAlertButtonID() {return  internalID+"faAlertButton";}
     public String getFAfilingDateAlertDivID(){return  internalID+"faAlertDIV";}
 
+
+
+    public String getFRregistrationDateAlertMessageID(){ return  internalID+"frAlertMessage"; }
+    public String getFRregistrationAlertButtonID() {return  internalID+"frAlertButton";}
+    public String getFRregistrationAlertDivID(){return  internalID+"frAlertDIV";}
+
     ////////////////////////////////////////////////////////
     // foreign application fields
     ////////////////////////////////////////////////////////
