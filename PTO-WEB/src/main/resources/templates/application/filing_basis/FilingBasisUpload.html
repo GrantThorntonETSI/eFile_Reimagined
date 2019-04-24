@@ -13188,7 +13188,8 @@
             var buttonID = $(this).attr("button-id");
             var date = $(this);
            // datealert( divID, msgID, buttonID,date,"gs-pfa-filing-date", value, gsID,appInternalID );
-            datealertPastAndFuture( divID, msgID, buttonID,date,"gs-pfa-filing-date", value, gsID,appInternalID,-182);
+            var alertMsg = "You cannot claim Section 44(d) priority, because your attempted U.S. filing is outside the 6-month window. (i.e., from when the foreign application was filed). The date must be before ";
+            datealertPastAndFuture( divID, msgID, buttonID,date,"gs-pfa-filing-date", value, gsID,appInternalID,-182, alertMsg);
 
         });
 
@@ -13216,7 +13217,9 @@
 
             var value = $(this).val();
 
-            datealertPastAndFuture( divID, msgID, buttonID,date,"cc-pfa-filing-date", value, ccID,appInternalID,-182);
+            var alertMsg = "You cannot claim Section 44(d) priority, because your attempted U.S. filing is outside the 6-month window. (i.e., from when the foreign application was filed). The date must be before ";
+
+            datealertPastAndFuture( divID, msgID, buttonID,date,"cc-pfa-filing-date", value, ccID,appInternalID,-182, alertMsg);
 
 
 
@@ -13296,8 +13299,8 @@
             var msgID = $(this).attr("message-id");
             var buttonID = $(this).attr("button-id");
             var date = $(this);
-
-            datealertPastAndFuture( divID, msgID, buttonID,date,"gs-pfr-reg-date", value, gsID,appInternalID,0);
+            var alertMsg =  "You cannot claim Section 44(d) priority, because your attempted foreign registration date is in the future. The date must be before ";
+            datealertPastAndFuture( divID, msgID, buttonID,date,"gs-pfr-reg-date", value, gsID,appInternalID,0, alertMsg);
            // addFilingBasisInfoToGoodAndService("gs-pfr-reg-date", value, gsID, appInternalID);
 
         });
@@ -13315,7 +13318,9 @@
             var buttonID = $(this).attr("button-id");
             var date = $(this);
 
-            datealertPastAndFuture( divID, msgID, buttonID,date,"cc-pfr-reg-date", value, ccID,appInternalID,0);
+            var alertMsg =  "You cannot claim Section 44(d) priority, because your attempted foreign registration date is in the future. The date must be before ";
+
+            datealertPastAndFuture( divID, msgID, buttonID,date,"cc-pfr-reg-date", value, ccID,appInternalID,0,alertMsg);
             //addFilingBasisInfoToClassCategory("cc-pfr-reg-date", value, ccID, appInternalID);
 
         });
@@ -14387,7 +14392,7 @@
 
 
 
-    function datealertPastAndFuture( divID, messageID, buttonID, date, command, value, id, appInteralID,offset ) {
+    function datealertPastAndFuture( divID, messageID, buttonID, date, command, value, id, appInteralID,offset, alertMsg) {
 
         function addDays(theDate, days) {
             return new Date(theDate.getTime() + days*24*60*60*1000);
@@ -14431,7 +14436,7 @@
 
                     $('#'+divID).show('fast');
                     $('#'+buttonID).focus();
-                    $('#'+messageID).text("You cannot claim Section 44(d) priority, because your attempted U.S. filing is outside the 6-month window. (i.e., from when the foreign application was filed). The date must be before " + strmin);
+                    $('#'+messageID).text(alertMsg + strmin);
                     // reset input
                     $(date).val('');
                 }
@@ -14476,7 +14481,7 @@
                 //////////////////////////////////////////
                 $('#'+divID).show('fast');
                 $('#'+buttonID).focus();
-                $('#'+messageID).text("You cannot claim Section 44(d) priority, because your attempted U.S. filing is outside the 6-month window. (i.e., from when the foreign application was filed). The date must be before " + strmin);
+                $('#'+messageID).text(alertMsg + strmin);
                 // reset input
                 $(date).val('');
 
@@ -14496,7 +14501,7 @@
                     //////////////////////////////////////////
                     $('#'+divID).show('fast');
                     $('#'+buttonID).focus();
-                    $('#'+messageID).text("You cannot claim Section 44(d) priority, because your attempted U.S. filing is outside the 6-month window. (i.e., from when the foreign application was filed). The date must be after " + strmin);
+                    $('#'+messageID).text(alertMsg + strmin);
                     // reset input
                     $(date).val('');
                 }
