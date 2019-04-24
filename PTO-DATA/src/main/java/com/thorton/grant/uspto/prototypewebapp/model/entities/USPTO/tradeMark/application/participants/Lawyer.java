@@ -46,6 +46,9 @@ public class Lawyer extends Contact {
 
 
 
+    private boolean usCertifyCheck;
+
+
 
 
     private String barJurisdiction;
@@ -312,6 +315,14 @@ public class Lawyer extends Contact {
 
     public void setBarCertifcatePDF(boolean barCertifcatePDF) {
         this.barCertifcatePDF = barCertifcatePDF;
+    }
+
+    public boolean isUsCertifyCheck() {
+        return usCertifyCheck;
+    }
+
+    public void setUsCertifyCheck(boolean usCertifyCheck) {
+        this.usCertifyCheck = usCertifyCheck;
     }
 
     @Override

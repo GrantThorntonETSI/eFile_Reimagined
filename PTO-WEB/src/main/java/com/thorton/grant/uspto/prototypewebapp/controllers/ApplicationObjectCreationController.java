@@ -329,6 +329,16 @@ public class ApplicationObjectCreationController {
                 lawyer.setAffliationUS(false);
             }
         }
+
+        if(newAttorneyContactFormDTO.getUsCertifyCheckbox().equals("check") ){
+
+            lawyer.setUsCertifyCheck(true);
+        }
+        else{
+            lawyer.setUsCertifyCheck(false);
+
+        }
+
         if(newAttorneyContactFormDTO.getAttorneyBarJurisdiction()!= null){
             lawyer.setBarJurisdiction(newAttorneyContactFormDTO.getAttorneyBarJurisdiction());
         }

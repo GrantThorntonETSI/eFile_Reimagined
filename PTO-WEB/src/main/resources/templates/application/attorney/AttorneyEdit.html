@@ -650,8 +650,18 @@
                                         </div>
                                     </div>
                                     <h4 class="weight600">Acknowledgement of Certification in Good Standing</h4>
-                                    <input class="form-check-input checkmark" type="checkbox" value="" aria-checked="false" tabindex="0" aria-labelledby="userAccept-label" id="user-accept-checkbox" name="user-accept-checkbox">
+                                    <th:block th:if="${attorney.isUsCertifyCheck()== true}">
+                                        <input class="form-check-input checkmark" type="checkbox" value="" aria-checked="false" tabindex="0" aria-labelledby="userAccept-label" id="user-accept-checkbox" name="user-accept-checkbox" checked>
+                                    </th:block>
+                                    <th:block th:if="${attorney.isUsCertifyCheck()== false}">
+                                        <input class="form-check-input checkmark" type="checkbox" value="" aria-checked="false" tabindex="0" aria-labelledby="userAccept-label" id="user-accept-checkbox" name="user-accept-checkbox">
+                                    </th:block>
+
+
+
                                     <label class="form-check-label form-check long" for="user-accept-checkbox" id="userAccept-label"><span class="radio notspecial">I certify that this attorney is in good standing with a bar of the highest court of any U.S. State, the District of Columbia, the U.S. Commonwealths or U.S. Territories.</span></label>
+
+
                                     <div class="row">
                                         <th:block th:if="${attorney.isBarCertificateImageUploaded() == true}">
                                             <div class="col-xs-12" style="display: none;">

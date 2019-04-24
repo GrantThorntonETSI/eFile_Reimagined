@@ -63,6 +63,10 @@ public class NewAttorneyContactFormDTO {
     private String appInternalID;
 
 
+
+    private String usCertifyCheckbox;
+
+
     public String getTitle() {
         return title;
     }
@@ -328,5 +332,13 @@ public class NewAttorneyContactFormDTO {
 
     public void setAttorneyPhoneExtension3(String attorneyPhoneExtension3) {
         this.attorneyPhoneExtension3 = attorneyPhoneExtension3;
+    }
+
+    public String getUsCertifyCheckbox() {
+        return usCertifyCheckbox;
+    }
+
+    public void setUsCertifyCheckbox(String usCertifyCheckbox) {
+        this.usCertifyCheckbox = usCertifyCheckbox;
     }
 }
