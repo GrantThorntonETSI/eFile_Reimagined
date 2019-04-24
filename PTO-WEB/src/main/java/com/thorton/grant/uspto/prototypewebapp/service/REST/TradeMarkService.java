@@ -118,16 +118,8 @@ public class TradeMarkService extends BaseRESTapiService {
 
         if(markField.equals("mark-description")){
             // ptoUser.setState(param); // sets state code
-            baseTrademarkApplication.getTradeMark().setMarkDescription("This mark consists of "+markValue);
-            appFieldReadable = "Mark Description";
-
-        }
-
-
-        if(markField.equals("mark-BW-description")){
-            // ptoUser.setState(param); // sets state code
-            baseTrademarkApplication.getTradeMark().setMarkBWDescription("This mark consists of "+markValue);
-            appFieldReadable = "Mark BW Description";
+            baseTrademarkApplication.getTradeMark().setMarkDescription("The mark consists of "+markValue);
+            appFieldReadable = "Mark description";
 
         }
 
@@ -140,7 +132,7 @@ public class TradeMarkService extends BaseRESTapiService {
 
         if(markField.equals("mark-color-description")){
             // ptoUser.setState(param); // sets state code
-            baseTrademarkApplication.getTradeMark().setMarkColorDescription("This mark consists of "+markValue);
+            baseTrademarkApplication.getTradeMark().setMarkColorDescription(markValue);
             appFieldReadable = "Mark Colors Description";
 
         }

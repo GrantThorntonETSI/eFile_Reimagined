@@ -276,18 +276,7 @@ public class TradeMark extends BaseEntity {
 
     public String getMarkDescription() {
 
-        if(isMarkColorClaim()){
-            return markColorDescription;
-        }
-        else {
-            if(trademarkDesignType.equals("Standard Character")){
-                System.out.println("999999999999999999999999999999999999999999999999999999999999999999999999999999");
-                return trademarkStandardCharacterText;
-            }
-            else {
-                return markBWDescription;
-            }
-        }
+       return markDescription;
 
     }
 
