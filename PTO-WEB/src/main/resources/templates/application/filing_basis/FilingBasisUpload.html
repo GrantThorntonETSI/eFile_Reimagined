@@ -2603,7 +2603,7 @@
                                                     </div>
                                                     <div class="form-group form-group-md col-xs-12">
                                                         <label for="reg-date">Foreign registration date: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                        <input type="date" class="form-control fr-reg-date-cc" id="reg-dateCC" name="regdate" value="" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}"  th:value="${Good_Service_class.getFrREgistrationDateCCDispaly()}">
+                                                        <input type="date" class="form-control fr-reg-date-cc" id="reg-dateCC" name="regdate" value="" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}, div-id=${Good_Service_class.getFRregistrationDateAlertDivID()}, message-id=${Good_Service_class.getFRregistrationDateAlertMessageID()}, button-id=${Good_Service_class.getFRregistrationDateAlertButtonID()}"  th:value="${Good_Service_class.getFrREgistrationDateCCDispaly()}">
                                                     </div>
                                                     <div class="form-group form-group-md col-xs-12">
                                                         <label for="reg-date">Foreign registration expiration date: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>

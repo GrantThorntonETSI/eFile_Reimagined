@@ -895,6 +895,11 @@
 
                                         <th:block th:if="${Good_Service_class.isForeignRegistrationCC() == true}">
                                             <div class="row" >
+                                                <div class="col-xs-12 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service_class.getFRregistrationDateAlertDivID()}" style="display:none;">
+                                                    <p th:attr="id=${Good_Service_class.getFRregistrationDateAlertMessageID()}"></p>
+                                                    <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service_class.getFRregistrationDateAlertButtonID()},div-id=${Good_Service_class.getFRregistrationDateAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                    <br clear="all">
+                                                </div>
                                                 <div class="col-xs-12 form-group form-group-md holdsaforeign">
                                                     <div class="col-xs-12">
                                                         <p class="weight600" id="foreignregistration">Foreign Registration Information:</p>
@@ -1149,7 +1154,7 @@
                                                     </div>
                                                     <div class="form-group form-group-md col-xs-12">
                                                         <label for="reg-date">Foreign registration date: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                        <input type="date" class="form-control fr-reg-date-cc" id="reg-dateCC" name="regdate" value="" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}"  th:value="${Good_Service_class.getFrREgistrationDateCCDispaly()}">
+                                                        <input type="date" class="form-control fr-reg-date-cc" id="reg-dateCC" name="regdate" value="" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}, div-id=${Good_Service_class.getFRregistrationDateAlertDivID()}, message-id=${Good_Service_class.getFRregistrationDateAlertMessageID()}, button-id=${Good_Service_class.getFRregistrationDateAlertButtonID()}"  th:value="${Good_Service_class.getFrREgistrationDateCCDispaly()}">
                                                     </div>
                                                     <div class="form-group form-group-md col-xs-12">
                                                         <label for="reg-date">Foreign registration expiration date: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
@@ -1280,6 +1285,11 @@
 
                                         <th:block th:if="${Good_Service_class.isForeignRegistrationCC() == false}">
                                             <div class="row"  style="display: none;">
+                                                <div class="col-xs-12 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service_class.getFRregistrationDateAlertDivID()}" style="display:none;">
+                                                    <p th:attr="id=${Good_Service_class.getFRregistrationDateAlertMessageID()}"></p>
+                                                    <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service_class.getFRregistrationDateAlertButtonID()},div-id=${Good_Service_class.getFRregistrationDateAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                    <br clear="all">
+                                                </div>
                                                 <div class="col-xs-12 form-group form-group-md holdsaforeign">
                                                     <div class="col-xs-12">
                                                         <p class="weight600" id="foreignregistration">Foreign Registration Information:</p>
@@ -1535,7 +1545,7 @@
 
                                                     <div class="form-group form-group-md col-xs-12">
                                                         <label for="reg-date">Foreign registration date: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                        <input type="date" class="form-control fr-reg-date-cc" id="reg-dateCC" name="regdate" value="" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}" >
+                                                        <input type="date" class="form-control fr-reg-date-cc" id="reg-dateCC" name="regdate" value="" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}, div-id=${Good_Service_class.getFRregistrationDateAlertDivID()}, message-id=${Good_Service_class.getFRregistrationDateAlertMessageID()}, button-id=${Good_Service_class.getFRregistrationDateAlertButtonID()}" >
                                                     </div>
                                                     <div class="form-group form-group-md col-xs-12">
                                                         <label for="reg-date">Foreign registration expiration date: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
@@ -2292,6 +2302,11 @@
 
                                         <th:block th:if="${Good_Service_class.isForeignRegistrationCC() == true}">
                                             <div class="row" >
+                                                <div class="col-xs-12 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service_class.getFRregistrationDateAlertDivID()}" style="display:none;">
+                                                    <p th:attr="id=${Good_Service_class.getFRregistrationDateAlertMessageID()}"></p>
+                                                    <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service_class.getFRregistrationDateAlertButtonID()},div-id=${Good_Service_class.getFRregistrationDateAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                    <br clear="all">
+                                                </div>
                                                 <div class="col-xs-12 form-group form-group-md holdsaforeign">
                                                     <div class="col-xs-12">
                                                         <p class="weight600" id="foreignregistration">Foreign Registration Information:</p>
@@ -2546,7 +2561,7 @@
                                                     </div>
                                                     <div class="form-group form-group-md col-xs-12">
                                                         <label for="reg-date">Foreign registration date: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                        <input type="date" class="form-control fr-reg-date-cc" id="reg-dateCC" name="regdate" value="" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}"  th:value="${Good_Service_class.getFrREgistrationDateCCDispaly()}">
+                                                        <input type="date" class="form-control fr-reg-date-cc" id="reg-dateCC" name="regdate" value="" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}, div-id=${Good_Service_class.getFRregistrationDateAlertDivID()}, message-id=${Good_Service_class.getFRregistrationDateAlertMessageID()}, button-id=${Good_Service_class.getFRregistrationDateAlertButtonID()}"  th:value="${Good_Service_class.getFrREgistrationDateCCDispaly()}">
                                                     </div>
                                                     <div class="form-group form-group-md col-xs-12">
                                                         <label for="reg-date">Foreign registration expiration date: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
@@ -2677,6 +2692,11 @@
 
                                         <th:block th:if="${Good_Service_class.isForeignRegistrationCC() == false}">
                                             <div class="row"  style="display: none;">
+                                                <div class="col-xs-12 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service_class.getFRregistrationDateAlertDivID()}" style="display:none;">
+                                                    <p th:attr="id=${Good_Service_class.getFRregistrationDateAlertMessageID()}"></p>
+                                                    <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service_class.getFRregistrationDateAlertButtonID()},div-id=${Good_Service_class.getFRregistrationDateAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                    <br clear="all">
+                                                </div>
                                                 <div class="col-xs-12 form-group form-group-md holdsaforeign">
                                                     <div class="col-xs-12">
                                                         <p class="weight600" id="foreignregistration">Foreign Registration Information:</p>
@@ -2932,7 +2952,7 @@
 
                                                     <div class="form-group form-group-md col-xs-12">
                                                         <label for="reg-date">Foreign registration date: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                        <input type="date" class="form-control fr-reg-date-cc" id="reg-dateCC" name="regdate" value="" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}" >
+                                                        <input type="date" class="form-control fr-reg-date-cc" id="reg-dateCC" name="regdate" value="" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}, div-id=${Good_Service_class.getFRregistrationDateAlertDivID()}, message-id=${Good_Service_class.getFRregistrationDateAlertMessageID()}, button-id=${Good_Service_class.getFRregistrationDateAlertButtonID()}" >
                                                     </div>
                                                     <div class="form-group form-group-md col-xs-12">
                                                         <label for="reg-date">Foreign registration expiration date: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
@@ -10959,12 +10979,17 @@
 
         $('input.fr-reg-date-cc').focusout(function () {
             var ccID= $(this).attr("cc-id");
+
             var value = $(this).val();
-            addFilingBasisInfoToClassCategory("cc-pfr-reg-date", value, ccID, appInternalID);
+            var divID = $(this).attr("div-id");
+            var msgID = $(this).attr("message-id");
+            var buttonID = $(this).attr("button-id");
+            var date = $(this);
+
+            datealertPastAndFuture( divID, msgID, buttonID,date,"cc-pfr-reg-date", value, ccID,appInternalID,0);
+            //addFilingBasisInfoToClassCategory("cc-pfr-reg-date", value, ccID, appInternalID);
 
         });
-
-
 
 
 
@@ -12052,7 +12077,10 @@
 
                 if (requireddate >= dateval) {
                     // date entered is within the future limit
-                    if(command.indexOf("cc-") > 0){
+                    if(command.indexOf("cc") >= 0){
+
+
+
                         addFilingBasisInfoToClassCategory(command, value, id, appInternalID);
                     }
                     else{
@@ -12075,7 +12103,7 @@
             else{
                 // entered date is in the past or today
 
-                if(command == "cc-pfa-filing-date"){
+                if(command.indexOf("cc") >= 0){
                     addFilingBasisInfoToClassCategory(command, value, id, appInternalID);
                 }
                 else{
@@ -12094,7 +12122,10 @@
                 //////////////////////////////////////////
                 // if entered date is in the past or today
                 //////////////////////////////////////////
-                if(command == "cc-pfa-filing-date"){
+
+                if(command.indexOf("cc") >=0){
+
+
                     addFilingBasisInfoToClassCategory(command, value, id, appInternalID);
                 }
                 else{
@@ -12136,7 +12167,7 @@
                     //////////////////////////////////////////
                     // date entered is in the past but witin limits
                     //////////////////////////////////////////
-                    if(command == "cc-pfa-filing-date"){
+                    if(command.indexOf("cc") >= 0){
                         addFilingBasisInfoToClassCategory(command, value, id, appInternalID);
                     }
                     else{
@@ -12149,7 +12180,7 @@
                 // date enterd is in the future
                 //////////////////////////////////////////
 
-                if(command == "cc-pfa-filing-date"){
+                if(command.indexOf("cc") >= 0){
                     addFilingBasisInfoToClassCategory(command, value, id, appInternalID);
                 }
                 else{
@@ -12163,6 +12194,7 @@
 
 
     }
+
 
 </script>
 
