@@ -84,6 +84,13 @@ public class GSClassCategory {
     public String getFAfilingDateAlertButtonID() {return  classCategoryNumber+"faAlertButton";}
     public String getFAfilingDateAlertDivID(){return  classCategoryNumber+"faAlertDIV";}
 
+
+
+
+    public String getFRregistrationDateAlertMessageID(){ return  classCategoryNumber+"frCCregistrationDAteAlertMessage"; }
+    public String getFRregistrationDateAlertButtonID() {return  classCategoryNumber+"frCCregistrationDateAlertButton";}
+    public String getFRregistrationDateAlertDivID(){return  classCategoryNumber+"frCCregistratoinDateAlertDIV";}
+
     ////////////////////////////////////////////////////////
     // get id functions for goods and services
     ////////////////////////////////////////////////////////
