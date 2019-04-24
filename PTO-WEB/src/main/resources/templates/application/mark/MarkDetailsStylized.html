@@ -115,6 +115,12 @@
                             <p class="required weight600" aria-level="3">Mark Literal</p>
                             <label for="mark-literal"> <p> Enter the word(s), letter(s) and/or number(s) you wish to register, e.g., <span class="uppercase">the cat&#8217;s meow</span>. Entries in this field must be found in the <a href="https://www.uspto.gov/trademark/standard-character-set">USPTO standard character set</a>. <a href="#" data-toggle="tooltip" title="Any entry in this field that is not found in the mark image will not be considered part of the mark." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> </p></label>
                             <textarea id="mark-literal" rows="3" class="form-control" th:text="${baseTrademarkApplication.tradeMark.markLiteral}"></textarea>
+
+                            <h3 class="weight600">Mark Description <span class="label label-info subtle visuallyremoved">Reduced Fee</span></h3>
+                            <b>Enter the description of the mark <a href="#" data-toggle="tooltip" title="If the mark is a color mark, the description must include the nature and location of the color; i.e., you must specifically state where each color is located within the mark." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span></b><br>
+                            <label>The mark consists of </label>
+                            <textarea id="mark-description" rows="3" class="form-control"  th:text="${baseTrademarkApplication.tradeMark.getMarkDescription()}"></textarea>
+
                             <div class="row">
                                 <div class="col-xs-12">
                                     <section aria-label="color claim">
@@ -150,10 +156,7 @@
 
                                                     <label>Identify the colors in your mark. <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
                                                     <textarea id="mark-color-description" rows="3" class="form-control" th:text="${baseTrademarkApplication.tradeMark.markColors}"></textarea>
-                                                    <h3 class="weight600">Mark Description</h3>
-                                                    <b>Enter the description of the mark including the location of the colors. <a href="#" data-toggle="tooltip" title="If the mark is a color mark, the description must include the nature and location of the color; i.e., you must specifically state where each color is located within the mark." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span></b><br>
-                                                    <label>This mark consists of </label>
-                                                    <textarea id="mark-color-claim" rows="3" class="form-control" placeholder="" th:text="${baseTrademarkApplication.tradeMark.markColorDescription}"></textarea>
+
                                                 </div>
 
 
@@ -168,10 +171,6 @@
 
                                                     </div>
 
-                                                    <h3 class="weight600">Mark Description <span class="label label-info subtle visuallyremoved">Reduced Fee</span></h3>
-                                                    Provide a description of the mark. <br>
-                                                    <label>This mark consists of </label>
-                                                    <textarea id="mark-BW-description" rows="3" class="form-control" placeholder="" th:text="${baseTrademarkApplication.tradeMark.markBWDescription}"></textarea>
                                                 </div>
 
 
@@ -194,10 +193,7 @@
 
                                                         <label>Identify the colors in your mark. <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
                                                         <textarea id="mark-color-description" rows="3" class="form-control" th:text="${baseTrademarkApplication.tradeMark.markColors}"></textarea>
-                                                        <h3 class="weight600">Mark Description</h3>
-                                                        <b><span class="weight600">&#42;</span> Enter the description of the mark including the location of the colors. <a href="#" data-toggle="tooltip" title="If the mark is a color mark, the description must include the nature and location of the color; i.e., you must specifically state where each color is located within the mark." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></b><br>
-                                                        <label>This mark consists of </label>
-                                                        <textarea id="mark-color-claim" rows="3" class="form-control" placeholder="" th:text="${baseTrademarkApplication.tradeMark.markColorDescription}"></textarea>
+
                                                     </div>
 
 
@@ -212,10 +208,6 @@
 
                                                         </div>
 
-                                                        <h3 class="weight600">Mark Description</h3>
-                                                        <span class="weight600">&#42;</span> Provide a description of the mark.<br>
-                                                        <label>This mark consists of </label>
-                                                        <textarea id="mark-BW-description" rows="3" class="form-control" placeholder="" th:text="${baseTrademarkApplication.tradeMark.markBWDescription}"></textarea>
                                                     </div>
                                                 </th:block>
                                                 <th:block th:if="${baseTrademarkApplication.tradeMark.isMarkColorClaim() == false}">
@@ -234,10 +226,7 @@
 
                                                         <label>Identify the colors in your mark. <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
                                                         <textarea id="mark-color-description" rows="3" class="form-control" th:text="${baseTrademarkApplication.tradeMark.markColors}"></textarea>
-                                                        <h3 class="weight600">Mark Description</h3>
-                                                        <b><span class="weight600">&#42;</span> Enter the description of the mark including the location of the colors. <a href="#" data-toggle="tooltip" title="If the mark is a color mark, the description must include the nature and location of the color; i.e., you must specifically state where each color is located within the mark." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></b><br>
-                                                        <label>This mark consists of </label>
-                                                        <textarea id="mark-color-claim" rows="3" class="form-control" placeholder="" th:text="${baseTrademarkApplication.tradeMark.markColorDescription}"></textarea>
+
                                                     </div>
 
 
@@ -252,10 +241,6 @@
 
                                                         </div>
 
-                                                        <h3 class="weight600">Mark Description</h3>
-                                                        <span class="weight600">&#42;</span> Provide a description of the mark.<br>
-                                                        <label>This mark consists of </label>
-                                                        <textarea id="mark-BW-description" rows="3" class="form-control" placeholder="" th:text="${baseTrademarkApplication.tradeMark.markBWDescription}"></textarea>
                                                     </div>
                                                 </th:block>
 
@@ -1527,10 +1512,10 @@
         //////////////////////////////////////////////////////////////////////
         // field auto save  mark color descriptions
         //////////////////////////////////////////////////////////////////////
-        $('#mark-color-claim').focusout(function () {
-            var colorDescriptions = $(this).val();
+        $('#mark-description').focusout(function () {
+            var description = $(this).val();
 
-            saveMarkTextdetails("mark-color-description", colorDescriptions, appInternalID);
+            saveMarkTextdetails("mark-description", description, appInternalID);
         });
 
         //////////////////////////////////////////////////////////////////////
