@@ -109,13 +109,20 @@
                     <div class="card-text" >
                         <h2 class="card-title weight600">Mark Information</h2>
                     </div>
-                    <h3 class="weight600">Mark Description <span class="label label-info subtle visuallyremoved">Reduced Fee</span></h3>
-                    <b>Enter the description of the mark <a href="#" data-toggle="tooltip" title="If the mark is a color mark, the description must include the nature and location of the color; i.e., you must specifically state where each color is located within the mark." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span></b><br>
-                    <label>The mark consists of </label>
-                    <textarea id="mark-description" rows="3" class="form-control"  th:text="${baseTrademarkApplication.tradeMark.getMarkDescription()}"></textarea>
+
+
+                    <div class="row">
+                        <div class="col-xs-12" style="margin-left: 15px;">
+                            <h3 class="weight600">Mark Description <span class="label label-info subtle visuallyremoved">Reduced Fee</span></h3>
+                            <b>Enter the description of the mark <a href="#" data-toggle="tooltip" title="If the mark is a color mark, the description must include the nature and location of the color; i.e., you must specifically state where each color is located within the mark." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span></b><br>
+                            <label>The mark consists of </label>
+                            <textarea id="mark-description" rows="3" class="form-control"  th:text="${baseTrademarkApplication.tradeMark.getMarkDescription()}"></textarea>
+
+                        </div>
+                    </div>
 
                     <fieldset>
-                        <div class="form-group form-group-md col-xs-12">
+
 
                             <div class="row">
                                 <div class="col-xs-12">
@@ -1025,7 +1032,7 @@
                                     </section>
                                 </div>
                             </div><!--END nameportraitsignature-->
-                        </div><!--END formgroup-->
+
                     </fieldset>
 
                 </div><!--END col-->
