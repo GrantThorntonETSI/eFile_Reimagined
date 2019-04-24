@@ -3456,7 +3456,7 @@ public class ApplicationFlowController {
                 if(baseTrademarkApplication.getTradeMark().isMarkColorClaimBW()){
 
                     if(baseTrademarkApplication.getTradeMark().isAcceptBWmarkSet() == false){
-                        missedTEAsFields.add("Accept B&W mark");
+                        missedTEAsFields.add("Mark color claim - accept B&W mark");
                     }
                 }
                 else {
