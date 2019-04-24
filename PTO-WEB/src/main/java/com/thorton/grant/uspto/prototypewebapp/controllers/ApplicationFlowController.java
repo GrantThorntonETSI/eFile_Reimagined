@@ -3452,12 +3452,7 @@ public class ApplicationFlowController {
 
         if(baseTrademarkApplication.getTradeMark().getTrademarkDesignType().equals("Standard Character") == false){
 
-            if(baseTrademarkApplication.getTradeMark().isMarkColorClaim() == false){
 
-
-                missedTEAsFields.add("Mark color claim");
-            }
-            else {
                 if(baseTrademarkApplication.getTradeMark().isMarkColorClaimBW()){
 
                     if(baseTrademarkApplication.getTradeMark().isAcceptBWmarkSet() == false){
@@ -3465,14 +3460,18 @@ public class ApplicationFlowController {
                     }
                 }
                 else {
-                    if(baseTrademarkApplication.getTradeMark().getMarkColors() == null){
-                        missedTEAsFields.add("Mark color claim - mark color");
+                    if(baseTrademarkApplication.getTradeMark().isMarkColorClaim()){
+                        if(baseTrademarkApplication.getTradeMark().getMarkColors() == null){
+                            missedTEAsFields.add("Mark color claim - mark color");
+                        }
                     }
                 }
+
+
                 if(baseTrademarkApplication.getTradeMark().getMarkDescription() == null){
-                    missedTEAsFields.add("Mark color/B&W description");
+                    missedTEAsFields.add("Mark description");
                 }
-            }
+
 
         }
 

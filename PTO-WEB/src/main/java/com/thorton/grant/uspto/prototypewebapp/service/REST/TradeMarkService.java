@@ -98,6 +98,7 @@ public class TradeMarkService extends BaseRESTapiService {
             if(markValue.equals("no")){
 
                 baseTrademarkApplication.getTradeMark().setMarkColorClaim(false);
+                baseTrademarkApplication.getTradeMark().setMarkColorClaimBW(true);
                 baseTrademarkApplication.getTradeMark().setColorClaimSet(true);
 
             }
