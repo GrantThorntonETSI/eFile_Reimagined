@@ -31,6 +31,17 @@ public class GSClassCategory {
 
 
 
+
+    // first gs date class level
+    private Date firstGSDateCC;
+
+    // first mark date  level
+
+    private Date firstMarkDateCC;
+
+
+
+
     // foreign radio checkboxes
 
     private boolean pendingFACC;
@@ -507,6 +518,24 @@ public class GSClassCategory {
     }
 
 
+    public String getFirstGSDateCCDisplay() {
+        if(firstGSDateCC != null) {
+            return firstGSDateCC.toString().substring(0, 10);
+        }
+        else {
+            return "";
+        }
+    }
+
+    public String getFirstCommerceDateCCDisplay() {
+        if(firstMarkDateCC!= null) {
+            return firstMarkDateCC.toString().substring(0, 10);
+        }
+        else {
+            return "";
+        }
+    }
+
 
     public boolean onlyOneGS(){
         boolean retValue = false;
@@ -518,5 +547,21 @@ public class GSClassCategory {
 
         return retValue;
 
+    }
+
+    public Date getFirstGSDateCC() {
+        return firstGSDateCC;
+    }
+
+    public void setFirstGSDateCC(Date firstGSDateCC) {
+        this.firstGSDateCC = firstGSDateCC;
+    }
+
+    public Date getFirstMarkDateCC() {
+        return firstMarkDateCC;
+    }
+
+    public void setFirstMarkDateCC(Date firstMarkDateCC) {
+        this.firstMarkDateCC = firstMarkDateCC;
     }
 }

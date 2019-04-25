@@ -807,6 +807,10 @@ public class BaseTrademarkApplication  {
                     gsClassCategory.setFrCertCCuploaded(current.isFrCertUploadedCC());
 
 
+                    gsClassCategory.setFirstGSDateCC(current.getFirstGSDateCC());
+                    gsClassCategory.setFirstMarkDateCC(current.getFirstMarkDateCC());
+
+
 
 
 

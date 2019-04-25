@@ -172,6 +172,12 @@ public class GoodAndService {
     public boolean frCertUploadedCC;
 
 
+    public Date firstGSDateCC;
+    public Date firstMarkDateCC;
+
+
+
+
 
 
 
@@ -762,6 +768,22 @@ public class GoodAndService {
 
     public void setFrCertUploadedCC(boolean frCertUploadedCC) {
         this.frCertUploadedCC = frCertUploadedCC;
+    }
+
+    public Date getFirstGSDateCC() {
+        return firstGSDateCC;
+    }
+
+    public void setFirstGSDateCC(Date firstGSDateCC) {
+        this.firstGSDateCC = firstGSDateCC;
+    }
+
+    public Date getFirstMarkDateCC() {
+        return firstMarkDateCC;
+    }
+
+    public void setFirstMarkDateCC(Date firstMarkDateCC) {
+        this.firstMarkDateCC = firstMarkDateCC;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////

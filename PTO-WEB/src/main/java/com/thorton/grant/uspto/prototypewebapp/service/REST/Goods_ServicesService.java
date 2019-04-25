@@ -1250,6 +1250,89 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
+        if(ccField.equals("cc-gs-date")) {
+
+            //baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
+
+
+            for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                GoodAndService current = iter.next();
+
+
+                System.out.println("class number : "+ccNumber);
+
+                if (current.getClassNumber().equals(ccNumber)) {
+                    //current.setFaFilingDate(ccValue);
+System.out.println("999999999999999999999999");
+                    try {
+                        DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+                        Date date = format.parse(ccValue);
+                        //current.setFaFilingDate(date);
+                        current.setFirstGSDate(date);
+                        current.setFirstGSDateSet(true);
+                        // need to create the new class level fields
+                        // and update the copy construstuctor process to copy over the new fields
+
+                        //current.setFaFilingDateCC(date);
+                        current.setFirstGSDateCC(date);
+
+                    }
+                    catch(Exception ex){
+                        return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
+
+                    }
+
+
+
+
+                }
+            }
+
+
+            appFieldReadable = "Filing basis first goods and services date Class level Option";
+        }
+
+        if(ccField.equals("cc-mark-date")) {
+
+            //baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
+
+
+            for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                GoodAndService current = iter.next();
+
+                if (current.getClassNumber().equals(ccNumber)) {
+                    //current.setFaFilingDate(ccValue);
+
+                    try {
+                        DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+                        Date date = format.parse(ccValue);
+                        //current.setFaFilingDate(date);
+                        current.setFirstCommerceDate(date);
+                        current.setFirstCommerceDateSet(true);
+                        // need to create the new class level fields
+                        // and update the copy construstuctor process to copy over the new fields
+
+                        //current.setFaFilingDateCC(date);
+                        current.setFirstMarkDateCC(date);
+
+                    }
+                    catch(Exception ex){
+                        return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
+
+                    }
+
+
+
+
+                }
+            }
+
+
+            appFieldReadable = "Filing basis first use mark in commerce date Class level Option";
+        }
+
+
+
 
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);

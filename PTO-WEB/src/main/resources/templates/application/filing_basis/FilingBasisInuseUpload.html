@@ -170,14 +170,15 @@
 
                                     <div class="col-xs-12 col-md-6 form-group form-group-md">
                                         <label  >When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                        <input type="date" class="form-control gs-date-cc" value="" th:attr="id=${Good_Service_class.getFirstGSDateID()},mark-date-id=${Good_Service_class.getFirstMarkDateID()},cc-id=${Good_Service_class.getClassCategoryNumber()}, div-id=${Good_Service_class.getFirstDAtesAlertDivID()}, message-id=${Good_Service_class.getFirstDatesAlertMessageID()}, button-id=${Good_Service_class.getFirstDatesAlertButtonID()}">
+                                        <input type="date" class="form-control gs-date-cc"  th:value="${Good_Service_class.getFirstGSDateCCDisplay()}" th:attr="id=${Good_Service_class.getFirstGSDateID()},mark-date-id=${Good_Service_class.getFirstMarkDateID()},cc-id=${Good_Service_class.getClassCategoryNumber()}, div-id=${Good_Service_class.getFirstDAtesAlertDivID()}, message-id=${Good_Service_class.getFirstDatesAlertMessageID()}, button-id=${Good_Service_class.getFirstDatesAlertButtonID()}">
                                     </div>
 
 
                                     <div class="col-xs-12 col-md-6 form-group form-group-md matchlabelheightdiv">
                                         <label  class="matchlabelheight" >When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip"  title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                        <input type="date" class="form-control mark-date-cc"    name="commercedate"  value="" th:attr="id=${Good_Service_class.getFirstMarkDateID()},gs-date-id=${Good_Service_class.getFirstGSDateID()},gs-id=${Good_Service_class.getClassCategoryNumber()}, div-id=${Good_Service_class.getFirstDAtesAlertDivID()}, message-id=${Good_Service_class.getFirstDatesAlertMessageID()}, button-id=${Good_Service_class.getFirstDatesAlertButtonID()}" >
+                                        <input type="date" class="form-control mark-date-cc"    name="commercedate"  th:value="${Good_Service_class.getFirstCommerceDateCCDisplay()}" th:attr="id=${Good_Service_class.getFirstMarkDateID()},gs-date-id=${Good_Service_class.getFirstGSDateID()},cc-id=${Good_Service_class.getClassCategoryNumber()}, div-id=${Good_Service_class.getFirstDAtesAlertDivID()}, message-id=${Good_Service_class.getFirstDatesAlertMessageID()}, button-id=${Good_Service_class.getFirstDatesAlertButtonID()}" >
                                     </div>
+
 
 
                                     <div class="row" style="margin-left: 15px;">
@@ -1654,7 +1655,7 @@
 
                                     <div class="col-xs-12 col-md-6 form-group form-group-md matchlabelheightdiv">
                                         <label  class="matchlabelheight" >When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip"  title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                        <input type="date" class="form-control mark-date-cc"    name="commercedate"  value="" th:attr="id=${Good_Service_class.getFirstMarkDateID()},gs-date-id=${Good_Service_class.getFirstGSDateID()},gs-id=${Good_Service_class.getClassCategoryNumber()}, div-id=${Good_Service_class.getFirstDAtesAlertDivID()}, message-id=${Good_Service_class.getFirstDatesAlertMessageID()}, button-id=${Good_Service_class.getFirstDatesAlertButtonID()}" >
+                                        <input type="date" class="form-control mark-date-cc"    name="commercedate"  value="" th:attr="id=${Good_Service_class.getFirstMarkDateID()},gs-date-id=${Good_Service_class.getFirstGSDateID()},cc-id=${Good_Service_class.getClassCategoryNumber()}, div-id=${Good_Service_class.getFirstDAtesAlertDivID()}, message-id=${Good_Service_class.getFirstDatesAlertMessageID()}, button-id=${Good_Service_class.getFirstDatesAlertButtonID()}" >
                                     </div>
 
 
@@ -3121,14 +3122,15 @@
 
                                                                 <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                     <label  >When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                                    <input type="date" class="form-control gs-date" value="" th:attr="id=${Good_Service.getFirstGSDateID()},mark-date-id=${Good_Service.getFirstMarkDateID()},gs-id=${Good_Service.getInternalID()}, div-id=${Good_Service.getFirstDAtesAlertDivID()}, message-id=${Good_Service.getFirstDatesAlertMessageID()}, button-id=${Good_Service.getFirstDatesAlertButtonID()}">
+                                                                    <input type="date" class="form-control gs-date" th:value="${Good_Service.getFirstGSDateDisplay()}"  th:attr="id=${Good_Service.getFirstGSDateID()},mark-date-id=${Good_Service.getFirstMarkDateID()},gs-id=${Good_Service.getInternalID()}, div-id=${Good_Service.getFirstDAtesAlertDivID()}, message-id=${Good_Service.getFirstDatesAlertMessageID()}, button-id=${Good_Service.getFirstDatesAlertButtonID()}">
                                                                 </div>
 
 
                                                                 <div class="col-xs-12 col-md-6 form-group form-group-md matchlabelheightdiv">
                                                                     <label  class="matchlabelheight" >When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip" th:attr="name=${Good_Service.getInternalID()}" title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                                    <input type="date" class="form-control mark-date"    name="commercedate"  value="" th:attr="id=${Good_Service.getFirstMarkDateID()},gs-date-id=${Good_Service.getFirstGSDateID()},gs-id=${Good_Service.getInternalID()}, div-id=${Good_Service.getFirstDAtesAlertDivID()}, message-id=${Good_Service.getFirstDatesAlertMessageID()}, button-id=${Good_Service.getFirstDatesAlertButtonID()}" >
+                                                                    <input type="date" class="form-control mark-date"    name="commercedate"  th:value="${Good_Service.getFirstCommerceDateDisplay()}" th:attr="id=${Good_Service.getFirstMarkDateID()},gs-date-id=${Good_Service.getFirstGSDateID()},gs-id=${Good_Service.getInternalID()}, div-id=${Good_Service.getFirstDAtesAlertDivID()}, message-id=${Good_Service.getFirstDatesAlertMessageID()}, button-id=${Good_Service.getFirstDatesAlertButtonID()}" >
                                                                 </div>
+
 
 
 
@@ -4644,14 +4646,15 @@
 
                                                                 <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                     <label  >When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                                    <input type="date" class="form-control gs-date" value="" th:attr="id=${Good_Service.getFirstGSDateID()},mark-date-id=${Good_Service.getFirstMarkDateID()},gs-id=${Good_Service.getInternalID()}, div-id=${Good_Service.getFirstDAtesAlertDivID()}, message-id=${Good_Service.getFirstDatesAlertMessageID()}, button-id=${Good_Service.getFirstDatesAlertButtonID()}">
+                                                                    <input type="date" class="form-control gs-date" th:value="${Good_Service.getFirstGSDateDisplay()}"  th:attr="id=${Good_Service.getFirstGSDateID()},mark-date-id=${Good_Service.getFirstMarkDateID()},gs-id=${Good_Service.getInternalID()}, div-id=${Good_Service.getFirstDAtesAlertDivID()}, message-id=${Good_Service.getFirstDatesAlertMessageID()}, button-id=${Good_Service.getFirstDatesAlertButtonID()}">
                                                                 </div>
 
 
                                                                 <div class="col-xs-12 col-md-6 form-group form-group-md matchlabelheightdiv">
                                                                     <label  class="matchlabelheight" >When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip" th:attr="name=${Good_Service.getInternalID()}" title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                                    <input type="date" class="form-control mark-date"    name="commercedate"  value="" th:attr="id=${Good_Service.getFirstMarkDateID()},gs-date-id=${Good_Service.getFirstGSDateID()},gs-id=${Good_Service.getInternalID()}, div-id=${Good_Service.getFirstDAtesAlertDivID()}, message-id=${Good_Service.getFirstDatesAlertMessageID()}, button-id=${Good_Service.getFirstDatesAlertButtonID()}" >
+                                                                    <input type="date" class="form-control mark-date"    name="commercedate"  th:value="${Good_Service.getFirstCommerceDateDisplay()}" th:attr="id=${Good_Service.getFirstMarkDateID()},gs-date-id=${Good_Service.getFirstGSDateID()},gs-id=${Good_Service.getInternalID()}, div-id=${Good_Service.getFirstDAtesAlertDivID()}, message-id=${Good_Service.getFirstDatesAlertMessageID()}, button-id=${Good_Service.getFirstDatesAlertButtonID()}" >
                                                                 </div>
+
 
                                                                 <div class="col-xs-12 form-group form-group-md">
 
@@ -5489,6 +5492,7 @@
                                                                     <label  class="matchlabelheight" >When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip" th:attr="name=${Good_Service.getInternalID()}" title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
                                                                     <input type="date" class="form-control mark-date"    name="commercedate"  th:value="${Good_Service.getFirstCommerceDateDisplay()}" th:attr="id=${Good_Service.getFirstMarkDateID()},gs-date-id=${Good_Service.getFirstGSDateID()},gs-id=${Good_Service.getInternalID()}, div-id=${Good_Service.getFirstDAtesAlertDivID()}, message-id=${Good_Service.getFirstDatesAlertMessageID()}, button-id=${Good_Service.getFirstDatesAlertButtonID()}" >
                                                                 </div>
+
 
 
                                                                 <div class="col-xs-12 form-group form-group-md">
@@ -7069,14 +7073,15 @@
 
                                                                 <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                     <label  >When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                                    <input type="date" class="form-control gs-date" value="" th:attr="id=${Good_Service.getFirstGSDateID()},mark-date-id=${Good_Service.getFirstMarkDateID()},gs-id=${Good_Service.getInternalID()}, div-id=${Good_Service.getFirstDAtesAlertDivID()}, message-id=${Good_Service.getFirstDatesAlertMessageID()}, button-id=${Good_Service.getFirstDatesAlertButtonID()}">
+                                                                    <input type="date" class="form-control gs-date" th:value="${Good_Service.getFirstGSDateDisplay()}"  th:attr="id=${Good_Service.getFirstGSDateID()},mark-date-id=${Good_Service.getFirstMarkDateID()},gs-id=${Good_Service.getInternalID()}, div-id=${Good_Service.getFirstDAtesAlertDivID()}, message-id=${Good_Service.getFirstDatesAlertMessageID()}, button-id=${Good_Service.getFirstDatesAlertButtonID()}">
                                                                 </div>
 
 
                                                                 <div class="col-xs-12 col-md-6 form-group form-group-md matchlabelheightdiv">
                                                                     <label  class="matchlabelheight" >When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip" th:attr="name=${Good_Service.getInternalID()}" title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                                    <input type="date" class="form-control mark-date"    name="commercedate"  value="" th:attr="id=${Good_Service.getFirstMarkDateID()},gs-date-id=${Good_Service.getFirstGSDateID()},gs-id=${Good_Service.getInternalID()}, div-id=${Good_Service.getFirstDAtesAlertDivID()}, message-id=${Good_Service.getFirstDatesAlertMessageID()}, button-id=${Good_Service.getFirstDatesAlertButtonID()}" >
+                                                                    <input type="date" class="form-control mark-date"    name="commercedate"  th:value="${Good_Service.getFirstCommerceDateDisplay()}" th:attr="id=${Good_Service.getFirstMarkDateID()},gs-date-id=${Good_Service.getFirstGSDateID()},gs-id=${Good_Service.getInternalID()}, div-id=${Good_Service.getFirstDAtesAlertDivID()}, message-id=${Good_Service.getFirstDatesAlertMessageID()}, button-id=${Good_Service.getFirstDatesAlertButtonID()}" >
                                                                 </div>
+
 
 
                                                                 <div class="col-xs-12 form-group form-group-md">
@@ -9507,14 +9512,15 @@
 
                                                                 <div class="col-xs-12 col-md-6 form-group form-group-md">
                                                                     <label  >When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                                    <input type="date" class="form-control gs-date" value="" th:attr="id=${Good_Service.getFirstGSDateID()},mark-date-id=${Good_Service.getFirstMarkDateID()},gs-id=${Good_Service.getInternalID()}, div-id=${Good_Service.getFirstDAtesAlertDivID()}, message-id=${Good_Service.getFirstDatesAlertMessageID()}, button-id=${Good_Service.getFirstDatesAlertButtonID()}">
+                                                                    <input type="date" class="form-control gs-date" th:value="${Good_Service.getFirstGSDateDisplay()}"  th:attr="id=${Good_Service.getFirstGSDateID()},mark-date-id=${Good_Service.getFirstMarkDateID()},gs-id=${Good_Service.getInternalID()}, div-id=${Good_Service.getFirstDAtesAlertDivID()}, message-id=${Good_Service.getFirstDatesAlertMessageID()}, button-id=${Good_Service.getFirstDatesAlertButtonID()}">
                                                                 </div>
 
 
                                                                 <div class="col-xs-12 col-md-6 form-group form-group-md matchlabelheightdiv">
                                                                     <label  class="matchlabelheight" >When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip" th:attr="name=${Good_Service.getInternalID()}" title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                                    <input type="date" class="form-control mark-date"    name="commercedate"  value="" th:attr="id=${Good_Service.getFirstMarkDateID()},gs-date-id=${Good_Service.getFirstGSDateID()},gs-id=${Good_Service.getInternalID()}, div-id=${Good_Service.getFirstDAtesAlertDivID()}, message-id=${Good_Service.getFirstDatesAlertMessageID()}, button-id=${Good_Service.getFirstDatesAlertButtonID()}" >
+                                                                    <input type="date" class="form-control mark-date"    name="commercedate"  th:value="${Good_Service.getFirstCommerceDateDisplay()}" th:attr="id=${Good_Service.getFirstMarkDateID()},gs-date-id=${Good_Service.getFirstGSDateID()},gs-id=${Good_Service.getInternalID()}, div-id=${Good_Service.getFirstDAtesAlertDivID()}, message-id=${Good_Service.getFirstDatesAlertMessageID()}, button-id=${Good_Service.getFirstDatesAlertButtonID()}" >
                                                                 </div>
+
 
 
                                                                 <div class="col-xs-12 form-group form-group-md">
@@ -11326,7 +11332,7 @@
         // first doos and services date
         $('input.gs-date-cc').change(function () {
 
-            var ccID= $(this).attr("gs-id");
+            var ccID= $(this).attr("cc-id");
             var divID = $(this).attr("div-id");
             var msgID = $(this).attr("message-id");
             var buttonID = $(this).attr("button-id");
@@ -11355,7 +11361,7 @@
         });
 
         $('input.mark-date-cc').change(function () {
-            var ccID= $(this).attr("gs-id");
+            var ccID= $(this).attr("cc-id");
             var divID = $(this).attr("div-id");
             var msgID = $(this).attr("message-id");
             var buttonID = $(this).attr("button-id");
@@ -12051,7 +12057,13 @@
         if(targetValue == null || targetValue == ""){
             // call auto save
 
-            addFilingBasisInfoToGoodAndService(command,value,cc_gs_id,appInternalID);
+            if(command.indexOf("cc") >= 0){
+
+                addFilingBasisInfoToClassCategory(command, value, cc_gs_id, appInternalID);
+            }
+            else{
+                addFilingBasisInfoToGoodAndService(command, value, cc_gs_id, appInternalID);
+            }
         }
         else{
 
@@ -12088,7 +12100,13 @@
             }
             else{
                 // call auto save
-                addFilingBasisInfoToGoodAndService(command,value,cc_gs_id,appInternalID);
+                if(command.indexOf("cc") >= 0){
+
+                    addFilingBasisInfoToClassCategory(command, value, cc_gs_id, appInternalID);
+                }
+                else{
+                    addFilingBasisInfoToGoodAndService(command, value, cc_gs_id, appInternalID);
+                }
             }
 
         }
