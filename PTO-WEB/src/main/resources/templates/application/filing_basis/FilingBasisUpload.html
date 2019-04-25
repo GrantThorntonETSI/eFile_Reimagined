@@ -211,6 +211,24 @@
 
                                 <div class="row" style="">
 
+                                    <div class="col-xs-10 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${ Good_Service_class.getFirstDAtesAlertDivID()}" style="display:none; margin-left:7%;margin-right:3%;">
+                                        <p th:attr="id=${Good_Service_class.getFirstDatesAlertMessageID()}"></p>
+                                        <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service_class.getFirstDatesAlertButtonID()},div-id=${Good_Service_class.getFirstDAtesAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                        <br clear="all">
+                                    </div>
+
+                                    <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                        <label  >When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
+                                        <input type="date" class="form-control gs-date" value="" th:attr="id=${Good_Service_class.getFirstGSDateID()},mark-date-id=${Good_Service_class.getFirstMarkDateID()},cc-id=${Good_Service_class.getClassCategoryNumber()}, div-id=${Good_Service_class.getFirstDAtesAlertDivID()}, message-id=${Good_Service_class.getFirstDatesAlertMessageID()}, button-id=${Good_Service_class.getFirstDatesAlertButtonID()}">
+                                    </div>
+
+
+                                    <div class="col-xs-12 col-md-6 form-group form-group-md matchlabelheightdiv">
+                                        <label  class="matchlabelheight" >When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip"  title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
+                                        <input type="date" class="form-control mark-date"    name="commercedate"  value="" th:attr="id=${Good_Service_class.getFirstMarkDateID()},gs-date-id=${Good_Service_class.getFirstGSDateID()},gs-id=${Good_Service_class.getClassCategoryNumber()}, div-id=${Good_Service_class.getFirstDAtesAlertDivID()}, message-id=${Good_Service_class.getFirstDatesAlertMessageID()}, button-id=${Good_Service_class.getFirstDatesAlertButtonID()}" >
+                                    </div>
+
+
                                     <div class="row" style="margin-left: 15px;">
                                         <div class="col-xs-12">
                                             <div class="lead">
@@ -1672,6 +1690,27 @@
                             <th:block   th:if="${Good_Service_class.isProvideSpecimenForAll() == false}">
 
                                 <div class="row" style="display: none;">
+
+
+                                    <div class="col-xs-10 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${ Good_Service_class.getFirstDAtesAlertDivID()}" style="display:none; margin-left:7%;margin-right:3%;">
+                                        <p th:attr="id=${Good_Service_class.getFirstDatesAlertMessageID()}"></p>
+                                        <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service_class.getFirstDatesAlertButtonID()},div-id=${Good_Service_class.getFirstDAtesAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                        <br clear="all">
+                                    </div>
+
+                                    <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                        <label  >When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
+                                        <input type="date" class="form-control gs-date" value="" th:attr="id=${Good_Service_class.getFirstGSDateID()},mark-date-id=${Good_Service_class.getFirstMarkDateID()},cc-id=${Good_Service_class.getClassCategoryNumber()}, div-id=${Good_Service_class.getFirstDAtesAlertDivID()}, message-id=${Good_Service_class.getFirstDatesAlertMessageID()}, button-id=${Good_Service_class.getFirstDatesAlertButtonID()}">
+                                    </div>
+
+
+                                    <div class="col-xs-12 col-md-6 form-group form-group-md matchlabelheightdiv">
+                                        <label  class="matchlabelheight" >When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip"  title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
+                                        <input type="date" class="form-control mark-date"    name="commercedate"  value="" th:attr="id=${Good_Service_class.getFirstMarkDateID()},gs-date-id=${Good_Service_class.getFirstGSDateID()},gs-id=${Good_Service_class.getClassCategoryNumber()}, div-id=${Good_Service_class.getFirstDAtesAlertDivID()}, message-id=${Good_Service_class.getFirstDatesAlertMessageID()}, button-id=${Good_Service_class.getFirstDatesAlertButtonID()}" >
+                                    </div>
+
+
+
                                     <div class="row" style="margin-left: 15px;">
                                         <div class="col-xs-12">
                                             <div class="lead">

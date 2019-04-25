@@ -91,6 +91,19 @@ public class GSClassCategory {
     public String getFRregistrationDateAlertButtonID() {return  classCategoryNumber+"frCCregistrationDateAlertButton";}
     public String getFRregistrationDateAlertDivID(){return  classCategoryNumber+"frCCregistratoinDateAlertDIV";}
 
+
+
+
+
+
+    public String getFirstDatesAlertMessageID(){ return  classCategoryNumber+"firstDatesAlertMessage"; }
+    public String getFirstDatesAlertButtonID() {return  classCategoryNumber+"firstDatesAlertButton";}
+    public String getFirstDAtesAlertDivID(){return  classCategoryNumber+"firstDatesAlertDIV";}
+
+    public String getFirstGSDateID () { return  classCategoryNumber+"firstGSDateID"; }
+
+    public String getFirstMarkDateID(){ return  classCategoryNumber+"firstMarkDateID"; }
+
     ////////////////////////////////////////////////////////
     // get id functions for goods and services
     ////////////////////////////////////////////////////////
