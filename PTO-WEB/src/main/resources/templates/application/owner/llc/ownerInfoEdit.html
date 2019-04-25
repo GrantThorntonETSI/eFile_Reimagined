@@ -739,6 +739,7 @@
         $('#additional-name-type').change(function () {
             var value = $(this).val();
             saveOwnerInfo(ownerEmail, "additional-name-type",value, appInternalID);
+            $('#nametype').show(500);
         });
         // ajax auto save
         if(markType == "Standard Character"){
