@@ -269,5 +269,34 @@ public class PathController {
 
 
 
+    // petitions sample controller
+
+    @RequestMapping({"/petitions/revAbandoned"})
+    public String reviveAbandonedFiling( Model model){
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        PTOUserService  ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        //////////////////////////////////////////////////////
+        // this is set back to null upon verification check
+        //////////////////////////////////////////////////////
+
+        //////////////////////////////////////////////////////
+        //continuation = true;
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+
+
+
+        return "petition/abandoned/index";
+    }
+
+
+
 
 }
