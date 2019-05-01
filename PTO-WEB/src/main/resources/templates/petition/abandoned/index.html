@@ -135,12 +135,16 @@
                                                                 <div class="col-xs-6 col-lg-12">
                                                                     <p><span th:text="${baseTrademarkApplication.getPrimaryLawyer().getLawFirmName()}"></span></p>
                                                                 </div>
-                                                                <div class="col-xs-6 col-lg-12">
-                                                                    <h4>Docket/reference number</h4>
-                                                                </div>
-                                                                <div class="col-xs-6 col-lg-12">
-                                                                    <p>259802.20006</p>
-                                                                </div>
+
+                                                                <th:block  th:each="docket : ${baseTrademarkApplication.getPrimaryLawyer().getDocketNumberList()}">
+                                                                    <div class="col-xs-6 col-lg-12">
+                                                                        <h4>Docket/reference number</h4>
+                                                                    </div>
+                                                                    <div class="col-xs-6 col-lg-12">
+                                                                        <p><span th:text="${docket}">259802.20006</span></p>
+                                                                    </div>
+                                                                </th:block>
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -160,7 +164,7 @@
                                             <label for="inlineRadio073" class="radio-inline radiocontainer"><input type="radio" name="actionradio" id="inlineRadio073" value="noreceived" tabindex="0"><span class="checkmark"></span>No</label>
                                         </div>
                                     </fieldset>
-                                    <div id="reviveappformradios">
+                                    <div id="reviveappformradios" style="display: none;">
                                         <fieldset aria-label="file a response" id="responsefile">
                                             <p id="filenow">Do you want to file a response to the office action now to avoid delays and expedite the processing of your application?</p>
                                             <div role="radiogroup" class="form-group form-group-md" aria-describedby="filenow">
@@ -184,7 +188,7 @@
                                                             <option value="send" disabled>Send to second party for signature</option>
                                                         </select>
                                                     </div>
-                                                    <div class="col-xs-12 form-group form-group-md direct">
+                                                    <div class="col-xs-12 form-group form-group-md direct" style="display: none;">
                                                         <div class="row hidethis">
                                                             <section aria-label="sign">
                                                                 <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
@@ -220,7 +224,11 @@
                                                     <h2 class="card-title weight600">Respond to Office Action</h2>
                                                 </div>
                                                 <p id="respondeditor">Use the text field below to respond to all issues raised in the Office Action.</p>
-                                                <div id="editor" aria-describedby="respondeditor" tabindex="0"></div>
+                                                <input type="text" class="form-control" id="response" required>
+
+
+
+
                                                 <br clear="all">
                                             </fieldset><!--//2-->
                                             <!--3-->
