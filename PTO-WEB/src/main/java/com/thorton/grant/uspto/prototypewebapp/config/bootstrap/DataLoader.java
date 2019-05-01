@@ -10,6 +10,7 @@ import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.applic
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.TradeMark;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.ManagedContact;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
@@ -182,10 +183,23 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         //owner.setState(PTOUser1.getState());
 
         trademarkApplication.addOwner(testOwner);
+        trademarkApplication.setPrimaryOwner(testOwner);
 
         // set up mark for default application
+        // 1. attach mark image
+        // 2. set mark literals
+
+        TradeMark tradeMark = new TradeMark();
+        tradeMark.setTrademarkDesignType("");
+        trademarkApplication.setTradeMark(tradeMark);
+
+        trademarkApplication.getTradeMark().setTrademarkImagePath("/files/"+"");
+        trademarkApplication.getTradeMark().setBaseStoragePath("C:\\images\\attorney");
+
+
 
         // set up filing basis for default application
+        // 1. add one filing basis
 
         // set up additional info for default application
 
