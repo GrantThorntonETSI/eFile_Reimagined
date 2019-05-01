@@ -121,4 +121,14 @@ public class OfficeActions extends BaseEntity {
     public void setParentMarkOwnerName(String parentMarkOwnerName) {
         this.parentMarkOwnerName = parentMarkOwnerName;
     }
+
+    public String getInternalID(){
+        return String.valueOf(this.getId());
+    }
+
+
+    public String getPetitionsLink(){
+        return "/petitions/revAbandoned/"+getInternalID()+"/?trademarkID="+getTrademarkApplication().getApplicationInternalID();
+    }
+
 }

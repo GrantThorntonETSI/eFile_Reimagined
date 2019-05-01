@@ -46,19 +46,19 @@
                                                                     <h4>Serial number</h4>
                                                                 </div>
                                                                 <div class="col-xs-6 col-lg-12">
-                                                                    <p>87697840</p>
+                                                                    <p><span th:text="${baseTrademarkApplication.getTrademarkName()}">87697840</span></p>
                                                                 </div>
                                                                 <div class="col-xs-6 col-lg-12">
                                                                     <h4>Mark literal</h4>
                                                                 </div>
                                                                 <div class="col-xs-6 col-lg-12">
-                                                                    <p>PK Prep</p>
+                                                                    <p><span  th:text="${baseTrademarkApplication.getTradeMark().getMarkLiteral()}">PK Prep</span></p>
                                                                 </div>
                                                                 <div class="col-xs-6 col-lg-12">
                                                                     <h4>Mark image</h4>
                                                                 </div>
                                                                 <div class="col-xs-6 col-lg-12">
-                                                                    <img th:src="@{/resources/images/standardcharacter_alt2.gif}" class="img-thumbnail" alt="your mark image">                                                         			</div>
+                                                                    <img th:src="${baseTrademarkApplication.getTradeMark().getMarkImageDisplayPath()}" class="img-thumbnail" alt="your mark image">                                                         			</div>
                                                                 <div class="col-xs-6 col-lg-12">
                                                                     <h4>Goods/Services</h4>
                                                                 </div>
@@ -89,26 +89,25 @@
                                                                     <h4>Owner of record</h4>
                                                                 </div>
                                                                 <div class="col-xs-6 col-lg-12">
-                                                                    <p>Pittsburgh Penguins <span class="uppercase">lp</span></p>
+                                                                    <p><span th:text="${baseTrademarkApplication.getPrimaryOwner().getOwnerDisplayname()}"></span></p>
                                                                 </div>
                                                                 <div class="col-xs-6 col-lg-12">
                                                                     <h4>Email address</h4>
                                                                 </div>
                                                                 <div class="col-xs-6 col-lg-12">
-                                                                    <p class="email">pittsburgh&#64;penguins.com</p>
+                                                                    <p class="email"><span th:text="${baseTrademarkApplication.getPrimaryOwner().getEmail()}">pittsburgh&#64;penguins.com</span></p>
                                                                 </div>
                                                                 <div class="col-xs-6 col-lg-12">
                                                                     <h4>Entity type</h4>
                                                                 </div>
                                                                 <div class="col-xs-6 col-lg-12">
-                                                                    <p>Limited Partnership</p>
+                                                                    <p><span th:text="${baseTrademarkApplication.getPrimaryOwner().getOwnersubType()}">Limited Partnership</span></p>
                                                                 </div>
                                                                 <div class="col-xs-6 col-lg-12">
                                                                     <h4>Owner address</h4>
                                                                 </div>
                                                                 <div class="col-xs-6 col-lg-12">
-                                                                    <p>1001 Fifth Avenue<br>
-                                                                        Pittsburgh, PA 15219</p>
+                                                                    <p><span th:text="${baseTrademarkApplication.getPrimaryOwner().getAddress1()}+''+${baseTrademarkApplication.getPrimaryOwner().getCity()}+', '+${baseTrademarkApplication.getPrimaryOwner().getState()}+' '+${baseTrademarkApplication.getPrimaryOwner().getZipcode()}" ></span></p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -128,13 +127,13 @@
                                                                     <h4>Attorney of record</h4>
                                                                 </div>
                                                                 <div class="col-xs-6 col-lg-12">
-                                                                    <p>Clark W. Lackert</p>
+                                                                    <p><span th:text="${baseTrademarkApplication.getPrimaryLawyer().getFirstName()}+' '+${baseTrademarkApplication.getPrimaryLawyer().getLastName()}">Clark W. Lackert</span></p>
                                                                 </div>
                                                                 <div class="col-xs-6 col-lg-12">
                                                                     <h4>Attorney firm</h4>
                                                                 </div>
                                                                 <div class="col-xs-6 col-lg-12">
-                                                                    <p>Reed Smith <span class="uppercase">llp</span></p>
+                                                                    <p><span th:text="${baseTrademarkApplication.getPrimaryLawyer().getLawFirmName()}"></span></p>
                                                                 </div>
                                                                 <div class="col-xs-6 col-lg-12">
                                                                     <h4>Docket/reference number</h4>

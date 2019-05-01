@@ -554,6 +554,20 @@ public class BaseTrademarkApplication  {
         return officeAction;
     }
 
+
+
+    public OfficeActions findOfficeActionById(String id){
+        OfficeActions action = null;
+        for(Iterator<OfficeActions> iter = officeActions.iterator(); iter.hasNext(); ) {
+            OfficeActions current = iter.next();
+
+            if(current.getInternalID().equals(id)){
+                action = current;
+            }
+        }
+        return action;
+    }
+
     public boolean isAttorneyFiling() {
         return isAttorneyFiling;
     }

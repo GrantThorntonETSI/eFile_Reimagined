@@ -13,6 +13,7 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.Se
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.form.NewAttorneyContactFormDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.form.NewOwnerContactFormDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.form.partnerDTO;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.OfficeActions;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
@@ -3805,6 +3806,47 @@ public class ApplicationFlowController {
         return "application/confirm/ConfirmPayment";
 
     }
+
+
+
+    @RequestMapping({"/petitions/revAbandoned/{actionID}"})
+    public String reviveAbandonedFiling( Model model, @PathVariable String actionID ,@RequestParam("trademarkID") String trademarkInternalID){
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        PTOUserService  ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+
+        OfficeActions action = baseTrademarkApplication.findOfficeActionById(actionID);
+
+
+
+        //////////////////////////////////////////////////////
+        // this is set back to null upon verification check
+        //////////////////////////////////////////////////////
+
+        //////////////////////////////////////////////////////
+        //continuation = true;
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+
+        model.addAttribute("action",action);
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
+
+
+
+        return "petition/abandoned/index";
+    }
+
 
 
 }

@@ -105,7 +105,9 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         //trademarkApplication.setLastViewModel("application/MarkDetailsStart");
         //trademarkApplication.setLastViewModel("application/additional/additionalInfo");
         //trademarkApplication.setLastViewModel("application/mark/MarkDetailsDesignWText");
-        trademarkApplication.setLastViewModel("application/goods_services/GoodsServicesStart");
+        //trademarkApplication.setLastViewModel("application/goods_services/GoodsServicesStart");
+
+        trademarkApplication.setLastViewModel("application/success/index");
         //trademarkApplication.setLastViewModel("application/attorney/AttorneyStart");
         trademarkApplication.setAttorneySet(true);
         trademarkApplication.setAttorneyFiling(true);
@@ -137,6 +139,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         newLawyer.setState("VA");
         newLawyer.setZipcode("22222");
         newLawyer.setPrimaryPhonenumber("333-333-3333");
+        newLawyer.addDocketNumber("12345.6679-QFG");
 
 
         PTOUser1.addLawyer(newLawyer);
@@ -165,8 +168,14 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         testOwner.setFirstName(PTOUser1.getFirstName());
         testOwner.setLastName(PTOUser1.getLastName());
         testOwner.setCitizenShip(PTOUser1.getCountry());
+        testOwner.setCity(PTOUser1.getCity());
+        testOwner.setState(PTOUser1.getState());
+        testOwner.setZipcode(PTOUser1.getZipcode());
+
         testOwner.setOwnerEnityType("US");
         testOwner.setOwnersubType("Individual");
+        testOwner.setEmail(PTOUser1.getEmail());
+
         // GoverningEntity testPartner = new GoverningEntity();
        // testPartner.setPartnerLastName("ike");
          //testPartner.setPartnerFirstName("mike");
@@ -203,6 +212,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
 
         trademarkApplication.getTradeMark().setTrademarkBWImagePath("/files/"+"standardcharacter_alt2.gif");
         trademarkApplication.getTradeMark().setBaseStoragePath("C:\\images\\attorney");
+        //trademarkApplication.getTradeMark().setBaseStoragePath("/home/zhangl/images/");
         trademarkApplication.getTradeMark().setStandardCharacterMark(false);
         trademarkApplication.getTradeMark().setColorClaimSet(true);
         trademarkApplication.getTradeMark().setMarkColorClaim(true);
