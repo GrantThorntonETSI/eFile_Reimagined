@@ -5,8 +5,10 @@ import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserRoleService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.participants.LawyerService;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.participants.OwnerService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.ManagedContact;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
@@ -100,9 +102,12 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         trademarkApplication.setLastViewModel("application/goods_services/GoodsServicesStart");
         //trademarkApplication.setLastViewModel("application/attorney/AttorneyStart");
         trademarkApplication.setAttorneySet(true);
-        trademarkApplication.setAttorneyFiling(true);
+        trademarkApplication.setAttorneyFiling(false);
 
         trademarkApplication.setValidateTEASFields(true);
+
+
+
 
 
         // tradeMark application needs an internal id that tieto the ptoUser ...
@@ -146,22 +151,22 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         ///////////////////////////////////////////////////////////////////////////////////////////////
 
         //trademarkApplication.setOwnerEmail(PTOUser1.getEmail());
-        //Owner testOwner = new Owner();
-        //testOwner.setClient(PTOUser1);
-        //testOwner.setAddress1(PTOUser1.getAddress());
-       // testOwner.setAddress(PTOUser1.getAddress());
-        //testOwner.setFirstName(PTOUser1.getFirstName());
-        //testOwner.setLastName(PTOUser1.getLastName());
-        //testOwner.setCitizenShip(PTOUser1.getCountry());
-        //testOwner.setOwnerEnityType("US");
-        //testOwner.setOwnersubType("Individual");
+        Owner testOwner = new Owner();
+        testOwner.setClient(PTOUser1);
+        testOwner.setAddress1(PTOUser1.getAddress());
+        testOwner.setAddress(PTOUser1.getAddress());
+        testOwner.setFirstName(PTOUser1.getFirstName());
+        testOwner.setLastName(PTOUser1.getLastName());
+        testOwner.setCitizenShip(PTOUser1.getCountry());
+        testOwner.setOwnerEnityType("US");
+        testOwner.setOwnersubType("Individual");
         // GoverningEntity testPartner = new GoverningEntity();
        // testPartner.setPartnerLastName("ike");
          //testPartner.setPartnerFirstName("mike");
         //testPartner.setPartnerCitizenship(PTOUser1.getCountry());
         //testOwner.addPartner(testPartner);
 
-       // OwnerService ownerService = serviceBeanFactory.getOwnerService();
+       //OwnerService ownerService = serviceBeanFactory.getOwnerService();
 
         //ownerService.save(testOwner);
 
@@ -176,10 +181,31 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         // owner.setCity(PTOUser1.getCity());
         //owner.setState(PTOUser1.getState());
 
-        //trademarkApplication.setOwner(owner);
-        /////////////////////////////////////////////////////////////////////////////////
-        // add a method to PTOUser to just add one application
-        /////////////////////////////////////////////////////////////////////////////////
+        trademarkApplication.addOwner(testOwner);
+
+        // set up mark for default application
+
+        // set up filing basis for default application
+
+        // set up additional info for default application
+
+        // set up signature and confirm for default appliation
+
+        // set up final status for default application
+
+        // set up office action for default application
+
+
+        // then on dash board ..for each application ...display each office action that it has
+
+
+
+
+
+
+
+
+
 
 
         PTOUser1.addApplication(trademarkApplication);
@@ -192,6 +218,12 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         trademarkApplication.setApplicationInternalID(trademarkApplication.getTrademarkName()+trademarkApplication.getId());
 
         tradeMarkApplicationService.save(trademarkApplication);
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
 
 
         // create another user

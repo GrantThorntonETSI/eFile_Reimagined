@@ -107,6 +107,10 @@ public class BaseTrademarkApplication  {
 
 
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @Nullable
+    private Set<OfficeActions> officeActions; // default owner   PTO user
+
 
     /////////////////////////////////////////////////////////////////////
     // stage 2
@@ -531,6 +535,23 @@ public class BaseTrademarkApplication  {
         }
         return ownerSet;
      }
+
+
+    @Nullable
+    public Set<OfficeActions> getOfficeActions() {
+        return officeActions;
+    }
+
+    public void setOfficeActions(@Nullable Set<OfficeActions> officeActions) {
+        this.officeActions = officeActions;
+    }
+
+
+    public OfficeActions addOfficeAction( OfficeActions officeAction){
+        this.officeActions.add(officeAction);
+
+        return officeAction;
+    }
 
     public boolean isAttorneyFiling() {
         return isAttorneyFiling;

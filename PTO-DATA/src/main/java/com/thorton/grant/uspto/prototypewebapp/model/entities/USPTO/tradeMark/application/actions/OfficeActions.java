@@ -1,9 +1,11 @@
 package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions;
 
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.petition.Petition;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.base.BaseEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import java.util.Objects;
 
@@ -16,10 +18,15 @@ public class OfficeActions extends BaseEntity {
 
     private String oficeActionCode;
 
-    @OneToOne
+    @ManyToOne
     private BaseTrademarkApplication trademarkApplication;
 
 
+
+
+
+    @OneToOne
+    private Petition  petition;
 
 
     public String getOfficeAction() {
@@ -46,6 +53,14 @@ public class OfficeActions extends BaseEntity {
         this.trademarkApplication = trademarkApplication;
     }
 
+    public Petition getPetition() {
+        return petition;
+    }
+
+    public void setPetition(Petition petition) {
+        this.petition = petition;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -54,21 +69,12 @@ public class OfficeActions extends BaseEntity {
         OfficeActions that = (OfficeActions) o;
         return Objects.equals(officeAction, that.officeAction) &&
                 Objects.equals(oficeActionCode, that.oficeActionCode) &&
-                Objects.equals(trademarkApplication, that.trademarkApplication);
+                Objects.equals(trademarkApplication, that.trademarkApplication) &&
+                Objects.equals(petition, that.petition);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(officeAction, oficeActionCode, trademarkApplication);
-    }
-
-
-    @Override
-    public String toString() {
-        return "OfficeActions{" +
-                "officeAction='" + officeAction + '\'' +
-                ", oficeActionCode='" + oficeActionCode + '\'' +
-                ", trademarkApplication=" + trademarkApplication +
-                '}';
+        return Objects.hash(officeAction, oficeActionCode, trademarkApplication, petition);
     }
 }
