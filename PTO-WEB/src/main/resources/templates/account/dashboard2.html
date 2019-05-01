@@ -205,7 +205,7 @@
                                                                         <td><img th:src="${action.getParentMarkImagePath()}" style="max-width: 55px; max-height: 33px;"></td>
                                                                         <td th:text="${action.getParentMarkOwnerName()}">Pittsburgh Penguins LP</td>
                                                                         <td th:text="${action.returnSomeDate()}">2/20/2019</td>
-                                                                        <td > <a >Abandoned</a></td>
+                                                                        <td > <a th:text="${action.getOfficeActionCode()}">Abandoned</a></td>
                                                                         <td STYLE="color: red"><a href="/petitions/revAbandoned">File a Petition to Revive</a></td>
                                                                     </tr>
 

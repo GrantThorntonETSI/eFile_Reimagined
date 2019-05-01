@@ -260,7 +260,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         OfficeActions officeActions = new OfficeActions();
         officeActions.setParentMarkImagePath(trademarkApplication.getTradeMark().getTrademarkImagePath());
         officeActions.setParentMarkOwnerName(trademarkApplication.getPrimaryOwner().getOwnerDisplayname());
-        officeActions.setParentSerialNumber(trademarkApplication.getTrademarkName());
+        officeActions.setParentSerialNumber("3000000");
         Petition petition = new Petition();
         petition.setRecievedOfficeAction(false);
         petition.setRecievedOfficeActionSet(false);
@@ -268,6 +268,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
 
         officeActions.setPetition(petition);
         petition.setOfficeAction(officeActions);
+
 
 
         officeActions.setOfficeActionCode("Abandoned");
