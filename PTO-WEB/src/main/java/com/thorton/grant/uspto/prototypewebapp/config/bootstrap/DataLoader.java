@@ -4,12 +4,15 @@ import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserRoleService;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.actions.PetitionService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.participants.LawyerService;
-import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.participants.OwnerService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.OfficeActions;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.Petition;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.GoodAndService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.TradeMark;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.ManagedContact;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
@@ -47,6 +50,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         UserRoleService userRoleService = serviceBeanFactory.getUserRoleService();
         BaseTradeMarkApplicationService tradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         LawyerService lawyerService = serviceBeanFactory.getLawyerService();
+
+        PetitionService petitionService = serviceBeanFactory.getPetitionService();
 
         ////////////////////////////////////////////////////////////////////////////////
 
@@ -103,7 +108,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         trademarkApplication.setLastViewModel("application/goods_services/GoodsServicesStart");
         //trademarkApplication.setLastViewModel("application/attorney/AttorneyStart");
         trademarkApplication.setAttorneySet(true);
-        trademarkApplication.setAttorneyFiling(false);
+        trademarkApplication.setAttorneyFiling(true);
 
         trademarkApplication.setValidateTEASFields(true);
 
@@ -135,6 +140,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
 
 
         PTOUser1.addLawyer(newLawyer);
+        trademarkApplication.setPrimaryLawyer(newLawyer);
 
 
         // add default managed contact
@@ -194,15 +200,33 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         trademarkApplication.setTradeMark(tradeMark);
 
         trademarkApplication.getTradeMark().setTrademarkImagePath("/files/"+"standardcharacter_alt2.gif");
+
+        trademarkApplication.getTradeMark().setTrademarkBWImagePath("/files/"+"standardcharacter_alt2.gif");
         trademarkApplication.getTradeMark().setBaseStoragePath("C:\\images\\attorney");
-        trademarkApplication.getTradeMark().setStandardCharacterMark(true);
+        trademarkApplication.getTradeMark().setStandardCharacterMark(false);
+        trademarkApplication.getTradeMark().setColorClaimSet(true);
+        trademarkApplication.getTradeMark().setMarkColorClaim(true);
+        trademarkApplication.getTradeMark().setMarkColorClaimBW(false);
+        trademarkApplication.getTradeMark().setMarkColors("black");
 
         trademarkApplication.getTradeMark().setMarkDescription("captial letters and acroynm.");
-        trademarkApplication.getTradeMark().setTrademarkDesignType("Standard Character");
+        trademarkApplication.getTradeMark().setTrademarkDesignType("Design with text");
 
         trademarkApplication.getTradeMark().setMarkLiteral("PK Prep");
 
         // this should be enought for mark standard characters type
+
+
+        // set up goods and services
+        trademarkApplication.setSearchExistingGSdatabase(true);
+
+
+        // create the good and service
+        GoodAndService goodAndService = new GoodAndService();
+        goodAndService.setClassNumber("7");
+        goodAndService.setClassDescription("Agriculture implements, namely, coulters");
+        goodAndService.setInternalID("a0");
+        trademarkApplication.addGoodAndService(goodAndService);
 
 
 
@@ -212,13 +236,49 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         // set up filing basis for default application
         // 1. add one filing basis
 
+        trademarkApplication.setMarkInUseForAllGS(false);
+        trademarkApplication.setMarkAllgsSet(true);
+
+
+        // we need to loop though all gs and set its in use to false
+        trademarkApplication.setDeclarationMarkInUse(false);
+        trademarkApplication.setDeclarationMarkInUseSet(true);
+
+
+        trademarkApplication.setMarkHasForeignRegistration(false);
+        trademarkApplication.setMarkFappSet(true);
+
+
         // set up additional info for default application
 
         // set up signature and confirm for default appliation
 
         // set up final status for default application
+        trademarkApplication.setFilingStatus("Abandoned");
 
         // set up office action for default application
+        OfficeActions officeActions = new OfficeActions();
+        officeActions.setParentMarkImagePath(trademarkApplication.getTradeMark().getTrademarkImagePath());
+        officeActions.setParentMarkOwnerName(trademarkApplication.getPrimaryOwner().getOwnerDisplayname());
+        officeActions.setParentSerialNumber(trademarkApplication.getTrademarkName());
+        Petition petition = new Petition();
+        petition.setRecievedOfficeAction(false);
+        petition.setRecievedOfficeActionSet(false);
+        petitionService.save(petition);
+
+        officeActions.setPetition(petition);
+        petition.setOfficeAction(officeActions);
+
+
+        officeActions.setOfficeActionCode("Abandoned");
+
+
+        trademarkApplication.addOfficeAction(officeActions);
+        officeActions.setTrademarkApplication(trademarkApplication);
+
+
+
+
 
 
         // then on dash board ..for each application ...display each office action that it has

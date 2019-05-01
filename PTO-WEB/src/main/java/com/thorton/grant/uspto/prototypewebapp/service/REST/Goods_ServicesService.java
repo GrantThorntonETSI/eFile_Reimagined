@@ -227,7 +227,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                         current.setFrExpirationDate(null);
                         current.setFrRenewlDate(null);
                         current.setFrCertImagePath(null);
-                         current.setForeignRegistration(false);
+                        current.setForeignRegistration(false);
 
 
 
@@ -1263,7 +1263,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
                 if (current.getClassNumber().equals(ccNumber)) {
                     //current.setFaFilingDate(ccValue);
-System.out.println("999999999999999999999999");
+
                     try {
                         DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
                         Date date = format.parse(ccValue);

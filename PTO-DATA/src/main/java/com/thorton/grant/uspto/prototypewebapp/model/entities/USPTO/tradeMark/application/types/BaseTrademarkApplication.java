@@ -27,6 +27,7 @@ public class BaseTrademarkApplication  {
         availableLawyers = new HashSet<>();
         actions = new HashSet<>();
         owners = new HashSet<>();
+        officeActions = new HashSet<>();
 
 
         goodAndServices = new HashSet<>();

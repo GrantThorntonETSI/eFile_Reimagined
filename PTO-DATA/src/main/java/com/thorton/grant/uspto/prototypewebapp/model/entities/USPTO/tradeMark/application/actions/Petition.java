@@ -1,6 +1,5 @@
-package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.petition;
+package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions;
 
-import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.OfficeActions;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.base.BaseEntity;
 
 import javax.persistence.Entity;
