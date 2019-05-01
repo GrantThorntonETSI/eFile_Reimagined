@@ -1700,6 +1700,49 @@ $(document).ready(function(){
 	});
 
 
+//start revive petition s1 options
+
+	$('input#inlineRadio072').change(function() {
+		if(this.checked == true){
+			$('div#reviveappform').css('display','block');
+			$('div#reviveappformradios').show('fast','swing');
+			$('fieldset#responsefile').hide('fast');
+			$('fieldset#edit').show('fast','swing');
+			$('fieldset#resp').show('fast','swing');
+			$('.hidethis').hide('fast','swing');
+			$('select.signmethod').val('Select');
+			$('input#inlineRadio074, input#inlineRadio075').prop({
+				checked:false,
+			});
+			$('div.ql-editor').empty();
+		}
+	});
+	$('input#inlineRadio073').change(function() {
+		if(this.checked == true){
+			$('div#reviveappform').hide('fast','swing');
+			$('fieldset#responsefile').css('display','block');
+			$('div#reviveappformradios').show('fast');
+		}
+	});
+	$('input#inlineRadio074').change(function() {
+		if(this.checked == true){
+			$('div#reviveappform').show('fast','swing');
+			$('fieldset#edit').show('fast','swing');
+			$('fieldset#resp').show('fast','swing');
+			$('.hidethis').hide('fast','swing');
+			$('select.signmethod').val('Select');
+			$('div.ql-editor').empty();
+		}
+	});
+	$('input#inlineRadio075').change(function() {
+		if(this.checked == true){
+			$('div#reviveappform').show('fast','swing');
+			$('div#reviveappform').find('fieldset#edit').hide('fast');
+			$('div#reviveappform').find('fieldset#resp').hide('fast');
+		}
+	});
+
+
 
 
 });

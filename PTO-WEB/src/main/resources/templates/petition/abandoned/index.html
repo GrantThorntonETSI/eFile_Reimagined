@@ -6,7 +6,7 @@
     <title>Goods and Services Review</title>
 </head>
 <body>
-<div class="row content">
+<div class="row content" style="display: none;">
     <main class="col-xs-12 col-sm-8 col-md-8 col-lg-7">
         <!--START Content Div-->
         <div class="row">
@@ -164,15 +164,15 @@
                                             <label for="inlineRadio073" class="radio-inline radiocontainer"><input type="radio" name="actionradio" id="inlineRadio073" value="noreceived" tabindex="0"><span class="checkmark"></span>No</label>
                                         </div>
                                     </fieldset>
-                                    <div id="reviveappformradios" style="display: none;">
-                                        <fieldset aria-label="file a response" id="responsefile">
+                                    <div id="reviveappformradios" style="display: none;" >
+                                        <fieldset aria-label="file a response" id="responsefile" style="display: none;">
                                             <p id="filenow">Do you want to file a response to the office action now to avoid delays and expedite the processing of your application?</p>
                                             <div role="radiogroup" class="form-group form-group-md" aria-describedby="filenow">
                                                 <label for="inlineRadio074" class="radio-inline radiocontainer"><input type="radio" name="noactionradio" id="inlineRadio074" value="yesfilenow" tabindex="0"><span class="checkmark"></span>Yes</label>
                                                 <label for="inlineRadio075" class="radio-inline radiocontainer"><input type="radio" name="noactionradio" id="inlineRadio075" value="noreissue" tabindex="0"><span class="checkmark"></span>No</label>
                                             </div>
                                         </fieldset>
-                                        <div id="reviveappform">
+                                        <div id="reviveappform" style="display: none;">
                                             <!--1-->
                                             <fieldset aria-label="yes, received office action. Select petition signature method.">
                                                 <div class="card-text noexpand">
@@ -290,7 +290,7 @@
                 <button type="button" class="btn btn-sm btn-default fill prev" value="previous"></button>
             </div>
             <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-primary fill next" value="next">Done
+                <button type="button" class="btn btn-sm btn-primary fill next" value="next" id="doneButton">Done
                     <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
             </div>
         </div>
@@ -301,10 +301,26 @@
 
 
 
+<script>
+
+    var prevLinkURL = "../../accounts/dashboard";
 
 
 
+$(document).ready(function() {
 
+    setTimeout(function () {
+     // after 1000 ms we add the class animated to the login/register card
+        $('.content').fadeIn(500);
+    }, 500);
+
+
+    $('#doneButton').click(function () {
+        location.href=prevLinkURL;
+    });
+
+});
+</script>
 
 </body>
 </html>
