@@ -193,8 +193,19 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         tradeMark.setTrademarkDesignType("");
         trademarkApplication.setTradeMark(tradeMark);
 
-        trademarkApplication.getTradeMark().setTrademarkImagePath("/files/"+"");
+        trademarkApplication.getTradeMark().setTrademarkImagePath("/files/"+"standardcharacter_alt2.gif");
         trademarkApplication.getTradeMark().setBaseStoragePath("C:\\images\\attorney");
+        trademarkApplication.getTradeMark().setStandardCharacterMark(true);
+
+        trademarkApplication.getTradeMark().setMarkDescription("captial letters and acroynm.");
+        trademarkApplication.getTradeMark().setTrademarkDesignType("Standard Character");
+
+        trademarkApplication.getTradeMark().setMarkLiteral("PK Prep");
+
+        // this should be enought for mark standard characters type
+
+
+
 
 
 
