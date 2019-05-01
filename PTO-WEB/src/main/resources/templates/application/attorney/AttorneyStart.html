@@ -96,7 +96,17 @@
                     <p class="required"><span class="weight600">&#42; = Required</span></p>
                     <!--START Attorney Information Form-->
                     <div class="card-text">
-                        <h2 class="card-title weight600" id="attorneyinfo">Attorney Information</h2>
+                        <div role="heading" aria-level="2" id="attorneyinfo">
+                            <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#attorneyadvise" aria-controls="attorneyadvise" aria-expanded="false" id="attorneyadvisebtn"><span class="glyphicon glyphicon-triangle-right"></span><span id="toggleglyphcolor" class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Attorney Information</button>
+                        </div>
+                    </div>
+                    <div id="attorneyadvise" class="collapse Accordion-panel" role="region" aria-labelledby="attorneyadvisebtn">
+                        <div class="Accordion" style="margin-left: 15px;">
+                            <ol>The only attorneys who may sign responses and otherwise practice before the USPTO in trademark matters are as follows:
+                                <li style="margin-top: 11px;">1.  Attorneys in good standing with a bar of the highest court of any U.S. state, the District of Columbia, Puerto Rico, and other U.S. commonwealths or U.S. territories; and</li>
+                                <li style="margin-top: 11px;">2.  Canadian agents/attorneys who represent owners of the mark located in Canada and (a) are registered with the USPTO and in good standing as patent agents or (b) have been granted reciprocal recognition by the USPTO.</li>
+                            </ol>
+                        </div>
                     </div>
                     <p id="attorneyfiling">Is an Attorney filing this application?</p>
 
