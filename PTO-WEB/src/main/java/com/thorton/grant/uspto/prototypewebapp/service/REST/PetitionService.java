@@ -47,7 +47,19 @@ public class PetitionService  extends  BaseRESTapiService{
 
 
 
+        if(pField.equals("claim-delay-unintended")){
 
+            if(pValue.equals("yes")){
+                baseTrademarkApplication.findOfficeActionById(actionID).getPetition().setClaimDelayUnintentional(true);
+
+            }
+            else {
+                baseTrademarkApplication.findOfficeActionById(actionID).getPetition().setClaimDelayUnintentional(false);
+            }
+
+            appFieldReadable = "Delay claim option set";
+
+        }
 
 
 
