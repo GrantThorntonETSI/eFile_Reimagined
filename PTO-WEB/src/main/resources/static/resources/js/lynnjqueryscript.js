@@ -1743,6 +1743,17 @@ $(document).ready(function(){
 	});
 
 
+	$('select.signmethod').on('change',function(){
+		var loadsign = ('.' + $(this).val());
+		$(this).closest('fieldset').find('.hidethis').show('fast');
+		$( loadsign ).css('display','block');
+		if( loadsign == '.Select') {
+			$(this).closest('fieldset').find('.hidethis').hide('fast');
+		}
+		//console.log(loadsign);
+	});
+
+
 
 
 });
