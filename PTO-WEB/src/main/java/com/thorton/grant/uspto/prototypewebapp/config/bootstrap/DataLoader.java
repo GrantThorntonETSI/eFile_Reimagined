@@ -211,8 +211,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         trademarkApplication.getTradeMark().setTrademarkImagePath("/files/"+"standardcharacter_alt2.gif");
 
         trademarkApplication.getTradeMark().setTrademarkBWImagePath("/files/"+"standardcharacter_alt2.gif");
-        //trademarkApplication.getTradeMark().setBaseStoragePath("C:\\images\\attorney");
-        trademarkApplication.getTradeMark().setBaseStoragePath("/home/zhangl/images/");
+        trademarkApplication.getTradeMark().setBaseStoragePath("C:\\images\\attorney");
+        //trademarkApplication.getTradeMark().setBaseStoragePath("/home/zhangl/images/");
         trademarkApplication.getTradeMark().setStandardCharacterMark(false);
         trademarkApplication.getTradeMark().setColorClaimSet(true);
         trademarkApplication.getTradeMark().setMarkColorClaim(true);
