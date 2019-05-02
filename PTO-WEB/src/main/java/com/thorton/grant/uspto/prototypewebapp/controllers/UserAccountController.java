@@ -165,7 +165,7 @@ public class UserAccountController {
         //////////////////////////////////////////////////////////////////////////////////////////////
         if(ptoUser.isProfileComplete() == false){ // redirect back to userAccounts if profile is not complete yet
             model.addAttribute("message", "Please Complete your Contact Information First.");
-            return "account/userHome";
+            return "account/userProfile";
         }
         //////////////////////////////////////////////////////////////////////////////////////////////
 

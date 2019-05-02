@@ -319,7 +319,7 @@ public class ApplicationObjectCreationController {
             System.out.println("docket number 3 :"+newAttorneyContactFormDTO.getAttorneyDocketNumber3()+"/");
             lawyer.addDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber3());
         }
-        if(newAttorneyContactFormDTO.getAttorneyAffiliation()!= null){
+        if(newAttorneyContactFormDTO.getAttorneyAffiliation()!= null && newAttorneyContactFormDTO.getAttorneyAffiliation().equals("") == false){
             lawyer.setAffiliationStatus(newAttorneyContactFormDTO.getAttorneyAffiliation());
             lawyer.setAffiliationStatusSet(true);
             if(newAttorneyContactFormDTO.getAttorneyAffiliation().contains("usaffiliation")){
@@ -328,16 +328,24 @@ public class ApplicationObjectCreationController {
             else {
                 lawyer.setAffliationUS(false);
             }
+
+            if(newAttorneyContactFormDTO.getUsCertifyCheckbox().equals("check") ){
+
+                lawyer.setUsCertifyCheck(true);
+            }
+            else{
+                lawyer.setUsCertifyCheck(false);
+
+            }
+
+
         }
 
-        if(newAttorneyContactFormDTO.getUsCertifyCheckbox().equals("check") ){
 
-            lawyer.setUsCertifyCheck(true);
-        }
-        else{
-            lawyer.setUsCertifyCheck(false);
 
-        }
+
+
+
 
         if(newAttorneyContactFormDTO.getAttorneyBarJurisdiction()!= null){
             lawyer.setBarJurisdiction(newAttorneyContactFormDTO.getAttorneyBarJurisdiction());
