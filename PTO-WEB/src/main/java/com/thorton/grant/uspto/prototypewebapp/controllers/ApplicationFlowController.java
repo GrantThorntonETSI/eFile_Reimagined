@@ -3841,6 +3841,8 @@ public class ApplicationFlowController {
         model.addAttribute("action",action);
         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
+        model.addAttribute("petitionSignatureType", action.getPetition().getPetitionSignatureMethod());
+
 
 
 

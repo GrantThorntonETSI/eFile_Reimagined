@@ -63,6 +63,15 @@ public class PetitionService  extends  BaseRESTapiService{
 
 
 
+        if(pField.equals("pet-signature-method")){
+
+            baseTrademarkApplication.findOfficeActionById(actionID).getPetition().setPetitionSignatureMethod(pValue);
+
+
+            appFieldReadable = "Petition signature method set";
+        }
+
+
 
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);

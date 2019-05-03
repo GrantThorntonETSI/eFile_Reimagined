@@ -233,7 +233,7 @@
                                                             <h2 class="card-title weight600">Respond to Office Action</h2>
                                                         </div>
                                                         <p id="respondeditor">Use the text field below to respond to all issues raised in the Office Action.</p>
-                                                        <input type="text" class="form-control" id="response" required>
+                                                        <textarea row="5"  class="form-control" id="response" required> </textarea>
 
 
 
@@ -265,7 +265,7 @@
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <label for="responsedatesigned">Date signed: <span id="tz2" class="sr-only"> </span></label>
-                                                                            <input type="text" rows="1" class="form-control datesigned disabled" id="responsedatesigned" disabled  th:attr="action-id=${action.getInternalID()}" > </input>
+                                                                            <input type="text" rows="1" class="form-control datesigned disabled" id="responsedatesigned" disabled  th:attr="action-id=${action.getInternalID()}" >
                                                                         </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <label for="responsesignatoryname">Signatory&#8217;s name</label>
@@ -314,7 +314,7 @@
                                                             <div class="row">
                                                                 <div class="form-group form-group-md col-xs-12">
                                                                     <label for="petitionsign" class="weight600">How are you signing the petition?</label>
-                                                                    <select class="form-control signmethod" id="petitionsign" onchange="showTheTime()" th:attr="action-id=${action.getInternalID()}" >
+                                                                    <select class="form-control signmethod" id="petitionsign"  th:attr="action-id=${action.getInternalID()}" >
                                                                         <option value="Select">Select Signature Method</option>
                                                                         <option value="direct">Sign directly</option>
                                                                         <option value="handwritten" disabled>Print and upload handwritten signature</option>
@@ -357,7 +357,7 @@
                                                                 <h2 class="card-title weight600">Respond to Office Action</h2>
                                                             </div>
                                                             <p id="respondeditor">Use the text field below to respond to all issues raised in the Office Action.</p>
-                                                            <input type="text" class="form-control" id="response" required>
+                                                            <textarea row="5"  class="form-control" id="response" required> </textarea>
 
 
 
@@ -379,7 +379,7 @@
                                                                         <option value="send" disabled>Send to second party for signature</option>
                                                                     </select>
                                                                 </div>
-                                                                <div class="col-xs-12 form-group form-group-md direct">
+                                                                <div class="col-xs-12 form-group form-group-md direct" style="display: none;">
                                                                     <div class="row hidethis">
                                                                         <section aria-label="sign">
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
@@ -436,7 +436,7 @@
                                                             <div class="row">
                                                                 <div class="form-group form-group-md col-xs-12">
                                                                     <label for="petitionsign" class="weight600">How are you signing the petition?</label>
-                                                                    <select class="form-control signmethod" id="petitionsign" onchange="showTheTime()" th:attr="action-id=${action.getInternalID()}" >
+                                                                    <select class="form-control signmethod" id="petitionsign"  th:attr="action-id=${action.getInternalID()}" >
                                                                         <option value="Select">Select Signature Method</option>
                                                                         <option value="direct">Sign directly</option>
                                                                         <option value="handwritten" disabled>Print and upload handwritten signature</option>
@@ -479,7 +479,7 @@
                                                                 <h2 class="card-title weight600">Respond to Office Action</h2>
                                                             </div>
                                                             <p id="respondeditor">Use the text field below to respond to all issues raised in the Office Action.</p>
-                                                            <input type="text" class="form-control" id="response" required>
+                                                            <textarea rows="5"  class="form-control" id="response" required></textarea>
 
 
 
@@ -580,6 +580,8 @@
 
     var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
 
+    var petitionSignatureType = /*[[${petitionSignatureType}]]*/ 'User Name';
+
 
     var validateTEAS =  /*[[${baseTrademarkApplication.isValidateTEASFields()}]]*/ 'User Name';
     /*]]>*/
@@ -652,6 +654,12 @@ $(document).ready(function() {
 
 
     });
+    // persistence behavior for petition sign method
+    // set signature type persistence
+    if(petitionSignatureType != "" && petitionSignatureType != "null" && petitionSignatureType != null){
+        $('#petitionsign').val(petitionSignatureType);
+        $('#petitionsign').parent().next().show(500);
+    }
 
 
 
