@@ -190,7 +190,7 @@
                                                         <div class="row">
                                                             <div class="form-group form-group-md col-xs-12">
                                                                 <label for="petitionsign" class="weight600">How are you signing the petition?</label>
-                                                                <select class="form-control signmethod" id="petitionsign" onchange="showTheTime()" th:attr="action-id=${action.getInternalID()}" >
+                                                                <select class="form-control signmethod" id="petitionsign"  th:attr="action-id=${action.getInternalID()}" >
                                                                     <option value="Select">Select Signature Method</option>
                                                                     <option value="direct">Sign directly</option>
                                                                     <option value="handwritten" disabled>Print and upload handwritten signature</option>
@@ -208,7 +208,7 @@
 
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <label for="datesigned">Date signed: <span id="tz" class="sr-only"> </span></label>
-                                                                            <textarea rows="1" class="form-control disabled datesigned" id="datesigned" disabled th:attr="action-id=${action.getInternalID()}" > </textarea>
+                                                                            <input type="text" rows="1" class="form-control disabled datesigned" id="datesigned" disabled th:attr="action-id=${action.getInternalID()}" > </input>
                                                                         </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <label for="signatoryname">Signatory&#8217;s name</label>
@@ -216,7 +216,7 @@
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
                                                                             <label for="signatoryphone">Signatory&#8217;s phone number</label>
-                                                                            <input type="tel" class="form-control" id="signatoryphone" th:attr="action-id=${action.getInternalID()}" >
+                                                                            <input type="text" class="form-control" id="signatoryphone" th:attr="action-id=${action.getInternalID()}" >
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <label for="signatoryposition">Signatory&#8217;s position</label>
@@ -265,7 +265,7 @@
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <label for="responsedatesigned">Date signed: <span id="tz2" class="sr-only"> </span></label>
-                                                                            <textarea rows="1" class="form-control datesigned disabled" id="responsedatesigned" disabled  th:attr="action-id=${action.getInternalID()}" > </textarea>
+                                                                            <input type="text" rows="1" class="form-control datesigned disabled" id="responsedatesigned" disabled  th:attr="action-id=${action.getInternalID()}" > </input>
                                                                         </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <label for="responsesignatoryname">Signatory&#8217;s name</label>
@@ -273,7 +273,7 @@
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
                                                                             <label for="responsesignatoryphone">Signatory&#8217;s phone number</label>
-                                                                            <input type="tel" class="form-control" id="responsesignatoryphone" th:attr="action-id=${action.getInternalID()}" >
+                                                                            <input type="text" class="form-control" id="responsesignatoryphone" th:attr="action-id=${action.getInternalID()}" >
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <label for="responsesignatoryposition">Signatory&#8217;s position</label>
@@ -332,7 +332,7 @@
 
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="datesigned">Date signed: <span id="tz" class="sr-only"> </span></label>
-                                                                                <textarea rows="1" class="form-control disabled datesigned" id="datesigned" disabled th:attr="action-id=${action.getInternalID()}" > </textarea>
+                                                                                <input type="text" rows="1" class="form-control disabled datesigned" id="datesigned" disabled th:attr="action-id=${action.getInternalID()}" > </input>
                                                                             </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="signatoryname">Signatory&#8217;s name</label>
@@ -340,7 +340,7 @@
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
                                                                                 <label for="signatoryphone">Signatory&#8217;s phone number</label>
-                                                                                <input type="tel" class="form-control" id="signatoryphone" th:attr="action-id=${action.getInternalID()}" >
+                                                                                <input type="text" class="form-control" id="signatoryphone" th:attr="action-id=${action.getInternalID()}" >
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="signatoryposition">Signatory&#8217;s position</label>
@@ -389,7 +389,7 @@
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="responsedatesigned">Date signed: <span id="tz2" class="sr-only"> </span></label>
-                                                                                <textarea rows="1" class="form-control datesigned disabled" id="responsedatesigned" disabled  th:attr="action-id=${action.getInternalID()}" > </textarea>
+                                                                                <input type="text" rows="1" class="form-control datesigned disabled" id="responsedatesigned" disabled  th:attr="action-id=${action.getInternalID()}" > </input>
                                                                             </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="responsesignatoryname">Signatory&#8217;s name</label>
@@ -397,7 +397,7 @@
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
                                                                                 <label for="responsesignatoryphone">Signatory&#8217;s phone number</label>
-                                                                                <input type="tel" class="form-control" id="responsesignatoryphone" th:attr="action-id=${action.getInternalID()}" >
+                                                                                <input type="text" class="form-control" id="responsesignatoryphone" th:attr="action-id=${action.getInternalID()}" >
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="responsesignatoryposition">Signatory&#8217;s position</label>
@@ -454,7 +454,7 @@
 
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="datesigned">Date signed: <span id="tz" class="sr-only"> </span></label>
-                                                                                <textarea rows="1" class="form-control disabled datesigned" id="datesigned" disabled th:attr="action-id=${action.getInternalID()}" > </textarea>
+                                                                                <input type="text" rows="1" class="form-control disabled datesigned" id="datesigned" disabled th:attr="action-id=${action.getInternalID()}" > </input>
                                                                             </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="signatoryname">Signatory&#8217;s name</label>
@@ -462,7 +462,7 @@
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
                                                                                 <label for="signatoryphone">Signatory&#8217;s phone number</label>
-                                                                                <input type="tel" class="form-control" id="signatoryphone" th:attr="action-id=${action.getInternalID()}" >
+                                                                                <input type="text" class="form-control" id="signatoryphone" th:attr="action-id=${action.getInternalID()}" >
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="signatoryposition">Signatory&#8217;s position</label>
@@ -511,7 +511,7 @@
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="responsedatesigned">Date signed: <span id="tz2" class="sr-only"> </span></label>
-                                                                                <textarea rows="1" class="form-control datesigned disabled" id="responsedatesigned" disabled  th:attr="action-id=${action.getInternalID()}" > </textarea>
+                                                                                <input type="text" rows="1" class="form-control datesigned disabled" id="responsedatesigned" disabled  th:attr="action-id=${action.getInternalID()}" > </input>
                                                                             </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="responsesignatoryname">Signatory&#8217;s name</label>
@@ -519,7 +519,7 @@
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
                                                                                 <label for="responsesignatoryphone">Signatory&#8217;s phone number</label>
-                                                                                <input type="tel" class="form-control" id="responsesignatoryphone" th:attr="action-id=${action.getInternalID()}" >
+                                                                                <input type="text" class="form-control" id="responsesignatoryphone" th:attr="action-id=${action.getInternalID()}" >
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="responsesignatoryposition">Signatory&#8217;s position</label>
@@ -639,6 +639,21 @@ $(document).ready(function() {
 
         savePeitionInfo("rec-office-action", "no", actionID, appInternalID);
     });
+
+    // petition sign method
+
+    $('#petitionsign').change(function () {
+        var actionID = $(this).attr("action-id");
+
+        var value = $(this).val();
+
+
+        savePeitionInfo("pet-signature-method", value, actionID, appInternalID);
+
+
+    });
+
+
 
 });
 
