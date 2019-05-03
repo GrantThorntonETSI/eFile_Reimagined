@@ -203,24 +203,24 @@
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <p class="sr-only">Enclose the signature in forward slashes</p>
                                                                             <label for="signature">Signature</label>
-                                                                            <input type="text" class="form-control" placeholder="/Signature/" id="signature" required th:attr="action-id=${action.getInternalID()}" >
+                                                                            <input type="text" class="form-control" placeholder="/Signature/" id="signature" th:value="${action.getPetition().getPetitionSignature()}" th:attr="action-id=${action.getInternalID()}" >
                                                                         </div>
 
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <label for="datesigned">Date signed: <span id="tz" class="sr-only"> </span></label>
-                                                                            <input type="text" rows="1" class="form-control  datesigned" id="datesigned"  th:attr="action-id=${action.getInternalID()}" > </input>
+                                                                            <input type="text" rows="1" class="form-control  datesigned" id="datesigned" th:value="${action.getPetition().getPetitoinDateSignedDisplay()}" th:attr="action-id=${action.getInternalID()}" > </input>
                                                                         </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <label for="signatoryname">Signatory&#8217;s name</label>
-                                                                            <input type="text" class="form-control" id="signatoryname" required th:attr="action-id=${action.getInternalID()}" >
+                                                                            <input type="text" class="form-control" id="signatoryname" th:value="${action.getPetition().getPetitionSignatoryName()}"   th:attr="action-id=${action.getInternalID()}" >
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
                                                                             <label for="signatoryphone">Signatory&#8217;s phone number</label>
-                                                                            <input type="text" class="form-control" id="signatoryphone" th:attr="action-id=${action.getInternalID()}" >
+                                                                            <input type="text" class="form-control" id="signatoryphone"   th:value="${action.getPetition().getPetitionSignatoryPhone()}"  th:attr="action-id=${action.getInternalID()}" >
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <label for="signatoryposition">Signatory&#8217;s position</label>
-                                                                            <input type="text" class="form-control" id="signatoryposition" required th:attr="action-id=${action.getInternalID()}" >
+                                                                            <input type="text" class="form-control" id="signatoryposition"   th:value="${action.getPetition().getPetitionSinatoryPosition()}" th:attr="action-id=${action.getInternalID()}" >
                                                                         </div>
                                                                     </section>
                                                                 </div>
@@ -261,23 +261,23 @@
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <p class="sr-only">Enclose the signature in forward slashes</p>
                                                                             <label for="responsesignature">Signature</label>
-                                                                            <input type="text" class="form-control" placeholder="/Signature/" id="responsesignature" required  th:attr="action-id=${action.getInternalID()}" >
+                                                                            <input type="text" class="form-control" placeholder="/Signature/" id="responsesignature" th:value="${action.getPetition().getResponseSignature()}"  th:attr="action-id=${action.getInternalID()}" >
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <label for="responsedatesigned">Date signed: <span id="tz2" class="sr-only"> </span></label>
-                                                                            <input type="text" rows="1" class="form-control datesigned " id="responsedatesigned"  th:attr="action-id=${action.getInternalID()}" >
+                                                                            <input type="text" rows="1" class="form-control datesigned" id="responsedatesigned"  th:value="${action.getPetition().getResponseDateSignedDisplay()}"  th:attr="action-id=${action.getInternalID()}" > </input>
                                                                         </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <label for="responsesignatoryname">Signatory&#8217;s name</label>
-                                                                            <input type="text" class="form-control" id="responsesignatoryname" required th:attr="action-id=${action.getInternalID()}" >
+                                                                            <input type="text" class="form-control" id="responsesignatoryname"  th:value="${action.getPetition().responseSignatoryName}" th:attr="action-id=${action.getInternalID()}" >
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
                                                                             <label for="responsesignatoryphone">Signatory&#8217;s phone number</label>
-                                                                            <input type="text" class="form-control" id="responsesignatoryphone" th:attr="action-id=${action.getInternalID()}" >
+                                                                            <input type="text" class="form-control" id="responsesignatoryphone"  th:value="${action.getPetition().responseSignatoryPhone}"   th:attr="action-id=${action.getInternalID()}" >
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <label for="responsesignatoryposition">Signatory&#8217;s position</label>
-                                                                            <input type="text" class="form-control" id="responsesignatoryposition" required th:attr="action-id=${action.getInternalID()}" >
+                                                                            <input type="text" class="form-control" id="responsesignatoryposition" th:value="${action.getPetition().responseSignatoryPosition}" th:attr="action-id=${action.getInternalID()}" >
                                                                         </div>
                                                                     </section>
                                                                 </div>
@@ -385,23 +385,23 @@
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <p class="sr-only">Enclose the signature in forward slashes</p>
                                                                                 <label for="responsesignature">Signature</label>
-                                                                                <input type="text" class="form-control" placeholder="/Signature/" id="responsesignature" required  th:attr="action-id=${action.getInternalID()}" >
+                                                                                <input type="text" class="form-control" placeholder="/Signature/" id="responsesignature" th:value="${action.getPetition().getResponseSignature()}" th:attr="action-id=${action.getInternalID()}" >
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="responsedatesigned">Date signed: <span id="tz2" class="sr-only"> </span></label>
-                                                                                <input type="text" rows="1" class="form-control datesigned " id="responsedatesigned"   th:attr="action-id=${action.getInternalID()}" > </input>
+                                                                                <input type="text" rows="1" class="form-control datesigned " id="responsedatesigned"  th:value="${action.getPetition().getResponseDateSignedDisplay()}"  th:attr="action-id=${action.getInternalID()}" >
                                                                             </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="responsesignatoryname">Signatory&#8217;s name</label>
-                                                                                <input type="text" class="form-control" id="responsesignatoryname" required th:attr="action-id=${action.getInternalID()}" >
+                                                                                <input type="text" class="form-control" id="responsesignatoryname"  th:value="${action.getPetition().responseSignatoryName}" th:attr="action-id=${action.getInternalID()}" >
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
                                                                                 <label for="responsesignatoryphone">Signatory&#8217;s phone number</label>
-                                                                                <input type="text" class="form-control" id="responsesignatoryphone" th:attr="action-id=${action.getInternalID()}" >
+                                                                                <input type="text" class="form-control" id="responsesignatoryphone"  th:value="${action.getPetition().responseSignatoryPhone}"   th:attr="action-id=${action.getInternalID()}" >
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="responsesignatoryposition">Signatory&#8217;s position</label>
-                                                                                <input type="text" class="form-control" id="responsesignatoryposition" required th:attr="action-id=${action.getInternalID()}" >
+                                                                                <input type="text" class="form-control" id="responsesignatoryposition" th:value="${action.getPetition().responseSignatoryPosition}" th:attr="action-id=${action.getInternalID()}" >
                                                                             </div>
                                                                         </section>
                                                                     </div>
@@ -507,23 +507,23 @@
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <p class="sr-only">Enclose the signature in forward slashes</p>
                                                                                 <label for="responsesignature">Signature</label>
-                                                                                <input type="text" class="form-control" placeholder="/Signature/" id="responsesignature" required  th:attr="action-id=${action.getInternalID()}" >
+                                                                                <input type="text" class="form-control" placeholder="/Signature/" id="responsesignature" th:value="${action.getPetition().getResponseSignature()}"  th:attr="action-id=${action.getInternalID()}" >
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="responsedatesigned">Date signed: <span id="tz2" class="sr-only"> </span></label>
-                                                                                <input type="text" rows="1" class="form-control datesigned" id="responsedatesigned"   th:attr="action-id=${action.getInternalID()}" > </input>
+                                                                                <input type="text" rows="1" class="form-control datesigned" id="responsedatesigned"  th:value="${action.getPetition().getResponseDateSignedDisplay()}"  th:attr="action-id=${action.getInternalID()}" > </input>
                                                                             </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="responsesignatoryname">Signatory&#8217;s name</label>
-                                                                                <input type="text" class="form-control" id="responsesignatoryname" required th:attr="action-id=${action.getInternalID()}" >
+                                                                                <input type="text" class="form-control" id="responsesignatoryname"  th:value="${action.getPetition().responseSignatoryName}" th:attr="action-id=${action.getInternalID()}" >
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
                                                                                 <label for="responsesignatoryphone">Signatory&#8217;s phone number</label>
-                                                                                <input type="text" class="form-control" id="responsesignatoryphone" th:attr="action-id=${action.getInternalID()}" >
+                                                                                <input type="text" class="form-control" id="responsesignatoryphone"  th:value="${action.getPetition().responseSignatoryPhone}"   th:attr="action-id=${action.getInternalID()}" >
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="responsesignatoryposition">Signatory&#8217;s position</label>
-                                                                                <input type="text" class="form-control" id="responsesignatoryposition" required th:attr="action-id=${action.getInternalID()}" >
+                                                                                <input type="text" class="form-control" id="responsesignatoryposition" th:value="${action.getPetition().responseSignatoryPosition}" th:attr="action-id=${action.getInternalID()}" >
                                                                             </div>
                                                                         </section>
                                                                     </div>
@@ -749,6 +749,63 @@ $(document).ready(function() {
     }
 
 
+    // petition signature and generate time stamp for signature
+    $('#responsesignature').focusout(function () {
+
+        var sigVal = $(this).val();
+        var actionID = $(this).attr("action-id");
+
+        if(sigVal != ""){
+            //sigVal = sigVal;
+            var date = new Date();
+
+            var dateDisplay = formatDate(date);
+            $('#responsedatesigned').val(dateDisplay);
+            // save signature text
+            // also save signature time stamp display
+
+            savePeitionSignature("response-signature-text", sigVal, dateDisplay, actionID, appInternalID);
+
+        }
+
+
+    });
+
+
+    $('#responsesignatoryname').focusout(function () {
+        var actionID = $(this).attr("action-id");
+
+        var value = $(this).val();
+
+
+        savePeitionInfo("response-signature-name", value, actionID, appInternalID);
+
+
+    });
+
+
+    $('#responsesignatoryphone').focusout(function () {
+        var actionID = $(this).attr("action-id");
+
+        var value = $(this).val();
+
+
+        savePeitionInfo("response-signature-phone", value, actionID, appInternalID);
+
+    });
+
+    $('#responsesignatoryposition').focusout(function () {
+        var actionID = $(this).attr("action-id");
+
+        var value = $(this).val();
+
+
+        savePeitionInfo("response-signature-position", value, actionID, appInternalID);
+
+    });
+
+
+
 
 });
 
@@ -854,7 +911,7 @@ $(document).ready(function() {
             hour = "0"+hour;
 
         }
-        if(minutes.length<2){
+        if(minutes < 10){
             minutes ="0"+minutes;
         }
         if(seconds.length<3){

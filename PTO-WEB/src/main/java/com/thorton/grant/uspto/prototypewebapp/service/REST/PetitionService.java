@@ -115,6 +115,32 @@ public class PetitionService  extends  BaseRESTapiService{
             appFieldReadable = "Response signature method";
         }
 
+        if(pField.equals("response-signature-name")){
+
+            baseTrademarkApplication.findOfficeActionById(actionID).getPetition().setResponseSignatoryName(pValue);
+
+
+            appFieldReadable = "Response signatory name";
+        }
+
+        if(pField.equals("response-signature-phone")){
+
+            baseTrademarkApplication.findOfficeActionById(actionID).getPetition().setResponseSignatoryPhone(pValue);
+
+
+            appFieldReadable = "Response signatory phone number";
+        }
+
+        if(pField.equals("response-signature-position")){
+
+            baseTrademarkApplication.findOfficeActionById(actionID).getPetition().setResponseSignatoryPosition(pValue);
+
+
+            appFieldReadable = "Response signatory position";
+        }
+
+
+
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
         String responseMsg = appFieldReadable+" has been saved";
@@ -138,9 +164,19 @@ public class PetitionService  extends  BaseRESTapiService{
             baseTrademarkApplication.findOfficeActionById(actionID).getPetition().setPetitionSignature(pValue);
             baseTrademarkApplication.findOfficeActionById(actionID).getPetition().setPetitoinDateSignedDisplay(dateDisplay);
 
-            appFieldReadable = "Petition signature set";
+            appFieldReadable = "Petition signature";
 
         }
+
+        if(pField.equals("response-signature-text")){
+
+            baseTrademarkApplication.findOfficeActionById(actionID).getPetition().setResponseSignature(pValue);
+            baseTrademarkApplication.findOfficeActionById(actionID).getPetition().setResponseDateSignedDisplay(dateDisplay);
+
+            appFieldReadable = "Response signature";
+
+        }
+
 
 
         String responseMsg = appFieldReadable+" has been saved";
