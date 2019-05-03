@@ -139,7 +139,23 @@ public class PetitionService  extends  BaseRESTapiService{
             appFieldReadable = "Response signatory position";
         }
 
+        if(pField.equals("avoid-delay")){
 
+            if(pValue.equals("yes")){
+
+                baseTrademarkApplication.findOfficeActionById(actionID).getPetition().setWantToFileResponse(true);
+                baseTrademarkApplication.findOfficeActionById(actionID).getPetition().setWantToFileResponseSet(true);
+            }
+            else{
+                baseTrademarkApplication.findOfficeActionById(actionID).getPetition().setWantToFileResponse(false);
+                baseTrademarkApplication.findOfficeActionById(actionID).getPetition().setWantToFileResponseSet(true);
+
+            }
+
+
+
+            appFieldReadable = "Avoid delay option";
+        }
 
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
