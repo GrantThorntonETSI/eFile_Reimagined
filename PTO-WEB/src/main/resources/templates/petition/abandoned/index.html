@@ -208,7 +208,7 @@
 
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <label for="datesigned">Date signed: <span id="tz" class="sr-only"> </span></label>
-                                                                            <input type="text" rows="1" class="form-control disabled datesigned" id="datesigned" disabled th:attr="action-id=${action.getInternalID()}" > </input>
+                                                                            <input type="text" rows="1" class="form-control  datesigned" id="datesigned"  th:attr="action-id=${action.getInternalID()}" > </input>
                                                                         </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <label for="signatoryname">Signatory&#8217;s name</label>
@@ -265,7 +265,7 @@
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <label for="responsedatesigned">Date signed: <span id="tz2" class="sr-only"> </span></label>
-                                                                            <input type="text" rows="1" class="form-control datesigned disabled" id="responsedatesigned" disabled  th:attr="action-id=${action.getInternalID()}" >
+                                                                            <input type="text" rows="1" class="form-control datesigned " id="responsedatesigned"  th:attr="action-id=${action.getInternalID()}" >
                                                                         </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <label for="responsesignatoryname">Signatory&#8217;s name</label>
@@ -327,12 +327,12 @@
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <p class="sr-only">Enclose the signature in forward slashes</p>
                                                                                 <label for="signature">Signature</label>
-                                                                                <input type="text" class="form-control" placeholder="/Signature/" id="signature" required th:attr="action-id=${action.getInternalID()}" >
+                                                                                <input type="text" class="form-control" placeholder="/Signature/" id="signature"  th:value="${action.getPetition().getPetitionSignature()}" th:attr="action-id=${action.getInternalID()}" >
                                                                             </div>
 
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="datesigned">Date signed: <span id="tz" class="sr-only"> </span></label>
-                                                                                <input type="text" rows="1" class="form-control disabled datesigned" id="datesigned" disabled th:attr="action-id=${action.getInternalID()}" > </input>
+                                                                                <input type="text" rows="1" class="form-control  datesigned" id="datesigned"  th:value="${action.getPetition().getPetitoinDateSignedDisplay()}" th:attr="action-id=${action.getInternalID()}" > </input>
                                                                             </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="signatoryname">Signatory&#8217;s name</label>
@@ -389,7 +389,7 @@
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="responsedatesigned">Date signed: <span id="tz2" class="sr-only"> </span></label>
-                                                                                <input type="text" rows="1" class="form-control datesigned disabled" id="responsedatesigned" disabled  th:attr="action-id=${action.getInternalID()}" > </input>
+                                                                                <input type="text" rows="1" class="form-control datesigned " id="responsedatesigned"   th:attr="action-id=${action.getInternalID()}" > </input>
                                                                             </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="responsesignatoryname">Signatory&#8217;s name</label>
@@ -449,12 +449,12 @@
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <p class="sr-only">Enclose the signature in forward slashes</p>
                                                                                 <label for="signature">Signature</label>
-                                                                                <input type="text" class="form-control" placeholder="/Signature/" id="signature" required th:attr="action-id=${action.getInternalID()}" >
+                                                                                <input type="text" class="form-control" placeholder="/Signature/" id="signature" th:value="${action.getPetition().getPetitionSignature()}" th:attr="action-id=${action.getInternalID()}" >
                                                                             </div>
 
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="datesigned">Date signed: <span id="tz" class="sr-only"> </span></label>
-                                                                                <input type="text" rows="1" class="form-control disabled datesigned" id="datesigned" disabled th:attr="action-id=${action.getInternalID()}" > </input>
+                                                                                <input type="text" rows="1" class="form-control  datesigned" id="datesigned" th:value="${action.getPetition().getPetitoinDateSignedDisplay()}" th:attr="action-id=${action.getInternalID()}" > </input>
                                                                             </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="signatoryname">Signatory&#8217;s name</label>
@@ -511,7 +511,7 @@
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="responsedatesigned">Date signed: <span id="tz2" class="sr-only"> </span></label>
-                                                                                <input type="text" rows="1" class="form-control datesigned disabled" id="responsedatesigned" disabled  th:attr="action-id=${action.getInternalID()}" > </input>
+                                                                                <input type="text" rows="1" class="form-control datesigned" id="responsedatesigned"   th:attr="action-id=${action.getInternalID()}" > </input>
                                                                             </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="responsesignatoryname">Signatory&#8217;s name</label>
@@ -661,6 +661,34 @@ $(document).ready(function() {
         $('#petitionsign').parent().next().show(500);
     }
 
+    // petition signature and generate time stamp for signature
+     $('#signature').focusout(function () {
+
+         var sigVal = $(this).val();
+         var actionID = $(this).attr("action-id");
+
+         if(sigVal != ""){
+             //sigVal = sigVal;
+             var date = new Date();
+
+             var dateDisplay = formatDate(date);
+             $('#datesigned').val(dateDisplay);
+
+
+             // save signature text
+             // also save signature time stamp display
+
+             savePeitionSignature("pet-signature-text", sigVal, dateDisplay, actionID, appInternalID);
+
+
+
+
+         }
+
+
+     });
+
+
 
 
 });
@@ -705,6 +733,81 @@ $(document).ready(function() {
 
         });
     }
+
+
+    function savePeitionSignature(petitionFieldName, petitionFieldValue, displayDate, actionID, appInternalID) {
+
+        //var field_value = $(this).val();
+        //alert(field_value);
+
+
+        $.ajax({
+            url: "../../../REST/apiGateway/petition/update/" + petitionFieldName + "/" + petitionFieldValue + "/" + displayDate+"/"+actionID + "/" + appInternalID,
+            type: 'GET',
+            success: function (data) {
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:") + 7, data.indexOf("status:") + 4 + 7);
+
+                var s_msg = data.substring(data.indexOf("msg:") + 4, data.length - 2);
+
+                if (s_code.trim() == "200") {
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function () {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+            },
+            error: function (data) {
+
+                console.log(data);
+
+            }
+
+        });
+    }
+
+
+
+    function formatDate(date) {
+        var monthNames = [
+            "January", "February", "March",
+            "April", "May", "June", "July",
+            "August", "September", "October",
+            "November", "December"
+        ];
+
+        var day = date.getDate();
+        var monthIndex = date.getMonth();
+        var year = date.getFullYear();
+        var hour = date.getHours();
+        var minutes = date.getMinutes();
+        var seconds = date.getSeconds();
+        if(hour.length<2){
+            hour = "0"+hour;
+
+        }
+        if(minutes.length<2){
+            minutes ="0"+minutes;
+        }
+        if(seconds.length<3){
+            seconds = "0"+seconds;
+        }
+
+        return (hour+":"+minutes+":"+seconds+" "+monthNames[monthIndex]+" "+day+","+date.getFullYear()+" E.T");
+
+        //return day + ' ' + monthNames[monthIndex] + ' ' + year;
+    }
+
+
 
 </script>
 

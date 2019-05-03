@@ -37,7 +37,7 @@ public class Petition extends BaseEntity {
 
          private String petitionSignature;
 
-         private Date petitoinDateSigned;
+         private String petitoinDateSignedDisplay;
 
          private String petitionSignatoryName;
          private String petitionSignatoryPhone;
@@ -53,7 +53,7 @@ public class Petition extends BaseEntity {
 
         private String responseSignature;
 
-        private Date responseDateSigned;
+        private String responseDateSignedDisplay;
 
         private String responseSignatoryName;
         private String responseSignatoryPhone;
@@ -135,12 +135,12 @@ public class Petition extends BaseEntity {
         this.petitionSignature = petitionSignature;
     }
 
-    public Date getPetitoinDateSigned() {
-        return petitoinDateSigned;
+    public String getPetitoinDateSignedDisplay() {
+        return petitoinDateSignedDisplay;
     }
 
-    public void setPetitoinDateSigned(Date petitoinDateSigned) {
-        this.petitoinDateSigned = petitoinDateSigned;
+    public void setPetitoinDateSignedDisplay(String petitoinDateSignedDisplay) {
+        this.petitoinDateSignedDisplay = petitoinDateSignedDisplay;
     }
 
     public String getPetitionSignatoryName() {
@@ -183,12 +183,12 @@ public class Petition extends BaseEntity {
         this.responseSignature = responseSignature;
     }
 
-    public Date getResponseDateSigned() {
-        return responseDateSigned;
+    public String getResponseDateSignedDisplay() {
+        return responseDateSignedDisplay;
     }
 
-    public void setResponseDateSigned(Date responseDateSigned) {
-        this.responseDateSigned = responseDateSigned;
+    public void setResponseDateSignedDisplay(String responseDateSignedDisplay) {
+        this.responseDateSignedDisplay = responseDateSignedDisplay;
     }
 
     public String getResponseSignatoryName() {

@@ -24,7 +24,7 @@ public class PetitionService  extends  BaseRESTapiService{
     @CrossOrigin(origins = {"https://localhost","https://efile-reimagined.com"})
     @RequestMapping(method = GET, value="/REST/apiGateway/petition/update/{pField}/{pValue}/{actionID}/{appInternalID}")
     @ResponseBody
-    ResponseEntity<String> updateFilingBasisForGoodsServcices(@PathVariable String pField , @PathVariable String pValue, @PathVariable String actionID, @PathVariable String appInternalID){
+    ResponseEntity<String> savePetitionsFileds(@PathVariable String pField , @PathVariable String pValue, @PathVariable String actionID, @PathVariable String appInternalID){
 
         String appFieldReadable = "";
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
@@ -74,9 +74,35 @@ public class PetitionService  extends  BaseRESTapiService{
 
 
 
+
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
         String responseMsg = appFieldReadable+" has been saved";
 
+        return buildResponseEnity("200", responseMsg);
+    }
+
+
+    @CrossOrigin(origins = {"https://localhost","https://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/petition/update/{pField}/{pValue}/{dateDisplay}/{actionID}/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> savePetitionSignatures(@PathVariable String pField , @PathVariable String pValue, @PathVariable String dateDisplay, @PathVariable String actionID, @PathVariable String appInternalID){
+        String appFieldReadable = "";
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+
+        if(pField.equals("pet-signature-text")){
+
+            baseTrademarkApplication.findOfficeActionById(actionID).getPetition().setPetitionSignature(pValue);
+            baseTrademarkApplication.findOfficeActionById(actionID).getPetition().setPetitoinDateSignedDisplay(dateDisplay);
+
+            appFieldReadable = "Petition signature set";
+
+        }
+
+
+        String responseMsg = appFieldReadable+" has been saved";
         return buildResponseEnity("200", responseMsg);
     }
 
