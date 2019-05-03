@@ -233,7 +233,7 @@
                                                             <h2 class="card-title weight600">Respond to Office Action</h2>
                                                         </div>
                                                         <p id="respondeditor">Use the text field below to respond to all issues raised in the Office Action.</p>
-                                                        <textarea row="5"  class="form-control" id="response" required> </textarea>
+                                                        <textarea row="5"  class="form-control" id="response" th:text="${action.getPetition().getResponseText()}"   th:attr="action-id=${action.getInternalID()}"> </textarea>
 
 
 
@@ -357,7 +357,7 @@
                                                                 <h2 class="card-title weight600">Respond to Office Action</h2>
                                                             </div>
                                                             <p id="respondeditor">Use the text field below to respond to all issues raised in the Office Action.</p>
-                                                            <textarea row="5"  class="form-control" id="response" required> </textarea>
+                                                            <textarea row="5"  class="form-control" id="response" th:text="${action.getPetition().getResponseText()}"  th:attr="action-id=${action.getInternalID()}"> </textarea>
 
 
 
@@ -479,7 +479,7 @@
                                                                 <h2 class="card-title weight600">Respond to Office Action</h2>
                                                             </div>
                                                             <p id="respondeditor">Use the text field below to respond to all issues raised in the Office Action.</p>
-                                                            <textarea rows="5"  class="form-control" id="response" required></textarea>
+                                                            <textarea rows="5"  class="form-control" id="response"  th:text="${action.getPetition().getResponseText()}"  th:attr="action-id=${action.getInternalID()}"></textarea>
 
 
 
@@ -715,6 +715,17 @@ $(document).ready(function() {
 
         savePeitionInfo("pet-signature-position", value, actionID, appInternalID);
 
+    });
+
+
+
+    $('#response').focusout(function () {
+
+        var actionID = $(this).attr("action-id");
+
+        var value = $(this).val();
+
+        savePeitionInfo("response-text", value, actionID, appInternalID);
     });
 
 

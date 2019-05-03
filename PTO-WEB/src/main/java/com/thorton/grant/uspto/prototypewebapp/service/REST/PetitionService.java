@@ -68,7 +68,7 @@ public class PetitionService  extends  BaseRESTapiService{
             baseTrademarkApplication.findOfficeActionById(actionID).getPetition().setPetitionSignatureMethod(pValue);
 
 
-            appFieldReadable = "Petition signature method set";
+            appFieldReadable = "Petition signature method";
         }
 
 
@@ -77,7 +77,7 @@ public class PetitionService  extends  BaseRESTapiService{
             baseTrademarkApplication.findOfficeActionById(actionID).getPetition().setPetitionSignatoryName(pValue);
 
 
-            appFieldReadable = "Petition signatory name set";
+            appFieldReadable = "Petition signatory name";
         }
 
 
@@ -86,7 +86,7 @@ public class PetitionService  extends  BaseRESTapiService{
             baseTrademarkApplication.findOfficeActionById(actionID).getPetition().setPetitionSignatoryPhone(pValue);
 
 
-            appFieldReadable = "Petition signatory phone number set";
+            appFieldReadable = "Petition signatory phone number";
         }
 
         if(pField.equals("pet-signature-position")){
@@ -94,7 +94,16 @@ public class PetitionService  extends  BaseRESTapiService{
             baseTrademarkApplication.findOfficeActionById(actionID).getPetition().setPetitionSinatoryPosition(pValue);
 
 
-            appFieldReadable = "Petition signatory position set";
+            appFieldReadable = "Petition signatory position";
+        }
+
+
+        if(pField.equals("response-text")){
+
+            baseTrademarkApplication.findOfficeActionById(actionID).getPetition().setResponseText(pValue);
+
+
+            appFieldReadable = "Response message";
         }
 
 
