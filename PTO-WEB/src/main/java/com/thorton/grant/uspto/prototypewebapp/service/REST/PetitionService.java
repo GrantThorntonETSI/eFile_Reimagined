@@ -72,7 +72,30 @@ public class PetitionService  extends  BaseRESTapiService{
         }
 
 
+        if(pField.equals("pet-signature-name")){
 
+            baseTrademarkApplication.findOfficeActionById(actionID).getPetition().setPetitionSignatoryName(pValue);
+
+
+            appFieldReadable = "Petition signatory name set";
+        }
+
+
+        if(pField.equals("pet-signature-phone")){
+
+            baseTrademarkApplication.findOfficeActionById(actionID).getPetition().setPetitionSignatoryPhone(pValue);
+
+
+            appFieldReadable = "Petition signatory phone number set";
+        }
+
+        if(pField.equals("pet-signature-position")){
+
+            baseTrademarkApplication.findOfficeActionById(actionID).getPetition().setPetitionSinatoryPosition(pValue);
+
+
+            appFieldReadable = "Petition signatory position set";
+        }
 
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
