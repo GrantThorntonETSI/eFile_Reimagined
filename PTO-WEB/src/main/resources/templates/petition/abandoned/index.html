@@ -255,7 +255,7 @@
                                                                     <option value="send" disabled>Send to second party for signature</option>
                                                                 </select>
                                                             </div>
-                                                            <div class="col-xs-12 form-group form-group-md direct">
+                                                            <div class="col-xs-12 form-group form-group-md direct" style="display: none;">
                                                                 <div class="row hidethis">
                                                                     <section aria-label="sign">
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
@@ -582,6 +582,8 @@
 
     var petitionSignatureType = /*[[${petitionSignatureType}]]*/ 'User Name';
 
+    var responseSignatureType = /*[[${responseSignatureType}]]*/ 'User Name';
+
 
     var validateTEAS =  /*[[${baseTrademarkApplication.isValidateTEASFields()}]]*/ 'User Name';
     /*]]>*/
@@ -727,6 +729,24 @@ $(document).ready(function() {
 
         savePeitionInfo("response-text", value, actionID, appInternalID);
     });
+
+
+
+    $('#responsepetitionsign').change(function () {
+        var actionID = $(this).attr("action-id");
+
+        var value = $(this).val();
+
+
+        savePeitionInfo("response-signature-method", value, actionID, appInternalID);
+
+
+    });
+
+    if(responseSignatureType != "" && responseSignatureType != "null" && responseSignatureType != null){
+        $('#responsepetitionsign').val(responseSignatureType);
+        $('#responsepetitionsign').parent().next().show(500);
+    }
 
 
 

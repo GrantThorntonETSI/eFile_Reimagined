@@ -3843,6 +3843,8 @@ public class ApplicationFlowController {
 
         model.addAttribute("petitionSignatureType", action.getPetition().getPetitionSignatureMethod());
 
+        model.addAttribute("responseSignatureType", action.getPetition().getResponseSignatureMethod());
+
 
 
 
