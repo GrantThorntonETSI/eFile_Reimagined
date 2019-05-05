@@ -15,15 +15,26 @@
                 <!--START Content Div-->
                 <div class="row">
                     <div class="col-xs-12 text-left">
-                        <h1 id="userprofile">User Profile</h1>
-                        <p class="required"><span class="weight600">&#42; = Required</span></p>
-                        <div class="row alert"  th:if="${user.isProfileComplete() == false}">
-                            <div class="col-xs-12 col-sm-6 alert alert-warning" role="alert">
-                                <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
-                                <span class="sr-only">Notification:</span>
-                                Please complete the required fields to continue.
+                        <th:block th:if="${user.isProfileComplete() == false}">
+                            <h1 id="userprofile">Complete User Profile</h1>
+                            <p class="required"><span class="weight600">&#42; = Required</span></p>
+                            <div class="row alert"  >
+                                <div class="col-xs-12 col-sm-6 alert alert-warning" role="alert">
+                                    <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+                                    <span class="sr-only">Notification:</span>
+                                    Please complete the required fields to continue.
+                                </div>
                             </div>
-                        </div>
+
+                        </th:block>
+                        <th:block th:if="${user.isProfileComplete() == true}">
+
+                            <h1 id="userprofile">User Profile</h1>
+                            <p class="required"><span class="weight600">&#42; = Required</span></p>
+
+                        </th:block>
+
+
                         <!--START Account Information-->
                         <div class="card-text noexpand">
                             <h2 class="card-title weight600" id="accountinfo">Account Information</h2>
@@ -628,6 +639,24 @@
                     </div><!--END Content Div-->
                 </div>
 
+                <th:block th:if="${user.isProfileComplete() == false}">
+                    <div class="inlinebuttons btn-group btn-group-justified  owner-paging-buttons" role="nav" aria-label="view previous or next page" id="prevnxt">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-primary fill next" id="returnToDashboard" value="next" disabled >Done
+                                <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                </th:block>
+
+
+
+
+
+
+
             </main><!--MAIN-->
         </div><!--END container div-->
 
@@ -649,6 +678,7 @@
 
 
 <script>
+    var dashboardLinkURL = "../../accounts/dashboard";
     $(document).ready(function() {
 
         setTimeout(function() {
@@ -656,6 +686,10 @@
             $('.content').fadeIn(500);
         }, 500);
 
+
+        $('#returnToDashboard').click(function () {
+            location.href=dashboardLinkURL;
+        });
 
 
         // save two factor authentication
@@ -921,6 +955,7 @@
 
 
 
+
         });
 
         // animate success check mark
@@ -1096,6 +1131,7 @@
                     $(".banner-message span").css('color','green');
                     $(".banner-message span").focus();
                     $('#alert-card').fadeOut();
+                    $('#returnToDashboard').attr("disabled",false);
                     //$('.contextual-alert').css('display', 'none');
 
                 }
