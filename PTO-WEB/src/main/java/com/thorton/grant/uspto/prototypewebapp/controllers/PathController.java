@@ -235,7 +235,7 @@ public class PathController {
     public String loginFailure(Model model) {
 
 
-        String server_message = "Password entered was not not correct.";
+        String server_message = "Email and password combination could not be found.";
         //redirectAttributes.addFlashAttribute("message",server_message );
         model.addAttribute("message", server_message);
 

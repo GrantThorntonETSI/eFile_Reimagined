@@ -1,9 +1,13 @@
 package com.thorton.grant.uspto.prototypewebapp.controllers;
 
+import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.IUserService;
+import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.AccountRecoveryDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.RegistrationDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.VerificationToken;
+import com.thorton.grant.uspto.prototypewebapp.service.recovery.accountRecoveryEvent;
 import com.thorton.grant.uspto.prototypewebapp.service.registratrion.OnRegistrationCompleteEvent;
 import com.thorton.grant.uspto.prototypewebapp.service.registratrion.UserRegistrationService;
 
@@ -30,8 +34,12 @@ public class RegistrationController {
 
     private final UserRegistrationService service;
 
-    public RegistrationController(UserRegistrationService service) {
+    private final  ServiceBeanFactory serviceBeanFactory;
+
+
+    public RegistrationController(UserRegistrationService service, ServiceBeanFactory serviceBeanFactory) {
         this.service = service;
+        this.serviceBeanFactory = serviceBeanFactory;
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
@@ -52,6 +60,7 @@ public class RegistrationController {
         return "registration/index2";
 
     }
+
 
 
 
@@ -120,6 +129,10 @@ public class RegistrationController {
 
 
     }
+
+
+
+
     private UserCredentials createUserAccount(RegistrationDTO accountDto, BindingResult result) {
         UserCredentials registered = null;
 
