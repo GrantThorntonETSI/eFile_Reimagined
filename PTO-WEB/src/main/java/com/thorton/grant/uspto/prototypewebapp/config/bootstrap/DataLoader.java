@@ -326,12 +326,12 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
 
         Set<PTOUser> managedContactsAttorneys = new HashSet<>();
         Set<PTOUser> managedContactsOwners = new HashSet<>();
-        PTOUser Jackie = createUser("Jackie", "Babos", "333 Carlyle ave", "Alexendria", "VA", "22222", "X1", "333-333-3333", "Jackie.Babos@us.gt.com","12345",managedContactsAttorneys, managedContactsOwners);
+        PTOUser Jackie = createUser("Jackie", "Babos", "333 Carlyle ave", "Alexendria", "VA", "22222", "X1", "333-333-3333", "jackie.babos@us.gt.com","12345",managedContactsAttorneys, managedContactsOwners);
 
         // GT users
 
-        PTOUser Jacob = createUser("Jacob", "Goldstein", "333 Carlyle ave", "Alexendria", "VA", "22222", "X1", "444-444-444", "Jacob.Goldstein@us.gt.com","12345",managedContactsAttorneys,managedContactsOwners);
-        PTOUser Avo = createUser("Avo", "Reed", "333 Carlyle ave", "Alexendria", "VA", "22222", "X1", "222-22-2222", "Avo.Reid@us.gt.com","12345", managedContactsAttorneys, managedContactsOwners);
+        PTOUser Jacob = createUser("Jacob", "Goldstein", "333 Carlyle ave", "Alexendria", "VA", "22222", "X1", "444-444-444", "jacob.goldstein@us.gt.com","12345",managedContactsAttorneys,managedContactsOwners);
+        PTOUser Avo = createUser("Avo", "Reed", "333 Carlyle ave", "Alexendria", "VA", "22222", "X1", "222-22-2222", "avo.reid@us.gt.com","12345", managedContactsAttorneys, managedContactsOwners);
         PTOUser Li = createUser("Li", "Zhang", "333 Carlyle ave", "Alexendria", "VA", "22222", "X1", "555-555-5555", "li.zhang@us.gt.com","12345", managedContactsAttorneys, managedContactsOwners);
         PTOUser lynn = createUser("Lynn", "Istanikmas", "333 Carlyle ave", "Alexendria", "VA", "22222", "X1", "555-555-5555", "lynn.stanikmas@us.gt.com","12345", managedContactsAttorneys, managedContactsOwners);
 
@@ -347,7 +347,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         PTOUser crystalH = createUser("Crystal", "Hlywa", "600 Dulany Street", "Alexendria", "VA", "22222", "X1", "555-555-5555", "crystal.hlywa@uspto.gov","12345", managedContactsAttorneys, managedContactsOwners);
         PTOUser stacyH = createUser("Stacy", "Hatfield", "600 Dulany Street", "Alexendria", "VA", "22222", "X1", "555-555-5555", "stacey.hatfield@uspto.gov","12345", managedContactsAttorneys, managedContactsOwners);
         PTOUser ninoA = createUser("Nino", "Arvanitis", "600 Dulany Street", "Alexendria", "VA", "22222", "X1", "555-555-5555", "nino.arvanitis@uspto.gov","12345", managedContactsAttorneys, managedContactsOwners);
-        PTOUser TammieD = createUser("Tammie", "Diggs", "600 Dulany Street", "Alexendria", "VA", "22222", "X1", "555-555-5555", "tammie.giggs@uspto.gov","12345", managedContactsAttorneys, managedContactsOwners);
+        PTOUser TammieD = createUser("Tammie", "Diggs", "600 Dulany Street", "Alexendria", "VA", "22222", "X1", "555-555-5555", "tammie.diggs@uspto.gov","12345", managedContactsAttorneys, managedContactsOwners);
         PTOUser stephenA = createUser("Stephen", "Aquila", "600 Dulany Street", "Alexendria", "VA", "22222", "X1", "555-555-5555", "stephen.aquila@uspto.gov","12345", managedContactsAttorneys, managedContactsOwners);
         PTOUser nelsonB = createUser("Nelson", "Betancourt", "600 Dulany Street", "Alexendria", "VA", "22222", "X1", "555-555-5555", "nelson.betancourt@uspto.gov","12345", managedContactsAttorneys, managedContactsOwners);
         PTOUser TyleA = createUser("Tyle", "Auduong", "600 Dulany Street", "Alexendria", "VA", "22222", "X1", "555-555-5555", "tyle.auduong@uspto.gov","12345", managedContactsAttorneys, managedContactsOwners);
@@ -366,11 +366,11 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         // BA users
 
         PTOUser Lynn = createUser("Lynn", "Istanikmas", "600 Dulany Street", "Alexendria", "VA", "22222", "X1", "333-333-3333", "lstanikmas@gmail.com","12345",managedContactsAttorneys, managedContactsOwners);
-        PTOUser Tina = createUser("Tina", "Donbeck", "600 Dulany Street", "Alexendria", "VA", "22222", "X1", "333-333-3333", "Tina.Donbeck@uspto.gov","12345",managedContactsAttorneys, managedContactsOwners);
-        PTOUser Al = createUser("Albert", "Young", "600 Dulany Street", "Alexendria", "VA", "22222", "X1", "333-333-3333", "Albert.Young@uspto.gov","12345",managedContactsAttorneys, managedContactsOwners);
-        PTOUser keyte = createUser("Keyte", "Ernst", "600 Dulany Street", "Alexendria", "VA", "22222", "X1", "333-333-3333", "Keyte.Ernst@uspto.gov","12345",managedContactsAttorneys, managedContactsOwners);
-        PTOUser shelly = createUser("Shelly", "Matte", "600 Dulany Street", "Alexendria", "VA", "22222", "X1", "333-333-3333", "Shelly.Matte@uspto.gov","12345",managedContactsAttorneys, managedContactsOwners);
-        PTOUser Vi = createUser("Tuong-Vi", "Nguyen", "600 Dulany Street", "Alexendria", "VA", "22222", "X1", "333-333-3333", "Tuong-Vi.Nguyen@uspto.gov","12345",managedContactsAttorneys, managedContactsOwners);
+        PTOUser Tina = createUser("Tina", "Donbeck", "600 Dulany Street", "Alexendria", "VA", "22222", "X1", "333-333-3333", "tina.donbeck@uspto.gov","12345",managedContactsAttorneys, managedContactsOwners);
+        PTOUser Al = createUser("Albert", "Young", "600 Dulany Street", "Alexendria", "VA", "22222", "X1", "333-333-3333", "albert.young@uspto.gov","12345",managedContactsAttorneys, managedContactsOwners);
+        PTOUser keyte = createUser("Keyte", "Ernst", "600 Dulany Street", "Alexendria", "VA", "22222", "X1", "333-333-3333", "keyte.ernst@uspto.gov","12345",managedContactsAttorneys, managedContactsOwners);
+        PTOUser shelly = createUser("Shelly", "Matte", "600 Dulany Street", "Alexendria", "VA", "22222", "X1", "333-333-3333", "shelly.matte@uspto.gov","12345",managedContactsAttorneys, managedContactsOwners);
+        PTOUser Vi = createUser("Tuong-Vi", "Nguyen", "600 Dulany Street", "Alexendria", "VA", "22222", "X1", "333-333-3333", "tuong-vi.nguyen@uspto.gov","12345",managedContactsAttorneys, managedContactsOwners);
         PTOUser Serra = createUser("Serra", "Trinh", "333 Carlyle ave", "Alexendria", "VA", "22222", "X1", "333-333-3333", "serra.trinh@us.gt.com","12345",managedContactsAttorneys, managedContactsOwners);
 
 
