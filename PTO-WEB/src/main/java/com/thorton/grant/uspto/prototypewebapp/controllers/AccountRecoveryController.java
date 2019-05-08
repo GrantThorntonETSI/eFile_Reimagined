@@ -194,6 +194,9 @@ public class AccountRecoveryController {
         String server_message = "Email verification succesful. You can now reset your password.";
         //redirectAttributes.addFlashAttribute("message",server_message );
         model.addAttribute("message", server_message);
+        AccountRecoveryDTO accountRecoveryDTO = new AccountRecoveryDTO();
+        model.addAttribute("userCredentialsDTO", accountRecoveryDTO);
+        model.addAttribute("email", userCredentials.getEmail());
 
 
         return "resetPassword";

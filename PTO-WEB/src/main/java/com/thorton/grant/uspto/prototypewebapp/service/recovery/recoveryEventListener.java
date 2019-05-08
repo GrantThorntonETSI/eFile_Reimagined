@@ -50,7 +50,6 @@ public class recoveryEventListener implements
     private void confirmRecoverEvent(accountRecoveryEvent event) {
 
 
-System.out.println("9999999999999999999999999999999999999999999999999999999");
         UserCredentials userCredentials = event.getUserCredentials();
 
         String token = UUID.randomUUID().toString();
