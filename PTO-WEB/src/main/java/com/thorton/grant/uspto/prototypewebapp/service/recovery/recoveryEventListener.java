@@ -76,8 +76,8 @@ public class recoveryEventListener implements
 
                 // perform any operation
                 //mailSender.sendEmailverificationLink("http://efile-reimagined.com"+confirmationUrl,recipientAddress);
-                mailSender.sendEmailverificationLink(hostBean.getHost()+confirmationUrl,recipientAddress);
-                System.out.println("ACCOUNT ACITVATION EMAIL SENT!");
+                mailSender.sendAccountRestLink(hostBean.getHost()+confirmationUrl,recipientAddress);
+                System.out.println("ACCOUNT RECOVERY EMAIL SENT!");
             }
         }).start();
         //mailSender.send(email);
