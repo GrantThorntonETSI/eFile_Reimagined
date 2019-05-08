@@ -10,14 +10,12 @@ import com.thorton.grant.uspto.prototypewebapp.service.recovery.accountRecoveryE
 import com.thorton.grant.uspto.prototypewebapp.service.registratrion.UserRegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -31,6 +29,8 @@ public class AccountRecoveryController {
     private final UserRegistrationService service;
 
     private final ServiceBeanFactory serviceBeanFactory;
+
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
     private String account_email;
@@ -52,11 +52,11 @@ public class AccountRecoveryController {
         this.account_token = account_token;
     }
 
-    public AccountRecoveryController(UserRegistrationService service, ServiceBeanFactory serviceBeanFactory) {
+    public AccountRecoveryController(UserRegistrationService service, ServiceBeanFactory serviceBeanFactory, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.service = service;
         this.serviceBeanFactory = serviceBeanFactory;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
-
 
     @RequestMapping(value = "/recovery", method = RequestMethod.GET)
     public String showRecoveryForm(WebRequest request, Model model){
@@ -202,4 +202,70 @@ public class AccountRecoveryController {
         return "resetPassword";
 
     }
+
+    @PostMapping(value = "/recovery/updatePW")
+    public String resetUserPassword(Model model,
+            @ModelAttribute("userCredentialsDTO")  AccountRecoveryDTO accountDto,
+            BindingResult result,
+            WebRequest request,
+            Errors errors) {
+
+        System.out.print("post process for account recovery .......form result binded to DTO object");
+        System.out.println("DTO capture output: ");
+        System.out.println();
+        System.out.println("####################################################################");
+
+        System.out.println(accountDto.getEmail());
+        System.out.println("####################################################################");
+
+
+
+        ////////////////////////////////
+        // main recovery  logic
+        ///////////////////////////////
+
+        // get email
+
+        // find userCredentials via email
+
+        UserCredentials registered;
+
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        registered = userCredentialsService.findByEmail(accountDto.getEmail());
+
+        if (registered == null) {
+            result.rejectValue("email", "account is not valid");
+        }
+        if (result.hasErrors()) {
+            System.out.println("result has errors !!!!!!!!!!!!!!!!!!!!"+result.getAllErrors().toString());
+
+            return "/error";
+        }
+        else {
+            //return new ModelAndView("/account/userHome", "users", accountDto);
+            // new users needs to log in. will need to verify email before activation.
+            // no errors ...send user to email verification notifcation page
+            registered.setPassword(bCryptPasswordEncoder.encode(accountDto.getPassword()));
+            registered.setPasswordConfirm(bCryptPasswordEncoder.encode(accountDto.getMatchingPassword()));
+
+            userCredentialsService.save(registered);
+
+            //////////////////////////////////////////////////////////////////////////////////////
+            // after registration event, return user to check email activation link page
+            //////////////////////////////////////////////////////////////////////////////////////
+            String server_message = "Reset password was successful. You can now sign into the application.";
+            //redirectAttributes.addFlashAttribute("message",server_message );
+            model.addAttribute("message", server_message);
+            return "login";
+        }
+
+
+
+    }
+
+
+
+
+
+
 }
