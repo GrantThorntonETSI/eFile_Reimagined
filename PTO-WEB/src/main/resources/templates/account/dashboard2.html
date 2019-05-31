@@ -122,7 +122,7 @@
                                                                 <th colspan="5" scope="colgroup"><span id="filings">Filings</span> <button type="button" id="newFiling" class="btn-sm btn-success fill">New Application</button></th>
                                                             </tr>
                                                             <tr role="row">
-                                                                <th scope="col" class="sorting_asc" tabindex="0" aria-controls="dashboardtableone" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Select: activate to sort column descending">Serial#</th>
+                                                                <th scope="col" class="sorting_asc" tabindex="0" aria-controls="dashboardtableone" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Select: activate to sort column descending">Application/Serial#</th>
                                                                 <th scope="col" class="sorting_asc" tabindex="0" aria-controls="dashboardtableone" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Select: activate to sort column descending">Registration#</th>
                                                                 <th scope="col" class="sorting_asc" tabindex="0" aria-controls="dashboardtableone" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Class-num: activate to sort column descending">Owner</th>
                                                                 <th scope="col" class="sorting" tabindex="0" aria-controls="dashboardtableone" rowspan="1" colspan="1" aria-label="Description: activate to sort column ascending">Status</th>
@@ -186,7 +186,7 @@
                                                                 <th colspan="7" scope="colgroup">Upcoming Action(s) Due</th>
                                                             </tr>
                                                             <tr role="row">
-                                                                <th scope="col" class="sorting_asc" tabindex="0" aria-controls="dashboardtabletwo" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Select: activate to sort column descending">Serial#</th>
+                                                                <th scope="col" class="sorting_asc" tabindex="0" aria-controls="dashboardtabletwo" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Select: activate to sort column descending">Application/Serial#</th>
                                                                 <th scope="col" class="sorting_asc" tabindex="0" aria-controls="dashboardtabletwo" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Class-num: activate to sort column descending">Registration#</th>
                                                                 <th scope="col" class="sorting" tabindex="0" aria-controls="dashboardtabletwo" rowspan="1" colspan="1" aria-label="Description: activate to sort column ascending">Mark</th>
                                                                 <th scope="col" class="sorting" tabindex="0" aria-controls="dashboardtabletwo" rowspan="1" colspan="1" aria-label="Notes: activate to sort column ascending">Owner</th>
@@ -199,20 +199,47 @@
 
                                                             <th:block th:each="filing : ${user.getMyApplications()}">
                                                                 <th:block th:each="action : ${filing.getOfficeActions()}">
-                                                                    <tr>
-                                                                        <td><a th:text="${action.getParentSerialNumber()}">87697840</a></td>
-                                                                        <td>N/A</td>
-                                                                        <td><img th:src="${action.getParentMarkImagePath()}" style="max-width: 55px; max-height: 33px;"></td>
-                                                                        <td th:text="${action.getParentMarkOwnerName()}">Pittsburgh Penguins LP</td>
-                                                                        <td th:text="${action.returnSomeDate()}">2/20/2019</td>
-                                                                        <td > <a th:text="${action.getOfficeActionCode()}">Abandoned</a></td>
-                                                                        <td STYLE="color: red"><a th:href="${action.getPetitionsLink()}">File a Petition to Revive</a></td>
-                                                                    </tr>
+                                                                    <th:block th:if="${action.isActiveAction() == true}">
+                                                                        <tr>
+                                                                            <td><a th:text="${action.getParentSerialNumber()}">87697840</a></td>
+                                                                            <td>N/A</td>
+                                                                            <td><img th:src="${action.getParentMarkImagePath()}" style="max-width: 55px; max-height: 33px;"></td>
+                                                                            <td th:text="${action.getParentMarkOwnerName()}">Pittsburgh Penguins LP</td>
+                                                                            <td th:text="${action.returnSomeDate()}">2/20/2019</td>
+                                                                            <td > <a th:text="${action.getOfficeActionCode()}">Abandoned</a></td>
+                                                                            <td STYLE="color: red"><a>Respond</a></td>
+                                                                        </tr>
+
+                                                                    </th:block>
+
 
                                                                 </th:block>
 
 
                                                             </th:block>
+
+
+                                                            <th:block th:each="filing2 : ${user.getMyApplications()}">
+                                                                <th:block th:each="petition : ${filing2.getPetitions()}">
+                                                                    <th:block th:if="${petition.isActivePetition() == true}">
+                                                                        <tr>
+                                                                            <td><a th:text="${petition.getParentSerialNumber()}">87697840</a></td>
+                                                                            <td>N/A</td>
+                                                                            <td><img th:src="${petition.getParentMarkImagePath()}" style="max-width: 55px; max-height: 33px;"></td>
+                                                                            <td th:text="${petition.getParentMarkOwnerName()}">Pittsburgh Penguins LP</td>
+                                                                            <td th:text="${petition.returnSomeDate()}">2/20/2019</td>
+                                                                            <td > <a th:text="${petition.getOfficeActionCode()}">Abandoned</a></td>
+                                                                            <td STYLE="color: red"><a th:href="${petition.getPetitionsLink()}">Revive</a></td>
+                                                                        </tr>
+
+                                                                    </th:block>
+
+
+                                                                </th:block>
+
+
+                                                            </th:block>
+
 
 
                                                             </tbody>

@@ -2,6 +2,7 @@ package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.a
 
 
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.OfficeActions;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.Petition;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.GSClassCategory;
@@ -25,7 +26,7 @@ public class BaseTrademarkApplication  {
     public BaseTrademarkApplication() {
 
         availableLawyers = new HashSet<>();
-        actions = new HashSet<>();
+
         owners = new HashSet<>();
         officeActions = new HashSet<>();
 
@@ -108,11 +109,13 @@ public class BaseTrademarkApplication  {
 
 
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
     @Nullable
     private Set<OfficeActions> officeActions; // default owner   PTO user
 
-
+    @OneToMany(fetch = FetchType.EAGER ,cascade =  CascadeType.ALL)
+    @Nullable
+    private Set<Petition>  petitions;
     /////////////////////////////////////////////////////////////////////
     // stage 2
     /////////////////////////////////////////////////////////////////////
@@ -124,10 +127,12 @@ public class BaseTrademarkApplication  {
 
 
 
-    @OneToMany(cascade =  CascadeType.ALL)
-    @Nullable
-    private Set<OfficeActions> actions;
-    ////////////////////////////////////////////////////////
+
+
+
+
+
+
 
 
     private String ownerType;
@@ -386,6 +391,66 @@ public class BaseTrademarkApplication  {
 
 
 
+    /////////////////////////////////////////////////////////////////////////////////////////
+    // initial black out period date
+    // initial black out period interval
+
+    // user can file petitions to ammend at this time frame
+    // no office actions can be issued at this time
+    // status : "Black Out"
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////////////
+    // first office action window start date
+    // first office action wiondow interval
+
+    // this is a time when an office action can be initated by the system or our lawyers
+    // we will automatically issue an abandoned status based on our validation class
+    // which will return abandoned every instance for now. we can update the logic of this module
+    // later when that becomes clear
+
+    // status "Office Action 1"
+
+
+    /////////////////////////////////////////////////////////////////////////////////////////
+    // we will not response to any office action (As that module is not built)
+    // we will simply allow the office action to expire and allow user to file a petition to revive
+    /////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+    //////////////////////////////////////////////////////////////////////////
+    // date fields and flags to support petitions and amendments workflow
+    // with time expiration
+    // filing application statuses should be well defined
+    //////////////////////////////////////////////////////////////////////////
+
+    private Date applicationFilingDate;
+
+
+
+    private boolean claimDidNotRecieveOfficeAction; // this can only be claimed once. once it is set to true, you can not make that claim any more  // this is actually a filed that needs to be on the filing object
+
+    ///////////////////////////////////////////////////////////////
+
+    public boolean isClaimDidNotRecieveOfficeAction() {
+        return claimDidNotRecieveOfficeAction;
+    }
+
+    public void setClaimDidNotRecieveOfficeAction(boolean claimDidNotRecieveOfficeAction) {
+        this.claimDidNotRecieveOfficeAction = claimDidNotRecieveOfficeAction;
+    }
+
+
+    public Date getApplicationFilingDate() {
+        return applicationFilingDate;
+    }
+
+    public void setApplicationFilingDate(Date applicationFilingDate) {
+        this.applicationFilingDate = applicationFilingDate;
+    }
 
     public boolean isAttorneyPoolEmpty() {
 
@@ -555,6 +620,13 @@ public class BaseTrademarkApplication  {
     }
 
 
+    public Petition addPetition( Petition petition){
+        this.petitions.add(petition);
+
+        return petition;
+    }
+
+
 
     public OfficeActions findOfficeActionById(String id){
         OfficeActions action = null;
@@ -566,6 +638,19 @@ public class BaseTrademarkApplication  {
             }
         }
         return action;
+    }
+
+
+    public Petition findPetitionById(String id){
+        Petition petition = null;
+        for(Iterator<Petition> iter = petitions.iterator(); iter.hasNext(); ) {
+            Petition current = iter.next();
+
+            if(current.getInternalID().equals(id)){
+                petition = current;
+            }
+        }
+        return petition;
     }
 
     public boolean isAttorneyFiling() {
@@ -593,14 +678,6 @@ public class BaseTrademarkApplication  {
         this.tradeMark = tradeMark;
     }
 
-
-    public Set<OfficeActions> getActions() {
-        return actions;
-    }
-
-    public void setActions(@Nullable Set<OfficeActions> actions) {
-        this.actions = actions;
-    }
 
 
 
@@ -1776,47 +1853,15 @@ public class BaseTrademarkApplication  {
         this.declarationAll = declarationAll;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        BaseTrademarkApplication that = (BaseTrademarkApplication) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(trademarkName, that.trademarkName) &&
-                Objects.equals(applicationInternalID, that.applicationInternalID) &&
-                Objects.equals(ownerEmail, that.ownerEmail) &&
-                Objects.equals(availableLawyers, that.availableLawyers) &&
-                Objects.equals(ownerType, that.ownerType) &&
-                Objects.equals(ownerSubType, that.ownerSubType);
+    @Nullable
+    public Set<Petition> getPetitions() {
+        return petitions;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, trademarkName, applicationInternalID, ownerEmail, availableLawyers, ownerType, ownerSubType);
+    public void setPetitions(@Nullable Set<Petition> petitions) {
+        this.petitions = petitions;
     }
 
-    @Override
-    public String toString() {
-        return "BaseTrademarkApplication{" +
-                "id=" + id +
-                ", trademarkName='" + trademarkName + '\'' +
-                ", applicationInternalID='" + applicationInternalID + '\'' +
-                ", isAttorneySet=" + isAttorneySet +
-                ", isAttorneyFiling=" + isAttorneyFiling +
-                ", isForeignEnityFiling=" + isForeignEnityFiling +
-                ", currentStage='" + currentStage + '\'' +
-                ", lastViewModel='" + lastViewModel + '\'' +
-                ", ownerEmail='" + ownerEmail + '\'' +
-                ", ptoUser=" + ptoUser +
-                ", primaryLawyer=" + primaryLawyer +
-                ", availableLawyers=" + availableLawyers +
-                ", owners=" + owners +
-                ", tradeMark=" + tradeMark +
-                ", actions=" + actions +
-                ", ownerType='" + ownerType + '\'' +
-                ", ownerSubType='" + ownerSubType + '\'' +
-                '}';
-    }
 
     public Set<Integer> getUniqueClassNumberforGS(){
 

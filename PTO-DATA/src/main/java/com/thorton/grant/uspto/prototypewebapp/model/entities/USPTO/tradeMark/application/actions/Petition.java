@@ -1,8 +1,10 @@
 package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions;
 
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.base.BaseEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.util.Date;
@@ -11,12 +13,12 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "petiton")
-public class Petition extends BaseEntity {
+public class Petition extends OfficeActions {
 
 
 
-         @OneToOne
-         private OfficeActions officeAction;
+
+
 
          // check box
          private boolean claimDelayUnintentional;
@@ -69,15 +71,11 @@ public class Petition extends BaseEntity {
         private String responseText;
 
 
+        private boolean activePetition;
 
 
-    public OfficeActions getOfficeAction() {
-        return officeAction;
-    }
 
-    public void setOfficeAction(OfficeActions officeAction) {
-        this.officeAction = officeAction;
-    }
+
 
     public boolean isClaimDelayUnintentional() {
         return claimDelayUnintentional;
@@ -223,21 +221,16 @@ public class Petition extends BaseEntity {
         this.responseText = responseText;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Petition petition = (Petition) o;
-        return claimDelayUnintentional == petition.claimDelayUnintentional &&
-                recievedOfficeAction == petition.recievedOfficeAction &&
-                recievedOfficeActionSet == petition.recievedOfficeActionSet &&
-                Objects.equals(officeAction, petition.officeAction);
+    public boolean isActivePetition() {
+        return activePetition;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(officeAction, claimDelayUnintentional, recievedOfficeAction, recievedOfficeActionSet);
+    public void setActivePetition(boolean activePetition) {
+        this.activePetition = activePetition;
     }
 
+    public String getPetitionsLink(){
+        return "/petitions/revAbandoned/"+getInternalID()+"/?trademarkID="+getTrademarkApplication().getApplicationInternalID();
+    }
 
 }

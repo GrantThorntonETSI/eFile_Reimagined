@@ -1976,7 +1976,18 @@ public class ApplicationObjectCreationController {
         baseTrademarkApplication.setSectionStatus(sectionStatus);
 
 
-        if(baseTrademarkApplication.getFilingStatus() != "Filed"){
+
+
+
+        if(baseTrademarkApplication.getFilingStatus().equals( "Draft")){
+
+            // set filing date for filing
+
+            baseTrademarkApplication.setApplicationFilingDate(new Date());
+
+
+
+
             Document document = new Document();
 
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
