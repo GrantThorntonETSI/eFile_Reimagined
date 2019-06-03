@@ -2439,9 +2439,9 @@ button[type=submit] {
 }
 
 /* START GSselected, Dashboard, Editowner, Reviewattorney panels */
-#gsselected .panel-heading h4, #gsselected .panel-heading p, #dashboardmain .panel-heading h4, #dashboardmain .panel-heading p, #editowner .panel-heading h4, #editowner .panel-heading p, #reviewattorney .panel-heading h4, #reviewattorney .panel-heading p, #userprofilepage .panel-heading p, #userprofilepage .panel-body p {
-	display:inline-block;
-	font-size: 1.3em;
+#gsselected span.weight600, #dashboardmain span.weight600, #editowner span.weight600, #reviewattorney span.weight600, #declarationschecks span.weight600, #createaccount span.weight600 {
+	color:#333;
+	font-weight:600;
 }
 #gsselected span.weight600, #dashboardmain span.weight600, #editowner span.weight600, #reviewattorney span.weight600 {
 	color:#333;
@@ -2502,7 +2502,7 @@ button[type=submit] {
 	word-break:break-all;
 	min-height: 149px;
 }
-#gsselected .panel-heading, #dashboardmain .panel-heading, #editowner .panel-heading, #reviewattorney .panel-heading, #userprofilepage .panel-body {
+#gsselected .panel-heading, #dashboardmain .panel-heading, #editowner .panel-heading, #reviewattorney .panel-heading, #userprofilepage .panel-body, #petitions1 .panel-body, #createaccount .panel-heading {
 	-webkit-border-top-left-radius: 		0;
 	-webkit-border-top-right-radius: 		0;
 	-webkit-border-bottom-left-radius: 		0;
@@ -2527,7 +2527,7 @@ button[type=submit] {
 	-moz-border-top-right-radius: 		0;
 	border-top-right-radius: 			0;
 }
-#gsselected .panel-default, #dashboardmain .panel-default, #editowner .panel-default, #reviewattorney .panel-default, #userprofilepage .panel-default {
+#gsselected .panel-default, #dashboardmain .panel-default, #editowner .panel-default, #reviewattorney .panel-default, #userprofilepage .panel-default, #petitions1 .panel-default, #petitions2 .panel-default, #responseamend .panel-default, #createaccount .panel-heading {
 	border:none!important;
 }
 #gsselected .panel-title p, #dashboardmain .panel-title p, #editowner .panel-title p, #reviewattorney .panel-title p, #userprofilepage .panel-title p {
@@ -2602,8 +2602,8 @@ button[type=submit] {
 	-webkit-hyphens: none;
 	hyphens: none;
 }
-#dashboardmain .panel-default>.panel-heading {
-	background-color:#F3D54E;
+#dashboardmain .panel-default>.panel-heading, #createaccount .panel-heading {
+	background-color:#9BB8D3;
 }
 #gsselected .panel-default>.panel-heading .number, #dashboardmain .panel-default>.panel-heading .number, #editowner .panel-default>.panel-heading .number, #reviewattorney .panel-default>.panel-heading .number {
 	color:#333/*#FFF*/;
@@ -3130,4 +3130,15 @@ a.disabled:hover, a.disabled:active, a.disabled span:hover,  a.disabled span:act
 .fileholder div img {
 	height:auto;
 	max-width:80%;
+}
+
+#createaccount .limits {
+	margin-top:3.1em;
+}
+#createaccount ul {
+	list-style-type: disc;
+}
+#createaccount ul li {
+	margin-top:.45em;
+	margin-left:1.2em;
 }
