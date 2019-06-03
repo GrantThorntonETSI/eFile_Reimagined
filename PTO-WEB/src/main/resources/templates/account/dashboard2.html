@@ -38,9 +38,11 @@
     <script type="application/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script type="application/javascript"  th:src="@{/resources/js/lynnjqueryscript.js}"></script>
     <script type="application/javascript"  th:src="@{/resources/js/tab_panels.js}"></script>
+
+    <script type="application/javascript"  th:src="@{/resources/js/ie_alert.js}"></script>
 </head>
 
-<body>
+<body  onload="ShowIEAlert()">
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -107,6 +109,11 @@
             <div class="row">
                 <div class="col-xs-12" id="dashsectionscontainer" style="">
                     <h1>eFile Homepage</h1>
+                    <div class="col-xs-12 form-group form-group-md alert alert-warning" role="alert" aria-live="assertive" id="alertmin">
+                        <p id="mintext"></p>
+                        <button type="button" class="close" aria-label="close alert" id="alertbtn"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                        <br clear="all">
+                    </div>
                     <div class="row">
                         <div class="col-xs-12 form-group form-group-md" id="dashboard">
                             <div class="row">
