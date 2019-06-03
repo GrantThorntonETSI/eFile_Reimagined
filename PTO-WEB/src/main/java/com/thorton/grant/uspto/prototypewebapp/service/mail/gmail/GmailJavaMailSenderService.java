@@ -300,7 +300,7 @@ public class GmailJavaMailSenderService extends JavaMailSenderBase {
                     "<body>\n" +
                     "<h1>United States Patent and Trademark Office</h1>\n" +
                     "<p>Reset password for a  <a href=\"https://"+link+"\" target=\"_blank\">\n" +
-                    "uspto.gov</a> account using <span class=\"txt-blue\">"+address+"</span>.</p>\n" +
+                    "uspto.gov</a> account.</p>\n" +
                     "<p></p>\n" +
                     "<div class=\"btn btn-primary\"><a href=\""+link+"\" target=\"_blank\">Reset password</a></div>\n" +
                     "<p></p>\n" +
