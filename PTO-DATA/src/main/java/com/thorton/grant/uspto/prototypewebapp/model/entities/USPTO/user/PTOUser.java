@@ -210,7 +210,7 @@ public class PTOUser extends UserPersonalData {
             //this.availableLawyers.add(new Lawyer( iter.next() ));
 
             ManagedContact current = iter.next();
-            if(current.getContactType() == "attorney"){
+            if(current.getContactType().equals("attorney")){
                attorneyContacts.add(current);
             }
 
@@ -227,7 +227,7 @@ public class PTOUser extends UserPersonalData {
             //this.availableLawyers.add(new Lawyer( iter.next() ));
 
             ManagedContact current = iter.next();
-            if(current.getContactType() == "owner"){
+            if(current.getContactType().equals("owner")){
                 ownerContacts.add(current);
             }
 

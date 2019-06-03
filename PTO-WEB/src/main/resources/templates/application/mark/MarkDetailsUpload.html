@@ -588,6 +588,7 @@
 
         //START remove selected file
         $(document).on('click', '.js-upload-finished button.close', function() {
+            $( 'input[type="file"]' ).val('');
             $( '.hidethis' ).contents().css('display','block');
             //$( '.upload-drop-zone' ).css('height','115px');
             $( '.upload-drop-zone' ).css('height','175px');
