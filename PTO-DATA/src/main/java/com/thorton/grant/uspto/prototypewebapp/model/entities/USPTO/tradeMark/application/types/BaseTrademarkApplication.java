@@ -505,7 +505,7 @@ public class BaseTrademarkApplication  {
 
     public Set<Lawyer> getAvailableLawyersExcludePrimary() {
 
-      Set<Lawyer> lawyerPool = new HashSet<>();
+        Set<Lawyer> lawyerPool = new HashSet<>();
         Lawyer lawyer = null;
         for(Iterator<Lawyer> iter = availableLawyers.iterator(); iter.hasNext(); ) {
             Lawyer current = iter.next();
@@ -536,7 +536,7 @@ public class BaseTrademarkApplication  {
     public Lawyer findContactByEmail(String email){
         Lawyer lawyer = null;
         for(Iterator<Lawyer> iter = availableLawyers.iterator(); iter.hasNext(); ) {
-             Lawyer current = iter.next();
+            Lawyer current = iter.next();
 
             if(current.getEmail().equals(email)){
                 lawyer = current;
@@ -592,7 +592,7 @@ public class BaseTrademarkApplication  {
     }
 
 
-     public boolean isOwnerSet(){
+    public boolean isOwnerSet(){
 
         boolean ownerSet = false;
 
@@ -600,7 +600,7 @@ public class BaseTrademarkApplication  {
             ownerSet = true;
         }
         return ownerSet;
-     }
+    }
 
 
     @Nullable
@@ -773,19 +773,19 @@ public class BaseTrademarkApplication  {
             Collections.sort(sortedCategory, new CustomComparator());
             System.out.println("sorted GS size is "+sortedCategory.size());
 
-             for(int b =0; b < sortedCategory.size(); b++){
-                 returnGoodsServicesList.add(sortedCategory.get(b));
-             }
+            for(int b =0; b < sortedCategory.size(); b++){
+                returnGoodsServicesList.add(sortedCategory.get(b));
+            }
 
-             System.out.println("return array list sie is "+returnGoodsServicesList.size());
+            System.out.println("return array list sie is "+returnGoodsServicesList.size());
 
         }
         // go through the main gs list and find GS that matches this key
 
         // for each id unique id,
         //   create an arrayList
-             // for each GS that matches this unique Category
-             // add to the array list
+        // for each GS that matches this unique Category
+        // add to the array list
 
         // // end for loop
         // sort array list
@@ -874,12 +874,12 @@ public class BaseTrademarkApplication  {
         // for each unique number create a GSClass category object
 
 
-            // loop through and add GS classes with matching class numbers to the category object
-            // call sort on category object's GS array list ..so that every thing added is sorted
-            // add category object to the return arraylist
+        // loop through and add GS classes with matching class numbers to the category object
+        // call sort on category object's GS array list ..so that every thing added is sorted
+        // add category object to the return arraylist
 
 
-       // call sort on return arraylist
+        // call sort on return arraylist
 
 
         List<Integer> sortedUniqeClassNumbers = new ArrayList<>(uniqeClassNumber);
@@ -1046,7 +1046,7 @@ public class BaseTrademarkApplication  {
     public String getBasicFeeCalculationString(){
 
 
-            return "$"+String.valueOf(baseFee);
+        return "$"+String.valueOf(baseFee);
 
 
 
@@ -1074,13 +1074,13 @@ public class BaseTrademarkApplication  {
 
     public String getTotalFeeString(){
         String val = "";
-                if(getUniqueClassNumberforGS().size() > 0){
-                  val=  (baseFee+Integer.valueOf(getUniqueClassNumberforGS().size()-1)*baseFee)+"";
-                }
-                else{
-                    val = String.valueOf(baseFee);
+        if(getUniqueClassNumberforGS().size() > 0){
+            val=  (baseFee+Integer.valueOf(getUniqueClassNumberforGS().size()-1)*baseFee)+"";
+        }
+        else{
+            val = String.valueOf(baseFee);
 
-                }
+        }
 
 
         return "Fee $"+val;
@@ -1865,13 +1865,13 @@ public class BaseTrademarkApplication  {
 
     public Set<Integer> getUniqueClassNumberforGS(){
 
-       Set<Integer> uniqeIDS = new HashSet<>();
+        Set<Integer> uniqeIDS = new HashSet<>();
 
         for(Iterator<GoodAndService> iter = goodAndServices.iterator(); iter.hasNext(); ) {
             GoodAndService current = iter.next();
 
 
-               uniqeIDS.add(Integer.valueOf(current.getClassNumber()));
+            uniqeIDS.add(Integer.valueOf(current.getClassNumber()));
 
         }
 

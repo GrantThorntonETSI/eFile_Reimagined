@@ -82,82 +82,62 @@ $(document).ready(function(){
 
 
 
-	//START initialize Dashboard datable one
-	var tableone = $('#dashboardtableone').DataTable({
-		"fnDrawCallback": function( oSettings ) {
-		},
-		'sDom': '<"toolbar">lfrtip',
-		"language": {
-			"search": "<span class='glyphicon glyphicon-search' aria-hidden='true'></span><span class='sr-only'>search</span>",
-			"lengthMenu": "<span class='glyphicon glyphicon-filter' aria-hidden='true'></span><span class='sr-only'>select number of entries to display</span> <select>"+
-				'<option value="10">10</option>'+
-				'<option value="25">25</option>'+
-				'<option value="50">50</option>'+
-				'<option value="100">100</option>'+
-				'<option value="-1">All</option>'+
-				'</select>'
-		},
-		'autoWidth': false,
-		'responsive': true,
-		'columns': [
-			{ 'width': '20%' },
-			{ 'width': '20%' },
-			{ 'width': '20%' },
-			{ 'width': '20%' },
-			{ 'width': '20%' },
-		],
-		'columnDefs': [
-			{ responsivePriority: 1, targets: 0 },
-			{ responsivePriority: 2, targets: 1 },
-			{ responsivePriority: 3, targets: 3 },
-			{ responsivePriority: 4, targets: 2 },
-			{ responsivePriority: 5, targets: 4 },
-			{ className: 'centertxt', 'targets': [ 0,1,2,3,4 ] },
-		],
-	});
-	//END initialize Dashboard datable one
 
-	//START initialize Dashboard datable two
-	var tabletwo = $('#dashboardtabletwo').DataTable({
+	// intialize application review data table
+	var tablethree = $('#responseamendtabletwo').DataTable({
 		"fnDrawCallback": function( oSettings ) {
 		},
-		'sDom': '<"toolbartwo">lfrtip',
-		"language": {
-			"search": "<span class='glyphicon glyphicon-search' aria-hidden='true'></span><span class='sr-only'>search</span>",
-			"lengthMenu": "<span class='glyphicon glyphicon-filter' aria-hidden='true'></span><span class='sr-only'>select number of entries to display</span> <select>"+
-				'<option value="10">10</option>'+
-				'<option value="25">25</option>'+
-				'<option value="50">50</option>'+
-				'<option value="100">100</option>'+
-				'<option value="-1">All</option>'+
-				'</select>'
-		},
+		'sDom': 't',
+		//"language": {
+		//"search": "<span class='glyphicon glyphicon-search' aria-hidden='true'></span><span class='sr-only'>search</span>",
+//			"lengthMenu": "<span class='glyphicon glyphicon-filter' aria-hidden='true'></span><span class='sr-only'>select number of entries to display</span> <select>"+
+//			  '<option value="10">10</option>'+
+//			  '<option value="25">25</option>'+
+//			  '<option value="50">50</option>'+
+//			  '<option value="100">100</option>'+
+//			  '<option value="-1">All</option>'+
+//			  '</select>'
+		//},
+
 		'autoWidth': false,
-		'responsive': true,
+		responsive: {
+			breakpoints: [
+				{ name: 'desktop', width: Infinity },
+				{ name: 'tablet',  width: 1024 },
+				{ name: 'fablet',  width: 768 },
+				{ name: 'phone',   width: 480 }
+			]
+		},
 		'columns': [
-			{ 'width': '12%' },
-			{ 'width': '17%' },
-			{ 'width': '14%' },
-			{ 'width': '14%' },
-			{ 'width': '15%' },
-			{ 'width': '14%' },
-			{ 'width': '14%' },
+			{ 'width': '4%' },
+			{ 'width': '13%' },
+			{ 'width': '13%' },
+			{ 'width': '10%' },
+			{ 'width': '10%' },
+			{ 'width': '10%' },
+			{ 'width': '10%' },
+			{ 'width': '10%' },
+			{ 'width': '10%' },
+			{ 'width': '10%' },
 		],
 		'columnDefs': [
-			{ responsivePriority: 1, targets: 0 },
-			{ responsivePriority: 2, targets: 6 },
-			{ responsivePriority: 3, targets: 4 },
-			{ responsivePriority: 4, targets: 5 },
-			{ responsivePriority: 5, targets: 1 },
-			{ responsivePriority: 6, targets: 3 },
-			{ responsivePriority: 7, targets: 2 },
-			{ className: 'centertxt', 'targets': [ 0,1,2,3,4,5,6 ] },
+			{ className: 'centertxt', 'targets': [ 0,1,2,3,4,5,6,7,8,9 ] },
+			{ orderable: false},
+			{ className: 'select-checkbox'},
+			{ targets:   0}
 		],
+		select: {
+			style:    'multi',
+			selector: 'tr td:nth-child(1) span'
+		},
+		order: [[ 1, 'asc' ]]
 	});
-	//END initialize Dashboard datable two
+
+
+
 
 	//Dashboard datatables ellipsis menu tableone
-    $("div.toolbar").html('<div class="dropdown"><button class="btn btn-xs dropdown-toggle" type="button" id="dropdownMenucolvis" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical" role="img" aria-label="toggle columns visibility"></span></button><ul class="dropdown-menu" aria-labelledby="dropdownMenucolvis"><li class="dropdown-header">Toggle Columns</li><li><a class="toggle-vis" data-column="0"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Serial#</a></li><li><a class="toggle-vis" data-column="1"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Registration#</a></li><li><a class="toggle-vis" data-column="2"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Owner</a></li><li><a class="toggle-vis" data-column="3"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Status</a></li><li><a class="toggle-vis" data-column="4"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Mark</a></li></ul></div>');
+	$("div.toolbar").html('<div class="dropdown"><button class="btn btn-xs dropdown-toggle" type="button" id="dropdownMenucolvis" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical" role="img" aria-label="toggle columns visibility"></span></button><ul class="dropdown-menu" aria-labelledby="dropdownMenucolvis"><li class="dropdown-header">Toggle Columns</li><li><a class="toggle-vis" data-column="0"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Serial#</a></li><li><a class="toggle-vis" data-column="1"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Registration#</a></li><li><a class="toggle-vis" data-column="2"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Owner</a></li><li><a class="toggle-vis" data-column="3"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Status</a></li><li><a class="toggle-vis" data-column="4"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Mark</a></li></ul></div>');
 	$('a.toggle-vis').on( 'click', function (e) {
 		e.preventDefault();
 		var column = tableone.column( $(this).attr('data-column') );
@@ -167,7 +147,7 @@ $(document).ready(function(){
 	//END dashboard datatables ellipsis menu tableone
 
 	//Dashboard datatables ellipsis menu tabletwo
-    $("div.toolbartwo").html('<div class="dropdown"><button class="btn btn-xs dropdown-toggle" type="button" id="dropdownMenucolvis" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical role="img" aria-label="toggle column visibility""></span></button><ul class="dropdown-menu" aria-labelledby="dropdownMenucolvis"><li class="dropdown-header">Toggle Columns</li><li><a class="toggle-vistwo" data-column="0"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Serial#</a></li><li><a class="toggle-vistwo" data-column="1"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Registration#</a></li><li><a class="toggle-vistwo" data-column="2"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Mark</a></li><li><a class="toggle-vistwo" data-column="3"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Owner</a></li><li><a class="toggle-vistwo" data-column="4"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Due Date</a></li><li><a class="toggle-vistwo" data-column="5"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Status</a></li><li><a class="toggle-vistwo" data-column="6"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Action</a></li></ul></div>');
+	$("div.toolbartwo").html('<div class="dropdown"><button class="btn btn-xs dropdown-toggle" type="button" id="dropdownMenucolvis" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical role="img" aria-label="toggle column visibility""></span></button><ul class="dropdown-menu" aria-labelledby="dropdownMenucolvis"><li class="dropdown-header">Toggle Columns</li><li><a class="toggle-vistwo" data-column="0"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Serial#</a></li><li><a class="toggle-vistwo" data-column="1"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Registration#</a></li><li><a class="toggle-vistwo" data-column="2"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Mark</a></li><li><a class="toggle-vistwo" data-column="3"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Owner</a></li><li><a class="toggle-vistwo" data-column="4"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Due Date</a></li><li><a class="toggle-vistwo" data-column="5"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Status</a></li><li><a class="toggle-vistwo" data-column="6"><span class="glyphicon glyphicon-eye-open" role="img" aria-label="hide this column"></span>Action</a></li></ul></div>');
 	$('a.toggle-vistwo').on( 'click', function (e) {
 		e.preventDefault();
 		var column = tabletwo.column( $(this).attr('data-column') );
@@ -1074,7 +1054,7 @@ $(document).ready(function(){
 		$('#' + $(this).val()).show( 'fast' );
 
 		if($(this).val() == "usaffiliation"){
-            $('#user-accept-checkbox').attr("required", true);
+			$('#user-accept-checkbox').attr("required", true);
 
 			$('#canadianaffiliation').hide( 'fast' );
 		}
@@ -1154,11 +1134,11 @@ $(document).ready(function(){
 	}
 	$('a.fromcontact').click(togglecontacts);
 	//start toggle glyphicon contacts widget
-    //start toggle glyphicon dashboard toggle menu widget
-    function togglecolumnselection() {
-        $( this ).find('span.glyphicon-eye-open').toggleClass( 'visuallyhidden' ).attr('aria-label','show this column');
-    }
-    $('a.toggle-vis').click(togglecolumnselection);
+	//start toggle glyphicon dashboard toggle menu widget
+	function togglecolumnselection() {
+		$( this ).find('span.glyphicon-eye-open').toggleClass( 'visuallyhidden' ).attr('aria-label','show this column');
+	}
+	$('a.toggle-vis').click(togglecolumnselection);
 	//end toggle glyphicon contacts widget
 
 	//start close (x) fees
@@ -1221,19 +1201,19 @@ $(document).ready(function(){
 	//end show managed contacts from nav
 
 
-    //search managed contacts
-    $("#contactsearch").on("keyup", function() {
+	//search managed contacts
+	$("#contactsearch").on("keyup", function() {
 
 
-        var value = $(this).val().toLowerCase();
+		var value = $(this).val().toLowerCase();
 
 
-        $("#contactssearch tr").filter(function() {
+		$("#contactssearch tr").filter(function() {
 
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
-    });
-    //search managed contacts
+			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+		});
+	});
+	//search managed contacts
 
 	//edit owner accordion button toggle
 	$('#editowner button.Accordion-trigger, #reviewattorney button.Accordion-trigger').click(function() {
@@ -1242,19 +1222,19 @@ $(document).ready(function(){
 		$( this ).children('span.glyphicon-triangle-right').toggleClass('visuallyremoved');
 		$( this ).children('span.glyphicon-triangle-bottom').toggleClass('visuallyadded');
 	});	//edit owner accordion button toggle rev
-    $( document ).on('click','#editowner button.Accordion-trigger, #reviewattorney button.Accordion-trigger', function() {
-        $( this ).siblings('span.glyphicon-triangle-right').removeClass('visuallyadded').toggleClass('visuallyremoved');
-        $( this ).siblings('span.glyphicon-triangle-bottom').removeClass('visuallyremoved').toggleClass('visuallyadded');
-    });
-    $( document ).on('click','#editowner .panel-title span.glyphicon-triangle-right, #reviewattorney .panel-title span.glyphicon-triangle-right', function() {
-        $( this ).addClass('visuallyremoved').removeClass('visuallyadded');
-        $( this ).siblings( 'span.glyphicon-triangle-bottom' ).addClass('visuallyadded').removeClass('visuallyremoved');
-    });
-    $( document ).on('click','#editowner .panel-title span.glyphicon-triangle-bottom, #reviewattorney .panel-title span.glyphicon-triangle-bottom', function() {
-        $( this ).addClass('visuallyremoved').removeClass('visuallyadded');
-        $( this ).siblings( 'span.glyphicon-triangle-right' ).addClass('visuallyadded').removeClass('visuallyremoved');
-    });
-    //edit owner accordion button toggle rev
+	$( document ).on('click','#editowner button.Accordion-trigger, #reviewattorney button.Accordion-trigger', function() {
+		$( this ).siblings('span.glyphicon-triangle-right').removeClass('visuallyadded').toggleClass('visuallyremoved');
+		$( this ).siblings('span.glyphicon-triangle-bottom').removeClass('visuallyremoved').toggleClass('visuallyadded');
+	});
+	$( document ).on('click','#editowner .panel-title span.glyphicon-triangle-right, #reviewattorney .panel-title span.glyphicon-triangle-right', function() {
+		$( this ).addClass('visuallyremoved').removeClass('visuallyadded');
+		$( this ).siblings( 'span.glyphicon-triangle-bottom' ).addClass('visuallyadded').removeClass('visuallyremoved');
+	});
+	$( document ).on('click','#editowner .panel-title span.glyphicon-triangle-bottom, #reviewattorney .panel-title span.glyphicon-triangle-bottom', function() {
+		$( this ).addClass('visuallyremoved').removeClass('visuallyadded');
+		$( this ).siblings( 'span.glyphicon-triangle-right' ).addClass('visuallyadded').removeClass('visuallyremoved');
+	});
+	//edit owner accordion button toggle rev
 	//edit owner accordion button toggle
 
 	//END additional phone
@@ -1754,7 +1734,127 @@ $(document).ready(function(){
 	});
 
 
+	//START initialize Dashboard datable one
+	var tableone = $('#dashboardtableone').DataTable({
+		"fnDrawCallback": function( oSettings ) {
+		},
+		'sDom': '<"toolbar">lfrtip',
+		"language": {
+			"search": "<span class='glyphicon glyphicon-search' aria-hidden='true'></span><span class='sr-only'>search</span>",
+			"lengthMenu": "<span class='glyphicon glyphicon-filter' aria-hidden='true'></span><span class='sr-only'>select number of entries to display</span> <select>"+
+				'<option value="10">10</option>'+
+				'<option value="25">25</option>'+
+				'<option value="50">50</option>'+
+				'<option value="100">100</option>'+
+				'<option value="-1">All</option>'+
+				'</select>'
+		},
+		'autoWidth': false,
+		responsive: {
+			breakpoints: [
+				{ name: 'desktop', width: Infinity },
+				{ name: 'tablet',  width: 1180 },
+				{ name: 'fablet',  width: 768 },
+				{ name: 'phone',   width: 480 }
+			]
+		},
+		'columns': [
+			{ 'width': '20%' },
+			{ 'width': '16%' },
+			{ 'width': '25%' },
+			{ 'width': '16%' },
+			{ 'width': '12%' },
+			{ 'width': '11%' },
+		],
+		'columnDefs': [
+			{ responsivePriority: 1, targets: 0 },//buttons
+			{ responsivePriority: 2, targets: 1 },//serial
+			{ responsivePriority: 4, targets: 2 },//reg
+			{ responsivePriority: 3, targets: 3 },//owner
+			{ responsivePriority: 6, targets: 4 },//status
+			{ responsivePriority: 5, targets: 5 },//mark
+			{ className: 'centertxt', 'targets': [ 0,1,2,3,4,5 ] },
+		],
+	});
+	//
+	//START delete dashboard table row
+	$( '#dashboardtableone tbody' ).on('click','.deleterow',function(e){
+		e.preventDefault();
+		var numrows = $( '#dashboardtableone tbody tr' ).length -1;
+		var rows = $( '#dashboardtableone tbody tr' );
+		$( this ).closest('tr').next('tr.child').remove();
+		$( this ).closest('tr').remove();
+		$('#dashboardtableone_info').text('Showing 1 to ' + numrows + ' of ' + numrows + ' entries');
+		if (numrows < 1) {
+			$('#dashboardtableone_info').text('Showing 0 to ' + numrows + ' of ' + numrows + ' entries');
+		};
+	});
 
+
+	//START initialize Dashboard datable two
+	var tabletwo = $('#dashboardtabletwo').DataTable({
+		"fnDrawCallback": function( oSettings ) {
+		},
+		'sDom': '<"toolbartwo">lfrtip',
+		"language": {
+			"search": "<span class='glyphicon glyphicon-search' aria-hidden='true'></span><span class='sr-only'>search</span>",
+			"lengthMenu": "<span class='glyphicon glyphicon-filter' aria-hidden='true'></span><span class='sr-only'>select number of entries to display</span> <select>"+
+				'<option value="10">10</option>'+
+				'<option value="25">25</option>'+
+				'<option value="50">50</option>'+
+				'<option value="100">100</option>'+
+				'<option value="-1">All</option>'+
+				'</select>'
+		},
+		'autoWidth': false,
+		responsive: {
+			breakpoints: [
+				{ name: 'desktop', width: Infinity },
+				{ name: 'tablet',  width: 1180 },
+				{ name: 'fablet',  width: 768 },
+				{ name: 'phone',   width: 380 }
+			]
+		},
+		'columns': [
+			{ 'width': '18%' },//buttons
+			{ 'width': '10%' },//serial
+			{ 'width': '25%' },//reg
+			{ 'width': '11%' },//mark
+			{ 'width': '9%' },//owner
+			{ 'width': '9%' },
+			{ 'width': '9%' },
+			{ 'width': '9%' },
+		],
+		'columnDefs': [
+			{ responsivePriority: 1, targets: 0 },//buttons
+			{ responsivePriority: 2, targets: 1 },//serial
+			{ responsivePriority: 4, targets: 2 },//reg
+			{ responsivePriority: 5, targets: 3 },//mark
+			{ responsivePriority: 3, targets: 4 },//owner
+			{ className: 'centertxt', 'targets': [ 0,1,2,3,4,5 ] },
+		],
+	});
+
+	$(function() {
+		var progresslength = $('#editattorney .breadcrumb-steps .col-xs-2').length;
+		var progress = $('#editattorney .breadcrumb-steps .col-xs-2');
+		if ((progresslength) === 5)  {
+			$(progress).css('width','20%');
+		}
+		if ((progresslength) === 4)  {
+			$(progress).css('width','25%');
+		}
+		if ((progresslength) === 3)  {
+			$(progress).css('width','33.33%');
+		}
+		if ((progresslength) === 2)  {
+			$(progress).css('width','50%');
+		}
+		if ((progresslength) === 1)  {
+			$('#editattorney .displaycell').css('display','none');
+			console.log(progresslength);
+		}
+	});
 
 });
 

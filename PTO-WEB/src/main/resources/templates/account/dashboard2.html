@@ -38,11 +38,9 @@
     <script type="application/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script type="application/javascript"  th:src="@{/resources/js/lynnjqueryscript.js}"></script>
     <script type="application/javascript"  th:src="@{/resources/js/tab_panels.js}"></script>
-
-    <script type="application/javascript"  th:src="@{/resources/js/ie_alert.js}"></script>
 </head>
 
-<body  onload="ShowIEAlert()">
+<body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -109,11 +107,6 @@
             <div class="row">
                 <div class="col-xs-12" id="dashsectionscontainer" style="">
                     <h1>eFile Homepage</h1>
-                    <div class="col-xs-12 form-group form-group-md alert alert-warning" role="alert" aria-live="assertive" id="alertmin">
-                        <p id="mintext"></p>
-                        <button type="button" class="close" aria-label="close alert" id="alertbtn"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
-                        <br clear="all">
-                    </div>
                     <div class="row">
                         <div class="col-xs-12 form-group form-group-md" id="dashboard">
                             <div class="row">
@@ -126,9 +119,10 @@
                                                         <table id="dashboardtableone" class="table dataTable row-border display responsive text-center" style="width:100%" role="grid" aria-describedby="filings">
                                                             <thead>
                                                             <tr role="row">
-                                                                <th colspan="5" scope="colgroup"><span id="filings">Filings</span> <button type="button" id="newFiling" class="btn-sm btn-success fill">New Application</button></th>
+                                                                <th colspan="6" scope="colgroup"><span id="filings">Filings</span> <button type="button" id="newFiling" class="btn-sm btn-success fill">New Application</button></th>
                                                             </tr>
                                                             <tr role="row">
+                                                                <th scope="col" class="sorting_asc" tabindex="0" aria-controls="dashboardtableone" rowspan="1" colspan="1" role="columnheader"></th>
                                                                 <th scope="col" class="sorting_asc" tabindex="0" aria-controls="dashboardtableone" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Select: activate to sort column descending">Application/Serial#</th>
                                                                 <th scope="col" class="sorting_asc" tabindex="0" aria-controls="dashboardtableone" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Select: activate to sort column descending">Registration#</th>
                                                                 <th scope="col" class="sorting_asc" tabindex="0" aria-controls="dashboardtableone" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Class-num: activate to sort column descending">Owner</th>
@@ -138,7 +132,16 @@
                                                             </thead>
                                                             <tbody>
                                                             <th:block th:each="app : ${user.getMyApplications()}">
+
+
                                                                 <tr>
+
+                                                                    <td>
+                                                                        <th:block th:if="${app.getFilingStatus() == 'New Application'}">
+                                                                            <button type="button" class="btn btn-sm close deleterow" th:attr="filing-id=${app.getApplicationInternalID()}" value="" aria-label="remove this row"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+
+                                                                        </th:block>
+                                                                    </td>
                                                                     <td><a   th:attr="href='/application/continueApplication/?trademarkID='+${app.getApplicationInternalID()}"><span th:text="${app.getTrademarkName()}">87697840</span></a></td>
                                                                     <td>N/A</td>
 
@@ -210,11 +213,20 @@
                                                                         <tr>
                                                                             <td><a th:text="${action.getParentSerialNumber()}">87697840</a></td>
                                                                             <td>N/A</td>
-                                                                            <td><img th:src="${action.getParentMarkImagePath()}" style="max-width: 55px; max-height: 33px;"></td>
+
+                                                                            <th:block th:if="${action.isStandardCharacterMark() == true}">
+                                                                                <td ><span style="max-width: 55px; max-height: 33px; margin:0 auto;font-family: Palatino, Garamond, Bookman, Avant Garde; font-size:.9em;text-align:center;margin-bottom:0;" th:text="${action.getStandardCharacterText()}"></span></td>
+
+                                                                            </th:block>
+                                                                            <th:block th:if="${action.isStandardCharacterMark() == false}">
+                                                                                <td><img th:src="${action.getParentMarkImagePath()}" style="max-width: 55px; max-height: 33px;"></td>
+                                                                            </th:block>
+
+
                                                                             <td th:text="${action.getParentMarkOwnerName()}">Pittsburgh Penguins LP</td>
                                                                             <td th:text="${action.returnSomeDate()}">2/20/2019</td>
                                                                             <td > <a th:text="${action.getOfficeActionCode()}">Abandoned</a></td>
-                                                                            <td STYLE="color: red"><a>Respond</a></td>
+                                                                            <td STYLE="color: red"><a th:href="${action.getOfficeActionLink()}">Respond to Office Action</a></td>
                                                                         </tr>
 
                                                                     </th:block>
@@ -232,11 +244,17 @@
                                                                         <tr>
                                                                             <td><a th:text="${petition.getParentSerialNumber()}">87697840</a></td>
                                                                             <td>N/A</td>
-                                                                            <td><img th:src="${petition.getParentMarkImagePath()}" style="max-width: 55px; max-height: 33px;"></td>
+                                                                            <th:block th:if="${petition.isStandardCharacterMark() == true}">
+                                                                                <td ><span style="max-width: 55px; max-height: 33px; margin:0 auto;font-family: Palatino, Garamond, Bookman, Avant Garde; font-size:.9em;text-align:center;margin-bottom:0;" th:text="${petition.getStandardCharacterText()}"></span></td>
+
+                                                                            </th:block>
+                                                                            <th:block th:if="${petition.isStandardCharacterMark() == false}">
+                                                                                <td><img th:src="${petition.getParentMarkImagePath()}" style="max-width: 55px; max-height: 33px;"></td>
+                                                                            </th:block>
                                                                             <td th:text="${petition.getParentMarkOwnerName()}">Pittsburgh Penguins LP</td>
                                                                             <td th:text="${petition.returnSomeDate()}">2/20/2019</td>
                                                                             <td > <a th:text="${petition.getOfficeActionCode()}">Abandoned</a></td>
-                                                                            <td STYLE="color: red"><a th:href="${petition.getPetitionsLink()}">Revive</a></td>
+                                                                            <td STYLE="color: red"><a th:href="${petition.getPetitionsLink()}">File Petition to Revive</a></td>
                                                                         </tr>
 
                                                                     </th:block>
@@ -374,29 +392,90 @@
 
 <script>
 
-$(document).ready(function() {
+    $(document).ready(function() {
 
 
 
-    setTimeout(function() {
-    // after 1000 ms we add the class animated to the login/register card
-    $('#dashsectionscontainer').fadeIn(500);
-
-
-
-
-    }, 500);
+        setTimeout(function() {
+            // after 1000 ms we add the class animated to the login/register card
+            $('#dashsectionscontainer').fadeIn(500);
 
 
 
 
+        }, 500);
 
-    $('#newFiling').click(function () {
-    var newFilingURL = "/application/start/?trademarkID=new";
-     location.href=newFilingURL;
+
+
+
+
+        $('#newFiling').click(function () {
+            var newFilingURL = "/application/start/?trademarkID=new";
+            location.href=newFilingURL;
+        });
+
+
+
+
+        $('.deleterow').click(function () {
+            var applicationID = $(this).attr("filing-id");
+
+            deleteFiling(applicationID);
+
+        });
+
     });
 
-});
+
+    function deleteFiling( appInternalID) {
+
+        //var field_value = $(this).val();
+        //alert(field_value);
+
+
+        $.ajax({
+            url: "../../REST/apiGateway/application/delete/"+appInternalID,
+            type: 'GET',
+            success: function(data){
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                if(s_code.trim() == "200"){
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function() {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+
+            },
+            error: function(data) {
+
+                console.log(data);
+
+            }
+
+        });
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////
+        // end of contact information 'State' auto save ////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+
+
+    }
+
 
 </script>
 

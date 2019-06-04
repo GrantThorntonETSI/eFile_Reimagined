@@ -929,4 +929,37 @@ public class ApplicationService  extends  BaseRESTapiService{
     }
 
 
+
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/application/delete/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> deleteApplication( @PathVariable String appInternalID){
+
+        //////////////////////////////////////////////////////////
+        // retrieve application using passed internal id
+        //////////////////////////////////////////////////////////
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+        String responseMsg = "";
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService  ptoUserService = getServiceBeanFactory().getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+
+        ptoUser.deleteApplication(baseTrademarkApplication);
+        ptoUserService.save(ptoUser);
+
+        //baseTradeMarkApplicationService.delete(baseTrademarkApplication);
+        //baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+        ////////////////////////////////////////////////
+        // start generating response
+        ////////////////////////////////////////////////
+
+        return buildResponseEnity("200", responseMsg);
+
+    }
+
+
+
 }
