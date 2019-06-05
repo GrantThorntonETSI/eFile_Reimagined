@@ -2366,7 +2366,7 @@ public class ApplicationObjectCreationController {
             recieptFilePath  = "/files-pdf/"+recieptFilePath;
 
             baseTrademarkApplication.setRecieptFilePath(recieptFilePath);
-            baseTrademarkApplication.setFilingStatus("Submitted");
+            baseTrademarkApplication.setFilingStatus("New Application");
             baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
         }
