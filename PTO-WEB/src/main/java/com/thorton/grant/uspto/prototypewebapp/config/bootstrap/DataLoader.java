@@ -73,7 +73,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         Date date = new Date();
 
         // in production. duration will be set to 30 minutes, and delay will be set to 23.5 hours
-        timer.schedule(filingStatusUpdateTask, Long.valueOf(60000*2), Long.valueOf(60000*1));
+        //timer.schedule(filingStatusUpdateTask, Long.valueOf(60000*2), Long.valueOf(60000*1));
 
     }
 
