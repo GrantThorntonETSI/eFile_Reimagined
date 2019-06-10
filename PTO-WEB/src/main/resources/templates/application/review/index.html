@@ -410,56 +410,22 @@
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <input class="form-check-input checkmark" type="checkbox" value="rowone" tabindex="0" aria-labelledby="checkboxone" id="">
-                                                                <label class="form-check-label form-check" for="" aria-label="select this row" id="checkboxone"><span class="radio notspecial"></span></label>
-                                                            </td>
-                                                            <!--<td><img src="images/designwithtext_alt2.gif" class="img-thumbnail" width="55" alt="Your mark"></td>-->
-                                                            <td tabindex="0">Jun 20, 2018</td>
-                                                            <td tabindex="0">Response to Office Action</td>
-                                                            <td tabindex="0"><span class="uppercase">multi</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <input class="form-check-input checkmark" type="checkbox" value="rowone" tabindex="0" aria-labelledby="checkboxone" id="">
-                                                                <label class="form-check-label form-check" for="" aria-label="select this row" id="checkboxone"><span class="radio notspecial"></span></label>
-                                                            </td>
-                                                            <!--<td><img src="images/stylized_alt1.gif" class="img-thumbnail" width="55" alt="Your mark"></td>-->
-                                                            <td tabindex="0">Dec 30, 2017</td>
-                                                            <td tabindex="0">Offc Action Outgoing</td>
-                                                            <td tabindex="0"><span class="uppercase">xml</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <input class="form-check-input checkmark" type="checkbox" value="rowone" tabindex="0" aria-labelledby="checkboxone" id="">
-                                                                <label class="form-check-label form-check" for="" aria-label="select this row" id="checkboxone"><span class="radio notspecial"></span></label>
-                                                            </td>
-                                                            <!--<td><img src="images/stylized_alt1.gif" class="img-thumbnail" width="55" alt="Your mark"></td>-->
-                                                            <td tabindex="0">Dec 30, 2017</td>
-                                                            <td tabindex="0">XSearch Search Summary</td>
-                                                            <td tabindex="0"><span class="uppercase">xml</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <input class="form-check-input checkmark" type="checkbox" value="rowone" tabindex="0" aria-labelledby="checkboxone" id="">
-                                                                <label class="form-check-label form-check" for="" aria-label="select this row" id="checkboxone"><span class="radio notspecial"></span></label>
-                                                            </td>
-                                                            <!--<td><img src="images/stylized_alt1.gif" class="img-thumbnail" width="55" alt="Your mark"></td>-->
-                                                            <td tabindex="0">Nov 27, 2017</td>
-                                                            <td tabindex="0">Drawing</td>
-                                                            <td tabindex="0"><span class="uppercase">jpeg</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <input class="form-check-input checkmark" type="checkbox" value="rowone" tabindex="0" aria-labelledby="checkboxone" id="">
-                                                                <label class="form-check-label form-check" for="" aria-label="select this row" id="checkboxone"><span class="radio notspecial"></span></label>
-                                                            </td>
-                                                            <!--<td><img src="images/stylized_alt1.gif" class="img-thumbnail" width="55" alt="Your mark"></td>-->
-                                                            <td tabindex="0">Nov 27, 2017</td>
-                                                            <td tabindex="0">TEAS RF New Application</td>
-                                                            <td tabindex="0"><span class="uppercase">multi</span></td>
-                                                        </tr>
+
+                                                        <th:block th:each="event : ${baseTrademarkApplication.getFilingDocumentEvents()}">
+                                                            <tr>
+                                                                <td>
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="rowone" tabindex="0" aria-labelledby="checkboxone" id="">
+                                                                    <label class="form-check-label form-check" for="" aria-label="select this row" id="checkboxone"><span class="radio notspecial"></span></label>
+                                                                </td>
+                                                                <!--<td><img src="images/designwithtext_alt2.gif" class="img-thumbnail" width="55" alt="Your mark"></td>-->
+                                                                <td tabindex="0" th:text="${event.getEventDateDisplay()}">Jun 20, 2018</td>
+                                                                <td tabindex="0" th:text="${event.getEventDescription()}" >Response to Office Action</td>
+                                                                <td tabindex="0"><span class="uppercase">multi</span></td>
+                                                            </tr>
+
+                                                        </th:block>
+
+
                                                         </tbody>
                                                     </table>
                                                 </div>

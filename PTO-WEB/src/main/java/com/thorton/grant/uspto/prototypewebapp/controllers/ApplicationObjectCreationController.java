@@ -938,6 +938,7 @@ public class ApplicationObjectCreationController {
                     filingDocumentEvent.setEventDescription("Drawing");
                     filingDocumentEvent.setEventDocumentDisplayLink("/files/"+image_path);
                     filingDocumentEvent.setEventDocumentDownloadLink("/files-server/"+image_path);
+                    filingDocumentEvent.setDocumentType(file.getOriginalFilename().substring(file.getOriginalFilename().indexOf(".")).toUpperCase());
                     Date date = new Date();
                     filingDocumentEvent.setEventDate(date);
 
@@ -2199,6 +2200,7 @@ public class ApplicationObjectCreationController {
             filingDocumentEvent.setEventDocumentDownloadLink("files-server/"+recieptFilePath);
             Date date = new Date();
             filingDocumentEvent.setEventDate(date);
+            filingDocumentEvent.setDocumentType("MULTI");
             baseTrademarkApplication.addFilingDocumentEvent(filingDocumentEvent);
 
 

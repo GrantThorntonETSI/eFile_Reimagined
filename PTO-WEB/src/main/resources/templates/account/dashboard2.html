@@ -202,9 +202,10 @@
                                                         <table id="dashboardtabletwo" class="table DataTable row-border display responsive text-center" style="width:100%" role="grid" aria-describedby="filings">
                                                             <thead>
                                                             <tr role="row">
-                                                                <th colspan="7" scope="colgroup">Upcoming Action(s) Due</th>
+                                                                <th colspan="8" scope="colgroup">Upcoming Action(s) Due</th>
                                                             </tr>
                                                             <tr role="row">
+                                                                <th scope="col" class="sorting_asc" tabindex="0" aria-controls="dashboardtabletwo" rowspan="1" colspan="1" role="columnheader"></th>
                                                                 <th scope="col" class="sorting_asc" tabindex="0" aria-controls="dashboardtabletwo" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Select: activate to sort column descending">Application/Serial#</th>
                                                                 <th scope="col" class="sorting_asc" tabindex="0" aria-controls="dashboardtabletwo" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Class-num: activate to sort column descending">Registration#</th>
                                                                 <th scope="col" class="sorting" tabindex="0" aria-controls="dashboardtabletwo" rowspan="1" colspan="1" aria-label="Description: activate to sort column ascending">Mark</th>
@@ -220,6 +221,7 @@
                                                                 <th:block th:each="action : ${filing.getOfficeActions()}">
                                                                     <th:block th:if="${action.isActiveAction() == true}">
                                                                         <tr>
+                                                                            <td></td>
                                                                             <td><a th:text="${action.getParentSerialNumber()}">87697840</a></td>
                                                                             <td>N/A</td>
 
