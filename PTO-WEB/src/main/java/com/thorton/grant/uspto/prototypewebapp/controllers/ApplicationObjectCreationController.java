@@ -2196,7 +2196,7 @@ public class ApplicationObjectCreationController {
             }
             filingDocumentEvent.setEventDescription(filingType);
             filingDocumentEvent.setEventDocumentDisplayLink("/files-pdf/"+recieptFilePath);
-            filingDocumentEvent.setEventDocumentDownloadLink("files-server"+recieptFilePath);
+            filingDocumentEvent.setEventDocumentDownloadLink("files-server/"+recieptFilePath);
             Date date = new Date();
             filingDocumentEvent.setEventDate(date);
             baseTrademarkApplication.addFilingDocumentEvent(filingDocumentEvent);
