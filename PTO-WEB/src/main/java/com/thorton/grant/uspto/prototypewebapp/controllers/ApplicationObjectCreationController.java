@@ -900,65 +900,42 @@ public class ApplicationObjectCreationController {
 
 
     // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
-    @PostMapping(value = "/Mark/add")
-    public String addMarkDetailsImageFile(
-                                      @RequestParam(name="file", required=false) MultipartFile file,
-                                      @RequestParam String AppInternalID,
-                                      Model model) {
+    @PostMapping(value = "/mark/js/add")
+    public ResponseEntity addMarkJSupload(
+            @RequestParam(name="file", required=false) MultipartFile file,
+            @RequestParam (name="appID")String AppInternalID,
+            Model model
+    ) {
 
-
-
-        System.out.println("1111111111111111111111111111111111111111111111122222222222222222222222222222222222222222");
-        System.out.println("mark upload controller !!!!!!!!!!!");
-        System.out.println("1111111111111111111111111111111111111111111111122222222222222222222222222222222222222222");
-        // create a new application and tie it to user then save it to repository
-        // create attorneyDTO + to model
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
-        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
-        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
-        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
-        System.out.println("1111111111111111111111111111111111111111111111111111111111111111111111111111111");
-        System.out.println("app internal id : "+AppInternalID);
-        System.out.println("1111111111111111111111111111111111111111111111111111111111111111111111111111111");
-
-        if(AppInternalID.contains(",")){
-            int index = AppInternalID.indexOf(",");
-            AppInternalID = AppInternalID.substring(0, index);
-        }
-
-        System.out.println("22222222222222222222222222222222222222222222222222222222222222222222222222222222");
-        System.out.println("app internal id : "+AppInternalID);
-        System.out.println("222222222222222222222222222222222222222222222222222222222222222222222222222222222");
-
+        System.out.println("Mark image js file upload!!!! ");
 
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID( AppInternalID);
 
-        model.addAttribute("user", ptoUser);
-        model.addAttribute("account",credentials);
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
-
-        model.addAttribute("hostBean", hostBean);
-        String trademarkInternalID = baseTrademarkApplication.getApplicationInternalID();
-
-        //TradeMark tradeMark = new TradeMark();
+        String filePath ="";
         if(file != null){
+            System.out.println("file is not null");
 
             if(file.isEmpty() == false) {
+                System.out.println("file is not empty !!!!!!!!!!!!!!!");
 
 
                 try {
                     String image_path = storageService.store(file);
+                    filePath = "/files/"+image_path;
+
+
+                    System.out.println("storage root:"+storageService.getRootPath());
+                    System.out.println("file path server :"+filePath);
 
                     baseTrademarkApplication.getTradeMark().setTrademarkImagePath("/files/"+image_path);
-                    baseTrademarkApplication.getTradeMark().setTrademarkImageFilename(file.getOriginalFilename());
-                    model.addAttribute("markImagePath",baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+                    baseTrademarkApplication.getTradeMark().setBaseStoragePath(storageService.getRootPath());
+                    //model.addAttribute("markImagePath",baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
                 }
                 catch ( StorageException ex){
-                    model.addAttribute("message", "ERROR: Mark Image upload failed due to error: "+ex );
-                   // return "forward:/mark/designWithText/?trademarkID="+trademarkInternalID;
-                    return "application/mark/MarkDetailsUpload";
+                    // model.addAttribute("message", "ERROR: Mark Image upload failed due to error: "+ex );
+                    // return "forward:/mark/designWithText/?trademarkID="+trademarkInternalID;
+                    buildResponseEnity("420", "{error:" +"ERROR: Mark Image upload failed due to error: "+ex+"}");
 
                 }
 
@@ -968,135 +945,35 @@ public class ApplicationObjectCreationController {
                     String BWimagePath = storageService.storeBW(file);
 
                     baseTrademarkApplication.getTradeMark().setTrademarkBWImagePath("/files/"+BWimagePath);
-                    model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+                    //model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
 
                 }
                 catch ( StorageException ex){
-                    model.addAttribute("message", "ERROR: BW Mark Image upload failed due to error: "+ex );
+                    //model.addAttribute("message", "ERROR: BW Mark Image upload failed due to error: "+ex );
                     // return "forward:/mark/designWithText/?trademarkID="+trademarkInternalID;
-                    return "application/mark/MarkDetailsUpload";
+                    buildResponseEnity("420", "{error:" +"ERROR: BW Mark Image upload failed due to error: "+ex+"}");
 
                 }
                 baseTrademarkApplication.setTradeMarkUploaded(true);
                 baseTradeMarkApplicationService.save(baseTrademarkApplication);
-
-
             }
 
         }
-        model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
-        //return "application/MarkDetailsDesignWText";
-        return "application/mark/MarkDetailsUpload";
-    }
-    ///////////////////////////////////////////////////////////////////////////////
-    // end of attorney add
-    ///////////////////////////////////////////////////////////////////////////////
-
-
-
-
-    // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
-    @PostMapping(value = "/Mark/consent/add")
-    public String uploadMarkConset(
-            @RequestParam(name="file", required=false) MultipartFile file,
-            @RequestParam String AppInternalID,
-            Model model) {
-
-
-
-        System.out.println("1111111111111111111111111111111111111111111111122222222222222222222222222222222222222222");
-        System.out.println("mark consent file upload controller !!!!!!!!!!!");
-        System.out.println("1111111111111111111111111111111111111111111111122222222222222222222222222222222222222222");
-        // create a new application and tie it to user then save it to repository
-        // create attorneyDTO + to model
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
-        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
-        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
-        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
-        System.out.println("1111111111111111111111111111111111111111111111111111111111111111111111111111111");
-        System.out.println("app internal id : "+AppInternalID);
-        System.out.println("1111111111111111111111111111111111111111111111111111111111111111111111111111111");
-
-        if(AppInternalID.contains(",")){
-            int index = AppInternalID.indexOf(",");
-            AppInternalID = AppInternalID.substring(0, index);
-        }
-
-        System.out.println("22222222222222222222222222222222222222222222222222222222222222222222222222222222");
-        System.out.println("app internal id : "+AppInternalID);
-        System.out.println("222222222222222222222222222222222222222222222222222222222222222222222222222222222");
-
-
-        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
-        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID( AppInternalID);
-
-        model.addAttribute("user", ptoUser);
-        model.addAttribute("account",credentials);
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
-
-        model.addAttribute("hostBean", hostBean);
-        String trademarkInternalID = baseTrademarkApplication.getApplicationInternalID();
-
-        //TradeMark tradeMark = new TradeMark();
-        if(file != null){
-
-            if(file.isEmpty() == false) {
-
-
-                try {
-                    String file_path = storageService.store(file);
-
-                    baseTrademarkApplication.getTradeMark().setTrademarkConsentFilePath("/files/"+file_path);
-                    baseTrademarkApplication.getTradeMark().setTrademarkConsentDownLoadPath("/files-server/"+file_path);
-                    baseTrademarkApplication.getTradeMark().setTrademarkConsentFileName(file.getOriginalFilename());
-                    baseTrademarkApplication.getTradeMark().setConsentFileUploaded(true);
-                    boolean colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
-                    boolean acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
-                    boolean translationFW = baseTrademarkApplication.getTradeMark().isForeignLanguageTranslationWording();
-
-                    boolean transliterationFW = baseTrademarkApplication.getTradeMark().isForeignLanguateTransliterationWording();
-
-                    boolean containsSignatureName = baseTrademarkApplication.getTradeMark().isContainNamePortaitSignature();
-                    boolean isName = baseTrademarkApplication.getTradeMark().isName();
-                    boolean isSignature = baseTrademarkApplication.getTradeMark().isSignature();
-                    boolean isPortrait =  baseTrademarkApplication.getTradeMark().isPortrait();
-                    boolean isNPSLivingPerson =  baseTrademarkApplication.getTradeMark().isNPSLivingPerson();
-                    boolean isNPSLivingPersonSet = baseTrademarkApplication.getTradeMark().isNPSLivingPersonSet();
-
-
-                    model.addAttribute("markColorClaim", colorClaim);
-                    model.addAttribute("markColorClaimBW", acceptBW);
-                    model.addAttribute("translationFW", translationFW);
-                    model.addAttribute("translitFW", transliterationFW);
-                    model.addAttribute("containsSignatureName", containsSignatureName );
-                    model.addAttribute("isName", isName );
-                    model.addAttribute("isSignature", isSignature );
-                    model.addAttribute("isPortrait", isPortrait );
-                    model.addAttribute("isNPSLivingPerson", isNPSLivingPerson );
-                    model.addAttribute("isNPSLivingPersonSet", isNPSLivingPersonSet);
-                }
-                catch ( StorageException ex){
-                    model.addAttribute("message", "ERROR: Mark Image upload failed due to error: "+ex );
-                    // return "forward:/mark/designWithText/?trademarkID="+trademarkInternalID;
-                    return "application/mark/MarkDetailsDesignWText";
-
-                }
-
-
-                baseTradeMarkApplicationService.save(baseTrademarkApplication);
-
-
-            }
-
+        else{
+            System.out.println("file object is null");
         }
 
 
+        return buildResponseEnity("200", "{image-url:" +filePath+"}");
 
-        model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
-        return "application/mark/MarkDetailsDesignWText";
-        //return "application/MarkDetailsUpload";
+        //return ResponseEntity.ok().build();
+
     }
+
+
+
+
+
     ///////////////////////////////////////////////////////////////////////////////
     // end of attorney add
     ///////////////////////////////////////////////////////////////////////////////
@@ -1679,78 +1556,6 @@ public class ApplicationObjectCreationController {
 
     }
 
-
-
-    // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
-    @PostMapping(value = "/mark/js/add")
-    public ResponseEntity addMarkJSupload(
-            @RequestParam(name="file", required=false) MultipartFile file,
-            @RequestParam (name="appID")String AppInternalID,
-            Model model
-    ) {
-
-        System.out.println("Mark image js file upload!!!! ");
-
-        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
-        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID( AppInternalID);
-
-        String filePath ="";
-        if(file != null){
-            System.out.println("file is not null");
-
-            if(file.isEmpty() == false) {
-                System.out.println("file is not empty !!!!!!!!!!!!!!!");
-
-
-                try {
-                    String image_path = storageService.store(file);
-                    filePath = "/files/"+image_path;
-
-
-                    System.out.println("storage root:"+storageService.getRootPath());
-                    System.out.println("file path server :"+filePath);
-
-                    baseTrademarkApplication.getTradeMark().setTrademarkImagePath("/files/"+image_path);
-                    baseTrademarkApplication.getTradeMark().setBaseStoragePath(storageService.getRootPath());
-                    //model.addAttribute("markImagePath",baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
-                }
-                catch ( StorageException ex){
-                   // model.addAttribute("message", "ERROR: Mark Image upload failed due to error: "+ex );
-                    // return "forward:/mark/designWithText/?trademarkID="+trademarkInternalID;
-                    buildResponseEnity("420", "{error:" +"ERROR: Mark Image upload failed due to error: "+ex+"}");
-
-                }
-
-                // generate black and white version and store path
-
-                try {
-                    String BWimagePath = storageService.storeBW(file);
-
-                    baseTrademarkApplication.getTradeMark().setTrademarkBWImagePath("/files/"+BWimagePath);
-                    //model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
-
-                }
-                catch ( StorageException ex){
-                    //model.addAttribute("message", "ERROR: BW Mark Image upload failed due to error: "+ex );
-                    // return "forward:/mark/designWithText/?trademarkID="+trademarkInternalID;
-                    buildResponseEnity("420", "{error:" +"ERROR: BW Mark Image upload failed due to error: "+ex+"}");
-
-                }
-                baseTrademarkApplication.setTradeMarkUploaded(true);
-                baseTradeMarkApplicationService.save(baseTrademarkApplication);
-            }
-
-        }
-        else{
-            System.out.println("file object is null");
-        }
-
-
-        return buildResponseEnity("200", "{image-url:" +filePath+"}");
-
-        //return ResponseEntity.ok().build();
-
-    }
 
     // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
     @PostMapping(value = "/distinctive/evidence/add")
