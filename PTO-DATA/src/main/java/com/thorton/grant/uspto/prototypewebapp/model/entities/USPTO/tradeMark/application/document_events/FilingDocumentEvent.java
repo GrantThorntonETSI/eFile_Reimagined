@@ -25,6 +25,9 @@ public class FilingDocumentEvent extends BaseEntity {
     private String eventDescription;
 
 
+    private String documentType;
+
+
 
     // and a downloadable link
     private String eventDocumentDownloadLink;
@@ -79,6 +82,11 @@ public class FilingDocumentEvent extends BaseEntity {
         return eventDate.toString().substring(0, 10);
     }
 
+    public String getDocumentType() {
+        return documentType;
+    }
 
-
+    public void setDocumentType(String documentType) {
+        this.documentType = documentType;
+    }
 }
