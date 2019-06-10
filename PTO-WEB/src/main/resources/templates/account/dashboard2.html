@@ -253,6 +253,7 @@
                                                                 <th:block th:each="petition : ${filing2.getPetitions()}">
                                                                     <th:block th:if="${petition.isActivePetition() == true}">
                                                                         <tr>
+                                                                            <td></td>
                                                                             <td><a th:text="${petition.getParentSerialNumber()}">87697840</a></td>
                                                                             <td>N/A</td>
                                                                             <th:block th:if="${petition.isStandardCharacterMark() == true}">
