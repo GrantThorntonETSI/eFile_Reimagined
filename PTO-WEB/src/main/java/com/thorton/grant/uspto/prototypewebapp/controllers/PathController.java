@@ -12,11 +12,8 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCrede
 import com.thorton.grant.uspto.prototypewebapp.service.mail.gmail.GmailJavaMailSenderService;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,17 +24,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.io.IOException;
 import java.util.Random;
 
 
 @Controller
-@Component
-public class PathController  {
+public class PathController {
 
     private final ServiceBeanFactory serviceBeanFactory;
 
@@ -45,15 +39,11 @@ public class PathController  {
 
     private final GmailJavaMailSenderService mailSender;
 
-
-
     public PathController(ServiceBeanFactory serviceBeanFactory, IUserService service, GmailJavaMailSenderService mailSender) {
         this.serviceBeanFactory = serviceBeanFactory;
         this.service = service;
         this.mailSender = mailSender;
     }
-
-
 
     @RequestMapping({"", "/","/index","/index.html", "/home"})
     public String index(){
@@ -241,15 +231,10 @@ public class PathController  {
     ///////////////////////////////////
     // login failure intercept
     ///////////////////////////////////
-
-
-
     @RequestMapping({"/passwordFailure"})
     public String loginFailure(Model model, HttpServletRequest httpServletRequest) {
 
 
-
-        System.out.println("uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
         String server_message = "Email and password combination could not be found.";
         //redirectAttributes.addFlashAttribute("message",server_message );
         model.addAttribute("message", server_message);
@@ -259,6 +244,7 @@ public class PathController  {
         return "login";
 
     }
+
 
 
     @RequestMapping({"/aboutUs"})

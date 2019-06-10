@@ -3,13 +3,13 @@ package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.a
 
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.OfficeActions;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.Petition;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.document_events.FilingDocumentEvent;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.GSClassCategory;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.GoodAndService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.TradeMark;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
-import com.thorton.grant.uspto.prototypewebapp.model.entities.base.BaseEntity;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
@@ -116,6 +116,13 @@ public class BaseTrademarkApplication  {
     @OneToMany(fetch = FetchType.EAGER ,cascade =  CascadeType.ALL)
     @Nullable
     private Set<Petition>  petitions;
+
+
+    @OneToMany(fetch = FetchType.EAGER ,cascade =  CascadeType.ALL)
+    @Nullable
+    private Set<FilingDocumentEvent> filingDocumentEvents  ;
+
+
     /////////////////////////////////////////////////////////////////////
     // stage 2
     /////////////////////////////////////////////////////////////////////
@@ -124,6 +131,11 @@ public class BaseTrademarkApplication  {
     private TradeMark tradeMark;
 
     private boolean tradeMarkUploaded;
+
+
+
+
+    // add one to many relationship to filingDocumentEvent
 
 
 
@@ -626,7 +638,21 @@ public class BaseTrademarkApplication  {
         return petition;
     }
 
+    @Nullable
+    public Set<FilingDocumentEvent> getFilingDocumentEvents() {
+        return filingDocumentEvents;
+    }
 
+    public void setFilingDocumentEvents(@Nullable Set<FilingDocumentEvent> filingDocumentEvents) {
+        this.filingDocumentEvents = filingDocumentEvents;
+    }
+
+
+    public FilingDocumentEvent addFilingDocumentEvent(FilingDocumentEvent filingDocumentEvent){
+
+          filingDocumentEvents.add(filingDocumentEvent);
+        return filingDocumentEvent;
+    }
 
     public OfficeActions findOfficeActionById(String id){
         OfficeActions action = null;

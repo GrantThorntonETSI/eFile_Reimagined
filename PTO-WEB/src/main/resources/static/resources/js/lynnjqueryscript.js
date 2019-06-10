@@ -166,7 +166,7 @@ $(document).ready(function(){
 	//END
 
 	//start close (x) dashboard panels
-	$('#dashsectionscontainer .closegspanels').click(function() {
+	$('#dashsectionscontainer #announcements .closegspanels').click(function() {
 		$( this ).parent().parent().parent().parent().parent().fadeOut( 'fast','swing');
 	});
 	//end close (x) dashboard panels
@@ -1855,6 +1855,22 @@ $(document).ready(function(){
 			console.log(progresslength);
 		}
 	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 });
 

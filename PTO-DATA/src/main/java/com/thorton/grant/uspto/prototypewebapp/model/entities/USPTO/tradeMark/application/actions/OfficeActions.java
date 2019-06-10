@@ -3,15 +3,22 @@ package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.a
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.base.BaseEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 
 @Entity
+@Table(name = "office_actions")
 public class OfficeActions extends BaseEntity {
 
+
+    public OfficeActions() {
+
+        requiredActions = new HashSet<>();
+    }
 
     private String officeAction;
 
@@ -26,6 +33,12 @@ public class OfficeActions extends BaseEntity {
     private String  parentMarkImagePath;
 
     private String parentMarkOwnerName;
+
+
+
+    private boolean standardCharacterMark;
+
+    private String standardCharacterText;
 
 
 
@@ -52,6 +65,10 @@ public class OfficeActions extends BaseEntity {
     private BaseTrademarkApplication trademarkApplication;
 
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<RequiredActions> requiredActions;
+
+
 
 
 
@@ -73,12 +90,26 @@ public class OfficeActions extends BaseEntity {
         this.officeActionCode = officeActionCode;
     }
 
+
+    public Set<RequiredActions> getRequiredActions() {
+        return requiredActions;
+    }
+
+    public void setRequiredActions(Set<RequiredActions> requiredActions) {
+        this.requiredActions = requiredActions;
+    }
+
     public BaseTrademarkApplication getTrademarkApplication() {
         return trademarkApplication;
     }
 
     public void setTrademarkApplication(BaseTrademarkApplication trademarkApplication) {
         this.trademarkApplication = trademarkApplication;
+    }
+
+    public RequiredActions addRequiredActions(RequiredActions requiredActions){
+        this.requiredActions.add(requiredActions);
+        return requiredActions;
     }
 
 
@@ -127,6 +158,39 @@ public class OfficeActions extends BaseEntity {
         this.activeAction = activeAction;
     }
 
+    public boolean isStandardCharacterMark() {
+        return standardCharacterMark;
+    }
+
+    public void setStandardCharacterMark(boolean standardCharacterMark) {
+        this.standardCharacterMark = standardCharacterMark;
+    }
+
+    public String getStandardCharacterText() {
+        return standardCharacterText;
+    }
+
+    public void setStandardCharacterText(String standardCharacterText) {
+        this.standardCharacterText = standardCharacterText;
+    }
+
+    public String getOfficeActionLink(){
+        return "/officeAction/response/"+getInternalID()+"/?trademarkID="+getTrademarkApplication().getApplicationInternalID();
+    }
+
+
+
+    public RequiredActions findRequiredActionById(String id){
+        RequiredActions action = null;
+        for(Iterator<RequiredActions> iter = requiredActions.iterator(); iter.hasNext(); ) {
+            RequiredActions current = iter.next();
+
+            if(current.getInternalID().equals(id)){
+                action = current;
+            }
+        }
+        return action;
+    }
 
 
 }

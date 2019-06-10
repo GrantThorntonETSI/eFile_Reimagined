@@ -36,6 +36,7 @@ public class TradeMark extends BaseEntity {
     private String trademarkImagePath;
     private String trademarkBWImagePath;
 
+    private String trademarkImageFilename;
     private String baseStoragePath;
 
 
@@ -760,6 +761,14 @@ public class TradeMark extends BaseEntity {
 
     public void addDisclaimerDeclaration( String disclaimerDeclaration){
         disclaimerDeclarationList.add(disclaimerDeclaration);
+    }
+
+    public String getTrademarkImageFilename() {
+        return trademarkImageFilename;
+    }
+
+    public void setTrademarkImageFilename(String trademarkImageFilename) {
+        this.trademarkImageFilename = trademarkImageFilename;
     }
 
     @Override

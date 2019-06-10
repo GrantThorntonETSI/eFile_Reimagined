@@ -38,9 +38,10 @@
     <script type="application/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script type="application/javascript"  th:src="@{/resources/js/lynnjqueryscript.js}"></script>
     <script type="application/javascript"  th:src="@{/resources/js/tab_panels.js}"></script>
+    <script type="application/javascript" th:src="@{/resources/js/chrome_alert.js}"></script>
 </head>
 
-<body>
+<body onload="ShowChromeAlert()">
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -107,6 +108,14 @@
             <div class="row">
                 <div class="col-xs-12" id="dashsectionscontainer" style="">
                     <h1>eFile Homepage</h1>
+                    <div class="col-xs-12 form-group form-group-md alert alert-warning" role="alert" aria-live="assertive" id="alertmin">
+                        <div class="closepans" id="minholder">
+                            <p id="mintext"></p>
+                            <button type="button" class="close closegspanels" aria-label="close alert" id="alertbtn"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                        </div>
+                    </div>
+
+
                     <div class="row">
                         <div class="col-xs-12 form-group form-group-md" id="dashboard">
                             <div class="row">
@@ -137,7 +146,7 @@
                                                                 <tr>
 
                                                                     <td>
-                                                                        <th:block th:if="${app.getFilingStatus() == 'New Application'}">
+                                                                        <th:block th:if="${app.getFilingStatus() == 'Draft'}">
                                                                             <button type="button" class="btn btn-sm close deleterow" th:attr="filing-id=${app.getApplicationInternalID()}" value="" aria-label="remove this row"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
 
                                                                         </th:block>
@@ -422,6 +431,35 @@
 
             deleteFiling(applicationID);
 
+        });
+
+        //START close button height match dashboard
+        $( window ).load(function () {
+            var d = $( '#announcements .closepans' ).prev('div');
+            $(d).css('display','flex').css('flex-direction','column').css('min-height','3em');
+            $('#announcements .closepans').css( 'line-height', (d.innerHeight()) ).css( 'height', (d.innerHeight()) );
+            $('#announcements .closegspanels').css('line-height',(d.innerHeight() + 'px'));
+            $( window ).resize(function() {
+                $('#announcements .closepans').css( 'height', (d.innerHeight()) );
+                $('#announcements .closegspanels').css('line-height',(d.innerHeight() + 'px'));
+            });
+            var e = $( '#dashboardmain .alert-warning .closepans' );
+            $(e).css('min-height','3em');
+            $('#dashboardmain .alert-warning .closepans').css( 'height', (e.innerHeight()) );
+            $('#dashboardmain .alert-warning button.closegspanels').css('height',(e.innerHeight() + 'px')).css('line-height',(e.innerHeight() + 'px'));
+            $( window ).resize(function() {
+                $('#dashboardmain .alert-warning .closepans').css( 'height', (e.innerHeight()) );
+                $('#dashboardmain .alert-warning button.closegspanels').css('height',(e.innerHeight() + 'px')).css('line-height',(e.innerHeight() + 'px'));
+            });
+            console.log(e);
+        });
+
+        $('#alertmin').css('visibility','hidden').css('top','-10000px').css('float','none').css('margin-bottom','0').css('padding','0');
+        $(document).on('click','#alertmin button.close', function () {
+            $('#alertmin').css('visibility','hidden').css('top','-10000px').css('float','none').css('margin-bottom','0').css('padding','0');
+            $('#alertmin button').css('display','none');
+            $('#alertmin').css('height','1px');
+            $('#alertmin p').css('display','none');
         });
 
     });

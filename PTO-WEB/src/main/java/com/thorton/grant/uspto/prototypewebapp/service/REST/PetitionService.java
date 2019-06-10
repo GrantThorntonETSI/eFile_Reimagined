@@ -199,4 +199,35 @@ public class PetitionService  extends  BaseRESTapiService{
         return buildResponseEnity("200", responseMsg);
     }
 
+
+
+
+    // Office Action REST API service
+
+
+    @CrossOrigin(origins = {"https://localhost","https://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/OfficeAction/response/update/{pField}/{pValue}/{OfficeActionID}/{requiredActionID}/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> saveOAResponse(@PathVariable String pField , @PathVariable String pValue, @PathVariable String OfficeActionID, @PathVariable String requiredActionID,@PathVariable String appInternalID){
+        String appFieldReadable = "";
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+
+        if(pField.equals("OA-translation-languageType")){
+
+            baseTrademarkApplication.findOfficeActionById(OfficeActionID).findRequiredActionById(requiredActionID).setTranslationTextLanguage(pValue);
+            baseTrademarkApplication.getTradeMark().setForeignLanguageType_translation(pValue);
+
+            appFieldReadable = "Language Type";
+
+        }
+
+
+
+        String responseMsg = appFieldReadable+" has been saved";
+        return buildResponseEnity("200", responseMsg);
+    }
+
 }

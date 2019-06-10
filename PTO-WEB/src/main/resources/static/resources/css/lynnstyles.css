@@ -2343,20 +2343,12 @@ button[type=submit] {
 	margin:0 auto;
 	float:none;
 }
-.fileholder .linkholder {
-	/*overflow-wrap: break-word;
-	word-wrap: break-word;
-	-ms-word-break: break-all;
-	word-break: break-all;
-	word-break: break-word;
-	-ms-hyphens: auto;
-	-moz-hyphens: auto;
-	-webkit-hyphens: auto;
-	hyphens: auto;
-	white-space: normal;*/
-	overflow: hidden;
-	text-overflow: ellipsis;
-	/*max-height: 38px;*/
+.js-upload-finished .linkholder a {
+	text-decoration:underline;
+}
+.fileholder .linkholder, .fileholder .iconholder{
+	display:table;
+	max-height: 38px;
 }
 .fileholder div {
 	padding: 1em 0;
@@ -2364,10 +2356,14 @@ button[type=submit] {
 .fileholder div.row {
 	padding: 0;
 }
-.fileholder div img, .fileholder div button, .fileholder span, .fileholder a {
+.fileholder div img, .fileholder div button, .fileholder span, .fileholder a, .fileholder i, #petitions1 div img, #petitions2 div img, #responseamend div img {
 	float: none!important;
 	height:38px;
 	font-size:.8em;
+}
+.fileholder div img, .fileholder i, .fileholder span, #petitions1 div img, #petitions2 div img, #responseamend div img  {
+	height:auto;
+	max-width:80%;
 }
 .fileholder div img, .fileholder span {
 	margin:0 auto;
@@ -2382,9 +2378,14 @@ button[type=submit] {
 .fileholder span.glyphicon {
 	line-height: 1.4em;
 }
-.fileholder a {
+.fileholder a, .fileholder i {
 	color:#fff;
 }
+
+.fileholder i {
+	font-size: 1.4em;
+}
+
 .fileholder {
 	padding:0 1.5em;
 	min-height: 38px;
@@ -2414,7 +2415,7 @@ button[type=submit] {
 	padding: .5em 1em!important;
 	display: table!important;
 	height:auto!important;
-	margin-top: .4em!important;
+	margin-top: .47em!important;
 }
 .js-upload-finished .list-group-item-success {
 	display: inline-block;
@@ -2765,6 +2766,10 @@ footer #megamenu ul {
 		width:100%!important;
 		margin-top:1em!important;
 	}
+	.js-upload-finished .badge {
+		margin-top: 1em!important;
+		font-size: .6em;
+	}
 }
 @media (min-width: 768px){
 	.navbar-nav#lowernav>li {
@@ -3101,9 +3106,7 @@ footer #megamenu ul {
 	#userprofilepage .panel-body {
 		min-height: 22em;
 	}
-	.js-upload-finished, .upload-drop-zone {
-		width:50%;
-	}
+
 	#responseamend .js-upload-finished, .upload-drop-zone {
 		width:100%;
 	}
@@ -3180,4 +3183,47 @@ table#dashboardtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:f
 }
 table#dashboardtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child, table#dashboardtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child {
 	padding-left: 0;
+}
+
+#dashboardmain #alertmin, #filingbasisabde #alertmin {
+	height: 1px;
+}
+#filingbasisabde #alertmin p {
+	width: 85%;
+	padding-left:0;
+}
+div#minholder {
+	display: table;
+	width: 100%;
+	min-height: 2.91em;
+}
+
+p#mintext {
+	display: table-cell;
+	vertical-align:middle;
+	font-size:1.07em;
+	padding-left:27px;
+}
+
+#alertmin button#alertbtn {
+	font-size: 2.5em;
+	color:#444;
+	float:right;
+	display: table-cell;
+	vertical-align:middle;
+}
+#filingbasisabde #alertmin button#alertbtn {
+	width:15%;
+}
+#alertmin button#alertbtn span {
+	top: 4px;
+}
+
+#dashboardmain .panel-heading h4 {
+	padding-left:25px;
+	margin-top: .4em;
+}
+
+#dashboardmain button.closegspanels {
+	font-size: 3em;
 }
