@@ -30,6 +30,8 @@ public class BaseTrademarkApplication  {
         owners = new HashSet<>();
         officeActions = new HashSet<>();
 
+        filingDocumentEvents = new HashSet<>();
+
 
         goodAndServices = new HashSet<>();
         sectionStatus = new ArrayList<>();
@@ -402,6 +404,8 @@ public class BaseTrademarkApplication  {
     private boolean validateTEASFields = false;
 
 
+
+    private boolean TEASPlusApplication = false;
 
     /////////////////////////////////////////////////////////////////////////////////////////
     // initial black out period date
@@ -1888,6 +1892,13 @@ public class BaseTrademarkApplication  {
         this.petitions = petitions;
     }
 
+    public boolean isTEASPlusApplication() {
+        return TEASPlusApplication;
+    }
+
+    public void setTEASPlusApplication(boolean TEASPlusApplication) {
+        this.TEASPlusApplication = TEASPlusApplication;
+    }
 
     public Set<Integer> getUniqueClassNumberforGS(){
 

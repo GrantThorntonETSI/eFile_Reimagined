@@ -3703,6 +3703,7 @@ public class ApplicationFlowController {
             passedValidation = true;
             // update Base application base price
             baseTrademarkApplication.setBaseFee(225);
+            baseTrademarkApplication.setTEASPlusApplication(true);
 
         }
 

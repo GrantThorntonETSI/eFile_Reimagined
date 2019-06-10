@@ -16,6 +16,7 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.Co
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.form.NewAttorneyContactFormDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.form.NewOwnerContactFormDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.form.partnerDTO;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.document_events.FilingDocumentEvent;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.GoverningEntity;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
@@ -919,6 +920,7 @@ public class ApplicationObjectCreationController {
             if(file.isEmpty() == false) {
                 System.out.println("file is not empty !!!!!!!!!!!!!!!");
 
+                // we need to create a document event here
 
                 try {
                     String image_path = storageService.store(file);
@@ -931,6 +933,16 @@ public class ApplicationObjectCreationController {
                     baseTrademarkApplication.getTradeMark().setTrademarkImagePath("/files/"+image_path);
                     baseTrademarkApplication.getTradeMark().setBaseStoragePath(storageService.getRootPath());
                     //model.addAttribute("markImagePath",baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+
+                    FilingDocumentEvent filingDocumentEvent = new FilingDocumentEvent();
+                    filingDocumentEvent.setEventDescription("Drawing");
+                    filingDocumentEvent.setEventDocumentDisplayLink("/files/"+image_path);
+                    filingDocumentEvent.setEventDocumentDownloadLink("/files-server/"+image_path);
+                    Date date = new Date();
+                    filingDocumentEvent.setEventDate(date);
+
+                    baseTrademarkApplication.addFilingDocumentEvent(filingDocumentEvent);
+
                 }
                 catch ( StorageException ex){
                     // model.addAttribute("message", "ERROR: Mark Image upload failed due to error: "+ex );
@@ -2172,7 +2184,33 @@ public class ApplicationObjectCreationController {
             recieptFilePath  = "/files-pdf/"+recieptFilePath;
 
             baseTrademarkApplication.setRecieptFilePath(recieptFilePath);
-            baseTrademarkApplication.setFilingStatus("New Application");
+            // create document event here
+            FilingDocumentEvent filingDocumentEvent = new FilingDocumentEvent();
+            String filingType="";
+            if(baseTrademarkApplication.isTEASPlusApplication() == true){
+                filingType ="TEAS RF New Application";
+            }
+            else {
+
+                filingType = "New Application";
+            }
+            filingDocumentEvent.setEventDescription(filingType);
+            filingDocumentEvent.setEventDocumentDisplayLink("/files-pdf/"+recieptFilePath);
+            filingDocumentEvent.setEventDocumentDownloadLink("files-server"+recieptFilePath);
+            Date date = new Date();
+            filingDocumentEvent.setEventDate(date);
+            baseTrademarkApplication.addFilingDocumentEvent(filingDocumentEvent);
+
+
+
+            baseTrademarkApplication.setFilingStatus(filingType);
+
+
+
+
+
+
+
             baseTradeMarkApplicationService.save(baseTrademarkApplication);
             baseTrademarkApplication.setLastViewModel("application/review/index");
 
