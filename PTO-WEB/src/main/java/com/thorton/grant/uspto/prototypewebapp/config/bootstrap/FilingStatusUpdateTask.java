@@ -5,6 +5,7 @@ import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.applic
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.OfficeActions;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.Petition;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.RequiredActions;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.document_events.FilingDocumentEvent;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import org.springframework.beans.factory.annotation.Value;
@@ -106,7 +107,7 @@ public class FilingStatusUpdateTask extends TimerTask {
         for(Iterator<BaseTrademarkApplication> iter = baseTradeMarkApplicationService.findAll().iterator(); iter.hasNext(); ) {
             BaseTrademarkApplication current = iter.next();
 
-            if(current.getApplicationFilingDate() != null && current.getFilingStatus().equals("New Application")){
+            if((current.getApplicationFilingDate() != null && current.getFilingStatus().equals("TEAS RF New Application") )|| (current.getApplicationFilingDate() != null && current.getFilingStatus().equals("New Application") ) ){
                 // check that date + duration against current time
               if((current.getApplicationFilingDate().getTime() + blackOutPeriodDuration) < new Date().getTime()){
 
@@ -124,6 +125,20 @@ public class FilingStatusUpdateTask extends TimerTask {
                   officeActions.setParentSerialNumber(current.getTrademarkName());
                   officeActions.setActiveAction(true);
                   //officeActions.setOfficeActionCode("Missing transliteration");
+
+
+                  // create office action event here
+                  FilingDocumentEvent filingDocumentEvent = new FilingDocumentEvent();
+                  filingDocumentEvent.setEventDescription("Office Action Outgoing");
+
+                  filingDocumentEvent.setDocumentType("XML");
+                  Date date = new Date();
+                  filingDocumentEvent.setEventDate(date);
+
+                  current.addFilingDocumentEvent(filingDocumentEvent);
+
+
+
 
                   if (current.getTradeMark().isStandardCharacterMark() || current.getTradeMark().getTrademarkDesignType().equals("Design with Text")) {
                       if (current.getTradeMark().getForeignLanguageTranslationUSText() == null || current.getTradeMark().getForeignLanguageTranslationUSText() == null || current.getTradeMark().getForeignLanguageType_translation() == null ){
