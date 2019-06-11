@@ -219,7 +219,7 @@
 
                                                             <th:block th:each="filing : ${user.getMyApplications()}">
                                                                 <th:block th:each="action : ${filing.getOfficeActions()}">
-                                                                    <th:block th:if="${action.isActiveAction() == true}">
+                                                                    <th:block th:if="${action.isOfficeActionCompleted() == false}">
                                                                         <tr>
                                                                             <td></td>
                                                                             <td><a th:text="${action.getParentSerialNumber()}">87697840</a></td>
