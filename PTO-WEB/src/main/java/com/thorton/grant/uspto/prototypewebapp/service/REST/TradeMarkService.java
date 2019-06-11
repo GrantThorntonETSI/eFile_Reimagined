@@ -3,10 +3,13 @@ package com.thorton.grant.uspto.prototypewebapp.service.REST;
 import com.thorton.grant.uspto.prototypewebapp.config.host.bean.endPoint.HostBean;
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.document_events.FilingDocumentEvent;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @RestController
@@ -512,6 +515,16 @@ public class TradeMarkService extends BaseRESTapiService {
             // ptoUser.setState(param); // sets state code
             baseTrademarkApplication.getTradeMark().setTrademarkStandardCharacterText(markValue);
             baseTrademarkApplication.getTradeMark().setStandardCharacterMark(true);
+
+            FilingDocumentEvent filingDocumentEvent = new FilingDocumentEvent();
+            filingDocumentEvent.setEventDescription("Drawing");
+            filingDocumentEvent.setStandardCharacterMark(true);
+            filingDocumentEvent.setStandardText(markValue);
+            filingDocumentEvent.setDocumentType("Standard Character");
+            Date date = new Date();
+            filingDocumentEvent.setEventDate(date);
+
+            baseTrademarkApplication.addFilingDocumentEvent(filingDocumentEvent);
 
             appFieldReadable = "Mark Standard Character Text";
 

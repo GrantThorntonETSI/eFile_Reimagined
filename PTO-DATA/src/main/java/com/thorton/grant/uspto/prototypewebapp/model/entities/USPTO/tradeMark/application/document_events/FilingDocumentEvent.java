@@ -35,6 +35,9 @@ public class FilingDocumentEvent extends BaseEntity {
     private String eventDocumentDisplayLink;
 
 
+    private String standardText;
+    private boolean standardCharacterMark = false;
+
 
     // this will just a a database object that we set and do get on
 
@@ -88,5 +91,29 @@ public class FilingDocumentEvent extends BaseEntity {
 
     public void setDocumentType(String documentType) {
         this.documentType = documentType;
+    }
+
+    public BaseTrademarkApplication getTrademarkApplication() {
+        return trademarkApplication;
+    }
+
+    public void setTrademarkApplication(BaseTrademarkApplication trademarkApplication) {
+        this.trademarkApplication = trademarkApplication;
+    }
+
+    public String getStandardText() {
+        return standardText;
+    }
+
+    public void setStandardText(String standardText) {
+        this.standardText = standardText;
+    }
+
+    public boolean isStandardCharacterMark() {
+        return standardCharacterMark;
+    }
+
+    public void setStandardCharacterMark(boolean standardCharacterMark) {
+        this.standardCharacterMark = standardCharacterMark;
     }
 }

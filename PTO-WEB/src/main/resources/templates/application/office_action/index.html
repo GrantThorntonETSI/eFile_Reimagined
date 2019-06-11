@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/efilePetitionsFragment :: layout (~{::body},'user')}" xmlns="http://www.w3.org/1999/html">
+<head >
+    <meta charset="UTF-8">
+    <title>Goods and Services Review</title>
+</head>
+<body>
+<div class="row content" id="responseamend" style="display: none;">
+
+    <main class="col-xs-12 col-sm-8 col-md-8 col-lg-7">
+        <!--START Content Div-->
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h1>Respond to Office Action</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="card-text noexpand">
+                            <h2 class="card-title weight600" id="appdata">Application Data</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel-group" aria-describedby="appdata">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-lg-4">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="row underlinerow">
+                                                        <div class="col-xs-12">
+                                                            <h3 class="weight600">Mark information</h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6 col-lg-12">
+                                                    <h4>Serial number</h4>
+                                                </div>
+                                                <div class="col-xs-6 col-lg-12">
+                                                    <p><span th:text="${baseTrademarkApplication.getTrademarkName()}">87697840</span></p>
+                                                </div>
+                                                <div class="col-xs-6 col-lg-12">
+                                                    <h4>Mark literal</h4>
+                                                </div>
+                                                <div class="col-xs-6 col-lg-12">
+                                                    <p><span  th:text="${baseTrademarkApplication.getTradeMark().getMarkLiteral()}">PK Prep</span></p>
+                                                </div>
+                                                <div class="col-xs-6 col-lg-12">
+                                                    <h4>Mark image</h4>
+                                                </div>
+
+                                                <th:block  th:if="${baseTrademarkApplication.isStandardTextMark() == true}">
+                                                    <div class="col-xs-6 col-lg-12">
+                                                        <span style="max-width: 55px; max-height: 33px; margin:0 auto;font-family: Palatino, Garamond, Bookman, Avant Garde; font-size:.9em;text-align:center;margin-bottom:0;" th:text="${baseTrademarkApplication.getTradeMark().getTrademarkStandardCharacterText()}"></span>
+                                                    </div>
+
+                                                </th:block>
+                                                <th:block  th:if="${baseTrademarkApplication.isStandardTextMark() == false}">
+                                                    <div class="col-xs-6 col-lg-12">
+                                                        <img th:src="${baseTrademarkApplication.getTradeMark().getMarkImageDisplayPath()}" class="img-thumbnail" alt="your mark image">
+                                                    </div>
+                                                </th:block>
+
+
+
+
+
+                                                <div class="col-xs-6 col-lg-12">
+                                                    <h4>Goods/Services</h4>
+                                                </div>
+
+                                                <div class="col-xs-6 col-lg-12">
+                                                    <p><a href="#" class="disabled" >View goods/services</a></p>
+                                                </div>
+
+                                                <div class="col-xs-6 col-lg-12">
+                                                    <h4>Filing type</h4>
+                                                </div>
+
+                                                <div class="col-xs-6 col-lg-12">
+                                                    <p><span class="uppercase">teas rf</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-lg-4">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="row underlinerow">
+                                                        <div class="col-xs-9">
+                                                            <h3 class="weight600">Owner</h3>
+                                                        </div>
+                                                        <div class="col-xs-3">
+                                                            <a href="#" class="disabled" disabled>Edit</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6 col-lg-12">
+                                                    <h4>Owner of record</h4>
+                                                </div>
+                                                <div class="col-xs-6 col-lg-12">
+                                                    <p><span th:text="${baseTrademarkApplication.getPrimaryOwner().getOwnerDisplayname()}"></span></p>
+                                                </div>
+                                                <div class="col-xs-6 col-lg-12">
+                                                    <h4>Email address</h4>
+                                                </div>
+                                                <div class="col-xs-6 col-lg-12">
+                                                    <p class="email"><span th:text="${baseTrademarkApplication.getPrimaryOwner().getEmail()}">pittsburgh&#64;penguins.com</span></p>
+                                                </div>
+                                                <div class="col-xs-6 col-lg-12">
+                                                    <h4>Entity type</h4>
+                                                </div>
+                                                <div class="col-xs-6 col-lg-12">
+                                                    <p><span th:text="${baseTrademarkApplication.getPrimaryOwner().getOwnersubType()}">Limited Partnership</span></p>
+                                                </div>
+                                                <div class="col-xs-6 col-lg-12">
+                                                    <h4>Owner address</h4>
+                                                </div>
+                                                <div class="col-xs-6 col-lg-12">
+                                                    <p><span th:text="${baseTrademarkApplication.getPrimaryOwner().getAddress1()}+''+${baseTrademarkApplication.getPrimaryOwner().getCity()}+', '+${baseTrademarkApplication.getPrimaryOwner().getState()}+' '+${baseTrademarkApplication.getPrimaryOwner().getZipcode()}" ></span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <th:block th:if="${baseTrademarkApplication.isAttorneyFiling() == true}">
+
+                                            <div class="col-xs-12 col-lg-4">
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <div class="row underlinerow">
+                                                            <div class="col-xs-9">
+                                                                <h3 class="weight600">Attorney</h3>
+                                                            </div>
+                                                            <div class="col-xs-3">
+                                                                <a href="#" class="disabled" disabled>Edit</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6 col-lg-12">
+                                                        <h4>Attorney of record</h4>
+                                                    </div>
+                                                    <div class="col-xs-6 col-lg-12">
+                                                        <p><span th:text="${baseTrademarkApplication.getPrimaryLawyer().getFirstName()}+' '+${baseTrademarkApplication.getPrimaryLawyer().getLastName()}">Clark W. Lackert</span></p>
+                                                    </div>
+                                                    <div class="col-xs-6 col-lg-12">
+                                                        <h4>Attorney firm</h4>
+                                                    </div>
+                                                    <div class="col-xs-6 col-lg-12">
+                                                        <p><span th:text="${baseTrademarkApplication.getPrimaryLawyer().getLawFirmName()}"></span></p>
+                                                    </div>
+
+                                                    <th:block  th:each="docket : ${baseTrademarkApplication.getPrimaryLawyer().getDocketNumberList()}">
+                                                        <div class="col-xs-6 col-lg-12">
+                                                            <h4>Docket/reference number</h4>
+                                                        </div>
+                                                        <div class="col-xs-6 col-lg-12">
+                                                            <p><span th:text="${docket}">259802.20006</span></p>
+                                                        </div>
+                                                    </th:block>
+
+                                                </div>
+                                            </div>
+
+
+                                        </th:block>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="card-text noexpand">
+                            <h2 class="card-title weight600">Required Actions</h2>
+                        </div>
+                        <p>Displayed below are the required actions you need to take in order to continue with this application. You are able to <a href="images/revise_s1.pdf" target="_blank">view the office action here<span class="sr-only">Opens in new window</span><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>.</p>
+
+                    </div>
+                </div>
+
+
+<!--start of repeatable section -->
+
+                <th:block  th:each="requiredActions : ${action.getRequiredActions()}">
+
+                    <th:block th:if="${requiredActions.getRequiredActionType() == 'Disclaimer Required'}">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button type="button" class="btn btn-link Accordion-trigger ablock" data-parent="#accordion" data-toggle="collapse" data-target="#disclaimthis" aria-controls="disclaimthis" aria-expanded="false" id="disclaimthisbtn"><span class="glyphicon glyphicon-triangle-right"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Disclaimer Required</button>
+                            </div>
+                        </div>
+
+                        <div class="row collapse Accordion-panel" role="region" id="disclaimthis" aria-labelledby="disclaimthisbtn">
+                            <div class="col-xs-12">
+                                <div class="callout">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <h2>Descriptive Wording (Requires a Disclaimer)</h2>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <p>Applicant must provide a disclaimer of the unregistrable part(s) of the applied-for mark even though the mark as a whole appears to be registrable. See 15 U.S.C. &#167;1056(a); TMEP &#167;&#167;1213, 1213.03(a). A disclaimer of an unregistrable part of a mark will not affect the mark&#8217;s appearance. See Schwarzkopf v. John H. Breck, Inc., 340 F.2d 978, 979-80, 144 USPQ 433, 433 (C.C.P.A. 1965).</p>
+                                            <p>In this case, applicant must disclaim the word &#8220;Markey&#8221; because it is not inherently distinctive. These unregistrable term(s) at best are merely descriptive of an ingredient, quality, characteristic, function, feature, purpose, or use of applicant&#8217;s goods and/or services. See 15 U.S.C. &#167;1052(e)(1); DuoProSS Meditech Corp. v. Inviro Med. Devices, Ltd., 695 F.3d 1247, 1251, 103 USPQ2d 1753, 1755 (Fed. Cir. 2012); TMEP &#167;&#167;1213, 1213.03(a).</p>
+                                            <p>&#94;The attached evidence from &#94; shows this wording &#94;&#60;means &#94;/is commonly used in connection with similar goods and/or services to mean &#94;&#62;. Thus, the wording merely describes applicant&#8217;s goods and/or services because &#94;&#60;explain&#62;.</p>
+                                            <p>Applicant may respond to this issue by submitting a disclaimer in the following format:<br>
+                                                <span class="weight600">No claim is made to the exclusive right to use &#8220;&#94;&#8221; apart from the mark as shown.</span></p>
+                                        </div>
+                                    </div>
+                                    <section aria-label="disclaimer of the unregistrable part(s) of the applied-for mark">
+                                        <div class="card-text">
+                                            <div role="heading" aria-level="2">
+                                                <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#disclaimra" aria-controls="disclaimra" aria-expanded="false" id="discaimrabtn"><span class="glyphicon glyphicon-triangle-right"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Disclaimer</button>
+                                            </div>
+                                        </div>
+                                        <div id="disclaimra" class="collapse Accordion-panel" role="region" aria-labelledby="discaimrabtn">
+                                            <div class="Accordion">
+                                                <p>A disclaimer is a statement indicating you do not claim exclusive rights to an unregistrable portion of your mark. This is often material that is descriptive or common in your field of business. A disclaimer does not physically remove the unregistrable portion from your mark or affect the appearance of your mark. You cannot disclaim the entire mark. A disclaimer will appear on the registration certificate.</p>
+                                            </div>
+                                        </div>
+                                        <form action="" method="post">
+                                            <fieldset aria-label="enter disclaimer information">
+                                                <div class="row disclaim">
+                                                    <div class="col-xs-12">
+                                                        <p>No claim is made to the exclusive right to use</p>
+                                                    </div>
+                                                    <div class="form-group form-group-md col-xs-12">
+                                                        <label for="noclaim" class="sr-only">No claim is made to the exclusive right to use</label>
+                                                        <input type="text" class="form-control" id="noclaim" th:value="${requiredActions.getDisclaimerText()}"  th:attr="action-id=${requiredActions.getInternalID()}">
+                                                    </div>
+                                                    <div class="form-group form-group-md col-xs-12">
+                                                        <p>apart from the mark as shown.</p>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </form>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+
+                    </th:block>
+
+                    <th:block th:if="${requiredActions.getRequiredActionType() == 'Translation of Foreign Wording'}">
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button type="button" class="btn btn-link Accordion-trigger ablock" data-toggle="collapse" data-target="#translation" aria-controls="translation" aria-expanded="false" id="translationbtn"><span class="glyphicon glyphicon-triangle-right"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Translation of Foreign Wording</button>
+                            </div>
+                        </div>
+
+                        <div class="row collapse Accordion-panel" role="region" id="translation" aria-labelledby="translationbtn">
+                            <div class="col-xs-12">
+                                <div class="callout">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <h2>Translation of Foreign Wording</h2>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <p>To permit proper examination of the application, applicant must submit an English translation of the foreign wording in the mark &#94;. 37 C.F.R. &#167;&#167;2.32(a)(9), 2.61(b); see TMEP &#167;809. The following English translation is suggested: <span class="weight600">The English translation of &#8220;&#94;&#8221; in the mark is &#8220;&#94;&#8221;</span>. TMEP &#167;809.03. See attached translation evidence.</p>
+                                        </div>
+                                    </div>
+                                    <section aria-label="enter the translation of the mark">
+                                        <div class="card-text">
+                                            <div role="heading" aria-level="2">
+                                                <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#translatera" aria-controls="translatera" aria-expanded="false" id="translaterabtn"><span class="glyphicon glyphicon-triangle-right"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Translation</button>
+                                            </div>
+                                        </div>
+                                        <div id="translatera" class="collapse Accordion-panel" role="region" aria-labelledby="translaterabtn">
+                                            <div class="Accordion">
+                                                <p>A translation of a trademark is the meaning in English of any non-English wording. Every application to register a trademark that includes non-English wording must include a translation of that wording. <a href="https://tmep.uspto.gov/RDMS/TMEP/current#/current/TMEP-800d1e2300.html" target="_blank">More information<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><span class="sr-only">Opens in new window</span></a>.</p>
+                                            </div>
+                                        </div>
+                                        <div class="row disclaim">
+                                            <div class="col-xs-12">
+                                                <p>Enter the foreign language and the translation.</p>
+                                                <div class="row">
+                                                    <form action="" method="post" class="form-inline">
+                                                        <fieldset aria-label="select foreign language">
+                                                            <div class="form-group form-group-md col-xs-12">
+                                                                <label for="foreignlanguage">Language:</label>
+                                                                <select class="form-control" id="foreignlanguage"  th:attr="action-id=${requiredActions.getInternalID()}">
+                                                                    <option th:value="${requiredActions.translationTextLanguage}" th:text="${requiredActions.translationTextLanguage}" selected></option>
+                                                                    <option value="Select">Select</option>
+                                                                    <option value="Spanish">Spanish</option>
+                                                                    <option value="German">German</option>
+                                                                    <option value="French">French</option>
+                                                                </select>
+                                                            </div>
+                                                        </fieldset>
+                                                    </form>
+                                                </div>
+                                                <form action="" method="post">
+                                                    <fieldset aria-label="enter translation information">
+                                                        <p>The English translation of</p>
+                                                        <div class="row">
+                                                            <div class="form-group form-group-md col-xs-12">
+                                                                <label for="foreignwording" class="sr-only">enter the foreign language of the mark text</label>
+                                                                <input type="text" class="form-control" id="foreignwording" th:value="${requiredActions.translationTextForeign}"  th:attr="action-id=${requiredActions.getInternalID()}">
+                                                            </div>
+                                                            <div class="form-group form-group-md col-xs-12">
+                                                                <p>in the mark is</p>
+                                                            </div>
+                                                            <div class="form-group form-group-md col-xs-12">
+                                                                <label for="englishwording" class="sr-only">enter the English language of the mark text</label>
+                                                                <input type="text" class="form-control" id="englishwording" th:value="${requiredActions.translationTextEnglish}"  th:attr="action-id=${requiredActions.getInternalID()}">
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </th:block>
+                </th:block>
+
+
+
+
+
+
+
+
+
+<!--end of repeatable section -->
+
+
+
+
+
+
+
+
+
+                <div class="inlinebuttons btn-group btn-group-justified" role="navigation" aria-label="view previous or next page" id="prevnxt">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-default fill prev" id="" value="previous">Previous</button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-primary fill next" id="" value="next" disabled>Next
+                            <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</div><!--END div content-->
+
+
+
+<script th:inline="javascript">
+
+    /*<![CDATA[*/
+    var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
+
+    var  image_path = /*[[${markImagePath}]]*/ 'User Name';
+
+    var  image_pathBW = /*[[${markImagePathBW}]]*/ 'User Name';
+
+    var colorClaim = /*[[${markColorClaim}]]*/ 'User Name';
+
+
+    var acceptBW = /*[[${markColorClaimBW}]]*/ 'User Name';
+
+    var OfficeActionID = /*[[${OfficeActionID}]]*/ 'User Name';
+
+    var colorClaimSet = /*[[${colorClaimSet}]]*/ 'User Name';
+
+    var markType = /*[[${baseTrademarkApplication.tradeMark.trademarkDesignType}]]*/ 'User Name';
+    var markText = /*[[${baseTrademarkApplication.tradeMark.trademarkStandardCharacterText}]]*/ 'User Name';
+
+    /*]]>*/
+</script>
+
+
+
+<script>
+
+    var prevLinkURL = "../../../accounts/dashboard";
+
+
+
+    $(document).ready(function() {
+
+        setTimeout(function () {
+            // after 1000 ms we add the class animated to the login/register card
+            $('.content').fadeIn(500);
+        }, 500);
+
+
+        //////////////////////////////////////////////////////////////////////
+        // set mark image based on persisted values
+        //////////////////////////////////////////////////////////////////////
+
+        if(markType == "Standard Character"){
+
+            if(markText  != null && markText != ""){
+
+                $( '#togglepop' ).attr('data-content', '<div class="media"><span id="showmarktxt" style="min-width:77px;width:80px;margin:0 auto;font-family: Palatino, Garamond, Bookman, Avant Garde; font-size:.9em;text-align:center;margin-bottom:0;" class="media-object" alt="my trademark">'+markText+'</span></div>');
+            }
+            else{
+                $( '#togglepop' ).attr('data-content', '<div class="media"><span class="glyphicon glyphicon-picture" aria-hidden="true"  style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></span></div>');
+            }
+
+        }
+        else {
+
+            if(colorClaimSet == false){
+
+                if(image_path != null){
+
+                    $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+                }
+                // set color claim to true be default when its not set yet
+                else{
+                    $( '#togglepop' ).attr('data-content', '<div class="media"><span class="glyphicon glyphicon-picture" aria-hidden="true"  style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></span></div>');
+                }
+
+            }
+            else {
+
+                if(colorClaim == false){
+
+                    if(acceptBW == true){
+                        // $('#inlineRadio2').click();
+                        // $('#bwmark').click();
+
+                        $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_pathBW+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+
+                    }
+                    else{
+                        if(image_path != null){
+
+                            $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+
+
+                        }
+
+                    }
+
+                }
+                if(colorClaim == true){
+                    // $('#inlineRadio1').click();
+                    if(image_path != null){
+
+                        $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+
+
+                    }
+                }
+
+
+            }
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // ajax auto save
+        $('#foreignlanguage').change( function () {
+
+            var requiredActionID = $(this).attr("action-id");
+
+            var languageType = $(this).val();
+            // we also need the action id, and required action id
+            saveOAresponse("OA-translation-languageType", languageType, OfficeActionID, requiredActionID, appInternalID);
+
+        });
+
+
+    });
+
+
+    function saveOAresponse(FieldName, FieldValue, OA_id, RA_id ,appInternalID) {
+
+        //var field_value = $(this).val();
+        //alert(field_value);
+
+
+        $.ajax({
+            url: "../../../REST/apiGateway/OfficeAction/response/update/" + FieldName + "/" + FieldValue + "/" + OA_id + "/" + RA_id +"/"+appInternalID,
+            type: 'GET',
+            success: function (data) {
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:") + 7, data.indexOf("status:") + 4 + 7);
+
+                var s_msg = data.substring(data.indexOf("msg:") + 4, data.length - 2);
+
+                if (s_code.trim() == "200") {
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function () {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+            },
+            error: function (data) {
+
+                console.log(data);
+
+            }
+
+        });
+    }
+
+
+</script>
+
+</body>
+</html>
