@@ -210,37 +210,50 @@ public class FilingStatusUpdateTask extends TimerTask {
 
                     System.out.println("Filing has expired from the office action period");
 
-                    // remove office action ..or set it to inactive
-                    // so on the dashboard. we only show actions that are active
-                    //
-                    // do the same thing. create petition object and attach it to the filing
-                    Petition petition = new Petition();
-                    petition.setParentMarkImagePath(current.getTradeMark().getTrademarkImagePath());
-                    petition.setStandardCharacterMark(current.isStandardTextMark());
-                    petition.setStandardCharacterText(current.getTradeMark().getTrademarkStandardCharacterText());
-                    petition.setParentMarkOwnerName(current.getPrimaryOwner().getOwnerDisplayname());
-                    petition.setParentSerialNumber(current.getTrademarkName());
+                    // check if office action has been completed ..
+                    for(Iterator<OfficeActions> iter3 = current.getOfficeActions().iterator(); iter3.hasNext(); ) {
+                        OfficeActions current3 = iter3.next();
+
+                        if(current3.isOfficeActionCompleted() == false){
+
+                            // remove office action ..or set it to inactive
+                            // so on the dashboard. we only show actions that are active
+                            //
+                            // do the same thing. create petition object and attach it to the filing
+                            Petition petition = new Petition();
+                            petition.setParentMarkImagePath(current.getTradeMark().getTrademarkImagePath());
+                            petition.setStandardCharacterMark(current.isStandardTextMark());
+                            petition.setStandardCharacterText(current.getTradeMark().getTrademarkStandardCharacterText());
+                            petition.setParentMarkOwnerName(current.getPrimaryOwner().getOwnerDisplayname());
+                            petition.setParentSerialNumber(current.getTrademarkName());
 
 
-                    current.setFilingStatus("Abandoned - Failure to Respond or Late Response");
-                    petition.setOfficeActionCode("Abandoned - Failure to Respond or Late Response");
+                            current.setFilingStatus("Abandoned - Failure to Respond or Late Response");
+                            petition.setOfficeActionCode("Abandoned - Failure to Respond or Late Response");
 
-                    petition.setActivePetition(true);
-                    current.addPetition(petition);
-                    petition.setTrademarkApplication(current);
+                            petition.setActivePetition(true);
+                            current.addPetition(petition);
+                            petition.setTrademarkApplication(current);
 
 
-                    // go back and set any active actions to in-active
-                    for(Iterator<OfficeActions> iter2 = current.getOfficeActions().iterator(); iter2.hasNext(); ) {
-                        OfficeActions current2 = iter2.next();
-                        current2.setActiveAction(false);
+                            // go back and set any active actions to in-active
+                            //for(Iterator<OfficeActions> iter2 = current.getOfficeActions().iterator(); iter2.hasNext(); ) {
+                            //    OfficeActions current2 = iter2.next();
+                            //    current2.setActiveAction(false);
+
+                            //}
+
+                            baseTradeMarkApplicationService.save(current);
+
+
+                        }
+
 
                     }
 
 
 
-
-                    baseTradeMarkApplicationService.save(current);
+                    // only execute below code if office action is not completed...
 
 
                 }
