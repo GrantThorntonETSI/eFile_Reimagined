@@ -484,6 +484,8 @@
 
 
         // ajax auto save
+
+        // translation required actions
         $('#foreignlanguage').change( function () {
 
             var requiredActionID = $(this).attr("action-id");
@@ -493,6 +495,41 @@
             saveOAresponse("OA-translation-languageType", languageType, OfficeActionID, requiredActionID, appInternalID);
 
         });
+
+
+        $('#foreignwording').change( function () {
+
+            var requiredActionID = $(this).attr("action-id");
+
+            var foreignText = $(this).val();
+            // we also need the action id, and required action id
+            saveOAresponse("OA-translation-foreign-text", foreignText, OfficeActionID, requiredActionID, appInternalID);
+
+        });
+
+        $('#englishwording').change( function () {
+
+            var requiredActionID = $(this).attr("action-id");
+
+            var englishText = $(this).val();
+            // we also need the action id, and required action id
+            saveOAresponse("OA-translation-us-text", englishText, OfficeActionID, requiredActionID, appInternalID);
+
+        });
+
+
+        // disclaimer required actions
+        $('#noclaim').change( function () {
+
+            var requiredActionID = $(this).attr("action-id");
+
+            var disclaimerText = $(this).val();
+            // we also need the action id, and required action id
+            saveOAresponse("OA-mark-disclaimer", disclaimerText, OfficeActionID, requiredActionID, appInternalID);
+
+        });
+
+
 
 
     });

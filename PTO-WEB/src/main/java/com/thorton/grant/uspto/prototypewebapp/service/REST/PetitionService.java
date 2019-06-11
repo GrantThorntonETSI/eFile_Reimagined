@@ -224,6 +224,35 @@ public class PetitionService  extends  BaseRESTapiService{
 
         }
 
+        if(pField.equals("OA-translation-foreign-text")){
+
+            baseTrademarkApplication.findOfficeActionById(OfficeActionID).findRequiredActionById(requiredActionID).setTranslationTextForeign(pValue);
+            baseTrademarkApplication.getTradeMark().setForeignLanguageTranslationOriginalText(pValue);
+
+            appFieldReadable = "Foreign Text";
+
+        }
+
+        if(pField.equals("OA-translation-us-text")){
+
+            baseTrademarkApplication.findOfficeActionById(OfficeActionID).findRequiredActionById(requiredActionID).setTranslationTextEnglish(pValue);
+            baseTrademarkApplication.getTradeMark().setForeignLanguageTranslationUSText(pValue);
+
+            appFieldReadable = "English Text";
+
+        }
+
+        if(pField.equals("OA-mark-disclaimer")){
+
+            baseTrademarkApplication.findOfficeActionById(OfficeActionID).findRequiredActionById(requiredActionID).setDisclaimerText(pValue);
+            baseTrademarkApplication.getTradeMark().setDisclaimerDeclaration(pValue);
+
+            appFieldReadable = "Mark Disclaimer";
+
+        }
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
 
 
         String responseMsg = appFieldReadable+" has been saved";
