@@ -192,5 +192,23 @@ public class OfficeActions extends BaseEntity {
         return action;
     }
 
+    public boolean isOfficeActionCompleted(){
+
+        boolean returnValue = true;
+        // check all required actions ...
+        // if all completed then it is completed.
+
+        for(Iterator<RequiredActions> iter = requiredActions.iterator(); iter.hasNext(); ) {
+            RequiredActions current = iter.next();
+
+            if(current.isRequiredActionCompleted() == false){
+                returnValue = false;
+            }
+        }
+
+
+        return returnValue;
+    }
+
 
 }

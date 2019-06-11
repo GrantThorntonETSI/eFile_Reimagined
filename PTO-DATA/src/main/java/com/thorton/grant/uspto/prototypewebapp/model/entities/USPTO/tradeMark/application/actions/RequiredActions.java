@@ -46,6 +46,10 @@ public class RequiredActions extends OfficeActions{
 
 
 
+    private boolean requiredActionCompleted = false;
+
+
+
 
     public String getRequiredActionType() {
         return requiredActionType;
@@ -111,5 +115,13 @@ public class RequiredActions extends OfficeActions{
 
     public void setTranslationTextLanguage(String translationTextLanguage) {
         this.translationTextLanguage = translationTextLanguage;
+    }
+
+    public boolean isRequiredActionCompleted() {
+        return requiredActionCompleted;
+    }
+
+    public void setRequiredActionCompleted(boolean requiredActionCompleted) {
+        this.requiredActionCompleted = requiredActionCompleted;
     }
 }

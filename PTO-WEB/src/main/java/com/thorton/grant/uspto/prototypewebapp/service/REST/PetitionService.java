@@ -220,6 +220,12 @@ public class PetitionService  extends  BaseRESTapiService{
             baseTrademarkApplication.findOfficeActionById(OfficeActionID).findRequiredActionById(requiredActionID).setTranslationTextLanguage(pValue);
             baseTrademarkApplication.getTradeMark().setForeignLanguageType_translation(pValue);
 
+            // check if translation required action is completed
+            if(baseTrademarkApplication.getTradeMark().getForeignLanguageTranslationUSText() != null && baseTrademarkApplication.getTradeMark().getForeignLanguageTranslationOriginalText() != null && baseTrademarkApplication.getTradeMark().getForeignLanguageType_translation() != null){
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).findRequiredActionById(requiredActionID).setRequiredActionCompleted(true);
+            }
+
+
             appFieldReadable = "Language Type";
 
         }
@@ -228,6 +234,10 @@ public class PetitionService  extends  BaseRESTapiService{
 
             baseTrademarkApplication.findOfficeActionById(OfficeActionID).findRequiredActionById(requiredActionID).setTranslationTextForeign(pValue);
             baseTrademarkApplication.getTradeMark().setForeignLanguageTranslationOriginalText(pValue);
+            // check if translation required action is completed
+            if(baseTrademarkApplication.getTradeMark().getForeignLanguageTranslationUSText() != null && baseTrademarkApplication.getTradeMark().getForeignLanguageTranslationOriginalText() != null && baseTrademarkApplication.getTradeMark().getForeignLanguageType_translation() != null){
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).findRequiredActionById(requiredActionID).setRequiredActionCompleted(true);
+            }
 
             appFieldReadable = "Foreign Text";
 
@@ -237,10 +247,27 @@ public class PetitionService  extends  BaseRESTapiService{
 
             baseTrademarkApplication.findOfficeActionById(OfficeActionID).findRequiredActionById(requiredActionID).setTranslationTextEnglish(pValue);
             baseTrademarkApplication.getTradeMark().setForeignLanguageTranslationUSText(pValue);
+            // check if translation required action is completed
+            if(baseTrademarkApplication.getTradeMark().getForeignLanguageTranslationUSText() != null && baseTrademarkApplication.getTradeMark().getForeignLanguageTranslationOriginalText() != null && baseTrademarkApplication.getTradeMark().getForeignLanguageType_translation() != null){
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).findRequiredActionById(requiredActionID).setRequiredActionCompleted(true);
+            }
 
             appFieldReadable = "English Text";
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         if(pField.equals("OA-mark-disclaimer")){
 
@@ -249,7 +276,12 @@ public class PetitionService  extends  BaseRESTapiService{
 
             appFieldReadable = "Mark Disclaimer";
 
+
+            //since this is the only field we can mark this complete
+            baseTrademarkApplication.findOfficeActionById(OfficeActionID).findRequiredActionById(requiredActionID).setRequiredActionCompleted(true);
+
         }
+
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
