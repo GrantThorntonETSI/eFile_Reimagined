@@ -389,6 +389,9 @@
     var prevLinkURL = "../../../accounts/dashboard";
 
 
+    var nextLinkURL = "../../../officeAction/optional/"+OfficeActionID+"/?trademarkID="+appInternalID;
+
+
 
     $(document).ready(function() {
 
@@ -472,8 +475,11 @@
         }
 
 
+        // paging
 
-
+        $('.next').click(function () {
+            location.href=nextLinkURL;
+        });
 
 
 
@@ -561,6 +567,18 @@
                         $(".autoSaveMessageArea span").text(s_msg);
                         $(".autoSaveMessageArea span").fadeIn(1000);
                     }, 500);
+
+                }
+                else {
+
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function () {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                    $('.next').css("disabled", false);
 
                 }
 

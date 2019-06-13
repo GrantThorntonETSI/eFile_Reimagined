@@ -3946,6 +3946,78 @@ public class ApplicationFlowController {
 
 
 
+    @RequestMapping({"/officeAction/optional/{actionID}"})
+    public String optionalActionsMain( Model model, @PathVariable String actionID ,@RequestParam("trademarkID") String trademarkInternalID){
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        PTOUserService  ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+
+        //OfficeActions action = baseTrademarkApplication.findOfficeActionById(actionID);
+
+        OfficeActions actions = baseTrademarkApplication.findOfficeActionById(actionID);
+
+        //////////////////////////////////////////////////////
+        // this is set back to null upon verification check
+        //////////////////////////////////////////////////////
+
+        //////////////////////////////////////////////////////
+        //continuation = true;
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+
+        model.addAttribute("action", actions);
+
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
+
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+        }
+        else{
+            model.addAttribute("markImagePath","");
+
+            model.addAttribute("markImagePathBW","");
+
+        }
+
+
+
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
+
+        model.addAttribute("OfficeActionID", actions.getInternalID());
+
+
+
+
+
+
+        return "application/office_action/optional_actions/index";
+    }
+
+
 
     // create controller to direct to optional actions select page
 

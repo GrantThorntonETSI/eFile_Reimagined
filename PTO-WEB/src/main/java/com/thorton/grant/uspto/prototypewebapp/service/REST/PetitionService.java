@@ -288,7 +288,17 @@ public class PetitionService  extends  BaseRESTapiService{
 
 
         String responseMsg = appFieldReadable+" has been saved";
-        return buildResponseEnity("200", responseMsg);
+
+        String code ="";
+
+        if(baseTrademarkApplication.findOfficeActionById(OfficeActionID).isOfficeActionCompleted() == true){
+            code = "555";
+        }
+        else {
+            code = "200";
+
+        }
+        return buildResponseEnity(code, responseMsg);
     }
 
 }

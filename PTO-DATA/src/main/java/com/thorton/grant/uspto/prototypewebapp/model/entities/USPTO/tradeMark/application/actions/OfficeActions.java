@@ -65,7 +65,7 @@ public class OfficeActions extends BaseEntity {
     private BaseTrademarkApplication trademarkApplication;
 
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<RequiredActions> requiredActions;
 
 
