@@ -11,7 +11,7 @@ import java.util.Objects;
 public class RolePrivilege  {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "privilege_id")
     private Long id;
     private String name;

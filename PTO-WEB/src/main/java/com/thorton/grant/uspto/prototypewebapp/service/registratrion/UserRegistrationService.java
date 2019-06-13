@@ -57,10 +57,10 @@ public class UserRegistrationService implements IUserService {
 
         newUser.setFirstName(accountDto.getFirstName());
         newUser.setLastName(accountDto.getLastName());
-        newUser.setEmail(accountDto.getEmail());
+        newUser.setEmail(accountDto.getEmail().toLowerCase());
 
 
-        newUserCredentials.setEmail(accountDto.getEmail());
+        newUserCredentials.setEmail(accountDto.getEmail().toLowerCase());
         newUserCredentials.setPassword(bCryptPasswordEncoder.encode(accountDto.getPassword()));
         newUserCredentials.setPasswordConfirm(bCryptPasswordEncoder.encode(accountDto.getPassword_confirm()));
         //newUserCredentials.setPassword(bCryptPasswordEncoder.encode("12345"));

@@ -20,7 +20,7 @@ import java.util.Set;
 public class UserCredentials  {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="user_credentials_id")
     private Long id;
 
