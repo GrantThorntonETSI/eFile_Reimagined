@@ -72,6 +72,36 @@ public class OfficeActions extends BaseEntity {
 
 
 
+    // optional action fields
+
+    // optional actions complete
+
+    // optional actions list
+
+
+
+    // office action is complete when both optional and required are completed.
+    // optional actions can be completed by skipping
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     public String getOfficeAction() {

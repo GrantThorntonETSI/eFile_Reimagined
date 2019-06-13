@@ -557,6 +557,8 @@
 
                 var s_msg = data.substring(data.indexOf("msg:") + 4, data.length - 2);
 
+
+
                 if (s_code.trim() == "200") {
                     //if(data.contains("status: 200")){
                     // show confirmation check mark on form
@@ -578,7 +580,7 @@
                         $(".autoSaveMessageArea span").fadeIn(1000);
                     }, 500);
 
-                    $('.next').css("disabled", false);
+                    $('.next').attr("disabled", false);
 
                 }
 
