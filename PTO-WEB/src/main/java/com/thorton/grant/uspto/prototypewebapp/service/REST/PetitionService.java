@@ -291,7 +291,7 @@ public class PetitionService  extends  BaseRESTapiService{
 
         String code ="";
 
-        if(baseTrademarkApplication.findOfficeActionById(OfficeActionID).isOfficeActionCompleted() == true){
+        if(baseTrademarkApplication.findOfficeActionById(OfficeActionID).isRequiredActionsCompleted() == true){
             code = "555";
         }
         else {

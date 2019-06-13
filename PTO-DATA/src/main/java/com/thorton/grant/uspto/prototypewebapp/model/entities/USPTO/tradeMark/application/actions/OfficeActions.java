@@ -74,6 +74,8 @@ public class OfficeActions extends BaseEntity {
 
     // optional action fields
 
+    boolean optianlCompleted = false;
+
     // optional actions complete
 
     // optional actions list
@@ -208,7 +210,13 @@ public class OfficeActions extends BaseEntity {
         return "/officeAction/response/"+getInternalID()+"/?trademarkID="+getTrademarkApplication().getApplicationInternalID();
     }
 
+    public boolean isOptianlCompleted() {
+        return optianlCompleted;
+    }
 
+    public void setOptianlCompleted(boolean optianlCompleted) {
+        this.optianlCompleted = optianlCompleted;
+    }
 
     public RequiredActions findRequiredActionById(String id){
         RequiredActions action = null;
@@ -222,7 +230,7 @@ public class OfficeActions extends BaseEntity {
         return action;
     }
 
-    public boolean isOfficeActionCompleted(){
+    public boolean isRequiredActionsCompleted(){
 
         boolean returnValue = true;
         // check all required actions ...
@@ -238,6 +246,14 @@ public class OfficeActions extends BaseEntity {
 
 
         return returnValue;
+    }
+
+
+    public boolean isOfficeActionCompleted(){
+
+        return (isRequiredActionsCompleted() && this.isOptianlCompleted());
+
+
     }
 
 
