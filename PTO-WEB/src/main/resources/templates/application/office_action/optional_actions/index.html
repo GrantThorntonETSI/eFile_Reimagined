@@ -27,23 +27,70 @@
                         <p class="leadtext">Do you need to do any of the following actions?</p>
                         <div class="row">
                             <div class="col-xs-12 form-group form-group-md">
-                                <input class="form-check-input checkmark" type="checkbox" value="aorchange" tabindex="0" aria-labelledby="aor" id="aoredit">
+                                <th:block th:if="${action.isAttorneyOptional() == true}">
+                                    <input class="form-check-input checkmark" type="checkbox" value="aorchange" tabindex="0" aria-labelledby="aor" id="aoredit" checked>
+
+                                </th:block>
+                                <th:block th:if="${action.isAttorneyOptional() == false}">
+                                    <input class="form-check-input checkmark" type="checkbox" value="aorchange" tabindex="0" aria-labelledby="aor" id="aoredit" >
+
+                                </th:block>
+
                                 <label class="form-check-label form-check" for="aoredit"><span class="radio notspecial" id="aor">Appoint, replace or withdraw attorney of record</span></label>
                             </div>
                             <div class="col-xs-12 form-group form-group-md">
-                                <input class="form-check-input checkmark" type="checkbox" value="ownaddchange" tabindex="0" aria-labelledby="ownaddr" id="ownaddre">
+                                <th:block th:if="${action.isOwnerOptional() == true}">
+                                    <input class="form-check-input checkmark" type="checkbox" value="ownaddchange" tabindex="0" aria-labelledby="ownaddr" id="ownaddre" checked>
+                                </th:block>
+
+                                <th:block th:if="${action.isOwnerOptional() == false}">
+                                    <input class="form-check-input checkmark" type="checkbox" value="ownaddchange" tabindex="0" aria-labelledby="ownaddr" id="ownaddre">
+                                </th:block>
+
+
                                 <label class="form-check-label form-check" for="ownaddre"><span class="radio notspecial" id="ownaddr">Correct or change the owner&#8217;s name or entity information</span></label>
                             </div>
                             <div class="col-xs-12 form-group form-group-md">
-                                <input class="form-check-input checkmark" type="checkbox" value="editmark" tabindex="0" aria-labelledby="changemark" id="minorchange">
+
+                                <th:block th:if="${action.isMarkOptional() == true}">
+                                    <input class="form-check-input checkmark" type="checkbox" value="editmark" tabindex="0" aria-labelledby="changemark" id="minorchange" checked>
+
+                                </th:block>
+                                <th:block th:if="${action.isMarkOptional() == false}">
+                                    <input class="form-check-input checkmark" type="checkbox" value="editmark" tabindex="0" aria-labelledby="changemark" id="minorchange">
+
+                                </th:block>
+
+
                                 <label class="form-check-label form-check" for="minorchange"><span class="radio notspecial" id="changemark">Make a minor change to the mark or submit a better quality image</span></label>
                             </div>
                             <div class="col-xs-12 form-group form-group-md">
-                                <input class="form-check-input checkmark" type="checkbox" value="modgs" tabindex="0" aria-labelledby="modgss" id="modify">
+                                <th:block th:if="${action.isGsOptional() == true}">
+                                    <input class="form-check-input checkmark" type="checkbox" value="modgs" tabindex="0" aria-labelledby="modgss" id="modify" checked>
+
+                                </th:block>
+
+                                <th:block th:if="${action.isGsOptional() == false}">
+                                    <input class="form-check-input checkmark" type="checkbox" value="modgs" tabindex="0" aria-labelledby="modgss" id="modify">
+
+                                </th:block>
+
+
                                 <label class="form-check-label form-check" for="modify"><span class="radio notspecial" id="modgss">Modify goods/services</span></label>
                             </div>
                             <div class="col-xs-12 form-group form-group-md">
-                                <input class="form-check-input checkmark" type="checkbox" value="makechange" tabindex="0" aria-labelledby="change" id="changefile">
+                                <th:block th:if="${action.isAdditionalOptional() == true}">
+                                    <input class="form-check-input checkmark" type="checkbox" value="makechange" tabindex="0" aria-labelledby="change" id="changefile" checked>
+
+                                </th:block>
+
+                                <th:block th:if="${action.isAdditionalOptional() == false}">
+                                    <input class="form-check-input checkmark" type="checkbox" value="makechange" tabindex="0" aria-labelledby="change" id="changefile">
+
+                                </th:block>
+
+
+
                                 <label class="form-check-label form-check" for="changefile">
                                     	<span class="radio notspecial" id="change">
                                             <ul>Add, change or withdraw any of the following:
@@ -249,11 +296,11 @@
 
             if(this.checked == true){
 
-                saveOptinalActionSelectList("add", "fb", OfficeActionID,appInternalID);
+                saveOptinalActionSelectList("add", "gs", OfficeActionID,appInternalID);
 
             }
             else {
-                saveOptinalActionSelectList("remove", "fb", OfficeActionID,appInternalID);
+                saveOptinalActionSelectList("remove", "gs", OfficeActionID,appInternalID);
             }
 
         });

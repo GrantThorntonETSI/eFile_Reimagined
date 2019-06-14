@@ -322,16 +322,50 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
 
             if(pField.equals("add")){
                 baseTrademarkApplication.findOfficeActionById(OfficeActionID).addOptionalActionSelectedList(pValue);
+                if(pValue.equals("attorney")){
+                    baseTrademarkApplication.findOfficeActionById(OfficeActionID).setAttorneyOptional(true);
+                }
 
+                if(pValue.equals("owner")){
+                    baseTrademarkApplication.findOfficeActionById(OfficeActionID).setOwnerOptional(true);
+                }
+                if(pValue.equals("mark")){
+                   baseTrademarkApplication.findOfficeActionById(OfficeActionID).setMarkOptional(true);
+                }
+
+                if(pValue.equals("gs")){
+                    baseTrademarkApplication.findOfficeActionById(OfficeActionID).setGsOptional(true);
+                }
+                if(pValue.equals("additional")){
+                    baseTrademarkApplication.findOfficeActionById(OfficeActionID).setAdditionalOptional(true);
+                }
             }
             else {
 
                 baseTrademarkApplication.findOfficeActionById(OfficeActionID).removeOptionalActionSelectedList(pValue);
 
+                if(pValue.equals("attorney")){
+                    baseTrademarkApplication.findOfficeActionById(OfficeActionID).setAttorneyOptional(false);
+                }
+
+                if(pValue.equals("owner")){
+                    baseTrademarkApplication.findOfficeActionById(OfficeActionID).setOwnerOptional(false);
+                }
+                if(pValue.equals("mark")){
+                    baseTrademarkApplication.findOfficeActionById(OfficeActionID).setMarkOptional(false);
+                }
+
+                if(pValue.equals("gs")){
+                    baseTrademarkApplication.findOfficeActionById(OfficeActionID).setGsOptional(false);
+                }
+                if(pValue.equals("additional")){
+                    baseTrademarkApplication.findOfficeActionById(OfficeActionID).setAdditionalOptional(false);
+                }
+
             }
 
 
-
+            baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
         String responseMsg = pValue+" was "+pField+"ed from optional actions.";
 

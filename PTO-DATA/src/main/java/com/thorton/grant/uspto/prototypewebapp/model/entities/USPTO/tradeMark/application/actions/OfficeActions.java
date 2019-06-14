@@ -88,10 +88,22 @@ public class OfficeActions extends BaseEntity {
 
 
 
-
+    int currentActionIndex = 0;
 
     // optional actions list
     ArrayList<String> optionalActionsSelectedList;
+
+    private boolean attorneyOptional;
+
+    private boolean ownerOptional;
+
+    private boolean markOptional;
+
+    private boolean gsOptional;
+
+    private boolean additionalOptional;
+
+
 
 
 
@@ -273,9 +285,53 @@ public class OfficeActions extends BaseEntity {
         optionalActionsCompletedList.remove(action);
    }
 
+    public int getCurrentActionIndex() {
+        return currentActionIndex;
+    }
 
+    public void setCurrentActionIndex(int currentActionIndex) {
+        this.currentActionIndex = currentActionIndex;
+    }
 
+    public boolean isAttorneyOptional() {
+        return attorneyOptional;
+    }
 
+    public void setAttorneyOptional(boolean attorneyOptional) {
+        this.attorneyOptional = attorneyOptional;
+    }
+
+    public boolean isOwnerOptional() {
+        return ownerOptional;
+    }
+
+    public void setOwnerOptional(boolean ownerOptional) {
+        this.ownerOptional = ownerOptional;
+    }
+
+    public boolean isMarkOptional() {
+        return markOptional;
+    }
+
+    public void setMarkOptional(boolean markOptional) {
+        this.markOptional = markOptional;
+    }
+
+    public boolean isGsOptional() {
+        return gsOptional;
+    }
+
+    public void setGsOptional(boolean gsOptional) {
+        this.gsOptional = gsOptional;
+    }
+
+    public boolean isAdditionalOptional() {
+        return additionalOptional;
+    }
+
+    public void setAdditionalOptional(boolean additionalOptional) {
+        this.additionalOptional = additionalOptional;
+    }
 
     public RequiredActions findRequiredActionById(String id){
         RequiredActions action = null;

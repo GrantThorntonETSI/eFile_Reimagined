@@ -346,8 +346,19 @@
                         <button type="button" class="btn btn-sm btn-default fill prev" id="" value="previous">Previous</button>
                     </div>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-primary fill next" id="" value="next" disabled>Next
-                            <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
+
+                        <th:block  th:if="${action.isRequiredActionsCompleted() == true}">
+                            <button type="button" class="btn btn-sm btn-primary fill next" id="" value="next">Next
+                                <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
+
+                        </th:block>
+
+                        <th:block  th:if="${action.isRequiredActionsCompleted() == false}">
+                            <button type="button" class="btn btn-sm btn-primary fill next" id="" value="next" disabled>Next
+                                <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
+
+                        </th:block>
+
                     </div>
                 </div>
             </div>
