@@ -14,9 +14,9 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
 @Service
-public class PetitionService  extends  BaseRESTapiService{
+public class OfficeActionAndPetitionService extends  BaseRESTapiService{
 
-    public PetitionService(ServiceBeanFactory serviceBeanFactory, HostBean hostBean) {
+    public OfficeActionAndPetitionService(ServiceBeanFactory serviceBeanFactory, HostBean hostBean) {
         super(serviceBeanFactory, hostBean);
     }
 
@@ -300,5 +300,61 @@ public class PetitionService  extends  BaseRESTapiService{
         }
         return buildResponseEnity(code, responseMsg);
     }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    @CrossOrigin(origins = {"https://localhost","https://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/OfficeAction/optional/selected/update/{pField}/{pValue}/{OfficeActionID}/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> saveOptionalActionSelection(@PathVariable String pField , @PathVariable String pValue, @PathVariable String OfficeActionID,@PathVariable String appInternalID){
+
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+
+
+       // pField will always be  "add" or "remove"
+       // pValue will always be the bread crumb value to add to selected list
+
+
+
+            if(pField.equals("add")){
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).addOptionalActionSelectedList(pValue);
+
+            }
+            else {
+
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).removeOptionalActionSelectedList(pValue);
+
+            }
+
+
+
+
+        String responseMsg = pValue+" was "+pField+"ed from optional actions.";
+
+
+        return buildResponseEnity("200", responseMsg);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

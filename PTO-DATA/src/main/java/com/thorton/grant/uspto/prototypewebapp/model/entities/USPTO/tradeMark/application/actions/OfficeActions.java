@@ -4,10 +4,7 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.ap
 import com.thorton.grant.uspto.prototypewebapp.model.entities.base.BaseEntity;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 
 @Entity
@@ -18,6 +15,9 @@ public class OfficeActions extends BaseEntity {
     public OfficeActions() {
 
         requiredActions = new HashSet<>();
+
+        optionalActionsSelectedList = new ArrayList<>();
+        optionalActionsCompletedList = new ArrayList<>();
     }
 
     private String officeAction;
@@ -74,11 +74,26 @@ public class OfficeActions extends BaseEntity {
 
     // optional action fields
 
+
+    // this can be completed by either selecting no action or completing optional actions
     boolean optianlCompleted = false;
 
     // optional actions complete
 
+
+    // use these two lists to figure out what the next page should be..
+
+    // last value in this list is the last completed step
+    ArrayList<String> optionalActionsCompletedList;
+
+
+
+
+
     // optional actions list
+    ArrayList<String> optionalActionsSelectedList;
+
+
 
 
 
@@ -217,6 +232,50 @@ public class OfficeActions extends BaseEntity {
     public void setOptianlCompleted(boolean optianlCompleted) {
         this.optianlCompleted = optianlCompleted;
     }
+
+
+    public ArrayList<String> getOptionalActionsCompletedList() {
+        return optionalActionsCompletedList;
+    }
+
+    public void setOptionalActionsCompletedList(ArrayList<String> optionalActionsCompletedList) {
+        this.optionalActionsCompletedList = optionalActionsCompletedList;
+    }
+
+    public ArrayList<String> getOptionalActionsSelectedList() {
+        return optionalActionsSelectedList;
+    }
+
+    public void setOptionalActionsSelectedList(ArrayList<String> optionalActionsSelectedList) {
+        this.optionalActionsSelectedList = optionalActionsSelectedList;
+    }
+
+    // add and remove functions for each of the lists
+
+   public String addOptionalActionSelectedList( String action ){
+        optionalActionsSelectedList.add(action);
+
+        return action;
+   }
+   public void removeOptionalActionSelectedList( String action ){
+        optionalActionsSelectedList.remove(action);
+   }
+
+   public String addOptionalActionCompletedList( String action ){
+
+        optionalActionsCompletedList.add(action);
+
+        return action;
+   }
+
+   public void removeOptionalActionCompletedList( String action ){
+
+        optionalActionsCompletedList.remove(action);
+   }
+
+
+
+
 
     public RequiredActions findRequiredActionById(String id){
         RequiredActions action = null;

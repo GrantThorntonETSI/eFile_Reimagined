@@ -202,20 +202,90 @@
 
         // ajax auto save
 
+        // attorney
+
+        $('#aoredit').click(function () {
+
+            if(this.checked == true){
+                saveOptinalActionSelectList("add", "attorney", OfficeActionID,appInternalID);
+            }
+            else {
+                saveOptinalActionSelectList("remove", "attorney", OfficeActionID,appInternalID);
+            }
+
+        });
+
+
+        // owner
+
+        $('#ownaddre').click(function () {
+
+            if(this.checked == true){
+                saveOptinalActionSelectList("add", "owner", OfficeActionID,appInternalID);
+            }
+            else {
+                saveOptinalActionSelectList("remove", "owner", OfficeActionID,appInternalID);
+            }
+
+        });
+
+
+
+        // mark
+        $('#minorchange').click(function () {
+
+            if(this.checked == true){
+                saveOptinalActionSelectList("add", "mark", OfficeActionID,appInternalID);
+            }
+            else {
+                saveOptinalActionSelectList("remove", "mark", OfficeActionID,appInternalID);
+            }
+
+        });
+
+
+        // filing basis
+        $('#modify').click(function () {
+
+            if(this.checked == true){
+
+                saveOptinalActionSelectList("add", "fb", OfficeActionID,appInternalID);
+
+            }
+            else {
+                saveOptinalActionSelectList("remove", "fb", OfficeActionID,appInternalID);
+            }
+
+        });
+
+        // additional info
+        $('#changefile').click(function () {
+
+            if(this.checked == true){
+
+                saveOptinalActionSelectList("add", "additional", OfficeActionID,appInternalID);
+
+            }
+            else {
+                saveOptinalActionSelectList("remove", "additional", OfficeActionID,appInternalID);
+            }
+
+        });
+
         // translation required actions
 
 
     });
 
 
-    function saveOAresponse(FieldName, FieldValue, OA_id, RA_id ,appInternalID) {
+    function saveOptinalActionSelectList(actionName, actionValue, OA_id,appInternalID) {
 
         //var field_value = $(this).val();
         //alert(field_value);
 
 
         $.ajax({
-            url: "../../../REST/apiGateway/OfficeAction/response/update/" + FieldName + "/" + FieldValue + "/" + OA_id + "/" + RA_id +"/"+appInternalID,
+            url: "../../../REST/apiGateway/OfficeAction/optional/selected/update/" + actionName + "/" + actionValue+ "/" +OA_id + "/"+appInternalID,
             type: 'GET',
             success: function (data) {
 
