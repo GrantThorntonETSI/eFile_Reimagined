@@ -4119,8 +4119,8 @@ public class ApplicationFlowController {
                // prev link logic
                if(selectedList.size() == 0){
 
-                   nextLink = "../../../accounts/dashboard";
-                   prevLink = "../../../officeAction/optional/"+actionID+"/?trademarkID="+trademarkInternalID;
+                   nextLink = "../../../../accounts/dashboard";
+                   prevLink = "../../../../officeAction/optional/"+actionID+"/?trademarkID="+trademarkInternalID;
                }
                else {
 
@@ -4129,15 +4129,23 @@ public class ApplicationFlowController {
 
                returnLink =  "application/office_action/signature/index";
            }
+           else{
+                // this is not a completed
 
-            // case 2: optional action not completed
+               // case 2: optional action not completed
 
-            //  determine next link value
-                // use completed, and selected. and current location. to determine the next link value
+               //  determine next link value
+               // use completed, and selected. and current location. to determine the next link value
 
 
-            //  determine prev link value
-                // use completed, and selected. and current location. to determine the prev link value
+               //  determine prev link value
+               // use completed, and selected. and current location. to determine the prev link value
+
+
+
+
+           }
+
 
 
 
