@@ -4092,13 +4092,60 @@ public class ApplicationFlowController {
         int currentStep = baseTrademarkApplication.findOfficeActionById(actionID).getCurrentActionIndex();
 
 
+        String nextLink = "";
+        String prevLink = "";
+
+        String returnLink = "";
+
+
+
+
 
 
         // build next and prev link value
-        // case 1: optional action completed
+            // case 1: optional action completed
+            // if completed list and selected list is the same size
+                 // next link is done. return to dashboard.
+                 // prev link
+                           // if empty, just optional actions page
+                           // if not empty, it should be the last completed page. update current index
+
+           if(completedList.size() == selectedList.size()){
+            // optional action is completed
+
+               // next link is confirm and sign
 
 
-        // case 2: optional action not completed
+               // prev link logic
+               if(selectedList.size() == 0){
+
+                   nextLink = "../../../accounts/dashboard";
+                   prevLink = "../../../officeAction/optional/"+actionID+"/?trademarkID="+trademarkInternalID;
+               }
+               else {
+
+
+               }
+
+               returnLink =  "application/office_action/signature/index";
+           }
+
+            // case 2: optional action not completed
+
+            //  determine next link value
+                // use completed, and selected. and current location. to determine the next link value
+
+
+            //  determine prev link value
+                // use completed, and selected. and current location. to determine the prev link value
+
+
+
+
+
+
+        model.addAttribute("nextLink", nextLink);
+        model.addAttribute("prevLink", prevLink);
 
 
 
@@ -4112,12 +4159,7 @@ public class ApplicationFlowController {
 
 
 
-
-
-
-
-
-        return "application/office_action/optional_actions/index";
+        return returnLink;
     }
 
 

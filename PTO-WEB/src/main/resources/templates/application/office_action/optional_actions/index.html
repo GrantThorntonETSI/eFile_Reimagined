@@ -150,7 +150,9 @@
 
 <script>
 
-    var prevLinkURL = "../../../accounts/dashboard";
+    var prevLinkURL = "../../../officeAction/response/"+OfficeActionID+"/?trademarkID="+appInternalID;
+
+    var nextLinkURL = "../../../officeAction/optional/pathController/"+OfficeActionID+"/?trademarkID="+appInternalID;
 
 
 
@@ -236,6 +238,16 @@
         }
 
 
+
+        // paging
+
+        $('.next').click(function () {
+            location.href=nextLinkURL;
+        });
+
+        $('.prev').click(function () {
+            location.href=prevLinkURL;
+        });
 
 
 
