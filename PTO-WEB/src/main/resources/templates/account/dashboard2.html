@@ -220,25 +220,29 @@
                                                             <th:block th:each="filing : ${user.getMyApplications()}">
                                                                 <th:block th:each="action : ${filing.getOfficeActions()}">
                                                                     <th:block th:if="${action.isOfficeActionCompleted() == false}">
-                                                                        <tr>
-                                                                            <td></td>
-                                                                            <td><a th:text="${action.getParentSerialNumber()}">87697840</a></td>
-                                                                            <td>N/A</td>
 
-                                                                            <th:block th:if="${action.isStandardCharacterMark() == true}">
-                                                                                <td ><span style="max-width: 55px; max-height: 33px; margin:0 auto;font-family: Palatino, Garamond, Bookman, Avant Garde; font-size:.9em;text-align:center;margin-bottom:0;" th:text="${action.getStandardCharacterText()}"></span></td>
+                                                                        <th:block th:if="${action.isActiveAction()== true}">
+                                                                            <tr>
+                                                                                <td></td>
+                                                                                <td><a th:text="${action.getParentSerialNumber()}">87697840</a></td>
+                                                                                <td>N/A</td>
 
-                                                                            </th:block>
-                                                                            <th:block th:if="${action.isStandardCharacterMark() == false}">
-                                                                                <td><img th:src="${action.getParentMarkImagePath()}" style="max-width: 55px; max-height: 33px;"></td>
-                                                                            </th:block>
+                                                                                <th:block th:if="${action.isStandardCharacterMark() == true}">
+                                                                                    <td ><span style="max-width: 55px; max-height: 33px; margin:0 auto;font-family: Palatino, Garamond, Bookman, Avant Garde; font-size:.9em;text-align:center;margin-bottom:0;" th:text="${action.getStandardCharacterText()}"></span></td>
+
+                                                                                </th:block>
+                                                                                <th:block th:if="${action.isStandardCharacterMark() == false}">
+                                                                                    <td><img th:src="${action.getParentMarkImagePath()}" style="max-width: 55px; max-height: 33px;"></td>
+                                                                                </th:block>
 
 
-                                                                            <td th:text="${action.getParentMarkOwnerName()}">Pittsburgh Penguins LP</td>
-                                                                            <td th:text="${action.returnSomeDate()}">2/20/2019</td>
-                                                                            <td > <a th:text="${action.getOfficeActionCode()}">Abandoned</a></td>
-                                                                            <td STYLE="color: red"><a th:href="${action.getOfficeActionLink()}">Respond to Office Action</a></td>
-                                                                        </tr>
+                                                                                <td th:text="${action.getParentMarkOwnerName()}">Pittsburgh Penguins LP</td>
+                                                                                <td th:text="${action.returnSomeDate()}">2/20/2019</td>
+                                                                                <td > <a th:text="${action.getOfficeActionCode()}">Abandoned</a></td>
+                                                                                <td STYLE="color: red"><a th:href="${action.getOfficeActionLink()}">Respond to Office Action</a></td>
+                                                                            </tr>
+                                                                        </th:block>
+
 
                                                                     </th:block>
 

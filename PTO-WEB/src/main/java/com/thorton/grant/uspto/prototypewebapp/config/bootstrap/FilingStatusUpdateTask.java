@@ -249,6 +249,7 @@ public class FilingStatusUpdateTask extends TimerTask {
                             petition.setActivePetition(true);
                             current.addPetition(petition);
                             petition.setTrademarkApplication(current);
+                            current3.setActiveAction(false);
 
 
                             // go back and set any active actions to in-active

@@ -4022,7 +4022,7 @@ public class ApplicationFlowController {
 
 
     @RequestMapping({"/officeAction/optional/pathController/{actionID}"})
-    public String optionalActionsPathController( Model model, @PathVariable String actionID ,@RequestParam("trademarkID") String trademarkInternalID){
+    public String optionalActionsPathController(WebRequest request, Model model, @PathVariable String actionID ,@RequestParam("trademarkID") String trademarkInternalID){
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -4047,12 +4047,7 @@ public class ApplicationFlowController {
         //////////////////////////////////////////////////////
         //continuation = true;
 
-        model.addAttribute("user", ptoUser);
-        model.addAttribute("account",credentials);
 
-        model.addAttribute("action", actions);
-
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
         boolean colorClaim= false;
         boolean acceptBW = false;
@@ -4134,12 +4129,43 @@ public class ApplicationFlowController {
 
                // case 2: optional action not completed
 
+               // if we on bread crumb one
+               nextLink = "bread crumb 2";
+               prevLink = "../../../../officeAction/optional/"+actionID+"/?trademarkID="+trademarkInternalID;
+
+
+
+               // if next action is lawyer
+
+               model.addAttribute("lawyerPool", baseTrademarkApplication.getAvailableLawyersExcludePrimary());
+
                //  determine next link value
                // use completed, and selected. and current location. to determine the next link value
 
 
                //  determine prev link value
                // use completed, and selected. and current location. to determine the prev link value
+
+
+               if(completedList.size() == 0){
+
+                  // check the first selected list
+
+                   if(selectedList.get(currentStep).equals("owner")) {
+
+                       returnLink =  "application/office_action/optional_actions/owner/index";
+
+                   }
+
+                   if(selectedList.get(currentStep).equals("attorney")) {
+
+                       returnLink =  "application/office_action/optional_actions/attorney_optional/index";
+
+                   }
+
+               }
+
+
 
 
 
@@ -4164,7 +4190,13 @@ public class ApplicationFlowController {
 
 
 
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
 
+        model.addAttribute("action", actions);
+
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+        model.addAttribute("lawyerPool", baseTrademarkApplication.getAvailableLawyersExcludePrimary());
 
 
         return returnLink;
