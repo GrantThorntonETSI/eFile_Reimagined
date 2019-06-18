@@ -4084,7 +4084,8 @@ public class ApplicationFlowController {
 
         ArrayList<String> selectedList = baseTrademarkApplication.findOfficeActionById(actionID).getOptionalActionsSelectedList();
         ArrayList<String> completedList =  baseTrademarkApplication.findOfficeActionById(actionID).getOptionalActionsCompletedList();
-        int currentStep = baseTrademarkApplication.findOfficeActionById(actionID).getCurrentActionIndex();
+        //int currentStep = baseTrademarkApplication.findOfficeActionById(actionID).getCurrentActionIndex();
+        OfficeActions action = baseTrademarkApplication.findOfficeActionById(actionID);
 
 
         String nextLink = "";
@@ -4151,15 +4152,24 @@ public class ApplicationFlowController {
 
                   // check the first selected list
 
-                   if(selectedList.get(currentStep).equals("owner")) {
 
-                       returnLink =  "application/office_action/optional_actions/owner/index";
 
-                   }
-
-                   if(selectedList.get(currentStep).equals("attorney")) {
+                   if(action.isAttorneyOptional() == true) {
 
                        returnLink =  "application/office_action/optional_actions/attorney_optional/index";
+
+                   }
+                   else {
+
+                       if(action.isOwnerOptional() == true) {
+
+                           returnLink =  "application/office_action/optional_actions/owner/index";
+
+                       }
+                       else{
+
+
+                       }
 
                    }
 

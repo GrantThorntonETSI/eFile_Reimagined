@@ -91,6 +91,8 @@ public class OfficeActions extends BaseEntity {
     int currentActionIndex = 0;
 
     // optional actions list
+    // we probably do not need this ...
+    // should be able to use flags below
     ArrayList<String> optionalActionsSelectedList;
 
     private boolean attorneyOptional;
