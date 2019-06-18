@@ -4132,8 +4132,8 @@ public class ApplicationFlowController {
                // case 2: optional action not completed
 
                // if we on bread crumb one
-               nextLink = "../../../../officeAction/optional/pathController/next/"+actionID+"/?trademarkID="+trademarkInternalID;
-               prevLink = "../../../../officeAction/optional/pathController/prev/"+actionID+"/?trademarkID="+trademarkInternalID;
+               nextLink = "../../../../../officeAction/optional/pathController/next/"+actionID+"/?trademarkID="+trademarkInternalID;
+               prevLink = "../../../../../officeAction/optional/pathController/prev/"+actionID+"/?trademarkID="+trademarkInternalID;
 
 
 
@@ -4165,6 +4165,11 @@ public class ApplicationFlowController {
 
                        returnLink =  "application/office_action/optional_actions/attorney/index";
 
+                       if(action.isStep1_firstTime() == true){
+                           action.getOptionalActionsCompletedList().add("attorney");
+
+                       }
+
                    }
 
 
@@ -4172,10 +4177,20 @@ public class ApplicationFlowController {
 
                        returnLink =  "application/office_action/optional_actions/owner/index";
 
+                       if(action.isStep1_firstTime() == true){
+                           action.getOptionalActionsCompletedList().add("owner");
+                       }
+
+
                    }
 
                    if (selectedList.get(action.getCurrentActionIndex()).equals("mark")) {
                        returnLink = "application/office_action/optional_actions/mark/index";
+
+                       if(action.isStep1_firstTime() == true){
+                           action.getOptionalActionsCompletedList().add("mark");
+                       }
+
 
 
                    }
@@ -4183,15 +4198,24 @@ public class ApplicationFlowController {
 
                    if (selectedList.get(action.getCurrentActionIndex()).equals("fb")) {
                        returnLink = "application/office_action/optional_actions/filing_basis/index";
+                       if(action.isStep1_firstTime() == true){
+                           action.getOptionalActionsCompletedList().add("fb");
+                       }
+
 
 
                    }
 
                    if (selectedList.get(action.getCurrentActionIndex()).equals("additional")) {
                        returnLink =  "application/office_action/optional_actions/additional_info/index";
+                       if(action.isStep1_firstTime() == true){
+                           action.getOptionalActionsCompletedList().add("additional");
+                       }
+
 
 
                    }
+                   action.setStep1_firstTime(false);
 
                    // update optionalActionIndex
 
@@ -4204,24 +4228,42 @@ public class ApplicationFlowController {
                    if(selectedList.get(action.getCurrentActionIndex()).equals("owner")) {
 
                        returnLink =  "application/office_action/optional_actions/owner/index";
+                       if(action.isStep2_firstTime() == true){
+                           action.getOptionalActionsCompletedList().add("owner");
+                       }
+
 
                    }
 
                    if (selectedList.get(action.getCurrentActionIndex()).equals("mark")) {
                        returnLink = "application/office_action/optional_actions/mark/index";
+                       if(action.isStep2_firstTime() == true){
+                           action.getOptionalActionsCompletedList().add("mark");
+                       }
+
 
                    }
 
 
                    if (selectedList.get(action.getCurrentActionIndex()).equals("fb")) {
                        returnLink = "application/office_action/optional_actions/filing_basis/index";
+                       if(action.isStep2_firstTime() == true){
+                           action.getOptionalActionsCompletedList().add("fb");
+                       }
+
 
                    }
 
                    if (selectedList.get(action.getCurrentActionIndex()).equals("additional")) {
                        returnLink =  "application/office_action/optional_actions/additional_info/index";
+                       if(action.isStep2_firstTime() == true){
+                           action.getOptionalActionsCompletedList().add("additional");
+                       }
+
 
                    }
+
+                   action.setStep2_firstTime(false);
 
 
                }
@@ -4233,19 +4275,32 @@ public class ApplicationFlowController {
 
                    if (selectedList.get(action.getCurrentActionIndex()).equals("mark")) {
                        returnLink = "application/office_action/optional_actions/mark/index";
+                       if(action.isStep3_firstTime() == true){
+                           action.getOptionalActionsCompletedList().add("mark");
+                       }
+
 
                    }
 
 
                    if (selectedList.get(action.getCurrentActionIndex()).equals("fb")) {
                        returnLink = "application/office_action/optional_actions/filing_basis/index";
+                       if(action.isStep3_firstTime() == true){
+                           action.getOptionalActionsCompletedList().add("fb");
+                       }
+
 
                    }
 
                    if (selectedList.get(action.getCurrentActionIndex()).equals("additional")) {
                        returnLink =  "application/office_action/optional_actions/additional_info/index";
+                       if(action.isStep3_firstTime() == true){
+                           action.getOptionalActionsCompletedList().add("additional");
+                       }
+
 
                    }
+                   action.setStep3_firstTime(false);
 
 
                }
@@ -4258,13 +4313,24 @@ public class ApplicationFlowController {
 
                    if (selectedList.get(action.getCurrentActionIndex()).equals("fb")) {
                        returnLink = "application/office_action/optional_actions/filing_basis/index";
+                       if(action.isStep4_firstTime() == true){
+                           action.getOptionalActionsCompletedList().add("fb");
+                       }
+
 
                    }
 
                    if (selectedList.get(action.getCurrentActionIndex()).equals("additional")) {
                        returnLink =  "application/office_action/optional_actions/additional_info/index";
 
+                       if(action.isStep4_firstTime() == true){
+                           action.getOptionalActionsCompletedList().add("additional");
+                       }
+
+
                    }
+
+                   action.setStep4_firstTime(false);
 
 
                }
@@ -4275,7 +4341,11 @@ public class ApplicationFlowController {
 
                        returnLink =  "application/office_action/optional_actions/additional_info/index";
 
+                       if(action.isStep5_firstTime() == true){
+                           action.getOptionalActionsCompletedList().add("additional");
+                       }
 
+                        action.setStep5_firstTime(false);
                }
 
 

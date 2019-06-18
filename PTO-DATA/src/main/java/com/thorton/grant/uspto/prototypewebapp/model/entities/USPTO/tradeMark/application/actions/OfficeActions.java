@@ -107,6 +107,18 @@ public class OfficeActions extends BaseEntity {
 
 
 
+    boolean step1_firstTime = true;
+
+    boolean step2_firstTime = true;
+
+    boolean step3_firstTime = true;
+
+    boolean step4_firstTime = true;
+
+    boolean step5_firstTime = true;
+
+
+
 
 
 
@@ -345,6 +357,46 @@ public class OfficeActions extends BaseEntity {
 
     public boolean isFbOptional() {
         return fbOptional;
+    }
+
+    public boolean isStep1_firstTime() {
+        return step1_firstTime;
+    }
+
+    public void setStep1_firstTime(boolean step1_firstTime) {
+        this.step1_firstTime = step1_firstTime;
+    }
+
+    public boolean isStep2_firstTime() {
+        return step2_firstTime;
+    }
+
+    public void setStep2_firstTime(boolean step2_firstTime) {
+        this.step2_firstTime = step2_firstTime;
+    }
+
+    public boolean isStep3_firstTime() {
+        return step3_firstTime;
+    }
+
+    public void setStep3_firstTime(boolean step3_firstTime) {
+        this.step3_firstTime = step3_firstTime;
+    }
+
+    public boolean isStep4_firstTime() {
+        return step4_firstTime;
+    }
+
+    public void setStep4_firstTime(boolean step4_firstTime) {
+        this.step4_firstTime = step4_firstTime;
+    }
+
+    public boolean isStep5_firstTime() {
+        return step5_firstTime;
+    }
+
+    public void setStep5_firstTime(boolean step5_firstTime) {
+        this.step5_firstTime = step5_firstTime;
     }
 
     public void setFbOptional(boolean fbOptional) {
