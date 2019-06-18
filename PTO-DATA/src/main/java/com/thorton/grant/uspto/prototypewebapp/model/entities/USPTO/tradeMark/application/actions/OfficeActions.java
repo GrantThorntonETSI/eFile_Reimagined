@@ -101,7 +101,7 @@ public class OfficeActions extends BaseEntity {
 
     private boolean markOptional;
 
-    private boolean gsOptional;
+    private boolean fbOptional;
 
     private boolean additionalOptional;
 
@@ -287,6 +287,30 @@ public class OfficeActions extends BaseEntity {
         optionalActionsCompletedList.remove(action);
    }
 
+
+   public ArrayList<String> getOrderedSelectedList(){
+        ArrayList<String> ordereddList = new ArrayList<>();
+
+        if(this.attorneyOptional == true){
+            ordereddList.add("attorney");
+        }
+        if(this.ownerOptional == true){
+            ordereddList.add("owner");
+
+        }
+        if(this.markOptional == true){
+            ordereddList.add("mark");
+        }
+        if(this.fbOptional == true){
+            ordereddList.add("fb");
+        }
+        if(this.additionalOptional == true){
+            ordereddList.add("additional");
+        }
+
+        return ordereddList;
+   }
+
     public int getCurrentActionIndex() {
         return currentActionIndex;
     }
@@ -319,12 +343,12 @@ public class OfficeActions extends BaseEntity {
         this.markOptional = markOptional;
     }
 
-    public boolean isGsOptional() {
-        return gsOptional;
+    public boolean isFbOptional() {
+        return fbOptional;
     }
 
-    public void setGsOptional(boolean gsOptional) {
-        this.gsOptional = gsOptional;
+    public void setFbOptional(boolean fbOptional) {
+        this.fbOptional = fbOptional;
     }
 
     public boolean isAdditionalOptional() {
@@ -372,6 +396,9 @@ public class OfficeActions extends BaseEntity {
 
 
     }
+
+
+
 
 
 }

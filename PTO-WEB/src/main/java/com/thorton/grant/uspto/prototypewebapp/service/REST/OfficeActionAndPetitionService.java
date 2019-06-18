@@ -334,7 +334,7 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
                 }
 
                 if(pValue.equals("gs")){
-                    baseTrademarkApplication.findOfficeActionById(OfficeActionID).setGsOptional(true);
+                    baseTrademarkApplication.findOfficeActionById(OfficeActionID).setFbOptional(true);
                 }
                 if(pValue.equals("additional")){
                     baseTrademarkApplication.findOfficeActionById(OfficeActionID).setAdditionalOptional(true);
@@ -356,7 +356,7 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
                 }
 
                 if(pValue.equals("gs")){
-                    baseTrademarkApplication.findOfficeActionById(OfficeActionID).setGsOptional(false);
+                    baseTrademarkApplication.findOfficeActionById(OfficeActionID).setFbOptional(false);
                 }
                 if(pValue.equals("additional")){
                     baseTrademarkApplication.findOfficeActionById(OfficeActionID).setAdditionalOptional(false);

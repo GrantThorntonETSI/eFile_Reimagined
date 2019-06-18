@@ -24,6 +24,7 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.as
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.ManagedContact;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
+import com.thorton.grant.uspto.prototypewebapp.service.REST.OfficeActionAndPetitionService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -4021,8 +4022,8 @@ public class ApplicationFlowController {
 
 
 
-    @RequestMapping({"/officeAction/optional/pathController/{actionID}"})
-    public String optionalActionsPathController(WebRequest request, Model model, @PathVariable String actionID ,@RequestParam("trademarkID") String trademarkInternalID){
+    @RequestMapping({"/officeAction/optional/pathController/{direction}/{actionID}"})
+    public String optionalActionsPathController(WebRequest request, Model model,  @PathVariable String direction, @PathVariable String actionID ,@RequestParam("trademarkID") String trademarkInternalID){
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -4082,7 +4083,7 @@ public class ApplicationFlowController {
 
         // start checking office
 
-        ArrayList<String> selectedList = baseTrademarkApplication.findOfficeActionById(actionID).getOptionalActionsSelectedList();
+        ArrayList<String> selectedList = baseTrademarkApplication.findOfficeActionById(actionID).getOrderedSelectedList();
         ArrayList<String> completedList =  baseTrademarkApplication.findOfficeActionById(actionID).getOptionalActionsCompletedList();
         //int currentStep = baseTrademarkApplication.findOfficeActionById(actionID).getCurrentActionIndex();
         OfficeActions action = baseTrademarkApplication.findOfficeActionById(actionID);
@@ -4131,8 +4132,8 @@ public class ApplicationFlowController {
                // case 2: optional action not completed
 
                // if we on bread crumb one
-               nextLink = "bread crumb 2";
-               prevLink = "../../../../officeAction/optional/"+actionID+"/?trademarkID="+trademarkInternalID;
+               nextLink = "../../../../officeAction/optional/pathController/next/"+actionID+"/?trademarkID="+trademarkInternalID;
+               prevLink = "../../../../officeAction/optional/pathController/prev/"+actionID+"/?trademarkID="+trademarkInternalID;
 
 
 
@@ -4148,37 +4149,144 @@ public class ApplicationFlowController {
                // use completed, and selected. and current location. to determine the prev link value
 
 
-               if(completedList.size() == 0){
+
+               //step 1
+               if(action.getCurrentActionIndex() == 0){
 
                   // check the first selected list
 
 
 
-                   if(action.isAttorneyOptional() == true) {
-
-                       returnLink =  "application/office_action/optional_actions/attorney_optional/index";
-
-                   }
-                   else {
-
-                       if(action.isOwnerOptional() == true) {
-
-                           returnLink =  "application/office_action/optional_actions/owner/index";
-
-                       }
-                       else{
+                   // we need a prev link handler ..the forward link logic can not be used there
 
 
-                       }
+
+                   if(selectedList.get(action.getCurrentActionIndex()).equals("attorney")) {
+
+                       returnLink =  "application/office_action/optional_actions/attorney/index";
 
                    }
+
+
+                   if(selectedList.get(action.getCurrentActionIndex()).equals("owner")) {
+
+                       returnLink =  "application/office_action/optional_actions/owner/index";
+
+                   }
+
+                   if (selectedList.get(action.getCurrentActionIndex()).equals("mark")) {
+                       returnLink = "application/office_action/optional_actions/mark/index";
+
+
+                   }
+
+
+                   if (selectedList.get(action.getCurrentActionIndex()).equals("fb")) {
+                       returnLink = "application/office_action/optional_actions/filing_basis/index";
+
+
+                   }
+
+                   if (selectedList.get(action.getCurrentActionIndex()).equals("additional")) {
+                       returnLink =  "application/office_action/optional_actions/additional_info/index";
+
+
+                   }
+
+                   // update optionalActionIndex
+
+               }
+
+               // step 2
+
+               if(action.getCurrentActionIndex() == 1){
+
+                   if(selectedList.get(action.getCurrentActionIndex()).equals("owner")) {
+
+                       returnLink =  "application/office_action/optional_actions/owner/index";
+
+                   }
+
+                   if (selectedList.get(action.getCurrentActionIndex()).equals("mark")) {
+                       returnLink = "application/office_action/optional_actions/mark/index";
+
+                   }
+
+
+                   if (selectedList.get(action.getCurrentActionIndex()).equals("fb")) {
+                       returnLink = "application/office_action/optional_actions/filing_basis/index";
+
+                   }
+
+                   if (selectedList.get(action.getCurrentActionIndex()).equals("additional")) {
+                       returnLink =  "application/office_action/optional_actions/additional_info/index";
+
+                   }
+
+
+               }
+
+               // step 3
+               if(action.getCurrentActionIndex() == 2){
+
+
+
+                   if (selectedList.get(action.getCurrentActionIndex()).equals("mark")) {
+                       returnLink = "application/office_action/optional_actions/mark/index";
+
+                   }
+
+
+                   if (selectedList.get(action.getCurrentActionIndex()).equals("fb")) {
+                       returnLink = "application/office_action/optional_actions/filing_basis/index";
+
+                   }
+
+                   if (selectedList.get(action.getCurrentActionIndex()).equals("additional")) {
+                       returnLink =  "application/office_action/optional_actions/additional_info/index";
+
+                   }
+
+
+               }
+
+               // step 4
+               if(action.getCurrentActionIndex() == 3){
+
+
+
+
+                   if (selectedList.get(action.getCurrentActionIndex()).equals("fb")) {
+                       returnLink = "application/office_action/optional_actions/filing_basis/index";
+
+                   }
+
+                   if (selectedList.get(action.getCurrentActionIndex()).equals("additional")) {
+                       returnLink =  "application/office_action/optional_actions/additional_info/index";
+
+                   }
+
+
+               }
+
+               // step 5
+
+               if(action.getCurrentActionIndex() == 4){
+
+                       returnLink =  "application/office_action/optional_actions/additional_info/index";
+
 
                }
 
 
+                if(direction.equals("next")){
+                    action.setCurrentActionIndex(action.getCurrentActionIndex()+1);
+                }
+                else {
+                    action.setCurrentActionIndex(action.getCurrentActionIndex()-1);
+                }
 
-
-
+               baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
            }
 
@@ -4211,6 +4319,7 @@ public class ApplicationFlowController {
 
         return returnLink;
     }
+
 
 
 

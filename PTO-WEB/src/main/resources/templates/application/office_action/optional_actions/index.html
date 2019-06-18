@@ -65,12 +65,12 @@
                                 <label class="form-check-label form-check" for="minorchange"><span class="radio notspecial" id="changemark">Make a minor change to the mark or submit a better quality image</span></label>
                             </div>
                             <div class="col-xs-12 form-group form-group-md">
-                                <th:block th:if="${action.isGsOptional() == true}">
+                                <th:block th:if="${action.isFbOptional() == true}">
                                     <input class="form-check-input checkmark" type="checkbox" value="modgs" tabindex="0" aria-labelledby="modgss" id="modify" checked>
 
                                 </th:block>
 
-                                <th:block th:if="${action.isGsOptional() == false}">
+                                <th:block th:if="${action.isFbOptional() == false}">
                                     <input class="form-check-input checkmark" type="checkbox" value="modgs" tabindex="0" aria-labelledby="modgss" id="modify">
 
                                 </th:block>
@@ -152,7 +152,7 @@
 
     var prevLinkURL = "../../../officeAction/response/"+OfficeActionID+"/?trademarkID="+appInternalID;
 
-    var nextLinkURL = "../../../officeAction/optional/pathController/"+OfficeActionID+"/?trademarkID="+appInternalID;
+    var nextLinkURL = "../../../officeAction/optional/pathController/next/"+OfficeActionID+"/?trademarkID="+appInternalID;
 
 
 
