@@ -3965,6 +3965,8 @@ public class ApplicationFlowController {
         //OfficeActions action = baseTrademarkApplication.findOfficeActionById(actionID);
 
         OfficeActions actions = baseTrademarkApplication.findOfficeActionById(actionID);
+        actions.setCurrentActionIndex(-1);
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
         //////////////////////////////////////////////////////
         // this is set back to null upon verification check
@@ -4169,10 +4171,7 @@ public class ApplicationFlowController {
 
                 // optionals action select page
 
-                if(action.getCurrentActionIndex() == -1){
-                    returnLink = "../../../../../officeAction/optional/"+actionID+"/?trademarkID="+trademarkInternalID;
 
-                }
 
                //step 1
                if(action.getCurrentActionIndex() == 0){
@@ -4180,8 +4179,8 @@ public class ApplicationFlowController {
                   // check the first selected list
 
                    // we need a prev link handler ..the forward link logic can not be used there
-
-
+                   // on first bread crumb, prev link points to optional select page
+                   prevLink = "../../../../../officeAction/optional/"+actionID+"/?trademarkID="+trademarkInternalID;
 
                    if(selectedList.get(action.getCurrentActionIndex()).equals("attorney")) {
 
