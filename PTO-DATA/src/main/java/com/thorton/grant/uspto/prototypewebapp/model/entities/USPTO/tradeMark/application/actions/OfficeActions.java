@@ -88,7 +88,7 @@ public class OfficeActions extends BaseEntity {
 
 
 
-    int currentActionIndex = 0;
+    int currentActionIndex = -1;
 
     // optional actions list
     // we probably do not need this ...
@@ -117,7 +117,7 @@ public class OfficeActions extends BaseEntity {
 
     boolean step5_firstTime = true;
 
-
+    boolean step6_firstTime = true;
 
 
 
@@ -320,6 +320,9 @@ public class OfficeActions extends BaseEntity {
             ordereddList.add("additional");
         }
 
+        // this one is always there
+        ordereddList.add("signature");
+
         return ordereddList;
    }
 
@@ -397,6 +400,14 @@ public class OfficeActions extends BaseEntity {
 
     public void setStep5_firstTime(boolean step5_firstTime) {
         this.step5_firstTime = step5_firstTime;
+    }
+
+    public boolean isStep6_firstTime() {
+        return step6_firstTime;
+    }
+
+    public void setStep6_firstTime(boolean step6_firstTime) {
+        this.step6_firstTime = step6_firstTime;
     }
 
     public void setFbOptional(boolean fbOptional) {

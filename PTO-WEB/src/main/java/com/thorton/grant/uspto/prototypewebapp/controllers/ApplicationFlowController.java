@@ -4107,6 +4107,8 @@ public class ApplicationFlowController {
                            // if empty, just optional actions page
                            // if not empty, it should be the last completed page. update current index
 
+
+        /*
            if(completedList.size() == selectedList.size()){
             // optional action is completed
 
@@ -4120,13 +4122,24 @@ public class ApplicationFlowController {
                    prevLink = "../../../../officeAction/optional/"+actionID+"/?trademarkID="+trademarkInternalID;
                }
                else {
-
+                   nextLink = "../../../../../accounts/dashboard";
+                   prevLink = "../../../../../officeAction/optional/pathController/prev/"+actionID+"/?trademarkID="+trademarkInternalID;
 
                }
 
+
+
+
+
                returnLink =  "application/office_action/signature/index";
-           }
-           else{
+
+
+               // need to design prev link logic for after completion
+
+
+
+           }   */
+
                 // this is not a completed
 
                // case 2: optional action not completed
@@ -4147,15 +4160,24 @@ public class ApplicationFlowController {
 
                //  determine prev link value
                // use completed, and selected. and current location. to determine the prev link value
+                if(direction.equals("prev")) {
+                    action.setCurrentActionIndex(action.getCurrentActionIndex()-1);
+                }
+                if(direction.equals("next")){
+                    action.setCurrentActionIndex(action.getCurrentActionIndex()+1);
+                }
 
+                // optionals action select page
 
+                if(action.getCurrentActionIndex() == -1){
+                    returnLink = "../../../../../officeAction/optional/"+actionID+"/?trademarkID="+trademarkInternalID;
+
+                }
 
                //step 1
                if(action.getCurrentActionIndex() == 0){
 
                   // check the first selected list
-
-
 
                    // we need a prev link handler ..the forward link logic can not be used there
 
@@ -4215,6 +4237,16 @@ public class ApplicationFlowController {
 
 
                    }
+                   if (selectedList.get(action.getCurrentActionIndex()).equals("signature")) {
+                       returnLink =  "application/office_action/signature/index";
+                       if(action.isStep1_firstTime() == true){
+                           action.getOptionalActionsCompletedList().add("signature");
+                       }
+
+
+
+                   }
+
                    action.setStep1_firstTime(false);
 
                    // update optionalActionIndex
@@ -4262,6 +4294,15 @@ public class ApplicationFlowController {
 
 
                    }
+                   if (selectedList.get(action.getCurrentActionIndex()).equals("signature")) {
+                       returnLink =  "application/office_action/signature/index";
+                       if(action.isStep1_firstTime() == true){
+                           action.getOptionalActionsCompletedList().add("signature");
+                       }
+
+
+
+                   }
 
                    action.setStep2_firstTime(false);
 
@@ -4300,6 +4341,16 @@ public class ApplicationFlowController {
 
 
                    }
+
+                   if (selectedList.get(action.getCurrentActionIndex()).equals("signature")) {
+                       returnLink =  "application/office_action/signature/index";
+                       if(action.isStep1_firstTime() == true){
+                           action.getOptionalActionsCompletedList().add("signature");
+                       }
+
+
+
+                   }
                    action.setStep3_firstTime(false);
 
 
@@ -4330,6 +4381,16 @@ public class ApplicationFlowController {
 
                    }
 
+                   if (selectedList.get(action.getCurrentActionIndex()).equals("signature")) {
+                       returnLink =  "application/office_action/signature/index";
+                       if(action.isStep1_firstTime() == true){
+                           action.getOptionalActionsCompletedList().add("signature");
+                       }
+
+
+
+                   }
+
                    action.setStep4_firstTime(false);
 
 
@@ -4339,26 +4400,52 @@ public class ApplicationFlowController {
 
                if(action.getCurrentActionIndex() == 4){
 
+                   if (selectedList.get(action.getCurrentActionIndex()).equals("additional")) {
                        returnLink =  "application/office_action/optional_actions/additional_info/index";
 
-                       if(action.isStep5_firstTime() == true){
+                       if(action.isStep4_firstTime() == true){
                            action.getOptionalActionsCompletedList().add("additional");
                        }
 
-                        action.setStep5_firstTime(false);
+
+                   }
+
+                   if (selectedList.get(action.getCurrentActionIndex()).equals("signature")) {
+                       returnLink =  "application/office_action/signature/index";
+                       if(action.isStep1_firstTime() == true){
+                           action.getOptionalActionsCompletedList().add("signature");
+                       }
+
+
+
+                   }
+
+                   action.setStep5_firstTime(false);
                }
 
 
-                if(direction.equals("next")){
-                    action.setCurrentActionIndex(action.getCurrentActionIndex()+1);
+               // step 6
+                if(action.getCurrentActionIndex() == 5){
+
+                    if (selectedList.get(action.getCurrentActionIndex()).equals("signature")) {
+                        returnLink =  "application/office_action/signature/index";
+                        if(action.isStep1_firstTime() == true){
+                            action.getOptionalActionsCompletedList().add("signature");
+                        }
+
+                    }
+
+                    action.setStep6_firstTime(false);
+
                 }
-                else {
-                    action.setCurrentActionIndex(action.getCurrentActionIndex()-1);
-                }
+
+
+
+
 
                baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
-           }
+
 
 
 

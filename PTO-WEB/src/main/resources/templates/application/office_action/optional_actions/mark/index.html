@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/efilePetitionsFragment :: layout (~{::body},'user')}" >
+<head >
+    <meta charset="UTF-8">
+    <title>Goods and Services Review</title>
+</head>
+<body>
+<div class="row content" id="responseamend" style="display: none;">
+
+    <main class="col-xs-12 col-sm-8 col-md-8 col-lg-7">
+
+        <!--START Content Div-->
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row">
+                    <section class="col-xs-12 steps breadcrumb-steps" aria-label="progress tracker">
+                        <div class="row displaycell">
+                            <div class="col-xs-2 one" id="bs-header1">
+                                <div class="row">
+                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
+                                        <span>1</span>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link1">
+                                        <p class="first">Attorney</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-2 two" id="bs-header2">
+                                <div class="row">
+                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
+                                        <span>2</span>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link2">
+                                        <p>Owner</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-2 three" id="bs-header3">
+                                <div class="row">
+                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
+                                        <span>3</span>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link3">
+                                        <p>Mark</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-2 four" id="bs-header4">
+                                <div class="row">
+                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
+                                        <span>4</span>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link4">
+                                        <p>Goods / Services</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-2 five" id="bs-header5">
+                                <div class="row">
+                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
+                                        <span>5</span>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link5">
+                                        <p>Additional info</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <h1>Mark Information</h1>
+                    </div>
+
+
+                </div>
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+
+        <div class="inlinebuttons btn-group btn-group-justified  owner-paging-buttons" role="nav" aria-label="view previous or next page" id="prevnxt">
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-default fill prev" id="prevButton" value="previous">Previous</button>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next">Next
+                    <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
+            </div>
+        </div>
+
+    </main>
+
+
+</div><!--END div content-->
+
+
+
+<script th:inline="javascript">
+
+    /*<![CDATA[*/
+    var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
+
+    var  image_path = /*[[${markImagePath}]]*/ 'User Name';
+
+    var  image_pathBW = /*[[${markImagePathBW}]]*/ 'User Name';
+
+    var colorClaim = /*[[${markColorClaim}]]*/ 'User Name';
+
+
+    var acceptBW = /*[[${markColorClaimBW}]]*/ 'User Name';
+
+    var OfficeActionID = /*[[${OfficeActionID}]]*/ 'User Name';
+
+    var colorClaimSet = /*[[${colorClaimSet}]]*/ 'User Name';
+
+    var markType = /*[[${baseTrademarkApplication.tradeMark.trademarkDesignType}]]*/ 'User Name';
+    var markText = /*[[${baseTrademarkApplication.tradeMark.trademarkStandardCharacterText}]]*/ 'User Name';
+
+
+    var nextLink = /*[[${nextLink}]]*/ 'User Name';
+    var prevLink = /*[[${prevLink}]]*/ 'User Name';
+
+    /*]]>*/
+</script>
+
+
+
+<script>
+
+
+
+
+
+    $(document).ready(function() {
+
+        setTimeout(function () {
+            // after 1000 ms we add the class animated to the login/register card
+            $('.content').fadeIn(500);
+        }, 500);
+
+
+        //////////////////////////////////////////////////////////////////////
+        // set mark image based on persisted values
+        //////////////////////////////////////////////////////////////////////
+
+        if(markType == "Standard Character"){
+
+            if(markText  != null && markText != ""){
+
+                $( '#togglepop' ).attr('data-content', '<div class="media"><span id="showmarktxt" style="min-width:77px;width:80px;margin:0 auto;font-family: Palatino, Garamond, Bookman, Avant Garde; font-size:.9em;text-align:center;margin-bottom:0;" class="media-object" alt="my trademark">'+markText+'</span></div>');
+            }
+            else{
+                $( '#togglepop' ).attr('data-content', '<div class="media"><span class="glyphicon glyphicon-picture" aria-hidden="true"  style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></span></div>');
+            }
+
+        }
+        else {
+
+            if(colorClaimSet == false){
+
+                if(image_path != null){
+
+                    $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+                }
+                // set color claim to true be default when its not set yet
+                else{
+                    $( '#togglepop' ).attr('data-content', '<div class="media"><span class="glyphicon glyphicon-picture" aria-hidden="true"  style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></span></div>');
+                }
+
+            }
+            else {
+
+                if(colorClaim == false){
+
+                    if(acceptBW == true){
+                        // $('#inlineRadio2').click();
+                        // $('#bwmark').click();
+
+                        $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_pathBW+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+
+                    }
+                    else{
+                        if(image_path != null){
+
+                            $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+
+
+                        }
+
+                    }
+
+                }
+                if(colorClaim == true){
+                    // $('#inlineRadio1').click();
+                    if(image_path != null){
+
+                        $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+
+
+                    }
+                }
+
+
+            }
+
+
+
+
+        }
+
+
+
+        $('.next').click(function () {
+            location.href=nextLink;
+        });
+
+        $('.prev').click(function () {
+            location.href=prevLink;
+        });
+
+
+
+
+
+
+    });
+
+
+    function saveOAresponse(FieldName, FieldValue, OA_id, RA_id ,appInternalID) {
+
+        //var field_value = $(this).val();
+        //alert(field_value);
+
+
+        $.ajax({
+            url: "../../../REST/apiGateway/OfficeAction/response/update/" + FieldName + "/" + FieldValue + "/" + OA_id + "/" + RA_id +"/"+appInternalID,
+            type: 'GET',
+            success: function (data) {
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:") + 7, data.indexOf("status:") + 4 + 7);
+
+                var s_msg = data.substring(data.indexOf("msg:") + 4, data.length - 2);
+
+
+
+                if (s_code.trim() == "200") {
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function () {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                }
+                else {
+
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function () {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                    $('.next').attr("disabled", false);
+
+                }
+
+
+            },
+            error: function (data) {
+
+                console.log(data);
+
+            }
+
+        });
+    }
+
+
+</script>
+
+</body>
+</html>
