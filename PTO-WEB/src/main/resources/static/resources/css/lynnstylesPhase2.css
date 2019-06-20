@@ -2767,67 +2767,46 @@ button[type="submit"].right, button[type="button"].right {
     margin:0 auto;
     float:none;
 }
-.fileholder .linkholder {
-    /*overflow-wrap: break-word;
-    word-wrap: break-word;
-    -ms-word-break: break-all;
-    word-break: break-all;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-    white-space: normal;*/
-    /*overflow: hidden;
-      text-overflow: ellipsis;*/
+fileholder .linkholder, .fileholder .iconholder{
     display:table;
     max-height: 38px;
-}
-.fileholder .linkholder a {
-    display: table-cell;
-    vertical-align: middle;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100px;
 }
 .fileholder div {
     padding: 1em 0;
 }
-.fileholder div.visuallyhidden {
-    height:1em;
-}
 .fileholder div.row {
     padding: 0;
 }
-.fileholder div img, .fileholder div button, .fileholder span, .fileholder a, #petitions1 div img, #petitions2 div img, #responseamend div img {
+.fileholder div img, .fileholder div button, .fileholder span, .fileholder a, .fileholder i, #petitions1 div img, #petitions2 div img, #responseamend div img {
     float: none!important;
     height:38px;
     font-size:.8em;
 }
-#petitions1 div img, #petitions2 div img, #responseamend div img {
-    float: left!important;
+.fileholder div img, .fileholder i, .fileholder span, #petitions1 div img, #petitions2 div img, #responseamend div img  {
+    height:auto;
+    max-width:80%;
 }
-.fileholder div img, .fileholder span, #petitions1 div img, #petitions2 div img, #responseamend div img {
+.fileholder div img, .fileholder span {
     margin:0 auto;
     display:block;
 }
-.fileholder .img-thumbnail, #petitions1 .img-thumbnail, #petitions2 .img-thumbnail, #responseamend .img-thumbnail {
+.fileholder .img-thumbnail {
     border:0;
     -webkit-border-radius: 2px 2px 2px 2px;
     -moz-border-radius: 2px 2px 2px 2px;
     border-radius: 2px 2px 2px 2px;
 }
-#petitions1 .img-thumbnail, #petitions2 .img-thumbnail, #responseamend .img-thumbnail {
-    background-color: #ccc;
-    margin-bottom: .8em;
-    margin-top: .6em;
-}
 .fileholder span.glyphicon {
     line-height: 1.4em;
 }
-.fileholder a {
+.fileholder a, .fileholder i {
     color:#fff;
 }
+
+.fileholder i {
+    font-size: 1.4em;
+}
+
 .fileholder {
     padding:0 1.5em;
     min-height: 38px;

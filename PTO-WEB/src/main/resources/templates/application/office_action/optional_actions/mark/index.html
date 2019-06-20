@@ -148,12 +148,12 @@
                                     <div class="col-xs-12" id="amendarea">
                                         <input class="form-check-input checkmark" type="checkbox" value="amendescription" tabindex="0" aria-labelledby="amendescript" id="amendd" name="amendd">
                                         <label class="form-check-label form-check-left form-check" for="amendd" id="amendescript"><span class="radio notspecial">I need to amend the description of my mark to confirm to my specimen</span></label>
-                                        <div id="amenddescript">
+                                        <div id="amenddescript" style="display: none;">
                                             <textarea id="ta2" rows="3" class="form-control" aria-labelledby="amendescript"></textarea>
                                         </div>
                                         <input class="form-check-input checkmark" type="checkbox" value="amendmarkliteral" tabindex="0" aria-labelledby="editliteral" id="amendliteral" name="amendliteral">
                                         <label class="form-check-label form-check-left form-check" for="amendliteral" id="editliteral"><span class="radio notspecial">I need to amend the mark literal</span></label>
-                                        <div id="amendlit">
+                                        <div id="amendlit" style="display: none;">
                                             <textarea id="ta014" rows="3" class="form-control" aria-labelledby="editliteral"></textarea>
                                         </div>
                                     </div>
@@ -164,7 +164,10 @@
                                     <label for="inlineRadio0112" class="radio-inline radiocontainer">No<input type="radio" name="newinfo" id="inlineRadio0112" value="no" tabindex="0"><span class="checkmark"></span></label>
                                 </div>
                             </fieldset>
-                            <fieldset aria-labelledby="addmkinfo" id="addmarkinfo">
+
+
+
+                            <fieldset aria-labelledby="addmkinfo" id="addmarkinfo"  style="display: none;">
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <section aria-label="color claim">
@@ -493,7 +496,7 @@
                                             </div>
                                         </section>
                                     </div>
-                                </div><!--END nameportraitsignature-->
+
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <section aria-label="disclaimer">
@@ -621,7 +624,7 @@
                                         </section>
                                     </div>
                                 </div><!--END Meaning or Significance-->
-                            </fieldset>
+                           </fieldset>
 
                 <div class="inlinebuttons btn-group btn-group-justified" role="navigation" aria-label="view previous or next page" id="prevnxt">
                     <div class="btn-group">
@@ -788,12 +791,8 @@
             formData.append('file', file);
             formData.append('appID', appInternalID);
 
-
             var url = $("#"+formID).attr("action");
 
-            alert(formID);
-
-            alert(url);
             // Get the selected files from the input.
             // get form url
             $.ajax({
