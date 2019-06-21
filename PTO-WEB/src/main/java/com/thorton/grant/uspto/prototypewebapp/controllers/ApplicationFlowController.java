@@ -4207,6 +4207,40 @@ public class ApplicationFlowController {
 
                    if (selectedList.get(action.getCurrentActionIndex()).equals("mark")) {
                        returnLink = "application/office_action/optional_actions/mark/index";
+                       boolean translationFW = baseTrademarkApplication.getTradeMark().isForeignLanguageTranslationWording();
+                       boolean transliterationFW = baseTrademarkApplication.getTradeMark().isForeignLanguateTransliterationWording();
+                       boolean containsSignatureName = baseTrademarkApplication.getTradeMark().isContainNamePortaitSignature();
+
+                       boolean isName = baseTrademarkApplication.getTradeMark().isName();
+                       boolean isSignature = baseTrademarkApplication.getTradeMark().isSignature();
+                       boolean isPortrait =  baseTrademarkApplication.getTradeMark().isPortrait();
+                       boolean isNPSLivingPerson =  baseTrademarkApplication.getTradeMark().isNPSLivingPerson();
+                       boolean isNPSLivingPersonSet = baseTrademarkApplication.getTradeMark().isNPSLivingPersonSet();
+
+                       boolean isConsentUploaded = false;
+
+                       if(baseTrademarkApplication.getTradeMark().getTrademarkConsentFilePath() != null && baseTrademarkApplication.getTradeMark().getTrademarkConsentFilePath() != ""){
+                           isConsentUploaded = true;
+                       }
+
+                       model.addAttribute("markColorClaim", colorClaim);
+                       model.addAttribute("markColorClaimBW", acceptBW);
+
+                       model.addAttribute("colorClaimSet", colorClaimSet);
+                       model.addAttribute("standardCharacterMark", standardCharacterMark);
+
+
+                       model.addAttribute("translationFW", translationFW);
+                       model.addAttribute("translitFW", transliterationFW);
+                       model.addAttribute("containsSignatureName", containsSignatureName );
+
+                       model.addAttribute("isName", isName );
+                       model.addAttribute("isSignature", isSignature );
+                       model.addAttribute("isPortrait", isPortrait );
+                       model.addAttribute("isNPSLivingPerson", isNPSLivingPerson );
+                       model.addAttribute("isNPSLivingPersonSet", isNPSLivingPersonSet);
+
+                       model.addAttribute("isConsentUploaded", isConsentUploaded);
 
                        if(action.isStep1_firstTime() == true){
                            action.getOptionalActionsCompletedList().add("mark");
@@ -4268,6 +4302,40 @@ public class ApplicationFlowController {
 
                    if (selectedList.get(action.getCurrentActionIndex()).equals("mark")) {
                        returnLink = "application/office_action/optional_actions/mark/index";
+                       boolean translationFW = baseTrademarkApplication.getTradeMark().isForeignLanguageTranslationWording();
+                       boolean transliterationFW = baseTrademarkApplication.getTradeMark().isForeignLanguateTransliterationWording();
+                       boolean containsSignatureName = baseTrademarkApplication.getTradeMark().isContainNamePortaitSignature();
+
+                       boolean isName = baseTrademarkApplication.getTradeMark().isName();
+                       boolean isSignature = baseTrademarkApplication.getTradeMark().isSignature();
+                       boolean isPortrait =  baseTrademarkApplication.getTradeMark().isPortrait();
+                       boolean isNPSLivingPerson =  baseTrademarkApplication.getTradeMark().isNPSLivingPerson();
+                       boolean isNPSLivingPersonSet = baseTrademarkApplication.getTradeMark().isNPSLivingPersonSet();
+
+                       boolean isConsentUploaded = false;
+
+                       if(baseTrademarkApplication.getTradeMark().getTrademarkConsentFilePath() != null && baseTrademarkApplication.getTradeMark().getTrademarkConsentFilePath() != ""){
+                           isConsentUploaded = true;
+                       }
+
+                       model.addAttribute("markColorClaim", colorClaim);
+                       model.addAttribute("markColorClaimBW", acceptBW);
+
+                       model.addAttribute("colorClaimSet", colorClaimSet);
+                       model.addAttribute("standardCharacterMark", standardCharacterMark);
+
+
+                       model.addAttribute("translationFW", translationFW);
+                       model.addAttribute("translitFW", transliterationFW);
+                       model.addAttribute("containsSignatureName", containsSignatureName );
+
+                       model.addAttribute("isName", isName );
+                       model.addAttribute("isSignature", isSignature );
+                       model.addAttribute("isPortrait", isPortrait );
+                       model.addAttribute("isNPSLivingPerson", isNPSLivingPerson );
+                       model.addAttribute("isNPSLivingPersonSet", isNPSLivingPersonSet);
+
+                       model.addAttribute("isConsentUploaded", isConsentUploaded);
                        if(action.isStep2_firstTime() == true){
                            action.getOptionalActionsCompletedList().add("mark");
                        }
@@ -4318,6 +4386,40 @@ public class ApplicationFlowController {
                        if(action.isStep3_firstTime() == true){
                            action.getOptionalActionsCompletedList().add("mark");
                        }
+                       boolean translationFW = baseTrademarkApplication.getTradeMark().isForeignLanguageTranslationWording();
+                       boolean transliterationFW = baseTrademarkApplication.getTradeMark().isForeignLanguateTransliterationWording();
+                       boolean containsSignatureName = baseTrademarkApplication.getTradeMark().isContainNamePortaitSignature();
+
+                       boolean isName = baseTrademarkApplication.getTradeMark().isName();
+                       boolean isSignature = baseTrademarkApplication.getTradeMark().isSignature();
+                       boolean isPortrait =  baseTrademarkApplication.getTradeMark().isPortrait();
+                       boolean isNPSLivingPerson =  baseTrademarkApplication.getTradeMark().isNPSLivingPerson();
+                       boolean isNPSLivingPersonSet = baseTrademarkApplication.getTradeMark().isNPSLivingPersonSet();
+
+                       boolean isConsentUploaded = false;
+
+                       if(baseTrademarkApplication.getTradeMark().getTrademarkConsentFilePath() != null && baseTrademarkApplication.getTradeMark().getTrademarkConsentFilePath() != ""){
+                           isConsentUploaded = true;
+                       }
+
+                       model.addAttribute("markColorClaim", colorClaim);
+                       model.addAttribute("markColorClaimBW", acceptBW);
+
+                       model.addAttribute("colorClaimSet", colorClaimSet);
+                       model.addAttribute("standardCharacterMark", standardCharacterMark);
+
+
+                       model.addAttribute("translationFW", translationFW);
+                       model.addAttribute("translitFW", transliterationFW);
+                       model.addAttribute("containsSignatureName", containsSignatureName );
+
+                       model.addAttribute("isName", isName );
+                       model.addAttribute("isSignature", isSignature );
+                       model.addAttribute("isPortrait", isPortrait );
+                       model.addAttribute("isNPSLivingPerson", isNPSLivingPerson );
+                       model.addAttribute("isNPSLivingPersonSet", isNPSLivingPersonSet);
+
+                       model.addAttribute("isConsentUploaded", isConsentUploaded);
 
 
                    }

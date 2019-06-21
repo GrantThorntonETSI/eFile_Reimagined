@@ -1531,6 +1531,19 @@
     var nextLink = /*[[${nextLink}]]*/ 'User Name';
     var prevLink = /*[[${prevLink}]]*/ 'User Name';
 
+
+
+    var acceptBW = /*[[${markColorClaimBW}]]*/ 'User Name';
+    var translationFW = /*[[${translationFW}]]*/ 'User Name';
+    var translitFW = /*[[${translitFW}]]*/ 'User Name';
+    var containsSignatureName = /*[[${containsSignatureName}]]*/ 'User Name';
+    var isName = /*[[${isName}]]*/ 'User Name';
+    var isSignature = /*[[${isSignature}]]*/ 'User Name';
+    var isPortrait = /*[[${isPortrait}]]*/ 'User Name';
+
+    var isNPSLivingPerson = /*[[${isNPSLivingPerson}]]*/ 'User Name';
+    var isNPSLivingPersonSet = /*[[${isNPSLivingPersonSet}]]*/ 'User Name';
+    var isConsentUploaded = /*[[${isConsentUploaded}]]*/ 'User Name';
     /*]]>*/
 </script>
 
@@ -1590,14 +1603,14 @@
 
                         $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_pathBW+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
 
-
+                        $('#colorMarkBWInline').attr("src", image_pathBW);
                     }
                     else{
                         if(image_path != null){
 
                             $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
 
-
+                            $('#colorMarkInline').attr("src", image_path);
 
                         }
 
@@ -1610,7 +1623,7 @@
 
                         $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
 
-
+                        $('#colorMarkInline').attr("src", image_path);
 
                     }
                 }
@@ -1619,9 +1632,66 @@
             }
 
 
+        }
 
+        if(isName == true){
+            $('#checkname').click();
 
         }
+
+        if(isSignature == true){
+            $('#checksignature').click();
+
+        }
+        if(isPortrait == true){
+            $('#checkportrait').click();
+
+        }
+
+
+        if(isNPSLivingPersonSet == true){
+
+            if(isNPSLivingPerson == true){
+                $('#inlineRadio17').attr("checked", true);
+                if(isConsentUploaded){
+                    $('#npsConsent').show();
+                    $('#yesliving').hide();
+                }
+                else {
+                    $('#yesliving').show();
+                    $('#npsConsent').hide();
+                }
+
+
+            }
+            else {
+                if(isNPSLivingPerson == false){
+                    $('#inlineRadio18').attr("checked", true);
+                    $('#yesliving').hide();
+                    $('#npsConsent').hide();
+                }
+            }
+        }
+
+        //////////////////////////////////////////////////////////////////////
+        // toggle between color or bw local
+        //////////////////////////////////////////////////////////////////////
+        $('#inlineRadio2').click(function () {
+
+            $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_pathBW+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+
+            $('#colorMarkBWInline').attr("src",image_pathBW );
+
+        });
+        //////////////////////////////////////////////////////////////////////
+        // toggle between color or bw local
+        //////////////////////////////////////////////////////////////////////
+        $('#inlineRadio1').click(function () {
+            $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+            $('#colorMarkInline').attr("src",image_path );
+        });
 
 
 
@@ -1796,6 +1866,798 @@
 
         });
 
+        //////////////////////////////////////////////////////////////////////
+        // field auto save mark literal
+        //////////////////////////////////////////////////////////////////////
+
+        $('#mark-literal').focusout( function () {
+
+            var field_value = $(this).val();
+            if(field_value != ""){
+                $('#nextButton').attr("disabled",false);
+
+                saveMarkTextdetails("mark-literal", field_value, appInternalID);
+            }
+
+            // enable next link
+
+
+
+        });
+        //////////////////////////////////////////////////////////////////////
+        // field auto save color claim "no"
+        //////////////////////////////////////////////////////////////////////
+
+        $('#inlineRadio2').click( function () {
+
+
+            saveMarkTextdetails("mark-color-claim", "no", appInternalID);
+
+        });
+        //////////////////////////////////////////////////////////////////////
+        // field auto save BW mark description
+        //////////////////////////////////////////////////////////////////////
+        $('#bwmark').click(function () {
+
+            saveMarkTextdetails("mark-accept-BW", "yes", appInternalID);
+        });
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save accept BW mark
+        //////////////////////////////////////////////////////////////////////
+        $('#mark-BW-description').focusout(function () {
+            var description = $(this).val();
+
+            saveMarkTextdetails("mark-BW-description",description, appInternalID);
+        });
+
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save color claim "yes"
+        //////////////////////////////////////////////////////////////////////
+        $('#inlineRadio1').click( function () {
+
+            saveMarkTextdetails("mark-color-claim", "yes", appInternalID);
+
+        });
+        //////////////////////////////////////////////////////////////////////
+        // field auto save identify mark colors List
+        //////////////////////////////////////////////////////////////////////
+        $('#mark-color-description').focusout(function () {
+            var colorList = $(this).val();
+
+            saveMarkTextdetails("mark-color-list",colorList, appInternalID);
+        });
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save  mark color descriptions
+        //////////////////////////////////////////////////////////////////////
+        $('#mark-description').focusout(function () {
+            var description = $(this).val();
+
+            saveMarkTextdetails("mark-description", description, appInternalID);
+        });
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save translation foreign wording "yes"
+        //////////////////////////////////////////////////////////////////////
+
+        $('#inlineRadio3').click( function () {
+
+
+            saveMarkTextdetails("mark-fw-translation", "yes", appInternalID);
+
+        });
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save translation foreign wording "no"
+        //////////////////////////////////////////////////////////////////////
+
+        $('#inlineRadio4').click( function () {
+
+
+            saveMarkTextdetails("mark-fw-translation", "no", appInternalID);
+
+        });
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save translation foreign wording  language type
+        //////////////////////////////////////////////////////////////////////
+
+        $('#language').change( function () {
+
+            var languageType = $(this).val();
+            saveMarkTextdetails("mark-fw-languageType", languageType, appInternalID);
+
+        });
+
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save translation foreign wording  fw text
+        //////////////////////////////////////////////////////////////////////
+
+        $('#engtranslation').focusout( function () {
+
+            var fwText = $(this).val();
+            saveMarkTextdetails("mark-fw-fwText", fwText, appInternalID);
+
+        });
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save translation foreign wording  english text
+        //////////////////////////////////////////////////////////////////////
+
+        $('#inthemark').focusout( function () {
+
+            var engText = $(this).val();
+            saveMarkTextdetails("mark-fw-engText", engText, appInternalID);
+
+        });
+
+
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save transliteration foreign wording "yes"
+        //////////////////////////////////////////////////////////////////////
+
+        $('#inlineRadio5').click( function () {
+
+
+            saveMarkTextdetails("mark-fw-transliteration", "yes", appInternalID);
+
+        });
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save transliteration foreign wording "no"
+        //////////////////////////////////////////////////////////////////////
+
+        $('#inlineRadio6').click( function () {
+
+
+            saveMarkTextdetails("mark-fw-transliteration", "no", appInternalID);
+
+        });
+
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save transliteration foreign wording  language type
+        //////////////////////////////////////////////////////////////////////
+
+        $('#languagetranslit').change( function () {
+
+            var languageType = $(this).val();
+            saveMarkTextdetails("mark-fw-translit-languageType", languageType, appInternalID);
+
+        });
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save transliteration foreign wording  fw text
+        //////////////////////////////////////////////////////////////////////
+
+        $('#nonlatranslation').focusout( function () {
+
+            var fwText = $(this).val();
+            saveMarkTextdetails("mark-fw-translit-fwText", fwText, appInternalID);
+
+        });
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save transliteration foreign wording  fw text
+        //////////////////////////////////////////////////////////////////////
+
+        $('#inenglish').focusout( function () {
+
+            var engText = $(this).val();
+            saveMarkTextdetails("mark-fw-translit-engText", engText, appInternalID);
+
+        });
+
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save name portrait signature radio "yes"
+        //////////////////////////////////////////////////////////////////////
+
+
+        $('#inlineRadio7').click( function () {
+
+
+            saveMarkTextdetails("mark-name-sig-portrait", "yes", appInternalID);
+
+        });
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save name portrait signature radio "no"
+        //////////////////////////////////////////////////////////////////////
+
+        $('#inlineRadio8').click( function () {
+
+
+            saveMarkTextdetails("mark-name-sig-portrait", "no", appInternalID);
+
+        });
+
+
+
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save name / portrai/ signature BS check boxes
+        //////////////////////////////////////////////////////////////////////
+
+
+
+        $('#namechecked').click(function () {
+
+            if($(this).is(":checked")) {
+                // name checked
+
+                saveMarkTextdetails("mark-NPS-name", "yes", appInternalID);
+
+                if($('#signaturechecked').is(":checked")){
+                    // signature checked
+
+                    if($('#portraitchecked').is(":checked")){
+                        // all 3 checked
+                        $('#consent-download').attr("href", npsAllConsentLink);
+
+                    }
+                    else {
+                        // only name and signature checked
+                        $('#consent-download').attr("href", nameAndSignatureConsentLink);
+                    }
+
+
+
+                }
+                else{
+
+                    // signature not checked
+                    if($('#portraitchecked').is(":checked")){
+                        // portrait and name are checked
+
+                        $('#consent-download').attr("href", nameAndPortraitConsentLink);
+
+                    }
+                    else {
+                        // only name is checked
+                        $('#consent-download').attr("href", nameOnlyConsentLink);
+                    }
+
+
+                }
+
+            }
+            else{
+                // name is unchecked ...
+
+                saveMarkTextdetails("mark-NPS-name", "no", appInternalID);
+
+                if($('#signaturechecked').is(":checked")){
+                    // signature is checked
+                    if($('#portraitchecked').is(":checked")){
+                        // signature and portrait checked
+                        $('#consent-download').attr("href", signatureAndPortraitConsentLink);
+
+                    }
+                    else {
+                        // only  signature checked
+                        $('#consent-download').attr("href", SignatureOnlyConsentLink);
+                    }
+
+                }
+                else{
+                    if($('#portraitchecked').is(":checked")){
+                        //  portrait checked
+                        $('#consent-download').attr("href", portraitOnlyConsentLink);
+
+                    }
+                    else {
+                        // only  signature checked
+                        $('#consent-download').attr("href", "");
+                    }
+
+
+                }
+
+            }
+        });
+
+
+        $('#portraitchecked').click(function () {
+
+            if($(this).is(":checked")) {
+
+                saveMarkTextdetails("mark-NPS-portrait", "yes", appInternalID);
+
+                if($('#namechecked').is(":checked")){
+                    // portrait and named checked
+
+                    if($('#signaturechecked').is(":checked")){
+                        // all 3 checked
+                        $('#consent-download').attr("href", npsAllConsentLink);
+
+                    }
+                    else {
+
+                        // only portrait and name
+                        $('#consent-download').attr("href", nameAndPortraitConsentLink);
+                    }
+
+
+
+                }
+                else{
+
+                    if($('#signaturechecked').is(":checked")){
+                        // portrait and signature are checked
+
+                        $('#consent-download').attr("href", signatureAndPortraitConsentLink);
+
+                    }
+                    else {
+                        // portrait only
+                        $('#consent-download').attr("href", portraitOnlyConsentLink);
+                    }
+
+
+                }
+                /////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+            }
+            else{
+                // portrait is unchecked
+
+                saveMarkTextdetails("mark-NPS-portrait", "no", appInternalID);
+                if($('#signaturechecked').is(":checked")){
+
+                    if($('#namechecked').is(":checked")){
+                        // signature and name still checked
+                        $('#consent-download').attr("href", nameAndSignatureConsentLink);
+
+                    }
+                    else {
+                        // only  signature checked
+                        $('#consent-download').attr("href", SignatureOnlyConsentLink);
+                    }
+
+                }
+                else{
+                    if($('#namechecked').is(":checked")){
+                        //  portrait checked
+                        $('#consent-download').attr("href", nameOnlyConsentLink);
+
+                    }
+                    else {
+                        // only  signature checked
+                        $('#consent-download').attr("href", "");
+                    }
+
+
+                }
+
+            }
+        });
+
+        $('#signaturechecked').click(function () {
+
+            if($(this).is(":checked")) {
+
+                saveMarkTextdetails("mark-NPS-signature", "yes", appInternalID);
+
+                if($('#namechecked').is(":checked")){
+                    // portrait and named checked
+
+                    if($('#portraitchecked').is(":checked")){
+                        // all 3 checked
+
+                        $('#consent-download').attr("href", npsAllConsentLink);
+
+                    }
+                    else {
+
+                        // only signature and name
+                        $('#consent-download').attr("href", nameAndSignatureConsentLink);
+                    }
+
+
+
+                }
+                else{
+
+                    if($('#portraitchecked').is(":checked")){
+                        // portrait and signature are checked
+
+                        $('#consent-download').attr("href", signatureAndPortraitConsentLink);
+
+                    }
+                    else {
+                        // signature only checked
+                        $('#consent-download').attr("href", SignatureOnlyConsentLink);
+                    }
+
+
+                }
+                /////////////////////////////////////////////////////////////////////////////////////////////////
+            }
+            else{
+                saveMarkTextdetails("mark-NPS-signature", "no", appInternalID);
+
+                if($('#portraitchecked').is(":checked")){
+
+                    if($('#namechecked').is(":checked")){
+                        // portraut and name still checked
+                        $('#consent-download').attr("href", nameAndPortraitConsentLink);
+
+                    }
+                    else {
+                        // only  portrait  checked
+                        $('#consent-download').attr("href", portraitOnlyConsentLink);
+                    }
+
+                }
+                else{
+                    if($('#namechecked').is(":checked")){
+                        //  portrait checked
+                        $('#consent-download').attr("href", nameOnlyConsentLink);
+
+                    }
+                    else {
+
+                        $('#consent-download').attr("href", "");
+                    }
+
+
+                }
+
+            }
+        });
+
+
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save mark NPS - name-firstName
+        //////////////////////////////////////////////////////////////////////
+
+        $('#name-firstname').focusout( function () {
+
+            var field_value = $(this).val();
+            if(field_value != ""){
+                saveMarkTextdetails("mark-NPS-name-firstName", field_value, appInternalID);
+            }
+
+        });
+
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save mark NPS - name-middleName
+        //////////////////////////////////////////////////////////////////////
+
+        $('#name-middlename').focusout( function () {
+
+            var field_value = $(this).val();
+            if(field_value != ""){
+                saveMarkTextdetails("mark-NPS-name-middleName", field_value, appInternalID);
+            }
+
+        });
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save mark NPS - name-lastName
+        //////////////////////////////////////////////////////////////////////
+
+        $('#name-lastname').focusout( function () {
+
+            var field_value = $(this).val();
+            if(field_value != ""){
+                saveMarkTextdetails("mark-NPS-name-lastName", field_value, appInternalID);
+            }
+
+        });
+
+
+        $('#signature-firstname').focusout( function () {
+
+            var field_value = $(this).val();
+            if(field_value != ""){
+                saveMarkTextdetails("mark-NPS-signature-firstName", field_value, appInternalID);
+            }
+
+        });
+
+        $('#signature-middlename').focusout( function () {
+
+            var field_value = $(this).val();
+            if(field_value != ""){
+                saveMarkTextdetails("mark-NPS-signature-middleName", field_value, appInternalID);
+            }
+
+        });
+
+        $('#signature-lastname').focusout( function () {
+
+            var field_value = $(this).val();
+            if(field_value != ""){
+                saveMarkTextdetails("mark-NPS-signature-lastName", field_value, appInternalID);
+            }
+
+        });
+
+        $('#portrait-firstname').focusout( function () {
+
+            var field_value = $(this).val();
+            if(field_value != ""){
+                saveMarkTextdetails("mark-NPS-portrait-firstName", field_value, appInternalID);
+            }
+
+        });
+
+        $('#portrait-middlename').focusout( function () {
+
+            var field_value = $(this).val();
+            if(field_value != ""){
+                saveMarkTextdetails("mark-NPS-portrait-middleName", field_value, appInternalID);
+            }
+
+        });
+
+
+        $('#portrait-lastname').focusout( function () {
+
+            var field_value = $(this).val();
+            if(field_value != ""){
+                saveMarkTextdetails("mark-NPS-portrait-lastName", field_value, appInternalID);
+            }
+
+        });
+
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save Mark is NPS living  "yes"
+        //////////////////////////////////////////////////////////////////////
+
+        $('#inlineRadio17').click( function () {
+
+
+            saveMarkTextdetails("mark-nps-living", "yes", appInternalID);
+            $('#yesliving').show(500);
+
+        });
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save Mark is NPS living "no"
+        //////////////////////////////////////////////////////////////////////
+
+        $('#inlineRadio18').click( function () {
+
+
+            saveMarkTextdetails("mark-nps-living", "no", appInternalID);
+
+            $('#npsConsent').hide(500);
+            $('#yesliving').hide(500);
+
+        });
+
+
+        $('.close').click(function () {
+
+
+            $('#npsConsent').hide(500);
+            $('#yesliving').show(500);
+
+
+        });
+
+
+
+
+
+
+
+        // this is the id of the submit button
+        $(".upload-consent-button").click(function() {
+
+
+
+            var formID = $(this).attr("form");
+
+
+            var fileInputId = $(this).attr("file-id");
+
+
+            var spinnerID = "consent-upload-spinner";
+
+            $('#'+spinnerID).show();
+
+            var fileInput = document.getElementById(fileInputId);
+            var file = fileInput.files[0];
+            var formData = new FormData();
+            formData.append('file', file);
+            formData.append('appID', appInternalID);
+
+
+            var url = $("#"+formID).attr("action");
+            // Get the selected files from the input.
+
+
+            setTimeout(function () {
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: formData, // serializes the form's elements.
+                    async: true,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(data)
+                    {
+                        // we will return the the file url
+                        // call jquery and set it in the img div
+                        var consentDownloadLink = parsePathFromResponse(data);
+                        var consentFileName = parseNameFromResponse(data);
+
+                        // set download path
+
+                        $('#consentFileLink').attr('href', consentDownloadLink);
+                        // set file name here too
+
+                        $('#consentFileLink').text(consentFileName);
+
+                        //$('#'+imageId).attr("src", imgPath);
+
+
+                        $("#"+spinnerID).hide(500);
+
+
+                        $('#yesliving').hide(500);
+
+                        $('#npsConsent').show(500);
+
+                    }
+                });
+
+            }, 1000);
+
+
+
+            return false; // avoid to execute the actual submit of the form.
+        });
+
+
+
+
+    // disclaimer fields
+
+
+        $('#inlineRadio09').click( function () {
+
+
+            saveMarkTextdetails("mark-active-disclaimer", "yes", appInternalID);
+
+        });
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save translation foreign wording "no"
+        //////////////////////////////////////////////////////////////////////
+
+        $('#inlineRadio010').click( function () {
+
+
+            saveMarkTextdetails("mark-active-disclaimer", "no", appInternalID);
+
+        });
+        ///////////////////////////////////////////////////////////////////////
+        // add additional disclaimer js
+        ///////////////////////////////////////////////////////////////////////
+        $( document ).on('focusout','input.disclaimer-input',function(){
+
+
+            var declaration = $(this).val();
+
+            var index = $(this).attr('disclaimer-index');
+
+            if(index == null){
+                index = "new";
+            }
+
+            var currentInput = $(this);
+
+            saveMarkTextdetailsAdditional("mark-disclaimer-declaration-additional", declaration, index, appInternalID,currentInput);
+        });
+
+        $( document ).on('click','.resetdisclaimbtn',function(){
+
+            var index = $(this).parent().prev().find('input').attr("disclaimer-index");
+            var value = "xxxxx";
+
+            var input = $(this);
+            if(index >= 0 || index != "new"){
+                var newIndex = saveMarkTextdetailsAdditional("mark-disclaimer-declaration-remove", value,index,appInternalID,input);
+            }
+            $( this ).parent().parent().hide(500);
+
+            //$( this ).parent().parent().remove();
+        });
+        ///////////////////////////////////////////////////////////////////////
+
+
+        $('#yesIndustry').focusout(function () {
+            var declaration = $(this).val();
+
+            saveMarkTextdetails("mark-Industry-text", declaration, appInternalID);
+        });
+
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save mark prior u.s registration "yes"
+        //////////////////////////////////////////////////////////////////////
+
+        $('#inlineRadio011').click( function () {
+
+
+            saveMarkTextdetails("mark-prior-registration", "yes", appInternalID);
+
+            $('#yespriordiv').show(500);
+
+        });
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save mark prior u.s registration  "no"
+        //////////////////////////////////////////////////////////////////////
+
+        $('#inlineRadio012').click( function () {
+
+
+            saveMarkTextdetails("mark-prior-registration", "no", appInternalID);
+
+            $('#yespriordiv').fadeOut(500);
+
+        });
+
+
+        $('#yesprior').focusout(function () {
+            var regNumber = $(this).val();
+
+            saveMarkTextdetails("mark-prior-reg-number", regNumber, appInternalID);
+        });
+
+
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save mark meaning
+        //////////////////////////////////////////////////////////////////////
+
+        $('#inlineRadio013').click( function () {
+
+
+            saveMarkTextdetails("mark-has-meaning", "yes", appInternalID);
+
+        });
+
+        //////////////////////////////////////////////////////////////////////
+        // field auto save mark prior u.s registration  "no"
+        //////////////////////////////////////////////////////////////////////
+
+        $('#inlineRadio014').click( function () {
+
+
+            saveMarkTextdetails("mark-has-meaning", "no", appInternalID);
+
+        });
+
+
+        $('#yesmeaning').focusout(function () {
+            var regNumber = $(this).val();
+
+            saveMarkTextdetails("mark-meaning-text", regNumber, appInternalID);
+        });
+
+
+
+
+
+
+
 
 
 
@@ -1814,61 +2676,83 @@
         return response;
     }
 
+    function parseNameFromResponse(response){
+        var index = response.indexOf("image-name:");
+        index = index+11;
+        response = response.substring(index);
 
 
-    function saveOAresponse(FieldName, FieldValue, OA_id, RA_id ,appInternalID) {
+        var index2 = response.indexOf("}");
+        response = response.substring(0, index2);
+        return response;
+    }
+
+
+
+
+
+
+    function saveMarkTextdetails(field_name_prefix, field_value, appInternalID) {
+
+
+
+
+
+        //alert(field_name_prefix);
+        // send state, and token to server
+        // token will be generated in the controller and added to the view
+        // similar to how access token works ...a token is tied to a user
+        // access token will be passed in through model
+        //
+        // var tokenValue = '${token}';  // token is the model attribute name
+        // we are not using secured tokens for the prototype
+        // we will secure it by adding ssl and https support
 
         //var field_value = $(this).val();
         //alert(field_value);
 
-
         $.ajax({
-            url: "../../../REST/apiGateway/OfficeAction/response/update/" + FieldName + "/" + FieldValue + "/" + OA_id + "/" + RA_id +"/"+appInternalID,
+            url: "../../REST/apiGateway/mark/update/"+field_name_prefix+"/"+field_value+"/"+appInternalID,
             type: 'GET',
-            success: function (data) {
+            success: function(data){
 
                 // parse out status msg:
-                var s_code = data.substring(data.indexOf("status:") + 7, data.indexOf("status:") + 4 + 7);
+                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
 
-                var s_msg = data.substring(data.indexOf("msg:") + 4, data.length - 2);
+                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
 
-
-
-                if (s_code.trim() == "200") {
+                if(s_code.trim() == "200"){
                     //if(data.contains("status: 200")){
                     // show confirmation check mark on form
                     //$('#toggle').delay(1000).click();
                     $(".autoSaveMessageArea span").fadeOut(500);
-                    setTimeout(function () {
+                    setTimeout(function() {
                         // after 1000 ms we add the class animated to the login/register card
                         $(".autoSaveMessageArea span").text(s_msg);
                         $(".autoSaveMessageArea span").fadeIn(1000);
                     }, 500);
-
-                }
-                else {
-
-                    $(".autoSaveMessageArea span").fadeOut(500);
-                    setTimeout(function () {
-                        // after 1000 ms we add the class animated to the login/register card
-                        $(".autoSaveMessageArea span").text(s_msg);
-                        $(".autoSaveMessageArea span").fadeIn(1000);
-                    }, 500);
-
-                    $('.next').attr("disabled", false);
 
                 }
 
 
             },
-            error: function (data) {
+            error: function(data) {
 
                 console.log(data);
 
             }
 
         });
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////
+        // end of contact information 'State' auto save ////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+
+
     }
+
 
 
 </script>
