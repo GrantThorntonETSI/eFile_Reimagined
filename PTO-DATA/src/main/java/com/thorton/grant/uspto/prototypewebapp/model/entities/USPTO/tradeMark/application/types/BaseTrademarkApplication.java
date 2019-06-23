@@ -436,8 +436,13 @@ public class BaseTrademarkApplication  {
 
 
     // amend mark flags
-    boolean showMarkInfoSet;
-    boolean showMarkInfo;
+    private boolean showMarkInfoSet;
+    private boolean showMarkInfo;
+
+
+    private boolean showMarkDescription;
+    private boolean showMarkLiteral;
+
 
 
 
@@ -1904,6 +1909,22 @@ public class BaseTrademarkApplication  {
 
     public void setShowMarkInfo(boolean showMarkInfo) {
         this.showMarkInfo = showMarkInfo;
+    }
+
+    public boolean isShowMarkDescription() {
+        return showMarkDescription;
+    }
+
+    public void setShowMarkDescription(boolean showMarkDescription) {
+        this.showMarkDescription = showMarkDescription;
+    }
+
+    public boolean isShowMarkLiteral() {
+        return showMarkLiteral;
+    }
+
+    public void setShowMarkLiteral(boolean showMarkLiteral) {
+        this.showMarkLiteral = showMarkLiteral;
     }
 
     @Nullable

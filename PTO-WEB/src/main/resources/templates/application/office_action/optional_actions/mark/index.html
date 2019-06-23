@@ -146,16 +146,44 @@
                             <fieldset aria-label="amend information">
                                 <div class="row">
                                     <div class="col-xs-12" id="amendarea">
-                                        <input class="form-check-input checkmark" type="checkbox" value="amendescription" tabindex="0" aria-labelledby="amendescript" id="amendd" name="amendd">
-                                        <label class="form-check-label form-check-left form-check" for="amendd" id="amendescript"><span class="radio notspecial">I need to amend the description of my mark to confirm to my specimen</span></label>
-                                        <div id="amenddescript" style="display: none;">
-                                            <textarea id="ta2" rows="3" class="form-control" aria-labelledby="amendescript"></textarea>
-                                        </div>
-                                        <input class="form-check-input checkmark" type="checkbox" value="amendmarkliteral" tabindex="0" aria-labelledby="editliteral" id="amendliteral" name="amendliteral">
-                                        <label class="form-check-label form-check-left form-check" for="amendliteral" id="editliteral"><span class="radio notspecial">I need to amend the mark literal</span></label>
-                                        <div id="amendlit" style="display: none;">
-                                            <textarea id="ta014" rows="3" class="form-control" aria-labelledby="editliteral"></textarea>
-                                        </div>
+
+                                        <th:block th:if="${baseTrademarkApplication.isShowMarkDescription() == true }">
+                                            <input class="form-check-input checkmark" type="checkbox" value="amendescription" tabindex="0" aria-labelledby="amendescript" id="amendd" name="amendd" checked>
+                                            <label class="form-check-label form-check-left form-check" for="amendd" id="amendescript"><span class="radio notspecial">I need to amend the description of my mark to confirm to my specimen</span></label>
+                                            <div id="amenddescript" style="">
+                                                <textarea id="ta2" rows="3" class="form-control" aria-labelledby="amendescript" th:text="${baseTrademarkApplication.getTradeMark().getMarkDescription()}"></textarea>
+                                            </div>
+
+
+                                        </th:block>
+                                        <th:block th:if="${baseTrademarkApplication.isShowMarkDescription() == false }">
+                                            <input class="form-check-input checkmark" type="checkbox" value="amendescription" tabindex="0" aria-labelledby="amendescript" id="amendd" name="amendd">
+                                            <label class="form-check-label form-check-left form-check" for="amendd" id="amendescript"><span class="radio notspecial">I need to amend the description of my mark to confirm to my specimen</span></label>
+                                            <div id="amenddescript" style="display: none;">
+                                                <textarea id="ta2" rows="3" class="form-control" aria-labelledby="amendescript" th:text="${baseTrademarkApplication.getTradeMark().getMarkDescription()}"></textarea>
+                                            </div>
+
+
+                                        </th:block>
+
+                                        <th:block th:if="${baseTrademarkApplication.isShowMarkLiteral() == true }">
+                                            <input class="form-check-input checkmark" type="checkbox" value="amendmarkliteral" tabindex="0" aria-labelledby="editliteral" id="amendliteral" name="amendliteral" checked>
+                                            <label class="form-check-label form-check-left form-check" for="amendliteral" id="editliteral"><span class="radio notspecial">I need to amend the mark literal</span></label>
+                                            <div id="amendlit" style="">
+                                                <textarea id="ta014" rows="3" class="form-control" aria-labelledby="editliteral" th:text="${baseTrademarkApplication.getTradeMark().getMarkLiteral()}"></textarea>
+                                            </div>
+
+                                        </th:block>
+                                        <th:block th:if="${baseTrademarkApplication.isShowMarkLiteral() == false }">
+                                            <input class="form-check-input checkmark" type="checkbox" value="amendmarkliteral" tabindex="0" aria-labelledby="editliteral" id="amendliteral" name="amendliteral">
+                                            <label class="form-check-label form-check-left form-check" for="amendliteral" id="editliteral"><span class="radio notspecial">I need to amend the mark literal</span></label>
+                                            <div id="amendlit" style="display: none;">
+                                                <textarea id="ta014" rows="3" class="form-control" aria-labelledby="editliteral" th:text="${baseTrademarkApplication.getTradeMark().getMarkLiteral()}"></textarea>
+                                            </div>
+
+                                        </th:block>
+
+
                                     </div>
                                 </div>
                                 <p id="addmkinfo" class="form-group form-group md">Do you need to include additional information about the mark not previously requested or specified?</p>
@@ -4549,6 +4577,30 @@
             $('#addmarkinfo').fadeOut(500);
             saveMarkTextdetails("mark-roa-optional-showInfo", "no", appInternalID);
 
+        });
+
+
+        $('#amendd').click(function () {
+           if(this.checked){
+               $('#amenddescript').show(500);
+               saveMarkTextdetails("mark-roa-optional-showMarkDescription", "yes", appInternalID);
+           }
+           else{
+               $('#amenddescript').hide(500);
+               saveMarkTextdetails("mark-roa-optional-showMarkDescription", "no", appInternalID);
+           }
+        });
+
+
+        $('#amendliteral').click(function () {
+            if(this.checked){
+                $('#amendlit').show(500);
+                saveMarkTextdetails("mark-roa-optional-showMarkLiteral", "yes", appInternalID);
+            }
+            else{
+                $('#amendlit').hide(500);
+                saveMarkTextdetails("mark-roa-optional-showMarkLiteral", "no", appInternalID);
+            }
         });
 
         //////////////////////////////////////////////////////////////////////
