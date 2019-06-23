@@ -435,6 +435,13 @@ public class BaseTrademarkApplication  {
     /////////////////////////////////////////////////////////////////////////////////////////
 
 
+    // amend mark flags
+    boolean showMarkInfoSet;
+    boolean showMarkInfo;
+
+
+
+
 
 
     //////////////////////////////////////////////////////////////////////////
@@ -1881,6 +1888,22 @@ public class BaseTrademarkApplication  {
 
     public void setDeclarationAll(boolean declarationAll) {
         this.declarationAll = declarationAll;
+    }
+
+    public boolean isShowMarkInfoSet() {
+        return showMarkInfoSet;
+    }
+
+    public void setShowMarkInfoSet(boolean showMarkInfoSet) {
+        this.showMarkInfoSet = showMarkInfoSet;
+    }
+
+    public boolean isShowMarkInfo() {
+        return showMarkInfo;
+    }
+
+    public void setShowMarkInfo(boolean showMarkInfo) {
+        this.showMarkInfo = showMarkInfo;
     }
 
     @Nullable

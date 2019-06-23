@@ -531,6 +531,30 @@ public class TradeMarkService extends BaseRESTapiService {
         }
 
 
+
+        if(markField.equals("mark-roa-optional-showInfo")){
+            // ptoUser.setState(param); // sets state code
+
+            if(markValue.equals("yes")){
+                baseTrademarkApplication.setShowMarkInfoSet(true);
+                baseTrademarkApplication.setShowMarkInfo(true);
+
+            }
+            if(markValue.equals("no")){
+
+                baseTrademarkApplication.setShowMarkInfoSet(true);
+                baseTrademarkApplication.setShowMarkInfo(false);
+
+            }
+
+            appFieldReadable = "Mark amend option";
+
+        }
+
+
+
+
+
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
         String responseMsg = appFieldReadable+" has been saved";
