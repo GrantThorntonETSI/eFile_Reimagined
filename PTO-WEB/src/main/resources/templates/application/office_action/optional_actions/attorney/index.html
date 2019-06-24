@@ -381,6 +381,8 @@
     var nextLink = /*[[${nextLink}]]*/ 'User Name';
     var prevLink = /*[[${prevLink}]]*/ 'User Name';
 
+    var collapseID = /*[[${baseTrademarkApplication.attorneyCollapseID}]]*/ 'User Name';
+
     /*]]>*/
 </script>
 
@@ -483,7 +485,95 @@
             location.href=prevLink;
         });
 
+        $('input:radio').each(function () {
 
+            if ($(this).prop('checked')) {
+                var new_html=   $(this).parent().next().html();
+                new_html = new_html.replace("aria-expanded=\"false\"", "aria-expanded=\"true\"");
+                new_html = new_html.replace("material-icons collapsed", "material-icons");
+                //alert(new_html);
+                $(this).parent().next().html(new_html);
+                $('#'+collapseID).addClass("in");
+
+            }
+
+        });
+
+
+        $('input.primaryLawyer').click(function () {
+
+
+            var field_value =  $(this).parent().next().next().children().html();
+            if(field_value != "") {
+                // set email to confirm button property
+                //$('#confirm-link-widget').attr("primary-attorney-email", field_value);
+                setPrimaryAttorneyApplication(field_value, appInternalID);
+
+                $('#nextButton').attr("disabled",false);
+
+                $(this).parent().parent().parent().parent().parent().parent().effect("highlight", {}, 5000);
+            }
+            // enableConfirmWidgetLink();
+
+        });
+
+        $('#confirm-link-widget').click( function () {
+            // alert("!!!!!!!!!!!!!");
+            //alert($(this).attr("primary-attorney-email"));
+            var contact_email = $(this).attr("primary-attorney-email");
+            setPrimaryAttorneyApplication(contact_email, appInternalID);
+            // enable next link ..
+            // enable next url ...
+            $('#nextButton').attr("disabled",false);
+            disableConfirmWidgetLink();
+
+
+            // loop through each checked radio button
+            // call parent add high light
+            $('input:radio').each(function () {
+
+                if ($(this).prop('checked')) {
+                    $(this).parent().parent().parent().parent().parent().parent().effect("highlight", {}, 5000);
+
+                }
+
+            });
+
+
+
+
+        });
+
+        $('#addAttorneyLink').click(function () {
+
+            //location.href=prevLinkURL;
+        });
+
+        // remove attorney hide and auto save
+        $('.remove-attorney').click(function () {
+            //alert($(this).parent().parent().parent().html());
+            $(this).parent().parent().parent().parent().fadeOut(500);
+            $(this).parent().parent().parent().parent().parent().next().fadeOut(500);
+            var contactEmail = $(this).attr("contact-email");
+            //alert(contactEmail);
+            // make call to remove attorney from application
+            removeAttorneyFromApplication(contactEmail,appInternalID);
+
+            // check if primary attr set ..if set . disable next button
+            if($(this).parent().attr("primary-attorney") == "true"){
+                $('#nextButton').attr("disabled", true);
+            }
+
+
+        });
+
+        $('.attorney-edit').click(function () {
+            var attorneyEmail = $(this).attr("contact-email");
+
+            //location.href=attorneyEditURL+attorneyEmail+"/?trademarkID="+appInternalID;;
+
+
+        });
 
 
 
@@ -491,59 +581,226 @@
     });
 
 
-    function saveOAresponse(FieldName, FieldValue, OA_id, RA_id ,appInternalID) {
+    function enableConfirmWidgetLink() {
 
-        //var field_value = $(this).val();
-        //alert(field_value);
+        $('#confirm-link-widget').css("background-color", "rgb(52, 152, 219)");
 
+    }
 
+    function disableConfirmWidgetLink() {
+
+        $('#confirm-link-widget').css("background-color", "rgb(128, 128, 128)");
+
+    }
+
+    function removeAttorneyFromApplication(contact_email, project_ID) {
+
+        //////////////////////////////////////////////////////////////////////////////////////
+        // we need REST controller of finding a contact by its email
+        // this needs to be implemented on the PTOUser object
+        //////////////////////////////////////////////////////////////////////////////////////
+        var contact_field_name = "application-contact-add-confirm";
         $.ajax({
-            url: "../../../REST/apiGateway/OfficeAction/response/update/" + FieldName + "/" + FieldValue + "/" + OA_id + "/" + RA_id +"/"+appInternalID,
+            //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
+            url: "../../../../../REST/apiGateway/application/contacts/attorney/delete/"+contact_email+"/"+project_ID,
+
             type: 'GET',
-            success: function (data) {
+            success: function(data){
+
+
 
                 // parse out status msg:
-                var s_code = data.substring(data.indexOf("status:") + 7, data.indexOf("status:") + 4 + 7);
+                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
 
-                var s_msg = data.substring(data.indexOf("msg:") + 4, data.length - 2);
+                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
 
-
-
-                if (s_code.trim() == "200") {
+                if(s_code.trim() == "200"){
                     //if(data.contains("status: 200")){
                     // show confirmation check mark on form
                     //$('#toggle').delay(1000).click();
                     $(".autoSaveMessageArea span").fadeOut(500);
-                    setTimeout(function () {
+                    setTimeout(function() {
                         // after 1000 ms we add the class animated to the login/register card
                         $(".autoSaveMessageArea span").text(s_msg);
                         $(".autoSaveMessageArea span").fadeIn(1000);
                     }, 500);
 
-                }
-                else {
 
-                    $(".autoSaveMessageArea span").fadeOut(500);
-                    setTimeout(function () {
-                        // after 1000 ms we add the class animated to the login/register card
-                        $(".autoSaveMessageArea span").text(s_msg);
-                        $(".autoSaveMessageArea span").fadeIn(1000);
-                    }, 500);
 
-                    $('.next').attr("disabled", false);
+
 
                 }
-
+                else{
+                    //$('.circle-loader').fadeOut(100);
+                    //$('.x-mark').fadeIn(500);
+                    //$(".validationMsgArea span").text(s_msg);
+                    //$(".validationMsgArea span").css('color','red');
+                }
 
             },
-            error: function (data) {
+            error: function(data) {
+
+                //$('.circle-loader').fadeOut(100);
+                //$('.x-mark').fadeIn(500);
 
                 console.log(data);
-
+                // set message to div area ...fields can not be left null
+                //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                //$(".validationMsgArea span").css('color','red');
             }
 
         });
-    }
+
+    } // end of function
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+    function setPrimaryAttorneyApplication(contact_email, project_ID) {
+
+        //////////////////////////////////////////////////////////////////////////////////////
+        // we need REST controller of finding a contact by its email
+        // this needs to be implemented on the PTOUser object
+        //////////////////////////////////////////////////////////////////////////////////////
+        var contact_field_name = "application-contact-add-confirm";
+        $.ajax({
+            //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
+            url: "../../../../../REST/apiGateway/application/Attorney/Primary/set/"+contact_email+"/"+project_ID,
+
+            type: 'GET',
+            success: function(data){
+
+
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                if(s_code.trim() == "200"){
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function() {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+
+
+
+
+                }
+                else{
+                    //$('.circle-loader').fadeOut(100);
+                    //$('.x-mark').fadeIn(500);
+                    //$(".validationMsgArea span").text(s_msg);
+                    //$(".validationMsgArea span").css('color','red');
+                }
+
+            },
+            error: function(data) {
+
+                //$('.circle-loader').fadeOut(100);
+                //$('.x-mark').fadeIn(500);
+
+                console.log(data);
+                // set message to div area ...fields can not be left null
+                //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                //$(".validationMsgArea span").css('color','red');
+            }
+
+        });
+
+    } // end of function
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    /////////////////////////////////////////////////////
+    // aJAX
+    /////////////////////////////////////////////////////
+    function saveProjectInfo(field_name_prefix, field_value, application_internal_id) {
+        //alert(field_name_prefix);
+        // send state, and token to server
+        // token will be generated in the controller and added to the view
+        // similar to how access token works ...a token is tied to a user
+        // access token will be passed in through model
+        //
+        // var tokenValue = '${token}';  // token is the model attribute name
+        // we are not using secured tokens for the prototype
+        // we will secure it by adding ssl and https support
+        //var field_value = $(this).val();
+        //alert(field_value);
+        $.ajax({
+            //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
+            url: "../../../../../REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+application_internal_id,
+            type: 'GET',
+            success: function(data){
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+                if(s_code.trim() == "200"){
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    // add time stamp from server side
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function() {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+                    // animation rendering control
+                    //if($('.state-checkmark').css('display') == 'block'){
+                    if($( "."+field_name_prefix.toLowerCase()+"-animation").css('display') == 'block'){
+                        $("."+field_name_prefix.toLowerCase()+"-animation").fadeOut(100);
+                        // now we need to create an java back end service that saves this value.
+                        // also add validation on the html  similar to password save
+                        //$('#toggle-'+field_name_prefix.toLowerCase()).delay(100).click();
+                        // alert($(this).val());
+                        $("."+field_name_prefix.toLowerCase()+"-animation").fadeIn(1000);
+                        // now we need to create an java back end service that saves this value.
+                        // also add validation on the html  similar to password save
+                        //$("."+field_name_prefix.toLowerCase()+"-animation").delay(1000).click();
+                    }
+                    else {
+                        $("."+field_name_prefix.toLowerCase()+"-animation").fadeIn(1000);
+                        // now we need to create an java back end service that saves this value.
+                        // also add validation on the html  similar to password save
+                        //$('#toggle-'+field_name_prefix.toLowerCase()).delay(1000).click();
+                    }
+                }
+                else{
+                    //$('.circle-loader').fadeOut(100);
+                    //$('.x-mark').fadeIn(500);
+                    //$(".validationMsgArea span").text(s_msg);
+                    //$(".validationMsgArea span").css('color','red');
+                }
+            },
+            error: function(data) {
+                //$('.circle-loader').fadeOut(100);
+                //$('.x-mark').fadeIn(500);
+                console.log(data);
+                // set message to div area ...fields can not be left null
+                //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                //$(".validationMsgArea span").css('color','red');
+            }
+        });
+    } // end of function
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 </script>
