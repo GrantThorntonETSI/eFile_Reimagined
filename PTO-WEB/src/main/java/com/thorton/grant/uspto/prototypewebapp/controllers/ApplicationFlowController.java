@@ -4245,6 +4245,16 @@ public class ApplicationFlowController {
 
                if(action.getCurrentActionIndex() == 1){
 
+                   if(selectedList.get(action.getCurrentActionIndex()).equals("attorney-select")) {
+
+                       returnLink =  "application/office_action/optional_actions/attorney/attorneySelect";
+                       if(action.isStep2_firstTime() == true){
+                           action.getOptionalActionsCompletedList().add("attorney-select");
+                       }
+
+
+                   }
+
                    if(selectedList.get(action.getCurrentActionIndex()).equals("owner")) {
 
                        returnLink =  "application/office_action/optional_actions/owner/index";
@@ -4318,7 +4328,7 @@ public class ApplicationFlowController {
                    }
                    if (selectedList.get(action.getCurrentActionIndex()).equals("signature")) {
                        returnLink =  "application/office_action/signature/index";
-                       if(action.isStep1_firstTime() == true){
+                       if(action.isStep2_firstTime() == true){
                            action.getOptionalActionsCompletedList().add("signature");
                        }
 
@@ -4334,6 +4344,15 @@ public class ApplicationFlowController {
                // step 3
                if(action.getCurrentActionIndex() == 2){
 
+                   if(selectedList.get(action.getCurrentActionIndex()).equals("owner")) {
+
+                       returnLink =  "application/office_action/optional_actions/owner/index";
+                       if(action.isStep3_firstTime() == true){
+                           action.getOptionalActionsCompletedList().add("owner");
+                       }
+
+
+                   }
 
 
                    if (selectedList.get(action.getCurrentActionIndex()).equals("mark")) {
@@ -4400,7 +4419,7 @@ public class ApplicationFlowController {
 
                    if (selectedList.get(action.getCurrentActionIndex()).equals("signature")) {
                        returnLink =  "application/office_action/signature/index";
-                       if(action.isStep1_firstTime() == true){
+                       if(action.isStep3_firstTime() == true){
                            action.getOptionalActionsCompletedList().add("signature");
                        }
 
@@ -4416,6 +4435,48 @@ public class ApplicationFlowController {
                if(action.getCurrentActionIndex() == 3){
 
 
+                   if (selectedList.get(action.getCurrentActionIndex()).equals("mark")) {
+                       returnLink = "application/office_action/optional_actions/mark/index";
+                       if(action.isStep4_firstTime() == true){
+                           action.getOptionalActionsCompletedList().add("mark");
+                       }
+                       boolean translationFW = baseTrademarkApplication.getTradeMark().isForeignLanguageTranslationWording();
+                       boolean transliterationFW = baseTrademarkApplication.getTradeMark().isForeignLanguateTransliterationWording();
+                       boolean containsSignatureName = baseTrademarkApplication.getTradeMark().isContainNamePortaitSignature();
+
+                       boolean isName = baseTrademarkApplication.getTradeMark().isName();
+                       boolean isSignature = baseTrademarkApplication.getTradeMark().isSignature();
+                       boolean isPortrait =  baseTrademarkApplication.getTradeMark().isPortrait();
+                       boolean isNPSLivingPerson =  baseTrademarkApplication.getTradeMark().isNPSLivingPerson();
+                       boolean isNPSLivingPersonSet = baseTrademarkApplication.getTradeMark().isNPSLivingPersonSet();
+
+                       boolean isConsentUploaded = false;
+
+                       if(baseTrademarkApplication.getTradeMark().getTrademarkConsentFilePath() != null && baseTrademarkApplication.getTradeMark().getTrademarkConsentFilePath() != ""){
+                           isConsentUploaded = true;
+                       }
+
+                       model.addAttribute("markColorClaim", colorClaim);
+                       model.addAttribute("markColorClaimBW", acceptBW);
+
+                       model.addAttribute("colorClaimSet", colorClaimSet);
+                       model.addAttribute("standardCharacterMark", standardCharacterMark);
+
+
+                       model.addAttribute("translationFW", translationFW);
+                       model.addAttribute("translitFW", transliterationFW);
+                       model.addAttribute("containsSignatureName", containsSignatureName );
+
+                       model.addAttribute("isName", isName );
+                       model.addAttribute("isSignature", isSignature );
+                       model.addAttribute("isPortrait", isPortrait );
+                       model.addAttribute("isNPSLivingPerson", isNPSLivingPerson );
+                       model.addAttribute("isNPSLivingPersonSet", isNPSLivingPersonSet);
+
+                       model.addAttribute("isConsentUploaded", isConsentUploaded);
+
+
+                   }
 
 
                    if (selectedList.get(action.getCurrentActionIndex()).equals("fb")) {
@@ -4439,7 +4500,7 @@ public class ApplicationFlowController {
 
                    if (selectedList.get(action.getCurrentActionIndex()).equals("signature")) {
                        returnLink =  "application/office_action/signature/index";
-                       if(action.isStep1_firstTime() == true){
+                       if(action.isStep4_firstTime() == true){
                            action.getOptionalActionsCompletedList().add("signature");
                        }
 
@@ -4456,10 +4517,20 @@ public class ApplicationFlowController {
 
                if(action.getCurrentActionIndex() == 4){
 
+                   if (selectedList.get(action.getCurrentActionIndex()).equals("fb")) {
+                       returnLink = "application/office_action/optional_actions/filing_basis/index";
+                       if(action.isStep5_firstTime() == true){
+                           action.getOptionalActionsCompletedList().add("fb");
+                       }
+
+
+                   }
+
+
                    if (selectedList.get(action.getCurrentActionIndex()).equals("additional")) {
                        returnLink =  "application/office_action/optional_actions/additional_info/index";
 
-                       if(action.isStep4_firstTime() == true){
+                       if(action.isStep5_firstTime() == true){
                            action.getOptionalActionsCompletedList().add("additional");
                        }
 
@@ -4468,7 +4539,7 @@ public class ApplicationFlowController {
 
                    if (selectedList.get(action.getCurrentActionIndex()).equals("signature")) {
                        returnLink =  "application/office_action/signature/index";
-                       if(action.isStep1_firstTime() == true){
+                       if(action.isStep5_firstTime() == true){
                            action.getOptionalActionsCompletedList().add("signature");
                        }
 
@@ -4483,9 +4554,19 @@ public class ApplicationFlowController {
                // step 6
                 if(action.getCurrentActionIndex() == 5){
 
+                    if (selectedList.get(action.getCurrentActionIndex()).equals("additional")) {
+                        returnLink =  "application/office_action/optional_actions/additional_info/index";
+
+                        if(action.isStep6_firstTime() == true){
+                            action.getOptionalActionsCompletedList().add("additional");
+                        }
+
+
+                    }
+
                     if (selectedList.get(action.getCurrentActionIndex()).equals("signature")) {
                         returnLink =  "application/office_action/signature/index";
-                        if(action.isStep1_firstTime() == true){
+                        if(action.isStep6_firstTime() == true){
                             action.getOptionalActionsCompletedList().add("signature");
                         }
 
@@ -4497,6 +4578,22 @@ public class ApplicationFlowController {
 
 
 
+        // step 6
+        if(action.getCurrentActionIndex() == 6){
+
+
+
+            if (selectedList.get(action.getCurrentActionIndex()).equals("signature")) {
+                returnLink =  "application/office_action/signature/index";
+                if(action.isStep7_firstTime() == true){
+                    action.getOptionalActionsCompletedList().add("signature");
+                }
+
+            }
+
+            action.setStep7_firstTime(false);
+
+        }
 
 
                baseTradeMarkApplicationService.save(baseTrademarkApplication);

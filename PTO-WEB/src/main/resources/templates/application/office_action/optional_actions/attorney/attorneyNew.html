@@ -857,8 +857,7 @@
 
 <script>
 
-    var nextLinkURL = "../../application/AttorneySet/?trademarkID="+appInternalID;
-    var prevLinkURL = "../../accounts/dashboard";
+
 
     var nextLinkURLAttorneyFalse = "../../application/OwnerStart/?trademarkID="+appInternalID;
 
@@ -924,7 +923,7 @@
 
         $('#appInternalIDForm').val(appInternalID);
 
-        $('#actionIDForm').val(actionID);
+        $('#actionIDForm').val(ac);
 
         // hide managed contacts by default
 
@@ -1078,14 +1077,11 @@
                 saveProjectInfo("set-lawyer-options-value", "no", appInternalID);
             }, 555);
 
-            nextLinkURL = nextLinkURLAttorneyFalse;
+
             $('#nextButtonFormPaging').attr("disabled",false);
         });
         ////////////////////////////////////////////////////////////////
 
-        $('#prevButton').click(function () {
-            location.href=prevLinkURL;
-        });
 
         $('#nextButtonFormPaging').click(function () {
             //location.href=nextLinkURL;

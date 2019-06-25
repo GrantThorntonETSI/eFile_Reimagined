@@ -119,6 +119,8 @@ public class OfficeActions extends BaseEntity {
 
     boolean step6_firstTime = true;
 
+    boolean step7_firstTime = true;
+
 
 
 
@@ -305,6 +307,7 @@ public class OfficeActions extends BaseEntity {
 
         if(this.attorneyOptional == true){
             ordereddList.add("attorney");
+            ordereddList.add("attorney-select");
         }
         if(this.ownerOptional == true){
             ordereddList.add("owner");
@@ -408,6 +411,14 @@ public class OfficeActions extends BaseEntity {
 
     public void setStep6_firstTime(boolean step6_firstTime) {
         this.step6_firstTime = step6_firstTime;
+    }
+
+    public boolean isStep7_firstTime() {
+        return step7_firstTime;
+    }
+
+    public void setStep7_firstTime(boolean step7_firstTime) {
+        this.step7_firstTime = step7_firstTime;
     }
 
     public void setFbOptional(boolean fbOptional) {
