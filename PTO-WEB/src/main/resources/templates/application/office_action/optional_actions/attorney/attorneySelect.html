@@ -99,10 +99,18 @@
                         </div>
                         <div class="row">
 
+                            <th:block th:if="${baseTrademarkApplication.isAttorneyFiling() == true}">
+                                <div class="col-xs-6 col-md-6 col-lg-4">
+                                    <button type="button" class="btn-sm btn-success add" id="addAttorneyLink">Add additional attorney</button>
+                                </div>
+                            </th:block>
+                            <th:block th:if="${baseTrademarkApplication.isAttorneyFiling() == false}">
+                                <div class="col-xs-6 col-md-6 col-lg-4">
+                                    <button type="button" class="btn-sm btn-success add" id="addAttorneyLink" disabled>Add additional attorney</button>
+                                </div>
+                            </th:block>
 
-                            <div class="col-xs-6 col-md-6 col-lg-4">
-                                <button type="button" class="btn-sm btn-success add" id="addAttorneyLink">Add additional attorney</button>
-                            </div>
+
                         </div>
 
                         <th:block th:if="${baseTrademarkApplication.isAttorneyFiling() == true}">
