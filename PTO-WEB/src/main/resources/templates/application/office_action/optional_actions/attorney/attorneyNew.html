@@ -916,32 +916,6 @@
 
 
 
-    var nextLinkURLAttorneyFalse = "../../application/OwnerStart/?trademarkID="+appInternalID;
-
-    var bsLink1 = "../../application/OwnerSetView/?trademarkID="+appInternalID;
-
-    var bsLink2_active =  "../../application/MarkDetails/?trademarkID="+appInternalID;
-    var bsLink2_done =  "../../application/MarkDetails/?trademarkID="+appInternalID;
-
-    var bsLink3_active =  "../../application/goodsAndServicesStart/?trademarkID="+appInternalID;
-    var bsLink3_done =  "../../application/goodsAndServicesReview/?trademarkID="+appInternalID;
-
-
-
-
-    var bsLink4_active = "../../application/filingBasisStart/?trademarkID="+appInternalID;
-    var bsLink4_done = "../../application/filingBasisStart/?trademarkID="+appInternalID;
-
-
-
-    var bsLink5_active =  "../../application/additionalInfoUpload/?trademarkID="+appInternalID;
-    var bsLink5_done =  "../../application/additionalInfoUpload/?trademarkID="+appInternalID;
-
-
-
-
-    var bsLink6_active =  "../../application/confirmInfo/?trademarkID="+appInternalID;
-    var bsLink6_done =  "../../application/confirmInfo/?trademarkID="+appInternalID;
 
 
 
@@ -980,7 +954,7 @@
 
         $('#appInternalIDForm').val(appInternalID);
 
-        $('#actionIDForm').val(ac);
+        $('#actionIDForm').val(actionID);
 
         // hide managed contacts by default
 
@@ -992,18 +966,7 @@
 
 
 
-        //////////////////////////////////////////////////////////////////
-        // persistence rendering logic for TEAS plus field labels
-        //////////////////////////////////////////////////////////////////
-        if(validateTEAS == true){
-            $('input.togglesavemore').attr("checked",true);
-            $( document ).find('span.subtle').removeClass('visuallyremoved');
-            $( document ).find('#on').removeClass('visuallyhidden');
 
-        }
-        else{
-            $( document ).find('span.subtle').addClass( 'visuallyremoved' );
-        }
         //////////////////////////////////////////////////////////////////
         // prevent future dates for date input fields
         //////////////////////////////////////////////////////////////////
@@ -1111,9 +1074,6 @@
             // but enabled
 
 
-
-            $('#nextButtonFormPaging').attr("disabled",true);
-
         });
 
 
@@ -1140,35 +1100,7 @@
         ////////////////////////////////////////////////////////////////
 
 
-        $('#nextButtonFormPaging').click(function () {
-            //location.href=nextLinkURL;
-            if($('#inlineRadio016').is(":checked")){
 
-                location.href=nextLinkURL;
-            }
-            else{
-                // check if yes radio is clicked
-                if($('#inlineRadio015').is(":checked")) {
-
-                    // start check fields
-
-                    // if all fields are empty
-                    // and lawyer pool not empty
-                    // send to next page
-
-                    if (isAttorneyPoolEmpty == false) {
-                        // call jquery click
-                        // set next link to attorney view
-                        // activate link
-                        location.href=nextLinkURL;
-                        //$('#nextButtonFormPaging').attr("disabled",false);
-
-
-                    }
-                } // we will handle turning the button to submit in another jquery
-
-            }
-        });
 
 
 
@@ -1184,43 +1116,6 @@
         //////////////////////////////////////////////////////////////
         // check if attorneyFillingFalse is set
         /////////////////////////////////////////////////////////////
-        if(isAttorneyOptionSet == true){
-
-            if(isAttorneyFiling == true){
-                if(isAttorneyPoolEmpty == true){
-                    // call jquery click
-                    // set next link to attorney view
-                    // activate link
-                    $('#inlineRadio015').click();
-                    $('#formSubmitNextButtonGroup').fadeOut();
-                    $('#formPagingNextButtonGroup').fadeIn();
-                    $('#nextButtonFormPaging').attr("disabled",false);
-
-                }
-                else {
-                    // fade in submit button???
-                    // how to handel toggling between upload and next button
-                    $('#inlineRadio015').click();
-                    $('#formSubmitNextButtonGroup').fadeIn();
-                    $('#formPagingNextButtonGroup').fadeOut();
-                    $('#nextButtonFormPaging').attr("disabled",false);
-                }
-
-            }
-            else{
-                // call jquery click
-                // no attorney, option set
-                // set next link to owner page
-                // activate next link
-                $('#inlineRadio016').attr("checked", true);
-
-                $('#formSubmitNextButtonGroup').fadeOut();
-                $('#formPagingNextButtonGroup').fadeIn();
-                nextLinkURL = nextLinkURLAttorneyFalse;
-                $('#nextButtonFormPaging').attr("disabled",false);
-            }
-        }
-
 
         //////////////////////////////////////////
         // show drop downs
@@ -1246,8 +1141,6 @@
         $('a.fromcontact').click(function () {
 
             var contactEmail = $(this).parent().next().html();
-            $('#formPagingNextButtonGroup').fadeOut();
-            $('#formSubmitNextButtonGroup').fadeIn();
 
             setformWithManagedContact(contactEmail);
             $('#nextButton').attr("disabled", false);
@@ -1262,8 +1155,7 @@
         $('input.form-control').focusout(function () {
 
             if($(this).val() != "") {
-                $('#formPagingNextButtonGroup').fadeOut();
-                $('#formSubmitNextButtonGroup').fadeIn();
+
                 $('#nextButton').attr("disabled", false);
                 $('#nextButton').attr("form", "addNewAttorneyForm");
                 $('#nextButton').attr("type", "submit");
@@ -1293,9 +1185,6 @@
             $('#formPagingNextButtonGroup').fadeIn();
 
 
-            if(isAttorneyPoolEmpty == true){
-                $('#nextButtonFormPaging').attr("disabled", true);
-            }
         });
 
 

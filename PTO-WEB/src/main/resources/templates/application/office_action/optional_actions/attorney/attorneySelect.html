@@ -106,146 +106,46 @@
                         </div>
 
                         <th:block th:if="${baseTrademarkApplication.isAttorneyFiling() == true}">
-                            <form action="" method="post" >
-                                <fieldset aria-label="review owner details">
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <!--START selected panels-->
+
+                            <th:block th:if="${baseTrademarkApplication.getAvailableLawyers().size() > 0}">
+                                <form action="" method="post" >
+                                    <fieldset aria-label="review owner details">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <!--START selected panels-->
 
 
-                                            <!--panel one-->
-                                            <div class="panel-group ">
-                                                <div class="panel panel-default primary-attorney">
-                                                    <div class="panel-heading">
-                                                        <div class="row">
-                                                            <div class="col-xs-12 col-sm-9 col-md-10">
-                                                                <div class="row">
-                                                                    <div class="col-xs-12 col-md-1">
-
-                                                                        <input  class="primaryLawyer" style="position: relative; bottom: -5px;"  type="radio" name="primaryAttorney" checked>
-
-                                                                    </div>
-                                                                    <div class="col-xs-12 col-md-4">
-                                                                        <p class="panel-title number weight600"><span class="glyphicon glyphicon-triangle-right visuallyadded" data-toggle="collapse" th:attr="data-target='#'+${baseTrademarkApplication.getPrimaryLawyer().collapseID}"  aria-hidden="true"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved collapsed" data-toggle="collapse" th:attr="data-target='#'+${baseTrademarkApplication.getPrimaryLawyer().collapseID}"  aria-hidden="true"></span><button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" th:attr="data-target='#'+${baseTrademarkApplication.getPrimaryLawyer().collapseID}"  data-target="#jbabos" aria-controls="jbabos" aria-expanded="false"  th:text="${baseTrademarkApplication.getPrimaryLawyer().getFirstName()}+' '+${baseTrademarkApplication.getPrimaryLawyer().getLastName()}" id="jbabosbtn"><span class="glyphicon glyphicon-triangle-right"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Jackie Babos</button></p>
-
-                                                                    </div>
-                                                                    <div class="col-xs-12 col-md-5 email">
-                                                                        <p th:text="${baseTrademarkApplication.getPrimaryLawyer().getEmail()}">jackie.babos@us.gt.com</p>
-                                                                    </div>
-                                                                    <div class="col-xs-12 col-md-4">
-                                                                        <p th:text="${baseTrademarkApplication.getPrimaryLawyer().getLawFirmName()}">Individual</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div th:attr="id=${baseTrademarkApplication.getPrimaryLawyer().collapseID}"  class="collapse Accordion-panel" role="region" aria-labelledby="jbabosbtn">
-                                                                    <div class="Accordion" role="region">
-                                                                        <div class="row">
-                                                                            <div class="col-xs-12 col-md-6 col-lg-8">
-                                                                                <p >Attorney Address Info</p>
-                                                                                <div aria-labelledby="jbabostype">
-                                                                                    <div class="form-group form-group-md">
-                                                                                        <span style="color: black;" th:text="${baseTrademarkApplication.getPrimaryLawyer().getAddress()}+' '+${baseTrademarkApplication.getPrimaryLawyer().getCity()}+', '+${baseTrademarkApplication.getPrimaryLawyer().getState()}+' '+${baseTrademarkApplication.getPrimaryLawyer().getZipcode()}" > 1115 Reserve Champion Drive, Rockville MD 20850</span>
-
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-xs-12 col-md-6 col-lg-8">
-                                                                                <p >Attorney Contact Info</p>
-                                                                                <div aria-labelledby="jbabosnameofothertype">
-                                                                                    <div class="form-group form-group-md" style="color:black;">
-                                                                                        email: <span th:text="${baseTrademarkApplication.getPrimaryLawyer().getEmail()}">email: lzhang421@gmail.com</span>
-                                                                                        </br>
-
-                                                                                        <th:block th:each="number : ${baseTrademarkApplication.getPrimaryLawyer().getPhoneNumbers()}">
-
-                                                                                            phone:
-                                                                                            <span th:text="${number.phoneType}">Type</span>  <span th:text="${number.phoneNumber}"></span> - <span th:text="${number.extension}"> </span>
-                                                                                            <br>
-                                                                                        </th:block>
-
-
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="col-xs-12 col-md-6 col-lg-8">
-                                                                                <p >Attorney Bar Info</p>
-                                                                                <div aria-labelledby="jbabosnameofothertype">
-                                                                                    <div class="form-group form-group-md" style="color:black;">
-                                                                                        <span> Bar Standing: </span>
-                                                                                        <span th:text="${baseTrademarkApplication.getPrimaryLawyer().getAffiliationStatus()}"></span> <br>
-                                                                                        <span> Bar Membership Number: </span>
-                                                                                        <span th:text="${baseTrademarkApplication.getPrimaryLawyer().getMembershipNumber()}"></span> <br>
-                                                                                        <span> Bar Jurisdiction: </span>
-                                                                                        <span th:text="${baseTrademarkApplication.getPrimaryLawyer().getBarJurisdiction()}"></span> <br>
-                                                                                        <span> Bar Admission Date: </span>
-                                                                                        <span th:text="${baseTrademarkApplication.getPrimaryLawyer().getBarAdmissionDateDisplay()}"></span><br>
-                                                                                        <span> Bar Certificate:</span><br>
-
-
-                                                                                        <th:block   th:if="${baseTrademarkApplication.getPrimaryLawyer().isBarCertifcatePDF() == true}">
-                                                                                            <embed  id="attorney-bar-img"   class="img-responsive" th:src="${baseTrademarkApplication.getPrimaryLawyer().getBarCertificateImageKey()}"  type="application/pdf" />
-                                                                                        </th:block>
-                                                                                        <th:block   th:if="${baseTrademarkApplication.getPrimaryLawyer().isBarCertifcatePDF() == false}">
-                                                                                            <img th:attr="src=${baseTrademarkApplication.getPrimaryLawyer().getBarCertificateImageKey()}"  class="img-responsive" />
-
-
-                                                                                        </th:block>
-
-
-
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xs-12 col-sm-3 col-md-2 inlinebuttons btn-group btn-group-justified" aria-label="edit or remove contact">
-                                                                <div class="btn-group">
-                                                                    <button type="button" class="btn btn-sm btn-success  attorney-edit" aria-label="edit contact" th:attr="contact-email=${baseTrademarkApplication.getPrimaryLawyer().getEmail()}">Edit</button>
-                                                                </div>
-                                                                <div class="btn-group"  primary-attorney="true">
-                                                                    <span class="glyphicon glyphicon-remove-circle remove-attorney" aria-hidden="true" th:attr="contact-email=${baseTrademarkApplication.getPrimaryLawyer().getEmail()}" style="font-size: 40px; position: relative; right:-15px;"></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--panel two-->
-
-
-                                            <th:block th:each="lawyer : ${lawyerPool}">
-                                                <div class="panel-group">
-                                                    <div class="panel panel-default">
+                                                <!--panel one-->
+                                                <div class="panel-group ">
+                                                    <div class="panel panel-default primary-attorney">
                                                         <div class="panel-heading">
                                                             <div class="row">
                                                                 <div class="col-xs-12 col-sm-9 col-md-10">
                                                                     <div class="row">
                                                                         <div class="col-xs-12 col-md-1">
 
-                                                                            <input  class="primaryLawyer" style="position: relative; bottom: -5px;"  type="radio" name="primaryAttorney" >
+                                                                            <input  class="primaryLawyer" style="position: relative; bottom: -5px;"  type="radio" name="primaryAttorney" checked>
+
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-4">
-                                                                            <p class="panel-title number weight600"><span class="glyphicon glyphicon-triangle-right visuallyadded" data-toggle="collapse" th:attr="data-target='#'+${lawyer.collapseID}" aria-hidden="true"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved collapsed" data-toggle="collapse" th:attr="data-target='#'+${lawyer.collapseID}"  aria-hidden="true"></span><button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" th:attr="data-target='#'+${lawyer.collapseID}" aria-controls="jbabos" aria-expanded="false"  th:text="${lawyer.getFirstName()}+' '+${lawyer.getLastName()}" id="jbabosbtn"> Jackie Babos</button></p>
+                                                                            <p class="panel-title number weight600"><span class="glyphicon glyphicon-triangle-right visuallyadded" data-toggle="collapse" th:attr="data-target='#'+${baseTrademarkApplication.getPrimaryLawyer().collapseID}"  aria-hidden="true"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved collapsed" data-toggle="collapse" th:attr="data-target='#'+${baseTrademarkApplication.getPrimaryLawyer().collapseID}"  aria-hidden="true"></span><button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" th:attr="data-target='#'+${baseTrademarkApplication.getPrimaryLawyer().collapseID}"  data-target="#jbabos" aria-controls="jbabos" aria-expanded="false"  th:text="${baseTrademarkApplication.getPrimaryLawyer().getFirstName()}+' '+${baseTrademarkApplication.getPrimaryLawyer().getLastName()}" id="jbabosbtn"><span class="glyphicon glyphicon-triangle-right"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Jackie Babos</button></p>
 
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-5 email">
-                                                                            <p th:text="${lawyer.getEmail()}">jackie.babos@us.gt.com</p>
+                                                                            <p th:text="${baseTrademarkApplication.getPrimaryLawyer().getEmail()}">jackie.babos@us.gt.com</p>
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-4">
-                                                                            <p th:text="${lawyer.getLawFirmName()}">Individual</p>
+                                                                            <p th:text="${baseTrademarkApplication.getPrimaryLawyer().getLawFirmName()}">Individual</p>
                                                                         </div>
                                                                     </div>
-                                                                    <div th:attr="id=${lawyer.collapseID}" class="collapse Accordion-panel" role="region" aria-labelledby="jbabosbtn">
+                                                                    <div th:attr="id=${baseTrademarkApplication.getPrimaryLawyer().collapseID}"  class="collapse Accordion-panel" role="region" aria-labelledby="jbabosbtn">
                                                                         <div class="Accordion" role="region">
                                                                             <div class="row">
                                                                                 <div class="col-xs-12 col-md-6 col-lg-8">
                                                                                     <p >Attorney Address Info</p>
                                                                                     <div aria-labelledby="jbabostype">
                                                                                         <div class="form-group form-group-md">
-                                                                                            <span style="color: black;" th:text="${lawyer.address}+' '+${lawyer.city}+', '+${lawyer.state}+' '+${lawyer.zipcode}" > 1115 Reserve Champion Drive, Rockville MD 20850</span>
+                                                                                            <span style="color: black;" th:text="${baseTrademarkApplication.getPrimaryLawyer().getAddress()}+' '+${baseTrademarkApplication.getPrimaryLawyer().getCity()}+', '+${baseTrademarkApplication.getPrimaryLawyer().getState()}+' '+${baseTrademarkApplication.getPrimaryLawyer().getZipcode()}" > 1115 Reserve Champion Drive, Rockville MD 20850</span>
 
                                                                                         </div>
                                                                                     </div>
@@ -254,14 +154,16 @@
                                                                                     <p >Attorney Contact Info</p>
                                                                                     <div aria-labelledby="jbabosnameofothertype">
                                                                                         <div class="form-group form-group-md" style="color:black;">
-                                                                                            email: <span th:text="${lawyer.getEmail()}">email: lzhang421@gmail.com</span>
+                                                                                            email: <span th:text="${baseTrademarkApplication.getPrimaryLawyer().getEmail()}">email: lzhang421@gmail.com</span>
                                                                                             </br>
-                                                                                            <th:block th:each="number : ${lawyer.getPhoneNumbers()}">
+
+                                                                                            <th:block th:each="number : ${baseTrademarkApplication.getPrimaryLawyer().getPhoneNumbers()}">
 
                                                                                                 phone:
                                                                                                 <span th:text="${number.phoneType}">Type</span>  <span th:text="${number.phoneNumber}"></span> - <span th:text="${number.extension}"> </span>
                                                                                                 <br>
                                                                                             </th:block>
+
 
                                                                                         </div>
                                                                                     </div>
@@ -272,24 +174,25 @@
                                                                                     <div aria-labelledby="jbabosnameofothertype">
                                                                                         <div class="form-group form-group-md" style="color:black;">
                                                                                             <span> Bar Standing: </span>
-                                                                                            <span th:text="${lawyer.affiliationStatus}"></span> <br>
+                                                                                            <span th:text="${baseTrademarkApplication.getPrimaryLawyer().getAffiliationStatus()}"></span> <br>
                                                                                             <span> Bar Membership Number: </span>
-                                                                                            <span th:text="${lawyer.membershipNumber}"></span> <br>
+                                                                                            <span th:text="${baseTrademarkApplication.getPrimaryLawyer().getMembershipNumber()}"></span> <br>
                                                                                             <span> Bar Jurisdiction: </span>
-                                                                                            <span th:text="${lawyer.barJurisdiction}"></span> <br>
+                                                                                            <span th:text="${baseTrademarkApplication.getPrimaryLawyer().getBarJurisdiction()}"></span> <br>
                                                                                             <span> Bar Admission Date: </span>
-                                                                                            <span th:text="${lawyer.barAdmissionDate}"></span><br>
+                                                                                            <span th:text="${baseTrademarkApplication.getPrimaryLawyer().getBarAdmissionDateDisplay()}"></span><br>
                                                                                             <span> Bar Certificate:</span><br>
 
 
-                                                                                            <th:block   th:if="${lawyer.isBarCertifcatePDF() == true}">
-                                                                                                <embed  id="attorney-bar-img"   class="img-responsive" th:src="${lawyer.getBarCertificateImageKey()}"  type="application/pdf" />
+                                                                                            <th:block   th:if="${baseTrademarkApplication.getPrimaryLawyer().isBarCertifcatePDF() == true}">
+                                                                                                <embed  id="attorney-bar-img"   class="img-responsive" th:src="${baseTrademarkApplication.getPrimaryLawyer().getBarCertificateImageKey()}"  type="application/pdf" />
                                                                                             </th:block>
-                                                                                            <th:block   th:if="${lawyer.isBarCertifcatePDF() == false}">
-                                                                                                <img th:attr="src=${lawyer.getBarCertificateImageKey()}"  class="img-responsive"   />
+                                                                                            <th:block   th:if="${baseTrademarkApplication.getPrimaryLawyer().isBarCertifcatePDF() == false}">
+                                                                                                <img th:attr="src=${baseTrademarkApplication.getPrimaryLawyer().getBarCertificateImageKey()}"  class="img-responsive" />
 
 
                                                                                             </th:block>
+
 
 
                                                                                         </div>
@@ -302,10 +205,10 @@
                                                                 </div>
                                                                 <div class="col-xs-12 col-sm-3 col-md-2 inlinebuttons btn-group btn-group-justified" aria-label="edit or remove contact">
                                                                     <div class="btn-group">
-                                                                        <button type="button" class="btn btn-sm btn-success  attorney-edit" aria-label="edit contact" th:attr="contact-email=${lawyer.getEmail()}">Edit</button>
+                                                                        <button type="button" class="btn btn-sm btn-success  attorney-edit" aria-label="edit contact" th:attr="contact-email=${baseTrademarkApplication.getPrimaryLawyer().getEmail()}">Edit</button>
                                                                     </div>
-                                                                    <div class="btn-group"  th:attr="primary-attorney=${lawyer.isPrimary()}">
-                                                                        <span class="glyphicon glyphicon-remove-circle remove-attorney" aria-hidden="true" th:attr="contact-email=${lawyer.getEmail()}" style="font-size: 40px; position: relative; right:-15px;"></span>
+                                                                    <div class="btn-group"  primary-attorney="true">
+                                                                        <span class="glyphicon glyphicon-remove-circle remove-attorney" aria-hidden="true" th:attr="contact-email=${baseTrademarkApplication.getPrimaryLawyer().getEmail()}" style="font-size: 40px; position: relative; right:-15px;"></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -314,15 +217,117 @@
                                                 </div>
                                                 <!--panel two-->
 
-                                            </th:block>
+
+                                                <th:block th:each="lawyer : ${lawyerPool}">
+                                                    <div class="panel-group">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-heading">
+                                                                <div class="row">
+                                                                    <div class="col-xs-12 col-sm-9 col-md-10">
+                                                                        <div class="row">
+                                                                            <div class="col-xs-12 col-md-1">
+
+                                                                                <input  class="primaryLawyer" style="position: relative; bottom: -5px;"  type="radio" name="primaryAttorney" >
+                                                                            </div>
+                                                                            <div class="col-xs-12 col-md-4">
+                                                                                <p class="panel-title number weight600"><span class="glyphicon glyphicon-triangle-right visuallyadded" data-toggle="collapse" th:attr="data-target='#'+${lawyer.collapseID}" aria-hidden="true"></span><span class="glyphicon glyphicon-triangle-bottom visuallyremoved collapsed" data-toggle="collapse" th:attr="data-target='#'+${lawyer.collapseID}"  aria-hidden="true"></span><button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" th:attr="data-target='#'+${lawyer.collapseID}" aria-controls="jbabos" aria-expanded="false"  th:text="${lawyer.getFirstName()}+' '+${lawyer.getLastName()}" id="jbabosbtn"> Jackie Babos</button></p>
+
+                                                                            </div>
+                                                                            <div class="col-xs-12 col-md-5 email">
+                                                                                <p th:text="${lawyer.getEmail()}">jackie.babos@us.gt.com</p>
+                                                                            </div>
+                                                                            <div class="col-xs-12 col-md-4">
+                                                                                <p th:text="${lawyer.getLawFirmName()}">Individual</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div th:attr="id=${lawyer.collapseID}" class="collapse Accordion-panel" role="region" aria-labelledby="jbabosbtn">
+                                                                            <div class="Accordion" role="region">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-12 col-md-6 col-lg-8">
+                                                                                        <p >Attorney Address Info</p>
+                                                                                        <div aria-labelledby="jbabostype">
+                                                                                            <div class="form-group form-group-md">
+                                                                                                <span style="color: black;" th:text="${lawyer.address}+' '+${lawyer.city}+', '+${lawyer.state}+' '+${lawyer.zipcode}" > 1115 Reserve Champion Drive, Rockville MD 20850</span>
+
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-xs-12 col-md-6 col-lg-8">
+                                                                                        <p >Attorney Contact Info</p>
+                                                                                        <div aria-labelledby="jbabosnameofothertype">
+                                                                                            <div class="form-group form-group-md" style="color:black;">
+                                                                                                email: <span th:text="${lawyer.getEmail()}">email: lzhang421@gmail.com</span>
+                                                                                                </br>
+                                                                                                <th:block th:each="number : ${lawyer.getPhoneNumbers()}">
+
+                                                                                                    phone:
+                                                                                                    <span th:text="${number.phoneType}">Type</span>  <span th:text="${number.phoneNumber}"></span> - <span th:text="${number.extension}"> </span>
+                                                                                                    <br>
+                                                                                                </th:block>
+
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="col-xs-12 col-md-6 col-lg-8">
+                                                                                        <p >Attorney Bar Info</p>
+                                                                                        <div aria-labelledby="jbabosnameofothertype">
+                                                                                            <div class="form-group form-group-md" style="color:black;">
+                                                                                                <span> Bar Standing: </span>
+                                                                                                <span th:text="${lawyer.affiliationStatus}"></span> <br>
+                                                                                                <span> Bar Membership Number: </span>
+                                                                                                <span th:text="${lawyer.membershipNumber}"></span> <br>
+                                                                                                <span> Bar Jurisdiction: </span>
+                                                                                                <span th:text="${lawyer.barJurisdiction}"></span> <br>
+                                                                                                <span> Bar Admission Date: </span>
+                                                                                                <span th:text="${lawyer.barAdmissionDate}"></span><br>
+                                                                                                <span> Bar Certificate:</span><br>
+
+
+                                                                                                <th:block   th:if="${lawyer.isBarCertifcatePDF() == true}">
+                                                                                                    <embed  id="attorney-bar-img"   class="img-responsive" th:src="${lawyer.getBarCertificateImageKey()}"  type="application/pdf" />
+                                                                                                </th:block>
+                                                                                                <th:block   th:if="${lawyer.isBarCertifcatePDF() == false}">
+                                                                                                    <img th:attr="src=${lawyer.getBarCertificateImageKey()}"  class="img-responsive"   />
+
+
+                                                                                                </th:block>
+
+
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-xs-12 col-sm-3 col-md-2 inlinebuttons btn-group btn-group-justified" aria-label="edit or remove contact">
+                                                                        <div class="btn-group">
+                                                                            <button type="button" class="btn btn-sm btn-success  attorney-edit" aria-label="edit contact" th:attr="contact-email=${lawyer.getEmail()}">Edit</button>
+                                                                        </div>
+                                                                        <div class="btn-group"  th:attr="primary-attorney=${lawyer.isPrimary()}">
+                                                                            <span class="glyphicon glyphicon-remove-circle remove-attorney" aria-hidden="true" th:attr="contact-email=${lawyer.getEmail()}" style="font-size: 40px; position: relative; right:-15px;"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--panel two-->
+
+                                                </th:block>
 
 
 
-                                            <!--END selected panels-->
+                                                <!--END selected panels-->
+                                            </div>
                                         </div>
-                                    </div>
-                                </fieldset>
-                            </form>
+                                    </fieldset>
+                                </form>
+
+                            </th:block>
+
 
                         </th:block>
 
