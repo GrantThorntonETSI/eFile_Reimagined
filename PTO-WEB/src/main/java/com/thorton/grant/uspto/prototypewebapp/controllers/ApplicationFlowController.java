@@ -498,7 +498,7 @@ public class ApplicationFlowController {
         model.addAttribute("myContacts", contactsDisplayDTO);
         SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
 
-///////////////////////////////////////////
+        ///////////////////////////////////////////
         // load my contacts list for thyemleaf
         ////////////////////////////////////////////
         ArrayList<String> contactNamesMC = new ArrayList<>();
@@ -4097,51 +4097,6 @@ public class ApplicationFlowController {
         String returnLink = "";
 
 
-
-
-
-
-        // build next and prev link value
-            // case 1: optional action completed
-            // if completed list and selected list is the same size
-                 // next link is done. return to dashboard.
-                 // prev link
-                           // if empty, just optional actions page
-                           // if not empty, it should be the last completed page. update current index
-
-
-        /*
-           if(completedList.size() == selectedList.size()){
-            // optional action is completed
-
-               // next link is confirm and sign
-
-
-               // prev link logic
-               if(selectedList.size() == 0){
-
-                   nextLink = "../../../../accounts/dashboard";
-                   prevLink = "../../../../officeAction/optional/"+actionID+"/?trademarkID="+trademarkInternalID;
-               }
-               else {
-                   nextLink = "../../../../../accounts/dashboard";
-                   prevLink = "../../../../../officeAction/optional/pathController/prev/"+actionID+"/?trademarkID="+trademarkInternalID;
-
-               }
-
-
-
-
-
-               returnLink =  "application/office_action/signature/index";
-
-
-               // need to design prev link logic for after completion
-
-
-
-           }   */
-
                 // this is not a completed
 
                // case 2: optional action not completed
@@ -4584,6 +4539,161 @@ public class ApplicationFlowController {
 
     // create controller to direct to optional actions select page
 
+    @RequestMapping({"/officeAction/optional/pathController/attorneyEdit/{email}/{actionID}"})
+    public String optionalActionEditAttorney(WebRequest request, Model model, @PathVariable String email,   @PathVariable String actionID ,@RequestParam("trademarkID") String trademarkInternalID){
 
+
+        // add everything edit attorney has ...
+        // but return to its new own dedicated page
+
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+
+
+        /////////////////////////////////////////////
+        // load my contacts list for thyemleaf
+        /////////////////////////////////////////////
+        ArrayList<String> contactNames = new ArrayList<>();
+        ArrayList<String> contactEmails = new ArrayList<>();
+        ArrayList<String> contactFirms = new ArrayList<>();
+        Lawyer lawyer = null;
+
+        for(Iterator<Lawyer> iter = ptoUser.getMyLawyers().iterator(); iter.hasNext(); ) {
+            lawyer = iter.next();
+            contactNames.add(lawyer.getFirstName()+" "+lawyer.getLastName());
+            contactEmails.add(lawyer.getEmail());
+            contactFirms.add(lawyer.getLawFirmName());
+
+        }
+        Collections.reverse(contactNames);
+        Collections.reverse(contactEmails);
+        Collections.reverse(contactFirms);
+        ContactsDisplayDTO contactsDisplayDTO = new ContactsDisplayDTO();
+        contactsDisplayDTO.setContactNames(contactNames);
+        contactsDisplayDTO.setContactEmails(contactEmails);
+        contactsDisplayDTO.setContactFirms(contactFirms);
+        model.addAttribute("myContacts", contactsDisplayDTO);
+        SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
+
+        ///////////////////////////////////////////
+        // load my contacts list for thyemleaf
+        ////////////////////////////////////////////
+        ArrayList<String> contactNamesMC = new ArrayList<>();
+        ArrayList<String> contactEmailsMC = new ArrayList<>();
+        ArrayList<String> contactSubTypesMC = new ArrayList<>();
+        ManagedContact managedContact = null;
+
+        for(Iterator<ManagedContact> iter = ptoUser.getMyManagedContacts().iterator(); iter.hasNext(); ) {
+            managedContact = iter.next();
+            if(managedContact.getContactType() == "attorney") {
+                contactNamesMC.add(managedContact.getDisplayName());
+                contactEmailsMC.add(managedContact.getEmail());
+                contactSubTypesMC.add(managedContact.getContactType());
+            }
+
+        }
+        Collections.reverse(contactNamesMC);
+        Collections.reverse(contactEmailsMC);
+        Collections.reverse(contactSubTypesMC);
+        ContactsDisplayDTO mcDisplayDTO = new ContactsDisplayDTO();
+        mcDisplayDTO.setContactNames(contactNamesMC);
+        mcDisplayDTO.setContactEmails(contactEmailsMC);
+        mcDisplayDTO.setContactEntitySubType(contactSubTypesMC);
+        model.addAttribute("myManagedContacts", mcDisplayDTO);
+
+        // set empty selected contacts for thymeleaf
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+        ArrayList<String> selectedContactNames = new ArrayList<>();
+        for(Iterator<Lawyer> iter = baseTrademarkApplication.getAvailableLawyers().iterator(); iter.hasNext(); ) {
+            Lawyer current = iter.next();
+            selectedContactNames.add(current.getFirstName()+" "+current.getLastName());
+        }
+        ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
+        selectedAttorneyDisplayDTO.setContactNames(selectedContactNames);
+        model.addAttribute("selectedAttorneys",selectedAttorneyDisplayDTO);
+
+
+
+        ////////////////////////////////////////////////////////////////////////////
+        // existing trade  mark application
+        ////////////////////////////////////////////////////////////////////////////
+        // loaded baseTradeMarkapplication by internal id and add to model
+        ////////////////////////////////////////////////////////////////////////////
+        // BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+        // we are already setting this value in the begging for selected contacts rendering
+        /////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////
+        // add relationship (i.e grey out the correspondant contacts table)
+        // we can do this when rendering the contacts table rows ...
+        // do a check and insert different HTML for the row
+        //////////////////////////////////////////////////////////////////////////
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        // add selected contacts display info to model
+        ////////////////////////////////////////////////////////////////////////////////////////////
+
+        Lawyer attorney = baseTrademarkApplication.findContactByEmail(email);
+
+
+        model.addAttribute("attorney", attorney);
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+        model.addAttribute("lawyerPool", baseTrademarkApplication.getAvailableLawyers());
+
+
+
+
+
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
+        String markType = "";
+        String markText ="";
+
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+            markType = baseTrademarkApplication.getTradeMark().getTrademarkDesignType();
+            markText = baseTrademarkApplication.getTradeMark().getTrademarkStandardCharacterText();
+        }
+        else{
+            model.addAttribute("markImagePath","");
+            model.addAttribute("markImagePathBW","");
+
+        }
+
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
+        model.addAttribute("markType", markType);
+        model.addAttribute("markText",markText);
+
+        model.addAttribute("actionID", actionID);
+
+
+        // need a special controller to process direct access of optional actions steps
+        // in this case. it should be set at the attorney tab
+        // action ids will be used to build the link
+
+
+
+        return "application/office_action/optional_actions/attorney/attorneyEdit";
+
+    }
 
 }

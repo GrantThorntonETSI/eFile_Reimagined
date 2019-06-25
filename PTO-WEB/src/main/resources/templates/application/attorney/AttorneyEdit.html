@@ -1550,88 +1550,14 @@
         // AJAx auto save triggers
         //////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////
-        // show and hide attorney form actions
-        ////////////////////////////////////////////////////////////
-        $('#inlineRadio015').click( function () {
-            ////////////////////////////////////////////////////////////
-            // call back end update ...
-            // signal uppate occurred
-            // wait for the confirm message first.
-            ////////////////////////////////////////////////////////////
-
-            saveProjectInfo("set-lawyer-options-value", "yes", appInternalID);
-
-            // loads form // done by another script
-            // show auto fill button
-            $('#autofill').fadeIn(500);
-            // show clear form button
-
-            // next button behavior not determined (can be form submit or just going to the next page)
-            // but enabled
 
 
 
-            $('#nextButtonFormPaging').attr("disabled",true);
-
-        });
-
-
-
-        /////////////////////////////////////////////////////////////
-        // action listeners on radio buttons
-        ////////////////////////////////////////////////////////////
-        $('#inlineRadio016').click( function () {
-            ////////////////////////////////////////////////////////
-            // call back end update ...
-            ////////////////////////////////////////////////////////
-            ////////////////////////////////////////////////////////
-            // remove any selected contacts from application object
-            ////////////////////////////////////////////////////////
-
-            // call set attorney options ...for project
-            setTimeout(function() {
-                saveProjectInfo("set-lawyer-options-value", "no", appInternalID);
-            }, 555);
-
-            nextLinkURL = nextLinkURLAttorneyFalse;
-            $('#nextButtonFormPaging').attr("disabled",false);
-        });
-        ////////////////////////////////////////////////////////////////
 
         $('#prevButton').click(function () {
             location.href=prevLinkURL;
         });
 
-        $('#nextButtonFormPaging').click(function () {
-            //location.href=nextLinkURL;
-            if($('#inlineRadio016').is(":checked")){
-
-                location.href=nextLinkURL;
-            }
-            else{
-                // check if yes radio is clicked
-                if($('#inlineRadio015').is(":checked")) {
-
-                    // start check fields
-
-                    // if all fields are empty
-                    // and lawyer pool not empty
-                    // send to next page
-
-                    if (isAttorneyPoolEmpty == false) {
-                        // call jquery click
-                        // set next link to attorney view
-                        // activate link
-                        location.href=nextLinkURL;
-                        //$('#nextButtonFormPaging').attr("disabled",false);
-
-
-                    }
-                } // we will handle turning the button to submit in another jquery
-
-            }
-        });
 
 
 
