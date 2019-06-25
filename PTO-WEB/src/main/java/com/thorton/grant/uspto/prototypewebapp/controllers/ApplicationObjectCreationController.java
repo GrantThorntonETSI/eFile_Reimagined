@@ -425,6 +425,358 @@ public class ApplicationObjectCreationController {
     ///////////////////////////////////////////////////////////////////////////////
 
 
+    // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
+    @PostMapping(value = "/attorney/add/optional")
+    public String optionalActionAddAttorney( @ModelAttribute("addNewAttorneyContactFormDTO") @Valid NewAttorneyContactFormDTO newAttorneyContactFormDTO,
+                                      @RequestParam(name="file", required=false) MultipartFile file,
+
+                                      Model model,
+                                      WebRequest request,
+                                      BindingResult result,
+                                      Errors errors) {
+
+
+
+
+
+
+
+
+        // create a new application and tie it to user then save it to repository
+        // create attorneyDTO + to model
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        String tempAppId = newAttorneyContactFormDTO.getAppInternalID();
+        if(tempAppId.contains(",")){
+            int index = tempAppId.indexOf(",");
+            tempAppId = tempAppId.substring(0, index);
+            newAttorneyContactFormDTO.setAppInternalID(tempAppId);
+        }
+
+        // we need action id as field ..
+
+        String actionID = newAttorneyContactFormDTO.getActionID();
+        if(actionID.contains(",")){
+            int index = actionID.indexOf(",");
+            actionID = actionID.substring(0, index);
+
+        }
+
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(newAttorneyContactFormDTO.getAppInternalID());
+
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
+        model.addAttribute("hostBean", hostBean);
+        String trademarkInternalID = baseTrademarkApplication.getApplicationInternalID();
+
+        ////////////////////////////////////////////////////////////////////////
+        //add new attorney contact business logic
+        ////////////////////////////////////////////////////////////////////////
+        // create lawyer ...and set it to PTO user ..then save PTO user object and add it to model
+        // set all fields from DTO
+        ////////////////////////////////////////////////////////////////////////
+        Lawyer lawyer = new Lawyer();
+
+
+        if(newAttorneyContactFormDTO.getFirstName()!= null){
+
+
+            lawyer.setFirstName(newAttorneyContactFormDTO.getFirstName());
+            lawyer.setCollapseID((newAttorneyContactFormDTO.getFirstName()+newAttorneyContactFormDTO.getLastName()).replaceAll("[^A-Za-z0-9]", ""));
+        }
+
+        lawyer.setLastName(newAttorneyContactFormDTO.getLastName());
+        if(newAttorneyContactFormDTO.getMiddleName() != null){
+            lawyer.setMidlleName(newAttorneyContactFormDTO.getMiddleName());
+        }
+        if(newAttorneyContactFormDTO.getSuffix() != null){
+            lawyer.setSuffix(newAttorneyContactFormDTO.getSuffix());
+        }
+        lawyer.setLawFirmName(newAttorneyContactFormDTO.getLawFirmName());
+
+        if(newAttorneyContactFormDTO.getAttorneyAddressCountry() != null){
+            lawyer.setCountry(newAttorneyContactFormDTO.getAttorneyAddressCountry());
+        }
+
+        if(newAttorneyContactFormDTO.getAttorneyAddress1() != null){
+            lawyer.setAddress1(newAttorneyContactFormDTO.getAttorneyAddress1());
+            lawyer.setAddress(newAttorneyContactFormDTO.getAttorneyAddress1());
+        }
+
+        if(newAttorneyContactFormDTO.getAttorneyAddress2() != null){
+            lawyer.setAddress2(newAttorneyContactFormDTO.getAttorneyAddress2());
+        }
+
+        if(newAttorneyContactFormDTO.getAttorneyAddress3() != null){
+            lawyer.setAddress3(newAttorneyContactFormDTO.getAttorneyAddress3());
+        }
+        if(newAttorneyContactFormDTO.getAttorneyCity() != null){
+            lawyer.setCity(newAttorneyContactFormDTO.getAttorneyCity());
+        }
+
+        if(newAttorneyContactFormDTO.getAttorneyState() != null){
+            lawyer.setState(newAttorneyContactFormDTO.getAttorneyState());
+        }
+        if(newAttorneyContactFormDTO.getAttorneyZipcode() != null){
+            lawyer.setZipcode(newAttorneyContactFormDTO.getAttorneyZipcode());
+        }
+        if(newAttorneyContactFormDTO.getAttorneyEmail()!= null){
+            if(baseTrademarkApplication.findContactByEmail(newAttorneyContactFormDTO.getAttorneyEmail()) != null){
+                model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+                ArrayList<String> contactNames = new ArrayList<>();
+                ArrayList<String> contactEmails = new ArrayList<>();
+                ArrayList<String> contactSubTypes = new ArrayList<>();
+                ManagedContact managedContact = null;
+
+                for(Iterator<ManagedContact> iter = ptoUser.getMyManagedContacts().iterator(); iter.hasNext(); ) {
+                    managedContact = iter.next();
+                    contactNames.add(managedContact.getDisplayName());
+                    contactEmails.add(managedContact.getEmail());
+                    contactSubTypes.add(managedContact.getContactType());
+
+                }
+                Collections.reverse(contactNames);
+                Collections.reverse(contactEmails);
+                Collections.reverse(contactSubTypes);
+                ContactsDisplayDTO contactsDisplayDTO = new ContactsDisplayDTO();
+                contactsDisplayDTO.setContactNames(contactNames);
+                contactsDisplayDTO.setContactEmails(contactEmails);
+                contactsDisplayDTO.setContactEntitySubType(contactSubTypes);
+                model.addAttribute("myManagedContacts", contactsDisplayDTO);
+
+                // also add error message
+                model.addAttribute("message", "ERROR: Attorney email exists for this Application.");
+
+                return "application/attorney/AttorneyStart";
+                // return to  ownerStartPage with error message
+            }
+
+            lawyer.setEmail(newAttorneyContactFormDTO.getAttorneyEmail());
+
+        }
+        //////////////////////////////////////////////////////////////////////////////////////
+        // add attorney bar information here ...
+        //////////////////////////////////////////////////////////////////////////////////////
+
+        if(file != null){
+
+            // check file type and set if uploaded image is a pdf file
+
+
+
+
+
+
+            if(file.isEmpty() == false) {
+
+                String fileName = file.getOriginalFilename();
+                String imagePath = "";
+
+                try {
+                    imagePath = storageService.store(file);
+                    lawyer.setBarCertificateImageUploaded(true);
+                    lawyer.setBarCertificateImageFileName(file.getOriginalFilename());
+
+                }
+                catch ( StorageException ex){
+                    model.addAttribute("message", "ERROR: Attorney Credentials upload failed due to error: "+ex );
+                    return "forward:/application/start/?trademarkID="+trademarkInternalID;
+
+                }
+
+
+
+                if(fileName.endsWith(".pdf") || fileName.endsWith(".PDF")){
+                    lawyer.setBarCertificateImageKey("/files-pdf/"+imagePath);
+                    lawyer.setBarCertifcatePDF(true);
+                }
+                else {
+                    lawyer.setBarCertificateImageKey("/files/"+imagePath);
+                }
+
+
+
+            }
+
+        }
+
+        if(newAttorneyContactFormDTO.getAttorneyPhone() != null && newAttorneyContactFormDTO.getAttorneyPhone().equals("") == false){
+            lawyer.setPrimaryPhonenumber(newAttorneyContactFormDTO.getAttorneyPhone());
+
+            // create new phone object and add it to attorney, also get type and extension values
+            // make sure form DTO supports type and extension values
+            PhoneNumber phoneNumber = new PhoneNumber();
+            phoneNumber.setPhoneNumber(newAttorneyContactFormDTO.getAttorneyPhone());
+            //phoneNumber.setPhoneType(newAttorneyContactFormDTO.);
+            phoneNumber.setPhoneType(newAttorneyContactFormDTO.getAttorneyPhoneType());
+            phoneNumber.setExtension(newAttorneyContactFormDTO.getAttorneyPhoneExtension());
+
+            lawyer.addPhoneNumber(phoneNumber);
+
+        }
+
+        if(newAttorneyContactFormDTO.getAttorneyPhone2() != null && newAttorneyContactFormDTO.getAttorneyPhone2().equals("") == false){
+
+
+            // create new phone object and add it to attorney, also get type and extension values
+            // make sure form DTO supports type and extension values
+            PhoneNumber phoneNumber = new PhoneNumber();
+            phoneNumber.setPhoneNumber(newAttorneyContactFormDTO.getAttorneyPhone2());
+            //phoneNumber.setPhoneType(newAttorneyContactFormDTO.);
+            phoneNumber.setPhoneType(newAttorneyContactFormDTO.getAttorneyPhoneType2());
+            phoneNumber.setExtension(newAttorneyContactFormDTO.getAttorneyPhoneExtension2());
+
+            lawyer.addPhoneNumber(phoneNumber);
+
+        }
+        if(newAttorneyContactFormDTO.getAttorneyPhone3() != null && newAttorneyContactFormDTO.getAttorneyPhone3().equals("") == false){
+
+
+            // create new phone object and add it to attorney, also get type and extension values
+            // make sure form DTO supports type and extension values
+            PhoneNumber phoneNumber = new PhoneNumber();
+            phoneNumber.setPhoneNumber(newAttorneyContactFormDTO.getAttorneyPhone3());
+            //phoneNumber.setPhoneType(newAttorneyContactFormDTO.);
+            phoneNumber.setPhoneType(newAttorneyContactFormDTO.getAttorneyPhoneType3());
+            phoneNumber.setExtension(newAttorneyContactFormDTO.getAttorneyPhoneExtension3());
+
+            lawyer.addPhoneNumber(phoneNumber);
+
+        }
+
+        if(newAttorneyContactFormDTO.getAttorneyDocketNumber()!= null && newAttorneyContactFormDTO.getAttorneyDocketNumber().equals("") == false){
+            // lawyer.setDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber());
+
+            System.out.println("docket number 1 :"+newAttorneyContactFormDTO.getAttorneyDocketNumber()+"/");
+            lawyer.addDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber());
+        }
+
+        if(newAttorneyContactFormDTO.getAttorneyDocketNumber2()!= null && newAttorneyContactFormDTO.getAttorneyDocketNumber2().equals("") == false){
+
+
+            // lawyer.setDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber());
+            System.out.println("docket number 2 :"+newAttorneyContactFormDTO.getAttorneyDocketNumber2()+"/");
+            lawyer.addDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber2());
+        }
+        if(newAttorneyContactFormDTO.getAttorneyDocketNumber3()!= null && newAttorneyContactFormDTO.getAttorneyDocketNumber3().equals("") == false){
+            // lawyer.setDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber());
+            System.out.println("docket number 3 :"+newAttorneyContactFormDTO.getAttorneyDocketNumber3()+"/");
+            lawyer.addDocketNumber(newAttorneyContactFormDTO.getAttorneyDocketNumber3());
+        }
+        if(newAttorneyContactFormDTO.getAttorneyAffiliation()!= null && newAttorneyContactFormDTO.getAttorneyAffiliation().equals("") == false){
+            lawyer.setAffiliationStatus(newAttorneyContactFormDTO.getAttorneyAffiliation());
+            lawyer.setAffiliationStatusSet(true);
+            if(newAttorneyContactFormDTO.getAttorneyAffiliation().contains("usaffiliation")){
+                lawyer.setAffliationUS(true);
+            }
+            else {
+                lawyer.setAffliationUS(false);
+            }
+
+            if(newAttorneyContactFormDTO.getUsCertifyCheckbox().equals("check") ){
+
+                lawyer.setUsCertifyCheck(true);
+            }
+            else{
+                lawyer.setUsCertifyCheck(false);
+
+            }
+
+
+        }
+
+
+
+
+
+
+
+        if(newAttorneyContactFormDTO.getAttorneyBarJurisdiction()!= null){
+            lawyer.setBarJurisdiction(newAttorneyContactFormDTO.getAttorneyBarJurisdiction());
+        }
+
+        if(newAttorneyContactFormDTO.getAttorneyBarMembershipNumber()!= null){
+            lawyer.setMembershipNumber(newAttorneyContactFormDTO.getAttorneyBarMembershipNumber());
+        }
+
+        if(newAttorneyContactFormDTO.getAttorneyBarAdmissionDate()!= null){
+
+            String string = newAttorneyContactFormDTO.getAttorneyBarAdmissionDate();
+
+
+            try {
+                DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+                Date date = format.parse(string);
+
+                lawyer.setBarAdmissionDate(date);
+            }
+            catch(Exception ex){
+
+                model.addAttribute("message", "ERROR: Could not save Bar Admission Date, invalid Date format.");
+            }
+
+
+        }
+
+        if(newAttorneyContactFormDTO.getAttorneyCAagentName()!= null){
+            lawyer.setCanadianAgentName(newAttorneyContactFormDTO.getAttorneyCAagentName());
+        }
+        if(newAttorneyContactFormDTO.applicantCA != null){
+            if(newAttorneyContactFormDTO.getApplicantCA() == "true") {
+                lawyer.setApplicantCA(true);
+            }
+            else {
+                lawyer.setApplicantCA(false);
+            }
+        }
+
+
+
+        // check if managed contact should be added to PTOUser
+        if(ptoUser.findManagedContactByDisplayName(lawyer.getFirstName()+" "+lawyer.getLastName()) == null && ptoUser.findManagedContactByEmail(lawyer.getEmail()) == null){
+            ManagedContact newContact = createCopyAttorneyInfo4ManagedContact(lawyer);
+            ptoUser.addManagedContact(newContact);
+            ptoUserService.save(ptoUser);
+
+        }
+        System.out.println("lawyer pool size : "+baseTrademarkApplication.getAvailableLawyers().size());
+
+        if(baseTrademarkApplication.getAvailableLawyers().size() == 0){
+            lawyer.setPrimary(true);
+            baseTrademarkApplication.setPrimaryLawyer(lawyer);
+        }
+
+
+        baseTrademarkApplication.addAvailableLawyer(lawyer);
+
+        // check if attorney should be set as primary
+
+
+
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+
+        //forward to officeActions page (which should redirect back to attorney tab for office actions
+
+        return "forward:/officeAction/optional/pathController/none/"+actionID+"/?trademarkID="+trademarkInternalID;
+
+        // try forwarding to the attorney edit page
+        //return "forward:/application/attorney/edit/" +lawyer.getEmail() + "/?trademarkID="+trademarkInternalID;
+
+
+    }
+
 
     // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
     @RequestMapping(value = "/owner/add", method = RequestMethod.POST)

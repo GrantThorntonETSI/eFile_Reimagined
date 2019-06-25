@@ -1,10 +1,1704 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/efileApplicationAttorneyFragment :: layout (~{::body},'user')}" >
+<head >
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Attorney Information</title>
 </head>
 <body>
+
+<div class="container-fluid">
+    <!-- End Navbar -->
+    <div class="row content" id="attorney" style="display: none;">
+        <main class="col-xs-12 col-sm-8 col-md-8 col-lg-7">
+            <!--START Content Div-->
+            <div class="row">
+                <div class="col-xs-12">
+
+
+                    <!--START Attorney Information Form-->
+                    <div class="card-text">
+                        <div role="heading" aria-level="2" id="attorneyinfo">
+                            <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#attorneyadvise" aria-controls="attorneyadvise" aria-expanded="false" id="attorneyadvisebtn"><span class="glyphicon glyphicon-triangle-right"></span><span id="toggleglyphcolor" class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Attorney Information</button>
+                        </div>
+                    </div>
+                    <div id="attorneyadvise" class="collapse Accordion-panel" role="region" aria-labelledby="attorneyadvisebtn">
+                        <div class="Accordion" style="margin-left: 15px;">
+                            <ol>The only attorneys who may sign responses and otherwise practice before the USPTO in trademark matters are as follows:
+                                <li style="margin-top: 11px;">1.  Attorneys in good standing with a bar of the highest court of any U.S. state, the District of Columbia, Puerto Rico, and other U.S. commonwealths or U.S. territories; and</li>
+                                <li style="margin-top: 11px;">2.  Canadian agents/attorneys who represent owners of the mark located in Canada and (a) are registered with the USPTO and in good standing as patent agents or (b) have been granted reciprocal recognition by the USPTO.</li>
+                            </ol>
+                        </div>
+                    </div>
+
+
+
+
+                    <div id="yesattorneyfiling" role="region" aria-labelledby="attorneyfiling" style="">
+                        <form method="post" id="addNewAttorneyForm" action="/attorney/add/optional" onsubmit="return validateAttorneyForm();" enctype="multipart/form-data" th:object="${addNewAttorneyContactFormDTO}" aria-labelledby="title">
+                            <fieldset aria-labelledby="attorneyinfo">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-lg-12">
+                                        <button type="button" class="btn-sm btn-success fill" id="autofill">Select from Contacts</button>
+                                        <button type="button" class="btn-sm btn-success fill" id="clearfill">Clear form</button>
+                                    </div>
+                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                        <label for="title">Title</label>
+                                        <input type="text" class="form-control" id="title"><!--Needs th:field= attribute to capture this value on submit-->
+                                    </div>
+                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                        <label for="attorney-first-name"><span class="weight600">&#42;</span> First name</label>
+                                        <input type="text" class="form-control" id="attorney-first-name" th:field="*{firstName}" name="first" placeholder="" required>
+                                    </div>
+                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                        <label for="Attorney-middle-name">Middle name</label>
+                                        <input type="text" class="form-control" id="Attorney-middle-name" th:field="*{middleName}">
+                                    </div>
+                                    <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
+                                        <label for="attorney-last-name"><span class="weight600">&#42;</span> Last name</label>
+                                        <input type="text" class="form-control" id="attorney-last-name" th:field="*{lastName}" required>
+                                    </div>
+                                    <div class="form-group form-group-md col-xs-5 col-sm-3">
+                                        <label for="suffix">Suffix</label>
+                                        <select class="form-control" id="suffix" th:field="*{suffix}">
+                                            <option value="select">Select</option>
+                                            <option value="Sr.">Sr.</option>
+                                            <option value="I">I</option>
+                                            <option value="II">II</option>
+                                            <option value="III">III</option>
+                                            <option value="IV">IV</option>
+                                            <option value="V">V</option>
+                                            <option value="VI">VI</option>
+                                            <option value="Jr.">Jr.</option>
+                                            <option value="VII">VII</option>
+                                            <option value="VIII">VIII</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-5">
+                                        <label for="attorney-lawfirm-name"><span class="weight600"></span> Firm</label>
+                                        <input type="text" class="form-control" id="attorney-lawfirm-name" th:field="*{lawFirmName}" placeholder="">
+                                    </div>
+                                </div>
+                            </fieldset><!--END Attorney Information-->
+                            <!--START Attorney Contact Information-->
+                            <div class="card-text">
+                                <h2 class="card-title weight600" id="attorneycontact">Attorney Contact Information</h2>
+                            </div>
+                            <fieldset aria-labelledby="attorneycontact">
+                                <div class="row">
+                                    <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-5">
+                                        <label for="attorney-country"><span class="weight600">&#42;</span> Country / US territory</label>
+                                        <select class="form-control" id="attorney-country" th:field="*{attorneyAddressCountry}" required>
+                                            <option value="">Select</option>
+                                            <option value="United States of America">United States of America</option>
+                                            <option value="Afghanistan">Afghanistan</option>
+                                            <option value="Albania">Albania</option>
+                                            <option value="Algeria">Algeria</option>
+                                            <option value="American Samoa">American Samoa</option>
+                                            <option value="Andorra">Andorra</option>
+                                            <option value="Angola">Angola</option>
+                                            <option value="Anguilla">Anguilla</option>
+                                            <option value="Antarctica">Antarctica</option>
+                                            <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                                            <option value="Argentina">Argentina</option>
+                                            <option value="Armenia">Armenia</option>
+                                            <option value="Aruba">Aruba</option>
+                                            <option value="Australia">Australia</option>
+                                            <option value="Austria">Austria</option>
+                                            <option value="Azerbaijan">Azerbaijan</option>
+                                            <option value="Bahamas">Bahamas</option>
+                                            <option value="Bahrain">Bahrain</option>
+                                            <option value="Bangladesh">Bangladesh</option>
+                                            <option value="Barbados">Barbados</option>
+                                            <option value="Belarus">Belarus</option>
+                                            <option value="Belgium">Belgium</option>
+                                            <option value="Belize">Belize</option>
+                                            <option value="Benin">Benin</option>
+                                            <option value="Bermuda">Bermuda</option>
+                                            <option value="Bhutan">Bhutan</option>
+                                            <option value="Bolivia">Bolivia</option>
+                                            <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                                            <option value="Botswana">Botswana</option>
+                                            <option value="Bouvet Island">Bouvet Island</option>
+                                            <option value="Brazil">Brazil</option>
+                                            <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
+                                            <option value="Brunei Darussalam">Brunei Darussalam</option>
+                                            <option value="Bulgaria">Bulgaria</option>
+                                            <option value="Burkina Faso">Burkina Faso</option>
+                                            <option value="Burundi">Burundi</option>
+                                            <option value="Canada">Canada</option>
+                                            <option value="Cambodia">Cambodia</option>
+                                            <option value="Cameroon">Cameroon</option>
+                                            <option value="Cape Verde">Cape Verde</option>
+                                            <option value="Cayman Islands">Cayman Islands</option>
+                                            <option value="Central African Republic">Central African Republic</option>
+                                            <option value="Chad">Chad</option>
+                                            <option value="Chile">Chile</option>
+                                            <option value="China">China</option>
+                                            <option value="Christmas Island">Christmas Island</option>
+                                            <option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
+                                            <option value="Colombia">Colombia</option>
+                                            <option value="Comoros">Comoros</option>
+                                            <option value="Congo">Congo</option>
+                                            <option value="Congo, The Democratic Republic of">Congo, The Democratic Republic of</option>
+                                            <option value="Cook Islands">Cook Islands</option>
+                                            <option value="Costa Rica">Costa Rica</option>
+                                            <option value="Cote D'Ivoire">Cote D&#8217;Ivoire</option>
+                                            <option value="Croatia">Croatia</option>
+                                            <option value="Cuba">Cuba</option>
+                                            <option value="Cyprus">Cyprus</option>
+                                            <option value="Czech Republic">Czech Republic</option>
+                                            <option value="Denmark">Denmark</option>
+                                            <option value="Djibouti">Djibouti</option>
+                                            <option value="Dominica">Dominica</option>
+                                            <option value="Dominican Republic">Dominican Republic</option>
+                                            <option value="East Timor">East Timor</option>
+                                            <option value="Ecuador">Ecuador</option>
+                                            <option value="Egypt">Egypt</option>
+                                            <option value="El Salvador">El Salvador</option>
+                                            <option value="Equatorial Guinea">Equatorial Guinea</option>
+                                            <option value="Eritrea">Eritrea</option>
+                                            <option value="Estonia">Estonia</option>
+                                            <option value="Ethiopia">Ethiopia</option>
+                                            <option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option>
+                                            <option value="Faroe Islands">Faroe Islands</option>
+                                            <option value="Fiji">Fiji</option>
+                                            <option value="Finland">Finland</option>
+                                            <option value="France">France</option>
+                                            <option value="French Guiana">French Guiana</option>
+                                            <option value="French Polynesia">French Polynesia</option>
+                                            <option value="French Southern Territories">French Southern Territories</option>
+                                            <option value="Gabon">Gabon</option>
+                                            <option value="Gambia">Gambia</option>
+                                            <option value="Georgia">Georgia</option>
+                                            <option value="Germany">Germany</option>
+                                            <option value="Ghana">Ghana</option>
+                                            <option value="Gibraltar">Gibraltar</option>
+                                            <option value="Greece">Greece</option>
+                                            <option value="Greenland">Greenland</option>
+                                            <option value="Grenada">Grenada</option>
+                                            <option value="Guadeloupe">Guadeloupe</option>
+                                            <option value="Guam">Guam</option>
+                                            <option value="Guatemala">Guatemala</option>
+                                            <option value="Guinea">Guinea</option>
+                                            <option value="Guinea-Bissau">Guinea&#8211;Bissau</option>
+                                            <option value="Guyana">Guyana</option>
+                                            <option value="Haiti">Haiti</option>
+                                            <option value="Heard Island and Mcdonald Islands">Heard Island and Mcdonald Islands</option>
+                                            <option value="Holy See (Vatican City State)">Holy See (Vatican City State)</option>
+                                            <option value="Honduras">Honduras</option>
+                                            <option value="Hong Kong">Hong Kong</option>
+                                            <option value="Hungary">Hungary</option>
+                                            <option value="Iceland">Iceland</option>
+                                            <option value="India">India</option>
+                                            <option value="Indonesia">Indonesia</option>
+                                            <option value="Iran, Islamic Republic of">Iran, Islamic Republic of</option>
+                                            <option value="Iraq">Iraq</option>
+                                            <option value="Ireland">Ireland</option>
+                                            <option value="Israel">Israel</option>
+                                            <option value="Italy">Italy</option>
+                                            <option value="Jamaica">Jamaica</option>
+                                            <option value="Japan">Japan</option>
+                                            <option value="Jordan">Jordan</option>
+                                            <option value="Kazakstan">Kazakstan</option>
+                                            <option value="Kenya">Kenya</option>
+                                            <option value="Kiribati">Kiribati</option>
+                                            <option value="Korea, Democratic People's Republic of">Korea, Democratic People&#8217;S Republic of</option>
+                                            <option value="Korea, Republic of">Korea, Republic of</option>
+                                            <option value="Kuwait">Kuwait</option>
+                                            <option value="Kyrgyzstan">Kyrgyzstan</option>
+                                            <option value="Lao People's Democratic Republic">Lao People&#8217;s Democratic Republic</option>
+                                            <option value="Latvia">Latvia</option>
+                                            <option value="Lebanon">Lebanon</option>
+                                            <option value="Lesotho">Lesotho</option>
+                                            <option value="Liberia">Liberia</option>
+                                            <option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option>
+                                            <option value="Liechtenstein">Liechtenstein</option>
+                                            <option value="Lithuania">Lithuania</option>
+                                            <option value="Luxembourg">Luxembourg</option>
+                                            <option value="Macau">Macau</option>
+                                            <option value="Macedonia, Former Yugoslav Rep. of">Macedonia, Former Yugoslav Rep. of</option>
+                                            <option value="Madagascar">Madagascar</option>
+                                            <option value="Malawi">Malawi</option>
+                                            <option value="Malaysia">Malaysia</option>
+                                            <option value="Maldives">Maldives</option>
+                                            <option value="Mali">Mali</option>
+                                            <option value="Malta">Malta</option>
+                                            <option value="Marshall Islands">Marshall Islands</option>
+                                            <option value="Martinique">Martinique</option>
+                                            <option value="Mauritania">Mauritania</option>
+                                            <option value="Mauritius">Mauritius</option>
+                                            <option value="Mayotte">Mayotte</option>
+                                            <option value="Mexico">Mexico</option>
+                                            <option value="Micronesia, Federated States of">Micronesia, Federated States of</option>
+                                            <option value="Moldova, Republic of">Moldova, Republic of</option>
+                                            <option value="Monaco">Monaco</option>
+                                            <option value="Mongolia">Mongolia</option>
+                                            <option value="Montserrat">Montserrat</option>
+                                            <option value="Morocco">Morocco</option>
+                                            <option value="Mozambique">Mozambique</option>
+                                            <option value="Myanmar">Myanmar</option>
+                                            <option value="Namibia">Namibia</option>
+                                            <option value="Nauru">Nauru</option>
+                                            <option value="Nepal">Nepal</option>
+                                            <option value="Netherlands">Netherlands</option>
+                                            <option value="Netherlands Antilles">Netherlands Antilles</option>
+                                            <option value="New Caledonia">New Caledonia</option>
+                                            <option value="New Zealand">New Zealand</option>
+                                            <option value="Nicaragua">Nicaragua</option>
+                                            <option value="Niger">Niger</option>
+                                            <option value="Nigeria">Nigeria</option>
+                                            <option value="Niue">Niue</option>
+                                            <option value="Norfolk Island">Norfolk Island</option>
+                                            <option value="Northern Mariana Islands">Northern Mariana Islands</option>
+                                            <option value="Norway">Norway</option>
+                                            <option value="Oman">Oman</option>
+                                            <option value="Pakistan">Pakistan</option>
+                                            <option value="Palau">Palau</option>
+                                            <option value="Palestinian Territory, Occupied">Palestinian Territory, Occupied</option>
+                                            <option value="Panama">Panama</option>
+                                            <option value="Papua New Guinea">Papua New Guinea</option>
+                                            <option value="Paraguay">Paraguay</option>
+                                            <option value="Peru">Peru</option>
+                                            <option value="Philippines">Philippines</option>
+                                            <option value="Pitcairn">Pitcairn</option>
+                                            <option value="Poland">Poland</option>
+                                            <option value="Portugal">Portugal</option>
+                                            <option value="Puerto Rico">Puerto Rico</option>
+                                            <option value="Qatar">Qatar</option>
+                                            <option value="Reunion">Reunion</option>
+                                            <option value="Romania">Romania</option>
+                                            <option value="Russian Federation">Russian Federation</option>
+                                            <option value="Rwanda">Rwanda</option>
+                                            <option value="Saint Helena">Saint Helena</option>
+                                            <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                                            <option value="Saint Lucia">Saint Lucia</option>
+                                            <option value="Saint Pierre and Miquelon">Saint Pierre and Miquelon</option>
+                                            <option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
+                                            <option value="Samoa">Samoa</option>
+                                            <option value="San Marino">San Marino</option>
+                                            <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+                                            <option value="Saudi Arabia">Saudi Arabia</option>
+                                            <option value="Senegal">Senegal</option>
+                                            <option value="Seychelles">Seychelles</option>
+                                            <option value="Sierra Leone">Sierra Leone</option>
+                                            <option value="Singapore">Singapore</option>
+                                            <option value="Slovakia">Slovakia</option>
+                                            <option value="Slovenia">Slovenia</option>
+                                            <option value="Solomon Islands">Solomon Islands</option>
+                                            <option value="Somalia">Somalia</option>
+                                            <option value="South Africa">South Africa</option>
+                                            <option value="South Georgia/So. Sandwich Islands">South Georgia/So. Sandwich Islands</option>
+                                            <option value="Spain">Spain</option>
+                                            <option value="Sri Lanka">Sri Lanka</option>
+                                            <option value="Sudan">Sudan</option>
+                                            <option value="Suriname">Suriname</option>
+                                            <option value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
+                                            <option value="Swaziland">Swaziland</option>
+                                            <option value="Sweden">Sweden</option>
+                                            <option value="Switzerland">Switzerland</option>
+                                            <option value="Syrian Arab Republic">Syrian Arab Republic</option>
+                                            <option value="Taiwan">Taiwan</option>
+                                            <option value="Tajikistan">Tajikistan</option>
+                                            <option value="Tanzania, United Republic of">Tanzania, United Republic of</option>
+                                            <option value="Thailand">Thailand</option>
+                                            <option value="Togo">Togo</option>
+                                            <option value="Tokelau">Tokelau</option>
+                                            <option value="Tonga">Tonga</option>
+                                            <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+                                            <option value="Tunisia">Tunisia</option>
+                                            <option value="Turkey">Turkey</option>
+                                            <option value="Turkmenistan">Turkmenistan</option>
+                                            <option value="Turks and Caicos Islands">Turks and Caicos Islands</option>
+                                            <option value="Tuvalu">Tuvalu</option>
+                                            <option value="Uganda">Uganda</option>
+                                            <option value="Ukraine">Ukraine</option>
+                                            <option value="United Arab Emirates">United Arab Emirates</option>
+                                            <option value="United Kingdom">United Kingdom</option>
+                                            <option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
+                                            <option value="Uruguay">Uruguay</option>
+                                            <option value="Uzbekistan">Uzbekistan</option>
+                                            <option value="Vanuatu">Vanuatu</option>
+                                            <option value="Venezuela">Venezuela</option>
+                                            <option value="Viet Nam">Viet Nam</option>
+                                            <option value="Virgin Islands, British">Virgin Islands, British</option>
+                                            <option value="Virgin Islands, U.S.">Virgin Islands, U.S.</option>
+                                            <option value="Wallis and Futuna">Wallis and Futuna</option>
+                                            <option value="Western Sahara">Western Sahara</option>
+                                            <option value="Yemen">Yemen</option>
+                                            <option value="Yugoslavia">Yugoslavia</option>
+                                            <option value="Zambia">Zambia</option>
+                                            <option value="Zimbabwe">Zimbabwe</option>
+                                            <option value="Unknown">Unknown</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-7">
+                                        <label for="attorney-address1"><span class="weight600">&#42;</span> Address line 1</label>
+                                        <input type="text" class="form-control" id="attorney-address1" th:field="*{attorneyAddress1}" required>
+                                    </div>
+                                    <div class="form-group form-group-md col-xs-12 col-xl-6">
+                                        <label for="attorney-address2">Address line 2</label>
+                                        <input type="text" class="form-control" id="attorney-address2" th:field="*{attorneyAddress2}">
+                                    </div>
+                                    <div class="form-group form-group-md col-xs-12 col-xl-6">
+                                        <label for="attorney-address3">Address line 3</label>
+                                        <input type="text" class="form-control" id="attorney-address3" th:field="*{attorneyAddress3}">
+                                    </div>
+                                    <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
+                                        <label for="attorney-city"><span class="weight600">&#42;</span>City</label>
+                                        <input type="text" class="form-control" id="attorney-city" th:field="*{attorneyCity}" required>
+                                    </div>
+                                    <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
+                                        <label for="attorney-state"><span class="weight600">&#42;</span>State</label>
+                                        <select class="form-control" id="attorney-state" th:field="*{attorneyState}" required>
+                                            <option value="">Select</option>
+                                            <option  value="Alabama">Alabama</option>
+                                            <option  value="Alaska">Alaska</option>
+                                            <option value="Arizona">Arizona</option>
+                                            <option value="Arkansas">Arkansas</option>
+                                            <option value="California">California</option>
+                                            <option value="Colorado">Colorado</option>
+                                            <option value="Connecticut">Connecticut</option>
+                                            <option value="Delaware">Delaware</option>
+                                            <option value="District of Columbia">District of Columbia</option>
+                                            <option value="Florida">Florida</option>
+                                            <option value="Georgia">Georgia</option>
+                                            <option value="Hawaii">Hawaii</option>
+                                            <option value="Idaho">Idaho</option>
+                                            <option value="Illinois">Illinois</option>
+                                            <option value="Indiana">Indiana</option>
+                                            <option value="Iowa">Iowa</option>
+                                            <option value="Kansas">Kansas</option>
+                                            <option value="Kentucky">Kentucky</option>
+                                            <option value="Louisiana">Louisiana</option>
+                                            <option value="Maine">Maine</option>
+                                            <option value="Maryland">Maryland</option>
+                                            <option value="Massachusetts">Massachusetts</option>
+                                            <option value="Michigan">Michigan</option>
+                                            <option value="Minnesota">Minnesota</option>
+                                            <option value="Mississippi">Mississippi</option>
+                                            <option value="Missouri">Missouri</option>
+                                            <option value="Montana">Montana</option>
+                                            <option value="Nebraska">Nebraska</option>
+                                            <option value="Nevada">Nevada</option>
+                                            <option value="New Hampshire">New Hampshire</option>
+                                            <option value="New Jersey">New Jersey</option>
+                                            <option value="New Mexico">New Mexico</option>
+                                            <option value="New York">New York</option>
+                                            <option value="North Carolina">North Carolina</option>
+                                            <option value="North Dakota">North Dakota</option>
+                                            <option value="Ohio">Ohio</option>
+                                            <option value="Oklahoma">Oklahoma</option>
+                                            <option value="Oregon">Oregon</option>
+                                            <option value="Pennsylvania">Pennsylvania</option>
+                                            <option value="Rhode Island">Rhode Island</option>
+                                            <option value="South Carolina">South Carolina</option>
+                                            <option value="South Dakota">South Dakota</option>
+                                            <option value="Tennessee">Tennessee</option>
+                                            <option value="Texas">Texas</option>
+                                            <option value="Utah">Utah</option>
+                                            <option value="Vermont">Vermont</option>
+                                            <option value="Virginia">Virginia</option>
+                                            <option value="Washington">Washington</option>
+                                            <option value="West Virginia">West Virginia</option>
+                                            <option value="Wisconsin">Wisconsin</option>
+                                            <option value="Wyoming">Wyoming</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
+                                        <label for="attorney-zipcode"><span class="weight600">&#42;</span> Zip code</label>
+                                        <input type="text" class="form-control" id="attorney-zipcode" placeholder="" th:field="*{attorneyZipcode}" required>
+                                    </div>
+                                    <div class="form-group form-group-md col-xs-12 col-md-7 col-lg-7">
+                                        <label for="attorney-email"><span class="weight600">&#42;</span> Email address</label>
+                                        <input type="text" class="form-control" id="attorney-email" placeholder="email Address" th:field="*{attorneyEmail}" required>
+                                    </div>
+
+                                    <div class="row phones" id="phone1">
+                                        <div class="col-xs-12">
+                                            <div class="form-group form-group-md col-xs-6 col-sm-3">
+                                                <label for="attorney-phonenumbertype">Phone type</label>
+                                                <select class="form-control" id="attorney-phonenumbertype" th:field="*{attorneyPhoneType}"><!--Needs th:field= attribute to capture this value on submit-->
+                                                    <option value="">Type</option>
+                                                    <option value="Cell">Cell</option>
+                                                    <option value="Home">Home</option>
+                                                    <option value="Work">Work</option>
+                                                    <option value="Fax">Fax</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group form-group-md col-xs-6 col-sm-4">
+                                                <label for="attorney-phone">Phone number</label>
+                                                <input type="text" class="form-control" id="attorney-phone" th:field="*{attorneyPhone}">
+                                            </div>
+                                            <div class="form-group form-group-md col-xs-9 col-sm-3">
+                                                <label for="attorney-ext">Ext.</label>
+                                                <input type="text" class="form-control" id="attorney-ext" th:field="*{attorneyPhoneExtension}">
+                                            </div>
+                                            <div class="col-xs-3 col-sm-2 form-group form-group-md visuallyremoved resetphone2">
+                                                <button type="button" class="btn btn-sm close resetphonebtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="appendphones">
+
+                                        <div class="row phones" id="phone2" style="display: none">
+                                            <div class="col-xs-12">
+                                                <div class="form-group form-group-md col-xs-6 col-sm-3">
+                                                    <label for="attorney-phonenumbertype">Phone type</label>
+                                                    <select class="form-control" id="attorney-phonenumbertype2" th:field="*{attorneyPhoneType2}"><!--Needs th:field= attribute to capture this value on submit-->
+                                                        <option value="">Type</option>
+                                                        <option value="Cell">Cell</option>
+                                                        <option value="Home">Home</option>
+                                                        <option value="Work">Work</option>
+                                                        <option value="Fax">Fax</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group form-group-md col-xs-6 col-sm-4">
+                                                    <label for="attorney-phone">Phone number</label>
+                                                    <input type="text" class="form-control" id="attorney-phone2" th:field="*{attorneyPhone2}">
+                                                </div>
+                                                <div class="form-group form-group-md col-xs-9 col-sm-3">
+                                                    <label for="attorney-ext">Ext.</label>
+                                                    <input type="text" class="form-control" id="attorney-ext2" th:field="*{attorneyPhoneExtension2}">
+                                                </div>
+                                                <div class="col-xs-3 col-sm-2 form-group form-group-md  resetphone2">
+                                                    <button type="button" class="btn btn-sm close resetphonebtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row phones" id="phone3" style="display: none">
+                                            <div class="col-xs-12">
+                                                <div class="form-group form-group-md col-xs-6 col-sm-3">
+                                                    <label for="attorney-phonenumbertype">Phone type</label>
+                                                    <select class="form-control" id="attorney-phonenumbertype3" th:field="*{attorneyPhoneType3}"><!--Needs th:field= attribute to capture this value on submit-->
+                                                        <option value="">Type</option>
+                                                        <option value="Cell">Cell</option>
+                                                        <option value="Home">Home</option>
+                                                        <option value="Work">Work</option>
+                                                        <option value="Fax">Fax</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group form-group-md col-xs-6 col-sm-4">
+                                                    <label for="attorney-phone">Phone number</label>
+                                                    <input type="text" class="form-control" id="attorney-phone3" th:field="*{attorneyPhone3}">
+                                                </div>
+                                                <div class="form-group form-group-md col-xs-9 col-sm-3">
+                                                    <label for="attorney-ext">Ext.</label>
+                                                    <input type="text" class="form-control" id="attorney-ext3" th:field="*{attorneyPhoneExtension3}">
+                                                </div>
+                                                <div class="col-xs-3 col-sm-2 form-group form-group-md  resetphone2">
+                                                    <button type="button" class="btn btn-sm close resetphonebtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="form-group form-group-md col-xs-12" aria-label="add additional phone number">
+                                        <div class="row">
+                                            <div class="inlinebuttons btn-group btn-group-justified">
+                                                <div class="btn-group col-xs-6">
+                                                    <button type="button" class="btn btn-sm btn-success addphoneinitial" id="addphoneNumberButton" aria-label="add number">Add Phone Number</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </fieldset><!--END Contact Attorney Information-->
+                            <!--START Docket Reference Information-->
+                            <div class="card-text">
+
+                                <div role="heading" aria-level="2">
+                                    <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#docket-section" aria-controls="docket-section" aria-expanded="false" id="dcoketbtn"><span class="glyphicon glyphicon-triangle-right"></span><span id="toggleglyph" class="glyphicon glyphicon-triangle-bottom visuallyremoved"></span> Docket or Reference Number</button>
+                                </div>
+                            </div>
+                            <div id="docket-section" class="collapse Accordion-panel" role="region" aria-labelledby="dcoketbtn">
+                                <div class="Accordion">
+                                    <p>You may add total of 3 Docket Numbers when creating an new attorney, and you may add more docket numbers in the application attorney edit module.</p>
+                                </div>
+                            </div>
+
+                            <fieldset aria-labelledby="docketreference">
+                                <div class="row docket" id="docket1">
+                                    <div class="form-group form-group-md col-xs-9">
+                                        <label for="docket-id1">If applicable, enter the attorney docket or reference number.</label>
+                                        <input type="text" class="form-control" id="docket-id1" th:field="*{attorneyDocketNumber}">
+                                    </div>
+                                    <div class="form-group form-group-md visuallyremoved resetdkt col-xs-3" style="bottom: -30px; left:-111px;">
+                                        <button type="button" class="btn btn-sm close resetdktrefbtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                                    </div>
+                                </div>
+                                <div class="appenddocket">
+                                    <div class="row docket" id="docket2"  style="display: none;">
+                                        <div class="form-group form-group-md col-xs-9">
+                                            <label for="docket-id2">If applicable, enter the attorney docket or reference number.</label>
+                                            <input type="text" class="form-control" id="docket-id2" th:field="*{attorneyDocketNumber2}">
+                                        </div>
+                                        <div class="form-group form-group-md  resetdkt col-xs-3" style="bottom: -30px; left:-111px;">
+                                            <button type="button" class="btn btn-sm close resetdktrefbtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                                        </div>
+                                    </div>
+
+                                    <div class="row docket" id="docket3" style="display: none;">
+                                        <div class="form-group form-group-md col-xs-9">
+                                            <label for="docket-id3">If applicable, enter the attorney docket or reference number.</label>
+                                            <input type="text" class="form-control" id="docket-id3"  th:field="*{attorneyDocketNumber3}">
+                                        </div>
+                                        <div class="form-group form-group-md resetdkt col-xs-3" style="bottom: -30px; left:-111px;">
+                                            <button type="button" class="btn btn-sm close resetdktrefbtn" value="" aria-label="remove this number"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="form-group form-group-md col-xs-12">
+                                    <div class="row">
+                                        <div class="inlinebuttons btn-group btn-group-justified">
+                                            <div class="btn-group col-xs-6">
+                                                <button type="button" class="btn btn-sm btn-success addinitialDocket" id="addocketrefButton" aria-label="add docket or reference number">Add Docket Number</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset><!--END Docket Reference Information-->
+                            <!--START Affiliation Information-->
+                            <div class="card-text">
+                                <h2 class="card-title weight600" id="affiliation">Affiliation Information</h2>
+                            </div>
+                            <fieldset aria-labelledby="affiliation">
+                                <div class="row">
+                                    <div class="form-group form-group-md col-xs-12">
+                                        <label for="attorney-bar-standing">Attorney Bar Info <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
+                                        <select class="form-control" id="attorney-bar-standing" th:field="*{attorneyAffiliation}" >
+                                            <option value="">Select</option>
+                                            <option value="usaffiliation">U.S. Attorney in good standing</option>
+                                            <option value="canadianaffiliation">Canadian agent or attorney</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div id="usaffiliation" role="region" aria-labelledby="affiliation" class="hidethis" style="display: none;">
+                                    <div class="row">
+                                        <div class="form-group form-group-md col-xs-12 col-md-3">
+                                            <label for="attorney-bar-jurisdiction">Bar Jurisdiction <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
+                                            <select class="form-control" id="attorney-bar-jurisdiction" name="attorneyBarJurisdiction">
+                                                <option value="">Select</option>
+                                                <option  value="Alabama">Alabama</option>
+                                                <option  value="Alaska">Alaska</option>
+                                                <option value="Arizona">Arizona</option>
+                                                <option value="Arkansas">Arkansas</option>
+                                                <option value="California">California</option>
+                                                <option value="Colorado">Colorado</option>
+                                                <option value="Connecticut">Connecticut</option>
+                                                <option value="Delaware">Delaware</option>
+                                                <option value="District of Columbia">District of Columbia</option>
+                                                <option value="Florida">Florida</option>
+                                                <option value="Georgia">Georgia</option>
+                                                <option value="Hawaii">Hawaii</option>
+                                                <option value="Idaho">Idaho</option>
+                                                <option value="Illinois">Illinois</option>
+                                                <option value="Indiana">Indiana</option>
+                                                <option value="Iowa">Iowa</option>
+                                                <option value="Kansas">Kansas</option>
+                                                <option value="Kentucky">Kentucky</option>
+                                                <option value="Louisiana">Louisiana</option>
+                                                <option value="Maine">Maine</option>
+                                                <option value="Maryland">Maryland</option>
+                                                <option value="Massachusetts">Massachusetts</option>
+                                                <option value="Michigan">Michigan</option>
+                                                <option value="Minnesota">Minnesota</option>
+                                                <option value="Mississippi">Mississippi</option>
+                                                <option value="Missouri">Missouri</option>
+                                                <option value="Montana">Montana</option>
+                                                <option value="Nebraska">Nebraska</option>
+                                                <option value="Nevada">Nevada</option>
+                                                <option value="New Hampshire">New Hampshire</option>
+                                                <option value="New Jersey">New Jersey</option>
+                                                <option value="New Mexico">New Mexico</option>
+                                                <option value="New York">New York</option>
+                                                <option value="North Carolina">North Carolina</option>
+                                                <option value="North Dakota">North Dakota</option>
+                                                <option value="Ohio">Ohio</option>
+                                                <option value="Oklahoma">Oklahoma</option>
+                                                <option value="Oregon">Oregon</option>
+                                                <option value="Pennsylvania">Pennsylvania</option>
+                                                <option value="Rhode Island">Rhode Island</option>
+                                                <option value="South Carolina">South Carolina</option>
+                                                <option value="South Dakota">South Dakota</option>
+                                                <option value="Tennessee">Tennessee</option>
+                                                <option value="Texas">Texas</option>
+                                                <option value="Utah">Utah</option>
+                                                <option value="Vermont">Vermont</option>
+                                                <option value="Virginia">Virginia</option>
+                                                <option value="Washington">Washington</option>
+                                                <option value="West Virginia">West Virginia</option>
+                                                <option value="Wisconsin">Wisconsin</option>
+                                                <option value="Wyoming">Wyoming</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group form-group-md col-xs-12 col-md-5">
+                                            <label for="bar-membership-number">Membership Number <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
+                                            <input type="text" class="form-control" id="bar-membership-number" name="attorneyBarMembershipNumber" value="">
+                                        </div>
+                                        <div class="form-group form-group-md col-xs-12 col-md-4">
+                                            <label for="bar-membership-date">Date of Admission <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
+                                            <input type="date" class="form-control" id="bar-membership-date" name="attorneyBarAdmissionDate" value="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group form-group-md">
+                                        <div>
+                                            <label class="small long upload-drop-zone" for="file"><span class="glyphicon glyphicon-upload"></span> <br>
+                                                Upload bar credentials, including certificate of good standing from highest court of a state, commonwealth, territory or possession, or of the District of Columbia evidencing that you are a memeber of the bar of such court and are in good standing.</label>
+                                            <input type="file" id="file" name="file" class="form-control" accept=".jpg,.tiff,.png,.pdf">
+                                        </div><!-- Drop Zone -->
+
+
+                                        <div class="row">
+                                            <div class="js-upload-finished col-xs-12">
+                                                <p id="uploadedfile">Selected files</p>
+                                                <div class="list-group" id="filedata">
+                                                    <div class="list-group-item list-group-item-success fileholder col-xs-12" role="alert"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <h4 class="weight600">Acknowledgement of Certification in Good Standing <span class="label label-info subtle visuallyremoved">Reduced Fee</span></h4>
+                                    <div class="form-group form-group-md">
+                                        <input class="form-check-input checkmark" type="checkbox" value="check" aria-checked="false" tabindex="0" aria-labelledby="userAccept-label" id="user-accept-checkbox" name="usCertifyCheckbox" >
+                                        <label class="form-check-label form-check long" for="user-accept-checkbox" id="userAccept-label"><span class="radio notspecial">I certify that this attorney is in good standing with a bar of the highest court of any US State, the District of Columbia, the US Commonwealths or US Territories. I also certify that the uploaded bar credentials and certificate of good standing are accurate, and agree to upload the certificate once I click "Next."</span></label>
+                                    </div>
+
+                                </div> <!-- end of u.s affiliation -->
+                                <div id="canadianaffiliation" role="region" aria-labelledby="affiliation" class="hidethis"  style="display: none;">
+                                    <div class="form-group">
+                                        <label class="small" for="ca-attornery-query">Please select a name from the registered OED list from Canadian Trademark and Patent Agents</label>
+                                        <span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr;">
+                                                <input class="tt-hint" type="text" autocomplete="off" spellcheck="off" disabled="" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
+                                                <input class="form-control tt-query" name="attorneyCAagentName" id="ca-attornery-query" placeholder="" type="text" value="" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: rgb(255, 255, 255);">
+                                                    <span style="position: absolute; left: -9999px; visibility: hidden; white-space: nowrap; font-family: 'Segoe UI', 'Helvetica Neue', Tahoma, Arial; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;">a</span>
+                                                        <span class="tt-dropdown-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none; right: auto;">
+                                                            <div class="tt-dataset-0" style="display: none;">
+                                                                <span class="tt-suggestions" style="display: block;"></span>
+                                                            </div>
+                                                        </span>
+                                                    </span>
+                                        </span>
+                                    </div><!--END Li's form-group-->
+                                    <div class="form-group">
+                                        <input class="form-check-input checkmark" type="checkbox" value="" aria-checked="false" tabindex="0" aria-labelledby="notCAList-label" id="notOnCAlist" name="notCAList-checkbox">
+                                        <label class="form-check-label form-check" for="notOnCAlist" id="notCAList-label"><span class="radio notspecial">I can not find my name in the list.</span></label>
+                                    </div>
+                                    <p id="canadalocation">Is the applicant located in Canada?</p>
+                                    <div role="radiogroup" aria-labelledby="canadalocation">
+                                        <label for="applicantCATrue" class="radio-inline"><input type="radio" name="applicantCA" value="true" id="applicantCATrue">Yes</label>
+                                        <label for="applicantCAFalse" class="radio-inline"><input type="radio" name="applicantCA" value="false" id="applicantCAFalse">No</label>
+                                    </div><!--END radiogroup-->
+                                </div><!--END canadian affiliation-->
+                                <div class="row" style="display:none; max-height: 1px;">
+                                    <input id="appInternalIDForm" type="text" th:field="*{appInternalID}"   class="form-control"   style=" width:1px;">
+                                    <input id="actionIDForm" type="text" th:field="*{actionID}"   class="form-control"   style=" width:1px;">
+                                </div>
+
+
+                            </fieldset><!--END Affiliation Information-->
+
+
+                        </form><!--END Attorney Form-->
+
+                    </div><!--END attorney toggle area-->
+
+                </div>
+            </div>
+            <div class="inlinebuttons btn-group btn-group-justified  owner-paging-buttons" role="nav" aria-label="view previous or next page" id="prevnxt">
+
+
+                <div class="btn-group" id="formSubmitNextButtonGroup" style="">
+                    <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next" disabled>Next
+                        <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div>
+                    </button>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</div><!--END container-fluid-->
+
+
+<div class="container-fluid stickycomponents">
+    <div id="chats">
+        <div class="row">
+
+            <section class="col-xs-7 col-sm-6 col-md-6 col-lg-6 col-xs-offset-5 col-sm-offset-6 col-md-offset-6 col-lg-offset-6 weight600" aria-label="your data" id="mydata2">
+                <div class="panel-group">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" id="contacts">
+                            <h4 class="panel-title">
+                                <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#collapse2" aria-controls="collapse2" aria-expanded="false" id="contactsbtn" aria-label="toggle contacts panel"><span id="toggleglyphone" class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span><span id="toggleglyph" class="glyphicon glyphicon-triangle-top visuallyremoved" aria-hidden="true"></span>Contacts</button>
+                            </h4>
+                            <button type="button" id="closecontacts" class="close" data-target="#mydata2" aria-label="Close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                        </div>
+                        <div id="collapse2" class="panel-collapse collapse" aria-labelledby="contactsbtn">
+
+                            <table class="list-group table-fixed" role="grid" aria-label="contacts">
+
+                                <tbody>
+                                <tr class="row">
+                                    <td tabindex="0" class="list-group-item col-xs-6"></td>
+                                    <td tabindex="0" class="list-group-item inner-addon right-addon col-xs-6"><i class="glyphicon glyphicon-search" aria-hidden="true"></i><input type="text" class="form-control" id="contactsearch" placeholder="" aria-label="search"></td>
+                                </tr>
+                                <tr class="row">
+                                    <td class="nopadding" colspan="2">
+                                        <table class="list-group table" role="grid" id="contactssearch">
+
+                                            <tbody class="scroll">
+                                            <th:block th:each="contact : ${user.getAttorneyManagedContact()}">
+
+                                                <tr class="row">
+                                                    <td tabindex="0" class="list-group-item col-xs-6"><a href="#" class="fromcontact" id="managedContactFillFormAction" ><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><span class="glyphicon glyphicon-ok-sign visuallyremoved" aria-hidden="true"></span></a> <b th:text="${contact.displayName}">Avo Reed</b></td>
+                                                    <td tabindex="0" class="list-group-item col-xs-6" th:text="${contact.email}">avo.reid@us.gt.com</td>
+                                                </tr>
+
+                                            </th:block>
+                                            </tbody>
+
+
+                                        </table>
+
+
+
+
+                                    </td>
+
+                                </tr>
+
+
+
+
+                                </tbody>
+
+
+                            </table>
+                        </div>
+                    </div>
+                </div><!--END contacts-->
+            </section>
+        </div><!--END row-->
+    </div><!--END chats-->
+</div><!--END div container-fluid-->
+
+
+
+
+
+
+
+<!--load model attribute for Jquery consumption  -->
+<script th:inline="javascript">
+
+    /*<![CDATA[*/
+
+
+    var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
+    var attorneyOpt = /*[[${baseTrademarkApplication.isAttorneyFiling()}]]*/ 'User Name';
+
+    var ownerOpt = /*[[${baseTrademarkApplication.isOwnerSet()}]]*/ 'User Name';
+
+
+    var isAttorneyOptionSet = /*[[${isAttorneyOptionSet}]]*/ 'User Name';
+
+
+
+    var isAttorneyFiling = /*[[${isAttorneyFiling}]]*/ 'User Name';
+
+
+
+    var isAttorneyPoolEmpty = /*[[${baseTrademarkApplication.isAttorneyPoolEmpty()}]]*/ 'User Name';
+
+
+    var host_name= /*[[${hostBean.host}]]*/ 'User Name';
+    var host_port= /*[[${hostBean.port}]]*/ 'User Name';
+
+
+
+    var managedContactNames = /*[[${myManagedContacts.ContactNames}]]*/ 'User Name';
+    var managedContactEmails = /*[[${myManagedContacts.ContactEmails}]]*/ 'User Name';
+    var managedContactTypes = /*[[${myManagedContacts.contactEntitySubType}]]*/ 'User Name';
+
+    var selectedContacts = /*[[${selectedAttorneys.ContactEmails}]]*/ 'User Name';
+
+    var host = host_name+":"+host_port;
+
+
+
+    var  image_path = /*[[${markImagePath}]]*/ 'User Name';
+    var  image_pathBW = /*[[${markImagePathBW}]]*/ 'User Name';
+    var colorClaim = /*[[${markColorClaim}]]*/ 'User Name';
+    var acceptBW = /*[[${markColorClaimBW}]]*/ 'User Name';
+    var colorClaimSet = /*[[${colorClaimSet}]]*/ 'User Name';
+    var markType = /*[[${markType}]]*/ 'User Name';
+    var markText = /*[[${markText}]]*/ 'User Name';
+
+
+    var breadCrumbStatus = /*[[${breadCrumbStatus}]]*/ 'User Name';
+
+    var validateTEAS =  /*[[${baseTrademarkApplication.isValidateTEASFields()}]]*/ 'User Name';
+
+    var actionID = /*[[${actionID}]]*/ 'User Name';
+
+
+
+
+    /*]]>*/
+</script>
+
+
+<script>
+
+    var nextLinkURL = "../../application/AttorneySet/?trademarkID="+appInternalID;
+    var prevLinkURL = "../../accounts/dashboard";
+
+    var nextLinkURLAttorneyFalse = "../../application/OwnerStart/?trademarkID="+appInternalID;
+
+    var bsLink1 = "../../application/OwnerSetView/?trademarkID="+appInternalID;
+
+    var bsLink2_active =  "../../application/MarkDetails/?trademarkID="+appInternalID;
+    var bsLink2_done =  "../../application/MarkDetails/?trademarkID="+appInternalID;
+
+    var bsLink3_active =  "../../application/goodsAndServicesStart/?trademarkID="+appInternalID;
+    var bsLink3_done =  "../../application/goodsAndServicesReview/?trademarkID="+appInternalID;
+
+
+
+
+    var bsLink4_active = "../../application/filingBasisStart/?trademarkID="+appInternalID;
+    var bsLink4_done = "../../application/filingBasisStart/?trademarkID="+appInternalID;
+
+
+
+    var bsLink5_active =  "../../application/additionalInfoUpload/?trademarkID="+appInternalID;
+    var bsLink5_done =  "../../application/additionalInfoUpload/?trademarkID="+appInternalID;
+
+
+
+
+    var bsLink6_active =  "../../application/confirmInfo/?trademarkID="+appInternalID;
+    var bsLink6_done =  "../../application/confirmInfo/?trademarkID="+appInternalID;
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+<!-- end of main content-->
+
+
+
+
+
+
+
+<script>
+
+
+    // next link url to enable  for u.s individual href="http://localhost:8080/application/owner/info"
+    $(document).ready(function() {
+
+        setTimeout(function() {
+            // after 1000 ms we add the class animated to the login/register card
+            $('.content').fadeIn(500);
+        }, 500);
+
+        var activeDocketNumberCount = 1;
+        var activePhoneNumberCount = 1;
+
+        $('#appInternalIDForm').val(appInternalID);
+
+        $('#actionIDForm').val(actionID);
+
+        // hide managed contacts by default
+
+        $('.glyphicon-remove').click();
+
+
+        // expand fee drop down
+        $('a.dropdown-toggle').click();
+
+
+
+        //////////////////////////////////////////////////////////////////
+        // persistence rendering logic for TEAS plus field labels
+        //////////////////////////////////////////////////////////////////
+        if(validateTEAS == true){
+            $('input.togglesavemore').attr("checked",true);
+            $( document ).find('span.subtle').removeClass('visuallyremoved');
+            $( document ).find('#on').removeClass('visuallyhidden');
+
+        }
+        else{
+            $( document ).find('span.subtle').addClass( 'visuallyremoved' );
+        }
+        //////////////////////////////////////////////////////////////////
+        // prevent future dates for date input fields
+        //////////////////////////////////////////////////////////////////
+        preventFutureDate();
+        //////////////////////////////////////////////////////////////////
+        // set bread crumb based on application status
+        //////////////////////////////////////////////////////////////////
+
+        if(markType == "Standard Character"){
+
+            if(markText  != null && markText != ""){
+
+                $( '#togglepop' ).attr('data-content', '<div class="media"><span id="showmarktxt" style="min-width:77px;width:80px;margin:0 auto;font-family: Palatino, Garamond, Bookman, Avant Garde; font-size:.9em;text-align:center;margin-bottom:0;" class="media-object" alt="my trademark">'+markText+'</span></div>');
+            }
+            else{
+                $( '#togglepop' ).attr('data-content', '<div class="media"><span class="glyphicon glyphicon-picture" aria-hidden="true"  style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></span></div>');
+            }
+
+        }
+        else {
+
+            if(colorClaimSet == false){
+
+                if(image_path != null && image_path != ""){
+
+                    $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+                }
+                // set color claim to true be default when its not set yet
+                else{
+
+                    $( '#togglepop' ).attr('data-content', '<div class="media"><span class="glyphicon glyphicon-picture" aria-hidden="true"  style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></span></div>');
+                }
+
+            }
+            else {
+
+                if(colorClaim == false){
+
+                    if(acceptBW == true){
+                        // $('#inlineRadio2').click();
+                        // $('#bwmark').click();
+
+                        $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_pathBW+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+
+                    }
+                    else{
+                        if(image_path != null && image_path != ""){
+
+                            $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+
+
+                        }
+
+                    }
+
+                }
+                if(colorClaim == true){
+                    // $('#inlineRadio1').click();
+                    if(image_path != null && image_path != ""){
+
+                        $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+
+
+                    }
+                }
+
+
+            }
+
+
+
+
+        }
+
+
+
+
+
+        //////////////////////////////////////////////////////////////////////
+        // AJAx auto save triggers
+        //////////////////////////////////////////////////////////////////////
+
+        ////////////////////////////////////////////////////////////
+        // show and hide attorney form actions
+        ////////////////////////////////////////////////////////////
+        $('#inlineRadio015').click( function () {
+            ////////////////////////////////////////////////////////////
+            // call back end update ...
+            // signal uppate occurred
+            // wait for the confirm message first.
+            ////////////////////////////////////////////////////////////
+
+            saveProjectInfo("set-lawyer-options-value", "yes", appInternalID);
+
+            // loads form // done by another script
+            // show auto fill button
+            $('#autofill').fadeIn(500);
+            // show clear form button
+
+            // next button behavior not determined (can be form submit or just going to the next page)
+            // but enabled
+
+
+
+            $('#nextButtonFormPaging').attr("disabled",true);
+
+        });
+
+
+
+        /////////////////////////////////////////////////////////////
+        // action listeners on radio buttons
+        ////////////////////////////////////////////////////////////
+        $('#inlineRadio016').click( function () {
+            ////////////////////////////////////////////////////////
+            // call back end update ...
+            ////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////
+            // remove any selected contacts from application object
+            ////////////////////////////////////////////////////////
+
+            // call set attorney options ...for project
+            setTimeout(function() {
+                saveProjectInfo("set-lawyer-options-value", "no", appInternalID);
+            }, 555);
+
+            nextLinkURL = nextLinkURLAttorneyFalse;
+            $('#nextButtonFormPaging').attr("disabled",false);
+        });
+        ////////////////////////////////////////////////////////////////
+
+        $('#prevButton').click(function () {
+            location.href=prevLinkURL;
+        });
+
+        $('#nextButtonFormPaging').click(function () {
+            //location.href=nextLinkURL;
+            if($('#inlineRadio016').is(":checked")){
+
+                location.href=nextLinkURL;
+            }
+            else{
+                // check if yes radio is clicked
+                if($('#inlineRadio015').is(":checked")) {
+
+                    // start check fields
+
+                    // if all fields are empty
+                    // and lawyer pool not empty
+                    // send to next page
+
+                    if (isAttorneyPoolEmpty == false) {
+                        // call jquery click
+                        // set next link to attorney view
+                        // activate link
+                        location.href=nextLinkURL;
+                        //$('#nextButtonFormPaging').attr("disabled",false);
+
+
+                    }
+                } // we will handle turning the button to submit in another jquery
+
+            }
+        });
+
+
+
+        // if this works, then add it to populate form with contacts data js call
+
+
+
+
+
+        //////////////////////////////////////////////////////////////
+        //  persistence logic
+        //////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////
+        // check if attorneyFillingFalse is set
+        /////////////////////////////////////////////////////////////
+        if(isAttorneyOptionSet == true){
+
+            if(isAttorneyFiling == true){
+                if(isAttorneyPoolEmpty == true){
+                    // call jquery click
+                    // set next link to attorney view
+                    // activate link
+                    $('#inlineRadio015').click();
+                    $('#formSubmitNextButtonGroup').fadeOut();
+                    $('#formPagingNextButtonGroup').fadeIn();
+                    $('#nextButtonFormPaging').attr("disabled",false);
+
+                }
+                else {
+                    // fade in submit button???
+                    // how to handel toggling between upload and next button
+                    $('#inlineRadio015').click();
+                    $('#formSubmitNextButtonGroup').fadeIn();
+                    $('#formPagingNextButtonGroup').fadeOut();
+                    $('#nextButtonFormPaging').attr("disabled",false);
+                }
+
+            }
+            else{
+                // call jquery click
+                // no attorney, option set
+                // set next link to owner page
+                // activate next link
+                $('#inlineRadio016').attr("checked", true);
+
+                $('#formSubmitNextButtonGroup').fadeOut();
+                $('#formPagingNextButtonGroup').fadeIn();
+                nextLinkURL = nextLinkURLAttorneyFalse;
+                $('#nextButtonFormPaging').attr("disabled",false);
+            }
+        }
+
+
+        //////////////////////////////////////////
+        // show drop downs
+        //////////////////////////////////////////
+
+
+        ////////////////////////////////////////////////////
+        // enable next button on select drop down completion
+        ////////////////////////////////////////////////////
+
+
+        ///////////////////////////////////////////////////////////
+
+
+        // sort and redraw to line up columns
+        $('[data-toggle="tooltip"]').tooltip();
+        // widget actions
+
+
+
+
+
+        $('a.fromcontact').click(function () {
+
+            var contactEmail = $(this).parent().next().html();
+            $('#formPagingNextButtonGroup').fadeOut();
+            $('#formSubmitNextButtonGroup').fadeIn();
+
+            setformWithManagedContact(contactEmail);
+            $('#nextButton').attr("disabled", false);
+            $('#nextButton').attr("form", "addNewAttorneyForm");
+            $('#nextButton').attr("type", "submit");
+            $('#nextButton').attr("id", "contactSumbit");
+
+
+        });
+
+
+        $('input.form-control').focusout(function () {
+
+            if($(this).val() != "") {
+                $('#formPagingNextButtonGroup').fadeOut();
+                $('#formSubmitNextButtonGroup').fadeIn();
+                $('#nextButton').attr("disabled", false);
+                $('#nextButton').attr("form", "addNewAttorneyForm");
+                $('#nextButton').attr("type", "submit");
+                $('#nextButton').attr("id", "contactSumbit");
+            }
+
+        });
+
+
+
+        $( "#clearfill" ).click(function() {
+            $( 'input#attorney-first-name' ).val( '' );
+            $( 'input#title' ).val( '' );
+            $( 'input#attorney-last-name' ).val( '' );
+            $( '#suffix' ).val( );
+            $( 'input#attorney-lawfirm-name' ).val( '' );
+            $( '#attorney-country' ).val( );
+            $( 'input#attorney-address1' ).val( '' );
+            $( 'input#attorney-city' ).val( '' );
+            $( '#attorney-state' ).val('' );
+            $( 'input#attorney-zipcode' ).val( '' );
+            $( 'input#attorney-email' ).val( '' );
+            $( 'input#attorney-phonenumbertype' ).val( );
+            $( 'input#attorney-phone' ).val( '' );
+
+            $('#formSubmitNextButtonGroup').fadeOut();
+            $('#formPagingNextButtonGroup').fadeIn();
+
+
+            if(isAttorneyPoolEmpty == true){
+                $('#nextButtonFormPaging').attr("disabled", true);
+            }
+        });
+
+
+
+        // attorney docket number add
+
+        $('#addocketrefButton').click(function () {
+
+            activeDocketNumberCount++;
+
+
+            if(activeDocketNumberCount == 2){
+                $('#docket2').show(500);
+            }
+            if(activeDocketNumberCount == 3){
+
+                if($('#docket3').is(':visible')){
+                    $('#docket2').show(500);
+                }
+                else {
+                    $('#docket3').show(500);
+                }
+
+            }
+
+        });
+
+
+
+        //attorney docket number remove
+        $( document ).on('click','.resetdktrefbtn',function(){
+
+            activeDocketNumberCount--;
+            $( this ).parent().parent().hide(500);
+
+        });
+
+
+
+        // phone number add
+
+        $('#addphoneNumberButton').click(function () {
+
+            activePhoneNumberCount++;
+
+
+            if(activePhoneNumberCount == 2){
+                $('#phone2').show(500);
+            }
+            if(activePhoneNumberCount == 3){
+
+                if($('#phone3').is(':visible')){
+                    $('#phone2').show(500);
+                }
+                else {
+                    $('#phone3').show(500);
+                }
+
+
+            }
+
+        });
+
+        //attorney docket number remove
+        $( document ).on('click','.resetphonebtn',function(){
+
+            activePhoneNumberCount--;
+            $( this ).parent().parent().parent().hide(500);
+
+
+        });
+
+
+
+
+        //file upload inputs
+        $(document).on('change', 'input[type="file"]', function(e) {
+            var fileDisplayArea = $(this).siblings('label').children( 'div.fileDisplayArea' );
+            //var fileDisplayArea = ('.fileDisplayArea');
+            var file = e.target.files[0];
+            var name = e.target.files[0].name;
+            var type = e.target.files[0].type;
+            var listlength = $(this).parent().next().children('js-upload-finished').children('list-group').children('div.fileholder div.row').length + 1;
+            var holdata = $(this).parent().parent().find('div.fileholder');
+            var hidethis = $(this).parent().contents();
+            //var fileName = e.target.files[0].name;
+            var imageType = /image.*/;
+            if (file.type.match(imageType)) {
+                if ((listlength) < 2)  {
+                    //console.log(listlength);
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $(fileDisplayArea).addClass('loader').html("");
+                        // Create an image
+                        var img = new Image();
+                        // Set the img src
+                        img.src = reader.result;
+
+
+                        var imgSrc = img.src;
+
+                        // display the image on the page
+                        $(fileDisplayArea).removeClass('loader').append(img);
+                        $( '.upload-drop-zone' ).css('height','115px');
+                        $( '.upload-drop-zone img' ).css('height','64px');
+                        $( '.thumbnail img' ).css('height','20px');
+                        $(holdata).append('<div class="row"><div class="col-xs-2"><button type="button" class="btn btn-sm close" aria-label="remove file selection"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button></div><div class="col-xs-4 linkholder"><a href="'+ imgSrc + '" aria-labelledby="uploadedfile" download>' + name + '</a></div><div class="col-xs-2"><img src="' + imgSrc + '" class="img-thumbnail"></div><div class="col-xs-4"><span class="badge alert-success pull-right">Selected File</span></div></div>');
+                        //console.log(holdata);
+                    }
+                    if ((listlength) == 1)  {
+                        $( hidethis ).hide();
+                    }
+                    //if ((listlength) == 0)  {
+                    //$( '.upload-drop-zone' ).show();
+                    //}
+                    if (file) {
+                        reader.readAsDataURL(file);
+                    }
+                }
+            }
+            else
+            {
+
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    if (( listlength ) < 2)  {
+                        $( fileDisplayArea ).addClass( 'loader' ).html("");
+                        // Create a file
+                        var dataURL = reader.result;
+
+                        var imgSrc;
+
+                        if(name.indexOf(".pdf") > 0 || name.indexOf(".PDF") > 0){
+                            imgSrc = "../../resources/images/pdf-icon.png"
+                        }
+                        $( fileDisplayArea ).removeClass( 'loader' );
+                        $( fileDisplayArea ).html( '<span class="glyphicon glyphicon-check"></span>' );
+                        $(holdata).append('<div class="row"><div class="col-xs-2"><button type="button" class="btn btn-sm close" aria-label="remove file selection"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button></div><div class="col-xs-4 linkholder"><a href="'+ imgSrc + '" aria-labelledby="uploadedfile" download>' + name + '</a></div><div class="col-xs-2"><img src="' + imgSrc + '" class="img-thumbnail"></div><div class="col-xs-4"><span class="badge alert-success pull-right">Selected File</span></div></div>');
+                        //console.log(dataURL);
+                    }
+                    if ((listlength) == 1)  {
+                        $( hidethis ).hide();
+                    }
+//					if ((listlength) == 0)  {
+//						$( '.upload-drop-zone' ).show();
+//					}
+                }
+                if (file) {
+                    reader.readAsDataURL(file);
+                }
+            }
+        });
+
+
+
+        //START remove selected file
+        $(document).on('click', '.js-upload-finished button.close', function() {
+            $( 'input[type="file"]' ).val('');
+            $( '.hidethis' ).contents().css('display','block');
+            $( '.upload-drop-zone' ).css('height','115px');
+            $( '#usaffiliation .upload-drop-zone' ).css('height','175px');
+            $( '#usaffiliation .upload-drop-zone' ).css('display','block');
+            $( this ).parent().parent().remove();
+            $( 'div.fileDisplayArea img' ).remove();
+            $( 'div.fileDisplayArea' ).html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Select File</div>');
+        });
+
+
+
+
+    }); // end of document ready()
+
+
+
+    // validation function
+    function validateAttorneyForm()
+    {
+
+        var formError = false;
+        var errorMsg = "";
+        // check if contact attempted to add already in application
+        for(var a=0; a < selectedContacts.length; a++){
+            if($('#attorney-email').val() == selectedContacts[a]){
+                formError = true;
+                errorMsg = "this new contact is already added to this application as an attorney.";
+            }
+        }
+
+
+
+        for(var b=0; b < managedContactEmails.length; b++){
+
+            if($('#attorney-email').val() == managedContactEmails[b]){
+                if(managedContactTypes[b] == "owner"){
+                    formError = true;
+                    errorMsg = "this new contact has email address matching an owner contact.";
+                }
+            }
+        }
+
+
+        if(formError)
+        {
+            alert(errorMsg);
+
+            return false;
+        }
+        else{
+            return true;
+        }
+
+
+    }
+
+    function setformWithManagedContact(email) {
+
+        //////////////////////////////////////////////////////////////////////////////////////
+        // we need REST controller of finding a contact by its email
+        // this needs to be implemented on the PTOUser object
+        //////////////////////////////////////////////////////////////////////////////////////
+
+        $.ajax({
+            //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
+            url: "../../REST/apiGateway/user/managedContact/get/"+email,
+
+            type: 'GET',
+            success: function(data){
+
+
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                if(s_code.trim() == "200"){
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    //$(".autoSaveMessageArea span").fadeOut(500);
+
+                    var firstName = getFieldValueFromResponse(s_msg,"firstName");
+                    if(firstName != "null"){
+                        $('#attorney-first-name').val(firstName);
+
+                    }
+                    var middleName = getFieldValueFromResponse(s_msg,"middleName");
+                    if(middleName != "null"){
+                        $('#attorney-middle-name').val(middleName);
+
+                    }
+                    var lastName = getFieldValueFromResponse(s_msg,"lastName");
+                    if(lastName != "null"){
+                        $('#attorney-last-name').val(lastName);
+
+                    }
+                    var suffix = getFieldValueFromResponse(s_msg,"suffix");
+                    if(suffix != "null"){
+                        $('#suffix').val(suffix);
+
+                    }
+                    var country = getFieldValueFromResponse(s_msg,"country");
+                    if(country != "null"){
+                        $('#attorney-country').val(country);
+
+                    }
+
+                    var address1 = getFieldValueFromResponse(s_msg,"address");
+                    if(address1 != "null"){
+                        $('#attorney-address1').val(address1);
+                    }
+
+                    var city = getFieldValueFromResponse(s_msg,"city");
+                    if(city != "null"){
+                        $('#attorney-city').val(city);
+                    }
+                    var state = getFieldValueFromResponse(s_msg,"state");
+                    if(state != "null"){
+
+
+                        $('#attorney-state').val(state);
+                    }
+                    var zipcode = getFieldValueFromResponse(s_msg,"zipcode");
+                    if(zipcode != "null"){
+                        $('#attorney-zipcode').val(zipcode);
+                    }
+                    var email_result = getFieldValueFromResponse(s_msg,"email");
+                    if(email_result != "null"){
+                        $('#attorney-email').val(email_result);
+                    }
+                    var phone = getFieldValueFromResponse(s_msg,"phone");
+                    if(phone != "null"){
+                        $('#attorney-phone').val(phone);
+                    }
+
+
+
+                    //alert(firstName);
+
+
+                    setTimeout(function() {
+                        // after 1000 ms we add the class animated to the login/register card
+                        //  $(".autoSaveMessageArea span").text(s_msg);
+                        // $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+
+
+                }
+                else{
+                    //$('.circle-loader').fadeOut(100);
+                    //$('.x-mark').fadeIn(500);
+                    //$(".validationMsgArea span").text(s_msg);
+                    //$(".validationMsgArea span").css('color','red');
+                }
+
+            },
+            error: function(data) {
+
+                //$('.circle-loader').fadeOut(100);
+                //$('.x-mark').fadeIn(500);
+
+                console.log(data);
+                // set message to div area ...fields can not be left null
+                //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                //$(".validationMsgArea span").css('color','red');
+            }
+
+        });
+
+    } // end of function
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    /////////////////////////////////////////////////////
+    // aJAX
+    /////////////////////////////////////////////////////
+    function saveProjectInfo(field_name_prefix, field_value, application_internal_id) {
+        //alert(field_name_prefix);
+        // send state, and token to server
+        // token will be generated in the controller and added to the view
+        // similar to how access token works ...a token is tied to a user
+        // access token will be passed in through model
+        //
+        // var tokenValue = '${token}';  // token is the model attribute name
+        // we are not using secured tokens for the prototype
+        // we will secure it by adding ssl and https support
+        //var field_value = $(this).val();
+        //alert(field_value);
+        $.ajax({
+            //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
+            url: "../../REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+application_internal_id,
+            type: 'GET',
+            success: function(data){
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+                if(s_code.trim() == "200"){
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    // add time stamp from server side
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function() {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+                    // animation rendering control
+                    //if($('.state-checkmark').css('display') == 'block'){
+                    if($( "."+field_name_prefix.toLowerCase()+"-animation").css('display') == 'block'){
+                        $("."+field_name_prefix.toLowerCase()+"-animation").fadeOut(100);
+                        // now we need to create an java back end service that saves this value.
+                        // also add validation on the html  similar to password save
+                        //$('#toggle-'+field_name_prefix.toLowerCase()).delay(100).click();
+                        // alert($(this).val());
+                        $("."+field_name_prefix.toLowerCase()+"-animation").fadeIn(1000);
+                        // now we need to create an java back end service that saves this value.
+                        // also add validation on the html  similar to password save
+                        //$("."+field_name_prefix.toLowerCase()+"-animation").delay(1000).click();
+                    }
+                    else {
+                        $("."+field_name_prefix.toLowerCase()+"-animation").fadeIn(1000);
+                        // now we need to create an java back end service that saves this value.
+                        // also add validation on the html  similar to password save
+                        //$('#toggle-'+field_name_prefix.toLowerCase()).delay(1000).click();
+                    }
+                }
+                else{
+                    //$('.circle-loader').fadeOut(100);
+                    //$('.x-mark').fadeIn(500);
+                    //$(".validationMsgArea span").text(s_msg);
+                    //$(".validationMsgArea span").css('color','red');
+                }
+            },
+            error: function(data) {
+                //$('.circle-loader').fadeOut(100);
+                //$('.x-mark').fadeIn(500);
+                console.log(data);
+                // set message to div area ...fields can not be left null
+                //$(".validationMsgArea span").text("You can not leave any fields empty.");
+                //$(".validationMsgArea span").css('color','red');
+            }
+        });
+    } // end of function
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // helper functions
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+    function getContactName(cell) {
+        var contact_name = cell.substring(3, cell.length-4);
+        return contact_name;
+    }
+
+
+    function getFieldValueFromResponse(response, fieldName){
+
+        // find starting index of fieldName
+        // find the next colon
+        var indexStart = response.indexOf(fieldName+":")+fieldName.length;
+        response = response.substring(indexStart+1);
+        var indexEnd = response.indexOf("}");
+        response = response.substring(0, indexEnd);
+
+        // find the next right closing bracket
+        return response;
+
+    }
+
+    function preventFutureDate() {
+        var dtToday = new Date();
+
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+
+        if(month < 10)
+            month = '0' + month.toString();
+        if(day < 10)
+            day = '0' + day.toString();
+
+        var maxDate = year + '-' + month + '-' + day;
+        $('#bar-membership-date').attr('max', maxDate);
+    }
+
+
+
+
+
+</script>
 
 </body>
 </html>

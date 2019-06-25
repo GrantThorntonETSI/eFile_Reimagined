@@ -63,6 +63,9 @@ public class NewAttorneyContactFormDTO {
     private String appInternalID;
 
 
+    private String actionID;
+
+
 
     private String usCertifyCheckbox;
 
@@ -340,5 +343,14 @@ public class NewAttorneyContactFormDTO {
 
     public void setUsCertifyCheckbox(String usCertifyCheckbox) {
         this.usCertifyCheckbox = usCertifyCheckbox;
+    }
+
+
+    public String getActionID() {
+        return actionID;
+    }
+
+    public void setActionID(String actionID) {
+        this.actionID = actionID;
     }
 }

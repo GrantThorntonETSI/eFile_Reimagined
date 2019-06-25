@@ -4696,4 +4696,211 @@ public class ApplicationFlowController {
 
     }
 
+
+
+    @Transactional
+    @RequestMapping({"/officeAction/optional/pathController/attorneyAdd/{actionID}"})
+    public String optionalActionCreateAttorney
+            (WebRequest request, Model model, @PathVariable String actionID ,@RequestParam("trademarkID") String trademarkInternalID) {
+
+        // create a new application and tie it to user then save it to repository
+        // create attorneyDTO + to model
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account", credentials);
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+
+
+        ArrayList<String> contactNamesMC = new ArrayList<>();
+        ArrayList<String> contactEmailsMC = new ArrayList<>();
+        ArrayList<String> contactSubTypesMC = new ArrayList<>();
+        ManagedContact managedContact = null;
+
+        for (Iterator<ManagedContact> iter = ptoUser.getMyManagedContacts().iterator(); iter.hasNext(); ) {
+            managedContact = iter.next();
+            if (managedContact.getContactType() == "attorney") {
+                contactNamesMC.add(managedContact.getDisplayName());
+                contactEmailsMC.add(managedContact.getEmail());
+                contactSubTypesMC.add(managedContact.getContactType());
+            }
+
+
+        }
+        Collections.reverse(contactNamesMC);
+        Collections.reverse(contactEmailsMC);
+        Collections.reverse(contactSubTypesMC);
+        ContactsDisplayDTO mcDisplayDTO = new ContactsDisplayDTO();
+        mcDisplayDTO.setContactNames(contactNamesMC);
+        mcDisplayDTO.setContactEmails(contactEmailsMC);
+        mcDisplayDTO.setContactEntitySubType(contactSubTypesMC);
+        model.addAttribute("myManagedContacts", mcDisplayDTO);
+
+
+
+
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        // add attorneys pool first name last name
+        // and add to model
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        boolean isAttorneyOptionSet = false;
+        boolean isAttorneyFiling = false;
+
+        if (trademarkInternalID.equals("new")) {
+
+            BaseTrademarkApplication trademarkApplication = new BaseTrademarkApplication();
+            //trademarkApplication.setLastViewModel("application/owner/individual/ownerInfo");
+            //trademarkApplication.setLastViewModel("application/OwnerStart");
+
+            ////////////////////////////////////////////////////////////////////////////
+            // bread crumb and continue application updates
+            ////////////////////////////////////////////////////////////////////////////
+            trademarkApplication.setLastViewModel("application/attorney/AttorneyStart");
+            ArrayList<String> sectionStatus = trademarkApplication.getSectionStatus();
+            sectionStatus.set(0,"active");
+            trademarkApplication.setSectionStatus(sectionStatus);
+            ////////////////////////////////////////////////////////////////////////////
+
+
+
+            trademarkApplication.setAttorneySet(false);
+            trademarkApplication.setAttorneyFiling(false);
+
+
+            trademarkApplication.setOwnerEmail(ptoUser.getEmail());
+
+            /////////////////////////////////////////////////////////////////////////////////
+            // add a method to PTOUser to just add one application
+            /////////////////////////////////////////////////////////////////////////////////
+            baseTradeMarkApplicationService.save(trademarkApplication);
+            trademarkApplication.setTrademarkName("my_first_trademark");
+            trademarkApplication.setApplicationInternalID(UUID.randomUUID().toString());
+            counter++;
+            trademarkApplication.setTrademarkName("" + counter);
+            ptoUser.addApplication(trademarkApplication); // adds to myApplications Collection
+            ptoUserService.save(ptoUser);
+            model.addAttribute("baseTrademarkApplication", trademarkApplication);
+
+            /////////////////////////////////////////////////////////////////////////////////
+            // set empty selected contacts for thymeleaf
+            // add emtpy selected list
+            /////////////////////////////////////////////////////////////////////////////////
+            ArrayList<String> scontactNames = new ArrayList<>();
+            ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
+            selectedAttorneyDisplayDTO.setContactNames(scontactNames);
+
+            model.addAttribute("selectedAttorneys", selectedAttorneyDisplayDTO);
+            model.addAttribute("isAttorneyOptionSet", isAttorneyOptionSet);
+            model.addAttribute("isAttorneyFiling", isAttorneyFiling);
+
+            ArrayList<String> selectedContactEmails2 = new ArrayList<>();
+            for(Iterator<Lawyer> iter = trademarkApplication.getAvailableLawyers().iterator(); iter.hasNext(); ) {
+                Lawyer current = iter.next();
+                selectedContactEmails2.add(current.getEmail());
+            }
+            ContactsDisplayDTO selectedAttorneyDisplayDTO2 = new ContactsDisplayDTO();
+            selectedAttorneyDisplayDTO2.setContactEmails(selectedContactEmails2 );
+            model.addAttribute("selectedAttorneys",selectedAttorneyDisplayDTO2);
+
+
+            boolean colorClaim= false;
+            boolean acceptBW = false;
+            boolean colorClaimSet = false;
+            boolean standardCharacterMark = false;
+            String markType = "";
+            String markText ="";
+
+            model.addAttribute("markImagePath","");
+            model.addAttribute("markImagePathBW","");
+            model.addAttribute("markColorClaim", colorClaim);
+            model.addAttribute("markColorClaimBW", acceptBW);
+            model.addAttribute("colorClaimSet", colorClaimSet);
+            model.addAttribute("standardCharacterMark ", standardCharacterMark );
+            model.addAttribute("markType", markType);
+            model.addAttribute("markText",markText);
+
+
+            model.addAttribute("breadCrumbStatus", trademarkApplication.getSectionStatus());
+
+
+        } else {
+            BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+            ArrayList<String> selectedContactNames = new ArrayList<>();
+            for (Iterator<Lawyer> iter = baseTrademarkApplication.getAvailableLawyers().iterator(); iter.hasNext(); ) {
+                Lawyer current = iter.next();
+                selectedContactNames.add(current.getFirstName() + " " + current.getLastName());
+            }
+            ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
+            selectedAttorneyDisplayDTO.setContactNames(selectedContactNames);
+            model.addAttribute("selectedAttorneys", selectedAttorneyDisplayDTO);
+
+            model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+            isAttorneyOptionSet = baseTrademarkApplication.isAttorneySet();
+            isAttorneyFiling = baseTrademarkApplication.isAttorneyFiling();
+            model.addAttribute("isAttorneyOptionSet", isAttorneyOptionSet);
+            model.addAttribute("isAttorneyFiling", isAttorneyFiling);
+
+            ArrayList<String> selectedContactEmails2 = new ArrayList<>();
+            for(Iterator<Lawyer> iter = baseTrademarkApplication.getAvailableLawyers().iterator(); iter.hasNext(); ) {
+                Lawyer current = iter.next();
+                selectedContactEmails2.add(current.getEmail());
+            }
+            ContactsDisplayDTO selectedAttorneyDisplayDTO2 = new ContactsDisplayDTO();
+            selectedAttorneyDisplayDTO2.setContactEmails(selectedContactEmails2 );
+            model.addAttribute("selectedAttorneys",selectedAttorneyDisplayDTO2);
+
+
+            boolean colorClaim= false;
+            boolean acceptBW = false;
+            boolean colorClaimSet = false;
+            boolean standardCharacterMark = false;
+            String markType = "";
+            String markText ="";
+
+            if( baseTrademarkApplication.getTradeMark() != null) {
+                model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+                model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+                colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+                acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+                colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+                standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+                markType = baseTrademarkApplication.getTradeMark().getTrademarkDesignType();
+                markText = baseTrademarkApplication.getTradeMark().getTrademarkStandardCharacterText();
+            }
+            else{
+                model.addAttribute("markImagePath","");
+                model.addAttribute("markImagePathBW","");
+
+            }
+
+            model.addAttribute("markColorClaim", colorClaim);
+            model.addAttribute("markColorClaimBW", acceptBW);
+            model.addAttribute("colorClaimSet", colorClaimSet);
+            model.addAttribute("standardCharacterMark ", standardCharacterMark );
+            model.addAttribute("markType", markType);
+            model.addAttribute("markText",markText);
+
+            model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
+
+        }
+        NewAttorneyContactFormDTO attorneyContactFormDTO = new NewAttorneyContactFormDTO();
+        model.addAttribute("addNewAttorneyContactFormDTO", attorneyContactFormDTO);
+
+        model.addAttribute("actionID", actionID);
+        // add any selected attorneys to model as selectedContacts
+
+
+        model.addAttribute("hostBean", hostBean);
+        return "application/office_action/optional_actions/attorney/attorneyNew";
+
+
+    }
+
 }
