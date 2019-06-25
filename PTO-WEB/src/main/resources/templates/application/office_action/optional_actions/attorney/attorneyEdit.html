@@ -1314,6 +1314,8 @@
 
     var validateTEAS =  /*[[${baseTrademarkApplication.isValidateTEASFields()}]]*/ 'User Name';
 
+    var OfficeActionID = /*[[${actionID}]]*/ 'User Name';
+
 
 
 
@@ -1323,10 +1325,10 @@
 
 <script>
 
-    var nextLinkURL = "../../../../../officeAction/optional/pathController/none/"+OfficeActionID+"/?trademarkID="+appInternalID;
-    var prevLinkURL  = "../../../../../officeAction/optional/pathController/none/"+OfficeActionID+"/?trademarkID="+appInternalID;;
+    var nextLinkURL = "../../../../../../officeAction/optional/pathController/none/"+OfficeActionID+"/?trademarkID="+appInternalID;
+    var prevLinkURL  = "../../../../../../officeAction/optional/pathController/none/"+OfficeActionID+"/?trademarkID="+appInternalID;;
 
-    var nextLinkURLAttorneyFalse = "../../application/OwnerStart/?trademarkID="+appInternalID;
+
 
 
 
@@ -1478,45 +1480,6 @@
         });
 
 
-
-        //////////////////////////////////////////////////////////////
-        //  persistence logic
-        //////////////////////////////////////////////////////////////
-        //////////////////////////////////////////////////////////////
-        // check if attorneyFillingFalse is set
-        /////////////////////////////////////////////////////////////
-        if(isAttorneyOptionSet == true){
-
-            if(isAttorneyFiling == true){
-                if(isAttorneyPoolEmpty == false){
-                    // call jquery click
-                    // set next link to attorney view
-                    // activate link
-                    $('#inlineRadio015').attr("checked", true);
-                    $('#formSubmitNextButtonGroup').fadeOut();
-                    $('#formPagingNextButtonGroup').fadeIn();
-                    $('#nextButtonFormPaging').attr("disabled",false);
-
-                }
-                else {
-                    // fade in submit button???
-                    // how to handel toggling between upload and next button
-                }
-
-            }
-            else{
-                // call jquery click
-                // no attorney, option set
-                // set next link to owner page
-                // activate next link
-                $('#inlineRadio016').attr("checked", true);
-
-                $('#formSubmitNextButtonGroup').fadeOut();
-                $('#formPagingNextButtonGroup').fadeIn();
-                nextLinkURL = nextLinkURLAttorneyFalse;
-                $('#nextButtonFormPaging').attr("disabled",false);
-            }
-        }
 
 
         //////////////////////////////////////////
@@ -1674,9 +1637,9 @@
         });
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //add additional docket number
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
         $('#yesattorneyfiling').on('focusout', 'input.docket-id', function () {
@@ -1711,11 +1674,11 @@
             // $( this ).parent().parent().remove(500);
         });
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //add additional phone number fields
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         $('#yesattorneyfiling').on('change', 'select.attorney-phonenumbertype', function () {
             var value = $(this).val();
 
@@ -1840,7 +1803,7 @@
             formData.append('appID', appInternalID);
             formData.append('email', attEmail);
             // static known value
-            var url = "/attorney/cert/update";
+            var url = "../../../../../../attorney/cert/update";
 
 
             // Get the selected files from the input.
@@ -2026,7 +1989,7 @@
 
         $.ajax({
             //url: host+"/REST/apiGateway/application/update/"+field_name_prefix+"/"+field_value+"/"+applicaiton_internal_id,
-            url: "../../REST/apiGateway/user/managedContact/get/"+email,
+            url: "../../../../../../REST/apiGateway/user/managedContact/get/"+email,
 
             type: 'GET',
             success: function(data){
@@ -2148,7 +2111,7 @@
 
         $.ajax({
 
-            url: "../../../../REST/apiGateway/application/attorney/update/"+contact_email+"/"+field_name+"/"+field_value+"/"+appInternalID,
+            url: "../../../../../../REST/apiGateway/application/attorney/update/"+contact_email+"/"+field_name+"/"+field_value+"/"+appInternalID,
 
             type: 'GET',
             success: function(data){
@@ -2210,7 +2173,7 @@
 
         $.ajax({
 
-            url: "../../../../REST/apiGateway/application/attorney/update/additional/"+contact_email+"/"+field_name+"/"+field_value+"/"+fieldIndex+"/"+appInternalID,
+            url: "../../../../../../REST/apiGateway/application/attorney/update/additional/"+contact_email+"/"+field_name+"/"+field_value+"/"+fieldIndex+"/"+appInternalID,
 
             type: 'GET',
             success: function(data){
@@ -2266,7 +2229,7 @@
 
         $.ajax({
 
-            url: "../../../../REST/apiGateway/application/attorney/update/additional/"+contact_email+"/"+field_name+"/"+field_value+"/"+fieldIndex+"/"+appInternalID,
+            url: "../../../../../../REST/apiGateway/application/attorney/update/additional/"+contact_email+"/"+field_name+"/"+field_value+"/"+fieldIndex+"/"+appInternalID,
 
             type: 'GET',
             success: function(data){
@@ -2327,7 +2290,7 @@
 
         $.ajax({
 
-            url: "../../../../REST/apiGateway/application/attorney/update/additional/"+contact_email+"/"+field_name+"/"+field_value+"/"+fieldIndex+"/"+appInternalID,
+            url: "../../../../../../REST/apiGateway/application/attorney/update/additional/"+contact_email+"/"+field_name+"/"+field_value+"/"+fieldIndex+"/"+appInternalID,
 
             type: 'GET',
             success: function(data){
@@ -2389,7 +2352,7 @@
 
         $.ajax({
 
-            url: "../../../../REST/apiGateway/application/attorney/update/additional/"+contact_email+"/"+field_name+"/"+field_value+"/"+fieldIndex+"/"+appInternalID,
+            url: "../../../../../../REST/apiGateway/application/attorney/update/additional/"+contact_email+"/"+field_name+"/"+field_value+"/"+fieldIndex+"/"+appInternalID,
 
             type: 'GET',
             success: function(data){

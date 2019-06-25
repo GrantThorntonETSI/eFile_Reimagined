@@ -4689,7 +4689,7 @@ public class ApplicationFlowController {
         // need a special controller to process direct access of optional actions steps
         // in this case. it should be set at the attorney tab
         // action ids will be used to build the link
-
+        model.addAttribute("hostBean", hostBean);
 
 
         return "application/office_action/optional_actions/attorney/attorneyEdit";
