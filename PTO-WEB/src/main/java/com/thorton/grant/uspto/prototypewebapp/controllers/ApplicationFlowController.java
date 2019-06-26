@@ -1415,6 +1415,76 @@ public class ApplicationFlowController {
         return "application/owner/llc/ownerInfoEdit";
     }
 
+
+
+    // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
+    @RequestMapping({"/officeAction/optional/owner/llc/edit/{actionID}/{email}"})
+    public String optionalActionOwneLLCUSInfoEdit(WebRequest request, Model model, @PathVariable String actionID, @PathVariable String email, @RequestParam("trademarkID") String trademarkInternalID) {
+
+        // create a new application and tie it to user then save it to repository
+        // create attorneyDTO + to model
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PTOUserService ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+
+        Owner owner = baseTrademarkApplication.findOwnerByEmail(email);
+
+        model.addAttribute("owner", owner);
+
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
+        model.addAttribute("hostBean", hostBean);
+
+        model.addAttribute("breadCrumbStatus",baseTrademarkApplication.getSectionStatus());
+
+
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
+        String markType = "";
+        String markText ="";
+
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+            markType = baseTrademarkApplication.getTradeMark().getTrademarkDesignType();
+            markText = baseTrademarkApplication.getTradeMark().getTrademarkStandardCharacterText();
+        }
+        else{
+            model.addAttribute("markImagePath","");
+            model.addAttribute("markImagePathBW","");
+
+        }
+
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
+        model.addAttribute("markType", markType);
+        model.addAttribute("markText",markText);
+
+        model.addAttribute("actionID",actionID);
+
+
+
+        return "application/office_action/optional_actions/owner/llc/ownerEdit";
+    }
+
+
     // hopefully just a redirect here, we won't need to add the applicaiton and credentials to the model
     @RequestMapping({"/application/owner/jv/edit/{email}"})
     public String ownerJointVentureUSInfoEdit(WebRequest request, Model model, @PathVariable String email, @RequestParam("trademarkID") String trademarkInternalID) {
