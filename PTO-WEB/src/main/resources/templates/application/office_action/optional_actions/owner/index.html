@@ -279,6 +279,21 @@
     var nextLink = /*[[${nextLink}]]*/ 'User Name';
     var prevLink = /*[[${prevLink}]]*/ 'User Name';
 
+
+    var ownerEditURLIndividal =  "../../../../../officeAction/optional/owner/Ind/edit/"+OfficeActionID+"/";
+    var ownerEditURLCorp =  "../../../../../officeAction/optional/owner/corp/edit/"+OfficeActionID+"/";
+    var ownerEditURLEstate =  "../../../../../officeAction/optional/owner/estate/edit/"+OfficeActionID+"/";
+    var ownerEditURLsolp =  "../../../../../officeAction/optional/owner/solp/edit/"+OfficeActionID+"/";
+    var ownerEditURLllc =  "../../../../../officeAction/optional/owner/llc/edit/"+OfficeActionID+"/";
+
+    var ownerEditURLJoinVenture =  "../../../../../officeAction/optional/owner/jv/edit/"+OfficeActionID+"/";
+
+    var ownerEditURLLLP =  "../../../../../officeAction/optional/owner/llp/edit/"+OfficeActionID+"/";
+
+    var ownerEditURLpartnership =  "../../../../../officeAction/optional/owner/partner/edit/"+OfficeActionID+"/";
+
+    var ownerEditURLtrust =  "../../../../../officeAction/optional/owner/trust/edit/"+OfficeActionID+"/";
+
     /*]]>*/
 </script>
 
@@ -385,6 +400,50 @@
 
 
 
+        $('.owner-edit').click(function () {
+            var ownerEmail = $(this).attr("owner-email");
+            var ownerType =  $(this).attr("owner-type");
+
+            // set owner edit url based on owner type
+            //alert(ownerType);
+            var url ="";
+            if(ownerType == "Corporation"){
+                url = ownerEditURLCorp;
+            }
+            if(ownerType == "Individual"){
+                url = ownerEditURLIndividal;
+            }
+            if(ownerType == "Estate"){
+                url = ownerEditURLEstate;
+            }
+            if(ownerType == "Sole Proprietorship"){
+                url = ownerEditURLsolp;
+            }
+
+            if(ownerType == "Limited Liability Company"){
+                url = ownerEditURLllc;
+            }
+
+            if(ownerType == "Joint Venture"){
+                url = ownerEditURLJoinVenture;
+            }
+
+            if(ownerType == "Limited Partnership"){
+                url = ownerEditURLLLP;
+            }
+
+            if(ownerType == "Partnership"){
+                url = ownerEditURLpartnership;
+            }
+
+            if(ownerType == "Trust"){
+                url = ownerEditURLtrust;
+            }
+
+            location.href=url+ownerEmail+"/?trademarkID="+appInternalID;;
+
+
+        });
 
     });
 

@@ -109,6 +109,9 @@ public class NewOwnerContactFormDTO {
     private String appInternalID;
 
 
+    private String actionID;
+
+
 
     public String getAppInternalID() {
         return appInternalID;
@@ -460,5 +463,14 @@ public class NewOwnerContactFormDTO {
 
     public void setPartnerType3(String partnerType3) {
         this.partnerType3 = partnerType3;
+    }
+
+
+    public String getActionID() {
+        return actionID;
+    }
+
+    public void setActionID(String actionID) {
+        this.actionID = actionID;
     }
 }
