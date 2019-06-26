@@ -1323,9 +1323,6 @@
     var host_name= /*[[${hostBean.host}]]*/ 'User Name';
     var host_port= /*[[${hostBean.port}]]*/ 'User Name';
     var host = host_name+":"+host_port;
-    var nextLinkURL = "../../../../../application/OwnerSetView/?trademarkID="+appInternalID;
-
-    var breadCrumbStatus = /*[[${breadCrumbStatus}]]*/ 'User Name';
 
     var  image_path = /*[[${markImagePath}]]*/ 'User Name';
     var  image_pathBW = /*[[${markImagePathBW}]]*/ 'User Name';
@@ -1334,6 +1331,14 @@
     var colorClaimSet = /*[[${colorClaimSet}]]*/ 'User Name';
     var markType = /*[[${markType}]]*/ 'User Name';
     var markText = /*[[${markText}]]*/ 'User Name';
+
+    var OfficeActionID = /*[[${actionID}]]*/ 'User Name';
+
+    var nextLinkURL = "../../../../../../../officeAction/optional/pathController/none/"+OfficeActionID+"/?trademarkID="+appInternalID;
+
+
+
+
 
     /*]]>*/
 </script>
@@ -1348,16 +1353,6 @@
             // after 1000 ms we add the class animated to the login/register card
             $('.content').fadeIn(500);
         }, 500);
-
-
-
-        $('#doneButton').click(function () {
-            location.href=nextLinkURL;
-        });
-
-
-
-
 
         if(markType == "Standard Character"){
 
@@ -1430,16 +1425,9 @@
         }
 
 
-
-
-
-
-
-
-
-
-
-
+        $('#doneButton').click(function () {
+            location.href=nextLinkURL;
+        });
 
         var ownerEmail = $('#ownerEmail').val();
 
@@ -1772,7 +1760,7 @@
 
         $.ajax({
 
-            url: "../../../../../REST/apiGateway/application/GoverningEntity/update/"+contact_email+"/"+field_name+"/"+field_value+"/"+entityID+"/"+appInternalID,
+            url: "../../../../../../../REST/apiGateway/application/GoverningEntity/update/"+contact_email+"/"+field_name+"/"+field_value+"/"+entityID+"/"+appInternalID,
 
             type: 'GET',
             success: function(data){
@@ -1838,7 +1826,7 @@
 
         $.ajax({
 
-            url: "../../../../../REST/apiGateway/application/owner/update/"+contact_email+"/"+field_name+"/"+field_value+"/"+appInternalID,
+            url: "../../../../../../../REST/apiGateway/application/owner/update/"+contact_email+"/"+field_name+"/"+field_value+"/"+appInternalID,
 
             type: 'GET',
             success: function(data){
@@ -1892,93 +1880,6 @@
 
 
 
-    function setBreadCrumb(bsStatusArrayList){
-
-        for(var a=0; a< bsStatusArrayList.length; a++){
-            if(a==0){
-                if(bsStatusArrayList[a] != "NA"){
-
-                    $('#bs-header1').addClass(bsStatusArrayList[a]);
-
-                }
-
-            }
-            if(a==1){
-                if(bsStatusArrayList[a] != "NA"){
-                    $('#bs-header2').addClass(bsStatusArrayList[a]);
-                    if(bsStatusArrayList[a] == "active"){
-                        $('#bs-link2').attr("href", bsLink2_active);
-
-                    }
-                    if(bsStatusArrayList[a] == "done"){
-                        $('#bs-link2').attr("href", bsLink2_done);
-                    }
-                    //$('#bs-link2').attr("href", bsLink2);
-                }
-
-            }
-            if(a==2){
-                if(bsStatusArrayList[a] != "NA"){
-
-                    $('#bs-header3').addClass(bsStatusArrayList[a]);
-                    if(bsStatusArrayList[a] == "active"){
-                        $('#bs-link3').attr("href", bsLink3_active);
-
-                    }
-                    if(bsStatusArrayList[a] == "done"){
-                        $('#bs-link3').attr("href", bsLink3_done);
-                    }
-
-                }
-
-            }
-            if(a==3){
-                if(bsStatusArrayList[a] != "NA"){
-
-                    $('#bs-header4').addClass(bsStatusArrayList[a]);
-                    if(bsStatusArrayList[a] == "active"){
-                        $('#bs-link4').attr("href", bsLink4_active);
-
-                    }
-                    if(bsStatusArrayList[a] == "done"){
-                        $('#bs-link4').attr("href", bsLink4_done);
-                    }
-
-                }
-
-            }
-            if(a==4){
-                if(bsStatusArrayList[a] != "NA"){
-                    $('#bs-header5').addClass(bsStatusArrayList[a]);
-                    if(bsStatusArrayList[a] == "active"){
-                        $('#bs-link5').attr("href", bsLink5_active);
-
-                    }
-                    if(bsStatusArrayList[a] == "done"){
-                        $('#bs-link5').attr("href", bsLink5_done);
-                    }
-
-                }
-
-            }
-            if(a==5){
-                if(bsStatusArrayList[a] != "NA"){
-                    $('#bs-header6').addClass(bsStatusArrayList[a]);
-                    if(bsStatusArrayList[a] == "active"){
-                        $('#bs-link6').attr("href", bsLink6_active);
-
-                    }
-                    if(bsStatusArrayList[a] == "done"){
-                        $('#bs-link6').attr("href", bsLink6_done);
-                    }
-
-                }
-
-            }
-
-        }
-
-    }
 
 
 
