@@ -5131,7 +5131,6 @@ public class ApplicationFlowController {
                }
 
                // step 5
-
                if(action.getCurrentActionIndex() == 4){
 
                    if (selectedList.get(action.getCurrentActionIndex()).equals("fb")) {
@@ -5168,7 +5167,7 @@ public class ApplicationFlowController {
                }
 
 
-               // step 6
+                // step 6
                 if(action.getCurrentActionIndex() == 5){
 
                     if (selectedList.get(action.getCurrentActionIndex()).equals("additional")) {
@@ -5195,53 +5194,39 @@ public class ApplicationFlowController {
 
 
 
-        // step 6
-        if(action.getCurrentActionIndex() == 6){
+                // step 6
+                if(action.getCurrentActionIndex() == 6){
 
 
 
-            if (selectedList.get(action.getCurrentActionIndex()).equals("signature")) {
-                returnLink =  "application/office_action/signature/index";
-                if(action.isStep7_firstTime() == true){
-                    action.getOptionalActionsCompletedList().add("signature");
+                    if (selectedList.get(action.getCurrentActionIndex()).equals("signature")) {
+                        returnLink =  "application/office_action/signature/index";
+                        if(action.isStep7_firstTime() == true){
+                            action.getOptionalActionsCompletedList().add("signature");
+                        }
+
+                    }
+
+                    action.setStep7_firstTime(false);
+
                 }
 
-            }
 
-            action.setStep7_firstTime(false);
-
-        }
+                baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
 
-               baseTradeMarkApplicationService.save(baseTrademarkApplication);
+                model.addAttribute("nextLink", nextLink);
+                model.addAttribute("prevLink", prevLink);
 
 
 
+                model.addAttribute("user", ptoUser);
+                model.addAttribute("account",credentials);
 
+                model.addAttribute("action", actions);
 
-
-
-
-
-        model.addAttribute("nextLink", nextLink);
-        model.addAttribute("prevLink", prevLink);
-
-
-
-
-
-
-
-
-
-
-        model.addAttribute("user", ptoUser);
-        model.addAttribute("account",credentials);
-
-        model.addAttribute("action", actions);
-
-        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
-        model.addAttribute("lawyerPool", baseTrademarkApplication.getAvailableLawyersExcludePrimary());
+                model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+                model.addAttribute("lawyerPool", baseTrademarkApplication.getAvailableLawyersExcludePrimary());
 
 
         return returnLink;
