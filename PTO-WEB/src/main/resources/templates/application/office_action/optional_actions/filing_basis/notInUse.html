@@ -104,9 +104,34 @@
                 <th:block th:each="Good_Service_class : ${baseTrademarkApplication.getGoodAndServicesCategories()}">
                     <div class="row">
                         <div class="col-xs-12" id="basisabde">
-
                             <div class="card-text noexpand blue">
-                                <h2 class="card-title weight600" th:text="${Good_Service_class.getClassNumberDisplay()}">Class 003</h2>
+                                <div class="col-md-12 col-lg-7">
+
+                                    <div class="displaytable">
+                                        <h2 class="card-title weight600 displaycell">
+                                            <span th:text="${Good_Service_class.getClassNumberDisplay()}">Class 18</span>
+                                            <th:block th:each="gs : ${Good_Service_class.getGoodAndServices()}">
+
+                                                <span class="listed" role="alert">
+                                                    <span class="sr-only"></span>
+                                                    <span th:text="${gs.getClassDescription()}">Athletic apparel, namely, shirts, pants, jackets, footwear, hats and caps, athletic uniforms;</span>;
+                                                </span>
+                                            </th:block>
+
+
+                                        </h2>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 col-lg-5">
+                                    <label for="gs_one" class="sr-only">edit class</label>
+                                    <select class="form-control gsactions" id="gs_one">
+                                        <option value="edit">Edit</option>
+                                        <option value="delete">Delete this class permanently</option>
+                                        <option value="limit">Delete some goods/services in this class</option>
+                                        <option value="divide" disabled>Divide some or all of the goods/services in this class</option>
+                                    </select>
+                                </div>
                             </div>
 
 

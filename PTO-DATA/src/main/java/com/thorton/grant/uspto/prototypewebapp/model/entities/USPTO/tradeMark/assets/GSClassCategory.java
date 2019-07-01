@@ -32,6 +32,9 @@ public class GSClassCategory {
 
 
 
+
+
+
     // first gs date class level
     private Date firstGSDateCC;
 
@@ -73,6 +76,9 @@ public class GSClassCategory {
 
     private String frCertImageNameCC;
     private boolean frCertCCuploaded;
+
+
+    // added to support class level having access to all gs names and attributes
 
 
     // id functions
@@ -564,4 +570,8 @@ public class GSClassCategory {
     public void setFirstMarkDateCC(Date firstMarkDateCC) {
         this.firstMarkDateCC = firstMarkDateCC;
     }
+
+
+
+
 }

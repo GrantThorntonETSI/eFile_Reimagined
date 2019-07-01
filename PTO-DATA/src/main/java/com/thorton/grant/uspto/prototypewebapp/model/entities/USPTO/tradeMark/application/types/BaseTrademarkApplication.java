@@ -935,6 +935,7 @@ public class BaseTrademarkApplication  {
                 GoodAndService current = iter.next();
 
                 if(gsClassCategory.getClassCategoryNumber() == Integer.valueOf(current.getClassNumber())){
+
                     gsClassCategory.addGoodAndService(current);
                     gsClassCategory.setClassCategoryImagePath(current.getClassSpecimenImgPath());
                     gsClassCategory.setClassCategoryImageName(current.getSampleImageName());
@@ -964,6 +965,10 @@ public class BaseTrademarkApplication  {
 
                     gsClassCategory.setFirstGSDateCC(current.getFirstGSDateCC());
                     gsClassCategory.setFirstMarkDateCC(current.getFirstMarkDateCC());
+
+
+
+
 
 
 
