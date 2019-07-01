@@ -4824,7 +4824,12 @@ public class ApplicationFlowController {
 
 
                    if (selectedList.get(action.getCurrentActionIndex()).equals("fb")) {
-                       returnLink = "application/office_action/optional_actions/filing_basis/index";
+                       if(baseTrademarkApplication.isMarkInUseForAllGS() == true){
+                           returnLink = "application/office_action/optional_actions/filing_basis/inUse";
+                       }
+                       else {
+                           returnLink = "application/office_action/optional_actions/filing_basis/notInUse";
+                       }
                        if(action.isStep1_firstTime() == true){
                            action.getOptionalActionsCompletedList().add("fb");
                        }
@@ -4927,7 +4932,13 @@ public class ApplicationFlowController {
 
 
                    if (selectedList.get(action.getCurrentActionIndex()).equals("fb")) {
-                       returnLink = "application/office_action/optional_actions/filing_basis/index";
+                       if(baseTrademarkApplication.isMarkInUseForAllGS() == true){
+                           returnLink = "application/office_action/optional_actions/filing_basis/inUse";
+                       }
+                       else {
+                           returnLink = "application/office_action/optional_actions/filing_basis/notInUse";
+                       }
+
                        if(action.isStep2_firstTime() == true){
                            action.getOptionalActionsCompletedList().add("fb");
                        }
@@ -5017,7 +5028,12 @@ public class ApplicationFlowController {
 
 
                    if (selectedList.get(action.getCurrentActionIndex()).equals("fb")) {
-                       returnLink = "application/office_action/optional_actions/filing_basis/index";
+                       if(baseTrademarkApplication.isMarkInUseForAllGS() == true){
+                           returnLink = "application/office_action/optional_actions/filing_basis/inUse";
+                       }
+                       else {
+                           returnLink = "application/office_action/optional_actions/filing_basis/notInUse";
+                       }
                        if(action.isStep3_firstTime() == true){
                            action.getOptionalActionsCompletedList().add("fb");
                        }
@@ -5097,7 +5113,12 @@ public class ApplicationFlowController {
 
 
                    if (selectedList.get(action.getCurrentActionIndex()).equals("fb")) {
-                       returnLink = "application/office_action/optional_actions/filing_basis/index";
+                       if(baseTrademarkApplication.isMarkInUseForAllGS() == true){
+                           returnLink = "application/office_action/optional_actions/filing_basis/inUse";
+                       }
+                       else {
+                           returnLink = "application/office_action/optional_actions/filing_basis/notInUse";
+                       }
                        if(action.isStep4_firstTime() == true){
                            action.getOptionalActionsCompletedList().add("fb");
                        }
@@ -5134,7 +5155,12 @@ public class ApplicationFlowController {
                if(action.getCurrentActionIndex() == 4){
 
                    if (selectedList.get(action.getCurrentActionIndex()).equals("fb")) {
-                       returnLink = "application/office_action/optional_actions/filing_basis/index";
+                       if(baseTrademarkApplication.isMarkInUseForAllGS() == true){
+                           returnLink = "application/office_action/optional_actions/filing_basis/inUse";
+                       }
+                       else {
+                           returnLink = "application/office_action/optional_actions/filing_basis/notInUse";
+                       }
                        if(action.isStep5_firstTime() == true){
                            action.getOptionalActionsCompletedList().add("fb");
                        }
@@ -5227,6 +5253,20 @@ public class ApplicationFlowController {
 
                 model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
                 model.addAttribute("lawyerPool", baseTrademarkApplication.getAvailableLawyersExcludePrimary());
+
+                // add model atributes to support filing basis pages
+
+                ArrayList<String> selectedGSDescrption = new ArrayList<>();
+                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                    GoodAndService current = iter.next();
+                    selectedGSDescrption.add(current.getClassDescription());
+                }
+                ContactsDisplayDTO selectedDescription = new ContactsDisplayDTO();
+                selectedDescription.setContactNames(selectedGSDescrption);
+                model.addAttribute("selectedGoods_Services",selectedDescription);
+
+
+
 
 
         return returnLink;
