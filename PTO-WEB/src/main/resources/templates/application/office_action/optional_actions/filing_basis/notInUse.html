@@ -12704,9 +12704,6 @@
     var markType = /*[[${baseTrademarkApplication.tradeMark.trademarkDesignType}]]*/ 'User Name';
     var markText = /*[[${baseTrademarkApplication.tradeMark.trademarkStandardCharacterText}]]*/ 'User Name';
 
-
-    var breadCrumbStatus = /*[[${breadCrumbStatus}]]*/ 'User Name';
-    var validateTEAS =  /*[[${baseTrademarkApplication.isValidateTEASFields()}]]*/ 'User Name';
     /*]]>*/
 </script>
 
@@ -12714,40 +12711,6 @@
 
 <script>
 
-    var nextLinkURL = "../../application/additionalInfoUpload/?trademarkID="+appInternalID;
-    var prevLinkURL = "../../application/filingBasisStart/?trademarkID="+appInternalID;
-
-    ////////////////////////////////////////////////////////////////////////////////////
-    // bred crumb links
-    ////////////////////////////////////////////////////////////////////////////////////
-    var bsLink1 = "../../application/OwnerSetView/?trademarkID="+appInternalID;
-
-    var bsLink2_active =  "../../application/MarkDetails/?trademarkID="+appInternalID;
-    var bsLink2_done =  "../../application/MarkDetails/?trademarkID="+appInternalID;
-
-    var bsLink3_active =  "../../application/goodsAndServicesStart/?trademarkID="+appInternalID;
-    var bsLink3_done =  "../../application/goodsAndServicesReview/?trademarkID="+appInternalID;
-
-
-
-
-    var bsLink4_active = "../../application/filingBasisStart/?trademarkID="+appInternalID;
-    var bsLink4_done = "../../application/filingBasisStart/?trademarkID="+appInternalID;
-
-
-
-    var bsLink5_active =  "../../application/additionalInfoUpload/?trademarkID="+appInternalID;
-    var bsLink5_done =  "../../application/additionalInfoUpload/?trademarkID="+appInternalID;
-
-
-
-
-    var bsLink6_active =  "../../application/confirmInfo/?trademarkID="+appInternalID;
-    var bsLink6_done =  "../../application/confirmInfo/?trademarkID="+appInternalID;
-
-
-    var gridViewLink =  "../../application/gridViewFilingBasisUpload/?trademarkID="+appInternalID;
-    ////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -12784,18 +12747,10 @@
         //////////////////////////////////////////////////////////////////
         // persistence rendering logic for TEAS plus field labels
         //////////////////////////////////////////////////////////////////
-        if(validateTEAS == true){
-            $('input.togglesavemore').attr("checked",true);
-            $( document ).find('span.subtle').removeClass('visuallyremoved');
-            $( document ).find('#on').removeClass('visuallyhidden');
 
-        }
-        else{
-            $( document ).find('span.subtle').addClass( 'visuallyremoved' );
-        }
 
         $('[data-toggle="tooltip"]').tooltip();
-        setBreadCrumb(breadCrumbStatus);
+
 
         $('#bs-link1').click(function () {
             var url = $(this).attr("href");
