@@ -12685,11 +12685,7 @@
 
     var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
 
-    var host_name= /*[[${hostBean.host}]]*/ 'User Name';
-    var host_port= /*[[${hostBean.port}]]*/ 'User Name';
 
-
-    var host = host_name+":"+host_port;
     var  image_path = /*[[${markImagePath}]]*/ 'User Name';
 
     var  image_pathBW = /*[[${markImagePathBW}]]*/ 'User Name';
@@ -12752,66 +12748,9 @@
         $('[data-toggle="tooltip"]').tooltip();
 
 
-        $('#bs-link1').click(function () {
-            var url = $(this).attr("href");
-            if(url != undefined){
-                location.href=url;
-            }
-
-        });
-
-        $('#bs-link2').click(function () {
-            var url = $(this).attr("href");
-            if(url != undefined){
-                location.href=url;
-            }
-
-        });
-
-        $('#bs-link3').click(function () {
-            var url = $(this).attr("href");
-            if(url != undefined){
-                location.href=url;
-            }
-
-        });
-
-        $('#bs-link4').click(function () {
-            var url = $(this).attr("href");
-            if(url != undefined){
-                //location.href=url;
-            }
-
-        });
-
-        $('#bs-link5').click(function () {
-            var url = $(this).attr("href");
-            if(url != undefined){
-                location.href=url;
-            }
-
-        });
-
-        $('#bs-link6').click(function () {
-            var url = $(this).attr("href");
-            if(url != undefined){
-                location.href=url;
-            }
-
-        });
 
 
-        $('#prevButton').click(function () {
-            location.href=prevLinkURL;
-        });
 
-        $('#nextButton').click(function () {
-            location.href=nextLinkURL;
-        });
-
-        $('#searchDB').click(function () {
-            location.href=prevLinkURL;
-        });
 
         preventFutureDate();
         preventPastDate();

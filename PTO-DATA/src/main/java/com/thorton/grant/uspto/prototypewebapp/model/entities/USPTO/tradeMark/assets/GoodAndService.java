@@ -178,6 +178,11 @@ public class GoodAndService {
 
 
 
+    private boolean activeFilingBasis = true;
+
+
+
+
 
 
 
@@ -784,6 +789,14 @@ public class GoodAndService {
 
     public void setFirstMarkDateCC(Date firstMarkDateCC) {
         this.firstMarkDateCC = firstMarkDateCC;
+    }
+
+    public boolean isActiveFilingBasis() {
+        return activeFilingBasis;
+    }
+
+    public void setActiveFilingBasis(boolean activeFilingBasis) {
+        this.activeFilingBasis = activeFilingBasis;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
