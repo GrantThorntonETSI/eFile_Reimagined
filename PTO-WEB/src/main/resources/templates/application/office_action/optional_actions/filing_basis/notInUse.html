@@ -12792,6 +12792,8 @@
     var markType = /*[[${baseTrademarkApplication.tradeMark.trademarkDesignType}]]*/ 'User Name';
     var markText = /*[[${baseTrademarkApplication.tradeMark.trademarkStandardCharacterText}]]*/ 'User Name';
 
+    var nextLink = /*[[${nextLink}]]*/ 'User Name';
+    var prevLink = /*[[${prevLink}]]*/ 'User Name';
     /*]]>*/
 </script>
 
@@ -12841,6 +12843,13 @@
 
 
 
+        $('.next').click(function () {
+            location.href=nextLink;
+        });
+
+        $('.prev').click(function () {
+            location.href=prevLink;
+        });
 
 
 

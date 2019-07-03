@@ -11,6 +11,8 @@
         <!--START Content Div-->
         <div class="row">
             <div class="col-xs-12">
+
+
                 <div class="row">
                     <section class="col-xs-12 steps breadcrumb-steps" aria-label="progress tracker">
                         <div class="row displaycell">
@@ -20,7 +22,7 @@
                                         <span>1</span>
                                     </div>
                                     <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link1">
-                                        <p class="first">Your details</p>
+                                        <p class="first">Attorney</p>
                                     </div>
                                 </div>
                             </div>
@@ -30,7 +32,7 @@
                                         <span>2</span>
                                     </div>
                                     <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link2">
-                                        <p>Trademark details</p>
+                                        <p>Owner</p>
                                     </div>
                                 </div>
                             </div>
@@ -40,7 +42,7 @@
                                         <span>3</span>
                                     </div>
                                     <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link3">
-                                        <p>Goods and services</p>
+                                        <p>Mark</p>
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +52,7 @@
                                         <span>4</span>
                                     </div>
                                     <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link4">
-                                        <p>Basis</p>
+                                        <p>Goods / Services</p>
                                     </div>
                                 </div>
                             </div>
@@ -64,16 +66,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-2 six" id="bs-header6">
-                                <div class="row">
-                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
-                                        <span>6</span>
-                                    </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link6">
-                                        <p>Confirm and pay</p>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </section>
                 </div>
@@ -10387,7 +10380,8 @@
     var markType = /*[[${baseTrademarkApplication.tradeMark.trademarkDesignType}]]*/ 'User Name';
     var markText = /*[[${baseTrademarkApplication.tradeMark.trademarkStandardCharacterText}]]*/ 'User Name';
 
-
+    var nextLink = /*[[${nextLink}]]*/ 'User Name';
+    var prevLink = /*[[${prevLink}]]*/ 'User Name';
     /*]]>*/
 </script>
 
@@ -10436,6 +10430,15 @@
 
         $('[data-toggle="tooltip"]').tooltip();
 
+
+
+        $('.next').click(function () {
+            location.href=nextLink;
+        });
+
+        $('.prev').click(function () {
+            location.href=prevLink;
+        });
 
 
 
