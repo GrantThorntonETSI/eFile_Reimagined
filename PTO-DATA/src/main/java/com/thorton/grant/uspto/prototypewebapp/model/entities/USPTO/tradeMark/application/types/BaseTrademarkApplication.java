@@ -349,7 +349,7 @@ public class BaseTrademarkApplication  {
     private ArrayList<String> sectionStatus;
 
 
-    // receipt fields
+    // receipt fields and signature fields
 
     private String recieptFilePath;
     private String filingStatus = "Draft";
