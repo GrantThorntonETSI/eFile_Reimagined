@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.util.Date;
+
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
@@ -315,6 +317,33 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
             appFieldReadable = "Office Action signature type";
         }
 
+        if(pField.equals("OA-signatory-name")){
+
+
+            baseTrademarkApplication.findOfficeActionById(OfficeActionID).setOfficeActionSignatoryName(pValue);
+            appFieldReadable = "Office Action signatory name";
+        }
+
+
+        if(pField.equals("OA-signatory-phone")){
+
+
+            baseTrademarkApplication.findOfficeActionById(OfficeActionID).setOfficeActionSignatoryPhone(pValue);
+            appFieldReadable = "Office Action signatory phone number";
+        }
+
+        if(pField.equals("OA-signatory-position")){
+
+
+            baseTrademarkApplication.findOfficeActionById(OfficeActionID).setOfficeActionSignatoryPosition(pValue);
+            appFieldReadable = "Office Action signatory position";
+        }
+
+
+
+
+
+
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
@@ -339,6 +368,43 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
 
 
         return buildResponseEnity(code, responseMsg);
+    }
+
+
+
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/OfficeAction/signDirect/{OfficeActionID}/{signature}/{date}/{dateDisplay}/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> saveOASignature(@PathVariable String OfficeActionID, @PathVariable String signature ,@PathVariable String date, @PathVariable String dateDisplay, @PathVariable String appInternalID){
+
+        //////////////////////////////////////////////////////////
+        // retrieve application using passed internal id
+        //////////////////////////////////////////////////////////
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+
+
+        baseTrademarkApplication.findOfficeActionById(OfficeActionID).setOfficeActionSignature("/"+signature+"/");
+        Long dateInMilli = Long.valueOf(date);
+
+        //DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+        Date result = new Date(dateInMilli);
+
+        baseTrademarkApplication.findOfficeActionById(OfficeActionID).setOfficeActionDateSigned(result);
+        baseTrademarkApplication.findOfficeActionById(OfficeActionID).setOfficeActionDateSignedDisplay(dateDisplay);
+
+
+
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+        ////////////////////////////////////////////////
+        // start generating response
+        ////////////////////////////////////////////////
+
+        String responseMsg = "Direct Sign Signature has been saved for the Office Action";
+        return buildResponseEnity("200", responseMsg);
+
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

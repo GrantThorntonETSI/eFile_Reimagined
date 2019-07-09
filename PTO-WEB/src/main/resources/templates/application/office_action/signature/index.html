@@ -150,25 +150,25 @@
                                                                 <div class="row">
                                                                     <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                         <label for="signature">Signature <span class="weight600">&#42;</span> <a href="#" data-toggle="tooltip" title="" class="glyphicon glyphicon-info-sign test" data-placement="right" data-original-title="To electronically sign the application enter any combination of alpha numeric characters between two forward slash symbols (/); e.g., /jane smith/, /rdr/, or /127/)."></a></label>
-                                                                        <input type="text" class="form-control" placeholder="/Signature/" id="signature" required>
+                                                                        <input type="text" class="form-control" placeholder="/Signature/" id="signature" required th:value="${baseTrademarkApplication.findOfficeActionById(OfficeActionID).getOfficeActionSignature()}" >
                                                                     </div>
 
                                                                     <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                         <p class="sr-only">Enter the date in the following format: 20:36:14 May 30, 2019 E.T.</p>
                                                                         <label for="datesigned">Date signed: <span id="tz" class="sr-only"> </span></label>
-                                                                        <textarea rows="1" class="form-control datesigned disabled" id="datesigned" disabled> </textarea>
+                                                                        <textarea rows="1" class="form-control datesigned disabled" id="datesigned" disabled th:text="${baseTrademarkApplication.findOfficeActionById(OfficeActionID).getOfficeActionDateSignedDisplay()}"> </textarea>
                                                                     </div>
                                                                     <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                         <label for="signatoryname">Signatory&#8217;s name <span class="weight600">&#42;</span></label>
-                                                                        <input type="text" class="form-control" id="signatoryname" required>
+                                                                        <input type="text" class="form-control" id="signatoryname" required th:value="${baseTrademarkApplication.findOfficeActionById(OfficeActionID).getOfficeActionSignatoryName()}">
                                                                     </div>
                                                                     <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
                                                                         <label for="signatoryphone">Signatory&#8217;s phone number</label>
-                                                                        <input type="tel" class="form-control" id="signatoryphone">
+                                                                        <input type="tel" class="form-control" id="signatoryphone" th:value="${baseTrademarkApplication.findOfficeActionById(OfficeActionID).getOfficeActionSignatoryPhone()}">
                                                                     </div>
                                                                     <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                         <label for="signatoryposition">Signatory&#8217;s position <span class="weight600">&#42;</span></label>
-                                                                        <input type="text" class="form-control" id="signatoryposition" required>
+                                                                        <input type="text" class="form-control" id="signatoryposition" required  th:value="${baseTrademarkApplication.findOfficeActionById(OfficeActionID).getOfficeActionSignatoryPosition()}">
                                                                     </div>
                                                                 </div><!--end checkbox row-->
                                                             </div>
@@ -263,7 +263,10 @@
     var markText = /*[[${baseTrademarkApplication.tradeMark.trademarkStandardCharacterText}]]*/ 'User Name';
 
 
-    var nextLink = /*[[${nextLink}]]*/ 'User Name';
+    var nextLink = ""; // this will be the done link ...this will trigger a document action
+    // this should also prevent the filing from being abandoned
+
+
     var prevLink = /*[[${prevLink}]]*/ 'User Name';
 
     /*]]>*/
@@ -272,6 +275,7 @@
 
 
 <script>
+
 
 
 
@@ -368,7 +372,7 @@
             location.href=prevLink;
         });
 
-
+        checkActivateLink()
 
         // ajax auto save for authorization declaration.
         // unclick. this will enable the sign section
@@ -426,12 +430,11 @@
             var sigVal = $(this).val();
 
             if(sigVal != ""){
-                sigVal = sigVal;
-                var date = new Date();
 
+                var date = new Date();
                 var dateDisplay = formatDate(date);
                 $('#datesigned').val(dateDisplay);
-                //saveAppSignature(sigVal,date.getMilliseconds(), dateDisplay);
+                saveOASignature(OfficeActionID,sigVal,date.getMilliseconds(), dateDisplay);
 
             }
 
@@ -453,6 +456,55 @@
 
 
         });
+
+        $('#signatoryname').focusout(function () {
+
+            var value = $(this).val();
+
+            if(value != ""){
+
+                saveOAresponse("OA-signatory-name", value, OfficeActionID, "none" ,appInternalID);
+                //saveAppSignature(sigVal,date.getMilliseconds(), dateDisplay);
+
+            }
+            checkActivateLink();
+
+        });
+
+        $('#signatoryphone').focusout(function () {
+
+            var value = $(this).val();
+
+            if(value != ""){
+
+                saveOAresponse("OA-signatory-phone", value, OfficeActionID, "none" ,appInternalID);
+                //saveAppSignature(sigVal,date.getMilliseconds(), dateDisplay);
+
+
+            }
+            checkActivateLink();
+
+        });
+
+        $('#signatoryposition').focusout(function () {
+
+            var value = $(this).val();
+
+            if(value != ""){
+
+                saveOAresponse("OA-signatory-position", value, OfficeActionID, "none" ,appInternalID);
+                //saveAppSignature(sigVal,date.getMilliseconds(), dateDisplay);
+
+            }
+            checkActivateLink();
+
+        });
+
+
+
+
+
+
 
 
 
@@ -497,6 +549,68 @@
             $('#nextButton').attr("disabled",false);
         }
     }
+
+    function saveOASignature(OA_id, signature, time, timeDispaly) {
+
+
+
+
+
+        //alert(field_name_prefix);
+        // send state, and token to server
+        // token will be generated in the controller and added to the view
+        // similar to how access token works ...a token is tied to a user
+        // access token will be passed in through model
+        //
+        // var tokenValue = '${token}';  // token is the model attribute name
+        // we are not using secured tokens for the prototype
+        // we will secure it by adding ssl and https support
+
+        //var field_value = $(this).val();
+        //alert(field_value);
+
+        $.ajax({
+            url: "../../../../../REST/apiGateway/OfficeAction/signDirect/"+OA_id+"/"+signature+"/"+time+"/"+timeDispaly+"/"+appInternalID,
+            type: 'GET',
+            success: function(data){
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                if(s_code.trim() == "200"){
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function() {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+            },
+            error: function(data) {
+
+                console.log(data);
+
+            }
+
+        });
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////
+        // end of contact information 'State' auto save ////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+
+
+    }
+
 
 
 
