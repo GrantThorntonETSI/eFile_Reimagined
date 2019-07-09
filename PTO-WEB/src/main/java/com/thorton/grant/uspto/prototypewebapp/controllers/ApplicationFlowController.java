@@ -15,6 +15,7 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.fo
 import com.thorton.grant.uspto.prototypewebapp.model.entities.DTO.application.form.partnerDTO;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.OfficeActions;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.Petition;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.document_events.FilingDocumentEvent;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Owner;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
@@ -4583,6 +4584,15 @@ public class ApplicationFlowController {
 
 
         baseTrademarkApplication.findOfficeActionById(actionID).setOptianlCompleted(true);
+
+        FilingDocumentEvent filingDocumentEvent = new FilingDocumentEvent();
+        filingDocumentEvent.setEventDescription("Response to Office Action");
+
+        filingDocumentEvent.setDocumentType("XML");
+        Date date = new Date();
+        filingDocumentEvent.setEventDate(date);
+
+        baseTrademarkApplication.addFilingDocumentEvent(filingDocumentEvent);
 
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
