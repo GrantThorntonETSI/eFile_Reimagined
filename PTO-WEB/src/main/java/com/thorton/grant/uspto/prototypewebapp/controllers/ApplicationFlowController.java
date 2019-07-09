@@ -4563,6 +4563,39 @@ public class ApplicationFlowController {
 
 
 
+    @RequestMapping({"/officeAction/signature/complete/{actionID}"})
+    public String OfficeActionComplete( Model model, @PathVariable String actionID ,@RequestParam("trademarkID") String trademarkInternalID){
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        PTOUserService  ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+
+
+        // required acitons should return true as well at this point
+
+
+        baseTrademarkApplication.findOfficeActionById(actionID).setOptianlCompleted(true);
+
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+        // set office action to inactive
+        // create document record for response to office action
+
+
+        return "forward:/accounts/dashboard";
+    }
+
+
+
 
     @RequestMapping({"/officeAction/optional/{actionID}"})
     public String optionalActionsMain( Model model, @PathVariable String actionID ,@RequestParam("trademarkID") String trademarkInternalID){
