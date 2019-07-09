@@ -134,10 +134,30 @@ public class OfficeActions extends BaseEntity {
 
 
 
+    ///////////////////////////////////////////////
+   // signature fields and declaration fields
+   ///////////////////////////////////////////////
+    private String officeActionSignature;
+    private Date officeActionDateSigned;
+    private String officeActionDateSignedDisplay;
+
+    private String officeActionSignatoryName;
+    private  String officeActionSignatoryPosition;
+    private String officeActionSignatoryPhone;
+
+    private String officeActionSignatureType;
+    private boolean officeActionSignDirect;
 
 
 
+    private boolean unrepresentedOwner = false;
 
+    private boolean authorizedUSattorney = false;
+
+    private boolean authorizedCAattorney = false;
+
+    private boolean autorizationComplete = false;
+    ///////////////////////////////////////////////
 
 
 
@@ -472,7 +492,99 @@ public class OfficeActions extends BaseEntity {
     }
 
 
+    public String getOfficeActionSignature() {
+        return officeActionSignature;
+    }
 
+    public void setOfficeActionSignature(String officeActionSignature) {
+        this.officeActionSignature = officeActionSignature;
+    }
 
+    public Date getOfficeActionDateSigned() {
+        return officeActionDateSigned;
+    }
 
+    public void setOfficeActionDateSigned(Date officeActionDateSigned) {
+        this.officeActionDateSigned = officeActionDateSigned;
+    }
+
+    public String getOfficeActionDateSignedDisplay() {
+        return officeActionDateSignedDisplay;
+    }
+
+    public void setOfficeActionDateSignedDisplay(String officeActionDateSignedDisplay) {
+        this.officeActionDateSignedDisplay = officeActionDateSignedDisplay;
+    }
+
+    public String getOfficeActionSignatoryName() {
+        return officeActionSignatoryName;
+    }
+
+    public void setOfficeActionSignatoryName(String officeActionSignatoryName) {
+        this.officeActionSignatoryName = officeActionSignatoryName;
+    }
+
+    public String getOfficeActionSignatoryPosition() {
+        return officeActionSignatoryPosition;
+    }
+
+    public void setOfficeActionSignatoryPosition(String officeActionSignatoryPosition) {
+        this.officeActionSignatoryPosition = officeActionSignatoryPosition;
+    }
+
+    public String getOfficeActionSignatoryPhone() {
+        return officeActionSignatoryPhone;
+    }
+
+    public void setOfficeActionSignatoryPhone(String officeActionSignatoryPhone) {
+        this.officeActionSignatoryPhone = officeActionSignatoryPhone;
+    }
+
+    public String getOfficeActionSignatureType() {
+        return officeActionSignatureType;
+    }
+
+    public void setOfficeActionSignatureType(String officeActionSignatureType) {
+        this.officeActionSignatureType = officeActionSignatureType;
+    }
+
+    public boolean isOfficeActionSignDirect() {
+        return officeActionSignDirect;
+    }
+
+    public void setOfficeActionSignDirect(boolean officeActionSignDirect) {
+        this.officeActionSignDirect = officeActionSignDirect;
+    }
+
+    public boolean isUnrepresentedOwner() {
+        return unrepresentedOwner;
+    }
+
+    public void setUnrepresentedOwner(boolean unrepresentedOwner) {
+        this.unrepresentedOwner = unrepresentedOwner;
+    }
+
+    public boolean isAuthorizedUSattorney() {
+        return authorizedUSattorney;
+    }
+
+    public void setAuthorizedUSattorney(boolean authorizedUSattorney) {
+        this.authorizedUSattorney = authorizedUSattorney;
+    }
+
+    public boolean isAuthorizedCAattorney() {
+        return authorizedCAattorney;
+    }
+
+    public void setAuthorizedCAattorney(boolean authorizedCAattorney) {
+        this.authorizedCAattorney = authorizedCAattorney;
+    }
+
+    public boolean isAutorizationComplete() {
+        return autorizationComplete;
+    }
+
+    public void setAutorizationComplete(boolean autorizationComplete) {
+        this.autorizationComplete = autorizationComplete;
+    }
 }

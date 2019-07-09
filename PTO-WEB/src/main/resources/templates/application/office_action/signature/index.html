@@ -48,7 +48,18 @@
                                                                                 <li><span class="weight600">No</span> authorized attorney or Canadian attorney/agent <a href="#">represents</a> me in this matter, and that I am either: (1) the owner/holder; or (2) a person(s) with legal authority to bind the owner/holder; and</li>
                                                                                 <li>If an authorized U.S. attorney or canadian attorney/agent previously represented me in this matter, either I have filed a signed revocation of power of attorney with the USPTO or the USPTO has granted the request of my prior representation to withdraw. <br><span class="weight600 uppercase">advisory</span>: you may click this first button <em>only</em> if you are the owner/holder or legally authorized to bind the owner/holder, e.g., an officer of the owner/holder corporation or association, or a general partner of the owner/holder partnership.</li>
                                                                             </ul>
-                                                                            <input type="radio" name="roadeclarations" id="unrepre" value="unrepresented" tabindex="0"><span class="checkmark"></span></label>
+
+                                                                            <th:block th:if="${baseTrademarkApplication.findOfficeActionById(OfficeActionID).isUnrepresentedOwner() == true}">
+                                                                                <input type="radio" name="roadeclarations" id="unrepre" value="unrepresented" tabindex="0" checked><span class="checkmark"></span>
+
+                                                                            </th:block>
+
+                                                                            <th:block th:if="${baseTrademarkApplication.findOfficeActionById(OfficeActionID).isUnrepresentedOwner() == false}">
+                                                                                <input type="radio" name="roadeclarations" id="unrepre" value="unrepresented" tabindex="0"><span class="checkmark"></span>
+
+                                                                            </th:block>
+                                                                        </label>
+
                                                                     </div>
                                                                     <div class="radio">
                                                                         <label for="usattorney" class="radio-inline radiocontainer">
@@ -57,7 +68,17 @@
                                                                                 <li>I am currently the owner&#8217;s/holder&#8217;s attorney or an <a href="#">associate</a> thereof;</li>
                                                                                 <li>To the best of my knowledge, if prior to my appointment another U.S. attorney or a Canadian attorney/agent <span class="weight600">not currently associated with my company/firm</span> previously <a href="#">represented</a> the owner/holder in this matter: <a href="#">(1)</a> the owner/holder has filed or is concurrently filing a signed revocation of or substitute power of attorney with the USPTO; <a href="#">(2)</a> the USPTO has granted the request of the prior representative to withdraw; <a href="#">(3)</a> the owner/holder has filed a power of attorney appointing me in this matter; or <a href="#">(4)</a> the owner&#8217;s/holder&#8217;s appointed U.S. attorney or Canadian attorney/agent has filed a power of attorney appointing me as an associate attorney in this matter.</li>
                                                                             </ul>
-                                                                            <input type="radio" name="roadeclarations" id="usattorney" value="us" tabindex="0"><span class="checkmark"></span></label>
+                                                                            <th:block th:if="${baseTrademarkApplication.findOfficeActionById(OfficeActionID).isAuthorizedUSattorney() == true}">
+                                                                                <input type="radio" name="roadeclarations" id="unrepre" value="unrepresented" tabindex="0" checked><span class="checkmark"></span>
+
+                                                                            </th:block>
+
+                                                                            <th:block th:if="${baseTrademarkApplication.findOfficeActionById(OfficeActionID).isAuthorizedUSattorney() == false}">
+                                                                                <input type="radio" name="roadeclarations" id="usattorney" value="us" tabindex="0"><span class="checkmark"></span>
+
+                                                                            </th:block>
+                                                                        </label>
+
                                                                     </div>
                                                                     <div class="radio">
                                                                         <label for="canada" class="radio-inline radiocontainer">
@@ -66,7 +87,17 @@
                                                                                 <li>I am either registered with the USPTO and in good standing as a patent agent under 37 C.F.R. &#167;11.6(c) or I have been granted reciprocal recognition under 37 C.F.R. &#167;11.14(c) by the USPTO&#8217;s Office of Enrollment and Discipline; and;</li>
                                                                                 <li>To the best of my knowledge, if prior to my appointment another Canadian attorney/agent or a U.S. attorney <span class="weight600">not currently associated with my company/firm</span> previously <a href="#">represented</a> the owner/holder in this matter: <a href="#">(1)</a> the owner/holder has filed or is concurrently filing a signed revocation of or substitute power of attorney with the USPTO; <a href="#">(2)</a> the USPTO has granted the request of the prior representative to withdraw; <a href="#">(3)</a> the owner/holder has filed a power of attorney appointing me in this matter; or <a href="#">(4)</a> the owner&#8217;s/holder&#8217;s appointed Canadian attorney/agent or U.S. attorney has filed a power of attorney appointing me as an associate attorney in this matter.</li>
                                                                             </ul>
-                                                                            <input type="radio" name="roadeclarations" id="canada" value="canadian" tabindex="0"><span class="checkmark"></span></label>
+                                                                            <th:block th:if="${baseTrademarkApplication.findOfficeActionById(OfficeActionID).isAuthorizedCAattorney() == true}">
+                                                                                <input type="radio" name="roadeclarations" id="canada" value="canadian" tabindex="0" checked><span class="checkmark"></span>
+
+                                                                            </th:block>
+
+                                                                            <th:block th:if="${baseTrademarkApplication.findOfficeActionById(OfficeActionID).isAuthorizedCAattorney() == false}">
+                                                                                <input type="radio" name="roadeclarations" id="canada" value="canadian" tabindex="0"><span class="checkmark"></span>
+
+                                                                            </th:block>
+
+                                                                        </label>
                                                                     </div>
                                                                 </div><!--END radiogroup-->
                                                             </div>
@@ -82,52 +113,110 @@
                                                     <div class="row">
                                                         <div class="col-xs-12 form-group form-group-md">
                                                             <label for="ta2">How are you signing the response?</label>
-                                                            <select class="form-control signmethod countinputs" id="ta2"  onchange="showTheTime()">
-                                                                <option value="Select">Select Signature Method</option>
-                                                                <option value="direct">Sign directly</option>
-                                                                <option value="handwritten" disabled>Print and upload handwritten signature</option>
-                                                                <option value="send" disabled>Send to second party for signature</option>
-                                                                <option value="unsigned" disabled>Submit unsigned</option>
-                                                            </select>
+
+                                                            <th:block th:if="${baseTrademarkApplication.findOfficeActionById(OfficeActionID).isAutorizationComplete() == true}">
+                                                                <select class="form-control signmethod countinputs" id="ta2" >
+                                                                    <option value="Select">Select Signature Method</option>
+                                                                    <option value="direct">Sign directly</option>
+                                                                    <option value="handwritten" disabled>Print and upload handwritten signature</option>
+                                                                    <option value="send" disabled>Send to second party for signature</option>
+                                                                    <option value="unsigned" disabled>Submit unsigned</option>
+                                                                </select>
+
+                                                            </th:block>
+                                                            <th:block th:if="${baseTrademarkApplication.findOfficeActionById(OfficeActionID).isAutorizationComplete() == false}">
+                                                                <select class="form-control signmethod countinputs" id="ta2" disabled>
+                                                                    <option value="Select">Select Signature Method</option>
+                                                                    <option value="direct">Sign directly</option>
+                                                                    <option value="handwritten" disabled>Print and upload handwritten signature</option>
+                                                                    <option value="send" disabled>Send to second party for signature</option>
+                                                                    <option value="unsigned" disabled>Submit unsigned</option>
+                                                                </select>
+
+                                                            </th:block>
+
                                                         </div>
                                                     </div>
                                                 </div>
                                             </section>
                                         </div><!--//signature method-->
-                                        <div class="row hidethis">
-                                            <section class="col-xs-12" aria-label="sign">
-                                                <div class="col-xs-12">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 form-group form-group-md">
-                                                            <div class="row">
-                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                    <label for="signature">Signature <span class="weight600">&#42;</span> <a href="#" data-toggle="tooltip" title="" class="glyphicon glyphicon-info-sign test" data-placement="right" data-original-title="To electronically sign the application enter any combination of alpha numeric characters between two forward slash symbols (/); e.g., /jane smith/, /rdr/, or /127/)."></a></label>
-                                                                    <input type="text" class="form-control" placeholder="/Signature/" id="signature" required>
-                                                                </div>
-                                                                <script type="application/javascript" src="js/timestamp.js"></script>
-                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                    <p class="sr-only">Enter the date in the following format: 20:36:14 May 30, 2019 E.T.</p>
-                                                                    <label for="datesigned">Date signed: <span id="tz" class="sr-only"> </span></label>
-                                                                    <textarea rows="1" class="form-control datesigned disabled" id="datesigned" disabled> </textarea>
-                                                                </div>
-                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                    <label for="signatoryname">Signatory&#8217;s name <span class="weight600">&#42;</span></label>
-                                                                    <input type="text" class="form-control" id="signatoryname" required>
-                                                                </div>
-                                                                <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
-                                                                    <label for="signatoryphone">Signatory&#8217;s phone number</label>
-                                                                    <input type="tel" class="form-control" id="signatoryphone">
-                                                                </div>
-                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                    <label for="signatoryposition">Signatory&#8217;s position <span class="weight600">&#42;</span></label>
-                                                                    <input type="text" class="form-control" id="signatoryposition" required>
-                                                                </div>
-                                                            </div><!--end checkbox row-->
+
+                                        <th:block th:if="${baseTrademarkApplication.findOfficeActionById(OfficeActionID).isOfficeActionSignDirect() == true}">
+                                            <div class="row hidethis"  id="singature-section" style="">
+                                                <section class="col-xs-12" aria-label="sign">
+                                                    <div class="col-xs-12">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 form-group form-group-md">
+                                                                <div class="row">
+                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                        <label for="signature">Signature <span class="weight600">&#42;</span> <a href="#" data-toggle="tooltip" title="" class="glyphicon glyphicon-info-sign test" data-placement="right" data-original-title="To electronically sign the application enter any combination of alpha numeric characters between two forward slash symbols (/); e.g., /jane smith/, /rdr/, or /127/)."></a></label>
+                                                                        <input type="text" class="form-control" placeholder="/Signature/" id="signature" required>
+                                                                    </div>
+
+                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                        <p class="sr-only">Enter the date in the following format: 20:36:14 May 30, 2019 E.T.</p>
+                                                                        <label for="datesigned">Date signed: <span id="tz" class="sr-only"> </span></label>
+                                                                        <textarea rows="1" class="form-control datesigned disabled" id="datesigned" disabled> </textarea>
+                                                                    </div>
+                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                        <label for="signatoryname">Signatory&#8217;s name <span class="weight600">&#42;</span></label>
+                                                                        <input type="text" class="form-control" id="signatoryname" required>
+                                                                    </div>
+                                                                    <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
+                                                                        <label for="signatoryphone">Signatory&#8217;s phone number</label>
+                                                                        <input type="tel" class="form-control" id="signatoryphone">
+                                                                    </div>
+                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                        <label for="signatoryposition">Signatory&#8217;s position <span class="weight600">&#42;</span></label>
+                                                                        <input type="text" class="form-control" id="signatoryposition" required>
+                                                                    </div>
+                                                                </div><!--end checkbox row-->
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </section>
-                                        </div><!--//sign-->
+                                                </section>
+                                            </div><!--//sign-->
+
+                                        </th:block>
+
+                                        <th:block th:if="${baseTrademarkApplication.findOfficeActionById(OfficeActionID).isOfficeActionSignDirect() == false}">
+                                            <div class="row hidethis"  id="singature-section" style="display: none;">
+                                                <section class="col-xs-12" aria-label="sign">
+                                                    <div class="col-xs-12">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 form-group form-group-md">
+                                                                <div class="row">
+                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                        <label for="signature">Signature <span class="weight600">&#42;</span> <a href="#" data-toggle="tooltip" title="" class="glyphicon glyphicon-info-sign test" data-placement="right" data-original-title="To electronically sign the application enter any combination of alpha numeric characters between two forward slash symbols (/); e.g., /jane smith/, /rdr/, or /127/)."></a></label>
+                                                                        <input type="text" class="form-control" placeholder="/Signature/" id="signature" required>
+                                                                    </div>
+
+                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                        <p class="sr-only">Enter the date in the following format: 20:36:14 May 30, 2019 E.T.</p>
+                                                                        <label for="datesigned">Date signed: <span id="tz" class="sr-only"> </span></label>
+                                                                        <textarea rows="1" class="form-control datesigned disabled" id="datesigned" disabled> </textarea>
+                                                                    </div>
+                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                        <label for="signatoryname">Signatory&#8217;s name <span class="weight600">&#42;</span></label>
+                                                                        <input type="text" class="form-control" id="signatoryname" required>
+                                                                    </div>
+                                                                    <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
+                                                                        <label for="signatoryphone">Signatory&#8217;s phone number</label>
+                                                                        <input type="tel" class="form-control" id="signatoryphone">
+                                                                    </div>
+                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                        <label for="signatoryposition">Signatory&#8217;s position <span class="weight600">&#42;</span></label>
+                                                                        <input type="text" class="form-control" id="signatoryposition" required>
+                                                                    </div>
+                                                                </div><!--end checkbox row-->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                            </div><!--//sign-->
+
+                                        </th:block>
+
                                     </div><!--END formgroup-->
                                 </div>
                             </fieldset>
@@ -281,10 +370,134 @@
 
 
 
+        // ajax auto save for authorization declaration.
+        // unclick. this will enable the sign section
+
+
+        $('#unrepre').click(function () {
+
+            if(this.checked == true){
+
+                // auto save field
+
+                // unlock signature drop down
+                saveOAresponse("OA-representation-type", "unrepresented", OfficeActionID, "none" ,appInternalID)
+
+                $('#ta2').attr("disabled", false);
+
+            }
+
+
+        });
+
+        $('#usattorney').click(function () {
+
+            if(this.checked == true){
+
+                // auto save field
+                saveOAresponse("OA-representation-type", "us", OfficeActionID, "none" ,appInternalID)
+
+                // unlock signature drop down
+                $('#ta2').attr("disabled", false);
+
+            }
+
+
+        });
+
+        $('#canada').click(function () {
+
+            if(this.checked == true){
+
+                // auto save field
+                saveOAresponse("OA-representation-type", "ca", OfficeActionID, "none" ,appInternalID)
+
+                // unlock signature drop down
+                $('#ta2').attr("disabled", false);
+
+            }
+
+
+        });
+
+
+        $('#signature').focusout(function () {
+
+            var sigVal = $(this).val();
+
+            if(sigVal != ""){
+                sigVal = sigVal;
+                var date = new Date();
+
+                var dateDisplay = formatDate(date);
+                $('#datesigned').val(dateDisplay);
+                //saveAppSignature(sigVal,date.getMilliseconds(), dateDisplay);
+
+            }
+
+
+        });
+
+
+        $('#ta2').change(function () {
+
+
+            var value = $(this).val();
+
+            if(value != ""){
+
+                saveOAresponse("OA-signature-type", value, OfficeActionID, "none" ,appInternalID)
+                //saveAppSignature(sigVal,date.getMilliseconds(), dateDisplay);
+
+            }
+
+
+        });
+
 
 
 
     });
+
+
+    function formatDate(date) {
+        var monthNames = [
+            "January", "February", "March",
+            "April", "May", "June", "July",
+            "August", "September", "October",
+            "November", "December"
+        ];
+
+        var day = date.getDate();
+        var monthIndex = date.getMonth();
+        var year = date.getFullYear();
+        var hour = date.getHours();
+        var minutes = date.getMinutes();
+        var seconds = date.getSeconds();
+        if(hour.length<2){
+            hour = "0"+hour;
+
+        }
+        if(minutes.length<2){
+            minutes ="0"+minutes;
+        }
+        if(seconds.length<3){
+            seconds = "0"+seconds;
+        }
+
+        return (hour+":"+minutes+":"+seconds+" "+monthNames[monthIndex]+" "+day+","+date.getFullYear()+" E.T");
+
+        //return day + ' ' + monthNames[monthIndex] + ' ' + year;
+    }
+
+    function checkActivateLink() {
+
+
+        if($('#signature').val() !="" && $('#signatoryname').val()!="" && $('#signatoryposition').val()!=""){
+            $('#nextButton').attr("disabled",false);
+        }
+    }
+
 
 
     function saveOAresponse(FieldName, FieldValue, OA_id, RA_id ,appInternalID) {
@@ -294,7 +507,7 @@
 
 
         $.ajax({
-            url: "../../../REST/apiGateway/OfficeAction/response/update/" + FieldName + "/" + FieldValue + "/" + OA_id + "/" + RA_id +"/"+appInternalID,
+            url: "../../../../../REST/apiGateway/OfficeAction/response/update/" + FieldName + "/" + FieldValue + "/" + OA_id + "/" + RA_id +"/"+appInternalID,
             type: 'GET',
             success: function (data) {
 

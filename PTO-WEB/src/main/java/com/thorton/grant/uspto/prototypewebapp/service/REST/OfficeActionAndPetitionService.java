@@ -258,17 +258,6 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
         if(pField.equals("OA-mark-disclaimer")){
 
             baseTrademarkApplication.findOfficeActionById(OfficeActionID).findRequiredActionById(requiredActionID).setDisclaimerText(pValue);
@@ -280,6 +269,50 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
             //since this is the only field we can mark this complete
             baseTrademarkApplication.findOfficeActionById(OfficeActionID).findRequiredActionById(requiredActionID).setRequiredActionCompleted(true);
 
+        }
+
+
+
+
+
+        if(pField.equals("OA-representation-type")){
+
+            if(pValue.equals("unrepresented")){
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).setUnrepresentedOwner(true);
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).setAuthorizedUSattorney(false);
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).setAuthorizedCAattorney(false);
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).setAutorizationComplete(true);
+
+            }
+            if(pValue.equals("us")){
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).setUnrepresentedOwner(false);
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).setAuthorizedUSattorney(true);
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).setAuthorizedCAattorney(false);
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).setAutorizationComplete(true);
+
+            }
+            if(pValue.equals("ca")){
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).setUnrepresentedOwner(false);
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).setAuthorizedUSattorney(false);
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).setAuthorizedCAattorney(true);
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).setAutorizationComplete(true);
+
+            }
+
+            appFieldReadable = "Office Action signature declaration";
+
+
+        }
+
+        if(pField.equals("OA-signature-type")){
+
+
+            if(pValue.equals("direct")){
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).setOfficeActionSignatureType(pValue);
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).setOfficeActionSignDirect(true);
+
+            }
+            appFieldReadable = "Office Action signature type";
         }
 
 
@@ -298,6 +331,13 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
             code = "200";
 
         }
+
+
+
+
+
+
+
         return buildResponseEnity(code, responseMsg);
     }
 
