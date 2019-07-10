@@ -1416,6 +1416,13 @@
             var field_value = $(this).val();
             if(field_value != ""){
                 $('#nextButton').attr("disabled",false);
+                $('#bs-link2').attr("disabled", false);
+                $('#bs-link3').attr("disabled", false);
+                $('#bs-link4').attr("disabled", false);
+
+                $('#bs-link5').attr("disabled",false);
+
+                $('#bs-link6').attr("disabled",false);
 
                 saveMarkTextdetails("mark-literal", field_value, appInternalID);
             }
@@ -1424,6 +1431,14 @@
                 // mark literal is removed
 
                 $('#nextButton').attr("disabled", true);
+                $('#bs-link2').attr("disabled", true);
+                $('#bs-link3').attr("disabled", true);
+                $('#bs-link4').attr("disabled", true);
+
+                $('#bs-link5').attr("disabled",true);
+
+                $('#bs-link6').attr("disabled",true);
+
             }
 
             // enable next link
