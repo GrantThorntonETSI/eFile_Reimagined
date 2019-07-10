@@ -1419,6 +1419,12 @@
 
                 saveMarkTextdetails("mark-literal", field_value, appInternalID);
             }
+            else {
+                saveMarkTextdetails("mark-literal", "none", appInternalID);
+                // mark literal is removed
+
+                $('#nextButton').attr("disabled", true);
+            }
 
             // enable next link
 

@@ -82,7 +82,13 @@ public class TradeMarkService extends BaseRESTapiService {
 
         if(markField.equals("mark-literal")){
             // ptoUser.setState(param); // sets state code
-            baseTrademarkApplication.getTradeMark().setMarkLiteral(markValue);
+            if(markValue.equals("none")){
+                baseTrademarkApplication.getTradeMark().setMarkLiteral(null);
+            }
+            else {
+                baseTrademarkApplication.getTradeMark().setMarkLiteral(markValue);
+            }
+
             appFieldReadable = "Mark Literal";
 
         }
