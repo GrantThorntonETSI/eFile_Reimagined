@@ -519,7 +519,7 @@
                                                                                                                                         <option value="direct">Sign Directly</option>
                                                                                                                                         <option value="handwritten" disabled>Print and Upload Handwritten Signature</option>
                                                                                                                                         <option value="send" disabled>Send to Second Party for Signature</option>
-                                                                                                                                        <option value="unsigned" disabled>Submit Unsigned</option>
+                                                                                                                                        <option value="unsigned" >Submit Unsigned</option>
                                                                                                                                     </select>
                                                                                                                                 </div>
                                                                                                                             </div>
@@ -773,7 +773,7 @@
                 <button type="button" class="btn btn-sm btn-default fill prev" id="prevButton" value="previous">Previous</button>
             </div>
             <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next">Next
+                <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next" disabled>Next
                     <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
             </div>
         </div>
@@ -931,6 +931,12 @@
 
         // expand fee drop down
         $('a.dropdown-toggle').click();
+
+        alert($('#signmethod :selected').text());
+
+        if($('#signmethod').val() == "direct" || $('#signmethod').val() == "unsigned" ){
+            $('#nextButton').attr("disabled", false);
+        }
 
 
         //////////////////////////////////////////////////////////////////
@@ -1105,6 +1111,10 @@
         // set signature type persistence
         if(signatureType != "" && signatureType != "null" && signatureType != null){
             $('#signmethod').val(signatureType);
+
+            if(signatureType == "unsigned"){
+                $('#nextButton').attr("disabled", false);
+            }
         }
 
 
@@ -1114,11 +1124,19 @@
             var value = $(this).val();
 
 
-            if(value == "direct"){
+            if(value == "unsigned"){
+                $('#nextButton').attr("disabled", false);
+            }
+            else{
                 $('#nextButton').attr("disabled", true);
+                checkActivateLink();
             }
 
             saveAppDeclarationField("app-sign-type", value);
+
+
+
+
 
 
 
@@ -1580,6 +1598,9 @@
         if($('#signature').val() !="" && $('#signatoryname').val()!="" && $('#signatoryposition').val()!=""){
             $('#nextButton').attr("disabled",false);
         }
+
+
+
     }
 
 
