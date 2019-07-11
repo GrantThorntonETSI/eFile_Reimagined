@@ -16,66 +16,44 @@
                 <div class="row">
                     <section class="col-xs-12 steps breadcrumb-steps" aria-label="progress tracker">
                         <div class="row displaycell">
-                            <div class="col-xs-2 one" id="bs-header1">
-                                <div class="row">
-                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
-                                        <span>1</span>
+
+                            <th:block th:each="crumb, iter: ${action.getOAbreadCrumbs()}">
+
+
+                                <th:block th:if="${crumb.isActiveBreadCrumb() == true}">
+                                    <div class="col-xs-2 active">
+                                        <div class="row">
+                                            <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
+                                                <span th:text="${iter.index}+1">1</span>
+                                            </div>
+                                            <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                                <p class="first" th:text="${crumb.getDescription()}"></p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link1">
-                                        <p class="first">Your details</p>
+
+                                </th:block>
+
+                                <th:block th:if="${crumb.isActiveBreadCrumb() == false}">
+                                    <div class="col-xs-2">
+                                        <div class="row">
+                                            <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
+                                                <span th:text="${iter.index}+1">1</span>
+                                            </div>
+                                            <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8">
+                                                <p class="first" th:text="${crumb.getDescription()}"></p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-2 two" id="bs-header2">
-                                <div class="row">
-                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
-                                        <span>2</span>
-                                    </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link2">
-                                        <p>Trademark details</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-2 three" id="bs-header3">
-                                <div class="row">
-                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
-                                        <span>3</span>
-                                    </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link3">
-                                        <p>Goods and services</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-2 four" id="bs-header4">
-                                <div class="row">
-                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
-                                        <span>4</span>
-                                    </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link4">
-                                        <p>Basis</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-2 five" id="bs-header5">
-                                <div class="row">
-                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
-                                        <span>5</span>
-                                    </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link5">
-                                        <p>Additional info</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-2 six" id="bs-header6">
-                                <div class="row">
-                                    <div class="col-xs-3 col-sm-5 col-md-4 col-lg-4 number">
-                                        <span>6</span>
-                                    </div>
-                                    <div class="col-xs-9 col-sm-7 col-md-8 col-lg-8" id="bs-link6">
-                                        <p>Confirm and pay</p>
-                                    </div>
-                                </div>
-                            </div>
+
+                                </th:block>
+
+
+
+                            </th:block>
+
+
+
                         </div>
                     </section>
                 </div>

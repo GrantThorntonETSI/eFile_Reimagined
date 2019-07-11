@@ -18,6 +18,7 @@ public class OfficeActions extends BaseEntity {
 
         optionalActionsSelectedList = new ArrayList<>();
         optionalActionsCompletedList = new ArrayList<>();
+
     }
 
     private String officeAction;
@@ -84,7 +85,7 @@ public class OfficeActions extends BaseEntity {
     // use these two lists to figure out what the next page should be..
 
     // last value in this list is the last completed step
-    ArrayList<String> optionalActionsCompletedList;
+    private ArrayList<String> optionalActionsCompletedList;
 
 
 
@@ -93,7 +94,7 @@ public class OfficeActions extends BaseEntity {
     // optional actions list
     // we probably do not need this ...
     // should be able to use flags below
-    ArrayList<String> optionalActionsSelectedList;
+    private ArrayList<String> optionalActionsSelectedList;
 
     private boolean attorneyOptional;
 
@@ -121,6 +122,9 @@ public class OfficeActions extends BaseEntity {
 
     boolean step7_firstTime = true;
 
+
+
+    // create matching bread crumbs
 
 
 
@@ -348,6 +352,86 @@ public class OfficeActions extends BaseEntity {
 
         return ordereddList;
    }
+
+
+   public ArrayList<BreadCrumb> getOAbreadCrumbs(){
+       ArrayList<BreadCrumb> crumbList = new ArrayList<>();
+
+       if(this.attorneyOptional == true){
+          BreadCrumb breadCrumb = new BreadCrumb();
+          breadCrumb.setDescription("Attorney");
+
+
+          ArrayList<String> orderedList = getOrderedSelectedList();
+
+          if( orderedList.get(currentActionIndex).equals("attorney") || orderedList.get(currentActionIndex).equals("attorney-select") ){
+              breadCrumb.setActiveBreadCrumb(true);
+          }
+          crumbList.add(breadCrumb);
+       }
+       if(this.ownerOptional == true){
+           BreadCrumb breadCrumb = new BreadCrumb();
+           breadCrumb.setDescription("Owner");
+           ArrayList<String> orderedList = getOrderedSelectedList();
+
+           if( orderedList.get(currentActionIndex).equals("owner") ){
+               breadCrumb.setActiveBreadCrumb(true);
+           }
+           crumbList.add(breadCrumb);
+
+       }
+       if(this.markOptional == true){
+           BreadCrumb breadCrumb = new BreadCrumb();
+           breadCrumb.setDescription("Mark");
+           ArrayList<String> orderedList = getOrderedSelectedList();
+
+           if( orderedList.get(currentActionIndex).equals("mark") ){
+               breadCrumb.setActiveBreadCrumb(true);
+           }
+           crumbList.add(breadCrumb);
+       }
+       if(this.fbOptional == true){
+           BreadCrumb breadCrumb = new BreadCrumb();
+           breadCrumb.setDescription("Filing Basis");
+           ArrayList<String> orderedList = getOrderedSelectedList();
+
+           if( orderedList.get(currentActionIndex).equals("fb") ){
+               breadCrumb.setActiveBreadCrumb(true);
+           }
+           crumbList.add(breadCrumb);
+       }
+       if(this.additionalOptional == true){
+           BreadCrumb breadCrumb = new BreadCrumb();
+           breadCrumb.setDescription("Additional");
+           ArrayList<String> orderedList = getOrderedSelectedList();
+
+           if( orderedList.get(currentActionIndex).equals("additional") ){
+               breadCrumb.setActiveBreadCrumb(true);
+           }
+           crumbList.add(breadCrumb);
+       }
+
+       // this one is always there
+       BreadCrumb breadCrumb = new BreadCrumb();
+       breadCrumb.setDescription("Signature");
+       ArrayList<String> orderedList = getOrderedSelectedList();
+
+       if( orderedList.get(currentActionIndex).equals("signature") ){
+           breadCrumb.setActiveBreadCrumb(true);
+       }
+       crumbList.add(breadCrumb);
+
+       return crumbList;
+
+
+   }
+
+
+
+
+
+
+
 
     public int getCurrentActionIndex() {
         return currentActionIndex;
@@ -587,4 +671,10 @@ public class OfficeActions extends BaseEntity {
     public void setAutorizationComplete(boolean autorizationComplete) {
         this.autorizationComplete = autorizationComplete;
     }
+
+
+
+    // bread crumb methods
+
+
 }
