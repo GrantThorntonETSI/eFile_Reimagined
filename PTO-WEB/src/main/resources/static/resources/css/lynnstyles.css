@@ -962,11 +962,13 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.even.parent>td:first-child:before,
 	position:absolute;
 	bottom:-4px;
 }
-#mydata2 .scroll {
-	max-height:300px;
+#mydata2 tbody.scroll {
+	max-height:200px;
+	display:block;
 	overflow:auto;
 	overflow-y:auto;
 	overflow-x:auto;
+	scrollbar-color: #808080 #bbb;
 }
 #mydata2 .scroll::-webkit-scrollbar {
 	width: 1em;
@@ -980,14 +982,18 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.even.parent>td:first-child:before,
 #mydata2 .scroll::-webkit-scrollbar-thumb:hover {
 	background: #004C97;
 }
+#mydata2 .scroll:hover {
+	scrollbar-color: #004C97 #bbb;
+}
+#mydata2 .scroll {
+	scrollbar-width: thin;
+}
 #mydata .table-fixed .nopadding, #mydata2 .table-fixed .nopadding {
 	padding:0;
 }
 #mydata .table-fixed, #mydata2 .table-fixed {
 	width:100%;
 }
-
-
 #mydata .panel-heading h4, #mydata2 .panel-heading h4 {
 	display:inline-block;
 }
@@ -1049,13 +1055,12 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.even.parent>td:first-child:before,
 	color:#F3D54E;
 	font-size:1.1em;
 }
-#mydata2 .list-group-item a span.glyphicon-ok-sign {
-	color:#7A9A01;
-}
-
-#dashboard a.toggle-vis span.glyphicon {
+#dashboard a.toggle-vis span.glyphicon, #dashboard a.toggle-vistwo span.glyphicon, #petitions a.toggle-vis span.glyphicon {
 	margin-right:1em;
 	color:#F3D54E;
+}
+#mydata2 .list-group-item a span.glyphicon-ok-sign {
+	color:#7A9A01;
 }
 #mydata .panel-title, #mydata2 .panel-title {
 	font-size: .92em;
@@ -1067,10 +1072,20 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.even.parent>td:first-child:before,
 #mydata .panel>.panel-collapse>.list-group, #mydata2 .panel>.panel-collapse>.list-group {
 	margin-bottom: 41px;
 }
-
-
-
-
+#mydata .panel>.panel-collapse>table.list-group table, #mydata2 .panel>.panel-collapse>table.list-group table {
+	margin-bottom: 0;
+}
+#mydata .panel>.panel-collapse>table.list-group tbody, #mydata2 .panel>.panel-collapse>table.list-group tbody {
+	/*display: block;*/
+	width:100%;
+}
+#mydata .panel>.panel-collapse>table.list-group table tbody td, #mydata2 .panel>.panel-collapse>table.list-group table tbody td, #mydata .panel>.panel-collapse>table.list-group table tbody tr, #mydata2 .panel>.panel-collapse>table.list-group table tbody tr {
+	display:block;
+	float:left;
+}
+#mydata .panel>.panel-collapse>table.list-group table tbody tr, #mydata2 .panel>.panel-collapse>table.list-group table tbody tr {
+	width: 100%;
+}
 #mydata .panel-group .panel, #mydata2 .panel-group .panel {
 	-webkit-border-radius: 	2px;
 	-moz-border-radius: 	2px;
@@ -1080,14 +1095,17 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.even.parent>td:first-child:before,
 	color: #FFF;
 	background-color: #808080;
 	font-size:.8em;
-
+	width: 100%;
 }
-#mydata .panel-default>.panel-heading#contacts .Accordion-trigger, #mydata2 .panel-default>.panel-heading#contacts .Accordion-trigger {
-	color:#EEEEEE;
+#mydata .panel-default>.panel-heading#contacts .panel-title button, #mydata2 .panel-default>.panel-heading#contacts .panel-title button {
+	color:#EEEEEE!important;
 }
-#mydata .panel-default>.panel-heading .Accordion-trigger, #mydata2 .panel-default>.panel-heading .Accordion-trigger {
-	color:#EEEEEE;
+#mydata .panel-default>.panel-heading .panel-title button, #mydata2 .panel-default>.panel-heading .panel-title button {
+	color:#EEEEEE!important;
 	letter-spacing: 0.03em;
+}
+#mydata .panel-default>.panel-heading .panel-title button:hover, #mydata2 .panel-default>.panel-heading  .panel-title button:hover {
+	color:#EEEEEE!important;
 }
 #mydata2 .list-group-item a#clearform {
 	font-weight:600;
@@ -1102,6 +1120,8 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.even.parent>td:first-child:before,
 #mydata2 td.list-group-item {
 	border-bottom: 1px solid #ddd;
 	border-top: none;
+	height: 2.9em;
+	line-height: 1.64em;
 }
 /* END data panel */
 
