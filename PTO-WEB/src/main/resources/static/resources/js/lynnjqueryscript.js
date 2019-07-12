@@ -1835,27 +1835,28 @@ $(document).ready(function(){
 		],
 	});
 
-	$(function() {
-		var progresslength = $('#editattorney .breadcrumb-steps .col-xs-2').length;
-		var progress = $('#editattorney .breadcrumb-steps .col-xs-2');
-		if ((progresslength) === 5)  {
-			$(progress).css('width','20%');
-		}
-		if ((progresslength) === 4)  {
-			$(progress).css('width','25%');
-		}
-		if ((progresslength) === 3)  {
-			$(progress).css('width','33.33%');
-		}
-		if ((progresslength) === 2)  {
-			$(progress).css('width','50%');
-		}
-		if ((progresslength) === 1)  {
-			$('#editattorney .displaycell').css('display','none');
-			console.log(progresslength);
-		}
-	});
 
+
+		$(function() {
+        var progresslength = $('#editattorney .breadcrumb-steps .col-xs-2, #amendmark .breadcrumb-steps .col-xs-2, #editowneroptional .breadcrumb-steps .col-xs-2, #gsinuseoptional .breadcrumb-steps .col-xs-2, #gsselectedoptional .breadcrumb-steps .col-xs-2, div.amend .breadcrumb-steps .col-xs-2').length;
+        var progress = $('#editattorney .breadcrumb-steps .col-xs-2, #amendmark .breadcrumb-steps .col-xs-2, #editowneroptional .breadcrumb-steps .col-xs-2, #gsinuseoptional .breadcrumb-steps .col-xs-2, #gsselectedoptional .breadcrumb-steps .col-xs-2, div.amend .breadcrumb-steps .col-xs-2');
+          if ((progresslength) === 5)  {
+              $(progress).css('width','20%');
+          }
+          if ((progresslength) === 4)  {
+              $(progress).css('width','25%');
+          }
+          if ((progresslength) === 3)  {
+              $(progress).css('width','33.33%');
+          }
+          if ((progresslength) === 2)  {
+              $(progress).css('width','50%');
+          }
+          if ((progresslength) === 1)  {
+              $('#editattorney .displaycell, #amendmark .displaycell, #editowneroptional .displaycell, #gsinuseoptional .displaycell, #gsselectedoptional .displaycell, div.amend .displaycell').css('display','none');
+            //console.log(progresslength);
+          }
+    });
 
 
 
