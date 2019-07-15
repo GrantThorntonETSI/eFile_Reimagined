@@ -964,6 +964,7 @@ public class ApplicationFlowController {
         model.addAttribute("account",credentials);
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+        OfficeActions actions = baseTrademarkApplication.findOfficeActionById(actionID);
 
 
         Owner owner = baseTrademarkApplication.findOwnerByEmail(email);
@@ -1009,6 +1010,9 @@ public class ApplicationFlowController {
 
 
         model.addAttribute("actionID",actionID);
+
+        model.addAttribute("action", actions);
+
 
 
         return "application/office_action/optional_actions/owner/individual/ownerEdit";
@@ -1101,6 +1105,7 @@ public class ApplicationFlowController {
         model.addAttribute("account",credentials);
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+        OfficeActions actions = baseTrademarkApplication.findOfficeActionById(actionID);
 
 
         Owner owner = baseTrademarkApplication.findOwnerByEmail(email);
@@ -1147,7 +1152,7 @@ public class ApplicationFlowController {
 
         model.addAttribute("actionID",actionID);
 
-
+        model.addAttribute("action", actions);
         return "application/office_action/optional_actions/owner/corp/ownerEdit";
     }
 
