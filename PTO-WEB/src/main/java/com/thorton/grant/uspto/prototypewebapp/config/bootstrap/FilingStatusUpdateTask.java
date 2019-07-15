@@ -47,7 +47,7 @@ public class FilingStatusUpdateTask extends TimerTask {
     private long blackOutPeriodDuration = 1*60*1000;  // 1 mins
 
     @Value("${uspto.officeaction1}")
-    private long firstOfficeActionDuration = 5*60*1000;  // 5 mins
+    private long firstOfficeActionDuration = 5000*60*1000;  // 5 mins
 
 
     @Value("${uspto.officeaction2b}")

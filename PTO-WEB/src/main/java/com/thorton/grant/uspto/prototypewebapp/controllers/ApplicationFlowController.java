@@ -5338,7 +5338,8 @@ public class ApplicationFlowController {
         model.addAttribute("user", ptoUser);
         model.addAttribute("account",credentials);
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
-
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+        OfficeActions actions = baseTrademarkApplication.findOfficeActionById(actionID);
 
         /////////////////////////////////////////////
         // load my contacts list for thyemleaf
@@ -5392,7 +5393,7 @@ public class ApplicationFlowController {
         model.addAttribute("myManagedContacts", mcDisplayDTO);
 
         // set empty selected contacts for thymeleaf
-        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
 
         ArrayList<String> selectedContactNames = new ArrayList<>();
         for(Iterator<Lawyer> iter = baseTrademarkApplication.getAvailableLawyers().iterator(); iter.hasNext(); ) {
@@ -5473,6 +5474,8 @@ public class ApplicationFlowController {
         // action ids will be used to build the link
         model.addAttribute("hostBean", hostBean);
 
+        model.addAttribute("action", actions);
+
 
         return "application/office_action/optional_actions/attorney/attorneyEdit";
 
@@ -5496,6 +5499,8 @@ public class ApplicationFlowController {
         model.addAttribute("user", ptoUser);
         model.addAttribute("account", credentials);
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+        OfficeActions actions = baseTrademarkApplication.findOfficeActionById(actionID);
 
 
         ArrayList<String> contactNamesMC = new ArrayList<>();
@@ -5611,7 +5616,7 @@ public class ApplicationFlowController {
 
 
         } else {
-            BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
 
             ArrayList<String> selectedContactNames = new ArrayList<>();
             for (Iterator<Lawyer> iter = baseTrademarkApplication.getAvailableLawyers().iterator(); iter.hasNext(); ) {
@@ -5676,6 +5681,7 @@ public class ApplicationFlowController {
         model.addAttribute("addNewAttorneyContactFormDTO", attorneyContactFormDTO);
 
         model.addAttribute("actionID", actionID);
+        model.addAttribute("action", actions);
         // add any selected attorneys to model as selectedContacts
 
 
