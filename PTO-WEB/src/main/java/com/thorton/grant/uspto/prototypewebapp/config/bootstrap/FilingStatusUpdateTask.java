@@ -47,11 +47,11 @@ public class FilingStatusUpdateTask extends TimerTask {
     private long blackOutPeriodDuration = 1*60*1000;  // 1 mins
 
     @Value("${uspto.officeaction1}")
-    private long firstOfficeActionDuration = 5000*60*1000;  // 5 mins
+    private long firstOfficeActionDuration = 1*60*1000;  // 5 mins
 
 
     @Value("${uspto.officeaction2b}")
-    private long durationToRevivieWithoutClaim = 1*60*1000; //1 minsh
+    private long durationToRevivieWithoutClaim = 10*60*1000; //1 minsh
 
     @Value("${uspto.officeaction2}")
     private long durationToReviveWithClaim = 1*60*1000;   // 1 mins
@@ -250,6 +250,15 @@ public class FilingStatusUpdateTask extends TimerTask {
                             current.addPetition(petition);
                             petition.setTrademarkApplication(current);
                             current3.setActiveAction(false);
+
+                            FilingDocumentEvent filingDocumentEvent = new FilingDocumentEvent();
+                            filingDocumentEvent.setEventDescription("Filing Abandoned");
+
+                            filingDocumentEvent.setDocumentType("XML");
+                            Date date = new Date();
+                            filingDocumentEvent.setEventDate(date);
+
+                            current.addFilingDocumentEvent(filingDocumentEvent);
 
 
                             // go back and set any active actions to in-active

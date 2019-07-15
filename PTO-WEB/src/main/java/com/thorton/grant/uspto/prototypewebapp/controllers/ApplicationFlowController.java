@@ -4489,10 +4489,101 @@ public class ApplicationFlowController {
         model.addAttribute("standardCharacterMark ", standardCharacterMark );
 
 
+        model.addAttribute("petitionID", petitionID);
+
+
 
 
 
         return "petition/abandoned/index";
+    }
+
+
+    @RequestMapping({"/petitions/revive/{petitionID}"})
+    public String reviveAbandonedFilingComplete( Model model, @PathVariable String petitionID ,@RequestParam("trademarkID") String trademarkInternalID){
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        PTOUserService  ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+
+        //OfficeActions action = baseTrademarkApplication.findOfficeActionById(actionID);
+
+        baseTrademarkApplication.findPetitionById(petitionID).setActivePetition(false);
+
+        if(baseTrademarkApplication.isTEASPlusApplication()){
+            baseTrademarkApplication.setFilingStatus("TEAS RF New Application");
+        }
+        else {
+            baseTrademarkApplication.setFilingStatus("New Application");
+        }
+
+        FilingDocumentEvent filingDocumentEvent = new FilingDocumentEvent();
+        filingDocumentEvent.setEventDescription("Filing Revived");
+
+        filingDocumentEvent.setDocumentType("XML");
+        Date date = new Date();
+        filingDocumentEvent.setEventDate(date);
+
+        baseTrademarkApplication.addFilingDocumentEvent(filingDocumentEvent);
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+        //////////////////////////////////////////////////////
+        // this is set back to null upon verification check
+        //////////////////////////////////////////////////////
+
+        //////////////////////////////////////////////////////
+        //continuation = true;
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+
+
+
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
+
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+        }
+        else{
+            model.addAttribute("markImagePath","");
+
+            model.addAttribute("markImagePathBW","");
+
+        }
+
+
+
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
+
+
+        model.addAttribute("petitionID", petitionID);
+
+
+
+
+
+        return "forward:/accounts/dashboard";
     }
 
 
@@ -4566,6 +4657,9 @@ public class ApplicationFlowController {
 
         return "application/office_action/index";
     }
+
+
+
 
 
 
