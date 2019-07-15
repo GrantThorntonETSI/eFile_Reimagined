@@ -824,7 +824,7 @@
                 <button type="button" class="btn btn-sm btn-default fill prev" value="previous"></button>
             </div>
             <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-primary fill next" value="next" id="doneButton">Done
+                <button type="button" class="btn btn-sm btn-primary fill next" value="next" id="doneButton" disabled>Done
                     <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
             </div>
         </div>
@@ -871,6 +871,8 @@ $(document).ready(function() {
         location.href=doneURL;
     });
 
+
+    checkActivateLink();
 
 
     // start ajax auto save
@@ -980,6 +982,7 @@ $(document).ready(function() {
 
 
         savePeitionInfo("pet-signature-name", value, actionID, appInternalID);
+        checkActivateLink();
 
     });
 
@@ -991,6 +994,7 @@ $(document).ready(function() {
 
 
         savePeitionInfo("pet-signature-phone", value, actionID, appInternalID);
+        checkActivateLink();
 
     });
 
@@ -1002,6 +1006,7 @@ $(document).ready(function() {
 
 
         savePeitionInfo("pet-signature-position", value, actionID, appInternalID);
+        checkActivateLink();
 
     });
 
@@ -1207,6 +1212,21 @@ $(document).ready(function() {
         return (hour+":"+minutes+":"+seconds+" "+monthNames[monthIndex]+" "+day+","+date.getFullYear()+" E.T");
 
         //return day + ' ' + monthNames[monthIndex] + ' ' + year;
+    }
+
+
+
+    function checkActivateLink() {
+
+
+        if($('#signature').val() !="" && $('#signatoryname').val()!="" && $('#signatoryposition').val()!=""){
+            $('#doneButton').attr("disabled",false);
+        }
+
+        if($('#responsesignature').val() !="" && $('#responsesignatorynamename').val()!="" && $('#responsesignatoryposition').val()!=""){
+            $('#doneButton').attr("disabled",false);
+        }
+
     }
 
 
