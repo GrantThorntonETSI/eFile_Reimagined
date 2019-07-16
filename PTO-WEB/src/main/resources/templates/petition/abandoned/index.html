@@ -427,7 +427,7 @@
                                                                                     <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                         <p class="sr-only">Enclose the signature in forward slashes</p>
                                                                                         <label for="signature">Signature</label>
-                                                                                        <input type="text" class="form-control" placeholder="/Signature/" id="signature" th:value="${petition.getPetitionSignature()}" th:attr="action-id=${petitiongetInternalID()}" >
+                                                                                        <input type="text" class="form-control" placeholder="/Signature/" id="signature" th:value="${petition.getPetitionSignature()}" th:attr="action-id=${petition.getInternalID()}" >
                                                                                     </div>
 
                                                                                     <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
@@ -740,12 +740,16 @@ $(document).ready(function() {
         savePeitionInfo("avoid-delay", "yes", actionID, appInternalID);
 
         $('#doneButton').html("Next");
+        $('#doneButton').attr("disabled", true);
+        checkActivateLink();
 
 
     });
 
     if($('#inlineRadio074').is(":checked")){
         $('#doneButton').html("Next");
+        $('#doneButton').attr("disabled", true);
+        checkActivateLink();
     }
 
     // no click for recieved office action
@@ -755,11 +759,15 @@ $(document).ready(function() {
         savePeitionInfo("avoid-delay", "no", actionID, appInternalID);
 
         $('#doneButton').html("Done");
+        $('#doneButton').attr("disabled", true);
+        checkActivateLink();
 
     });
 
     if($('#inlineRadio075').is(":checked")){
         $('#doneButton').html("Done");
+        $('#doneButton').attr("disabled", true);
+        checkActivateLink();
     }
 
 
