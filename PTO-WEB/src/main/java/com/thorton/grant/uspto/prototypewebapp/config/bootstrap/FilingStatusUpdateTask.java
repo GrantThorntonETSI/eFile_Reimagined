@@ -271,6 +271,9 @@ public class FilingStatusUpdateTask extends TimerTask {
 
                             petition.setActionID(String.valueOf(current.getId()));
 
+                            long dueDate = new Date().getTime()+current.getBlackOutPeriod()+current.getOfficeActionResponsePeriod()+current.getPetitionPeriod();
+                            petition.setDueDate(new Date(dueDate));
+
 
                             current.setFilingStatus("Abandoned - Failure to Respond or Late Response");
                             petition.setOfficeActionCode("Abandoned - Failure to Respond or Late Response");

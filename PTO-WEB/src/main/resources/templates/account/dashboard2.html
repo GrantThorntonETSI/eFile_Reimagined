@@ -268,7 +268,7 @@
                                                                                 <td><img th:src="${petition.getParentMarkImagePath()}" style="max-width: 55px; max-height: 33px;"></td>
                                                                             </th:block>
                                                                             <td th:text="${petition.getParentMarkOwnerName()}">Pittsburgh Penguins LP</td>
-                                                                            <td th:text="${petition.returnSomeDate()}">2/20/2019</td>
+                                                                            <td th:text="${petition.getDueDateDisplay()}">2/20/2019</td>
                                                                             <td > <a th:text="${petition.getOfficeActionCode()}">Abandoned</a></td>
                                                                             <td STYLE="color: red"><a th:href="${petition.getPetitionsLink()}">File Petition to Revive</a></td>
                                                                         </tr>
