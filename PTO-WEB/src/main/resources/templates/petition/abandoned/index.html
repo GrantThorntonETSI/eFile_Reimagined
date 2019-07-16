@@ -246,62 +246,7 @@
                                                         </div>
                                                     </fieldset><!--//1-->
                                                     <!--2-->
-                                                    <fieldset aria-label="yes, received office action. Respond to office action." id="edit">
-                                                        <div class="card-text noexpand">
-                                                            <h2 class="card-title weight600">Respond to Office Action</h2>
-                                                        </div>
-                                                        <p id="respondeditor">Use the text field below to respond to all issues raised in the Office Action.</p>
-                                                        <textarea row="5"  class="form-control" id="response" th:text="${petition.getResponseText()}"   th:attr="action-id=${petition.getInternalID()}"> </textarea>
 
-
-
-
-                                                        <br clear="all">
-                                                    </fieldset><!--//2-->
-                                                    <!--3-->
-                                                    <fieldset aria-label="yes, received office action. Select response signature method." id="resp">
-                                                        <div class="card-text noexpand">
-                                                            <h2 class="card-title weight600">Response Signature</h2>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="form-group form-group-md col-xs-12">
-                                                                <label for="responsepetitionsign" class="weight600">How are you signing the petition?</label>
-                                                                <select class="form-control signmethod" id="responsepetitionsign" th:attr="action-id=${petition.getInternalID()}" >
-                                                                    <option value="Select">Select Signature Method</option>
-                                                                    <option value="direct">Sign directly</option>
-                                                                    <option value="handwritten" disabled>Print and upload handwritten signature</option>
-                                                                    <option value="send" disabled>Send to second party for signature</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-xs-12 form-group form-group-md direct" style="display: none;">
-                                                                <div class="row hidethis">
-                                                                    <section aria-label="sign">
-                                                                        <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                            <p class="sr-only">Enclose the signature in forward slashes</p>
-                                                                            <label for="responsesignature">Signature</label>
-                                                                            <input type="text" class="form-control" placeholder="/Signature/" id="responsesignature" th:value="${petition.getResponseSignature()}"  th:attr="action-id=${petition.getInternalID()}" >
-                                                                        </div>
-                                                                        <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                            <label for="responsedatesigned">Date signed: <span id="tz2" class="sr-only"> </span></label>
-                                                                            <input type="text" rows="1" class="form-control datesigned" id="responsedatesigned"  th:value="${petition.getResponseDateSignedDisplay()}"  th:attr="action-id=${petition.getInternalID()}" > </input>
-                                                                        </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
-                                                                        <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                            <label for="responsesignatoryname">Signatory&#8217;s name</label>
-                                                                            <input type="text" class="form-control" id="responsesignatoryname"  th:value="${petition.responseSignatoryName}" th:attr="action-id=${petition.getInternalID()}" >
-                                                                        </div>
-                                                                        <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
-                                                                            <label for="responsesignatoryphone">Signatory&#8217;s phone number</label>
-                                                                            <input type="text" class="form-control" id="responsesignatoryphone"  th:value="${petition.responseSignatoryPhone}"   th:attr="action-id=${petition.getInternalID()}" >
-                                                                        </div>
-                                                                        <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                            <label for="responsesignatoryposition">Signatory&#8217;s position</label>
-                                                                            <input type="text" class="form-control" id="responsesignatoryposition" th:value="${petition.responseSignatoryPosition}" th:attr="action-id=${petition.getInternalID()}" >
-                                                                        </div>
-                                                                    </section>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </fieldset><!--//3-->
                                                 </div>
                                             </div>
 
@@ -370,62 +315,7 @@
                                                             </div>
                                                         </fieldset><!--//1-->
                                                         <!--2-->
-                                                        <fieldset aria-label="yes, received office action. Respond to office action." id="edit">
-                                                            <div class="card-text noexpand">
-                                                                <h2 class="card-title weight600">Respond to Office Action</h2>
-                                                            </div>
-                                                            <p id="respondeditor">Use the text field below to respond to all issues raised in the Office Action.</p>
-                                                            <textarea row="5"  class="form-control" id="response" th:text="${petition.getResponseText()}"  th:attr="action-id=${petition.getInternalID()}"> </textarea>
 
-
-
-
-                                                            <br clear="all">
-                                                        </fieldset><!--//2-->
-                                                        <!--3-->
-                                                        <fieldset aria-label="yes, received office action. Select response signature method." id="resp">
-                                                            <div class="card-text noexpand">
-                                                                <h2 class="card-title weight600">Response Signature</h2>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="form-group form-group-md col-xs-12">
-                                                                    <label for="responsepetitionsign" class="weight600">How are you signing the petition?</label>
-                                                                    <select class="form-control signmethod" id="responsepetitionsign" th:attr="action-id=${petition.getInternalID()}" >
-                                                                        <option value="Select">Select Signature Method</option>
-                                                                        <option value="direct">Sign directly</option>
-                                                                        <option value="handwritten" disabled>Print and upload handwritten signature</option>
-                                                                        <option value="send" disabled>Send to second party for signature</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-xs-12 form-group form-group-md direct" style="display: none;">
-                                                                    <div class="row hidethis">
-                                                                        <section aria-label="sign">
-                                                                            <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                <p class="sr-only">Enclose the signature in forward slashes</p>
-                                                                                <label for="responsesignature">Signature</label>
-                                                                                <input type="text" class="form-control" placeholder="/Signature/" id="responsesignature" th:value="${petition.getResponseSignature()}" th:attr="action-id=${petition.getInternalID()}" >
-                                                                            </div>
-                                                                            <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                <label for="responsedatesigned">Date signed: <span id="tz2" class="sr-only"> </span></label>
-                                                                                <input type="text" rows="1" class="form-control datesigned " id="responsedatesigned"  th:value="${petition.getResponseDateSignedDisplay()}"  th:attr="action-id=${petition.getInternalID()}" >
-                                                                            </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
-                                                                            <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                <label for="responsesignatoryname">Signatory&#8217;s name</label>
-                                                                                <input type="text" class="form-control" id="responsesignatoryname"  th:value="${petition.responseSignatoryName}" th:attr="action-id=${petition.getInternalID()}" >
-                                                                            </div>
-                                                                            <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
-                                                                                <label for="responsesignatoryphone">Signatory&#8217;s phone number</label>
-                                                                                <input type="text" class="form-control" id="responsesignatoryphone"  th:value="${petition.responseSignatoryPhone}"   th:attr="action-id=${petition.getInternalID()}" >
-                                                                            </div>
-                                                                            <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                <label for="responsesignatoryposition">Signatory&#8217;s position</label>
-                                                                                <input type="text" class="form-control" id="responsesignatoryposition" th:value="${petition.responseSignatoryPosition}" th:attr="action-id=${petition.getInternalID()}" >
-                                                                            </div>
-                                                                        </section>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </fieldset><!--//3-->
                                                     </div>
                                                 </div>
 
@@ -500,58 +390,7 @@
                                                                 </div>
                                                             </fieldset><!--//1-->
                                                             <!--2-->
-                                                            <fieldset aria-label="yes, received office action. Respond to office action." id="edit">
-                                                                <div class="card-text noexpand">
-                                                                    <h2 class="card-title weight600">Respond to Office Action</h2>
-                                                                </div>
-                                                                <p id="respondeditor">Use the text field below to respond to all issues raised in the Office Action.</p>
-                                                                <textarea rows="5"  class="form-control" id="response"  th:text="${petition.getResponseText()}"  th:attr="action-id=${petition.getInternalID()}"></textarea>
-                                                                <br clear="all">
-                                                            </fieldset><!--//2-->
-                                                            <!--3-->
-                                                            <fieldset aria-label="yes, received office action. Select response signature method." id="resp">
-                                                                <div class="card-text noexpand">
-                                                                    <h2 class="card-title weight600">Response Signature</h2>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="form-group form-group-md col-xs-12">
-                                                                        <label for="responsepetitionsign" class="weight600">How are you signing the petition?</label>
-                                                                        <select class="form-control signmethod" id="responsepetitionsign" th:attr="action-id=${petition.getInternalID()}" >
-                                                                            <option value="Select">Select Signature Method</option>
-                                                                            <option value="direct">Sign directly</option>
-                                                                            <option value="handwritten" disabled>Print and upload handwritten signature</option>
-                                                                            <option value="send" disabled>Send to second party for signature</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-xs-12 form-group form-group-md direct">
-                                                                        <div class="row hidethis">
-                                                                            <section aria-label="sign">
-                                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                    <p class="sr-only">Enclose the signature in forward slashes</p>
-                                                                                    <label for="responsesignature">Signature</label>
-                                                                                    <input type="text" class="form-control" placeholder="/Signature/" id="responsesignature" th:value="${petition.getResponseSignature()}"  th:attr="action-id=${petition.getInternalID()}" >
-                                                                                </div>
-                                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                    <label for="responsedatesigned">Date signed: <span id="tz2" class="sr-only"> </span></label>
-                                                                                    <input type="text" rows="1" class="form-control datesigned" id="responsedatesigned"  th:value="${petitiongetResponseDateSignedDisplay()}"  th:attr="action-id=${petition.getInternalID()}" > </input>
-                                                                                </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
-                                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                    <label for="responsesignatoryname">Signatory&#8217;s name</label>
-                                                                                    <input type="text" class="form-control" id="responsesignatoryname"  th:value="${petition.responseSignatoryName}" th:attr="action-id=${petition.getInternalID()}" >
-                                                                                </div>
-                                                                                <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
-                                                                                    <label for="responsesignatoryphone">Signatory&#8217;s phone number</label>
-                                                                                    <input type="text" class="form-control" id="responsesignatoryphone"  th:value="${petition.responseSignatoryPhone}"   th:attr="action-id=${petition.getInternalID()}" >
-                                                                                </div>
-                                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                    <label for="responsesignatoryposition">Signatory&#8217;s position</label>
-                                                                                    <input type="text" class="form-control" id="responsesignatoryposition" th:value="${petition.responseSignatoryPosition}" th:attr="action-id=${petition.getInternalID()}" >
-                                                                                </div>
-                                                                            </section>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </fieldset><!--//3-->
+
                                                         </div>
 
 
@@ -613,58 +452,7 @@
                                                                     </div>
                                                                 </fieldset><!--//1-->
                                                                 <!--2-->
-                                                                <fieldset aria-label="yes, received office action. Respond to office action." id="edit">
-                                                                    <div class="card-text noexpand">
-                                                                        <h2 class="card-title weight600">Respond to Office Action</h2>
-                                                                    </div>
-                                                                    <p id="respondeditor">Use the text field below to respond to all issues raised in the Office Action.</p>
-                                                                    <textarea rows="5"  class="form-control" id="response"  th:text="${petition.getResponseText()}"  th:attr="action-id=${petition.getInternalID()}"></textarea>
-                                                                    <br clear="all">
-                                                                </fieldset><!--//2-->
-                                                                <!--3-->
-                                                                <fieldset aria-label="yes, received office action. Select response signature method." id="resp">
-                                                                    <div class="card-text noexpand">
-                                                                        <h2 class="card-title weight600">Response Signature</h2>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="form-group form-group-md col-xs-12">
-                                                                            <label for="responsepetitionsign" class="weight600">How are you signing the petition?</label>
-                                                                            <select class="form-control signmethod" id="responsepetitionsign" th:attr="action-id=${petition.getInternalID()}" >
-                                                                                <option value="Select">Select Signature Method</option>
-                                                                                <option value="direct">Sign directly</option>
-                                                                                <option value="handwritten" disabled>Print and upload handwritten signature</option>
-                                                                                <option value="send" disabled>Send to second party for signature</option>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="col-xs-12 form-group form-group-md direct">
-                                                                            <div class="row hidethis">
-                                                                                <section aria-label="sign">
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                        <p class="sr-only">Enclose the signature in forward slashes</p>
-                                                                                        <label for="responsesignature">Signature</label>
-                                                                                        <input type="text" class="form-control" placeholder="/Signature/" id="responsesignature" th:value="${petition.getResponseSignature()}"  th:attr="action-id=${petition.getInternalID()}" >
-                                                                                    </div>
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                        <label for="responsedatesigned">Date signed: <span id="tz2" class="sr-only"> </span></label>
-                                                                                        <input type="text" rows="1" class="form-control datesigned" id="responsedatesigned"  th:value="${petition.getResponseDateSignedDisplay()}"  th:attr="action-id=${petition.getInternalID()}" > </input>
-                                                                                    </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                        <label for="responsesignatoryname">Signatory&#8217;s name</label>
-                                                                                        <input type="text" class="form-control" id="responsesignatoryname"  th:value="${petition.responseSignatoryName}" th:attr="action-id=${petition.getInternalID()}" >
-                                                                                    </div>
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
-                                                                                        <label for="responsesignatoryphone">Signatory&#8217;s phone number</label>
-                                                                                        <input type="text" class="form-control" id="responsesignatoryphone"  th:value="${petition.responseSignatoryPhone}"   th:attr="action-id=${petition.getInternalID()}" >
-                                                                                    </div>
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                        <label for="responsesignatoryposition">Signatory&#8217;s position</label>
-                                                                                        <input type="text" class="form-control" id="responsesignatoryposition" th:value="${petition.responseSignatoryPosition}" th:attr="action-id=${petition.getInternalID()}" >
-                                                                                    </div>
-                                                                                </section>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </fieldset><!--//3-->
+
                                                             </div>
 
 
@@ -727,58 +515,7 @@
                                                                     </div>
                                                                 </fieldset><!--//1-->
                                                                 <!--2-->
-                                                                <fieldset aria-label="yes, received office action. Respond to office action." id="edit" style="display: none;">
-                                                                    <div class="card-text noexpand">
-                                                                        <h2 class="card-title weight600">Respond to Office Action</h2>
-                                                                    </div>
-                                                                    <p id="respondeditor">Use the text field below to respond to all issues raised in the Office Action.</p>
-                                                                    <textarea rows="5"  class="form-control" id="response"  th:text="${petition.getResponseText()}"  th:attr="action-id=${petition.getInternalID()}"></textarea>
-                                                                    <br clear="all">
-                                                                </fieldset><!--//2-->
-                                                                <!--3-->
-                                                                <fieldset aria-label="yes, received office action. Select response signature method." id="resp" style="display: none;">
-                                                                    <div class="card-text noexpand">
-                                                                        <h2 class="card-title weight600">Response Signature</h2>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="form-group form-group-md col-xs-12">
-                                                                            <label for="responsepetitionsign" class="weight600">How are you signing the petition?</label>
-                                                                            <select class="form-control signmethod" id="responsepetitionsign" th:attr="action-id=${petition.getInternalID()}" >
-                                                                                <option value="Select">Select Signature Method</option>
-                                                                                <option value="direct">Sign directly</option>
-                                                                                <option value="handwritten" disabled>Print and upload handwritten signature</option>
-                                                                                <option value="send" disabled>Send to second party for signature</option>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="col-xs-12 form-group form-group-md direct">
-                                                                            <div class="row hidethis">
-                                                                                <section aria-label="sign">
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                        <p class="sr-only">Enclose the signature in forward slashes</p>
-                                                                                        <label for="responsesignature">Signature</label>
-                                                                                        <input type="text" class="form-control" placeholder="/Signature/" id="responsesignature" th:value="${petition.getResponseSignature()}"  th:attr="action-id=${petition.getInternalID()}" >
-                                                                                    </div>
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                        <label for="responsedatesigned">Date signed: <span id="tz2" class="sr-only"> </span></label>
-                                                                                        <input type="text" rows="1" class="form-control datesigned" id="responsedatesigned"  th:value="${petition.getResponseDateSignedDisplay()}"  th:attr="action-id=${petition.getInternalID()}" > </input>
-                                                                                    </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                        <label for="responsesignatoryname">Signatory&#8217;s name</label>
-                                                                                        <input type="text" class="form-control" id="responsesignatoryname"  th:value="${petition.responseSignatoryName}" th:attr="action-id=${petition.getInternalID()}" >
-                                                                                    </div>
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
-                                                                                        <label for="responsesignatoryphone">Signatory&#8217;s phone number</label>
-                                                                                        <input type="text" class="form-control" id="responsesignatoryphone"  th:value="${petition.responseSignatoryPhone}"   th:attr="action-id=${petition.getInternalID()}" >
-                                                                                    </div>
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                        <label for="responsesignatoryposition">Signatory&#8217;s position</label>
-                                                                                        <input type="text" class="form-control" id="responsesignatoryposition" th:value="${petition.responseSignatoryPosition}" th:attr="action-id=${petition.getInternalID()}" >
-                                                                                    </div>
-                                                                                </section>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </fieldset><!--//3-->
+
                                                             </div>
 
 
@@ -847,7 +584,21 @@
     var petitionID = /*[[${petitionID}]]*/ 'User Name';
 
 
-    var validateTEAS =  /*[[${baseTrademarkApplication.isValidateTEASFields()}]]*/ 'User Name';
+    var  image_path = /*[[${markImagePath}]]*/ 'User Name';
+
+    var  image_pathBW = /*[[${markImagePathBW}]]*/ 'User Name';
+
+    var colorClaim = /*[[${markColorClaim}]]*/ 'User Name';
+
+
+    var acceptBW = /*[[${markColorClaimBW}]]*/ 'User Name';
+
+    var OfficeActionID = /*[[${OfficeActionID}]]*/ 'User Name';
+
+    var colorClaimSet = /*[[${colorClaimSet}]]*/ 'User Name';
+
+    var markType = /*[[${baseTrademarkApplication.tradeMark.trademarkDesignType}]]*/ 'User Name';
+    var markText = /*[[${baseTrademarkApplication.tradeMark.trademarkStandardCharacterText}]]*/ 'User Name';
     /*]]>*/
 </script>
 
@@ -874,6 +625,74 @@ $(document).ready(function() {
 
     checkActivateLink();
 
+    if(markType == "Standard Character"){
+
+        if(markText  != null && markText != ""){
+
+            $( '#togglepop' ).attr('data-content', '<div class="media"><span id="showmarktxt" style="min-width:77px;width:80px;margin:0 auto;font-family: Palatino, Garamond, Bookman, Avant Garde; font-size:.9em;text-align:center;margin-bottom:0;" class="media-object" alt="my trademark">'+markText+'</span></div>');
+        }
+        else{
+            $( '#togglepop' ).attr('data-content', '<div class="media"><span class="glyphicon glyphicon-picture" aria-hidden="true"  style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></span></div>');
+        }
+
+    }
+    else {
+
+        if(colorClaimSet == false){
+
+            if(image_path != null){
+
+                $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+            }
+            // set color claim to true be default when its not set yet
+            else{
+                $( '#togglepop' ).attr('data-content', '<div class="media"><span class="glyphicon glyphicon-picture" aria-hidden="true"  style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></span></div>');
+            }
+
+        }
+        else {
+
+            if(colorClaim == false){
+
+                if(acceptBW == true){
+                    // $('#inlineRadio2').click();
+                    // $('#bwmark').click();
+
+                    $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_pathBW+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+
+                }
+                else{
+                    if(image_path != null){
+
+                        $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+
+
+                    }
+
+                }
+
+            }
+            if(colorClaim == true){
+                // $('#inlineRadio1').click();
+                if(image_path != null){
+
+                    $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+
+
+                }
+            }
+
+
+        }
+
+
+
+
+    }
 
     // start ajax auto save
     // check box click for delay unintentional
