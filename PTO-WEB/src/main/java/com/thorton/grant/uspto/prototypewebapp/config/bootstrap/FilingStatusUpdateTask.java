@@ -109,7 +109,7 @@ public class FilingStatusUpdateTask extends TimerTask {
 
             if((current.getApplicationFilingDate() != null && current.getFilingStatus().equals("TEAS RF New Application") )|| (current.getApplicationFilingDate() != null && current.getFilingStatus().equals("New Application") ) ){
                 // check that date + duration against current time
-              if((current.getApplicationFilingDate().getTime() + blackOutPeriodDuration) < new Date().getTime()){
+              if((current.getApplicationFilingDate().getTime() + current.getBlackOutPeriod()) < new Date().getTime()){
 
                   System.out.println("Filing has expired from the black out period");
 
@@ -221,7 +221,7 @@ public class FilingStatusUpdateTask extends TimerTask {
             BaseTrademarkApplication current = iter.next();
             if(current.getApplicationFilingDate() != null && current.getFilingStatus().equals("Non-Final Action Mailed") == true){
                 // check that date + duration against current time
-                if((current.getApplicationFilingDate().getTime() + blackOutPeriodDuration +firstOfficeActionDuration) < new Date().getTime()){
+                if((current.getApplicationFilingDate().getTime() + current.getBlackOutPeriod() + current.getOfficeActionResponsePeriod()) < new Date().getTime()){
 
                     System.out.println("Filing has expired from the office action period");
 
@@ -241,6 +241,8 @@ public class FilingStatusUpdateTask extends TimerTask {
                             petition.setStandardCharacterText(current.getTradeMark().getTrademarkStandardCharacterText());
                             petition.setParentMarkOwnerName(current.getPrimaryOwner().getOwnerDisplayname());
                             petition.setParentSerialNumber(current.getTrademarkName());
+
+                            petition.setActionID(String.valueOf(current.getId()));
 
 
                             current.setFilingStatus("Abandoned - Failure to Respond or Late Response");

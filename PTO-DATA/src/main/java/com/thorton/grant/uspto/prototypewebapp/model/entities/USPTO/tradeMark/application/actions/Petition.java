@@ -73,6 +73,8 @@ public class Petition extends OfficeActions {
 
         private boolean activePetition;
 
+        private String actionID; // corresponding office action
+
 
 
 
@@ -233,4 +235,11 @@ public class Petition extends OfficeActions {
         return "/petitions/revAbandoned/"+getInternalID()+"/?trademarkID="+getTrademarkApplication().getApplicationInternalID();
     }
 
+    public String getActionID() {
+        return actionID;
+    }
+
+    public void setActionID(String actionID) {
+        this.actionID = actionID;
+    }
 }

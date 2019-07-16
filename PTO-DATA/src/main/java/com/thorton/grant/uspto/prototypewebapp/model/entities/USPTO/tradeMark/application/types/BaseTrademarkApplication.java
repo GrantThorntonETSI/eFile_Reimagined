@@ -438,15 +438,8 @@ public class BaseTrademarkApplication  {
     // amend mark flags
     private boolean showMarkInfoSet;
     private boolean showMarkInfo;
-
-
     private boolean showMarkDescription;
     private boolean showMarkLiteral;
-
-
-
-
-
 
 
     //////////////////////////////////////////////////////////////////////////
@@ -456,12 +449,27 @@ public class BaseTrademarkApplication  {
     //////////////////////////////////////////////////////////////////////////
 
     private Date applicationFilingDate;
-
-
-
     private boolean claimDidNotRecieveOfficeAction; // this can only be claimed once. once it is set to true, you can not make that claim any more  // this is actually a filed that needs to be on the filing object
 
     ///////////////////////////////////////////////////////////////
+
+
+
+    private long officeActionResponsePeriod = 1*60*1000;
+
+    private long blackOutPeriod = 1*60*1000;
+
+    private long petitionPeriod = 5*60*1000;
+
+
+
+
+
+
+
+
+
+
 
     public boolean isClaimDidNotRecieveOfficeAction() {
         return claimDidNotRecieveOfficeAction;
@@ -1947,6 +1955,30 @@ public class BaseTrademarkApplication  {
 
     public void setTEASPlusApplication(boolean TEASPlusApplication) {
         this.TEASPlusApplication = TEASPlusApplication;
+    }
+
+    public Long getOfficeActionResponsePeriod() {
+        return officeActionResponsePeriod;
+    }
+
+    public void setOfficeActionResponsePeriod(Long officeActionResponsePeriod) {
+        this.officeActionResponsePeriod = officeActionResponsePeriod;
+    }
+
+    public Long getBlackOutPeriod() {
+        return blackOutPeriod;
+    }
+
+    public void setBlackOutPeriod(Long blackOutPeriod) {
+        this.blackOutPeriod = blackOutPeriod;
+    }
+
+    public Long getPetitionPeriod() {
+        return petitionPeriod;
+    }
+
+    public void setPetitionPeriod(Long petitionPeriod) {
+        this.petitionPeriod = petitionPeriod;
     }
 
     public Set<Integer> getUniqueClassNumberforGS(){

@@ -4517,6 +4517,9 @@ public class ApplicationFlowController {
         //OfficeActions action = baseTrademarkApplication.findOfficeActionById(actionID);
 
         baseTrademarkApplication.findPetitionById(petitionID).setActivePetition(false);
+        baseTrademarkApplication.findOfficeActionById(baseTrademarkApplication.findPetitionById(petitionID).getActionID()).setActiveAction(true);
+        baseTrademarkApplication.setOfficeActionResponsePeriod(baseTrademarkApplication.getOfficeActionResponsePeriod()*2); // extend office action period for revived filing
+        // office action is now active again
 
         if(baseTrademarkApplication.isTEASPlusApplication()){
             baseTrademarkApplication.setFilingStatus("TEAS RF New Application");
@@ -4524,6 +4527,8 @@ public class ApplicationFlowController {
         else {
             baseTrademarkApplication.setFilingStatus("New Application");
         }
+
+        baseTrademarkApplication.setOfficeActionResponsePeriod(baseTrademarkApplication.getOfficeActionResponsePeriod()*2);
 
         FilingDocumentEvent filingDocumentEvent = new FilingDocumentEvent();
         filingDocumentEvent.setEventDescription("Filing Revived");
