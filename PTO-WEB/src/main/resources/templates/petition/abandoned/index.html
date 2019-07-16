@@ -610,6 +610,8 @@
 
 
 
+
+
 $(document).ready(function() {
 
     setTimeout(function () {
@@ -737,15 +739,28 @@ $(document).ready(function() {
 
         savePeitionInfo("avoid-delay", "yes", actionID, appInternalID);
 
+        $('#doneButton').html("Next");
+
 
     });
+
+    if($('#inlineRadio074').is(":checked")){
+        $('#doneButton').html("Next");
+    }
 
     // no click for recieved office action
     $('#inlineRadio075').click(function () {
         var actionID = $(this).attr("action-id");
 
         savePeitionInfo("avoid-delay", "no", actionID, appInternalID);
+
+        $('#doneButton').html("Done");
+
     });
+
+    if($('#inlineRadio075').is(":checked")){
+        $('#doneButton').html("Done");
+    }
 
 
 

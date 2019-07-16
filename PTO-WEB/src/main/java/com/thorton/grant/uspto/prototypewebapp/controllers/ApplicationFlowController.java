@@ -4547,6 +4547,11 @@ public class ApplicationFlowController {
 
         //////////////////////////////////////////////////////
         //continuation = true;
+        OfficeActions actions = baseTrademarkApplication.findOfficeActionById(baseTrademarkApplication.findPetitionById(petitionID).getActionID());
+        model.addAttribute("action", actions);
+        model.addAttribute("OfficeActionID", actions.getInternalID());
+
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
 
         model.addAttribute("user", ptoUser);
         model.addAttribute("account",credentials);
@@ -4588,7 +4593,14 @@ public class ApplicationFlowController {
 
 
 
-        return "forward:/accounts/dashboard";
+         if(baseTrademarkApplication.findPetitionById(petitionID).isWantToFileResponse() == true ){
+             return "application/office_action/index";
+         }
+         else {
+             return "forward:/accounts/dashboard";
+         }
+
+
     }
 
 
