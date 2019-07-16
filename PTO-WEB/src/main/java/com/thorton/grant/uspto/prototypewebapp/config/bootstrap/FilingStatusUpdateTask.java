@@ -124,6 +124,8 @@ public class FilingStatusUpdateTask extends TimerTask {
                   officeActions.setParentMarkOwnerName(current.getPrimaryOwner().getOwnerDisplayname());
                   officeActions.setParentSerialNumber(current.getTrademarkName());
                   officeActions.setActiveAction(true);
+                  long dueDate = new Date().getTime()+current.getBlackOutPeriod()+current.getOfficeActionResponsePeriod();
+                  officeActions.setDueDate(new Date(dueDate));
                   //officeActions.setOfficeActionCode("Missing transliteration");
 
 

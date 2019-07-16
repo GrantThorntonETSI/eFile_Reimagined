@@ -18,6 +18,7 @@ public class OfficeActions extends BaseEntity {
 
         optionalActionsSelectedList = new ArrayList<>();
         optionalActionsCompletedList = new ArrayList<>();
+        dueDate = new Date();
 
     }
 
