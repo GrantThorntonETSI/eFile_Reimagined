@@ -115,75 +115,100 @@ public class FilingStatusUpdateTask extends TimerTask {
 
                   //baseTradeMarkApplicationService.save(current);
 
+                  // we need to check current filings to make sure there are no active office action
 
-                  // set relevant office actions
-                  OfficeActions officeActions = new OfficeActions();
-                  officeActions.setParentMarkImagePath(current.getTradeMark().getTrademarkImagePath());
-                  officeActions.setStandardCharacterMark(current.isStandardTextMark());
-                  officeActions.setStandardCharacterText(current.getTradeMark().getTrademarkStandardCharacterText());
-                  officeActions.setParentMarkOwnerName(current.getPrimaryOwner().getOwnerDisplayname());
-                  officeActions.setParentSerialNumber(current.getTrademarkName());
-                  officeActions.setActiveAction(true);
-                  long dueDate = new Date().getTime()+current.getBlackOutPeriod()+current.getOfficeActionResponsePeriod();
-                  officeActions.setDueDate(new Date(dueDate));
-                  //officeActions.setOfficeActionCode("Missing transliteration");
+                  if(current.hasActiveOfficeAction() == false){
+
+                      OfficeActions officeActions = new OfficeActions();
+                      officeActions.setParentMarkImagePath(current.getTradeMark().getTrademarkImagePath());
+                      officeActions.setStandardCharacterMark(current.isStandardTextMark());
+                      officeActions.setStandardCharacterText(current.getTradeMark().getTrademarkStandardCharacterText());
+                      officeActions.setParentMarkOwnerName(current.getPrimaryOwner().getOwnerDisplayname());
+                      officeActions.setParentSerialNumber(current.getTrademarkName());
+                      officeActions.setActiveAction(true);
+                      long dueDate = new Date().getTime()+current.getBlackOutPeriod()+current.getOfficeActionResponsePeriod();
+                      officeActions.setDueDate(new Date(dueDate));
+                      //officeActions.setOfficeActionCode("Missing transliteration");
 
 
-                  // create office action event here
-                  FilingDocumentEvent filingDocumentEvent = new FilingDocumentEvent();
-                  filingDocumentEvent.setEventDescription("Office Action Outgoing");
-
-                  filingDocumentEvent.setDocumentType("XML");
-                  Date date = new Date();
-                  filingDocumentEvent.setEventDate(date);
-
-                  current.addFilingDocumentEvent(filingDocumentEvent);
+                      // create office action event here
+                      // filing document is only created if an office action is created with required actions
 
 
 
 
-                  if (current.getTradeMark().isStandardCharacterMark() || current.getTradeMark().getTrademarkDesignType().equals("Design with Text")) {
-                      if (current.getTradeMark().getForeignLanguageTranslationUSText() == null || current.getTradeMark().getForeignLanguageTranslationUSText() == null || current.getTradeMark().getForeignLanguageType_translation() == null ){
 
-                          // create required action here
-                          RequiredActions requiredActions = new RequiredActions();
-                          requiredActions.setRequiredActionType("Translation of Foreign Wording");
-                          requiredActions.setTranslationTextForeign(current.getTradeMark().getForeignLanguageTranslationOriginalText());
-                          requiredActions.setTranslationTextEnglish(current.getTradeMark().getForeignLanguageTranslationUSText());
-                          requiredActions.setTranslationTextLanguage(current.getTradeMark().getForeignLanguageType_translation());
+                      if (current.getTradeMark().isStandardCharacterMark() || current.getTradeMark().getTrademarkDesignType().equals("Design with Text")) {
+                          if (current.getTradeMark().getForeignLanguageTranslationUSText() == null || current.getTradeMark().getForeignLanguageTranslationUSText() == null || current.getTradeMark().getForeignLanguageType_translation() == null ){
+
+                              // create required action here
+                              RequiredActions requiredActions = new RequiredActions();
+                              requiredActions.setRequiredActionType("Translation of Foreign Wording");
+                              requiredActions.setTranslationTextForeign(current.getTradeMark().getForeignLanguageTranslationOriginalText());
+                              requiredActions.setTranslationTextEnglish(current.getTradeMark().getForeignLanguageTranslationUSText());
+                              requiredActions.setTranslationTextLanguage(current.getTradeMark().getForeignLanguageType_translation());
 
 
 
-                          officeActions.addRequiredActions(requiredActions);
+                              officeActions.addRequiredActions(requiredActions);
 
+
+
+                          }
 
 
                       }
 
 
+                      if(current.getTradeMark().getDisclaimerDeclarationList().size() == 0){
+                          // you have to provide at least one disclaimer
+                          RequiredActions requiredActions = new RequiredActions();
+                          requiredActions.setRequiredActionType("Disclaimer Required");
+
+                          officeActions.addRequiredActions(requiredActions);
+
+                      }
+
+
+
+                      if(officeActions.getRequiredActions().size() > 0){
+                          current.setFilingStatus("Non-Final Action Mailed");
+                          officeActions.setOfficeActionCode("Non-Final Action Mailed");
+
+
+                          // create  an default office action object and attach it to filing
+                          current.addOfficeAction(officeActions);
+                          officeActions.setTrademarkApplication(current);
+
+                          FilingDocumentEvent filingDocumentEvent = new FilingDocumentEvent();
+                          filingDocumentEvent.setEventDescription("Office Action Outgoing");
+
+                          filingDocumentEvent.setDocumentType("XML");
+                          Date date = new Date();
+                          filingDocumentEvent.setEventDate(date);
+
+                          current.addFilingDocumentEvent(filingDocumentEvent);
+                      }
+
+                      baseTradeMarkApplicationService.save(current);
+
+
+
+
                   }
 
 
-                  if(current.getTradeMark().getDisclaimerDeclarationList().size() == 0){
-                      // you have to provide at least one disclaimer
-                      RequiredActions requiredActions = new RequiredActions();
-                      requiredActions.setRequiredActionType("Disclaimer Required");
-
-                      officeActions.addRequiredActions(requiredActions);
-
-                  }
 
 
-                  current.setFilingStatus("Non-Final Action Mailed");
-                  officeActions.setOfficeActionCode("Non-Final Action Mailed");
+                  // also check for number of required actions.
+                  // if there are none. office action is not saved
 
 
-                  // create  an default office action object and attach it to filing
 
 
-                  current.addOfficeAction(officeActions);
-                  officeActions.setTrademarkApplication(current);
-                  baseTradeMarkApplicationService.save(current);
+
+                  // set relevant office actions
+
 
 
               }

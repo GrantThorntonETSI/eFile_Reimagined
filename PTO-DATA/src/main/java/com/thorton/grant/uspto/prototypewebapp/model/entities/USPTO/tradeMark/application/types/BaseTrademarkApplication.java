@@ -455,7 +455,7 @@ public class BaseTrademarkApplication  {
 
 
 
-    private long officeActionResponsePeriod = 1*60*1000;
+    private long officeActionResponsePeriod = 2*60*1000;
 
     private long blackOutPeriod = 1*60*1000;
 
@@ -465,8 +465,23 @@ public class BaseTrademarkApplication  {
 
 
 
+    public boolean hasActiveOfficeAction(){
 
 
+        boolean returnValue = false;
+
+
+        for(Iterator<OfficeActions> iter = officeActions.iterator(); iter.hasNext(); ) {
+            OfficeActions current = iter.next();
+
+            if(current.isActiveAction() == true){
+                returnValue = true;
+            }
+        }
+
+
+        return returnValue;
+    }
 
 
 
