@@ -30,7 +30,7 @@ public class BaseTrademarkApplication  {
         owners = new HashSet<>();
         officeActions = new HashSet<>();
 
-        filingDocumentEvents = new HashSet<>();
+        filingDocumentEvents = new ArrayList<>();
 
 
         goodAndServices = new HashSet<>();
@@ -122,7 +122,7 @@ public class BaseTrademarkApplication  {
 
     @OneToMany(fetch = FetchType.EAGER ,cascade =  CascadeType.ALL)
     @Nullable
-    private Set<FilingDocumentEvent> filingDocumentEvents  ;
+    private List<FilingDocumentEvent> filingDocumentEvents  ;
 
 
     /////////////////////////////////////////////////////////////////////
@@ -678,11 +678,11 @@ public class BaseTrademarkApplication  {
     }
 
     @Nullable
-    public Set<FilingDocumentEvent> getFilingDocumentEvents() {
+    public List<FilingDocumentEvent> getFilingDocumentEvents() {
         return filingDocumentEvents;
     }
 
-    public void setFilingDocumentEvents(@Nullable Set<FilingDocumentEvent> filingDocumentEvents) {
+    public void setFilingDocumentEvents(@Nullable List<FilingDocumentEvent> filingDocumentEvents) {
         this.filingDocumentEvents = filingDocumentEvents;
     }
 

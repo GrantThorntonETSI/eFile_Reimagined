@@ -561,7 +561,7 @@
                 <button type="button" class="btn btn-sm btn-default fill prev" value="previous"></button>
             </div>
             <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-primary fill next" value="next" id="doneButton" disabled>Done
+                <button type="button" class="btn btn-sm btn-primary fill next" value="next" id="doneButton" disabled><span class="text">Done</span>
                     <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
             </div>
         </div>
@@ -739,18 +739,10 @@ $(document).ready(function() {
 
         savePeitionInfo("avoid-delay", "yes", actionID, appInternalID);
 
-        $('#doneButton').html("Next");
-        $('#doneButton').attr("disabled", true);
-        checkActivateLink();
-
+        $('#doneButton span.text').text("Next");
 
     });
 
-    if($('#inlineRadio074').is(":checked")){
-        $('#doneButton').html("Next");
-        $('#doneButton').attr("disabled", true);
-        checkActivateLink();
-    }
 
     // no click for recieved office action
     $('#inlineRadio075').click(function () {
@@ -758,17 +750,9 @@ $(document).ready(function() {
 
         savePeitionInfo("avoid-delay", "no", actionID, appInternalID);
 
-        $('#doneButton').html("Done");
-        $('#doneButton').attr("disabled", true);
-        checkActivateLink();
-
+        $('#doneButton span.text').text("Done");
     });
 
-    if($('#inlineRadio075').is(":checked")){
-        $('#doneButton').html("Done");
-        $('#doneButton').attr("disabled", true);
-        checkActivateLink();
-    }
 
 
 
@@ -1065,9 +1049,6 @@ $(document).ready(function() {
             $('#doneButton').attr("disabled",false);
         }
 
-        if($('#responsesignature').val() !="" && $('#responsesignatorynamename').val()!="" && $('#responsesignatoryposition').val()!=""){
-            $('#doneButton').attr("disabled",false);
-        }
 
     }
 

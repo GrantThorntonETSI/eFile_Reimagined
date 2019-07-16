@@ -506,6 +506,35 @@
 
 </div><!--END div content-->
 
+
+<script th:inline="javascript">
+
+    /*<![CDATA[*/
+
+
+    var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
+
+
+
+
+    var  image_path = /*[[${markImagePath}]]*/ 'User Name';
+
+    var  image_pathBW = /*[[${markImagePathBW}]]*/ 'User Name';
+
+    var colorClaim = /*[[${markColorClaim}]]*/ 'User Name';
+
+
+    var acceptBW = /*[[${markColorClaimBW}]]*/ 'User Name';
+
+    var OfficeActionID = /*[[${OfficeActionID}]]*/ 'User Name';
+
+    var colorClaimSet = /*[[${colorClaimSet}]]*/ 'User Name';
+
+    var markType = /*[[${baseTrademarkApplication.tradeMark.trademarkDesignType}]]*/ 'User Name';
+    var markText = /*[[${baseTrademarkApplication.tradeMark.trademarkStandardCharacterText}]]*/ 'User Name';
+    /*]]>*/
+</script>
+
 <script>
     $(document).ready(function() {
 
@@ -513,6 +542,78 @@
 
             $('.content').fadeIn(500);
         }, 500);
+
+
+
+        if(markType == "Standard Character"){
+
+            if(markText  != null && markText != ""){
+
+                $( '#togglepop' ).attr('data-content', '<div class="media"><span id="showmarktxt" style="min-width:77px;width:80px;margin:0 auto;font-family: Palatino, Garamond, Bookman, Avant Garde; font-size:.9em;text-align:center;margin-bottom:0;" class="media-object" alt="my trademark">'+markText+'</span></div>');
+            }
+            else{
+                $( '#togglepop' ).attr('data-content', '<div class="media"><span class="glyphicon glyphicon-picture" aria-hidden="true"  style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></span></div>');
+            }
+
+        }
+        else {
+
+            if(colorClaimSet == false){
+
+                if(image_path != null){
+
+                    $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+                }
+                // set color claim to true be default when its not set yet
+                else{
+                    $( '#togglepop' ).attr('data-content', '<div class="media"><span class="glyphicon glyphicon-picture" aria-hidden="true"  style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></span></div>');
+                }
+
+            }
+            else {
+
+                if(colorClaim == false){
+
+                    if(acceptBW == true){
+                        // $('#inlineRadio2').click();
+                        // $('#bwmark').click();
+
+                        $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_pathBW+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+
+                    }
+                    else{
+                        if(image_path != null){
+
+                            $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+
+
+                        }
+
+                    }
+
+                }
+                if(colorClaim == true){
+                    // $('#inlineRadio1').click();
+                    if(image_path != null){
+
+                        $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+
+
+                    }
+                }
+
+
+            }
+
+
+
+
+        }
+
     });
 
 
