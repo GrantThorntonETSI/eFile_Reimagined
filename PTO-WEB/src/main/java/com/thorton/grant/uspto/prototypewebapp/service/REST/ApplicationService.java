@@ -64,7 +64,10 @@ public class ApplicationService  extends  BaseRESTapiService{
             if(param.equals("no")){
                 baseTrademarkApplication.setAttorneySet(true);
                 baseTrademarkApplication.setAttorneyFiling(false);
-                baseTrademarkApplication.setLastViewModel("application/attorney/AttorneyStart");
+                if(baseTrademarkApplication.getFilingStatus().equals("Draft")){
+                    baseTrademarkApplication.setLastViewModel("application/attorney/AttorneyStart");
+                }
+
                 // drop all attorneys added to attorney pool if any exists
                 baseTrademarkApplication.setPrimaryLawyer(null);
                 for(Iterator<Lawyer> iter = baseTrademarkApplication.getAvailableLawyers().iterator(); iter.hasNext(); ) {
@@ -82,7 +85,10 @@ public class ApplicationService  extends  BaseRESTapiService{
             else {
                 baseTrademarkApplication.setAttorneySet(true);
                 baseTrademarkApplication.setAttorneyFiling(true);
-                baseTrademarkApplication.setLastViewModel("application/attorney/AttorneyStart");
+                if(baseTrademarkApplication.getFilingStatus().equals("Draft")){
+                    baseTrademarkApplication.setLastViewModel("application/attorney/AttorneyStart");
+                }
+
                 baseTradeMarkApplicationService.save(baseTrademarkApplication);
             }
 
@@ -106,8 +112,10 @@ public class ApplicationService  extends  BaseRESTapiService{
                 baseTrademarkApplication.setOwnerSubType(sub_type);
                 baseTrademarkApplication.setForeignEnityFiling(false);
                 baseTrademarkApplication.setEntityTypeSet(true);
+                if(baseTrademarkApplication.getFilingStatus().equals("Draft")){
+                    baseTrademarkApplication.setLastViewModel("application/owner/OwnerStart");
+                }
 
-                baseTrademarkApplication.setLastViewModel("application/owner/OwnerStart");
                 baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
                 appFieldReadable = "Entity Sub Type";
@@ -118,7 +126,11 @@ public class ApplicationService  extends  BaseRESTapiService{
                 baseTrademarkApplication.setForeignEnityFiling(true);
                 baseTrademarkApplication.setEntityTypeSet(true);
 
-                baseTrademarkApplication.setLastViewModel("application/owner/OwnerStart");
+
+                if(baseTrademarkApplication.getFilingStatus().equals("Draft")){
+                    baseTrademarkApplication.setLastViewModel("application/owner/OwnerStart");
+                }
+
                 baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
                 appFieldReadable = "Entity Sub Type";
@@ -147,8 +159,10 @@ public class ApplicationService  extends  BaseRESTapiService{
                 baseTrademarkApplication.setEntityTypeSet(true);
 
 
+                if(baseTrademarkApplication.getFilingStatus().equals("Draft")){
+                    baseTrademarkApplication.setLastViewModel("application/owner/OwnerStart");
+                }
 
-                baseTrademarkApplication.setLastViewModel("application/owner/OwnerStart");
                 baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
                 appFieldReadable = "Entity Type";
@@ -166,8 +180,10 @@ public class ApplicationService  extends  BaseRESTapiService{
                 }
                 baseTrademarkApplication.setForeignEnityFiling(true);
                 baseTrademarkApplication.setEntityTypeSet(true);
+                if(baseTrademarkApplication.getFilingStatus().equals("Draft")){
+                    baseTrademarkApplication.setLastViewModel("application/owner/OwnerStart");
+                }
 
-                baseTrademarkApplication.setLastViewModel("application/owner/OwnerStart");
                 baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
                 appFieldReadable = "Entity Type";
@@ -326,7 +342,10 @@ public class ApplicationService  extends  BaseRESTapiService{
             if(delLawyer.getEmail().equals(contact_email)){
 
                 if(baseTrademarkApplication.getAvailableLawyers().size() == 1){
-                    baseTrademarkApplication.setLastViewModel("application/attorney/AttorneyStart");
+                    if(baseTrademarkApplication.getFilingStatus().equals("Draft")){
+                        baseTrademarkApplication.setLastViewModel("application/attorney/AttorneyStart");
+                    }
+
                     //baseTrademarkApplication.setAttorneyFiling(false);
 
                 }
@@ -396,7 +415,10 @@ public class ApplicationService  extends  BaseRESTapiService{
            }
            baseTrademarkApplication.setPrimaryLawyer(primaryAttorney);
            primaryAttorney.setPrimary(true);
-           baseTrademarkApplication.setLastViewModel("application/attorney/AttorneySet2");
+           if(baseTrademarkApplication.getFilingStatus().equals("Draft")){
+               baseTrademarkApplication.setLastViewModel("application/attorney/AttorneySet2");
+           }
+
            baseTrademarkApplication.setAttorneyCollapseID(primaryAttorney.getFirstName()+primaryAttorney.getLastName());
            baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
@@ -603,7 +625,10 @@ public class ApplicationService  extends  BaseRESTapiService{
             if(delOwner.getEmail().equals(contact_email)){
 
                 if(baseTrademarkApplication.getOwners().size() == 1){
-                    baseTrademarkApplication.setLastViewModel("application/owner/OwnerStart");
+                    if(baseTrademarkApplication.getFilingStatus().equals("Draft")){
+                        baseTrademarkApplication.setLastViewModel("application/owner/OwnerStart");
+                    }
+
                     //baseTrademarkApplication.setAttorneyFiling(false);
 
                 }

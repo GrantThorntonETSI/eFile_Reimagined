@@ -133,7 +133,10 @@ public class ApplicationFlowController {
             ////////////////////////////////////////////////////////////////////////////
             // bread crumb and continue application updates
             ////////////////////////////////////////////////////////////////////////////
-            trademarkApplication.setLastViewModel("application/attorney/AttorneyStart");
+            if(trademarkApplication.getFilingStatus().equals("Draft")){
+                trademarkApplication.setLastViewModel("application/attorney/AttorneyStart");
+            }
+
             ArrayList<String> sectionStatus = trademarkApplication.getSectionStatus();
             sectionStatus.set(0,"active");
             trademarkApplication.setSectionStatus(sectionStatus);
@@ -357,7 +360,10 @@ public class ApplicationFlowController {
         ContactsDisplayDTO selectedAttorneyDisplayDTO = new ContactsDisplayDTO();
         selectedAttorneyDisplayDTO.setContactNames(selectedContactNames);
         model.addAttribute("selectedAttorneys",selectedAttorneyDisplayDTO);
-        baseTrademarkApplication.setLastViewModel("application/attorney/AttorneySet2");
+        if(baseTrademarkApplication.getFilingStatus().equals("Draft")){
+            baseTrademarkApplication.setLastViewModel("application/attorney/AttorneySet2");
+        }
+
 
         if(trademarkInternalID.equals("new")) {
 
@@ -5657,13 +5663,12 @@ public class ApplicationFlowController {
         if (trademarkInternalID.equals("new")) {
 
             BaseTrademarkApplication trademarkApplication = new BaseTrademarkApplication();
-            //trademarkApplication.setLastViewModel("application/owner/individual/ownerInfo");
-            //trademarkApplication.setLastViewModel("application/OwnerStart");
+
 
             ////////////////////////////////////////////////////////////////////////////
             // bread crumb and continue application updates
             ////////////////////////////////////////////////////////////////////////////
-            trademarkApplication.setLastViewModel("application/attorney/AttorneyStart");
+
             ArrayList<String> sectionStatus = trademarkApplication.getSectionStatus();
             sectionStatus.set(0,"active");
             trademarkApplication.setSectionStatus(sectionStatus);
