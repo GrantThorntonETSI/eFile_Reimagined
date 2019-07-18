@@ -249,7 +249,11 @@ public class ApplicationObjectCreationController {
                   }
                   else {
                       lawyer.setBarCertificateImageKey("/files/"+imagePath);
+
+                      lawyer.setBarCertifcatePDF(false);
                   }
+
+                  lawyer.setBarCertificateImageUploaded(true);
 
 
 
@@ -330,14 +334,18 @@ public class ApplicationObjectCreationController {
                 lawyer.setAffliationUS(false);
             }
 
-            if(newAttorneyContactFormDTO.getUsCertifyCheckbox().equals("check") ){
+            if( newAttorneyContactFormDTO.getUsCertifyCheckbox() != null){
+                if(newAttorneyContactFormDTO.getUsCertifyCheckbox().equals("check") ){
 
-                lawyer.setUsCertifyCheck(true);
-            }
-            else{
-                lawyer.setUsCertifyCheck(false);
+                    lawyer.setUsCertifyCheck(true);
+                }
+                else{
+                    lawyer.setUsCertifyCheck(false);
+
+                }
 
             }
+
 
 
         }
@@ -2072,9 +2080,11 @@ public class ApplicationObjectCreationController {
 
                     if(fileName.endsWith(".pdf") || fileName.endsWith(".PDF")){
                         filePath = "/files-pdf/"+image_path;
+                        baseTrademarkApplication.findContactByEmail(email).setBarCertifcatePDF(true);
                     }
                     else {
                         filePath = "/files/"+image_path;
+                        baseTrademarkApplication.findContactByEmail(email).setBarCertifcatePDF(false);
                     }
 
 
@@ -2083,8 +2093,11 @@ public class ApplicationObjectCreationController {
                     baseTrademarkApplication.findContactByEmail(email).setBarCertificateImageKey(filePath);
 
 
+
                     // need to also send over attorney email as part of email update
                     baseTrademarkApplication.findContactByEmail(email).setBarCertificateImageFileName(file.getOriginalFilename());
+                    baseTrademarkApplication.findContactByEmail(email).setBarCertificateImageUploaded(true);
+
 
 
 

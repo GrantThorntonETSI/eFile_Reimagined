@@ -188,7 +188,15 @@ public class ContactsService extends  BaseRESTapiService {
         }
 
         if(contact_field_name.equals("attorney-bar-standing" )){
-            lawyer.setBarJurisdiction(contact_field_value);
+            lawyer.setAffiliationStatus(contact_field_value);
+            lawyer.setAffiliationStatusSet(true);
+            if(contact_field_value.equals("usaffiliation")){
+                lawyer.setAffliationUS(true);
+            }
+            else {
+                lawyer.setAffliationUS(false);
+            }
+
             appFieldReadable = "Contact Affiliation ";
 
         }
@@ -281,6 +289,14 @@ public class ContactsService extends  BaseRESTapiService {
 
         if(contact_field_name.equals("attorney-bar-standing" )){
             baseTrademarkApplication.findContactByEmail(contact_email).setAffiliationStatus(contact_field_value);
+            baseTrademarkApplication.findContactByEmail(contact_email).setAffiliationStatusSet(true);
+
+            if(contact_field_value.equals("usaffiliation")){
+                baseTrademarkApplication.findContactByEmail(contact_email).setAffliationUS(true);
+            }
+            else {
+                baseTrademarkApplication.findContactByEmail(contact_email).setAffliationUS(false);
+            }
             appFieldReadable = "Attorney Bar Standing status ";
 
         }

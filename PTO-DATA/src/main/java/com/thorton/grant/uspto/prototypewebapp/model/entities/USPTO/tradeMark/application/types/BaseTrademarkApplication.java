@@ -401,7 +401,7 @@ public class BaseTrademarkApplication  {
 
 
     // TEAS fields
-    private boolean validateTEASFields = false;
+    private boolean validateTEASFields = true;
 
 
 
