@@ -690,99 +690,119 @@
 
                                         <th:block th:if="${attorney.isBarCertificateImageUploaded() == true}">
                                             <div class="row">
-                                                    <div class="col-xs-12" style="display: none;">
-                                                        <form method="post"  target="hidden-iframe"  id="attorney-bar-file-form"  action="/attorney/cert/add"  enctype="multipart/form-data"  aria-labelledby="title">
 
-                                                            <label class="small long upload-drop-zone" for="attorney-bar-file-input"><span class="glyphicon glyphicon-upload"></span> <br>
-                                                                Upload bar credentials, including certificate of good standing from highest court of a state, commonwealth, territory or possession, or of the District of Columbia evidencing that you are a memeber of the bar of such court and are in good standing.</label>
-                                                            <input type="file" id="attorney-bar-file-input" name="file" class="form-control" style="display: none;"   >
+                                                <div class="col-xs-12" >
+                                                    <p class="text-center"><br><br></p>
 
-                                                        </form>
-                                                    </div>
+                                                    <div class="form-group form-group-md">
+                                                        <div >
+                                                            <form method="post"  target="hidden-iframe"  id="attorney-bar-file-form"  action="/attorney/cert/add"  enctype="multipart/form-data"  aria-labelledby="title">
+
+                                                                <label class="small long upload-drop-zone" for="attorney-bar-file-input" style="display: none;"><span class="glyphicon glyphicon-upload"></span> <br>
+                                                                    Upload bar credentials, including certificate of good standing from highest court of a state, commonwealth, territory or possession, or of the District of Columbia evidencing that you are a memeber of the bar of such court and are in good standing.</label>
+                                                                <input type="file" id="attorney-bar-file-input" name="file" class="form-control" style="display: none;"   >
+
+                                                            </form>
+                                                        </div>
 
 
-
-                                                    <div class="col-xs-12" style=" margin-bottom:15px;"  >
-                                                        <div class="row" >
 
                                                             <th:block   th:if="${attorney.isBarCertifcatePDF() == true}">
+                                                                <div class="row" >
+                                                                    <div class="js-upload-finished col-xs-12 ">
+                                                                        <p id="uploadedfile">Selected files</p>
 
-                                                                <div class="js-upload-finished col-xs-12 col-md-10 col-lg-8">
+                                                                        <div class="list-group" >
+                                                                            <div class="list-group-item list-group-item-success fileholder col-xs-12" role="alert" style="margin-bottom: 15px;">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-2">
+                                                                                        <button type="button" class="btn btn-sm close attorney-bar-img-close" aria-label="remove file selection">
+                                                                                            <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                    <div class="col-xs-2 linkholder" style="margin-left: 15px;">
+                                                                                        <a id="attorney-bar-img-dlink"  th:text="${attorney.getBarCertificateImageFileName()}">download-link</a>
 
-                                                                    <div class="list-group" >
-                                                                        <div class="list-group-item list-group-item-success fileholder col-xs-12" role="alert" style="margin-bottom: 15px;">
-                                                                            <div class="row">
-                                                                                <div class="col-xs-2">
-                                                                                    <button type="button" class="btn btn-sm close attorney-bar-img-close" aria-label="remove file selection">
-                                                                                        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
-                                                                                    </button>
-                                                                                </div>
-                                                                                <div class="col-xs-2 linkholder" style="margin-left: 15px;">
-                                                                                    <a id="attorney-bar-img-dlink"  th:text="${attorney.getBarCertificateImageFileName()}">download-link</a>
-
-                                                                                </div>
-                                                                                <div class="col-xs-5" style="margin-left: 33px;">
-                                                                                    <embed  id="attorney-bar-img"   th:src="${attorney.barCertificateImageKey}"  type="application/pdf" />
-                                                                                </div>
-                                                                                <div class="col-xs-3">
-                                                                                    <span id="file-status" class="badge alert-success pull-right">Uploaded file</span>
+                                                                                    </div>
+                                                                                    <div class="col-xs-5" style="margin-left: 33px;">
+                                                                                        <embed  id="attorney-bar-img"   th:src="${attorney.barCertificateImageKey}"  type="application/pdf" />
+                                                                                    </div>
+                                                                                    <div class="col-xs-3">
+                                                                                        <span id="file-status" class="badge alert-success pull-right">Uploaded file</span>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
+
 
 
                                                             </th:block>
 
                                                             <th:block   th:if="${attorney.isBarCertifcatePDF() == false}">
+                                                                <div class="row" >
+                                                                    <div class="js-upload-finished col-xs-12 ">
+                                                                        <p id="uploadedfile" >Selected files</p>
 
-                                                                <div class="js-upload-finished col-xs-12 col-md-10 col-lg-8">
+                                                                        <div class="list-group" id="filedata">
+                                                                            <div class="list-group-item list-group-item-success fileholder col-xs-12" role="alert" style="margin-bottom: 15px;">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-2">
+                                                                                        <button type="button" class="btn btn-sm close attorney-bar-img-close" aria-label="remove file selection">
+                                                                                            <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                    <div class="col-xs-2 linkholder" style="margin-left: 15px;">
+                                                                                        <a id="attorney-bar-img-dlink"  th:text="${attorney.getBarCertificateImageFileName()}">download-link</a>
 
-                                                                    <div class="list-group" >
-                                                                        <div class="list-group-item list-group-item-success fileholder col-xs-12" role="alert" style="margin-bottom: 15px;">
-                                                                            <div class="row">
-                                                                                <div class="col-xs-2">
-                                                                                    <button type="button" class="btn btn-sm close attorney-bar-img-close" aria-label="remove file selection">
-                                                                                        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
-                                                                                    </button>
+                                                                                    </div>
+                                                                                    <div class="col-xs-5" style="margin-left: 33px;">
+                                                                                        <embed id="attorney-bar-img"   th:src="${attorney.barCertificateImageKey}"  type="image/jpeg" />
+                                                                                    </div>
+
+                                                                                    <div class="col-xs-3">
+                                                                                        <span id="file-status" class="badge alert-success pull-right">Uploaded file</span>
+                                                                                    </div>
+
                                                                                 </div>
-                                                                                <div class="col-xs-2 linkholder" style="margin-left: 15px;">
-                                                                                    <a id="attorney-bar-img-dlink"  th:text="${attorney.getBarCertificateImageFileName()}">download-link</a>
-
-                                                                                </div>
-                                                                                <div class="col-xs-5" style="margin-left: 33px;">
-                                                                                    <embed id="attorney-bar-img"   th:src="${attorney.barCertificateImageKey}"  type="image/jpeg" />
-                                                                                </div>
-
-                                                                                <div class="col-xs-3">
-                                                                                    <span id="file-status" class="badge alert-success pull-right">Uploaded file</span>
-                                                                                </div>
-
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
 
-
+                                                                 </div>
                                                             </th:block>
 
 
+                                                        <div class="row" >
 
+                                                            <div class="col-xs-12" id="attorney-upload-button-col" style="margin-top: 15px; display: none;">
+                                                                <div class="center">
 
+                                                                    <div type="button"  id="attorney-bar-img-upload" class="btn btn-sm" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Certificate</b><span><i class="fa fa-spinner fa-spin" id="attorney-bar-file-upload-spinner" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                                                </div>
 
+                                                            </div>
 
                                                         </div>
 
-                                                    </div>
 
-                                                    <div class="col-xs-12" id="attorney-upload-button-col" style="margin-top: 15px; display: none;">
-                                                        <div class="center">
 
-                                                            <div type="button"  id="attorney-bar-img-upload" class="btn btn-sm" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Certificate</b><span><i class="fa fa-spinner fa-spin" id="attorney-bar-file-upload-spinner" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
-                                                        </div>
 
                                                     </div>
+
+
+                                                </div>
+
+
+
+
+
+
+
+
+
+
 
                                             </div>
 
