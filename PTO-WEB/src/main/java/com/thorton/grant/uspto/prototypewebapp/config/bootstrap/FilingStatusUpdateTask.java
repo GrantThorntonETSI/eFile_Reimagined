@@ -137,7 +137,10 @@ public class FilingStatusUpdateTask extends TimerTask {
 
 
 
+                      // required actions section
 
+
+                      // required action Translation
                       if (current.getTradeMark().isStandardCharacterMark() || current.getTradeMark().getTrademarkDesignType().equals("Design with Text")) {
                           if (current.getTradeMark().getForeignLanguageTranslationUSText() == null || current.getTradeMark().getForeignLanguageTranslationUSText() == null || current.getTradeMark().getForeignLanguageType_translation() == null ){
 
@@ -159,6 +162,7 @@ public class FilingStatusUpdateTask extends TimerTask {
 
                       }
 
+                      // required action disclaimer
 
                       if(current.getTradeMark().getDisclaimerDeclarationList().size() == 0){
                           // you have to provide at least one disclaimer
@@ -170,7 +174,18 @@ public class FilingStatusUpdateTask extends TimerTask {
                       }
 
 
+                      // required action SOU i.e if all goods and services are in use for each of the class
 
+
+
+
+
+
+                      // end of required actions section
+
+
+
+                      // office action is created only if there are required actions
                       if(officeActions.getRequiredActions().size() > 0){
                           current.setFilingStatus("Non-Final Action Mailed");
                           officeActions.setOfficeActionCode("Non-Final Action Mailed");
