@@ -8,6 +8,8 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.ap
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.document_events.FilingDocumentEvent;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.participants.Lawyer;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.GSClassCategory;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.GoodAndService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
@@ -176,6 +178,35 @@ public class FilingStatusUpdateTask extends TimerTask {
 
                       // required action SOU i.e if all goods and services are in use for each of the class
 
+                      // if the class is declared to be in use, and have dates
+                          // then check for specimen
+                      // if not declared in use
+
+
+                      boolean SOUmissing = true;
+                      for(Iterator<GSClassCategory> iterClassCategory = current.getGoodAndServicesCategories().iterator(); iterClassCategory.hasNext(); ) {
+                         GSClassCategory currentCategory = iterClassCategory.next();
+                         if(currentCategory.isAtLeastOneGoodInCommerce()){
+                             // check if class level specimen is set
+                             for(Iterator<GoodAndService> iterGS = currentCategory.getGoodAndServices().iterator(); iterGS.hasNext(); ) {
+                                 GoodAndService currentGS = iterGS.next();
+                                 if(currentGS.getSampleImagePath() != null){ // found a speciemn for one of the goods and service
+                                     SOUmissing = false;
+                                 }
+
+                             }
+
+                         }
+                      }
+
+                      if(SOUmissing){
+                          // create required action for SOU * not all goods and services declared in use have a specimen
+                          RequiredActions requiredActions = new RequiredActions();
+                          requiredActions.setRequiredActionType("SOU");
+
+                          officeActions.addRequiredActions(requiredActions);
+
+                      }
 
 
 

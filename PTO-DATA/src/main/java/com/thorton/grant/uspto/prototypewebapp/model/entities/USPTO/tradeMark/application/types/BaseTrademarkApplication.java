@@ -159,7 +159,7 @@ public class BaseTrademarkApplication  {
     // one class of Good and service // old code
     // leave it here for now until the new code works
     ////////////////////////////////////////////////////////
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @Nullable
     private Set<GoodAndService> goodAndServices; // default owner   PTO user
     ////////////////////////////////////////////////////////
