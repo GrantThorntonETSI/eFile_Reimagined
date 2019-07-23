@@ -232,53 +232,29 @@
             </div>
         </main>
     </div>
-
-
-
-    <div class="container-fluid stickycomponents">
+</div>
+<div class="container-fluid stickycomponents">
         <div id="chats">
             <div class="row">
-
                 <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-sm-offset-6 col-md-offset-6 col-lg-offset-6 weight600" aria-label="your data" id="mydata2">
-
-
-
                     <div class="panel-group">
-
-
-
-
                         <div class="panel panel-default">
-
-
-
-
-
                             <div class="panel-heading" id="contacts">
                                 <h4 class="panel-title">
-                                    <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#collapse2" aria-controls="collapse2" aria-expanded="false" id="contactsbtn" aria-label="toggle contacts panel"><span id="toggleglyphone" class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span><span id="toggleglyph" class="glyphicon glyphicon-triangle-top visuallyremoved" aria-hidden="true"></span>Contacts</button>
+                                    <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#collapse2" aria-controls="collapse2" aria-expanded="false" id="contactsbtn" aria-label="toggle contacts panel"><span id="toggleglyphone" class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span><span id="toggleglyph" class="glyphicon glyphicon-triangle-top visuallyremoved" aria-hidden="true"></span>  Contacts</button>
                                 </h4>
                                 <button type="button" id="closecontacts" class="close" data-target="#mydata2" aria-label="Close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
                             </div>
-
-
-
                             <div id="collapse2" class="panel-collapse collapse" aria-labelledby="contactsbtn">
-
-
-
                                 <table class="list-group table-fixed" role="grid" aria-label="contacts">
-
                                     <tbody>
-
-                                    <tr class="row">
+                                    <tr>
                                         <td tabindex="0" class="list-group-item col-xs-6"></td>
                                         <td tabindex="0" class="list-group-item inner-addon right-addon col-xs-6"><i class="glyphicon glyphicon-search" aria-hidden="true"></i><input type="text" class="form-control" id="contactsearch" placeholder="" aria-label="search"></td>
                                     </tr>
-
-                                    <tr class="row">
+                                    <tr>
                                         <td class="nopadding" colspan="2">
-                                            <table class="list-group table" role="grid" id="contactssearch">
+                                            <table class="list-group table" id="contactssearch">
                                                 <thead class="sr-only">
                                                 <tr>
                                                     <th scope="col">Name</th>
@@ -289,57 +265,24 @@
                                                 <tbody class="scroll">
                                                 <th:block th:each="contact : ${user.getOwnerManagedContact()}">
 
-                                                    <tr class="row">
+                                                    <tr>
                                                         <td tabindex="0" class="list-group-item col-xs-6"><a href="#" class="fromcontact" id="managedContactFillFormAction" ><span class="glyphicon glyphicon-plus-sign" role="img" aria-label="select this contact"></span></a> <b th:text="${contact.displayName}">Avo Reed</b></td>
                                                         <td tabindex="0" class="list-group-item col-xs-6" th:text="${contact.email}">avo.reid@us.gt.com</td>
                                                     </tr>
-
                                                 </th:block>
                                                 </tbody>
-
-
                                             </table>
-
-
-
-
                                         </td>
-
                                     </tr>
-
-
-
-
                                     </tbody>
-
-
                                 </table>
-
-
-
                             </div>
-
-
-
-
-
                         </div>
-
-
-
-
-
                     </div><!--END contacts-->
-
-
-
-
-
                 </section>
             </div><!--END row-->
         </div><!--END chats-->
     </div><!--END div container-fluid-->
-</div>
 
 
 <!--load model attribute for Jquery consumption  -->
