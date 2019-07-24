@@ -8,7 +8,8 @@
 <body>
 
 <!-- End Navbar -->
-<div class="row content" id="attorney" style="display: none;">
+<div class="container-fluid">
+    <div class="row content" id="attorney" style="display: none;">
     <main class="col-xs-12 col-sm-8 col-md-8 col-lg-7">
 
         <!--START Content Div-->
@@ -157,7 +158,7 @@
                                                                                 <div aria-labelledby="jbabosnameofothertype">
                                                                                     <div class="form-group form-group-md" style="color:black;">
                                                                                         email: <span th:text="${owner.getEmail()}">email: lzhang421@gmail.com</span>
-                                                                                        </br>
+                                                                                        <br>
                                                                                         phone: <span th:text="${owner.getPrimaryPhonenumber()}">phone: 581-777-3333</span>
 
                                                                                     </div>
@@ -175,13 +176,13 @@
                                                                                                 <th:block th:if="${goveringEntity.isPersonEntity() == true}" >
 
                                                                                                     name: <span th:text="${goveringEntity.firstName}+' '+${goveringEntity.lastName}">email: lzhang421@gmail.com</span>
-                                                                                                    </br>
+                                                                                                    <br>
                                                                                                     Citizenship : <span th:text="${goveringEntity.getEntityCitizenship()}">phone: 581-777-3333</span>
                                                                                                 </th:block>
 
                                                                                                 <th:block th:if="${goveringEntity.isPersonEntity() == false}" >
                                                                                                     name: <span th:text="${goveringEntity.entityName}">email: lzhang421@gmail.com</span>
-                                                                                                    </br>
+                                                                                                    <br>
                                                                                                     State of Organization: <span th:text="${goveringEntity.organizationState}">phone: 581-777-3333</span>
                                                                                                 </th:block>
 
@@ -247,7 +248,7 @@
             </div>
         </div>
 
-        <div class="inlinebuttons btn-group btn-group-justified  owner-paging-buttons" role="nav" aria-label="view previous or next page" id="prevnxt">
+        <div class="inlinebuttons btn-group btn-group-justified  owner-paging-buttons" role="navigation" aria-label="view previous or next page" id="prevnxt">
             <div class="btn-group">
                 <button type="button" class="btn btn-sm btn-default fill prev" id="prevButton" value="previous">Previous</button>
             </div>
@@ -259,6 +260,7 @@
 
     </main>
     <!-- end of main content-->
+</div>
 </div>
 <div class="container-fluid stickycomponents">
     <div id="chats">
