@@ -89,7 +89,9 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-12" >
-                                <p class="text-center"><br><br></p>
+
+                                <p id="typemark">Upload a file containing your mark. <span class="weight600">&#42;</span></p>
+
 
                                     <th:block  th:if="${baseTrademarkApplication.isTradeMarkUploaded() == true}">
                                         <form method="post" target="hidden-iframe" id="addNewMark" action="/mark/js/add" enctype="multipart/form-data" aria-labelledby="title">

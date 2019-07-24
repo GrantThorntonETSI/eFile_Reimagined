@@ -41,10 +41,13 @@
     <script type="application/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script type="application/javascript"  th:src="@{/resources/js/lynnjqueryscriptDashboard.js}"></script>
     <script type="application/javascript"  th:src="@{/resources/js/tab_panels.js}"></script>
+    <script type="application/javascript" th:src="@{/resources/js/chrome_alert.js}"></script>
 </head>
 </head>
 
-<body id="landing">
+<body id="landing"  onload="ShowChromeAlert()">
+
+
 <div class="row">
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
@@ -96,7 +99,16 @@
     </nav>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid alertmargin">
+
+    <div class="row">
+        <div class="col-xs-11 form-group form-group-md alert alert-warning" role="alert" aria-live="assertive" id="alertmin">
+            <div class="closepans" id="minholder">
+                <p id="mintext"></p>
+                <button type="button" class="close closegspanels" aria-label="close alert" id="alertbtn"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+            </div>
+        </div>
+    </div>
     <div class="row content" style="display: none;">
         <main class="col-xs-12 col-sm-10 col-md-10 col-lg-11" id="landingpagemain">
             <!--START Content Div-->
