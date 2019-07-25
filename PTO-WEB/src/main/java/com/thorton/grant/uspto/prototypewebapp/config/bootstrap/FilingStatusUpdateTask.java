@@ -183,6 +183,8 @@ public class FilingStatusUpdateTask extends TimerTask {
                       // if not declared in use
 
 
+                      /*
+
                       boolean SOUmissing = true;
                       for(Iterator<GSClassCategory> iterClassCategory = current.getGoodAndServicesCategories().iterator(); iterClassCategory.hasNext(); ) {
                          GSClassCategory currentCategory = iterClassCategory.next();
@@ -208,7 +210,7 @@ public class FilingStatusUpdateTask extends TimerTask {
 
                       }
 
-
+                    */
 
 
 
