@@ -103,8 +103,6 @@ public class BaseTrademarkApplication  {
     private Set<Lawyer> availableLawyers;
 
 
-    // can be a lawyer or owner ???
-
     @OneToMany(cascade = CascadeType.ALL)
     @Nullable
     private Set<Owner> owners; // default owner   PTO user
@@ -122,7 +120,16 @@ public class BaseTrademarkApplication  {
 
     @OneToMany(fetch = FetchType.EAGER ,cascade =  CascadeType.ALL)
     @Nullable
-    private List<FilingDocumentEvent> filingDocumentEvents  ;
+    private List<FilingDocumentEvent> filingDocumentEvents;
+
+
+    // notice of allowance (singular office Actions ..but will implement it as a set
+
+
+
+
+
+
 
 
     /////////////////////////////////////////////////////////////////////

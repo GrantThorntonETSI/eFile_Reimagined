@@ -262,14 +262,6 @@ public class FilingStatusUpdateTask extends TimerTask {
               }
               else{
                   System.out.println("filing is still in the black out period");
-                  // check for possible office actions
-
-                  // 1. failed to provide declarations and signature
-
-
-
-                  // 2. missing transliteration for standard character and design with text
-
 
               }
             }
@@ -352,6 +344,38 @@ public class FilingStatusUpdateTask extends TimerTask {
 
 
                         }
+                        else{
+
+                            // skip examiner review period
+                            // filing is accepted
+                            // change filing status
+                            // create filing document event
+
+                            current.setFilingStatus("Accepted Filing");
+
+
+                            current3.setActiveAction(false);
+
+                            FilingDocumentEvent filingDocumentEvent = new FilingDocumentEvent();
+                            filingDocumentEvent.setEventDescription("Filing Accepted");
+
+                            filingDocumentEvent.setDocumentType("XML");
+                            Date date = new Date();
+                            filingDocumentEvent.setEventDate(date);
+
+                            current.addFilingDocumentEvent(filingDocumentEvent);
+
+
+                            // go back and set any active actions to in-active
+                            //for(Iterator<OfficeActions> iter2 = current.getOfficeActions().iterator(); iter2.hasNext(); ) {
+                            //    OfficeActions current2 = iter2.next();
+                            //    current2.setActiveAction(false);
+
+                            //}
+
+                            baseTradeMarkApplicationService.save(current);
+
+                        }
 
 
                     }
@@ -364,10 +388,26 @@ public class FilingStatusUpdateTask extends TimerTask {
                 }
                 else{
                     System.out.println("filing is still in respond to office action period");
+                    // check for accepted filings
+
                 }
             }
             else{
-                System.out.println("Filing is not Submitted or is still in black out period.");
+                if(current.getFilingStatus().equals("Accepted Filing")){
+                    // check if filing is 1b (not all in use)
+                    // check for notice of allowance
+                    if(current.isMarkInUseForAllGS() == false){
+                        // 1b filing
+
+
+                    }
+
+
+
+                }
+                else {
+                    System.out.println("Filing is not Submitted or is still in black out period.");
+                }
             }
 
         }
