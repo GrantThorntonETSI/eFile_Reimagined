@@ -1,6 +1,7 @@
 package com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types;
 
 
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.NoticeOfAllowance;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.OfficeActions;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.Petition;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.document_events.FilingDocumentEvent;
@@ -116,6 +117,10 @@ public class BaseTrademarkApplication  {
     @OneToMany(fetch = FetchType.EAGER ,cascade =  CascadeType.ALL)
     @Nullable
     private Set<Petition>  petitions;
+
+    @OneToMany(fetch = FetchType.EAGER ,cascade =  CascadeType.ALL)
+    @Nullable
+    private Set<NoticeOfAllowance>  noticeOfAllowances;
 
 
     @OneToMany(fetch = FetchType.EAGER ,cascade =  CascadeType.ALL)
@@ -2035,5 +2040,38 @@ public class BaseTrademarkApplication  {
 
             return o1.getClassCategoryNumber().compareTo(o2.getClassCategoryNumber());
         }
+    }
+
+
+    @Nullable
+    public Set<NoticeOfAllowance> getNoticeOfAllowances() {
+        return noticeOfAllowances;
+    }
+
+
+
+    public void setNoticeOfAllowances(@Nullable Set<NoticeOfAllowance> noticeOfAllowances) {
+        this.noticeOfAllowances = noticeOfAllowances;
+    }
+
+    public void addNoticeofAllowance(NoticeOfAllowance noticeOfAllowance){
+        this.noticeOfAllowances.add(noticeOfAllowance);
+    }
+
+    public void removeNoticeofAllowance( NoticeOfAllowance noticeOfAllowance){
+        this.noticeOfAllowances.remove(noticeOfAllowance);
+    }
+
+
+    public void setOfficeActionResponsePeriod(long officeActionResponsePeriod) {
+        this.officeActionResponsePeriod = officeActionResponsePeriod;
+    }
+
+    public void setBlackOutPeriod(long blackOutPeriod) {
+        this.blackOutPeriod = blackOutPeriod;
+    }
+
+    public void setPetitionPeriod(long petitionPeriod) {
+        this.petitionPeriod = petitionPeriod;
     }
 }
