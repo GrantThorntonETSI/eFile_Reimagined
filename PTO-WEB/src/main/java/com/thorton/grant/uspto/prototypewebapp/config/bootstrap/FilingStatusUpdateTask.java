@@ -399,6 +399,14 @@ public class FilingStatusUpdateTask extends TimerTask {
                     if(current.isMarkInUseForAllGS() == false){
                         // 1b filing
 
+                        // create notice of allowance
+
+
+                        // create document event
+
+                        // also need to update dashboard to display notice of allowances
+
+
 
                     }
 
