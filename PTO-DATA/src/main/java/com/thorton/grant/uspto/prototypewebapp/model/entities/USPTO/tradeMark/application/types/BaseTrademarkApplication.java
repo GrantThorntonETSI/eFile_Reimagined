@@ -471,7 +471,10 @@ public class BaseTrademarkApplication  {
 
     private long blackOutPeriod = 1*60*1000;
 
-    private long petitionPeriod = 5*60*1000;
+    private long petitionPeriod = 1*60*1000;
+
+
+    private long issuranceOfAllowancePeriod = 5*60*1000;
 
 
 
@@ -2073,5 +2076,13 @@ public class BaseTrademarkApplication  {
 
     public void setPetitionPeriod(long petitionPeriod) {
         this.petitionPeriod = petitionPeriod;
+    }
+
+    public long getIssuranceOfAllowancePeriod() {
+        return issuranceOfAllowancePeriod;
+    }
+
+    public void setIssuranceOfAllowancePeriod(long issuranceOfAllowancePeriod) {
+        this.issuranceOfAllowancePeriod = issuranceOfAllowancePeriod;
     }
 }

@@ -2,6 +2,7 @@ package com.thorton.grant.uspto.prototypewebapp.config.bootstrap;
 
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.NoticeOfAllowance;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.OfficeActions;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.Petition;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.RequiredActions;
@@ -344,38 +345,7 @@ public class FilingStatusUpdateTask extends TimerTask {
 
 
                         }
-                        else{
 
-                            // skip examiner review period
-                            // filing is accepted
-                            // change filing status
-                            // create filing document event
-
-                            current.setFilingStatus("Accepted Filing");
-
-
-                            current3.setActiveAction(false);
-
-                            FilingDocumentEvent filingDocumentEvent = new FilingDocumentEvent();
-                            filingDocumentEvent.setEventDescription("Filing Accepted");
-
-                            filingDocumentEvent.setDocumentType("XML");
-                            Date date = new Date();
-                            filingDocumentEvent.setEventDate(date);
-
-                            current.addFilingDocumentEvent(filingDocumentEvent);
-
-
-                            // go back and set any active actions to in-active
-                            //for(Iterator<OfficeActions> iter2 = current.getOfficeActions().iterator(); iter2.hasNext(); ) {
-                            //    OfficeActions current2 = iter2.next();
-                            //    current2.setActiveAction(false);
-
-                            //}
-
-                            baseTradeMarkApplicationService.save(current);
-
-                        }
 
 
                     }
@@ -387,7 +357,45 @@ public class FilingStatusUpdateTask extends TimerTask {
 
                 }
                 else{
-                    System.out.println("filing is still in respond to office action period");
+                    System.out.println("filing is still in respond to office action period or filing is in a different state");
+                    if((current.getApplicationFilingDate().getTime() + current.getBlackOutPeriod() + current.getOfficeActionResponsePeriod() + current.getIssuranceOfAllowancePeriod()) < new Date().getTime()){
+                        for(Iterator<OfficeActions> iter4 = current.getOfficeActions().iterator(); iter4.hasNext(); ) {
+                            OfficeActions current4 = iter4.next();
+                            if(current4.isOfficeActionCompleted() == true){
+                                // skip examiner review period
+                                // filing is accepted
+                                // change filing status
+                                // create filing document event
+
+                                current.setFilingStatus("Accepted Filing");
+
+
+                                current4.setActiveAction(false);
+
+                                FilingDocumentEvent filingDocumentEvent = new FilingDocumentEvent();
+                                filingDocumentEvent.setEventDescription("Filing Accepted");
+
+                                filingDocumentEvent.setDocumentType("XML");
+                                Date date = new Date();
+                                filingDocumentEvent.setEventDate(date);
+
+                                current.addFilingDocumentEvent(filingDocumentEvent);
+
+
+                                // go back and set any active actions to in-active
+                                //for(Iterator<OfficeActions> iter2 = current.getOfficeActions().iterator(); iter2.hasNext(); ) {
+                                //    OfficeActions current2 = iter2.next();
+                                //    current2.setActiveAction(false);
+
+                                //}
+
+                                baseTradeMarkApplicationService.save(current);
+
+
+                            }
+
+                        }
+                    }
                     // check for accepted filings
 
                 }
@@ -400,11 +408,49 @@ public class FilingStatusUpdateTask extends TimerTask {
                         // 1b filing
 
                         // create notice of allowance
+                        NoticeOfAllowance noa = new NoticeOfAllowance();
+                        noa.setParentMarkImagePath(current.getTradeMark().getTrademarkImagePath());
+                        noa.setStandardCharacterMark(current.isStandardTextMark());
+                        noa.setStandardCharacterText(current.getTradeMark().getTrademarkStandardCharacterText());
+                        noa.setParentMarkOwnerName(current.getPrimaryOwner().getOwnerDisplayname());
+                        noa.setParentSerialNumber(current.getTrademarkName());
+                        noa.setActiveAction(true);
+                        long dueDate = new Date().getTime()+current.getBlackOutPeriod()+current.getOfficeActionResponsePeriod();
+                        noa.setDueDate(new Date(dueDate));
+
+
+                        // you have to provide at least one disclaimer
+                        RequiredActions requiredActions = new RequiredActions();
+                        requiredActions.setRequiredActionType("Statement of Use");
+
+                        noa.addRequiredActions(requiredActions);
+
+
+                        current.setFilingStatus("Issuance Of Allowance");
+                        noa.setOfficeActionCode("Issuance Of Allowance");
+
+
+                        // create  an default office action object and attach it to filing
+                        current.addOfficeAction(noa);
+                        noa.setTrademarkApplication(current);
+
+                        FilingDocumentEvent filingDocumentEvent = new FilingDocumentEvent();
+                        filingDocumentEvent.setEventDescription("Issuance Of Allowance");
+
+                        filingDocumentEvent.setDocumentType("XML");
+                        Date date = new Date();
+                        filingDocumentEvent.setEventDate(date);
+
+                        current.addFilingDocumentEvent(filingDocumentEvent);
+
+
+
 
 
                         // create document event
 
-                        // also need to update dashboard to display notice of allowances
+                        //  also need to update dashboard to display notice of allowances
+                        //  the requires action here is mark in use declaration
 
 
 
