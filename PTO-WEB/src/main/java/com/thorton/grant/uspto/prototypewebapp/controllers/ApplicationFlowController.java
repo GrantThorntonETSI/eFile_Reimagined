@@ -4706,6 +4706,12 @@ public class ApplicationFlowController {
 
 
         baseTrademarkApplication.findOfficeActionById(actionID).setOptianlCompleted(true);
+        if(baseTrademarkApplication.isTEASPlusApplication()){
+            baseTrademarkApplication.setFilingStatus("TEAS RF New Application");
+        }
+        else {
+            baseTrademarkApplication.setFilingStatus("New Application");
+        }
 
         FilingDocumentEvent filingDocumentEvent = new FilingDocumentEvent();
         filingDocumentEvent.setEventDescription("Response to Office Action");

@@ -177,48 +177,6 @@ public class FilingStatusUpdateTask extends TimerTask {
                       }
 
 
-                      // required action SOU i.e if all goods and services are in use for each of the class
-
-                      // if the class is declared to be in use, and have dates
-                          // then check for specimen
-                      // if not declared in use
-
-
-                      /*
-
-                      boolean SOUmissing = true;
-                      for(Iterator<GSClassCategory> iterClassCategory = current.getGoodAndServicesCategories().iterator(); iterClassCategory.hasNext(); ) {
-                         GSClassCategory currentCategory = iterClassCategory.next();
-                         if(currentCategory.isAtLeastOneGoodInCommerce()){
-                             // check if class level specimen is set
-                             for(Iterator<GoodAndService> iterGS = currentCategory.getGoodAndServices().iterator(); iterGS.hasNext(); ) {
-                                 GoodAndService currentGS = iterGS.next();
-                                 if(currentGS.getSampleImagePath() != null){ // found a speciemn for one of the goods and service
-                                     SOUmissing = false;
-                                 }
-
-                             }
-
-                         }
-                      }
-
-                      if(SOUmissing){
-                          // create required action for SOU * not all goods and services declared in use have a specimen
-                          RequiredActions requiredActions = new RequiredActions();
-                          requiredActions.setRequiredActionType("SOU");
-
-                          officeActions.addRequiredActions(requiredActions);
-
-                      }
-
-                    */
-
-
-
-                      // end of required actions section
-
-
-
                       // office action is created only if there are required actions
                       if(officeActions.getRequiredActions().size() > 0){
                           current.setFilingStatus("Non-Final Action Mailed");
@@ -358,6 +316,12 @@ public class FilingStatusUpdateTask extends TimerTask {
                 }
                 else{
                     System.out.println("filing is still in respond to office action period or filing is in a different state");
+
+
+                }
+            }
+            else{
+                if(current.getFilingStatus().equals("TEAS RF New Application") || current.getFilingStatus().equals("New Application") ){
                     if((current.getApplicationFilingDate().getTime() + current.getBlackOutPeriod() + current.getOfficeActionResponsePeriod() + current.getIssuranceOfAllowancePeriod()) < new Date().getTime()){
                         for(Iterator<OfficeActions> iter4 = current.getOfficeActions().iterator(); iter4.hasNext(); ) {
                             OfficeActions current4 = iter4.next();
@@ -397,10 +361,10 @@ public class FilingStatusUpdateTask extends TimerTask {
                         }
                     }
                     // check for accepted filings
-
                 }
-            }
-            else{
+
+
+
                 if(current.getFilingStatus().equals("Accepted Filing")){
                     // check if filing is 1b (not all in use)
                     // check for notice of allowance
@@ -459,9 +423,7 @@ public class FilingStatusUpdateTask extends TimerTask {
 
 
                 }
-                else {
-                    System.out.println("Filing is not Submitted or is still in black out period.");
-                }
+
             }
 
         }
