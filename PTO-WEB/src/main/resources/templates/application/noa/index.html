@@ -6,7 +6,7 @@
     <title>Goods and Services Review</title>
 </head>
 <body>
-<div class="row content"  style="">
+<div class="row content"  style="display: none;">
 
     <main class="col-xs-12 col-sm-8 col-md-8 col-lg-7" id="mainContent" tabindex="-1">
         <!--START Content Div-->
@@ -68,7 +68,7 @@
                                                     <th:block th:each="Good_Service: ${Good_Service_class.getGoodAndServices()}">
 
                                                         <span class="label label-info subtle" contenteditable="false">
-                                                        <span class="closepans" th:text="${Good_Service.getClassDescription()}">Athletic apparel, namely, shirts, pants, jackets, footwear, hats and caps, athletic uniforms</span>
+                                                        <span class="closepans" th:text="${Good_Service.getClassDescription()}"></span>
                                                         <button type="button" class="close closegspanels" aria-label="delete"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
                                                     </span>
 
