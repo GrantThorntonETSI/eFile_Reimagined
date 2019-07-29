@@ -322,7 +322,7 @@ public class FilingStatusUpdateTask extends TimerTask {
             }
             else{
                 if(current.getFilingStatus().equals("TEAS RF New Application") || current.getFilingStatus().equals("New Application") ){
-                    if((current.getApplicationFilingDate().getTime() + current.getBlackOutPeriod() + current.getOfficeActionResponsePeriod() + current.getIssuranceOfAllowancePeriod()) < new Date().getTime()){
+                    if((current.getApplicationFilingDate().getTime() + current.getBlackOutPeriod() + current.getOfficeActionResponsePeriod() ) < new Date().getTime()){
                         for(Iterator<OfficeActions> iter4 = current.getOfficeActions().iterator(); iter4.hasNext(); ) {
                             OfficeActions current4 = iter4.next();
                             if(current4.isOfficeActionCompleted() == true){
@@ -415,7 +415,7 @@ public class FilingStatusUpdateTask extends TimerTask {
 
                         //  also need to update dashboard to display notice of allowances
                         //  the requires action here is mark in use declaration
-
+                        baseTradeMarkApplicationService.save(current);
 
 
                     }

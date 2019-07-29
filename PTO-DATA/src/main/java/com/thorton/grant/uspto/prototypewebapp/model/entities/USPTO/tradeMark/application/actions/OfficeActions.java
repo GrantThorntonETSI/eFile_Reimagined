@@ -275,7 +275,13 @@ public class OfficeActions extends BaseEntity {
     }
 
     public String getOfficeActionLink(){
-        return "/officeAction/response/"+getInternalID()+"/?trademarkID="+getTrademarkApplication().getApplicationInternalID();
+
+        if(getOfficeActionCode().equals("Issuance Of Allowance")){
+            return "/noa/response/" + getInternalID() + "/?trademarkID=" + getTrademarkApplication().getApplicationInternalID();
+        }
+        else {
+            return "/officeAction/response/" + getInternalID() + "/?trademarkID=" + getTrademarkApplication().getApplicationInternalID();
+        }
     }
 
     public boolean isOptianlCompleted() {

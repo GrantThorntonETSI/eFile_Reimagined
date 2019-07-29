@@ -1,0 +1,2329 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/efilePetitionsFragment :: layout (~{::body},'user')}" xmlns="http://www.w3.org/1999/html">
+<head >
+    <meta charset="UTF-8">
+    <title>Goods and Services Review</title>
+</head>
+<body>
+<div class="row content"  style="display: none;">
+
+    <main class="col-xs-12 col-sm-8 col-md-8 col-lg-7" id="mainContent" tabindex="-1">
+        <!--START Content Div-->
+        <div class="row" id="soucontent">
+            <div class="col-xs-12">
+                <form action="" method="post">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h1>Statement of Use</h1>
+                        </div>
+                    </div>
+                    <div>
+                        <!-- Modal -->
+                        <div class="modal fade classmodal" tabindex="0" role="dialog" aria-labelledby="soumodallabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="soumodallabel">Delete Class Permanently?</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p role="alert"><span class="sr-only"></span>This statement of use does not cover this specific class. This entire class is to be permanently deleted from this application.</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="row">
+                                            <div class="col-xs-12 form-group form-group-md">
+                                                <div class="row">
+                                                    <div class="btn-group btn-group-justified">
+                                                        <div class="col-xs-6 btn-group">
+                                                            <button type="button" class="btn btn-sm btn-success cancel" data-dismiss="modal">Cancel</button>
+                                                        </div>
+                                                        <div class="col-xs-6 btn-group">
+                                                            <button type="button" class="btn btn-sm btn-success" data-dismiss="modal">Yes, delete this class</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade gsmodal" tabindex="0" role="dialog" aria-labelledby="soumodaltwolabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="soumodaltwolabel">Delete some goods/services in this class</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Please delete goods/services that are not in use.</p>
+                                        <p>The mark is in use in commerce on or in connection with the following goods/services:</p>
+                                        <div class="form-group form-group-md">
+                                            <div class="inusegs form-control" role="textbox" contenteditable="true" aria-multiline="true">
+                                                    <span class="label label-info subtle" contenteditable="false">
+                                                        <span class="closepans">Athletic apparel, namely, shirts, pants, jackets, footwear, hats and caps, athletic uniforms</span>
+                                                        <button type="button" class="close closegspanels" aria-label="delete"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                    </span>
+                                                <span class="label label-info subtle" contenteditable="false">
+                                                        <span class="closepans">Athletic tops and bottoms for cycling</span>
+                                                        <button type="button" class="close closegspanels" aria-label="delete"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                    </span>
+                                                <span class="label label-info subtle" contenteditable="false">
+                                                        <span class="closepans">Clothing, namely, arm warmers</span>
+                                                        <button type="button" class="close closegspanels" aria-label="delete"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                    </span>
+                                                <span class="label label-info subtle" contenteditable="false">
+                                                        <span class="closepans">Clothing, namely, base layers</span>
+                                                        <button type="button" class="close closegspanels" aria-label="delete"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                    </span>
+                                                <span class="label label-info subtle" contenteditable="false">
+                                                        <span class="closepans">Gloves</span>
+                                                        <button type="button" class="close closegspanels" aria-label="delete"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                    </span>
+                                                <span class="label label-info subtle" contenteditable="false">
+                                                        <span class="closepans">Jackets and socks</span>
+                                                        <button type="button" class="close closegspanels" aria-label="delete"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                    </span>
+                                                <span class="label label-info subtle" contenteditable="false">
+                                                        <span class="closepans">T-shirts</span>
+                                                        <button type="button" class="close closegspanels" aria-label="delete"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                    </span>
+                                                <span class="label label-info subtle" contenteditable="false">
+                                                        <span class="closepans">Tank tops</span>
+                                                        <button type="button" class="close closegspanels" aria-label="delete"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                    </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="row">
+                                            <div class="col-xs-12 form-group form-group-md">
+                                                <button type="button" class="btn btn-sm btn-success" data-dismiss="modal">Done</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row formodal">
+                            <div class="resetclass">
+                                <button type="button" class="btn btn-sm close resetclassbtn" aria-label="undo this class deletion"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
+                            </div>
+                        </div><!--END add/remove class button row-->
+                        <div class="row">
+                            <div class="col-xs-12 statementou">
+                                <div class="card-text noexpand blue">
+                                    <div class="col-md-12 col-lg-7">
+                                        <div class="displaytable">
+                                            <h2 class="card-title weight600 displaycell"><span>Class 18</span> <span class="listed" role="alert"><span class="sr-only"></span>Athletic apparel, namely, shirts, pants, jackets, footwear, hats and caps, athletic uniforms;</span> <span class="listed" role="alert"><span class="sr-only"></span>Athletic tops and bottoms for cycling;</span> <span class="listed" role="alert"><span class="sr-only" ></span>Clothing, namely, arm warmers;</span> <span class="listed" role="alert"><span class="sr-only"></span>Clothing, namely, base layers;</span> <span class="listed" role="alert"><span class="sr-only"></span>Gloves;</span> <span class="listed" role="alert"><span class="sr-only"></span>Jackets and socks;</span> <span class="listed" role="alert">T-shirts;</span> <span class="listed role="alert""><span class="sr-only"></span>Tank tops</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-lg-5">
+                                        <label for="gs_one" class="sr-only">edit class</label>
+                                        <select class="form-control gsactions" id="gs_one">
+                                            <option value="edit">Edit</option>
+                                            <option value="delete">Delete this class permanently</option>
+                                            <option value="limit">Delete some goods/services in this class</option>
+                                            <option value="divide" disabled>Divide some or all of the goods/services in this class</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <fieldset aria-label="use statement">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <h2 class="weight600">Use Statement</h2>
+                                                    <div class="form-group form-group-md">
+                                                        <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" aria-labelledby="userAccept-label_one" id="user-accept-checkbox" name="user-accept-checkbox">
+                                                        <label class="form-check-label form-check-left form-check" for="user-accept-checkbox" id="userAccept-label_one"><span class="radio notspecial">The mark is in use in commerce on or in connection with all goods/services in this class.</span></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                                    <label for="connection-date_one" class="matchlabelheighttwo">When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> <span class="label label-info subtle">Reduced Fee</span></label>
+                                                    <input type="date" class="form-control" id="connection-date_one" name="connectiondate" value="">
+                                                </div>
+                                                <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                                    <label for="firstconnection-date_one" class="matchlabelheighttwo">When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> <span class="label label-info subtle">Reduced Fee</span></label>
+                                                    <input type="date" class="form-control" id="firstconnection-date_one" name="firstconnectiondate" value="">
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                        <fieldset aria-label="upload specimen">
+                                            <div class="row">
+                                                <div class="col-xs-12 form-group form-group-md upload">
+                                                    <h2 class="weight600">Attach Specimen</h2>
+                                                    <p id="upimagetwo">Please provide a specimen for this individual good/service.</p>
+                                                    <div class="form-group form-group-md hidethis">
+                                                        <label class="small upload-drop-zone" for="specimensixfile" id="upimgtwo"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png</label>
+                                                        <input type="file" id="specimensixfile" name="specimensixfileupload" class="form-control" accept=".jpg,.tiff,.png" aria-labelledby="upimgtwo upimagetwo">
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-xs-12 js-upload-finished">
+                                                            <div class="list-group">
+                                                                <div class="list-group-item list-group-item-success fileholder col-xs-12" role="alert"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="col-xs-12 form-group form-group-md">
+                                                                <button type="submit" class="btn-sm btn-success add ctr" aria-label="submit selected file">Submit</button>
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- Drop Zone -->
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <label for="specdescriptone">Provide a description of your specimen:</label>
+                                                    <textarea id="specdescriptone" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                        <fieldset aria-label="enter other information">
+                                            <div class="row">
+                                                <div class="col-xs-12 form-group form-group-md">
+                                                    <h2 class="card-title weight600">Other Situations</h2>
+                                                    <div class="row">
+                                                        <div class="col-xs-12 form-group form-group-md">
+                                                            <input class="form-check-input checkmark" type="checkbox" value="minorchange_one" tabindex="0" aria-labelledby="minor_one" id="nonmaterial_one">
+                                                            <label class="form-check-label form-check-left form-check" for="nonmaterial_one" id="minor_one"><span class="radio notspecial">Make minor/non-material changes to my mark to conform to my specimen</span></label>
+                                                        </div>
+                                                        <div class="col-xs-12 form-group form-group-md">
+                                                            <input class="form-check-input checkmark" type="checkbox" value="information_one" tabindex="0" aria-labelledby="addinfo_one" id="info_one">
+                                                            <label class="form-check-label form-check-left form-check" for="info_one" id="addinfo_one"><span class="radio notspecial">Include additional information not previously requested or specified</span></label>
+                                                        </div>
+                                                        <div class="col-xs-12 form-group form-group-md">
+                                                            <input class="form-check-input checkmark" type="checkbox" value="optionalinsurance_one" tabindex="0" aria-labelledby="optional_one" id="insurance_one">
+                                                            <label class="form-check-label form-check-left form-check" for="insurance_one" id="optional_one"><span class="radio notspecial">File an optional insurance extension</span></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <!-- Modal -->
+                        <div class="modal fade classmodal" tabindex="0" role="dialog" aria-labelledby="soumodallabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="soumodallabel">Delete Class Permanently?</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p role="alert"><span class="sr-only"></span>This statement of use does not cover this specific class. This entire class is to be permanently deleted from this application.</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="row">
+                                            <div class="col-xs-12 form-group form-group-md">
+                                                <div class="row">
+                                                    <div class="btn-group btn-group-justified">
+                                                        <div class="col-xs-6 btn-group">
+                                                            <button type="button" class="btn btn-sm btn-success cancel" data-dismiss="modal">Cancel</button>
+                                                        </div>
+                                                        <div class="col-xs-6 btn-group">
+                                                            <button type="button" class="btn btn-sm btn-success" data-dismiss="modal">Yes, delete this class</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade gsmodal" id="soumodaltwo" tabindex="0" role="dialog" aria-labelledby="soumodaltwolabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="soumodaltwolabel">Delete some goods/services in this class</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Please delete goods/services that are not in use.</p>
+                                        <p>The mark is in use in commerce on or in connection with the following goods/services:</p>
+                                        <div class="form-group form-group-md">
+                                            <div class="form-control inusegs" role="textbox" contenteditable="true" aria-multiline="true">
+                                                    <span class="label label-info subtle" contenteditable="false">
+                                                        <span class="closepans">Athletic apparel, namely, shirts, pants, jackets, footwear, hats and caps, athletic uniforms</span>
+                                                        <button type="button" class="close closegspanels" aria-label="delete"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                    </span>
+                                                <span class="label label-info subtle" contenteditable="false">
+                                                        <span class="closepans">Athletic tops and bottoms for cycling</span>
+                                                        <button type="button" class="close closegspanels" aria-label="delete"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                    </span>
+                                                <span class="label label-info subtle" contenteditable="false">
+                                                        <span class="closepans">Clothing, namely, arm warmers</span>
+                                                        <button type="button" class="close closegspanels" aria-label="delete"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                    </span>
+                                                <span class="label label-info subtle" contenteditable="false">
+                                                        <span class="closepans">Clothing, namely, base layers</span>
+                                                        <button type="button" class="close closegspanels" aria-label="delete"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                    </span>
+                                                <span class="label label-info subtle" contenteditable="false">
+                                                        <span class="closepans">Gloves</span>
+                                                        <button type="button" class="close closegspanels" aria-label="delete"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                    </span>
+                                                <span class="label label-info subtle" contenteditable="false">
+                                                        <span class="closepans">Jackets and socks</span>
+                                                        <button type="button" class="close closegspanels" aria-label="delete"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                    </span>
+                                                <span class="label label-info subtle" contenteditable="false">
+                                                        <span class="closepans">T-shirts</span>
+                                                        <button type="button" class="close closegspanels" aria-label="delete"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                    </span>
+                                                <span class="label label-info subtle" contenteditable="false">
+                                                        <span class="closepans">Tank tops</span>
+                                                        <button type="button" class="close closegspanels" aria-label="delete"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                    </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="row">
+                                            <div class="col-xs-12 form-group form-group-md">
+                                                <button type="button" class="btn btn-sm btn-success" data-dismiss="modal">Done</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row formodal">
+                            <div class="resetclass"><button type="button" class="btn btn-sm close resetclassbtn" aria-label="undo this class deletion"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 statementou">
+                                <div class="card-text noexpand blue">
+                                    <div class="col-md-12 col-lg-7">
+                                        <div class="displaytable">
+                                            <h2 class="card-title weight600 displaycell"><span>Class 19</span> <span class="listed" role="alert"><span class="sr-only"></span>Athletic apparel, namely, shirts, pants, jackets, footwear, hats and caps, athletic uniforms;</span> <span class="listed" role="alert"><span class="sr-only"></span>Athletic tops and bottoms for cycling;</span> <span class="listed" role="alert"><span class="sr-only"></span>Clothing, namely, arm warmers;</span> <span class="listed" role="alert"><span class="sr-only"></span>Clothing, namely, base layers;</span> <span class="listed" role="alert"><span class="sr-only"></span>Gloves;</span> <span class="listed" role="alert"><span class="sr-only"></span>Jackets and socks;</span> <span class="listed" role="alert"><span class="sr-only"></span>T-shirts;</span> <span class="listed" role="alert"><span class="sr-only"></span>Tank tops</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-lg-5">
+                                        <label for="gs_two" class="sr-only">edit class</label>
+                                        <select class="form-control gsactions" id="gs_two">
+                                            <option value="edit">Edit</option>
+                                            <option value="delete">Delete this class permanently</option>
+                                            <option value="limit">Delete some goods/services in this class</option>
+                                            <option value="divide" disabled>Divide some or all of the goods/services in this class</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <h2 class="weight600">Use Statement</h2>
+                                                <div class="form-group form-group-md">
+                                                    <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" aria-labelledby="userAccept-label_two" id="user-accept-checkbox_two" name="user-accept-checkbox_two">
+                                                    <label class="form-check-label form-check-left form-check" for="user-accept-checkbox_two" id="userAccept-label_two"><span class="radio notspecial">The mark is in use in commerce on or in connection with all goods/services in this class.</span></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                                <label for="connection-date_two" class="matchlabelheighttwo">When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> <span class="label label-info subtle">Reduced Fee</span></label>
+                                                <input type="date" class="form-control" id="connection-date_two" name="connectiondate_two" value="">
+                                            </div>
+                                            <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                                <label for="firstconnection-date_two" class="matchlabelheighttwo">When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> <span class="label label-info subtle">Reduced Fee</span></label>
+                                                <input type="date" class="form-control" id="firstconnection-date_two" name="firstconnectiondate_two" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </fieldset>
+                                <fieldset aria-label="upload specimen">
+                                    <div class="row">
+                                        <div class="col-xs-12 form-group form-group-md upload">
+                                            <h2 class="weight600">Attach Specimen</h2>
+                                            <p id="upimagetwo">Please provide a specimen for this individual good/service.</p>
+                                            <div class="form-group form-group-md hidethis">
+                                                <label class="small upload-drop-zone" for="specimensixfile" id="upimgtwo"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png</label>
+                                                <input type="file" id="specimensixfile" name="specimensixfileupload" class="form-control" accept=".jpg,.tiff,.png" aria-labelledby="upimgtwo upimagetwo">
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12 js-upload-finished">
+                                                    <div class="list-group">
+                                                        <div class="list-group-item list-group-item-success fileholder col-xs-12" role="alert"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="col-xs-12 form-group form-group-md">
+                                                        <button type="submit" class="btn-sm btn-success add ctr" aria-label="submit selected file">Submit</button>
+                                                    </div>
+                                                </div>
+                                            </div><!-- Drop Zone -->
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <label for="specdescriptwo">Provide a description of your specimen:</label>
+                                            <textarea id="specdescriptwo" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset aria-label="enter other information">
+                                    <div class="row">
+                                        <div class="col-xs-12 form-group form-group-md">
+                                            <h2 class="card-title weight600">Other Situations</h2>
+                                            <div class="row">
+                                                <div class="col-xs-12 form-group form-group-md">
+                                                    <input class="form-check-input checkmark" type="checkbox" value="minorchange_two" tabindex="0" aria-labelledby="minor_two" id="nonmaterial_two">
+                                                    <label class="form-check-label form-check-left form-check" for="nonmaterial_two" id="minor_two"><span class="radio notspecial">Make minor/non-material changes to my mark to conform to my specimen</span></label>
+                                                </div>
+                                                <div class="col-xs-12 form-group form-group-md">
+                                                    <input class="form-check-input checkmark" type="checkbox" value="information_two" tabindex="0" aria-labelledby="addinfo_two" id="info_two">
+                                                    <label class="form-check-label form-check-left form-check" for="info_two" id="addinfo_two"><span class="radio notspecial">Include additional information not previously requested or specified</span></label>
+                                                </div>
+                                                <div class="col-xs-12 form-group form-group-md">
+                                                    <input class="form-check-input checkmark" type="checkbox" value="optionalinsurance_two" tabindex="0" aria-labelledby="optional_two" id="insurance_two">
+                                                    <label class="form-check-label form-check-left form-check" for="insurance_two" id="optional_two"><span class="radio notspecial">File an optional insurance extension</span></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div><!--END col-->
+        </div><!--END row-->
+        <div class="inlinebuttons btn-group btn-group-justified" role="navigation" aria-label="view previous or next page" id="prevnxt">
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-default fill prev" id="" value="previous">Previous</button>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-primary fill next" id="" value="next">Next
+                    <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
+            </div>
+        </div>
+    </main><!--END main-->
+
+</div><!--END div content-->
+
+
+
+<script th:inline="javascript">
+
+    /*<![CDATA[*/
+    var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
+
+    var  image_path = /*[[${markImagePath}]]*/ 'User Name';
+
+    var  image_pathBW = /*[[${markImagePathBW}]]*/ 'User Name';
+
+    var colorClaim = /*[[${markColorClaim}]]*/ 'User Name';
+
+
+    var acceptBW = /*[[${markColorClaimBW}]]*/ 'User Name';
+
+    var OfficeActionID = /*[[${OfficeActionID}]]*/ 'User Name';
+
+    var colorClaimSet = /*[[${colorClaimSet}]]*/ 'User Name';
+
+    var markType = /*[[${baseTrademarkApplication.tradeMark.trademarkDesignType}]]*/ 'User Name';
+    var markText = /*[[${baseTrademarkApplication.tradeMark.trademarkStandardCharacterText}]]*/ 'User Name';
+
+    /*]]>*/
+</script>
+
+
+
+<script>
+
+    var prevLinkURL = "../../../accounts/dashboard";
+
+
+    var nextLinkURL = "../../../officeAction/optional/"+OfficeActionID+"/?trademarkID="+appInternalID;
+
+
+
+    $(document).ready(function() {
+
+        setTimeout(function () {
+            // after 1000 ms we add the class animated to the login/register card
+            $('.content').fadeIn(500);
+        }, 500);
+
+
+        //////////////////////////////////////////////////////////////////////
+        // set mark image based on persisted values
+        //////////////////////////////////////////////////////////////////////
+
+        if(markType == "Standard Character"){
+
+            if(markText  != null && markText != ""){
+
+                $( '#togglepop' ).attr('data-content', '<div class="media"><span id="showmarktxt" style="min-width:77px;width:80px;margin:0 auto;font-family: Palatino, Garamond, Bookman, Avant Garde; font-size:.9em;text-align:center;margin-bottom:0;" class="media-object" alt="my trademark">'+markText+'</span></div>');
+            }
+            else{
+                $( '#togglepop' ).attr('data-content', '<div class="media"><span class="glyphicon glyphicon-picture" aria-hidden="true"  style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></span></div>');
+            }
+
+        }
+        else {
+
+            if(colorClaimSet == false){
+
+                if(image_path != null){
+
+                    $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+                }
+                // set color claim to true be default when its not set yet
+                else{
+                    $( '#togglepop' ).attr('data-content', '<div class="media"><span class="glyphicon glyphicon-picture" aria-hidden="true"  style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></span></div>');
+                }
+
+            }
+            else {
+
+                if(colorClaim == false){
+
+                    if(acceptBW == true){
+                        // $('#inlineRadio2').click();
+                        // $('#bwmark').click();
+
+                        $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_pathBW+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+
+                    }
+                    else{
+                        if(image_path != null){
+
+                            $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+
+
+                        }
+
+                    }
+
+                }
+                if(colorClaim == true){
+                    // $('#inlineRadio1').click();
+                    if(image_path != null){
+
+                        $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+
+
+                    }
+                }
+
+
+            }
+
+
+
+
+        }
+
+
+        // paging
+
+        $('.next').click(function () {
+            location.href=nextLinkURL;
+        });
+
+        $('.prev').click(function () {
+            location.href=prevLinkURL;
+        });
+
+
+        preventFutureDate();
+        preventPastDate();
+
+
+
+
+
+
+        // ajax auto save
+
+        // translation required actions
+        $('#foreignlanguage').change( function () {
+
+            var requiredActionID = $(this).attr("action-id");
+
+            var languageType = $(this).val();
+            // we also need the action id, and required action id
+            saveOAresponse("OA-translation-languageType", languageType, OfficeActionID, requiredActionID, appInternalID);
+
+        });
+
+
+        $('#foreignwording').change( function () {
+
+            var requiredActionID = $(this).attr("action-id");
+
+            var foreignText = $(this).val();
+            // we also need the action id, and required action id
+            saveOAresponse("OA-translation-foreign-text", foreignText, OfficeActionID, requiredActionID, appInternalID);
+
+        });
+
+        $('#englishwording').change( function () {
+
+            var requiredActionID = $(this).attr("action-id");
+
+            var englishText = $(this).val();
+            // we also need the action id, and required action id
+            saveOAresponse("OA-translation-us-text", englishText, OfficeActionID, requiredActionID, appInternalID);
+
+        });
+
+
+        // disclaimer required actions
+        $('#noclaim').change( function () {
+
+            var requiredActionID = $(this).attr("action-id");
+
+            var disclaimerText = $(this).val();
+            // we also need the action id, and required action id
+            saveOAresponse("OA-mark-disclaimer", disclaimerText, OfficeActionID, requiredActionID, appInternalID);
+
+        });
+
+        // listerner for foreign applicatoin accordians
+
+        //START additional pending + foreign
+
+        $('input.checkmark-cc').click(function () {
+
+
+            var ccID = $(this).attr("cc-id");
+
+            // check value
+            if($(this).val() == "pending" ){
+
+
+                if(this.checked == true){
+                    // unhide  parent next div
+                    // call auto save yes on foreign application
+                    $(this).parent().next().show(500);
+
+                    addFilingBasisInfoToClassCategory("cc-pfa-option", "yes", ccID, appInternalID);
+                    $(this).next().next().next().next().attr("checked", false);
+
+
+                }
+                else{
+                    // hide parent next div
+                    // call auto save no on forgeign application
+                    $(this).parent().next().fadeOut(500);
+                    addFilingBasisInfoToClassCategory("cc-pfa-option", "no", ccID, appInternalID);
+                }
+
+
+
+            }
+
+            if($(this).val() == "foreign" ){
+
+
+                if(this.checked == true){
+                    // unhide  parent next div
+                    // call auto save yes on foreign application
+                    $(this).parent().next().next().show(500);
+
+
+                    addFilingBasisInfoToClassCategory("cc-pfr-option", "yes", ccID, appInternalID);
+                    $(this).next().next().attr("checked", false);
+
+                }
+                else{
+                    // hide parent next div
+                    // call auto save no on forgeign application
+                    $(this).parent().next().next().fadeOut(500);
+                    addFilingBasisInfoToClassCategory("cc-pfr-option", "no", ccID, appInternalID);
+
+                }
+
+
+
+            }
+
+
+            if($(this).val() == "na" ){
+
+
+                if(this.checked == true){
+                    // unhide  parent next div
+                    // call auto save yes on foreign application
+
+                    $(this).parent().next().next().fadeOut(500);
+                    $(this).parent().next().fadeOut(500);
+
+                    //$(this).prev().prev().attr("disabled", true);
+                    $(this).prev().prev().attr("checked", false);
+                    //$(this).prev().prev().prev().prev().attr("disabled",true);
+                    $(this).prev().prev().prev().prev().attr("checked",false);
+                    addFilingBasisInfoToClassCategory("cc-pna-option", "yes", ccID, appInternalID);
+
+                }
+                else{
+                    // hide parent next div
+                    // call auto save no on forgeign application
+                    //$(this).parent().next().next().fadeOut(500);
+                    //$(this).prev().prev().attr("disabled", false);
+                    //$(this).prev().prev().prev().prev().attr("disabled",false)
+                    addFilingBasisInfoToClassCategory("cc-pna-option", "no", ccID, appInternalID);
+
+                }
+
+
+
+            }
+
+            // unhide related div
+            // parse out GS internal id from id attribute
+            // call auto save
+
+        });
+
+
+
+
+
+        //START additional pending + foreign
+
+        $('input.checkmark').click(function () {
+
+
+            var gsID = $(this).attr("gs-id");
+
+            // check value
+            if($(this).val() == "pending" ){
+
+
+                if(this.checked == true){
+                    // unhide  parent next div
+                    // call auto save yes on foreign application
+                    $(this).parent().next().show(500);
+                    addFilingBasisInfoToGoodAndService("gs-pfa-option", "yes", gsID, appInternalID);
+                    $(this).next().next().next().next().attr("checked", false);
+
+                }
+                else{
+                    // hide parent next div
+                    // call auto save no on forgeign application
+                    $(this).parent().next().fadeOut(500);
+                    addFilingBasisInfoToGoodAndService("gs-pfa-option", "no", gsID, appInternalID);
+                }
+
+
+
+            }
+
+            if($(this).val() == "foreign" ){
+
+
+                if(this.checked == true){
+                    // unhide  parent next div
+                    // call auto save yes on foreign application
+                    $(this).parent().next().next().show(500);
+
+                    addFilingBasisInfoToGoodAndService("gs-pfr-option", "yes", gsID, appInternalID);
+                    $(this).next().next().attr("checked", false);
+
+                }
+                else{
+                    // hide parent next div
+                    // call auto save no on forgeign application
+                    $(this).parent().next().next().fadeOut(500);
+                    addFilingBasisInfoToGoodAndService("gs-pfr-option", "no", gsID, appInternalID);
+
+                }
+
+
+
+            }
+
+
+            if($(this).val() == "na" ){
+
+
+                if(this.checked == true){
+                    // unhide  parent next div
+                    // call auto save yes on foreign application
+
+                    $(this).parent().next().next().fadeOut(500);
+                    $(this).parent().next().fadeOut(500);
+
+                    // $(this).prev().prev().attr("disabled", true);
+                    $(this).prev().prev().attr("checked", false);
+                    // $(this).prev().prev().prev().prev().attr("disabled",true);
+                    $(this).prev().prev().prev().prev().attr("checked",false);
+                    addFilingBasisInfoToGoodAndService("gs-pna-option", "yes", gsID, appInternalID);
+
+                }
+                else{
+                    // hide parent next div
+                    // call auto save no on forgeign application
+                    //$(this).parent().next().next().fadeOut(500);
+                    //  $(this).prev().prev().attr("disabled", false);
+                    // $(this).prev().prev().prev().prev().attr("disabled",false)
+                    addFilingBasisInfoToGoodAndService("gs-pna-option", "no", gsID, appInternalID);
+
+                }
+
+
+
+            }
+
+            // unhide related div
+            // parse out GS internal id from id attribute
+            // call auto save
+
+        });
+
+        ///////////////////////////////////////////////////////////////////////
+        // persistence rendering for fa-country drop down and persistence
+        ///////////////////////////////////////////////////////////////////////
+
+        $('select.fa-country').change(function () {
+            var gsID= $(this).attr("gs-id");
+
+            //alert(gsID);
+            var value = $(this).val();
+
+            addFilingBasisInfoToGoodAndService("gs-pfa-country", value, gsID, appInternalID);
+
+
+        });
+
+        ///////////////////////////////////////////////////////////////////////
+        // class level equivalent  fa-country drop down and persistence
+        ///////////////////////////////////////////////////////////////////////
+        $('select.fa-country-cc').change(function () {
+            var ccID= $(this).attr("cc-id");
+
+            //alert(gsID);
+            var value = $(this).val();
+
+            addFilingBasisInfoToClassCategory("cc-pfa-country", value, ccID, appInternalID);
+
+
+        });
+
+
+        $('select').each(function () {
+
+            var countryCode = $(this).attr("gs-value");
+
+            var countryCodeCC = $(this).attr("cc-value");
+
+            if(countryCode != null){
+
+                $(this).val(countryCode);
+            }
+
+            if(countryCodeCC != null){
+
+                $(this).val(countryCodeCC);
+            }
+
+
+
+        });
+
+
+
+
+
+        ///////////////////////////////////////////////////////////////////////
+        // persistence rendering for fa app number drop down and persistence
+        ///////////////////////////////////////////////////////////////////////
+
+        $('input.fa-app-number').focusout(function () {
+            var gsID= $(this).attr("gs-id");
+
+            //alert(gsID);
+            var value = $(this).val();
+            addFilingBasisInfoToGoodAndService("gs-pfa-app-Number", value, gsID, appInternalID);
+
+        });
+
+        ///////////////////////////////////////////////////////////////////////
+        // class level equivalent  faapp number down and persistence
+        ///////////////////////////////////////////////////////////////////////
+
+        $('input.fa-app-number-cc').focusout(function () {
+            var ccID= $(this).attr("cc-id");
+
+            //alert(gsID);
+            var value = $(this).val();
+            addFilingBasisInfoToClassCategory("cc-pfa-app-Number", value, ccID, appInternalID);
+
+        });
+
+
+
+
+
+
+        ///////////////////////////////////////////////////////////////////////
+        // persistence rendering for fa filing date drop down and persistence
+        ///////////////////////////////////////////////////////////////////////
+
+
+        ///////////////////////////////////////////////////////////////////////
+        // persistence rendering for fa filing date drop down and persistence
+        ///////////////////////////////////////////////////////////////////////
+
+        $('input.fa-filing-date').focusout(function () {
+            var gsID= $(this).attr("gs-id");
+            var value = $(this).val();
+            var divID = $(this).attr("div-id");
+            var msgID = $(this).attr("message-id");
+            var buttonID = $(this).attr("button-id");
+            var date = $(this);
+            // datealert( divID, msgID, buttonID,date,"gs-pfa-filing-date", value, gsID,appInternalID );
+            var alertMsg = "You cannot claim Section 44(d) priority, because your attempted U.S. filing is outside the 6-month window. (i.e., from when the foreign application was filed). The date must be before ";
+            datealertPastAndFuture( divID, msgID, buttonID,date,"gs-pfa-filing-date", value, gsID,appInternalID,-182, alertMsg);
+
+        });
+
+
+        $('.alert-close').click(function () {
+            var divID = $(this).attr("div-id");
+
+            $('#'+divID).hide('fast');
+
+        });
+
+
+        ///////////////////////////////////////////////////////////////////////
+        // class level equivalent  faapp number down and persistence
+        ///////////////////////////////////////////////////////////////////////
+        $('input.fa-filing-date-cc').focusout(function () {
+            var ccID= $(this).attr("cc-id");
+
+            var value = $(this).val();
+            var divID = $(this).attr("div-id");
+            var msgID = $(this).attr("message-id");
+            var buttonID = $(this).attr("button-id");
+            var date = $(this);
+
+            var value = $(this).val();
+
+            var alertMsg = "You cannot claim Section 44(d) priority, because your attempted U.S. filing is outside the 6-month window. (i.e., from when the foreign application was filed). The date must be before ";
+
+            datealertPastAndFuture( divID, msgID, buttonID,date,"cc-pfa-filing-date", value, ccID,appInternalID,-182, alertMsg);
+
+
+
+
+        });
+
+
+
+
+
+        //END additional pending + foreign
+
+        ///////////////////////////////////////////////////////////////////////
+        // persistence rendering for fr country drop down and persistence
+        ///////////////////////////////////////////////////////////////////////
+
+        $('select.fr-country').change(function () {
+            var gsID= $(this).attr("gs-id");
+            var value = $(this).val();
+
+            addFilingBasisInfoToGoodAndService("gs-pfr-country", value, gsID, appInternalID);
+
+
+        });
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        // class level persistence rendering for fr country drop down and persistence
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        $('select.fr-country-cc').change(function () {
+            var ccID= $(this).attr("cc-id");
+            var value = $(this).val();
+
+            addFilingBasisInfoToClassCategory("cc-pfr-country", value, ccID, appInternalID);
+
+
+        });
+
+
+        ///////////////////////////////////////////////////////////////////////
+        // persistence rendering for fr reg number  persistence
+        ///////////////////////////////////////////////////////////////////////
+
+        $('input.fr-reg-number').focusout(function () {
+            var gsID= $(this).attr("gs-id");
+
+            //alert(gsID);
+            var value = $(this).val();
+            addFilingBasisInfoToGoodAndService("gs-pfr-reg-Number", value, gsID, appInternalID);
+
+        });
+
+        ///////////////////////////////////////////////////////////////////////
+        // class level persistence rendering for fr reg number  persistence
+        ///////////////////////////////////////////////////////////////////////
+        $('input.fr-reg-number-cc').focusout(function () {
+            var ccID= $(this).attr("cc-id");
+
+            //alert(gsID);
+            var value = $(this).val();
+            addFilingBasisInfoToClassCategory("cc-pfr-reg-Number", value, ccID, appInternalID);
+
+        });
+
+
+
+
+
+
+
+        ///////////////////////////////////////////////////////////////////////
+        // persistence rendering for fr reg date  persistence
+        ///////////////////////////////////////////////////////////////////////
+
+        $('input.fr-reg-date').focusout(function () {
+            var gsID= $(this).attr("gs-id");
+            var value = $(this).val();
+            var divID = $(this).attr("div-id");
+            var msgID = $(this).attr("message-id");
+            var buttonID = $(this).attr("button-id");
+            var date = $(this);
+            var alertMsg =  "You cannot claim Section 44(d) priority, because your attempted foreign registration date is in the future. The date must be before ";
+            datealertPastAndFuture( divID, msgID, buttonID,date,"gs-pfr-reg-date", value, gsID,appInternalID,0, alertMsg);
+            // addFilingBasisInfoToGoodAndService("gs-pfr-reg-date", value, gsID, appInternalID);
+
+        });
+
+        ///////////////////////////////////////////////////////////////////////
+        // class level persistence rendering for fr reg date  persistence
+        ///////////////////////////////////////////////////////////////////////
+
+
+        $('input.fr-reg-date-cc').focusout(function () {
+            var ccID= $(this).attr("cc-id");
+
+            var value = $(this).val();
+            var divID = $(this).attr("div-id");
+            var msgID = $(this).attr("message-id");
+            var buttonID = $(this).attr("button-id");
+            var date = $(this);
+
+            var alertMsg =  "You cannot claim Section 44(d) priority, because your attempted foreign registration date is in the future. The date must be before ";
+
+            datealertPastAndFuture( divID, msgID, buttonID,date,"cc-pfr-reg-date", value, ccID,appInternalID,0,alertMsg);
+            //addFilingBasisInfoToClassCategory("cc-pfr-reg-date", value, ccID, appInternalID);
+
+        });
+
+
+
+
+        ///////////////////////////////////////////////////////////////////////
+        // persistence rendering for fr expire date  persistence
+        ///////////////////////////////////////////////////////////////////////
+
+        $('input.fr-expire-date').focusout(function () {
+            var gsID= $(this).attr("gs-id");
+
+            //alert(gsID);
+            var value = $(this).val();
+            addFilingBasisInfoToGoodAndService("gs-pfr-exp-date", value, gsID, appInternalID);
+
+        });
+        ///////////////////////////////////////////////////////////////////////
+        // class level persistence rendering for fr expire date  persistence
+        ///////////////////////////////////////////////////////////////////////
+        $('input.fr-expire-date-cc').focusout(function () {
+            var ccID= $(this).attr("cc-id");
+
+            //alert(gsID);
+            var value = $(this).val();
+            addFilingBasisInfoToClassCategory("cc-pfr-exp-date", value, ccID, appInternalID);
+
+        });
+
+
+
+
+
+        ///////////////////////////////////////////////////////////////////////
+        // persistence rendering for fr renewal date  persistence
+        ///////////////////////////////////////////////////////////////////////
+
+        $('input.fr-renewal-date').focusout(function () {
+            var gsID= $(this).attr("gs-id");
+
+
+            var value = $(this).val();
+            addFilingBasisInfoToGoodAndService("gs-pfr-renew-date", value, gsID, appInternalID);
+
+        });
+        ///////////////////////////////////////////////////////////////////////
+        // class level persistence rendering for fr renewal date  persistence
+        ///////////////////////////////////////////////////////////////////////
+        $('input.fr-renewal-date-cc').focusout(function () {
+            var ccID= $(this).attr("cc-id");
+
+
+            var value = $(this).val();
+            addFilingBasisInfoToClassCategory("cc-pfr-renew-date", value, ccID, appInternalID);
+
+        });
+
+
+
+        ///////////////////////////////////////////////////////////////////////
+        // persistence rendering for fr  certificate  persistence
+        ///////////////////////////////////////////////////////////////////////
+
+
+        // this is the id of the submit button
+        $(".fr-regCert-submit").click(function() {
+
+
+            var currentButton = $(this);
+
+            var formID = $(this).attr("form");
+            var gsID = $(this).attr("gs-id");
+
+            var fileInputId = $(this).attr("file-id");
+
+            var imageId = $(this).attr("gs-img-id");
+
+            var spinnerID = $(this).attr("spinner-id");
+            var dLinkID = $(this).attr("download-link-id");
+
+            $('#'+spinnerID).show();
+            var fileInput = document.getElementById(fileInputId);
+            var file = fileInput.files[0];
+            var formData = new FormData();
+            formData.append('file', file);
+            formData.append('appID', appInternalID);
+            formData.append('gsID',gsID);
+
+            var url = $("#"+formID).attr("action");
+            // Get the selected files from the input.
+            // get form url
+
+            setTimeout(function () {
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: formData, // serializes the form's elements.
+                    async: true,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(data)
+                    {
+                        // we will return the the file url
+                        // call jquery and set it in the img div
+                        var imgPath = parsePathFromResponse(data);
+
+                        var fileName = parseNameFromResponse(data);
+                        $('#'+dLinkID).text(fileName);
+                        $('#'+imageId).attr("src", imgPath);
+                        $("#"+spinnerID).hide();
+                        //$("#cat-spec-img").fadeIn(500);
+                    }
+                });
+
+                $(currentButton).parent().parent().prev().show(500);
+                //alert($(this).parent().parent().html());
+                $(currentButton).parent().parent().prev().prev().hide(500);
+                $(currentButton).parent().parent().hide(500);
+
+            }, 1000);
+
+
+
+            return false; // avoid to execute the actual submit of the form.
+        });
+
+        $('.fr-cert-close').click(function () {
+
+
+            $(this).parent().parent().parent().parent().parent().parent().parent().hide(500);
+
+            $(this).parent().parent().parent().parent().parent().parent().parent().prev().show(500);
+
+            $(this).parent().parent().parent().parent().parent().parent().parent().next().show(500);
+
+        });
+
+        ///////////////////////////////////////////////////////////////////////
+        // class level persistence rendering for fr  certificate  persistence
+        ///////////////////////////////////////////////////////////////////////
+
+        // this is the id of the submit button
+        $(".fr-regCert-submit-cc").click(function() {
+
+
+            var currentButton = $(this);
+
+            var formID = $(this).attr("form");
+            var ccID = $(this).attr("cc-id");
+
+            var fileInputId = $(this).attr("file-id");
+
+            var imageId = $(this).attr("cc-img-id");
+
+            var spinnerID = $(this).attr("spinner-id");
+            var dLinkID = $(this).attr("download-link-id");
+
+            $('#'+spinnerID).show();
+            var fileInput = document.getElementById(fileInputId);
+            var file = fileInput.files[0];
+            var formData = new FormData();
+            formData.append('file', file);
+            formData.append('appID', appInternalID);
+            formData.append('ccID',ccID);
+
+            var url = $("#"+formID).attr("action");
+            // Get the selected files from the input.
+            // get form url
+
+            setTimeout(function () {
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: formData, // serializes the form's elements.
+                    async: true,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(data)
+                    {
+                        // we will return the the file url
+                        // call jquery and set it in the img div
+                        var imgPath = parsePathFromResponse(data);
+
+                        var fileName = parseNameFromResponse(data);
+                        $('#'+dLinkID).text(fileName);
+                        $('#'+imageId).attr("src", imgPath);
+                        $("#"+spinnerID).hide();
+                        //$("#cat-spec-img").fadeIn(500);
+                    }
+                });
+
+                $(currentButton).parent().parent().prev().show(500);
+                //alert($(this).parent().parent().html());
+                $(currentButton).parent().parent().prev().prev().hide(500);
+                $(currentButton).parent().parent().hide(500);
+
+            }, 1000);
+
+
+
+            return false; // avoid to execute the actual submit of the form.
+        });
+
+        $('.fr-cert-close-cc').click(function () {
+
+
+            $(this).parent().parent().parent().parent().parent().parent().parent().hide(500);
+
+            $(this).parent().parent().parent().parent().parent().parent().parent().prev().show(500);
+
+            $(this).parent().parent().parent().parent().parent().parent().parent().next().show(500);
+
+        });
+
+
+
+
+        // end foreign registartion
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+        // AJAX auto save
+        ////////////////////////////////////////////////////////////////////////////////////////
+        $('.class-spec-desc-ta').focusout(function () {
+            var catNum= $(this).attr("cat-num");
+            var descr = $(this).val();
+            addFilingBasisInfoToClassCategory("cc-spec-descr", descr, catNum, appInternalID);
+
+
+        });
+
+
+
+
+        //goods and services level in use
+
+        $('input.mark-in-use-radio').click(function () {
+
+
+
+            $(this).parent().parent().next().css('display','none');
+
+            var gsID= $(this).attr("name");
+
+            if($(this).attr("id").indexOf("RadioYES") > 0 ){
+                // yes readio click
+                if(this.checked == true){
+                    $(this).parent().parent().next().show(500);
+                    //$('div#yescommerce').show(500);
+                    addFilingBasisInfoToGoodAndService("fb-mark-in-use", "yes", gsID, appInternalID);
+                }
+                else {
+                    $(this).parent().parent().next().fadeOut(500);
+                }
+            }
+            else{
+                // no readio click
+
+
+                if(this.checked == true){
+                    $(this).parent().parent().next().fadeOut(500);
+                    var radioButton = $(this);
+                    addFilingBasisInfoToGoodAndServiceSpecial("fb-mark-in-use", "no", gsID, appInternalID,radioButton);
+
+
+                }
+                else {
+                    $(this).parent().parent().next().show(500);
+                }
+
+                // go through the child radio set
+                // and check all nos
+                // and disable yes
+
+            }
+
+
+
+        });
+
+
+
+        // first doos and services date
+        $('input.gs-date').focusout(function () {
+
+            var gsID= $(this).attr("gs-id");
+            var divID = $(this).attr("div-id");
+            var msgID = $(this).attr("message-id");
+            var buttonID = $(this).attr("button-id");
+            var markDateID = $(this).attr("mark-date-id");
+            var date = $(this).val();
+
+            datealertFirstDatePair(divID,msgID,buttonID,date,"fb-gs-date",date,gsID,appInternalID,markDateID);
+
+        });
+
+        // first doos and services date
+        $('input.gs-date-cc').focusout(function () {
+
+            var ccID= $(this).attr("cc-id");
+            var divID = $(this).attr("div-id");
+            var msgID = $(this).attr("message-id");
+            var buttonID = $(this).attr("button-id");
+            var markDateID = $(this).attr("mark-date-id");
+            var date = $(this).val();
+
+            datealertFirstDatePair(divID,msgID,buttonID,date,"cc-gs-date",date,ccID,appInternalID,markDateID);
+
+        });
+
+
+
+        // first mark in commerce date
+
+        $('input.mark-date').focusout(function () {
+            var gsID= $(this).attr("gs-id");
+            var divID = $(this).attr("div-id");
+            var msgID = $(this).attr("message-id");
+            var buttonID = $(this).attr("button-id");
+            var gsDateID = $(this).attr("gs-date-id");
+            var date = $(this).val();
+
+            datealertFirstDatePair(divID,msgID,buttonID,date,"fb-mark-date",date,gsID,appInternalID,gsDateID);
+
+
+        });
+
+        $('input.mark-date-cc').focusout(function () {
+            var ccID= $(this).attr("cc-id");
+            var divID = $(this).attr("div-id");
+            var msgID = $(this).attr("message-id");
+            var buttonID = $(this).attr("button-id");
+            var gsDateID = $(this).attr("gs-date-id");
+            var date = $(this).val();
+
+            datealertFirstDatePair(divID,msgID,buttonID,date,"cc-mark-date",date,ccID,appInternalID,gsDateID);
+
+
+        });
+
+
+
+
+        $('input.provide-spec').click(function () {
+
+            var gsId = $(this).attr("id")
+
+            if(this.checked == true) {
+
+                addFilingBasisInfoToGoodAndService("fb-provide-spec", "yes", gsId, appInternalID);
+                $(this).parent().next().show(500);
+
+            }
+            else{
+                addFilingBasisInfoToGoodAndService("fb-provide-spec", "no", gsId, appInternalID);
+                $(this).parent().next().fadeOut(500);
+            }
+            //alert($(this).attr("id"));
+        });
+
+        $('textarea.spec-description').focusout(function () {
+            var gsId = $(this).prev().attr("name")
+            var msg = $(this).val();
+
+            if(msg != ""){
+                addFilingBasisInfoToGoodAndService("fb-sample-desc",msg,gsId, appInternalID);
+            }
+
+
+        });
+
+
+
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////
+        // ajax form submit
+        // we will need one for each file upload form
+        // but for now, just get one working
+        ////////////////////////////////////////////////////////////////////////////////
+
+        // this is the id of the submit button
+        $(".submitCCSpecimen").click(function() {
+
+            var currentButton = $(this);
+
+            var formID = $(this).attr("form");
+            var classNumber = $(this).attr("cat-num");
+
+            var fileInputId = $(this).attr("file-id");
+
+            var imageId = $(this).attr("class-img-id");
+
+            var spinnerID = $(this).attr("spinner-id");
+            var dLinkID = $(this).attr("download-link-id");
+
+            $('#'+spinnerID).show();
+            var fileInput = document.getElementById(fileInputId);
+            var file = fileInput.files[0];
+            var formData = new FormData();
+            formData.append('file', file);
+            formData.append('appID', appInternalID);
+            formData.append('catNum',classNumber);
+
+            var url = $("#"+formID).attr("action");
+            // Get the selected files from the input.
+            // get form url
+
+            setTimeout(function () {
+
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: formData, // serializes the form's elements.
+                    async: true,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(data)
+                    {
+                        // we will return the the file url
+                        // call jquery and set it in the img div
+                        var imgPath = parsePathFromResponse(data);
+                        var consentFileName = parseNameFromResponse(data);
+
+                        $('#'+dLinkID).text(consentFileName);
+
+
+                        $('#'+imageId).attr("src", imgPath);
+                        $("#"+spinnerID).hide();
+
+                        //$("#cat-spec-img").fadeIn(500);
+                    }
+                });
+                $(currentButton).parent().parent().prev().prev().show(500);
+                //alert($(this).parent().parent().html());
+                $(currentButton).parent().parent().prev().prev().prev().hide(500);
+                $(currentButton).parent().parent().hide(500);
+                //alert($(currentButton).parent().parent().html())
+            }, 1000);
+
+
+            return false; // avoid to execute the actual submit of the form.
+        });
+
+
+        $('.cc-spec-close').click(function () {
+
+
+            $(this).parent().parent().parent().parent().parent().parent().parent().hide(500);
+
+            $(this).parent().parent().parent().parent().parent().parent().parent().prev().show(500);
+
+            // alert( $(this).parent().parent().parent().parent().parent().parent().parent().next().html());
+            $(this).parent().parent().parent().parent().parent().parent().parent().next().next().show(500);
+
+        });
+
+
+        // this is the id of the submit button
+        $(".submitGSSpecimen").click(function() {
+
+
+            var currentButton = $(this);
+            var formID = $(this).attr("form");
+            var gsID = $(this).attr("gs-id");
+
+            var fileInputId = $(this).attr("file-id");
+
+            var imageId = $(this).attr("gs-img-id");
+
+            var spinnerID = $(this).attr("spinner-id");
+            var dLinkID = $(this).attr("download-link-id");
+
+            $('#'+spinnerID).show();
+            var fileInput = document.getElementById(fileInputId);
+            var file = fileInput.files[0];
+            var formData = new FormData();
+            formData.append('file', file);
+            formData.append('appID', appInternalID);
+            formData.append('gsID',gsID);
+
+            var url = $("#"+formID).attr("action");
+            // Get the selected files from the input.
+            // get form url
+            setTimeout(function () {
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: formData, // serializes the form's elements.
+                    async: true,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(data)
+                    {
+                        // we will return the the file url
+                        // call jquery and set it in the img div
+                        var imgPath = parsePathFromResponse(data);
+                        var fileName = parseNameFromResponse(data);
+                        $('#'+dLinkID).text(fileName);
+                        $('#'+imageId).attr("src", imgPath);
+                        $("#"+spinnerID).hide();
+                        //$("#cat-spec-img").fadeIn(500);
+                    }
+                });
+
+                $(currentButton).parent().parent().prev().prev().show(500);
+                //alert($(this).parent().parent().html());
+                $(currentButton).parent().parent().prev().prev().prev().hide(500);
+                $(currentButton).parent().parent().hide(500);
+            }, 1000);
+
+
+
+
+
+            return false; // avoid to execute the actual submit of the form.
+        });
+
+
+        $('.gs-spec-close').click(function () {
+
+
+            $(this).parent().parent().parent().parent().parent().parent().parent().hide(500);
+
+            $(this).parent().parent().parent().parent().parent().parent().parent().prev().show(500);
+            $(this).parent().parent().parent().parent().parent().parent().parent().next().next().show(500);
+
+
+        });
+
+
+
+
+
+
+        $('.mark-in-use-radio-classLevel-yes').on('click',function () {
+
+            $(this).parent().parent().parent().next().fadeIn(500);
+
+            var catNum= $(this).attr("cat-num");
+
+            addFilingBasisInfoToClassCategory("cc-in-use-one", "yes", catNum, appInternalID);
+
+            //$(this).parent().parent().parent().next().next().next().show(500);
+
+
+
+            $(this).parent().parent().parent().next().next().next().find("input").each(function () {
+
+
+
+                var htmlText = $(this).parent().html();
+
+                if(htmlText.indexOf("inUseRadioNO") > 0){
+
+                    $(this).attr("checked", false);
+
+                }
+
+
+
+
+
+            });
+
+
+
+        });
+
+
+        $('.mark-in-use-radio-classLevel-no').on( 'click',function () {
+            // $(this).parent().parent().parent().next().children('input').each(function () {
+            //     $(this).attr("checked", false);
+            // });
+
+            $(this).parent().parent().parent().next().fadeOut(500);
+
+
+            $(this).parent().parent().parent().next().next().fadeOut(500);
+            var catNum= $(this).attr("cat-num");
+
+            addFilingBasisInfoToClassCategory("cc-in-use-one", "no", catNum, appInternalID);
+
+
+
+            // check if yes is already checked
+            $(this).parent().parent().parent().next().find("input").each(function () {
+
+
+                $(this).attr("checked", false);
+
+
+
+
+            });
+
+
+
+            $(this).parent().parent().parent().next().next().next().find("input").each(function () {
+
+                var htmlText = $(this).parent().html();
+
+
+                if(htmlText.indexOf("inUseRadioYES") > 0){
+                    $(this).attr("checked", false);
+                    // $(this).attr("disabled", true);
+                    //alert(htmlText);
+                }
+
+                if(htmlText.indexOf("inUseRadioNO") > 0){
+
+
+                    $(this).attr("checked", true);
+                    //alert(htmlText);
+
+                    // $(this).click();
+
+
+                }
+
+
+
+            });
+
+            $(this).parent().parent().parent().next().next().next().hide(500);
+
+
+        });
+
+
+
+
+        $('.provide-spec-all-class-yes').click(function () {
+
+            $(this).parent().parent().parent().next().fadeIn(500);
+            $(this).parent().parent().parent().next().next().fadeOut(500);
+
+            var catNum= $(this).attr("cat-num");
+
+            addFilingBasisInfoToClassCategory("cc-specimen-class-opt", "yes", catNum, appInternalID);
+
+        });
+
+
+        $('.provide-spec-all-class-no').click(function () {
+
+            $(this).parent().parent().parent().next().fadeOut(500);
+
+
+            // alert( $(this).parent().parent().parent().next().next().html());
+            $(this).parent().parent().parent().next().next().fadeIn(500);
+
+            var catNum= $(this).attr("cat-num");
+
+            addFilingBasisInfoToClassCategory("cc-specimen-class-opt", "no", catNum, appInternalID);
+
+
+        });
+
+
+
+
+    });
+
+
+    function saveOAresponse(FieldName, FieldValue, OA_id, RA_id ,appInternalID) {
+
+        //var field_value = $(this).val();
+        //alert(field_value);
+
+
+        $.ajax({
+            url: "../../../REST/apiGateway/OfficeAction/response/update/" + FieldName + "/" + FieldValue + "/" + OA_id + "/" + RA_id +"/"+appInternalID,
+            type: 'GET',
+            success: function (data) {
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:") + 7, data.indexOf("status:") + 4 + 7);
+
+                var s_msg = data.substring(data.indexOf("msg:") + 4, data.length - 2);
+
+
+
+                if (s_code.trim() == "200") {
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function () {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                }
+                else {
+
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function () {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                    $('.next').attr("disabled", false);
+
+                }
+
+
+            },
+            error: function (data) {
+
+                console.log(data);
+
+            }
+
+        });
+    }
+
+
+    function addFilingBasisInfoToClassCategory(ccFieldName, ccFieldValue, ccNumber, appInternalID) {
+
+        //var field_value = $(this).val();
+        //alert(field_value);
+
+
+        $.ajax({
+            url: "../../../REST/apiGateway/CC/fb/update/"+ccFieldName+"/"+ccFieldValue+"/"+ccNumber+"/"+appInternalID,
+            type: 'GET',
+            success: function(data){
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                if(s_code.trim() == "200"){
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function() {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+            },
+            error: function(data) {
+
+                console.log(data);
+
+            }
+
+        });
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////
+        // end of contact information 'State' auto save ////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+
+
+    }
+
+
+
+
+
+    function addFilingBasisInfoToGoodAndService(fbFieldName, fbFieldValue, gsID, appInternalID) {
+
+        //var field_value = $(this).val();
+        //alert(field_value);
+
+
+        $.ajax({
+            url: "../../../REST/apiGateway/GS/fb/update/"+fbFieldName+"/"+fbFieldValue+"/"+gsID+"/"+appInternalID,
+            type: 'GET',
+            success: function(data){
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                if(s_code.trim() == "200"){
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function() {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                }
+
+            },
+            error: function(data) {
+
+                console.log(data);
+
+            }
+
+        });
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////
+        // end of contact information 'State' auto save ////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+
+
+    }
+
+    function addFilingBasisInfoToGoodAndServiceSpecial(fbFieldName, fbFieldValue, gsID, appInternalID,radioButton) {
+
+        //var field_value = $(this).val();
+        //alert(field_value);
+
+
+        $.ajax({
+            url: "../../../REST/apiGateway/GS/fb/update/"+fbFieldName+"/"+fbFieldValue+"/"+gsID+"/"+appInternalID,
+            type: 'GET',
+            success: function(data){
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                if(s_code.trim() == "200"){
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function() {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                }
+                if(s_code.trim() == "420"){
+
+
+                    $(radioButton).attr("checked", false);
+
+                    alert("You have indicated at least one of the goods/services in this class is in-use. You mist choose 'Yes' for at least one good/service.");
+                }
+
+
+            },
+            error: function(data) {
+
+                console.log(data);
+
+            }
+
+        });
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////
+        // end of contact information 'State' auto save ////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+
+
+    }
+
+
+
+
+
+    function preventFutureDate() {
+        var dtToday = new Date();
+
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+
+        if(month < 10)
+            month = '0' + month.toString();
+        if(day < 10)
+            day = '0' + day.toString();
+
+        var maxDate = year + '-' + month + '-' + day;
+
+        $('input.gs-date').attr('max', maxDate);
+        $('input.mark-date').attr('max', maxDate);
+
+        var faMonth = dtToday.getMonth()+7;
+        if(faMonth > 12){
+            faMonth = faMonth - 12;
+        }
+
+        if(faMonth < 10)
+            faMonth = '0' + faMonth.toString();
+
+        var maxDateFA = year + '-' + faMonth + '-' + day;
+
+        //$('input.fa-filing-date').attr('max', maxDateFA);
+
+        $('input.fr-reg-date').attr('max', maxDate);
+    }
+
+    function preventPastDate() {
+        var dtToday = new Date();
+
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+
+        if(month < 10)
+            month = '0' + month.toString();
+        if(day < 10)
+            day = '0' + day.toString();
+
+        var maxDate = year + '-' + month + '-' + day;
+
+        $('input.gs-date').attr('max', maxDate);
+        $('input.mark-date').attr('max', maxDate);
+
+        var faMonth = dtToday.getMonth()+7;
+        if(faMonth > 12){
+            faMonth = faMonth - 12;
+        }
+        else{
+            year = year -1;
+        }
+
+
+        if(faMonth < 10)
+            faMonth = '0' + faMonth.toString();
+
+        var maxDateFA = year + '-' + faMonth + '-' + day;
+
+        $('input.fa-filing-date').attr('min', maxDateFA);
+
+        //$('input.fr-reg-date').attr('max', maxDate);
+    }
+
+
+
+    function parsePathFromResponse(response){
+        var index = response.indexOf("image-url:");
+        index = index+10;
+        response = response.substring(index);
+
+
+        var index2 = response.indexOf("}");
+        response = response.substring(0, index2);
+        return response;
+    }
+
+    function parseNameFromResponse(response){
+
+        var index = response.indexOf("image-name:");
+        index = index+11;
+        response = response.substring(index);
+
+
+        var index2 = response.indexOf("}");
+        response = response.substring(0, index2);
+        return response;
+    }
+
+    function setBreadCrumb(bsStatusArrayList){
+
+        for(var a=0; a< bsStatusArrayList.length; a++){
+            if(a==0){
+                if(bsStatusArrayList[a] != "NA"){
+
+                    $('#bs-header1').addClass(bsStatusArrayList[a]);
+                    $('#bs-link1').attr("href", bsLink1);
+
+                }
+
+            }
+            if(a==1){
+                if(bsStatusArrayList[a] != "NA"){
+                    $('#bs-header2').addClass(bsStatusArrayList[a]);
+                    if(bsStatusArrayList[a] == "active"){
+                        $('#bs-link2').attr("href", bsLink2_active);
+
+                    }
+                    if(bsStatusArrayList[a] == "done"){
+                        $('#bs-link2').attr("href", bsLink2_done);
+                    }
+
+
+
+                }
+
+            }
+            if(a==2){
+                if(bsStatusArrayList[a] != "NA"){
+
+                    $('#bs-header3').addClass(bsStatusArrayList[a]);
+
+                    if(bsStatusArrayList[a] == "active"){
+                        $('#bs-link3').attr("href", bsLink3_active);
+
+                    }
+                    if(bsStatusArrayList[a] == "done"){
+                        $('#bs-link3').attr("href", bsLink3_done);
+                    }
+
+
+                }
+
+            }
+            if(a==3){
+                if(bsStatusArrayList[a] != "NA"){
+
+                    $('#bs-header4').addClass(bsStatusArrayList[a]);
+
+                }
+
+            }
+            if(a==4){
+                if(bsStatusArrayList[a] != "NA"){
+                    $('#bs-header5').addClass(bsStatusArrayList[a]);
+                    if(bsStatusArrayList[a] == "active"){
+                        $('#bs-link5').attr("href", bsLink5_active);
+
+                    }
+                    if(bsStatusArrayList[a] == "done"){
+                        $('#bs-link5').attr("href", bsLink5_done);
+                    }
+
+                }
+
+            }
+            if(a==5){
+                if(bsStatusArrayList[a] != "NA"){
+                    $('#bs-header6').addClass(bsStatusArrayList[a]);
+                    if(bsStatusArrayList[a] == "active"){
+                        $('#bs-link6').attr("href", bsLink6_active);
+
+                    }
+                    if(bsStatusArrayList[a] == "done"){
+                        $('#bs-link6').attr("href", bsLink6_done);
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+
+
+    //alert messages //alert if invalid dates are entered manually incorrectly
+
+
+    function datealertFirstDatePair( divID, messageID, buttonID, date, command, value, cc_gs_id, appInteralID, targetID ) {
+
+        function addDays(theDate, days) {
+            return new Date(theDate + days*24*60*60*1000);
+        }
+
+        var options = { hour12: false, timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit', timeZoneName: 'short' };
+        var thatz = new Date().toLocaleTimeString('en-US', options);
+
+
+
+        // get target date
+        var targetValue = $('#'+targetID).val();
+
+        // if target is not set, then nothing to validate
+        if(targetValue == null || targetValue == ""){
+            // call auto save
+
+            if(command.indexOf("cc") >= 0){
+
+                addFilingBasisInfoToClassCategory(command, value, cc_gs_id, appInternalID);
+            }
+            else{
+                addFilingBasisInfoToGoodAndService(command, value, cc_gs_id, appInternalID);
+            }
+        }
+        else{
+
+            var targetDate = Date.parse(targetValue);
+
+            var dateLimitFuture = addDays(targetDate, 182).toLocaleTimeString('en-US', options);
+            var dateLimitPast = addDays(targetDate, -182).toLocaleTimeString('en-US', options);
+            // creates a 60 day range forward and backwards
+
+
+            var strmin = dateLimitPast;
+            var strmax = dateLimitFuture;
+
+
+            //date entered
+            var dateval = Date.parse(date);
+
+            var requireddateForward = Date.parse(dateLimitFuture);
+            var requireddateBackwards = Date.parse(dateLimitPast);
+
+            var todaydate = Date.parse(thatz);
+
+            // check if target date is in range ...
+            // it has to be less then the upper limit and bigger then the lower limit
+
+            if(dateval < requireddateBackwards || dateval > requireddateForward){
+
+                $('#'+divID).show('fast');
+                $('#'+buttonID).focus();
+                $('#'+messageID).text("The date of first use in commerce cannot be earlier than the date of first use anywhere.");
+                // reset input
+                $(date).val('');
+
+            }
+            else{
+                // call auto save
+                if(command.indexOf("cc") >= 0){
+
+                    addFilingBasisInfoToClassCategory(command, value, cc_gs_id, appInternalID);
+                }
+                else{
+                    addFilingBasisInfoToGoodAndService(command, value, cc_gs_id, appInternalID);
+                }
+            }
+
+        }
+
+
+
+
+    }
+
+
+
+
+
+    function datealertPastAndFuture( divID, messageID, buttonID, date, command, value, id, appInteralID,offset, alertMsg) {
+
+        function addDays(theDate, days) {
+            return new Date(theDate.getTime() + days*24*60*60*1000);
+        }
+
+        var options = { hour12: false, timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit', timeZoneName: 'short' };
+        var thatz = new Date().toLocaleTimeString('en-US', options);
+        var newDate = addDays(new Date(), offset).toLocaleTimeString('en-US', options);
+        var strmin = newDate;
+
+
+        //var validate = date.value;
+        var dateval = Date.parse($(date).val());
+
+        var requireddate = Date.parse(newDate);
+
+        var todaydate = Date.parse(thatz);
+
+
+        //////////////////////////////////////////
+        if(offset > 0){
+            // prevent future dates
+            if ( todaydate < dateval) {
+
+                if (requireddate >= dateval) {
+                    // date entered is within the future limit
+                    if(command.indexOf("cc") >= 0){
+
+
+
+                        addFilingBasisInfoToClassCategory(command, value, id, appInternalID);
+                    }
+                    else{
+                        addFilingBasisInfoToGoodAndService(command, value, id, appInternalID);
+                    }
+
+                }
+
+                else{
+                    // date entered is beyond the future limit
+
+                    $('#'+divID).show('fast');
+                    $('#'+buttonID).focus();
+                    $('#'+messageID).text(alertMsg + strmin);
+                    // reset input
+                    $(date).val('');
+                }
+
+            }
+            else{
+                // entered date is in the past or today
+
+                if(command.indexOf("cc") >= 0){
+                    addFilingBasisInfoToClassCategory(command, value, id, appInternalID);
+                }
+                else{
+                    addFilingBasisInfoToGoodAndService(command, value, id, appInternalID);
+                }
+
+
+            }
+
+
+        }
+        //////////////////////////////////////////
+        if(offset == 0){
+            // no future dates
+            if ( todaydate >= dateval) {
+                //////////////////////////////////////////
+                // if entered date is in the past or today
+                //////////////////////////////////////////
+
+                if(command.indexOf("cc") >=0){
+
+
+                    addFilingBasisInfoToClassCategory(command, value, id, appInternalID);
+                }
+                else{
+                    addFilingBasisInfoToGoodAndService(command, value, id, appInternalID);
+                }
+
+            }
+            else{
+                //////////////////////////////////////////
+                // if entered date is in the fture
+                //////////////////////////////////////////
+                $('#'+divID).show('fast');
+                $('#'+buttonID).focus();
+                $('#'+messageID).text(alertMsg + strmin);
+                // reset input
+                $(date).val('');
+
+            }
+        }
+
+        //////////////////////////////////////////
+        if(offset <0){
+            // prevent past dates
+            if ( todaydate > dateval) {
+                //////////////////////////////////////////
+                // if entered date is in the past
+                //////////////////////////////////////////
+                if (requireddate > dateval) {
+                    //////////////////////////////////////////
+                    // date enetred is less then required date, i.e further into the past, not allowed
+                    //////////////////////////////////////////
+                    $('#'+divID).show('fast');
+                    $('#'+buttonID).focus();
+                    $('#'+messageID).text(alertMsg + strmin);
+                    // reset input
+                    $(date).val('');
+                }
+                else{
+                    //////////////////////////////////////////
+                    // date entered is in the past but witin limits
+                    //////////////////////////////////////////
+                    if(command.indexOf("cc") >= 0){
+                        addFilingBasisInfoToClassCategory(command, value, id, appInternalID);
+                    }
+                    else{
+                        addFilingBasisInfoToGoodAndService(command, value, id, appInternalID);
+                    }
+                }
+            }
+            else {
+                //////////////////////////////////////////
+                // date enterd is in the future
+                //////////////////////////////////////////
+
+                if(command.indexOf("cc") >= 0){
+                    addFilingBasisInfoToClassCategory(command, value, id, appInternalID);
+                }
+                else{
+                    addFilingBasisInfoToGoodAndService(command, value, id, appInternalID);
+                }
+
+            }
+        }
+        //////////////////////////////////////////
+
+
+
+    }
+
+
+
+</script>
+
+</body>
+</html>
