@@ -1,6 +1,6 @@
 $(document).ready(function(){
-//START footer and login positioning
-    $( window ).on('load', function() {
+    //START footer and login positioning
+    $( window ).load(function() {
         var e = $( window ).height();
         var enav = $('.navbar-fixed-top').height();
         var efoot = $('footer').height();
@@ -16,62 +16,17 @@ $(document).ready(function(){
     });
     $( window ).resize(function() {
         var e = $( window ).height();
-        var f = $('ul.dropdown-menu').eq(0).height();
         var enav = $('.navbar-fixed-top').height();
         var efoot = $('footer').height();
         var winwidth = $(window).width();
         //if (winwidth > 768) {
         $('footer').css('position','relative').css('top',((e - efoot) - enav)).css('margin-top','0');
         $('main#loginform').css('position','relative').css('top',((e - efoot) - enav) / 6);
-        if (f > e) {
-            $('ul.dropdown-menu').eq(0).css('height', (e - 400)).css('max-height', '340px').css('overflow-y','scroll');
-        }
-        else {
-            $('ul.dropdown-menu').eq(0).css('height', (e - 400)).css('max-height', '340px').css('overflow-y','auto');
-        }
         //}
 //		else if (winwidth < 767) {
 //			$('footer').css('position','relative').css('top',((e - efoot) - enav)).css('margin-top','0');
 //			$('main#loginform').css('position','relative').css('top', '0');
 //			}
-    });
-    //
-    //START main nav nested dropdown menu
-    $('ul.nav .dropdown-menu a.dropdown-toggle').on('click', function() {
-        var subMenu = $(this).next('.dropdown-menu');
-        $(subMenu).toggleClass('show');
-        if ($(subMenu).hasClass( 'show' )) {
-            $(this).attr( 'aria-expanded','true' );
-        }
-        else {
-            $(this).attr( 'aria-expanded','false' );
-        }
-        var e = $( window ).height();
-        var f = $('ul.dropdown-menu').eq(0).height();
-        if (f > e) {
-            $('ul.dropdown-menu').eq(0).css('max-height', (e - 280)).css('overflow-y','scroll');
-        }
-        else {
-            $('ul.dropdown-menu').eq(0).css('max-height', (e - 280)).css('overflow-y','auto');
-        }
-        return false;
-    });
-    $('a.dropdown-toggle').eq(0).on('click', function() {
-        var subMenushown = $('.dropdown-submenu');
-        var submenuwide = $('ul.dropdown-menu').eq(0);
-        $(subMenushown).removeClass('show');
-        $(subMenushown).prev('a.dropdown-toggle').attr('aria-expanded','false');
-        $(submenuwide).css('min-height', '200px').css('overflow-y','auto');
-        var winwidth = $(window).width();
-        if (winwidth > 766) {
-            $(submenuwide).css('width', '389px');
-        }
-        $( window ).resize(function() {
-            var winwidth = $(window).width();
-            if (winwidth < 767) {
-                $(submenuwide).css('width', 'auto');
-            }
-        });
     });
     //
     $("button.Accordion-trigger").click(function() {
@@ -137,36 +92,27 @@ $(document).ready(function(){
         },
         'autoWidth': false,
         responsive: {
-            details: {
-                type: 'column',
-                target: 1,
-            },
             breakpoints: [
                 { name: 'desktop', width: Infinity },
-                { name: 'tablet',  width: 1180 },
+                { name: 'tablet',  width: 1024 },
                 { name: 'fablet',  width: 768 },
                 { name: 'phone',   width: 480 }
-            ],
+            ]
         },
         'columns': [
             { 'width': '10%' },
+            { 'width': '60%' },
             { 'width': '10%' },
-            { 'width': '16%' },
-            { 'width': '25%' },
-            { 'width': '16%' },
-            { 'width': '12%' },
-            { 'width': '11%' },
+            { 'width': '10%' },
+            { 'width': '10%' },
         ],
         'columnDefs': [
-            { responsivePriority: 1, targets: 0 },//buttons
-            { responsivePriority: 0, targets: 1 },//(control)
-            { responsivePriority: 2, targets: 2 },//serial
-            { responsivePriority: 4, targets: 3 },//reg
-            { responsivePriority: 3, targets: 4 },//owner
-            { responsivePriority: 6, targets: 5 },//status
-            { responsivePriority: 5, targets: 6 },//mark
-            { className: 'centertxt', 'targets': [ 0,2,3,4,5,6 ] },
-            { className: 'control', 'orderable': true, 'targets': [ 1 ] },
+            { responsivePriority: 1, targets: 0 },
+            { responsivePriority: 2, targets: 1 },
+            { responsivePriority: 3, targets: 3 },
+            { responsivePriority: 4, targets: 2 },
+            { responsivePriority: 5, targets: 4 },
+            { className: 'centertxt', 'targets': [ 0,1,2,3,4 ] },
         ],
     });
     //
@@ -189,29 +135,29 @@ $(document).ready(function(){
         responsive: {
             breakpoints: [
                 { name: 'desktop', width: Infinity },
-                { name: 'tablet',  width: 1180 },
+                { name: 'tablet',  width: 1024 },
                 { name: 'fablet',  width: 768 },
-                { name: 'phone',   width: 380 }
+                { name: 'phone',   width: 480 }
             ]
         },
         'columns': [
-            { 'width': '12%' },//toggle show child rows
-            { 'width': '16%' },//serial
-            { 'width': '25%' },//reg
-            { 'width': '11%' },//mark
-            { 'width': '9%' },//owner
-            { 'width': '9%' },
-            { 'width': '9%' },
-            { 'width': '9%' },
+            { 'width': '10%' },
+            { 'width': '20%' },
+            { 'width': '15%' },
+            { 'width': '10%' },
+            { 'width': '10%' },
+            { 'width': '10%' },
+            { 'width': '25%' },
         ],
         'columnDefs': [
-            { responsivePriority: 1, targets: 0 },//toggle show child rows
-            { responsivePriority: 2, targets: 1 },//serial
-            { responsivePriority: 4, targets: 2 },//reg
-            { responsivePriority: 5, targets: 3 },//mark
-            { responsivePriority: 3, targets: 4 },//owner
-            { className: 'centertxt', 'targets': [ 1,2,3,4,5 ] },
-            { className: 'control', 'orderable': false, 'targets': [ 0 ] },
+            { responsivePriority: 1, targets: 0 },
+            { responsivePriority: 2, targets: 6 },
+            { responsivePriority: 3, targets: 4 },
+            { responsivePriority: 4, targets: 5 },
+            { responsivePriority: 5, targets: 1 },
+            { responsivePriority: 6, targets: 3 },
+            { responsivePriority: 7, targets: 2 },
+            { className: 'centertxt', 'targets': [ 0,1,2,3,4,5,6 ] },
         ],
     });
     //
@@ -240,24 +186,21 @@ $(document).ready(function(){
             ]
         },
         'columns': [
-            { 'width': '8%' },//control 0
-            { 'width': '12%' },//mark 2
-            { 'width': '13%' },//serial 3
-            { 'width': '18%' },//filing 4
-            { 'width': '23%' },//status 5
-            { 'width': '13%' },//owner 6
-            { 'width': '13%' },//attorney 7
+            { 'width': '10%' },
+            { 'width': '15%' },
+            { 'width': '20%' },
+            { 'width': '25%' },
+            { 'width': '15%' },
+            { 'width': '15%' },
         ],
         'columnDefs': [
             { responsivePriority: 1, targets: 0 },
-            { responsivePriority: 2, targets: 5 },
-            { responsivePriority: 3, targets: 1 },
-            { responsivePriority: 4, targets: 6 },
-            { responsivePriority: 5, targets: 2 },
-            { responsivePriority: 6, targets: 4 },
-            { responsivePriority: 7, targets: 3 },
-            { className: 'centertxt', 'targets': [ 1,2,3,4,5 ] },
-            { className: 'control', 'orderable': false, 'targets': [ 0 ] },
+            { responsivePriority: 3, targets: 4 },
+            { responsivePriority: 4, targets: 5 },
+            { responsivePriority: 5, targets: 1 },
+            { responsivePriority: 6, targets: 3 },
+            { responsivePriority: 7, targets: 2 },
+            { className: 'centertxt', 'targets': [ 0,1,2,3,4,5 ] },
         ],
     });
     //
@@ -266,6 +209,17 @@ $(document).ready(function(){
         "fnDrawCallback": function( oSettings ) {
         },
         'sDom': 't',
+        //"language": {
+        //"search": "<span class='glyphicon glyphicon-search' aria-hidden='true'></span><span class='sr-only'>search</span>",
+//			"lengthMenu": "<span class='glyphicon glyphicon-filter' aria-hidden='true'></span><span class='sr-only'>select number of entries to display</span> <select>"+
+//			  '<option value="10">10</option>'+
+//			  '<option value="25">25</option>'+
+//			  '<option value="50">50</option>'+
+//			  '<option value="100">100</option>'+
+//			  '<option value="-1">All</option>'+
+//			  '</select>'
+        //},
+
         'autoWidth': false,
         responsive: {
             breakpoints: [
@@ -276,16 +230,16 @@ $(document).ready(function(){
             ]
         },
         'columns': [
-            { 'width': '8%' },
-            { 'width': '14%' },
-            { 'width': '24%' },
-            { 'width': '24%' },
-            { 'width': '24%' },
+            { 'width': '4%' },
+            { 'width': '30%' },
+            { 'width': '36%' },
+            { 'width': '30%' },
         ],
         'columnDefs': [
-            { className: 'centertxt', 'targets': [ 1,2,3,4 ] },
-            { className: 'select-checkbox', 'orderable': false, targets: [ 1 ]},
-            { className: 'control', 'orderable': false, targets: [ 0 ]},
+            { className: 'centertxt', 'targets': [ 0,1,2 ] },
+            { orderable: false},
+            { className: 'select-checkbox'},
+            { targets:   0}
         ],
         select: {
             style:    'multi',
@@ -299,6 +253,17 @@ $(document).ready(function(){
         "fnDrawCallback": function( oSettings ) {
         },
         'sDom': 't',
+        //"language": {
+        //"search": "<span class='glyphicon glyphicon-search' aria-hidden='true'></span><span class='sr-only'>search</span>",
+//			"lengthMenu": "<span class='glyphicon glyphicon-filter' aria-hidden='true'></span><span class='sr-only'>select number of entries to display</span> <select>"+
+//			  '<option value="10">10</option>'+
+//			  '<option value="25">25</option>'+
+//			  '<option value="50">50</option>'+
+//			  '<option value="100">100</option>'+
+//			  '<option value="-1">All</option>'+
+//			  '</select>'
+        //},
+
         'autoWidth': false,
         responsive: {
             breakpoints: [
@@ -309,22 +274,22 @@ $(document).ready(function(){
             ]
         },
         'columns': [
-            { 'width': '9%' },
-            { 'width': '9%' },
+            { 'width': '4%' },
             { 'width': '13%' },
             { 'width': '13%' },
-            { 'width': '8%' },
-            { 'width': '8%' },
-            { 'width': '8%' },
-            { 'width': '8%' },
-            { 'width': '8%' },
-            { 'width': '8%' },
-            { 'width': '8%' },
+            { 'width': '10%' },
+            { 'width': '10%' },
+            { 'width': '10%' },
+            { 'width': '10%' },
+            { 'width': '10%' },
+            { 'width': '10%' },
+            { 'width': '10%' },
         ],
         'columnDefs': [
-            { className: 'centertxt', 'targets': [ 1,2,3,4,5,6,7,8,9 ] },
-            { className: 'select-checkbox', 'orderable': false, targets: [ 1 ]},
-            { className: 'control', 'orderable': false, targets: [ 0 ]},
+            { className: 'centertxt', 'targets': [ 0,1,2,3,4,5,6,7,8,9 ] },
+            { orderable: false},
+            { className: 'select-checkbox'},
+            { targets:   0}
         ],
         select: {
             style:    'multi',
@@ -333,129 +298,29 @@ $(document).ready(function(){
         order: [[ 1, 'asc' ]]
     });
     //
-    //START a11y datatable hide/show rows
-    $( '#dashboardtableone tbody' ).on('click', 'td.control', function(e){
-        e.preventDefault();
-        $( this ).attr('aria-expanded', function (i, attr) {
-            return attr == 'true' ? 'false' : 'true'
-        });
-        var dtcontent = $( this ).parent().next('tr.child');
-        $( dtcontent ).attr('role','alert');
-    });
-    $( '#dashboardtabletwo tbody' ).on('click', 'td.control', function(e){
-        e.preventDefault();
-        $( this ).attr('aria-expanded', function (i, attr) {
-            return attr == 'true' ? 'false' : 'true'
-        });
-        var dtcontent = $( this ).parent().next('tr.child');
-        $( dtcontent ).attr('role','alert');
-    });
-    $( '#filepetitiontable tbody' ).on('click', 'td.control', function(e){
-        e.preventDefault();
-        $( this ).attr('aria-expanded', function (i, attr) {
-            return attr == 'true' ? 'false' : 'true'
-        });
-        var dtcontent = $( this ).parent().next('tr.child');
-        $( dtcontent ).attr('role','alert');
-    });
-    $( '#responseamendtable tbody' ).on('click', 'td.control', function(e){
-        e.preventDefault();
-        $( this ).attr('aria-expanded', function (i, attr) {
-            return attr == 'true' ? 'false' : 'true'
-        });
-        var dtcontent = $( this ).parent().next('tr.child');
-        $( dtcontent ).attr('role','alert');
-    });
-    $( '#responseamendtabletwo tbody' ).on('click', 'td.control', function(e){
-        e.preventDefault();
-        $( this ).attr('aria-expanded', function (i, attr) {
-            return attr == 'true' ? 'false' : 'true'
-        });
-        var dtcontent = $( this ).parent().next('tr.child');
-        $( dtcontent ).attr('role','alert');
-    });
-    //
-    //START delete datatable table row
-    $( '#dashboardtableone tbody .deleterow' ).each(function() {
-        $(this).on('click', function(e){
-            e.preventDefault();
-            var numrows = $( '#dashboardtableone tbody tr' ).length -1;
-            var rows = $( '#dashboardtableone tbody tr' );
-            var hasdraft = $( this ).closest('tr:contains(Draft)');
-            var hasdraftchild = $( this ).closest('tr').next('tr.child:contains(Draft)');
-            var draft = 'draft application';
-            var focussed = $('span#filingsheader button');
-            var dt = $('#dashboardtableone').dataTable();
-            var b = $('#alertmin');
-            if ((hasdraft.length > 0) || (hasdraftchild.length > 0)) {
-                if ($(b).css('visibility','hidden')) {
-                    $(b).css('visibility','visible');
-                    $(b).css('height','auto');
-                    $(b).addClass('form-group');
-                    $(b).addClass('form-group-md');
-                    $(b).css('float','left');
-                    $(b).css('top','.25em');
-                    $(b).css('padding','1em');
-                    $(b).css('marginBottom','1em');
-                    $('#mintext').css('display','table-cell');
-                    $('#alertbtndash').css('display','block');
-                    $('#alertbtndash').focus();
-                    window.scrollBy(0, '90%');
-                    $('#mintext').html('Are you sure you want to delete this ' + draft + '?');
-                    $('#alertbtndash').on('click', function() {
-                        $(focussed).focus();
-                        $(hasdraft).remove();
-                        $(hasdraftchild).remove();
-                        dt.fnDeleteRow(hasdraft);
-                        dt.fnDeleteRow(hasdraftchild);
-                    });
-                }
-            } else if ((hasdraft.length < 1) || (hasdraftchild.length < 1)) {
-                var deletethis = $( this ).closest('tr').next('tr.child');
-                var deletethistoo = $( this ).closest('tr');
-                $(b).css('visibility','hidden');
-                $(b).css('height','1px');
-                $(b).removeClass('form-group');
-                $(b).removeClass('form-group-md');
-                $(b).css('top','-10000px');
-                $(b).css('float','none');
-                $(b).css('padding','0');
-                $(b).css('marginBottom','0');
-                $('#mintext').css('display','none');
-                $('#alertbtndash').css('display','none');
-                $('#alertbtndash').blur();
-                $( deletethis ).remove();
-                $( deletethistoo ).remove();
-                dt.fnDeleteRow(deletethis);
-                dt.fnDeleteRow(deletethistoo);
-            }
-
-        });
-    });
-    //
     //generate unique IDs + matching labels for response / amend pages, checkmarks
-    var checkboxList = $('#responseamendtable tr td:nth-child(2) input, #responseamendtabletwo tr td:nth-child(2) input');
+    var checkboxList = $('#responseamendtable tr td:nth-child(1) input, #responseamendtabletwo tr td:nth-child(1) input');
     for (var i = 0; i <= checkboxList.length; i++) {
         $(checkboxList[i]).attr('id', 'checkboxone' + i);
     }
-    var labelList = $('#responseamendtable tr td:nth-child(2) input, #responseamendtabletwo tr td:nth-child(2) input').next('label');
+    var labelList = $('#responseamendtable tr td:nth-child(1) input, #responseamendtabletwo tr td:nth-child(1) input').next('label');
     for (var i = 0; i <= labelList.length; i++) {
         $(labelList[i]).attr('for', 'checkboxone' + i);
     }
-    var labelidList = $('#responseamendtable tr td:nth-child(2) input, #responseamendtabletwo tr td:nth-child(2) input').next('label');
+    var labelidList = $('#responseamendtable tr td:nth-child(1) input, #responseamendtabletwo tr td:nth-child(1) input').next('label');
     for (var i = 0; i <= labelidList.length; i++) {
         $(labelidList[i]).attr('id', 'selectrow_' + i);
     }
-    var checkboxarialabelList = $('#responseamendtable tr td:nth-child(2) input, #responseamendtabletwo tr td:nth-child(2) input');
+    var checkboxarialabelList = $('#responseamendtable tr td:nth-child(1) input, #responseamendtabletwo tr td:nth-child(1) input');
     for (var i = 0; i <= checkboxarialabelList.length; i++) {
         $(checkboxarialabelList[i]).attr('aria-labelledby', 'selectrow_' + i);
     }
     //
     //start select all response / amend
     $(document).on('change','#responseamendtable input#selectall', function() {
-        var checkboxes  = $('#responseamendtable tr td:nth-child(2) span');
+        var checkboxes  = $('#responseamendtable tr td:nth-child(1) span');
         var rows  = $('#responseamendtable tr');
-        var input  = $('#responseamendtable tr td:nth-child(2) input.form-check-input');
+        var input  = $('#responseamendtable tr td:nth-child(1) input');
         var selectall = $(this);
         if ($(this).is( ":checked" )) {
             $(rows).addClass('selected');
@@ -465,7 +330,7 @@ $(document).ready(function(){
             $(input).prop('checked', false);
         }
     });
-    $('#responseamendtable tr td:nth-child(2) input').on('change', function(e){
+    $('#responseamendtable tr td:nth-child(1) input').on('change', function(e){
         $('#responseamendtable input#selectall').prop('checked', false);
         if ($(this).is( ":checked" )) {
             $(this).parent().parent().addClass('selected');
@@ -474,9 +339,9 @@ $(document).ready(function(){
         }
     });
     $(document).on('change','#responseamendtabletwo input#selectalltwo', function() {
-        var checkboxes  = $('#responseamendtabletwo tr td:nth-child(2) span');
+        var checkboxes  = $('#responseamendtabletwo tr td:nth-child(1) span');
         var rows  = $('#responseamendtabletwo tr');
-        var input  = $('#responseamendtabletwo tr td:nth-child(2) input');
+        var input  = $('#responseamendtabletwo tr td:nth-child(1) input');
         var selectall = $(this);
         if ($(this).is( ":checked" )) {
             $(rows).addClass('selected');
@@ -486,7 +351,7 @@ $(document).ready(function(){
             $(input).prop('checked', false);
         }
     });
-    $('#responseamendtabletwo tr td:nth-child(2) input').on('change', function(e){
+    $('#responseamendtabletwo tr td:nth-child(1) input').on('change', function(e){
         $('#responseamendtabletwo input#selectalltwo').prop('checked', false);
         if ($(this).is( ":checked" )) {
             $(this).parent().parent().addClass('selected');
@@ -556,7 +421,7 @@ $(document).ready(function(){
     });
     //
     //START close (x) dashboard panels
-    $('#dashsectionscontainer #announcements .closegspanels').click(function() {
+    $('#dashsectionscontainer .closegspanels').click(function() {
         $( this ).parent().parent().parent().parent().parent().fadeOut( 'fast','swing');
     });
     //
@@ -786,32 +651,7 @@ $(document).ready(function(){
             $('#cad').show( 'fast' );
         }
         else {
-            var clearthis = $('div#cad');
-            var clearall = {};
-            $(function(){
-                var clear = function(){
-                    $(clearthis).find('input[type="file"]').val('');
-                    $(clearthis).find('.hidethis').contents().css('display','block');
-                    $(clearthis).find('.upload-drop-zone').css('height','115px');
-                    $(clearthis).find('.js-upload-finished button.close').parent().parent().remove();
-                    $(clearthis).find('div.fileDisplayArea img').remove();
-                    $(clearthis).find('div.js-upload-finished').css('display','none');
-                    $(clearthis).find('button[type=submit]').css('display','none');
-                    $(clearthis).find('div.fileDisplayArea').html('<span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .pdf, .doc');
-                    $(clearthis).find('input[type=radio]').prop('checked', false);
-                    $(clearthis).find('input[type=checkbox]').prop('checked', false);
-                    $(clearthis).find('input').val('');
-                    $(clearthis).find('textarea').val('');
-                    $(clearthis).find('div.appendreg').contents().remove();
-                };
-                clearall = clear;
-            });
-            $(clearall);
             $('#cad').hide( 'fast' );
-            $('#yesdistict').hide( 'fast' );
-            $('#yeswhole').hide( 'fast' );
-            $('#yespart').hide( 'fast' );
-            $('#yesevidence').hide( 'fast' );
         }
     });
     $('div#uaf').css('display','none');
@@ -820,21 +660,6 @@ $(document).ready(function(){
             $('#uaf').show( 'fast' );
         }
         else {
-            var clearthis = $('div#uaf');
-            var resetselect = [ 'mm/dd/yy' ];
-            var resetselect = jQuery.makeArray( resetselect );
-            var clearall = {};
-            $(function(){
-                var clear = function(){
-                    $(clearthis).find('select[type=date]').val( resetselect[0] );
-                    $(clearthis).find('input[type=radio]').prop('checked', false);
-                    $(clearthis).find('input').val('');
-                    $(clearthis).find('textarea').val('');
-                };
-                clearall = clear;
-            });
-            $(clearall);
-            $('#yesotherform').hide( 'fast' );
             $('#uaf').hide( 'fast' );
         }
     });
@@ -844,34 +669,6 @@ $(document).ready(function(){
             $('#cc').show( 'fast' );
         }
         else {
-            $('#cc').find('input[type=radio]').prop('checked', false);
-            var clearthis = $('#cc');
-            var clearall = {};
-            $(function(){
-                var clear = function(){
-                    $(clearthis).find('input[type="file"]').val('');
-                    $(clearthis).find('.hidethis').contents().css('display','block');
-                    $(clearthis).find('.upload-drop-zone').css('height','115px');
-                    $(clearthis).find('.js-upload-finished button.close').parent().parent().remove();
-                    $(clearthis).find('div.fileDisplayArea img').remove();
-                    $(clearthis).find('div.js-upload-finished').css('display','none');
-                    $(clearthis).find('button[type=submit]').css('display','none');
-                    $(clearthis).find('div.fileDisplayArea').html('<span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .pdf, .doc');
-                    $(clearthis).find('input[type=radio]').prop('checked', false);
-                    $(clearthis).find('input[type=checkbox]').prop('checked', false);
-                    $(clearthis).find('select').val('Select');
-                    $(clearthis).find('input').val('');
-                    $(clearthis).find('textarea').val('');
-                    $(clearthis).find('div.upload').hide('fast');
-                    $(clearthis).find('div.appendaconcregapp_courtd').contents().remove();
-                };
-                clearall = clear;
-            });
-            $(clearall);
-            $('#hideshowconcurrentuses_courtd').hide( 'fast' );
-            $('#hideshowconcurrentuses_ttab').hide( 'fast' );
-            $('#hideshowconcurrentuses_conflictingreg').hide( 'fast' );
-            $('#hideshowconcurrentuses_earlieruse').hide( 'fast' );
             $('#cc').hide( 'fast' );
         }
     });
@@ -880,26 +677,6 @@ $(document).ready(function(){
     $('div#yesdistict').css('display','none');
     $('input#inlineRadio033').change(function() {
         if(this.checked == true){
-            var clearthis = $(this).closest('fieldset');
-            var clearall = {};
-            $(function(){
-                var clear = function(){
-                    $(clearthis).find('input[type="file"]').val('');
-                    $(clearthis).find('.hidethis').contents().css('display','block');
-                    $(clearthis).find('.upload-drop-zone').css('height','115px');
-                    $(clearthis).find('.js-upload-finished button.close').parent().parent().remove();
-                    $(clearthis).find('div.fileDisplayArea img').remove();
-                    $(clearthis).find('div.js-upload-finished').css('display','none');
-                    $(clearthis).find('button[type=submit]').css('display','none');
-                    $(clearthis).find('div.fileDisplayArea').html('<span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .pdf, .doc');
-                    $(clearthis).find('div.upload').hide('fast');
-                    $(clearthis).find('input[type=radio]').prop('checked', false);
-                    $(this).prop('checked', true);
-                };
-                clearall = clear;
-            });
-            $(clearall);
-            $(this).prop('checked', true);
             $('div#yesdistict').show( 'fast' );
         }
         else {
@@ -908,26 +685,6 @@ $(document).ready(function(){
     });
     $('input#inlineRadio034').change(function() {
         if(this.checked == true){
-            var clearthis = $(this).closest('fieldset');
-            var clearall = {};
-            $(function(){
-                var clear = function(){
-                    $(clearthis).find('input[type="file"]').val('');
-                    $(clearthis).find('.hidethis').contents().css('display','block');
-                    $(clearthis).find('.upload-drop-zone').css('height','115px');
-                    $(clearthis).find('.js-upload-finished button.close').parent().parent().remove();
-                    $(clearthis).find('div.fileDisplayArea img').remove();
-                    $(clearthis).find('div.js-upload-finished').css('display','none');
-                    $(clearthis).find('button[type=submit]').css('display','none');
-                    $(clearthis).find('div.fileDisplayArea').html('<span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .pdf, .doc');
-                    $(clearthis).find('div.upload').hide('fast');
-                    $(clearthis).find('input[type=radio]').prop('checked', false);
-                };
-                clearall = clear;
-            });
-            $(clearall);
-            $('div#yeswhole').css('display','none');
-            $(this).prop('checked', true);
             $('div#yesdistict').hide( 'fast' );
         }
         else {
@@ -966,7 +723,7 @@ $(document).ready(function(){
     });
     $('input#inlineRadio036').change(function() {
         if(this.checked == true){
-            $('div#yeswhole').hide( 'fast' );
+            $('div#yeswhole').show( 'fast' );
             $('div#yespart').show( 'fast' );
         }
         else {
@@ -979,6 +736,7 @@ $(document).ready(function(){
     $('input#inlineRadio042').change(function() {
         if(this.checked == true){
             $('div#yeswholeother').show( 'fast' );
+            //$(heightmatchbackwards);
             $('div#yespartother').hide( 'fast' );
         }
         else {
@@ -1000,8 +758,6 @@ $(document).ready(function(){
     $('input#inlineRadio037').change(function() {
         if(this.checked == true){
             $('div#yesevidence').show( 'fast' );
-            $('div#yespriors').find('input').val('');
-            $('div.appendreg').contents().remove();
             $('div#yespriors').hide( 'fast' );
         }
         else {
@@ -1010,24 +766,6 @@ $(document).ready(function(){
     });
     $('input#inlineRadio038').change(function() {
         if(this.checked == true){
-            var clearthis = $(this).closest('div#yeswhole').parent();
-            var clearall = {};
-            $(function(){
-                var clear = function(){
-                    $(clearthis).find('input[type="file"]').val('');
-                    $(clearthis).find('.hidethis').contents().css('display','block');
-                    $(clearthis).find('.upload-drop-zone').css('height','115px');
-                    $(clearthis).find('.js-upload-finished button.close').parent().parent().remove();
-                    $(clearthis).find('div.fileDisplayArea img').remove();
-                    $(clearthis).find('div.js-upload-finished').css('display','none');
-                    $(clearthis).find('button[type=submit]').css('display','none');
-                    $(clearthis).find('div.fileDisplayArea').html('<span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .pdf, .doc');
-                    $(clearthis).find('div.upload').hide('fast');
-                };
-                clearall = clear;
-            });
-            $(clearall);
-            $('div.resetreg').removeClass( 'visuallyremoved' );
             $('div#yesevidence').hide( 'fast' );
             $('div#yespriors').show( 'fast' );
         }
@@ -1037,181 +775,31 @@ $(document).ready(function(){
     });
     $('input#inlineRadio039').change(function() {
         if(this.checked == true){
-            var clearthis = $(this).closest('div#yeswhole').parent();
-            var clearall = {};
-            $(function(){
-                var clear = function(){
-                    $(clearthis).find('input[type="file"]').val('');
-                    $(clearthis).find('.hidethis').contents().css('display','block');
-                    $(clearthis).find('.upload-drop-zone').css('height','115px');
-                    $(clearthis).find('.js-upload-finished button.close').parent().parent().remove();
-                    $(clearthis).find('div.fileDisplayArea img').remove();
-                    $(clearthis).find('div.js-upload-finished').css('display','none');
-                    $(clearthis).find('button[type=submit]').css('display','none');
-                    $(clearthis).find('div.fileDisplayArea').html('<span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .pdf, .doc');
-                    $(clearthis).find('div.upload').hide('fast');
-                };
-                clearall = clear;
-            });
-            $(clearall);
             $('div#yesevidence').hide( 'fast' );
-            $('div#yespriors').find('input').val('');
-            $('div.appendreg').contents().remove();
             $('div#yespriors').hide( 'fast' );
-        };
+        }
     });
-    //basis + postreg classes provide specimen options
+    //basis classes provide specimen options
     $('div.yesonespecimen').css('display','none');
     $('div.individualspecimen').css('display','none');
     $('input.yesone').on('change',function(){
         if(this.checked == true){
-            //$(this).closest('fieldset').find( 'div[role="radiogroup"] input[name="use"]:even').prop('checked', false).prop('disabled','true').attr('aria-disabled','true').addClass('disabled');
-            //$(this).closest('fieldset').find( 'div[role="radiogroup"] input[name="use"]:even').parent('label').addClass('disabled').addClass('special');
-            $(this).closest('fieldset').find( 'section.basis div.individualspecimen input.showspecimen' ).prop('checked', false);
-            var clearthis = $(this).closest('fieldset');
-            var clearall = {};
-            $(function(){
-                var clear = function(){
-                    $(clearthis).find('section.basis input[type="file"]').val('');
-                    $(clearthis).find('section.basis div.yesspecimen textarea').val('');
-                    $(clearthis).find('section.basis div.fileholder .hidethis').contents().css('display','block');
-                    $(clearthis).find('section.basis div.fileholder .row').remove();
-                    $(clearthis).find('section.basis .upload-drop-zone').css('height','115px');
-                    $(clearthis).find('section.basis .js-upload-finished button.close').parent().parent().remove();
-                    $(clearthis).find('section.basis div.fileDisplayArea img').remove();
-                    $(clearthis).find('section.basis div.js-upload-finished').css('display','none');
-                    $(clearthis).find('section.basis button[type=submit]').css('display','none');
-                    $(clearthis).find('section.basis div.fileDisplayArea').html('<span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png');
-                    $(clearthis).find('section.basis div.upload').hide('fast');
-                };
-                clearall = clear;
-            });
-            $(clearall);
-            $('section.basis div.yesspecimen').hide('fast');
-            $('div.yesonespecimen .upload').show('fast');
             $(this).closest('section').find('div.yesonespecimen').show( 'fast' );
-            $(this).closest('section').find('div.yesonespecimen div.hidethis').contents().css('display','block');
-            $(this).closest('section').find('div.yesonespecimen .upload-drop-zone').css('height','115px');
-            $(this).closest('section').find('div.yesonespecimen div.js-upload-finished').css('display','none');
             $(this).closest('fieldset').find('div.individualspecimen').hide( 'fast' );
         }
         else {
-            $('div.upload').find('div.fileholder');
             $(this).closest('section').find('div.yesonespecimen').hide( 'fast' );
             $(this).closest('fieldset').find('div.individualspecimen').show( 'fast' );
         }
     });
     $('input.yesoneeach').on('change',function(){
         if(this.checked == true){
-            $(this).closest('fieldset').find('div.individualspecimen').show('fast');
-            $(this).closest('section.basis div.upload .hidethis').contents().css('display','block');
-            $(this).closest('section.basis div.yesspecimen textarea').css('display','block');
-            $(this).closest('section.basis div.yesspecimen label').css('display','block');
-            var clearthis = $(this).closest('fieldset');
-            var clearall = {};
-            $(function(){
-                var clear = function(){
-                    $(clearthis).find('div.yesonespecimen input[type="file"]').val('');
-                    $(clearthis).find('div.yesonespecimen div.yesspecimen textarea').val('');
-                    $(clearthis).find('div.yesonespecimen div.fileholder .hidethis').contents().css('display','block');
-                    $(clearthis).find('div.yesonespecimen div.fileholder .row').remove();
-                    $(clearthis).find('div.yesonespecimen .upload-drop-zone').css('height','115px');
-                    $(clearthis).find('div.yesonespecimen .js-upload-finished button.close').parent().parent().remove();
-                    $(clearthis).find('div.yesonespecimen div.fileDisplayArea img').remove();
-                    $(clearthis).find('div.yesonespecimen div.js-upload-finished').css('display','none');
-                    $(clearthis).find('div.yesonespecimen button[type=submit]').css('display','none');
-                    $(clearthis).find('div.yesonespecimen div.fileDisplayArea').html('<span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png');
-                    $(clearthis).find('div.yesonespecimen div.upload').hide('fast');
-                };
-                clearall = clear;
-            });
-            $(clearall);
-            $(this).closest('section').find('div.yesonespecimen').hide('fast');
-
+            $(this).closest('section').find('div.yesonespecimen').hide( 'fast' );
+            $(this).closest('fieldset').find('div.individualspecimen').show( 'fast' );
         }
         else {
-            $('div.upload').find('div.fileholder');
             $(this).closest('section').find('div.yesonespecimen').show( 'fast' );
             $(this).closest('fieldset').find('div.individualspecimen').hide( 'fast' );
-        }
-    });
-    $('input.yesoneeachpost').on('change',function(){
-        if(this.checked == true){
-            //$(this).closest('fieldset').find( 'div[role="radiogroup"] input[name="use"]:even').prop('disabled','false').removeAttr('disabled').attr('aria-disabled','false').removeClass('disabled');
-            //$(this).closest('fieldset').find( 'div[role="radiogroup"] input[name="use"]:even').parent('label').removeClass('disabled').removeClass('special');
-            $(this).closest('section').find('textarea#specdescript' ).val('');
-            $(this).closest('section').find('div.yesonespecimen input[type="file"]').val('');
-            $(this).closest('section').find('div.yesonespecimen button.close').parent().parent().remove();
-            $(this).closest('section').find('div.yesonespecimen div.fileDisplayArea img').remove();
-            $(this).closest('section').find('div.yesonespecimen button[type=submit]').css('display','none');
-            $(this).closest('section').find('div.yesonespecimen div.fileDisplayArea').html('<span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png');
-            $(this).closest('section').find('div.yesonespecimen div.upload').hide('fast');
-            $(this).closest('section').find('div.yesonespecimen').hide('fast');
-        }
-    });
-    if ( $( 'div#sectioneight' ).length ) {
-        $('div.nonuse').css('display', 'none');
-    }
-    //START sectioneight delete gs
-    $('#sectioneight h2 button.close').on('click',function() {
-        var gsdiv = $(this).closest('section');
-        $(this).parent().find('span.sr-only').text() === 'good / service removed'
-            ? $(this).parent().find('span.sr-only').text('good / service added')
-            : $(this).parent().find('span.sr-only').text('good / service removed');
-        $( this ).find('span.glyphicon').toggleClass('glyphicon-refresh');
-        $( this ).find('span.glyphicon').toggleClass('glyphicon-remove');
-        $( this ).toggleClass('resetgsbtn');
-        $( gsdiv ).toggleClass('removegs');
-    });
-    $('#sectioneight h2 button.resetgsbtn').on('click',function() {
-        var gsdiv = $(this).closest('section');
-        $( gsdiv ).css('opacity','1.0');
-        $( gsdiv ).toggleClass('removegs');
-
-    });
-    //
-    $('section.basis div[role="radiogroup"] input:odd').on('change',function(){
-        if(this.checked == true){
-            var clearthis = $(this).closest('section');
-            var clearall = {};
-            $(function(){
-                var clear = function(){
-                    $(clearthis).find('div.yesspecimen input[type="file"]').val('');
-                    $(clearthis).find('div.yesspecimen textarea').val('');
-                    $(clearthis).find('div.yesspecimen div.fileholder .hidethis').contents().css('display','block');
-                    $(clearthis).find('div.yesspecimen div.fileholder .row').remove();
-                    $(clearthis).find('div.yesspecimen .upload-drop-zone').css('height','115px');
-                    $(clearthis).find('div.yesspecimen .js-upload-finished button.close').parent().parent().remove();
-                    $(clearthis).find('div.yesspecimen div.fileDisplayArea img').remove();
-                    $(clearthis).find('div.yesspecimen div.js-upload-finished').css('display','none');
-                    $(clearthis).find('div.yesspecimen button[type=submit]').css('display','none');
-                    $(clearthis).find('div.yesspecimen div.fileDisplayArea').html('<span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png');
-                    $(clearthis).find('div.yesspecimen div.upload').hide('fast');
-                };
-                clearall = clear;
-            });
-            $(clearall);
-            $(this).closest('section').find('div.yesspecimen').hide( 'fast' );
-            $(this).closest('section').find('div.nonuse').show( 'fast' );
-        }
-        else {
-            $(this).closest('section').find('div.nonuse').hide( 'fast' );
-        }
-    });
-    $('section.basis div[role="radiogroup"] input:even').on('change',function(){
-        if(this.checked == true){
-            var selectedyesoneach = $(this).closest('fieldset').find('input.yesoneeachpost');
-            $(selectedyesoneach);
-            if($(selectedyesoneach).prop('checked')) {
-                $(this).closest('section').find('div.nonuse').hide( 'fast' );
-                $(this).closest('section').find('div.yesspecimen').show('fast');
-                $(this).closest('section').find('div.upload').css('display','block');
-                $(this).closest('section.basis').find('div.upload .hidethis').contents().css('display','block');
-                $(this).closest('section.basis').find( '.upload-drop-zone' ).css('height','115px');
-                $(this).closest('section.basis').find('div.yesspecimen textarea').css('display','block');
-                $(this).closest('section.basis').find('div.yesspecimen label').css('display','block');
-                $(this).closest('section').find('textarea#specdescript' ).val('');
-            }
         }
     });
     //hide / show concurrent uses
@@ -1235,12 +823,11 @@ $(document).ready(function(){
         $('div#hideshowconcurrentuses_ttab select, div#hideshowconcurrentuses_conflictingreg select, div#hideshowconcurrentuses_earlieruse select').val( resetselect[0] );
         $('div.appendaconcregapp_ttab div.holdsaconcregapp_ttab, div.appendaconcregapp_conflictingreg div.holdsaconcregapp_conflictingreg, div.appendaconcregapp_earlieruse div.holdsaconcregapp_earlieruse').remove();
         $('div#hideshowconcurrentuses_ttab .hidethis, div#hideshowconcurrentuses_conflictingreg .hidethis, div#hideshowconcurrentuses_earlieruse .hidethis').contents().css('display','block');
-        $('div#hideshowconcurrentuses_ttab .js-upload-finished, div#hideshowconcurrentuses_conflictingreg .js-upload-finished, div#hideshowconcurrentuses_earlieruse .js-upload-finished').css('display','none');
         $('div#hideshowconcurrentuses_ttab .upload-drop-zone, div#hideshowconcurrentuses_conflictingreg .upload-drop-zone, div#hideshowconcurrentuses_earlieruse .upload-drop-zone').css('height','115px');
         $('div#hideshowconcurrentuses_ttab #usaffiliation .upload-drop-zone, div#hideshowconcurrentuses_conflictingreg #usaffiliation .upload-drop-zone, div#hideshowconcurrentuses_earlieruse #usaffiliation .upload-drop-zone').css('height','175px');
         $('div#hideshowconcurrentuses_ttab .js-upload-finished button.close, div#hideshowconcurrentuses_conflictingreg .js-upload-finished button.close, div#hideshowconcurrentuses_earlieruse .js-upload-finished button.close' ).parent().parent().remove();
         $('div#hideshowconcurrentuses_ttab div.fileDisplayArea img, div#hideshowconcurrentuses_conflictingreg div.fileDisplayArea img, div#hideshowconcurrentuses_earlieruse div.fileDisplayArea img' ).remove();
-        $('div#hideshowconcurrentuses_ttab div.fileDisplayArea, div#hideshowconcurrentuses_conflictingreg div.fileDisplayArea, div#hideshowconcurrentuses_earlieruse div.fileDisplayArea' ).html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .pdf, .doc</div>');
+        $('div#hideshowconcurrentuses_ttab div.fileDisplayArea, div#hideshowconcurrentuses_conflictingreg div.fileDisplayArea, div#hideshowconcurrentuses_earlieruse div.fileDisplayArea' ).html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Select File</div>');
     });
     $('input#inlineRadio053').change(function() {
         if(this.checked == true){
@@ -1258,12 +845,11 @@ $(document).ready(function(){
         $('div#hideshowconcurrentuses_courtd select, div#hideshowconcurrentuses_conflictingreg select, div#hideshowconcurrentuses_earlieruse select').val( resetselect[0] );
         $('div.appendaconcregapp_courtd div.holdsaconcregapp_courtd, div.appendaconcregapp_conflictingreg div.holdsaconcregapp_conflictingreg, div.appendaconcregapp_earlieruse div.holdsaconcregapp_earlieruse').remove();
         $('div#hideshowconcurrentuses_courtd .hidethis, div#hideshowconcurrentuses_conflictingreg .hidethis, div#hideshowconcurrentuses_earlieruse .hidethis').contents().css('display','block');
-        $('div#hideshowconcurrentuses_courtd .js-upload-finished, div#hideshowconcurrentuses_conflictingreg .js-upload-finished, div#hideshowconcurrentuses_earlieruse .js-upload-finished').css('display','none');
         $('div#hideshowconcurrentuses_courtd .upload-drop-zone, div#hideshowconcurrentuses_conflictingreg .upload-drop-zone, div#hideshowconcurrentuses_earlieruse .upload-drop-zone').css('height','115px');
         $('div#hideshowconcurrentuses_courtd #usaffiliation .upload-drop-zone, div#hideshowconcurrentuses_conflictingreg #usaffiliation .upload-drop-zone, div#hideshowconcurrentuses_earlieruse #usaffiliation .upload-drop-zone').css('height','175px');
         $('div#hideshowconcurrentuses_courtd .js-upload-finished button.close, div#hideshowconcurrentuses_conflictingreg .js-upload-finished button.close, div#hideshowconcurrentuses_earlieruse .js-upload-finished button.close' ).parent().parent().remove();
         $('div#hideshowconcurrentuses_courtd div.fileDisplayArea img, div#hideshowconcurrentuses_conflictingreg div.fileDisplayArea img, div#hideshowconcurrentuses_earlieruse div.fileDisplayArea img' ).remove();
-        $('div#hideshowconcurrentuses_courtd div.fileDisplayArea, div#hideshowconcurrentuses_conflictingreg div.fileDisplayArea, div#hideshowconcurrentuses_earlieruse div.fileDisplayArea' ).html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .pdf, .doc</div>');
+        $('div#hideshowconcurrentuses_courtd div.fileDisplayArea, div#hideshowconcurrentuses_conflictingreg div.fileDisplayArea, div#hideshowconcurrentuses_earlieruse div.fileDisplayArea' ).html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Select File</div>');
     });
     $('input#inlineRadio054').change(function() {
         if(this.checked == true){
@@ -1281,12 +867,11 @@ $(document).ready(function(){
         $('div#hideshowconcurrentuses_courtd select, div#hideshowconcurrentuses_ttab select, div#hideshowconcurrentuses_earlieruse select').val( resetselect[0] );
         $('div.appendaconcregapp_courtd div.holdsaconcregapp_courtd, div.appendaconcregapp_ttab div.holdsaconcregapp_ttab, div.appendaconcregapp_earlieruse div.holdsaconcregapp_earlieruse').remove();
         $('div#hideshowconcurrentuses_courtd .hidethis, div#hideshowconcurrentuses_ttab .hidethis, div#hideshowconcurrentuses_earlieruse .hidethis').contents().css('display','block');
-        $('div#hideshowconcurrentuses_courtd .js-upload-finished, div#hideshowconcurrentuses_ttab .js-upload-finished, div#hideshowconcurrentuses_earlieruse .js-upload-finished').css('display','none');
         $('div#hideshowconcurrentuses_courtd .upload-drop-zone, div#hideshowconcurrentuses_ttab .upload-drop-zone, div#hideshowconcurrentuses_earlieruse .upload-drop-zone').css('height','115px');
         $('div#hideshowconcurrentuses_courtd #usaffiliation .upload-drop-zone, div#hideshowconcurrentuses_ttab #usaffiliation .upload-drop-zone, div#hideshowconcurrentuses_earlieruse #usaffiliation .upload-drop-zone').css('height','175px');
         $('div#hideshowconcurrentuses_courtd .js-upload-finished button.close, div#hideshowconcurrentuses_ttab .js-upload-finished button.close, div#hideshowconcurrentuses_earlieruse .js-upload-finished button.close' ).parent().parent().remove();
         $('div#hideshowconcurrentuses_courtd div.fileDisplayArea img, div#hideshowconcurrentuses_ttab div.fileDisplayArea img, div#hideshowconcurrentuses_earlieruse div.fileDisplayArea img' ).remove();
-        $('div#hideshowconcurrentuses_courtd div.fileDisplayArea, div#hideshowconcurrentuses_ttab div.fileDisplayArea, div#hideshowconcurrentuses_earlieruse div.fileDisplayArea' ).html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .pdf, .doc</div>');
+        $('div#hideshowconcurrentuses_courtd div.fileDisplayArea, div#hideshowconcurrentuses_ttab div.fileDisplayArea, div#hideshowconcurrentuses_earlieruse div.fileDisplayArea' ).html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Select File</div>');
     });
     $('input#inlineRadio055').change(function() {
         if(this.checked == true){
@@ -1304,12 +889,11 @@ $(document).ready(function(){
         $('div#hideshowconcurrentuses_courtd select, div#hideshowconcurrentuses_ttab select, div#hideshowconcurrentuses_conflictingreg select').val( resetselect[0] );
         $('div.appendaconcregapp_courtd div.holdsaconcregapp_courtd, div.appendaconcregapp_ttab div.holdsaconcregapp_ttab, div.appendaconcregapp_conflictingreg div.holdsaconcregapp_conflictingreg').remove();
         $('div#hideshowconcurrentuses_courtd .hidethis, div#hideshowconcurrentuses_ttab .hidethis, div#hideshowconcurrentuses_conflictingreg .hidethis').contents().css('display','block');
-        $('div#hideshowconcurrentuses_courtd .js-upload-finished, div#hideshowconcurrentuses_ttab .js-upload-finished, div#hideshowconcurrentuses_conflictingreg .js-upload-finished').css('display','none');
         $('div#hideshowconcurrentuses_courtd .upload-drop-zone, div#hideshowconcurrentuses_ttab .upload-drop-zone, div#hideshowconcurrentuses_conflictingreg .upload-drop-zone').css('height','115px');
         $('div#hideshowconcurrentuses_courtd #usaffiliation .upload-drop-zone, div#hideshowconcurrentuses_ttab #usaffiliation .upload-drop-zone, div#hideshowconcurrentuses_conflictingreg #usaffiliation .upload-drop-zone').css('height','175px');
         $('div#hideshowconcurrentuses_courtd .js-upload-finished button.close, div#hideshowconcurrentuses_ttab .js-upload-finished button.close, div#hideshowconcurrentuses_conflictingreg .js-upload-finished button.close' ).parent().parent().remove();
         $('div#hideshowconcurrentuses_courtd div.fileDisplayArea img, div#hideshowconcurrentuses_ttab div.fileDisplayArea img, div#hideshowconcurrentuses_conflictingreg div.fileDisplayArea img' ).remove();
-        $('div#hideshowconcurrentuses_courtd div.fileDisplayArea, div#hideshowconcurrentuses_ttab div.fileDisplayArea, div#hideshowconcurrentuses_conflictingreg div.fileDisplayArea' ).html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .pdf, .doc</div>');
+        $('div#hideshowconcurrentuses_courtd div.fileDisplayArea, div#hideshowconcurrentuses_ttab div.fileDisplayArea, div#hideshowconcurrentuses_conflictingreg div.fileDisplayArea' ).html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Select File</div>');
     });
     //START toggle panel color
     $( '.nocontent' ).click(function() {
@@ -1360,6 +944,7 @@ $(document).ready(function(){
     $('input#ta026').val('www.us.gt.com').css('position','relative');
     $('input#ta027').val('Cell').css('position','relative');
     $('input#ta028').val('').css('position','relative');
+
     $('input#ta212').val('Jacob').css('position','relative');
     $('input#ta213').val('Goldstein').css('position','relative');
     $('input#ta218').val('jacob.goldstein@us.gt.com').css('position','relative');
@@ -1427,49 +1012,19 @@ $(document).ready(function(){
     });
     //
     //START file upload inputs
-    $('div.upload button[type=submit]').css('display','none');
     $(document).on('change', 'input[type="file"]', function(e) {
         var fileDisplayArea = $(this).siblings('label').children( 'div.fileDisplayArea' );
         //var fileDisplayArea = ('.fileDisplayArea');
         var file = e.target.files[0];
         var name = e.target.files[0].name;
         var type = e.target.files[0].type;
-        var icon = [ '<i class="upload-icon demo-icon icon-file-word" aria-hidden="true">\&\#xf1c2\;</i>','<i class="upload-icon demo-icon icon-file-pdf" aria-hidden="true">\&\#xf1c1\;</i>','<i class="upload-icon demo-icon icon-file-powerpoint" aria-hidden="true">\&\#xf1c4\;</i>','<i class="upload-icon demo-icon icon-file-excel" aria-hidden="true">\&\#xf1c3\;</i>','<i class="upload-icon demo-icon icon-file-code" aria-hidden="true">\&\#xf1c9\;</i>' ];
-        var icon = jQuery.makeArray( icon );
-        if((type) == 'application\/vnd.openxmlformats\-officedocument\.wordprocessingml\.document'){
-            var icon = (icon[0]);
-        }
-        if((type) == 'application/msword')
-        {
-            var icon = (icon[0]);
-        }
-        else if((type) == 'application\/pdf'){
-            var icon = (icon[1]);
-        }
-        else if((type) == 'application\/vnd.openxmlformats\-officedocument\.presentationml\.presentation'){
-            var icon = (icon[2]);
-        }
-        else if((type) == 'application\/vnd\.openxmlformats\-officedocument\.spreadsheetml\.sheet'){
-            var icon = (icon[3]);
-        }
-        else if((type) == 'text\/csv'){
-            var icon = (icon[3]);
-        }
-        else if((type) == 'application\/vnd\.ms\-excel'){
-            var icon = (icon[3]);
-        }
-        else {
-            var icon = ('');
-        }
         var listlength = $(this).parent().next().children('js-upload-finished').children('list-group').children('div.fileholder div.row').length + 1;
-        var holdata = $(this).closest('div.upload').find('div.fileholder');
-        var displaydata = $(this).closest('div.upload').find('div.js-upload-finished');
+        var holdata = $(this).parent().parent().find('div.fileholder');
         var hidethis = $(this).parent().contents();
         //var fileName = e.target.files[0].name;
         var imageType = /image.*/;
         if (file.type.match(imageType)) {
             if ((listlength) < 2)  {
-                window.filetypes = $(this).closest('div.upload').find('div.fileDisplayArea').text();
                 //console.log(listlength);
                 var reader = new FileReader();
                 reader.onload = function(e) {
@@ -1481,14 +1036,10 @@ $(document).ready(function(){
                     var imgSrc = img.src;
                     // display the image on the page
                     $(fileDisplayArea).removeClass('loader').append(img);
-                    $(displaydata).css('display','block');
                     $( '.upload-drop-zone' ).css('height','115px');
                     $( '.upload-drop-zone img' ).css('height','64px');
                     $( '.thumbnail img' ).css('height','20px');
-                    $(holdata).append('<div class="row"><div class="col-xs-2"><button type="button" class="btn btn-sm close" aria-label="remove file selection"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button></div><div class="col-xs-2 linkholder"><a href="'+ imgSrc + '" aria-labelledby="uploadedfile" download>' + name + '</a></div><div class="col-xs-5"><img src="' + imgSrc + '" class="img-thumbnail"></div><div class="col-xs-3"><span class="badge alert-success pull-right">Selected File</span></div></div>');
-                    if ( $( 'div#amendmark' ).length ) {
-                        $('div#currentmark img').attr('src', imgSrc);
-                    }
+                    $(holdata).append('<div class="row"><div class="col-xs-2"><button type="button" class="btn btn-sm close" aria-label="remove file selection"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button></div><div class="col-xs-4 linkholder"><a href="'+ imgSrc + '" aria-labelledby="uploadedfile" download>' + name + '</a></div><div class="col-xs-2"><img src="' + imgSrc + '" class="img-thumbnail"></div><div class="col-xs-4"><span class="badge alert-success pull-right">Selected File</span></div></div>');
                     //console.log(holdata);
                 }
                 if ((listlength) == 1)  {
@@ -1500,28 +1051,20 @@ $(document).ready(function(){
                 if (file) {
                     reader.readAsDataURL(file);
                 }
-                console.log(filetypes);
             }
         } else {
             var reader = new FileReader();
-            reader.onload = function() {
+            reader.onload = function(e) {
                 if (( listlength ) < 2)  {
                     $( fileDisplayArea ).addClass( 'loader' ).html("");
                     // Create a file
                     var dataURL = reader.result;
                     $( fileDisplayArea ).removeClass( 'loader' );
-                    $( displaydata ).css('display','block');
                     $( fileDisplayArea ).html( '<span class="glyphicon glyphicon-check"></span>' );
-                    $( holdata ).append('<div class="row"><div class="col-xs-2"><button type="button" class="btn btn-sm close" aria-label="remove file selection"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button></div><div class="col-xs-1 fileholder iconholder">' + icon + '</div><div class="col-xs-4 linkholder"><a href="' + dataURL + '"aria-labelledby="uploadedfile" download>' + name + '</a></div><div class="col-xs-1 visuallyhidden">' + type + '</div><div class="col-xs-4"><span class="badge alert-success pull-right">Selected File</span></div></div>');
-                    if ( $( 'div#amendmark' ).length ) {
-                        $('div#currentmark img').css('display','none');
-                        $('div#currentmark').prepend('<a href="' + dataURL + '"aria-labelledby="uploadedfile" download>' + name + '</a>');
-                        $('div#currentmark').prepend(icon);
-                    }
-                    //console.log(icon);
-                    //console.log(type);
+                    $(holdata).append('<div class="row"><div class="col-xs-2"><button type="button" class="btn btn-sm close" aria-label="remove file selection"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button></div><div class="col-xs-4 linkholder"><a href="' + dataURL + '"aria-labelledby="uploadedfile" download>' + name + '</a></div><div class="col-xs-1 visuallyhidden">' + type + '</div><div class="col-xs-5"><span class="badge alert-success pull-right">Selected File</span></div></div>');
+                    //console.log(dataURL);
                 }
-                if (( listlength ) == 1)  {
+                if ((listlength) == 1)  {
                     $( hidethis ).hide();
                 }
 //					if ((listlength) == 0)  {
@@ -1532,69 +1075,22 @@ $(document).ready(function(){
                 reader.readAsDataURL(file);
             }
         }
-        $(this).closest('div.upload').find('button[type=submit]').css('display','block');
-        $( 'div.upload' ).submit(
-            function(e) {
-                var file = ($( 'div.upload .linkholder a' ).attr('href'));
-                //at this point, the variable, file, needs to be converted to a blob and appended to FormData
-                $.ajax({
-                    url: 'upload',
-                    type: 'POST',
-                    data: new FormData( file ),
-                    processData: false,
-                    contentType: false,
-                    success: function(result){
-                        //$("#div").html(str);
-                        //alert('At this point, the variable, file, needs to be converted to a blob and appended to FormData -- ' + file);
-                        //$( this ).find( 'button[type=submit]' ).css('display','none');
-                        //$( this ).find( 'span.alert-success' ).html('Uploaded File');
-                    }
-                });
-                $( this ).find( 'button[type=submit]' ).css('display','none');
-                $( this ).find( 'span.alert-success' ).html('Uploaded File');
-                $( this ).find( 'input[type="file"]' ).val('');
-                //return false;
-                e.preventDefault();
-            }
-        );
-    });
-    $(document).on('click', 'div.upload button[type=submit]', function() {
-        $( this ).closest( 'button[type=submit]' ).css('display','none');
-        $( this ).parent().parent().parent().parent().find( 'span.alert-success' ).html('Uploaded File');
-        $( this ).parent().parent().parent().parent().find( 'input[type="file"]' ).val('');
-        return false;
     });
     //
     //START remove selected file
-    var initialmark = $('div#currentmark img').attr('src');
-    var resetmark = {};
     $(document).on('click', '.js-upload-finished button.close', function() {
-        var filetypes2 = window.filetypes;
-        var displaydata = $(this).closest('div.upload').find('div.js-upload-finished');
-        var showinput = $(this).closest('div.upload').find('div.hidethis');
-        $(this).closest('div.upload').find( 'input[type="file"]' ).val('');
-        $( showinput ).contents().css('display','block');
-        $( displaydata ).css('display','none');
-        $(this).closest('div.upload').find( 'button[type=submit]' ).css('display','none');
-        $(this).closest('div.upload').find( 'label.upload-drop-zone' ).css('height','115px');
-        $(this).closest('div#usaffiliation').find( 'label.upload-drop-zone' ).css('height','2.65em').css('display','table');
-        $(this).closest('div.upload').find( 'div.fileDisplayArea img' ).remove();
-        $(this).closest('div.upload').find( 'div.fileDisplayArea' ).html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>' + filetypes + '</div>');
-        $(this).parent().parent().remove();
-        var removemarkselection = function(){
-            $('div#currentmark').find('i').remove();
-            $('div#currentmark').find('a').remove();
-            $('div#currentmark img').attr('src',initialmark).css('display','block');
-        }
-        resetmark = removemarkselection;
-        $(resetmark);
+        $( '.hidethis' ).contents().css('display','block');
+        $( '.upload-drop-zone' ).css('height','115px');
+        $( '#usaffiliation .upload-drop-zone' ).css('height','175px');
+        $( this ).parent().parent().remove();
+        $( 'div.fileDisplayArea img' ).remove();
+        $( 'div.fileDisplayArea' ).html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Select File</div>');
     });
-
     //
-    //START prevent File Upload submit
-    //$('div.upload button[type=submit]').click(function(event){
-    //event.preventDefault();
-    //});
+    //+ Translation Item
+    //
+
+    //- Translation Item
     //
     //START toggle radio buttons content
     //start mark color options
@@ -1602,42 +1098,22 @@ $(document).ready(function(){
     $('div#yescolorclaim').css('display','none');
     $('input#inlineRadio1').change(function() {
         if(this.checked == true){
-            var clearthis = $('div#nocolorclaim');
-            var clearall = {};
-            $(function(){
-                var clear = function(){
-                    $(clearthis).find('input[type=checkbox]').prop({
-                        checked: false,
-                    });
-                };
-                clearall = clear;
-            });
-            $(clearall);
             $('div#nocolorclaim').hide( 'fast' );
-            $('div#yescolorclaim').show( 'fast' );
+            $('div#yescolorclaim').show( 'slow' );
         }
         else {
             $('div#nocolorclaim').show( 'fast' );
-            $('div#yescolorclaim').hide( 'fast' );
+            $('div#yescolorclaim').hide( 'slow' );
         }
     });
     $('input#inlineRadio2').change(function() {
         if(this.checked == true){
-            var clearthis = $('div#yescolorclaim');
-            var clearall = {};
-            $(function(){
-                var clear = function(){
-                    $(clearthis).find('textarea').val('');
-                };
-                clearall = clear;
-            });
-            $(clearall);
             $('div#nocolorclaim').show( 'fast' );
-            $('div#yescolorclaim').hide( 'fast' );
+            $('div#yescolorclaim').hide( 'slow' );
         }
         else {
             $('div#nocolorclaim').hide( 'fast' );
-            $('div#yescolorclaim').show( 'fast' );
+            $('div#yescolorclaim').show( 'slow' );
         }
     });
     //end mark color options
@@ -1645,28 +1121,18 @@ $(document).ready(function(){
     $('div#yestranslation').css('display','none');
     $('input#inlineRadio3').change(function() {
         if(this.checked == true){
-            $('div#yestranslation').show( 'fast' );
+            $('div#yestranslation').show( 'slow' );
         }
         else {
-            $('div#yestranslation').hide( 'fast' );
+            $('div#yestranslation').hide( 'slow' );
         }
     });
     $('input#inlineRadio4').change(function() {
         if(this.checked == true){
-            var clearthis = $('div#yestranslation');
-            $(function(){
-                var clear = function(){
-                    $(clearthis).find('select').val('Select');
-                    $(clearthis).find('input').val('');
-                    $(clearthis).find('div.appendatranslate').contents().remove();
-                };
-                clearall = clear;
-            });
-            $(clearall);
-            $('div#yestranslation').hide( 'fast' );
+            $('div#yestranslation').hide( 'slow' );
         }
         else {
-            $('div#yestranslation').show( 'fast' );
+            $('div#yestranslation').show( 'slow' );
         }
     });
     //end translations options
@@ -1682,16 +1148,6 @@ $(document).ready(function(){
     });
     $('input#inlineRadio6').change(function() {
         if(this.checked == true){
-            var clearthis = $('div#yestransliteration');
-            $(function(){
-                var clear = function(){
-                    $(clearthis).find('div.appendatransliterate').contents().remove();
-                    $(clearthis).find('select').val('Select');
-                    $(clearthis).find('input').val('');
-                };
-                clearall = clear;
-            });
-            $(clearall);
             $('div#yestransliteration').hide( 'fast' );
         }
         else {
@@ -1711,33 +1167,6 @@ $(document).ready(function(){
     });
     $('input#inlineRadio8').change(function() {
         if(this.checked == true){
-            var clearthis = $('div#yesnps');
-            $(function(){
-                var clear = function(){
-                    $(clearthis).find('div.appendaname').contents().remove();
-                    $(clearthis).find('div.appendaportrait').contents().remove();
-                    $(clearthis).find('div.appendasignature').contents().remove();
-                    $(clearthis).find('input[type="file"]').val('');
-                    $(clearthis).find('select').val('Select');
-                    $(clearthis).find('.hidethis').contents().css('display','block');
-                    $(clearthis).find('.upload-drop-zone').css('height','2.65em').css('display','table');
-                    $(clearthis).find('.js-upload-finished button.close').parent().parent().remove();
-                    $(clearthis).find('div.fileDisplayArea img').remove();
-                    $(clearthis).find('div.js-upload-finished').css('display','none');
-                    $(clearthis).find('button[type=submit]').css('display','none');
-                    $(clearthis).find('div.fileDisplayArea').html('<span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .doc');
-                    $(clearthis).find('input[type=checkbox]').prop('checked', false);
-                    $(clearthis).find('input[type=radio]').prop('checked', false);
-                    $(clearthis).find('input').val('');
-                    $(clearthis).find('textarea').val('');
-                };
-                clearall = clear;
-            });
-            $(clearall);
-            $('div#yescontainsname').hide( 'fast' );
-            $('div#yescontainsportrait').hide( 'fast' );
-            $('div#yescontainssignature').hide( 'fast' );
-            $('div#yesliving').hide( 'fast' );
             $('div#yesnps').hide( 'fast' );
         }
         else {
@@ -1805,15 +1234,6 @@ $(document).ready(function(){
     });
     $('input#inlineRadio010').change(function() {
         if(this.checked == true){
-            var clearthis = $('div#yesdisclaimer');
-            $(function(){
-                var clear = function(){
-                    $(clearthis).find('input').val('');
-                    $(clearthis).find('div.appenddisclaim').contents().remove();
-                };
-                clearall = clear;
-            });
-            $(clearall);
             $('div#yesdisclaimer').hide( 'fast' );
         }
         else {
@@ -1833,29 +1253,6 @@ $(document).ready(function(){
     });
     $('input#inlineRadio046').change(function() {
         if(this.checked == true){
-            var clearthis = $('div#yesnotpreviously');
-            $(function(){
-                var clear = function(){
-                    $(clearthis).find('div.appendaname').contents().remove();
-                    $(clearthis).find('div.appendaportrait').contents().remove();
-                    $(clearthis).find('div.appendasignature').contents().remove();
-                    $(clearthis).find('input[type="file"]').val('');
-                    $(clearthis).find('select').val('Select');
-                    $(clearthis).find('.hidethis').contents().css('display','block');
-                    $(clearthis).find('.upload-drop-zone').css('height','2.65em').css('display','table');
-                    $(clearthis).find('.js-upload-finished button.close').parent().parent().remove();
-                    $(clearthis).find('div.fileDisplayArea img').remove();
-                    $(clearthis).find('div.js-upload-finished').css('display','none');
-                    $(clearthis).find('button[type=submit]').css('display','none');
-                    $(clearthis).find('div.fileDisplayArea').html('<span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .pdf, .doc');
-                    $(clearthis).find('input[type=checkbox]').prop('checked', false);
-                    $(clearthis).find('input[type=radio]').prop('checked', false);
-                    $(clearthis).find('input').val('');
-                    $(clearthis).find('textarea').val('');
-                };
-                clearall = clear;
-            });
-            $(clearall);
             $('div#yesnotpreviously').hide( 'fast' );
         }
         else {
@@ -1875,15 +1272,6 @@ $(document).ready(function(){
     });
     $('input#inlineRadio012').change(function() {
         if(this.checked == true){
-            var clearthis = $('div#yesprior');
-            $(function(){
-                var clear = function(){
-                    $(clearthis).find('input').val('');
-                    $(clearthis).find('div.appenddocket').contents().remove();
-                };
-                clearall = clear;
-            });
-            $(clearall);
             $('div#yesprior').hide( 'fast' );
         }
         else {
@@ -1903,14 +1291,6 @@ $(document).ready(function(){
     });
     $('input#inlineRadio014').change(function() {
         if(this.checked == true){
-            var clearthis = $('div#yesmeaning');
-            $(function(){
-                var clear = function(){
-                    $(clearthis).find('input').val('');
-                };
-                clearall = clear;
-            });
-            $(clearall);
             $('div#yesmeaning').hide( 'fast' );
         }
         else {
@@ -2031,16 +1411,17 @@ $(document).ready(function(){
             $(this).closest('section').find('div.yescommerce select').val( resetselect[0] );
             $(this).closest('section').find('div.yescommerce .hidethis').contents().css('display','block');
             $(this).closest('section').find('div.yescommerce .upload-drop-zone').css('height','115px');
+            $(this).closest('section').find('div.yescommerce div.upload-drop-zone').css('height','175px');
             $(this).closest('section').find('div.yescommerce .js-upload-finished button.close' ).parent().parent().remove();
             $(this).closest('section').find('div.yescommerce div.fileDisplayArea img' ).remove();
-            $(this).closest('section').find('div.yescommerce div.holdsaforeign div.fileDisplayArea' ).html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png</div>');
+            $(this).closest('section').find('div.yescommerce div.holdsaforeign div.fileDisplayArea' ).html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Select File</div>');
         }
         else {
             $(this).closest('section').find('div.yescommerce').show( 'fast' );
         }
     });
     //
-    //START generate unique IDs + matching labels for Basis  + SOU pages, checkmarks
+    //START generate unique IDs + matching labels for Basis pages, checkmarks
     var checkboxList = $('#basisab input.showspecimen, #basisabde input.showspecimen');
     for (var i = 0; i <= checkboxList.length; i++) {
         $(checkboxList[i]).attr('id', 'individualspecimencheck_' + i);
@@ -2056,28 +1437,6 @@ $(document).ready(function(){
     var checkboxarialabelList = $('#basisab input.showspecimen, #basisabde input.showspecimen');
     for (var i = 0; i <= checkboxarialabelList.length; i++) {
         $(checkboxarialabelList[i]).attr('aria-labelledby', 'individualspecimen_' + i);
-    }
-    //
-    //START generate unique IDs + matching labels for Basis, Amend Mark, section8 + SOU pages, uploaded files
-    var fileList = $('#basisab input[type=file], #basisabde input[type=file], #detected input[type=file], #amendmark input[type=file], #soucontent input[type=file], #sectioneight input[type=file]');
-    for (var i = 0; i <= fileList.length; i++) {
-        $(fileList[i]).attr('id', 'uploadedfile' + i);
-    }
-    var nameList = $('#basisab input[type=file], #basisabde input[type=file], #detected input[type=file], #amendmark input[type=file], #soucontent input[type=file], #sectioneight input[type=file]');
-    for (var i = 0; i <= nameList.length; i++) {
-        $(nameList[i]).attr('name', 'uploadedspecimen' + i + 'file');
-    }
-    var labelList = $('#basisab input[type=file], #basisabde input[type=file], #detected input[type=file], #amendmark input[type=file], #soucontent input[type=file], #sectioneight input[type=file]').prev('label');
-    for (var i = 0; i <= labelList.length; i++) {
-        $(labelList[i]).attr('for', 'uploadedfile' + i);
-    }
-    var labelidList = $('#basisab input[type=file], #basisabde input[type=file], #detected input[type=file], #amendmark input[type=file], #soucontent input[type=file], #sectioneight input[type=file]').prev('label');
-    for (var i = 0; i <= labelidList.length; i++) {
-        $(labelidList[i]).attr('id', 'specimen' + i);
-    }
-    var filesarialabelList = $('#basisab input[type=file], #basisabde input[type=file], #detected input[type=file], #amendmark input[type=file], #soucontent input[type=file], #sectioneight input[type=file]');
-    for (var i = 0; i <= filesarialabelList.length; i++) {
-        $(filesarialabelList[i]).attr('aria-labelledby', 'specimen' + i);
     }
     //
     //START basistwo connection options
@@ -2101,10 +1460,11 @@ $(document).ready(function(){
             $(this).closest('section').find('div.yesconnection input[type=text]').val('');
             $(this).closest('section').find('div.yesconnection select').val( resetselect[0] );
             $(this).closest('section').find('div.yesconnection .hidethis').contents().css('display','block');
-            $(this).closest('section').find('div.yesconnection .upload-drop-zone').css('height','115px').css('display','block');
+            $(this).closest('section').find('div.yesconnection .upload-drop-zone').css('height','115px');
+            $(this).closest('section').find('div.yesconnection div.upload-drop-zone').css('height','175px');
             $(this).closest('section').find('div.yesconnection .js-upload-finished button.close' ).parent().parent().remove();
             $(this).closest('section').find('div.yesconnection div.fileDisplayArea img' ).remove();
-            $(this).closest('section').find('div.yesconnection div.holdsaforeign div.fileDisplayArea' ).html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png</div>');
+            $(this).closest('section').find('div.yesconnection div.holdsaforeign div.fileDisplayArea' ).html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Select File</div>');
         }
         else {
             $(this).closest('section').find('div.yesconnection').show( 'fast' );
@@ -2116,20 +1476,15 @@ $(document).ready(function(){
     $('input.showspecimen').change(function() {
         if(this.checked == true){
             $(this).closest('section').find('div.yesspecimen').show( 'fast' );
-            $(this).closest('section').find('textarea').css('display','block');
-            $(this).closest('section').find('textarea').siblings('label').css('display','block');
-            $(this).closest('section').find('div.upload').css('display','block');
-            $(this).closest('section').find( '.upload-drop-zone' ).css('height','115px').css('display','block');
-            $(this).closest('section').find( '#usaffiliation .upload-drop-zone' ).css('height','175px').css('display','block');
-            $(this).closest('section').find( 'div.fileDisplayArea' ).html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png</div>');
         }
         else {
             $(this).closest('section').find('div.yesspecimen').hide( 'fast' );
             $(this).closest('section').find('.hidethis').contents().css('display','block');
             $(this).closest('section').find('.upload-drop-zone').css('height','115px');
+            $(this).closest('section').find('div.upload-drop-zone').css('height','175px');
             $(this).closest('section').find('.js-upload-finished button.close' ).parent().parent().remove();
             $(this).closest('section').find('div.fileDisplayArea img' ).remove();
-            $(this).closest('section').find('div.holdsaforeign div.fileDisplayArea' ).html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png</div>');
+            $(this).closest('section').find('div.holdsaforeign div.fileDisplayArea' ).html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Select File</div>');
         }
     });
     //end provide specimen options
@@ -2138,45 +1493,6 @@ $(document).ready(function(){
     $('div#usaffiliation').css('display','none');
     $('div#canadianaffiliation').css('display','none');
     $('#attorney-bar-standing').change(function(){
-        var resetselect = [ 'mm/dd/yy' ];
-        var resetselect = jQuery.makeArray( resetselect );
-        var clearall = {};
-        if($(this).val() == 'canadianaffiliation'){ // or this.value == 'canadianaffiliation'
-            var clearthis = $('div#usaffiliation');
-            $(function(){
-                var clear = function(){
-                    $(clearthis).find('input[type="file"]').val('');
-                    $(clearthis).find('select').val('Select');
-                    $(clearthis).find('select[type=date]').val( resetselect[0] );
-                    $(clearthis).find('.hidethis').contents().css('display','block');
-                    $(clearthis).find('.upload-drop-zone').css('height','2.65em').css('display','table');
-                    $(clearthis).find('.js-upload-finished button.close').parent().parent().remove();
-                    $(clearthis).find('div.fileDisplayArea img').remove();
-                    $(clearthis).find('div.js-upload-finished').css('display','none');
-                    $(clearthis).find('button[type=submit]').css('display','none');
-                    $(clearthis).find('div.fileDisplayArea').html('<span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .pdf, .doc');
-                    $(clearthis).find('input[type=checkbox]').prop('checked', false);
-                    $(clearthis).find('input[type=radio]').prop('checked', false);
-                    $(clearthis).find('input').val('');
-                    $(clearthis).find('textarea').val('');
-                };
-                clearall = clear;
-            });
-            $(clearall);
-        }
-        else if ($(this).val() == 'usaffiliation') {
-            var clearthis = $('div#canadianaffiliation');
-            $(function(){
-                var clear = function(){
-                    $(clearthis).find('select').val('Select');
-                    $(clearthis).find('input[type=checkbox]').prop('checked', false);
-                    $(clearthis).find('input[type=radio]').prop('checked', false);
-                    $(clearthis).find('input').val('');
-                };
-                clearall = clear;
-            });
-            $(clearall);
-        }
         $('.hidethisdiv').hide( 'fast' );
         $('#' + $(this).val()).show( 'fast' );
     });
@@ -2211,7 +1527,6 @@ $(document).ready(function(){
         var includeforeign = ('js/' + $(this).val() + $( '#entitycountry' ).val() + '.js');
         $.getScript( includeforeign );
         $('#owner #autofillforeign').show( 'fast' );
-        $('#owner #autofillforeign').parent().attr('role','alert');
         $('footer').css('display','block');
         //console.log(includeforeign);
     });
@@ -2239,65 +1554,22 @@ $(document).ready(function(){
     $('select.countinputs').on('change',function(){
         var count = $('div.indentctr input[type=radio]:checked').length;
         var boxes = $('div.indentctr');
-        var b = $('#alertmin');
-        var c = $('#mintext');
-        var d = $('#alertbtn');
+        //var section = $(this).closest('section').prev('section').find('div.indentctr');
         $(this).closest('section').prev('section').find('div.indentctr input[type=radio]:checked');
         if( count < 1) {
             $('html, body').animate({
-                scrollTop: boxes.offset().top - 300
+                scrollTop: boxes.offset().top - 144
             }, 500);
-            $(b).css('visibility','visible');
-            $(b).css('height','auto');
-            $(b).addClass('form-group').addClass('form-group-md');
-            $(b).css('float','left');
-            $(b).css('top','.25em');
-            $(b).css('padding','1em');
-            $(b).css('marginBottom','1em');
-            $(c).css('display','block');
-            $(d).css('display','block');
-            $(d).toggleClass( 'focus' );
-            $(c).html('You must click one of the three buttons, below, to confirm that you are authorized pursuant to the rules governing representation of others before the USPTO to sign this form.');
             $(this).val('Select');
             $(this).closest('fieldset').find('.hidethis').css('display','none');
+            alert ('You must click one of the three buttons, below, to confirm that you are authorized pursuant to the rules governing representation of others before the USPTO to sign this form.');
             $(this).closest('fieldset').find('textarea.datesigned').val('');
-        }
-    });
-    //
-    //START select security questions
-    $('#createaccount .hidethis').css('display','none');
-    $('select.questions').on('change',function(){
-        var loadsign = ($(this).val());
-        $(this).closest('fieldset').find('.hidethis').show('fast');
-        $( loadsign ).css('display','block');
-        if( loadsign == 'Select') {
-            $(this).closest('fieldset').find('.hidethis').hide('fast');
-            $(this).closest('fieldset').find('input.answer').val('');
-            $(this).closest('fieldset').find('.hidethis input').val('');
         }
     });
     //
     //START select all declarations
     $(document).on('change','#declarationsignature input#select', function() {
         var checkboxes  = $('#declarationsignature input#select').parent('div').siblings('div').children('input.checkmark');
-        var selectall = $(this);
-        if ($(this).is( ":checked" )) {
-            $.each(checkboxes, function(){
-                $(this).prop('checked', true);
-            });
-        } else {
-            $.each(checkboxes, function(){
-                $(this).prop('checked', false);
-            });
-        }
-        $(checkboxes).on('click', function(e){
-            $(selectall).prop('checked', false);
-        });
-    });
-    //
-    //START select all incontestable
-    $(document).on('change','#incontestable input#select', function() {
-        var checkboxes  = $('#incontestable input#select').parent().parent().parent().children('fieldset').find('input.checkmark');
         var selectall = $(this);
         if ($(this).is( ":checked" )) {
             $.each(checkboxes, function(){
@@ -2400,7 +1672,6 @@ $(document).ready(function(){
         $( this ).find('span.glyphicon-ok-sign').parent().parent().css('background-color','#D4EB8E').css('color','#333').siblings().css('background-color','#D4EB8E').css('color','#333');
         $( this ).find('span.glyphicon-ok-sign').parent().parent().parent().siblings().children().children().children('.glyphicon-ok-sign').removeClass( 'glyphicon-ok-sign' );
         $( this ).find('span.glyphicon-ok-sign').attr('aria-label','deselect this contact');
-        $( '#mydata2 .collapse' ).collapse('hide').fadeOut( 'slow','swing');
     }
     $('a.fromcontact').click(togglecontacts);
     //
@@ -2498,7 +1769,7 @@ $(document).ready(function(){
         $( 'div.reg:eq(0)' ).clone().appendTo( '#yespriors .appendreg' );
         $( 'div.reg' ).last().find('input').val('');
         $( 'div.reg' ).last().find('textarea').val('');
-        $( '#yespriors .appendreg .resetregbtn' ).removeClass( 'visuallyremoved' );
+        $( '#yespriors .appendreg .resetreg' ).removeClass( 'visuallyremoved' );
         $( this ).removeClass( '.addinitial' );
     });
     //
@@ -2714,7 +1985,6 @@ $(document).ready(function(){
         if(this.checked == true){
             $(this).parent().parent().parent().find('div.holdsaforeign').show( 'fast' );
             $('button#addforeignreg_basisone').show( 'fast' );
-            $('button#addforeignreg_basisone').parent().attr( 'role','alert' );
             $('input#natwo_basisone').prop({
                 checked: false,
             });
@@ -2731,7 +2001,6 @@ $(document).ready(function(){
         if(this.checked == true){
             $(this).parent().parent().parent().find('div.holdsapending').show( 'fast' );
             $('button#addpending_basistwo').show( 'fast' );
-            $('button#addpending_basistwo').parent().attr( 'role','alert' );
             $('input#natwo_basistwo').prop({
                 checked: false,
             });
@@ -2747,7 +2016,6 @@ $(document).ready(function(){
         if(this.checked == true){
             $(this).parent().parent().parent().find('div.holdsaforeign').show( 'fast' );
             $('button#addforeignreg_basistwo').show( 'fast' );
-            $('button#addforeignreg_basistwo').parent().attr( 'role','alert' );
             $('input#natwo_basistwo').prop({
                 checked: false,
             });
@@ -2779,9 +2047,10 @@ $(document).ready(function(){
             $('div.yescommerce div.holdsaforeign select, div.yescommerce div.holdsapending select').val( resetselect[0] );
             $('div.yescommerce div.holdsaforeign .hidethis, div.yescommerce div.holdsapending .hidethis').contents().css('display','block');
             $('div.yescommerce div.holdsaforeign .upload-drop-zone, div.yescommerce div.holdsapending .upload-drop-zone').css('height','115px');
+            $('div.yescommerce div.holdsaforeign div.upload-drop-zone, div.yescommerce div.holdsapending div.upload-drop-zone').css('height','175px');
             $('div.yescommerce div.holdsaforeign .js-upload-finished button.close, div.yescommerce div.holdsapending .js-upload-finished button.close' ).parent().parent().remove();
             $('div.yescommerce div.holdsaforeign div.fileDisplayArea img, div.yescommerce div.holdsapending div.fileDisplayArea img' ).remove();
-            $('div.yescommerce div.holdsaforeign div.fileDisplayArea, div.yescommerce div.holdsapending div.fileDisplayArea' ).html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .pdf, .doc</div>');
+            $('div.yescommerce div.holdsaforeign div.fileDisplayArea, div.yescommerce div.holdsapending div.fileDisplayArea' ).html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Select File</div>');
             $('div.yescommerce div.appendaforeign div.holdsaforeign, div.yescommerce div.appendaforeign div.holdsapending').remove();
         }
     });
@@ -2806,9 +2075,10 @@ $(document).ready(function(){
             $('div.yesconnection div.holdsaforeign select, div.yesconnection div.holdsapending select').val( resetselect[0] );
             $('div.yesconnection div.holdsaforeign .hidethis, div.yesconnection div.holdsapending .hidethis').contents().css('display','block');
             $('div.yesconnection div.holdsaforeign .upload-drop-zone, div.yesconnection div.holdsapending .upload-drop-zone').css('height','115px');
+            $('div.yesconnection div.holdsaforeign div.upload-drop-zone, div.yesconnection div.holdsapending div.upload-drop-zone').css('height','175px');
             $('div.yesconnection div.holdsaforeign .js-upload-finished button.close, div.yesconnection div.holdsapending .js-upload-finished button.close' ).parent().parent().remove();
             $('div.yesconnection div.holdsaforeign div.fileDisplayArea img, div.yesconnection div.holdsapending div.fileDisplayArea img' ).remove();
-            $('div.yesconnection div.holdsaforeign div.fileDisplayArea, div.yesconnection div.holdsapending div.fileDisplayArea' ).html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .pdf, .doc</div>');
+            $('div.yesconnection div.holdsaforeign div.fileDisplayArea, div.yesconnection div.holdsapending div.fileDisplayArea' ).html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Select File</div>');
             $('div.yesconnection div.appendaforeign div.holdsaforeign, div#yesconnection div.appendaforeign div.holdsapending').remove();
         }
     });
@@ -2828,7 +2098,7 @@ $(document).ready(function(){
         $( 'div.yescommerce div.holdsaforeign .upload-drop-zone' ).last().attr('for', clonelabel);
         $( 'div.yescommerce div.holdsaforeign #usaffiliation .upload-drop-zone' ).last().css('height','175px');
         $( 'div.yescommerce div.holdsaforeign div.fileDisplayArea img' ).last().remove();
-        $( 'div.yescommerce div.holdsaforeign div.fileDisplayArea' ).last().html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .pdf, .doc</div>');
+        $( 'div.yescommerce div.holdsaforeign div.fileDisplayArea' ).last().html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Select File</div>');
         $( 'div.yescommerce .appendaforeign .resetreg' ).removeClass( 'visuallyremoved' ).css('border-top','1px solid #ddd').css('margin-bottom','.4em');
         $( this ).removeClass( '.addinitial' );
     });
@@ -2846,7 +2116,7 @@ $(document).ready(function(){
         $( 'div.yesconnection div.holdsaforeign .upload-drop-zone' ).last().attr('for', clonelabel);
         $( 'div.yesconnection div.holdsaforeign #usaffiliation .upload-drop-zone' ).last().css('height','175px');
         $( 'div.yesconnection div.holdsaforeign div.fileDisplayArea img' ).last().remove();
-        $( 'div.yesconnection div.holdsaforeign div.fileDisplayArea' ).last().html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .pdf, .doc</div>');
+        $( 'div.yesconnection div.holdsaforeign div.fileDisplayArea' ).last().html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Select File</div>');
         $( 'div.yesconnection .appendaforeign .resetreg' ).removeClass( 'visuallyremoved' ).css('border-top','1px solid #ddd').css('margin-bottom','.4em');
         $( this ).removeClass( '.addinitial' );
     });
@@ -2869,7 +2139,7 @@ $(document).ready(function(){
         $( 'div.yescommerce div.holdsapending .upload-drop-zone' ).last().attr('for', clonelabel);
         $( 'div.yescommerce div.holdsapending #usaffiliation .upload-drop-zone' ).last().css('height','175px');
         $( 'div.yescommerce div.holdsapending div.fileDisplayArea img' ).last().remove();
-        $( 'div.yescommerce div.holdsapending div.fileDisplayArea' ).last().html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png</div>');
+        $( 'div.yescommerce div.holdsapending div.fileDisplayArea' ).last().html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Select File</div>');
         $( 'div.yescommerce .appendapending .resetreg' ).removeClass( 'visuallyremoved' ).css('border-top','1px solid #ddd').css('margin-bottom','.4em').css('margin-top','1.5em');
         $( this ).removeClass( '.addinitial' );
     });
@@ -2890,30 +2160,21 @@ $(document).ready(function(){
         $( 'div.yesconnection div.holdsapending .upload-drop-zone' ).last().attr('for', clonelabel);
         $( 'div.yesconnection div.holdsapending #usaffiliation .upload-drop-zone' ).last().css('height','175px');
         $( 'div.yesconnection div.holdsapending div.fileDisplayArea img' ).last().remove();
-        $( 'div.yesconnection div.holdsapending div.fileDisplayArea' ).last().html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png</div>');
+        $( 'div.yesconnection div.holdsapending div.fileDisplayArea' ).last().html('<div class="fileDisplayArea"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Select File</div>');
         $( 'div.yesconnection .appendapending .resetreg' ).removeClass( 'visuallyremoved' ).css('border-top','1px solid #ddd').css('margin-bottom','.4em').css('margin-top','1.5em');
         $( this ).removeClass( '.addinitial' );
     });
     //
-    //START Basis foreign application / dashboard date alert
-    //$('#alertmin').css('visibility','hidden').css('top','-10000px').css('float','none').css('margin-bottom','0').css('padding','0');
-    $(document).on('click','#alertmin button.close', function(e) {
+    //START Basis foreign application date alert
+    $('#alertmin').css('visibility','hidden').css('top','-10000px').css('float','none').css('margin-bottom','0').css('padding','0');
+    $(document).on('click','#alertmin button.close', function () {
         $('#alertmin').css('visibility','hidden').css('top','-10000px').css('float','none').css('margin-bottom','0').css('padding','0');
         $('#alertmin button').css('display','none');
-        $('#alertmin').css('height','1px');
-        $('#alertmin').removeClass('form-group').removeClass('form-group-md');
         $('#alertmin p').css('display','none');
-        e.preventDefault();
-    });
-    $(document).on('click','#filingbasisab #alertmin button.close', function(e) {
-        var t = $('input[type=radio][disabled]');
-        $('html, body').animate({
-            scrollTop: (t).offset().top - 150
-        }, 500);
     });
     //
     //START modals
-    $('#tradeservmodal','#collectivemodal','#collectivemembmodal','#loginmodal','#emailmodal','#securitymodal','#passwordmodal','#soucontent .modal').on('shown.bs.modal', function () {
+    $('#tradeservmodal','#collectivemodal','#collectivemembmodal','#loginmodal','#emailmodal','#securitymodal','#passwordmodal').on('shown.bs.modal', function () {
         $('.btn-success').focus();
     })
     //
@@ -2939,130 +2200,15 @@ $(document).ready(function(){
         });
     });
     //
-    //START close button height match SOU labels
-    $('div.gsmodal').on('show.bs.modal', function() {
-        var d = $('div.gsmodal button.closegspanels').parent().find('span.closepans');
-        var c = $('div.gsmodal button.closegspanels span.label');
-        var f = $('div.gsmodal button.closegspanels');
-        var e = $('div.gsmodal span.closepans').eq(0).parent();
-        $(d).css('display','table-cell').css('vertical-align','middle');
-        $(f).css('display','table-cell').css('vertical-align','middle');
-        $(c).css('min-height','24%');
-        $('div.gsmodal button.closegspanels').css('line-height',(c.innerHeight() + 'px')).css( 'height',(c.innerHeight()));
-    });
-    //
-    //START SOU modal button add/remove GSs
-    $('div.inusegs span.label button').on('click',function() {
-        var colorClass = this.className;
-        if ((colorClass) == ('close closegspanels')) {
-            $(this).parent().css('background','#ecf1f3').css('color','#999');
-            $(this).children('span').addClass('glyphicon-refresh').removeClass('glyphicon-remove-circle');
-            $(this).toggleClass('refresh');
-            $(this).attr('aria-label','undo delete this good / service');
-        }
-        if ((colorClass) == ('close closegspanels refresh')) {
-            $(this).parent().css('background','#cbd6da').css('color','#333');
-            $(this).children('span').removeClass('glyphicon-refresh').addClass('glyphicon-remove-circle');
-            $(this).toggleClass('refresh');
-            $(this).attr('aria-label','delete');
-        }
-    });
-    //
-    //START SOU modal add/remove GSs from blue bar
-    $('div.inusegs button').on('click',function() {
-        var colorClass = this.className;
-        var labelindex = $(this).index('div.inusegs button.closegspanels');
-        if ((colorClass) === ('close closegspanels')) {
-            var buttonparent = $(this).parents('div.modal');
-            var buttongrandparent = $( buttonparent ).parent();
-            $('.statementou h2.displaycell span.listed').eq( labelindex ).removeClass('strike');
-            $('.statementou h2.displaycell span.listed span.sr-only').eq( labelindex ).text('added');
-        }
-        if ((colorClass) === ('close closegspanels refresh')) {
-            var buttonparent = $(this).parents('div.modal');
-            var buttongrandparent = $( buttonparent ).parent();
-            $('.statementou h2.displaycell span.listed').eq( labelindex ).addClass('strike');
-            $('.statementou h2.displaycell span.listed span.sr-only').eq( labelindex ).text('removed');
-        }
-    });
-    //
-    //START SOU modal add/remove class
-    if ( $( 'div#soucontent' ).length ) {
-        $('div.formodal').css('display','none');
-        //START SOU blue bar height
-        $( window ).on('load', function() {
-            var winwidth = $(window).width();
-            var modalparent = $('div.modal').parent();
-            if (winwidth > 1199) {
-                //var souf = $(modalparent).find('.statementou h2.displaycell').outerHeight();
-                $.each(modalparent, function(){
-                    var souf = $(this).find('.statementou h2.displaycell').outerHeight();
-                    $(this).find('.statementou .noexpand.blue').css('height',(souf));
-                });
-            }
-            else if (winwidth < 1199) {
-                $.each(modalparent, function(){
-                    var souf = ($(this).find('.statementou h2.displaycell').outerHeight() + 70);
-                    $(this).find('.statementou .noexpand.blue').css('height',(souf));
-                });
-            }
-        });
-        $( window ).resize(function() {
-            var winwidth = $(window).width();
-            var modalparent = $('div.modal').parent();
-            if (winwidth > 1199) {
-                //var souf = $(modalparent).find('.statementou h2.displaycell').outerHeight();
-                $.each(modalparent, function(){
-                    var souf = $(this).find('.statementou h2.displaycell').outerHeight();
-                    $(this).find('.statementou .noexpand.blue').css('height',(souf));
-                });
-            }
-            else if (winwidth < 1199) {
-                $.each(modalparent, function(){
-                    var souf = ($(this).find('.statementou h2.displaycell').outerHeight() + 70);
-                    $(this).find('.statementou .noexpand.blue').css('height',(souf));
-                });
-            }
-        });
-        //
-    }
-    $('div.classmodal button.btn-success').on('click',function() {
-        var modaldiv = $('div.formodal');
-        var modaldivparent = $(this).parents('div.modal');
-        var modaldivgrandparent = $(modaldivparent).parent();
-        $( modaldivparent ).find('span.sr-only').text('class removed');
-        $( modaldivgrandparent ).find('div.inusegs span.subtle').css('display','none');
-        $( modaldivparent ).parent().find('div.statementou').css('opacity','0.4');
-        $( modaldivparent ).modal('hide')
-        $( modaldivparent ).parent().find('div.formodal').css('display','block');
-    });
-    $('button.resetclassbtn').on('click',function() {
-        var modaldiv = $(this).parents('div.formodal');
-        var modaldivparent = $(this).parents('div.modal');
-        var modaldivgrandparent = $(modaldiv).parent();
-        $( modaldivgrandparent ).find('div.inusegs span.subtle').css('display','table');
-        $( modaldiv).parent().find('div.statementou').css('opacity','1.0');
-        $( modaldivparent ).find('span.sr-only').text('class added');
-        $( modaldiv ).css('display','none');
-    });
-    //
-    //START close button height match dashboard
-    $( window ).on('load', function() {
+    //START close button height match
+    $( window ).load(function () {
         var d = $( '#announcements .closepans' ).prev('div');
-        $(d).css('display','flex').css('flex-direction','column').css('min-height','3em');
-        $('#announcements .closepans').css( 'line-height', (d.innerHeight() + 'px') ).css( 'height', (d.innerHeight()) );
-        $('#announcements .closegspanels').css('line-height',(d.innerHeight() + 'px'));
+        $(d).css('display','flex').css('flex-direction','column');
+        $('.closepans').css( 'height', (d.innerHeight()) );
+        $('.closegspanels').css('line-height',(d.innerHeight() + 'px'));
         $( window ).resize(function() {
-            $('#announcements .closepans').css( 'height', (d.innerHeight()) );
-            $('#announcements .closegspanels').css('line-height',(d.innerHeight() + 'px'));
-        });
-        var e = $( '#dashboardmain .alert-warning .closepans' );
-        $(e).css('min-height','3em');
-        $('#dashboardmain .alert-warning .closepans').css( 'height', (e.innerHeight()) );
-        $('#dashboardmain .alert-warning button.closegspanels').css('line-height',(e.innerHeight() + 'px')).css('display','table-cell');
-        $( window ).resize(function() {
-            $('#dashboardmain .alert-warning .closepans').css( 'height', (e.innerHeight()) );
-            $('#dashboardmain .alert-warning button.closegspanels').css('line-height',(e.innerHeight() + 'px'));
+            $('.closepans').css( 'height', (d.innerHeight()) );
+            $('.closegspanels').css('line-height',(d.innerHeight() + 'px'));
         });
     });
     //
@@ -3089,7 +2235,6 @@ $(document).ready(function(){
     });
     //
     //START toggle teas save more labels
-    $('.togglesavemore').prop('checked', true);
     $('.togglesavemore').change(function() {
         if(this.checked == true){
             $( document ).find('span.subtle').removeClass('visuallyremoved');
@@ -3702,24 +2847,8 @@ $(document).ready(function(){
             $(document).on('change','#basisab input[type=radio].count', function() {
                 var count = $(this).closest('fieldset').find('input[type=radio].count').length;
                 var countall = $(this).closest('fieldset').find('input[type=radio].count:checked').length;
-                var b = $('#alertmin');
-                var c = $('#mintext');
-                var d = $('#alertbtn');
                 if (countall == count) {
-                    $(b).css('visibility','visible');
-                    $(b).css('height','auto');
-                    $(b).addClass('form-group').addClass('form-group-md');
-                    $(b).css('float','left');
-                    $(b).css('top','.25em');
-                    $(b).css('padding','1em');
-                    $(b).css('margin-bottom','1em');
-                    $(c).css('display','block');
-                    $(d).css('display','block');
-                    $(d).toggleClass( 'focus' );
-                    $('html, body').animate({
-                        scrollTop: $(b).offset().top - 144
-                    }, 500);
-                    $(c).html('You have indicated at least one of the goods / services in this class is in-use. You must choose ' + '<span class="leftquote"></span>Yes<span class="rightquote"></span>' + ' for at least one good / service.');
+                    alert ('You have indicated at least one of the goods / services in this class is in-use. You must choose "Yes" for at least one good / service.');
                     $(this).prop({
                         disabled: true,
                         checked:false,
@@ -3762,38 +2891,12 @@ $(document).ready(function(){
     $( 'span.partnershipname' ).html( arrcompany[0] );
     $( 'span.state_country' ).html( arrstate[0] );
     //
-    //WYSIWYG editor for revive petition application scenarios
+    //WYSIWYG editor for revive petition application s1
     if ( $( 'div#editor' ).length ) {
         var quill = new Quill('#editor', {
             theme: 'snow'
         });
     }
-    //
-    //START ROA Optional Actions
-    $('#roaoptact').on('click', 'button.next', function() {
-        var url = 'attorney_info_review_optional.html';
-        $(location).prop('href', url);
-    });
-    $(function() {
-        var progresslength = $('#editattorney .breadcrumb-steps .col-xs-2, #amendmark .breadcrumb-steps .col-xs-2, #editowneroptional .breadcrumb-steps .col-xs-2, #gsinuseoptional .breadcrumb-steps .col-xs-2, #gsselectedoptional .breadcrumb-steps .col-xs-2, div.amend .breadcrumb-steps .col-xs-2').length;
-        var progress = $('#editattorney .breadcrumb-steps .col-xs-2, #amendmark .breadcrumb-steps .col-xs-2, #editowneroptional .breadcrumb-steps .col-xs-2, #gsinuseoptional .breadcrumb-steps .col-xs-2, #gsselectedoptional .breadcrumb-steps .col-xs-2, div.amend .breadcrumb-steps .col-xs-2');
-        if ((progresslength) === 5)  {
-            $(progress).css('width','20%');
-        }
-        if ((progresslength) === 4)  {
-            $(progress).css('width','25%');
-        }
-        if ((progresslength) === 3)  {
-            $(progress).css('width','33.33%');
-        }
-        if ((progresslength) === 2)  {
-            $(progress).css('width','50%');
-        }
-        if ((progresslength) === 1)  {
-            $('#editattorney .displaycell, #amendmark .displaycell, #editowneroptional .displaycell, #gsinuseoptional .displaycell, #gsselectedoptional .displaycell, div.amend .displaycell').css('display','none');
-            //console.log(progresslength);
-        }
-    });
     //
     //START revive petition options
     $('div#reviveappformradios').css('display','none');
@@ -3811,36 +2914,12 @@ $(document).ready(function(){
     $('div#received').css('display','none');
     $('div#expedite').css('display','none');
     $('div#reconsidersig').css('display','none');
-    $('div#petsignature').css('display','none');
-    $('div#xreq').css('display','none');
-    $('div#sou').css('display','none');
-    $('div#requestnoa').css('display','none');
-    $('div#fees').css('display','none');
-    $('div#souquestion').css('display','none');
     //clear signature inputs when user selects alternate radio option
     function clear() {
         $('div#reviveappform textarea.datesigned').val('');
         $('div#reviveappform .hidethis input').val('');
         $('div#reviveappform select.signmethod').val('Select');
         $('div#reviveappform .hidethis').hide('fast');
-    }
-    function clearttab() {
-        $('div#yesttabreconsideration textarea.datesigned').val('');
-        $('div#yesttabreconsideration .hidethis input').val('');
-        $('div#yesttabreconsideration select.signmethod').val('Select');
-        $('div#yesttabreconsideration .hidethis').hide('fast');
-    }
-    function clearreconsidersig() {
-        $('div#reconsidersig textarea.datesigned').val('');
-        $('div#reconsidersig .hidethis input').val('');
-        $('div#reconsidersig select.signmethod').val('Select');
-        $('div#reconsidersig .hidethis').hide('fast');
-    }
-    function clearexpedite() {
-        $('div#expedite textarea.datesigned').val('');
-        $('div#expedite .hidethis input').val('');
-        $('div#expedite select.signmethod').val('Select');
-        $('div#expedite .hidethis').hide('fast');
     }
     function clearreconsider() {
         $('div#reconsideration textarea.datesigned, div#noreconsideration textarea.datesigned, div#expedite textarea.datesigned, div#received textarea.datesigned').val('');
@@ -3849,6 +2928,7 @@ $(document).ready(function(){
         $('div#reconsideration .hidethis, div#noreconsideration .hidethis, div#expedite .hidethis, div#received .hidethis').hide('fast');
     }
     //
+    //START revive petition ROA s1 options
     $('input#inlineRadio072').change(function() {
         if(this.checked == true){
             $(clear);
@@ -3869,16 +2949,21 @@ $(document).ready(function(){
     $('input#inlineRadio074').change(function() {
         if(this.checked == true){
             $(clear);
-            $('fieldset#edit, fieldset#resp, div#reviveappform').show('fast','swing');
+            $('div#reviveappform').show('fast','swing');
+            $('fieldset#edit').show('fast','swing');
+            $('fieldset#resp').show('fast','swing');
         }
     });
     $('input#inlineRadio075').change(function() {
         if(this.checked == true){
             $(clear);
-            $('div#reviveappform fieldset#resp, div#reviveappform fieldset#edit').hide('fast');
+            $('div#reviveappform fieldset#edit').hide('fast');
+            $('div#reviveappform fieldset#resp').hide('fast');
             $('div#reviveappform').show('fast','swing');
         }
     });
+    //
+    //START revive petition ROA s2 unique options
     $('input#inlineRadio078,input#inlineRadio079').change(function() {
         $(clear);
         $('div#reviveappform div.ql-editor').empty();
@@ -3886,15 +2971,22 @@ $(document).ready(function(){
             checked:false,
         });
         $('div#reviveappform input').val('');
-        $('div#reconsideration, div#noreconsideration, div#yesttabreconsideration, div#nottabreconsideration, div#reviveappform').hide('fast');
+        $('div#reconsideration').hide('fast');
+        $('div#noreconsideration').hide('fast');
+        $('div#yesttabreconsideration').hide('fast');
+        $('div#nottabreconsideration').hide('fast');
+        $('div#reviveappform').hide('fast','swing');
         $('div#reviveappform').show('fast','swing');
     });
+    //request for reconsideration radios
     $('input#inlineRadio080').change(function() {
         $(clearreconsider);
         $('div#reconsideration input,div#noreconsideration input,div#yesttabreconsideration input,div#nottabreconsideration input').prop({
             checked:false,
         });
-        $('div#nottabreconsideration, div#noreconsideration').hide('fast');
+        $('div#nottabreconsideration').hide('fast');
+        $('div#nottabreconsideration').hide('fast');
+        $('div#noreconsideration').hide('fast','swing');
         $('div#reconsideration').show('fast','swing');
     });
     $('input#inlineRadio081').change(function() {
@@ -3903,7 +2995,9 @@ $(document).ready(function(){
         $('div#reconsideration input,div#noreconsideration input,div#yesttabreconsideration input,div#nottabreconsideration input').prop({
             checked:false,
         });
-        $('div#nottabreconsideration, fieldset#tabappeal, div#reconsideration').hide('fast');
+        $('div#nottabreconsideration').hide('fast');
+        $('fieldset#tabappeal').hide('fast');
+        $('div#reconsideration').hide('fast');
         $('div#noreconsideration').show('fast','swing');
     });
     //
@@ -3913,50 +3007,56 @@ $(document).ready(function(){
         });
         $('div#nottabreconsideration').hide('fast');
         $('div#yesttabreconsideration').show('fast');
+        //$('fieldset#appsig').css('display','none');
     });
     $('input#inlineRadio077,input#inlineRadio083').change(function() {
         $('div#yesttabreconsideration').hide('fast','swing');
         $('div#nottabreconsideration').show('fast','swing');
     });
+    //
+    //START revive petition ROA s3 options
     $('input#inlineRadio084').change(function() {
+        $('div#twomonths').hide('fast');
         $('div#newpetradios input, div#twomonths input, div#petdiradios input, div#reviveappformradios input, div#expedite input, div#received input, div#receipt input').val('');
         $('div#newpetradios input, div#twomonths input, div#petdiradios input, div#reviveappformradios input, div#expedite input, div#received input, div#receipt input').prop({
             checked:false,
         });
         $('div.ql-editor').empty();
-        $('textarea.datesigned, .hidethis input').val('');
+        $('textarea.datesigned').val('');
+        $('.hidethis input').val('');
         $('select.signmethod').val('Select');
-        $('div#twomonths, div#newpetradios, div#twomonths, div#petdiradios, div#reviveappformradios, div#expedite, div#received, div#receipt, .hidethis').hide('fast');
+        $('.hidethis').hide('fast');
+        $('div#newpetradios, div#twomonths, div#petdiradios, div#reviveappformradios, div#expedite, div#received, div#receipt').hide('fast');
         $('div#newpetradios').show('fast','swing');
     });
     $('input#inlineRadio085').change(function() {
+        $('div#newpetradios').hide('fast');
         $('div#newpetradios input, div#twomonths input, div#petdiradios input, div#reviveappformradios input, div#expedite input, div#received input, div#receipt input').val('');
         $('div#newpetradios input, div#twomonths input, div#petdiradios input, div#reviveappformradios input, div#expedite input, div#received input, div#receipt input').prop({
             checked:false,
         });
         $('div.ql-editor').empty();
-        $('textarea.datesigned, .hidethis input').val('');
+        $('textarea.datesigned').val('');
+        $('.hidethis input').val('');
         $('select.signmethod').val('Select');
-        $('.hidethis, div#newpetradios, div#twomonths, div#petdiradios, div#reviveappformradios, div#expedite, div#received, div#receipt').hide('fast');
+        $('.hidethis').hide('fast');
+        $('div#newpetradios, div#twomonths, div#petdiradios, div#reviveappformradios, div#expedite, div#received, div#receipt').hide('fast');
         $('div#twomonths').show('fast','swing');
     });
     $('input#inlineRadio088').change(function() {
-        $(clearreconsider);
-        $('div#petdiradios input, div#souquestion input').prop({
-            checked:false,
-        });
-        $('div#petdiradios, div#xreq, #souquestion, #reconsideration').hide('fast');
+        $('div#petdiradios').hide('fast');
         $('div#receipt').show('fast','swing');
     });
     $('input#inlineRadio089').change(function() {
         $(clearreconsider);
-        $('textarea.datesigned, .hidethis input, div#newpetradios input, div#reviveappformradios input, div#expedite input, div#received input, div#receipt input, div#reconsidersig input, div#souquestion input, div#requestnoa input, div#fees input').val('');
-        $('div#newpetradios input, div#reviveappformradios input, div#expedite input, div#received input, div#receipt input, div#reconsidersig input').prop({
+        $('div#received div.ql-editor').empty();
+        $('div#received input, div#receipt input, div#reviveappformradios input').prop({
             checked:false,
         });
-        $('div.ql-editor').empty();
-        $('select.signmethod').val('Select');
-        $('div#newpetradios, div#reviveappformradios, div#expedite, div#received, div#receipt, div#reconsidersig, div#yesttabreconsideration, div#nottabreconsideration, div#xreq, #souquestion, #reconsideration, #requestnoa, #fees').hide('fast');
+        $('div#receipt').hide('fast');
+        $('div#expedite').hide('fast');
+        $('div#reviveappformradios').hide('fast');
+        $('div#received').hide('fast');
         $('div#petdiradios').show('fast','swing');
     });
     $('input#inlineRadio092').change(function() {
@@ -3964,7 +3064,8 @@ $(document).ready(function(){
         $('input#inlineRadio094, input#inlineRadio095').prop({
             checked:false,
         });
-        $('div#reviveappformradios, div#expedite').hide('fast');
+        $('div#reviveappformradios').hide('fast');
+        $('div#expedite').hide('fast');
         $('div#received').show('fast','swing');
     });
     $('input#inlineRadio093').change(function() {
@@ -3978,176 +3079,50 @@ $(document).ready(function(){
         $('div#expedite').show('fast','swing');
         $(clearreconsider);
     });
+    //
+    //START revive petition ROA s4 options
     $('input#inlineRadio096').change(function() {
-        $('textarea.datesigned, .hidethis input, div#newpetradios input, div#twomonths input, div#petdiradios input, div#reviveappformradios input, div#expedite input, div#received input, div#receipt input, div#reconsidersig input').val('');
-        $('div#newpetradios input, div#twomonths input, div#petdiradios input, div#reviveappformradios input, div#expedite input, div#received input, div#receipt input, div#reconsidersig input, #requestnoa input, #fees input').prop({
+        $('div#twomonths').hide('fast');
+        $('div#newpetradios input, div#twomonths input, div#petdiradios input, div#reviveappformradios input, div#expedite input, div#received input, div#receipt input').val('');
+        $('div#newpetradios input, div#twomonths input, div#petdiradios input, div#reviveappformradios input, div#expedite input, div#received input, div#receipt input').prop({
             checked:false,
         });
         $('div.ql-editor').empty();
+        $('textarea.datesigned').val('');
+        $('.hidethis input').val('');
         $('select.signmethod').val('Select');
-        $('.hidethis, div#newpetradios, div#twomonths, div#petdiradios, div#reviveappformradios, div#expedite, div#received, div#receipt, div#reconsidersig, div#yesttabreconsideration, div#nottabreconsideration, div#xreq, #reconsideration, #requestnoa, #fees').hide('fast');
+        $('.hidethis').hide('fast');
+        $('div#newpetradios, div#twomonths, div#petdiradios, div#reviveappformradios, div#expedite, div#received, div#receipt').hide('fast');
         $('div#newpetradios').show('fast','swing');
+        //$('div#reconsidersig').show('fast','swing');
     });
     $('input#inlineRadio097').change(function() {
-        $('textarea.datesigned, .hidethis input, div#newpetradios input, div#twomonths input, div#petdiradios input, div#reviveappformradios input, div#expedite input, div#received input, div#receipt input, div#reconsidersig input').val('');
+        $('div#newpetradios').hide('fast');
+        $('div#newpetradios input, div#twomonths input, div#petdiradios input, div#reviveappformradios input, div#expedite input, div#received input, div#receipt input, div#reconsidersig input').val('');
         $('div#newpetradios input, div#twomonths input, div#petdiradios input, div#reviveappformradios input, div#expedite input, div#received input, div#receipt input, div#reconsidersig input').prop({
             checked:false,
         });
         $('div.ql-editor').empty();
+        $('textarea.datesigned').val('');
+        $('.hidethis input').val('');
         $('select.signmethod').val('Select');
-        $('.hidethis, div#newpetradios, div#twomonths, div#petdiradios, div#reviveappformradios, div#expedite, div#received, div#receipt, div#reconsidersig, div#yesttabreconsideration, div#nottabreconsideration').hide('fast');
+        $('.hidethis').hide('fast');
+        $('div#newpetradios, div#twomonths, div#petdiradios, div#reviveappformradios, div#expedite, div#received, div#receipt, div#reconsidersig').hide('fast');
         $('div#twomonths').show('fast','swing');
+        //$('div#reconsidersig').show('fast','swing');
     });
     $('input#inlineRadio098').change(function() {
         $(clearreconsider);
-        $('div#reviveappformradios input, div#reconsidersig input, div#nottabreconsideration input').prop({
+        $('input#inlineRadio094, input#inlineRadio095').prop({
             checked:false,
         });
-        $('div#reviveappformradios, div#expedite, div#received, div#reconsidersig, div#yesttabreconsideration, div#nottabreconsideration').hide('fast');
-        $('div#reviveappformradios').show('fast','swing');
-        $('div#expedite').show('fast','swing');
-    });
-    $('input#inlineRadio099').change(function() {
-        $(clearreconsider);
-        $(clearttab);
-        $(clearreconsidersig);
-        $('div.ql-editor').empty();
-        $('div#reviveappformradios input, div#reconsidersig input, div#nottabreconsideration input').prop({
-            checked:false,
-        });
-        $('div#reviveappformradios, div#expedite, div#received, div#reconsidersig, div#yesttabreconsideration, div#nottabreconsideration').hide('fast');
-        $('div#reviveappformradios').show('fast','swing');
-        $('div#expedite').show('fast','swing');
+        $('div#reviveappformradios').show('fast');
+        $('div#expedite').show('fast');
     });
     $('input#inlineRadio0100').change(function() {
-        $(clearttab);
-        $('div#yesttabreconsideration, div#nottabreconsideration').hide('fast');
+        $(clearreconsider);
+        $('div#expedite').hide('fast');
         $('div#received').show('fast','swing');
         $('div#reconsidersig').show('fast','swing');
-    });
-    $('input#inlineRadio0101').change(function() {
-        $(clearttab);
-        $(clearreconsidersig);
-        $('div.ql-editor').empty();
-        $('div#received, div#reconsidersig, div#yesttabreconsideration, div#nottabreconsideration').hide('fast');
-        $('div#reconsidersig input, div#nottabreconsideration').prop({
-            checked:false,
-        });
-        $('div#yesttabreconsideration').show('fast','swing');
-    });
-    $('input#inlineRadio0102').change(function() {
-        $(clear);
-        $(clearexpedite);
-        $('div#reviveappform input').prop({
-            checked:false,
-        });
-        $('div#reviveappform input').val('');
-        $('div#fees, div#requestnoa, div#reconsideration, div#expedite, div#reviveappform').hide('fast');
-        $('div#expedite, div#xreq, div#souquestion, div#sou').css('display','block');
-        $('div#reviveappform, div#expedite, div#xreq, div#souquestion, div#sou').show('fast','swing');
-
-    });
-    $('input#inlineRadio0103').change(function() {
-        $(clear);
-        $(clearexpedite);
-        $('div#reviveappform input').prop({
-            checked:false,
-        });
-        $('div#reviveappform input').val('');
-        $('div#expedite, div#xreq, div#souquestion, div#sou, div#reconsideration, div#reviveappform').hide('fast');
-        $('#requestnoa, div#expedite').css('display','block');
-        $('div#reviveappform, #requestnoa, div#expedite').show('fast','swing');
-    });
-    $('input#inlineRadio0106').change(function() {
-        $(clearreconsider);
-        $('div#reconsideration').show('fast','swing');
-    });
-    $('input#inlineRadio0107').change(function() {
-        $(clearreconsider);
-        $('div#reconsideration').hide('fast');
-    });
-    $('input#inlineRadio0104').change(function() {
-        $(clearreconsider);
-        $('div#fees input').prop({
-            checked:false,
-        });
-        $('div#fees, div#xreq, div#reconsideration').hide('fast');
-        //$('div#expedite').show('fast','swing');
-    });
-    $('input#inlineRadio0105').change(function() {
-        //$(clearexpedite);
-        //$('div#expedite').hide('fast');
-        $('div#fees').show('fast','swing');
-    });
-    $('input#inlineRadio0108').change(function() {
-        $('div#xreq').show('fast','swing');
-        $('div#souquestion').hide('fast');
-        $('div#reconsideration').show('fast','swing');
-    });
-    $('input#inlineRadio0109').change(function() {
-        $(clearreconsider);
-        $('div#reconsideration, div#souquestion, div#xreq').hide('fast');
-        $('div#xreq').show('fast','swing');
-    });
-    //START SOU select modals
-    $('.statementou select').on('change',function(){
-        var loadmodal = ($(this).val());
-        //$( loadmodal ).css('display','block');
-        if( loadmodal == 'edit') {
-            $(this).parents('#soucontent div.modal').modal('hide');
-        }
-        else if ( loadmodal == 'delete') {
-            $(this).parents('.statementou').parent().siblings('div.classmodal').modal('show');
-        }
-        else if ( loadmodal == 'limit') {
-            $(this).parents('.statementou').parent().siblings('div.gsmodal').modal('show');
-        }
-    });
-    $('#soucontent').on('hide.bs.modal', function() {
-        var resetselect = [ 'edit' ];
-        var resetselect = jQuery.makeArray( resetselect );
-        var loadmodalreset = $('.statementou select');
-        $(loadmodalreset).val( resetselect[0] );
-    });
-    //
-    //START amend mark edit descripion + literal
-    $('div#amenddescript').css('display','none');
-    $('div#amendlit').css('display','none');
-    $('input#amendd').change(function() {
-        if(this.checked == true){
-            $('div#amenddescript').show( 'fast' );
-        }
-        else {
-            $('div#amenddescript').hide( 'fast' );
-        }
-    });
-    $('input#amendliteral').change(function() {
-        if(this.checked == true){
-            $('div#amendlit').show( 'fast' );
-        }
-        else {
-            $('div#amendlit').hide( 'fast' );
-        }
-    });
-    //
-    //START amend mark additional info
-    if ( $( 'div#amendmark' ).length ) {
-        $('fieldset#addmarkinfo').css('display','none');
-    }
-    $('input#inlineRadio0111').change(function() {
-        if(this.checked == true){
-            $('fieldset#addmarkinfo').show( 'fast' );
-        }
-        else {
-            $('fieldset#addmarkinfo').hide( 'fast' );
-        }
-    });
-    $('input#inlineRadio0112').change(function() {
-        if(this.checked == true){
-            $('fieldset#addmarkinfo').hide( 'fast' );
-        }
-        else {
-            $('fieldset#addmarkinfo').show( 'fast' );
-        }
     });
 });
