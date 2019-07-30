@@ -209,6 +209,42 @@ object#selected {
 .glyphicon {
     top: 2px;
 }
+.inusegs .label {
+	margin:0 .75em .75em 0;
+	font-size:1em;
+	text-align:left;
+	background:#cdd8dc;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	-ms-word-break: break-all;
+	word-break: break-all;
+	word-break: break-word;
+	-ms-hyphens: auto;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+	white-space: normal;
+	display: table;
+	float: left;
+	width: 47%;
+	min-height: 3.15em;
+	}
+	.inusegs .label button .glyphicon {
+		line-height: auto;
+		}
+		.inusegs .label button {
+			width:10%;
+			float:right;
+			font-size: 2em;
+			color:#333;
+			min-width: 38px;
+			display: table-cell;
+			vertical-align: middle;
+			}
+			.inusegs span.label span {
+				width:80%;
+				line-height: 1.2em;
+				}
 .subtle {
     vertical-align: text-top;
     display: inline-block;
@@ -1034,7 +1070,7 @@ table#goodsandservices {
 }
 td:focus {
     box-shadow: none;
-    outline: 1px solid #009CDE;
+    outline: 1px solid #009CDE!important;
     outline-offset: -4px;
 }
 td.red {
@@ -1566,7 +1602,34 @@ span#termsagree label a:hover, span#termsagree label a:hover {
 .noexpand.blue {
     background-color: #004C97;
     color: #fff;
-}
+	}
+.statementou .noexpand.blue {
+    padding-left: 0;
+	min-height: 64px;
+    display: inline-block;
+	}
+.statementou .noexpand.blue span:first-child {
+    margin-right: 1em;
+	}
+.statementou .noexpand.blue span.listed {
+    font-weight: normal;
+	}
+.statementou .noexpand.blue span.strike {
+	text-decoration: line-through #FFF;
+	}
+.strike {
+	text-decoration: line-through #FFF;
+	}
+.form-check span.radio.special.strike, .radio-inline.radiocontainer.special.strike, .radiocontainer.special.strike {
+	text-decoration: line-through #000;
+	}
+.statementou .noexpand.blue .displaytable {
+    min-height: 38px;
+	}
+.statementou select.gsactions {
+	margin-top: .5em;
+	margin-bottom: 1em;
+	}
 .leadtext {
     margin-top: 30px;
     margin-bottom: 20px;
@@ -1597,7 +1660,7 @@ p#lead {
 span.weight600 {
     font-weight:normal;
 }
-#success span.weight600, #responseamend span.weight600 {
+#success span.weight600, #responseamend span.weight600, div.modal span.weight600 {
     color:#333;
     font-weight:600;
 }
@@ -1725,22 +1788,37 @@ label.hasinfo {
     overflow:auto;
     overflow-y:auto;
     overflow-x:auto;
+    scrollbar-color: #808080 #bbb;
+	scrollbar-width: thin;
 }
+#scrollone:hover, div.modal div.inusegs:hover {
+	scrollbar-color: #004C97 #bbb;
+	}	
+div.modal div.inusegs {
+	min-height:280px;
+	overflow:auto;
+	overflow-y:auto;
+	overflow-x:auto;
+	scrollbar-color: #808080 #bbb;
+	scrollbar-width: thin;
+	padding: 10px 10px;
+    padding-bottom: 1px;
+	}
 #responseamendreview #scrollone {
     margin:auto 0;
     margin-right:15px;
     max-height:320px;
 }
-#scrollone::-webkit-scrollbar {
+#scrollone::-webkit-scrollbar, div.modal div.inusegs::-webkit-scrollbar {
     width: 1em;
 }
-#scrollone::-webkit-scrollbar-track {
+#scrollone::-webkit-scrollbar-track, div.modal div.inusegs::-webkit-scrollbar-track {
     background: #bbb;
 }
-#scrollone::-webkit-scrollbar-thumb {
+#scrollone::-webkit-scrollbar-thumb, div.modal div.inusegs::-webkit-scrollbar-thumb {
     background: #808080;
 }
-#scrollone::-webkit-scrollbar-thumb:hover {
+#scrollone::-webkit-scrollbar-thumb:hover, div.modal div.inusegs::-webkit-scrollbar-thumb:hover {
     background: #004C97;
 }
 /*BUTTONS*/
@@ -1816,10 +1894,21 @@ label.hasinfo {
     box-shadow:         rgb(0,0,0);
     text-shadow: 0 0 0 transparent;
 }
-.resetphonebtn, .resetregbtn, .resetdktrefbtn, .resetnamebtn, .resetportraitbtn, .resetportraitbtn, .resetsignaturebtn, .resettranslationbtn, .resettransliterationbtn, .resetdisclaimbtn {
+.resetphonebtn, .resetregbtn, .resetdktrefbtn, .resetnamebtn, .resetportraitbtn, .resetportraitbtn, .resetsignaturebtn, .resettranslationbtn, .resettransliterationbtn, .resetdisclaimbtn, .deleterow, button.resetclassbtn {
     margin: 0 auto;
     float: none;
     margin-top: .545em;
+}
+div.resetclass{
+	 border-top: 1px solid #ddd; 
+	 margin-bottom: 0.4em; 
+	 margin-top: 1.5em;
+	 margin-left:15px;
+	 margin-right:15px;"
+}
+#markoptions .modal-footer button, .gsmodal .modal-footer button {
+	float:none;
+	margin: 0 auto;
 }
 .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus, div[role="radio"]:focus, .btn-success.active.focus, .btn-success.active:focus, .btn-success.focus, .btn-success:active.focus, .btn-success:active:focus, .btn-success:focus, .btn-sm.active.focus, .btn-sm.active:focus, .btn-sm.focus, .btn-sm:active.focus, .btn-sm:active:focus, .btn-sm:focus, .close.active.focus, .close.active:focus, .close.focus, .close:active.focus, .close:active:focus, .close:focus, .btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.focus, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:focus, .ql-snow.ql-toolbar button:focus, .ql-snow .ql-toolbar button:focus, .ql-snow.ql-toolbar button.focus, .ql-snow.ql-toolbar span:focus, .ql-snow .ql-toolbar span:focus, .ql-snow.ql-toolbar span.focus, .ql-tooltip input:focus, .ql-tooltip input.focus {
     /*outline: thin dotted;*/
@@ -2170,6 +2259,13 @@ input:checked + .slider #off {
     100% { transform: rotate(360deg); }
 }
 /* MODALS */
+.modal {
+	font-size:1.25em;
+}
+.modal-title {
+	font-weight: 600;
+	color:#333;
+}
 .modal-footer {
     border-top: none;
 }
@@ -2178,6 +2274,8 @@ input:checked + .slider #off {
 }
 .modal-header .close {
     margin-top: -4px!important;
+    font-size: 2em;
+	padding: 0 .3em .2em .3em;
 }
 .modal-content {
     -webkit-border-top-left-radius: 		0;
@@ -2200,6 +2298,10 @@ input:checked + .slider #off {
     font-weight:400;
     color: #fff;
     background-color:#9BB8D3;
+}
+.modal-header h4 {
+    width: 80%;
+	padding: .35em .3em .2em .3em;
 }
 .modal-body {
     color: #333;
@@ -2277,7 +2379,7 @@ div.round {
     float: right;
     margin: 0;
 }
-#basisabde .btn-success.add.ctr, #basisab .btn-success.add.ctr {
+#basisabde .btn-success.add.ctr, #basisab .btn-success.add.ctr, .statementou .btn-success.add.ctr {
     margin-top: 0;
     margin-bottom:2em;
 }
@@ -2457,7 +2559,7 @@ span#authem  {
     margin-top:0!important;
     margin-bottom:0!important;
 }
-#declarationsignature #declarationschecks span.radio, #optionalactionschecks span.radio, #responseamendoptional span {
+#declarationsignature #declarationschecks span.radio, #optionalactionschecks span.radio, #responseamendoptional span, .statementou span.radio {
     margin-top:0!important;
     margin-bottom:0!important;
 }
@@ -2888,12 +2990,12 @@ fileholder .linkholder, .fileholder .iconholder{
 #gsselected button.close {
     height:1.4em;
 }
-#editowner button.close, #reviewattorney button.close, #userprofilepage button.close, #yesattorneyfiling button.close, .phones button.close, #detected button.close, #designwithtext button.close, #basisabde button.close, #basisab button.close {
+#editowner button.close, #reviewattorney button.close, #userprofilepage button.close, #yesattorneyfiling button.close, .phones button.close, #detected button.close, #designwithtext button.close, #basisabde button.close, #basisab button.close, button.resetclassbtn {
     font-size: 3em;
     height:1.06em;
     color:#009CDE;
 }
-#editowner button.close:hover, #reviewattorney button.close:hover, #userprofilepage button.close:hover, #yesattorneyfiling button.close:hover, #detected button.close:hover, #designwithtext button.close:hover, #basisabde button.close:hover, #basisab button.close:hover, #addNewOwnerForm button.close:hover, #addNewOwnerForm button.close:hover {
+#editowner button.close:hover, #reviewattorney button.close:hover, #userprofilepage button.close:hover, #yesattorneyfiling button.close:hover, #detected button.close:hover, #designwithtext button.close:hover, #basisabde button.close:hover, #basisab button.close:hover, #addNewOwnerForm button.close:hover, #addNewOwnerForm button.close:hover, .statementou button.close:hover, button.deleterow:hover, button.resetclassbtn:hover {
     color: #047db0;
     opacity:1.0;
     -moz-opacity: 1.0;
@@ -3175,6 +3277,11 @@ footer #megamenu ul {
     box-shadow: none;
     border-color: #009CDE;
     outline: 0;
+}
+@media (max-width: 421px) { 
+	.inusegs .label {
+		width: 100%;
+		}
 }
 @media (max-width: 528px) {
     .breadcrumb-steps p {
