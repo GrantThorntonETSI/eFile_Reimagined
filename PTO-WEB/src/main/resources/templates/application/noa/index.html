@@ -68,9 +68,9 @@
                                                     <th:block th:each="Good_Service: ${Good_Service_class.getGoodAndServices()}">
 
                                                         <span class="label label-info subtle" contenteditable="false">
-                                                        <span class="closepans" th:text="${Good_Service.getClassDescription()}"></span>
-                                                        <button type="button" class="close closegspanels" aria-label="delete"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
-                                                    </span>
+                                                            <span class="closepans" th:text="${Good_Service.getClassDescription()}"></span>
+                                                            <button type="button" class="close closegspanels" aria-label="delete"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                        </span>
 
                                                     </th:block>
 
@@ -98,7 +98,17 @@
                                     <div class="card-text noexpand blue">
                                         <div class="col-md-12 col-lg-7">
                                             <div class="displaytable">
-                                                <h2 class="card-title weight600 displaycell"><span th:text="${Good_Service_class.getClassNumberDisplay()}">Class 18</span> <span class="listed" role="alert"><span class="sr-only"></span>Athletic apparel, namely, shirts, pants, jackets, footwear, hats and caps, athletic uniforms;</span> <span class="listed" role="alert"><span class="sr-only"></span>Athletic tops and bottoms for cycling;</span> <span class="listed" role="alert"><span class="sr-only" ></span>Clothing, namely, arm warmers;</span> <span class="listed" role="alert"><span class="sr-only"></span>Clothing, namely, base layers;</span> <span class="listed" role="alert"><span class="sr-only"></span>Gloves;</span> <span class="listed" role="alert"><span class="sr-only"></span>Jackets and socks;</span> <span class="listed" role="alert">T-shirts;</span> <span class="listed role="alert""><span class="sr-only"></span>Tank tops</span></h2>
+                                                <h2 class="card-title weight600 displaycell"><span th:text="${Good_Service_class.getClassNumberDisplay()}">Class 18</span>
+
+                                                    <th:block th:each="Good_Service: ${Good_Service_class.getGoodAndServices()}">
+                                                        <span class="listed" role="alert">
+                                                            <span class="sr-only"></span>
+                                                            <span th:text="${Good_Service.getClassDescription()}">Athletic apparel, namely, shirts, pants, jackets, footwear, hats and caps, athletic uniforms;</span>
+                                                        </span>
+
+                                                    </th:block>
+
+                                                </h2>
                                             </div>
                                         </div>
                                         <div class="col-md-12 col-lg-5">

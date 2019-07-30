@@ -1921,7 +1921,26 @@ $(document).ready(function(){
 
 
 
-
+	//START SOU select modals
+	$('.statementou select').on('change',function(){
+		var loadmodal = ($(this).val());
+		//$( loadmodal ).css('display','block');
+		if( loadmodal == 'edit') {
+			$(this).parents('#soucontent div.modal').modal('hide');
+		}
+		else if ( loadmodal == 'delete') {
+			$(this).parents('.statementou').parent().siblings('div.classmodal').modal('show');
+		}
+		else if ( loadmodal == 'limit') {
+			$(this).parents('.statementou').parent().siblings('div.gsmodal').modal('show');
+		}
+	});
+	$('#soucontent').on('hide.bs.modal', function() {
+		var resetselect = [ 'edit' ];
+		var resetselect = jQuery.makeArray( resetselect );
+		var loadmodalreset = $('.statementou select');
+		$(loadmodalreset).val( resetselect[0] );
+	});
 
 
 
