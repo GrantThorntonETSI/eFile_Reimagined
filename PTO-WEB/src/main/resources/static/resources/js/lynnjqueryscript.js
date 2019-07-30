@@ -1588,7 +1588,7 @@ $(document).ready(function(){
 	});
 	//END displaymark height match
     
-    //START close button height match SOU labels
+  //START close button height match SOU labels
 	$('div.gsmodal').on('show.bs.modal', function() {
       var d = $('div.gsmodal button.closegspanels').parent().find('span.closepans');
 	  var c = $('div.gsmodal button.closegspanels span.label');
@@ -1681,16 +1681,16 @@ $(document).ready(function(){
 		$(loadmodalreset).val( resetselect[0] );
 	});
 	//
-    
-    //START close button height match dashboard
+
+	//START close button height match dashboard
 	$( window ).on('load', function() {
-      var d = $( '#announcements .closepans' ).prev('div');
-	  $(d).css('display','flex').css('flex-direction','column').css('min-height','3em');
-	  $('#announcements .closepans').css( 'line-height', (d.innerHeight() + 'px') ).css( 'height', (d.innerHeight()) );
-	  $('#announcements .closegspanels').css('line-height',(d.innerHeight() + 'px'));
-	  $( window ).resize(function() {
-  		$('#announcements .closepans').css( 'height', (d.innerHeight()) );
-	  	$('#announcements .closegspanels').css('line-height',(d.innerHeight() + 'px'));
+		var d = $( '#announcements .closepans' ).prev('div');
+		$(d).css('display','flex').css('flex-direction','column').css('min-height','3em');
+		$('#announcements .closepans').css( 'line-height', (d.innerHeight() + 'px') ).css( 'height', (d.innerHeight()) );
+		$('#announcements .closegspanels').css('line-height',(d.innerHeight() + 'px'));
+		$( window ).resize(function() {
+			$('#announcements .closepans').css( 'height', (d.innerHeight()) );
+			$('#announcements .closegspanels').css('line-height',(d.innerHeight() + 'px'));
 		});
 	});
 	//
@@ -1918,32 +1918,32 @@ $(document).ready(function(){
 						$(focussed).focus();
 						$(hasdraft).remove();
 						$(hasdraftchild).remove();
-    					dt.fnDeleteRow(hasdraft);
-						dt.fnDeleteRow(hasdraftchild);	
-					  });
-					}
-				} else if ((hasdraft.length < 1) || (hasdraftchild.length < 1)) {
-					var deletethis = $( this ).closest('tr').next('tr.child');
-					var deletethistoo = $( this ).closest('tr');
-					$(b).css('visibility','hidden');
-					$(b).css('height','1px');
-					$(b).removeClass('form-group');
-					$(b).removeClass('form-group-md');
-					$(b).css('top','-10000px');
-					$(b).css('float','none');
-					$(b).css('padding','0');
-					$(b).css('marginBottom','0');
-					$('#mintext').css('display','none');
-					$('#alertbtndash').css('display','none');
-					$('#cancelbtndash').css('display','none');
-					$('#alertbtndash').blur();
-					$(deletethis).remove();
-					$(deletethistoo).remove();
-					dt.fnDeleteRow(deletethis);
-					dt.fnDeleteRow(deletethistoo);
+						dt.fnDeleteRow(hasdraft);
+						dt.fnDeleteRow(hasdraftchild);
+					});
 				}
-			});
+			} else if ((hasdraft.length < 1) || (hasdraftchild.length < 1)) {
+				var deletethis = $( this ).closest('tr').next('tr.child');
+				var deletethistoo = $( this ).closest('tr');
+				$(b).css('visibility','hidden');
+				$(b).css('height','1px');
+				$(b).removeClass('form-group');
+				$(b).removeClass('form-group-md');
+				$(b).css('top','-10000px');
+				$(b).css('float','none');
+				$(b).css('padding','0');
+				$(b).css('marginBottom','0');
+				$('#mintext').css('display','none');
+				$('#alertbtndash').css('display','none');
+				$('#cancelbtndash').css('display','none');
+				$('#alertbtndash').blur();
+				$(deletethis).remove();
+				$(deletethistoo).remove();
+				dt.fnDeleteRow(deletethis);
+				dt.fnDeleteRow(deletethistoo);
+			}
 		});
+	});
 	//
 	//START initialize Dashboard datable two
 	var tabletwo = $('#dashboardtabletwo').DataTable({
@@ -1991,26 +1991,26 @@ $(document).ready(function(){
 
 
 
-		$(function() {
-        var progresslength = $('#editattorney .breadcrumb-steps .col-xs-2, #amendmark .breadcrumb-steps .col-xs-2, #editowneroptional .breadcrumb-steps .col-xs-2, #gsinuseoptional .breadcrumb-steps .col-xs-2, #gsselectedoptional .breadcrumb-steps .col-xs-2, div.amend .breadcrumb-steps .col-xs-2').length;
-        var progress = $('#editattorney .breadcrumb-steps .col-xs-2, #amendmark .breadcrumb-steps .col-xs-2, #editowneroptional .breadcrumb-steps .col-xs-2, #gsinuseoptional .breadcrumb-steps .col-xs-2, #gsselectedoptional .breadcrumb-steps .col-xs-2, div.amend .breadcrumb-steps .col-xs-2');
-          if ((progresslength) === 5)  {
-              $(progress).css('width','20%');
-          }
-          if ((progresslength) === 4)  {
-              $(progress).css('width','25%');
-          }
-          if ((progresslength) === 3)  {
-              $(progress).css('width','33.33%');
-          }
-          if ((progresslength) === 2)  {
-              $(progress).css('width','50%');
-          }
-          if ((progresslength) === 1)  {
-              $('#editattorney .displaycell, #amendmark .displaycell, #editowneroptional .displaycell, #gsinuseoptional .displaycell, #gsselectedoptional .displaycell, div.amend .displaycell').css('display','none');
-            //console.log(progresslength);
-          }
-    });
+	$(function() {
+		var progresslength = $('#editattorney .breadcrumb-steps .col-xs-2, #amendmark .breadcrumb-steps .col-xs-2, #editowneroptional .breadcrumb-steps .col-xs-2, #gsinuseoptional .breadcrumb-steps .col-xs-2, #gsselectedoptional .breadcrumb-steps .col-xs-2, div.amend .breadcrumb-steps .col-xs-2').length;
+		var progress = $('#editattorney .breadcrumb-steps .col-xs-2, #amendmark .breadcrumb-steps .col-xs-2, #editowneroptional .breadcrumb-steps .col-xs-2, #gsinuseoptional .breadcrumb-steps .col-xs-2, #gsselectedoptional .breadcrumb-steps .col-xs-2, div.amend .breadcrumb-steps .col-xs-2');
+		if ((progresslength) === 5)  {
+			$(progress).css('width','20%');
+		}
+		if ((progresslength) === 4)  {
+			$(progress).css('width','25%');
+		}
+		if ((progresslength) === 3)  {
+			$(progress).css('width','33.33%');
+		}
+		if ((progresslength) === 2)  {
+			$(progress).css('width','50%');
+		}
+		if ((progresslength) === 1)  {
+			$('#editattorney .displaycell, #amendmark .displaycell, #editowneroptional .displaycell, #gsinuseoptional .displaycell, #gsselectedoptional .displaycell, div.amend .displaycell').css('display','none');
+			//console.log(progresslength);
+		}
+	});
 
 
 
