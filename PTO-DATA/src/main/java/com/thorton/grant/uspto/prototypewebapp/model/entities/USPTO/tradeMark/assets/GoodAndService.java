@@ -15,6 +15,9 @@ public class GoodAndService {
     private Long id;
 
 
+    private boolean activeGS = true;
+
+
     private String classNumber;
 
     private String classDescription;
@@ -851,5 +854,13 @@ public class GoodAndService {
 
     public void setNA_AllGS(boolean NA_AllGS) {
         this.NA_AllGS = NA_AllGS;
+    }
+
+    public boolean isActiveGS() {
+        return activeGS;
+    }
+
+    public void setActiveGS(boolean activeGS) {
+        this.activeGS = activeGS;
     }
 }

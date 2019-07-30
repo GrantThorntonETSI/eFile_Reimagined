@@ -17,6 +17,11 @@ public class GSClassCategory {
         goodAndServices = new ArrayList<>();
     }
 
+
+    private boolean activeClass = true;
+
+
+
     private ArrayList<GoodAndService> goodAndServices;
     private  Integer classCategoryNumber;
 
@@ -571,7 +576,11 @@ public class GSClassCategory {
         this.firstMarkDateCC = firstMarkDateCC;
     }
 
+    public boolean isActiveClass() {
+        return activeClass;
+    }
 
-
-
+    public void setActiveClass(boolean activeClass) {
+        this.activeClass = activeClass;
+    }
 }
