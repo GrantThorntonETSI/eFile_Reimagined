@@ -41,7 +41,7 @@
                                                                 <button type="button" class="btn btn-sm btn-success cancel" data-dismiss="modal">Cancel</button>
                                                             </div>
                                                             <div class="col-xs-6 btn-group">
-                                                                <button type="button" class="btn btn-sm btn-success" data-dismiss="modal">Yes, delete this class</button>
+                                                                <button type="button" class="btn btn-sm btn-success" data-dismiss="modal" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">Yes, delete this class</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -109,11 +109,13 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row formodal">
                                 <div class="resetclass">
-                                    <button type="button" class="btn btn-sm close resetclassbtn" aria-label="undo this class deletion"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
+                                    <button type="button" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}" class="btn btn-sm close resetclassbtn" aria-label="undo this class deletion"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
                                 </div>
                             </div><!--END add/remove class button row-->
+
                             <div class="row">
                                 <div class="col-xs-12 statementou">
                                     <div class="card-text noexpand blue">
@@ -122,24 +124,19 @@
                                                 <h2 class="card-title weight600 displaycell"><span th:text="${Good_Service_class.getClassNumberDisplay()}">Class 18</span>
 
                                                     <th:block th:each="Good_Service: ${Good_Service_class.getGoodAndServices()}">
-
                                                             <th:block th:if="${Good_Service.isActiveGS() == true}">
                                                                 <span class="listed" role="alert">
                                                                     <span class="sr-only"></span>
-                                                                    <span th:text="${Good_Service.getClassDescription()}">Athletic apparel, namely, shirts, pants, jackets, footwear, hats and caps, athletic uniforms;</span>
+                                                                    <span th:text="${Good_Service.getClassDescription()}">Athletic apparel, namely, shirts, pants, jackets, footwear, hats and caps, athletic uniforms;</span>;
                                                                 </span>
                                                             </th:block>
                                                             <th:block th:if="${Good_Service.isActiveGS() == false}">
                                                                 <span class="listed strike" role="alert">
                                                                     <span class="sr-only">removed</span>
-                                                                    <span th:text="${Good_Service.getClassDescription()}">Athletic apparel, namely, shirts, pants, jackets, footwear, hats and caps, athletic uniforms;</span>
+                                                                    <span th:text="${Good_Service.getClassDescription()}">Athletic apparel, namely, shirts, pants, jackets, footwear, hats and caps, athletic uniforms;</span>;
                                                                 </span>
 
                                                             </th:block>
-
-
-
-
                                                     </th:block>
 
                                                 </h2>
