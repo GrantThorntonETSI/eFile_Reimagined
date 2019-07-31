@@ -41,7 +41,7 @@
                                                                 <button type="button" class="btn btn-sm btn-success cancel" data-dismiss="modal">Cancel</button>
                                                             </div>
                                                             <div class="col-xs-6 btn-group">
-                                                                <button type="button" class="btn btn-sm btn-success" data-dismiss="modal" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">Yes, delete this class</button>
+                                                                <button type="button" class="btn btn-sm btn-success disableCC" data-dismiss="modal" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">Yes, delete this class</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1561,6 +1561,14 @@
 
 
         });
+
+
+
+        $('.disableCC').click(function () {
+            var ccID = $(this).attr("cc-id");
+
+            saveGSstatus("cc", "no", ccID,appInternalID);
+        })
 
 
 

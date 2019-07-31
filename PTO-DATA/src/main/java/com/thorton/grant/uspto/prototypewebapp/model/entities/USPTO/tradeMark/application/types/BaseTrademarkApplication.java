@@ -1004,6 +1004,8 @@ public class BaseTrademarkApplication  {
                     gsClassCategory.setFirstGSDateCC(current.getFirstGSDateCC());
                     gsClassCategory.setFirstMarkDateCC(current.getFirstMarkDateCC());
 
+                    gsClassCategory.setActiveClass(current.isActiveGS());
+
 
 
 

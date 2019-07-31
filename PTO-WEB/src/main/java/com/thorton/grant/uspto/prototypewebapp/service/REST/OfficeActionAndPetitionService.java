@@ -5,12 +5,14 @@ import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.GoodAndService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 
 import java.util.Date;
+import java.util.Iterator;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -494,13 +496,49 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
 
         // pField will always be  "add" or "remove"
         // pValue will always be the bread crumb value to add to selected list
+        String msg ="";
+        if(pField.equals("gs")){
+            if(pValue.equals("yes")){
+                baseTrademarkApplication.findGSbyInternalID(gsID).setActiveGS(true);
+            }
+            else {
+                baseTrademarkApplication.findGSbyInternalID(gsID).setActiveGS(false);
+            }
 
-        if(pValue.equals("yes")){
-            baseTrademarkApplication.findGSbyInternalID(gsID).setActiveGS(true);
+             msg = "Goods and Services level ";
         }
         else {
-            baseTrademarkApplication.findGSbyInternalID(gsID).setActiveGS(false);
+            if(pField.equals("cc")){
+                String ccNumber = gsID;
+
+                // for each gs, that matches that class id ..
+                // set active to false
+                if(pValue.equals("yes")){
+                    for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                        GoodAndService current = iter.next();
+                        if(current.getClassNumber().equals(ccNumber)){
+                            current.setActiveGS(true);
+                        }
+                    }
+
+                }
+                else {
+                    for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                        GoodAndService current = iter.next();
+                        if(current.getClassNumber().equals(ccNumber)){
+                            current.setActiveGS(false);
+                        }
+                    }
+
+                }
+
+                msg = "Class Category level ";
+
+
+
+            }
         }
+
 
 
 
@@ -508,7 +546,7 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
-        String responseMsg = "Goods and Services status has been saved";
+        String responseMsg = msg + "status has been saved";
 
 
         return buildResponseEnity("200", responseMsg);
