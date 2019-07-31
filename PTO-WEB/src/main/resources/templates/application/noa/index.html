@@ -21,27 +21,31 @@
 
                     <th:block th:each="Good_Service_class : ${baseTrademarkApplication.getGoodAndServicesCategories()}">
                         <div>
-                            <!-- Modal -->
-                            <div class="modal fade classmodal" tabindex="0" role="dialog" aria-labelledby="soumodallabel">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="soumodallabel">Delete Class Permanently?</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p role="alert"><span class="sr-only"></span>This statement of use does not cover this specific class. This entire class is to be permanently deleted from this application.</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <div class="row">
-                                                <div class="col-xs-12 form-group form-group-md">
-                                                    <div class="row">
-                                                        <div class="btn-group btn-group-justified">
-                                                            <div class="col-xs-6 btn-group">
-                                                                <button type="button" class="btn btn-sm btn-success cancel" data-dismiss="modal">Cancel</button>
-                                                            </div>
-                                                            <div class="col-xs-6 btn-group">
-                                                                <button type="button" class="btn btn-sm btn-success disableCC" data-dismiss="modal" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">Yes, delete this class</button>
+
+
+                            <th:block th:if="${Good_Service_class.isActiveClass() == true}">
+                                <!-- Modal -->
+                                <div class="modal fade classmodal" tabindex="0" role="dialog" aria-labelledby="soumodallabel">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="soumodallabel">Delete Class Permanently?</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p role="alert"><span class="sr-only"></span>This statement of use does not cover this specific class. This entire class is to be permanently deleted from this application.</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <div class="row">
+                                                    <div class="col-xs-12 form-group form-group-md">
+                                                        <div class="row">
+                                                            <div class="btn-group btn-group-justified">
+                                                                <div class="col-xs-6 btn-group">
+                                                                    <button type="button" class="btn btn-sm btn-success cancel" data-dismiss="modal">Cancel</button>
+                                                                </div>
+                                                                <div class="col-xs-6 btn-group">
+                                                                    <button type="button" class="btn btn-sm btn-success disableCC" data-dismiss="modal" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">Yes, delete this class</button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -50,80 +54,79 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- Modal -->
-                            <div class="modal fade gsmodal" tabindex="0" role="dialog" aria-labelledby="soumodaltwolabel">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="soumodaltwolabel">Delete some goods/services in this class</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Please delete goods/services that are not in use.</p>
-                                            <p>The mark is in use in commerce on or in connection with the following goods/services:</p>
-                                            <div class="form-group form-group-md">
-                                                <div class="inusegs form-control" role="textbox" contenteditable="true" aria-multiline="true">
+                                <!-- Modal -->
+                                <div class="modal fade gsmodal" tabindex="0" role="dialog" aria-labelledby="soumodaltwolabel">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="soumodaltwolabel">Delete some goods/services in this class</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Please delete goods/services that are not in use.</p>
+                                                <p>The mark is in use in commerce on or in connection with the following goods/services:</p>
+                                                <div class="form-group form-group-md">
+                                                    <div class="inusegs form-control" role="textbox" contenteditable="true" aria-multiline="true">
 
-                                                    <th:block th:each="Good_Service: ${Good_Service_class.getGoodAndServices()}">
-
+                                                        <th:block th:each="Good_Service: ${Good_Service_class.getGoodAndServices()}">
 
 
 
-                                                        <th:block th:if="${Good_Service.isActiveGS() == true}">
+
+                                                            <th:block th:if="${Good_Service.isActiveGS() == true}">
                                                             <span class="label label-info subtle" contenteditable="false">
                                                             <span class="closepans" th:text="${Good_Service.getClassDescription()}"></span>
                                                             <button type="button" class="close closegspanels" aria-label="delete" th:attr="gs-id=${Good_Service.getInternalID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
                                                         </span>
 
-                                                        </th:block>
+                                                            </th:block>
 
-                                                        <th:block th:if="${Good_Service.isActiveGS() == false}">
+                                                            <th:block th:if="${Good_Service.isActiveGS() == false}">
 
                                                             <span class="label label-info subtle" contenteditable="false" style="background: rgb(236, 241, 243); color: rgb(153, 153, 153);">
                                                             <span class="closepans" style="display: table-cell; vertical-align: middle;" th:text="${Good_Service.getClassDescription()}"></span>
                                                             <button type="button" class="close closegspanels refresh" aria-label="undo delete this good / service" style="display: table-cell; vertical-align: middle;" th:attr="gs-id=${Good_Service.getInternalID()}"><span aria-hidden="true" class="glyphicon glyphicon-refresh"></span></button>
                                                         </span>
 
+                                                            </th:block>
+
+
+
+
+
+
+
                                                         </th:block>
 
 
-
-
-
-
-
-                                                    </th:block>
-
-
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <div class="row">
-                                                <div class="col-xs-12 form-group form-group-md">
-                                                    <button type="button" class="btn btn-sm btn-success" data-dismiss="modal">Done</button>
+                                            <div class="modal-footer">
+                                                <div class="row">
+                                                    <div class="col-xs-12 form-group form-group-md">
+                                                        <button type="button" class="btn btn-sm btn-success" data-dismiss="modal">Done</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="row formodal">
-                                <div class="resetclass">
-                                    <button type="button" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}" class="btn btn-sm close resetclassbtn" aria-label="undo this class deletion"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
-                                </div>
-                            </div><!--END add/remove class button row-->
+                                <div class="row formodal" style="display: none;">
+                                    <div class="resetclass">
+                                        <button type="button" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}" class="btn btn-sm close resetclassbtn  enable-cc" aria-label="undo this class deletion"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
+                                    </div>
+                                </div><!--END add/remove class button row-->
 
-                            <div class="row">
-                                <div class="col-xs-12 statementou">
-                                    <div class="card-text noexpand blue">
-                                        <div class="col-md-12 col-lg-7">
-                                            <div class="displaytable">
-                                                <h2 class="card-title weight600 displaycell"><span th:text="${Good_Service_class.getClassNumberDisplay()}">Class 18</span>
+                                <div class="row">
+                                    <div class="col-xs-12 statementou">
+                                        <div class="card-text noexpand blue">
+                                            <div class="col-md-12 col-lg-7">
+                                                <div class="displaytable">
+                                                    <h2 class="card-title weight600 displaycell"><span th:text="${Good_Service_class.getClassNumberDisplay()}">Class 18</span>
 
-                                                    <th:block th:each="Good_Service: ${Good_Service_class.getGoodAndServices()}">
+                                                        <th:block th:each="Good_Service: ${Good_Service_class.getGoodAndServices()}">
                                                             <th:block th:if="${Good_Service.isActiveGS() == true}">
                                                                 <span class="listed" role="alert">
                                                                     <span class="sr-only"></span>
@@ -137,99 +140,316 @@
                                                                 </span>
 
                                                             </th:block>
-                                                    </th:block>
+                                                        </th:block>
 
-                                                </h2>
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 col-lg-5">
+                                                <label for="gs_one" class="sr-only">edit class</label>
+                                                <select class="form-control gsactions" id="gs_one">
+                                                    <option value="edit">Edit</option>
+                                                    <option value="delete">Delete this class permanently</option>
+                                                    <option value="limit">Delete some goods/services in this class</option>
+                                                    <option value="divide" disabled>Divide some or all of the goods/services in this class</option>
+                                                </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-12 col-lg-5">
-                                            <label for="gs_one" class="sr-only">edit class</label>
-                                            <select class="form-control gsactions" id="gs_one">
-                                                <option value="edit">Edit</option>
-                                                <option value="delete">Delete this class permanently</option>
-                                                <option value="limit">Delete some goods/services in this class</option>
-                                                <option value="divide" disabled>Divide some or all of the goods/services in this class</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <fieldset aria-label="use statement">
-                                                <div class="row">
-                                                    <div class="col-xs-12">
-                                                        <h2 class="weight600">Use Statement</h2>
-                                                        <div class="form-group form-group-md">
-                                                            <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" aria-labelledby="userAccept-label_one" id="user-accept-checkbox" name="user-accept-checkbox">
-                                                            <label class="form-check-label form-check-left form-check" for="user-accept-checkbox" id="userAccept-label_one"><span class="radio notspecial">The mark is in use in commerce on or in connection with all goods/services in this class.</span></label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                        <label for="connection-date_one" class="matchlabelheighttwo">When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> <span class="label label-info subtle">Reduced Fee</span></label>
-                                                        <input type="date" class="form-control" id="connection-date_one" name="connectiondate" value="">
-                                                    </div>
-                                                    <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                        <label for="firstconnection-date_one" class="matchlabelheighttwo">When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> <span class="label label-info subtle">Reduced Fee</span></label>
-                                                        <input type="date" class="form-control" id="firstconnection-date_one" name="firstconnectiondate" value="">
-                                                    </div>
-                                                </div>
-                                            </fieldset>
-                                            <fieldset aria-label="upload specimen">
-                                                <div class="row">
-                                                    <div class="col-xs-12 form-group form-group-md upload">
-                                                        <h2 class="weight600">Attach Specimen</h2>
-                                                        <p id="upimagetwo">Please provide a specimen for this individual good/service.</p>
-                                                        <div class="form-group form-group-md hidethis">
-                                                            <label class="small upload-drop-zone" for="specimensixfile" id="upimgtwo"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png</label>
-                                                            <input type="file" id="specimensixfile" name="specimensixfileupload" class="form-control" accept=".jpg,.tiff,.png" aria-labelledby="upimgtwo upimagetwo">
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-xs-12 js-upload-finished">
-                                                                <div class="list-group">
-                                                                    <div class="list-group-item list-group-item-success fileholder col-xs-12" role="alert"></div>
-                                                                </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <fieldset aria-label="use statement">
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <h2 class="weight600">Use Statement</h2>
+                                                            <div class="form-group form-group-md">
+                                                                <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" aria-labelledby="userAccept-label_one" id="user-accept-checkbox" name="user-accept-checkbox">
+                                                                <label class="form-check-label form-check-left form-check" for="user-accept-checkbox" id="userAccept-label_one"><span class="radio notspecial">The mark is in use in commerce on or in connection with all goods/services in this class.</span></label>
                                                             </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <div class="col-xs-12">
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                                            <label for="connection-date_one" class="matchlabelheighttwo">When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> <span class="label label-info subtle">Reduced Fee</span></label>
+                                                            <input type="date" class="form-control" id="connection-date_one" name="connectiondate" value="">
+                                                        </div>
+                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                                            <label for="firstconnection-date_one" class="matchlabelheighttwo">When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> <span class="label label-info subtle">Reduced Fee</span></label>
+                                                            <input type="date" class="form-control" id="firstconnection-date_one" name="firstconnectiondate" value="">
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                                <fieldset aria-label="upload specimen">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 form-group form-group-md upload">
+                                                            <h2 class="weight600">Attach Specimen</h2>
+                                                            <p id="upimagetwo">Please provide a specimen for this individual good/service.</p>
+                                                            <div class="form-group form-group-md hidethis">
+                                                                <label class="small upload-drop-zone" for="specimensixfile" id="upimgtwo"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png</label>
+                                                                <input type="file" id="specimensixfile" name="specimensixfileupload" class="form-control" accept=".jpg,.tiff,.png" aria-labelledby="upimgtwo upimagetwo">
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-xs-12 js-upload-finished">
+                                                                    <div class="list-group">
+                                                                        <div class="list-group-item list-group-item-success fileholder col-xs-12" role="alert"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-xs-12">
+                                                                    <div class="col-xs-12 form-group form-group-md">
+                                                                        <button type="submit" class="btn-sm btn-success add ctr" aria-label="submit selected file">Submit</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div><!-- Drop Zone -->
+                                                        </div>
+                                                        <div class="col-xs-12">
+                                                            <label for="specdescriptone">Provide a description of your specimen:</label>
+                                                            <textarea id="specdescriptone" class="form-control"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                                <fieldset aria-label="enter other information">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 form-group form-group-md">
+                                                            <h2 class="card-title weight600">Other Situations</h2>
+                                                            <div class="row">
                                                                 <div class="col-xs-12 form-group form-group-md">
-                                                                    <button type="submit" class="btn-sm btn-success add ctr" aria-label="submit selected file">Submit</button>
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="minorchange_one" tabindex="0" aria-labelledby="minor_one" id="nonmaterial_one">
+                                                                    <label class="form-check-label form-check-left form-check" for="nonmaterial_one" id="minor_one"><span class="radio notspecial">Make minor/non-material changes to my mark to conform to my specimen</span></label>
                                                                 </div>
-                                                            </div>
-                                                        </div><!-- Drop Zone -->
-                                                    </div>
-                                                    <div class="col-xs-12">
-                                                        <label for="specdescriptone">Provide a description of your specimen:</label>
-                                                        <textarea id="specdescriptone" class="form-control"></textarea>
-                                                    </div>
-                                                </div>
-                                            </fieldset>
-                                            <fieldset aria-label="enter other information">
-                                                <div class="row">
-                                                    <div class="col-xs-12 form-group form-group-md">
-                                                        <h2 class="card-title weight600">Other Situations</h2>
-                                                        <div class="row">
-                                                            <div class="col-xs-12 form-group form-group-md">
-                                                                <input class="form-check-input checkmark" type="checkbox" value="minorchange_one" tabindex="0" aria-labelledby="minor_one" id="nonmaterial_one">
-                                                                <label class="form-check-label form-check-left form-check" for="nonmaterial_one" id="minor_one"><span class="radio notspecial">Make minor/non-material changes to my mark to conform to my specimen</span></label>
-                                                            </div>
-                                                            <div class="col-xs-12 form-group form-group-md">
-                                                                <input class="form-check-input checkmark" type="checkbox" value="information_one" tabindex="0" aria-labelledby="addinfo_one" id="info_one">
-                                                                <label class="form-check-label form-check-left form-check" for="info_one" id="addinfo_one"><span class="radio notspecial">Include additional information not previously requested or specified</span></label>
-                                                            </div>
-                                                            <div class="col-xs-12 form-group form-group-md">
-                                                                <input class="form-check-input checkmark" type="checkbox" value="optionalinsurance_one" tabindex="0" aria-labelledby="optional_one" id="insurance_one">
-                                                                <label class="form-check-label form-check-left form-check" for="insurance_one" id="optional_one"><span class="radio notspecial">File an optional insurance extension</span></label>
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="information_one" tabindex="0" aria-labelledby="addinfo_one" id="info_one">
+                                                                    <label class="form-check-label form-check-left form-check" for="info_one" id="addinfo_one"><span class="radio notspecial">Include additional information not previously requested or specified</span></label>
+                                                                </div>
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="optionalinsurance_one" tabindex="0" aria-labelledby="optional_one" id="insurance_one">
+                                                                    <label class="form-check-label form-check-left form-check" for="insurance_one" id="optional_one"><span class="radio notspecial">File an optional insurance extension</span></label>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </fieldset>
+                                                </fieldset>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+
+                            </th:block>
+
+                            <th:block th:if="${Good_Service_class.isActiveClass() == false}">
+
+                                <!-- Modal -->
+                                <div class="modal fade classmodal" tabindex="0" role="dialog" aria-labelledby="soumodallabel">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="soumodallabel">Delete Class Permanently?</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p role="alert"><span class="sr-only"></span>This statement of use does not cover this specific class. This entire class is to be permanently deleted from this application.</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <div class="row">
+                                                    <div class="col-xs-12 form-group form-group-md">
+                                                        <div class="row">
+                                                            <div class="btn-group btn-group-justified">
+                                                                <div class="col-xs-6 btn-group">
+                                                                    <button type="button" class="btn btn-sm btn-success cancel" data-dismiss="modal">Cancel</button>
+                                                                </div>
+                                                                <div class="col-xs-6 btn-group">
+                                                                    <button type="button" class="btn btn-sm btn-success disableCC" data-dismiss="modal" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">Yes, delete this class</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal -->
+                                <div class="modal fade gsmodal" tabindex="0" role="dialog" aria-labelledby="soumodaltwolabel">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="soumodaltwolabel">Delete some goods/services in this class</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Please delete goods/services that are not in use.</p>
+                                                <p>The mark is in use in commerce on or in connection with the following goods/services:</p>
+                                                <div class="form-group form-group-md">
+                                                    <div class="inusegs form-control" role="textbox" contenteditable="true" aria-multiline="true">
+
+                                                        <th:block th:each="Good_Service: ${Good_Service_class.getGoodAndServices()}">
+
+
+
+
+                                                            <th:block th:if="${Good_Service.isActiveGS() == true}">
+                                                            <span class="label label-info subtle" contenteditable="false">
+                                                            <span class="closepans" th:text="${Good_Service.getClassDescription()}"></span>
+                                                            <button type="button" class="close closegspanels" aria-label="delete" th:attr="gs-id=${Good_Service.getInternalID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                        </span>
+
+                                                            </th:block>
+
+                                                            <th:block th:if="${Good_Service.isActiveGS() == false}">
+
+                                                            <span class="label label-info subtle" contenteditable="false" style="background: rgb(236, 241, 243); color: rgb(153, 153, 153);">
+                                                            <span class="closepans" style="display: table-cell; vertical-align: middle;" th:text="${Good_Service.getClassDescription()}"></span>
+                                                            <button type="button" class="close closegspanels refresh" aria-label="undo delete this good / service" style="display: table-cell; vertical-align: middle;" th:attr="gs-id=${Good_Service.getInternalID()}"><span aria-hidden="true" class="glyphicon glyphicon-refresh"></span></button>
+                                                        </span>
+
+                                                            </th:block>
+
+
+
+
+
+
+
+                                                        </th:block>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <div class="row">
+                                                    <div class="col-xs-12 form-group form-group-md">
+                                                        <button type="button" class="btn btn-sm btn-success" data-dismiss="modal">Done</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row formodal" style="display: block;">
+                                    <div class="resetclass">
+                                        <button type="button" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}" class="btn btn-sm close resetclassbtn" aria-label="undo this class deletion"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
+                                    </div>
+                                </div><!--END add/remove class button row-->
+
+                                <div class="row">
+                                    <div class="col-xs-12 statementou" style="opacity: 0.4;">
+                                        <div class="card-text noexpand blue">
+                                            <div class="col-md-12 col-lg-7">
+                                                <div class="displaytable">
+                                                    <h2 class="card-title weight600 displaycell"><span th:text="${Good_Service_class.getClassNumberDisplay()}">Class 18</span>
+
+                                                        <th:block th:each="Good_Service: ${Good_Service_class.getGoodAndServices()}">
+                                                            <th:block th:if="${Good_Service.isActiveGS() == true}">
+                                                                <span class="listed" role="alert">
+                                                                    <span class="sr-only"></span>
+                                                                    <span th:text="${Good_Service.getClassDescription()}">Athletic apparel, namely, shirts, pants, jackets, footwear, hats and caps, athletic uniforms;</span>;
+                                                                </span>
+                                                            </th:block>
+                                                            <th:block th:if="${Good_Service.isActiveGS() == false}">
+                                                                <span class="listed strike" role="alert">
+                                                                    <span class="sr-only">removed</span>
+                                                                    <span th:text="${Good_Service.getClassDescription()}">Athletic apparel, namely, shirts, pants, jackets, footwear, hats and caps, athletic uniforms;</span>;
+                                                                </span>
+
+                                                            </th:block>
+                                                        </th:block>
+
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 col-lg-5">
+                                                <label for="gs_one" class="sr-only">edit class</label>
+                                                <select class="form-control gsactions" id="gs_one">
+                                                    <option value="edit">Edit</option>
+                                                    <option value="delete">Delete this class permanently</option>
+                                                    <option value="limit">Delete some goods/services in this class</option>
+                                                    <option value="divide" disabled>Divide some or all of the goods/services in this class</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <fieldset aria-label="use statement">
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <h2 class="weight600">Use Statement</h2>
+                                                            <div class="form-group form-group-md">
+                                                                <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" aria-labelledby="userAccept-label_one" id="user-accept-checkbox" name="user-accept-checkbox">
+                                                                <label class="form-check-label form-check-left form-check" for="user-accept-checkbox" id="userAccept-label_one"><span class="radio notspecial">The mark is in use in commerce on or in connection with all goods/services in this class.</span></label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                                            <label for="connection-date_one" class="matchlabelheighttwo">When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> <span class="label label-info subtle">Reduced Fee</span></label>
+                                                            <input type="date" class="form-control" id="connection-date_one" name="connectiondate" value="">
+                                                        </div>
+                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                                            <label for="firstconnection-date_one" class="matchlabelheighttwo">When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> <span class="label label-info subtle">Reduced Fee</span></label>
+                                                            <input type="date" class="form-control" id="firstconnection-date_one" name="firstconnectiondate" value="">
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                                <fieldset aria-label="upload specimen">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 form-group form-group-md upload">
+                                                            <h2 class="weight600">Attach Specimen</h2>
+                                                            <p id="upimagetwo">Please provide a specimen for this individual good/service.</p>
+                                                            <div class="form-group form-group-md hidethis">
+                                                                <label class="small upload-drop-zone" for="specimensixfile" id="upimgtwo"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png</label>
+                                                                <input type="file" id="specimensixfile" name="specimensixfileupload" class="form-control" accept=".jpg,.tiff,.png" aria-labelledby="upimgtwo upimagetwo">
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-xs-12 js-upload-finished">
+                                                                    <div class="list-group">
+                                                                        <div class="list-group-item list-group-item-success fileholder col-xs-12" role="alert"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-xs-12">
+                                                                    <div class="col-xs-12 form-group form-group-md">
+                                                                        <button type="submit" class="btn-sm btn-success add ctr" aria-label="submit selected file">Submit</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div><!-- Drop Zone -->
+                                                        </div>
+                                                        <div class="col-xs-12">
+                                                            <label for="specdescriptone">Provide a description of your specimen:</label>
+                                                            <textarea id="specdescriptone" class="form-control"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                                <fieldset aria-label="enter other information">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 form-group form-group-md">
+                                                            <h2 class="card-title weight600">Other Situations</h2>
+                                                            <div class="row">
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="minorchange_one" tabindex="0" aria-labelledby="minor_one" id="nonmaterial_one">
+                                                                    <label class="form-check-label form-check-left form-check" for="nonmaterial_one" id="minor_one"><span class="radio notspecial">Make minor/non-material changes to my mark to conform to my specimen</span></label>
+                                                                </div>
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="information_one" tabindex="0" aria-labelledby="addinfo_one" id="info_one">
+                                                                    <label class="form-check-label form-check-left form-check" for="info_one" id="addinfo_one"><span class="radio notspecial">Include additional information not previously requested or specified</span></label>
+                                                                </div>
+                                                                <div class="col-xs-12 form-group form-group-md">
+                                                                    <input class="form-check-input checkmark" type="checkbox" value="optionalinsurance_one" tabindex="0" aria-labelledby="optional_one" id="insurance_one">
+                                                                    <label class="form-check-label form-check-left form-check" for="insurance_one" id="optional_one"><span class="radio notspecial">File an optional insurance extension</span></label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </th:block>
+
                         </div>
                     </th:block>
 
@@ -1570,6 +1790,11 @@
             saveGSstatus("cc", "no", ccID,appInternalID);
         })
 
+        $('.enable-cc').click(function () {
+            var ccID = $(this).attr("cc-id");
+
+            saveGSstatus("cc", "yes", ccID,appInternalID);
+        })
 
 
 

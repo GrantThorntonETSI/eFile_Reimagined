@@ -1635,9 +1635,7 @@ $(document).ready(function(){
 		}
 	});
 	//
-    if ( $( 'div#soucontent' ).length ) {
-        $('div.formodal').css('display','none')
-    };
+
 	//
 	$('div.classmodal button.btn-success').on('click',function() {
 		var modaldiv = $('div.formodal');
