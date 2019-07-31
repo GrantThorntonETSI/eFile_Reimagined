@@ -481,6 +481,42 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
 
 
 
+    @CrossOrigin(origins = {"https://localhost","https://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/application/fb/gs/status/update/{pField}/{pValue}/{gsID}/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> updateFilingGSstatus(@PathVariable String pField , @PathVariable String pValue, @PathVariable String gsID,@PathVariable String appInternalID){
+
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+
+
+        // pField will always be  "add" or "remove"
+        // pValue will always be the bread crumb value to add to selected list
+
+        if(pValue.equals("yes")){
+            baseTrademarkApplication.findGSbyInternalID(gsID).setActiveGS(true);
+        }
+        else {
+            baseTrademarkApplication.findGSbyInternalID(gsID).setActiveGS(false);
+        }
+
+
+
+
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+        String responseMsg = "Goods and Services status has been saved";
+
+
+        return buildResponseEnity("200", responseMsg);
+    }
+
+
+
+
 
 
 

@@ -67,10 +67,31 @@
 
                                                     <th:block th:each="Good_Service: ${Good_Service_class.getGoodAndServices()}">
 
-                                                        <span class="label label-info subtle" contenteditable="false">
+
+
+
+                                                        <th:block th:if="${Good_Service.isActiveGS() == true}">
+                                                            <span class="label label-info subtle" contenteditable="false">
                                                             <span class="closepans" th:text="${Good_Service.getClassDescription()}"></span>
-                                                            <button type="button" class="close closegspanels" aria-label="delete"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                            <button type="button" class="close closegspanels" aria-label="delete" th:attr="gs-id=${Good_Service.getInternalID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
                                                         </span>
+
+                                                        </th:block>
+
+                                                        <th:block th:if="${Good_Service.isActiveGS() == false}">
+
+                                                            <span class="label label-info subtle" contenteditable="false" style="background: rgb(236, 241, 243); color: rgb(153, 153, 153);">
+                                                            <span class="closepans" style="display: table-cell; vertical-align: middle;" th:text="${Good_Service.getClassDescription()}"></span>
+                                                            <button type="button" class="close closegspanels refresh" aria-label="undo delete this good / service" style="display: table-cell; vertical-align: middle;" th:attr="gs-id=${Good_Service.getInternalID()}"><span aria-hidden="true" class="glyphicon glyphicon-refresh"></span></button>
+                                                        </span>
+
+                                                        </th:block>
+
+
+
+
+
+
 
                                                     </th:block>
 
@@ -101,10 +122,23 @@
                                                 <h2 class="card-title weight600 displaycell"><span th:text="${Good_Service_class.getClassNumberDisplay()}">Class 18</span>
 
                                                     <th:block th:each="Good_Service: ${Good_Service_class.getGoodAndServices()}">
-                                                        <span class="listed" role="alert">
-                                                            <span class="sr-only"></span>
-                                                            <span th:text="${Good_Service.getClassDescription()}">Athletic apparel, namely, shirts, pants, jackets, footwear, hats and caps, athletic uniforms;</span>
-                                                        </span>
+
+                                                            <th:block th:if="${Good_Service.isActiveGS() == true}">
+                                                                <span class="listed" role="alert">
+                                                                    <span class="sr-only"></span>
+                                                                    <span th:text="${Good_Service.getClassDescription()}">Athletic apparel, namely, shirts, pants, jackets, footwear, hats and caps, athletic uniforms;</span>
+                                                                </span>
+                                                            </th:block>
+                                                            <th:block th:if="${Good_Service.isActiveGS() == false}">
+                                                                <span class="listed strike" role="alert">
+                                                                    <span class="sr-only">removed</span>
+                                                                    <span th:text="${Good_Service.getClassDescription()}">Athletic apparel, namely, shirts, pants, jackets, footwear, hats and caps, athletic uniforms;</span>
+                                                                </span>
+
+                                                            </th:block>
+
+
+
 
                                                     </th:block>
 
@@ -1507,7 +1541,90 @@
 
 
 
+        // enable or disable gs for class
+
+        $('.closegspanels').click(function () {
+            // get gs internal id from button  attribute
+            var gsID = $(this).attr("gs-id");
+
+            var val = "";
+            // determin if this is to enable or disable gs
+
+            if($(this).hasClass("refresh")){
+                val = "no";
+            }
+            else {
+                val = "yes";
+            }
+
+            saveGSstatus("gs", val, gsID, appInternalID);
+            // make ajax call accordingly
+
+
+
+
+        });
+
+
+
+
     });
+
+
+    function saveGSstatus(FieldName, FieldValue, gs_id,appInternalID) {
+
+        //var field_value = $(this).val();
+        //alert(field_value);
+
+
+        $.ajax({
+            url: "../../../REST/apiGateway/application/fb/gs/status/update/" + FieldName + "/" + FieldValue + "/" + gs_id + "/"+appInternalID,
+            type: 'GET',
+            success: function (data) {
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:") + 7, data.indexOf("status:") + 4 + 7);
+
+                var s_msg = data.substring(data.indexOf("msg:") + 4, data.length - 2);
+
+
+
+                if (s_code.trim() == "200") {
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function () {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                }
+                else {
+
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function () {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                    $('.next').attr("disabled", false);
+
+                }
+
+
+            },
+            error: function (data) {
+
+                console.log(data);
+
+            }
+
+        });
+    }
+
 
 
     function saveOAresponse(FieldName, FieldValue, OA_id, RA_id ,appInternalID) {
