@@ -88,7 +88,7 @@ public class FilingStatusUpdateTask extends TimerTask {
 
         checkBlackOutPeriod();
         checkOfficeActionPeriod1();
-        checkOfficeActionPeriod2();
+        checkNOAPeriod();
 
 
 
@@ -332,6 +332,9 @@ public class FilingStatusUpdateTask extends TimerTask {
                                 // create filing document event
 
                                 current.setFilingStatus("Accepted Filing");
+                                current.setApplicationAcceptedDate(new Date());
+
+                                // create accepted filing date
 
 
                                 current4.setActiveAction(false);
@@ -424,6 +427,13 @@ public class FilingStatusUpdateTask extends TimerTask {
 
                 }
 
+
+
+
+
+
+
+
             }
 
         }
@@ -431,8 +441,71 @@ public class FilingStatusUpdateTask extends TimerTask {
     }
 
 
-    public void checkOfficeActionPeriod2(){
+    public void checkNOAPeriod(){
         System.out.println("checking Office Action period 2 status for filings : "+durationToReviveWithClaim);
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+
+
+        for(Iterator<BaseTrademarkApplication> iter = baseTradeMarkApplicationService.findAll().iterator(); iter.hasNext(); ) {
+
+            BaseTrademarkApplication current = iter.next();
+
+            if( current.getApplicationAcceptedDate() != null && current.getFilingStatus().equals("Issuance Of Allowance")){
+                // check if allowance has expired ...use accepted date + issuance of allowance period
+
+                if((current.getApplicationAcceptedDate().getTime() + current.getIssuranceOfAllowancePeriod()) < new Date().getTime()){
+                   // issuance of allowance has expired
+                   // set filing to abandoment
+                   // create document record
+                   // create petition to revive
+                    for(Iterator<OfficeActions> iter3 = current.getOfficeActions().iterator(); iter3.hasNext(); ) {
+                        OfficeActions current3 = iter3.next();
+
+                        if (current3.isOfficeActionCompleted() == false) {
+                            // this should flag the NOA which is also an office action with required action of SOU
+
+                            Petition petition = new Petition();
+                            petition.setParentMarkImagePath(current.getTradeMark().getTrademarkImagePath());
+                            petition.setStandardCharacterMark(current.isStandardTextMark());
+                            petition.setStandardCharacterText(current.getTradeMark().getTrademarkStandardCharacterText());
+                            petition.setParentMarkOwnerName(current.getPrimaryOwner().getOwnerDisplayname());
+                            petition.setParentSerialNumber(current.getTrademarkName());
+
+                            petition.setActionID(String.valueOf(current3.getInternalID()));
+
+                            long dueDate = new Date().getTime()+current.getBlackOutPeriod()+current.getPetitionPeriod();
+                            petition.setDueDate(new Date(dueDate));
+
+
+                            current.setFilingStatus("Abandoned - Failure to Respond or Late Response");
+                            petition.setOfficeActionCode("Abandoned - Failure to Respond or Late Response");
+                            petition.setType("noa");
+
+                            petition.setActivePetition(true);
+                            current.addPetition(petition);
+                            petition.setTrademarkApplication(current);
+                            current3.setActiveAction(false);
+
+                            FilingDocumentEvent filingDocumentEvent = new FilingDocumentEvent();
+                            filingDocumentEvent.setEventDescription("Filing Abandoned");
+
+                            filingDocumentEvent.setDocumentType("XML");
+                            Date date = new Date();
+                            filingDocumentEvent.setEventDate(date);
+
+                            current.addFilingDocumentEvent(filingDocumentEvent);
+
+
+                            baseTradeMarkApplicationService.save(current);
+
+                        }
+                    }
+
+
+                }
+            }
+        }
     }
 
 

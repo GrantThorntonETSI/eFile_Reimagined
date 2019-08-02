@@ -597,6 +597,8 @@
 
     var colorClaimSet = /*[[${colorClaimSet}]]*/ 'User Name';
 
+    var type = /*[[${type}]]*/ 'User Name';
+
     var markType = /*[[${baseTrademarkApplication.tradeMark.trademarkDesignType}]]*/ 'User Name';
     var markText = /*[[${baseTrademarkApplication.tradeMark.trademarkStandardCharacterText}]]*/ 'User Name';
     /*]]>*/
@@ -606,8 +608,13 @@
 
 <script>
 
+
+
     var doneURL = "../../../../../petitions/revive/"+petitionID+"/?trademarkID="+appInternalID;
 
+    if(type == "noa"){
+        doneURL = "../../../../../petitions/sou/revive/"+petitionID+"/?trademarkID="+appInternalID;
+    }
 
 
 

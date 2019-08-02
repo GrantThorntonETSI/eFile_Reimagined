@@ -75,6 +75,8 @@ public class Petition extends OfficeActions {
 
         private String actionID; // corresponding office action
 
+        private String type ="office action";
+
 
 
 
@@ -232,7 +234,13 @@ public class Petition extends OfficeActions {
     }
 
     public String getPetitionsLink(){
-        return "/petitions/revAbandoned/"+getInternalID()+"/?trademarkID="+getTrademarkApplication().getApplicationInternalID();
+
+        if(type.equals("noa") == false) {
+            return "/petitions/revAbandoned/" + getInternalID() + "/?trademarkID=" + getTrademarkApplication().getApplicationInternalID();
+        }
+        else{
+            return "/petitions/revAbandoned/" + getInternalID() + "/?trademarkID=" + getTrademarkApplication().getApplicationInternalID();
+        }
     }
 
     public String getActionID() {
@@ -241,5 +249,13 @@ public class Petition extends OfficeActions {
 
     public void setActionID(String actionID) {
         this.actionID = actionID;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

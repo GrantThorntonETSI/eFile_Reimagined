@@ -4494,6 +4494,8 @@ public class ApplicationFlowController {
         model.addAttribute("colorClaimSet", colorClaimSet);
         model.addAttribute("standardCharacterMark ", standardCharacterMark );
 
+        model.addAttribute("type", petition.getType());
+
 
         model.addAttribute("petitionID", petitionID);
 
@@ -4608,6 +4610,108 @@ public class ApplicationFlowController {
 
 
     }
+
+
+    @RequestMapping({"/petitions/sou/revive/{petitionID}"})
+    public String reviveAbandonedFilingSOUComplete( Model model, @PathVariable String petitionID ,@RequestParam("trademarkID") String trademarkInternalID){
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        PTOUserService  ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+        baseTrademarkApplication.findPetitionById(petitionID).setActivePetition(false);
+
+        baseTrademarkApplication.findOfficeActionById(baseTrademarkApplication.findPetitionById(petitionID).getActionID()).setActiveAction(true);
+        baseTrademarkApplication.setOfficeActionResponsePeriod(baseTrademarkApplication.getOfficeActionResponsePeriod()*4); // extend office action period for revived filing
+        // office action is now active again
+        baseTrademarkApplication.setPetitionPeriod(baseTrademarkApplication.getPetitionPeriod()*4);
+
+
+        baseTrademarkApplication.setFilingStatus("Accepted Filing");
+
+
+        baseTrademarkApplication.setOfficeActionResponsePeriod(baseTrademarkApplication.getOfficeActionResponsePeriod()*2);
+
+        FilingDocumentEvent filingDocumentEvent = new FilingDocumentEvent();
+        filingDocumentEvent.setEventDescription("Filing Revived");
+
+        filingDocumentEvent.setDocumentType("XML");
+        Date date = new Date();
+        filingDocumentEvent.setEventDate(date);
+
+        baseTrademarkApplication.addFilingDocumentEvent(filingDocumentEvent);
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+        //////////////////////////////////////////////////////
+        // this is set back to null upon verification check
+        //////////////////////////////////////////////////////
+
+        //////////////////////////////////////////////////////
+        //continuation = true;
+        OfficeActions actions = baseTrademarkApplication.findOfficeActionById(baseTrademarkApplication.findPetitionById(petitionID).getActionID());
+        model.addAttribute("action", actions);
+        model.addAttribute("OfficeActionID", actions.getInternalID());
+
+        model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+
+
+
+        boolean colorClaim= false;
+        boolean acceptBW = false;
+        boolean colorClaimSet = false;
+        boolean standardCharacterMark = false;
+
+        if( baseTrademarkApplication.getTradeMark() != null) {
+            model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+            model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+            colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+            acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+            colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+            standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+        }
+        else{
+            model.addAttribute("markImagePath","");
+
+            model.addAttribute("markImagePathBW","");
+
+        }
+
+
+
+        model.addAttribute("markColorClaim", colorClaim);
+        model.addAttribute("markColorClaimBW", acceptBW);
+        model.addAttribute("colorClaimSet", colorClaimSet);
+        model.addAttribute("standardCharacterMark ", standardCharacterMark );
+
+
+        model.addAttribute("petitionID", petitionID);
+
+
+
+
+
+        if(baseTrademarkApplication.findPetitionById(petitionID).isWantToFileResponse() == true ){
+            return "application/noa/index";
+        }
+        else {
+            return "forward:/accounts/dashboard";
+        }
+
+
+    }
+
 
 
 
