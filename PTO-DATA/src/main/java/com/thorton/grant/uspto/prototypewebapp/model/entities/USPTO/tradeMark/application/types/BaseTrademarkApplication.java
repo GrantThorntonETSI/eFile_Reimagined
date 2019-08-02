@@ -463,6 +463,7 @@ public class BaseTrademarkApplication  {
     private Date applicationFilingDate;
     private boolean claimDidNotRecieveOfficeAction; // this can only be claimed once. once it is set to true, you can not make that claim any more  // this is actually a filed that needs to be on the filing object
 
+    private Date applicationAcceptedDate;
     ///////////////////////////////////////////////////////////////
 
 
@@ -474,7 +475,7 @@ public class BaseTrademarkApplication  {
     private long petitionPeriod = 1*60*1000;
 
 
-    private long issuranceOfAllowancePeriod = 5*60*1000;
+    private long issuranceOfAllowancePeriod = 1*60*1000;
 
 
 
@@ -2086,5 +2087,14 @@ public class BaseTrademarkApplication  {
 
     public void setIssuranceOfAllowancePeriod(long issuranceOfAllowancePeriod) {
         this.issuranceOfAllowancePeriod = issuranceOfAllowancePeriod;
+    }
+
+
+    public Date getApplicationAcceptedDate() {
+        return applicationAcceptedDate;
+    }
+
+    public void setApplicationAcceptedDate(Date applicationAcceptedDate) {
+        this.applicationAcceptedDate = applicationAcceptedDate;
     }
 }
