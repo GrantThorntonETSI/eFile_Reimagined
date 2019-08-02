@@ -162,7 +162,7 @@
                                                         <div class="col-xs-12">
                                                             <h2 class="weight600">Use Statement</h2>
                                                             <div class="form-group form-group-md">
-                                                                <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" aria-labelledby="userAccept-label_one" id="user-accept-checkbox" name="user-accept-checkbox">
+                                                                <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" aria-labelledby="userAccept-label_one" id="user-accept-checkbox" name="user-accept-checkbox" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">
                                                                 <label class="form-check-label form-check-left form-check" for="user-accept-checkbox" id="userAccept-label_one"><span class="radio notspecial">The mark is in use in commerce on or in connection with all goods/services in this class.</span></label>
                                                             </div>
                                                         </div>
@@ -469,7 +469,7 @@
                 <button type="button" class="btn btn-sm btn-default fill prev" id="" value="previous">Previous</button>
             </div>
             <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-primary fill next" id="" value="next">Next
+                <button type="button" class="btn btn-sm btn-primary fill next" id="" value="next" disabled>Next
                     <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
             </div>
         </div>
@@ -510,7 +510,7 @@
     var prevLinkURL = "../../../accounts/dashboard";
 
 
-    var nextLinkURL = "../../../officeAction/optional/"+OfficeActionID+"/?trademarkID="+appInternalID;
+    var nextLinkURL = "../../../officeAction/noa/signature/"+OfficeActionID+"/?trademarkID="+appInternalID;
 
 
 

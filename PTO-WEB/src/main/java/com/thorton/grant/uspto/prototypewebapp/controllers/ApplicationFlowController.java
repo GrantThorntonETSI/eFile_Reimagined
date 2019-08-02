@@ -4860,8 +4860,89 @@ public class ApplicationFlowController {
     }
 
 
+     // noa signature page controller..not optional actions in front of signing page
+     @RequestMapping({"/officeAction/noa/signature/{actionID}"})
+     public String officeActionSOUSignature(WebRequest request, Model model,   @PathVariable String actionID ,@RequestParam("trademarkID") String trademarkInternalID){
+         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+         OfficeActions actions = baseTrademarkApplication.findOfficeActionById(actionID);
+         boolean colorClaim= false;
+         boolean acceptBW = false;
+         boolean colorClaimSet = false;
+         boolean standardCharacterMark = false;
+
+         if( baseTrademarkApplication.getTradeMark() != null) {
+             model.addAttribute("markImagePath", baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+             model.addAttribute("markImagePathBW",baseTrademarkApplication.getTradeMark().getTrademarkBWImagePath());
+             colorClaim = baseTrademarkApplication.getTradeMark().isMarkColorClaim();
+             acceptBW = baseTrademarkApplication.getTradeMark().isMarkColorClaimBW();
+
+             colorClaimSet = baseTrademarkApplication.getTradeMark().isColorClaimSet();
+             standardCharacterMark = baseTrademarkApplication.getTradeMark().isStandardCharacterMark();
+         }
+         else{
+             model.addAttribute("markImagePath","");
+
+             model.addAttribute("markImagePathBW","");
+
+         }
 
 
+
+         model.addAttribute("markColorClaim", colorClaim);
+         model.addAttribute("markColorClaimBW", acceptBW);
+         model.addAttribute("colorClaimSet", colorClaimSet);
+         model.addAttribute("standardCharacterMark ", standardCharacterMark );
+
+
+         model.addAttribute("OfficeActionID", actions.getInternalID());
+         return "application/noa/signature/index";
+     }
+
+
+    @RequestMapping({"/officeAction/sou/signature/complete/{actionID}"})
+    public String OfficeActionSOUComplete( Model model, @PathVariable String actionID ,@RequestParam("trademarkID") String trademarkInternalID){
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        PTOUserService  ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+
+
+        // required acitons should return true as well at this point
+
+
+        baseTrademarkApplication.findOfficeActionById(actionID).setOptianlCompleted(true);
+
+        baseTrademarkApplication.setFilingStatus("Accepted Filing");
+
+
+
+        FilingDocumentEvent filingDocumentEvent = new FilingDocumentEvent();
+        filingDocumentEvent.setEventDescription("Response to Notice of Allowance");
+
+        filingDocumentEvent.setDocumentType("XML");
+        Date date = new Date();
+        filingDocumentEvent.setEventDate(date);
+
+        baseTrademarkApplication.addFilingDocumentEvent(filingDocumentEvent);
+
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+        // set office action to inactive
+        // create document record for response to office action
+
+
+        return "forward:/accounts/dashboard";
+    }
 
 
     @RequestMapping({"/officeAction/signature/complete/{actionID}"})
@@ -4993,19 +5074,17 @@ public class ApplicationFlowController {
     @RequestMapping({"/officeAction/optional/pathController/{direction}/{actionID}"})
     public String optionalActionsPathController(WebRequest request, Model model,  @PathVariable String direction, @PathVariable String actionID ,@RequestParam("trademarkID") String trademarkInternalID){
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+       Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        PTOUserService  ptoUserService = serviceBeanFactory.getPTOUserService();
+       PTOUserService  ptoUserService = serviceBeanFactory.getPTOUserService();
         PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
-        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
-        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+       UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+       UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
 
 
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
 
-
-        //OfficeActions action = baseTrademarkApplication.findOfficeActionById(actionID);
 
         OfficeActions actions = baseTrademarkApplication.findOfficeActionById(actionID);
 
