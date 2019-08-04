@@ -111,7 +111,7 @@ main#loginform {
     padding-top:0;
 }
 .maincontainer.bottom {
-    height: 3.7em;
+    height: 4.3em;
     background-color:#eee;
     padding:1em;
 }
@@ -249,6 +249,8 @@ object#selected {
     vertical-align: text-top;
     display: inline-block;
     border-radius: .19em;
+	margin-left:5px;
+	margin-bottom: 5px;
 }
 .label.subtle {
     padding-top:.35em;
@@ -355,6 +357,10 @@ ul#lowernav li a.glyphed span {
     margin-bottom: 1em;
     font-weight: 600;
 }
+.callout, #responseamend .callout .panel-body {
+	padding:5em;
+	padding-bottom:4.1em;
+	}
 .callout .view {
     margin-bottom:1em;
     display:inline-block;
@@ -402,6 +408,9 @@ section .breadcrumb-steps {
     table-layout: fixed;
     width: 100%;
 }
+#editattorney .breadcrumb-steps .col-xs-2 {
+	width:20%;
+	}
 .displaycell {
     display:table-cell;
 }
@@ -1038,7 +1047,7 @@ span#filingsheader {
 }
 #announce h3{
     padding:4px;
-    color:#fff;
+    color:#808080;
     text-align:center;
 }
 #goodsandservices_wrapper {
@@ -1046,9 +1055,9 @@ span#filingsheader {
     border-top:1px solid #333;
     padding-top:.8em;
 }
-#goodsandservices .form-check span.radio.notspecial::before {
+/*#goodsandservices .form-check span.radio.notspecial::before {
     top:-5px;
-}
+}*/
 table#goodsandservices {
     border-top: 1px solid #333;
     margin-top: 2.8em;
@@ -1088,6 +1097,12 @@ td.red {
 #dashboardmain {
     background-color: #EEEEEE;
     font-size:.9em;
+}
+#dashboardmain #alertmin, #filingbasisabde #alertmin {
+	height: 1px;
+}
+#dashsectionscontainer #minholder .close.active.focus, #dashsectionscontainer #minholder .close.active:focus, #dashsectionscontainer #minholder .close.focus, #dashsectionscontainer #minholder .close:active.focus, #dashsectionscontainer #minholder .close:active:focus, #dashsectionscontainer #minholder .close:focus {
+	outline-offset: -4px;
 }
 #dashboardmain .form-group {
     margin-bottom: 0;
@@ -1215,13 +1230,40 @@ main #loginform .landingpagemain {
     -moz-border-radius:1.3em;
     border-radius:1.3em;
 }
-table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before, table#dashboardtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table#dashboardtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before, table#filepetitiontable.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table#filepetitiontable.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before, table#responseamendtable.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table#responseamendtable.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before, table#responseamendtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table#responseamendtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
+table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before, table#dashboardtabletwo.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table#dashboardtabletwo.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before, table#filepetitiontable.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table#filepetitiontable.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before, table#responseamendtable.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table#responseamendtable.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before, table#responseamendtabletwo.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table#responseamendtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
     background-color: #009CDE;
     left:6px;
 }
-table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
-    background-color: #63666A!important;
-    color: #fff!important;
+table.dataTable.dtr-inline.collapsed>tbody>tr.even.parent>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr.even.parent>th:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr.odd.parent>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr.odd.parent>th:first-child:before {
+	background-color: transparent!important;
+	border: .2em solid transparent!important;
+	color:#808080!important;
+	content: '\e252'!important;
+}
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before, table#dashboardtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table#dashboardtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before, table#filepetitiontable.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table#filepetitiontable.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before, table#responseamendtable.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table#responseamendtable.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before, table#responseamendtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table#responseamendtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
+	-webkit-box-shadow: 0 0 0 rgba(0,0,0,0);
+	-moz-box-shadow:         0 0 0 rgba(0,0,0,0);
+	box-shadow:                 0 0 0 rgba(0,0,0,0);
+	left:50%;
+	content: '\e250';
+	font-family: 'Glyphicons Halflings';
+	font-size: 1.1em;
+	line-height: 1.1em;
+	top:29.6%;
+	width:1em;
+	height:1em;
+	-webkit-border-radius: 1em;
+	-webkit-border-bottom-right-radius: 1em;
+	-webkit-border-bottom-left-radius: 1em;
+	-moz-border-radius: 1em;
+	-moz-border-radius-bottomright: 1em;
+	-moz-border-radius-bottomleft: 1em;
+	border-radius: 1em;
+	border-bottom-right-radius: 1em;
+	border-bottom-left-radius: 1em;
+	color:#009CDE;
+	margin-top:0;
+	position:relative;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.active, #dashboardtabletwo_paginate .paginate_button.current, #dashboardtabletwo_paginate .paginate_button.active, #filepetitiontable_paginate .paginate_button.current, #filepetitiontable_paginate .paginate_button.active, #responseamendtable_paginate .paginate_button.current, #responseamendtable_paginate .paginate_button.active, #responseamendtabletwo_paginate .paginate_button.current, #responseamendtabletwo_paginate .paginate_button.active {
     cursor: pointer;
@@ -1267,6 +1309,18 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child:before, tabl
     overflow:auto;
     overflow-y:auto;
     overflow-x:auto;
+	scrollbar-width: thin;
+}
+#mydata2 tbody.scroll {
+	max-height:200px;
+	display:block;
+	overflow:auto;
+	overflow-y:auto;
+	overflow-x:auto;
+	scrollbar-color: #808080 #bbb;
+}
+#mydata2 .scroll:hover {
+	scrollbar-color: #004C97 #bbb;
 }
 #mydata2 .scroll::-webkit-scrollbar {
     width: 1em;
@@ -1289,6 +1343,10 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child:before, tabl
 #mydata .panel-heading h4, #mydata2 .panel-heading h4 {
     display:inline-block;
 }
+#dashboardmain .panel-heading h4 {
+	padding-left:25px;
+	margin-top: .4em;
+	}
 #mydata button.close, #mydata2 button.close{
     height: 18px;
     font-size: 1.45em;
@@ -1485,14 +1543,14 @@ span#termsagree label a:hover, span#termsagree label a:hover {
     font-size:.8em;
     line-height:1.48em;
 }
-/*#panels a.right span {
+#panels a.right span {
 	position:absolute;
 	left:-10000px;
 	top:auto;
 	width:1px;
 	height:1px;
 	overflow:hidden;
-	}*/
+	}
 #panels .col-xs-7t {
     position:relative;
 }
@@ -1553,6 +1611,10 @@ span#termsagree label a:hover, span#termsagree label a:hover {
     background-image:none!important;
     font-size:1em;
 }
+/* fix for panel body shrinked when faded in*/
+.panel-body {
+	min-height: 120px!important;
+}
 /* HEADLINE BACKGROUND */
 .card-text {
     margin-bottom:24px;
@@ -1566,7 +1628,7 @@ span#termsagree label a:hover, span#termsagree label a:hover {
     border-top-right-radius: 2px;
 }
 .card-text.noexpand {
-    padding: 6px 0 6px 18px;
+    padding: 9px 0 9px 18px;
 }
 #payment .card-text.noexpand {
     background-color:#EEEEEE;
@@ -1714,6 +1776,15 @@ label {
     margin-bottom: .6em;
     line-height: 1.5em;
 }
+label a:hover {
+	text-decoration: none!important;
+}
+label.disabled {
+	color:#ddd;
+}
+label.disabled span {
+	border-color: #eee!important;
+}
 .bluedit{
     position:absolute;
     top: 31%;
@@ -1826,6 +1897,9 @@ div.modal div.inusegs {
     background-color: #cdd8dc!important;
     cursor: url('../images/cursor_not_allowed.png'), auto!important;
 }
+button[disabled] {
+	background-color: #eee!important;
+}
 .inlinebuttons {
     margin:0 auto;
     position:relative;
@@ -1898,7 +1972,10 @@ div.modal div.inusegs {
     margin: 0 auto;
     float: none;
     margin-top: .545em;
-}
+	}
+.resetphonebtn {
+    margin-top: .57em;
+	}
 div.resetclass{
 	 border-top: 1px solid #ddd; 
 	 margin-bottom: 0.4em; 
@@ -1954,12 +2031,7 @@ span.ql-picker span:focus, span.ql-picker span.focus, span.ql-picker:focus, span
 #goodservideo .btn-block {
     height:400px;
 }
-.btn-success.active.focus, .btn-success.active:focus, .btn-success.focus, .btn-success:active.focus, .btn-success:active:focus, .btn-success:focus, .btn-default:focus {
-    /*outline: thin dotted;*/
-    outline: 1px solid #D9D9D6!important;
-}
-.btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.focus, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:focus {
-    /*outline: thin dotted;*/
+.btn-success.active.focus, .btn-success.active:focus, .btn-success.focus, .btn-success:active.focus, .btn-success:active:focus, .btn-success:focus, .btn-default:focus, .btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.focus, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:focus {
     outline: 1px solid #D9D9D6!important;
 }
 div[role="radio"]:focus {
@@ -2041,6 +2113,17 @@ div[role="radio"]:focus {
 button#moreoptionsbtn {
     margin:0 auto;
 }
+#optionsbtn {
+	font-weight: 400!important;
+	color: #337ab7;
+}
+#optionsbtn:focus, #optionsbtn:hover {
+	color: #23527c;
+}
+#optionsbutton {
+	padding:0!important;
+	font-weight:600;
+}
 .btn-success {
     background-color:#009CDE;
     background-image:none;
@@ -2104,7 +2187,7 @@ button#moreoptionsbtn {
     background-color:#9BB8D3;
 }
 #dashboardtableone_wrapper div.toolbar .btn-xs .glyphicon, #dashboardtabletwo_wrapper div.toolbartwo .btn-xs .glyphicon, #filepetitiontable_wrapper div.toolbarpetitions .btn-xs .glyphicon {
-    top: -7px;
+    top: -3px;
 }
 #reviewapplication .btn-success.fill {
     display:inline-block;
@@ -2176,6 +2259,11 @@ button#moreoptionsbtn {
 div[role="switch"] {
     display:inline-block;
 }
+div#minholder {
+	display: table;
+	width: 100%;
+	min-height: 2.91em;
+	}
 #on, #off {
     color:#fff;
     font-size: 13px;
@@ -2454,6 +2542,10 @@ div[role="heading"] button {
     font-weight: 600;
     color: #333;
 }
+#uploaded .Accordion p {
+	padding-left:40px;
+	padding-right:40px;
+}
 .Accordion-trigger:active, .Accordion-trigger:focus, .Accordion-trigger:active:focus, #responseamend .callout .panel-title button:active, #responseamend .callout .panel-title button:focus, #responseamend .callout .panel-title button:active:focus {
     outline: 0!important;
 }
@@ -2465,7 +2557,6 @@ div[role="heading"] button {
     display: none;
 }
 #goodsandservices_wrapper input[type="search"]:focus, #dashboardtableone_wrapper input[type="search"]:focus, #dashboardtabletwo_wrapper input[type="search"]:focus, #filepetitiontable_wrapper input[type="search"]:focus {
-    margin-left: 1em;
     background-color: #fafafb!important;
     box-shadow: none;
     border-color: #009CDE;
@@ -2514,7 +2605,7 @@ option, select, input[type="text"], input[type="email"], input[type="date"], inp
     box-shadow: none!important;
     -webkit-box-shadow: inset 0 0 0 rgba(0,0,0,0)!important;
     box-shadow: inset 0 0 0 rgba(0,0,0,0)!important;
-    border: 1px solid #009CDE!important;
+    border: 1px solid #ccc!important;
     outline: 0!important;
     background:none;
 }
@@ -2539,6 +2630,21 @@ select.form-control {
 }
 textarea {
     min-height:38px;
+	resize: none;
+	scrollbar-color: #808080 #bbb;
+	scrollbar-width: thin;
+}
+textarea::-webkit-scrollbar {
+	width: 1em;
+}
+textarea::-webkit-scrollbar-thumb {
+	background: #808080;
+}
+textarea::-webkit-scrollbar-thumb:hover {
+	background: #004C97;
+}
+textarea::-webkit-scrollbar-track {
+	background: #bbb;
 }
 textarea.datesigned {
     line-height: 24px;
@@ -2627,7 +2733,7 @@ input[type="checkbox"]:checked + label span.radio::after {
     font-size: 1.3em;
 }
 input[type="checkbox"]:focus + label span.radio::before {
-    outline: 1px solid #9BB8D3!important;
+    outline: 1px solid #009CDE!important;
     /*outline: 1px solid #000!important;*/
     outline-offset: 2px!important;
 }
@@ -2829,24 +2935,61 @@ p#upimage {
 }
 #alertmin {
     visibility: hidden;
+	padding:0;
 }
+div.alertmargin #alertmin {
+	margin-bottom:5em!important;
+	}
 #alertmin p {
     float:left;
     width: 80%;
 }
+#filingbasisabde #alertmin button#alertbtn {
+	width:15%;
+}
+#filingbasisabde #alertmin p {
+	width: 85%;
+	padding-left:0;
+}
+#dashsectionscontainer #alertmin p {
+	width: auto;
+	padding-top: .5em;
+	}
 p#mintext {
     float:left;
     width: 90%;
+	display: table-cell;
+	vertical-align:middle;
+	padding-left:27px;
 }
-#alertmin button#alertbtn {
-    float:right;
-    width: 10%;
-    font-size: 2.5em;
-    color:#444;
-}
+#dashboardmain p#mintext {
+	font-size:1.07em;
+	}
+#alertmin button#alertbtn, #alertmin button#alertbtndash, #alertmin button#cancelbtndash {
+	font-size: 2.5em;
+	color:#444;
+	float:right;
+	display: table-cell;
+	vertical-align:middle;
+	}
+#alertmin button#cancelbtndash, #alertmin button#alertbtndash {
+	font-size: 1.1em;
+	margin-right:.5em;
+	background-color: #A07400;
+	color: #fff;
+	font-weight: 600;
+	width: 80px;
+	margin-top: .5em;
+	}
+#alertmin button#alertbtndash:active:focus, #alertmin button#alertbtndash:active:hover, #alertmin button#cancelbtndash:active:focus, #alertmin button#cancelbtndash:active:hover, #alertmin button#alertbtndash:active, #alertmin button#alertbtndash:focus, #alertmin button#cancelbtndash:active, #alertmin button#cancelbtndash:focus, #alertmin button#cancelbtndash:hover, #alertmin button#alertbtndash:hover {
+	background-color: #825e00;
+	}
 #alertmin button#alertbtn:hover {
     color:#000;
 }
+#alertmin button#alertbtn span {
+	top: 4px;
+	}
 button[type="submit"] {
     margin: 0 auto;
     float: none;
@@ -2913,6 +3056,10 @@ fileholder .linkholder, .fileholder .iconholder{
     padding:0 1.5em;
     min-height: 38px;
 }
+.fileholder .linkholder, .fileholder .iconholder{
+	display:table;
+	max-height: 38px;
+}
 .fileholder div button {
     font-size: 2em!important;
     height: 38px!important;
@@ -2939,6 +3086,10 @@ fileholder .linkholder, .fileholder .iconholder{
     display: table!important;
     height:auto!important;
     margin-top: .4em!important;
+	font-size:.6em;
+}
+.js-upload-finished .linkholder a {
+	text-decoration:underline;
 }
 .js-upload-finished .list-group-item-success {
     display: inline-block;
@@ -2987,14 +3138,22 @@ fileholder .linkholder, .fileholder .iconholder{
     margin: 0 auto;
     height:1em;
 }
+#dashboard .dashsection button.close {
+	color: #009CDE;
+	margin-left: 1.5em;
+	float:left;
+	}
 #gsselected button.close {
     height:1.4em;
 }
-#editowner button.close, #reviewattorney button.close, #userprofilepage button.close, #yesattorneyfiling button.close, .phones button.close, #detected button.close, #designwithtext button.close, #basisabde button.close, #basisab button.close, button.resetclassbtn {
+#editowner button.close, #reviewattorney button.close, #userprofilepage button.close, #yesattorneyfiling button.close, .phones button.close, #detected button.close, #designwithtext button.close, #basisabde button.close, #basisab button.close, button.resetclassbtn, .disclaim button.close {
     font-size: 3em;
     height:1.06em;
     color:#009CDE;
 }
+#dashboardmain button.closegspanels {
+	font-size:3em;
+	}
 #editowner button.close:hover, #reviewattorney button.close:hover, #userprofilepage button.close:hover, #yesattorneyfiling button.close:hover, #detected button.close:hover, #designwithtext button.close:hover, #basisabde button.close:hover, #basisab button.close:hover, #addNewOwnerForm button.close:hover, #addNewOwnerForm button.close:hover, .statementou button.close:hover, button.deleterow:hover, button.resetclassbtn:hover {
     color: #047db0;
     opacity:1.0;
@@ -3033,7 +3192,7 @@ fileholder .linkholder, .fileholder .iconholder{
     word-break:break-all;
     min-height: 149px;
 }
-#gsselected .panel-heading, #dashboardmain .panel-heading, #editowner .panel-heading, #reviewattorney .panel-heading, #userprofilepage .panel-body, #petitions1 .panel-body {
+#gsselected .panel-heading, #dashboardmain .panel-heading, #editowner .panel-heading, #reviewattorney .panel-heading, #userprofilepage .panel-body, #petitions1 .panel-body, #createaccount .panel-heading {
     -webkit-border-top-left-radius: 		0;
     -webkit-border-top-right-radius: 		0;
     -webkit-border-bottom-left-radius: 		0;
@@ -3076,7 +3235,7 @@ fileholder .linkholder, .fileholder .iconholder{
     -moz-border-top-right-radius: 		0;
     border-top-right-radius: 			0;
 }
-#gsselected .panel-default, #dashboardmain .panel-default, #editowner .panel-default, #reviewattorney .panel-default, #userprofilepage .panel-default, #petitions1 .panel-default, #petitions2 .panel-default, #responseamend .panel-default {
+#gsselected .panel-default, #dashboardmain .panel-default, #editowner .panel-default, #reviewattorney .panel-default, #userprofilepage .panel-default, #petitions1 .panel-default, #petitions2 .panel-default, #responseamend .panel-default, #createaccount .panel-heading {
     border:none!important;
 }
 #petitions1 p.panel-title, #petitions2 p.panel-title, #responseamend p.panel-title  {
@@ -3154,8 +3313,8 @@ fileholder .linkholder, .fileholder .iconholder{
     -webkit-hyphens: none;
     hyphens: none;
 }
-#dashboardmain .panel-default>.panel-heading {
-    background-color:#F3D54E;
+#dashboardmain .panel-default>.panel-heading, #createaccount .panel-heading {
+    background-color:#9BB8D3;
 }
 #gsselected .panel-default>.panel-heading .number, #dashboardmain .panel-default>.panel-heading .number, #editowner .panel-default>.panel-heading .number, #reviewattorney .panel-default>.panel-heading .number, #petitions1 .panel-default>.panel-body .number, #petitions2 .panel-default>.panel-body .number {
     color:#333/*#FFF*/;
@@ -3469,6 +3628,9 @@ footer #megamenu ul {
     .navbar-nav {
         margin: 7.5px 15px;
     }
+	.navbar-nav li {
+		min-width: 10px;
+	}
     .navbar-right#lowernav {
         background-image: none;
         background-color:transparent!important;
