@@ -587,6 +587,13 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
                 current.setMarkInUseCC(true);
             }
         }
+        baseTrademarkApplication.setMarkInUseForAllGS(true);
+        // set notice of allowance action to not active
+        baseTrademarkApplication.findOfficeActionById(OfficeActionID).setActiveAction(false);
+
+
+
+
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
 

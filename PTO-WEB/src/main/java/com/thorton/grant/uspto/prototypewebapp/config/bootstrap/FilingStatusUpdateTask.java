@@ -260,7 +260,7 @@ public class FilingStatusUpdateTask extends TimerTask {
                     for(Iterator<OfficeActions> iter3 = current.getOfficeActions().iterator(); iter3.hasNext(); ) {
                         OfficeActions current3 = iter3.next();
 
-                        if(current3.isOfficeActionCompleted() == false){
+                        if(current3.isOfficeActionCompleted() == false && current.getFilingStatus().contains("Abandoned") == false){
 
                             // remove office action ..or set it to inactive
                             // so on the dashboard. we only show actions that are active
@@ -501,7 +501,7 @@ public class FilingStatusUpdateTask extends TimerTask {
                     for(Iterator<OfficeActions> iter3 = current.getOfficeActions().iterator(); iter3.hasNext(); ) {
                         OfficeActions current3 = iter3.next();
 
-                        if (current3.isOfficeActionCompleted() == false) {
+                        if (current3.isOfficeActionCompleted() == false && current.getFilingStatus().contains("Abandoned") == false) {
                             // this should flag the NOA which is also an office action with required action of SOU
 
                             Petition petition = new Petition();
