@@ -475,7 +475,7 @@ public class BaseTrademarkApplication  {
     private long petitionPeriod = 1*60*1000;
 
 
-    private long issuranceOfAllowancePeriod = 1*60*1000;
+    private long issuranceOfAllowancePeriod = 2*60*1000;
 
 
 
