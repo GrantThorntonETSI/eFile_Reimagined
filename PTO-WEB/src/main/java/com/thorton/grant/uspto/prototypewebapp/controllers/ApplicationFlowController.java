@@ -323,7 +323,7 @@ public class ApplicationFlowController {
         model.addAttribute("myContacts", contactsDisplayDTO);
         SelectedContactsDisplayDTO selectedContactsDisplayDTO = new SelectedContactsDisplayDTO();
 
-///////////////////////////////////////////
+        ///////////////////////////////////////////
         // load my contacts list for thyemleaf
         ////////////////////////////////////////////
         ArrayList<String> contactNamesMC = new ArrayList<>();
@@ -4863,6 +4863,13 @@ public class ApplicationFlowController {
      // noa signature page controller..not optional actions in front of signing page
      @RequestMapping({"/officeAction/noa/signature/{actionID}"})
      public String officeActionSOUSignature(WebRequest request, Model model,   @PathVariable String actionID ,@RequestParam("trademarkID") String trademarkInternalID){
+         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+         PTOUserService  ptoUserService = serviceBeanFactory.getPTOUserService();
+         PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+         UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+         UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
          BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
          BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
          OfficeActions actions = baseTrademarkApplication.findOfficeActionById(actionID);
@@ -4896,6 +4903,13 @@ public class ApplicationFlowController {
 
 
          model.addAttribute("OfficeActionID", actions.getInternalID());
+         model.addAttribute("baseTrademarkApplication", baseTrademarkApplication);
+         model.addAttribute("user", ptoUser);
+         model.addAttribute("account",credentials);
+
+
+
+
          return "application/noa/signature/index";
      }
 

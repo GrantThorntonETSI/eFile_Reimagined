@@ -83,6 +83,11 @@ public class GSClassCategory {
     private boolean frCertCCuploaded;
 
 
+    private boolean markInUseAllGS;
+
+
+
+
     // added to support class level having access to all gs names and attributes
 
 
@@ -582,5 +587,13 @@ public class GSClassCategory {
 
     public void setActiveClass(boolean activeClass) {
         this.activeClass = activeClass;
+    }
+
+    public boolean isMarkInUseAllGS() {
+        return markInUseAllGS;
+    }
+
+    public void setMarkInUseAllGS(boolean markInUseAllGS) {
+        this.markInUseAllGS = markInUseAllGS;
     }
 }

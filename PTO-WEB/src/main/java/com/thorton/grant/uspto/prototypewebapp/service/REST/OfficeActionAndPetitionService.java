@@ -5,6 +5,7 @@ import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.GSClassCategory;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.GoodAndService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -558,7 +559,59 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
 
 
 
+    @CrossOrigin(origins = {"https://localhost","https://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/OfficeAction/noa/response/update/{pField}/{pValue}/{OfficeActionID}/{ccID}/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> saveOASOUResponse(@PathVariable String pField , @PathVariable String pValue, @PathVariable String OfficeActionID, @PathVariable String ccID,@PathVariable String appInternalID){
 
+        String responseMsg = "Class level mark in use declaration for All goods and services have been saved.";
+
+        String returnCode = "420";
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+
+        // save mark is in use for class
+
+        // check if all class have this set
+
+
+        // need to create class level field is mark in use for all gs in this class
+
+        // need to create this value at the gs level and propogate up
+
+        for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+            GoodAndService current = iter.next();
+
+            if(ccID.equals(current.getClassNumber())){
+                current.setMarkInUseCC(true);
+            }
+        }
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+
+
+        for(Iterator<GSClassCategory> iterClass = baseTrademarkApplication.getGoodAndServicesCategories().iterator(); iterClass.hasNext(); ) {
+            GSClassCategory currentClass = iterClass.next();
+            if(currentClass.isMarkInUseAllGS() == false){
+                returnCode = "200";
+            }
+        }
+
+        // set this value for the specific class. // i.e loop through all gs that match class number
+
+        // then loop through all classes and determine return status code
+
+
+
+
+
+        // remember to set required actions to complete afterwards
+
+        return buildResponseEnity(returnCode, responseMsg);
+
+    }
 
 
 

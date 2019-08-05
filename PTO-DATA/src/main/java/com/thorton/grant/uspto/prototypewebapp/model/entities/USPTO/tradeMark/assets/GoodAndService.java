@@ -179,6 +179,8 @@ public class GoodAndService {
     public Date firstMarkDateCC;
 
 
+    public boolean markInUseCC;
+
 
 
     private boolean activeFilingBasis = true;
@@ -862,5 +864,13 @@ public class GoodAndService {
 
     public void setActiveGS(boolean activeGS) {
         this.activeGS = activeGS;
+    }
+
+    public boolean isMarkInUseCC() {
+        return markInUseCC;
+    }
+
+    public void setMarkInUseCC(boolean markInUseCC) {
+        this.markInUseCC = markInUseCC;
     }
 }
