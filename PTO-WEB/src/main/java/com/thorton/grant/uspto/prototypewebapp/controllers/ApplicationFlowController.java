@@ -4538,6 +4538,8 @@ public class ApplicationFlowController {
 
         baseTrademarkApplication.setOfficeActionResponsePeriod(baseTrademarkApplication.getOfficeActionResponsePeriod()*2);
 
+
+
         FilingDocumentEvent filingDocumentEvent = new FilingDocumentEvent();
         filingDocumentEvent.setEventDescription("Filing Revived");
 
@@ -4593,8 +4595,6 @@ public class ApplicationFlowController {
         model.addAttribute("markColorClaimBW", acceptBW);
         model.addAttribute("colorClaimSet", colorClaimSet);
         model.addAttribute("standardCharacterMark ", standardCharacterMark );
-
-
         model.addAttribute("petitionID", petitionID);
 
 
