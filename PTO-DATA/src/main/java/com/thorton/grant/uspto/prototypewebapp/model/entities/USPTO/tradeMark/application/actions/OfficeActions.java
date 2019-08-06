@@ -682,6 +682,24 @@ public class OfficeActions extends BaseEntity {
 
 
     // bread crumb methods
+    private Date actionDate;
 
+    public Date getActionDate() {
+        return actionDate;
+    }
+
+    public void setActionDate(Date actionDate) {
+        this.actionDate = actionDate;
+    }
+
+    public String getActionDateDisplay(){
+        if(actionDate != null){
+            return actionDate.toString().substring(0, 10);
+        }
+        else {
+            return "";
+        }
+
+    }
 
 }

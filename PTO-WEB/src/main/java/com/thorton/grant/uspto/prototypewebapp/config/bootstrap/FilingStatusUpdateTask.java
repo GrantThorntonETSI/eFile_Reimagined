@@ -281,6 +281,7 @@ public class FilingStatusUpdateTask extends TimerTask {
 
                             current.setFilingStatus("Abandoned - Failure to Respond or Late Response");
                             petition.setOfficeActionCode("Abandoned - Failure to Respond or Late Response");
+                            petition.setPetitionTitle("Failure to Respond Timely to Office Action");
 
                             petition.setActivePetition(true);
                             current.addPetition(petition);
@@ -443,8 +444,7 @@ public class FilingStatusUpdateTask extends TimerTask {
 
 
                             // create  an default office action object and attach it to filing
-                            current.addOfficeAction(noa);
-                            noa.setTrademarkApplication(current);
+
 
                             FilingDocumentEvent filingDocumentEvent = new FilingDocumentEvent();
                             filingDocumentEvent.setEventDescription("Issuance Of Allowance");
@@ -455,8 +455,9 @@ public class FilingStatusUpdateTask extends TimerTask {
 
                             current.addFilingDocumentEvent(filingDocumentEvent);
 
-
-
+                            noa.setActionDate(date);
+                            current.addOfficeAction(noa);
+                            noa.setTrademarkApplication(current);
 
 
                             // create document event
@@ -515,6 +516,10 @@ public class FilingStatusUpdateTask extends TimerTask {
 
                             long dueDate = new Date().getTime()+current.getBlackOutPeriod()+current.getPetitionPeriod();
                             petition.setDueDate(new Date(dueDate));
+                            petition.setPetitionTitle("Failure to File Timely Statement of Use or Extension Request");
+
+                            petition.setActionDate(current3.getActionDate());
+
 
 
                             current.setFilingStatus("Abandoned - Failure to Respond or Late Response");

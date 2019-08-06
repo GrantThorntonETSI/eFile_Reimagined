@@ -17,7 +17,7 @@ public class Petition extends OfficeActions {
 
 
 
-
+        private String petitionTitle;
 
 
          // check box
@@ -258,4 +258,15 @@ public class Petition extends OfficeActions {
     public void setType(String type) {
         this.type = type;
     }
+
+    public String getPetitionTitle() {
+        return petitionTitle;
+    }
+
+    public void setPetitionTitle(String petitionTitle) {
+        this.petitionTitle = petitionTitle;
+    }
+
+
+
 }
