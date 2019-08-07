@@ -4500,7 +4500,7 @@ public class ApplicationFlowController {
 
 
 
-        if(petition.getPetitionTitle().contains("Notice of Allowance")){
+        if(petition.getPetitionTitle().contains("Statement of Use")){
             return "petition/abandoned/souIndex";
         }
         else {
