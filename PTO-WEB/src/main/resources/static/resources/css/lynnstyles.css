@@ -1230,7 +1230,7 @@ main #loginform .landingpagemain {
     -moz-border-radius:1.3em;
     border-radius:1.3em;
 }
-table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before, table#dashboardtabletwo.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table#dashboardtabletwo.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before, table#filepetitiontable.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table#filepetitiontable.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before, table#responseamendtable.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table#responseamendtable.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before, table#responseamendtabletwo.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table#responseamendtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
+table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before, table#dashboardtableone.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table#dashboardtableone.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before, table#dashboardtabletwo.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table#dashboardtabletwo.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before, table#filepetitiontable.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table#filepetitiontable.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before, table#responseamendtable.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table#responseamendtable.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before, table#responseamendtabletwo.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table#responseamendtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
     background-color: transparent;
     border: .2em solid transparent;
 }
@@ -1628,7 +1628,7 @@ span#termsagree label a:hover, span#termsagree label a:hover {
     border-top-right-radius: 2px;
 }
 .card-text.noexpand {
-    padding: 9px 0 9px 18px;
+    padding: 6px 0 6px 18px;
 }
 #payment .card-text.noexpand {
     background-color:#EEEEEE;
@@ -1754,10 +1754,6 @@ fieldset {
 }
 .checkbox-inline, .radio-inline {
     padding-left: 21px;
-}
-input[type="date"]::-webkit-inner-spin-button, input[type=month]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    display: none;
 }
 .disabled {
     cursor: url('../images/cursor_not_allowed.png'), auto!important;
@@ -1987,7 +1983,7 @@ div.resetclass{
 	float:none;
 	margin: 0 auto;
 }
-.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus, div[role="radio"]:focus, .btn-success.active.focus, .btn-success.active:focus, .btn-success.focus, .btn-success:active.focus, .btn-success:active:focus, .btn-success:focus, .btn-sm.active.focus, .btn-sm.active:focus, .btn-sm.focus, .btn-sm:active.focus, .btn-sm:active:focus, .btn-sm:focus, .close.active.focus, .close.active:focus, .close.focus, .close:active.focus, .close:active:focus, .close:focus, .btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.focus, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:focus, .ql-snow.ql-toolbar button:focus, .ql-snow .ql-toolbar button:focus, .ql-snow.ql-toolbar button.focus, .ql-snow.ql-toolbar span:focus, .ql-snow .ql-toolbar span:focus, .ql-snow.ql-toolbar span.focus, .ql-tooltip input:focus, .ql-tooltip input.focus {
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus, div[role="radio"]:focus, .btn-success.active.focus, .btn-success.active:focus, .btn-success.focus, .btn-success:active.focus, .btn-success:active:focus, .btn-success:focus, .btn-sm.active.focus, .btn-sm.active:focus, .btn-sm.focus, .btn-sm:active.focus, .btn-sm:active:focus, .btn-sm:focus, .close.active.focus, .close.active:focus, .close.focus, .close:active.focus, .close:active:focus, .close:focus, .btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.focus, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:focus, .ql-snow.ql-toolbar button:focus, .ql-snow .ql-toolbar button:focus, .ql-snow.ql-toolbar button.focus, .ql-snow.ql-toolbar span:focus, .ql-snow .ql-toolbar span:focus, .ql-snow.ql-toolbar span.focus, .ql-tooltip input:focus, .ql-tooltip input.focus, .ql-container:focus, button.ui-datepicker-trigger:focus {
     /*outline: thin dotted;*/
     outline: 1px solid #9BB8D3!important;
     outline: 1px solid -webkit-focus-ring-color;
@@ -2003,6 +1999,13 @@ span.ql-picker span:focus, span.ql-picker span.focus, span.ql-picker:focus, span
     outline-offset: 0!important;
     outline:0!important;
     background:transparent;
+}
+.ui-datepicker-header select:focus {
+	outline-offset: 2px;
+	outline: 1px solid #fff!important;
+	-webkit-outline-radius: 2px;
+	-moz-outline-radius: 2px;
+	outline-radius: 2px;
 }
 .ql-picker {
     background:transparent;
@@ -2565,7 +2568,7 @@ div[role="heading"] button {
 input[type="file"]:focus {
     margin-left: 0;
 }
-option, select, input[type="text"], input[type="email"], input[type="date"], input[type="tel"], input[type="url"] {
+option, select, input[type="text"], input[type="email"], input[type="tel"], input[type="url"] {
     min-height: 38px!important;
 }
 #goodsandservices_wrapper input[type="search"], #dashboardtableone_wrapper input[type="search"], #dashboardtabletwo_wrapper input[type="search"], #filepetitiontable_wrapper input[type="search"] {
@@ -2737,9 +2740,122 @@ input[type="checkbox"]:focus + label span.radio::before {
     /*outline: 1px solid #000!important;*/
     outline-offset: 2px!important;
 }
-input[type="date"] {
-    padding:0 12px;
-    line-height:.95em!important;
+/*jquery ui datepicker*/
+input.datepicker { 
+	position: relative; 
+	padding: 0px 50px; 
+	width: 100%; 
+	}
+#ui-datepicker-div:focus, .ui-datepicker-calendar:focus {
+	outline: 1px solid #009CDE!important;
+    outline-offset: -2px;
+	border:none!important;
+	} 
+.ui-datepicker-prev:after, .ui-datepicker-next:after {
+    font-family: "Glyphicons Halflings";
+    font-weight: 900; 
+    color: #fff;
+	font-size:1em;
+	position: absolute; 
+	top: 0;
+	}
+a.ui-datepicker-prev:hover, a.ui-datepicker-next:hover,.ui-datepicker-prev:hover:after, .ui-datepicker-next:hover:after {
+    color: #ddd!important;
+	}
+.ui-datepicker-prev:after, .ui-datepicker-next:after {
+	top: 20px;
+	display:inline-block;
+	}
+.ui-datepicker-next:after {
+	right: 12px;
+	}
+.ui-datepicker-prev:after {
+	left: 12px;
+	}
+.ui-datepicker-header {
+	text-align:center;
+	padding:8px;
+	background-color: #808080;
+    color: #fff;
+	}
+.ui-datepicker-prev:hover:after, .ui-datepicker-next:hover:after {
+	color: #003865;
+	}
+.ui-datepicker-trigger:after {
+	font-family: "Glyphicons Halflings";
+    content: "\e109";
+    color: #009CDE;
+	font-size:1.5em;
+	}
+.ui-datepicker-trigger:hover:after {
+    color: #047db0;
+	}
+table.ui-datepicker-calendar {
+	min-width: 260px;
+    min-height: 200px;
+	background:#fff;
+	}
+button.ui-datepicker-trigger {
+	height: 48px;
+    width: 48px;
+	background:transparent;
+	border:0;
+	position: absolute;
+    bottom: -6px;
+	}
+button.ui-datepicker-trigger:focus {
+	outline-offset: -8px;
+	}
+.ui-datepicker-prev:after {
+    content: "\e079";
+	}
+.ui-datepicker-next:after {
+    content: "\e080";
+	}
+table.ui-datepicker-calendar td {
+	text-align: center;
+	width: 14.285714285714286%;
+	min-height: 14.285714285714286%;
+	border: 1px solid #ddd;
+	color:#222;
+	background:#9BB8D3;
+	}
+table.ui-datepicker-calendar td:focus {
+	outline:none!important;
+	}
+table.ui-datepicker-calendar td:hover {
+	background-color:#D4EB8E!important;
+	}
+table.ui-datepicker-calendar td a:hover {
+	color:#007A33!important;
+	}
+table.ui-datepicker-calendar td:active {
+	background-color:#007A33!important;
+	}
+table.ui-datepicker-calendar td a:active {
+	color:#D4EB8E!important;
+	}
+table.ui-datepicker-calendar td a {
+	color:#222;
+	}
+table.ui-datepicker-calendar th {
+	text-align: center;
+	padding-top:.3em;
+	padding-bottom:.3em;
+	border: 1px solid #ddd;
+	background-color:#ddd;
+	}
+.ui-datepicker-header select {
+	margin: 3px;
+	border:none;
+	color:#333;
+	background:#EEEEEE;
+	}
+.ui-datepicker-unselectable .ui-state-default {
+    color: #ddd;
+	}
+ table.ui-datepicker-calendar .ui-datepicker-unselectable:hover  {
+    background-color: #9BB8D3!important;
 }
 #specdescripthree, #specdescript, #specdescriptfour, #specdescriptwo {
     height:115px;

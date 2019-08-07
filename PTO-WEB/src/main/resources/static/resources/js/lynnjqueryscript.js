@@ -22,6 +22,7 @@ $(document).ready(function(){
 		//if (winwidth > 768) {
 		$('footer').css('position','relative').css('top',((e - efoot) - enav)).css('margin-top','0');
 		$('main#loginform').css('position','relative').css('top',((e - efoot) - enav) / 6);
+        $('.datepicker').datepicker( 'hide' );
 		//}
 //		else if (winwidth < 767) {
 //			$('footer').css('position','relative').css('top',((e - efoot) - enav)).css('margin-top','0');
@@ -2033,8 +2034,247 @@ $(document).ready(function(){
 		var loadmodalreset = $('.statementou select');
 		$(loadmodalreset).val( resetselect[0] );
 	});
-
-
+    
+    
+    
+    
+    
+    //jQuery Ui Datepicker
+	$('input.foreignfiling').each(function(){
+		var thatz = new Date();
+		function addDays(theDate, days) {
+			return new Date(theDate.getTime() + days*24*60*60*1000);
+		}
+		var newDate = addDays(new Date(), -182.5);
+		var strmin = newDate;
+		$(this).datepicker({
+			showOn: 'button',
+			buttonImage: '',
+			buttonText: '<span class="sr-only">launch the datepicker</span>',
+			prevText: '',
+			nextText: '',
+			altFormat: '@',
+			maxDate: thatz,
+			minDate: strmin,
+			constrainInput: true,
+			changeMonth:true,
+			changeYear:true,
+			beforeShow: function() {
+				makeAccessible();
+			},
+		});
+		function makeAccessible() {
+			clearTimeout(makeAccessible.timer);
+			$('.ui-datepicker-month').focus();
+			if ($('.ui-datepicker.ui-widget .ui-datepicker-calendar').is(':visible')) {
+				var cal = $('.ui-datepicker.ui-widget');
+				var cal_grid = cal.find('table');
+				var grid_thead = cal_grid.find('thead');
+				var grid_thead_tr = grid_thead.find('tr');
+				var grid_thead_th = grid_thead.find('th');
+				var grid_tbody = cal_grid.find('tbody');
+				var grid_tbody_tr = grid_tbody.find('tr');
+				var grid_tbody_td = grid_tbody.find('td');
+				var grid_selectoption = $('.ui-datepicker-header').find('option');
+					
+				$( cal ).attr('role','region');
+				$( grid_selectoption ).each(function () {
+					var span_months = 'name of month';
+					$( this ).attr('abbr', span_months);
+				});
+				$( cal_grid ).attr('role', 'grid').attr('tabindex', 0);
+				$( grid_thead ).attr('role', 'presentation');
+				$( grid_thead_tr ).attr('role', 'row');
+				$( grid_thead_th ).each(function () {
+					var span_title = $(this).find('span').attr('title');
+					$( this ).attr('role', 'columnheader').attr('arial-label', span_title).attr('abbr', span_title);
+				});
+				grid_tbody.attr('role', 'presentation');
+				grid_tbody_tr.each(function () {
+					$( this ).attr('role', 'row');
+				});
+				grid_tbody_td.each(function () {
+					var self = $( this );
+					var self_link = self.find('a');
+					$( self ).attr('role', 'gridcell')
+					$( self_link ).attr('tabindex', '0');
+				});
+			}
+			else {
+				makeAccessible.timer = setTimeout(makeAccessible, 10);
+			}
+		}
+	});
+	$('.datepicker').each(function(){
+		$(this).datepicker({
+			showOn: 'button',
+			buttonImage: '',
+			buttonText: '<span class="sr-only">open the datepicker</span>',
+			prevText: '',
+			nextText: '',
+			constrainInput: true,
+			monthNamesShort: [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ],
+			changeMonth:true,
+			changeYear:true,
+			beforeShow: function() {
+				makeAccessible();
+			},
+		});
+		function makeAccessible () {
+			clearTimeout(makeAccessible.timer);
+			$('.ui-datepicker-month').focus();
+			if ($('.ui-datepicker.ui-widget .ui-datepicker-calendar').is(':visible')) {
+				var cal = $('.ui-datepicker.ui-widget');
+				var cal_grid = cal.find('table');
+				var grid_thead = cal_grid.find('thead');
+				var grid_thead_tr = grid_thead.find('tr');
+				var grid_thead_th = grid_thead.find('th');
+				var grid_tbody = cal_grid.find('tbody');
+				var grid_tbody_tr = grid_tbody.find('tr');
+				var grid_tbody_td = grid_tbody.find('td');
+				var grid_selectoption = $('.ui-datepicker-header').find('option');
+				$( cal ).attr('role','region').attr('role','alert');
+				$( grid_selectoption ).each(function () {
+					var span_months = 'name of month';
+					$( this ).attr('abbr', span_months);
+				});
+				$( cal_grid ).attr('role', 'grid').attr('tabindex', 0).attr('aria-label','select a date');
+				$( grid_thead_th ).each(function () {
+					var span_title = $(this).find('span').attr('title');
+					$( this ).attr('role', 'columnheader').attr('arial-label', span_title).attr('abbr', span_title).attr('scope', 'col');
+				});
+				$( grid_tbody_td ).each(function () {
+					var self = $( this );
+					var self_link = self.find('a');
+					$( self_link ).attr('tabindex', '0');
+					$( this ).attr('tabindex', '0')
+				});
+				$( grid_tbody_td ).on('focusin',function () {
+					$(this).children('a').css('color','#333');
+					$(this).css('background-color','#F3D54E');
+				});
+				$( grid_tbody_td ).on('focusout',function () {
+					$(this).children('a').css('color','#222');
+					$(this).css('background-color','#9BB8D3');
+				});
+			}
+			else {
+				makeAccessible.timer = setTimeout(makeAccessible, 10);
+			}
+		}
+	});
+	$('input.datepicker').on('click', function() {
+		$('#ui-datepicker-div').datepicker().css('display','none');
+		$(this).focus();
+		if ($(this).is(':focus')) {
+			$('#ui-datepicker-div').datepicker().css('display','none');
+			}
+		});
+	$('input.foreignfiling').on('change', function() {
+		var focussed = $( this ).datepicker();
+		var thatz = new Date();
+		function addDays(theDate, days) {
+			return new Date(theDate.getTime() + days*24*60*60*1000);
+		}	
+		var options = { hour12: false, timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit', timeZoneName: 'short' };
+		var newDate = addDays(new Date(), -182.5).toLocaleTimeString('en-US', options);
+		var strmin = newDate; 
+		var sliceyearmin = strmin.slice(6, 10);
+		var slicemonthmin = strmin.slice(0, 2);
+		var slicedaymin = strmin.slice(3, 5);
+		
+		var strmax = thatz.toLocaleTimeString('en-US', options); 
+		var sliceyearmx = strmax.slice(6, 10);
+		var slicemonthmx = strmax.slice(0, 2);
+		var slicedaymx = strmax.slice(3, 5);
+		
+		var f = $('input.foreignfiling');
+		for (var i = 0; i < f.length; i++)
+		f[i].setAttribute("min", sliceyearmin + "-" + slicemonthmin + "-" + slicedaymin);	
+		var t = $('input.foreignfiling');
+		for (var i = 0; i < t.length; i++)
+		t[i].setAttribute("max", sliceyearmx + "-" + slicemonthmx + "-" + slicedaymx);
+				
+		var validateinputbox = $(this).val();
+		var validateinput = $(this).val();
+		var validate = $(this).val(); 	
+		var dateval = Date.parse(validate);
+		var requireddate = Date.parse(newDate);
+		var todaydate = Date.parse(thatz);
+		
+		if ((requireddate - 182.5) > dateval) {
+			var b = $('#alertmin');
+			if ($(b).css('visibility','hidden')) {
+				$(b).css('visibility','visible');
+				$(b).css('height','auto');
+				$(b).addClass('form-group');
+				$(b).addClass('form-group-md');
+				$(b).css('float','left');
+				$(b).css('top','.25em');
+				$(b).css('padding','1em');
+				$(b).css('marginBottom','1em');
+				$('#mintext').css('display', 'block');
+				$('#alertbtn').css('display','block');
+				$('#alertbtn').focus();
+				window.scrollTo(0, '90%');
+				$('#mintext').html('You cannot claim Section 44(d) priority, because your attempted U.S. filing is outside the 6-month window. (i.e., from when the foreign application was filed). The date must be a number after ' + strmin)
+		  } else {
+				$(b).css('visibility','hidden');
+				$(b).css('height','1px');
+				$(b).removeClass('form-group');
+				$(b).removeClass('form-group-md');
+				$(b).css('top','-10000px');
+				$(b).css('float','none');
+				$(b).css('padding','0');
+				$(b).css('marginBottom','0');
+				$('#mintext').css('display','none');
+				$('#alertbtn').css('display','none');
+				$('#alertbtn').blur();
+		  }
+		  $('#alertbtn').on('click', function() {
+			$(focussed).focus();
+			$(focussed).val('');
+			$('.datepicker').datepicker( 'hide' );
+		  });
+		}
+		if ((todaydate) < (dateval)) {
+			var b = $('#alertmin');
+			if ($(b).css('visibility','hidden')) {
+				$(b).css('visibility','visible');
+				$(b).css('height','auto');
+				$(b).addClass('form-group');
+				$(b).addClass('form-group-md');
+				$(b).css('float','left');
+				$(b).css('top','.25em');
+				$(b).css('padding','1em');
+				$(b).css('marginBottom','1em');
+				$('#mintext').css('display','block');
+				$('#alertbtn').css('display','block');
+				$('#alertbtn').focus();
+				window.scrollBy(0, '90%');
+				$('#mintext').html('You cannot claim Section 44(d) priority, because your attempted U.S. filing is after the current date. The date must be a number before ' + thatz);
+			} else {
+				$(b).css('visibility','hidden');
+				$(b).css('height','1px');
+				$(b).removeClass('form-group');
+				$(b).removeClass('form-group-md');
+				$(b).css('top','-10000px');
+				$(b).css('float','none');
+				$(b).css('padding','0');
+				$(b).css('marginBottom','0');
+				$('#mintext').css('display','none');
+				$('#alertbtn').css('display','none');
+				$('#alertbtn').blur();
+		  }
+		}
+		$('#alertbtn').on('click', function() {
+			$(focussed).focus();
+			$(focussed).val('');
+			$( '.datepicker' ).datepicker( 'hide' );
+		  });	
+	});
+    //
+    
 
 
 
