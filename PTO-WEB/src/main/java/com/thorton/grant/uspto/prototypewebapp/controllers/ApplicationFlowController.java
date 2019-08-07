@@ -3642,7 +3642,6 @@ public class ApplicationFlowController {
         // get owner info
 
 
-        System.out.println("999999999999999999999999999999999999999999999999999999");
 
         // get email and get PTOUser object from repository
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -4501,9 +4500,14 @@ public class ApplicationFlowController {
 
 
 
+        if(petition.getPetitionTitle().contains("Notice of Allowance")){
+            return "petition/abandoned/souIndex";
+        }
+        else {
+            return "petition/abandoned/index";
+        }
 
 
-        return "petition/abandoned/index";
     }
 
 

@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/efilePetitionsFragment :: layout (~{::body},'user')}" xmlns="http://www.w3.org/1999/html">
+<head >
+    <meta charset="UTF-8">
+    <title>Goods and Services Review</title>
+</head>
+<body>
+<div class="row content" style="display: none;">
+    <main class="col-xs-12 col-sm-8 col-md-8 col-lg-7" id="mainContent" tabindex="-1">
+        <!--START Content Div-->
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h1>Petition to Revive Abandoned Application</h1>
+                        <h2 class="leadtext weight600">Failure to File Timely Statement of Use or Extension Request</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="card-text">
+                                    <div role="heading" aria-level="2">
+                                        <button type="button" class="btn btn-link Accordion-trigger" data-toggle="collapse" data-target="#applicationdata" aria-controls="applicationdata" aria-expanded="true" id="appdatabtn"><span class="glyphicon glyphicon-triangle-right visuallyremoved"></span><span class="glyphicon glyphicon-triangle-bottom"></span> Application Data</button>
+                                    </div>
+                                </div>
+                                <div id="applicationdata" class="collapse Accordion-panel in" role="region" aria-labelledby="appdatabtn">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <p>You will be able to update your information in the next section if needed.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form action="" method="post">
+                                    <fieldset aria-label="acknowledgement">
+                                        <p class="weight600">In order to revive the application please read and acknowledge the following statement:</p>
+                                        <div class="form-group form-group-md">
+                                            <input class="form-check-input checkmark" type="checkbox" value="acceptrevives1" tabindex="0" aria-labelledby="acceptrevive" id="useracceptrevive" name="user-accept-checkbox">
+                                            <label class="form-check-label form-check form-check-left" for="useracceptrevive" id="acceptrevive"><span class="radio notspecial">In submitting this petition, the signatory confirms that he/she has firsthand knowledge that the failure to respond to the Office Action by the specified deadline was unintentional; and requests the USPTO to revive the abandoned application.</span></label>
+                                        </div>
+                                        <p class="weight600" id="recnote">Did you receive the Notice of Allowance issued on 7/26/2017?</p>
+                                        <div role="radiogroup" aria-describedby="recnote" class="form-group form-group-md">
+                                            <label for="inlineRadio0102" class="radio-inline radiocontainer"><input type="radio" name="actionradio" id="inlineRadio0102" value="yesreceived" tabindex="0"><span class="checkmark"></span>Yes</label>
+                                            <label for="inlineRadio0103" class="radio-inline radiocontainer"><input type="radio" name="actionradio" id="inlineRadio0103" value="noreceived" tabindex="0"><span class="checkmark"></span>No</label>
+                                        </div>
+                                    </fieldset>
+                                    <div id="reviveappform" role="alert" style="display: none;">
+                                        <div id="requestnoa" role="alert">
+                                            <fieldset aria-label="request new notice of allowance">
+                                                <p class="weight600" id="reqnoa">Would you like UPSTO to issue a new Notice of Allowance?</p>
+                                                <div role="radiogroup" class="form-group form-group-md" aria-describedby="reqnoa">
+                                                    <label for="inlineRadio0104" class="radio-inline radiocontainer block"><input type="radio" name="reqallowance" id="inlineRadio0104" value="yesreqallowance" tabindex="0"><span class="checkmark"></span>Yes, I want the Notice of Allowance re-issued</label>
+                                                    <label for="inlineRadio0105" class="radio-inline radiocontainer block"><input type="radio" name="reqallowance" id="inlineRadio0105" value="noreqallowance" tabindex="0"><span class="checkmark"></span>No, I want to file an Extension Request and/or a Statement of Use now</label>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="expedite" role="alert">
+                                            <fieldset aria-label="select petition signature method">
+                                                <div class="card-text noexpand">
+                                                    <h2 class="card-title weight600">Petition&#8217;s Signature</h2>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group form-group-md col-xs-12">
+                                                        <label for="petitionsign">How are you signing the petition?</label>
+                                                        <select class="form-control signmethod" id="petitionsign" onchange="showTheTime()">
+                                                            <option value="Select">Select Signature Method</option>
+                                                            <option value="direct">Sign directly</option>
+                                                            <option value="handwritten" disabled>Print and upload handwritten signature</option>
+                                                            <option value="send" disabled>Send to second party for signature</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-xs-12 form-group form-group-md direct">
+                                                        <div class="row hidethis">
+                                                            <section aria-label="sign">
+                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                    <label for="signature">Signature <a href="#" data-toggle="tooltip" title="" class="glyphicon glyphicon-info-sign test" data-placement="right" data-original-title="To electronically sign the application enter any combination of alpha numeric characters between two forward slash symbols (/); e.g., /jane smith/, /rdr/, or /127/)."></a></label>
+                                                                    <input type="text" class="form-control" placeholder="/Signature/" id="signature" required>
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                    <label for="datesigned">Date signed: <span id="tz" class="sr-only"> </span></label>
+                                                                    <textarea rows="1" class="form-control disabled datesigned" id="datesigned" disabled> </textarea>
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                    <label for="signatoryname">Signatory&#8217;s name</label>
+                                                                    <input type="text" class="form-control" id="signatoryname" required>
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
+                                                                    <label for="signatoryphone">Signatory&#8217;s phone number</label>
+                                                                    <input type="tel" class="form-control" id="signatoryphone">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                    <label for="signatoryposition">Signatory&#8217;s position</label>
+                                                                    <input type="text" class="form-control" id="signatoryposition" required>
+                                                                </div>
+                                                            </section>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div><!--//expedite-->
+                                        <div id="fees" role="alert" style="display: none;">
+                                            <fieldset aria-label="fees agreement">
+                                                <p class="weight600" id="agreefee">Do you want to file a Statement of Use with the fees for the missing Extension Request that must be filed directly within this form?</p>
+                                                <div role="radiogroup" class="form-group form-group-md" aria-describedby="agreefee">
+                                                    <label for="inlineRadio0108" class="radio-inline radiocontainer"><input type="radio" name="fees" id="inlineRadio0108" value="yesfees" tabindex="0"><span class="checkmark"></span>Yes</label>
+                                                    <label for="inlineRadio0109" class="radio-inline radiocontainer"><input type="radio" name="fees" id="inlineRadio0109" value="nofees" tabindex="0"><span class="checkmark"></span>No</label>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="xreq" role="alert"  style="display: none;">
+                                            <fieldset aria-label="file a request for extension">
+                                                <div class="card-text noexpand">
+                                                    <h2 class="card-title weight600">Extension Request</h2>
+                                                </div>
+                                                <div class="panel-group">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading">
+                                                            <p class="extensions weight600">Extension Request(s) Due:</span> <span class="weight600">First,</span> <span class="weight600">Second</span></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="souquestion" role="alert">
+                                                    <p class="weight600" id="filesou">Did you want to file a Statement of Use?</p>
+                                                    <div role="radiogroup" class="form-group form-group-md" aria-describedby="filesou">
+                                                        <label for="inlineRadio0106" class="radio-inline radiocontainer"><input type="radio" name="souradio" id="inlineRadio0106" value="yesou" tabindex="0"><span class="checkmark"></span>Yes</label>
+                                                        <label for="inlineRadio0107" class="radio-inline radiocontainer"><input type="radio" name="souradio" id="inlineRadio0107" value="nosou" tabindex="0"><span class="checkmark"></span>No</label>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="reconsideration">
+                                            <fieldset aria-label="enter statement of use information">
+                                                <div class="form-group form-group-md">
+                                                    <div class="card-text noexpand">
+                                                        <h2 class="card-title weight600" aria-labelledby="ttabreq">Statement of Use</h2>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <div class="form-group form-group-md">
+                                                            <img name="Placeholder" src="#" width="100%" height="50" alt="SOU placeholder" style="background-color: #ddd">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group form-group-md">
+                                                    <div class="card-text noexpand">
+                                                        <h2 class="card-title weight600">Statement of Use Signature</h2>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-12 form-group form-group-md">
+                                                        <label for="petitionsigntwo">How are you signing the Statement of Use?</label>
+                                                        <select class="form-control signmethod" id="petitionsigntwo" onchange="showTheTimeTwo()">
+                                                            <option value="Select">Select Signature Method</option>
+                                                            <option value="direct">Sign directly</option>
+                                                            <option value="handwritten" disabled>Print and upload handwritten signature</option>
+                                                            <option value="send" disabled>Send to second party for signature</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-xs-12 form-group form-group-md direct">
+                                                        <div class="row hidethis">
+                                                            <section aria-label="sign">
+                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                    <label for="reconsignature">Signature <a href="#" data-toggle="tooltip" title="" class="glyphicon glyphicon-info-sign test" data-placement="right" data-original-title="To electronically sign the application enter any combination of alpha numeric characters between two forward slash symbols (/); e.g., /jane smith/, /rdr/, or /127/)."></a></label>
+                                                                    <input type="text" class="form-control" placeholder="/Signature/" id="reconsignature" required>
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                    <label for="recondatesigned">Date signed: <span id="tz2" class="sr-only"> </span></label>
+                                                                    <textarea rows="1" class="form-control datesigned disabled" id="recondatesigned" disabled> </textarea>
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                    <label for="reconsignatoryname">Signatory&#8217;s name</label>
+                                                                    <input type="text" class="form-control" id="reconsignatoryname" required>
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
+                                                                    <label for="reconsignatoryphone">Signatory&#8217;s phone number</label>
+                                                                    <input type="tel" class="form-control" id="reconsignatoryphone">
+                                                                </div>
+                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                    <label for="reconsignatoryposition">Signatory&#8217;s position</label>
+                                                                    <input type="text" class="form-control" id="reconsignatoryposition" required>
+                                                                </div>
+                                                            </section>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="inlinebuttons btn-group btn-group-justified" role="navigation" aria-label="view previous or next page" id="prevnxt">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-default fill prev" id="" value="previous">Previous</button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-primary fill next" id="" value="next">Next
+                            <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div><!--END div content-->
+
+
+
+<script th:inline="javascript">
+
+    /*<![CDATA[*/
+
+
+    var appInternalID = /*[[${baseTrademarkApplication.applicationInternalID}]]*/ 'User Name';
+
+    var petitionSignatureType = /*[[${petitionSignatureType}]]*/ 'User Name';
+
+    var responseSignatureType = /*[[${responseSignatureType}]]*/ 'User Name';
+
+    var petitionID = /*[[${petitionID}]]*/ 'User Name';
+
+
+    var  image_path = /*[[${markImagePath}]]*/ 'User Name';
+
+    var  image_pathBW = /*[[${markImagePathBW}]]*/ 'User Name';
+
+    var colorClaim = /*[[${markColorClaim}]]*/ 'User Name';
+
+
+    var acceptBW = /*[[${markColorClaimBW}]]*/ 'User Name';
+
+    var OfficeActionID = /*[[${OfficeActionID}]]*/ 'User Name';
+
+    var colorClaimSet = /*[[${colorClaimSet}]]*/ 'User Name';
+
+    var type = /*[[${type}]]*/ 'User Name';
+
+    var markType = /*[[${baseTrademarkApplication.tradeMark.trademarkDesignType}]]*/ 'User Name';
+    var markText = /*[[${baseTrademarkApplication.tradeMark.trademarkStandardCharacterText}]]*/ 'User Name';
+    /*]]>*/
+</script>
+
+
+
+<script>
+
+
+
+    var doneURL = "../../../../../petitions/revive/"+petitionID+"/?trademarkID="+appInternalID;
+
+    if(type == "noa"){
+        doneURL = "../../../../../petitions/sou/revive/"+petitionID+"/?trademarkID="+appInternalID;
+    }
+
+
+
+
+    $(document).ready(function() {
+
+        setTimeout(function () {
+            // after 1000 ms we add the class animated to the login/register card
+            $('.content').fadeIn(500);
+        }, 500);
+
+
+        $('#doneButton').click(function () {
+            location.href=doneURL;
+        });
+
+
+        checkActivateLink();
+
+        if(markType == "Standard Character"){
+
+            if(markText  != null && markText != ""){
+
+                $( '#togglepop' ).attr('data-content', '<div class="media"><span id="showmarktxt" style="min-width:77px;width:80px;margin:0 auto;font-family: Palatino, Garamond, Bookman, Avant Garde; font-size:.9em;text-align:center;margin-bottom:0;" class="media-object" alt="my trademark">'+markText+'</span></div>');
+            }
+            else{
+                $( '#togglepop' ).attr('data-content', '<div class="media"><span class="glyphicon glyphicon-picture" aria-hidden="true"  style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></span></div>');
+            }
+
+        }
+        else {
+
+            if(colorClaimSet == false){
+
+                if(image_path != null){
+
+                    $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+                }
+                // set color claim to true be default when its not set yet
+                else{
+                    $( '#togglepop' ).attr('data-content', '<div class="media"><span class="glyphicon glyphicon-picture" aria-hidden="true"  style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></span></div>');
+                }
+
+            }
+            else {
+
+                if(colorClaim == false){
+
+                    if(acceptBW == true){
+                        // $('#inlineRadio2').click();
+                        // $('#bwmark').click();
+
+                        $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_pathBW+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+
+                    }
+                    else{
+                        if(image_path != null){
+
+                            $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+
+
+                        }
+
+                    }
+
+                }
+                if(colorClaim == true){
+                    // $('#inlineRadio1').click();
+                    if(image_path != null){
+
+                        $( '#togglepop' ).attr('data-content', '<div class="media"><img src='+image_path+' style="min-width:77px;width:80px;margin:0 auto;" class="media-object img-responsive" alt="my trademark"></div>');
+
+
+
+                    }
+                }
+
+
+            }
+
+
+
+
+        }
+
+        // start ajax auto save
+        // check box click for delay unintentional
+        $('#useracceptrevive').click(function () {
+            var actionID = $(this).attr("action-id");
+
+            if(this.checked == true){
+                savePeitionInfo("claim-delay-unintended", "yes", actionID, appInternalID);
+            }
+            else {
+                savePeitionInfo("claim-delay-unintended", "no", actionID, appInternalID);
+            }
+        });
+
+
+
+
+        // yes click for recieved office action
+        $('#inlineRadio072').click(function () {
+
+            var actionID = $(this).attr("action-id");
+
+            savePeitionInfo("rec-office-action", "yes", actionID, appInternalID);
+
+
+        });
+
+        // no click for recieved office action
+        $('#inlineRadio073').click(function () {
+            var actionID = $(this).attr("action-id");
+
+            savePeitionInfo("rec-office-action", "no", actionID, appInternalID);
+        });
+
+
+
+
+        // yes click for recieved office action
+        $('#inlineRadio074').click(function () {
+
+            var actionID = $(this).attr("action-id");
+
+            savePeitionInfo("avoid-delay", "yes", actionID, appInternalID);
+
+            $('#doneButton span.text').text("Next");
+
+        });
+
+
+        // no click for recieved office action
+        $('#inlineRadio075').click(function () {
+            var actionID = $(this).attr("action-id");
+
+            savePeitionInfo("avoid-delay", "no", actionID, appInternalID);
+
+            $('#doneButton span.text').text("Done");
+        });
+
+
+
+
+
+
+        // petition sign method
+
+        $('#petitionsign').change(function () {
+            var actionID = $(this).attr("action-id");
+
+            var value = $(this).val();
+
+
+            savePeitionInfo("pet-signature-method", value, actionID, appInternalID);
+
+
+        });
+        // persistence behavior for petition sign method
+        // set signature type persistence
+        if(petitionSignatureType != "" && petitionSignatureType != "null" && petitionSignatureType != null){
+            $('#petitionsign').val(petitionSignatureType);
+            $('#petitionsign').parent().next().show(500);
+        }
+
+        // petition signature and generate time stamp for signature
+        $('#signature').focusout(function () {
+
+            var sigVal = $(this).val();
+            var actionID = $(this).attr("action-id");
+
+            if(sigVal != ""){
+                //sigVal = sigVal;
+                var date = new Date();
+
+                var dateDisplay = formatDate(date);
+                $('#datesigned').val(dateDisplay);
+                // save signature text
+                // also save signature time stamp display
+
+                savePeitionSignature("pet-signature-text", sigVal, dateDisplay, actionID, appInternalID);
+
+            }
+
+
+        });
+
+
+        $('#signatoryname').focusout(function () {
+
+            var actionID = $(this).attr("action-id");
+
+            var value = $(this).val();
+
+
+            savePeitionInfo("pet-signature-name", value, actionID, appInternalID);
+            checkActivateLink();
+
+        });
+
+        $('#signatoryphone').focusout(function () {
+
+            var actionID = $(this).attr("action-id");
+
+            var value = $(this).val();
+
+
+            savePeitionInfo("pet-signature-phone", value, actionID, appInternalID);
+            checkActivateLink();
+
+        });
+
+        $('#signatoryposition').focusout(function () {
+
+            var actionID = $(this).attr("action-id");
+
+            var value = $(this).val();
+
+
+            savePeitionInfo("pet-signature-position", value, actionID, appInternalID);
+            checkActivateLink();
+
+        });
+
+
+
+        $('#response').focusout(function () {
+
+            var actionID = $(this).attr("action-id");
+
+            var value = $(this).val();
+
+            savePeitionInfo("response-text", value, actionID, appInternalID);
+        });
+
+
+
+        $('#responsepetitionsign').change(function () {
+            var actionID = $(this).attr("action-id");
+
+            var value = $(this).val();
+
+
+            savePeitionInfo("response-signature-method", value, actionID, appInternalID);
+
+
+        });
+
+        if(responseSignatureType != "" && responseSignatureType != "null" && responseSignatureType != null){
+            $('#responsepetitionsign').val(responseSignatureType);
+            $('#responsepetitionsign').parent().next().show(500);
+        }
+
+
+        // petition signature and generate time stamp for signature
+        $('#responsesignature').focusout(function () {
+
+            var sigVal = $(this).val();
+            var actionID = $(this).attr("action-id");
+
+            if(sigVal != ""){
+                //sigVal = sigVal;
+                var date = new Date();
+
+                var dateDisplay = formatDate(date);
+                $('#responsedatesigned').val(dateDisplay);
+                // save signature text
+                // also save signature time stamp display
+
+                savePeitionSignature("response-signature-text", sigVal, dateDisplay, actionID, appInternalID);
+
+            }
+
+
+        });
+
+
+        $('#responsesignatoryname').focusout(function () {
+            var actionID = $(this).attr("action-id");
+
+            var value = $(this).val();
+
+
+            savePeitionInfo("response-signature-name", value, actionID, appInternalID);
+
+
+        });
+
+
+        $('#responsesignatoryphone').focusout(function () {
+            var actionID = $(this).attr("action-id");
+
+            var value = $(this).val();
+
+
+            savePeitionInfo("response-signature-phone", value, actionID, appInternalID);
+
+        });
+
+        $('#responsesignatoryposition').focusout(function () {
+            var actionID = $(this).attr("action-id");
+
+            var value = $(this).val();
+
+
+            savePeitionInfo("response-signature-position", value, actionID, appInternalID);
+
+        });
+
+
+
+
+    });
+
+
+    function savePeitionInfo(petitionFieldName, petitionFieldValue, actionID, appInternalID) {
+
+        //var field_value = $(this).val();
+        //alert(field_value);
+
+
+        $.ajax({
+            url: "../../../REST/apiGateway/petition/update/" + petitionFieldName + "/" + petitionFieldValue + "/" + actionID + "/" + appInternalID,
+            type: 'GET',
+            success: function (data) {
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:") + 7, data.indexOf("status:") + 4 + 7);
+
+                var s_msg = data.substring(data.indexOf("msg:") + 4, data.length - 2);
+
+                if (s_code.trim() == "200") {
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function () {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+            },
+            error: function (data) {
+
+                console.log(data);
+
+            }
+
+        });
+    }
+
+
+    function savePeitionSignature(petitionFieldName, petitionFieldValue, displayDate, actionID, appInternalID) {
+
+        //var field_value = $(this).val();
+        //alert(field_value);
+
+
+        $.ajax({
+            url: "../../../REST/apiGateway/petition/update/" + petitionFieldName + "/" + petitionFieldValue + "/" + displayDate+"/"+actionID + "/" + appInternalID,
+            type: 'GET',
+            success: function (data) {
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:") + 7, data.indexOf("status:") + 4 + 7);
+
+                var s_msg = data.substring(data.indexOf("msg:") + 4, data.length - 2);
+
+                if (s_code.trim() == "200") {
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function () {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+            },
+            error: function (data) {
+
+                console.log(data);
+
+            }
+
+        });
+    }
+
+
+
+    function formatDate(date) {
+        var monthNames = [
+            "January", "February", "March",
+            "April", "May", "June", "July",
+            "August", "September", "October",
+            "November", "December"
+        ];
+
+        var day = date.getDate();
+        var monthIndex = date.getMonth();
+        var year = date.getFullYear();
+        var hour = date.getHours();
+        var minutes = date.getMinutes();
+        var seconds = date.getSeconds();
+        if(hour.length<2){
+            hour = "0"+hour;
+
+        }
+        if(minutes < 10){
+            minutes ="0"+minutes;
+        }
+        if(seconds.length<3){
+            seconds = "0"+seconds;
+        }
+
+        return (hour+":"+minutes+":"+seconds+" "+monthNames[monthIndex]+" "+day+","+date.getFullYear()+" E.T");
+
+        //return day + ' ' + monthNames[monthIndex] + ' ' + year;
+    }
+
+
+
+    function checkActivateLink() {
+
+
+        if($('#signature').val() !="" && $('#signatoryname').val()!="" && $('#signatoryposition').val()!=""){
+            $('#doneButton').attr("disabled",false);
+        }
+
+
+    }
+
+
+
+</script>
+
+</body>
+</html>
