@@ -149,7 +149,7 @@
                                                                         </th:block>
                                                                     </td>
                                                                     <td><a   th:attr="href='/application/continueApplication/?trademarkID='+${app.getApplicationInternalID()}"><span th:text="${app.getTrademarkName()}">87697840</span></a></td>
-                                                                    <td>N/A</td>
+                                                                    <td th:text="${app.getRegistrationID()}">N/A</td>
 
                                                                     <th:block th:if="${app.isOwnerSet() == true}">
 

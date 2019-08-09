@@ -31,6 +31,8 @@ public class FilingStatusUpdateTask extends TimerTask {
 
     private  final ServiceBeanFactory serviceBeanFactory;
 
+    private static long counter = 9000000;
+
     public FilingStatusUpdateTask(ServiceBeanFactory serviceBeanFactory) {
         this.serviceBeanFactory = serviceBeanFactory;
 
@@ -465,6 +467,19 @@ public class FilingStatusUpdateTask extends TimerTask {
                             //  also need to update dashboard to display notice of allowances
                             //  the requires action here is mark in use declaration
                             baseTradeMarkApplicationService.save(current);
+
+
+                        }
+                        else{
+                          // filing can now be registered
+                          // create registration number for filing
+                          // start this number at 9000000
+                            current.setFilingStatus("Registered Filing");
+                            counter++;
+                            current.setRegistrationID(String.valueOf(counter));
+
+                            baseTradeMarkApplicationService.save(current);
+
 
 
                         }

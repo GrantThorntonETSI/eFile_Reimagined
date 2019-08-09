@@ -162,8 +162,8 @@
                                                         <div class="col-xs-12">
                                                             <h2 class="weight600">Use Statement</h2>
                                                             <div class="form-group form-group-md">
-                                                                <input class="form-check-input checkmark in-use-cc" type="checkbox" value="" tabindex="0" aria-labelledby="userAccept-label_one" id="user-accept-checkbox" name="user-accept-checkbox" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">
-                                                                <label class="form-check-label form-check-left form-check" for="user-accept-checkbox" id="userAccept-label_one"><span class="radio notspecial">The mark is in use in commerce on or in connection with all goods/services in this class.</span></label>
+                                                                <input class="form-check-input checkmark in-use-cc" type="checkbox" value="" tabindex="0"   name="user-accept-checkbox" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}, id=${Good_Service_class.getInUseCheckboxID()},aria-labelledby=${Good_Service_class.getInUseCheckboxLabelID()} ">
+                                                                <label class="form-check-label form-check-left form-check"  th:attr="for=${Good_Service_class.getInUseCheckboxID()}, id=${Good_Service_class.getInUseCheckboxLabelID()}" ><span class="radio notspecial">The mark is in use in commerce on or in connection with all goods/services in this class.</span></label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -376,7 +376,7 @@
                                                         <div class="col-xs-12">
                                                             <h2 class="weight600">Use Statement</h2>
                                                             <div class="form-group form-group-md">
-                                                                <input class="form-check-input checkmark  in-use-cc" type="checkbox" value="" tabindex="0" aria-labelledby="userAccept-label_one" id="user-accept-checkbox" name="user-accept-checkbox" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">
+                                                                <input class="form-check-input checkmark  in-use-cc" type="checkbox" value="" tabindex="0" aria-labelledby="userAccept-label_one"  name="user-accept-checkbox" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">
                                                                 <label class="form-check-label form-check-left form-check" for="user-accept-checkbox" id="userAccept-label_one"><span class="radio notspecial">The mark is in use in commerce on or in connection with all goods/services in this class.</span></label>
                                                             </div>
                                                         </div>

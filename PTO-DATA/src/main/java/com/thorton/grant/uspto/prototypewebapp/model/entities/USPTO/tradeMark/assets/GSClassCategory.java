@@ -596,4 +596,13 @@ public class GSClassCategory {
     public void setMarkInUseAllGS(boolean markInUseAllGS) {
         this.markInUseAllGS = markInUseAllGS;
     }
+
+
+    public String getInUseCheckboxID(){
+        return classCategoryNumber+"allGSinUse";
+    }
+
+    public String getInUseCheckboxLabelID(){
+        return classCategoryNumber+"_lable_allGSinUse";
+    }
 }

@@ -45,6 +45,8 @@ public class BaseTrademarkApplication  {
 
     }
 
+
+
     ////////////////////////////////////////////////////////
     // stage 1 save point flags
     ////////////////////////////////////////////////////////
@@ -53,6 +55,10 @@ public class BaseTrademarkApplication  {
     private Long id;
     private String trademarkName;
     private String applicationInternalID;
+
+    private String registrationID = "N/A";
+
+
     private boolean isAttorneySet = false;
 
 
@@ -2099,4 +2105,14 @@ public class BaseTrademarkApplication  {
     public void setApplicationAcceptedDate(Date applicationAcceptedDate) {
         this.applicationAcceptedDate = applicationAcceptedDate;
     }
+
+    public String getRegistrationID() {
+        return registrationID;
+    }
+
+    public void setRegistrationID(String registrationID) {
+        this.registrationID = registrationID;
+    }
+
+
 }
