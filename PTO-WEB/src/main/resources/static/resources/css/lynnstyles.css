@@ -270,6 +270,8 @@ div.holdsaforeign p.weight600, div.appendsaforeign p.weight600, div.holdsapendin
 #dashboardmain .img-thumbnail, #dashboardmain .thumbnail {
     margin: 0 auto;
     float: none;
+    max-width: 55px; 
+    max-height: 33px;
 }
 .popover, .arrow {
     border:none;
@@ -674,7 +676,7 @@ ul[role="tablist"] li, #responseamendreview ul[role="tablist"] li {
     margin: 0 1em 1em 0;
     padding: .8em .8em;
     list-style-type: none;
-    background: #808080;
+    background: #009CDE;
     -webkit-border-radius:2px;
     -moz-border-radius:2px;
     border-radius:2px;
@@ -945,6 +947,11 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
     padding-left:.1em;
     padding-right:.1em;
 }
+#dashboardtableone th, #dashboardtabletwo th {
+	white-space: nowrap;
+	overflow: hidden;
+	height:20px;
+}
 table.dataTable thead .sorting_asc_disabled:after,
 table.dataTable thead .sorting_desc_disabled:after {
     color: #cdd8dc;
@@ -997,7 +1004,6 @@ table.dataTable thead .sorting_desc {
 }
 .table>thead:first-child>tr:first-child>th {
     background-color: #eee;
-    color:#808080;
     font-weight:normal;
 }
 table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
@@ -1032,8 +1038,10 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
     color: #808080;
     text-align:center;
 }
-span#filingsheader {
+span#filingsheader, span#due, span#notify {
     line-height: 39px;
+    color:#555;
+    font-size:1.2em;
 }
 #announce {
     background-color: #D9D9D6;
@@ -1047,7 +1055,7 @@ span#filingsheader {
 }
 #announce h3{
     padding:4px;
-    color:#808080;
+    color:#444;
     text-align:center;
 }
 #goodsandservices_wrapper {
@@ -1107,15 +1115,19 @@ td.red {
 #dashboardmain .form-group {
     margin-bottom: 0;
 }
-#dashboardtableone thead, #dashboardtabletwo thead, #dashboardtabletwo thead, #filepetitiontable thead:first-child>tr:first-child>th, table#goodsandservices thead:first-child>tr:first-child>th, #responseamendtable thead:first-child>tr:first-child>th, #responseamendtabletwo thead:first-child>tr:first-child>th {
+#dashboardtableone thead, #dashboardtabletwo thead, #filepetitiontable thead:first-child>tr:first-child>th, table#goodsandservices thead:first-child>tr:first-child>th, #responseamendtable thead:first-child>tr:first-child>th, #responseamendtabletwo thead:first-child>tr:first-child>th {
     color:#fff;
     background: #009CDE;
+}
+#dashboardtableone thead, #dashboardtabletwo thead {
+	background: #808080;
 }
 #dashboardtableone_length label, #dashboardtabletwo_length label, #filepetitiontable_length label, #responseamendtable_length label, #responseamendtabletwo_length label {
     margin-top: .3em;
 }
 #dashboardtableone_filter label, #dashboardtabletwo_filter label, #filepetitiontable_filter label, #responseamendtable_filter label, #responseamendtabletwo_filter label {
-    margin-bottom: 1.5em;
+    margin-bottom: .6em;
+    margin-top: .3em;
 }
 #dashboardtableone_wrapper input[type="search"], #dashboardtabletwo_wrapper input[type="search"], #filepetitiontable_wrapper input[type="search"]  {
     width:6.5em;
@@ -1127,7 +1139,7 @@ td.red {
     float: left;
     margin-left: 1.5em;
 }
-#dashboardtableone .centertxt, #dashboardtabletwo .centertxt, #goodsandservices .centertxt, #filepetitiontable .centertxt, #responseamendtable .centertxt, #responseamendtabletwo .centertxt {
+#dashboardtableone .centertxt, #dashboardtableone .control, #dashboardtabletwo .centertxt, #dashboardtabletwo .control, #goodsandservices .centertxt, #filepetitiontable .centertxt, #responseamendtable .centertxt, #responseamendtabletwo .centertxt, #filepetitiontable .control, #responseamendtable .control, #responseamendtabletwo .control {
     text-align:center;
 }
 .dashsection {
@@ -1234,13 +1246,21 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
     background-color: transparent;
     border: .2em solid transparent;
 }
-table.dataTable.dtr-inline.collapsed>tbody>tr.even.parent>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr.even.parent>th:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr.odd.parent>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr.odd.parent>th:first-child:before {
+table.dataTable.dtr-inline.collapsed>tbody>tr.even.parent>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr.even.parent>th:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr.odd.parent>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr.odd.parent>th:first-child:before, table.dataTable.dtr-column>tbody>tr>td.control:before, 
+table.dataTable.dtr-column>tbody>tr>th.control:before,  
+table.dataTable.dtr-column>tbody>tr.parent td.control:before, 
+table.dataTable.dtr-column>tbody>tr.parent th.control:before {
 	background-color: transparent!important;
 	border: .2em solid transparent!important;
+	/*color:#808080!important;
+	content: '\e252'!important;*/
+}
+table.dataTable.dtr-column>tbody>tr.parent td.control:before, 
+table.dataTable.dtr-column>tbody>tr.parent th.control:before, table.dataTable.dtr-inline.collapsed>tbody>tr.even.parent>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr.even.parent>th:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr.odd.parent>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr.odd.parent>th:first-child:before {
 	color:#808080!important;
 	content: '\e252'!important;
 }
-table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before, table#dashboardtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table#dashboardtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before, table#filepetitiontable.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table#filepetitiontable.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before, table#responseamendtable.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table#responseamendtable.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before, table#responseamendtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table#responseamendtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before, table#dashboardtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table#dashboardtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before, table#filepetitiontable.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table#filepetitiontable.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before, table#responseamendtable.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table#responseamendtable.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before, table#responseamendtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table#responseamendtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before, table.dataTable.dtr-column>tbody>tr>td.control:before, table.dataTable.dtr-column>tbody>tr>th.control:before {
 	-webkit-box-shadow: 0 0 0 rgba(0,0,0,0);
 	-moz-box-shadow:         0 0 0 rgba(0,0,0,0);
 	box-shadow:                 0 0 0 rgba(0,0,0,0);
@@ -1264,6 +1284,13 @@ table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before,
 	color:#009CDE;
 	margin-top:0;
 	position:relative;
+}
+#dashboardtableone .centertxt, #dashboardtableone .control, #dashboardtabletwo .centertxt, #dashboardtabletwo .control, #goodsandservices .centertxt, #filepetitiontable .centertxt, #responseamendtable .centertxt, #responseamendtabletwo .centertxt, #filepetitiontable .control, #responseamendtable .control, #responseamendtabletwo .control {
+	text-align:center;
+}
+table#dashboardtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child, table#dashboardtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child, table#responseamendtable.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child, table#responseamendtable.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child, table#responseamendtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child, table#responseamendtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child {
+    padding-left: 0!important;
+    padding-right: 16px;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.active, #dashboardtabletwo_paginate .paginate_button.current, #dashboardtabletwo_paginate .paginate_button.active, #filepetitiontable_paginate .paginate_button.current, #filepetitiontable_paginate .paginate_button.active, #responseamendtable_paginate .paginate_button.current, #responseamendtable_paginate .paginate_button.active, #responseamendtabletwo_paginate .paginate_button.current, #responseamendtabletwo_paginate .paginate_button.active {
     cursor: pointer;
@@ -2153,13 +2180,14 @@ button#moreoptionsbtn {
     margin:0 auto;
     margin-bottom: 1.5em;
 }
-#dashboardtableone .btn-success.fill {
-    display:inline-block;
-    background-color:#007A33;
-    margin-right: .5em;
-    margin-top: .07em;
-    position:relative;
-    float:right;
+#announcements .btn-success.fill {
+	background-color:#007A33;
+	margin-right: .5em;
+	margin-top: 0;
+	margin-bottom: 1.9em;
+	position:relative;
+	width:100%;
+	height:45px;
 }
 #dashboardtableone_wrapper div.toolbar, #dashboardtabletwo_wrapper div.toolbartwo, #filepetitiontable_wrapper div.toolbarpetitions {
     float:right;
@@ -3061,7 +3089,6 @@ div.alertmargin #alertmin {
 	margin-bottom:5em!important;
 	}
 #alertmin p {
-    float:left;
     width: 80%;
 }
 #filingbasisabde #alertmin button#alertbtn {
@@ -3260,9 +3287,7 @@ fileholder .linkholder, .fileholder .iconholder{
 }
 #dashboard .dashsection button.close {
 	color: #009CDE;
-	margin-left: 1.5em;
-	float:left;
-	}
+}
 #gsselected button.close {
     height:1.4em;
 }
@@ -3694,9 +3719,6 @@ footer #megamenu ul {
     }
     body.loginform, #loginform .headlinecontainer, main#loginform  {
         background-color: #004C97;
-    }
-    #dashboardtableone_length label, #dashboardtabletwo_length label, #filepetitiontable_length label, #responseamendtable_length label, #responseamendtabletwo_length label {
-        margin-top: .5em;
     }
     #loginform .maincontainer {
         padding:1em 3em;
