@@ -478,6 +478,15 @@ public class FilingStatusUpdateTask extends TimerTask {
                             counter++;
                             current.setRegistrationID(String.valueOf(counter));
 
+                            FilingDocumentEvent filingDocumentEvent = new FilingDocumentEvent();
+                            filingDocumentEvent.setEventDescription("Registered Tradmark");
+
+                            filingDocumentEvent.setDocumentType("XML");
+                            Date date = new Date();
+                            filingDocumentEvent.setEventDate(date);
+
+                            current.addFilingDocumentEvent(filingDocumentEvent);
+
                             baseTradeMarkApplicationService.save(current);
 
 
