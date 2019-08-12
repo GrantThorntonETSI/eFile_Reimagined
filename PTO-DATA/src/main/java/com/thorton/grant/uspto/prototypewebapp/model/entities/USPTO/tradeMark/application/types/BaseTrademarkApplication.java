@@ -484,6 +484,9 @@ public class BaseTrademarkApplication  {
     private long issuranceOfAllowancePeriod = 2*60*1000;
 
 
+    private long recurringFilingExtensionInterval = 2*60*1000;
+
+
 
 
 
@@ -2114,5 +2117,11 @@ public class BaseTrademarkApplication  {
         this.registrationID = registrationID;
     }
 
+    public long getRecurringFilingExtensionInterval() {
+        return recurringFilingExtensionInterval;
+    }
 
+    public void setRecurringFilingExtensionInterval(long recurringFilingExtensionInterval) {
+        this.recurringFilingExtensionInterval = recurringFilingExtensionInterval;
+    }
 }
