@@ -1788,45 +1788,342 @@ $(document).ready(function(){
 
 //start revive petition s1 options
 
+	//$('input#inlineRadio072').change(function() {
+		//if(this.checked == true){
+			//$('div#reviveappform').css('display','block');
+			//$('div#reviveappformradios').show('fast','swing');
+			//$('fieldset#responsefile').hide('fast');
+			//$('fieldset#edit').show('fast','swing');
+			//$('fieldset#resp').show('fast','swing');
+			//$('.hidethis').hide('fast','swing');
+			//$('select.signmethod').val('Select');
+			//$('input#inlineRadio074, input#inlineRadio075').prop({
+				checked:false,
+			//});
+			//$('div.ql-editor').empty();
+		//}
+	//});
+	//$('input#inlineRadio073').change(function() {
+		//if(this.checked == true){
+			//$('div#reviveappform').hide('fast','swing');
+			//$('fieldset#responsefile').css('display','block');
+			//$('div#reviveappformradios').show('fast');
+		//}
+	//});
+	//$('input#inlineRadio074').change(function() {
+		//if(this.checked == true){
+			//$('div#reviveappform').show('fast','swing');
+			//$('fieldset#edit').show('fast','swing');
+			//$('fieldset#resp').show('fast','swing');
+			//$('.hidethis').hide('fast','swing');
+			//$('select.signmethod').val('Select');
+			//$('div.ql-editor').empty();
+		//}
+	//});
+	//$('input#inlineRadio075').change(function() {
+		//if(this.checked == true){
+			//$('div#reviveappform').show('fast','swing');
+			//$('div#reviveappform').find('fieldset#edit').hide('fast');
+			//$('div#reviveappform').find('fieldset#resp').hide('fast');
+		//}
+	//});
+    
+    //START revive petition options			
+	//$('div#reviveappformradios').css('display','none');
+	//$('div#reviveappformdisplay').css('display','block');
+	//$('div#reviveappform').css('display','none');
+	//$('div#reconsideration').css('display','none');
+	//$('div#noreconsideration').css('display','none');
+	//$('div#yesreconsideration').css('display','none');
+	//$('div#yesttabreconsideration').css('display','none');
+	//$('div#nottabreconsideration').css('display','none');
+	//$('div#newpetradios').css('display','none');
+	//$('div#twomonths').css('display','none');
+	//$('div#petdiradios').css('display','none');
+	//$('div#receipt').css('display','none');
+	//$('div#received').css('display','none');
+	//$('div#expedite').css('display','none');
+	//$('div#reconsidersig').css('display','none');
+	//$('div#petsignature').css('display','none');
+	//$('div#xreq').css('display','none');
+	//$('div#sou').css('display','none');
+	//$('div#requestnoa').css('display','none');
+	//$('div#fees').css('display','none');
+	//$('div#souquestion').css('display','none');
+	
+    //clear signature inputs when user selects alternate radio option
+	function clear() { 
+		$('div#reviveappform textarea.datesigned').val('');
+		$('div#reviveappform .hidethis input').val('');
+		$('div#reviveappform select.signmethod').val('Select');
+		$('div#reviveappform .hidethis').hide('fast');
+		}
+	function clearttab() { 
+		$('div#yesttabreconsideration textarea.datesigned').val('');
+		$('div#yesttabreconsideration .hidethis input').val('');
+		$('div#yesttabreconsideration select.signmethod').val('Select');
+		$('div#yesttabreconsideration .hidethis').hide('fast');
+		}
+	function clearreconsidersig() { 
+		$('div#reconsidersig textarea.datesigned').val('');
+		$('div#reconsidersig .hidethis input').val('');
+		$('div#reconsidersig select.signmethod').val('Select');
+		$('div#reconsidersig .hidethis').hide('fast');
+		}
+	function clearexpedite() { 
+		$('div#expedite textarea.datesigned').val('');
+		$('div#expedite .hidethis input').val('');
+		$('div#expedite select.signmethod').val('Select');
+		$('div#expedite .hidethis').hide('fast');
+		}
+	function clearreconsider() { 
+		$('div#reconsideration textarea.datesigned, div#noreconsideration textarea.datesigned, div#expedite textarea.datesigned, div#received textarea.datesigned').val('');
+		$('div#reconsideration .hidethis input, div#noreconsideration .hidethis input, div#expedite .hidethis input, div#received .hidethis input').val('');
+		$('div#reconsideration select.signmethod, div#noreconsideration select.signmethod, div#expedite select.signmethod, div#received select.signmethod').val('Select');
+		$('div#reconsideration .hidethis, div#noreconsideration .hidethis, div#expedite .hidethis, div#received .hidethis').hide('fast');
+		}
+		//
 	$('input#inlineRadio072').change(function() {
 		if(this.checked == true){
-			$('div#reviveappform').css('display','block');
-			$('div#reviveappformradios').show('fast','swing');
-			$('fieldset#responsefile').hide('fast');
-			$('fieldset#edit').show('fast','swing');
-			$('fieldset#resp').show('fast','swing');
-			$('.hidethis').hide('fast','swing');
-			$('select.signmethod').val('Select');
+			$(clear);
 			$('input#inlineRadio074, input#inlineRadio075').prop({
 				checked:false,
 			});
-			$('div.ql-editor').empty();
+			$('div#reviveappformradios').hide('fast');
+			$('div#reviveappform').show('fast','swing');
 		}
-	});
-	$('input#inlineRadio073').change(function() {
+	});    
+	$('input#inlineRadio073,input#inlineRadio079').change(function() {
 		if(this.checked == true){
+			$(clear);
 			$('div#reviveappform').hide('fast','swing');
-			$('fieldset#responsefile').css('display','block');
-			$('div#reviveappformradios').show('fast');
-		}
+			$('div#reviveappformradios').show('fast','swing');
+			}
 	});
 	$('input#inlineRadio074').change(function() {
 		if(this.checked == true){
-			$('div#reviveappform').show('fast','swing');
-			$('fieldset#edit').show('fast','swing');
-			$('fieldset#resp').show('fast','swing');
-			$('.hidethis').hide('fast','swing');
-			$('select.signmethod').val('Select');
-			$('div.ql-editor').empty();
-		}
+			$(clear);
+			$('fieldset#edit, fieldset#resp, div#reviveappform').show('fast','swing');
+			}
 	});
 	$('input#inlineRadio075').change(function() {
 		if(this.checked == true){
+			$(clear);
+			$('div#reviveappform fieldset#resp, div#reviveappform fieldset#edit').hide('fast');
 			$('div#reviveappform').show('fast','swing');
-			$('div#reviveappform').find('fieldset#edit').hide('fast');
-			$('div#reviveappform').find('fieldset#resp').hide('fast');
-		}
+			}
 	});
+	$('input#inlineRadio078,input#inlineRadio079').change(function() {
+		$(clear);
+		$('div#reviveappform div.ql-editor').empty();
+		$('div#reviveappform input').prop({
+			checked:false,
+		});
+		$('div#reviveappform input').val('');
+		$('div#reconsideration, div#noreconsideration, div#yesttabreconsideration, div#nottabreconsideration, div#reviveappform').hide('fast');
+		$('div#reviveappform').show('fast','swing');
+	});
+	$('input#inlineRadio080').change(function() {
+		$(clearreconsider);
+		$('div#reconsideration input,div#noreconsideration input,div#yesttabreconsideration input,div#nottabreconsideration input').prop({
+			checked:false,
+		});
+		$('div#nottabreconsideration, div#noreconsideration').hide('fast');
+		$('div#reconsideration').show('fast','swing');
+	});
+	$('input#inlineRadio081').change(function() {
+		$(clearreconsider);
+		$('div.ql-editor').empty();
+		$('div#reconsideration input,div#noreconsideration input,div#yesttabreconsideration input,div#nottabreconsideration input').prop({
+			checked:false,
+		});
+		$('div#nottabreconsideration, fieldset#tabappeal, div#reconsideration').hide('fast');
+		$('div#noreconsideration').show('fast','swing');
+	});
+	//
+	$('input#inlineRadio076,input#inlineRadio082').change(function() {
+		$('div#nottabreconsideration input').prop({
+			checked:false,
+		});
+		$('div#nottabreconsideration').hide('fast');
+		$('div#yesttabreconsideration').show('fast');
+	});
+	$('input#inlineRadio077,input#inlineRadio083').change(function() {
+		$('div#yesttabreconsideration').hide('fast','swing');
+		$('div#nottabreconsideration').show('fast','swing');
+	});
+	$('input#inlineRadio084').change(function() {
+		$('div#newpetradios input, div#twomonths input, div#petdiradios input, div#reviveappformradios input, div#expedite input, div#received input, div#receipt input').val('');
+		$('div#newpetradios input, div#twomonths input, div#petdiradios input, div#reviveappformradios input, div#expedite input, div#received input, div#receipt input').prop({
+			checked:false,
+		});
+		$('div.ql-editor').empty();
+		$('textarea.datesigned, .hidethis input').val('');
+		$('select.signmethod').val('Select');
+		$('div#twomonths, div#newpetradios, div#twomonths, div#petdiradios, div#reviveappformradios, div#expedite, div#received, div#receipt, .hidethis').hide('fast');
+		$('div#newpetradios').show('fast','swing');
+	});
+	$('input#inlineRadio085').change(function() {
+		$('div#newpetradios input, div#twomonths input, div#petdiradios input, div#reviveappformradios input, div#expedite input, div#received input, div#receipt input').val('');
+		$('div#newpetradios input, div#twomonths input, div#petdiradios input, div#reviveappformradios input, div#expedite input, div#received input, div#receipt input').prop({
+			checked:false,
+		});
+		$('div.ql-editor').empty();
+		$('textarea.datesigned, .hidethis input').val('');
+		$('select.signmethod').val('Select');
+		$('.hidethis, div#newpetradios, div#twomonths, div#petdiradios, div#reviveappformradios, div#expedite, div#received, div#receipt').hide('fast');
+		$('div#twomonths').show('fast','swing');
+	});
+	$('input#inlineRadio088').change(function() {
+		$(clearreconsider);
+		$('div#petdiradios input, div#souquestion input').prop({
+			checked:false,
+		});
+		$('div#petdiradios, div#xreq, #souquestion, #reconsideration').hide('fast');
+		$('div#receipt').show('fast','swing');
+	});
+	$('input#inlineRadio089').change(function() {
+		$(clearreconsider);
+		$('textarea.datesigned, .hidethis input, div#newpetradios input, div#reviveappformradios input, div#expedite input, div#received input, div#receipt input, div#reconsidersig input, div#souquestion input, div#requestnoa input, div#fees input').val('');
+		$('div#newpetradios input, div#reviveappformradios input, div#expedite input, div#received input, div#receipt input, div#reconsidersig input').prop({
+			checked:false,
+		});
+		$('div.ql-editor').empty();
+		$('select.signmethod').val('Select');
+		$('div#newpetradios, div#reviveappformradios, div#expedite, div#received, div#receipt, div#reconsidersig, div#yesttabreconsideration, div#nottabreconsideration, div#xreq, #souquestion, #reconsideration, #requestnoa, #fees').hide('fast');
+		$('div#petdiradios').show('fast','swing');
+	});
+	$('input#inlineRadio092').change(function() {
+		$(clearreconsider);
+		$('input#inlineRadio094, input#inlineRadio095').prop({
+			checked:false,
+		});
+		$('div#reviveappformradios, div#expedite').hide('fast');
+		$('div#received').show('fast','swing');
+	});
+	$('input#inlineRadio093').change(function() {
+		$('div#received div.ql-editor').empty();
+		$('div#received input').val('');
+		$(clearreconsider);
+		$('div#received').hide('fast');
+		$('div#reviveappformradios').show('fast','swing');
+	});
+	$('input#inlineRadio094, input#inlineRadio095').change(function() {
+		$('div#expedite').show('fast','swing');
+		$(clearreconsider);
+	});
+	$('input#inlineRadio096').change(function() {
+		$('textarea.datesigned, .hidethis input, div#newpetradios input, div#twomonths input, div#petdiradios input, div#reviveappformradios input, div#expedite input, div#received input, div#receipt input, div#reconsidersig input').val('');
+		$('div#newpetradios input, div#twomonths input, div#petdiradios input, div#reviveappformradios input, div#expedite input, div#received input, div#receipt input, div#reconsidersig input, #requestnoa input, #fees input').prop({
+			checked:false,
+		});
+		$('div.ql-editor').empty();
+		$('select.signmethod').val('Select');
+		$('.hidethis, div#newpetradios, div#twomonths, div#petdiradios, div#reviveappformradios, div#expedite, div#received, div#receipt, div#reconsidersig, div#yesttabreconsideration, div#nottabreconsideration, div#xreq, #reconsideration, #requestnoa, #fees').hide('fast');
+		$('div#newpetradios').show('fast','swing');
+	});
+	$('input#inlineRadio097').change(function() {
+		$('textarea.datesigned, .hidethis input, div#newpetradios input, div#twomonths input, div#petdiradios input, div#reviveappformradios input, div#expedite input, div#received input, div#receipt input, div#reconsidersig input').val('');
+		$('div#newpetradios input, div#twomonths input, div#petdiradios input, div#reviveappformradios input, div#expedite input, div#received input, div#receipt input, div#reconsidersig input').prop({
+			checked:false,
+		});
+		$('div.ql-editor').empty();
+		$('select.signmethod').val('Select');
+		$('.hidethis, div#newpetradios, div#twomonths, div#petdiradios, div#reviveappformradios, div#expedite, div#received, div#receipt, div#reconsidersig, div#yesttabreconsideration, div#nottabreconsideration').hide('fast');
+		$('div#twomonths').show('fast','swing');
+	});
+	$('input#inlineRadio098').change(function() {
+		$(clearreconsider);
+		$('div#reviveappformradios input, div#reconsidersig input, div#nottabreconsideration input').prop({
+			checked:false,
+		});
+		$('div#reviveappformradios, div#expedite, div#received, div#reconsidersig, div#yesttabreconsideration, div#nottabreconsideration').hide('fast');
+		$('div#reviveappformradios').show('fast','swing');
+		$('div#expedite').show('fast','swing');
+	});
+	$('input#inlineRadio099').change(function() {
+		$(clearreconsider);
+		$(clearttab);
+		$(clearreconsidersig);
+		$('div.ql-editor').empty();
+		$('div#reviveappformradios input, div#reconsidersig input, div#nottabreconsideration input').prop({
+			checked:false,
+		});
+		$('div#reviveappformradios, div#expedite, div#received, div#reconsidersig, div#yesttabreconsideration, div#nottabreconsideration').hide('fast');
+		$('div#reviveappformradios').show('fast','swing');
+		$('div#expedite').show('fast','swing');
+	});
+	$('input#inlineRadio0100').change(function() {
+		$(clearttab);
+		$('div#yesttabreconsideration, div#nottabreconsideration').hide('fast');
+		$('div#received').show('fast','swing');
+		$('div#reconsidersig').show('fast','swing');
+	});
+	$('input#inlineRadio0101').change(function() {
+		$(clearttab);
+		$(clearreconsidersig);
+		$('div.ql-editor').empty();
+		$('div#received, div#reconsidersig, div#yesttabreconsideration, div#nottabreconsideration').hide('fast');
+		$('div#reconsidersig input, div#nottabreconsideration').prop({
+			checked:false,
+		});
+		$('div#yesttabreconsideration').show('fast','swing');
+	});
+	$('input#inlineRadio0102').change(function() {
+		$(clear);
+		$(clearexpedite);
+		$('div#reviveappform input').prop({
+			checked:false,
+		});
+		$('div#reviveappform input').val('');
+		$('div#fees, div#requestnoa, div#reconsideration, div#expedite, div#reviveappform').hide('fast');
+		$('div#expedite, div#xreq, div#souquestion, div#sou').css('display','block');
+		$('div#reviveappform, div#expedite, div#xreq, div#souquestion, div#sou').show('fast','swing');
+		
+	});
+	$('input#inlineRadio0103').change(function() {
+		$(clear);
+		$(clearexpedite);
+		$('div#reviveappform input').prop({
+			checked:false,
+		});
+		$('div#reviveappform input').val('');
+		$('div#expedite, div#xreq, div#souquestion, div#sou, div#reconsideration, div#reviveappform').hide('fast');
+		$('#requestnoa, div#expedite').css('display','block');
+		$('div#reviveappform, #requestnoa, div#expedite').show('fast','swing');
+	});
+	$('input#inlineRadio0106').change(function() {
+		$(clearreconsider);
+		$('div#reconsideration').show('fast','swing');
+	});
+	$('input#inlineRadio0107').change(function() {
+		$(clearreconsider);
+		$('div#reconsideration').hide('fast');
+	});
+	$('input#inlineRadio0104').change(function() {
+		$(clearreconsider);
+		$('div#fees input').prop({
+			checked:false,
+		});
+		$('div#fees, div#xreq, div#reconsideration').hide('fast');
+		//$('div#expedite').show('fast','swing');
+	});
+	$('input#inlineRadio0105').change(function() {
+		//$(clearexpedite);
+		//$('div#expedite').hide('fast');
+		$('div#fees').show('fast','swing');
+	});
+	$('input#inlineRadio0108').change(function() {
+		$('div#xreq').show('fast','swing');
+		$('div#souquestion').hide('fast');
+		$('div#reconsideration').show('fast','swing');
+	});
+	$('input#inlineRadio0109').change(function() {
+		$(clearreconsider);
+		$('div#reconsideration, div#souquestion, div#xreq').hide('fast');
+		$('div#xreq').show('fast','swing');
+	});
+    //
 
 
 	$('select.signmethod').on('change',function(){
