@@ -99,6 +99,8 @@ public class FilingStatusUpdateTask extends TimerTask {
         checkNOAPeriod();
 
 
+
+
     }
 
 
@@ -486,6 +488,8 @@ public class FilingStatusUpdateTask extends TimerTask {
                             filingDocumentEvent.setEventDate(date);
 
                             current.addFilingDocumentEvent(filingDocumentEvent);
+
+                            current.setApplicationRegisteredDate(date);
 
                             baseTradeMarkApplicationService.save(current);
 

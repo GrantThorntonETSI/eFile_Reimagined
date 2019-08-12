@@ -470,6 +470,9 @@ public class BaseTrademarkApplication  {
     private boolean claimDidNotRecieveOfficeAction; // this can only be claimed once. once it is set to true, you can not make that claim any more  // this is actually a filed that needs to be on the filing object
 
     private Date applicationAcceptedDate;
+
+
+    private Date applicationRegisteredDate;
     ///////////////////////////////////////////////////////////////
 
 
@@ -2123,5 +2126,13 @@ public class BaseTrademarkApplication  {
 
     public void setRecurringFilingExtensionInterval(long recurringFilingExtensionInterval) {
         this.recurringFilingExtensionInterval = recurringFilingExtensionInterval;
+    }
+
+    public Date getApplicationRegisteredDate() {
+        return applicationRegisteredDate;
+    }
+
+    public void setApplicationRegisteredDate(Date applicationRegisteredDate) {
+        this.applicationRegisteredDate = applicationRegisteredDate;
     }
 }
