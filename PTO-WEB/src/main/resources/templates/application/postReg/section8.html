@@ -149,73 +149,35 @@
                     </div>
                 </div>
                 <form action="upload" enctype="multipart/form-data" method="post">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="card-text noexpand blue">
-                                <h2 class="card-title weight600">Class 18</h2>
-                            </div>
-                            <fieldset aria-label="class18">
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <div>
-                                            <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" aria-labelledby="userAccept-label_one" id="user-accept-checkbox" name="user-accept-checkbox">
-                                            <label class="form-check-label form-check-left form-check" for="user-accept-checkbox" id="userAccept-label_one"><span class="radio notspecial">This class has a good/service in use.</span></label>
-                                        </div>
-                                        <section aria-label="class image and description">
-                                            <div role="radiogroup" class="form-group form-group-md">
-                                                <label for="inlineRadio0113" class="radio-inline radiocontainer block"><input type="radio" class="yesone" name="numberspecimen" id="inlineRadio0113" value="yes" tabindex="0"><span class="checkmark"></span>Provide a specimen and a description at the <span class="weight600">class level</span></label>
-                                                <label for="inlineRadio0114" class="radio-inline radiocontainer block"><input type="radio" class="yesoneeachpost" name="numberspecimen" id="inlineRadio0114" value="no" tabindex="0"><span class="checkmark"></span>Provide a specimen and a description for <span class="weight600">each individual good/service</span></label>
-                                            </div><!--END radiogroup-->
-                                            <div class="row form-group form-group-md yesonespecimen" role="alert"><!--toggle 'yes' radio-->
-                                                <div class="col-xs-12 form-group form-group-md upload">
-                                                    <p id="upimage">Provide an image of your specimen:</p>
-                                                    <div>
-                                                        <div class="form-group form-group-md hidethis">
-                                                            <label class="small upload-drop-zone" for="specimenfile" id="upimg">
-                                                                <div class="fileDisplayArea">
-                                                                    <span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png</div>
-                                                            </label>
-                                                            <input type="file" id="specimenfile" name="specimenfileupload" class="form-control" accept=".jpg,.tiff,.png" aria-labelledby="upimg upimage">
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="js-upload-finished col-xs-12">
-                                                                <div class="list-group">
-                                                                    <div class="list-group-item list-group-item-success fileholder col-xs-12" role="alert"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-xs-12">
-                                                                <div class="col-xs-12 form-group form-group-md">
-                                                                    <button type="submit" class="btn-sm btn-success add ctr" aria-label="submit selected file">Submit</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- Drop Zone -->
-                                                </div>
-                                                <div class="col-xs-12">
-                                                    <label for="specdescript">Provide a description of your specimen:</label>
-                                                    <textarea id="specdescript" class="form-control"></textarea>
-                                                </div>
-                                            </div>
-                                        </section>
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <section aria-label="basisone" id="basisone" class="basis">
-                                                    <div class="card-text noexpand">
-                                                        <h2 class="card-title weight600">Bar Soap <span class="sr-only" role="alert"></span><button type="button" class="close btn" aria-label="remove this good / service"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></h2>
 
-                                                    </div>
-                                                    <div role="radiogroup" class="form-group form-group-md">
-                                                        <label for="inlineRadio0115" class="radio-inline radiocontainer block"><input type="radio" name="use18one" id="inlineRadio0115" value="yesbar" tabindex="0"><span class="checkmark"></span>This good/service is in use.</label>
-                                                        <label for="inlineRadio0116" class="radio-inline radiocontainer block"><input type="radio" name="use18one" id="inlineRadio0116" value="nobar" tabindex="0"><span class="checkmark"></span>This good/service is an excusable non-use.</label>
-                                                    </div><!--END radiogroup-->
-                                                    <div class="row form-group form-group-md yesspecimen" role="alert"><!--toggle 'yes' radio-->
-                                                        <div class="col-xs-12 form-group form-group-md upload">
-                                                            <p id="upimagethree">Provide an image of your specimen:</p>
+                    <th:block th:each="Good_Service_class : ${baseTrademarkApplication.getGoodAndServicesCategories()}">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="card-text noexpand blue">
+                                    <h2 class="card-title weight600" th:text="${Good_Service_class.getClassNumberDisplay()}">Class 18</h2>
+                                </div>
+                                <fieldset aria-label="class18">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div>
+                                                <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" aria-labelledby="userAccept-label_one" id="user-accept-checkbox" name="user-accept-checkbox">
+                                                <label class="form-check-label form-check-left form-check" for="user-accept-checkbox" id="userAccept-label_one"><span class="radio notspecial">This class has a good/service in use.</span></label>
+                                            </div>
+                                            <section aria-label="class image and description">
+                                                <div role="radiogroup" class="form-group form-group-md">
+                                                    <label for="inlineRadio0113" class="radio-inline radiocontainer block"><input type="radio" class="yesone" name="numberspecimen" id="inlineRadio0113" value="yes" tabindex="0"><span class="checkmark"></span>Provide a specimen and a description at the <span class="weight600">class level</span></label>
+                                                    <label for="inlineRadio0114" class="radio-inline radiocontainer block"><input type="radio" class="yesoneeachpost" name="numberspecimen" id="inlineRadio0114" value="no" tabindex="0"><span class="checkmark"></span>Provide a specimen and a description for <span class="weight600">each individual good/service</span></label>
+                                                </div><!--END radiogroup-->
+                                                <div class="row form-group form-group-md yesonespecimen" role="alert"><!--toggle 'yes' radio-->
+                                                    <div class="col-xs-12 form-group form-group-md upload">
+                                                        <p id="upimage">Provide an image of your specimen:</p>
+                                                        <div>
                                                             <div class="form-group form-group-md hidethis">
-                                                                <label class="small upload-drop-zone" for="specimenthreefile" id="upimgthree"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png></label>
-                                                                <input type="file" id="specimenthreefile" name="specimenthreefileupload" class="form-control" accept=".jpg,.tiff,.png" aria-labelledby="upimgthree upimagethree">
+                                                                <label class="small upload-drop-zone" for="specimenfile" id="upimg">
+                                                                    <div class="fileDisplayArea">
+                                                                        <span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png</div>
+                                                                </label>
+                                                                <input type="file" id="specimenfile" name="specimenfileupload" class="form-control" accept=".jpg,.tiff,.png" aria-labelledby="upimg upimage">
                                                             </div>
                                                             <div class="row">
                                                                 <div class="js-upload-finished col-xs-12">
@@ -230,261 +192,87 @@
                                                                         <button type="submit" class="btn-sm btn-success add ctr" aria-label="submit selected file">Submit</button>
                                                                     </div>
                                                                 </div>
-                                                            </div><!-- Drop Zone -->
-                                                        </div>
-                                                        <div class="col-xs-12">
-                                                            <label for="specdescriptfour">Provide a description of your specimen:</label>
-                                                            <textarea id="specdescriptfour" class="form-control"></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row form-group form-group-md nonuse" role="alert"><!--toggle 'yes' radio-->
-                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                            <label for="connection-date" class="matchlabelheighttwo">Date of last use<span class="sr-only">enter the date in the following format: m m d d y y y y</span></label>
-                                                            <input type="text" class="form-control datepicker" id="connection-date" name="connectiondate" value="" placeholder="mm/dd/yyyy">
-                                                        </div>
-                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                            <label for="firstconnection-date" class="matchlabelheighttwo">Approximate date when use is expected to resume<span class="sr-only">enter the date in the following format: m m d d y y y y</span></label>
-                                                            <input type="text" class="form-control datepicker" id="firstconnection-date" name="firstconnectiondate" value="" placeholder="mm/dd/yyyy">
-                                                        </div>
-                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                            <label for="reason">Reason for nonuse:</label>
-                                                            <textarea id="reason" class="form-control"></textarea>
-                                                        </div>
-                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                            <label for="steps">Steps being taken to resume use</label>
-                                                            <textarea id="steps" class="form-control"></textarea>
-                                                        </div>
-                                                    </div>
-                                                </section>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <section aria-label="basistwo" id="basistwo" class="basis">
-                                                    <div class="card-text noexpand">
-                                                        <h2 class="card-title weight600">Liquid Bath Soap <span class="sr-only" role="alert"></span><button type="button" class="close btn" aria-label="remove this good / service"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></h2>
-                                                    </div>
-                                                    <div role="radiogroup" class="form-group form-group-md">
-                                                        <label for="inlineRadio0117" class="radio-inline radiocontainer block"><input type="radio" name="use18two" id="inlineRadio0117" value="yesliquid" tabindex="0"><span class="checkmark"></span>This good/service is in use.</label>
-                                                        <label for="inlineRadio0118" class="radio-inline radiocontainer block"><input type="radio" name="use18two" id="inlineRadio0118" value="noliquid" tabindex="0"><span class="checkmark"></span>This good/service is an excusable non-use.</label>
-                                                    </div><!--END radiogroup-->
-                                                    <div class="row form-group form-group-md yesspecimen" role="alert"><!--toggle 'yes' radio-->
-                                                        <div class="col-xs-12 form-group form-group-md upload">
-                                                            <p id="upimagethree">Provide an image of your specimen:</p>
-                                                            <div class="form-group form-group-md hidethis">
-                                                                <label class="small upload-drop-zone" for="specimenthreefile" id="upimgthree"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png</label>
-                                                                <input type="file" id="specimenthreefile" name="specimenthreefileupload" class="form-control" accept=".jpg,.tiff,.png" aria-labelledby="upimgthree upimagethree">
                                                             </div>
-                                                            <div class="row">
-                                                                <div class="js-upload-finished col-xs-12">
-                                                                    <div class="list-group">
-                                                                        <div class="list-group-item list-group-item-success fileholder col-xs-12" role="alert"></div>
+                                                        </div><!-- Drop Zone -->
+                                                    </div>
+                                                    <div class="col-xs-12">
+                                                        <label for="specdescript">Provide a description of your specimen:</label>
+                                                        <textarea id="specdescript" class="form-control"></textarea>
+                                                    </div>
+                                                </div>
+                                            </section>
+
+                                            <th:block th:each="Good_Service: ${Good_Service_class.getGoodAndServices()}">
+                                                <div class="row"  >
+                                                    <div class="col-xs-12">
+                                                        <section aria-label="basisone" id="basisone" class="basis">
+                                                            <div class="card-text noexpand">
+                                                                <h2 class="card-title weight600" th:text="${Good_Service.getClassDescription()}">Bar Soap <span class="sr-only" role="alert"></span><button type="button" class="close btn" aria-label="remove this good / service"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></h2>
+
+                                                            </div>
+                                                            <div role="radiogroup" class="form-group form-group-md">
+                                                                <label for="inlineRadio0115" class="radio-inline radiocontainer block"><input type="radio" name="use18one" id="inlineRadio0115" value="yesbar" tabindex="0"><span class="checkmark"></span>This good/service is in use.</label>
+                                                                <label for="inlineRadio0116" class="radio-inline radiocontainer block"><input type="radio" name="use18one" id="inlineRadio0116" value="nobar" tabindex="0"><span class="checkmark"></span>This good/service is an excusable non-use.</label>
+                                                            </div><!--END radiogroup-->
+                                                            <div class="row form-group form-group-md yesspecimen" role="alert" style="display: none;"><!--toggle 'yes' radio-->
+                                                                <div class="col-xs-12 form-group form-group-md upload">
+                                                                    <p id="upimagethree">Provide an image of your specimen:</p>
+                                                                    <div class="form-group form-group-md hidethis">
+                                                                        <label class="small upload-drop-zone" for="specimenthreefile" id="upimgthree"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png></label>
+                                                                        <input type="file" id="specimenthreefile" name="specimenthreefileupload" class="form-control" accept=".jpg,.tiff,.png" aria-labelledby="upimgthree upimagethree">
                                                                     </div>
+                                                                    <div class="row">
+                                                                        <div class="js-upload-finished col-xs-12">
+                                                                            <div class="list-group">
+                                                                                <div class="list-group-item list-group-item-success fileholder col-xs-12" role="alert"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <div class="col-xs-12 form-group form-group-md">
+                                                                                <button type="submit" class="btn-sm btn-success add ctr" aria-label="submit selected file">Submit</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div><!-- Drop Zone -->
                                                                 </div>
-                                                            </div>
-                                                            <div class="row">
                                                                 <div class="col-xs-12">
-                                                                    <div class="col-xs-12 form-group form-group-md">
-                                                                        <button type="submit" class="btn-sm btn-success add ctr" aria-label="submit selected file">Submit</button>
-                                                                    </div>
+                                                                    <label for="specdescriptfour">Provide a description of your specimen:</label>
+                                                                    <textarea id="specdescriptfour" class="form-control"></textarea>
                                                                 </div>
-                                                            </div><!-- Drop Zone -->
-                                                        </div>
-                                                        <div class="col-xs-12">
-                                                            <label for="specdescriptfour">Provide a description of your specimen:</label>
-                                                            <textarea id="specdescriptfour" class="form-control"></textarea>
-                                                        </div>
+                                                            </div>
+                                                            <div class="row form-group form-group-md nonuse" role="alert" style="display: none;"><!--toggle 'yes' radio-->
+                                                                <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                                                    <label for="connection-date" class="matchlabelheighttwo">Date of last use<span class="sr-only">enter the date in the following format: m m d d y y y y</span></label>
+                                                                    <input type="text" class="form-control datepicker" id="connection-date" name="connectiondate" value="" placeholder="mm/dd/yyyy">
+                                                                </div>
+                                                                <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                                                    <label for="firstconnection-date" class="matchlabelheighttwo">Approximate date when use is expected to resume<span class="sr-only">enter the date in the following format: m m d d y y y y</span></label>
+                                                                    <input type="text" class="form-control datepicker" id="firstconnection-date" name="firstconnectiondate" value="" placeholder="mm/dd/yyyy">
+                                                                </div>
+                                                                <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                                                    <label for="reason">Reason for nonuse:</label>
+                                                                    <textarea id="reason" class="form-control"></textarea>
+                                                                </div>
+                                                                <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                                                    <label for="steps">Steps being taken to resume use</label>
+                                                                    <textarea id="steps" class="form-control"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </section>
                                                     </div>
-                                                    <div class="row form-group form-group-md nonuse" role="alert"><!--toggle 'yes' radio-->
-                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                            <label for="connection-date" class="matchlabelheighttwo">Date of last use<span class="sr-only">enter the date in the following format: m m d d y y y y</span></label>
-                                                            <input type="text" class="form-control datepicker" id="connection-date" name="connectiondate" value="" placeholder="mm/dd/yyyy">
-                                                        </div>
-                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                            <label for="firstconnection-date" class="matchlabelheighttwo">Approximate date when use is expected to resume<span class="sr-only">enter the date in the following format: m m d d y y y y</span></label>
-                                                            <input type="text" class="form-control datepicker" id="firstconnection-date" name="firstconnectiondate" value="" placeholder="mm/dd/yyyy">
-                                                        </div>
-                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                            <label for="reason">Reason for nonuse:</label>
-                                                            <textarea id="reason" class="form-control"></textarea>
-                                                        </div>
-                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                            <label for="steps">Steps being taken to resume use</label>
-                                                            <textarea id="steps" class="form-control"></textarea>
-                                                        </div>
-                                                    </div>
-                                                </section>
-                                            </div>
+                                                </div>
+                                            </th:block>
+
+
                                         </div>
-                            </fieldset>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="card-text noexpand blue">
-                                <h2 class="card-title weight600">Class 019</h2>
+                                    </div>
+                                </fieldset>
                             </div>
-                            <fieldset aria-label="class019">
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <div>
-                                            <input class="form-check-input checkmark" type="checkbox" value="" tabindex="0" aria-labelledby="userAccept-label_one" id="user-accept-checkbox_two" name="user-accept-checkbox">
-                                            <label class="form-check-label form-check-left form-check" for="user-accept-checkbox_two" id="userAccept-label_one"><span class="radio notspecial">This class has a good/service in use.</span></label>
-                                        </div>
-                                        <section aria-label="class image and description">
-                                            <div role="radiogroup" class="form-group form-group-md">
-                                                <label for="inlineRadio0119" class="radio-inline radiocontainer block"><input type="radio" class="yesone" name="numberspecimen004" id="inlineRadio0119" value="yes" tabindex="0"><span class="checkmark"></span>Provide a specimen and a description at the <span class="weight600">class level</span></label>
-                                                <label for="inlineRadio0120" class="radio-inline radiocontainer block"><input type="radio" class="yesoneeachpost" name="numberspecimen004" id="inlineRadio0120" value="no" tabindex="0"><span class="checkmark"></span>Provide a specimen and a description for <span class="weight600">each individual good/service</span></label>
-                                            </div><!--END radiogroup-->
-                                            <div class="row form-group form-group-md yesonespecimen" role="alert"><!--toggle 'yes' radio-->
-                                                <div class="col-xs-12  form-group form-group-md upload">
-                                                    <p id="upimagefour">Provide an image of your specimen:</p>
-                                                    <div>
-                                                        <div class="form-group form-group-md hidethis">
-                                                            <label class="small upload-drop-zone" for="specimenfile" id="upimgfour"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png</label>
-                                                            <input type="file" id="specimenfile" name="specimenfileupload" class="form-control" accept=".jpg,.tiff,.png" aria-labelledby="upimgfour upimagefour">
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="js-upload-finished col-xs-12">
-                                                                <div class="list-group">
-                                                                    <div class="list-group-item list-group-item-success fileholder col-xs-12" role="alert"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-xs-12">
-                                                                <div class="col-xs-12 form-group form-group-md">
-                                                                    <button type="submit" class="btn-sm btn-success add ctr" aria-label="submit selected file">Submit</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- Drop Zone -->
-                                                </div>
-                                                <div class="col-xs-12">
-                                                    <label for="specdescript">Provide a description of your specimen:</label>
-                                                    <textarea id="specdescript" class="form-control"></textarea>
-                                                </div>
-                                            </div>
-                                        </section>
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <section aria-label="basisone" id="basisone" class="basis">
-                                                    <div class="card-text noexpand">
-                                                        <h2 class="card-title weight600">Bar Soap <span class="sr-only" role="alert"></span><button type="button" class="close btn" aria-label="remove this good / service"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></h2>
-                                                    </div>
-                                                    <div role="radiogroup" class="form-group form-group-md">
-                                                        <label for="inlineRadio0121" class="radio-inline radiocontainer block"><input type="radio" name="use19one" id="inlineRadio0121" value="yesbar" tabindex="0"><span class="checkmark"></span>This good/service is in use.</label>
-                                                        <label for="inlineRadio0122" class="radio-inline radiocontainer block"><input type="radio" name="use19one" id="inlineRadio0122" value="nobar" tabindex="0"><span class="checkmark"></span>This good/service is an excusable non-use.</label>
-                                                    </div><!--END radiogroup-->
-                                                    <div class="row form-group form-group-md yesspecimen" role="alert"><!--toggle 'yes' radio-->
-                                                        <div class="col-xs-12 form-group form-group-md upload">
-                                                            <p id="upimagethree">Provide an image of your specimen:</p>
-                                                            <div class="form-group form-group-md hidethis">
-                                                                <label class="small upload-drop-zone" for="specimenthreefile" id="upimgthree"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png</label>
-                                                                <input type="file" id="specimenthreefile" name="specimenthreefileupload" class="form-control" accept=".jpg,.tiff,.png" aria-labelledby="upimgthree upimagethree">
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="js-upload-finished col-xs-12">
-                                                                    <div class="list-group">
-                                                                        <div class="list-group-item list-group-item-success fileholder col-xs-12" role="alert"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-xs-12">
-                                                                    <div class="col-xs-12 form-group form-group-md">
-                                                                        <button type="submit" class="btn-sm btn-success add ctr" aria-label="submit selected file">Submit</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div><!-- Drop Zone -->
-                                                        </div>
-                                                        <div class="col-xs-12">
-                                                            <label for="specdescriptfour">Provide a description of your specimen:</label>
-                                                            <textarea id="specdescriptfour" class="form-control"></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row form-group form-group-md nonuse" role="alert"><!--toggle 'yes' radio-->
-                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                            <label for="connection-date" class="matchlabelheighttwo">Date of last use<span class="sr-only">enter the date in the following format: m m d d y y y y</span></label>
-                                                            <input type="text" class="form-control datepicker" id="connection-date" name="connectiondate" value="" placeholder="mm/dd/yyyy">
-                                                        </div>
-                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                            <label for="firstconnection-date" class="matchlabelheighttwo">Approximate date when use is expected to resume<span class="sr-only">enter the date in the following format: m m d d y y y y</span></label>
-                                                            <input type="text" class="form-control datepicker" id="firstconnection-date" name="firstconnectiondate" value="" placeholder="mm/dd/yyyy">
-                                                        </div>
-                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                            <label for="reason">Reason for nonuse:</label>
-                                                            <textarea id="reason" class="form-control"></textarea>
-                                                        </div>
-                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                            <label for="steps">Steps being taken to resume use</label>
-                                                            <textarea id="steps" class="form-control"></textarea>
-                                                        </div>
-                                                    </div>
-                                                </section>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <section aria-label="basistwo" id="basistwo" class="basis">
-                                                    <div class="card-text noexpand">
-                                                        <h2 class="card-title weight600">Liquid Bath Soap <span class="sr-only" role="alert"></span><button type="button" class="close btn" aria-label="remove this good / service"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></h2>
-                                                    </div>
-                                                    <div role="radiogroup" class="form-group form-group-md">
-                                                        <label for="inlineRadio0123" class="radio-inline radiocontainer block"><input type="radio" name="use19two" id="inlineRadio0123" value="yesliquid" tabindex="0"><span class="checkmark"></span>This good/service is in use.</label>
-                                                        <label for="inlineRadio0124" class="radio-inline radiocontainer block"><input type="radio" name="use19two" id="inlineRadio0124" value="noliquid" tabindex="0"><span class="checkmark"></span>This good/service is an excusable non-use.</label>
-                                                    </div><!--END radiogroup-->
-                                                    <div class="row form-group form-group-md yesspecimen" role="alert"><!--toggle 'yes' radio-->
-                                                        <div class="col-xs-12 form-group form-group-md upload">
-                                                            <p id="upimagesix">Provide an image of your specimen:</p>
-                                                            <div class="form-group form-group-md hidethis">
-                                                                <label class="small upload-drop-zone" for="specimentwelvefile" id="upimgsix"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png</label>
-                                                                <input type="file" id="specimentwelvefile" name="specimentwelvefileupload" class="form-control" accept=".jpg,.tiff,.png" aria-labelledby="upimgsix upimagesix">
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="js-upload-finished col-xs-12">
-                                                                    <div class="list-group">
-                                                                        <div class="list-group-item list-group-item-success fileholder col-xs-12" role="alert"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-xs-12">
-                                                                    <div class="col-xs-12 form-group form-group-md">
-                                                                        <button type="submit" class="btn-sm btn-success add ctr" aria-label="submit selected file">Submit</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div><!-- Drop Zone -->
-                                                        </div>
-                                                        <div class="col-xs-12">
-                                                            <label for="specdescriptfour">Provide a description of your specimen:</label>
-                                                            <textarea id="specdescriptfour" class="form-control"></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row form-group form-group-md nonuse" role="alert"><!--toggle 'yes' radio-->
-                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                            <label for="connection-date" class="matchlabelheighttwo">Date of last use<span class="sr-only">enter the date in the following format: m m d d y y y y</span></label>
-                                                            <input type="text" class="form-control datepicker" id="connection-date" name="connectiondate" value="" placeholder="mm/dd/yyyy">
-                                                        </div>
-                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                            <label for="firstconnection-date" class="matchlabelheighttwo">Approximate date when use is expected to resume<span class="sr-only">enter the date in the following format: m m d d y y y y</span></label>
-                                                            <input type="text" class="form-control datepicker" id="firstconnection-date" name="firstconnectiondate" value="" placeholder="mm/dd/yyyy">
-                                                        </div>
-                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                            <label for="reason">Reason for nonuse:</label>
-                                                            <textarea id="reason" class="form-control"></textarea>
-                                                        </div>
-                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                            <label for="steps">Steps being taken to resume use</label>
-                                                            <textarea id="steps" class="form-control"></textarea>
-                                                        </div>
-                                                    </div>
-                                                </section>
-                                            </div>
-                                        </div>
-                            </fieldset>
                         </div>
-                    </div>
+                    </th:block>
+
+
                 </form>
             </div><!--END col-->
         </div><!--END row-->
