@@ -1841,46 +1841,95 @@ $(document).ready(function(){
 
 
 	//START initialize Dashboard datable one
-	var tableone = $('#dashboardtableone').DataTable({
+		var tableone = $('#dashboardtableone').DataTable({
 		"fnDrawCallback": function( oSettings ) {
-		},
-		'sDom': '<"toolbar">lfrtip',
-		"language": {
+		},	
+			'sDom': '<"toolbar">lfrtip',
+			"language": {
 			"search": "<span class='glyphicon glyphicon-search' aria-hidden='true'></span><span class='sr-only'>search</span>",
 			"lengthMenu": "<span class='glyphicon glyphicon-filter' aria-hidden='true'></span><span class='sr-only'>select number of entries to display</span> <select>"+
-				'<option value="10">10</option>'+
-				'<option value="25">25</option>'+
-				'<option value="50">50</option>'+
-				'<option value="100">100</option>'+
-				'<option value="-1">All</option>'+
-				'</select>'
-		},
-		'autoWidth': false,
-		responsive: {
-			breakpoints: [
-				{ name: 'desktop', width: Infinity },
-				{ name: 'tablet',  width: 1180 },
-				{ name: 'fablet',  width: 768 },
-				{ name: 'phone',   width: 480 }
-			]
-		},
-		'columns': [
-			{ 'width': '20%' },
-			{ 'width': '16%' },
-			{ 'width': '25%' },
-			{ 'width': '16%' },
-			{ 'width': '12%' },
-			{ 'width': '11%' },
-		],
-		'columnDefs': [
-			{ responsivePriority: 1, targets: 0 },//buttons
-			{ responsivePriority: 2, targets: 1 },//serial
-			{ responsivePriority: 4, targets: 2 },//reg
-			{ responsivePriority: 3, targets: 3 },//owner
-			{ responsivePriority: 6, targets: 4 },//status
-			{ responsivePriority: 5, targets: 5 },//mark
-			{ className: 'centertxt', 'targets': [ 0,1,2,3,4,5 ] },
-		],
+			  '<option value="10">10</option>'+
+			  '<option value="25">25</option>'+
+			  '<option value="50">50</option>'+
+			  '<option value="100">100</option>'+
+			  '<option value="-1">All</option>'+
+			  '</select>'
+  			},
+			'autoWidth': false,
+			responsive: {
+				details: {
+                type: 'column',
+				target: 1,
+            	},
+				breakpoints: [
+					{ name: 'desktop', width: Infinity },
+					{ name: 'tablet',  width: 1180 },
+					{ name: 'fablet',  width: 768 },
+					{ name: 'phone',   width: 480 }
+				],
+			},
+			'columns': [
+				{ 'width': '10%' },
+				{ 'width': '10%' },
+				{ 'width': '16%' },
+				{ 'width': '20%' },
+				{ 'width': '16%' },
+				{ 'width': '16%' },
+				{ 'width': '16%' },
+			  ],
+			  'columnDefs': [ 
+			  	{ responsivePriority: 1, targets: 0 },//buttons 
+				{ responsivePriority: 0, targets: 1 },//(control)
+				{ responsivePriority: 2, targets: 2 },//serial
+				{ responsivePriority: 4, targets: 3 },//reg
+				{ responsivePriority: 3, targets: 4 },//mark
+				{ responsivePriority: 6, targets: 5 },//owner
+				{ responsivePriority: 5, targets: 6 },//status
+				{ className: 'centertxt', 'targets': [ 0,2,3,4,5,6 ] },
+				{ className: 'control', 'orderable': true, 'targets': [ 1 ] },
+			   ],
+		});
+	//
+    //START a11y datatable hide/show rows
+	$( '#dashboardtableone tbody' ).on('click', 'td.control', function(e){
+		e.preventDefault();
+		$( this ).attr('aria-expanded', function (i, attr) {
+			return attr == 'true' ? 'false' : 'true'
+		});
+		var dtcontent = $( this ).parent().next('tr.child');
+		$( dtcontent ).attr('role','alert');
+	});
+	$( '#dashboardtabletwo tbody' ).on('click', 'td.control', function(e){
+		e.preventDefault();
+		$( this ).attr('aria-expanded', function (i, attr) {
+			return attr == 'true' ? 'false' : 'true'
+		});
+		var dtcontent = $( this ).parent().next('tr.child');
+		$( dtcontent ).attr('role','alert');
+	});
+	$( '#filepetitiontable tbody' ).on('click', 'td.control', function(e){
+		e.preventDefault();
+		$( this ).attr('aria-expanded', function (i, attr) {
+			return attr == 'true' ? 'false' : 'true'
+		});
+		var dtcontent = $( this ).parent().next('tr.child');
+		$( dtcontent ).attr('role','alert');
+	});
+	$( '#responseamendtable tbody' ).on('click', 'td.control', function(e){
+		e.preventDefault();
+		$( this ).attr('aria-expanded', function (i, attr) {
+			return attr == 'true' ? 'false' : 'true'
+		});
+		var dtcontent = $( this ).parent().next('tr.child');
+		$( dtcontent ).attr('role','alert');
+	});
+	$( '#responseamendtabletwo tbody' ).on('click', 'td.control', function(e){
+		e.preventDefault();
+		$( this ).attr('aria-expanded', function (i, attr) {
+			return attr == 'true' ? 'false' : 'true'
+		});
+		var dtcontent = $( this ).parent().next('tr.child');
+		$( dtcontent ).attr('role','alert');
 	});
 	//
 	//START delete datatable table row
@@ -1945,49 +1994,53 @@ $(document).ready(function(){
 	});
 	//
 	//START initialize Dashboard datable two
-	var tabletwo = $('#dashboardtabletwo').DataTable({
+		var tabletwo = $('#dashboardtabletwo').DataTable({
 		"fnDrawCallback": function( oSettings ) {
 		},
-		'sDom': '<"toolbartwo">lfrtip',
-		"language": {
+			'sDom': '<"toolbartwo">lfrtip',
+			"language": {
 			"search": "<span class='glyphicon glyphicon-search' aria-hidden='true'></span><span class='sr-only'>search</span>",
 			"lengthMenu": "<span class='glyphicon glyphicon-filter' aria-hidden='true'></span><span class='sr-only'>select number of entries to display</span> <select>"+
-				'<option value="10">10</option>'+
-				'<option value="25">25</option>'+
-				'<option value="50">50</option>'+
-				'<option value="100">100</option>'+
-				'<option value="-1">All</option>'+
-				'</select>'
-		},
-		'autoWidth': false,
-		responsive: {
-			breakpoints: [
-				{ name: 'desktop', width: Infinity },
-				{ name: 'tablet',  width: 1180 },
-				{ name: 'fablet',  width: 768 },
-				{ name: 'phone',   width: 380 }
-			]
-		},
-		'columns': [
-			{ 'width': '18%' },//buttons
-			{ 'width': '10%' },//serial
-			{ 'width': '25%' },//reg
-			{ 'width': '11%' },//mark
-			{ 'width': '9%' },//owner
-			{ 'width': '9%' },
-			{ 'width': '9%' },
-			{ 'width': '9%' },
-		],
-		'columnDefs': [
-			{ responsivePriority: 1, targets: 0 },//buttons
-			{ responsivePriority: 2, targets: 1 },//serial
-			{ responsivePriority: 4, targets: 2 },//reg
-			{ responsivePriority: 5, targets: 3 },//mark
-			{ responsivePriority: 3, targets: 4 },//owner
-			{ className: 'centertxt', 'targets': [ 0,1,2,3,4,5 ] },
-		],
-	});
-
+			  '<option value="10">10</option>'+
+			  '<option value="25">25</option>'+
+			  '<option value="50">50</option>'+
+			  '<option value="100">100</option>'+
+			  '<option value="-1">All</option>'+
+			  '</select>'
+  			},
+			'autoWidth': false,
+			responsive: {
+				breakpoints: [
+					{ name: 'desktop', width: Infinity },
+					{ name: 'tablet',  width: 1180 },
+					{ name: 'fablet',  width: 768 },
+					{ name: 'phone',   width: 380 }
+				]
+			},
+			'columns': [
+				{ 'width': '8%' },
+				{ 'width': '12%' },
+				{ 'width': '20%' },
+				{ 'width': '12%' },
+				{ 'width': '12%' },
+				{ 'width': '12%' },
+				{ 'width': '12%' },
+				{ 'width': '12%' },
+			  ],
+			  'columnDefs': [
+			  	{ responsivePriority: 1, targets: 0 },//toggle show child rows
+				{ responsivePriority: 2, targets: 1 },//serial
+				{ responsivePriority: 4, targets: 2 },//reg
+				{ responsivePriority: 5, targets: 3 },//mark
+				{ responsivePriority: 3, targets: 4 },//owner
+				{ responsivePriority: 6, targets: 5 },//due date
+				{ responsivePriority: 7, targets: 6 },//status
+				{ responsivePriority: 8, targets: 7 },//action
+				{ className: 'centertxt', 'targets': [ 1,2,3,4,5,6,7 ] },
+				{ className: 'control', 'orderable': false, 'targets': [ 0 ] },
+			  ],
+		});
+	//
 
 
 	$(function() {

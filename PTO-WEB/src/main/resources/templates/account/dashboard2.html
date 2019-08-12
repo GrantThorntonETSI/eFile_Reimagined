@@ -8,7 +8,7 @@
 
     <link rel="shortcut icon" style="-moz-border-radius: 0px;-webkit-border-radius: 0px;border-radius: 0px;" type="image/x-icon" th:href="@{/resources/images/nav_banner.png}">
 
-    <title>USPTO.gov :: webapp prototype :: Dashboard</title>
+    <title>Dashboard :: USPTO.gov :: webapp prototype</title>
 
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -36,10 +36,9 @@
     <script type="application/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script type="application/javascript"  th:src="@{/resources/js/lynnjqueryscript.js}"></script>
     <script type="application/javascript"  th:src="@{/resources/js/tab_panels.js}"></script>
-    <script type="application/javascript" th:src="@{/resources/js/chrome_alert.js}"></script>
 </head>
 
-<body onload="ShowChromeAlert()">
+<body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -112,254 +111,219 @@
                           	<button type="button" class="btn-sm btn-success close closegspanels" aria-label="close alert" id="cancelbtndash">Cancel</button>
                             <button type="button" class="btn-sm btn-success close closegspanels" aria-label="close alert" id="alertbtndash">Yes</button>
                           </div>
-                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-xs-12 form-group form-group-md" id="dashboard">
                             <div class="row">
-                                <div class="col-xs-12 col-md-12 col-lg-4">
-                                    <section id="filings">
-                                        <div class="dataTables_wrapper no-wrap dt-bootstrap responsive">
-                                            <div class="row">
-                                                <div class="col-xs-12">
-                                                    <div class="col-xs-12 dashsection">
-                                                        <table id="dashboardtableone" class="table dataTable row-border display responsive text-center" style="width:100%" role="grid" aria-describedby="filings">
-                                                            <thead>
-                                                            <tr role="row">
-                                                                <th colspan="6" scope="colgroup"><span id="filings">Filings</span> <button type="button" id="newFiling" class="btn-sm btn-success fill">New Application</button></th>
-                                                            </tr>
-                                                            <tr role="row">
-                                                                <th scope="col" class="sorting_asc" tabindex="0" aria-controls="dashboardtableone" rowspan="1" colspan="1" role="columnheader"></th>
-                                                                <th scope="col" class="sorting_asc" tabindex="0" aria-controls="dashboardtableone" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Select: activate to sort column descending">Application/Serial#</th>
-                                                                <th scope="col" class="sorting_asc" tabindex="0" aria-controls="dashboardtableone" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Select: activate to sort column descending">Registration#</th>
-                                                                <th scope="col" class="sorting_asc" tabindex="0" aria-controls="dashboardtableone" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Class-num: activate to sort column descending">Owner</th>
-                                                                <th scope="col" class="sorting" tabindex="0" aria-controls="dashboardtableone" rowspan="1" colspan="1" aria-label="Description: activate to sort column ascending">Status</th>
-                                                                <th scope="col" class="sorting" tabindex="0" aria-controls="dashboardtableone" rowspan="1" colspan="1" aria-label="Notes: activate to sort column ascending">Mark</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            <th:block th:each="app : ${user.getMyApplications()}">
-
-
-                                                                <tr>
-
-                                                                    <td>
-                                                                        <th:block th:if="${app.getFilingStatus() == 'Draft'}">
-                                                                            <button type="button" class="btn btn-sm close deleterow" th:attr="filing-id=${app.getApplicationInternalID()}" value="" aria-label="remove this row"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
-
-                                                                        </th:block>
-                                                                    </td>
-                                                                    <td><a   th:attr="href='/application/continueApplication/?trademarkID='+${app.getApplicationInternalID()}"><span th:text="${app.getTrademarkName()}">87697840</span></a></td>
-                                                                    <td th:text="${app.getRegistrationID()}">N/A</td>
-
-                                                                    <th:block th:if="${app.isOwnerSet() == true}">
-
-                                                                        <td th:text="${app.getPrimaryOwner().getOwnerDisplayname()}">Lynn Stanikmas</td>
-
-                                                                    </th:block>
-                                                                    <th:block th:if="${app.isOwnerSet() == false}">
-
-                                                                        <td>N/A</td>
-
-                                                                    </th:block>
-
-                                                                    <td th:text="${app.getFilingStatus()}">Draft</td>
-
-                                                                    <th:block th:if="${app.isStandardTextMark() == true}">
-                                                                        <td ><span style="max-width: 55px; max-height: 33px; margin:0 auto;font-family: Palatino, Garamond, Bookman, Avant Garde; font-size:.9em;text-align:center;margin-bottom:0;" th:text="${app.getTradeMark().getTrademarkStandardCharacterText()}"></span></td>
-
-                                                                    </th:block>
-
-                                                                    <th:block th:if="${app.isStandardTextMark() == false}">
-                                                                        <th:block th:if="${app.isTradeMarkUploaded() == true}">
-                                                                            <td><img th:src="${app.getTradeMark().getTrademarkImagePath()}" style="max-width: 55px; max-height: 33px;"></td>
-                                                                        </th:block>
-                                                                        <th:block th:if="${app.isTradeMarkUploaded() == false}">
-                                                                            <td></td>
-                                                                        </th:block>
-
-                                                                    </th:block>
-
-
-                                                                </tr>
-                                                            </th:block>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div><!--one-->
-                                <div class="col-xs-12 col-md-12 col-lg-5">
-                                    <section id="due">
-                                        <div class="dataTables_wrapper no-wrap dt-bootstrap responsive">
-                                            <div class="row">
-                                                <div class="col-xs-12">
-                                                    <div class="col-xs-12 dashsection">
-                                                        <table id="dashboardtabletwo" class="table DataTable row-border display responsive text-center" style="width:100%" role="grid" aria-describedby="filings">
-                                                            <thead>
-                                                            <tr role="row">
-                                                                <th colspan="8" scope="colgroup">Upcoming Action(s) Due</th>
-                                                            </tr>
-                                                            <tr role="row">
-                                                                <th scope="col" class="sorting_asc" tabindex="0" aria-controls="dashboardtabletwo" rowspan="1" colspan="1" role="columnheader"></th>
-                                                                <th scope="col" class="sorting_asc" tabindex="0" aria-controls="dashboardtabletwo" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Select: activate to sort column descending">Application/Serial#</th>
-                                                                <th scope="col" class="sorting_asc" tabindex="0" aria-controls="dashboardtabletwo" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Class-num: activate to sort column descending">Registration#</th>
-                                                                <th scope="col" class="sorting" tabindex="0" aria-controls="dashboardtabletwo" rowspan="1" colspan="1" aria-label="Description: activate to sort column ascending">Mark</th>
-                                                                <th scope="col" class="sorting" tabindex="0" aria-controls="dashboardtabletwo" rowspan="1" colspan="1" aria-label="Notes: activate to sort column ascending">Owner</th>
-                                                                <th scope="col" class="sorting" tabindex="0" aria-controls="dashboardtabletwo" rowspan="1" colspan="1" aria-label="Notes: activate to sort column ascending">Due Date</th>
-                                                                <th scope="col" class="sorting" tabindex="0" aria-controls="dashboardtabletwo" rowspan="1" colspan="1" aria-label="Notes: activate to sort column ascending">Status</th>
-                                                                <th scope="col" class="sorting" tabindex="0" aria-controls="dashboardtabletwo" rowspan="1" colspan="1" aria-label="Notes: activate to sort column ascending">Action</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-
-                                                            <th:block th:each="filing : ${user.getMyApplications()}">
-                                                                <th:block th:each="action : ${filing.getOfficeActions()}">
-                                                                    <th:block th:if="${action.isOfficeActionCompleted() == false}">
-
-                                                                        <th:block th:if="${action.isActiveAction()== true}">
-                                                                            <tr>
-                                                                                <td></td>
-                                                                                <td><a th:text="${action.getParentSerialNumber()}">87697840</a></td>
-                                                                                <td>N/A</td>
-
-                                                                                <th:block th:if="${action.isStandardCharacterMark() == true}">
-                                                                                    <td ><span style="max-width: 55px; max-height: 33px; margin:0 auto;font-family: Palatino, Garamond, Bookman, Avant Garde; font-size:.9em;text-align:center;margin-bottom:0;" th:text="${action.getStandardCharacterText()}"></span></td>
-
-                                                                                </th:block>
-                                                                                <th:block th:if="${action.isStandardCharacterMark() == false}">
-                                                                                    <td><img th:src="${action.getParentMarkImagePath()}" style="max-width: 55px; max-height: 33px;"></td>
-                                                                                </th:block>
-
-
-                                                                                <td th:text="${action.getParentMarkOwnerName()}">Pittsburgh Penguins LP</td>
-                                                                                <td th:text="${action.getDueDateDisplay()}">2/20/2019</td>
-                                                                                <td > <a th:text="${action.getOfficeActionCode()}">Abandoned</a></td>
-                                                                                <td STYLE="color: red">
-                                                                                    <th:block th:if="${action.getOfficeActionCode() == 'Issuance Of Allowance'}">
-                                                                                        <a th:href="${action.getOfficeActionLink()}">Respond to Noitice Of Allowance</a>
-                                                                                    </th:block>
-
-                                                                                    <th:block th:if="${action.getOfficeActionCode() != 'Issuance Of Allowance'}">
-                                                                                        <a th:href="${action.getOfficeActionLink()}">Respond to Office Action</a>
-                                                                                    </th:block>
-
-
-
-                                                                                </td>
-                                                                            </tr>
-                                                                        </th:block>
-
-
-                                                                    </th:block>
-
-
-                                                                </th:block>
-
-
-                                                            </th:block>
-
-
-                                                            <th:block th:each="filing2 : ${user.getMyApplications()}">
-                                                                <th:block th:each="petition : ${filing2.getPetitions()}">
-                                                                    <th:block th:if="${petition.isActivePetition() == true}">
-                                                                        <tr>
-                                                                            <td></td>
-                                                                            <td><a th:text="${petition.getParentSerialNumber()}">87697840</a></td>
-                                                                            <td>N/A</td>
-                                                                            <th:block th:if="${petition.isStandardCharacterMark() == true}">
-                                                                                <td ><span style="max-width: 55px; max-height: 33px; margin:0 auto;font-family: Palatino, Garamond, Bookman, Avant Garde; font-size:.9em;text-align:center;margin-bottom:0;" th:text="${petition.getStandardCharacterText()}"></span></td>
-
-                                                                            </th:block>
-                                                                            <th:block th:if="${petition.isStandardCharacterMark() == false}">
-                                                                                <td><img th:src="${petition.getParentMarkImagePath()}" style="max-width: 55px; max-height: 33px;"></td>
-                                                                            </th:block>
-                                                                            <td th:text="${petition.getParentMarkOwnerName()}">Pittsburgh Penguins LP</td>
-                                                                            <td th:text="${petition.getDueDateDisplay()}">2/20/2019</td>
-                                                                            <td > <a th:text="${petition.getOfficeActionCode()}">Abandoned</a></td>
-                                                                            <td STYLE="color: red"><a th:href="${petition.getPetitionsLink()}">File Petition to Revive</a></td>
+                                <div class="col-xs-12 col-lg-9">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <section id="filings">
+                                                <div class="dataTables_wrapper no-wrap dt-bootstrap responsive">
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="col-xs-12 dashsection">
+                                                                <table id="dashboardtableone" class="table dataTable row-border display responsive" style="width:100%" role="grid" aria-describedby="filings">
+                                                                    <thead>
+                                                                        <tr role="row">
+                                                                            <th colspan="7" scope="colgroup"><span id="filingsheader">Filings</span> </th>
                                                                         </tr>
-
+                                                                        <tr role="row">
+                                                                            <th scope="col" tabindex="0" aria-controls="dashboardtableone" rowspan="1" colspan="1" role="columnheader"></th>
+                                                                            <th scope="col" tabindex="0" aria-controls="dashboardtableone" rowspan="1" colspan="1" role="columnheader"></th><!--control-->
+                                                                            <th scope="col" class="sorting_asc" tabindex="0" aria-controls="dashboardtableone" rowspan="1" colspan="1" role="columnheader"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span> Serial#</th>
+                                                                            <th scope="col" class="sorting_asc" tabindex="0" aria-controls="dashboardtableone" rowspan="1" colspan="1" role="columnheader"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span> Registration#</th>
+                                                                            <th scope="col" tabindex="0" aria-controls="dashboardtableone" rowspan="1" colspan="1" role="columnheader"> Mark</th>
+                                                                            <th scope="col" class="sorting_asc" tabindex="0" aria-controls="dashboardtableone" rowspan="1" colspan="1" role="columnheader"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span> Owner</th>
+                                                                            <th scope="col" class="sorting" tabindex="0" aria-controls="dashboardtableone" rowspan="1" colspan="1" role="columnheader"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span> Status</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <th:block th:each="app : ${user.getMyApplications()}">
+                                                                        <tr>
+                                                                            <td tabindex="0">
+                                                                                <th:block th:if="${app.getFilingStatus() == 'Draft'}">
+                                                                                    <button type="button" class="btn btn-sm close deleterow" th:attr="filing-id=${app.getApplicationInternalID()}" value="" aria-label="remove this row"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                                                                                </th:block>
+                                                                            </td><!--//delete row button-->
+                                                                            <td tabindex="0" role="button" aria-expanded="false" aria-label="expand additional columns for this record"></td><!--//control-->
+                                                                            <td><a   th:attr="href='/application/continueApplication/?trademarkID='+${app.getApplicationInternalID()}"><span th:text="${app.getTrademarkName()}">87697840</span></a></td><!--serial-->
+                                                                            <td>N/A</td><!--reg-->
+                                                                            <th:block th:if="${app.isStandardTextMark() == true}">
+                                                                                <td ><span style="max-width: 55px; max-height: 33px; margin:0 auto;font-family: Palatino, Garamond, Bookman, Avant Garde; font-size:.9em;text-align:center;margin-bottom:0;" th:text="${app.getTradeMark().getTrademarkStandardCharacterText()}"></span></td>
+                                                                            </th:block>
+                                                                            <th:block th:if="${app.isStandardTextMark() == false}">
+                                                                                <th:block th:if="${app.isTradeMarkUploaded() == true}">
+                                                                                    <td><img th:src="${app.getTradeMark().getTrademarkImagePath()}" class="img-thumbnail" alt="Your mark"></td>
+                                                                                </th:block>
+                                                                                <th:block th:if="${app.isTradeMarkUploaded() == false}">
+                                                                                    <td></td>
+                                                                                </th:block>
+                                                                            </th:block><!--//mark-->
+                                                                            <th:block th:if="${app.isOwnerSet() == true}">
+                                                                                <td th:text="${app.getPrimaryOwner().getOwnerDisplayname()}">Lynn Stanikmas</td>
+                                                                            </th:block>
+                                                                            <th:block th:if="${app.isOwnerSet() == false}">
+                                                                                <td>N/A</td>
+                                                                            </th:block><!--owner-->
+                                                                            <td th:text="${app.getFilingStatus()}">Draft</td><!--//status-->
+                                                                        </tr>
                                                                     </th:block>
-
-
-                                                                </th:block>
-
-
-                                                            </th:block>
-
-
-
-                                                            </tbody>
-                                                        </table>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </section>
-                                </div><!--two-->
-                                <div class="col-xs-12 col-md-12 col-lg-3">
-                                    <section id="announcements">
-                                        <div class="row">
-                                            <div class="panel-group">
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <div class="row">
-                                                            <div class="col-xs-10">
-                                                                <div class="col-xs-12">
+                                        </section>
+                                    </div><!--one-->
+                                    <div class="col-xs-12">
+                                        <section id="due">
+                                            <div class="dataTables_wrapper no-wrap dt-bootstrap responsive">
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <div class="col-xs-12 dashsection">
+                                                            <table id="dashboardtabletwo" class="table DataTable row-border display responsive" style="width:100%" role="grid" aria-describedby="filings">
+                                                                <thead>
+                                                                    <tr role="row">
+                                                                        <th colspan="8" scope="colgroup"><span id="due">Upcoming Action(s) Due</span></th>
+                                                                    </tr>
+                                                                    <tr role="row">
+                                                                        <th scope="col" tabindex="0" aria-controls="dashboardtabletwo" rowspan="1" colspan="1" role="columnheader"></th><!--control-->
+                                                                        <th scope="col" class="sorting_asc" tabindex="0" aria-controls="dashboardtabletwo" rowspan="1" colspan="1" role="columnheader" aria-sort="ascending" aria-label="activate to sort column descending"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span> Serial#</th>
+                                                                        <th scope="col" class="sorting_asc" tabindex="0" aria-controls="dashboardtabletwo" rowspan="1" colspan="1" role="columnheader" aria-sort="ascending" aria-label="activate to sort column descending"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span> Registration#</th>
+                                                                        <th scope="col" class="sorting" tabindex="0" aria-controls="dashboardtabletwo" rowspan="1" colspan="1" role="columnheader"> Mark</th>
+                                                                        <th scope="col" class="sorting" tabindex="0" aria-controls="dashboardtabletwo" rowspan="1" colspan="1" role="columnheader" aria-sort="ascending" aria-label="activate to sort column descending"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span> Owner</th>
+                                                                        <th scope="col" class="sorting none" tabindex="0" aria-controls="dashboardtabletwo" rowspan="1" colspan="1" role="columnheader" aria-sort="ascending" aria-label="activate to sort column descending"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span> Due Date</th>
+                                                                        <th scope="col" class="sorting" tabindex="0" aria-controls="dashboardtabletwo" rowspan="1" colspan="1" role="columnheader" aria-sort="ascending" aria-label="activate to sort column descending"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span> Status</th>
+                                                                        <th scope="col" class="sorting" tabindex="0" aria-controls="dashboardtabletwo" rowspan="1" colspan="1" role="columnheader" aria-sort="ascending" aria-label="activate to sort column descending"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span> Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <th:block th:each="filing : ${user.getMyApplications()}">
+                                                                        <th:block th:each="action : ${filing.getOfficeActions()}">
+                                                                            <th:block th:if="${action.isOfficeActionCompleted() == false}">
+                                                                                <th:block th:if="${action.isActiveAction()== true}">
+                                                                                    <tr>
+                                                                                        <td tabindex="0" role="button" aria-expanded="false" aria-label="expand additional columns for this record"></td><!--control-->
+                                                                                        <td><a th:text="${action.getParentSerialNumber()}">87697840</a></td>
+                                                                                        <td>N/A</td>
+                                                                                        <th:block th:if="${action.isStandardCharacterMark() == true}">
+                                                                                            <td><span style="max-width: 55px; max-height: 33px; margin:0 auto;font-family: Palatino, Garamond, Bookman, Avant Garde; font-size:.9em;text-align:center;margin-bottom:0;" th:text="${action.getStandardCharacterText()}"></span></td>
+                                                                                        </th:block>
+                                                                                        <th:block th:if="${action.isStandardCharacterMark() == false}">
+                                                                                            <td><img th:src="${action.getParentMarkImagePath()}" class="img-thumbnail" alt="your mark"></td>
+                                                                                        </th:block>
+                                                                                        <td th:text="${action.getParentMarkOwnerName()}">Pittsburgh Penguins LP</td>
+                                                                                        <td th:text="${action.getDueDateDisplay()}">2/20/2019</td>
+                                                                                        <td> <a th:text="${action.getOfficeActionCode()}">Abandoned</a></td>
+                                                                                        <td STYLE="color: red">
+                                                                                            <th:block th:if="${action.getOfficeActionCode() == 'Issuance Of Allowance'}">
+                                                                                                <a th:href="${action.getOfficeActionLink()}">Respond to Notice Of Allowance</a>
+                                                                                            </th:block>
+
+                                                                                            <th:block th:if="${action.getOfficeActionCode() != 'Issuance Of Allowance'}">
+                                                                                                <a th:href="${action.getOfficeActionLink()}">Respond to Office Action</a>
+                                                                                            </th:block>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </th:block>
+                                                                            </th:block>
+                                                                        </th:block>
+                                                                    </th:block>
+                                                                    <th:block th:each="filing2 : ${user.getMyApplications()}">
+                                                                        <th:block th:each="petition : ${filing2.getPetitions()}">
+                                                                            <th:block th:if="${petition.isActivePetition() == true}">
+                                                                                <tr>
+                                                                                    <td></td>
+                                                                                    <td><a th:text="${petition.getParentSerialNumber()}">87697840</a></td>
+                                                                                    <td>N/A</td>
+                                                                                    <th:block th:if="${petition.isStandardCharacterMark() == true}">
+                                                                                        <td ><span style="max-width: 55px; max-height: 33px; margin:0 auto;font-family: Palatino, Garamond, Bookman, Avant Garde; font-size:.9em;text-align:center;margin-bottom:0;" th:text="${petition.getStandardCharacterText()}"></span></td>
+                                                                                    </th:block>
+                                                                                    <th:block th:if="${petition.isStandardCharacterMark() == false}">
+                                                                                        <td><img th:src="${petition.getParentMarkImagePath()}" style="max-width: 55px; max-height: 33px;"></td>
+                                                                                    </th:block>
+                                                                                    <td th:text="${petition.getParentMarkOwnerName()}">Pittsburgh Penguins LP</td>
+                                                                                    <td th:text="${petition.getDueDateDisplay()}">2/20/2019</td>
+                                                                                    <td > <a th:text="${petition.getOfficeActionCode()}">Abandoned</a></td>
+                                                                                    <td STYLE="color: red"><a th:href="${petition.getPetitionsLink()}">File Petition to Revive</a></td>
+                                                                                </tr>
+                                                                            </th:block>
+                                                                        </th:block>
+                                                                    </th:block>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div><!--two-->
+                                </div>
+                                </div><!--//table column-->
+                                    <div class="col-xs-12 col-lg-3">
+                                        <section id="announcements">
+                                            <div class="row">
+                                                <div class="panel-group">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading">
+                                                            <div class="row">
+                                                                <div class="col-xs-9">
                                                                     <div class="row">
                                                                         <div class="col-xs-12">
                                                                             <h4 class="panel-title number"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Check back here for system message and notifications.</h4>
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <div class="col-xs-3 closepans" style="height: 20px;">
+                                                                    <button type="button" class="close closegspanels btn" aria-label="Close" style="line-height: 20px;"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                                                                </div>
                                                             </div>
-                                                            <div class="col-xs-2 closepans" style="height: 20px;">
-                                                                <button type="button" class="close closegspanels btn" aria-label="Close" style="line-height: 20px;"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                     <button type="button" id="newFiling" class="btn-sm btn-success fill">Start Application</button>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="col-xs-12" id="announce">
+                                                        <h3><span id="notify">Announcements</span></h3>
+                                                    </div>
+                                                    <div class="col-xs-12 dashsection">
+                                                        <div class="tabwidget" id="tabmusic-wt">
+                                                            <ul>
+                                                                <li class="notice"><a href="#panel1-wt" aria-describedby="tab-tip-wt">Updated Two-step Authentication</a></li>
+                                                                <li><a href="#panel2-wt">System Maintenance Notifications</a></li>
+                                                                <li><a href="#panel3-wt">Electronic System Maintenance Schedule</a></li>
+                                                            </ul>
+                                                            <div class="tabpanels second">
+                                                                <div id="panel1-wt" tabindex="0">
+                                                                    <p>The USPTO has updated the two-step authentication to modernize the security process.</p>
+                                                                </div>
+                                                                <div id="panel2-wt" tabindex="0">
+                                                                    <p>The USPTO will perform maintenance on the Electronic System for Trademark Trials and Appeals (ESTTA) beginning at 12:01 a.m., Saturday, September.</p>
+                                                                </div>
+                                                                <div id="panel3-wt" tabindex="0">
+                                                                    <p>The USPTO will perform maintenance on the Electronic System for Trademark Trials and Appeals (ESTTA) beginning at 12:01 a.m., Sunday, November.</p>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xs-12">
-                                                <div class="col-xs-12" id="announce">
-                                                    <h3>Announcements</h3>
-                                                </div>
-                                                <div class="col-xs-12 dashsection">
-                                                    <div class="tabwidget" id="tabmusic-wt">
-                                                        <ul>
-                                                            <li class="notice"><a href="#panel1-wt" aria-describedby="tab-tip-wt">Updated Two-step Authentication</a></li>
-                                                            <li><a href="#panel2-wt">System Maintenance Notifications</a></li>
-                                                            <li><a href="#panel3-wt">Electronic System Maintenance Schedule</a></li>
-                                                        </ul>
-                                                        <div class="tabpanels second">
-                                                            <div id="panel1-wt" tabindex="0">
-                                                                <p>The USPTO has updated the two-step authentication to modernize the security process.</p>
-                                                            </div>
-                                                            <div id="panel2-wt" tabindex="0">
-                                                                <p>The USPTO will perform maintenance on the Electronic System for Trademark Trials and Appeals (ESTTA) beginning at 12:01 a.m., Saturday, September.</p>
-                                                            </div>
-                                                            <div id="panel3-wt" tabindex="0">
-                                                                <p>The USPTO will perform maintenance on the Electronic System for Trademark Trials and Appeals (ESTTA) beginning at 12:01 a.m., Sunday, November.</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div><!--three-->
+                                        </section>
+                                    </div><!--three-->
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </main>
-    </div><!--END div content-->
-</div><!--END div container-->
-<!--jquery and web jars -->
-<!--<script th:src="@{/webjars/jquery/jquery.min.js}"></script>-->
+            </main>
+        </div><!--END div content-->
+    </div><!--END div container-->
+    <!--jquery and web jars -->
+    <!--<script th:src="@{/webjars/jquery/jquery.min.js}"></script>-->
 
 <footer>
     <div class="container-fluid">
@@ -449,34 +413,25 @@
         });
 
         //START close button height match dashboard
-        $( window ).load(function () {
-            var d = $( '#announcements .closepans' ).prev('div');
-            $(d).css('display','flex').css('flex-direction','column').css('min-height','3em');
-            $('#announcements .closepans').css( 'line-height', (d.innerHeight()) ).css( 'height', (d.innerHeight()) );
+        $( window ).on('load', function() {
+          var d = $( '#announcements .closepans' ).prev('div');
+          $(d).css('display','flex').css('flex-direction','column').css('min-height','3em');
+          $('#announcements .closepans').css( 'line-height', (d.innerHeight() + 'px') ).css( 'height', (d.innerHeight()) );
+          $('#announcements .closegspanels').css('line-height',(d.innerHeight() + 'px'));
+          $( window ).resize(function() {
+            $('#announcements .closepans').css( 'height', (d.innerHeight()) );
             $('#announcements .closegspanels').css('line-height',(d.innerHeight() + 'px'));
-            $( window ).resize(function() {
-                $('#announcements .closepans').css( 'height', (d.innerHeight()) );
-                $('#announcements .closegspanels').css('line-height',(d.innerHeight() + 'px'));
             });
-            var e = $( '#dashboardmain .alert-warning .closepans' );
-            $(e).css('min-height','3em');
-            $('#dashboardmain .alert-warning .closepans').css( 'height', (e.innerHeight()) );
-            $('#dashboardmain .alert-warning button.closegspanels').css('height',(e.innerHeight() + 'px')).css('line-height',(e.innerHeight() + 'px'));
-            $( window ).resize(function() {
-                $('#dashboardmain .alert-warning .closepans').css( 'height', (e.innerHeight()) );
-                $('#dashboardmain .alert-warning button.closegspanels').css('height',(e.innerHeight() + 'px')).css('line-height',(e.innerHeight() + 'px'));
-            });
-            console.log(e);
         });
 
-        $('#alertmin').css('visibility','hidden').css('top','-10000px').css('float','none').css('margin-bottom','0').css('padding','0');
-        $(document).on('click','#alertmin button.close', function () {
+        $(document).on('click','#alertmin button.close', function(e) {
             $('#alertmin').css('visibility','hidden').css('top','-10000px').css('float','none').css('margin-bottom','0').css('padding','0');
             $('#alertmin button').css('display','none');
             $('#alertmin').css('height','1px');
+            $('#alertmin').removeClass('form-group').removeClass('form-group-md');
             $('#alertmin p').css('display','none');
+            e.preventDefault();
         });
-
     });
 
 
