@@ -404,7 +404,7 @@ public class GmailJavaMailSenderService extends JavaMailSenderBase {
                     "<p>Please log into your account to view the new Action requiring your attention.  <a href=\"https://"+link+"\" target=\"_blank\">\n" +
                     "uspto.gov</a> account.</p>\n" +
                     "<p></p>\n" +
-                    "<div class=\"btn btn-primary\"><a href=\""+link+"\" target=\"_blank\">Reset password</a></div>\n" +
+                    "<div class=\"btn btn-primary\"><a href=\""+link+"\" target=\"_blank\">Check Action</a></div>\n" +
                     "<p></p>\n" +
                     "<p>If the button does not work then copy and paste the URL into your web browser.</p>\n" +
                     "<p><span class=\"txt-blue\"><a href=\""+link+"\" target=\"_blank\">"+link+"</a></span></p>\n" +
