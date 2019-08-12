@@ -1,5 +1,6 @@
 package com.thorton.grant.uspto.prototypewebapp.config.bootstrap;
 
+import com.thorton.grant.uspto.prototypewebapp.config.host.bean.endPoint.HostBean;
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.PTOUserService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.Secruity.UserCredentialsService;
@@ -18,6 +19,8 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.Managed
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.user.PTOUser;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserCredentials;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.security.UserRole;
+import com.thorton.grant.uspto.prototypewebapp.service.mail.gmail.GmailJavaMailSenderService;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -34,8 +37,13 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
 
     private  final ServiceBeanFactory serviceBeanFactory;
 
-    public DataLoader(ServiceBeanFactory serviceBeanFactory) {
+    private final GmailJavaMailSenderService mailSender;
+    private final ApplicationContext appContext;
+
+    public DataLoader(ServiceBeanFactory serviceBeanFactory, GmailJavaMailSenderService mailSender, ApplicationContext appContext) {
         this.serviceBeanFactory = serviceBeanFactory;
+        this.mailSender = mailSender;
+        this.appContext = appContext;
     }
 
     @Override
@@ -65,11 +73,9 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent>   
         // start scheduler for job that runs nightly to udpate filing statuses and check expiration dates for actions ...etc
         Timer timer = new Timer();
 
+        FilingStatusUpdateTask filingStatusUpdateTask = new FilingStatusUpdateTask(serviceBeanFactory, appContext, mailSender);
 
-        System.out.println("1111111111111111111111111111111111111111111111111111111111111111111111");
-        FilingStatusUpdateTask filingStatusUpdateTask = new FilingStatusUpdateTask(serviceBeanFactory);
 
-        System.out.println("99999999999999999999999999999999999999999999999999999999999999999999999999999");
         Date date = new Date();
 
         // in production. duration will be set to 30 minutes, and delay will be set to 23.5 hours

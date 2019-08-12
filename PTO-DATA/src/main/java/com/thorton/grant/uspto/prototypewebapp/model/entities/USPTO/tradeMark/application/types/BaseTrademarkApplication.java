@@ -473,6 +473,8 @@ public class BaseTrademarkApplication  {
 
 
     private Date applicationRegisteredDate;
+
+    private Date applicationRegistrationRenewDate;
     ///////////////////////////////////////////////////////////////
 
 
@@ -2134,5 +2136,13 @@ public class BaseTrademarkApplication  {
 
     public void setApplicationRegisteredDate(Date applicationRegisteredDate) {
         this.applicationRegisteredDate = applicationRegisteredDate;
+    }
+
+    public Date getApplicationRegistrationRenewDate() {
+        return applicationRegistrationRenewDate;
+    }
+
+    public void setApplicationRegistrationRenewDate(Date applicationRegistrationRenewDate) {
+        this.applicationRegistrationRenewDate = applicationRegistrationRenewDate;
     }
 }

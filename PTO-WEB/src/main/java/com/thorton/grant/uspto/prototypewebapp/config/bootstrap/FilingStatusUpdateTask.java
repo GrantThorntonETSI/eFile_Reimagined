@@ -1,5 +1,6 @@
 package com.thorton.grant.uspto.prototypewebapp.config.bootstrap;
 
+import com.thorton.grant.uspto.prototypewebapp.config.host.bean.endPoint.HostBean;
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.NoticeOfAllowance;
@@ -11,7 +12,9 @@ import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.ap
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.GSClassCategory;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.GoodAndService;
+import com.thorton.grant.uspto.prototypewebapp.service.mail.gmail.GmailJavaMailSenderService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,12 +34,24 @@ public class FilingStatusUpdateTask extends TimerTask {
 
     private  final ServiceBeanFactory serviceBeanFactory;
 
+
+    private  final HostBean hostBean;
+    private final ApplicationContext appContext;
+
+
+    private final GmailJavaMailSenderService mailSender;
+
+
+
+
     private static long counter = 9000000;
 
-    public FilingStatusUpdateTask(ServiceBeanFactory serviceBeanFactory) {
+    public FilingStatusUpdateTask(ServiceBeanFactory serviceBeanFactory, ApplicationContext appContext, GmailJavaMailSenderService mailSender) {
         this.serviceBeanFactory = serviceBeanFactory;
+        this.appContext = appContext;
+        this.mailSender = mailSender;
 
-        System.out.println("task consturctor called.");
+        this.hostBean = (HostBean) appContext.getBean(HostBean.class);
     }
 
     // read properties from property file
@@ -97,7 +112,7 @@ public class FilingStatusUpdateTask extends TimerTask {
         checkAcceptedFilings();
 
         checkNOAPeriod();
-
+        checkFilingExtensions();
 
 
 
@@ -490,6 +505,7 @@ public class FilingStatusUpdateTask extends TimerTask {
                             current.addFilingDocumentEvent(filingDocumentEvent);
 
                             current.setApplicationRegisteredDate(date);
+                            current.setApplicationRegistrationRenewDate(date);
 
                             baseTradeMarkApplicationService.save(current);
 
@@ -573,6 +589,92 @@ public class FilingStatusUpdateTask extends TimerTask {
 
                         }
                     }
+
+
+                }
+            }
+        }
+    }
+
+
+    public void checkFilingExtensions(){
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+
+
+        for(Iterator<BaseTrademarkApplication> iter = baseTradeMarkApplicationService.findAll().iterator(); iter.hasNext(); ) {
+
+            BaseTrademarkApplication current = iter.next();
+
+            if( current.getApplicationRegisteredDate() != null && current.getFilingStatus().equals("Registered Filing")){
+                // check if allowance has expired ...use accepted date + issuance of allowance period
+
+                if((current.getApplicationRegistrationRenewDate().getTime() + current.getRecurringFilingExtensionInterval()) < new Date().getTime()){
+                    // issuance of allowance has expired
+                    // set filing to abandoment
+                    // create document record
+                    // create petition to revive
+
+                    // create notice of allowance
+                    NoticeOfAllowance noa = new NoticeOfAllowance();
+                    noa.setParentMarkImagePath(current.getTradeMark().getTrademarkImagePath());
+                    noa.setStandardCharacterMark(current.isStandardTextMark());
+                    noa.setStandardCharacterText(current.getTradeMark().getTrademarkStandardCharacterText());
+                    noa.setParentMarkOwnerName(current.getPrimaryOwner().getOwnerDisplayname());
+                    noa.setParentSerialNumber(current.getTrademarkName());
+                    noa.setActiveAction(true);
+                    long dueDate = new Date().getTime()+current.getBlackOutPeriod()+current.getOfficeActionResponsePeriod();
+                    noa.setDueDate(new Date(dueDate));
+
+
+                    // you have to provide at least one disclaimer
+                    RequiredActions requiredActions = new RequiredActions();
+                    requiredActions.setRequiredActionType("Use Statement Renew");
+
+                    noa.addRequiredActions(requiredActions);
+
+
+                    current.setFilingStatus("Registered Filing - expired");
+                    noa.setOfficeActionCode("Use Statement Renew");
+
+
+                    // create  an default office action object and attach it to filing
+
+
+                    FilingDocumentEvent filingDocumentEvent = new FilingDocumentEvent();
+                    filingDocumentEvent.setEventDescription("Use Statement Renew");
+
+                    filingDocumentEvent.setDocumentType("XML");
+                    Date date = new Date();
+                    filingDocumentEvent.setEventDate(date);
+
+                    current.addFilingDocumentEvent(filingDocumentEvent);
+
+                    noa.setActionDate(date);
+                    current.addOfficeAction(noa);
+                    noa.setTrademarkApplication(current);
+
+
+
+                    baseTradeMarkApplicationService.save(current);
+
+                    String recipientAddress = "";
+                    if(current.isAttorneyFiling()){
+                       recipientAddress = current.getPrimaryLawyer().getEmail();
+                    }
+                    else {
+                        recipientAddress = current.getPrimaryOwner().getEmail();
+                    }
+
+                    mailSender.sendOfficeActionNotice(hostBean.getHost(),recipientAddress);
+
+                    // create document record and associated office action
+
+
+
+
+
+
+
 
 
                 }
