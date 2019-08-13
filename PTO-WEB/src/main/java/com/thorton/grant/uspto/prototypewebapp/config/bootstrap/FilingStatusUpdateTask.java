@@ -458,6 +458,7 @@ public class FilingStatusUpdateTask extends TimerTask {
                             noa.addRequiredActions(requiredActions);
 
 
+
                             current.setFilingStatus("Issuance Of Allowance");
                             noa.setOfficeActionCode("Issuance Of Allowance");
 
@@ -475,6 +476,7 @@ public class FilingStatusUpdateTask extends TimerTask {
                             current.addFilingDocumentEvent(filingDocumentEvent);
 
                             noa.setActionDate(date);
+
                             current.addOfficeAction(noa);
                             noa.setTrademarkApplication(current);
 

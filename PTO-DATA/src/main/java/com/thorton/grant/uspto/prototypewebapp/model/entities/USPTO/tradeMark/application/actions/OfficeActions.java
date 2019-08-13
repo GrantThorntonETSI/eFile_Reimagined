@@ -30,6 +30,8 @@ public class OfficeActions extends BaseEntity {
     private Date  dueDate;
 
 
+
+
     private String parentSerialNumber;
 
     private String  parentMarkImagePath;
@@ -54,11 +56,6 @@ public class OfficeActions extends BaseEntity {
     }
 
 
-    public String returnSomeDate(){
-
-        return  "2/20/2020";
-
-    }
 
 
 
@@ -708,5 +705,6 @@ public class OfficeActions extends BaseEntity {
         }
 
     }
+
 
 }

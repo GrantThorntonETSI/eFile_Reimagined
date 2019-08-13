@@ -40,14 +40,14 @@
                                             <input class="form-check-input checkmark" type="checkbox" value="acceptrevives1" tabindex="0" aria-labelledby="acceptrevive" id="useracceptrevive" name="user-accept-checkbox">
                                             <label class="form-check-label form-check form-check-left" for="useracceptrevive" id="acceptrevive"><span class="radio notspecial">In submitting this petition, the signatory confirms that he/she has firsthand knowledge that the failure to respond to the Office Action by the specified deadline was unintentional; and requests the USPTO to revive the abandoned application.</span></label>
                                         </div>
-                                        <p class="weight600" id="recnote">Did you receive the Notice of Allowance issued on 7/26/2017?</p>
+                                        <p class="weight600" id="recnote">Did you receive the Notice of Allowance issued on <span th:text="${petition.getActionDateDisplay()}"> </span></p>
                                         <div role="radiogroup" aria-describedby="recnote" class="form-group form-group-md">
                                             <label for="inlineRadio0102" class="radio-inline radiocontainer"><input type="radio" name="actionradio" id="inlineRadio0102" value="yesreceived" tabindex="0"><span class="checkmark"></span>Yes</label>
                                             <label for="inlineRadio0103" class="radio-inline radiocontainer"><input type="radio" name="actionradio" id="inlineRadio0103" value="noreceived" tabindex="0"><span class="checkmark"></span>No</label>
                                         </div>
                                     </fieldset>
                                     <div id="reviveappform" role="alert" style="display: none;">
-                                        <div id="requestnoa" role="alert">
+                                        <div id="requestnoa" role="alert" style="display: none;">
                                             <fieldset aria-label="request new notice of allowance">
                                                 <p class="weight600" id="reqnoa">Would you like UPSTO to issue a new Notice of Allowance?</p>
                                                 <div role="radiogroup" class="form-group form-group-md" aria-describedby="reqnoa">
@@ -99,7 +99,7 @@
                                                     </div>
                                                 </div>
                                             </fieldset>
-                                        </div><!--//expedite-->
+                                        </div><!--//expedite always visible-->
                                         <div id="fees" role="alert" style="display: none;">
                                             <fieldset aria-label="fees agreement">
                                                 <p class="weight600" id="agreefee">Do you want to file a Statement of Use with the fees for the missing Extension Request that must be filed directly within this form?</p>
@@ -130,64 +130,7 @@
                                                 </div>
                                             </fieldset>
                                         </div>
-                                        <div id="reconsideration">
-                                            <fieldset aria-label="enter statement of use information">
-                                                <div class="form-group form-group-md">
-                                                    <div class="card-text noexpand">
-                                                        <h2 class="card-title weight600" aria-labelledby="ttabreq">Statement of Use</h2>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-xs-12">
-                                                        <div class="form-group form-group-md">
-                                                            <img name="Placeholder" src="#" width="100%" height="50" alt="SOU placeholder" style="background-color: #ddd">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group form-group-md">
-                                                    <div class="card-text noexpand">
-                                                        <h2 class="card-title weight600">Statement of Use Signature</h2>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-xs-12 form-group form-group-md">
-                                                        <label for="petitionsigntwo">How are you signing the Statement of Use?</label>
-                                                        <select class="form-control signmethod" id="petitionsigntwo" onchange="showTheTimeTwo()">
-                                                            <option value="Select">Select Signature Method</option>
-                                                            <option value="direct">Sign directly</option>
-                                                            <option value="handwritten" disabled>Print and upload handwritten signature</option>
-                                                            <option value="send" disabled>Send to second party for signature</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-xs-12 form-group form-group-md direct">
-                                                        <div class="row hidethis">
-                                                            <section aria-label="sign">
-                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                    <label for="reconsignature">Signature <a href="#" data-toggle="tooltip" title="" class="glyphicon glyphicon-info-sign test" data-placement="right" data-original-title="To electronically sign the application enter any combination of alpha numeric characters between two forward slash symbols (/); e.g., /jane smith/, /rdr/, or /127/)."></a></label>
-                                                                    <input type="text" class="form-control" placeholder="/Signature/" id="reconsignature" required>
-                                                                </div>
-                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                    <label for="recondatesigned">Date signed: <span id="tz2" class="sr-only"> </span></label>
-                                                                    <textarea rows="1" class="form-control datesigned disabled" id="recondatesigned" disabled> </textarea>
-                                                                </div>
-                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                    <label for="reconsignatoryname">Signatory&#8217;s name</label>
-                                                                    <input type="text" class="form-control" id="reconsignatoryname" required>
-                                                                </div>
-                                                                <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
-                                                                    <label for="reconsignatoryphone">Signatory&#8217;s phone number</label>
-                                                                    <input type="tel" class="form-control" id="reconsignatoryphone">
-                                                                </div>
-                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                    <label for="reconsignatoryposition">Signatory&#8217;s position</label>
-                                                                    <input type="text" class="form-control" id="reconsignatoryposition" required>
-                                                                </div>
-                                                            </section>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </fieldset>
-                                        </div>
+
                                     </div>
                                 </form>
                             </div>
@@ -567,6 +510,63 @@
             savePeitionInfo("response-signature-position", value, actionID, appInternalID);
 
         });
+
+
+
+
+
+        // ui jquery
+
+        // yes recieved sou
+        $('#inlineRadio0102').click(function () {
+
+            $('#reviveappform').show(500);
+            $('#xreq').show(500);
+
+            $('#requestnoa').hide(500);
+            $('#fees').hide(500);
+
+            // also need to hide the no click sections
+
+
+        });
+        //no recieved sou
+        $('#inlineRadio0103').click(function () {
+
+            $('#reviveappform').show(500);
+            $('#requestnoa').show(500);
+
+            $('#xreq').hide(500);
+
+            // also need to hide the no click sections
+
+
+        });
+
+        $('#inlineRadio0104').click(function () {
+
+            $('#fees').hide(500);
+            // also need to hide the no click sections
+
+
+        });
+
+        // yes want to file sou
+        $('#inlineRadio0105').click(function () {
+
+            $('#fees').show(500);
+
+        });
+
+
+
+        // yes want to file sou
+        $('#inlineRadio0106').click(function () {
+
+        });
+
+        // no want to file sou
+
 
 
 
