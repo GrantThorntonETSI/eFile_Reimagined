@@ -50,8 +50,27 @@
                                         </div>
                                         <p class="weight600" id="recnote">Did you receive the Notice of Allowance issued on <span th:text="${petition.getActionDateDisplay()}"> </span></p>
                                         <div role="radiogroup" aria-describedby="recnote" class="form-group form-group-md">
-                                            <label for="inlineRadio0102" class="radio-inline radiocontainer"><input type="radio" name="actionradio" id="inlineRadio0102" value="yesreceived" tabindex="0"><span class="checkmark"></span>Yes</label>
-                                            <label for="inlineRadio0103" class="radio-inline radiocontainer"><input type="radio" name="actionradio" id="inlineRadio0103" value="noreceived" tabindex="0"><span class="checkmark"></span>No</label>
+
+                                            <th:block  th:if="${petition.recievedOfficeActionSet == false}">
+                                                <label for="inlineRadio0102" class="radio-inline radiocontainer"><input type="radio" name="actionradio" id="inlineRadio0102" value="yesreceived" tabindex="0" th:attr="action-id=${petition.getInternalID()}"><span class="checkmark"></span>Yes</label>
+                                                <label for="inlineRadio0103" class="radio-inline radiocontainer"><input type="radio" name="actionradio" id="inlineRadio0103" value="noreceived" tabindex="0" th:attr="action-id=${petition.getInternalID()}"><span class="checkmark"></span>No</label>
+                                            </th:block>
+
+                                            <th:block  th:if="${petition.recievedOfficeActionSet == true}">
+                                                <th:block  th:if="${petition.recievedOfficeAction == true}">
+                                                    <label for="inlineRadio0102" class="radio-inline radiocontainer"><input type="radio" name="actionradio" id="inlineRadio0102" value="yesreceived" tabindex="0" th:attr="action-id=${petition.getInternalID()}" checked><span class="checkmark"></span>Yes</label>
+                                                    <label for="inlineRadio0103" class="radio-inline radiocontainer"><input type="radio" name="actionradio" id="inlineRadio0103" value="noreceived" tabindex="0" th:attr="action-id=${petition.getInternalID()}"><span class="checkmark"></span>No</label>
+                                                </th:block>
+
+                                                <th:block  th:if="${petition.recievedOfficeAction == false}">
+
+                                                    <label for="inlineRadio0102" class="radio-inline radiocontainer"><input type="radio" name="actionradio" id="inlineRadio0102" value="yesreceived" tabindex="0" th:attr="action-id=${petition.getInternalID()}"><span class="checkmark"></span>Yes</label>
+                                                    <label for="inlineRadio0103" class="radio-inline radiocontainer"><input type="radio" name="actionradio" id="inlineRadio0103" value="noreceived" tabindex="0" th:attr="action-id=${petition.getInternalID()}" checked><span class="checkmark"></span>No</label>
+                                                </th:block>
+
+
+                                            </th:block>
+
                                         </div>
                                     </fieldset>
 
