@@ -163,6 +163,26 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
         }
 
 
+        if(pField.equals("reissue-office-action")){
+
+            if(pValue.equals("yes")){
+
+                baseTrademarkApplication.findPetitionById(actionID).setReissueOfficeAction(true);
+                baseTrademarkApplication.findPetitionById(actionID).setReissueRadioSet(true);
+            }
+            else{
+                baseTrademarkApplication.findPetitionById(actionID).setReissueOfficeAction(false);
+                baseTrademarkApplication.findPetitionById(actionID).setReissueRadioSet(true);
+
+            }
+
+
+
+            appFieldReadable = "Reissue option";
+        }
+
+
+
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
         String responseMsg = appFieldReadable+" has been saved";
 
