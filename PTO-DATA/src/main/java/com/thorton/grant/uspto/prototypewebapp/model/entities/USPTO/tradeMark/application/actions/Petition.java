@@ -79,6 +79,14 @@ public class Petition extends OfficeActions {
 
 
 
+        // sou petition response fields
+        private boolean  reissueOfficeAction;
+        private boolean reissueRadioSet;
+
+
+
+
+
 
 
 
@@ -271,5 +279,19 @@ public class Petition extends OfficeActions {
     }
 
 
+    public boolean isReissueOfficeAction() {
+        return reissueOfficeAction;
+    }
 
+    public void setReissueOfficeAction(boolean reissueOfficeAction) {
+        this.reissueOfficeAction = reissueOfficeAction;
+    }
+
+    public boolean isReissueRadioSet() {
+        return reissueRadioSet;
+    }
+
+    public void setReissueRadioSet(boolean reissueRadioSet) {
+        this.reissueRadioSet = reissueRadioSet;
+    }
 }
