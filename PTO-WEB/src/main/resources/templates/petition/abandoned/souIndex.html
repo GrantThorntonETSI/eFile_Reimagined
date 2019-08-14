@@ -53,8 +53,8 @@
                                                 <fieldset aria-label="request new notice of allowance">
                                                     <p class="weight600" id="reqnoa">Would you like UPSTO to issue a new Notice of Allowance?</p>
                                                     <div role="radiogroup" class="form-group form-group-md" aria-describedby="reqnoa">
-                                                        <label for="inlineRadio0104" class="radio-inline radiocontainer block"><input type="radio" name="reqallowance" id="inlineRadio0104" value="yesreqallowance" tabindex="0"><span class="checkmark"></span>Yes, I want the Notice of Allowance re-issued</label>
-                                                        <label for="inlineRadio0105" class="radio-inline radiocontainer block"><input type="radio" name="reqallowance" id="inlineRadio0105" value="noreqallowance" tabindex="0"><span class="checkmark"></span>No, I want to file an Extension Request and/or a Statement of Use now</label>
+                                                        <label for="inlineRadio0104" class="radio-inline radiocontainer block"><input type="radio" name="reqallowance" id="inlineRadio0104" value="yesreqallowance" tabindex="0" th:attr="action-id=${petition.getInternalID()}"><span class="checkmark"></span>Yes, I want the Notice of Allowance re-issued</label>
+                                                        <label for="inlineRadio0105" class="radio-inline radiocontainer block"><input type="radio" name="reqallowance" id="inlineRadio0105" value="noreqallowance" tabindex="0" th:attr="action-id=${petition.getInternalID()}"><span class="checkmark"></span>No, I want to file an Extension Request and/or a Statement of Use now</label>
                                                     </div>
                                                 </fieldset>
                                             </div>
@@ -78,7 +78,7 @@
                                                                 <section aria-label="sign">
                                                                     <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                         <label for="signature">Signature <a href="#" data-toggle="tooltip" title="" class="glyphicon glyphicon-info-sign test" data-placement="right" data-original-title="To electronically sign the application enter any combination of alpha numeric characters between two forward slash symbols (/); e.g., /jane smith/, /rdr/, or /127/)."></a></label>
-                                                                        <input type="text" class="form-control" placeholder="/Signature/" id="signature" required>
+                                                                        <input type="text" class="form-control" placeholder="/Signature/" id="signature" required th:attr="action-id=${petition.getInternalID()}">
                                                                     </div>
                                                                     <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                         <label for="datesigned">Date signed: <span id="tz" class="sr-only"> </span></label>
@@ -86,15 +86,15 @@
                                                                     </div>
                                                                     <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                         <label for="signatoryname">Signatory&#8217;s name</label>
-                                                                        <input type="text" class="form-control" id="signatoryname" required>
+                                                                        <input type="text" class="form-control" id="signatoryname" required th:attr="action-id=${petition.getInternalID()}">
                                                                     </div>
                                                                     <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
                                                                         <label for="signatoryphone">Signatory&#8217;s phone number</label>
-                                                                        <input type="tel" class="form-control" id="signatoryphone">
+                                                                        <input type="tel" class="form-control" id="signatoryphone" th:attr="action-id=${petition.getInternalID()}">
                                                                     </div>
                                                                     <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                         <label for="signatoryposition">Signatory&#8217;s position</label>
-                                                                        <input type="text" class="form-control" id="signatoryposition" required>
+                                                                        <input type="text" class="form-control" id="signatoryposition" required th:attr="action-id=${petition.getInternalID()}">
                                                                     </div>
                                                                 </section>
                                                             </div>
@@ -106,8 +106,8 @@
                                                 <fieldset aria-label="fees agreement">
                                                     <p class="weight600" id="agreefee">Do you want to file a Statement of Use with the fees for the missing Extension Request that must be filed directly within this form?</p>
                                                     <div role="radiogroup" class="form-group form-group-md" aria-describedby="agreefee">
-                                                        <label for="inlineRadio0108" class="radio-inline radiocontainer"><input type="radio" name="fees" id="inlineRadio0108" value="yesfees" tabindex="0"><span class="checkmark"></span>Yes</label>
-                                                        <label for="inlineRadio0109" class="radio-inline radiocontainer"><input type="radio" name="fees" id="inlineRadio0109" value="nofees" tabindex="0"><span class="checkmark"></span>No</label>
+                                                        <label for="inlineRadio0108" class="radio-inline radiocontainer"><input type="radio" name="fees" id="inlineRadio0108" value="yesfees" tabindex="0" th:attr="action-id=${petition.getInternalID()}"><span class="checkmark"></span>Yes</label>
+                                                        <label for="inlineRadio0109" class="radio-inline radiocontainer"><input type="radio" name="fees" id="inlineRadio0109" value="nofees" tabindex="0" th:attr="action-id=${petition.getInternalID()}"><span class="checkmark"></span>No</label>
                                                     </div>
                                                 </fieldset>
                                             </div>
@@ -126,26 +126,28 @@
                                                     <div id="souquestion" role="alert">
                                                         <p class="weight600" id="filesou">Did you want to file a Statement of Use?</p>
                                                         <div role="radiogroup" class="form-group form-group-md" aria-describedby="filesou">
-                                                            <label for="inlineRadio0106" class="radio-inline radiocontainer"><input type="radio" name="souradio" id="inlineRadio0106" value="yesou" tabindex="0"><span class="checkmark"></span>Yes</label>
-                                                            <label for="inlineRadio0107" class="radio-inline radiocontainer"><input type="radio" name="souradio" id="inlineRadio0107" value="nosou" tabindex="0"><span class="checkmark"></span>No</label>
+                                                            <label for="inlineRadio0106" class="radio-inline radiocontainer"><input type="radio" name="souradio" id="inlineRadio0106" value="yesou" tabindex="0"><span class="checkmark" th:attr="action-id=${petition.getInternalID()}"></span>Yes</label>
+                                                            <label for="inlineRadio0107" class="radio-inline radiocontainer"><input type="radio" name="souradio" id="inlineRadio0107" value="nosou" tabindex="0"><span class="checkmark" th:attr="action-id=${petition.getInternalID()}"></span>No</label>
                                                         </div>
                                                     </div>
                                                 </fieldset>
                                             </div>
 
                                         </div>
+
                                     </th:block>
 
                                     <th:block  th:if="${petition.recievedOfficeActionSet == true}">
 
                                         <th:block  th:if="${petition.recievedOfficeAction == true}">
-                                            <div id="reviveappform" role="alert" style="">
+
+                                            <div id="reviveappform" role="alert" style="display: none;">
                                                 <div id="requestnoa" role="alert" style="display: none;">
                                                     <fieldset aria-label="request new notice of allowance">
                                                         <p class="weight600" id="reqnoa">Would you like UPSTO to issue a new Notice of Allowance?</p>
                                                         <div role="radiogroup" class="form-group form-group-md" aria-describedby="reqnoa">
-                                                            <label for="inlineRadio0104" class="radio-inline radiocontainer block"><input type="radio" name="reqallowance" id="inlineRadio0104" value="yesreqallowance" tabindex="0"><span class="checkmark"></span>Yes, I want the Notice of Allowance re-issued</label>
-                                                            <label for="inlineRadio0105" class="radio-inline radiocontainer block"><input type="radio" name="reqallowance" id="inlineRadio0105" value="noreqallowance" tabindex="0"><span class="checkmark"></span>No, I want to file an Extension Request and/or a Statement of Use now</label>
+                                                            <label for="inlineRadio0104" class="radio-inline radiocontainer block"><input type="radio" name="reqallowance" id="inlineRadio0104" value="yesreqallowance" tabindex="0" th:attr="action-id=${petition.getInternalID()}"><span class="checkmark"></span>Yes, I want the Notice of Allowance re-issued</label>
+                                                            <label for="inlineRadio0105" class="radio-inline radiocontainer block"><input type="radio" name="reqallowance" id="inlineRadio0105" value="noreqallowance" tabindex="0" th:attr="action-id=${petition.getInternalID()}"><span class="checkmark"></span>No, I want to file an Extension Request and/or a Statement of Use now</label>
                                                         </div>
                                                     </fieldset>
                                                 </div>
@@ -169,7 +171,7 @@
                                                                     <section aria-label="sign">
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <label for="signature">Signature <a href="#" data-toggle="tooltip" title="" class="glyphicon glyphicon-info-sign test" data-placement="right" data-original-title="To electronically sign the application enter any combination of alpha numeric characters between two forward slash symbols (/); e.g., /jane smith/, /rdr/, or /127/)."></a></label>
-                                                                            <input type="text" class="form-control" placeholder="/Signature/" id="signature" required>
+                                                                            <input type="text" class="form-control" placeholder="/Signature/" id="signature" required th:attr="action-id=${petition.getInternalID()}">
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <label for="datesigned">Date signed: <span id="tz" class="sr-only"> </span></label>
@@ -177,15 +179,15 @@
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <label for="signatoryname">Signatory&#8217;s name</label>
-                                                                            <input type="text" class="form-control" id="signatoryname" required>
+                                                                            <input type="text" class="form-control" id="signatoryname" required th:attr="action-id=${petition.getInternalID()}">
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
                                                                             <label for="signatoryphone">Signatory&#8217;s phone number</label>
-                                                                            <input type="tel" class="form-control" id="signatoryphone">
+                                                                            <input type="tel" class="form-control" id="signatoryphone" th:attr="action-id=${petition.getInternalID()}">
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <label for="signatoryposition">Signatory&#8217;s position</label>
-                                                                            <input type="text" class="form-control" id="signatoryposition" required>
+                                                                            <input type="text" class="form-control" id="signatoryposition" required th:attr="action-id=${petition.getInternalID()}">
                                                                         </div>
                                                                     </section>
                                                                 </div>
@@ -197,8 +199,8 @@
                                                     <fieldset aria-label="fees agreement">
                                                         <p class="weight600" id="agreefee">Do you want to file a Statement of Use with the fees for the missing Extension Request that must be filed directly within this form?</p>
                                                         <div role="radiogroup" class="form-group form-group-md" aria-describedby="agreefee">
-                                                            <label for="inlineRadio0108" class="radio-inline radiocontainer"><input type="radio" name="fees" id="inlineRadio0108" value="yesfees" tabindex="0"><span class="checkmark"></span>Yes</label>
-                                                            <label for="inlineRadio0109" class="radio-inline radiocontainer"><input type="radio" name="fees" id="inlineRadio0109" value="nofees" tabindex="0"><span class="checkmark"></span>No</label>
+                                                            <label for="inlineRadio0108" class="radio-inline radiocontainer"><input type="radio" name="fees" id="inlineRadio0108" value="yesfees" tabindex="0" th:attr="action-id=${petition.getInternalID()}"><span class="checkmark"></span>Yes</label>
+                                                            <label for="inlineRadio0109" class="radio-inline radiocontainer"><input type="radio" name="fees" id="inlineRadio0109" value="nofees" tabindex="0" th:attr="action-id=${petition.getInternalID()}"><span class="checkmark"></span>No</label>
                                                         </div>
                                                     </fieldset>
                                                 </div>
@@ -217,212 +219,28 @@
                                                         <div id="souquestion" role="alert">
                                                             <p class="weight600" id="filesou">Did you want to file a Statement of Use?</p>
                                                             <div role="radiogroup" class="form-group form-group-md" aria-describedby="filesou">
-                                                                <label for="inlineRadio0106" class="radio-inline radiocontainer"><input type="radio" name="souradio" id="inlineRadio0106" value="yesou" tabindex="0"><span class="checkmark"></span>Yes</label>
-                                                                <label for="inlineRadio0107" class="radio-inline radiocontainer"><input type="radio" name="souradio" id="inlineRadio0107" value="nosou" tabindex="0"><span class="checkmark"></span>No</label>
+                                                                <label for="inlineRadio0106" class="radio-inline radiocontainer"><input type="radio" name="souradio" id="inlineRadio0106" value="yesou" tabindex="0"><span class="checkmark" th:attr="action-id=${petition.getInternalID()}"></span>Yes</label>
+                                                                <label for="inlineRadio0107" class="radio-inline radiocontainer"><input type="radio" name="souradio" id="inlineRadio0107" value="nosou" tabindex="0"><span class="checkmark" th:attr="action-id=${petition.getInternalID()}"></span>No</label>
                                                             </div>
                                                         </div>
                                                     </fieldset>
                                                 </div>
 
                                             </div>
-
                                         </th:block>
-                                        <th:block  th:if="${petition.recievedOfficeAction == true}">
 
-                                            <th:block  th:if="${petition.reissueRadioSet == true}">
+                                        <th:block  th:if="${petition.recievedOfficeAction == false}">
 
-                                                <th:block  th:if="${petition.reissueOfficeAction == true}">
+                                            <div id="reviveappform" role="alert" style="display: none;">
 
-                                                        <div id="reviveappform" role="alert" style="">
-                                                            <div id="requestnoa" role="alert" style="">
-                                                                <fieldset aria-label="request new notice of allowance">
-                                                                    <p class="weight600" id="reqnoa">Would you like UPSTO to issue a new Notice of Allowance?</p>
-                                                                    <div role="radiogroup" class="form-group form-group-md" aria-describedby="reqnoa">
-                                                                        <label for="inlineRadio0104" class="radio-inline radiocontainer block"><input type="radio" name="reqallowance" id="inlineRadio0104" value="yesreqallowance" tabindex="0" checked><span class="checkmark"></span>Yes, I want the Notice of Allowance re-issued</label>
-                                                                        <label for="inlineRadio0105" class="radio-inline radiocontainer block"><input type="radio" name="reqallowance" id="inlineRadio0105" value="noreqallowance" tabindex="0"><span class="checkmark"></span>No, I want to file an Extension Request and/or a Statement of Use now</label>
-                                                                    </div>
-                                                                </fieldset>
-                                                            </div>
-                                                            <div id="expedite" role="alert">
-                                                                <fieldset aria-label="select petition signature method">
-                                                                    <div class="card-text noexpand">
-                                                                        <h2 class="card-title weight600">Petition&#8217;s Signature</h2>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="form-group form-group-md col-xs-12">
-                                                                            <label for="petitionsign">How are you signing the petition?</label>
-                                                                            <select class="form-control signmethod" id="petitionsign" onchange="showTheTime()">
-                                                                                <option value="Select">Select Signature Method</option>
-                                                                                <option value="direct">Sign directly</option>
-                                                                                <option value="handwritten" disabled>Print and upload handwritten signature</option>
-                                                                                <option value="send" disabled>Send to second party for signature</option>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="col-xs-12 form-group form-group-md direct">
-                                                                            <div class="row hidethis">
-                                                                                <section aria-label="sign">
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                        <label for="signature">Signature <a href="#" data-toggle="tooltip" title="" class="glyphicon glyphicon-info-sign test" data-placement="right" data-original-title="To electronically sign the application enter any combination of alpha numeric characters between two forward slash symbols (/); e.g., /jane smith/, /rdr/, or /127/)."></a></label>
-                                                                                        <input type="text" class="form-control" placeholder="/Signature/" id="signature" required>
-                                                                                    </div>
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                        <label for="datesigned">Date signed: <span id="tz" class="sr-only"> </span></label>
-                                                                                        <textarea rows="1" class="form-control disabled datesigned" id="datesigned" disabled> </textarea>
-                                                                                    </div>
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                        <label for="signatoryname">Signatory&#8217;s name</label>
-                                                                                        <input type="text" class="form-control" id="signatoryname" required>
-                                                                                    </div>
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
-                                                                                        <label for="signatoryphone">Signatory&#8217;s phone number</label>
-                                                                                        <input type="tel" class="form-control" id="signatoryphone">
-                                                                                    </div>
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                        <label for="signatoryposition">Signatory&#8217;s position</label>
-                                                                                        <input type="text" class="form-control" id="signatoryposition" required>
-                                                                                    </div>
-                                                                                </section>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </fieldset>
-                                                            </div><!--//expedite always visible-->
-                                                            <div id="fees" role="alert" style="display: none;">
-                                                                <fieldset aria-label="fees agreement">
-                                                                    <p class="weight600" id="agreefee">Do you want to file a Statement of Use with the fees for the missing Extension Request that must be filed directly within this form?</p>
-                                                                    <div role="radiogroup" class="form-group form-group-md" aria-describedby="agreefee">
-                                                                        <label for="inlineRadio0108" class="radio-inline radiocontainer"><input type="radio" name="fees" id="inlineRadio0108" value="yesfees" tabindex="0"><span class="checkmark"></span>Yes</label>
-                                                                        <label for="inlineRadio0109" class="radio-inline radiocontainer"><input type="radio" name="fees" id="inlineRadio0109" value="nofees" tabindex="0"><span class="checkmark"></span>No</label>
-                                                                    </div>
-                                                                </fieldset>
-                                                            </div>
-                                                            <div id="xreq" role="alert"  style="display: none;">
-                                                                <fieldset aria-label="file a request for extension">
-                                                                    <div class="card-text noexpand">
-                                                                        <h2 class="card-title weight600">Extension Request</h2>
-                                                                    </div>
-                                                                    <div class="panel-group">
-                                                                        <div class="panel panel-default">
-                                                                            <div class="panel-heading">
-                                                                                <p class="extensions weight600">Extension Request(s) Due:</span> <span class="weight600">First,</span> <span class="weight600">Second</span></p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div id="souquestion" role="alert">
-                                                                        <p class="weight600" id="filesou">Did you want to file a Statement of Use?</p>
-                                                                        <div role="radiogroup" class="form-group form-group-md" aria-describedby="filesou">
-                                                                            <label for="inlineRadio0106" class="radio-inline radiocontainer"><input type="radio" name="souradio" id="inlineRadio0106" value="yesou" tabindex="0"><span class="checkmark"></span>Yes</label>
-                                                                            <label for="inlineRadio0107" class="radio-inline radiocontainer"><input type="radio" name="souradio" id="inlineRadio0107" value="nosou" tabindex="0"><span class="checkmark"></span>No</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </fieldset>
-                                                            </div>
+                                                <th:block  th:if="${petition.reissueRadioSet == false}">
 
-                                                        </div>
-
-                                                </th:block>
-
-                                                <th:block  th:if="${petition.reissueOfficeAction == false}">
-
-                                                        <div id="reviveappform" role="alert" style="">
-                                                            <div id="requestnoa" role="alert" style="">
-                                                                <fieldset aria-label="request new notice of allowance">
-                                                                    <p class="weight600" id="reqnoa">Would you like UPSTO to issue a new Notice of Allowance?</p>
-                                                                    <div role="radiogroup" class="form-group form-group-md" aria-describedby="reqnoa">
-                                                                        <label for="inlineRadio0104" class="radio-inline radiocontainer block"><input type="radio" name="reqallowance" id="inlineRadio0104" value="yesreqallowance" tabindex="0"><span class="checkmark"></span>Yes, I want the Notice of Allowance re-issued</label>
-                                                                        <label for="inlineRadio0105" class="radio-inline radiocontainer block"><input type="radio" name="reqallowance" id="inlineRadio0105" value="noreqallowance" tabindex="0" checked><span class="checkmark"></span>No, I want to file an Extension Request and/or a Statement of Use now</label>
-                                                                    </div>
-                                                                </fieldset>
-                                                            </div>
-                                                            <div id="expedite" role="alert">
-                                                                <fieldset aria-label="select petition signature method">
-                                                                    <div class="card-text noexpand">
-                                                                        <h2 class="card-title weight600">Petition&#8217;s Signature</h2>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="form-group form-group-md col-xs-12">
-                                                                            <label for="petitionsign">How are you signing the petition?</label>
-                                                                            <select class="form-control signmethod" id="petitionsign" onchange="showTheTime()">
-                                                                                <option value="Select">Select Signature Method</option>
-                                                                                <option value="direct">Sign directly</option>
-                                                                                <option value="handwritten" disabled>Print and upload handwritten signature</option>
-                                                                                <option value="send" disabled>Send to second party for signature</option>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="col-xs-12 form-group form-group-md direct">
-                                                                            <div class="row hidethis">
-                                                                                <section aria-label="sign">
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                        <label for="signature">Signature <a href="#" data-toggle="tooltip" title="" class="glyphicon glyphicon-info-sign test" data-placement="right" data-original-title="To electronically sign the application enter any combination of alpha numeric characters between two forward slash symbols (/); e.g., /jane smith/, /rdr/, or /127/)."></a></label>
-                                                                                        <input type="text" class="form-control" placeholder="/Signature/" id="signature" required>
-                                                                                    </div>
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                        <label for="datesigned">Date signed: <span id="tz" class="sr-only"> </span></label>
-                                                                                        <textarea rows="1" class="form-control disabled datesigned" id="datesigned" disabled> </textarea>
-                                                                                    </div>
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                        <label for="signatoryname">Signatory&#8217;s name</label>
-                                                                                        <input type="text" class="form-control" id="signatoryname" required>
-                                                                                    </div>
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
-                                                                                        <label for="signatoryphone">Signatory&#8217;s phone number</label>
-                                                                                        <input type="tel" class="form-control" id="signatoryphone">
-                                                                                    </div>
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                        <label for="signatoryposition">Signatory&#8217;s position</label>
-                                                                                        <input type="text" class="form-control" id="signatoryposition" required>
-                                                                                    </div>
-                                                                                </section>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </fieldset>
-                                                            </div><!--//expedite always visible-->
-                                                            <div id="fees" role="alert" style="display: none;">
-                                                                <fieldset aria-label="fees agreement">
-                                                                    <p class="weight600" id="agreefee">Do you want to file a Statement of Use with the fees for the missing Extension Request that must be filed directly within this form?</p>
-                                                                    <div role="radiogroup" class="form-group form-group-md" aria-describedby="agreefee">
-                                                                        <label for="inlineRadio0108" class="radio-inline radiocontainer"><input type="radio" name="fees" id="inlineRadio0108" value="yesfees" tabindex="0"><span class="checkmark"></span>Yes</label>
-                                                                        <label for="inlineRadio0109" class="radio-inline radiocontainer"><input type="radio" name="fees" id="inlineRadio0109" value="nofees" tabindex="0"><span class="checkmark"></span>No</label>
-                                                                    </div>
-                                                                </fieldset>
-                                                            </div>
-                                                            <div id="xreq" role="alert"  style="">
-                                                                <fieldset aria-label="file a request for extension">
-                                                                    <div class="card-text noexpand">
-                                                                        <h2 class="card-title weight600">Extension Request</h2>
-                                                                    </div>
-                                                                    <div class="panel-group">
-                                                                        <div class="panel panel-default">
-                                                                            <div class="panel-heading">
-                                                                                <p class="extensions weight600">Extension Request(s) Due:</span> <span class="weight600">First,</span> <span class="weight600">Second</span></p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div id="souquestion" role="alert">
-                                                                        <p class="weight600" id="filesou">Did you want to file a Statement of Use?</p>
-                                                                        <div role="radiogroup" class="form-group form-group-md" aria-describedby="filesou">
-                                                                            <label for="inlineRadio0106" class="radio-inline radiocontainer"><input type="radio" name="souradio" id="inlineRadio0106" value="yesou" tabindex="0"><span class="checkmark"></span>Yes</label>
-                                                                            <label for="inlineRadio0107" class="radio-inline radiocontainer"><input type="radio" name="souradio" id="inlineRadio0107" value="nosou" tabindex="0"><span class="checkmark"></span>No</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </fieldset>
-                                                            </div>
-
-                                                        </div>
-
-                                                </th:block>
-
-
-                                            </th:block>
-                                            <th:block  th:if="${petition.reissueRadioSet == false}">
-                                                <div id="reviveappform" role="alert" style="">
                                                     <div id="requestnoa" role="alert" style="">
                                                         <fieldset aria-label="request new notice of allowance">
                                                             <p class="weight600" id="reqnoa">Would you like UPSTO to issue a new Notice of Allowance?</p>
                                                             <div role="radiogroup" class="form-group form-group-md" aria-describedby="reqnoa">
-                                                                <label for="inlineRadio0104" class="radio-inline radiocontainer block"><input type="radio" name="reqallowance" id="inlineRadio0104" value="yesreqallowance" tabindex="0"><span class="checkmark"></span>Yes, I want the Notice of Allowance re-issued</label>
-                                                                <label for="inlineRadio0105" class="radio-inline radiocontainer block"><input type="radio" name="reqallowance" id="inlineRadio0105" value="noreqallowance" tabindex="0"><span class="checkmark"></span>No, I want to file an Extension Request and/or a Statement of Use now</label>
+                                                                <label for="inlineRadio0104" class="radio-inline radiocontainer block"><input type="radio" name="reqallowance" id="inlineRadio0104" value="yesreqallowance" tabindex="0" th:attr="action-id=${petition.getInternalID()}"><span class="checkmark"></span>Yes, I want the Notice of Allowance re-issued</label>
+                                                                <label for="inlineRadio0105" class="radio-inline radiocontainer block"><input type="radio" name="reqallowance" id="inlineRadio0105" value="noreqallowance" tabindex="0" th:attr="action-id=${petition.getInternalID()}"><span class="checkmark"></span>No, I want to file an Extension Request and/or a Statement of Use now</label>
                                                             </div>
                                                         </fieldset>
                                                     </div>
@@ -446,7 +264,7 @@
                                                                         <section aria-label="sign">
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="signature">Signature <a href="#" data-toggle="tooltip" title="" class="glyphicon glyphicon-info-sign test" data-placement="right" data-original-title="To electronically sign the application enter any combination of alpha numeric characters between two forward slash symbols (/); e.g., /jane smith/, /rdr/, or /127/)."></a></label>
-                                                                                <input type="text" class="form-control" placeholder="/Signature/" id="signature" required>
+                                                                                <input type="text" class="form-control" placeholder="/Signature/" id="signature" required th:attr="action-id=${petition.getInternalID()}">
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="datesigned">Date signed: <span id="tz" class="sr-only"> </span></label>
@@ -454,15 +272,15 @@
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="signatoryname">Signatory&#8217;s name</label>
-                                                                                <input type="text" class="form-control" id="signatoryname" required>
+                                                                                <input type="text" class="form-control" id="signatoryname" required th:attr="action-id=${petition.getInternalID()}">
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
                                                                                 <label for="signatoryphone">Signatory&#8217;s phone number</label>
-                                                                                <input type="tel" class="form-control" id="signatoryphone">
+                                                                                <input type="tel" class="form-control" id="signatoryphone" th:attr="action-id=${petition.getInternalID()}">
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="signatoryposition">Signatory&#8217;s position</label>
-                                                                                <input type="text" class="form-control" id="signatoryposition" required>
+                                                                                <input type="text" class="form-control" id="signatoryposition" required th:attr="action-id=${petition.getInternalID()}">
                                                                             </div>
                                                                         </section>
                                                                     </div>
@@ -474,8 +292,8 @@
                                                         <fieldset aria-label="fees agreement">
                                                             <p class="weight600" id="agreefee">Do you want to file a Statement of Use with the fees for the missing Extension Request that must be filed directly within this form?</p>
                                                             <div role="radiogroup" class="form-group form-group-md" aria-describedby="agreefee">
-                                                                <label for="inlineRadio0108" class="radio-inline radiocontainer"><input type="radio" name="fees" id="inlineRadio0108" value="yesfees" tabindex="0"><span class="checkmark"></span>Yes</label>
-                                                                <label for="inlineRadio0109" class="radio-inline radiocontainer"><input type="radio" name="fees" id="inlineRadio0109" value="nofees" tabindex="0"><span class="checkmark"></span>No</label>
+                                                                <label for="inlineRadio0108" class="radio-inline radiocontainer"><input type="radio" name="fees" id="inlineRadio0108" value="yesfees" tabindex="0" th:attr="action-id=${petition.getInternalID()}"><span class="checkmark"></span>Yes</label>
+                                                                <label for="inlineRadio0109" class="radio-inline radiocontainer"><input type="radio" name="fees" id="inlineRadio0109" value="nofees" tabindex="0" th:attr="action-id=${petition.getInternalID()}"><span class="checkmark"></span>No</label>
                                                             </div>
                                                         </fieldset>
                                                     </div>
@@ -494,19 +312,201 @@
                                                             <div id="souquestion" role="alert">
                                                                 <p class="weight600" id="filesou">Did you want to file a Statement of Use?</p>
                                                                 <div role="radiogroup" class="form-group form-group-md" aria-describedby="filesou">
-                                                                    <label for="inlineRadio0106" class="radio-inline radiocontainer"><input type="radio" name="souradio" id="inlineRadio0106" value="yesou" tabindex="0"><span class="checkmark"></span>Yes</label>
-                                                                    <label for="inlineRadio0107" class="radio-inline radiocontainer"><input type="radio" name="souradio" id="inlineRadio0107" value="nosou" tabindex="0"><span class="checkmark"></span>No</label>
+                                                                    <label for="inlineRadio0106" class="radio-inline radiocontainer"><input type="radio" name="souradio" id="inlineRadio0106" value="yesou" tabindex="0"><span class="checkmark" th:attr="action-id=${petition.getInternalID()}"></span>Yes</label>
+                                                                    <label for="inlineRadio0107" class="radio-inline radiocontainer"><input type="radio" name="souradio" id="inlineRadio0107" value="nosou" tabindex="0"><span class="checkmark" th:attr="action-id=${petition.getInternalID()}"></span>No</label>
                                                                 </div>
                                                             </div>
                                                         </fieldset>
                                                     </div>
+                                                </th:block>
 
-                                                </div>
-                                            </th:block>
+                                                <th:block  th:if="${petition.reissueRadioSet == true}">
+
+                                                    <th:block  th:if="${petition.reissueOfficeAction == true}">
+                                                        <div id="requestnoa" role="alert" style="">
+                                                            <fieldset aria-label="request new notice of allowance">
+                                                                <p class="weight600" id="reqnoa">Would you like UPSTO to issue a new Notice of Allowance?</p>
+                                                                <div role="radiogroup" class="form-group form-group-md" aria-describedby="reqnoa">
+                                                                    <label for="inlineRadio0104" class="radio-inline radiocontainer block"><input type="radio" name="reqallowance" id="inlineRadio0104" value="yesreqallowance" tabindex="0" th:attr="action-id=${petition.getInternalID()}" checked><span class="checkmark"></span>Yes, I want the Notice of Allowance re-issued</label>
+                                                                    <label for="inlineRadio0105" class="radio-inline radiocontainer block"><input type="radio" name="reqallowance" id="inlineRadio0105" value="noreqallowance" tabindex="0" th:attr="action-id=${petition.getInternalID()}"><span class="checkmark"></span>No, I want to file an Extension Request and/or a Statement of Use now</label>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                        <div id="expedite" role="alert">
+                                                            <fieldset aria-label="select petition signature method">
+                                                                <div class="card-text noexpand">
+                                                                    <h2 class="card-title weight600">Petition&#8217;s Signature</h2>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="form-group form-group-md col-xs-12">
+                                                                        <label for="petitionsign">How are you signing the petition?</label>
+                                                                        <select class="form-control signmethod" id="petitionsign" onchange="showTheTime()">
+                                                                            <option value="Select">Select Signature Method</option>
+                                                                            <option value="direct">Sign directly</option>
+                                                                            <option value="handwritten" disabled>Print and upload handwritten signature</option>
+                                                                            <option value="send" disabled>Send to second party for signature</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-xs-12 form-group form-group-md direct">
+                                                                        <div class="row hidethis">
+                                                                            <section aria-label="sign">
+                                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                                    <label for="signature">Signature <a href="#" data-toggle="tooltip" title="" class="glyphicon glyphicon-info-sign test" data-placement="right" data-original-title="To electronically sign the application enter any combination of alpha numeric characters between two forward slash symbols (/); e.g., /jane smith/, /rdr/, or /127/)."></a></label>
+                                                                                    <input type="text" class="form-control" placeholder="/Signature/" id="signature" required th:attr="action-id=${petition.getInternalID()}">
+                                                                                </div>
+                                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                                    <label for="datesigned">Date signed: <span id="tz" class="sr-only"> </span></label>
+                                                                                    <textarea rows="1" class="form-control disabled datesigned" id="datesigned" disabled> </textarea>
+                                                                                </div>
+                                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                                    <label for="signatoryname">Signatory&#8217;s name</label>
+                                                                                    <input type="text" class="form-control" id="signatoryname" required th:attr="action-id=${petition.getInternalID()}">
+                                                                                </div>
+                                                                                <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
+                                                                                    <label for="signatoryphone">Signatory&#8217;s phone number</label>
+                                                                                    <input type="tel" class="form-control" id="signatoryphone" th:attr="action-id=${petition.getInternalID()}">
+                                                                                </div>
+                                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                                    <label for="signatoryposition">Signatory&#8217;s position</label>
+                                                                                    <input type="text" class="form-control" id="signatoryposition" required th:attr="action-id=${petition.getInternalID()}">
+                                                                                </div>
+                                                                            </section>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div><!--//expedite always visible-->
+                                                        <div id="fees" role="alert" style="display: none;">
+                                                            <fieldset aria-label="fees agreement">
+                                                                <p class="weight600" id="agreefee">Do you want to file a Statement of Use with the fees for the missing Extension Request that must be filed directly within this form?</p>
+                                                                <div role="radiogroup" class="form-group form-group-md" aria-describedby="agreefee">
+                                                                    <label for="inlineRadio0108" class="radio-inline radiocontainer"><input type="radio" name="fees" id="inlineRadio0108" value="yesfees" tabindex="0" th:attr="action-id=${petition.getInternalID()}"><span class="checkmark"></span>Yes</label>
+                                                                    <label for="inlineRadio0109" class="radio-inline radiocontainer"><input type="radio" name="fees" id="inlineRadio0109" value="nofees" tabindex="0" th:attr="action-id=${petition.getInternalID()}"><span class="checkmark"></span>No</label>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                        <div id="xreq" role="alert"  style="display: none;">
+                                                            <fieldset aria-label="file a request for extension">
+                                                                <div class="card-text noexpand">
+                                                                    <h2 class="card-title weight600">Extension Request</h2>
+                                                                </div>
+                                                                <div class="panel-group">
+                                                                    <div class="panel panel-default">
+                                                                        <div class="panel-heading">
+                                                                            <p class="extensions weight600">Extension Request(s) Due:</span> <span class="weight600">First,</span> <span class="weight600">Second</span></p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div id="souquestion" role="alert">
+                                                                    <p class="weight600" id="filesou">Did you want to file a Statement of Use?</p>
+                                                                    <div role="radiogroup" class="form-group form-group-md" aria-describedby="filesou">
+                                                                        <label for="inlineRadio0106" class="radio-inline radiocontainer"><input type="radio" name="souradio" id="inlineRadio0106" value="yesou" tabindex="0"><span class="checkmark" th:attr="action-id=${petition.getInternalID()}"></span>Yes</label>
+                                                                        <label for="inlineRadio0107" class="radio-inline radiocontainer"><input type="radio" name="souradio" id="inlineRadio0107" value="nosou" tabindex="0"><span class="checkmark" th:attr="action-id=${petition.getInternalID()}"></span>No</label>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+
+                                                    </th:block>
+
+                                                    <th:block  th:if="${petition.reissueOfficeAction == false}">
+
+                                                        <div id="requestnoa" role="alert" style="">
+                                                            <fieldset aria-label="request new notice of allowance">
+                                                                <p class="weight600" id="reqnoa">Would you like UPSTO to issue a new Notice of Allowance?</p>
+                                                                <div role="radiogroup" class="form-group form-group-md" aria-describedby="reqnoa">
+                                                                    <label for="inlineRadio0104" class="radio-inline radiocontainer block"><input type="radio" name="reqallowance" id="inlineRadio0104" value="yesreqallowance" tabindex="0" th:attr="action-id=${petition.getInternalID()}"><span class="checkmark"></span>Yes, I want the Notice of Allowance re-issued</label>
+                                                                    <label for="inlineRadio0105" class="radio-inline radiocontainer block"><input type="radio" name="reqallowance" id="inlineRadio0105" value="noreqallowance" tabindex="0" th:attr="action-id=${petition.getInternalID()}" checked><span class="checkmark"></span>No, I want to file an Extension Request and/or a Statement of Use now</label>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                        <div id="expedite" role="alert">
+                                                            <fieldset aria-label="select petition signature method">
+                                                                <div class="card-text noexpand">
+                                                                    <h2 class="card-title weight600">Petition&#8217;s Signature</h2>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="form-group form-group-md col-xs-12">
+                                                                        <label for="petitionsign">How are you signing the petition?</label>
+                                                                        <select class="form-control signmethod" id="petitionsign" onchange="showTheTime()">
+                                                                            <option value="Select">Select Signature Method</option>
+                                                                            <option value="direct">Sign directly</option>
+                                                                            <option value="handwritten" disabled>Print and upload handwritten signature</option>
+                                                                            <option value="send" disabled>Send to second party for signature</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-xs-12 form-group form-group-md direct">
+                                                                        <div class="row hidethis">
+                                                                            <section aria-label="sign">
+                                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                                    <label for="signature">Signature <a href="#" data-toggle="tooltip" title="" class="glyphicon glyphicon-info-sign test" data-placement="right" data-original-title="To electronically sign the application enter any combination of alpha numeric characters between two forward slash symbols (/); e.g., /jane smith/, /rdr/, or /127/)."></a></label>
+                                                                                    <input type="text" class="form-control" placeholder="/Signature/" id="signature" required th:attr="action-id=${petition.getInternalID()}">
+                                                                                </div>
+                                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                                    <label for="datesigned">Date signed: <span id="tz" class="sr-only"> </span></label>
+                                                                                    <textarea rows="1" class="form-control disabled datesigned" id="datesigned" disabled> </textarea>
+                                                                                </div>
+                                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                                    <label for="signatoryname">Signatory&#8217;s name</label>
+                                                                                    <input type="text" class="form-control" id="signatoryname" required th:attr="action-id=${petition.getInternalID()}">
+                                                                                </div>
+                                                                                <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
+                                                                                    <label for="signatoryphone">Signatory&#8217;s phone number</label>
+                                                                                    <input type="tel" class="form-control" id="signatoryphone" th:attr="action-id=${petition.getInternalID()}">
+                                                                                </div>
+                                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                                    <label for="signatoryposition">Signatory&#8217;s position</label>
+                                                                                    <input type="text" class="form-control" id="signatoryposition" required th:attr="action-id=${petition.getInternalID()}">
+                                                                                </div>
+                                                                            </section>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div><!--//expedite always visible-->
+                                                        <div id="fees" role="alert" style="">
+                                                            <fieldset aria-label="fees agreement">
+                                                                <p class="weight600" id="agreefee">Do you want to file a Statement of Use with the fees for the missing Extension Request that must be filed directly within this form?</p>
+                                                                <div role="radiogroup" class="form-group form-group-md" aria-describedby="agreefee">
+                                                                    <label for="inlineRadio0108" class="radio-inline radiocontainer"><input type="radio" name="fees" id="inlineRadio0108" value="yesfees" tabindex="0" th:attr="action-id=${petition.getInternalID()}"><span class="checkmark"></span>Yes</label>
+                                                                    <label for="inlineRadio0109" class="radio-inline radiocontainer"><input type="radio" name="fees" id="inlineRadio0109" value="nofees" tabindex="0" th:attr="action-id=${petition.getInternalID()}"><span class="checkmark"></span>No</label>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                        <div id="xreq" role="alert"  style="display: none;">
+                                                            <fieldset aria-label="file a request for extension">
+                                                                <div class="card-text noexpand">
+                                                                    <h2 class="card-title weight600">Extension Request</h2>
+                                                                </div>
+                                                                <div class="panel-group">
+                                                                    <div class="panel panel-default">
+                                                                        <div class="panel-heading">
+                                                                            <p class="extensions weight600">Extension Request(s) Due:</span> <span class="weight600">First,</span> <span class="weight600">Second</span></p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div id="souquestion" role="alert">
+                                                                    <p class="weight600" id="filesou">Did you want to file a Statement of Use?</p>
+                                                                    <div role="radiogroup" class="form-group form-group-md" aria-describedby="filesou">
+                                                                        <label for="inlineRadio0106" class="radio-inline radiocontainer"><input type="radio" name="souradio" id="inlineRadio0106" value="yesou" tabindex="0"><span class="checkmark" th:attr="action-id=${petition.getInternalID()}"></span>Yes</label>
+                                                                        <label for="inlineRadio0107" class="radio-inline radiocontainer"><input type="radio" name="souradio" id="inlineRadio0107" value="nosou" tabindex="0"><span class="checkmark" th:attr="action-id=${petition.getInternalID()}"></span>No</label>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+
+                                                    </th:block>
 
 
 
+                                                </th:block>
+
+
+
+
+                                            </div>
                                         </th:block>
+
 
                                     </th:block>
 
