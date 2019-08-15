@@ -12,17 +12,13 @@
     <![endif]-->
 </head>
 <body class="insertform">
-<div class="container-fluid">
     <div class="row content" style="display: none;">
     <div class="col-xs-12">
         <!--START Content Div-->
         <div class="row" style="position: relative; top:-222px;">
-            <div class="col-xs-12 col-sm-12 col-lg-12">
-                <button type="button" class="btn-sm btn-success fill" id="clearfillOwner">Clear Form</button>
-            </div>
             <div class="col-xs-12 text-left">
                 <!--START Owner Information Form-->
-                <div class="card-text">
+                <div class="card-text noexpand">
                     <h2 class="card-title weight600" id="ownerinfo">Owner Name Information</h2>
                 </div>
                 <form method="post" id="addNewOwnerForm" onsubmit="return validateOwnerForm();" action="/owner/add" th:object="${addNewOwnerContactFormDTO}" aria-labelledby="ownerinfo">
@@ -40,7 +36,7 @@
                                 <label for="last-name"><span class="weight600">&#42;</span>Last name</label>
                                 <input type="text" class="form-control" id="last-name" th:field="*{lastName}" name="lastName" required>
                             </div>
-                            <div class="form-group form-group-md col-xs-6">
+                            <div class="form-group form-group-md col-xs-4 col-md-6">
                                 <label for="suffix">Suffix</label>
                                 <select class="form-control" name="suffix" th:field="*{suffix}" id="suffix">
                                     <option value="select">Select</option>
@@ -56,7 +52,7 @@
                                     <option value="VIII">VIII</option>
                                 </select>
                             </div>
-                            <div class="form-group form-group-md col-xs-6">
+                            <div class="form-group form-group-md col-xs-8 col-md-6">
                                 <label for="owner-citizenship">Country of citizenship  <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
                                 <select id="owner-citizenship"  class="form-control" name="suffix"   th:field="*{ownerCitizenShip}" >
                                     <option value="">Select</option>
@@ -81,7 +77,7 @@
                     </fieldset>
                     <!--END Sole Proprietor Information Form-->
                     <!--START Owner Address Information Form-->
-                    <div class="card-text">
+                    <div class="card-text noexpand">
                         <h2 class="card-title weight600" id="addressinfo">Owner Address Information</h2>
                     </div>
                     <fieldset aria-labelledby="addressinfo">
@@ -356,11 +352,11 @@
                                 <label for="addressline3">Address line 3</label>
                                 <input type="text" class="form-control" id="addressline3" th:field="*{ownerAddress3}">
                             </div>
-                            <div class="form-group form-group-md col-xs-4">
+                            <div class="form-group form-group-md col-xs-12 col-md-6">
                                 <label for="ownerCity"><span class="weight600">&#42;</span>City</label>
                                 <input type="text" class="form-control" id="ownerCity" th:field="*{ownerCity}" required>
                             </div>
-                            <div class="form-group form-group-md col-xs-4">
+                            <div class="form-group form-group-md col-xs-6">
                                 <label for="ownerState"><span class="weight600">&#42;</span>State/Province/Territory</label>
                                 <select class="form-control" id="ownerState" th:field="*{ownerState}" required>
                                     <option value="">Select</option>
@@ -403,6 +399,7 @@
                                     <option value="Oklahoma">Oklahoma</option>
                                     <option value="Oregon">Oregon</option>
                                     <option value="Pennsylvania">Pennsylvania</option>
+                                    <option value="Puerto Rico">Puerto Rico</option>
                                     <option value="Rhode Island">Rhode Island</option>
                                     <option value="South Carolina">South Carolina</option>
                                     <option value="South Dakota">South Dakota</option>
@@ -417,11 +414,11 @@
                                     <option value="Wyoming">Wyoming</option>
                                 </select>
                             </div>
-                            <div class="form-group form-group-md col-xs-4">
+                            <div class="form-group form-group-md col-xs-6 col-md-4">
                                 <label for="ownerZipcode"><span class="weight600">&#42;</span>Zip code/Postal code</label>
                                 <input type="text" class="form-control" id="ownerZipcode" placeholder="" th:field="*{ownerZipcode}" required>
                             </div>
-                            <div class="form-group form-group-md col-xs-12 col-md-7">
+                            <div class="form-group form-group-md col-xs-12 col-md-8">
                                 <label for="webaddress">Website address</label>
                                 <input type="url" name="website" th:field="*{ownerWebSite}" id="webaddress"  placeholder="" class="form-control" style="border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px;">
                             </div>
@@ -468,7 +465,6 @@
             </div><!--END Content Div-->
         </div>
     </div><!--END container div-->
-</div>
 </div>
 <!--load model attribute for Jquery consumption  -->
 <script th:inline="javascript">
@@ -605,7 +601,7 @@
 
 
 
-        $( "#clearfillOwner" ).click(function() {
+        $( "#clearfillOwner, #clearfillOwnerforeign" ).click(function() {
 
             $('#addNewOwnerForm')[0].reset();
             $('#appInternalIDForm').val(appInternalID);
