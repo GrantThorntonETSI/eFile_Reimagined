@@ -1225,7 +1225,7 @@
                                 <th:block th:each="contact : ${user.getAttorneyManagedContact()}">
 
                                     <tr class="row">
-                                        <td class="list-group-item col-xs-6"><a href="#" class="fromcontact" id="managedContactFillFormAction" ><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><span class="glyphicon glyphicon-ok-sign visuallyremoved" aria-hidden="true"></span></a> <b th:text="${contact.displayName}">Avo Reed</b></td>
+                                        <td class="list-group-item col-xs-6"><a href="#" class="fromcontact" id="managedContactFillFormAction"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><span class="glyphicon glyphicon-ok-sign visuallyremoved" aria-hidden="true"></span></a> <span th:text="${contact.displayName}">Avo Reed</span></td>
                                         <td class="list-group-item col-xs-6" th:text="${contact.email}">avo.reid@us.gt.com</td>
                                     </tr>
 

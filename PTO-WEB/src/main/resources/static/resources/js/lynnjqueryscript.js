@@ -2140,7 +2140,19 @@ $(document).ready(function(){
 	//START initialize Dashboard datable one
 		var tableone = $('#dashboardtableone').DataTable({
 		"fnDrawCallback": function( oSettings ) {
-		},	
+		},
+        "fnInitComplete": function(oSettings) {
+           if (oSettings.aiDisplayMaster.length <= 0) {
+               $('#dashboardtableone_wrapper').hide();
+               $('#dashboardtableone_wrapper').parent().parent().parent().parent().parent().parent().parent().hide();
+               $('section#announcements').parent().addClass('col-lg-6').removeClass('col-lg-3').css('margin','0 auto').css('float', 'none');
+           }
+           else {
+               $('#dashboardtableone_wrapper').show();
+               $('#dashboardtableone_wrapper').parent().parent().parent().parent().parent().parent().parent().show();
+               $('section#announcements').parent().removeClass('col-lg-6').addClass('col-lg-3').css('margin','auto').css('float', 'left');
+               }
+        },
 			'sDom': '<"toolbar">lfrtip',
 			"language": {
 			"search": "<span class='glyphicon glyphicon-search' aria-hidden='true'></span><span class='sr-only'>search</span>",
@@ -2294,6 +2306,12 @@ $(document).ready(function(){
 		var tabletwo = $('#dashboardtabletwo').DataTable({
 		"fnDrawCallback": function( oSettings ) {
 		},
+        "fnInitComplete": function(oSettings) {
+           if (oSettings.aiDisplayMaster.length <= 0) {
+               $("#dashboardtabletwo_wrapper").hide();
+               $("#dashboardtabletwo_wrapper").parent().parent().hide();
+           }
+        },
 			'sDom': '<"toolbartwo">lfrtip',
 			"language": {
 			"search": "<span class='glyphicon glyphicon-search' aria-hidden='true'></span><span class='sr-only'>search</span>",
