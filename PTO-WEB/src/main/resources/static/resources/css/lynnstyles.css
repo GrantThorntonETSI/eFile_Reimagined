@@ -4,7 +4,7 @@
     margin: 0;
     font-weight: normal;
     font-style: normal;
-    font-size: 100%;
+    font-size: inherit;
     text-shadow: 0 0 0 rgba(0,0,0,0)!important;
 }
 html {
@@ -13,6 +13,7 @@ html {
 body {
     font-family: "Segoe UI", "Helvetica Neue", Tahoma, Arial!important;
     background-color:#f6f6f6;
+    font-size:1em;
     /*min-height:100%;*/
     /*height:100%;*/
     /*overflow-x: hidden;*/
@@ -249,8 +250,6 @@ object#selected {
     vertical-align: text-top;
     display: inline-block;
     border-radius: .19em;
-	margin-left:5px;
-	margin-bottom: 5px;
 }
 .label.subtle {
     padding-top:.35em;
@@ -262,7 +261,8 @@ object#selected {
 }
 .label-info {
     background-color:#dff0d8;
-    color: #555
+    color: #555;
+    vertical-align:text-bottom;
 }
 div.holdsaforeign p.weight600, div.appendsaforeign p.weight600, div.holdsapending p.weight600, div.appendapending p.weight600 {
     margin-top:1.2em;
@@ -796,6 +796,9 @@ h1 {
 }
 h2, h3, h4, h5, h6 {
     line-height: 1.5em;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: inherit;
 }
 #petitions h1 {
     margin-bottom:1em;
@@ -1777,6 +1780,9 @@ fieldset {
 #responseamend .inlinebuttons {
     margin-top: 2em;
 }
+select#entypeforeignbahamas, select#entype {
+    margin-bottom:1em;
+}
 .control-label {
     text-align:left!important;
 }
@@ -1928,6 +1934,14 @@ button[disabled] {
     margin:0 auto;
     position:relative;
     width:100%;
+}
+#selectclear, #selectclearforeign {
+    float: none;
+    width:auto!important;
+    margin:0 auto;
+}
+button#autofill, button#autofillForeign {
+    border-right:6px solid #fff;
 }
 .modal .inlinebuttons .btn-group button {
     margin:0 1em;
@@ -2242,6 +2256,10 @@ button#moreoptionsbtn {
     padding:8px 10px!important;
     margin-top:16.16px;
     margin-bottom:16.16px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 3px!important;
+    border-bottom-right-radius: 3px!important;
 }
 .btn-group-justified.large {
     float:none;
@@ -2332,7 +2350,7 @@ div#minholder {
     background-color: #aaa;
     -webkit-transition: .4s;
     transition: .4s;
-    padding-top: 7px;
+    padding-top: 6px;
     border-radius: 19px;
 }
 .slider:before {
@@ -2601,7 +2619,7 @@ input[type="file"]:focus {
     margin-left: 0;
 }
 option, select, input[type="text"], input[type="email"], input[type="tel"], input[type="url"] {
-    min-height: 38px!important;
+    height: 38px!important;
 }
 #goodsandservices_wrapper input[type="search"], #dashboardtableone_wrapper input[type="search"], #dashboardtabletwo_wrapper input[type="search"], #filepetitiontable_wrapper input[type="search"] {
     margin-left: .5em!important;
@@ -3101,6 +3119,7 @@ div.alertmargin #alertmin {
 #dashsectionscontainer #alertmin p {
 	width: auto;
 	padding-top: .5em;
+    float: none;
 	}
 p#mintext {
     float:left;
@@ -3681,8 +3700,8 @@ footer #megamenu ul {
     .nav > li > a {
         padding-right:12px!important;
     }
-    .label.subtle {
-        padding-bottom: .33em;
+    #selectclear, #selectclearforeign {
+        width:80%!important
     }
 }
 @media (min-width: 800px) {
@@ -3705,6 +3724,9 @@ footer #megamenu ul {
 @media (max-width: 768px) {
     .btn-success.add.ctr {
         margin-top:0;
+    }
+    .slider {
+        padding-top: 8px;
     }
 }
 @media (max-width: 767px) {
@@ -3923,6 +3945,9 @@ footer #megamenu ul {
     #petitions1 .panel-body p, #petitions2 .panel-body p, #responseamend .panel-body p {
         margin-top: 0;
         margin-bottom: .8em;
+    }
+    #selectclear, #selectclearforeign {
+        width:50%!important
     }
 }
 @media (min-width: 1200px) and (max-width: 1587px) {

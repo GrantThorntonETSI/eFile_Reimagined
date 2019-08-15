@@ -16,22 +16,19 @@
     <div class="col-xs-12">
         <!--START Content Div-->
         <div class="row" style="position: relative; top:-222px;">
-            <div class="col-xs-12 col-sm-12 col-lg-12">
-                <button type="button" class="btn-sm btn-success fill" id="clearfillOwner">Clear Form</button>
-            </div>
             <div class="col-xs-12 text-left">
                 <!--START Owner Information Form-->
-                <div class="card-text">
+                <div class="card-text noexpand">
                     <h2 class="card-title weight600" id="ownerinfo">Owner Information</h2>
                 </div>
                 <form method="post" id="addNewOwnerForm" action="/owner/add" onsubmit="return validateOwnerForm();" th:object="${addNewOwnerContactFormDTO}" aria-labelledby="ownerinfo">
                     <fieldset aria-labelledby="ownerinfo">
                         <div class="row">
-                            <div class="form-group form-group-md col-xs-6">
+                            <div class="form-group form-group-md col-xs-12 col-md-6">
                                 <label for="ownername"><span class="weight600">&#42;</span>Owner name</label>
                                 <input type="text" class="form-control"  id="ownername" th:field="*{ownerName}" required>
                             </div>
-                            <div class="form-group form-group-md col-xs-6">
+                            <div class="form-group form-group-md col-xs-9 col-md-6">
                                 <label for="stateoforg"><span class="weight600">&#42;</span>State where legally organized <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
                                 <select class="form-control" id="stateoforg" th:field="*{ownerOrganizationState}" required>
                                     <option value="">Select</option>
@@ -86,6 +83,7 @@
                                     <option value="West Virginia">West Virginia</option>
                                     <option value="Wisconsin">Wisconsin</option>
                                     <option value="Wyoming">Wyoming</option>
+                                    <option value="N/A">N/A</option>
                                 </select>
                             </div>
                             <div class="form-group form-group-md col-xs-6">
@@ -106,20 +104,20 @@
                     </fieldset>
                     <!--END Owner Information-->
                     <!--START Sole Proprietor Information-->
-                    <div class="card-text">
+                    <div class="card-text noexpand">
                         <h2 class="card-title weight600" id="proprietorinfo">General Partners</h2>
                     </div>
                     <div id="partnerEntitydynamicFormArea" th:each="partner, itemStat : *{partnerDTOs}">
-                        <label><b style="color: red">&#42;</b>Select entity type</label>
+                        <label>&#42;Select entity type</label>
                         <span>
-                        <select id="domestic-entity-dropdown-partner" class="form-control" name="nameType"   th:field="*{partnerDTOs[__${itemStat.index}__].partnerType}">
-                            <option id="opt-none" value="none"  ></option>
-                            <option id="opt-domestic-ind" value="Individual"  >Individual</option>
-                            <option id="opt-domestic-soleP" value="Sole Proprietorship"  disabled>Sole Proprietorship</option>
+                        <select id="domestic-entity-dropdown-partner" class="form-control" name="nameType" th:field="*{partnerDTOs[__${itemStat.index}__].partnerType}" required>
+                            <option id="opt-none" value="none">Select</option>
+                            <option id="opt-domestic-ind" value="Individual">Individual</option>
+                            <option id="opt-domestic-soleP" value="Sole Proprietorship" disabled>Sole Proprietorship</option>
                             <option id="opt-domestic-llc" value="Limited Liability Company" disabled >Limited Liability Company</option>
-                            <option id="opt-domestic-part" value="Partnership" disabled >Partnership</option>
-                            <option id="opt-domestic-jvc" value="Joint Venture" disabled >Joint Venture</option>
-                            <option id="opt-domestic-trt" value="Trust" disabled >Trust</option>
+                            <option id="opt-domestic-part" value="Partnership" disabled>Partnership</option>
+                            <option id="opt-domestic-jvc" value="Joint Venture" disabled>Joint Venture</option>
+                            <option id="opt-domestic-trt" value="Trust" disabled>Trust</option>
                             <option id="opt-domestic-est" value="Estate" disabled>Estate</option>
                         </select>
                     </span>
@@ -144,7 +142,7 @@
                                 </div>
                                 <div class="form-group form-group-md col-xs-6">
                                     <label for="partner-citizenship"><span class="weight600">&#42;</span>Country of citizenship</label>
-                                    <select th:field="*{partnerDTOs[__${itemStat.index}__].citizenShip}" id="partner-citizenship"  class="form-control" name="owner-citizenship"   required>
+                                    <select th:field="*{partnerDTOs[__${itemStat.index}__].citizenShip}" id="partner-citizenship"  class="form-control" name="owner-citizenship" required>
                                         <option value="">Select</option>
                                         <option value="United States of America">United States of America</option>
                                         <option value="Afghanistan">Afghanistan</option>
@@ -451,10 +449,11 @@
                                         <option value="West Virginia">West Virginia</option>
                                         <option value="Wisconsin">Wisconsin</option>
                                         <option value="Wyoming">Wyoming</option>
+                                        <option value="N/A">N/A</option>
                                     </select>
                                 </div>
                                 <div class="form-group form-group-md col-xs-6">
-                                    <label><b style="color: red">&#42;</b>Type</label>
+                                    <label>&#42;Type</label>
                                     <span>
                                     <select id="partner-owner-name-type" class="form-control partner-owner-name-type" name="nameType" th:field="*{partnerDTOs[__${itemStat.index}__].type}">
                                         <option value="">Select</option>
@@ -480,7 +479,7 @@
                         <label>Select entity type</label>
                         <span>
                             <select id="domestic-entity-dropdown-partner2" class="form-control" name="nameType"  th:field="*{partnerType2}" >
-                                <option value="none"></option>
+                                <option value="none">Select</option>
                                 <option value="Individual">Individual</option>
                                 <option value="Sole Proprietorship" disabled>Sole Proprietorship</option>
                                 <option value="Limited Liability Company" disabled>Limited Liability Company</option>
@@ -817,12 +816,13 @@
                                         <option value="West Virginia">West Virginia</option>
                                         <option value="Wisconsin">Wisconsin</option>
                                         <option value="Wyoming">Wyoming</option>
+                                        <option value="N/A">N/A</option>
                                     </select>
                                 </div>
                                 <div class="form-group form-group-md col-xs-6">
-                                    <label><b style="color: red">&#42;</b>Type</label>
+                                    <label>&#42;Type</label>
                                     <span>
-                                        <select id="partner-owner-name-type2" class="form-control partner-owner-name-type" name="nameType"   th:field="*{partner_alt_type2}" >
+                                        <select id="partner-owner-name-type2" class="form-control partner-owner-name-type" name="nameType" th:field="*{partner_alt_type2}">
                                             <option value="">Select</option>
                                             <option value="Doing Business As(DBA)">Doing Business As(DBA)</option>
                                             <option value="Trading As(TA)">Trading As(TA)</option>
@@ -845,7 +845,7 @@
                         <label>Select entity type</label>
                         <span>
                             <select id="domestic-entity-dropdown-partner3" class="form-control" name="nameType" th:field="*{partnerType3}" >
-                                <option value="none"></option>
+                                <option value="none">Select</option>
                                 <option value="Individual">Individual</option>
                                 <option value="Sole Proprietorship" disabled>Sole Proprietorship</option>
                                 <option value="Limited Liability Company" disabled>Limited Liability Company</option>
@@ -1125,11 +1125,11 @@
                             <div class="row">
                                 <div class="form-group form-group-md col-xs-6">
                                     <label for="ownername"><b style="color: red">&#42;</b>Owner name</label>
-                                    <input id="partner-owner-name3" type="text"  class="form-control rounded-borders"   th:field="*{partner_name3}"  >
+                                    <input id="partner-owner-name3" type="text" class="form-control rounded-borders" th:field="*{partner_name3}"  >
                                 </div>
                                 <div class="form-group form-group-md col-xs-6">
                                     <label><b style="color: red">&#42;</b>State where legally organized</label>
-                                    <select id="partner-owner-name-state3"  class="form-control" name="State"   th:field="*{partner_state_org3}" >
+                                    <select id="partner-owner-name-state3"  class="form-control" name="State" th:field="*{partner_state_org3}" >
                                         <option value="">Select</option>
                                         <option value="Alabama">Alabama</option>
                                         <option value="Alaska">Alaska</option>
@@ -1182,13 +1182,13 @@
                                         <option value="West Virginia">West Virginia</option>
                                         <option value="Wisconsin">Wisconsin</option>
                                         <option value="Wyoming">Wyoming</option>
-
+                                        <option value="N/A">N/A</option>
                                     </select>
                                 </div>
                                 <div class="form-group form-group-md col-xs-6">
-                                    <label><b style="color: red">&#42;</b>Type</label>
+                                    <label>&#42;Type</label>
                                     <span>
-                                        <select id="partner-owner-name-type3" class="form-control partner-owner-name-type" name="nameType"   th:field="*{partner_alt_type3}" >
+                                        <select id="partner-owner-name-type3" class="form-control partner-owner-name-type" name="nameType" th:field="*{partner_alt_type3}">
                                             <option value="">Select</option>
                                             <option value="Doing Business As(DBA)">Doing Business As(DBA)</option>
                                             <option value="Trading As(TA)">Trading As(TA)</option>
@@ -1216,7 +1216,7 @@
                     </div><!--// hide / show add partner-->
                     <!--END Sole Proprietor Information Form-->
                     <!--START Owner Address Information Form-->
-                    <div class="card-text">
+                    <div class="card-text noexpand">
                         <h2 class="card-title weight600" id="addressinfo">Owner Address Information</h2>
                     </div>
                     <fieldset aria-labelledby="addressinfo">
@@ -1479,11 +1479,11 @@
                                 <label for="addressline3">Address line 3</label>
                                 <input type="text" class="form-control" id="addressline3" th:field="*{ownerAddress3}">
                             </div>
-                            <div class="form-group form-group-md col-xs-4">
+                            <div class="form-group form-group-md col-xs-12 col-md-6">
                                 <label for="ownerCity"><span class="weight600">&#42;</span>City</label>
                                 <input type="text" class="form-control" id="ownerCity" th:field="*{ownerCity}" required>
                             </div>
-                            <div class="form-group form-group-md col-xs-4">
+                            <div class="form-group form-group-md col-xs-6">
                                 <label for="ownerState"><span class="weight600">&#42;</span>State/Province/Territory</label>
                                 <select class="form-control" id="ownerState" th:field="*{ownerState}" required>
                                     <option value="">Select</option>
@@ -1526,6 +1526,7 @@
                                     <option value="Oklahoma">Oklahoma</option>
                                     <option value="Oregon">Oregon</option>
                                     <option value="Pennsylvania">Pennsylvania</option>
+                                    <option value="Puerto Rico">Puerto Rico</option>
                                     <option value="Rhode Island">Rhode Island</option>
                                     <option value="South Carolina">South Carolina</option>
                                     <option value="South Dakota">South Dakota</option>
@@ -1540,7 +1541,7 @@
                                     <option value="Wyoming">Wyoming</option>
                                 </select>
                             </div>
-                            <div class="form-group form-group-md col-xs-4">
+                            <div class="form-group form-group-md col-xs-6 col-md-4">
                                 <label for="ownerZipcode"><span class="weight600">&#42;</span>Zip code/Postal code</label>
                                 <input type="text" class="form-control" id="ownerZipcode" placeholder="" th:field="*{ownerZipcode}" required>
                             </div>
@@ -1548,7 +1549,7 @@
                     </fieldset>
                     <!--END Owner Address Information Form-->
                     <!--START Additional Information Form-->
-                    <div class="card-text">
+                    <div class="card-text noexpand">
                         <h2 class="card-title weight600" id="additionalinfo">Additional Information</h2>
                     </div>
                     <fieldset aria-labelledby="additionalinfo">
@@ -1596,26 +1597,25 @@
                             </div>
                         </div>
                     </fieldset>
+                     <div class="inlinebuttons btn-group btn-group-justified  owner-form-buttons" role="navigation" aria-label="view previous or next page" id="prevnxt">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-default fill prev" id="prevButton" value="previous">Previous</button>
+                        </div>
+                        <div class="btn-group" id="formSubmitNextButtonGroup">
+                            <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next" disabled>Next
+                                <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
+                        </div>
+                        <div class="btn-group" id="formPagingNextButtonGroup" style="display: none;">
+                            <button type="button" class="btn btn-sm btn-primary fill next" id="nextButtonFormPaging" value="next">Next
+                                <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
+                        </div>
+                    </div>
                 </form>
                 <!--END Additional Information Form-->
             </div><!--END Content Div-->
-            <div class="inlinebuttons btn-group btn-group-justified  owner-form-buttons" role="navigation" aria-label="view previous or next page" id="prevnxt">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-default fill prev" id="prevButton" value="previous">Previous</button>
-                </div>
-                <div class="btn-group" id="formSubmitNextButtonGroup">
-                    <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next" disabled>Next
-                        <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
-                </div>
-                <div class="btn-group" id="formPagingNextButtonGroup" style="display: none;">
-                    <button type="button" class="btn btn-sm btn-primary fill next" id="nextButtonFormPaging" value="next">Next
-                        <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
-                </div>
-            </div>
-        </div><!--MAIN-->
+        </div>
     </div><!--END container div-->
 </div>
-
 <!--load model attribute for Jquery consumption  -->
 <script th:inline="javascript">
 
@@ -1735,7 +1735,7 @@
 
 
 
-        $( "#clearfillOwner" ).click(function() {
+        $( "#clearfillOwner, #clearfillOwnerforeign" ).click(function() {
 
 
             $('#addNewOwnerForm')[0].reset();

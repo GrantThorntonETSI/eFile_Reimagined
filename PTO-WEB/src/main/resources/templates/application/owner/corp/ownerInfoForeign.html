@@ -10,12 +10,9 @@
     <div class="col-xs-12">
         <!--START Content Div-->
         <div class="row" style="position: relative; top:-222px;">
-            <div class="col-xs-12 col-sm-12 col-lg-12">
-                <button type="button" class="btn-sm btn-success fill" id="clearfillOwner">Clear Form</button>
-            </div>
             <div class="col-xs-12 text-left">
                 <!--START Owner Information Form-->
-                <div class="card-text">
+                <div class="card-text noexpand">
                     <h2 class="card-title weight600" id="ownerinfo">Owner Information</h2>
                 </div>
                 <form method="post" id="addNewOwnerForm" action="/owner/add" onsubmit="return validateOwnerForm();" th:object="${addNewOwnerContactFormDTO}" aria-labelledby="ownerinfo">
@@ -45,7 +42,7 @@
                     <!--START Sole Proprietor Information-->
                     <!--END Sole Proprietor Information Form-->
                     <!--START Owner Address Information Form-->
-                    <div class="card-text">
+                    <div class="card-text noexpand">
                         <h2 class="card-title weight600" id="addressinfo">Owner Address Information</h2>
                     </div>
                     <fieldset aria-labelledby="addressinfo">
@@ -312,11 +309,11 @@
                                 <label for="ownerCity"><span class="weight600">&#42;</span>City</label>
                                 <input type="text" class="form-control" id="ownerCity" th:field="*{ownerCity}" required>
                             </div>
-                            <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
+                            <div class="form-group form-group-md col-xs-12 col-md-6 col-lg-4">
                                 <label for="ownerState">State/Province/Territory</label>
-                                <input type="text" class="form-control" id="ownerState" th:field="*{ownerState}" >
+                                <input type="text" class="form-control" id="ownerState" th:field="*{ownerState}">
                             </div>
-                            <div class="form-group form-group-md col-xs-12 col-md-8 col-lg-4">
+                            <div class="form-group form-group-md col-xs-12 col-md-6 col-lg-3">
                                 <label for="ownerZipcode">Zip code/Postal code</label>
                                 <input type="text" class="form-control" id="ownerZipcode" placeholder="" th:field="*{ownerZipcode}" >
                             </div>
@@ -324,7 +321,7 @@
                     </fieldset>
                     <!--END Owner Address Information Form-->
                     <!--START Additional Information Form-->
-                    <div class="card-text">
+                    <div class="card-text noexpand">
                         <h2 class="card-title weight600" id="additionalinfo">Additional Information</h2>
                     </div>
                     <fieldset aria-labelledby="additionalinfo">
@@ -364,22 +361,22 @@
                             </div>
                         </div>
                     </fieldset>
+                     <div class="inlinebuttons btn-group btn-group-justified  owner-form-buttons" role="navigation" aria-label="view previous or next page" id="prevnxt" style="margin-right: 15px;">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-default fill prev" id="prevButton" value="previous">Previous</button>
+                        </div>
+                        <div class="btn-group" id="formSubmitNextButtonGroup">
+                            <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next" disabled>Next
+                                <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
+                        </div>
+                        <div class="btn-group" id="formPagingNextButtonGroup" style="display: none;">
+                            <button type="button" class="btn btn-sm btn-primary fill next" id="nextButtonFormPaging" value="next">Next
+                                <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
+                        </div>
+                    </div>
                 </form>
                 <!--END Additional Information Form-->
             </div><!--END Content Div-->
-            <div class="inlinebuttons btn-group btn-group-justified  owner-form-buttons" role="navigation" aria-label="view previous or next page" id="prevnxt" style="margin-right: 15px;">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-default fill prev" id="prevButton" value="previous">Previous</button>
-                </div>
-                <div class="btn-group" id="formSubmitNextButtonGroup">
-                    <button type="button" class="btn btn-sm btn-primary fill next" id="nextButton" value="next" disabled>Next
-                        <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
-                </div>
-                <div class="btn-group" id="formPagingNextButtonGroup" style="display: none;">
-                    <button type="button" class="btn btn-sm btn-primary fill next" id="nextButtonFormPaging" value="next">Next
-                        <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
-                </div>
-            </div>
         </div><!--MAIN-->
     </div><!--END container div-->
 </div>
@@ -507,7 +504,7 @@
 
 
 
-        $( "#clearfillOwner" ).click(function() {
+        $( "#clearfillOwner, #clearfillOwnerforeign" ).click(function() {
 
 
             $('#addNewOwnerForm')[0].reset();

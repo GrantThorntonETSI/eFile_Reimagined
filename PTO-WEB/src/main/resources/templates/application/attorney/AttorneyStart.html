@@ -123,9 +123,13 @@
                         <form method="post" id="addNewAttorneyForm" action="/attorney/add" onsubmit="return validateAttorneyForm();" enctype="multipart/form-data" th:object="${addNewAttorneyContactFormDTO}" aria-labelledby="title">
                             <fieldset aria-labelledby="attorneyinfo">
                                 <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-lg-12">
-                                        <button type="button" class="btn-sm btn-success fill" id="autofill">Select from Contacts</button>
-                                        <button type="button" class="btn-sm btn-success fill" id="clearfill">Clear form</button>
+                                    <div class="col-xs-12 btn-group btn-group-justified" aria-label="select from contacts or clear form" id="selectclear">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-success" id="autofill">Select from Contacts</button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-success" id="clearfill">Clear Form</button>
+                                        </div>
                                     </div>
                                     <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                         <label for="title">Title</label>
@@ -847,7 +851,7 @@
                                                 <tbody class="scroll">
                                                 <th:block th:each="contact : ${user.getAttorneyManagedContact()}">
                                                     <tr>
-                                                        <td tabindex="0" class="list-group-item col-xs-6"><a href="#" class="fromcontact" id="managedContactFillFormAction" ><span class="glyphicon glyphicon-plus-sign" role="img" aria-label="select this contact"></span></a> <b th:text="${contact.displayName}">Avo Reed</b></td>
+                                                        <td tabindex="0" class="list-group-item col-xs-6"><a href="#" class="fromcontact" id="managedContactFillFormAction" ><span class="glyphicon glyphicon-plus-sign" role="img" aria-label="select this contact"></span></a> <span th:text="${contact.displayName}">Avo Reed</span></td>
                                                         <td tabindex="0" class="list-group-item col-xs-6" th:text="${contact.email}">avo.reid@us.gt.com</td>
                                                     </tr>
                                                 </th:block>

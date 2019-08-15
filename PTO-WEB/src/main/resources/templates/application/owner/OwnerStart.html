@@ -83,7 +83,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <h1>Owner Information</h1>
-
+                            <p class="leadtext weight600">All filing information is made public, including your name and address. You may provide a P.O. Box number or a business address instead of your home address, if accurate. Please see <a href="https://www.uspto.gov/trademarks-application-process/filing-online/all-trademark-data-public" target="_blank">disclosure public information<span class="sr-only">Opens in new window</span><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>.</p>
                         </div>
                     </div>
                     <p class="required"><span class="weight600">&#42; = Required</span></p>
@@ -92,7 +92,7 @@
                     <div role="switch" aria-describedby="#costsavingoptions" aria-label="turn Reduced Fee labels on or off">
                         <label class="switch">
                             <input class="togglesavemore" type="checkbox">
-                            <span class="slider uppercase"><span class="visuallyhidden" id="on">On</span> <span id="off">Off</span></span>
+                            <span class="slider"><span class="visuallyhidden" id="on">On</span> <span id="off">Off</span></span>
                         </label>
                     </div>
                     <!--START Owner Information Form-->
@@ -138,8 +138,13 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-xs-12">
-                                                <button type="button" class="btn-sm btn-success fill" id="autofill" style="display: none;">Select from Contacts</button>
+                                            <div class="col-xs-12 btn-group btn-group-justified" aria-label="select from contacts or clear form" id="selectclear">
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-sm btn-success" id="autofill" style="display: none;">Select from Contacts</button>
+                                                </div>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-sm btn-success" id="clearfillOwner" style="display: none;">Clear Form</button>
+                                                </div>
                                             </div>
                                             <div class="embed-responsive-item" id="ownerEntityForm" style="position: relative; bottom:-222px;" >
                                             </div>
@@ -150,7 +155,7 @@
                                 <div id="yesforeignentity" role="region" aria-labelledby="usforeign" style="display: none;">
                                     <fieldset aria-labelledby="entitytype">
                                         <div class="row">
-                                            <div class="form-group form-group-md col-xs-6">
+                                            <div class="form-group form-group-md col-xs-12 col-lg-6">
                                                 <label for="entitycountry">Please select citizenship or country where legally organized:</label>
                                                 <select class="form-control" id="entitycountry">
                                                     <option value="Select">Select</option>
@@ -160,7 +165,7 @@
                                                     <option value="bahamas">Bahamas</option>
                                                 </select>
                                             </div>
-                                            <div class="form-group form-group-md col-xs-6" id="switchselect">
+                                            <div class="form-group form-group-md col-xs-12 col-lg-6" id="switchselect">
                                                 <div class="row">
                                                     <div class="col-xs-12 albaniaform">
                                                         <label for="entypeforeignalbania">Please select the entity type:</label>
@@ -209,8 +214,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-xs-12">
-                                            <button type="button" class="btn-sm btn-success fill" id="autofillForeign" style="display: none;">Select from Contacts</button>
+                                        <div class="col-xs-12 btn-group btn-group-justified" aria-label="select from contacts or clear form" id="selectclearforeign">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-sm btn-success" id="autofillForeign" style="display: none;">Select from Contacts</button>
+                                            </div>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-sm btn-success" id="clearfillOwnerforeign" style="display: none;">Clear Form</button>
+                                            </div>
                                         </div>
                                         <div class="embed-responsive-item" id="ownerEntityForeignForm" style="position: relative; bottom:-222px;" >
                                         </div>
@@ -266,7 +276,7 @@
                                                 <th:block th:each="contact : ${user.getOwnerManagedContact()}">
 
                                                     <tr>
-                                                        <td tabindex="0" class="list-group-item col-xs-6"><a href="#" class="fromcontact" id="managedContactFillFormAction" ><span class="glyphicon glyphicon-plus-sign" role="img" aria-label="select this contact"></span></a> <b th:text="${contact.displayName}">Avo Reed</b></td>
+                                                        <td tabindex="0" class="list-group-item col-xs-6"><a href="#" class="fromcontact" id="managedContactFillFormAction" ><span class="glyphicon glyphicon-plus-sign" role="img" aria-label="select this contact"></span></a> <span th:text="${contact.displayName}">Avo Reed</span></td>
                                                         <td tabindex="0" class="list-group-item col-xs-6" th:text="${contact.email}">avo.reid@us.gt.com</td>
                                                     </tr>
                                                 </th:block>
@@ -648,6 +658,7 @@
 
         $('#entype').change(function(){
             $('#autofill').show( 500 );
+            $('#clearfillOwner').show( 500 );
 
 
             var formType = $(this).val();
@@ -718,6 +729,7 @@
             });
 
             $('#autofill').show(500);
+            $('#clearfillOwner').show(500);
             saveProjectInfo("set-Owner-entity-types", "US"+"+"+subtype_val, appInternalID); // static from radio buttton
 
 
@@ -727,6 +739,7 @@
         $('#entypeforeignbahamas').change(function() {
 
             $('#autofillForeign').show( 500 );
+            $('#clearfillOwnerforeign').show( 500 );
             $(".owner-paging-buttons").fadeOut();
 
             var formType = $(this).val();
@@ -745,6 +758,7 @@
             });
 
             $('#autofillForeign').show(500);
+            $('#clearfillOwnerforeign').show( 500 );
 
             saveProjectInfo("set-Owner-entity-types", "in"+"+"+"Corporation+Foreign", appInternalID); // static from radio buttton
         });
