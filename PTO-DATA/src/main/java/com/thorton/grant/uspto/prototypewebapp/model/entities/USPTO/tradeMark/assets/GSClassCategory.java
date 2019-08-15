@@ -108,6 +108,19 @@ public class GSClassCategory {
 
     }
 
+    public String getProvideSpecimenCCRadioID(){
+
+
+        return classCategoryNumber+"ProvideSpecimenCCRadioID";
+    }
+
+    public String getProvideSpecimenGSRadioID(){
+
+
+        return classCategoryNumber+"ProvideSpecimenGSRadioID";
+    }
+
+
 
     // filing basis ids
     public String getpfaCCID(){

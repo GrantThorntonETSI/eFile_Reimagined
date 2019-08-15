@@ -49,8 +49,8 @@
                                             </div>
                                             <section aria-label="class image and description">
                                                 <div role="radiogroup" class="form-group form-group-md">
-                                                    <label  class="radio-inline radiocontainer block"><input type="radio" class="yesone  provide-spec-all-class" name="numberspecimen"   th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()},name=${Good_Service_class.getClassCategoryInnterLevelName()}" value="yes" tabindex="0"><span class="checkmark"></span>Provide a specimen and a description at the <span class="weight600">class level</span></label>
-                                                    <label  class="radio-inline radiocontainer block"><input type="radio" class="yesoneeachpost" name="numberspecimen  provide-spec-each-gs"   th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()},name=${Good_Service_class.getClassCategoryInnterLevelName()}" value="no" tabindex="0"><span class="checkmark"></span>Provide a specimen and a description for <span class="weight600">each individual good/service</span></label>
+                                                    <label  class="radio-inline radiocontainer block"><input type="radio" class="yesone  provide-spec-class-level"   th:attr="id=${Good_Service_class.getProvideSpecimenCCRadioID()},  cc-id=${Good_Service_class.getClassCategoryNumber()},name=${Good_Service_class.getClassCategoryInnterLevelName()}" value="yes" tabindex="0"><span class="checkmark"></span>Provide a specimen and a description at the <span class="weight600">class level</span></label>
+                                                    <label  class="radio-inline radiocontainer block"><input type="radio" class="yesoneeachpost provide-spec-gs-level"   th:attr="id=${Good_Service_class.getProvideSpecimenGSRadioID()}, cc-id=${Good_Service_class.getClassCategoryNumber()},name=${Good_Service_class.getClassCategoryInnterLevelName()}" value="no" tabindex="0"><span class="checkmark"></span>Provide a specimen and a description for <span class="weight600">each individual good/service</span></label>
                                                 </div><!--END radiogroup-->
                                                 <div class="row form-group form-group-md yesonespecimen" role="alert"  style="display: none;"><!--toggle 'yes' radio-->
                                                     <div class="col-xs-12 form-group form-group-md upload">
@@ -95,8 +95,8 @@
                                                                 <h2 class="card-title weight600"><span th:text="${Good_Service.getClassDescription()}">Bar Soap </span><span class="sr-only" role="alert"></span><button type="button" class="close btn" aria-label="remove this good / service" th:attr="gs-id=${Good_Service_class.getClassCategoryNumber()}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></h2>
                                                             </div>
                                                             <div role="radiogroup" class="form-group form-group-md">
-                                                                <label  class="radio-inline radiocontainer block"><input type="radio"  value="yesbar" tabindex="0" class="gs-in-use"  th:attr="name=${Good_Service.getInternalID()},id=${Good_Service.getInUseRadioIDYes()}" ><span class="checkmark"></span>This good/service is in use.</label>
-                                                                <label  class="radio-inline radiocontainer block"><input type="radio"  value="nobar" tabindex="0" class="gs-excused" th:attr="name=${Good_Service.getInternalID()},id=${Good_Service.getExcusebleNoneUseForGSID()}" ><span class="checkmark"></span>This good/service is an excusable non-use.</label>
+                                                                <label  class="radio-inline radiocontainer block"><input type="radio"  value="yesbar" tabindex="0" class="gs-in-use"  th:attr="name=${Good_Service.getInternalID()},id=${Good_Service.getInUseRadioIDYes()}, parent-CC-id=${Good_Service.getProvideSpecimenCCRadioID()}, parent-gs-id=${Good_Service.getProvideSpecimenGSRadioID()}" ><span class="checkmark"></span>This good/service is in use.</label>
+                                                                <label  class="radio-inline radiocontainer block"><input type="radio"  value="nobar" tabindex="0" class="gs-excused" th:attr="name=${Good_Service.getInternalID()},id=${Good_Service.getExcusebleNoneUseForGSID()}, parent-CC-id=${Good_Service.getProvideSpecimenCCRadioID()}, parent-gs-id=${Good_Service.getProvideSpecimenGSRadioID()}" ><span class="checkmark"></span>This good/service is an excusable non-use.</label>
                                                             </div><!--END radiogroup-->
                                                             <div class="row form-group form-group-md yesspecimen" role="alert" style="display: none;"><!--toggle 'yes' radio-->
                                                                 <div class="col-xs-12 form-group form-group-md upload">
@@ -295,6 +295,30 @@
             location.href = prevLinkURL;
         });
 
+
+
+        $('.provide-spec-class-level').click(function () {
+
+            $(this).parent().parent().next().show(500);
+        });
+
+        $('.provide-spec-gs-level').click(function () {
+
+            $(this).parent().parent().next().hide(500);
+        });
+
+
+        $('.gs-in-use').click(function () {
+            $(this).parent().parent().next().next().hide(500);
+            $(this).parent().parent().next().show(500);
+
+        });
+
+        $('.gs-excused').click(function () {
+            $(this).parent().parent().next().hide(500);
+            $(this).parent().parent().next().next().show(500);
+
+        });
 
 
 

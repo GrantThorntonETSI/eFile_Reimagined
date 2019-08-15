@@ -1032,6 +1032,8 @@ public class BaseTrademarkApplication  {
 
 
 
+
+
                 }
             }
             Collections.sort(gsClassCategory.getGoodAndServices(), new CustomComparator());

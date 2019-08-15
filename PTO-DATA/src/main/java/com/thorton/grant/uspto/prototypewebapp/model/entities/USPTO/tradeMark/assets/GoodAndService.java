@@ -206,6 +206,24 @@ public class GoodAndService {
     public boolean markInUseAllGSinClass;
 
 
+    public String getProvideSpecimenCCRadioID(){
+
+
+        return classNumber+"ProvideSpecimenCCRadioID";
+    }
+
+    public String getProvideSpecimenGSRadioID(){
+
+
+        return classNumber+"ProvideSpecimenGSRadioID";
+    }
+
+
+
+
+
+
+
 
 
 
@@ -911,4 +929,5 @@ public class GoodAndService {
     public void setExcusebleNoneUseForGS(boolean excusebleNoneUseForGS) {
         this.excusebleNoneUseForGS = excusebleNoneUseForGS;
     }
+
 }
