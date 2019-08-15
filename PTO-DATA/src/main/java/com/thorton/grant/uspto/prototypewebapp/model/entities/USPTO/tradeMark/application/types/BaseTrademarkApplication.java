@@ -1022,6 +1022,7 @@ public class BaseTrademarkApplication  {
                     gsClassCategory.setActiveClass(current.isActiveGS());
 
                     gsClassCategory.setMarkInUseAllGS(current.isMarkInUseCC());
+                    gsClassCategory.setMarkInUseAllGSinClass(current.isMarkInUseAllGSinClass());
 
 
 

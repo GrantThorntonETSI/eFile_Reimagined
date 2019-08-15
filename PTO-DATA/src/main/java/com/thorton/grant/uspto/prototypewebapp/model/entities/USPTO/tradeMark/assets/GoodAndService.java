@@ -134,6 +134,21 @@ public class GoodAndService {
 
     private String frCertImageName;
 
+    //section 8 gs level fields
+
+
+    private boolean excusebleNoneUseForGS;
+
+    // unique id generation
+
+
+
+    public String getExcusebleNoneUseForGSID(){
+        return internalID+"excusebleNoneUseForGSID";
+    }
+
+
+
 
 
     // class level fields that propogates up
@@ -182,8 +197,13 @@ public class GoodAndService {
     public boolean markInUseCC;
 
 
-
+    // sou fileds
     private boolean activeFilingBasis = true;
+
+
+
+    // new section 8 fileds
+    public boolean markInUseAllGSinClass;
 
 
 
@@ -872,5 +892,23 @@ public class GoodAndService {
 
     public void setMarkInUseCC(boolean markInUseCC) {
         this.markInUseCC = markInUseCC;
+    }
+
+    public boolean isMarkInUseAllGSinClass() {
+        return markInUseAllGSinClass;
+    }
+
+    public void setMarkInUseAllGSinClass(boolean markInUseAllGSinClass) {
+        this.markInUseAllGSinClass = markInUseAllGSinClass;
+    }
+
+
+
+    public boolean isExcusebleNoneUseForGS() {
+        return excusebleNoneUseForGS;
+    }
+
+    public void setExcusebleNoneUseForGS(boolean excusebleNoneUseForGS) {
+        this.excusebleNoneUseForGS = excusebleNoneUseForGS;
     }
 }

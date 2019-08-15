@@ -83,7 +83,11 @@ public class GSClassCategory {
     private boolean frCertCCuploaded;
 
 
-    private boolean markInUseAllGS;
+    private boolean markInUseAllGS; // global for all gs of all classes
+
+
+    private boolean markInUseAllGSinClass; // new field for post reg section 8 / need to generate unique ids for this field
+
 
 
 
@@ -92,7 +96,20 @@ public class GSClassCategory {
 
 
     // id functions
+    // section 8 ids
 
+    public String getMarkInUseAllGSinClassID(){
+        return classCategoryNumber+"markInUseAllGSinClass";
+
+    }
+
+    public String getMarkInUseAllGSinClassLabelID(){
+        return classCategoryNumber+"markInUseAllGSinClassLabel";
+
+    }
+
+
+    // filing basis ids
     public String getpfaCCID(){
         return classCategoryNumber+"pfa";
     }
@@ -117,11 +134,6 @@ public class GSClassCategory {
     public String getFRregistrationDateAlertMessageID(){ return  classCategoryNumber+"frCCregistrationDAteAlertMessage"; }
     public String getFRregistrationDateAlertButtonID() {return  classCategoryNumber+"frCCregistrationDateAlertButton";}
     public String getFRregistrationDateAlertDivID(){return  classCategoryNumber+"frCCregistratoinDateAlertDIV";}
-
-
-
-
-
 
     public String getFirstDatesAlertMessageID(){ return  classCategoryNumber+"firstDatesAlertMessage"; }
     public String getFirstDatesAlertButtonID() {return  classCategoryNumber+"firstDatesAlertButton";}
@@ -187,11 +199,6 @@ public class GSClassCategory {
     }
 
 
-
-    //
-
-
-
     public boolean atLeastOneGoodInCommerce;
 
     public boolean atLeastOneGoodInCommerceSet;
@@ -199,8 +206,6 @@ public class GSClassCategory {
     public boolean provideSpecimenForAll;
 
     public boolean provideSpecimenForAllset;
-
-
 
 
     @Nullable
@@ -303,11 +308,6 @@ public class GSClassCategory {
         return getClassCategoryNumber()+"classSpecDownloadID";
 
     }
-
-
-
-
-
 
 
     public boolean isClassSpecConsentUploaded(){
@@ -604,5 +604,14 @@ public class GSClassCategory {
 
     public String getInUseCheckboxLabelID(){
         return classCategoryNumber+"_lable_allGSinUse";
+    }
+
+
+    public boolean isMarkInUseAllGSinClass() {
+        return markInUseAllGSinClass;
+    }
+
+    public void setMarkInUseAllGSinClass(boolean markInUseAllGSinClass) {
+        this.markInUseAllGSinClass = markInUseAllGSinClass;
     }
 }
