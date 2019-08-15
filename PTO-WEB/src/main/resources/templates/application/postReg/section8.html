@@ -689,21 +689,21 @@
 
 
         $.ajax({
-            url: "../../../REST/apiGateway/CC/fb/update/"+ccFieldName+"/"+ccFieldValue+"/"+ccNumber+"/"+appInternalID,
+            url: "../../../REST/apiGateway/CC/fb/update/" + ccFieldName + "/" + ccFieldValue + "/" + ccNumber + "/" + appInternalID,
             type: 'GET',
-            success: function(data){
+            success: function (data) {
 
                 // parse out status msg:
-                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+                var s_code = data.substring(data.indexOf("status:") + 7, data.indexOf("status:") + 4 + 7);
 
-                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+                var s_msg = data.substring(data.indexOf("msg:") + 4, data.length - 2);
 
-                if(s_code.trim() == "200"){
+                if (s_code.trim() == "200") {
                     //if(data.contains("status: 200")){
                     // show confirmation check mark on form
                     //$('#toggle').delay(1000).click();
                     $(".autoSaveMessageArea span").fadeOut(500);
-                    setTimeout(function() {
+                    setTimeout(function () {
                         // after 1000 ms we add the class animated to the login/register card
                         $(".autoSaveMessageArea span").text(s_msg);
                         $(".autoSaveMessageArea span").fadeIn(1000);
@@ -713,13 +713,15 @@
 
 
             },
-            error: function(data) {
+            error: function (data) {
 
                 console.log(data);
 
             }
 
         });
+
+    }
 
 
 
@@ -733,9 +735,9 @@
         var index2 = response.indexOf("}");
         response = response.substring(0, index2);
         return response;
-    }
+        }
 
-    function parseNameFromResponse(response){
+        function parseNameFromResponse(response){
 
         var index = response.indexOf("image-name:");
         index = index+11;
@@ -745,7 +747,11 @@
         var index2 = response.indexOf("}");
         response = response.substring(0, index2);
         return response;
-    }
+       }
+
+
+
+
 
 
 </script>
