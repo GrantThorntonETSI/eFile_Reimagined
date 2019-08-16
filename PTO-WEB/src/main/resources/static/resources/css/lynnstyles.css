@@ -1375,7 +1375,7 @@ table#dashboardtabletwo.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:f
 }
 #dashboardmain .panel-heading h4 {
 	padding-left:25px;
-	margin-top: .4em;
+	margin-top: .4em!important;
 	}
 #mydata button.close, #mydata2 button.close{
     height: 18px;
@@ -2006,7 +2006,7 @@ button#autofill, button#autofillForeign {
     box-shadow:         rgb(0,0,0);
     text-shadow: 0 0 0 transparent;
 }
-.resetphonebtn, .resetregbtn, .resetdktrefbtn, .resetnamebtn, .resetportraitbtn, .resetportraitbtn, .resetsignaturebtn, .resettranslationbtn, .resettransliterationbtn, .resetdisclaimbtn, .deleterow, button.resetclassbtn {
+.resetphonebtn, .resetregbtn, .resetdktrefbtn, .resetnamebtn, .resetportraitbtn, .resetportraitbtn, .resetsignaturebtn, .resettranslationbtn, .resettransliterationbtn, .resetdisclaimbtn, .deleterow, button.resetclassbtn, button.resetPartner {
     margin: 0 auto;
     float: none;
     margin-top: .545em;
@@ -2317,6 +2317,7 @@ div#minholder {
 #on, #off {
     color:#fff;
     font-size: 13px;
+    line-height:38px;
 }
 #on {
     margin-left: 18px;
@@ -2350,7 +2351,6 @@ div#minholder {
     background-color: #aaa;
     -webkit-transition: .4s;
     transition: .4s;
-    padding-top: 6px;
     border-radius: 19px;
 }
 .slider:before {
@@ -3310,7 +3310,7 @@ fileholder .linkholder, .fileholder .iconholder{
 #gsselected button.close {
     height:1.4em;
 }
-#editowner button.close, #reviewattorney button.close, #userprofilepage button.close, #yesattorneyfiling button.close, .phones button.close, #detected button.close, #designwithtext button.close, #basisabde button.close, #basisab button.close, button.resetclassbtn, .disclaim button.close {
+#editowner button.close, #reviewattorney button.close, #userprofilepage button.close, #yesattorneyfiling button.close, .phones button.close, #detected button.close, #designwithtext button.close, #basisabde button.close, #basisab button.close, button.resetclassbtn, .disclaim button.close, button.removePartner {
     font-size: 3em;
     height:1.06em;
     color:#009CDE;
@@ -3724,9 +3724,6 @@ footer #megamenu ul {
 @media (max-width: 768px) {
     .btn-success.add.ctr {
         margin-top:0;
-    }
-    .slider {
-        padding-top: 8px;
     }
 }
 @media (max-width: 767px) {
