@@ -139,7 +139,7 @@
                                 </div>
                                 <div class="form-group form-group-md col-xs-6">
                                     <label for="partner-suffix">Suffix</label>
-                                    <input type="text" class="form-control" id="partner-suffix" th:field="*{partnerDTOs[__${itemStat.index}__].suffix}" name="suffix" />
+                                    <input  class="form-control" id="partner-suffix" th:field="*{partnerDTOs[__${itemStat.index}__].suffix}" name="suffix" />
 
                                 </div>
                                 <div class="form-group form-group-md col-xs-6">
@@ -1226,7 +1226,7 @@
                     <fieldset aria-labelledby="addressinfo">
                         <div class="row">
                             <div class="form-group form-group-md col-md-12 col-lg-7">
-                                <label for="OwnerAddressCountry">&#42;Country / U.S. territory</label>
+                                <label for="OwnerAddressCountry"><b style="color: red">&#42;</b>Country / U.S. territory</label>
                                 <select class="form-control" id="OwnerAddressCountry" name="territory" th:field="*{OwnerAddressCountry}" required>
                                     <option value="">Select</option>
                                     <option value="United States of America">United States of America</option>
