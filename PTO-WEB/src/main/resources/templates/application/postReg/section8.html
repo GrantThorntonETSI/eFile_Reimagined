@@ -677,11 +677,19 @@
         $('.provide-spec-class-level').click(function () {
 
             $(this).parent().parent().next().show(500);
+
+            var catNum= $(this).attr("cc-id");
+
+            addFilingBasisInfoToClassCategory("cc-specimen-class-opt", "yes", catNum, appInternalID);
         });
 
         $('.provide-spec-gs-level').click(function () {
 
             $(this).parent().parent().next().hide(500);
+
+            var catNum= $(this).attr("cc-id");
+
+            addFilingBasisInfoToClassCategory("cc-specimen-class-opt", "no", catNum, appInternalID);
         });
 
 
