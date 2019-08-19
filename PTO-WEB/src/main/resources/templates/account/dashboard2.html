@@ -148,7 +148,7 @@
                                                                             </td><!--//delete row button-->
                                                                             <td tabindex="0" role="button" aria-expanded="false" aria-label="expand additional columns for this record"></td><!--//control-->
                                                                             <td><a   th:attr="href='/application/continueApplication/?trademarkID='+${app.getApplicationInternalID()}"><span th:text="${app.getTrademarkName()}">87697840</span></a></td><!--serial-->
-                                                                            <td>N/A</td><!--reg-->
+                                                                            <td th:text="${app.getRegistrationID()}">N/A</td><!--reg-->
                                                                             <th:block th:if="${app.isStandardTextMark() == true}">
                                                                                 <td ><span style="max-width: 55px; max-height: 33px; margin:0 auto;font-family: Palatino, Garamond, Bookman, Avant Garde; font-size:.9em;text-align:center;margin-bottom:0;" th:text="${app.getTradeMark().getTrademarkStandardCharacterText()}"></span></td>
                                                                             </th:block>
