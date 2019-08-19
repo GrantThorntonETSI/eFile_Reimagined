@@ -205,7 +205,17 @@ public class GoodAndService {
     // new section 8 fileds
     public boolean markInUseAllGSinClass;
 
+    private Date dateOfLastUse;
+    private Date dateOfResumeUse;
+    private String noneUseReason;
+    private String stepsResumeUse;
 
+
+
+
+
+
+   // section 8 id functions
     public String getProvideSpecimenCCRadioID(){
 
 
@@ -219,7 +229,55 @@ public class GoodAndService {
     }
 
 
+    public String getDateOfLastUseGSID(){
 
+        return internalID+"dateOfLastUse";
+    }
+
+    public String getDateOfResumeUseGSID(){
+
+        return internalID+"dateOfResumeUse";
+    }
+
+    public String getNoneUseReasonGSID(){
+
+        return internalID+"noneUseReason";
+    }
+    public String getStepsResumeUseGSID(){
+
+        return internalID+"stepsResumeUse";
+    }
+
+    // section 8 helper functions
+
+    public String getDateOfLastUseDisplay(){
+
+
+        if(dateOfLastUse != null){
+            return dateOfLastUse.toString().substring(0, 10);
+        }
+        else {
+
+            return "";
+        }
+
+
+    }
+
+
+    public String getDateOfResumeUseDisplay(){
+
+
+        if(dateOfResumeUse != null){
+            return dateOfResumeUse.toString().substring(0, 10);
+        }
+        else {
+
+            return "";
+        }
+
+
+    }
 
 
 
@@ -930,4 +988,35 @@ public class GoodAndService {
         this.excusebleNoneUseForGS = excusebleNoneUseForGS;
     }
 
+    public Date getDateOfLastUse() {
+        return dateOfLastUse;
+    }
+
+    public void setDateOfLastUse(Date dateOfLastUse) {
+        this.dateOfLastUse = dateOfLastUse;
+    }
+
+    public Date getDateOfResumeUse() {
+        return dateOfResumeUse;
+    }
+
+    public void setDateOfResumeUse(Date dateOfResumeUse) {
+        this.dateOfResumeUse = dateOfResumeUse;
+    }
+
+    public String getNoneUseReason() {
+        return noneUseReason;
+    }
+
+    public void setNoneUseReason(String noneUseReason) {
+        this.noneUseReason = noneUseReason;
+    }
+
+    public String getStepsResumeUse() {
+        return stepsResumeUse;
+    }
+
+    public void setStepsResumeUse(String stepsResumeUse) {
+        this.stepsResumeUse = stepsResumeUse;
+    }
 }
