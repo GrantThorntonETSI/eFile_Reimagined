@@ -43,10 +43,32 @@
                                 <fieldset aria-label="class18">
                                     <div class="row">
                                         <div class="col-xs-12">
-                                            <div>
-                                                <input class="form-check-input checkmark user-accept-checkbox" type="checkbox" value="" tabindex="0"  th:attr="id=${Good_Service_class.getMarkInUseAllGSinClassID()},aria-labelledby=${Good_Service_class.getMarkInUseAllGSinClassLabelID()},cc-id=${Good_Service_class.getClassCategoryNumber()}" name="user-accept-checkbox">
-                                                <label class="form-check-label form-check-left form-check"   th:attr="id=${Good_Service_class.getMarkInUseAllGSinClassLabelID()}, for=${Good_Service_class.getMarkInUseAllGSinClassID()}" ><span class="radio notspecial">This class has all goods/services in use.</span></label>
-                                            </div>
+
+
+                                            <th:block  th:if="${Good_Service_class.isMarkInUseAllGSinClass() == true}">
+                                                <div>
+                                                    <input class="form-check-input checkmark user-accept-checkbox" type="checkbox" value="" tabindex="0"  th:attr="id=${Good_Service_class.getMarkInUseAllGSinClassID()},aria-labelledby=${Good_Service_class.getMarkInUseAllGSinClassLabelID()},cc-id=${Good_Service_class.getClassCategoryNumber()}" name="user-accept-checkbox" checked>
+                                                    <label class="form-check-label form-check-left form-check"   th:attr="id=${Good_Service_class.getMarkInUseAllGSinClassLabelID()}, for=${Good_Service_class.getMarkInUseAllGSinClassID()}" ><span class="radio notspecial">This class has all goods/services in use.</span></label>
+                                                </div>
+
+
+                                            </th:block>
+
+                                            <th:block  th:if="${Good_Service_class.isMarkInUseAllGSinClass() == false}">
+                                                <div>
+                                                    <input class="form-check-input checkmark user-accept-checkbox" type="checkbox" value="" tabindex="0"  th:attr="id=${Good_Service_class.getMarkInUseAllGSinClassID()},aria-labelledby=${Good_Service_class.getMarkInUseAllGSinClassLabelID()},cc-id=${Good_Service_class.getClassCategoryNumber()}" name="user-accept-checkbox">
+                                                    <label class="form-check-label form-check-left form-check"   th:attr="id=${Good_Service_class.getMarkInUseAllGSinClassLabelID()}, for=${Good_Service_class.getMarkInUseAllGSinClassID()}" ><span class="radio notspecial">This class has all goods/services in use.</span></label>
+                                                </div>
+
+
+                                            </th:block>
+
+
+
+
+
+
+
                                             <th:block   th:if="${Good_Service_class.isProvideSpecimenForAllset() == false}">
 
                                                 <section aria-label="class image and description">
@@ -849,6 +871,21 @@
 
         });
 
+
+
+        $('.user-accept-checkbox').click(function () {
+
+            var ccID = $(this).attr("cc-id")
+
+            if(this.checked == true){
+
+                addFilingBasisInfoToClassCategory("cc-all-gs-in-use", "yes", ccID, appInternalID);
+
+            }
+            else {
+                addFilingBasisInfoToClassCategory("cc-all-gs-in-use", "no", ccID, appInternalID)
+            }
+        });
 
 
 

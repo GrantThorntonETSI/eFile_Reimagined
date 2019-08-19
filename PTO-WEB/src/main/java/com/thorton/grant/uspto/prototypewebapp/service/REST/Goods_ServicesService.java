@@ -936,44 +936,44 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
-            if(ccField.equals("cc-pfr-option")) {
+        if(ccField.equals("cc-pfr-option")) {
 
-                //baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
-                if (ccValue.equals("yes")) {
+            //baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
+            if (ccValue.equals("yes")) {
 
-                    for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
-                        GoodAndService current = iter.next();
+                for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                    GoodAndService current = iter.next();
 
-                        if (current.getClassNumber().equals(ccNumber)) {
-                            current.setForeignRegistration(true);
-                            current.setForenginRegistrationAllGS(true);
-                            current.setMarkInUse(true);
-                            current.setMarkInUseSet(true);
+                    if (current.getClassNumber().equals(ccNumber)) {
+                        current.setForeignRegistration(true);
+                        current.setForenginRegistrationAllGS(true);
+                        current.setMarkInUse(true);
+                        current.setMarkInUseSet(true);
 
 
-                        }
                     }
-
-
-                }
-                if (ccValue.equals("no")) {
-
-                    for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
-                        GoodAndService current = iter.next();
-
-                        if (current.getClassNumber().equals(ccNumber)) {
-                            current.setForeignRegistration(false);
-                            current.setForenginRegistrationAllGS(false);
-
-
-                        }
-                    }
-
-
                 }
 
-                appFieldReadable = "Filing basis pending foreign registration Class level Option";
+
             }
+            if (ccValue.equals("no")) {
+
+                for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                    GoodAndService current = iter.next();
+
+                    if (current.getClassNumber().equals(ccNumber)) {
+                        current.setForeignRegistration(false);
+                        current.setForenginRegistrationAllGS(false);
+
+
+                    }
+                }
+
+
+            }
+
+            appFieldReadable = "Filing basis pending foreign registration Class level Option";
+        }
 
 
         if(ccField.equals("cc-pna-option")) {
@@ -1332,6 +1332,38 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
+        if(ccField.equals("cc-all-gs-in-use")) {
+
+            //baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
+
+
+            for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                GoodAndService current = iter.next();
+
+                System.out.println("cc number : "+ccNumber);
+                System.out.println("current class number for gs : "+current.getClassNumber());
+                if (current.getClassNumber().equals(ccNumber)) {
+                    //current.setFaFilingDate(ccValue);
+
+                    System.out.println("cc value : "+ccValue);
+
+                    if(ccValue.equals("yes")){
+                        current.setMarkInUseAllGSinClass(true);
+                    }
+                    else {
+                        current.setMarkInUseAllGSinClass(false);
+
+                    }
+
+
+
+
+                }
+            }
+
+
+            appFieldReadable = "Filing basis mark in use Class level Option";
+        }
 
 
 
