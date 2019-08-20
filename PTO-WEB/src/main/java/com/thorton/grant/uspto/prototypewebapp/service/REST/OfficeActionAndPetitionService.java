@@ -641,7 +641,7 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
 
 
     @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
-    @RequestMapping(method = GET, value="/REST/apiGateway/OfficeAction/section8/optional/{field}/{value}{OfficeActionID}/{appInternalID}")
+    @RequestMapping(method = GET, value="/REST/apiGateway/OfficeAction/section8/optional/{field}/{value}/{OfficeActionID}/{appInternalID}")
     @ResponseBody
     ResponseEntity<String> saveOAsection8optional(@PathVariable String field ,@PathVariable String value, @PathVariable String OfficeActionID, @PathVariable String appInternalID){
 
