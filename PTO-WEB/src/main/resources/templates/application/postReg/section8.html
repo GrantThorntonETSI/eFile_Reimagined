@@ -528,7 +528,7 @@
                                                                     </div>
                                                                 </th:block>
 
-                                                                <th:block th:if="${Good_Service.isExcusedNoneUse() == true}">
+                                                                <th:block th:if="${Good_Service.isMarkInUse() == false}">
 
                                                                     <div role="radiogroup" class="form-group form-group-md">
                                                                         <label  class="radio-inline radiocontainer block"><input type="radio"  value="yesbar" tabindex="0" class="gs-in-use"  th:attr="name=${Good_Service.getInternalID()},id=${Good_Service.getInUseRadioIDYes()}, parent-CC-id=${Good_Service.getProvideSpecimenCCRadioID()}, parent-gs-id=${Good_Service.getProvideSpecimenGSRadioID()}" ><span class="checkmark"></span>This good/service is in use.</label>

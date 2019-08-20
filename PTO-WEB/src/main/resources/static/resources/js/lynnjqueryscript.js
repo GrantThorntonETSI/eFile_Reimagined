@@ -2642,12 +2642,14 @@ $(document).ready(function(){
 		  });	
 	});
     //
-    
 
 
 
 
 
+	$('#dashsectionscontainer #alertminwelcome .closegspanels').click(function() {
+		$( this ).parent().parent().fadeOut( 'fast','swing');
+	});
 
 
 

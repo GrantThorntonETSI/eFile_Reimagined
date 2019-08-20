@@ -641,9 +641,9 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
 
 
     @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
-    @RequestMapping(method = GET, value="/REST/apiGateway/OfficeAction/section8/optional/{OfficeActionID}/{field}/{value}/{appInternalID}")
+    @RequestMapping(method = GET, value="/REST/apiGateway/OfficeAction/section8/optional/{field}/{value}{OfficeActionID}/{appInternalID}")
     @ResponseBody
-    ResponseEntity<String> saveOAsection8optional(@PathVariable String OfficeActionID, @PathVariable String field ,@PathVariable String value,  @PathVariable String appInternalID){
+    ResponseEntity<String> saveOAsection8optional(@PathVariable String field ,@PathVariable String value, @PathVariable String OfficeActionID, @PathVariable String appInternalID){
 
 
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
@@ -659,6 +659,8 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
                 // set section8 prev link to section 8 optional
                 baseTrademarkApplication.findOfficeActionById(OfficeActionID).setSection8PrevLink("../../../postReg/section8/incontestable/"+OfficeActionID+"/?trademarkID="+appInternalID);
 
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).setActionType("section8");
+
                 // this is used on the optional action page
 
 
@@ -670,6 +672,8 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
 
                 // set section 8 prev link to section 8
                 baseTrademarkApplication.findOfficeActionById(OfficeActionID).setSection8PrevLink("../../../renew/response//"+OfficeActionID+"/?trademarkID="+appInternalID);
+
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).setActionType("section8");
 
             }
 

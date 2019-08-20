@@ -155,13 +155,14 @@
 
     var prevLinkURL = "../../../officeAction/response/"+OfficeActionID+"/?trademarkID="+appInternalID;
 
-    if(actionType == "section8"){
-        prevLinkURL = section8URL;
-    }
+
 
     var nextLinkURL = "../../../officeAction/optional/pathController/next/"+OfficeActionID+"/?trademarkID="+appInternalID;
 
 
+    if(actionType == "section8"){
+        prevLinkURL = section8URL;
+    }
 
     $(document).ready(function() {
 
