@@ -168,6 +168,14 @@ public class OfficeActions extends BaseEntity {
 
 
 
+   //section 8 feilds
+    private boolean optionalSection8;
+
+    private boolean optionalSection8Set;
+    private String section8PrevLink;
+
+    private String actionType = "default";
+
 
 
 
@@ -706,5 +714,35 @@ public class OfficeActions extends BaseEntity {
 
     }
 
+    public boolean isOptionalSection8() {
+        return optionalSection8;
+    }
 
+    public void setOptionalSection8(boolean optionalSection8) {
+        this.optionalSection8 = optionalSection8;
+    }
+
+    public boolean isOptionalSection8Set() {
+        return optionalSection8Set;
+    }
+
+    public void setOptionalSection8Set(boolean optionalSection8Set) {
+        this.optionalSection8Set = optionalSection8Set;
+    }
+
+    public String getSection8PrevLink() {
+        return section8PrevLink;
+    }
+
+    public void setSection8PrevLink(String section8PrevLink) {
+        this.section8PrevLink = section8PrevLink;
+    }
+
+    public String getActionType() {
+        return actionType;
+    }
+
+    public void setActionType(String actionType) {
+        this.actionType = actionType;
+    }
 }

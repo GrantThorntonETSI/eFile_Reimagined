@@ -29,6 +29,9 @@ public class GoodAndService {
     private boolean markInUse;
     private boolean markInUseSet;
 
+    private boolean excusedNoneUse;
+
+
     private Date firstGSDate;
     private boolean firstGSDateSet;
 
@@ -1018,5 +1021,13 @@ public class GoodAndService {
 
     public void setStepsResumeUse(String stepsResumeUse) {
         this.stepsResumeUse = stepsResumeUse;
+    }
+
+    public boolean isExcusedNoneUse() {
+        return excusedNoneUse;
+    }
+
+    public void setExcusedNoneUse(boolean excusedNoneUse) {
+        this.excusedNoneUse = excusedNoneUse;
     }
 }

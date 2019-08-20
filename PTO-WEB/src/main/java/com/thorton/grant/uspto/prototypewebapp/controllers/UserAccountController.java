@@ -175,6 +175,80 @@ public class UserAccountController {
     }
 
 
+    @RequestMapping({"/accounts/dashboard-survey","accounts/dashboard-survey"})
+    public String dashboardSurveyController(Model model){
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        System.out.println("logged in user email :"+authentication.getPrincipal());
+        System.out.println("logged in user name: "+authentication.getName());
+        PTOUserService  ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+        model.addAttribute("user", ptoUser);
+        model.addAttribute("account",credentials);
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////
+        // find user's trademark applications
+        // iterate over myTrademarks and get their internal ids into an array list
+        ////////////////////////////////////////////////////////////////////////////////////////////////
+
+        BaseTrademarkApplication baseTrademarkApplication = null;
+        ArrayList<String> userfilingTableRowsID = new ArrayList<>();
+        ArrayList<String> userfilingTableRowsowneName = new ArrayList<>();
+        ArrayList<String> userfilingTableRowsStatus = new ArrayList<>();
+        ArrayList<String> userfilingTableRoowsTMname = new ArrayList<>();
+        for(Iterator<BaseTrademarkApplication> iter = ptoUser.getMyApplications().iterator(); iter.hasNext(); ) {
+
+
+            baseTrademarkApplication = iter.next();
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@User Account Controller@@@@@@@@@@@@@@@@@@@@@@@@@");
+            System.out.println("internal : "+baseTrademarkApplication.getApplicationInternalID());
+
+            userfilingTableRowsID.add(  baseTrademarkApplication.getApplicationInternalID());
+            userfilingTableRowsowneName.add(ptoUser.getFirstName()+" "+ptoUser.getLastName());
+            userfilingTableRowsStatus.add("Draft");
+            userfilingTableRoowsTMname.add(baseTrademarkApplication.getTrademarkName());
+
+        }
+        Collections.reverse(userfilingTableRowsID);
+        Collections.reverse(userfilingTableRowsowneName);
+        Collections.reverse(userfilingTableRowsStatus);
+        Collections.reverse(userfilingTableRoowsTMname);
+
+
+
+
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        //model.addAttribute("newFilingTableRow", userfilingTableRowsID);
+
+
+        TradeMarkApplicationsInternalIDDTO tradeMarkApplicationsInternalIDDTO = new TradeMarkApplicationsInternalIDDTO();
+        tradeMarkApplicationsInternalIDDTO.setMyApplicationIDs(userfilingTableRowsID);
+        tradeMarkApplicationsInternalIDDTO.setMyApplicationOwners(userfilingTableRowsowneName);
+        tradeMarkApplicationsInternalIDDTO.setMyApplicationStatues(userfilingTableRowsStatus);
+        tradeMarkApplicationsInternalIDDTO.setMyApplicationTMname(userfilingTableRoowsTMname);
+        model.addAttribute("newFilingTableRow", tradeMarkApplicationsInternalIDDTO);
+
+        //model.addAttribute("trademarkApplication", baseTrademarkApplication);
+
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        if(ptoUser.isProfileComplete() == false){ // redirect back to userAccounts if profile is not complete yet
+            model.addAttribute("message", "Please Complete your Contact Information First.");
+            return "account/userProfile";
+        }
+        //////////////////////////////////////////////////////////////////////////////////////////////
+
+        return "account/dashboard-survey";
+        //return baseTrademarkApplication.getLastViewModel();
+
+    }
+
+
 
 
 

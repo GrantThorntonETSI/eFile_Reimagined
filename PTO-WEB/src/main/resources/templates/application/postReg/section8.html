@@ -510,25 +510,25 @@
                                                                     </div>
                                                                     <div class="row form-group form-group-md nonuse" role="alert" style="display: none;"><!--toggle 'yes' radio-->
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                                            <label for="connection-date" class="matchlabelheighttwo">Date of last use<span class="sr-only">enter the date in the following format: m m d d y y y y</span></label>
-                                                                            <input type="text" class="form-control datepicker" id="connection-date" name="connectiondate" value="" placeholder="mm/dd/yyyy">
+                                                                            <label th:attr="for=${Good_Service.getDateOfLastUseGSID()}" class="matchlabelheighttwo">Date of last use<span class="sr-only">enter the date in the following format: m m d d y y y y</span></label>
+                                                                            <input type="text" class="form-control datepicker gs-last-use-date"  th:attr="id=${Good_Service.getDateOfLastUseGSID()},gs-id=${Good_Service.getInternalID()}"  value="" placeholder="mm/dd/yyyy">
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                                            <label for="firstconnection-date" class="matchlabelheighttwo">Approximate date when use is expected to resume<span class="sr-only">enter the date in the following format: m m d d y y y y</span></label>
-                                                                            <input type="text" class="form-control datepicker" id="firstconnection-date" name="firstconnectiondate" value="" placeholder="mm/dd/yyyy">
+                                                                            <label th:attr="for=${Good_Service.getDateOfResumeUseGSID()}" class="matchlabelheighttwo">Approximate date when use is expected to resume<span class="sr-only">enter the date in the following format: m m d d y y y y</span></label>
+                                                                            <input type="text" class="form-control datepicker gs-resume-use-date"  th:attr="id=${Good_Service.getDateOfResumeUseGSID()},gs-id=${Good_Service.getInternalID()}" value="" placeholder="mm/dd/yyyy">
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                                            <label for="reason">Reason for nonuse:</label>
-                                                                            <textarea id="reason" class="form-control"></textarea>
+                                                                            <label th:attr="for=${Good_Service.getNoneUseReasonGSID()}">Reason for nonuse:</label>
+                                                                            <textarea  th:attr="id=${Good_Service.getNoneUseReasonGSID()},gs-id=${Good_Service.getInternalID()}" class="form-control gs-none-use-reason "></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                                            <label for="steps">Steps being taken to resume use</label>
-                                                                            <textarea id="steps" class="form-control"></textarea>
+                                                                            <label th:attr="for=${Good_Service.getStepsResumeUseGSID()}">Steps being taken to resume use</label>
+                                                                            <textarea th:attr="id=${Good_Service.getStepsResumeUseGSID()},gs-id=${Good_Service.getInternalID()}" class="form-control gs-steps-resume-use"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </th:block>
 
-                                                                <th:block th:if="${Good_Service.isMarkInUse() == false}">
+                                                                <th:block th:if="${Good_Service.isExcusedNoneUse() == true}">
 
                                                                     <div role="radiogroup" class="form-group form-group-md">
                                                                         <label  class="radio-inline radiocontainer block"><input type="radio"  value="yesbar" tabindex="0" class="gs-in-use"  th:attr="name=${Good_Service.getInternalID()},id=${Good_Service.getInUseRadioIDYes()}, parent-CC-id=${Good_Service.getProvideSpecimenCCRadioID()}, parent-gs-id=${Good_Service.getProvideSpecimenGSRadioID()}" ><span class="checkmark"></span>This good/service is in use.</label>
@@ -654,20 +654,20 @@
                                                                     </div>
                                                                     <div class="row form-group form-group-md nonuse" role="alert" style=""><!--toggle 'yes' radio-->
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                                            <label for="connection-date" class="matchlabelheighttwo">Date of last use<span class="sr-only">enter the date in the following format: m m d d y y y y</span></label>
-                                                                            <input type="text" class="form-control datepicker" id="connection-date" name="connectiondate" value="" placeholder="mm/dd/yyyy">
+                                                                            <label th:attr="for=${Good_Service.getDateOfLastUseGSID()}" class="matchlabelheighttwo">Date of last use<span class="sr-only">enter the date in the following format: m m d d y y y y</span></label>
+                                                                            <input type="text" class="form-control datepicker gs-last-use-date"  th:value="${Good_Service.getDateOfLastUseDisplay()}"     th:attr="id=${Good_Service.getDateOfLastUseGSID()},gs-id=${Good_Service.getInternalID()}"  value="" placeholder="mm/dd/yyyy">
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                                            <label for="firstconnection-date" class="matchlabelheighttwo">Approximate date when use is expected to resume<span class="sr-only">enter the date in the following format: m m d d y y y y</span></label>
-                                                                            <input type="text" class="form-control datepicker" id="firstconnection-date" name="firstconnectiondate" value="" placeholder="mm/dd/yyyy">
+                                                                            <label th:attr="for=${Good_Service.getDateOfResumeUseGSID()}" class="matchlabelheighttwo">Approximate date when use is expected to resume<span class="sr-only">enter the date in the following format: m m d d y y y y</span></label>
+                                                                            <input type="text" class="form-control datepicker gs-resume-use-date"  th:value="${Good_Service.getDateOfResumeUseDisplay()}"     th:attr="id=${Good_Service.getDateOfResumeUseGSID()},gs-id=${Good_Service.getInternalID()}" value="" placeholder="mm/dd/yyyy">
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                                            <label for="reason">Reason for nonuse:</label>
-                                                                            <textarea id="reason" class="form-control"></textarea>
+                                                                            <label th:attr="for=${Good_Service.getNoneUseReasonGSID()}">Reason for nonuse:</label>
+                                                                            <textarea  th:attr="id=${Good_Service.getNoneUseReasonGSID()},gs-id=${Good_Service.getInternalID()}"   th:text="${Good_Service.getNoneUseReason()}" class="form-control gs-none-use-reason "></textarea>
                                                                         </div>
                                                                         <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                                            <label for="steps">Steps being taken to resume use</label>
-                                                                            <textarea id="steps" class="form-control"></textarea>
+                                                                            <label th:attr="for=${Good_Service.getStepsResumeUseGSID()}">Steps being taken to resume use</label>
+                                                                            <textarea th:attr="id=${Good_Service.getStepsResumeUseGSID()},gs-id=${Good_Service.getInternalID()}"  th:text="${Good_Service.getStepsResumeUse()}"   class="form-control gs-steps-resume-use"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </th:block>
@@ -799,20 +799,20 @@
                                                                 </div>
                                                                 <div class="row form-group form-group-md nonuse" role="alert" style="display: none;"><!--toggle 'yes' radio-->
                                                                     <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                                        <label for="connection-date" class="matchlabelheighttwo">Date of last use<span class="sr-only">enter the date in the following format: m m d d y y y y</span></label>
-                                                                        <input type="text" class="form-control datepicker" id="connection-date" name="connectiondate" value="" placeholder="mm/dd/yyyy">
+                                                                        <label th:attr="for=${Good_Service.getDateOfLastUseGSID()}" class="matchlabelheighttwo">Date of last use<span class="sr-only">enter the date in the following format: m m d d y y y y</span></label>
+                                                                        <input type="text" class="form-control datepicker gs-last-use-date"  th:attr="id=${Good_Service.getDateOfLastUseGSID()},gs-id=${Good_Service.getInternalID()}"  value="" placeholder="mm/dd/yyyy">
                                                                     </div>
                                                                     <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                                        <label for="firstconnection-date" class="matchlabelheighttwo">Approximate date when use is expected to resume<span class="sr-only">enter the date in the following format: m m d d y y y y</span></label>
-                                                                        <input type="text" class="form-control datepicker" id="firstconnection-date" name="firstconnectiondate" value="" placeholder="mm/dd/yyyy">
+                                                                        <label th:attr="for=${Good_Service.getDateOfResumeUseGSID()}" class="matchlabelheighttwo">Approximate date when use is expected to resume<span class="sr-only">enter the date in the following format: m m d d y y y y</span></label>
+                                                                        <input type="text" class="form-control datepicker gs-resume-use-date"  th:attr="id=${Good_Service.getDateOfResumeUseGSID()},gs-id=${Good_Service.getInternalID()}" value="" placeholder="mm/dd/yyyy">
                                                                     </div>
                                                                     <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                                        <label for="reason">Reason for nonuse:</label>
-                                                                        <textarea id="reason" class="form-control"></textarea>
+                                                                        <label th:attr="for=${Good_Service.getNoneUseReasonGSID()}">Reason for nonuse:</label>
+                                                                        <textarea  th:attr="id=${Good_Service.getNoneUseReasonGSID()},gs-id=${Good_Service.getInternalID()}" class="form-control gs-none-use-reason "></textarea>
                                                                     </div>
                                                                     <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                                        <label for="steps">Steps being taken to resume use</label>
-                                                                        <textarea id="steps" class="form-control"></textarea>
+                                                                        <label th:attr="for=${Good_Service.getStepsResumeUseGSID()}">Steps being taken to resume use</label>
+                                                                        <textarea th:attr="id=${Good_Service.getStepsResumeUseGSID()},gs-id=${Good_Service.getInternalID()}" class="form-control gs-steps-resume-use"></textarea>
                                                                     </div>
                                                                 </div>
 
@@ -834,6 +834,49 @@
                         </div>
                     </th:block>
 
+                    <div class="row">
+                        <section class="col-xs-12" aria-label="declaration of incontestability">
+                            <div class="card-text noexpand">
+                                <h2 class="card-title weight600">Declaration of Incontestability</h2>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="row">
+                                    <div class="col-xs-12 form-group form-group-md">
+                                        <p class="weight600" id="incontestable">Do you wish to file a Declaration of Incontestability (Section 15) at this time? <a href="#" data-toggle="tooltip" title="" class="glyphicon glyphicon-info-sign test" data-placement="right" data-original-title="Filing a declaration of incontestability for your trademark registration provides an extra layer of protection against challenges. Once a registration becomes incontestable, another party cannot challenge the ownership of the mark or argue that the mark should not have been registered. This limits the types of challenges that may be made against a registration, reducing the likelihood of the loss of that registration."></a></p>
+                                        <div role="radiogroup" class="form-group form-group-md" aria-describedby="incontestable">
+                                            <th:block th:if="${action.isOptionalSection8Set() == true}">
+                                                <th:block th:if="${action.isOptionalSection8() == true}">
+                                                    <label for="inlineRadio0114" class="radio-inline radiocontainer"><input type="radio" name="incontest" id="inlineRadio0114" value="" tabindex="0" checked><span class="checkmark"></span>Yes</label>
+                                                    <label for="inlineRadio0115" class="radio-inline radiocontainer"><input type="radio" name="incontest" id="inlineRadio0115" value="" tabindex="0"><span class="checkmark"></span>No</label>
+
+
+
+                                                </th:block>
+                                                <th:block th:if="${action.isOptionalSection8() == false}">
+                                                    <label for="inlineRadio0114" class="radio-inline radiocontainer"><input type="radio" name="incontest" id="inlineRadio0114" value="" tabindex="0"><span class="checkmark"></span>Yes</label>
+                                                    <label for="inlineRadio0115" class="radio-inline radiocontainer"><input type="radio" name="incontest" id="inlineRadio0115" value="" tabindex="0" checked><span class="checkmark"></span>No</label>
+
+
+
+                                                </th:block>
+
+
+
+                                            </th:block>
+
+                                            <th:block th:if="${action.isOptionalSection8Set() == false}">
+                                                <label for="inlineRadio0114" class="radio-inline radiocontainer"><input type="radio" name="incontest" id="inlineRadio0114" value="" tabindex="0"><span class="checkmark"></span>Yes</label>
+                                                <label for="inlineRadio0115" class="radio-inline radiocontainer"><input type="radio" name="incontest" id="inlineRadio0115" value="" tabindex="0"><span class="checkmark"></span>No</label>
+
+                                            </th:block>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div><!--//incontestability-->
+
 
 
             </div><!--END col-->
@@ -843,7 +886,7 @@
                 <button type="button" class="btn btn-sm btn-default fill prev" id="" value="previous">Previous</button>
             </div>
             <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-primary fill next" id="" value="next">Next
+                <button type="button" class="btn btn-sm btn-primary fill next" id="" value="next" >Next
                     <div class="round"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div></button>
             </div>
         </div>
@@ -885,7 +928,15 @@
     var prevLinkURL = "../../../../accounts/dashboard";
 
 
-    var nextLinkURL = ""+OfficeActionID+"/?trademarkID="+appInternalID;
+    // default to optional actions url
+
+    // on radio button select update the next link value
+
+    // which will enable the next button
+
+    var nextLinkURL = "";
+
+
 
 
 
@@ -998,15 +1049,15 @@
             $(this).parent().parent().next().next().hide(500);
             $(this).parent().parent().next().show(500);
             var gsID= $(this).attr("name");
-            addFilingBasisInfoToGoodAndService("fb-mark-in-use", "yes", gsID, appInternalID);
+            addFilingBasisInfoToGoodAndServiceSection8("fb-mark-in-use", "yes", gsID, appInternalID);
 
         });
 
         $('.gs-excused').click(function () {
             $(this).parent().parent().next().hide(500);
             $(this).parent().parent().next().next().show(500);
-
-            addFilingBasisInfoToGoodAndService("fb-mark-in-use", "no", gsID, appInternalID);
+            var gsID= $(this).attr("name");
+            addFilingBasisInfoToGoodAndServiceSection8("fb-excused-none-use", "yes", gsID, appInternalID);
 
         });
 
@@ -1192,14 +1243,98 @@
 
             if(this.checked == true){
 
-                addFilingBasisInfoToClassCategory("cc-all-gs-in-use", "yes", ccID, appInternalID);
+                addFilingBasisInfoToClassCategorySection8("cc-all-gs-in-use", "yes", ccID, appInternalID);
 
             }
             else {
-                addFilingBasisInfoToClassCategory("cc-all-gs-in-use", "no", ccID, appInternalID)
+                addFilingBasisInfoToClassCategorySection8("cc-all-gs-in-use", "no", ccID, appInternalID)
             }
         });
 
+
+        $('.gs-last-use-date').focusout(function () {
+
+            var gsID= $(this).attr("gs-id");
+            var date = $(this).val();
+
+            addFilingBasisInfoToGoodAndService("gs-last-use-date",date, gsID, appInternalID);
+
+        });
+
+
+        $('.gs-resume-use-date').focusout(function () {
+
+            var gsID= $(this).attr("gs-id");
+            var date = $(this).val();
+
+            addFilingBasisInfoToGoodAndService("gs-resume-use-date",date, gsID, appInternalID);
+
+        });
+
+        $('.gs-none-use-reason').focusout(function () {
+
+            var gsID= $(this).attr("gs-id");
+            var value = $(this).val();
+
+            addFilingBasisInfoToGoodAndService("gs-none-use-reason",value, gsID, appInternalID);
+
+        });
+
+        $('.gs-steps-resume-use').focusout(function () {
+
+            var gsID= $(this).attr("gs-id");
+            var value = $(this).val();
+
+            addFilingBasisInfoToGoodAndService("gs-steps-resume-use",value, gsID, appInternalID);
+
+        });
+
+
+
+
+
+        // yes to file incontestable
+        $('#inlineRadio0114').click(function () {
+
+            // chnage url to incontestable url
+            nextLinkURL = "../../../../postReg/section8/incontestable/"+OfficeActionID+"/?trademarkID="+appInternalID;
+            // enable next link
+
+            $('.next').attr("disabled",false);
+
+            updateSection8optional("oa-section8-optional", "yes", OfficeActionID, appInternalID);
+
+
+
+
+        });
+
+        // no to file incontestable
+        $('#inlineRadio0115').click(function () {
+
+            // change url to optional actions url
+
+            // enable next link
+            nextLinkURL = "../../../../officeAction/optional/"+OfficeActionID+"/?trademarkID="+appInternalID;
+
+            $('.next').attr("disabled",false);
+
+
+            // when auto saving this value ...create the prev link value on the office action object
+            updateSection8optional("oa-section8-optional", "no", OfficeActionID, appInternalID);
+
+        });
+
+        if($('#inlineRadio0114').is(":checked")){
+            nextLinkURL = "../../../../postReg/section8/incontestable/"+OfficeActionID+"/?trademarkID="+appInternalID;
+
+        }
+
+        if($('#inlineRadio0115').is(":checked")){
+
+            nextLinkURL = "../../../../officeAction/optional/"+OfficeActionID+"/?trademarkID="+appInternalID;
+
+        }
 
 
 
@@ -1216,7 +1351,7 @@
 
 
         $.ajax({
-            url: "../../../REST/apiGateway/GS/fb/update/"+fbFieldName+"/"+fbFieldValue+"/"+gsID+"/"+appInternalID,
+            url: "../../../../REST/apiGateway/GS/fb/update/"+fbFieldName+"/"+fbFieldValue+"/"+gsID+"/"+appInternalID,
             type: 'GET',
             success: function(data){
 
@@ -1257,6 +1392,64 @@
     }
 
 
+    function addFilingBasisInfoToGoodAndServiceSection8(fbFieldName, fbFieldValue, gsID, appInternalID) {
+
+        //var field_value = $(this).val();
+        //alert(field_value);
+
+
+        $.ajax({
+            url: "../../../../REST/apiGateway/GS/section8/update/"+fbFieldName+"/"+fbFieldValue+"/"+gsID+"/"+appInternalID,
+            type: 'GET',
+            success: function(data){
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:")+7, data.indexOf("status:")+4+7);
+
+                var s_msg = data.substring(data.indexOf("msg:")+4, data.length-2);
+
+                if(s_code.trim() == "200"){
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function() {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                }
+                else {
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function() {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                    $('.next').attr("disabled", false);
+                }
+
+            },
+            error: function(data) {
+
+                console.log(data);
+
+            }
+
+        });
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////
+        // end of contact information 'State' auto save ////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+
+
+    }
+
+
     function addFilingBasisInfoToClassCategory(ccFieldName, ccFieldValue, ccNumber, appInternalID) {
 
         //var field_value = $(this).val();
@@ -1264,7 +1457,7 @@
 
 
         $.ajax({
-            url: "../../../REST/apiGateway/CC/fb/update/" + ccFieldName + "/" + ccFieldValue + "/" + ccNumber + "/" + appInternalID,
+            url: "../../../../REST/apiGateway/CC/fb/update/" + ccFieldName + "/" + ccFieldValue + "/" + ccNumber + "/" + appInternalID,
             type: 'GET',
             success: function (data) {
 
@@ -1298,10 +1491,114 @@
 
     }
 
+    function addFilingBasisInfoToClassCategorySection8(ccFieldName, ccFieldValue, ccNumber, appInternalID) {
+
+        //var field_value = $(this).val();
+        //alert(field_value);
+
+
+        $.ajax({
+            url: "../../../../REST/apiGateway/CC/section8/update/" + ccFieldName + "/" + ccFieldValue + "/" + ccNumber + "/" + appInternalID,
+            type: 'GET',
+            success: function (data) {
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:") + 7, data.indexOf("status:") + 4 + 7);
+
+                var s_msg = data.substring(data.indexOf("msg:") + 4, data.length - 2);
+
+                if (s_code.trim() == "200") {
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function () {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                }
+                else {
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function() {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                    $('.next').attr("disabled", false);
+                }
+
+
+            },
+            error: function (data) {
+
+                console.log(data);
+
+            }
+
+        });
+
+    }
+
+
+    function updateSection8optional(FieldName, FieldValue, actionID, appInternalID) {
+
+        //var field_value = $(this).val();
+        //alert(field_value);
+
+
+        $.ajax({
+            url: "../../../../REST/apiGateway/OfficeAction/section8/optional/" + FieldName + "/" + FieldValue + "/" + actionID + "/" + appInternalID,
+            type: 'GET',
+            success: function (data) {
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:") + 7, data.indexOf("status:") + 4 + 7);
+
+                var s_msg = data.substring(data.indexOf("msg:") + 4, data.length - 2);
+
+                if (s_code.trim() == "200") {
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function () {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                }
+                else {
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function() {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                    $('.next').attr("disabled", false);
+                }
+
+
+            },
+            error: function (data) {
+
+                console.log(data);
+
+            }
+
+        });
+
+    }
 
 
 
-        function parsePathFromResponse(response){
+
+
+    function parsePathFromResponse(response){
         var index = response.indexOf("image-url:");
         index = index+10;
         response = response.substring(index);

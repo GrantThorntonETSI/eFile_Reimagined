@@ -21,32 +21,31 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
 @Service
-public class Goods_ServicesService  extends BaseRESTapiService{
+public class Goods_ServicesService  extends BaseRESTapiService {
 
     public Goods_ServicesService(ServiceBeanFactory serviceBeanFactory, HostBean hostBean) {
         super(serviceBeanFactory, hostBean);
     }
 
 
-
-    @CrossOrigin(origins = {"https://localhost","https://efile-reimagined.com"})
-    @RequestMapping(method = GET, value="/REST/apiGateway/GS/add/{classNumber}/{classDescription}/{gsID}/{appInternalID}")
+    @CrossOrigin(origins = {"https://localhost", "https://efile-reimagined.com"})
+    @RequestMapping(method = GET, value = "/REST/apiGateway/GS/add/{classNumber}/{classDescription}/{gsID}/{appInternalID}")
     @ResponseBody
-    ResponseEntity<String> updateApplictionGoodsServcis(@PathVariable String classNumber , @PathVariable String classDescription,  @PathVariable String gsID, @PathVariable String appInternalID){
+    ResponseEntity<String> updateApplictionGoodsServcis(@PathVariable String classNumber, @PathVariable String classDescription, @PathVariable String gsID, @PathVariable String appInternalID) {
 
         String appFieldReadable = "";
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
 
-        if(baseTrademarkApplication.findGSbyInternalID(gsID) != null){
+        if (baseTrademarkApplication.findGSbyInternalID(gsID) != null) {
 
             return buildResponseEnity("444", "Good and Service Already added to the Application");
 
         }
 
 
-        System.out.println("adding class number : "+classNumber);
-        System.out.println("adding GS ID : "+gsID);
+        System.out.println("adding class number : " + classNumber);
+        System.out.println("adding GS ID : " + gsID);
 
         // create the good and service
         GoodAndService goodAndService = new GoodAndService();
@@ -60,34 +59,31 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         appFieldReadable = "Good and Service";
         System.out.println("add GS called 33333333333333333333333333333333333");
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
-        String responseMsg = "{{server-message:"+appFieldReadable+" has been saved}";
+        String responseMsg = "{{server-message:" + appFieldReadable + " has been saved}";
 
         // new return message structure
 
         //  return buildResponseEnity("200", "{image-url:" +filePath+"}");
         // {server-msg:xxxxx},{fee-display-html:xxxx},{total-class-html:xxxxx},{total-extra-class-html:xxxx},{extra-class-fee-info-html:xxxxxx},{extra-class-fee-calc-html},{basic-fee-calc-html:xxxxx},{fee-total-html}
-        responseMsg+=",{fee-display-html:"+baseTrademarkApplication.getTotalFeeString()+"}"+",{total-class-html:"+baseTrademarkApplication.getTotalNumberOfclasses()+"}"+",{total-extra-class-html:"+baseTrademarkApplication.getNumberOfExtraClasses()+"}"+",{basic-fee-calc-html:"+baseTrademarkApplication.getBasicFeeCalculationString()+"}"+",{extra-class-fee-calc-html:"+baseTrademarkApplication.getExtraFeeCalculationString()+"}"+",{total-fee-html:"+baseTrademarkApplication.getTotalFeeString()+  "}}";
+        responseMsg += ",{fee-display-html:" + baseTrademarkApplication.getTotalFeeString() + "}" + ",{total-class-html:" + baseTrademarkApplication.getTotalNumberOfclasses() + "}" + ",{total-extra-class-html:" + baseTrademarkApplication.getNumberOfExtraClasses() + "}" + ",{basic-fee-calc-html:" + baseTrademarkApplication.getBasicFeeCalculationString() + "}" + ",{extra-class-fee-calc-html:" + baseTrademarkApplication.getExtraFeeCalculationString() + "}" + ",{total-fee-html:" + baseTrademarkApplication.getTotalFeeString() + "}}";
         // but responsemsg
-
-
 
 
         return buildResponseEnity("200", responseMsg);
     }
 
 
-
-    @CrossOrigin(origins = {"https://localhost","https://efile-reimagined.com"})
-    @RequestMapping(method = GET, value="/REST/apiGateway/GS/remove/{classNumber}/{classDescription}/{gsID}/{appInternalID}")
+    @CrossOrigin(origins = {"https://localhost", "https://efile-reimagined.com"})
+    @RequestMapping(method = GET, value = "/REST/apiGateway/GS/remove/{classNumber}/{classDescription}/{gsID}/{appInternalID}")
     @ResponseBody
-    ResponseEntity<String> updateApplictionGoodsServcisRemove(@PathVariable String classNumber , @PathVariable String classDescription, @PathVariable String gsID, @PathVariable String appInternalID){
+    ResponseEntity<String> updateApplictionGoodsServcisRemove(@PathVariable String classNumber, @PathVariable String classDescription, @PathVariable String gsID, @PathVariable String appInternalID) {
 
         String appFieldReadable = "Good and Service";
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
 
 
-        if(baseTrademarkApplication.findGSbyInternalID(gsID) == null){
+        if (baseTrademarkApplication.findGSbyInternalID(gsID) == null) {
 
             return buildResponseEnity("444", "Good and Service is not part of the Application");
 
@@ -95,75 +91,69 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
         System.out.println("remove GS called 2222222222222222222222222222222");
         GoodAndService deleteThisGS = baseTrademarkApplication.findGSbyInternalID(gsID);
-       // baseTrademarkApplication.getGoodsAndSevicesMap().get(classNumber).remove(deleteThisGS);
+        // baseTrademarkApplication.getGoodsAndSevicesMap().get(classNumber).remove(deleteThisGS);
         baseTrademarkApplication.removeGoodAndService(deleteThisGS);
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
-
 
 
         GoodsAndServicesService goodsAndServicesService = getServiceBeanFactory().getGoodsAndServicesService();
         goodsAndServicesService.delete(deleteThisGS);
 
-        String responseMsg = "{{server-message:"+appFieldReadable+" has been saved}";
+        String responseMsg = "{{server-message:" + appFieldReadable + " has been saved}";
 
         // new return message structure
 
         //  return buildResponseEnity("200", "{image-url:" +filePath+"}");
         // {server-msg:xxxxx},{fee-display-html:xxxx},{total-class-html:xxxxx},{total-extra-class-html:xxxx},{extra-class-fee-info-html:xxxxxx},{extra-class-fee-calc-html},{basic-fee-calc-html:xxxxx},{fee-total-html}
-        responseMsg+=",{fee-display-html:"+baseTrademarkApplication.getTotalFeeString()+"}"+",{total-class-html:"+baseTrademarkApplication.getTotalNumberOfclasses()+"}"+",{total-extra-class-html:"+baseTrademarkApplication.getNumberOfExtraClasses()+"}"+",{basic-fee-calc-html:"+baseTrademarkApplication.getBasicFeeCalculationString()+"}"+",{extra-class-fee-calc-html:"+baseTrademarkApplication.getExtraFeeCalculationString()+"}}";
+        responseMsg += ",{fee-display-html:" + baseTrademarkApplication.getTotalFeeString() + "}" + ",{total-class-html:" + baseTrademarkApplication.getTotalNumberOfclasses() + "}" + ",{total-extra-class-html:" + baseTrademarkApplication.getNumberOfExtraClasses() + "}" + ",{basic-fee-calc-html:" + baseTrademarkApplication.getBasicFeeCalculationString() + "}" + ",{extra-class-fee-calc-html:" + baseTrademarkApplication.getExtraFeeCalculationString() + "}}";
         //return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
         return buildResponseEnity("200", responseMsg);
     }
 
 
-
-
-    @CrossOrigin(origins = {"https://localhost","https://efile-reimagined.com"})
-    @RequestMapping(method = GET, value="/REST/apiGateway/GS/update/{gsField}/{gsValue}/{appInternalID}")
+    @CrossOrigin(origins = {"https://localhost", "https://efile-reimagined.com"})
+    @RequestMapping(method = GET, value = "/REST/apiGateway/GS/update/{gsField}/{gsValue}/{appInternalID}")
     @ResponseBody
-    ResponseEntity<String> updateGoods_ServicesSelectOptions(@PathVariable String gsField , @PathVariable String gsValue, @PathVariable String appInternalID){
+    ResponseEntity<String> updateGoods_ServicesSelectOptions(@PathVariable String gsField, @PathVariable String gsValue, @PathVariable String appInternalID) {
 
         String appFieldReadable = "";
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
 
-        if(gsField.equals("GS-select-Option")){
+        if (gsField.equals("GS-select-Option")) {
             // ptoUser.setState(param); // sets state code
-            if(gsValue.equals("search")) {
+            if (gsValue.equals("search")) {
                 baseTrademarkApplication.setSearchExistingGSdatabase(true);
-            }
-            else {
+            } else {
                 baseTrademarkApplication.setSearchExistingGSdatabase(false);
 
             }
             appFieldReadable = "Goods And Services search option";
 
         }
-        if(gsField.equals("GS-mark-inUse")){
+        if (gsField.equals("GS-mark-inUse")) {
             // ptoUser.setState(param); // sets state code
-            if(gsValue.equals("yes")) {
-                if(baseTrademarkApplication.isMarkInUseForAllGS() == true){
+            if (gsValue.equals("yes")) {
+                if (baseTrademarkApplication.isMarkInUseForAllGS() == true) {
                     return buildResponseEnity("444", "");
                 }
                 baseTrademarkApplication.setMarkInUseForAllGS(true);
                 baseTrademarkApplication.setMarkAllgsSet(true);
                 // we need to loop though all gs and set its in use to true
 
-                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
                     GoodAndService current = iter.next();
                     current.setMarkInUse(false);
                     current.setMarkInUseSet(false);
                 }
                 baseTrademarkApplication.setDeclarationMarkInUse(true);
                 baseTrademarkApplication.setDeclarationMarkInUseSet(true);
-            }
-            else {
-                if(baseTrademarkApplication.isMarkAllgsSet() == false){
+            } else {
+                if (baseTrademarkApplication.isMarkAllgsSet() == false) {
                     baseTrademarkApplication.setMarkInUseForAllGS(false);
                     baseTrademarkApplication.setMarkAllgsSet(true);
-                }
-                else {
-                    if(baseTrademarkApplication.isMarkInUseForAllGS() == false){
+                } else {
+                    if (baseTrademarkApplication.isMarkInUseForAllGS() == false) {
                         return buildResponseEnity("444", "");
                     }
                     baseTrademarkApplication.setMarkInUseForAllGS(false);
@@ -182,28 +172,24 @@ public class Goods_ServicesService  extends BaseRESTapiService{
             appFieldReadable = "Filing Basis mark in use option";
 
         }
-        if(gsField.equals("GS-mark-fapp")){
+        if (gsField.equals("GS-mark-fapp")) {
             // ptoUser.setState(param); // sets state code
-            if(gsValue.equals("yes")) {
+            if (gsValue.equals("yes")) {
 
-                if(baseTrademarkApplication.isMarkHasForeignRegistration() == true){
+                if (baseTrademarkApplication.isMarkHasForeignRegistration() == true) {
                     return buildResponseEnity("444", "");
                 }
                 baseTrademarkApplication.setMarkHasForeignRegistration(true);
                 baseTrademarkApplication.setMarkFappSet(true);
-            }
-            else {
+            } else {
 
 
-
-
-                if(baseTrademarkApplication.isMarkFappSet() == false) {
+                if (baseTrademarkApplication.isMarkFappSet() == false) {
 
                     baseTrademarkApplication.setMarkHasForeignRegistration(false);
                     baseTrademarkApplication.setMarkFappSet(true);
 
-                }
-                else {
+                } else {
                     // if mark foreign is set ...
                     // we need to unset it
                     // we need to unset all of the foreign application/registration settings and fields
@@ -211,12 +197,13 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                     baseTrademarkApplication.setMarkHasForeignRegistration(false);
 
                     // for each filing basis, also set this value for foreign app and foreign registration
-                    for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServicesList().iterator(); iter.hasNext(); ) {
-                         GoodAndService current = iter.next();
+                    for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServicesList().iterator(); iter.hasNext(); ) {
+                        GoodAndService current = iter.next();
 
-                         // unset foreign application for each good and service
+                        // unset foreign application for each good and service
 
-                         current.setFrCertImageName(null);current.setFaCountry(null);
+                        current.setFrCertImageName(null);
+                        current.setFaCountry(null);
                         current.setFaRegistrationNumber(null);
                         current.setFaFilingDate(null);
                         current.setPendingFA(false);
@@ -230,8 +217,6 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                         current.setForeignRegistration(false);
 
 
-
-
                     }
 
                 }
@@ -242,36 +227,32 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
-        String responseMsg = appFieldReadable+" has been saved.";
+        String responseMsg = appFieldReadable + " has been saved.";
 
         //return ResponseEntity.ok().headers(responseHeader).body(responseMsg) ;
         return buildResponseEnity("200", responseMsg);
     }
 
 
-
-
-    @CrossOrigin(origins = {"https://localhost","https://efile-reimagined.com"})
-    @RequestMapping(method = GET, value="/REST/apiGateway/GS/fb/update/{fbField}/{fbValue}/{gsID}/{appInternalID}")
+    @CrossOrigin(origins = {"https://localhost", "https://efile-reimagined.com"})
+    @RequestMapping(method = GET, value = "/REST/apiGateway/GS/fb/update/{fbField}/{fbValue}/{gsID}/{appInternalID}")
     @ResponseBody
-    ResponseEntity<String> updateFilingBasisForGoodsServcices(@PathVariable String fbField , @PathVariable String fbValue,  @PathVariable String gsID, @PathVariable String appInternalID){
+    ResponseEntity<String> updateFilingBasisForGoodsServcices(@PathVariable String fbField, @PathVariable String fbValue, @PathVariable String gsID, @PathVariable String appInternalID) {
 
         String appFieldReadable = "";
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
 
 
-
-
-        if(fbField.equals("fb-mark-in-use")){
+        if (fbField.equals("fb-mark-in-use")) {
             // ptoUser.setState(param); // sets state code
 
-            if(fbValue.equals("yes")){
+            if (fbValue.equals("yes")) {
                 baseTrademarkApplication.findGSbyInternalID(gsID).setMarkInUse(true);
                 baseTrademarkApplication.findGSbyInternalID(gsID).setMarkInUseSet(true);
 
             }
-            if(fbValue.equals("no")){
+            if (fbValue.equals("no")) {
 
                 // get class category nunber
                 GoodAndService goodAndService = baseTrademarkApplication.findGSbyInternalID(gsID);
@@ -279,16 +260,15 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                 int gsCount = 0;
                 int gsNo = 0;
 
-                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
                     GoodAndService current = iter.next();
 
-                    if(current.getClassNumber().equals(catNumber)){
+                    if (current.getClassNumber().equals(catNumber)) {
 
-                       gsCount++;
-                       if(current.isMarkInUse() == false && current.isMarkInUseSet() == true){
-                           gsNo++;
-                       }
-
+                        gsCount++;
+                        if (current.isMarkInUse() == false && current.isMarkInUseSet() == true) {
+                            gsNo++;
+                        }
 
 
                     }
@@ -296,23 +276,21 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
 
                 // get class level in use options
-                if(goodAndService.isAtLeastOneGoodInCommerceClassFlag()){
-                    if(gsCount - gsNo > 1){
+                if (goodAndService.isAtLeastOneGoodInCommerceClassFlag()) {
+                    if (gsCount - gsNo > 1) {
 
                         baseTrademarkApplication.findGSbyInternalID(gsID).setMarkInUse(false);
                         baseTrademarkApplication.findGSbyInternalID(gsID).setMarkInUseSet(true);
 
-                    }
-                    else{
+                    } else {
 
                         return buildResponseEnity("420", "ERROR: Could not save good and service in use options");
 
                     }
 
-                }
-                else{
-                     baseTrademarkApplication.findGSbyInternalID(gsID).setMarkInUse(false);
-                     baseTrademarkApplication.findGSbyInternalID(gsID).setMarkInUseSet(true);
+                } else {
+                    baseTrademarkApplication.findGSbyInternalID(gsID).setMarkInUse(false);
+                    baseTrademarkApplication.findGSbyInternalID(gsID).setMarkInUseSet(true);
                 }
 
                 // get number of goods and services in class
@@ -324,7 +302,6 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                 // return success or failure
 
 
-
             }
 
             appFieldReadable = "Filing Basis Mark In Use";
@@ -332,12 +309,12 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
-        if(fbField.equals("fb-gs-date")){
+        if (fbField.equals("fb-gs-date")) {
             // ptoUser.setState(param); // sets state code
 
-            if(gsID.equals("all")){
+            if (gsID.equals("all")) {
 
-                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
 
                     GoodAndService current = iter.next();
 
@@ -347,16 +324,14 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                         current.setFirstGSDate(date);
                         current.setFirstGSDateSet(true);
 
-                    }
-                    catch(Exception ex){
+                    } catch (Exception ex) {
                         return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
 
                     }
 
                 }
 
-            }
-            else {
+            } else {
 
                 try {
                     DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
@@ -364,12 +339,10 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                     baseTrademarkApplication.findGSbyInternalID(gsID).setFirstGSDate(date);
                     baseTrademarkApplication.findGSbyInternalID(gsID).setFirstGSDateSet(true);
 
-                }
-                catch(Exception ex){
+                } catch (Exception ex) {
                     return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
 
                 }
-
 
 
             }
@@ -378,50 +351,46 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
-        if(fbField.equals("fb-mark-date")){
+        if (fbField.equals("fb-mark-date")) {
             // ptoUser.setState(param); // sets state code
 
-           if (gsID.equals("all")){
+            if (gsID.equals("all")) {
 
-               for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
 
-                   GoodAndService current = iter.next();
-
-
-
-                   try {
-                       DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-                       Date date = format.parse(fbValue);
-                       current.setFirstCommerceDate(date);
-                       current.setFirstCommerceDateSet(true);
-                   }
-                   catch(Exception ex){
-                       return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
-
-                   }
-
-               }
-
-           }
-           else {
-               try {
-                   DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-                   Date date = format.parse(fbValue);
-                   baseTrademarkApplication.findGSbyInternalID(gsID).setFirstCommerceDate(date);
-                   baseTrademarkApplication.findGSbyInternalID(gsID).setFirstCommerceDateSet(true);
-               }
-               catch(Exception ex){
-                   return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
-
-               }
+                    GoodAndService current = iter.next();
 
 
-           }
+                    try {
+                        DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+                        Date date = format.parse(fbValue);
+                        current.setFirstCommerceDate(date);
+                        current.setFirstCommerceDateSet(true);
+                    } catch (Exception ex) {
+                        return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
+
+                    }
+
+                }
+
+            } else {
+                try {
+                    DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+                    Date date = format.parse(fbValue);
+                    baseTrademarkApplication.findGSbyInternalID(gsID).setFirstCommerceDate(date);
+                    baseTrademarkApplication.findGSbyInternalID(gsID).setFirstCommerceDateSet(true);
+                } catch (Exception ex) {
+                    return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
+
+                }
+
+
+            }
 
             appFieldReadable = "Filing Basis First Commerce Date";
 
         }
-        if(fbField.equals("fb-sample-desc")){
+        if (fbField.equals("fb-sample-desc")) {
             // ptoUser.setState(param); // sets state code
 
             baseTrademarkApplication.findGSbyInternalID(gsID).setSampleDescription(fbValue);
@@ -430,14 +399,14 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
         }
 
-        if(fbField.equals("fb-provide-spec")){
+        if (fbField.equals("fb-provide-spec")) {
             // ptoUser.setState(param); // sets state code
 
-            if(fbValue.equals("yes")){
+            if (fbValue.equals("yes")) {
                 baseTrademarkApplication.findGSbyInternalID(gsID).setProvideSample(true);
 
             }
-            if(fbValue.equals("no")){
+            if (fbValue.equals("no")) {
                 baseTrademarkApplication.findGSbyInternalID(gsID).setProvideSample(false);
 
 
@@ -448,18 +417,16 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
-        if(fbField.equals("gs-pfa-option")){
+        if (fbField.equals("gs-pfa-option")) {
             // ptoUser.setState(param); // sets state code
 
-            if(fbValue.equals("yes")){
+            if (fbValue.equals("yes")) {
                 baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
 
 
-
             }
-            if(fbValue.equals("no")){
+            if (fbValue.equals("no")) {
                 baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(false);
-
 
 
             }
@@ -469,23 +436,16 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
         // class level equivalent
 
-
-
-
-
-
-        if(fbField.equals("gs-pfr-option")){
+        if (fbField.equals("gs-pfr-option")) {
             // ptoUser.setState(param); // sets state code
 
-            if(fbValue.equals("yes")){
+            if (fbValue.equals("yes")) {
                 baseTrademarkApplication.findGSbyInternalID(gsID).setForeignRegistration(true);
 
 
-
             }
-            if(fbValue.equals("no")){
+            if (fbValue.equals("no")) {
                 baseTrademarkApplication.findGSbyInternalID(gsID).setForeignRegistration(false);
-
 
 
             }
@@ -494,20 +454,18 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
         }
 
-        if(fbField.equals("gs-pna-option")){
+        if (fbField.equals("gs-pna-option")) {
             // ptoUser.setState(param); // sets state code
 
-            if(fbValue.equals("yes")){
+            if (fbValue.equals("yes")) {
                 baseTrademarkApplication.findGSbyInternalID(gsID).setForeignAR_NA(true);
                 baseTrademarkApplication.findGSbyInternalID(gsID).setForeignRegistration(false);
                 baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(false);
 
 
-
             }
-            if(fbValue.equals("no")){
+            if (fbValue.equals("no")) {
                 baseTrademarkApplication.findGSbyInternalID(gsID).setForeignAR_NA(false);
-
 
 
             }
@@ -517,23 +475,21 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
-        if(fbField.equals("gs-pfa-country")){
+        if (fbField.equals("gs-pfa-country")) {
             // ptoUser.setState(param); // sets state code
 
 
-            if(gsID.equals("all")){
+            if (gsID.equals("all")) {
 
-                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
 
                     GoodAndService current = iter.next();
                     current.setFaCountry(fbValue);
                 }
-            }
-            else {
+            } else {
                 baseTrademarkApplication.findGSbyInternalID(gsID).setFaCountry(fbValue);
 
             }
-
 
 
             appFieldReadable = "Filing Basis Pending Foreign Application Country";
@@ -541,22 +497,20 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
-        if(fbField.equals("gs-pfa-app-Number")){
+        if (fbField.equals("gs-pfa-app-Number")) {
             // ptoUser.setState(param); // sets state code
 
-            if(gsID.equals("all")){
+            if (gsID.equals("all")) {
 
-                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
 
                     GoodAndService current = iter.next();
                     current.setFaRegistrationNumber(fbValue);
                 }
-            }
-            else {
+            } else {
                 baseTrademarkApplication.findGSbyInternalID(gsID).setFaRegistrationNumber(fbValue);
 
             }
-
 
 
             appFieldReadable = "Filing Basis Pending Foreign Application Number";
@@ -564,10 +518,10 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
-        if(fbField.equals("gs-pfa-filing-date")){
-            if(gsID.equals("all")){
+        if (fbField.equals("gs-pfa-filing-date")) {
+            if (gsID.equals("all")) {
 
-                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
 
                     GoodAndService current = iter.next();
 
@@ -576,21 +530,18 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                         Date date = format.parse(fbValue);
                         current.setFaFilingDate(date);
 
-                    }
-                    catch(Exception ex){
+                    } catch (Exception ex) {
                         return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
 
                     }
                 }
-            }
-            else {
+            } else {
                 try {
                     DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
                     Date date = format.parse(fbValue);
                     baseTrademarkApplication.findGSbyInternalID(gsID).setFaFilingDate(date);
 
-                }
-                catch(Exception ex){
+                } catch (Exception ex) {
                     return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
 
                 }
@@ -602,51 +553,47 @@ public class Goods_ServicesService  extends BaseRESTapiService{
 
         }
 
-        if(fbField.equals("gs-pfr-country")){
+        if (fbField.equals("gs-pfr-country")) {
             // ptoUser.setState(param); // sets state code
 
-            if(gsID.equals("all")){
+            if (gsID.equals("all")) {
 
-                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
 
                     GoodAndService current = iter.next();
                     current.setFrCountry(fbValue);
                 }
-            }
-            else {
+            } else {
                 baseTrademarkApplication.findGSbyInternalID(gsID).setFrCountry(fbValue);
             }
-
 
 
             appFieldReadable = "Filing Basis Foreign Registration Country";
 
         }
 
-        if(fbField.equals("gs-pfr-reg-Number")){
+        if (fbField.equals("gs-pfr-reg-Number")) {
             // ptoUser.setState(param); // sets state code
-            if(gsID.equals("all")){
+            if (gsID.equals("all")) {
 
-                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
 
                     GoodAndService current = iter.next();
                     current.setFrRegistartionNumber(fbValue);
                 }
-            }
-            else {
+            } else {
                 baseTrademarkApplication.findGSbyInternalID(gsID).setFrRegistartionNumber(fbValue);
             }
-
 
 
             appFieldReadable = "Filing Basis Foreign Registration Number";
 
         }
 
-        if(fbField.equals("gs-pfr-reg-date")){
-            if(gsID.equals("all")){
+        if (fbField.equals("gs-pfr-reg-date")) {
+            if (gsID.equals("all")) {
 
-                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
 
                     GoodAndService current = iter.next();
 
@@ -655,21 +602,18 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                         Date date = format.parse(fbValue);
                         current.setFrRegistrationDate(date);
 
-                    }
-                    catch(Exception ex){
+                    } catch (Exception ex) {
                         return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
 
                     }
                 }
-            }
-            else {
+            } else {
                 try {
                     DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
                     Date date = format.parse(fbValue);
                     baseTrademarkApplication.findGSbyInternalID(gsID).setFrRegistrationDate(date);
 
-                }
-                catch(Exception ex){
+                } catch (Exception ex) {
                     return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
 
                 }
@@ -682,10 +626,10 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
-        if(fbField.equals("gs-pfr-exp-date")){
-            if(gsID.equals("all")){
+        if (fbField.equals("gs-pfr-exp-date")) {
+            if (gsID.equals("all")) {
 
-                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
 
                     GoodAndService current = iter.next();
                     try {
@@ -693,33 +637,29 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                         Date date = format.parse(fbValue);
                         current.setFrExpirationDate(date);
 
-                    }
-                    catch(Exception ex){
+                    } catch (Exception ex) {
                         return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
 
                     }
                 }
-            }
-            else {
+            } else {
                 try {
                     DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
                     Date date = format.parse(fbValue);
                     baseTrademarkApplication.findGSbyInternalID(gsID).setFrExpirationDate(date);
 
-                }
-                catch(Exception ex){
+                } catch (Exception ex) {
                     return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
 
                 }
             }
 
 
-
             appFieldReadable = "Filing Basis Foreign Registration Expiration Date";
 
         }
 
-        if(fbField.equals("gs-pfr-renew-date")){
+        if (fbField.equals("gs-pfr-renew-date")) {
             // ptoUser.setState(param); // sets state code
 
             // baseTrademarkApplication.findGSbyInternalID(gsID).setFaRegistrationNumber(fbValue);
@@ -729,8 +669,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                 Date date = format.parse(fbValue);
                 baseTrademarkApplication.findGSbyInternalID(gsID).setFrRenewlDate(date);
 
-            }
-            catch(Exception ex){
+            } catch (Exception ex) {
                 return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
 
             }
@@ -739,35 +678,94 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
+        if (fbField.equals("gs-last-use-date")) {
+            // ptoUser.setState(param); // sets state code
+
+            // baseTrademarkApplication.findGSbyInternalID(gsID).setFaRegistrationNumber(fbValue);
+
+            try {
+                DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+                Date date = format.parse(fbValue);
+                baseTrademarkApplication.findGSbyInternalID(gsID).setDateOfLastUse(date);
+
+            } catch (Exception ex) {
+                return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
+
+            }
+            appFieldReadable = "Filing Basis date of last use";
+
+        }
+
+        if (fbField.equals("gs-resume-use-date")) {
+            // ptoUser.setState(param); // sets state code
+
+            // baseTrademarkApplication.findGSbyInternalID(gsID).setFaRegistrationNumber(fbValue);
+
+            try {
+                DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+                Date date = format.parse(fbValue);
+                baseTrademarkApplication.findGSbyInternalID(gsID).setDateOfResumeUse(date);
+
+            } catch (Exception ex) {
+                return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
+
+            }
+            appFieldReadable = "Filing Basis date of resume use";
+
+        }
+
+        if (fbField.equals("gs-none-use-reason")) {
+            // ptoUser.setState(param); // sets state code
+
+            baseTrademarkApplication.findGSbyInternalID(gsID).setNoneUseReason(fbValue);
+
+            appFieldReadable = "Filing Basis none use reasone";
+
+        }
+
+        if (fbField.equals("gs-none-use-reason")) {
+            // ptoUser.setState(param); // sets state code
+
+            baseTrademarkApplication.findGSbyInternalID(gsID).setNoneUseReason(fbValue);
+
+            appFieldReadable = "Filing Basis none use reasone";
+
+        }
+
+        if (fbField.equals("gs-steps-resume-use")) {
+            // ptoUser.setState(param); // sets state code
+
+            baseTrademarkApplication.findGSbyInternalID(gsID).setStepsResumeUse(fbValue);
+
+            appFieldReadable = "Filing Basis steps to resume use";
+
+        }
+
+
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
-        String responseMsg = appFieldReadable+" has been saved";
+        String responseMsg = appFieldReadable + " has been saved";
 
         return buildResponseEnity("200", responseMsg);
     }
 
 
-
-
-
-    @CrossOrigin(origins = {"https://localhost","https://efile-reimagined.com"})
-    @RequestMapping(method = GET, value="/REST/apiGateway/CC/fb/update/{ccField}/{ccValue}/{ccNumber}/{appInternalID}")
+    @CrossOrigin(origins = {"https://localhost", "https://efile-reimagined.com"})
+    @RequestMapping(method = GET, value = "/REST/apiGateway/CC/fb/update/{ccField}/{ccValue}/{ccNumber}/{appInternalID}")
     @ResponseBody
-    ResponseEntity<String> updateFilingBasisForClassCategory(@PathVariable String ccField , @PathVariable String ccValue,  @PathVariable String ccNumber, @PathVariable String appInternalID){
+    ResponseEntity<String> updateFilingBasisForClassCategory(@PathVariable String ccField, @PathVariable String ccValue, @PathVariable String ccNumber, @PathVariable String appInternalID) {
 
         String appFieldReadable = "";
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
 
 
-
-
-        if(ccField.equals("cc-spec-descr")){
+        if (ccField.equals("cc-spec-descr")) {
             // ptoUser.setState(param); // sets state code
 
-            for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+            for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
                 GoodAndService current = iter.next();
 
-                if(current.getClassNumber().equals(ccNumber)){
+                if (current.getClassNumber().equals(ccNumber)) {
                     current.setClassSpecimenDescr(ccValue);
 
                 }
@@ -778,30 +776,28 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
-        if(ccField.equals("cc-in-use-one")){
+        if (ccField.equals("cc-in-use-one")) {
             // ptoUser.setState(param); // sets state code
-            if(ccValue.equals("yes")){
+            if (ccValue.equals("yes")) {
 
-                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
                     GoodAndService current = iter.next();
 
-                    if(current.getClassNumber().equals(ccNumber)){
-                       current.setAtLeastOneGoodInCommerceClassFlag(true);
-                       current.setAtLeastOneGoodInCommerceClassFlagSet(true);
+                    if (current.getClassNumber().equals(ccNumber)) {
+                        current.setAtLeastOneGoodInCommerceClassFlag(true);
+                        current.setAtLeastOneGoodInCommerceClassFlagSet(true);
                         current.setMarkInUse(false);
                         current.setMarkInUseSet(false);
-
 
 
                     }
                 }
 
-            }
-            else {
-                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+            } else {
+                for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
                     GoodAndService current = iter.next();
 
-                    if(current.getClassNumber().equals(ccNumber)){
+                    if (current.getClassNumber().equals(ccNumber)) {
                         current.setAtLeastOneGoodInCommerceClassFlag(false);
                         current.setAtLeastOneGoodInCommerceClassFlagSet(true);
                         current.setProvideSpecimenForAllGS(false);
@@ -818,20 +814,18 @@ public class Goods_ServicesService  extends BaseRESTapiService{
             // we need to loop through each goods and services and update its in use flag
 
 
-
-
             appFieldReadable = "Class level option";
 
         }
 
-        if(ccField.equals("cc-specimen-class-opt")){
+        if (ccField.equals("cc-specimen-class-opt")) {
             // ptoUser.setState(param); // sets state code
-            if(ccValue.equals("yes")){
+            if (ccValue.equals("yes")) {
 
-                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
                     GoodAndService current = iter.next();
 
-                    if(current.getClassNumber().equals(ccNumber)){
+                    if (current.getClassNumber().equals(ccNumber)) {
                         current.setProvideSpecimenForAllGS(true);
                         current.setProvideSpecimenForAllGSSet(true);
 
@@ -839,12 +833,11 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                     }
                 }
 
-            }
-            else {
-                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+            } else {
+                for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
                     GoodAndService current = iter.next();
 
-                    if(current.getClassNumber().equals(ccNumber)){
+                    if (current.getClassNumber().equals(ccNumber)) {
                         current.setProvideSpecimenForAllGS(false);
                         current.setProvideSpecimenForAllGSSet(true);
 
@@ -859,10 +852,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
-
-
-
-        if(ccField.equals("cc-pfa-option")) {
+        if (ccField.equals("cc-pfa-option")) {
 
             //baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
             if (ccValue.equals("yes")) {
@@ -875,7 +865,6 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                         current.setPendingFAAllGS(true);
                         current.setMarkInUse(true);
                         current.setMarkInUseSet(true);
-
 
 
                     }
@@ -903,7 +892,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
-        if(ccField.equals("cc-pfr-option")) {
+        if (ccField.equals("cc-pfr-option")) {
 
             //baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
             if (ccValue.equals("yes")) {
@@ -943,7 +932,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
-        if(ccField.equals("cc-pna-option")) {
+        if (ccField.equals("cc-pna-option")) {
 
             //baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
             if (ccValue.equals("yes")) {
@@ -983,7 +972,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
-        if(ccField.equals("cc-pfa-country")) {
+        if (ccField.equals("cc-pfa-country")) {
 
             //baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
 
@@ -996,20 +985,15 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                     current.setFaCountry(ccValue);
 
 
-
-
                 }
             }
-
-
-
 
 
             appFieldReadable = "Filing basis foreign application country Class level Option";
         }
 
 
-        if(ccField.equals("cc-pfa-app-Number")) {
+        if (ccField.equals("cc-pfa-app-Number")) {
 
             //baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
 
@@ -1026,14 +1010,11 @@ public class Goods_ServicesService  extends BaseRESTapiService{
             }
 
 
-
-
-
             appFieldReadable = "Filing basis foreign application number Class level Option";
         }
 
 
-        if(ccField.equals("cc-pfa-filing-date")) {
+        if (ccField.equals("cc-pfa-filing-date")) {
 
             //baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
 
@@ -1042,7 +1023,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                 GoodAndService current = iter.next();
 
                 if (current.getClassNumber().equals(ccNumber)) {
-                   //current.setFaFilingDate(ccValue);
+                    //current.setFaFilingDate(ccValue);
 
                     try {
                         DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
@@ -1050,13 +1031,10 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                         current.setFaFilingDate(date);
                         current.setFaFilingDateCC(date);
 
-                    }
-                    catch(Exception ex){
+                    } catch (Exception ex) {
                         return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
 
                     }
-
-
 
 
                 }
@@ -1067,7 +1045,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
-        if(ccField.equals("cc-pfr-country")) {
+        if (ccField.equals("cc-pfr-country")) {
 
             //baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
 
@@ -1084,14 +1062,11 @@ public class Goods_ServicesService  extends BaseRESTapiService{
             }
 
 
-
-
-
             appFieldReadable = "Filing basis foreign registration country Class level Option";
         }
 
 
-        if(ccField.equals("cc-pfr-reg-Number")) {
+        if (ccField.equals("cc-pfr-reg-Number")) {
 
             //baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
 
@@ -1100,23 +1075,19 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                 GoodAndService current = iter.next();
 
                 if (current.getClassNumber().equals(ccNumber)) {
-                     current.setFrRegistartionNumber(ccValue);
-                     current.setFrRegistrationNumberCC(ccValue);
+                    current.setFrRegistartionNumber(ccValue);
+                    current.setFrRegistrationNumberCC(ccValue);
 
 
                 }
             }
 
 
-
-
-
             appFieldReadable = "Filing basis foreign registration number Class level Option";
         }
 
 
-
-        if(ccField.equals("cc-pfr-reg-date")) {
+        if (ccField.equals("cc-pfr-reg-date")) {
 
             //baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
 
@@ -1133,13 +1104,10 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                         current.setFrRegistrationDate(date);
                         current.setFrRegistrationDateCC(date);
 
-                    }
-                    catch(Exception ex){
+                    } catch (Exception ex) {
                         return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
 
                     }
-
-
 
 
                 }
@@ -1149,7 +1117,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
             appFieldReadable = "Filing basis foreign registration date Class level Option";
         }
 
-        if(ccField.equals("cc-pfr-exp-date")) {
+        if (ccField.equals("cc-pfr-exp-date")) {
 
             //baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
 
@@ -1166,13 +1134,10 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                         current.setFrExpirationDate(date);
                         current.setFrExpireDateCC(date);
 
-                    }
-                    catch(Exception ex){
+                    } catch (Exception ex) {
                         return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
 
                     }
-
-
 
 
                 }
@@ -1183,7 +1148,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
-        if(ccField.equals("cc-pfr-renew-date")) {
+        if (ccField.equals("cc-pfr-renew-date")) {
 
             //baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
 
@@ -1200,13 +1165,10 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                         current.setFrRenewlDate(date);
                         current.setFrRenewalDateCC(date);
 
-                    }
-                    catch(Exception ex){
+                    } catch (Exception ex) {
                         return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
 
                     }
-
-
 
 
                 }
@@ -1217,7 +1179,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
-        if(ccField.equals("cc-gs-date")) {
+        if (ccField.equals("cc-gs-date")) {
 
             //baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
 
@@ -1226,7 +1188,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                 GoodAndService current = iter.next();
 
 
-                System.out.println("class number : "+ccNumber);
+                System.out.println("class number : " + ccNumber);
 
                 if (current.getClassNumber().equals(ccNumber)) {
                     //current.setFaFilingDate(ccValue);
@@ -1243,13 +1205,10 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                         //current.setFaFilingDateCC(date);
                         current.setFirstGSDateCC(date);
 
-                    }
-                    catch(Exception ex){
+                    } catch (Exception ex) {
                         return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
 
                     }
-
-
 
 
                 }
@@ -1259,7 +1218,7 @@ public class Goods_ServicesService  extends BaseRESTapiService{
             appFieldReadable = "Filing basis first goods and services date Class level Option";
         }
 
-        if(ccField.equals("cc-mark-date")) {
+        if (ccField.equals("cc-mark-date")) {
 
             //baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
 
@@ -1282,13 +1241,10 @@ public class Goods_ServicesService  extends BaseRESTapiService{
                         //current.setFaFilingDateCC(date);
                         current.setFirstMarkDateCC(date);
 
-                    }
-                    catch(Exception ex){
+                    } catch (Exception ex) {
                         return buildResponseEnity("420", "ERROR: Could not save Date, invalid Date format");
 
                     }
-
-
 
 
                 }
@@ -1299,7 +1255,27 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
-        if(ccField.equals("cc-all-gs-in-use")) {
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+        String responseMsg = appFieldReadable + " has been saved";
+
+
+        // check if required action for filing extension is done and return code 420 if completed
+
+        return buildResponseEnity("200", responseMsg);
+    }
+
+
+    @CrossOrigin(origins = {"https://localhost", "https://efile-reimagined.com"})
+    @RequestMapping(method = GET, value = "/REST/apiGateway/CC/section8/update/{ccField}/{ccValue}/{ccNumber}/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> updateFilingBasisForClassCategorySection8OfficeAction(@PathVariable String ccField, @PathVariable String ccValue, @PathVariable String ccNumber, @PathVariable String appInternalID) {
+
+        String appFieldReadable = "";
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+
+
+        if (ccField.equals("cc-all-gs-in-use")) {
 
             //baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
 
@@ -1307,22 +1283,24 @@ public class Goods_ServicesService  extends BaseRESTapiService{
             for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
                 GoodAndService current = iter.next();
 
-                System.out.println("cc number : "+ccNumber);
-                System.out.println("current class number for gs : "+current.getClassNumber());
+                System.out.println("cc number : " + ccNumber);
+                System.out.println("current class number for gs : " + current.getClassNumber());
                 if (current.getClassNumber().equals(ccNumber)) {
                     //current.setFaFilingDate(ccValue);
 
-                    System.out.println("cc value : "+ccValue);
+                    System.out.println("cc value : " + ccValue);
 
-                    if(ccValue.equals("yes")){
+                    if (ccValue.equals("yes")) {
                         current.setMarkInUseAllGSinClass(true);
-                    }
-                    else {
+                        current.setMarkInUse(true);
+                        current.setMarkInUseSet(true);
+
+                    } else {
                         current.setMarkInUseAllGSinClass(false);
+                        current.setMarkInUse(false);
+                        current.setMarkInUseSet(true);
 
                     }
-
-
 
 
                 }
@@ -1333,10 +1311,88 @@ public class Goods_ServicesService  extends BaseRESTapiService{
         }
 
 
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+        String responseMsg = appFieldReadable + " has been saved";
+
+
+        boolean requiredActionComplete = true;
+        for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+            GoodAndService current = iter.next();
+            if (current.isMarkInUse() == false && current.isExcusebleNoneUseForGS() == false) {
+                requiredActionComplete = false;
+            }
+        }
+
+        String statusCode = "200";
+        if (requiredActionComplete == true) {
+            statusCode = "420";
+        }
+        return buildResponseEnity(statusCode, responseMsg);
+
+    }
+
+
+    @CrossOrigin(origins = {"https://localhost", "https://efile-reimagined.com"})
+    @RequestMapping(method = GET, value = "/REST/apiGateway/GS/section8/update/{fbField}/{fbValue}/{gsID}/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> updateFilingBasisForGoodsServcicesSection8(@PathVariable String fbField, @PathVariable String fbValue, @PathVariable String gsID, @PathVariable String appInternalID) {
+
+        String appFieldReadable = "";
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+
+
+        if (fbField.equals("fb-mark-in-use")) {
+            if (fbValue.equals("yes")) {
+                baseTrademarkApplication.findGSbyInternalID(gsID).setMarkInUse(true);
+                baseTrademarkApplication.findGSbyInternalID(gsID).setMarkInUseSet(true);
+                baseTrademarkApplication.findGSbyInternalID(gsID).setExcusedNoneUse(false);
+
+
+            }
+
+
+            appFieldReadable = "Filing Basis Mark In Use options";
+
+        }
+        if (fbField.equals("fb-excused-none-use")) {
+            if (fbValue.equals("yes")) {
+                baseTrademarkApplication.findGSbyInternalID(gsID).setMarkInUse(false);
+                baseTrademarkApplication.findGSbyInternalID(gsID).setMarkInUseSet(true);
+                baseTrademarkApplication.findGSbyInternalID(gsID).setExcusedNoneUse(true);
+
+
+            }
+
+
+            appFieldReadable = "Filing Basis Mark In Use options";
+
+        }
+
+
+
+
 
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
-        String responseMsg = appFieldReadable+" has been saved";
+        String responseMsg = appFieldReadable + " has been saved";
 
-        return buildResponseEnity("200", responseMsg);
+
+        boolean requiredActionComplete = true;
+        for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+            GoodAndService current = iter.next();
+            if (current.isMarkInUse() == false && current.isExcusebleNoneUseForGS() == false) {
+                requiredActionComplete = false;
+            }
+        }
+
+        String statusCode = "200";
+        if (requiredActionComplete == true) {
+            statusCode = "420";
+        }
+        return buildResponseEnity(statusCode, responseMsg);
     }
+
+
+
+
 }

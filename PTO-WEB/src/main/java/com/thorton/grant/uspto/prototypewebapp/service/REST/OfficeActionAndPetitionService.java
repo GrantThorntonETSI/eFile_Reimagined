@@ -574,11 +574,6 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
     }
 
 
-
-
-
-
-
     @CrossOrigin(origins = {"https://localhost","https://efile-reimagined.com"})
     @RequestMapping(method = GET, value="/REST/apiGateway/OfficeAction/noa/response/update/{pField}/{pValue}/{OfficeActionID}/{ccID}/{appInternalID}")
     @ResponseBody
@@ -599,6 +594,7 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
         // need to create class level field is mark in use for all gs in this class
 
         // need to create this value at the gs level and propogate up
+
 
         for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
             GoodAndService current = iter.next();
@@ -644,7 +640,48 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
 
 
 
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/OfficeAction/section8/optional/{OfficeActionID}/{field}/{value}/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> saveOAsection8optional(@PathVariable String OfficeActionID, @PathVariable String field ,@PathVariable String value,  @PathVariable String appInternalID){
 
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+
+        if(field.equals("oa-section8-optional")){
+
+            if(value.equals("yes")){
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).setOptionalSection8(true);
+
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).setOptionalSection8Set(true);
+
+                // set section8 prev link to section 8 optional
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).setSection8PrevLink("../../../postReg/section8/incontestable/"+OfficeActionID+"/?trademarkID="+appInternalID);
+
+                // this is used on the optional action page
+
+
+            }
+            else {
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).setOptionalSection8(false);
+
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).setOptionalSection8Set(true);
+
+                // set section 8 prev link to section 8
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).setSection8PrevLink("../../../renew/response//"+OfficeActionID+"/?trademarkID="+appInternalID);
+
+            }
+
+        }
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+        String responseMsg = "section 8 optional action" + " status has been saved";
+
+
+        return buildResponseEnity("200", responseMsg);
+    }
 
 
 

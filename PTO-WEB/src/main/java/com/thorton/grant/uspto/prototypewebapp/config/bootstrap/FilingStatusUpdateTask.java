@@ -626,6 +626,7 @@ public class FilingStatusUpdateTask extends TimerTask {
                     noa.setActiveAction(true);
                     long dueDate = new Date().getTime()+current.getBlackOutPeriod()+current.getOfficeActionResponsePeriod();
                     noa.setDueDate(new Date(dueDate));
+                    noa.setActionType("section8");
 
 
                     // you have to provide at least one disclaimer
