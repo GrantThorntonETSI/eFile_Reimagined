@@ -671,7 +671,7 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
                 baseTrademarkApplication.findOfficeActionById(OfficeActionID).setOptionalSection8Set(true);
 
                 // set section 8 prev link to section 8
-                baseTrademarkApplication.findOfficeActionById(OfficeActionID).setSection8PrevLink("../../../renew/response//"+OfficeActionID+"/?trademarkID="+appInternalID);
+                baseTrademarkApplication.findOfficeActionById(OfficeActionID).setSection8PrevLink("../../../renew/response/"+OfficeActionID+"/?trademarkID="+appInternalID);
 
                 baseTrademarkApplication.findOfficeActionById(OfficeActionID).setActionType("section8");
 
