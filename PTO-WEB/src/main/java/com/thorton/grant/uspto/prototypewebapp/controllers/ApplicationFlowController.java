@@ -4971,12 +4971,24 @@ public class ApplicationFlowController {
 
 
         baseTrademarkApplication.findOfficeActionById(actionID).setOptianlCompleted(true);
-        if(baseTrademarkApplication.isTEASPlusApplication()){
-            baseTrademarkApplication.setFilingStatus("TEAS RF New Application");
+       // baseTrademarkApplication.findOfficeActionById(actionID).setActiveAction(false);
+
+        if(baseTrademarkApplication.getApplicationRegisteredDate() != null ){
+
+                baseTrademarkApplication.setFilingStatus("Registered");
+
+
         }
-        else {
-            baseTrademarkApplication.setFilingStatus("New Application");
+        else{
+            if(baseTrademarkApplication.isTEASPlusApplication()){
+                baseTrademarkApplication.setFilingStatus("TEAS RF New Application");
+            }
+            else {
+                baseTrademarkApplication.setFilingStatus("New Application");
+            }
+
         }
+
 
         FilingDocumentEvent filingDocumentEvent = new FilingDocumentEvent();
         filingDocumentEvent.setEventDescription("Response to Office Action");

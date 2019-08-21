@@ -426,7 +426,7 @@
             location.href=prevLink;
         });
 
-        checkActivateLink();
+        //checkActivateLink();
 
         // ajax auto save for authorization declaration.
         // unclick. this will enable the sign section
@@ -599,7 +599,7 @@
     function checkActivateLink() {
 
 
-        if($('#signature').val() !="" && $('#signatoryname').val()!="" && $('#signatoryposition').val()!=""){
+        if($('#signature').val().length > 0  && $('#signatoryname').val().length > 0  && $('#signatoryposition').val().length > 0 ){
             $('#nextButton').attr("disabled",false);
         }
     }
@@ -707,7 +707,7 @@
                         $(".autoSaveMessageArea span").fadeIn(1000);
                     }, 500);
 
-                    $('.next').attr("disabled", false);
+                    //$('.next').attr("disabled", false);
 
                 }
 

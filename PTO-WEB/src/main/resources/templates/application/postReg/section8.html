@@ -1049,7 +1049,7 @@
             $(this).parent().parent().next().next().hide(500);
             $(this).parent().parent().next().show(500);
             var gsID= $(this).attr("name");
-            addFilingBasisInfoToGoodAndServiceSection8("fb-mark-in-use", "yes", gsID, appInternalID);
+            addFilingBasisInfoToGoodAndServiceSection8("fb-mark-in-use", "yes", OfficeActionID, gsID, appInternalID);
 
         });
 
@@ -1057,7 +1057,7 @@
             $(this).parent().parent().next().hide(500);
             $(this).parent().parent().next().next().show(500);
             var gsID= $(this).attr("name");
-            addFilingBasisInfoToGoodAndServiceSection8("fb-excused-none-use", "yes", gsID, appInternalID);
+            addFilingBasisInfoToGoodAndServiceSection8("fb-excused-none-use", "yes", OfficeActionID, gsID, appInternalID);
 
         });
 
@@ -1392,14 +1392,14 @@
     }
 
 
-    function addFilingBasisInfoToGoodAndServiceSection8(fbFieldName, fbFieldValue, gsID, appInternalID) {
+    function addFilingBasisInfoToGoodAndServiceSection8(fbFieldName, fbFieldValue, actionID, gsID, appInternalID) {
 
         //var field_value = $(this).val();
         //alert(field_value);
 
 
         $.ajax({
-            url: "../../../../REST/apiGateway/GS/section8/update/"+fbFieldName+"/"+fbFieldValue+"/"+gsID+"/"+appInternalID,
+            url: "../../../../REST/apiGateway/GS/section8/update/"+fbFieldName+"/"+fbFieldValue+"/"+ actionID+"/"+gsID+"/"+appInternalID,
             type: 'GET',
             success: function(data){
 

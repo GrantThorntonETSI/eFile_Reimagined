@@ -493,7 +493,7 @@ public class FilingStatusUpdateTask extends TimerTask {
                           // filing can now be registered
                           // create registration number for filing
                           // start this number at 9000000
-                            current.setFilingStatus("Registered Filing");
+                            current.setFilingStatus("Registered");
                             counter++;
                             current.setRegistrationID(String.valueOf(counter));
 
@@ -603,11 +603,16 @@ public class FilingStatusUpdateTask extends TimerTask {
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
 
 
+
+
+
+
+
         for(Iterator<BaseTrademarkApplication> iter = baseTradeMarkApplicationService.findAll().iterator(); iter.hasNext(); ) {
 
             BaseTrademarkApplication current = iter.next();
 
-            if( current.getApplicationRegisteredDate() != null && current.getFilingStatus().equals("Registered Filing")){
+            if( current.getApplicationRegisteredDate() != null && current.getFilingStatus().equals("Registered")){
                 // check if allowance has expired ...use accepted date + issuance of allowance period
 
                 if((current.getApplicationRegistrationRenewDate().getTime() + current.getRecurringFilingExtensionInterval()) < new Date().getTime()){
@@ -636,7 +641,7 @@ public class FilingStatusUpdateTask extends TimerTask {
                     noa.addRequiredActions(requiredActions);
 
 
-                    current.setFilingStatus("Registered Filing - expired");
+                    current.setFilingStatus("Registration - expired");
                     noa.setOfficeActionCode("Use Statement Renew");
 
 

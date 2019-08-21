@@ -3,6 +3,7 @@ package com.thorton.grant.uspto.prototypewebapp.service.REST;
 import com.thorton.grant.uspto.prototypewebapp.config.host.bean.endPoint.HostBean;
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.RequiredActions;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.GSClassCategory;
@@ -615,10 +616,13 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
 
 
 
-        for(Iterator<GSClassCategory> iterClass = baseTrademarkApplication.getGoodAndServicesCategories().iterator(); iterClass.hasNext(); ) {
-            GSClassCategory currentClass = iterClass.next();
-            if(currentClass.isMarkInUseAllGS() == false){
-                returnCode = "200";
+        for(Iterator<GoodAndService> iterClass = baseTrademarkApplication.getGoodAndServices().iterator(); iterClass.hasNext(); ) {
+            GoodAndService currentGS = iterClass.next();
+            if(currentGS.isMarkInUse() == false ){
+                if(currentGS.isExcusedNoneUse() == false){
+                    returnCode = "200";
+                }
+
             }
         }
 
@@ -627,8 +631,20 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
         // then loop through all classes and determine return status code
 
 
+        if(returnCode.equals("420")){
+            // reset application renew date
+            baseTrademarkApplication.setApplicationRegistrationRenewDate(new Date());
+
+            for(Iterator<RequiredActions> iterRA = baseTrademarkApplication.findOfficeActionById(OfficeActionID).getRequiredActions().iterator(); iterRA.hasNext(); ) {
+                RequiredActions current = iterRA.next();
+                current.setRequiredActionCompleted(true);
+
+            }
 
 
+        }
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
         // remember to set required actions to complete afterwards
 

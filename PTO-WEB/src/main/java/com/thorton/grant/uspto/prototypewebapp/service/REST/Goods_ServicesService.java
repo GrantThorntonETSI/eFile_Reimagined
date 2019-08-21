@@ -4,6 +4,7 @@ import com.thorton.grant.uspto.prototypewebapp.config.host.bean.endPoint.HostBea
 import com.thorton.grant.uspto.prototypewebapp.factories.ServiceBeanFactory;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.application.types.BaseTradeMarkApplicationService;
 import com.thorton.grant.uspto.prototypewebapp.interfaces.USPTO.tradeMark.asset.GoodsAndServicesService;
+import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.actions.RequiredActions;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.application.types.BaseTrademarkApplication;
 import com.thorton.grant.uspto.prototypewebapp.model.entities.USPTO.tradeMark.assets.GoodAndService;
 import org.springframework.http.ResponseEntity;
@@ -1333,9 +1334,9 @@ public class Goods_ServicesService  extends BaseRESTapiService {
 
 
     @CrossOrigin(origins = {"https://localhost", "https://efile-reimagined.com"})
-    @RequestMapping(method = GET, value = "/REST/apiGateway/GS/section8/update/{fbField}/{fbValue}/{gsID}/{appInternalID}")
+    @RequestMapping(method = GET, value = "/REST/apiGateway/GS/section8/update/{fbField}/{fbValue}/{OfficeActionID}/{gsID}/{appInternalID}")
     @ResponseBody
-    ResponseEntity<String> updateFilingBasisForGoodsServcicesSection8(@PathVariable String fbField, @PathVariable String fbValue, @PathVariable String gsID, @PathVariable String appInternalID) {
+    ResponseEntity<String> updateFilingBasisForGoodsServcicesSection8(@PathVariable String fbField, @PathVariable String fbValue,@PathVariable String OfficeActionID,  @PathVariable String gsID, @PathVariable String appInternalID) {
 
         String appFieldReadable = "";
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
@@ -1376,20 +1377,37 @@ public class Goods_ServicesService  extends BaseRESTapiService {
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
         String responseMsg = appFieldReadable + " has been saved";
 
+        String returnCode = "420";
+        for(Iterator<GoodAndService> iterClass = baseTrademarkApplication.getGoodAndServices().iterator(); iterClass.hasNext(); ) {
+            GoodAndService currentGS = iterClass.next();
+            if(currentGS.isMarkInUse() == false ){
+                if(currentGS.isExcusedNoneUse() == false){
+                    returnCode = "200";
+                }
 
-        boolean requiredActionComplete = true;
-        for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
-            GoodAndService current = iter.next();
-            if (current.isMarkInUse() == false && current.isExcusebleNoneUseForGS() == false) {
-                requiredActionComplete = false;
             }
         }
 
-        String statusCode = "200";
-        if (requiredActionComplete == true) {
-            statusCode = "420";
+        // set this value for the specific class. // i.e loop through all gs that match class number
+
+        // then loop through all classes and determine return status code
+
+
+        if(returnCode.equals("420")){
+            // reset application renew date
+            baseTrademarkApplication.setApplicationRegistrationRenewDate(new Date());
+
+            for(Iterator<RequiredActions> iterRA = baseTrademarkApplication.findOfficeActionById(OfficeActionID).getRequiredActions().iterator(); iterRA.hasNext(); ) {
+                RequiredActions current = iterRA.next();
+                current.setRequiredActionCompleted(true);
+
+            }
+
+
         }
-        return buildResponseEnity(statusCode, responseMsg);
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+        return buildResponseEnity(returnCode, responseMsg);
     }
 
 
