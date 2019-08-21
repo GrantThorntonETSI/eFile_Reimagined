@@ -86,7 +86,7 @@
                                     <option value="N/A">N/A</option>
                                 </select>
                             </div>
-                            <div class="form-group form-group-md col-xs-6">
+                            <div class="form-group form-group-md col-xs-12 col-sm-6">
                                 <label for="additional-name-type">Alternate name <a href="#" data-toggle="tooltip" title="Make selection below if the owner is doing bsiness as or trading under a different name." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> </label>
                                 <select class="form-control" id="additional-name-type" th:field="*{ownerType}">
                                     <option value="">Select</option>
@@ -96,7 +96,7 @@
                                     <option value="Formerly">Formerly</option>
                                 </select>
                             </div>
-                            <div class="form-group form-group-md col-xs-6" id="additionalNameValue" style="display: none;">
+                            <div class="form-group form-group-md col-xs-12 col-sm-6" id="additionalNameValue" style="display: none;">
                                 <label for="nameoftype">Name</label>
                                 <input type="text" class="form-control" id="nameoftype" name="nameoftype"  th:field="*{ownerAdditionalName}"  ><!--needs th:attribute-->
                             </div>
@@ -135,12 +135,12 @@
                                     <label for="partner-last-name"><span class="weight600">&#42;</span>Last name</label>
                                     <input id="partner-last-name" type="text" th:field="*{partnerDTOs[__${itemStat.index}__].lastName}"  name="lastName" class="form-control"  required>
                                 </div>
-                                <div class="form-group form-group-md col-xs-6">
+                                <div class="form-group form-group-md col-xs-6 col-sm-4 col-md-6">
                                     <label for="partner-suffix">Suffix</label>
                                     <input  class="form-control" id="partner-suffix" th:field="*{partnerDTOs[__${itemStat.index}__].suffix}" name="suffix" />
 
                                 </div>
-                                <div class="form-group form-group-md col-xs-6">
+                                <div class="form-group form-group-md col-xs-12 col-sm-8 col-md-6">
                                     <label for="partner-citizenship"><span class="weight600">&#42;</span>Country of citizenship</label>
                                     <select th:field="*{partnerDTOs[__${itemStat.index}__].citizenShip}" id="partner-citizenship"  class="form-control" name="owner-citizenship" required>
                                         <option value="">Select</option>
@@ -503,11 +503,11 @@
                                     <label for="partner-last-name"><span class="weight600">&#42;</span>Last name</label>
                                     <input id="partner-last-name2" type="text"  name="lastName" class="form-control" th:field="*{partner_last_name2}" >
                                 </div>
-                                <div class="form-group form-group-md col-xs-6">
+                                <div class="form-group form-group-md col-xs-6 col-sm-4 col-md-6">
                                     <label for="partner-suffix">Suffix</label>
                                     <input  class="form-control" id="partner-suffix2" name="suffix" th:field="*{partner_suffix2}" />
                                 </div>
-                                <div class="form-group form-group-md col-xs-6">
+                                <div class="form-group form-group-md col-xs-12 col-sm-8 col-md-6">
                                     <label for="partner-citizenship"><span class="weight600">&#42;</span>Country of citizenship</label>
                                     <select id="partner-citizenship2" class="form-control" name="owner-citizenship" th:field="*{partner_citizen2}" >
                                         <option value="">Select</option>
@@ -869,11 +869,11 @@
                                     <label for="partner-last-name"><span class="weight600">&#42;</span>Last name</label>
                                     <input id="partner-last-name3" type="text"  name="lastName" class="form-control"  th:field="*{partner_last_name3}" >
                                 </div>
-                                <div class="form-group form-group-md col-xs-6">
+                                <div class="form-group form-group-md col-xs-6 col-sm-4 col-md-6">
                                     <label for="partner-suffix">Suffix</label>
                                     <input  class="form-control" id="partner-suffix3" name="suffix"  th:field="*{partner_suffix3}" />
                                 </div>
-                                <div class="form-group form-group-md col-xs-6">
+                                <div class="form-group form-group-md col-xs-12 col-sm-8 col-md-6">
                                     <label for="partner-citizenship"><span class="weight600">&#42;</span>Country of citizenship</label>
                                     <select id="partner-citizenship3" class="form-control" name="owner-citizenship" th:field="*{partner_citizen3}" >
                                         <option value="">Select</option>
@@ -1483,7 +1483,7 @@
                                 <label for="ownerCity"><span class="weight600">&#42;</span>City</label>
                                 <input type="text" class="form-control" id="ownerCity" th:field="*{ownerCity}" required>
                             </div>
-                            <div class="form-group form-group-md col-xs-6">
+                            <div class="form-group form-group-md col-xs-12 col-sm-6 ">
                                 <label for="ownerState"><span class="weight600">&#42;</span>State/Province/Territory</label>
                                 <select class="form-control" id="ownerState" th:field="*{ownerState}" required>
                                     <option value="">Select</option>
@@ -1541,7 +1541,7 @@
                                     <option value="Wyoming">Wyoming</option>
                                 </select>
                             </div>
-                            <div class="form-group form-group-md col-xs-6 col-md-4">
+                            <div class="form-group form-group-md col-xs-12 col-sm-6 col-md-4">
                                 <label for="ownerZipcode"><span class="weight600">&#42;</span>Zip code/Postal code</label>
                                 <input type="text" class="form-control" id="ownerZipcode" placeholder="" th:field="*{ownerZipcode}" required>
                             </div>
