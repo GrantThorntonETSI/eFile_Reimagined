@@ -36,7 +36,7 @@
                                 <label for="last-name"><span class="weight600">&#42;</span>Last name</label>
                                 <input type="text" class="form-control" id="last-name" th:field="*{lastName}" name="lastName" required>
                             </div>
-                            <div class="form-group form-group-md col-xs-4 col-md-6">
+                            <div class="form-group form-group-md col-xs-6 col-sm-4 col-md-6">
                                 <label for="suffix">Suffix</label>
                                 <select class="form-control" name="suffix" th:field="*{suffix}" id="suffix">
                                     <option value="select">Select</option>
@@ -52,14 +52,14 @@
                                     <option value="VIII">VIII</option>
                                 </select>
                             </div>
-                            <div class="form-group form-group-md col-xs-8 col-md-6">
+                            <div class="form-group form-group-md col-xs-12 col-sm-8 col-md-6">
                                 <label for="owner-citizenship">Country of citizenship  <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
                                 <select id="owner-citizenship"  class="form-control" name="suffix"   th:field="*{ownerCitizenShip}" >
                                     <option value="">Select</option>
                                     <option value="United States of America" selected>United States of America</option>
                                 </select>
                             </div>
-                            <div class="form-group form-group-md col-xs-6">
+                            <div class="form-group form-group-md col-xs-12 col-sm-6">
                                 <label for="additional-name-type">Alternate name <a href="#" data-toggle="tooltip" title="Make selection below if the owner is doing bsiness as or trading under a different name." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> </label>
                                 <select class="form-control" name="nameType"  th:field="*{ownerType}" id="additional-name-type"><!--Needs th:attribute-->
                                     <option value="">Select</option>
@@ -69,7 +69,7 @@
                                     <option value="formerly">Formerly</option>
                                 </select>
                             </div>
-                            <div class="form-group form-group-md col-xs-6" id="additionalNameValue" style="display:none;">
+                            <div class="form-group form-group-md col-xs-12 col-sm-6" id="additionalNameValue" style="display:none;">
                                 <label for="nameoftype">Name</label>
                                 <input type="text" class="form-control" id="nameoftype" name="nameoftype"  th:field="*{ownerAdditionalName}"  ><!--needs th:attribute-->
                             </div>
@@ -356,7 +356,7 @@
                                 <label for="ownerCity"><span class="weight600">&#42;</span>City</label>
                                 <input type="text" class="form-control" id="ownerCity" th:field="*{ownerCity}" required>
                             </div>
-                            <div class="form-group form-group-md col-xs-6">
+                            <div class="form-group form-group-md col-xs-12 col-sm-6">
                                 <label for="ownerState"><span class="weight600">&#42;</span>State/Province/Territory</label>
                                 <select class="form-control" id="ownerState" th:field="*{ownerState}" required>
                                     <option value="">Select</option>

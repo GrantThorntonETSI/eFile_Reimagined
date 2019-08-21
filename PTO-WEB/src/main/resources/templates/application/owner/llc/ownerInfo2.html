@@ -79,7 +79,7 @@
                                     <option value="N/A">N/A</option>
                                 </select>
                             </div>
-                            <div class="form-group form-group-md col-xs-6">
+                            <div class="form-group form-group-md col-xs-12 col-sm-6">
                                 <label for="additional-name-type">Alternate name <a href="#" data-toggle="tooltip" title="Make selection below if the owner is doing bsiness as or trading under a different name." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> </label>
                                 <select class="form-control" id="additional-name-type" th:field="*{ownerType}">
                                     <option value="">Select</option>
@@ -89,7 +89,7 @@
                                     <option value="Formerly">Formerly</option>
                                 </select>
                             </div>
-                            <div class="form-group form-group-md col-xs-6" id="additionalNameValue" style="display: none;">
+                            <div class="form-group form-group-md col-xs-12 col-sm-6" id="additionalNameValue" style="display: none;">
                                 <label for="nameoftype">Name</label>
                                 <input type="text" class="form-control" id="nameoftype" name="nameoftype"  th:field="*{ownerAdditionalName}"  ><!--needs th:attribute-->
                             </div>
@@ -366,7 +366,7 @@
                                 <label for="ownerCity"><span class="weight600">&#42;</span>City</label>
                                 <input type="text" class="form-control" id="ownerCity" th:field="*{ownerCity}" required>
                             </div>
-                            <div class="form-group form-group-md col-xs-6">
+                            <div class="form-group form-group-md col-xs-12 col-sm-6">
                                 <label for="ownerState"><span class="weight600">&#42;</span>State/Province/Territory</label>
                                 <select class="form-control" id="ownerState" th:field="*{ownerState}" required>
                                     <option value="">Select</option>
@@ -424,7 +424,7 @@
                                     <option value="Wyoming">Wyoming</option>
                                 </select>
                             </div>
-                            <div class="form-group form-group-md col-xs-6 col-md-4">
+                            <div class="form-group form-group-md col-xs-12 col-sm-6 col-md-4">
                                 <label for="ownerZipcode"><span class="weight600">&#42;</span>Zip code/Postal code</label>
                                 <input type="text" class="form-control" id="ownerZipcode" placeholder="" th:field="*{ownerZipcode}" required>
                             </div>
