@@ -286,8 +286,8 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-xs-3 closepans" style="height: 20px;">
-                                                                <button type="button" class="close closegspanels btn" aria-label="Close" style="line-height: 20px;"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                                                            <div class="col-xs-3">
+                                                                <button type="button" class="close closegspanels btn" aria-label="Close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -422,17 +422,6 @@
 
         });
 
-        //START close button height match dashboard
-        $( window ).on('load', function() {
-            var d = $( '#announcements .closepans' ).prev('div');
-            $(d).css('display','flex').css('flex-direction','column').css('min-height','3em');
-            $('#announcements .closepans').css( 'line-height', (d.innerHeight() + 'px') ).css( 'height', (d.innerHeight()) );
-            $('#announcements .closegspanels').css('line-height',(d.innerHeight() + 'px'));
-            $( window ).resize(function() {
-                $('#announcements .closepans').css( 'height', (d.innerHeight()) );
-                $('#announcements .closegspanels').css('line-height',(d.innerHeight() + 'px'));
-            });
-        });
 
         $(document).on('click','#alertmin button.close', function(e) {
             $('#alertmin').css('visibility','hidden').css('top','-10000px').css('float','none').css('margin-bottom','0').css('padding','0');
