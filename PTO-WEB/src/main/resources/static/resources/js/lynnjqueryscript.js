@@ -1886,23 +1886,7 @@ $(document).ready(function(){
 		$('div#reconsideration .hidethis, div#noreconsideration .hidethis, div#expedite .hidethis, div#received .hidethis').hide('fast');
 		}
 		//
-	$('input#inlineRadio072').change(function() {
-		if(this.checked == true){
-			$(clear);
-			$('input#inlineRadio074, input#inlineRadio075').prop({
-				checked:false,
-			});
-			$('div#reviveappformradios').hide('fast');
-			$('div#reviveappform').show('fast','swing');
-		}
-	});    
-	$('input#inlineRadio073,input#inlineRadio079').change(function() {
-		if(this.checked == true){
-			$(clear);
-			$('div#reviveappform').hide('fast','swing');
-			$('div#reviveappformradios').show('fast','swing');
-			}
-	});
+
 	$('input#inlineRadio074').change(function() {
 		if(this.checked == true){
 			$(clear);

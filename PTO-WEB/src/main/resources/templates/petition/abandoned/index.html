@@ -743,6 +743,13 @@ $(document).ready(function() {
 
         savePeitionInfo("rec-office-action", "yes", actionID, appInternalID);
 
+        $('#reviveappformradios').hide('fast','swing');
+        $('#responsefile').hide('fast','swing');
+        $('#reviveappform').hide('fast','swing');
+
+
+
+
 
     });
 
@@ -751,6 +758,10 @@ $(document).ready(function() {
         var actionID = $(this).attr("action-id");
 
         savePeitionInfo("rec-office-action", "no", actionID, appInternalID);
+
+        $('#reviveappformradios').show('fast','swing');
+        $('#responsefile').show('fast','swing');
+
     });
 
 
@@ -765,6 +776,8 @@ $(document).ready(function() {
 
         $('#doneButton span.text').text("Next");
 
+        $('#reviveappform').show('fast','swing');
+
     });
 
 
@@ -775,6 +788,9 @@ $(document).ready(function() {
         savePeitionInfo("avoid-delay", "no", actionID, appInternalID);
 
         $('#doneButton span.text').text("Done");
+
+        $('#reviveappform').show('fast','swing');
+
     });
 
 
