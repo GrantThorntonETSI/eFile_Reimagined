@@ -2302,7 +2302,7 @@ button#moreoptionsbtn {
     padding-bottom: 3em;
 }
 .addphoneinitial, .addinitial {
-    width: 80%!important;
+    /*width: 80%!important;*/
     margin: 0 auto!important;
     float: none!important;
 }
@@ -3728,6 +3728,16 @@ footer #megamenu ul {
         background-size:94%;
         min-height:280px;
     }
+}  
+@media (min-width: 500px) {
+    #yesattorneyfiling fieldset .inlinebuttons, .insertform fieldset .inlinebuttons, #addNewOwnerForm fieldset .inlinebuttons, #yesdisclaimer fieldset .inlinebuttons {
+        width:41%;
+        margin-top:1em;
+        margin-bottom:1em;
+    }
+    #selectclear, #selectclearforeign, #gsselected .panel-group .inlinebuttons {
+        width: 71%!important;
+    }
 }
 @media (min-width:577px) and (max-width:991px) {
     #goodservideo .bgimg {
@@ -3813,11 +3823,6 @@ footer #megamenu ul {
 @media (min-width: 800px) {
     .inlinebuttons {
         width: 61%;
-    }
-    #userprofilepage fieldset .inlinebuttons, #yesattorneyfiling fieldset .inlinebuttons, .insertform fieldset .inlinebuttons, #addNewOwnerForm fieldset .inlinebuttons {
-        width: 41%!important;
-        margin-top:2em;
-        margin-bottom:2em;
     }
     #userprofilepage .modal .inlinebuttons {
         margin-bottom:.6em;
