@@ -1951,11 +1951,11 @@ button[disabled] {
 }
 #selectclear, #selectclearforeign {
     float: none;
-    width:auto!important;
     margin:0 auto;
 }
-button#autofill, button#autofillForeign {
-    border-right:6px solid #fff;
+button#clearfill, button#clearfillOwnerForeign, button#clearfillOwner {
+    width:96%;
+    float:right;
 }
 .modal .inlinebuttons .btn-group button {
     margin:0 1em;
@@ -3809,9 +3809,6 @@ footer #megamenu ul {
     .nav > li > a {
         padding-right:12px!important;
     }
-    #selectclear, #selectclearforeign {
-        width:80%!important
-    }
 }
 @media (min-width: 800px) {
     .inlinebuttons {
@@ -3984,6 +3981,12 @@ footer #megamenu ul {
     }
     main#landingpagemain {
         padding: 3em;
+    }
+    .inlinebuttons .btn-sm .fill {
+        padding-top: 4px;
+        padding-bottom:6px;
+        padding-right:0;
+        padding-left:0;
     }
 }
 @media (max-width: 991px) {
