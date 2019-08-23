@@ -602,6 +602,7 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
 
             if(ccID.equals(current.getClassNumber())){
                 current.setMarkInUseCC(true);
+                current.setMarkInUse(true);
             }
         }
         baseTrademarkApplication.setMarkInUseForAllGS(true);
@@ -619,9 +620,9 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
         for(Iterator<GoodAndService> iterClass = baseTrademarkApplication.getGoodAndServices().iterator(); iterClass.hasNext(); ) {
             GoodAndService currentGS = iterClass.next();
             if(currentGS.isMarkInUse() == false ){
-                if(currentGS.isExcusedNoneUse() == false){
+
                     returnCode = "200";
-                }
+
 
             }
         }
