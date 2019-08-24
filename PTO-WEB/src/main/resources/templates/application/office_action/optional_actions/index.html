@@ -50,34 +50,51 @@
 
                                 <label class="form-check-label form-check" for="ownaddre"><span class="radio notspecial" id="ownaddr">Correct or change the owner&#8217;s name or entity information</span></label>
                             </div>
-                            <div class="col-xs-12 form-group form-group-md">
 
-                                <th:block th:if="${action.isMarkOptional() == true}">
-                                    <input class="form-check-input checkmark" type="checkbox" value="editmark" tabindex="0" aria-labelledby="changemark" id="minorchange" checked>
+                            <th:block th:if="${action.getActionType() == 'default'}">
+                                <div class="col-xs-12 form-group form-group-md">
 
-                                </th:block>
-                                <th:block th:if="${action.isMarkOptional() == false}">
-                                    <input class="form-check-input checkmark" type="checkbox" value="editmark" tabindex="0" aria-labelledby="changemark" id="minorchange">
+                                    <th:block th:if="${action.isMarkOptional() == true}">
+                                        <input class="form-check-input checkmark" type="checkbox" value="editmark" tabindex="0" aria-labelledby="changemark" id="minorchange" checked>
 
-                                </th:block>
+                                    </th:block>
+                                    <th:block th:if="${action.isMarkOptional() == false}">
+                                        <input class="form-check-input checkmark" type="checkbox" value="editmark" tabindex="0" aria-labelledby="changemark" id="minorchange">
 
-
-                                <label class="form-check-label form-check" for="minorchange"><span class="radio notspecial" id="changemark">Make a minor change to the mark or submit a better quality image</span></label>
-                            </div>
-                            <div class="col-xs-12 form-group form-group-md">
-                                <th:block th:if="${action.isFbOptional() == true}">
-                                    <input class="form-check-input checkmark" type="checkbox" value="modgs" tabindex="0" aria-labelledby="modgss" id="modify" checked>
-
-                                </th:block>
-
-                                <th:block th:if="${action.isFbOptional() == false}">
-                                    <input class="form-check-input checkmark" type="checkbox" value="modgs" tabindex="0" aria-labelledby="modgss" id="modify">
-
-                                </th:block>
+                                    </th:block>
 
 
-                                <label class="form-check-label form-check" for="modify"><span class="radio notspecial" id="modgss">Modify goods/services</span></label>
-                            </div>
+                                    <label class="form-check-label form-check" for="minorchange"><span class="radio notspecial" id="changemark">Make a minor change to the mark or submit a better quality image</span></label>
+                                </div>
+
+                                <div class="col-xs-12 form-group form-group-md">
+                                    <th:block th:if="${action.isFbOptional() == true}">
+                                        <input class="form-check-input checkmark" type="checkbox" value="modgs" tabindex="0" aria-labelledby="modgss" id="modify" checked>
+
+                                    </th:block>
+
+                                    <th:block th:if="${action.isFbOptional() == false}">
+                                        <input class="form-check-input checkmark" type="checkbox" value="modgs" tabindex="0" aria-labelledby="modgss" id="modify">
+
+                                    </th:block>
+
+
+                                    <label class="form-check-label form-check" for="modify"><span class="radio notspecial" id="modgss">Modify goods/services</span></label>
+                                </div>
+
+                            </th:block>
+
+                            <th:block th:if="${action.getActionType() == 'section8'}">
+                                <div class="col-xs-12 form-group form-group-md">
+                                    <input class="form-check-input checkmark" type="checkbox" value="editcert" tabindex="0" aria-labelledby="changecert" id="certchange" disabled>
+                                    <label class="form-check-label form-check form-check-left" for="certchange" id="changecert"><span class="radio notspecial special">Request an Amendment or Correction of the Registration Certificate</span></label>
+                                </div>
+
+                            </th:block>
+
+
+
+
                             <div class="col-xs-12 form-group form-group-md">
                                 <th:block th:if="${action.isAdditionalOptional() == true}">
                                     <input class="form-check-input checkmark" type="checkbox" value="makechange" tabindex="0" aria-labelledby="change" id="changefile" checked>
