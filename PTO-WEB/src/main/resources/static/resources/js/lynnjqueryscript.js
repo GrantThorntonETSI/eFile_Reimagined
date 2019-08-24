@@ -2635,11 +2635,27 @@ $(document).ready(function(){
 		  });	
 	});
     //
-    
 
 
 
 
+//START sectioneight delete gs
+	$('#sectioneight h2 button.close').on('click',function() {
+		var gsdiv = $(this).closest('section');
+		$(this).parent().find('span.sr-only').text() === 'good / service removed'
+			? $(this).parent().find('span.sr-only').text('good / service added')
+			: $(this).parent().find('span.sr-only').text('good / service removed');
+		$( this ).find('span.glyphicon').toggleClass('glyphicon-refresh');
+		$( this ).find('span.glyphicon').toggleClass('glyphicon-remove');
+		$( this ).toggleClass('resetgsbtn');
+		$( gsdiv ).toggleClass('removegs');
+	});
+	$('#sectioneight h2 button.resetgsbtn').on('click',function() {
+		var gsdiv = $(this).closest('section');
+		$( gsdiv ).css('opacity','1.0');
+		$( gsdiv ).toggleClass('removegs');
+
+	});
 
 
 

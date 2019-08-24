@@ -44,7 +44,7 @@
                                                                     <button type="button" class="btn btn-sm btn-success cancel" data-dismiss="modal">Cancel</button>
                                                                 </div>
                                                                 <div class="col-xs-6 btn-group">
-                                                                    <button type="button" class="btn btn-sm btn-success disableCC" data-dismiss="modal" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">Yes, delete this class</button>
+                                                                    <button type="button" class="btn btn-sm btn-success disable-cc" data-dismiss="modal" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">Yes, delete this class</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -258,7 +258,7 @@
                                                                     <button type="button" class="btn btn-sm btn-success cancel" data-dismiss="modal">Cancel</button>
                                                                 </div>
                                                                 <div class="col-xs-6 btn-group">
-                                                                    <button type="button" class="btn btn-sm btn-success disableCC" data-dismiss="modal" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">Yes, delete this class</button>
+                                                                    <button type="button" class="btn btn-sm btn-success disable-cc" data-dismiss="modal" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">Yes, delete this class</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -377,7 +377,7 @@
                                                             <h2 class="weight600">Use Statement</h2>
                                                             <div class="form-group form-group-md">
                                                                 <input class="form-check-input checkmark  in-use-cc" type="checkbox" value="" tabindex="0" aria-labelledby="userAccept-label_one"  name="user-accept-checkbox" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">
-                                                                <label class="form-check-label form-check-left form-check" for="user-accept-checkbox" id="userAccept-label_one"><span class="radio notspecial">The mark is in use in commerce on or in connection with all goods/services in this class.</span></label>
+                                                                <label class="form-check-label form-check-left form-check"  id="userAccept-label_one"><span class="radio notspecial">The mark is in use in commerce on or in connection with all goods/services in this class.</span></label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -621,6 +621,42 @@
         });
 
 
+        $('.disable-cc').click(function () {
+            var ccID = $(this).attr("cc-id");
+
+            saveNOAresponse("activate-cc-noa", "no",  OfficeActionID, ccID, appInternalID );
+        });
+
+        $('.enable-cc').click(function () {
+            var ccID = $(this).attr("cc-id");
+
+            saveNOAresponse("activate-cc-noa", "yes",  OfficeActionID, ccID, appInternalID );
+        });
+
+        $('.closegspanels').click(function () {
+
+
+            var gsID = $(this).attr("gs-id");
+            if($(this).hasClass("refresh")){
+
+                alert("enable gs");
+
+                saveNOAresponseGS("activate-gs-noa", "yes", OfficeActionID, gsID, appInternalID);
+
+
+            }
+            else {
+                alert("disable gs");
+
+                saveNOAresponseGS("activate-gs-noa", "no", OfficeActionID, gsID, appInternalID);
+            }
+        });
+
+
+
+
+
+
         // ajax auto save
     });
 
@@ -631,7 +667,67 @@
 
 
         $.ajax({
-            url: "../../../../REST/apiGateway/OfficeAction/noa/response/update/" + FieldName + "/" + FieldValue + "/" + OA_id + "/" + cc_id +"/"+appInternalID,
+            url: "../../../../REST/apiGateway/OfficeAction/noa/response/update/cc/" + FieldName + "/" + FieldValue + "/" + OA_id + "/" + cc_id +"/"+appInternalID,
+            type: 'GET',
+            success: function (data) {
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:") + 7, data.indexOf("status:") + 4 + 7);
+
+                var s_msg = data.substring(data.indexOf("msg:") + 4, data.length - 2);
+
+
+
+                if (s_code.trim() == "200") {
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function () {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                    $('.next').attr("disabled", true);
+
+                }
+                else {
+
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function () {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                    $('.next').attr("disabled", false);
+
+                }
+
+
+            },
+            error: function (data) {
+
+                console.log(data);
+
+            }
+
+        });
+    }
+
+
+
+
+
+    function saveNOAresponseGS(FieldName, FieldValue, OA_id, gs_id ,appInternalID) {
+
+        //var field_value = $(this).val();
+        //alert(field_value);
+
+
+        $.ajax({
+            url: "../../../../REST/apiGateway/OfficeAction/noa/response/update/gs/" + FieldName + "/" + FieldValue + "/" + OA_id + "/" + gs_id +"/"+appInternalID,
             type: 'GET',
             success: function (data) {
 
