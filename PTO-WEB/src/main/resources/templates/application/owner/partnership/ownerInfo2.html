@@ -25,12 +25,12 @@
                 <form method="post" id="addNewOwnerForm" action="/owner/add"  onsubmit="return validateOwnerForm();" th:object="${addNewOwnerContactFormDTO}" aria-labelledby="ownerinfo">
                     <fieldset aria-labelledby="ownerinfo">
                         <div class="row">
-                            <div class="form-group form-group-md col-xs-12 col-md-6">
+                            <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
                                 <label for="ownername"><span class="weight600">&#42;</span>Owner name</label>
                                 <input type="text" class="form-control"  id="ownername" th:field="*{ownerName}" required>
                             </div>
-                            <div class="form-group form-group-md col-xs-9 col-md-6">
-                                <label for="stateoforg">State where legally organized <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
+                            <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
+                                <label for="stateoforg">State where legally organized <span class="label label-info subtle visuallyremoved" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
                                 <select class="form-control" id="stateoforg" th:field="*{ownerOrganizationState}" required >
                                     <option value="">Select</option>
                                     <option value="Alabama">Alabama</option>
@@ -141,8 +141,8 @@
                                     <input type="text" class="form-control" id="partner-suffix" th:field="*{partnerDTOs[__${itemStat.index}__].suffix}" name="suffix" />
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-8 col-md-6">
-                                    <label for="partner-citizenship"><span class="weight600">&#42;</span>Country of citizenship</label>
-                                    <select th:field="*{partnerDTOs[__${itemStat.index}__].citizenShip}" id="partner-citizenship"  class="form-control" name="owner-citizenship" required>
+                                    <label for="partner-citizenship">Country of citizenship <a href="#" data-toggle="tooltip" title="If you have dual citizenship only enter the citizenship you would like printed in the Official Gazette." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> <span class="label label-info subtle" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
+                                    <select th:field="*{partnerDTOs[__${itemStat.index}__].citizenShip}" id="partner-citizenship"  class="form-control" name="owner-citizenship">
                                         <option value="">Select</option>
                                         <option value="United States of America">United States of America</option>
                                         <option value="Afghanistan">Afghanistan</option>
@@ -391,12 +391,12 @@
 
                         <fieldset aria-labelledby="proprietorinfo" id="none-individual-partner-entity" style="display: none;">
                             <div class="row">
-                                <div class="form-group form-group-md col-xs-6">
+                                <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
                                     <label for="ownername"><b style="color: red">&#42;</b>General partner name</label>
                                     <input id="partner-owner-name" type="text" th:field="*{partnerDTOs[__${itemStat.index}__].partnerName}"  class="form-control rounded-borders"   required>
                                 </div>
-                                <div class="form-group form-group-md col-xs-6">
-                                    <label><b style="color: red">&#42;</b>State where legally organized</label>
+                                <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
+                                    <label for="partner-owner-name-state">State where legally organized <span class="label label-info subtle visuallyremoved" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
                                     <select  id="partner-owner-name-state" th:field="*{partnerDTOs[__${itemStat.index}__].state}"  class="form-control" name="State"  required>
                                         <option value="">Select</option>
                                         <option value="Alabama">Alabama</option>
@@ -493,7 +493,7 @@
                                     <input class="form-control" id="partner-suffix2" name="suffix" th:field="*{partner_suffix2}" />
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-8 col-md-6">
-                                    <label for="partner-citizenship"><span class="weight600">&#42;</span>Country of citizenship</label>
+                                    <label for="partner-citizenship">Country of citizenship <a href="#" data-toggle="tooltip" title="If you have dual citizenship only enter the citizenship you would like printed in the Official Gazette." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> <span class="label label-info subtle" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
                                     <select id="partner-citizenship2" class="form-control" name="owner-citizenship" th:field="*{partner_citizen2}" >
                                         <option value="">Select</option>
                                         <option value="United States of America">United States of America</option>
@@ -742,12 +742,12 @@
                         </fieldset>
                         <fieldset aria-labelledby="proprietorinfo" id="none-individual-partner-entity2" style="display: none;">
                             <div class="row">
-                                <div class="form-group form-group-md col-xs-6">
+                                <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
                                     <label for="ownername"><b style="color: red">&#42;</b>General partner name</label>
                                     <input id="partner-owner-name2" type="text"  class="form-control rounded-borders" th:field="*{partner_name2}"  >
                                 </div>
-                                <div class="form-group form-group-md col-xs-6">
-                                    <label><b style="color: red">&#42;</b>State where legally organized</label>
+                                <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
+                                    <label for="partner-owner-name-state2">State where legally organized <span class="label label-info subtle visuallyremoved" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
                                     <select id="partner-owner-name-state2" class="form-control" name="State" th:field="*{partner_state_org2}"  >
                                         <option value="">Select</option>
                                         <option value="Alabama">Alabama</option>
@@ -844,7 +844,7 @@
 
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-8 col-md-6">
-                                    <label for="partner-citizenship"><span class="weight600">&#42;</span>Country of citizenship</label>
+                                    <label for="partner-citizenship">Country of citizenship <a href="#" data-toggle="tooltip" title="If you have dual citizenship only enter the citizenship you would like printed in the Official Gazette." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> <span class="label label-info subtle" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
                                     <select id="partner-citizenship3" class="form-control" name="owner-citizenship" th:field="*{partner_citizen3}" >
                                         <option value="">Select</option>
                                         <option value="United States of America">United States of America</option>
@@ -1093,12 +1093,12 @@
                         </fieldset>
                         <fieldset aria-labelledby="proprietorinfo" id="none-individual-partner-entity3" style="display: none;">
                             <div class="row">
-                                <div class="form-group form-group-md col-xs-6">
+                                <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
                                     <label for="ownername"><b style="color: red">&#42;</b>General partner name</label>
                                     <input id="partner-owner-name3" type="text" class="form-control rounded-borders" th:field="*{partner_name3}"  >
                                 </div>
-                                <div class="form-group form-group-md col-xs-6">
-                                    <label><b style="color: red">&#42;</b>State where legally organized</label>
+                                <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
+                                    <label>State where legally organized <span class="label label-info subtle visuallyremoved" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
                                     <select id="partner-owner-name-state3" class="form-control" name="State" th:field="*{partner_state_org3}" >
                                         <option  value="">Select</option>
                                         <option  value="Alabama">Alabama</option>

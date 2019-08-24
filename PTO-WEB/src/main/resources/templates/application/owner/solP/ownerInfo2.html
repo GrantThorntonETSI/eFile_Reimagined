@@ -24,13 +24,13 @@
                 <form method="post" id="addNewOwnerForm" action="/owner/add" onsubmit="return validateOwnerForm();" th:object="${addNewOwnerContactFormDTO}" aria-labelledby="ownerinfo">
                     <fieldset aria-labelledby="ownerinfo">
                         <div class="row">
-                            <div class="form-group form-group-md col-xs-12 col-sm-6">
+                            <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
                                 <label for="ownername"><span class="weight600">&#42;</span>Owner name</label>
                                 <input type="text" class="form-control"  id="ownername" th:field="*{ownerName}" required>
                             </div>
-                            <div class="form-group form-group-md col-xs-12 col-sm-6">
-                                <label for="stateoforg"><span class="weight600">&#42;</span>State where legally organized</label>
-                                <select class="form-control" id="stateoforg" th:field="*{ownerState}"  required>
+                            <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
+                                <label for="stateoforg">State where legally organized <span class="label label-info subtle" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
+                                <select class="form-control" id="stateoforg" th:field="*{ownerState}">
                                     <option value="">Select</option>
                                     <option value="Alabama">Alabama</option>
                                     <option value="Alaska">Alaska</option>
@@ -138,8 +138,8 @@
                                 </select>
                             </div>
                             <div class="form-group form-group-md col-xs-12 col-sm-8 col-md-6">
-                                <label for="countryofcitizenship"><span class="weight600">&#42;</span>Country of citizenship</label>
-                                <select class="form-control" id="countryofcitizenship" th:field="*{ownerCitizenShip}" required>
+                                <label for="countryofcitizenship">Country of citizenship <a href="#" data-toggle="tooltip" title="If you have dual citizenship only enter the citizenship you would like printed in the Official Gazette." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> <span class="label label-info subtle" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
+                                <select class="form-control" id="countryofcitizenship" th:field="*{ownerCitizenShip}">
                                     <option value="">Select</option>
                                     <option value="United States of America">United States of America</option>
                                     <option value="Afghanistan">Afghanistan</option>
