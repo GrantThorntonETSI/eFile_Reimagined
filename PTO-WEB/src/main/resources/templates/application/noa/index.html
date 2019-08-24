@@ -639,16 +639,16 @@
             var gsID = $(this).attr("gs-id");
             if($(this).hasClass("refresh")){
 
-                alert("enable gs");
 
-                saveNOAresponseGS("activate-gs-noa", "yes", OfficeActionID, gsID, appInternalID);
+
+                saveNOAresponseGS("activate-gs-noa", "no", OfficeActionID, gsID, appInternalID);
 
 
             }
             else {
-                alert("disable gs");
 
-                saveNOAresponseGS("activate-gs-noa", "no", OfficeActionID, gsID, appInternalID);
+
+                saveNOAresponseGS("activate-gs-noa", "yes", OfficeActionID, gsID, appInternalID);
             }
         });
 
