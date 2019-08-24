@@ -822,7 +822,7 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
 
         }
 
-
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
         // set this value for the specific class. // i.e loop through all gs that match class number
 
@@ -839,10 +839,10 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
 
             }
 
+            baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
         }
 
-        baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
         // remember to set required actions to complete afterwards
         responseMsg = responseMsg + " has been saved";
