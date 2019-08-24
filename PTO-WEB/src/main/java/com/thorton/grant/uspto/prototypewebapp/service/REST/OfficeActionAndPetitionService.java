@@ -765,6 +765,90 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
 
     }
 
+    @CrossOrigin(origins = {"https://localhost","https://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/OfficeAction/section8/response/update/gs/{pField}/{pValue}/{OfficeActionID}/{gsID}/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> saveOAsection8ResponseActivatation(@PathVariable String pField , @PathVariable String pValue, @PathVariable String OfficeActionID, @PathVariable String gsID,@PathVariable String appInternalID){
+
+        String responseMsg = "";
+
+        String returnCode = "420";
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+
+        // save mark is in use for class
+
+        // check if all class have this set
+
+
+        // need to create class level field is mark in use for all gs in this class
+
+        // need to create this value at the gs level and propogate up
+
+        if(pField.equals("activate-gs-noa")){
+            if(pValue.equals("yes")){
+                baseTrademarkApplication.findGSbyInternalID(gsID).setActiveGS(true);
+
+
+                // there is no reciperical path for activating at the class level.
+                // activate at the class level has to be done at the class level
+            }
+            else {
+                baseTrademarkApplication.findGSbyInternalID(gsID).setActiveGS(false);
+                // check gs class if all gs is deactivated, if yes. update class level field for all gs
+
+
+            }
+
+            responseMsg = "good and service status ";
+
+        }
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+        // check if return code should be set to 420 . ie all none active gs are set to in use
+        // also update class level logic to check only active gs for in use claims
+
+        for(Iterator<GoodAndService> iterClass = baseTrademarkApplication.getGoodAndServices().iterator(); iterClass.hasNext(); ) {
+            GoodAndService currentGS = iterClass.next();
+            if(currentGS.isActiveGS()){
+                if(currentGS.isMarkInUse() == false && currentGS.isExcusedNoneUse() == false ){
+
+                    returnCode = "200";
+
+                }
+            }
+
+        }
+
+
+
+        // set this value for the specific class. // i.e loop through all gs that match class number
+
+        // then loop through all classes and determine return status code
+
+
+        if(returnCode.equals("420")){
+            // reset application renew date
+            baseTrademarkApplication.setApplicationRegistrationRenewDate(new Date());
+
+            for(Iterator<RequiredActions> iterRA = baseTrademarkApplication.findOfficeActionById(OfficeActionID).getRequiredActions().iterator(); iterRA.hasNext(); ) {
+                RequiredActions current = iterRA.next();
+                current.setRequiredActionCompleted(true);
+
+            }
+
+
+        }
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+        // remember to set required actions to complete afterwards
+        responseMsg = responseMsg + " has been saved";
+        return buildResponseEnity(returnCode, responseMsg);
+
+    }
 
 
 
