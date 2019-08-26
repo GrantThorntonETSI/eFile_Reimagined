@@ -208,12 +208,15 @@
 
                                         <div class="row basis">
                                             <div class="col-xs-12">
-                                                <input class="form-check-input checkmark" type="checkbox" value="18gs" tabindex="0" aria-labelledby="class18barsoap" >
+
 
                                                 <th:block th:if="${Good_Service.isActiveGS() == true}">
-                                                    <label class="form-check-label form-check form-check-left"  ><span class="radio notspecial special" th:text="${Good_Service.getClassDescription()}">Bar Soap</span></label>
+                                                    <input class="form-check-input checkmark" type="checkbox" value="18gs" tabindex="0" aria-labelledby="class18barsoap" >
+                                                    <label class="form-check-label form-check form-check-left"  ><span class="radio notspecial" th:text="${Good_Service.getClassDescription()}">Bar Soap</span></label>
                                                 </th:block>
                                                 <th:block th:if="${Good_Service.isActiveGS() == false}">
+
+                                                    <input class="form-check-input checkmark" type="checkbox" value="18gs" tabindex="0" aria-labelledby="class18barsoap" disabled>
                                                     <label class="form-check-label form-check form-check-left"  ><span class="radio notspecial special strike" th:text="${Good_Service.getClassDescription()}">Bar Soap</span></label>
                                                 </th:block>
 
