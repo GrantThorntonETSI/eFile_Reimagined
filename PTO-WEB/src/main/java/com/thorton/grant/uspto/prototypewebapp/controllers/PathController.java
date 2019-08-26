@@ -75,7 +75,7 @@ public class PathController {
         model.addAttribute("account",credentials);
 
         if(ptoUser.isProfileComplete()){
-              return "redirect:accounts/dashboard-survey";
+              return "redirect:accounts/dashboard2";
         }
         else {
             return "redirect:accounts/userHome";
