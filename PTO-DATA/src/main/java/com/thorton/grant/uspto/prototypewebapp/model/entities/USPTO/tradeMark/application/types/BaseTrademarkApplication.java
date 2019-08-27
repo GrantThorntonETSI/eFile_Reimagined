@@ -452,6 +452,13 @@ public class BaseTrademarkApplication  {
     // we will simply allow the office action to expire and allow user to file a petition to revive
     /////////////////////////////////////////////////////////////////////////////////////////
 
+    // section 18 fields
+    private String benifitsClaimedForMark;
+    private boolean allActiveGSfiveYearsInUSe;
+
+
+
+
 
     // amend mark flags
     private boolean showMarkInfoSet;
@@ -1023,6 +1030,8 @@ public class BaseTrademarkApplication  {
 
                     gsClassCategory.setMarkInUseAllGS(current.isMarkInUseCC());
                     gsClassCategory.setMarkInUseAllGSinClass(current.isMarkInUseAllGSinClass());
+
+                    gsClassCategory.setFiveYearsInUseForAllGSinClass(current.isFiveYearsInUseCC());
 
 
 
@@ -2147,5 +2156,22 @@ public class BaseTrademarkApplication  {
 
     public void setApplicationRegistrationRenewDate(Date applicationRegistrationRenewDate) {
         this.applicationRegistrationRenewDate = applicationRegistrationRenewDate;
+    }
+
+
+    public String getBenifitsClaimedForMark() {
+        return benifitsClaimedForMark;
+    }
+
+    public void setBenifitsClaimedForMark(String benifitsClaimedForMark) {
+        this.benifitsClaimedForMark = benifitsClaimedForMark;
+    }
+
+    public boolean isAllActiveGSfiveYearsInUSe() {
+        return allActiveGSfiveYearsInUSe;
+    }
+
+    public void setAllActiveGSfiveYearsInUSe(boolean allActiveGSfiveYearsInUSe) {
+        this.allActiveGSfiveYearsInUSe = allActiveGSfiveYearsInUSe;
     }
 }
