@@ -152,7 +152,6 @@ public class FilingStatusUpdateTask extends TimerTask {
                       officeActions.setStandardCharacterText(current.getTradeMark().getTrademarkStandardCharacterText());
                       officeActions.setParentMarkOwnerName(current.getPrimaryOwner().getOwnerDisplayname());
                       officeActions.setParentSerialNumber(current.getTrademarkName());
-                      officeActions.setParentRegistrationNumber(current.getRegistrationID());
                       officeActions.setActiveAction(true);
                       long dueDate = new Date().getTime()+current.getBlackOutPeriod()+current.getOfficeActionResponsePeriod();
                       officeActions.setDueDate(new Date(dueDate));
@@ -292,7 +291,6 @@ public class FilingStatusUpdateTask extends TimerTask {
                             petition.setStandardCharacterText(current.getTradeMark().getTrademarkStandardCharacterText());
                             petition.setParentMarkOwnerName(current.getPrimaryOwner().getOwnerDisplayname());
                             petition.setParentSerialNumber(current.getTrademarkName());
-                            petition.setParentRegistrationNumber(current.getRegistrationID());
 
                             petition.setActionID(String.valueOf(current3.getInternalID()));
 
@@ -448,7 +446,6 @@ public class FilingStatusUpdateTask extends TimerTask {
                             noa.setStandardCharacterText(current.getTradeMark().getTrademarkStandardCharacterText());
                             noa.setParentMarkOwnerName(current.getPrimaryOwner().getOwnerDisplayname());
                             noa.setParentSerialNumber(current.getTrademarkName());
-                            noa.setParentRegistrationNumber(current.getRegistrationID());
                             noa.setActiveAction(true);
                             long dueDate = new Date().getTime()+current.getBlackOutPeriod()+current.getOfficeActionResponsePeriod();
                             noa.setDueDate(new Date(dueDate));
@@ -560,7 +557,6 @@ public class FilingStatusUpdateTask extends TimerTask {
                             petition.setStandardCharacterText(current.getTradeMark().getTrademarkStandardCharacterText());
                             petition.setParentMarkOwnerName(current.getPrimaryOwner().getOwnerDisplayname());
                             petition.setParentSerialNumber(current.getTrademarkName());
-                            petition.setParentRegistrationNumber(current.getRegistrationID());
 
                             petition.setActionID(String.valueOf(current3.getInternalID()));
 
@@ -632,7 +628,6 @@ public class FilingStatusUpdateTask extends TimerTask {
                     noa.setStandardCharacterText(current.getTradeMark().getTrademarkStandardCharacterText());
                     noa.setParentMarkOwnerName(current.getPrimaryOwner().getOwnerDisplayname());
                     noa.setParentSerialNumber(current.getTrademarkName());
-                    noa.setParentRegistrationNumber(current.getRegistrationID());
                     noa.setActiveAction(true);
                     long dueDate = new Date().getTime()+current.getBlackOutPeriod()+current.getOfficeActionResponsePeriod();
                     noa.setDueDate(new Date(dueDate));
