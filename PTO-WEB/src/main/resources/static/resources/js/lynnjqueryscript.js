@@ -170,7 +170,8 @@ $(document).ready(function(){
 	$('#dashsectionscontainer #announcements .closegspanels').click(function() {
 		$( this ).parent().parent().parent().parent().parent().fadeOut( 'fast','swing');
 	});
-    $('#dashsectionscontainer #alertminwelcome .closegspanels').click(function() {
+    //START close (x) survey alert panel
+	$('#alertminwelcome .closegspanels').click(function() {
 		$( this ).parent().parent().fadeOut( 'fast','swing');
 	});
 	//end close (x) dashboard panels
@@ -2133,16 +2134,11 @@ $(document).ready(function(){
                $('#dashboardtableone_wrapper').hide();
                $('#dashboardtableone_wrapper').parent().parent().parent().parent().parent().parent().parent().hide();
                $('section#announcements').parent().addClass('col-lg-6').removeClass('col-lg-3').css('margin','0 auto').css('float', 'none');
-               $('div.alert-warning').css('margin','1em auto').css('float', 'none');
-				   //$('div.alert-warning').parent().addClass('col-xs-12');
            }
            else {
                 $('#dashboardtableone_wrapper').show();
                 $('#dashboardtableone_wrapper').parent().parent().parent().parent().parent().parent().parent().show();
                 $('section#announcements').parent().removeClass('col-lg-6').addClass('col-lg-3').css('margin','auto').css('float', 'left');
-                $('div.alert-warning').css('margin','auto').css('float', 'left');
-                $('div#alertminwelcome').css('width','100%');
-                //$('div.alert-warning').parent().removeClass('col-xs-12');
             }
         },
 			'sDom': '<"toolbar">lfrtip',
