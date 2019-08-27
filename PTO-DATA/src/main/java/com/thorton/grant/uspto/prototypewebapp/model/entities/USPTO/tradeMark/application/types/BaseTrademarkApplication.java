@@ -452,8 +452,11 @@ public class BaseTrademarkApplication  {
     // we will simply allow the office action to expire and allow user to file a petition to revive
     /////////////////////////////////////////////////////////////////////////////////////////
 
-    // section 18 fields
+    // section 15 fields
     private String benifitsClaimedForMark;
+
+    private boolean section15Declration;
+
     private boolean allActiveGSfiveYearsInUSe;
 
 
@@ -2173,5 +2176,13 @@ public class BaseTrademarkApplication  {
 
     public void setAllActiveGSfiveYearsInUSe(boolean allActiveGSfiveYearsInUSe) {
         this.allActiveGSfiveYearsInUSe = allActiveGSfiveYearsInUSe;
+    }
+
+    public boolean isSection15Declration() {
+        return section15Declration;
+    }
+
+    public void setSection15Declration(boolean section15Declration) {
+        this.section15Declration = section15Declration;
     }
 }

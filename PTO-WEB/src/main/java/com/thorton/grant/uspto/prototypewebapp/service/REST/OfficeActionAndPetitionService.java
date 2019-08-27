@@ -945,8 +945,20 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
         }
 
 
-        if(field.equals("beneifits-section15")){
+        if(field.equals("benefits-section15")){
             baseTrademarkApplication.setBenifitsClaimedForMark(value);
+
+            responseMsg = "section 15 benefits ";
+        }
+
+        if(field.equals("declarations-section15")){
+            if(value.equals("yes")){
+                baseTrademarkApplication.setSection15Declration(true);
+            }
+            else {
+                baseTrademarkApplication.setSection15Declration(false);
+            }
+
 
             responseMsg = "section 15 benefits ";
         }
