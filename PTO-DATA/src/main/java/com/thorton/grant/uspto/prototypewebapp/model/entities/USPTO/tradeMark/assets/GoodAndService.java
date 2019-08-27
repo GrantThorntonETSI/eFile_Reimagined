@@ -283,6 +283,24 @@ public class GoodAndService {
     }
 
 
+    // section 18 fields
+
+
+    // gs level
+
+    private boolean fiveYearsInUse;
+
+
+    // class level
+
+    private boolean fiveYearsInUseCC;
+
+
+
+
+
+
+
 
 
 
@@ -1029,5 +1047,22 @@ public class GoodAndService {
 
     public void setExcusedNoneUse(boolean excusedNoneUse) {
         this.excusedNoneUse = excusedNoneUse;
+    }
+
+
+    public boolean isFiveYearsInUse() {
+        return fiveYearsInUse;
+    }
+
+    public void setFiveYearsInUse(boolean fiveYearsInUse) {
+        this.fiveYearsInUse = fiveYearsInUse;
+    }
+
+    public boolean isFiveYearsInUseCC() {
+        return fiveYearsInUseCC;
+    }
+
+    public void setFiveYearsInUseCC(boolean fiveYearsInUseCC) {
+        this.fiveYearsInUseCC = fiveYearsInUseCC;
     }
 }

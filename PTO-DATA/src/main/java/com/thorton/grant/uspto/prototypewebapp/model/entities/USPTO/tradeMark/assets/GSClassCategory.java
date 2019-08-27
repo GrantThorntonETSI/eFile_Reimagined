@@ -90,6 +90,15 @@ public class GSClassCategory {
 
 
 
+    // section 18 fields
+
+    // this logic only propogate downs to active gs
+    private boolean fiveYearsInUseForAllGSinClass;
+
+
+
+
+
 
 
     // added to support class level having access to all gs names and attributes
@@ -626,5 +635,13 @@ public class GSClassCategory {
 
     public void setMarkInUseAllGSinClass(boolean markInUseAllGSinClass) {
         this.markInUseAllGSinClass = markInUseAllGSinClass;
+    }
+
+    public boolean isFiveYearsInUseForAllGSinClass() {
+        return fiveYearsInUseForAllGSinClass;
+    }
+
+    public void setFiveYearsInUseForAllGSinClass(boolean fiveYearsInUseForAllGSinClass) {
+        this.fiveYearsInUseForAllGSinClass = fiveYearsInUseForAllGSinClass;
     }
 }
