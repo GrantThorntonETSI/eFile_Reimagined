@@ -901,6 +901,183 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
 
 
 
+    // section 18 application level auto save
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/OfficeAction/section15/application/update/{field}/{value}/{OfficeActionID}/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> saveSection15ApplicatonLevel(@PathVariable String field ,@PathVariable String value, @PathVariable String OfficeActionID, @PathVariable String appInternalID){
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+        String responseMsg = "";
+        if(field.equals("section15-select-all")){
+
+            if(value.equals("yes")){
+
+
+                // for each gs, set inuse5 years to true and for gs and the class level
+                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                    GoodAndService current = iter.next();
+                    if(current.isActiveGS()){
+                        current.setFiveYearsInUse(true);
+                        current.setFiveYearsInUseCC(true);
+                    }
+
+                }
+
+
+            }
+            else {
+                // for each gs, set inuse5 years to false and for gs and the class level
+                // for each gs, set inuse5 years to true and for gs and the class level
+                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                    GoodAndService current = iter.next();
+                    if(current.isActiveGS()){
+                        current.setFiveYearsInUse(false);
+                        current.setFiveYearsInUseCC(false);
+                    }
+
+                }
+            }
+
+            responseMsg = "section 15 incontestable application level option";
+        }
+
+
+        if(field.equals("beneifits-section15")){
+            baseTrademarkApplication.setBenifitsClaimedForMark(value);
+
+            responseMsg = "section 15 benefits ";
+        }
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+
+        responseMsg = responseMsg+" have been saved";
+
+        return buildResponseEnity("200", responseMsg);
+    }
+
+
+
+    // section 18 class level auto save
+    // section 18 application level auto save
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/OfficeAction/section15/class/update/{field}/{value}/{OfficeActionID}/{classID}/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> saveSection15ClassLevel(@PathVariable String field ,@PathVariable String value, @PathVariable String OfficeActionID, @PathVariable String classID, @PathVariable String appInternalID){
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+        String responseMsg = "";
+        if(field.equals("section15-select-class")){
+
+            if(value.equals("yes")){
+
+
+                // for each gs, set inuse5 years to true and for gs and the class level
+                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                    GoodAndService current = iter.next();
+                    if(current.isActiveGS() && current.getClassNumber().equals(classID)){
+                        current.setFiveYearsInUse(true);
+                        current.setFiveYearsInUseCC(true);
+                    }
+
+                }
+
+
+            }
+            else {
+                // for each gs, set inuse5 years to false and for gs and the class level
+                // for each gs, set inuse5 years to true and for gs and the class level
+
+                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                    GoodAndService current = iter.next();
+                    if(current.isActiveGS() && current.getClassNumber().equals(classID)){
+                        current.setFiveYearsInUse(false);
+                        current.setFiveYearsInUseCC(false);
+                    }
+
+                }
+
+            }
+
+            responseMsg = "section 15 incontestable class level option";
+        }
+
+
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+
+        responseMsg = responseMsg+" have been saved";
+
+        return buildResponseEnity("200", responseMsg);
+    }
+
+
+    // section 18 gs level auto  save
+    // section 18 class level auto save
+    // section 18 application level auto save
+    @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
+    @RequestMapping(method = GET, value="/REST/apiGateway/OfficeAction/section15/gs/update/{field}/{value}/{OfficeActionID}/{gsID}/{appInternalID}")
+    @ResponseBody
+    ResponseEntity<String> saveSection15gsLevel(@PathVariable String field ,@PathVariable String value, @PathVariable String OfficeActionID, @PathVariable String gsID, @PathVariable String appInternalID){
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
+        String responseMsg = "";
+        if(field.equals("section15-select-class")){
+
+            if(value.equals("yes")){
+
+
+                // for each gs, set inuse5 years to true and for gs and the class level
+                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                    GoodAndService current = iter.next();
+                    if(current.isActiveGS() && current.getInternalID().equals(gsID)){
+                        current.setFiveYearsInUse(true);
+
+                    }
+
+                }
+
+
+            }
+            else {
+                // for each gs, set inuse5 years to false and for gs and the class level
+                // for each gs, set inuse5 years to true and for gs and the class level
+
+                // for each gs, set inuse5 years to true and for gs and the class level
+                for(Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
+                    GoodAndService current = iter.next();
+                    if(current.isActiveGS() && current.getInternalID().equals(gsID)){
+                        current.setFiveYearsInUse(false);
+
+                    }
+
+                }
+
+
+            }
+
+            responseMsg = "section 15 incontestable goods and services level option";
+        }
+
+
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+
+        responseMsg = responseMsg+" have been saved";
+
+        return buildResponseEnity("200", responseMsg);
+    }
+
+
 
 
 
