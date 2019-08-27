@@ -34,6 +34,8 @@ public class OfficeActions extends BaseEntity {
 
     private String parentSerialNumber;
 
+    private String parentRegistrationNumber;
+
     private String  parentMarkImagePath;
 
     private String parentMarkOwnerName;
@@ -744,5 +746,13 @@ public class OfficeActions extends BaseEntity {
 
     public void setActionType(String actionType) {
         this.actionType = actionType;
+    }
+
+    public String getParentRegistrationNumber() {
+        return parentRegistrationNumber;
+    }
+
+    public void setParentRegistrationNumber(String parentRegistrationNumber) {
+        this.parentRegistrationNumber = parentRegistrationNumber;
     }
 }
