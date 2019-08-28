@@ -997,7 +997,7 @@ public class BaseTrademarkApplication  {
             for(Iterator<GoodAndService> iter = goodAndServices.iterator(); iter.hasNext(); ) {
                 GoodAndService current = iter.next();
 
-                if(gsClassCategory.getClassCategoryNumber() == Integer.valueOf(current.getClassNumber()) && current.isActiveGS()){
+                if(gsClassCategory.getClassCategoryNumber() == Integer.valueOf(current.getClassNumber()) ){
 
                     gsClassCategory.addGoodAndService(current);
                     gsClassCategory.setClassCategoryImagePath(current.getClassSpecimenImgPath());

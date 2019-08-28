@@ -193,7 +193,7 @@
                         <div class="col-xs-12">
                             <div class="row basis">
                                 <div class="col-xs-12">
-                                    <input class="form-check-input checkmark" type="checkbox" value="selectall" tabindex="0" aria-labelledby="selall" id="select">
+                                    <input class="form-check-input checkmark  selectallclasses" type="checkbox" value="selectall" tabindex="0" aria-labelledby="selall" id="select">
                                     <label class="form-check-label form-check form-check-left" for="select" id="selall"><span class="radio notspecial">Select all</span></label>
                                 </div>
                             </div>
@@ -201,7 +201,7 @@
                             <th:block th:each="Good_Service_class : ${baseTrademarkApplication.getGoodAndServicesCategories()}">
                                 <fieldset aria-label="class18">
                                     <div class="card-text noexpand blue">
-                                        <input class="form-check-input checkmark" type="checkbox" value="class18" tabindex="0" aria-labelledby="class18" id="class_18">
+                                        <input class="form-check-input checkmark selectallgs" type="checkbox" value="class18" tabindex="0" aria-labelledby="class18" id="class_18">
                                         <label class="form-check-label form-check form-check-left" for="class_18" id="class18"><span class="radio notspecial weight600" th:text="${Good_Service_class.getClassNumberDisplay()}">Class 18</span></label>
                                     </div>
                                     <th:block th:each="Good_Service: ${Good_Service_class.getGoodAndServices()}">
@@ -306,6 +306,30 @@
             $('.content').fadeIn(500);
         }, 500);
 
+
+        $(document).on('change','#incontestable input.selectallclasses', function() {
+            var input  = $('#incontestable input.selectallclasses').parent().parent().parent().children('fieldset').find('input.checkmark');
+            var input  = $('#incontestable input.selectallclasses').parent().parent().parent().children('fieldset').find('input.checkmark');
+            if ($(this).is( ":checked" )) {
+                $(input).prop('checked', true);
+                $('input:disabled').prop('checked', false);
+            }
+            else {
+                $(input).prop('checked', false);
+            }
+        });
+
+        $(document).on('change','#incontestable input.selectallgs', function() {
+            var input  = $(this).parent().parent().find('input.checkmark');
+            if ($(this).is( ":checked" )) {
+                $(input).prop('checked', true);
+                $('input:disabled').prop('checked', false);
+            }
+            else {
+                $(input).prop('checked', false);
+            }
+        });
+        //
 
         //////////////////////////////////////////////////////////////////////
         // set mark image based on persisted values
