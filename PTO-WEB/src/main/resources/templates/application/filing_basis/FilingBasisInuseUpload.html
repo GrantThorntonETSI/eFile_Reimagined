@@ -10895,7 +10895,7 @@
         // persistence rendering for fa filing date drop down and persistence
         ///////////////////////////////////////////////////////////////////////
 
-        $('input.fa-filing-date').focusout(function () {
+        $('input.fa-filing-date').change(function () {
             var gsID= $(this).attr("gs-id");
             var value = $(this).val();
             var divID = $(this).attr("div-id");
@@ -10920,7 +10920,7 @@
         ///////////////////////////////////////////////////////////////////////
         // class level equivalent  faapp number down and persistence
         ///////////////////////////////////////////////////////////////////////
-        $('input.fa-filing-date-cc').focusout(function () {
+        $('input.fa-filing-date-cc').change(function () {
             var ccID= $(this).attr("cc-id");
 
             var value = $(this).val();
@@ -11007,7 +11007,7 @@
         // persistence rendering for fr reg date  persistence
         ///////////////////////////////////////////////////////////////////////
 
-        $('input.fr-reg-date').focusout(function () {
+        $('input.fr-reg-date').change(function () {
             var gsID= $(this).attr("gs-id");
             var value = $(this).val();
             var divID = $(this).attr("div-id");
@@ -11025,7 +11025,7 @@
         ///////////////////////////////////////////////////////////////////////
 
 
-        $('input.fr-reg-date-cc').focusout(function () {
+        $('input.fr-reg-date-cc').change(function () {
             var ccID= $(this).attr("cc-id");
 
             var value = $(this).val();
@@ -11048,7 +11048,7 @@
         // persistence rendering for fr expire date  persistence
         ///////////////////////////////////////////////////////////////////////
 
-        $('input.fr-expire-date').focusout(function () {
+        $('input.fr-expire-date').change(function () {
             var gsID= $(this).attr("gs-id");
 
             //alert(gsID);
@@ -11059,7 +11059,7 @@
         ///////////////////////////////////////////////////////////////////////
         // class level persistence rendering for fr expire date  persistence
         ///////////////////////////////////////////////////////////////////////
-        $('input.fr-expire-date-cc').focusout(function () {
+        $('input.fr-expire-date-cc').change(function () {
             var ccID= $(this).attr("cc-id");
 
             //alert(gsID);
@@ -11076,7 +11076,7 @@
         // persistence rendering for fr renewal date  persistence
         ///////////////////////////////////////////////////////////////////////
 
-        $('input.fr-renewal-date').focusout(function () {
+        $('input.fr-renewal-date').change(function () {
             var gsID= $(this).attr("gs-id");
 
 
@@ -11087,7 +11087,7 @@
         ///////////////////////////////////////////////////////////////////////
         // class level persistence rendering for fr renewal date  persistence
         ///////////////////////////////////////////////////////////////////////
-        $('input.fr-renewal-date-cc').focusout(function () {
+        $('input.fr-renewal-date-cc').change(function () {
             var ccID= $(this).attr("cc-id");
 
 
@@ -11323,7 +11323,7 @@
 
 
         // first doos and services date
-        $('input.gs-date').focusout(function () {
+        $('input.gs-date').change(function () {
 
             var gsID= $(this).attr("gs-id");
             var divID = $(this).attr("div-id");
@@ -11337,7 +11337,7 @@
         });
 
         // first doos and services date
-        $('input.gs-date-cc').focusout(function () {
+        $('input.gs-date-cc').change(function () {
 
             var ccID= $(this).attr("cc-id");
             var divID = $(this).attr("div-id");
@@ -11354,7 +11354,7 @@
 
         // first mark in commerce date
 
-        $('input.mark-date').focusout(function () {
+        $('input.mark-date').change(function () {
             var gsID= $(this).attr("gs-id");
             var divID = $(this).attr("div-id");
             var msgID = $(this).attr("message-id");
@@ -11367,7 +11367,7 @@
 
         });
 
-        $('input.mark-date-cc').focusout(function () {
+        $('input.mark-date-cc').change(function () {
             var ccID= $(this).attr("cc-id");
             var divID = $(this).attr("div-id");
             var msgID = $(this).attr("message-id");
@@ -12054,7 +12054,6 @@
 
         var options = { hour12: false, timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit', timeZoneName: 'short' };
         var thatz = new Date().toLocaleTimeString('en-US', options);
-
 
 
         // get target date
