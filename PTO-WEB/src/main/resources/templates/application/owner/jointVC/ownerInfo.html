@@ -135,19 +135,19 @@
                                     <input type="text" id="partner-first-name" th:field="*{partnerDTOs[__${itemStat.index}__].firstName}" name="firstName" class="form-control"  required>
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-4 col-lg-3">
-                                    <label for="partner-middle-name">middle Name</label>
+                                    <label for="partner-middle-name">Middle name</label>
                                     <input type="text"  th:field="*{partnerDTOs[__${itemStat.index}__].middleName}" id="partner-middle-name" name="middleName" class="form-control" >
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
                                     <label for="partner-last-name"><span class="weight600">&#42;</span>Last name</label>
                                     <input id="partner-last-name" type="text" th:field="*{partnerDTOs[__${itemStat.index}__].lastName}"  name="lastName" class="form-control"  required>
                                 </div>
-                                <div class="form-group form-group-md col-xs-12 col-sm-6 col-sm-4 col-md-6">
+                                <div class="form-group form-group-md col-xs-12 col-sm-4 col-md-6">
                                     <label for="partner-suffix">Suffix</label>
                                     <input type="text" class="form-control" id="partner-suffix" th:field="*{partnerDTOs[__${itemStat.index}__].suffix}" name="suffix" />
 
                                 </div>
-                                <div class="form-group form-group-md col-xs-12 col-sm-6 col-sm-4 col-md-6">
+                                <div class="form-group form-group-md col-xs-12 col-sm-8 col-md-6">
                                     <label for="partner-citizenship">Country of citizenship <a href="#" data-toggle="tooltip" title="If you have dual citizenship only enter the citizenship you would like printed in the Official Gazette." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> <span class="label label-info subtle" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
                                     <select th:field="*{partnerDTOs[__${itemStat.index}__].citizenShip}" id="partner-citizenship"  class="form-control" name="owner-citizenship">
                                         <option value="">Select</option>
@@ -404,7 +404,7 @@
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
                                     <label for="partner-owner-name-state">State where legally organized <span class="label label-info subtle visuallyremoved" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
-                                    <select  id="partner-owner-name-state" th:field="*{partnerDTOs[__${itemStat.index}__].state}"  class="form-control" name="State"  required>
+                                    <select  id="partner-owner-name-state" th:field="*{partnerDTOs[__${itemStat.index}__].state}"  class="form-control" name="State">
                                         <option value="">Select</option>
                                         <option value="Alabama">Alabama</option>
                                         <option value="Alaska">Alaska</option>
