@@ -580,7 +580,7 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
     @ResponseBody
     ResponseEntity<String> saveOASOUResponse(@PathVariable String pField , @PathVariable String pValue, @PathVariable String OfficeActionID, @PathVariable String ccID,@PathVariable String appInternalID){
 
-        String responseMsg = "Class level mark in use declaration for All goods and services have been saved.";
+        String responseMsg = "";
 
         String returnCode = "420";
 
@@ -612,6 +612,8 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
             baseTrademarkApplication.findOfficeActionById(OfficeActionID).setActiveAction(false);
             baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
+            responseMsg = "statement of use declaration ";
+
         }
 
 
@@ -640,7 +642,7 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
             baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
 
-
+            responseMsg = "class Status  ";
 
 
         }

@@ -156,174 +156,88 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-xs-12">
-                                                <fieldset aria-label="use statement">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <h2 class="weight600">Use Statement</h2>
-                                                            <div class="form-group form-group-md">
-                                                                <input class="form-check-input checkmark in-use-cc" type="checkbox" value="" tabindex="0"   name="user-accept-checkbox" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}, id=${Good_Service_class.getInUseCheckboxID()},aria-labelledby=${Good_Service_class.getInUseCheckboxLabelID()} ">
-                                                                <label class="form-check-label form-check-left form-check"  th:attr="for=${Good_Service_class.getInUseCheckboxID()}, id=${Good_Service_class.getInUseCheckboxLabelID()}" ><span class="radio notspecial">The mark is in use in commerce on or in connection with all goods/services in this class.</span></label>
-                                                            </div>
-                                                        </div>
+                                            <div class="col-xs-10 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${ Good_Service_class.getFirstDAtesAlertDivID()}" style="display:none; margin-left:7%;margin-right:3%;">
+                                                <p th:attr="id=${Good_Service_class.getFirstDatesAlertMessageID()}"></p>
+                                                <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service_class.getFirstDatesAlertButtonID()},div-id=${Good_Service_class.getFirstDAtesAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                <br clear="all">
+                                            </div>
+
+                                            <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                                <label class="matchlabelheighttwo" >When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span><span class="sr-only">enter the date in the following format: y y y y - m m - d d</span></label>
+                                                <input type="text" placeholder="yyyy-mm-dd" class="form-control datepicker gs-date-cc"  th:value="${Good_Service_class.getFirstGSDateCCDisplay()}" th:attr="id=${Good_Service_class.getFirstGSDateID()},mark-date-id=${Good_Service_class.getFirstMarkDateID()},cc-id=${Good_Service_class.getClassCategoryNumber()}, div-id=${Good_Service_class.getFirstDAtesAlertDivID()}, message-id=${Good_Service_class.getFirstDatesAlertMessageID()}, button-id=${Good_Service_class.getFirstDatesAlertButtonID()}">
+                                            </div>
+
+
+                                            <div class="col-xs-12 col-md-6 form-group form-group-md matchlabelheightdiv">
+                                                <label  class="matchlabelheighttwo" >When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip"  title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span><span class="sr-only">enter the date in the following format: y y y y - m m - d d</span></label>
+                                                <input type="text" placeholder="yyyy-mm-dd" class="form-control datepicker mark-date-cc"    name="commercedate"  th:value="${Good_Service_class.getFirstCommerceDateCCDisplay()}" th:attr="id=${Good_Service_class.getFirstMarkDateID()},gs-date-id=${Good_Service_class.getFirstGSDateID()},cc-id=${Good_Service_class.getClassCategoryNumber()}, div-id=${Good_Service_class.getFirstDAtesAlertDivID()}, message-id=${Good_Service_class.getFirstDatesAlertMessageID()}, button-id=${Good_Service_class.getFirstDatesAlertButtonID()}" >
+                                            </div>
+
+
+                                            <div class="row" style="margin-left: 15px;">
+                                                <div class="col-xs-12">
+                                                    <div class="lead">
+                                                        <p style="font-weight: bold;">Only one specimen is required per class.</p>
                                                     </div>
-                                                    <th:block th:each="Good_Service: ${Good_Service_class.getGoodAndServices()}">
-                                                        <div class="row">
-                                                            <div class="col-xs-10 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service.getFirstDAtesAlertDivID()}" style="display:none; margin-left:7%;margin-right:3%;">
-                                                                <p th:attr="id=${Good_Service.getFirstDatesAlertMessageID()}"></p>
-                                                                <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service.getFirstDatesAlertButtonID()},div-id=${Good_Service.getFirstDAtesAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
-                                                                <br clear="all">
-                                                            </div>
-
-                                                            <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                                <label class="matchlabelheighttwo" >When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span><span class="sr-only">enter the date in the following format: y y y y - m m - d d</span></label>
-                                                                <input type="text" placeholder="yyyy-mm-dd" class="form-control datepicker gs-date" th:value="${Good_Service.getFirstGSDateDisplay()}"  th:attr="id=${Good_Service.getFirstGSDateID()},mark-date-id=${Good_Service.getFirstMarkDateID()},gs-id=${Good_Service.getInternalID()}, div-id=${Good_Service.getFirstDAtesAlertDivID()}, message-id=${Good_Service.getFirstDatesAlertMessageID()}, button-id=${Good_Service.getFirstDatesAlertButtonID()}">
-                                                            </div>
+                                                </div>
+                                            </div>
 
 
-                                                            <div class="col-xs-12 col-md-6 form-group form-group-md matchlabelheightdiv">
-                                                                <label  class="matchlabelheighttwo" >When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip" th:attr="name=${Good_Service.getInternalID()}" title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span><span class="sr-only">enter the date in the following format: y y y y - m m - d d</span></label>
-                                                                <input type="text" placeholder="yyyy-mm-dd" class="form-control datepicker mark-date"    name="commercedate"  th:value="${Good_Service.getFirstCommerceDateDisplay()}" th:attr="id=${Good_Service.getFirstMarkDateID()},gs-date-id=${Good_Service.getFirstGSDateID()},gs-id=${Good_Service.getInternalID()}, div-id=${Good_Service.getFirstDAtesAlertDivID()}, message-id=${Good_Service.getFirstDatesAlertMessageID()}, button-id=${Good_Service.getFirstDatesAlertButtonID()}" >
-                                                            </div>
-                                                        </div><fieldset aria-label="upload specimen">
-                                                        <div id="yesspecimenone" class="form-group form-group-md"    style=""><!--toggle 'yes' radio-->
+                                            <div class="col-xs-6" style="display:none; ">
+                                                <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service_class.getClassCategporyImpageFormID()}"  action="/class/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
 
-
-                                                            <th:block th:if="${Good_Service.isSampleUploaded() == true}">
-                                                                <div class="col-xs-6" style="display: none">
-                                                                    <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service.getGSImpageFormID()}"  action="/gs/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
-
-                                                                        <p id="upimagetwo">Provide an image of your specimen:</p>
-                                                                        <div>
-                                                                            <label class="small upload-drop-zone" th:attr="for=${Good_Service.getGSFileInputID()}" id="upimgtwo" style="min-height: 111px;"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png</label>
-                                                                            <input type="file" th:attr="id=${Good_Service.getGSFileInputID()}" name="file" class="form-control" aria-labelledby="upimgtwo upimagetwo">
-                                                                        </div><!-- Drop Zone -->
+                                                    <p id="upimage">Provide an image of your specimen:</p>
+                                                    <div>
+                                                        <label class="small upload-drop-zone" th:attr="for=${Good_Service_class.classFileInputID}" id="upimg" style="min-height: 111px; "><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png</label>
+                                                        <input type="file" th:attr="id=${Good_Service_class.classFileInputID}" name="file" class="form-control">
+                                                    </div><!-- Drop Zone -->
 
 
 
 
-                                                                    </form>
+                                                </form>
 
-                                                                </div>
-                                                                <div class="col-xs-6" style="" >
-                                                                    <div class="row" >
-                                                                        <div class="js-upload-finished col-xs-12 col-md-10 col-lg-8">
+                                            </div>
+                                            <div class="col-xs-6" >
+                                                <div class="row" id="npsConsent">
+                                                    <div class="js-upload-finished col-xs-12 col-md-10 col-lg-8" >
 
-                                                                            <div class="list-group" >
-                                                                                <div class="list-group-item list-group-item-success fileholder col-xs-12" role="alert" style="min-height: 111px; margin-top: 15px;">
-                                                                                    <div class="row">
-                                                                                        <div class="col-xs-2">
-                                                                                            <button type="button" class="btn btn-sm close gs-spec-close" aria-label="remove file selection">
-                                                                                                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
-                                                                                            </button>
-                                                                                        </div>
-                                                                                        <div class="col-xs-4 linkholder" style="margin-left: 15px;">
-                                                                                            <a th:attr="id=${Good_Service.getGSspecDownloadLinkID()}" th:text="${Good_Service.getSampleImageName()}">download-link</a>
+                                                        <div class="list-group" >
+                                                            <div class="list-group-item list-group-item-success fileholder col-xs-12" role="alert" style="min-height: 111px; margin-top: 15px;">
+                                                                <div class="row">
+                                                                    <div class="col-xs-2">
+                                                                        <button type="button" class="btn btn-sm close cc-spec-close" aria-label="remove file selection">
+                                                                            <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="col-xs-4 linkholder" style="margin-left: 15px;">
+                                                                        <a th:attr="id=${Good_Service_class.getClassSpecDownloadLinkID()}" th:text="${Good_Service_class.getClassCategoryImageName()}" >download-link</a>
 
-                                                                                        </div>
-                                                                                        <div class="col-xs-2" style="margin-left: 33px;">
-                                                                                            <img th:attr="src=${Good_Service.getSampleImagePath()},id=${Good_Service.getGSImageID()}"   class="img-thumbnail">
-                                                                                        </div>
-
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-xs-2" style="margin-left: 33px;">
+                                                                        <img th:attr="src=${Good_Service_class.getClassCategoryImagePath()},id=${Good_Service_class.classImageID}"  class="img-thumbnail">
                                                                     </div>
 
-                                                                </div>
-
-                                                            </th:block>
-
-                                                            <th:block th:if="${Good_Service.isSampleUploaded() == false}">
-                                                                <div class="col-xs-6" style="">
-                                                                    <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service.getGSImpageFormID()}"  action="/gs/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
-
-                                                                        <p id="upimagetwo">Provide an image of your specimen:</p>
-                                                                        <div>
-                                                                            <label class="small upload-drop-zone" th:attr="for=${Good_Service.getGSFileInputID()}" id="upimgtwo" style="min-height: 111px;"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png</label>
-                                                                            <input type="file" th:attr="id=${Good_Service.getGSFileInputID()}" name="file" class="form-control" aria-labelledby="upimgtwo upimagetwo">
-                                                                        </div><!-- Drop Zone -->
-
-
-
-
-                                                                    </form>
-
-                                                                </div>
-                                                                <div class="col-xs-6" style="display: none" >
-                                                                    <div class="row" >
-                                                                        <div class="js-upload-finished col-xs-12 col-md-10 col-lg-8">
-
-                                                                            <div class="list-group" >
-                                                                                <div class="list-group-item list-group-item-success fileholder col-xs-12" role="alert" style="min-height: 111px; margin-top: 15px;">
-                                                                                    <div class="row">
-                                                                                        <div class="col-xs-2">
-                                                                                            <button type="button" class="btn btn-sm close gs-spec-close" aria-label="remove file selection">
-                                                                                                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
-                                                                                            </button>
-                                                                                        </div>
-                                                                                        <div class="col-xs-4 linkholder" style="margin-left: 15px;">
-                                                                                            <a th:attr="id=${Good_Service.getGSspecDownloadLinkID()}">download-link</a>
-
-                                                                                        </div>
-                                                                                        <div class="col-xs-2" style="margin-left: 33px;">
-                                                                                            <img th:attr="src=${Good_Service.getSampleImagePath()},id=${Good_Service.getGSImageID()}"   class="img-thumbnail">
-                                                                                        </div>
-
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                </div>
-
-
-
-                                                            </th:block>
-
-                                                            <div class="col-xs-6">
-                                                                <label th:attr="for=${Good_Service.getGSSpecDescID()}, name=${Good_Service.getInternalID()}">Provide a description of your specimen: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                                <textarea  th:attr="id=${Good_Service.getGSSpecDescID()}"  rows="4"   class="form-control spec-description" style="min-height: 111px;"></textarea>
-                                                            </div>
-
-                                                            <div class="col-xs-12" style=" margin-top: 15px;">
-                                                                <div class="center">
-
-                                                                    <div type="button" th:attr="form=${Good_Service.getGSImpageFormID()},gs-id=${Good_Service.internalID}, file-id=${Good_Service.getGSFileInputID()}, gs-img-id=${Good_Service.getGSImageID()}, spinner-id=${Good_Service.getGSUploadSpinnerID()},download-link-id=${Good_Service.getGSspecDownloadLinkID()}" class="btn btn-sm submitGSSpecimen" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Specimen</b><span><i class="fa fa-spinner fa-spin"  th:attr="id=${Good_Service.getGSUploadSpinnerID()}" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div>
-                                                    </fieldset>
-                                                    </th:block>
-
-
-                                                </fieldset>
-
-                                                <fieldset aria-label="enter other information">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 form-group form-group-md">
-                                                            <h2 class="card-title weight600">Other Situations</h2>
-                                                            <div class="row">
-                                                                <div class="col-xs-12 form-group form-group-md">
-                                                                    <input class="form-check-input checkmark" type="checkbox" value="minorchange_one" tabindex="0" aria-labelledby="minor_one" id="nonmaterial_one">
-                                                                    <label class="form-check-label form-check-left form-check" for="nonmaterial_one" id="minor_one"><span class="radio notspecial">Make minor/non-material changes to my mark to conform to my specimen</span></label>
-                                                                </div>
-                                                                <div class="col-xs-12 form-group form-group-md">
-                                                                    <input class="form-check-input checkmark" type="checkbox" value="information_one" tabindex="0" aria-labelledby="addinfo_one" id="info_one">
-                                                                    <label class="form-check-label form-check-left form-check" for="info_one" id="addinfo_one"><span class="radio notspecial">Include additional information not previously requested or specified</span></label>
-                                                                </div>
-                                                                <div class="col-xs-12 form-group form-group-md">
-                                                                    <input class="form-check-input checkmark" type="checkbox" value="optionalinsurance_one" tabindex="0" aria-labelledby="optional_one" id="insurance_one">
-                                                                    <label class="form-check-label form-check-left form-check" for="insurance_one" id="optional_one"><span class="radio notspecial">File an optional insurance extension</span></label>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </fieldset>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-xs-6">
+                                                <label th:attr="for=${Good_Service_class.classSpecDescID}" >Provide a description of your specimen: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
+                                                <textarea  th:attr="id=${Good_Service_class.classSpecDescID},cat-num=${Good_Service_class.getClassCategoryNumber()}"  th:text="${Good_Service_class.getClassCategoryDescr()}" rows="4"  class="form-control class-spec-desc-ta"></textarea>
+                                            </div>
+
+
+                                            <div class="col-xs-12" style="margin-top: 15px;">
+                                                <div class="center">
+
+                                                    <div type="button" th:attr="form=${Good_Service_class.getClassCategporyImpageFormID()},cat-num=${Good_Service_class.getClassCategoryNumber()}, file-id=${Good_Service_class.classFileInputID}, class-img-id=${Good_Service_class.classImageID}, spinner-id=${Good_Service_class.classUploadSpinnerID}, download-link-id=${Good_Service_class.getClassSpecDownloadLinkID()}" class="btn btn-sm submitCCSpecimen" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Specimen</b><span><i class="fa fa-spinner fa-spin"  th:attr="id=${Good_Service_class.classUploadSpinnerID}" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -476,138 +390,91 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <th:block th:each="Good_Service: ${Good_Service_class.getGoodAndServices()}">
-                                                        <div class="row">
-                                                            <div class="col-xs-10 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${Good_Service.getFirstDAtesAlertDivID()}" style="display:none; margin-left:7%;margin-right:3%;">
-                                                                <p th:attr="id=${Good_Service.getFirstDatesAlertMessageID()}"></p>
-                                                                <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service.getFirstDatesAlertButtonID()},div-id=${Good_Service.getFirstDAtesAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
-                                                                <br clear="all">
-                                                            </div>
+                                                    <div class="row">
+                                                        <div class="col-xs-10 alert alert-warning" role="alert" aria-live="assertive" th:attr="id=${ Good_Service_class.getFirstDAtesAlertDivID()}" style="display:none; margin-left:7%;margin-right:3%;">
+                                                            <p th:attr="id=${Good_Service_class.getFirstDatesAlertMessageID()}"></p>
+                                                            <button type="button" class="close alert-close" aria-label="close alert" th:attr="id=${Good_Service_class.getFirstDatesAlertButtonID()},div-id=${Good_Service_class.getFirstDAtesAlertDivID()}"><span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span></button>
+                                                            <br clear="all">
+                                                        </div>
 
-                                                            <div class="col-xs-12 col-md-6 form-group form-group-md">
-                                                                <label class="matchlabelheighttwo" >When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span><span class="sr-only">enter the date in the following format: y y y y - m m - d d</span></label>
-                                                                <input type="text" placeholder="yyyy-mm-dd" class="form-control datepicker gs-date" th:value="${Good_Service.getFirstGSDateDisplay()}"  th:attr="id=${Good_Service.getFirstGSDateID()},mark-date-id=${Good_Service.getFirstMarkDateID()},gs-id=${Good_Service.getInternalID()}, div-id=${Good_Service.getFirstDAtesAlertDivID()}, message-id=${Good_Service.getFirstDatesAlertMessageID()}, button-id=${Good_Service.getFirstDatesAlertButtonID()}">
-                                                            </div>
-
-
-                                                            <div class="col-xs-12 col-md-6 form-group form-group-md matchlabelheightdiv">
-                                                                <label  class="matchlabelheighttwo" >When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip" th:attr="name=${Good_Service.getInternalID()}" title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span><span class="sr-only">enter the date in the following format: y y y y - m m - d d</span></label>
-                                                                <input type="text" placeholder="yyyy-mm-dd" class="form-control datepicker mark-date"    name="commercedate"  th:value="${Good_Service.getFirstCommerceDateDisplay()}" th:attr="id=${Good_Service.getFirstMarkDateID()},gs-date-id=${Good_Service.getFirstGSDateID()},gs-id=${Good_Service.getInternalID()}, div-id=${Good_Service.getFirstDAtesAlertDivID()}, message-id=${Good_Service.getFirstDatesAlertMessageID()}, button-id=${Good_Service.getFirstDatesAlertButtonID()}" >
-                                                            </div>
-                                                        </div><fieldset aria-label="upload specimen">
-                                                        <div id="yesspecimenone" class="form-group form-group-md"    style=""><!--toggle 'yes' radio-->
+                                                        <div class="col-xs-12 col-md-6 form-group form-group-md">
+                                                            <label class="matchlabelheighttwo" >When did you first use the mark in connection with the goods/services? <a href="#" data-toggle="tooltip" title="Enter the date on which the mark was first used with the goods or services." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span><span class="sr-only">enter the date in the following format: y y y y - m m - d d</span></label>
+                                                            <input type="text" placeholder="yyyy-mm-dd" class="form-control datepicker gs-date-cc"  th:value="${Good_Service_class.getFirstGSDateCCDisplay()}" th:attr="id=${Good_Service_class.getFirstGSDateID()},mark-date-id=${Good_Service_class.getFirstMarkDateID()},cc-id=${Good_Service_class.getClassCategoryNumber()}, div-id=${Good_Service_class.getFirstDAtesAlertDivID()}, message-id=${Good_Service_class.getFirstDatesAlertMessageID()}, button-id=${Good_Service_class.getFirstDatesAlertButtonID()}">
+                                                        </div>
 
 
-                                                            <th:block th:if="${Good_Service.isSampleUploaded() == true}">
-                                                                <div class="col-xs-6" style="display: none">
-                                                                    <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service.getGSImpageFormID()}"  action="/gs/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
-
-                                                                        <p id="upimagetwo">Provide an image of your specimen:</p>
-                                                                        <div>
-                                                                            <label class="small upload-drop-zone" th:attr="for=${Good_Service.getGSFileInputID()}" id="upimgtwo" style="min-height: 111px;"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png</label>
-                                                                            <input type="file" th:attr="id=${Good_Service.getGSFileInputID()}" name="file" class="form-control" aria-labelledby="upimgtwo upimagetwo">
-                                                                        </div><!-- Drop Zone -->
+                                                        <div class="col-xs-12 col-md-6 form-group form-group-md matchlabelheightdiv">
+                                                            <label  class="matchlabelheighttwo" >When did you first use the mark in Commerce? <a href="#" data-toggle="tooltip"  title="Enter the date on which the mark was first used in commerce, such as commerce between states or between the United States and another country." class="glyphicon glyphicon-info-sign test" data-placement="right"></a><span class="label label-info subtle visuallyremoved">Reduced Fee</span><span class="sr-only">enter the date in the following format: y y y y - m m - d d</span></label>
+                                                            <input type="text" placeholder="yyyy-mm-dd" class="form-control datepicker mark-date-cc"    name="commercedate"  th:value="${Good_Service_class.getFirstCommerceDateCCDisplay()}" th:attr="id=${Good_Service_class.getFirstMarkDateID()},gs-date-id=${Good_Service_class.getFirstGSDateID()},cc-id=${Good_Service_class.getClassCategoryNumber()}, div-id=${Good_Service_class.getFirstDAtesAlertDivID()}, message-id=${Good_Service_class.getFirstDatesAlertMessageID()}, button-id=${Good_Service_class.getFirstDatesAlertButtonID()}" >
+                                                        </div>
 
 
-
-
-                                                                    </form>
-
+                                                        <div class="row" style="margin-left: 15px;">
+                                                            <div class="col-xs-12">
+                                                                <div class="lead">
+                                                                    <p style="font-weight: bold;">Only one specimen is required per class.</p>
                                                                 </div>
-                                                                <div class="col-xs-6" style="" >
-                                                                    <div class="row" >
-                                                                        <div class="js-upload-finished col-xs-12 col-md-10 col-lg-8">
+                                                            </div>
+                                                        </div>
 
-                                                                            <div class="list-group" >
-                                                                                <div class="list-group-item list-group-item-success fileholder col-xs-12" role="alert" style="min-height: 111px; margin-top: 15px;">
-                                                                                    <div class="row">
-                                                                                        <div class="col-xs-2">
-                                                                                            <button type="button" class="btn btn-sm close gs-spec-close" aria-label="remove file selection">
-                                                                                                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
-                                                                                            </button>
-                                                                                        </div>
-                                                                                        <div class="col-xs-4 linkholder" style="margin-left: 15px;">
-                                                                                            <a th:attr="id=${Good_Service.getGSspecDownloadLinkID()}" th:text="${Good_Service.getSampleImageName()}">download-link</a>
 
-                                                                                        </div>
-                                                                                        <div class="col-xs-2" style="margin-left: 33px;">
-                                                                                            <img th:attr="src=${Good_Service.getSampleImagePath()},id=${Good_Service.getGSImageID()}"   class="img-thumbnail">
-                                                                                        </div>
+                                                        <div class="col-xs-6" style="display:none; ">
+                                                            <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service_class.getClassCategporyImpageFormID()}"  action="/class/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
 
-                                                                                    </div>
+                                                                <p id="upimage">Provide an image of your specimen:</p>
+                                                                <div>
+                                                                    <label class="small upload-drop-zone" th:attr="for=${Good_Service_class.classFileInputID}" id="upimg" style="min-height: 111px; "><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png</label>
+                                                                    <input type="file" th:attr="id=${Good_Service_class.classFileInputID}" name="file" class="form-control">
+                                                                </div><!-- Drop Zone -->
+
+
+
+
+                                                            </form>
+
+                                                        </div>
+                                                        <div class="col-xs-6" >
+                                                            <div class="row" id="npsConsent">
+                                                                <div class="js-upload-finished col-xs-12 col-md-10 col-lg-8" >
+
+                                                                    <div class="list-group" >
+                                                                        <div class="list-group-item list-group-item-success fileholder col-xs-12" role="alert" style="min-height: 111px; margin-top: 15px;">
+                                                                            <div class="row">
+                                                                                <div class="col-xs-2">
+                                                                                    <button type="button" class="btn btn-sm close cc-spec-close" aria-label="remove file selection">
+                                                                                        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+                                                                                    </button>
                                                                                 </div>
+                                                                                <div class="col-xs-4 linkholder" style="margin-left: 15px;">
+                                                                                    <a th:attr="id=${Good_Service_class.getClassSpecDownloadLinkID()}" th:text="${Good_Service_class.getClassCategoryImageName()}" >download-link</a>
+
+                                                                                </div>
+                                                                                <div class="col-xs-2" style="margin-left: 33px;">
+                                                                                    <img th:attr="src=${Good_Service_class.getClassCategoryImagePath()},id=${Good_Service_class.classImageID}"  class="img-thumbnail">
+                                                                                </div>
+
                                                                             </div>
                                                                         </div>
                                                                     </div>
-
                                                                 </div>
-
-                                                            </th:block>
-
-                                                            <th:block th:if="${Good_Service.isSampleUploaded() == false}">
-                                                                <div class="col-xs-6" style="">
-                                                                    <form method="post"  target="hidden-iframe" th:attr="id=${Good_Service.getGSImpageFormID()}"  action="/gs/specimen/add"  enctype="multipart/form-data"  aria-labelledby="title">
-
-                                                                        <p id="upimagetwo">Provide an image of your specimen:</p>
-                                                                        <div>
-                                                                            <label class="small upload-drop-zone" th:attr="for=${Good_Service.getGSFileInputID()}" id="upimgtwo" style="min-height: 111px;"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> <br>Upload file. Allowed file types .jpg, .tiff, .png</label>
-                                                                            <input type="file" th:attr="id=${Good_Service.getGSFileInputID()}" name="file" class="form-control" aria-labelledby="upimgtwo upimagetwo">
-                                                                        </div><!-- Drop Zone -->
-
-
-
-
-                                                                    </form>
-
-                                                                </div>
-                                                                <div class="col-xs-6" style="display: none" >
-                                                                    <div class="row" >
-                                                                        <div class="js-upload-finished col-xs-12 col-md-10 col-lg-8">
-
-                                                                            <div class="list-group" >
-                                                                                <div class="list-group-item list-group-item-success fileholder col-xs-12" role="alert" style="min-height: 111px; margin-top: 15px;">
-                                                                                    <div class="row">
-                                                                                        <div class="col-xs-2">
-                                                                                            <button type="button" class="btn btn-sm close gs-spec-close" aria-label="remove file selection">
-                                                                                                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
-                                                                                            </button>
-                                                                                        </div>
-                                                                                        <div class="col-xs-4 linkholder" style="margin-left: 15px;">
-                                                                                            <a th:attr="id=${Good_Service.getGSspecDownloadLinkID()}">download-link</a>
-
-                                                                                        </div>
-                                                                                        <div class="col-xs-2" style="margin-left: 33px;">
-                                                                                            <img th:attr="src=${Good_Service.getSampleImagePath()},id=${Good_Service.getGSImageID()}"   class="img-thumbnail">
-                                                                                        </div>
-
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                </div>
-
-
-
-                                                            </th:block>
-
-                                                            <div class="col-xs-6">
-                                                                <label th:attr="for=${Good_Service.getGSSpecDescID()}, name=${Good_Service.getInternalID()}">Provide a description of your specimen: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                                                <textarea  th:attr="id=${Good_Service.getGSSpecDescID()}"  rows="4"   class="form-control spec-description" style="min-height: 111px;"></textarea>
-                                                            </div>
-
-                                                            <div class="col-xs-12" style=" margin-top: 15px;">
-                                                                <div class="center">
-
-                                                                    <div type="button" th:attr="form=${Good_Service.getGSImpageFormID()},gs-id=${Good_Service.internalID}, file-id=${Good_Service.getGSFileInputID()}, gs-img-id=${Good_Service.getGSImageID()}, spinner-id=${Good_Service.getGSUploadSpinnerID()},download-link-id=${Good_Service.getGSspecDownloadLinkID()}" class="btn btn-sm submitGSSpecimen" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Specimen</b><span><i class="fa fa-spinner fa-spin"  th:attr="id=${Good_Service.getGSUploadSpinnerID()}" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
-                                                                </div>
-
                                                             </div>
 
                                                         </div>
-                                                    </fieldset>
-                                                    </th:block>
+
+                                                        <div class="col-xs-6">
+                                                            <label th:attr="for=${Good_Service_class.classSpecDescID}" >Provide a description of your specimen: <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
+                                                            <textarea  th:attr="id=${Good_Service_class.classSpecDescID},cat-num=${Good_Service_class.getClassCategoryNumber()}"  th:text="${Good_Service_class.getClassCategoryDescr()}" rows="4"  class="form-control class-spec-desc-ta"></textarea>
+                                                        </div>
+
+
+                                                        <div class="col-xs-12" style="margin-top: 15px;">
+                                                            <div class="center">
+
+                                                                <div type="button" th:attr="form=${Good_Service_class.getClassCategporyImpageFormID()},cat-num=${Good_Service_class.getClassCategoryNumber()}, file-id=${Good_Service_class.classFileInputID}, class-img-id=${Good_Service_class.classImageID}, spinner-id=${Good_Service_class.classUploadSpinnerID}, download-link-id=${Good_Service_class.getClassSpecDownloadLinkID()}" class="btn btn-sm submitCCSpecimen" style="background-color: darkgreen; color: white; font-weight: bold;"><i class="material-icons" style="margin-right: 5px; margin-top: 5px;">cloud_upload</i><b style="position: relative; top:-5px;">Upload Specimen</b><span><i class="fa fa-spinner fa-spin"  th:attr="id=${Good_Service_class.classUploadSpinnerID}" style="font-size:24px; margin-left: 11px; display: none;"></i></span></div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
 
 
                                                 </fieldset>
@@ -814,11 +681,15 @@
         $('.disable-cc').click(function () {
             var ccID = $(this).attr("cc-id");
 
+            alert("disable class");
+
             saveNOAresponse("activate-cc-noa", "no",  OfficeActionID, ccID, appInternalID );
         });
 
         $('.enable-cc').click(function () {
             var ccID = $(this).attr("cc-id");
+
+            alert("enable class");
 
             saveNOAresponse("activate-cc-noa", "yes",  OfficeActionID, ccID, appInternalID );
         });
@@ -845,52 +716,47 @@
 
 
         // first doos and services date
-        $('input.gs-date').change(function () {
+        // first doos and services date
+        $('input.gs-date-cc').change(function () {
 
-            var gsID= $(this).attr("gs-id");
+            var ccID= $(this).attr("cc-id");
             var divID = $(this).attr("div-id");
             var msgID = $(this).attr("message-id");
             var buttonID = $(this).attr("button-id");
             var markDateID = $(this).attr("mark-date-id");
             var date = $(this).val();
 
-            datealertFirstDatePair(divID,msgID,buttonID,date,"fb-gs-date",date,gsID,appInternalID,markDateID);
+            datealertFirstDatePair(divID,msgID,buttonID,date,"cc-gs-date",date,ccID,appInternalID,markDateID);
 
         });
 
-        $('input.mark-date').change(function () {
-            var gsID= $(this).attr("gs-id");
+
+
+        $('input.mark-date-cc').change(function () {
+            var ccID= $(this).attr("cc-id");
             var divID = $(this).attr("div-id");
             var msgID = $(this).attr("message-id");
             var buttonID = $(this).attr("button-id");
             var gsDateID = $(this).attr("gs-date-id");
             var date = $(this).val();
 
-            datealertFirstDatePair(divID,msgID,buttonID,date,"fb-mark-date",date,gsID,appInternalID,gsDateID);
+            datealertFirstDatePair(divID,msgID,buttonID,date,"cc-mark-date",date,ccID,appInternalID,gsDateID);
 
 
         });
-        $('textarea.spec-description').focusout(function () {
-            var gsId = $(this).prev().attr("name")
-            var msg = $(this).val();
-
-            if(msg != ""){
-                addFilingBasisInfoToGoodAndService("fb-sample-desc",msg,gsId, appInternalID);
-            }
 
 
-        });
         // this is the id of the submit button
-        $(".submitGSSpecimen").click(function() {
-
+        $(".submitCCSpecimen").click(function() {
 
             var currentButton = $(this);
+
             var formID = $(this).attr("form");
-            var gsID = $(this).attr("gs-id");
+            var classNumber = $(this).attr("cat-num");
 
             var fileInputId = $(this).attr("file-id");
 
-            var imageId = $(this).attr("gs-img-id");
+            var imageId = $(this).attr("class-img-id");
 
             var spinnerID = $(this).attr("spinner-id");
             var dLinkID = $(this).attr("download-link-id");
@@ -901,12 +767,14 @@
             var formData = new FormData();
             formData.append('file', file);
             formData.append('appID', appInternalID);
-            formData.append('gsID',gsID);
+            formData.append('catNum',classNumber);
 
             var url = $("#"+formID).attr("action");
             // Get the selected files from the input.
             // get form url
+
             setTimeout(function () {
+
                 $.ajax({
                     type: "POST",
                     url: url,
@@ -920,36 +788,38 @@
                         // we will return the the file url
                         // call jquery and set it in the img div
                         var imgPath = parsePathFromResponse(data);
-                        var fileName = parseNameFromResponse(data);
-                        $('#'+dLinkID).text(fileName);
+                        var consentFileName = parseNameFromResponse(data);
+
+                        $('#'+dLinkID).text(consentFileName);
+
+
                         $('#'+imageId).attr("src", imgPath);
                         $("#"+spinnerID).hide();
+
                         //$("#cat-spec-img").fadeIn(500);
                     }
                 });
-
                 $(currentButton).parent().parent().prev().prev().show(500);
                 //alert($(this).parent().parent().html());
                 $(currentButton).parent().parent().prev().prev().prev().hide(500);
                 $(currentButton).parent().parent().hide(500);
+                //alert($(currentButton).parent().parent().html())
             }, 1000);
-
-
-
 
 
             return false; // avoid to execute the actual submit of the form.
         });
 
 
-        $('.gs-spec-close').click(function () {
+        $('.cc-spec-close').click(function () {
 
 
             $(this).parent().parent().parent().parent().parent().parent().parent().hide(500);
 
             $(this).parent().parent().parent().parent().parent().parent().parent().prev().show(500);
-            $(this).parent().parent().parent().parent().parent().parent().parent().next().next().show(500);
 
+            // alert( $(this).parent().parent().parent().parent().parent().parent().parent().next().html());
+            $(this).parent().parent().parent().parent().parent().parent().parent().next().next().show(500);
 
         });
 
