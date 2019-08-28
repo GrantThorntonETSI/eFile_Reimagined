@@ -901,6 +901,26 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // section 18 application level auto save
     @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
     @RequestMapping(method = GET, value="/REST/apiGateway/OfficeAction/section15/application/update/{field}/{value}/{OfficeActionID}/{appInternalID}")
@@ -976,9 +996,9 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
     // section 18 class level auto save
     // section 18 application level auto save
     @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
-    @RequestMapping(method = GET, value="/REST/apiGateway/OfficeAction/section15/class/update/{field}/{value}/{OfficeActionID}/{classID}/{appInternalID}")
+    @RequestMapping(method = GET, value="/REST/apiGateway/OfficeAction/section15/class/update/{field}/{value}/{classID}/{appInternalID}")
     @ResponseBody
-    ResponseEntity<String> saveSection15ClassLevel(@PathVariable String field ,@PathVariable String value, @PathVariable String OfficeActionID, @PathVariable String classID, @PathVariable String appInternalID){
+    ResponseEntity<String> saveSection15ClassLevel(@PathVariable String field ,@PathVariable String value, @PathVariable String classID, @PathVariable String appInternalID){
 
 
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
@@ -1042,7 +1062,7 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = getServiceBeanFactory().getBaseTradeMarkApplicationService();
         BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(appInternalID);
         String responseMsg = "";
-        if(field.equals("section15-select-class")){
+        if(field.equals("section15-select-gs")){
 
             if(value.equals("yes")){
 

@@ -201,8 +201,8 @@
                             <th:block th:each="Good_Service_class : ${baseTrademarkApplication.getGoodAndServicesCategories()}">
                                 <fieldset aria-label="class18">
                                     <div class="card-text noexpand blue">
-                                        <input class="form-check-input checkmark selectallgs" type="checkbox" value="class18" tabindex="0" aria-labelledby="class18" id="class_18">
-                                        <label class="form-check-label form-check form-check-left" for="class_18" id="class18"><span class="radio notspecial weight600" th:text="${Good_Service_class.getClassNumberDisplay()}">Class 18</span></label>
+                                        <input class="form-check-input checkmark selectallgs" type="checkbox" value="class18" tabindex="0" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">
+                                        <label class="form-check-label form-check form-check-left" ><span class="radio notspecial weight600" th:text="${Good_Service_class.getClassNumberDisplay()}">Class 18</span></label>
                                     </div>
                                     <th:block th:each="Good_Service: ${Good_Service_class.getGoodAndServices()}">
 
@@ -211,12 +211,12 @@
 
 
                                                 <th:block th:if="${Good_Service.isActiveGS() == true}">
-                                                    <input class="form-check-input checkmark" type="checkbox" value="18gs" tabindex="0" aria-labelledby="class18barsoap" >
+                                                    <input class="form-check-input checkmark  gs-in-use-section15" type="checkbox" value="18gs" tabindex="0" aria-labelledby="class18barsoap"  th:attr="gs-id=${Good_Service.getInternalID()}">
                                                     <label class="form-check-label form-check form-check-left"  ><span class="radio notspecial" th:text="${Good_Service.getClassDescription()}">Bar Soap</span></label>
                                                 </th:block>
                                                 <th:block th:if="${Good_Service.isActiveGS() == false}">
 
-                                                    <input class="form-check-input checkmark" type="checkbox" value="18gs" tabindex="0" aria-labelledby="class18barsoap" disabled>
+                                                    <input class="form-check-input checkmark  gs-in-use-section15" type="checkbox" value="18gs" tabindex="0" aria-labelledby="class18barsoap" disabled  th:attr="gs-id=${Good_Service.getInternalID()}">
                                                     <label class="form-check-label form-check form-check-left"  ><span class="radio notspecial special strike" th:text="${Good_Service.getClassDescription()}">Bar Soap</span></label>
                                                 </th:block>
 
@@ -313,22 +313,62 @@
             if ($(this).is( ":checked" )) {
                 $(input).prop('checked', true);
                 $('input:disabled').prop('checked', false);
+
+                addFilingBasisInfoToApplication("section15-select-all", "yes", OfficeActionID, appInternalID);
             }
             else {
                 $(input).prop('checked', false);
+
+                addFilingBasisInfoToApplication("section15-select-all", "no", OfficeActionID, appInternalID);
             }
+
+
         });
 
         $(document).on('change','#incontestable input.selectallgs', function() {
+
+            var ccID = $(this).attr("cc-id");
             var input  = $(this).parent().parent().find('input.checkmark');
             if ($(this).is( ":checked" )) {
                 $(input).prop('checked', true);
                 $('input:disabled').prop('checked', false);
+
+                addFilingBasisInfoToClassCategory("section15-select-class", "yes", ccID, appInternalID);
             }
             else {
                 $(input).prop('checked', false);
+
+                addFilingBasisInfoToClassCategory("section15-select-class", "no", ccID, appInternalID);
             }
+
+
+         $('.gs-in-use-section15').click(function () {
+
+             var gsID = $(this).attr("gs-id");
+             if ($(this).is( ":checked" )) {
+                 addFilingBasisInfoToGoodAndService("section15-select-gs", "yes", gsID, appInternalID);
+             }
+             else {
+                 addFilingBasisInfoToGoodAndService("section15-select-gs", "no", gsID, appInternalID);
+             }
+         });
+
+
         });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //
 
         //////////////////////////////////////////////////////////////////////
@@ -409,269 +449,6 @@
 
 
 
-        $('.provide-spec-class-level').click(function () {
-
-            $(this).parent().parent().next().show(500);
-
-            var catNum= $(this).attr("cc-id");
-
-            addFilingBasisInfoToClassCategory("cc-specimen-class-opt", "yes", catNum, appInternalID);
-        });
-
-        $('.provide-spec-gs-level').click(function () {
-
-            $(this).parent().parent().next().hide(500);
-
-            var catNum= $(this).attr("cc-id");
-
-            addFilingBasisInfoToClassCategory("cc-specimen-class-opt", "no", catNum, appInternalID);
-        });
-
-
-        $('.gs-in-use').click(function () {
-            $(this).parent().parent().next().next().hide(500);
-            $(this).parent().parent().next().show(500);
-            var gsID= $(this).attr("name");
-            addFilingBasisInfoToGoodAndService("fb-mark-in-use", "yes", gsID, appInternalID);
-
-        });
-
-        $('.gs-excused').click(function () {
-            $(this).parent().parent().next().hide(500);
-            $(this).parent().parent().next().next().show(500);
-            var gsID= $(this).attr("name");
-            addFilingBasisInfoToGoodAndService("fb-mark-in-use", "no", gsID, appInternalID);
-
-        });
-
-
-        // this is the id of the submit button
-        $(".submitCCSpecimen").click(function() {
-
-            var currentButton = $(this);
-
-            var formID = $(this).attr("form");
-            var classNumber = $(this).attr("cat-num");
-
-            var fileInputId = $(this).attr("file-id");
-
-            var imageId = $(this).attr("class-img-id");
-
-            var spinnerID = $(this).attr("spinner-id");
-            var dLinkID = $(this).attr("download-link-id");
-
-            $('#'+spinnerID).show();
-            var fileInput = document.getElementById(fileInputId);
-            var file = fileInput.files[0];
-            var formData = new FormData();
-            formData.append('file', file);
-            formData.append('appID', appInternalID);
-            formData.append('catNum',classNumber);
-
-            var url = $("#"+formID).attr("action");
-            // Get the selected files from the input.
-            // get form url
-
-
-            setTimeout(function () {
-
-                $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: formData, // serializes the form's elements.
-                    async: true,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    success: function(data)
-                    {
-                        // we will return the the file url
-                        // call jquery and set it in the img div
-
-                        var imgPath = parsePathFromResponse(data);
-                        var consentFileName = parseNameFromResponse(data);
-
-                        $('#'+dLinkID).text(consentFileName);
-
-
-                        $('#'+imageId).attr("src", imgPath);
-                        $("#"+spinnerID).hide();
-
-                        //$("#cat-spec-img").fadeIn(500);
-                    }
-                });
-                $(currentButton).parent().parent().prev().prev().show(500);
-                //alert($(this).parent().parent().html());
-                $(currentButton).parent().parent().prev().prev().prev().hide(500);
-                $(currentButton).parent().parent().hide(500);
-                //alert($(currentButton).parent().parent().html())
-            }, 1000);
-
-
-            return false; // avoid to execute the actual submit of the form.
-        });
-
-
-        $('.cc-spec-close').click(function () {
-
-
-            $(this).parent().parent().parent().parent().parent().parent().parent().hide(500);
-
-            $(this).parent().parent().parent().parent().parent().parent().parent().prev().show(500);
-
-            // alert( $(this).parent().parent().parent().parent().parent().parent().parent().next().html());
-            $(this).parent().parent().parent().parent().parent().parent().parent().next().next().show(500);
-
-        });
-
-
-        $('.class-spec-desc-ta').focusout(function () {
-            var catNum= $(this).attr("cat-num");
-            var descr = $(this).val();
-            addFilingBasisInfoToClassCategory("cc-spec-descr", descr, catNum, appInternalID);
-
-
-        });
-
-
-        // this is the id of the submit button
-        $(".submitGSSpecimen").click(function() {
-
-
-            var currentButton = $(this);
-            var formID = $(this).attr("form");
-            var gsID = $(this).attr("gs-id");
-
-            var fileInputId = $(this).attr("file-id");
-
-            var imageId = $(this).attr("gs-img-id");
-
-            var spinnerID = $(this).attr("spinner-id");
-            var dLinkID = $(this).attr("download-link-id");
-
-            $('#'+spinnerID).show();
-            var fileInput = document.getElementById(fileInputId);
-            var file = fileInput.files[0];
-            var formData = new FormData();
-            formData.append('file', file);
-            formData.append('appID', appInternalID);
-            formData.append('gsID',gsID);
-
-            var url = $("#"+formID).attr("action");
-            // Get the selected files from the input.
-            // get form url
-            setTimeout(function () {
-                $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: formData, // serializes the form's elements.
-                    async: true,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    success: function(data)
-                    {
-                        // we will return the the file url
-                        // call jquery and set it in the img div
-                        var imgPath = parsePathFromResponse(data);
-                        var fileName = parseNameFromResponse(data);
-                        $('#'+dLinkID).text(fileName);
-                        $('#'+imageId).attr("src", imgPath);
-                        $("#"+spinnerID).hide();
-                        //$("#cat-spec-img").fadeIn(500);
-                    }
-                });
-
-                $(currentButton).parent().parent().prev().prev().show(500);
-                //alert($(this).parent().parent().html());
-                $(currentButton).parent().parent().prev().prev().prev().hide(500);
-                $(currentButton).parent().parent().hide(500);
-            }, 1000);
-
-
-
-
-
-            return false; // avoid to execute the actual submit of the form.
-        });
-
-
-        $('.gs-spec-close').click(function () {
-
-
-            $(this).parent().parent().parent().parent().parent().parent().parent().hide(500);
-
-            $(this).parent().parent().parent().parent().parent().parent().parent().prev().show(500);
-            $(this).parent().parent().parent().parent().parent().parent().parent().next().next().show(500);
-
-
-        });
-
-        $('textarea.spec-description').focusout(function () {
-            var gsId = $(this).prev().attr("name")
-            var msg = $(this).val();
-
-            if(msg != ""){
-                addFilingBasisInfoToGoodAndService("fb-sample-desc",msg,gsId, appInternalID);
-            }
-
-
-        });
-
-
-
-        $('.user-accept-checkbox').click(function () {
-
-            var ccID = $(this).attr("cc-id")
-
-            if(this.checked == true){
-
-                addFilingBasisInfoToClassCategory("cc-all-gs-in-use", "yes", ccID, appInternalID);
-
-            }
-            else {
-                addFilingBasisInfoToClassCategory("cc-all-gs-in-use", "no", ccID, appInternalID)
-            }
-        });
-
-
-        $('.gs-last-use-date').focusout(function () {
-
-            var gsID= $(this).attr("gs-id");
-            var date = $(this).val();
-
-            addFilingBasisInfoToGoodAndService("gs-last-use-date",date, gsID, appInternalID);
-
-        });
-
-
-        $('.gs-resume-use-date').focusout(function () {
-
-            var gsID= $(this).attr("gs-id");
-            var date = $(this).val();
-
-            addFilingBasisInfoToGoodAndService("gs-resume-use-date",date, gsID, appInternalID);
-
-        });
-
-        $('.gs-none-use-reason').focusout(function () {
-
-            var gsID= $(this).attr("gs-id");
-            var value = $(this).val();
-
-            addFilingBasisInfoToGoodAndService("gs-none-use-reason",value, gsID, appInternalID);
-
-        });
-
-        $('.gs-steps-resume-use').focusout(function () {
-
-            var gsID= $(this).attr("gs-id");
-            var value = $(this).val();
-
-            addFilingBasisInfoToGoodAndService("gs-steps-resume-use",value, gsID, appInternalID);
-
-        });
-
 
 
 
@@ -733,7 +510,7 @@
 
 
         $.ajax({
-            url: "../../../REST/apiGateway/CC/fb/update/" + ccFieldName + "/" + ccFieldValue + "/" + ccNumber + "/" + appInternalID,
+            url: "../../../REST/apiGateway/OfficeAction/section15/class/update/" + ccFieldName + "/" + ccFieldValue + "/" + ccNumber + "/" + appInternalID,
             type: 'GET',
             success: function (data) {
 
@@ -768,7 +545,46 @@
     }
 
 
+    function addFilingBasisInfoToApplication(ccFieldName, ccFieldValue, oaID, appInternalID) {
 
+        //var field_value = $(this).val();
+        //alert(field_value);
+
+
+        $.ajax({
+            url: "../../../REST/apiGateway/OfficeAction/section15/application/update/" + ccFieldName + "/" + ccFieldValue + "/" + oaID + "/" + appInternalID,
+            type: 'GET',
+            success: function (data) {
+
+                // parse out status msg:
+                var s_code = data.substring(data.indexOf("status:") + 7, data.indexOf("status:") + 4 + 7);
+
+                var s_msg = data.substring(data.indexOf("msg:") + 4, data.length - 2);
+
+                if (s_code.trim() == "200") {
+                    //if(data.contains("status: 200")){
+                    // show confirmation check mark on form
+                    //$('#toggle').delay(1000).click();
+                    $(".autoSaveMessageArea span").fadeOut(500);
+                    setTimeout(function () {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $(".autoSaveMessageArea span").text(s_msg);
+                        $(".autoSaveMessageArea span").fadeIn(1000);
+                    }, 500);
+
+                }
+
+
+            },
+            error: function (data) {
+
+                console.log(data);
+
+            }
+
+        });
+
+    }
 
     function parsePathFromResponse(response){
         var index = response.indexOf("image-url:");
