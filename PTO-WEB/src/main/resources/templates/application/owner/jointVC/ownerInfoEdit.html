@@ -207,12 +207,12 @@
                                             <label><span class="weight600">&#42;</span>Last name</label>
                                             <input type="text" name="lastName" class="form-control ge-last-name" th:value="${exceuter.lastName}"   th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}">
                                         </div>
-                                        <div class="form-group form-group-md col-xs-6">
+                                        <div class="form-group form-group-md col-xs-6 col-sm-4 col-md-6">
                                             <label>Suffix</label>
-                                            <input class="form-control ge-suffix" name="suffix" />
+                                            <input type="text" class="form-control ge-suffix" name="suffix" />
                                         </div>
-                                        <div class="form-group form-group-md col-xs-6">
-                                            <label> <span class="weight600">&#42;</span>Country of citizenship</label>
+                                        <div class="form-group form-group-md col-xs-12 col-sm-8 col-md-6">
+                                            <label> <span class="weight600">&#42;</span>Country of citizenship <a href="#" data-toggle="tooltip" title="If you have dual citizenship only enter the citizenship you would like printed in the Official Gazette." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> <span class="label label-info subtle" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
                                             <select class="form-control ge-citizenship" name="owner-citizenship" th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}">
                                                 <option th:value="${exceuter.entityCitizenship}" th:text="${exceuter.entityCitizenship}" selected  th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}"></option>
                                                 <option value="">Select</option>
@@ -578,13 +578,13 @@
                                                 <label ><span class="weight600">&#42;</span>Last name</label>
                                                 <input  type="text"  class="form-control ge-last-name"  required value="">
                                             </div>
-                                            <div class="form-group form-group-md col-xs-6">
+                                            <div class="form-group form-group-md col-xs-12 col-sm-6">
                                                 <label for="partner-suffix">Suffix</label>
-                                                <input class="form-control" id="partner-suffix"   value="">
+                                                <input type="text" class="form-control" id="partner-suffix"   value="">
 
                                             </div>
-                                            <div class="form-group form-group-md col-xs-6">
-                                                <label ><span class="weight600">&#42;</span>Country of citizenship</label>
+                                            <div class="form-group form-group-md col-xs-12 col-sm-6">
+                                                <label ><span class="weight600">&#42;</span>Country of citizenship <a href="#" data-toggle="tooltip" title="If you have dual citizenship only enter the citizenship you would like printed in the Official Gazette." class="glyphicon glyphicon-info-sign test" data-placement="right"></a></label>
                                                 <select class="form-control ge-citizenship"  required="">
                                                     <option value="">Select</option>
                                                     <option value="United States of America">United States of America</option>
