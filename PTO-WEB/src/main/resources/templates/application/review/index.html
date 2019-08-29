@@ -25,30 +25,71 @@
                                 <div class="table-responsive">
                                     <table class="table table-bordered">
                                         <tbody>
-                                        <tr role="row">
-                                            <th scope="row" tabindex="0" colspan="1" role="rowheader" id="required">Required Actions</th>
+                                        <tr>
+                                            <th scope="col" tabindex="0" colspan="1" id="required">Required Actions</th>
+                                        </tr>
+
+                                        <!-- loop through there similar to the dashboard -->
+
+
+
+                                            <th:block th:each="action : ${baseTrademarkApplication.getOfficeActions()}">
+                                                <th:block th:if="${action.isOfficeActionCompleted() == false}">
+                                                    <th:block th:if="${action.isActiveAction()== true}">
+                                                        <tr>
+
+
+                                                                <th:block th:if="${action.getOfficeActionCode() == 'Issuance Of Allowance'}">
+
+
+                                                                    <td tabindex="0"  headers="required"><a th:href="${action.getOfficeActionLink()}">Respond to Notice Of Allowance</a></td>
+                                                                </th:block>
+
+                                                                <th:block th:if="${action.getOfficeActionCode() != 'Issuance Of Allowance'}">
+                                                                    <td tabindex="0" headers="required"><a th:href="${action.getOfficeActionLink()}">Respond to Office Action</a></td>
+                                                                </th:block>
+
+                                                            </td>
+                                                        </tr>
+                                                    </th:block>
+                                                </th:block>
+                                            </th:block>
+
+
+                                            <th:block th:each="petition : ${baseTrademarkApplication.getPetitions()}">
+                                                <th:block th:if="${petition.isActivePetition() == true}">
+                                                    <tr>
+
+                                                        <td tabindex="0"  headers="required"><a th:href="${petition.getPetitionsLink()}">File Petition to Revive</a></td>
+                                                    </tr>
+                                                </th:block>
+                                            </th:block>
+
+
+
+
+                                        <!-- the controller for these links will treat them as optional action with one action checked -->
+                                        <tr>
+                                            <th scope="col" tabindex="0" colspan="1" id="optional">Optional Actions</th>
                                         </tr>
                                         <tr>
-                                            <td tabindex="0" headers="upcoming"><a href="response_amendments_scenario_one.html">Respond to Office Action</a></td>
-                                        </tr><!--upcoming-->
-                                        <tr>
-                                            <td tabindex="0" headers="required">Action Example</td>
+                                            <td tabindex="0" headers="optional"><a href="#">Appoint, replace or modify attorney of record</a></td>
                                         </tr>
                                         <tr>
-                                            <td tabindex="0" headers="required">Action Example</td>
-                                        </tr><!--required-->
-                                        <tr role="row">
-                                            <th scope="row" tabindex="0" colspan="1" role="rowheader" id="optional">Optional Actions</th>
+                                            <td tabindex="0" headers="optional"><a href="owner_info_review_ROA_optional.html">Correct or modify the owner&#8217;s name or entity information</a></td>
                                         </tr>
                                         <tr>
-                                            <td tabindex="0" headers="optional">Action Example</td>
+                                            <td tabindex="0" headers="optional"><a href="#">Make a minor change to the mark or submit a better quality image</a></td>
                                         </tr>
                                         <tr>
-                                            <td tabindex="0" headers="optional">Action Example</td>
+                                            <td tabindex="0" headers="optional"><a href="#">Modify goods/services</a></td>
                                         </tr>
                                         <tr>
-                                            <td tabindex="0" headers="optional">Action Example</td>
-                                        </tr><!--required-->
+                                            <td tabindex="0" headers="optional"><a href="#">Add, change or withdraw any additional statements</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td tabindex="0" headers="optional" style="opacity: 0.4;"><a href="#" disabled="">Request for Express Abandonement</a></td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>
