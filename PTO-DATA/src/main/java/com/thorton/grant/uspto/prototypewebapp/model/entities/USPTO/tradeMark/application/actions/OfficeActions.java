@@ -181,6 +181,12 @@ public class OfficeActions extends BaseEntity {
 
 
 
+    // global action helper fields
+
+    private String uniqueKey;
+
+
+
     public String getOfficeAction() {
         return officeAction;
     }
@@ -754,5 +760,13 @@ public class OfficeActions extends BaseEntity {
 
     public void setParentRegistrationNumber(String parentRegistrationNumber) {
         this.parentRegistrationNumber = parentRegistrationNumber;
+    }
+
+    public String getUniqueKey() {
+        return uniqueKey;
+    }
+
+    public void setUniqueKey(String uniqueKey) {
+        this.uniqueKey = uniqueKey;
     }
 }

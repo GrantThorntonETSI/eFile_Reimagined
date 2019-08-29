@@ -73,7 +73,7 @@
                                             <th scope="col" tabindex="0" colspan="1" id="optional">Optional Actions</th>
                                         </tr>
                                         <tr>
-                                            <td tabindex="0" headers="optional"><a href="#">Appoint, replace or modify attorney of record</a></td>
+                                            <td tabindex="0" headers="optional"><a id="attorneyOptionalLink" href="">Appoint, replace or modify attorney of record</a></td>
                                         </tr>
                                         <tr>
                                             <td tabindex="0" headers="optional"><a href="owner_info_review_ROA_optional.html">Correct or modify the owner&#8217;s name or entity information</a></td>
@@ -585,6 +585,11 @@
         }, 500);
 
 
+
+
+        var attorneyOptionalLink = "../../../../globalAction/optional/attorney/?trademarkID="+appInternalID;
+
+        $('#attorneyOptionalLink').attr("href",attorneyOptionalLink);
 
         if(markType == "Standard Character"){
 
