@@ -76,16 +76,16 @@
                                             <td tabindex="0" headers="optional"><a id="attorneyOptionalLink" href="">Appoint, replace or modify attorney of record</a></td>
                                         </tr>
                                         <tr>
-                                            <td tabindex="0" headers="optional"><a href="owner_info_review_ROA_optional.html">Correct or modify the owner&#8217;s name or entity information</a></td>
+                                            <td tabindex="0" headers="optional"><a id="ownerOptionalLink" href="">Correct or modify the owner&#8217;s name or entity information</a></td>
                                         </tr>
                                         <tr>
-                                            <td tabindex="0" headers="optional"><a href="#">Make a minor change to the mark or submit a better quality image</a></td>
+                                            <td tabindex="0" headers="optional"><a  id="markOptionalLink" href="">Make a minor change to the mark or submit a better quality image</a></td>
                                         </tr>
                                         <tr>
-                                            <td tabindex="0" headers="optional"><a href="#">Modify goods/services</a></td>
+                                            <td tabindex="0" headers="optional"><a id="fbOptionalLink" href="">Modify goods/services</a></td>
                                         </tr>
                                         <tr>
-                                            <td tabindex="0" headers="optional"><a href="#">Add, change or withdraw any additional statements</a></td>
+                                            <td tabindex="0" headers="optional"><a id="additonalOptionalLink" href="">Add, change or withdraw any additional statements</a></td>
                                         </tr>
                                         <tr>
                                             <td tabindex="0" headers="optional" style="opacity: 0.4;"><a href="#" disabled="">Request for Express Abandonement</a></td>
@@ -589,7 +589,26 @@
 
         var attorneyOptionalLink = "../../../../globalAction/optional/attorney/?trademarkID="+appInternalID;
 
+        var ownerOptionalLink = "../../../../globalAction/optional/owner/?trademarkID="+appInternalID;
+
+        var markOptionalLink = "../../../../globalAction/optional/mark/?trademarkID="+appInternalID;
+
+        var fbOptionalLink = "../../../../globalAction/optional/fb/?trademarkID="+appInternalID;
+
+        var additonalOptionalLink = "../../../../globalAction/optional/additional/?trademarkID="+appInternalID;
+
         $('#attorneyOptionalLink').attr("href",attorneyOptionalLink);
+        $('#ownerOptionalLink').attr("href",  ownerOptionalLink);
+
+        $('#markOptionalLink').attr("href",  markOptionalLink);
+
+        $('#fbOptionalLink').attr("href",  fbOptionalLink);
+
+        $('#additonalOptionalLink').attr("href",  additonalOptionalLink);
+
+
+
+
 
         if(markType == "Standard Character"){
 

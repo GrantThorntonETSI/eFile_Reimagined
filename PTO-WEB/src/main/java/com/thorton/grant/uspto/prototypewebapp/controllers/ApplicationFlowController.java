@@ -6327,6 +6327,267 @@ public class ApplicationFlowController {
     }
 
 
+    // global action controller for owner
+    @Transactional
+    @RequestMapping({"/globalAction/optional/owner/"})
+    public String globalActionsOwner(WebRequest request, Model model,@RequestParam("trademarkID") String trademarkInternalID){
 
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        PTOUserService  ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+
+
+        // create in-active office action with a blank required action that is completed
+        OfficeActions officeActions = new OfficeActions();
+        officeActions.setParentMarkImagePath(baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+        officeActions.setStandardCharacterMark(baseTrademarkApplication.isStandardTextMark());
+        officeActions.setStandardCharacterText(baseTrademarkApplication.getTradeMark().getTrademarkStandardCharacterText());
+        officeActions.setParentMarkOwnerName(baseTrademarkApplication.getPrimaryOwner().getOwnerDisplayname());
+        officeActions.setParentSerialNumber(baseTrademarkApplication.getTrademarkName());
+        officeActions.setParentRegistrationNumber(baseTrademarkApplication.getRegistrationID());
+        officeActions.setActiveAction(false);
+        long dueDate = new Date().getTime()+baseTrademarkApplication.getBlackOutPeriod()+baseTrademarkApplication.getOfficeActionResponsePeriod();
+        officeActions.setDueDate(new Date(dueDate));
+        officeActions.setOfficeActionCode("global default action");
+        RequiredActions requiredActions = new RequiredActions();
+        requiredActions.setRequiredActionType("default");
+        requiredActions.setRequiredActionCompleted(true);
+
+
+
+        officeActions.addRequiredActions(requiredActions);
+        // attach attorney optional action to the office action
+        officeActions.setOwnerOptional(true);
+
+        String token = UUID.randomUUID().toString();
+        officeActions.setUniqueKey(token);
+
+        baseTrademarkApplication.addOfficeAction(officeActions);
+
+        officeActions.setTrademarkApplication(baseTrademarkApplication);
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+
+        String officeActionId = "";
+        for(Iterator<OfficeActions> iter = baseTrademarkApplication.getOfficeActions().iterator(); iter.hasNext(); ) {
+            OfficeActions current = iter.next();
+
+            if(current.getUniqueKey().equals(token)){
+                officeActionId = current.getInternalID();
+            }
+        }
+
+
+        return "forward:/officeAction/optional/pathController/next/"+officeActionId+"/?trademarkID="+trademarkInternalID;
+
+    }
+
+
+    // global action controller for mark
+    @Transactional
+    @RequestMapping({"/globalAction/optional/mark/"})
+    public String globalActionsMark(WebRequest request, Model model,@RequestParam("trademarkID") String trademarkInternalID){
+
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        PTOUserService  ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+
+
+        // create in-active office action with a blank required action that is completed
+        OfficeActions officeActions = new OfficeActions();
+        officeActions.setParentMarkImagePath(baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+        officeActions.setStandardCharacterMark(baseTrademarkApplication.isStandardTextMark());
+        officeActions.setStandardCharacterText(baseTrademarkApplication.getTradeMark().getTrademarkStandardCharacterText());
+        officeActions.setParentMarkOwnerName(baseTrademarkApplication.getPrimaryOwner().getOwnerDisplayname());
+        officeActions.setParentSerialNumber(baseTrademarkApplication.getTrademarkName());
+        officeActions.setParentRegistrationNumber(baseTrademarkApplication.getRegistrationID());
+        officeActions.setActiveAction(false);
+        long dueDate = new Date().getTime()+baseTrademarkApplication.getBlackOutPeriod()+baseTrademarkApplication.getOfficeActionResponsePeriod();
+        officeActions.setDueDate(new Date(dueDate));
+        officeActions.setOfficeActionCode("global default action");
+        RequiredActions requiredActions = new RequiredActions();
+        requiredActions.setRequiredActionType("default");
+        requiredActions.setRequiredActionCompleted(true);
+
+
+
+        officeActions.addRequiredActions(requiredActions);
+        // attach attorney optional action to the office action
+        officeActions.setMarkOptional(true);
+
+        String token = UUID.randomUUID().toString();
+        officeActions.setUniqueKey(token);
+
+        baseTrademarkApplication.addOfficeAction(officeActions);
+
+        officeActions.setTrademarkApplication(baseTrademarkApplication);
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+
+        String officeActionId = "";
+        for(Iterator<OfficeActions> iter = baseTrademarkApplication.getOfficeActions().iterator(); iter.hasNext(); ) {
+            OfficeActions current = iter.next();
+
+            if(current.getUniqueKey().equals(token)){
+                officeActionId = current.getInternalID();
+            }
+        }
+
+
+        return "forward:/officeAction/optional/pathController/next/"+officeActionId+"/?trademarkID="+trademarkInternalID;
+
+    }
+
+
+    // global action controller for fb
+    @Transactional
+    @RequestMapping({"/globalAction/optional/fb/"})
+    public String globalActionsGS(WebRequest request, Model model,@RequestParam("trademarkID") String trademarkInternalID){
+
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        PTOUserService  ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+
+
+        // create in-active office action with a blank required action that is completed
+        OfficeActions officeActions = new OfficeActions();
+        officeActions.setParentMarkImagePath(baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+        officeActions.setStandardCharacterMark(baseTrademarkApplication.isStandardTextMark());
+        officeActions.setStandardCharacterText(baseTrademarkApplication.getTradeMark().getTrademarkStandardCharacterText());
+        officeActions.setParentMarkOwnerName(baseTrademarkApplication.getPrimaryOwner().getOwnerDisplayname());
+        officeActions.setParentSerialNumber(baseTrademarkApplication.getTrademarkName());
+        officeActions.setParentRegistrationNumber(baseTrademarkApplication.getRegistrationID());
+        officeActions.setActiveAction(false);
+        long dueDate = new Date().getTime()+baseTrademarkApplication.getBlackOutPeriod()+baseTrademarkApplication.getOfficeActionResponsePeriod();
+        officeActions.setDueDate(new Date(dueDate));
+        officeActions.setOfficeActionCode("global default action");
+        RequiredActions requiredActions = new RequiredActions();
+        requiredActions.setRequiredActionType("default");
+        requiredActions.setRequiredActionCompleted(true);
+
+
+
+        officeActions.addRequiredActions(requiredActions);
+        // attach attorney optional action to the office action
+        officeActions.setFbOptional(true);
+
+        String token = UUID.randomUUID().toString();
+        officeActions.setUniqueKey(token);
+
+        baseTrademarkApplication.addOfficeAction(officeActions);
+
+        officeActions.setTrademarkApplication(baseTrademarkApplication);
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+
+        String officeActionId = "";
+        for(Iterator<OfficeActions> iter = baseTrademarkApplication.getOfficeActions().iterator(); iter.hasNext(); ) {
+            OfficeActions current = iter.next();
+
+            if(current.getUniqueKey().equals(token)){
+                officeActionId = current.getInternalID();
+            }
+        }
+
+
+        return "forward:/officeAction/optional/pathController/next/"+officeActionId+"/?trademarkID="+trademarkInternalID;
+
+    }
+
+
+    // global action controller for additional info
+    @Transactional
+    @RequestMapping({"/globalAction/optional/additional/"})
+    public String globalActionsAdditonal(WebRequest request, Model model,@RequestParam("trademarkID") String trademarkInternalID){
+
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        PTOUserService  ptoUserService = serviceBeanFactory.getPTOUserService();
+        PTOUser ptoUser = ptoUserService.findByEmail(authentication.getName());
+        UserCredentialsService userCredentialsService = serviceBeanFactory.getUserCredentialsService();
+        UserCredentials credentials = userCredentialsService.findByEmail(authentication.getName());
+
+
+        BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
+        BaseTrademarkApplication baseTrademarkApplication = baseTradeMarkApplicationService.findByInternalID(trademarkInternalID);
+
+
+
+        // create in-active office action with a blank required action that is completed
+        OfficeActions officeActions = new OfficeActions();
+        officeActions.setParentMarkImagePath(baseTrademarkApplication.getTradeMark().getTrademarkImagePath());
+        officeActions.setStandardCharacterMark(baseTrademarkApplication.isStandardTextMark());
+        officeActions.setStandardCharacterText(baseTrademarkApplication.getTradeMark().getTrademarkStandardCharacterText());
+        officeActions.setParentMarkOwnerName(baseTrademarkApplication.getPrimaryOwner().getOwnerDisplayname());
+        officeActions.setParentSerialNumber(baseTrademarkApplication.getTrademarkName());
+        officeActions.setParentRegistrationNumber(baseTrademarkApplication.getRegistrationID());
+        officeActions.setActiveAction(false);
+        long dueDate = new Date().getTime()+baseTrademarkApplication.getBlackOutPeriod()+baseTrademarkApplication.getOfficeActionResponsePeriod();
+        officeActions.setDueDate(new Date(dueDate));
+        officeActions.setOfficeActionCode("global default action");
+        RequiredActions requiredActions = new RequiredActions();
+        requiredActions.setRequiredActionType("default");
+        requiredActions.setRequiredActionCompleted(true);
+
+
+
+        officeActions.addRequiredActions(requiredActions);
+        // attach attorney optional action to the office action
+        officeActions.setAdditionalOptional(true);
+
+        String token = UUID.randomUUID().toString();
+        officeActions.setUniqueKey(token);
+
+        baseTrademarkApplication.addOfficeAction(officeActions);
+
+        officeActions.setTrademarkApplication(baseTrademarkApplication);
+
+        baseTradeMarkApplicationService.save(baseTrademarkApplication);
+
+
+        String officeActionId = "";
+        for(Iterator<OfficeActions> iter = baseTrademarkApplication.getOfficeActions().iterator(); iter.hasNext(); ) {
+            OfficeActions current = iter.next();
+
+            if(current.getUniqueKey().equals(token)){
+                officeActionId = current.getInternalID();
+            }
+        }
+
+
+        return "forward:/officeAction/optional/pathController/next/"+officeActionId+"/?trademarkID="+trademarkInternalID;
+
+    }
 
 }
