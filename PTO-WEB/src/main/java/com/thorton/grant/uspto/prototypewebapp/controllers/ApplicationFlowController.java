@@ -5215,6 +5215,10 @@ public class ApplicationFlowController {
                    // on first bread crumb, prev link points to optional select page
                    prevLink = "../../../../../officeAction/optional/"+actionID+"/?trademarkID="+trademarkInternalID;
 
+                   if(action.isActiveAction() == false){
+                       prevLink = "../../../../../application/continueApplication/?trademarkID="+trademarkInternalID;
+                   }
+
                    if(selectedList.get(action.getCurrentActionIndex()).equals("attorney")) {
 
                        returnLink =  "application/office_action/optional_actions/attorney/index";
@@ -6317,11 +6321,6 @@ public class ApplicationFlowController {
             }
         }
 
-
-
-
-        System.out.println(officeActionId);
-        System.out.println("5555555555555555555555555555555555555");
 
         return "forward:/officeAction/optional/pathController/next/"+officeActionId+"/?trademarkID="+trademarkInternalID;
 
