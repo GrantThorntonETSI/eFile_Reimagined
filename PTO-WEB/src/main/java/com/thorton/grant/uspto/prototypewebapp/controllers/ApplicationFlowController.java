@@ -6315,10 +6315,12 @@ public class ApplicationFlowController {
         String officeActionId = "";
         for(Iterator<OfficeActions> iter = baseTrademarkApplication.getOfficeActions().iterator(); iter.hasNext(); ) {
             OfficeActions current = iter.next();
-
-            if(current.getUniqueKey().equals(token)){
-               officeActionId = current.getInternalID();
+            if(current.getUniqueKey() != null){
+                if(current.getUniqueKey().equals(token)){
+                    officeActionId = current.getInternalID();
+                }
             }
+
         }
 
 
