@@ -30,7 +30,7 @@
                                 <input type="text" class="form-control"  id="ownername" th:field="*{ownerName}" required>
                             </div>
                             <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
-                                <label for="stateoforg">State where legally organized <span class="label label-info subtle visuallyremoved" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
+                                <label for="stateoforg">State where legally organized <span class="label label-info subtle" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
                                 <select class="form-control" id="stateoforg" th:field="*{ownerOrganizationState}" required >
                                     <option value="">Select</option>
                                     <option value="Alabama">Alabama</option>
@@ -88,7 +88,7 @@
                                 </select>
                             </div>
                             <div class="form-group form-group-md col-xs-12 col-sm-6">
-                                <label for="additional-name-type">Alternate name <a href="#" data-toggle="tooltip" title="Make selection below if the owner is doing bsiness as or trading under a different name." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> </label>
+                                <label for="additional-name-type">Alternate name <a href="#" data-toggle="tooltip" title="Make selection below if the owner is doing business as or trading under a different name." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> </label>
                                 <select class="form-control" id="additional-name-type" th:field="*{ownerType}">
                                     <option value="">Select</option>
                                     <option value="DBA">Doing Business As (DBA)</option>
@@ -490,7 +490,7 @@
                                 </div>
                                 <div class="form-group form-group-md col-xs-6 col-sm-4 col-md-6">
                                     <label for="partner-suffix">Suffix</label>
-                                    <input class="form-control" id="partner-suffix2" name="suffix" th:field="*{partner_suffix2}" />
+                                    <input type="text" class="form-control" id="partner-suffix2" name="suffix" th:field="*{partner_suffix2}" />
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-8 col-md-6">
                                     <label for="partner-citizenship">Country of citizenship <a href="#" data-toggle="tooltip" title="If you have dual citizenship only enter the citizenship you would like printed in the Official Gazette." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> <span class="label label-info subtle" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
@@ -840,7 +840,7 @@
                                 </div>
                                 <div class="form-group form-group-md col-xs-6 col-sm-4 col-md-6">
                                     <label for="partner-suffix">Suffix</label>
-                                    <input  class="form-control" id="partner-suffix3" name="suffix" th:field="*{partner_suffix3}" />
+                                    <input type="text" class="form-control" id="partner-suffix3" name="suffix" th:field="*{partner_suffix3}" />
 
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-8 col-md-6">
@@ -1094,7 +1094,7 @@
                         <fieldset aria-labelledby="proprietorinfo" id="none-individual-partner-entity3" style="display: none;">
                             <div class="row">
                                 <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
-                                    <label for="ownername"><b style="color: red">&#42;</b>General partner name</label>
+                                    <label for="ownername">&#42;General partner name</label>
                                     <input id="partner-owner-name3" type="text" class="form-control rounded-borders" th:field="*{partner_name3}"  >
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">

@@ -18,12 +18,12 @@
                 <form method="post" id="addNewOwnerForm" action="/owner/add" onsubmit="return validateOwnerForm();" th:object="${addNewOwnerContactFormDTO}" aria-labelledby="ownerinfo">
                     <fieldset aria-labelledby="ownerinfo">
                         <div class="row">
-                            <div class="form-group form-group-md col-xs-12 col-sm-6">
+                            <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
                                 <label for="ownername"><span class="weight600">&#42;</span>Owner name</label>
                                 <input type="text" class="form-control"  id="ownername" th:field="*{ownerName}" required>
                             </div>
-                            <div class="form-group form-group-md col-xs-12 col-sm-6">
-                                <label for="additional-name-type">Alternate name: <a href="#" data-toggle="tooltip" title="Make selection below if the owner is doing bsiness as or trading under a different name." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> </label>
+                            <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
+                                <label for="additional-name-type">Alternate name: <a href="#" data-toggle="tooltip" title="Make selection below if the owner is doing business as or trading under a different name." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> </label>
                                 <select class="form-control" id="additional-name-type" th:field="*{ownerType}">
                                     <option value="">Select</option>
                                     <option value="DBA">Doing Business As (DBA)</option>
@@ -305,15 +305,15 @@
                                 <label for="addressline3">Address line 3</label>
                                 <input type="text" class="form-control" id="addressline3" th:field="*{ownerAddress3}">
                             </div>
-                            <div class="form-group form-group-md col-xs-12 col-md-12 col-lg-5">
+                            <div class="form-group form-group-md col-xs-12 col-sm-6">
                                 <label for="ownerCity"><span class="weight600">&#42;</span>City</label>
                                 <input type="text" class="form-control" id="ownerCity" th:field="*{ownerCity}" required>
                             </div>
-                            <div class="form-group form-group-md col-xs-12 col-md-6 col-lg-4">
+                            <div class="form-group form-group-md col-xs-12 col-sm-6">
                                 <label for="ownerState">State/Province/Territory</label>
                                 <input type="text" class="form-control" id="ownerState" th:field="*{ownerState}">
                             </div>
-                            <div class="form-group form-group-md col-xs-12 col-md-6 col-lg-3">
+                            <div class="form-group form-group-md col-xs-12 col-sm-5">
                                 <label for="ownerZipcode">Zip code/Postal code</label>
                                 <input type="text" class="form-control" id="ownerZipcode" placeholder="" th:field="*{ownerZipcode}" >
                             </div>
