@@ -76,7 +76,7 @@
                                         <input type="text" class="form-control"  id="ownername"  th:value="${owner.getOwnerName()}">
                                     </div>
                                     <div class="form-group form-group-md col-xs-6">
-                                        <label for="stateoforg">State where legally organized <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
+                                        <label for="stateoforg">State where legally organized <span class="label label-info subtle">Reduced Fee</span></label>
                                         <select class="form-control" id="stateoforg" th:field="${owner.ownerOrganizationState}" >
                                             <option value="">Select</option>
                                             <option value="United States of America">United States of America</option>
@@ -322,7 +322,7 @@
                                         </select>
                                     </div>
                                     <div class="form-group form-group-md col-xs-6">
-                                        <label for="additional-name-type">Alternate name <a href="#" data-toggle="tooltip" title="Make selection below if the owner is doing bsiness as or trading under a different name." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> </label>
+                                        <label for="additional-name-type">Alternate name <a href="#" data-toggle="tooltip" title="Make selection below if the owner is doing business as or trading under a different name." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> </label>
                                         <select class="form-control" id="additional-name-type" th:field="${owner.ownerType}">
                                             <option value="">Select</option>
                                             <option value="Doing Business As(DBA)">Doing Business As(DBA)</option>
@@ -636,7 +636,7 @@
                                                 <input type="text" class="form-control rounded-borders ge-name"  style="" th:value="${exceuter.entityName}" th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}">
                                             </div>
                                             <div class="form-group form-group-md col-xs-6">
-                                                <label><span class="weight600">&#42;</span>State where legally organized</label>
+                                                <label><span class="weight600">&#42;</span>State where legally organized <span class="label label-info subtle">Reduced Fee</span></label>
                                                 <select class="form-control ge-state" name="State" th:attr="entity-index=${iter.index}" >
                                                     <option th:value="${exceuter.organizationState}" th:text="${exceuter.organizationState}" th:attr="entity-id=${exceuter.id}"selected></option>
                                                     <option value="">Select</option>
@@ -991,7 +991,7 @@
                                                     <input type="text" class="form-control rounded-borders ge-name"  required  value="">
                                                 </div>
                                                 <div class="form-group form-group-md col-xs-6">
-                                                    <label><span class="weight600">&#42;</span>State where legally organized</label>
+                                                    <label><span class="weight600">&#42;</span>State where legally organized <span class="label label-info subtle">Reduced Fee</span></label>
                                                     <select  class="form-control ge-state">
                                                         <option value="">Select</option>
                                                         <option value="Alabama">Alabama</option>
