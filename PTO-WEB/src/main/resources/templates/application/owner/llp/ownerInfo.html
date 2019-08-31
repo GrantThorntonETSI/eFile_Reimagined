@@ -26,10 +26,10 @@
                         <div class="row">
                             <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
                                 <label for="ownername"><span class="weight600">&#42;</span>Owner name</label>
-                                <input type="text" class="form-control"  id="ownername" th:field="*{ownerName}" required>
+                                <input type="text" class="form-control" id="ownername" th:field="*{ownerName}" required>
                             </div>
                             <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
-                                <label for="stateoforg">State where legally organized <span class="label label-info subtle visuallyremoved" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
+                                <label for="stateoforg">State where legally organized <span class="label label-info subtle" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
                                 <select class="form-control" id="stateoforg" th:field="*{ownerOrganizationState}" required>
                                     <option value="">Select</option>
                                     <option value="Alabama">Alabama</option>
@@ -87,7 +87,7 @@
                                 </select>
                             </div>
                             <div class="form-group form-group-md col-xs-12 col-sm-6">
-                                <label for="additional-name-type">Alternate name <a href="#" data-toggle="tooltip" title="Make selection below if the owner is doing bsiness as or trading under a different name." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> </label>
+                                <label for="additional-name-type">Alternate name <a href="#" data-toggle="tooltip" title="Make selection below if the owner is doing business as or trading under a different name." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> </label>
                                 <select class="form-control" id="additional-name-type" th:field="*{ownerType}">
                                     <option value="">Select</option>
                                     <option value="DBA">Doing Business As (DBA)</option>
@@ -137,7 +137,7 @@
                                 </div>
                                 <div class="form-group form-group-md col-xs-6 col-sm-4 col-md-6">
                                     <label for="partner-suffix">Suffix</label>
-                                    <input  class="form-control" id="partner-suffix" th:field="*{partnerDTOs[__${itemStat.index}__].suffix}" name="suffix" />
+                                    <input type="text" class="form-control" id="partner-suffix" th:field="*{partnerDTOs[__${itemStat.index}__].suffix}" name="suffix" />
 
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-8 col-md-6">
@@ -395,7 +395,7 @@
                                     <input id="partner-owner-name" type="text" th:field="*{partnerDTOs[__${itemStat.index}__].partnerName}"  class="form-control rounded-borders"   required>
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
-                                    <label for="partner-owner-name-state">State where legally organized <span class="label label-info subtle visuallyremoved" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
+                                    <label for="partner-owner-name-state">State where legally organized <span class="label label-info subtle" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
                                     <select id="partner-owner-name-state" th:field="*{partnerDTOs[__${itemStat.index}__].state}"  class="form-control" name="State"  required>
                                         <option value="">Select</option>
                                         <option value="Alabama">Alabama</option>
@@ -452,7 +452,7 @@
                                         <option value="N/A">N/A</option>
                                     </select>
                                 </div>
-                                <div class="form-group form-group-md col-xs-6">
+                                <div class="form-group form-group-md col-xs-12 col-sm-6">
                                     <label>&#42;Type</label>
                                     <span>
                                     <select id="partner-owner-name-type" class="form-control partner-owner-name-type" name="nameType" th:field="*{partnerDTOs[__${itemStat.index}__].type}">
@@ -464,7 +464,7 @@
                                     </select>
                                 </span>
                                 </div>
-                                <div class="form-group form-group-md col-xs-6" id="partner-add-Name-value" style="display: none;">
+                                <div class="form-group form-group-md col-xs-12 col-sm-6" id="partner-add-Name-value" style="display: none;">
                                     <label for="nameoftype">Name</label>
                                     <input type="text" class="form-control" id="partner-add-name" name="nameoftype"  th:field="*{partnerDTOs[__${itemStat.index}__].alternateName}"><!--needs th:attribute-->
                                 </div>
@@ -505,7 +505,7 @@
                                 </div>
                                 <div class="form-group form-group-md col-xs-6 col-sm-4 col-md-6">
                                     <label for="partner-suffix">Suffix</label>
-                                    <input  class="form-control" id="partner-suffix2" name="suffix" th:field="*{partner_suffix2}" />
+                                    <input type="text" class="form-control" id="partner-suffix2" name="suffix" th:field="*{partner_suffix2}" />
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-8 col-md-6">
                                     <label for="partner-citizenship">Country of citizenship <a href="#" data-toggle="tooltip" title="If you have dual citizenship only enter the citizenship you would like printed in the Official Gazette." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> <span class="label label-info subtle" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
@@ -758,11 +758,11 @@
                         <fieldset aria-labelledby="proprietorinfo" id="none-individual-partner-entity2" style="display: none;">
                             <div class="row">
                                 <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
-                                    <label for="ownername"><b style="color: red">&#42;</b>Owner name</label>
+                                    <label for="ownername"><span class="weight600">&#42;</span>Owner name</label>
                                     <input id="partner-owner-name2" type="text"  class="form-control rounded-borders"  th:field="*{partner_name2}"  >
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
-                                    <label for="partner-owner-name-state2">State where legally organized <span class="label label-info subtle visuallyremoved" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
+                                    <label for="partner-owner-name-state2">State where legally organized <span class="label label-info subtle" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
                                     <select id="partner-owner-name-state2" class="form-control" name="State" th:field="*{partner_state_org2}"  >
                                         <option value="">Select</option>
                                         <option value="Alabama">Alabama</option>
@@ -871,11 +871,11 @@
                                 </div>
                                 <div class="form-group form-group-md col-xs-6 col-sm-4 col-md-6">
                                     <label for="partner-suffix">Suffix</label>
-                                    <input  class="form-control" id="partner-suffix3" name="suffix"  th:field="*{partner_suffix3}" />
+                                    <input type="text" class="form-control" id="partner-suffix3" name="suffix"  th:field="*{partner_suffix3}" />
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-8 col-md-6">
                                     <label for="partner-citizenship">Country of citizenship <a href="#" data-toggle="tooltip" title="If you have dual citizenship only enter the citizenship you would like printed in the Official Gazette." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> <span class="label label-info subtle" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
-                                    <select id="partner-citizenship3" class="form-control" name="owner-citizenship" th:field="*{partner_citizen3}" >
+                                    <select id="partner-citizenship3" class="form-control" name="owner-citizenship" th:field="*{partner_citizen3}">
                                         <option value="">Select</option>
                                         <option value="United States of America">United States of America</option>
                                         <option value="Afghanistan">Afghanistan</option>
@@ -1128,7 +1128,7 @@
                                     <input id="partner-owner-name3" type="text" class="form-control rounded-borders" th:field="*{partner_name3}"  >
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
-                                    <label for="partner-owner-name-state3">State where legally organized <span class="label label-info subtle visuallyremoved" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
+                                    <label for="partner-owner-name-state3">State where legally organized <span class="label label-info subtle" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
                                     <select id="partner-owner-name-state3"  class="form-control" name="State" th:field="*{partner_state_org3}" >
                                         <option value="">Select</option>
                                         <option value="Alabama">Alabama</option>

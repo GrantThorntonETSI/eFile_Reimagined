@@ -6,7 +6,8 @@
     <title>Owner Information</title>
 </head>
 <body>
-<div class="row content"  style="display: none;">
+    <div class="container-fluid">
+        <div class="row content"  style="display: none;">
     <main class="col-xs-12 col-sm-8 col-md-8 col-lg-7">
         <div class="row" >
             <div class="col-xs-12">
@@ -91,13 +92,13 @@
                         </div>
                         <fieldset aria-labelledby="ownerinfo">
                             <div class="row">
-                                <div class="form-group form-group-md col-xs-6">
+                                <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
                                     <label for="ownername"><span class="weight600">&#42;</span>Owner name</label>
                                     <input type="text" class="form-control"  id="ownername" th:value="${owner.ownerDisplayname}">
                                 </div>
-                                <div class="form-group form-group-md col-xs-6">
-                                    <label for="stateoforg"><span class="weight600">&#42;</span>State where legally organized<span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
-                                    <select class="form-control" id="stateoforg"  th:field="${owner.ownerOrganizationState}"  >
+                                <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
+                                    <label for="stateoforg"><span class="weight600">&#42;</span>State where legally organized</label>
+                                    <select class="form-control" id="stateoforg"  th:field="${owner.ownerOrganizationState}" required>
                                         <option value="">Select</option>
                                         <option value="Alabama">Alabama</option>
                                         <option value="Alaska">Alaska</option>
@@ -152,8 +153,8 @@
                                         <option value="Wyoming">Wyoming</option>
                                     </select>
                                 </div>
-                                <div class="form-group form-group-md col-xs-6">
-                                    <label for="additional-name-type">Alternate name <a href="#" data-toggle="tooltip" title="Make selection below if the owner is doing bsiness as or trading under a different name." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> </label>
+                                <div class="form-group form-group-md col-xs-12 col-sm-6">
+                                    <label for="additional-name-type">Alternate name <a href="#" data-toggle="tooltip" title="Make selection below if the owner is doing business as or trading under a different name." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> </label>
                                     <select class="form-control" id="additional-name-type"  th:field="${owner.ownerType}">
                                         <option value="">Select</option>
                                         <option value="DBA">Doing Business As (DBA)</option>
@@ -164,14 +165,14 @@
                                 </div>
 
                                 <th:block  th:if="${owner.isAlternameSet() == true}">
-                                    <div class="form-group form-group-md col-xs-6" id="nametype">
+                                    <div class="form-group form-group-md col-xs-12 col-sm-6" id="nametype">
                                         <label for="nameoftype">Name</label>
                                         <input type="text" class="form-control" id="nameoftype" name="nameoftype"  th:value="${owner.ownerAdditionalName}"  ><!--needs th:attribute-->
                                     </div>
                                 </th:block>
 
                                 <th:block  th:if="${owner.isAlternameSet() == false}">
-                                    <div class="form-group form-group-md col-xs-6" id="nametype" style="display: none;">
+                                    <div class="form-group form-group-md col-xs-12 col-sm-6" id="nametype" style="display: none;">
                                         <label for="nameoftype">Name</label>
                                         <input type="text" class="form-control" id="nameoftype" name="nameoftype"  th:value="${owner.ownerAdditionalName}"  ><!--needs th:attribute-->
                                     </div>
@@ -448,11 +449,11 @@
                                     <label for="addressline3">Address line 3</label>
                                     <input type="text" class="form-control" id="addressline3" >
                                 </div>
-                                <div class="form-group form-group-md col-xs-4">
+                                <div class="form-group form-group-md col-xs-12 col-sm-6">
                                     <label for="ownerCity"><span class="weight600">&#42;</span>City</label>
                                     <input type="text" class="form-control" id="ownerCity" th:value="${owner.city}" >
                                 </div>
-                                <div class="form-group form-group-md col-xs-4">
+                                <div class="form-group form-group-md col-xs-12 col-sm-6">
                                     <label for="ownerState"><span class="weight600">&#42;</span>State/Province/Territory</label>
                                     <select class="form-control" id="ownerState" th:field="${owner.state}" required>
                                         <option value="">Select</option>
@@ -509,7 +510,7 @@
                                         <option value="Wyoming">Wyoming</option>
                                     </select>
                                 </div>
-                                <div class="form-group form-group-md col-xs-5">
+                                <div class="form-group form-group-md col-xs-12 col-sm-5">
                                     <label for="ownerZipcode"><span class="weight600">&#42;</span>Zip code/Postal code</label>
                                     <input type="text" class="form-control" id="ownerZipcode" placeholder="" th:value="${owner.zipcode}">
                                 </div>
@@ -569,6 +570,7 @@
         </div>
     </main>
 </div>
+    </div>
 
 <!--load model attribute for Jquery consumption  -->
 <script th:inline="javascript">

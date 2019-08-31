@@ -6,7 +6,8 @@
     <title>Owner Information</title>
 </head>
 <body>
-<div class="row content"  style="display: none;">
+    <div class="container-fluid">
+        <div class="row content"  style="display: none;">
     <main class="col-xs-12 col-sm-8 col-md-8 col-lg-7">
         <div class="row" >
             <div class="col-xs-12">
@@ -95,12 +96,12 @@
 
                         <fieldset aria-labelledby="ownerinfo">
                             <div class="row">
-                                <div class="form-group form-group-md col-xs-6">
+                                <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
                                     <label for="ownername"><span class="weight600">&#42;</span>Owner name</label>
                                     <input type="text" class="form-control"  id="ownername"  th:value="${owner.ownerDisplayname}">
                                 </div>
-                                <div class="form-group form-group-md col-xs-6">
-                                    <label for="stateoforg"><span class="weight600">&#42;</span>State where legally organized <span class="label label-info subtle visuallyremoved">Reduced Fee</span></label>
+                                <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
+                                    <label for="stateoforg">State where legally organized <span class="label label-info subtle">Reduced Fee</span></label>
                                     <select class="form-control" id="stateoforg"  th:field="${owner.ownerOrganizationState}" >
                                         <option value="">Select</option>
                                         <option value="Alabama">Alabama</option>
@@ -156,8 +157,8 @@
                                         <option value="Wyoming">Wyoming</option>
                                     </select>
                                 </div>
-                                <div class="form-group form-group-md col-xs-12 col-sm-6 col-lg-4">
-                                    <label for="additional-name-type">Alternate name <a href="#" data-toggle="tooltip" title="Make selection below if the owner is doing bsiness as or trading under a different name." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> </label>
+                                <div class="form-group form-group-md col-xs-12 col-sm-6">
+                                    <label for="additional-name-type">Alternate name <a href="#" data-toggle="tooltip" title="Make selection below if the owner is doing business as or trading under a different name." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> </label>
                                     <select class="form-control" id="additional-name-type" th:field="${owner.ownerType}">
                                         <option value="Select">Select</option>
                                         <option value="DBA">Doing Business As (DBA)</option>
@@ -168,14 +169,14 @@
                                 </div>
 
                                 <th:block  th:if="${owner.isAlternameSet() == true}">
-                                    <div class="form-group form-group-md col-xs-12 col-sm-6 col-lg-4" id="nametype">
+                                    <div class="form-group form-group-md col-xs-12 col-sm-6" id="nametype">
                                         <label for="nameoftype">Name</label>
                                         <input type="text" class="form-control" id="nameoftype" name="nameoftype"  th:value="${owner.ownerAdditionalName}"  ><!--needs th:attribute-->
                                     </div>
                                 </th:block>
 
                                 <th:block  th:if="${owner.isAlternameSet() == false}">
-                                    <div class="form-group form-group-md col-xs-12 col-sm-6 col-lg-4" id="nametype" style="display: none;">
+                                    <div class="form-group form-group-md col-xs-12 col-sm-6" id="nametype" style="display: none;">
                                         <label for="nameoftype">Name</label>
                                         <input type="text" class="form-control" id="nameoftype" name="nameoftype"  th:value="${owner.ownerAdditionalName}"  ><!--needs th:attribute-->
                                     </div>
@@ -209,12 +210,12 @@
                                             <label ><span class="weight600">&#42;</span>Last name</label>
                                             <input  type="text" name="lastName" class="form-control ge-last-name" th:value="${exceuter.lastName}" th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}">
                                         </div>
-                                        <div class="form-group form-group-md col-xs-6">
+                                        <div class="form-group form-group-md col-xs-6 col-sm-4 col-md-6">
                                             <label>Suffix</label>
-                                            <input class="form-control ge-suffix" name="suffix" />
+                                            <input type="text" class="form-control ge-suffix" name="suffix" />
                                         </div>
-                                        <div class="form-group form-group-md col-xs-6">
-                                            <label><span class="weight600">&#42;</span>Country of citizenship</label>
+                                        <div class="form-group form-group-md col-xs-12 col-sm-8 col-md-6">
+                                            <label>Country of citizenship <a href="#" data-toggle="tooltip" title="If you have dual citizenship only enter the citizenship you would like printed in the Official Gazette." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> <span class="label label-info subtle" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
                                             <select class="form-control ge-citizenship" name="owner-citizenship"  th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}">
                                                 <option th:value="${exceuter.entityCitizenship}" th:text="${exceuter.entityCitizenship}" selected th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}"></option>
                                                 <option value="">Select</option>
@@ -467,7 +468,7 @@
                                             <input  type="text" class="form-control rounded-borders ge-name" style="" th:value="${exceuter.entityName}" th:attr="entity-id=${exceuter.id}, entity-index=${iter.index}">
                                         </div>
                                         <div class="form-group form-group-md col-xs-6">
-                                            <label><span class="weight600">&#42;</span>State where legally organized</label>
+                                            <label>State where legally organized <span class="label label-info subtle">Reduced Fee</span></label>
                                             <select class="form-control ge-state" name="State" th:attr="entity-index=${iter.index}" >
                                                 <option th:value="${exceuter.organizationState}"  th:text="${exceuter.organizationState}"  th:attr="entity-id=${exceuter.id}"selected></option>
                                                 <option value="">Select</option>
@@ -582,11 +583,11 @@
                                             </div>
                                             <div class="form-group form-group-md col-xs-6">
                                                 <label for="partner-suffix">Suffix</label>
-                                                <input class="form-control" id="partner-suffix" value="">
+                                                <input type="text" class="form-control" id="partner-suffix" value="">
                                             </div>
                                             <div class="form-group form-group-md col-xs-6">
-                                                <label><span class="weight600">&#42;</span>Country of citizenship</label>
-                                                <select class="form-control ge-citizenship" required="">
+                                                <label>Country of citizenship <a href="#" data-toggle="tooltip" title="If you have dual citizenship only enter the citizenship you would like printed in the Official Gazette." class="glyphicon glyphicon-info-sign test" data-placement="right"></a> <span class="label label-info subtle" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
+                                                <select class="form-control ge-citizenship">
                                                     <option value="">Select</option>
                                                     <option value="United States of America">United States of America</option>
                                                     <option value="Afghanistan">Afghanistan</option>
@@ -839,7 +840,7 @@
                                                 <input type="text" class="form-control rounded-borders ge-name"  required  value="">
                                             </div>
                                             <div class="form-group form-group-md col-xs-6">
-                                                <label><span class="weight600">&#42;</span>State where legally organized</label>
+                                                <label>State where legally organized <span class="label label-info subtle">Reduced Fee</span></label>
                                                 <select  class="form-control ge-state">
                                                     <option value="">Select</option>
                                                     <option value="Alabama">Alabama</option>
@@ -1315,6 +1316,7 @@
         </div>
     </main>
 </div>
+    </div>
 
 <!--load model attribute for Jquery consumption  -->
 <script th:inline="javascript">
