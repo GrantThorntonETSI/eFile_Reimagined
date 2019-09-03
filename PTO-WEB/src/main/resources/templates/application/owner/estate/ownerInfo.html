@@ -31,7 +31,7 @@
                             </div>
                             <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
                                 <label for="stateoforg">State where legally organized <span class="label label-info subtle" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
-                                <select class="form-control" id="stateoforg" th:field="*{ownerOrganizationState}" required>
+                                <select class="form-control" id="stateoforg" th:field="*{ownerOrganizationState}">
                                     <option value="">Select</option>
                                     <option  value="Alabama">Alabama</option>
                                     <option  value="Alaska">Alaska</option>
@@ -398,7 +398,7 @@
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-sm-9 col-md-6">
                                     <label for="partner-owner-name-state">State where legally organized <span class="label label-info subtle" aria-describedby="#costsavingoptions">Reduced Fee</span></label>
-                                    <select  id="partner-owner-name-state" th:field="*{partnerDTOs[__${itemStat.index}__].state}"  class="form-control" name="State"  required>
+                                    <select  id="partner-owner-name-state" th:field="*{partnerDTOs[__${itemStat.index}__].state}"  class="form-control" name="State">
                                         <option value="">Select</option>
                                         <option value="Alabama">Alabama</option>
                                         <option value="Alaska">Alaska</option>
@@ -451,10 +451,11 @@
                                         <option value="West Virginia">West Virginia</option>
                                         <option value="Wisconsin">Wisconsin</option>
                                         <option value="Wyoming">Wyoming</option>
+                                        <option value="N/A">N/A</option>
                                     </select>
                                 </div>
                                 <div class="form-group form-group-md col-xs-12 col-xs-6">
-                                    <label>&#42;>Type</label>
+                                    <label>&#42;Type</label>
                                     <span>
                                     <select id="partner-owner-name-type" class="form-control partner-owner-name-type" name="nameType" th:field="*{partnerDTOs[__${itemStat.index}__].type}" >
                                         <option value="">Select</option>
