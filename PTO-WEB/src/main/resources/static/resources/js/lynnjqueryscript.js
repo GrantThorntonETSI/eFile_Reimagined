@@ -1592,39 +1592,46 @@ $(document).ready(function(){
 		});
 	});
 	//END displaymark height match
-    
-  //START close button height match SOU labels
+
+	//START close button height match SOU labels
 	$('div.gsmodal').on('show.bs.modal', function() {
-      var d = $('div.gsmodal button.closegspanels').parent().find('span.closepans');
-	  var c = $('div.gsmodal button.closegspanels span.label');
-	  var f = $('div.gsmodal button.closegspanels');
-	  var e = $('div.gsmodal span.closepans').eq(0).parent();
-	  $(d).css('display','table-cell').css('vertical-align','middle');
-	  $(f).css('display','table-cell').css('vertical-align','middle');
-	  $(c).css('min-height','24%');
-	  $('div.gsmodal button.closegspanels').css('line-height',(c.innerHeight() + 'px')).css( 'height',(c.innerHeight()));
+		var d = $('div.gsmodal button.closegspanels').parent().find('span.closepans');
+		var c = $('div.gsmodal button.closegspanels span.label');
+		var f = $('div.gsmodal button.closegspanels');
+		var e = $('div.gsmodal span.closepans').eq(0).parent();
+		$(d).css('display','table-cell').css('vertical-align','middle');
+		$(f).css('display','table-cell').css('vertical-align','middle');
+		$(c).css('min-height','24%');
+		$('div.gsmodal button.closegspanels').css('line-height',(c.innerHeight() + 'px')).css( 'height',(c.innerHeight()));
 	});
 	//
 	//START SOU modal button add/remove GSs
-		$('div.inusegs span.label button').on('click',function() { 
-			var colorClass = this.className;
-			if ((colorClass) == ('close closegspanels')) {
-				$(this).parent().css('background','#ecf1f3').css('color','#999');
-				$(this).children('span').addClass('glyphicon-refresh').removeClass('glyphicon-remove-circle');
-				$(this).toggleClass('refresh');
-				$(this).attr('aria-label','undo delete this good / service');
-			}
-			if ((colorClass) == ('close closegspanels refresh')) {
-				$(this).parent().css('background','#cbd6da').css('color','#333');
-				$(this).children('span').removeClass('glyphicon-refresh').addClass('glyphicon-remove-circle');
-				$(this).toggleClass('refresh');
-				$(this).attr('aria-label','delete');
-			}
-		});
+	$('div.inusegs span.label button').on('click',function() {
+		var colorClass = this.className;
+		var count = $(this).parent().parent('div.inusegs').find('span.glyphicon-remove-circle');
+		if ((colorClass) == ('close closegspanels')) {
+			$(this).parent().css('background','#ecf1f3').css('color','#999');
+			$(this).children('span').addClass('glyphicon-refresh').removeClass('glyphicon-remove-circle');
+			$(this).toggleClass('refresh');
+			$(this).attr('aria-label','undo delete this good / service');
+		}
+		if ((colorClass) == ('close closegspanels refresh')) {
+			$(this).parent().css('background','#cbd6da').css('color','#333');
+			$(this).children('span').removeClass('glyphicon-refresh').addClass('glyphicon-remove-circle');
+			$(this).toggleClass('refresh');
+			$(this).attr('aria-label','delete');
+		}
+		if ((count).length == 1) {
+			$(this).closest( 'div.gsmodal' ).parent().find('div.statementou').css('opacity','0.4');
+			$(this).closest( 'div.gsmodal' ).parent().find('div.statementou select option').prop('disabled', true);
+			$(this).closest( 'div.gsmodal' ).parent().find('div.formodal').css('display','block');
+		}
+	});
 	//
-	//START SOU modal add/remove GSs from blue bar
+	//START SOU modal strike/unstrike GSs from blue bar
 	$('div.inusegs button').on('click',function() {
 		var colorClass = this.className;
+		label = $(this).parent().parent('div.inusegs').find('button.closegspanels');
 		var labelindex = $(this).index('div.inusegs button.closegspanels');
 		if ((colorClass) === ('close closegspanels')) {
 			var buttonparent = $(this).parents('div.modal');
@@ -1640,62 +1647,53 @@ $(document).ready(function(){
 		}
 	});
 	//
-
-	//
-	$('div.classmodal button.btn-success').on('click',function() {
+	//START SOU modal add/remove class
+	if ( $( 'div#soucontent' ).length ) {
+		$('div.formodal').css('display','none');
+	}
+	$('div.classmodal button.deleteclass').on('click',function() {
 		var modaldiv = $('div.formodal');
 		var modaldivparent = $(this).parents('div.modal');
 		var modaldivgrandparent = $(modaldivparent).parent();
+		var modalgs = $(modaldivparent).closest('div.gsmodal');
 		$( modaldivparent ).find('span.sr-only').text('class removed');
 		$( modaldivgrandparent ).find('div.inusegs span.subtle').css('display','none');
 		$( modaldivparent ).parent().find('div.statementou').css('opacity','0.4');
-		$( modaldivparent ).modal('hide')
+		$( modaldivparent ).parent().find('div.statementou select option').prop('disabled', true);
+		$( modaldivparent ).modal('hide');
 		$( modaldivparent ).parent().find('div.formodal').css('display','block');
+		$(function() {
+			var gsbuttons = $(modalgs).find('div.inusegs span.label button');
+			$( gsbuttons ).parent().css('background','#ecf1f3').css('color','#999');
+			$( gsbuttons ).children('span').addClass('glyphicon-refresh').removeClass('glyphicon-remove-circle');
+			$( gsbuttons ).toggleClass('refresh');
+			$( gsbuttons ).attr('aria-label','undo delete this good / service');
+		});
+		$(this).closest('div.classmodal').parent().find('.statementou h2.displaycell span.listed').addClass('strike');
+		$(this).closest('div.classmodal').parent().find('.statementou h2.displaycell span.listed span.sr-only').text('removed');
 	});
 	$('button.resetclassbtn').on('click',function() {
 		var modaldiv = $(this).parents('div.formodal');
 		var modaldivparent = $(this).parents('div.modal');
 		var modaldivgrandparent = $(modaldiv).parent();
+		var modalgs = $(modaldiv).siblings('div.gsmodal');
 		$( modaldivgrandparent ).find('div.inusegs span.subtle').css('display','table');
 		$( modaldiv).parent().find('div.statementou').css('opacity','1.0');
+		$( modaldiv ).parent().find('div.statementou select option').eq(0).prop('disabled', false);
+		$( modaldiv ).parent().find('div.statementou select option').eq(1).prop('disabled', false);
+		$( modaldiv ).parent().find('div.statementou select option').eq(2).prop('disabled', false);
 		$( modaldivparent ).find('span.sr-only').text('class added');
 		$( modaldiv ).css('display','none');
+		$(function() {
+			var gsbuttons = $(modalgs).find('div.inusegs span.label button');
+			$( gsbuttons ).parent().css('background','#cbd6da').css('color','#333');
+			$( gsbuttons ).children('span').removeClass('glyphicon-refresh').addClass('glyphicon-remove-circle');
+			$( gsbuttons ).toggleClass('refresh');
+			$( gsbuttons ).attr('aria-label','delete');
+		});
+		$(this).closest('div.formodal').parent().find('.statementou h2.displaycell span.listed').removeClass('strike');
+		$(this).closest('div.formodal').parent().find('.statementou h2.displaycell span.listed span.sr-only').text('added');
 	});
-	//
-    
-    //START SOU select modals
-	$('.statementou select').on('change',function(){
-		var loadmodal = ($(this).val());
-		//$( loadmodal ).css('display','block');
-		if( loadmodal == 'edit') {
-			$(this).parents('#soucontent div.modal').modal('hide');
-			}
-		else if ( loadmodal == 'delete') {
-			$(this).parents('.statementou').parent().siblings('div.classmodal').modal('show');
-			} 
-		else if ( loadmodal == 'limit') {
-			$(this).parents('.statementou').parent().siblings('div.gsmodal').modal('show');
-			} 
-	});
-	$('#soucontent').on('hide.bs.modal', function() {
-		var resetselect = [ 'edit' ];
-		var resetselect = jQuery.makeArray( resetselect );
-		var loadmodalreset = $('.statementou select');
-		$(loadmodalreset).val( resetselect[0] );
-	});
-	//
-
-	//START close button height match dashboard
-	//$( window ).on('load', function() {
-		//var d = $( '#announcements .closepans' ).prev('div');
-		//$(d).css('display','flex').css('flex-direction','column').css('min-height','3em');
-		//$('#announcements .closepans').css( 'line-height', (d.innerHeight() + 'px') ).css( 'height', (d.innerHeight()) );
-		//$('#announcements .closegspanels').css('line-height',(d.innerHeight() + 'px'));
-		//$( window ).resize(function() {
-			//$('#announcements .closepans').css( 'height', (d.innerHeight()) );
-			//$('#announcements .closegspanels').css('line-height',(d.innerHeight() + 'px'));
-		//});
-	//});
 	//
 
 	//row header p height match

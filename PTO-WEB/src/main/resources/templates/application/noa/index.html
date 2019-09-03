@@ -44,7 +44,7 @@
                                                                     <button type="button" class="btn btn-sm btn-success cancel" data-dismiss="modal">Cancel</button>
                                                                 </div>
                                                                 <div class="col-xs-6 btn-group">
-                                                                    <button type="button" class="btn btn-sm btn-success disable-cc" data-dismiss="modal" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">Yes, delete this class</button>
+                                                                    <button type="button" class="btn btn-sm btn-success disable-cc deleteclass" data-dismiss="modal" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">Yes, delete this class</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -355,7 +355,7 @@
                                                                     <button type="button" class="btn btn-sm btn-success cancel" data-dismiss="modal">Cancel</button>
                                                                 </div>
                                                                 <div class="col-xs-6 btn-group">
-                                                                    <button type="button" class="btn btn-sm btn-success disable-cc" data-dismiss="modal" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">Yes, delete this class</button>
+                                                                    <button type="button" class="btn btn-sm btn-success disable-cc deleteclass" data-dismiss="modal" th:attr="cc-id=${Good_Service_class.getClassCategoryNumber()}">Yes, delete this class</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -818,7 +818,7 @@
         $('.disable-cc').click(function () {
             var ccID = $(this).attr("cc-id");
 
-            alert("disable class");
+
 
             saveNOAresponse("activate-cc-noa", "no",  OfficeActionID, ccID, appInternalID );
         });
@@ -826,7 +826,7 @@
         $('.enable-cc').click(function () {
             var ccID = $(this).attr("cc-id");
 
-            alert("enable class");
+
 
             saveNOAresponse("activate-cc-noa", "yes",  OfficeActionID, ccID, appInternalID );
         });
