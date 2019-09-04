@@ -5001,6 +5001,26 @@ public class ApplicationFlowController {
         baseTrademarkApplication.addFilingDocumentEvent(filingDocumentEvent);
 
 
+
+        // remove any global default actions
+
+        OfficeActions globalDefault = null;
+
+        for(Iterator<OfficeActions> iter = baseTrademarkApplication.getOfficeActions().iterator(); iter.hasNext(); ) {
+            OfficeActions current = iter.next();
+
+            if( current.getOfficeActionCode().equals("global default action")){
+                globalDefault = current;
+            }
+        }
+
+        if(globalDefault != null){
+            baseTrademarkApplication.removeOfficeAction(globalDefault);
+        }
+
+
+
+
         baseTradeMarkApplicationService.save(baseTrademarkApplication);
 
         // set office action to inactive
@@ -6383,10 +6403,12 @@ public class ApplicationFlowController {
         String officeActionId = "";
         for(Iterator<OfficeActions> iter = baseTrademarkApplication.getOfficeActions().iterator(); iter.hasNext(); ) {
             OfficeActions current = iter.next();
-
-            if(current.getUniqueKey().equals(token)){
-                officeActionId = current.getInternalID();
+            if(current.getUniqueKey() != null && current.getOfficeActionCode().equals("global default action")){
+                if(current.getUniqueKey().equals(token)){
+                    officeActionId = current.getInternalID();
+                }
             }
+
         }
 
 
@@ -6450,8 +6472,10 @@ public class ApplicationFlowController {
         for(Iterator<OfficeActions> iter = baseTrademarkApplication.getOfficeActions().iterator(); iter.hasNext(); ) {
             OfficeActions current = iter.next();
 
-            if(current.getUniqueKey().equals(token)){
-                officeActionId = current.getInternalID();
+            if(current.getUniqueKey() != null && current.getOfficeActionCode().equals("global default action")){
+                if(current.getUniqueKey().equals(token)){
+                    officeActionId = current.getInternalID();
+                }
             }
         }
 
@@ -6516,8 +6540,10 @@ public class ApplicationFlowController {
         for(Iterator<OfficeActions> iter = baseTrademarkApplication.getOfficeActions().iterator(); iter.hasNext(); ) {
             OfficeActions current = iter.next();
 
-            if(current.getUniqueKey().equals(token)){
-                officeActionId = current.getInternalID();
+            if(current.getUniqueKey() != null && current.getOfficeActionCode().equals("global default action")){
+                if(current.getUniqueKey().equals(token)){
+                    officeActionId = current.getInternalID();
+                }
             }
         }
 
@@ -6582,8 +6608,10 @@ public class ApplicationFlowController {
         for(Iterator<OfficeActions> iter = baseTrademarkApplication.getOfficeActions().iterator(); iter.hasNext(); ) {
             OfficeActions current = iter.next();
 
-            if(current.getUniqueKey().equals(token)){
-                officeActionId = current.getInternalID();
+            if(current.getUniqueKey() != null && current.getOfficeActionCode().equals("global default action")){
+                if(current.getUniqueKey().equals(token)){
+                    officeActionId = current.getInternalID();
+                }
             }
         }
 

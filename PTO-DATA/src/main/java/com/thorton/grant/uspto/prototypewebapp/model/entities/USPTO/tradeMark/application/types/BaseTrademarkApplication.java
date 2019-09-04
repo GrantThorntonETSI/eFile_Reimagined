@@ -711,6 +711,13 @@ public class BaseTrademarkApplication  {
     }
 
 
+    public void removeOfficeAction( OfficeActions officeAction){
+        this.officeActions.remove(officeAction);
+
+
+    }
+
+
     public Petition addPetition( Petition petition){
         this.petitions.add(petition);
 
