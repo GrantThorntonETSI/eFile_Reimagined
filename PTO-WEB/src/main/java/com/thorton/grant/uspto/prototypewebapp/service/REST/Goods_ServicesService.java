@@ -1278,9 +1278,6 @@ public class Goods_ServicesService  extends BaseRESTapiService {
 
         if (ccField.equals("cc-all-gs-in-use")) {
 
-            //baseTrademarkApplication.findGSbyInternalID(gsID).setPendingFA(true);
-
-
             for (Iterator<GoodAndService> iter = baseTrademarkApplication.getGoodAndServices().iterator(); iter.hasNext(); ) {
                 GoodAndService current = iter.next();
 
@@ -1327,6 +1324,7 @@ public class Goods_ServicesService  extends BaseRESTapiService {
         String statusCode = "200";
         if (requiredActionComplete == true) {
             statusCode = "420";
+
         }
         return buildResponseEnity(statusCode, responseMsg);
 

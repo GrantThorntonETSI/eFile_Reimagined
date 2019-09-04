@@ -673,6 +673,23 @@ public class FilingStatusUpdateTask extends TimerTask {
                     noa.setTrademarkApplication(current);
 
 
+                    // set all gs that are active and class in use to and excused none use to false
+
+                    for(Iterator<GoodAndService> iterGS = current.getGoodAndServices().iterator(); iterGS.hasNext(); ) {
+                        GoodAndService currentGS = iterGS.next();
+
+                       if(currentGS.isActiveGS()){
+                           currentGS.setMarkInUse(false);
+                           currentGS.setMarkInUseSet(false);
+                           currentGS.setExcusedNoneUse(false);
+                           currentGS.setMarkInUseCC(false);
+
+                       }
+                    }
+
+                    // all of the in use status will need to be redeclared on renew
+
+
 
                     baseTradeMarkApplicationService.save(current);
 

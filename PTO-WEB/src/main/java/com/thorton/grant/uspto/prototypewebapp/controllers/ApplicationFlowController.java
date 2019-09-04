@@ -4977,7 +4977,15 @@ public class ApplicationFlowController {
         if(baseTrademarkApplication.getApplicationRegisteredDate() != null ){
 
                 baseTrademarkApplication.setFilingStatus("Registered");
+                baseTrademarkApplication.setApplicationRegistrationRenewDate(new Date());
 
+                for(Iterator<RequiredActions> iterRA = baseTrademarkApplication.findOfficeActionById(actionID).getRequiredActions().iterator(); iterRA.hasNext(); ) {
+                    iterRA.next().setRequiredActionCompleted(true);
+                    // set required actions completed for registration renew
+
+                }
+
+                baseTrademarkApplication.findOfficeActionById(actionID).setActiveAction(false);
 
         }
         else{
@@ -6309,6 +6317,7 @@ public class ApplicationFlowController {
         officeActions.setParentSerialNumber(baseTrademarkApplication.getTrademarkName());
         officeActions.setParentRegistrationNumber(baseTrademarkApplication.getRegistrationID());
         officeActions.setActiveAction(false);
+        officeActions.setOptianlCompleted(true);
 
         long dueDate = new Date().getTime()+baseTrademarkApplication.getBlackOutPeriod()+baseTrademarkApplication.getOfficeActionResponsePeriod();
         officeActions.setDueDate(new Date(dueDate));
@@ -6378,6 +6387,7 @@ public class ApplicationFlowController {
         officeActions.setParentSerialNumber(baseTrademarkApplication.getTrademarkName());
         officeActions.setParentRegistrationNumber(baseTrademarkApplication.getRegistrationID());
         officeActions.setActiveAction(false);
+        officeActions.setOptianlCompleted(true);
         long dueDate = new Date().getTime()+baseTrademarkApplication.getBlackOutPeriod()+baseTrademarkApplication.getOfficeActionResponsePeriod();
         officeActions.setDueDate(new Date(dueDate));
         officeActions.setOfficeActionCode("global default action");
@@ -6446,6 +6456,7 @@ public class ApplicationFlowController {
         officeActions.setParentSerialNumber(baseTrademarkApplication.getTrademarkName());
         officeActions.setParentRegistrationNumber(baseTrademarkApplication.getRegistrationID());
         officeActions.setActiveAction(false);
+        officeActions.setOptianlCompleted(true);
         long dueDate = new Date().getTime()+baseTrademarkApplication.getBlackOutPeriod()+baseTrademarkApplication.getOfficeActionResponsePeriod();
         officeActions.setDueDate(new Date(dueDate));
         officeActions.setOfficeActionCode("global default action");
@@ -6514,6 +6525,7 @@ public class ApplicationFlowController {
         officeActions.setParentSerialNumber(baseTrademarkApplication.getTrademarkName());
         officeActions.setParentRegistrationNumber(baseTrademarkApplication.getRegistrationID());
         officeActions.setActiveAction(false);
+        officeActions.setOptianlCompleted(true);
         long dueDate = new Date().getTime()+baseTrademarkApplication.getBlackOutPeriod()+baseTrademarkApplication.getOfficeActionResponsePeriod();
         officeActions.setDueDate(new Date(dueDate));
         officeActions.setOfficeActionCode("global default action");
@@ -6582,6 +6594,8 @@ public class ApplicationFlowController {
         officeActions.setParentSerialNumber(baseTrademarkApplication.getTrademarkName());
         officeActions.setParentRegistrationNumber(baseTrademarkApplication.getRegistrationID());
         officeActions.setActiveAction(false);
+
+        officeActions.setOptianlCompleted(true);
         long dueDate = new Date().getTime()+baseTrademarkApplication.getBlackOutPeriod()+baseTrademarkApplication.getOfficeActionResponsePeriod();
         officeActions.setDueDate(new Date(dueDate));
         officeActions.setOfficeActionCode("global default action");

@@ -907,22 +907,6 @@ public class OfficeActionAndPetitionService extends  BaseRESTapiService{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // section 18 application level auto save
     @CrossOrigin(origins = {"http://localhost:80","http://efile-reimagined.com"})
     @RequestMapping(method = GET, value="/REST/apiGateway/OfficeAction/section15/application/update/{field}/{value}/{OfficeActionID}/{appInternalID}")
