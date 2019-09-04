@@ -275,24 +275,26 @@
 
 
                                                 </div><!--END radiogroup-->
-                                                <div id="yestranslation" style="display: none;"><!--toggle 'yes' radio-->
-                                                    <h3 >Enter the foreign language and the translation. <span class="label label-info subtle visuallyremoved">Reduced Fee</span></h3>
-                                                    <div class="form-group form-group-md col-xs-12 col-md-3">
-                                                        <b for="language">Language</b>
-                                                        <select class="form-control" id="language" th:field="${baseTrademarkApplication.tradeMark.foreignLanguageType_translation}">
-                                                            <option value="Select">Select</option>
-                                                            <option value="Spanish">Spanish</option>
-                                                            <option value="German">German</option>
-                                                            <option value="French">French</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group form-group-md col-xs-12 col-md-5">
-                                                        <b>The English Translation of the word</b>
-                                                        <input type="text" class="form-control" id="engtranslation" th:value="${baseTrademarkApplication.tradeMark.foreignLanguageTranslationOriginalText}" >
-                                                    </div>
-                                                    <div class="form-group form-group-md col-xs-12 col-md-4">
-                                                        <b >in the mark is</b>
-                                                        <input type="text" class="form-control" id="inthemark" th:value="${baseTrademarkApplication.tradeMark.foreignLanguageTranslationUSText}">
+                                                <div id="yestranslation" role="alert" style="display: none;"><!--toggle 'yes' radio-->
+                                                    <h3 class="weight600">Enter the foreign language and the translation. <span class="label label-info subtle visuallyremoved">Reduced Fee</span></h3>
+                                                    <div class="row">
+                                                        <div class="form-group form-group-md col-xs-12 col-md-3">
+                                                            <label for="language">Language</label>
+                                                            <select class="form-control" id="language" th:field="${baseTrademarkApplication.tradeMark.foreignLanguageType_translation}">
+                                                                <option value="Select">Select</option>
+                                                                <option value="Spanish">Spanish</option>
+                                                                <option value="German">German</option>
+                                                                <option value="French">French</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group form-group-md col-xs-12 col-md-6">
+                                                            <label for="engtranslation">The English translation of the word</label>
+                                                            <input type="text" class="form-control" id="engtranslation" th:value="${baseTrademarkApplication.tradeMark.foreignLanguageTranslationOriginalText}" >
+                                                        </div>
+                                                        <div class="form-group form-group-md col-xs-12 col-md-3">
+                                                            <label for="inthemark">in the mark is</label>
+                                                            <input type="text" class="form-control" id="inthemark" th:value="${baseTrademarkApplication.tradeMark.foreignLanguageTranslationUSText}">
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div id="notranslation"><!--toggle 'no' radio-->
@@ -311,22 +313,24 @@
                                                     </div><!--END radiogroup-->
                                                     <div id="yestranslation"><!--toggle 'yes' radio-->
                                                         <h3 class="weight600">Enter the foreign language and the translation. <span class="label label-info subtle visuallyremoved">Reduced Fee</span></h3>
-                                                        <div class="form-group form-group-md col-xs-12 col-md-3">
-                                                            <b for="language">Language</b>
-                                                            <select class="form-control" id="language" th:field="${baseTrademarkApplication.tradeMark.foreignLanguageType_translation}">
-                                                                <option value="Select">Select</option>
-                                                                <option value="Spanish">Spanish</option>
-                                                                <option value="German">German</option>
-                                                                <option value="French">French</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group form-group-md col-xs-12 col-md-5">
-                                                            <b>The English Translation of the word</b>
-                                                            <input type="text" class="form-control" id="engtranslation" th:value="${baseTrademarkApplication.tradeMark.foreignLanguageTranslationOriginalText}" >
-                                                        </div>
-                                                        <div class="form-group form-group-md col-xs-12 col-md-4">
-                                                            <b >in the mark is</b>
-                                                            <input type="text" class="form-control" id="inthemark" th:value="${baseTrademarkApplication.tradeMark.foreignLanguageTranslationUSText}">
+                                                        <div class="row">
+                                                            <div class="form-group form-group-md col-xs-12 col-md-3">
+                                                                <label for="language">Language</label>
+                                                                <select class="form-control" id="language" th:field="${baseTrademarkApplication.tradeMark.foreignLanguageType_translation}">
+                                                                    <option value="Select">Select</option>
+                                                                    <option value="Spanish">Spanish</option>
+                                                                    <option value="German">German</option>
+                                                                    <option value="French">French</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group form-group-md col-xs-12 col-md-6">
+                                                                <label for="engtranslation">The English translation of the word</label>
+                                                                <input type="text" class="form-control" id="engtranslation" th:value="${baseTrademarkApplication.tradeMark.foreignLanguageTranslationOriginalText}" >
+                                                            </div>
+                                                            <div class="form-group form-group-md col-xs-12 col-md-3">
+                                                                <label for="inthemark">in the mark is</label>
+                                                                <input type="text" class="form-control" id="inthemark" th:value="${baseTrademarkApplication.tradeMark.foreignLanguageTranslationUSText}">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div id="notranslation"><!--toggle 'no' radio-->
@@ -344,22 +348,24 @@
                                                     </div><!--END radiogroup-->
                                                     <div id="yestranslation" style="display: none;"><!--toggle 'yes' radio-->
                                                         <h3 class="weight600">Enter the foreign language and the translation. <span class="label label-info subtle visuallyremoved">Reduced Fee</span></h3>
-                                                        <div class="form-group form-group-md col-xs-12 col-md-3">
-                                                            <b for="language">Language</b>
-                                                            <select class="form-control" id="language" th:field="${baseTrademarkApplication.tradeMark.foreignLanguageType_translation}">
-                                                                <option value="Select">Select</option>
-                                                                <option value="Spanish">Spanish</option>
-                                                                <option value="German">German</option>
-                                                                <option value="French">French</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group form-group-md col-xs-12 col-md-5">
-                                                            <b>The English Translation of the word</b>
-                                                            <input type="text" class="form-control" id="engtranslation" th:value="${baseTrademarkApplication.tradeMark.foreignLanguageTranslationOriginalText}" >
-                                                        </div>
-                                                        <div class="form-group form-group-md col-xs-12 col-md-4">
-                                                            <b >in the mark is</b>
-                                                            <input type="text" class="form-control" id="inthemark" th:value="${baseTrademarkApplication.tradeMark.foreignLanguageTranslationUSText}">
+                                                        <div class="row">
+                                                            <div class="form-group form-group-md col-xs-12 col-md-3">
+                                                                <label for="language">Language</label>
+                                                                <select class="form-control" id="language" th:field="${baseTrademarkApplication.tradeMark.foreignLanguageType_translation}">
+                                                                    <option value="Select">Select</option>
+                                                                    <option value="Spanish">Spanish</option>
+                                                                    <option value="German">German</option>
+                                                                    <option value="French">French</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group form-group-md col-xs-12 col-md-6">
+                                                                <label for="engtranslation">The English translation of the word</label>
+                                                                <input type="text" class="form-control" id="engtranslation" th:value="${baseTrademarkApplication.tradeMark.foreignLanguageTranslationOriginalText}" >
+                                                            </div>
+                                                            <div class="form-group form-group-md col-xs-12 col-md-3">
+                                                                <label for="inthemark">in the mark is</label>
+                                                                <input type="text" class="form-control" id="inthemark" th:value="${baseTrademarkApplication.tradeMark.foreignLanguageTranslationUSText}">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div id="notranslation"><!--toggle 'no' radio-->
