@@ -354,20 +354,26 @@ public class FilingStatusUpdateTask extends TimerTask {
 
                         for(Iterator<OfficeActions> iter4 = current.getOfficeActions().iterator(); iter4.hasNext(); ) {
                             OfficeActions current4 = iter4.next();
-                            if(current4.isOfficeActionCompleted() == true){
-                                // skip examiner review period
-                                // filing is accepted
-                                // change filing status
-                                // create filing document event
+                            if(current4.isActiveAction()){
+                                if(current4.isOfficeActionCompleted() == true){
+                                    // skip examiner review period
+                                    // filing is accepted
+                                    // change filing status
+                                    // create filing document event
 
-                                current4.setActiveAction(false);
+                                    current4.setActiveAction(false);
 
 
+
+                                }
+                                else {
+                                    acceptedFiling = false;
+
+                                    System.out.println("office action is not completed");
+                                }
 
                             }
-                            else {
-                                acceptedFiling = false;
-                            }
+
 
                         }
 

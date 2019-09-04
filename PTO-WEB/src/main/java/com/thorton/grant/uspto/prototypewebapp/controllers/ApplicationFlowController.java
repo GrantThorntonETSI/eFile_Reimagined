@@ -6309,6 +6309,7 @@ public class ApplicationFlowController {
         officeActions.setParentSerialNumber(baseTrademarkApplication.getTrademarkName());
         officeActions.setParentRegistrationNumber(baseTrademarkApplication.getRegistrationID());
         officeActions.setActiveAction(false);
+
         long dueDate = new Date().getTime()+baseTrademarkApplication.getBlackOutPeriod()+baseTrademarkApplication.getOfficeActionResponsePeriod();
         officeActions.setDueDate(new Date(dueDate));
         officeActions.setOfficeActionCode("global default action");
