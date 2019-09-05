@@ -24,191 +24,260 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-12" id="petitions1">
-                        <form action="" method="post" >
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <fieldset aria-describedby="appdata">
-                                        <div class="panel-group">
-                                            <div class="panel panel-default">
-                                                <div class="panel-body">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 col-lg-4">
-                                                            <div class="row">
-                                                                <div class="col-xs-12">
-                                                                    <div class="row underlinerow">
-                                                                        <div class="col-xs-9">
-                                                                            <h3 class="weight600">Mark information</h3>
-                                                                        </div>
-                                                                        <div class="col-xs-3">
-                                                                            <a href="#" class="disabled" disabled>Edit</a>
-                                                                        </div>
+                <div class="col-xs-12" id="petitions1">
+                    <form action="" method="post" >
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <fieldset aria-describedby="appdata">
+                                    <div class="panel-group">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-lg-4">
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="row underlinerow">
+                                                                    <div class="col-xs-9">
+                                                                        <h3 class="weight600">Mark information</h3>
+                                                                    </div>
+                                                                    <div class="col-xs-3">
+                                                                        <a href="#" class="disabled" disabled>Edit</a>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-xs-6 col-lg-12">
-                                                                    <h4>Serial number</h4>
-                                                                </div>
-                                                                <div class="col-xs-6 col-lg-12">
-                                                                    <p><span th:text="${baseTrademarkApplication.getTrademarkName()}">87697840</span></p>
-                                                                </div>
-                                                                <div class="col-xs-6 col-lg-12">
-                                                                    <h4>Mark literal</h4>
-                                                                </div>
-                                                                <div class="col-xs-6 col-lg-12">
-                                                                    <p><span  th:text="${baseTrademarkApplication.getTradeMark().getMarkLiteral()}">PK Prep</span></p>
-                                                                </div>
-                                                                <div class="col-xs-6 col-lg-12">
-                                                                    <h4>Mark image</h4>
-                                                                </div>
-                                                                <th:block th:if="${baseTrademarkApplication.isStandardTextMark() == true}">
-                                                                    <div class="col-xs-6 col-lg-12"><span style="max-width: 55px; max-height: 33px; margin:0 auto;font-family: Palatino, Garamond, Bookman, Avant Garde; font-size:.9em;text-align:center;margin-bottom:0;" th:text="${baseTrademarkApplication.getTradeMark().getTrademarkStandardCharacterText()}"></span></div>
+                                                            </div>
+                                                            <div class="col-xs-6 col-lg-12">
+                                                                <h4>Serial number</h4>
+                                                            </div>
+                                                            <div class="col-xs-6 col-lg-12">
+                                                                <p><span th:text="${baseTrademarkApplication.getTrademarkName()}">87697840</span></p>
+                                                            </div>
+                                                            <div class="col-xs-6 col-lg-12">
+                                                                <h4>Mark literal</h4>
+                                                            </div>
+                                                            <div class="col-xs-6 col-lg-12">
+                                                                <p><span  th:text="${baseTrademarkApplication.getTradeMark().getMarkLiteral()}">PK Prep</span></p>
+                                                            </div>
+                                                            <div class="col-xs-6 col-lg-12">
+                                                                <h4>Mark image</h4>
+                                                            </div>
+                                                            <th:block th:if="${baseTrademarkApplication.isStandardTextMark() == true}">
+                                                                <div class="col-xs-6 col-lg-12"><span style="max-width: 55px; max-height: 33px; margin:0 auto;font-family: Palatino, Garamond, Bookman, Avant Garde; font-size:.9em;text-align:center;margin-bottom:0;" th:text="${baseTrademarkApplication.getTradeMark().getTrademarkStandardCharacterText()}"></span></div>
 
-                                                                </th:block>
-                                                                <th:block th:if="${baseTrademarkApplication.isStandardTextMark() == false}">
-                                                                    <div class="col-xs-6 col-lg-12">
-                                                                        <img th:src="${baseTrademarkApplication.getTradeMark().getMarkImageDisplayPath()}" class="img-thumbnail" alt="your mark image">
-                                                                    </div>
-                                                                </th:block>
+                                                            </th:block>
+                                                            <th:block th:if="${baseTrademarkApplication.isStandardTextMark() == false}">
+                                                                <div class="col-xs-6 col-lg-12">
+                                                                    <img th:src="${baseTrademarkApplication.getTradeMark().getMarkImageDisplayPath()}" class="img-thumbnail" alt="your mark image">
+                                                                </div>
+                                                            </th:block>
 
 
 
-                                                                <div class="col-xs-6 col-lg-12">
-                                                                    <h4>Goods/Services</h4>
-                                                                </div>
-                                                                <div class="col-xs-6 col-lg-12">
-                                                                    <p><a href="#" class="disabled" >View goods/services</a></p>
-                                                                </div>
-                                                                <div class="col-xs-6 col-lg-12">
-                                                                    <h4>Filing type</h4>
-                                                                </div>
-                                                                <div class="col-xs-6 col-lg-12">
-                                                                    <p><span class="uppercase">teas rf</span></p>
-                                                                </div>
+                                                            <div class="col-xs-6 col-lg-12">
+                                                                <h4>Goods/Services</h4>
+                                                            </div>
+                                                            <div class="col-xs-6 col-lg-12">
+                                                                <p><a href="#" class="disabled" >View goods/services</a></p>
+                                                            </div>
+                                                            <div class="col-xs-6 col-lg-12">
+                                                                <h4>Filing type</h4>
+                                                            </div>
+                                                            <div class="col-xs-6 col-lg-12">
+                                                                <p><span class="uppercase">teas rf</span></p>
                                                             </div>
                                                         </div>
-                                                        <div class="col-xs-12 col-lg-4">
-                                                            <div class="row">
-                                                                <div class="col-xs-12">
-                                                                    <div class="row underlinerow">
-                                                                        <div class="col-xs-9">
-                                                                            <h3 class="weight600">Owner</h3>
-                                                                        </div>
-                                                                        <div class="col-xs-3">
-                                                                            <a href="#" class="disabled" disabled>Edit</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xs-6 col-lg-12">
-                                                                    <h4>Owner of record</h4>
-                                                                </div>
-                                                                <div class="col-xs-6 col-lg-12">
-                                                                    <p><span th:text="${baseTrademarkApplication.getPrimaryOwner().getOwnerDisplayname()}"></span></p>
-                                                                </div>
-                                                                <div class="col-xs-6 col-lg-12">
-                                                                    <h4>Email address</h4>
-                                                                </div>
-                                                                <div class="col-xs-6 col-lg-12">
-                                                                    <p class="email"><span th:text="${baseTrademarkApplication.getPrimaryOwner().getEmail()}">pittsburgh&#64;penguins.com</span></p>
-                                                                </div>
-                                                                <div class="col-xs-6 col-lg-12">
-                                                                    <h4>Entity type</h4>
-                                                                </div>
-                                                                <div class="col-xs-6 col-lg-12">
-                                                                    <p><span th:text="${baseTrademarkApplication.getPrimaryOwner().getOwnersubType()}">Limited Partnership</span></p>
-                                                                </div>
-                                                                <div class="col-xs-6 col-lg-12">
-                                                                    <h4>Owner address</h4>
-                                                                </div>
-                                                                <div class="col-xs-6 col-lg-12">
-                                                                    <p><span th:text="${baseTrademarkApplication.getPrimaryOwner().getAddress1()}+''+${baseTrademarkApplication.getPrimaryOwner().getCity()}+', '+${baseTrademarkApplication.getPrimaryOwner().getState()}+' '+${baseTrademarkApplication.getPrimaryOwner().getZipcode()}" ></span></p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <th:block th:if="${baseTrademarkApplication.isAttorneyFiling() == true}">
-
-                                                            <div class="col-xs-12 col-lg-4">
-                                                                <div class="row">
-                                                                    <div class="col-xs-12">
-                                                                        <div class="row underlinerow">
-                                                                            <div class="col-xs-9">
-                                                                                <h3 class="weight600">Attorney</h3>
-                                                                            </div>
-                                                                            <div class="col-xs-3">
-                                                                                <a href="#" class="disabled" disabled>Edit</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-xs-6 col-lg-12">
-                                                                        <h4>Attorney of record</h4>
-                                                                    </div>
-                                                                    <div class="col-xs-6 col-lg-12">
-                                                                        <p><span th:text="${baseTrademarkApplication.getPrimaryLawyer().getFirstName()}+' '+${baseTrademarkApplication.getPrimaryLawyer().getLastName()}">Clark W. Lackert</span></p>
-                                                                    </div>
-                                                                    <div class="col-xs-6 col-lg-12">
-                                                                        <h4>Attorney firm</h4>
-                                                                    </div>
-                                                                    <div class="col-xs-6 col-lg-12">
-                                                                        <p><span th:text="${baseTrademarkApplication.getPrimaryLawyer().getLawFirmName()}"></span></p>
-                                                                    </div>
-
-                                                                    <th:block  th:each="docket : ${baseTrademarkApplication.getPrimaryLawyer().getDocketNumberList()}">
-                                                                        <div class="col-xs-6 col-lg-12">
-                                                                            <h4>Docket/reference number</h4>
-                                                                        </div>
-                                                                        <div class="col-xs-6 col-lg-12">
-                                                                            <p><span th:text="${docket}">259802.20006</span></p>
-                                                                        </div>
-                                                                    </th:block>
-
-                                                                </div>
-                                                            </div>
-
-
-                                                        </th:block>
-
                                                     </div>
+                                                    <div class="col-xs-12 col-lg-4">
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="row underlinerow">
+                                                                    <div class="col-xs-9">
+                                                                        <h3 class="weight600">Owner</h3>
+                                                                    </div>
+                                                                    <div class="col-xs-3">
+                                                                        <a href="#" class="disabled" disabled>Edit</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-6 col-lg-12">
+                                                                <h4>Owner of record</h4>
+                                                            </div>
+                                                            <div class="col-xs-6 col-lg-12">
+                                                                <p><span th:text="${baseTrademarkApplication.getPrimaryOwner().getOwnerDisplayname()}"></span></p>
+                                                            </div>
+                                                            <div class="col-xs-6 col-lg-12">
+                                                                <h4>Email address</h4>
+                                                            </div>
+                                                            <div class="col-xs-6 col-lg-12">
+                                                                <p class="email"><span th:text="${baseTrademarkApplication.getPrimaryOwner().getEmail()}">pittsburgh&#64;penguins.com</span></p>
+                                                            </div>
+                                                            <div class="col-xs-6 col-lg-12">
+                                                                <h4>Entity type</h4>
+                                                            </div>
+                                                            <div class="col-xs-6 col-lg-12">
+                                                                <p><span th:text="${baseTrademarkApplication.getPrimaryOwner().getOwnersubType()}">Limited Partnership</span></p>
+                                                            </div>
+                                                            <div class="col-xs-6 col-lg-12">
+                                                                <h4>Owner address</h4>
+                                                            </div>
+                                                            <div class="col-xs-6 col-lg-12">
+                                                                <p><span th:text="${baseTrademarkApplication.getPrimaryOwner().getAddress1()}+''+${baseTrademarkApplication.getPrimaryOwner().getCity()}+', '+${baseTrademarkApplication.getPrimaryOwner().getState()}+' '+${baseTrademarkApplication.getPrimaryOwner().getZipcode()}" ></span></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <th:block th:if="${baseTrademarkApplication.isAttorneyFiling() == true}">
+
+                                                        <div class="col-xs-12 col-lg-4">
+                                                            <div class="row">
+                                                                <div class="col-xs-12">
+                                                                    <div class="row underlinerow">
+                                                                        <div class="col-xs-9">
+                                                                            <h3 class="weight600">Attorney</h3>
+                                                                        </div>
+                                                                        <div class="col-xs-3">
+                                                                            <a href="#" class="disabled" disabled>Edit</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xs-6 col-lg-12">
+                                                                    <h4>Attorney of record</h4>
+                                                                </div>
+                                                                <div class="col-xs-6 col-lg-12">
+                                                                    <p><span th:text="${baseTrademarkApplication.getPrimaryLawyer().getFirstName()}+' '+${baseTrademarkApplication.getPrimaryLawyer().getLastName()}">Clark W. Lackert</span></p>
+                                                                </div>
+                                                                <div class="col-xs-6 col-lg-12">
+                                                                    <h4>Attorney firm</h4>
+                                                                </div>
+                                                                <div class="col-xs-6 col-lg-12">
+                                                                    <p><span th:text="${baseTrademarkApplication.getPrimaryLawyer().getLawFirmName()}"></span></p>
+                                                                </div>
+
+                                                                <th:block  th:each="docket : ${baseTrademarkApplication.getPrimaryLawyer().getDocketNumberList()}">
+                                                                    <div class="col-xs-6 col-lg-12">
+                                                                        <h4>Docket/reference number</h4>
+                                                                    </div>
+                                                                    <div class="col-xs-6 col-lg-12">
+                                                                        <p><span th:text="${docket}">259802.20006</span></p>
+                                                                    </div>
+                                                                </th:block>
+
+                                                            </div>
+                                                        </div>
+
+
+                                                    </th:block>
+
                                                 </div>
                                             </div>
                                         </div>
-                                    </fieldset>
-                                    <fieldset aria-label="acknowledgement">
-                                        <p class="weight600">In order to revive the application please read and acknowledge the following statement:</p>
-                                        <div class="form-group form-group-md">
-
-                                            <th:block th:if="${petition.claimDelayUnintentional == false}">
-                                                <input class="form-check-input checkmark" type="checkbox" value="acceptrevives1" tabindex="0" aria-labelledby="acceptrevive" id="useracceptrevive" name="user-accept-checkbox" th:attr="action-id=${petition.getInternalID()}" >
-                                            </th:block>
-
-                                            <th:block th:if="${petition.claimDelayUnintentional == true}">
-                                                <input class="form-check-input checkmark" type="checkbox" value="acceptrevives1" tabindex="0" aria-labelledby="acceptrevive" id="useracceptrevive" name="user-accept-checkbox" th:attr="action-id=${petition.getInternalID()}" checked >
-                                            </th:block>
-                                            <label class="form-check-label form-check" for="useracceptrevive" id="acceptrevive"><span class="radio notspecial">In submitting this petition, the signatory confirms that he/she has firsthand knowledge that the delay in filing a response to the office action on or before the deadline was unintentional.</span></label>
-                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset aria-label="acknowledgement">
+                                    <p class="weight600">In order to revive the application please read and acknowledge the following statement:</p>
+                                    <div class="form-group form-group-md">
 
                                         <th:block th:if="${petition.claimDelayUnintentional == false}">
-
-                                        </th:block>
-                                        <th:block th:if="${petition.getPetitionTitle() == 'Failure to Respond Timely to Office Action'}">
-                                            <p id="action">Did you receive the <a href="" target="_blank">office action<span class="sr-only">Opens in new window</span><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>?</p>
-
-
-                                        </th:block>
-                                        <th:block th:if="${petition.getPetitionTitle() == 'Failure to File Timely Statement of Use or Extension Request'}">
-                                            <p id="action">Did you receive the <a href="" target="_blank">Notice of Allowance<span class="sr-only">Opens in new window</span><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a> issued on <span th:text="${petition.getActionDateDisplay()}"></span>?</p>
-
-
+                                            <input class="form-check-input checkmark" type="checkbox" value="acceptrevives1" tabindex="0" aria-labelledby="acceptrevive" id="useracceptrevive" name="user-accept-checkbox" th:attr="action-id=${petition.getInternalID()}" >
                                         </th:block>
 
+                                        <th:block th:if="${petition.claimDelayUnintentional == true}">
+                                            <input class="form-check-input checkmark" type="checkbox" value="acceptrevives1" tabindex="0" aria-labelledby="acceptrevive" id="useracceptrevive" name="user-accept-checkbox" th:attr="action-id=${petition.getInternalID()}" checked >
+                                        </th:block>
+                                        <label class="form-check-label form-check" for="useracceptrevive" id="acceptrevive"><span class="radio notspecial">In submitting this petition, the signatory confirms that he/she has firsthand knowledge that the delay in filing a response to the office action on or before the deadline was unintentional.</span></label>
+                                    </div>
+
+                                    <th:block th:if="${petition.claimDelayUnintentional == false}">
+
+                                    </th:block>
+                                    <th:block th:if="${petition.getPetitionTitle() == 'Failure to Respond Timely to Office Action'}">
+                                        <p id="action">Did you receive the <a href="" target="_blank">office action<span class="sr-only">Opens in new window</span><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>?</p>
 
 
-                                        <th:block  th:if="${petition.recievedOfficeActionSet == false}">
+                                    </th:block>
+                                    <th:block th:if="${petition.getPetitionTitle() == 'Failure to File Timely Statement of Use or Extension Request'}">
+                                        <p id="action">Did you receive the <a href="" target="_blank">Notice of Allowance<span class="sr-only">Opens in new window</span><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a> issued on <span th:text="${petition.getActionDateDisplay()}"></span>?</p>
+
+
+                                    </th:block>
+
+
+
+                                    <th:block  th:if="${petition.recievedOfficeActionSet == false}">
+                                        <div role="radiogroup" aria-describedby="action" class="form-group form-group-md">
+                                            <label for="inlineRadio072" class="radio-inline radiocontainer"><input type="radio" name="actionradio" id="inlineRadio072" value="yesreceived" tabindex="0" th:attr="action-id=${petition.getInternalID()}" ><span class="checkmark"></span>Yes</label>
+                                            <label for="inlineRadio073" class="radio-inline radiocontainer"><input type="radio" name="actionradio" id="inlineRadio073" value="noreceived" tabindex="0" th:attr="action-id=${petition.getInternalID()}" ><span class="checkmark"></span>No</label>
+                                        </div>
+                                        <div id="reviveappformradios" style="display: none;" >
+                                            <fieldset aria-label="file a response" id="responsefile" style="display: none;">
+                                                <p id="filenow">Do you want to file a response to the office action now to avoid delays and expedite the processing of your application?</p>
+                                                <div role="radiogroup" class="form-group form-group-md" aria-describedby="filenow">
+                                                    <label for="inlineRadio074" class="radio-inline radiocontainer"><input type="radio" name="noactionradio" id="inlineRadio074" value="yesfilenow" tabindex="0" th:attr="action-id=${petition.getInternalID()}" ><span class="checkmark"></span>Yes</label>
+                                                    <label for="inlineRadio075" class="radio-inline radiocontainer"><input type="radio" name="noactionradio" id="inlineRadio075" value="noreissue" tabindex="0" th:attr="action-id=${petition.getInternalID()}" ><span class="checkmark"></span>No</label>
+                                                </div>
+                                            </fieldset>
+                                            <div id="reviveappform" style="display: none;">
+                                                <!--1-->
+                                                <fieldset aria-label="yes, received office action. Select petition signature method.">
+                                                    <div class="card-text noexpand">
+                                                        <h2 class="card-title weight600">Petition&#8217;s Signature</h2>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="form-group form-group-md col-xs-12">
+                                                            <label for="petitionsign" class="weight600">How are you signing the petition?</label>
+                                                            <select class="form-control signmethod" id="petitionsign"  th:attr="action-id=${petition.getInternalID()}" >
+                                                                <option value="Select">Select Signature Method</option>
+                                                                <option value="direct">Sign directly</option>
+                                                                <option value="handwritten" disabled>Print and upload handwritten signature</option>
+                                                                <option value="send" disabled>Send to second party for signature</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-xs-12 form-group form-group-md direct" style="display: none;">
+                                                            <div class="row hidethis">
+                                                                <section aria-label="sign">
+                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                        <p class="sr-only">Enclose the signature in forward slashes</p>
+                                                                        <label for="signature">Signature <a href="#" data-toggle="tooltip" title="" class="glyphicon glyphicon-info-sign test" data-placement="right" data-original-title="To electronically sign the application enter any combination of alpha numeric characters between two forward slash symbols (/); e.g., /jane smith/, /rdr/, or /127/)."></a></label>
+                                                                        <input type="text" class="form-control" placeholder="/Signature/" id="signature" th:value="${petition.getPetitionSignature()}" th:attr="action-id=${petition.getInternalID()}" >
+                                                                    </div>
+
+                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                        <label for="datesigned">Date signed: <span id="tz" class="sr-only"> </span></label>
+                                                                        <input type="text" rows="1" class="form-control  datesigned" id="datesigned" th:value="${petition.getPetitoinDateSignedDisplay()}" th:attr="action-id=${petition.getInternalID()}" > </input>
+                                                                    </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
+                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                        <label for="signatoryname">Signatory&#8217;s name</label>
+                                                                        <input type="text" class="form-control" id="signatoryname" th:value="${petition.getPetitionSignatoryName()}"   th:attr="action-id=${petition.getInternalID()}" >
+                                                                    </div>
+                                                                    <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
+                                                                        <label for="signatoryphone">Signatory&#8217;s phone number</label>
+                                                                        <input type="text" class="form-control" id="signatoryphone"   th:value="${petition.getPetitionSignatoryPhone()}"  th:attr="action-id=${petition.getInternalID()}" >
+                                                                    </div>
+                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                        <label for="signatoryposition">Signatory&#8217;s position</label>
+                                                                        <input type="text" class="form-control" id="signatoryposition"   th:value="${petition.getPetitionSinatoryPosition()}" th:attr="action-id=${petition.getInternalID()}" >
+                                                                    </div>
+                                                                </section>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </fieldset><!--//1-->
+                                                <!--2-->
+
+                                            </div>
+                                        </div>
+
+
+                                    </th:block>
+
+                                    <th:block  th:if="${petition.recievedOfficeActionSet == true}">
+
+                                        <th:block  th:if="${petition.recievedOfficeAction == true}">
                                             <div role="radiogroup" aria-describedby="action" class="form-group form-group-md">
-                                                <label for="inlineRadio072" class="radio-inline radiocontainer"><input type="radio" name="actionradio" id="inlineRadio072" value="yesreceived" tabindex="0" th:attr="action-id=${petition.getInternalID()}" ><span class="checkmark"></span>Yes</label>
+                                                <label for="inlineRadio072" class="radio-inline radiocontainer"><input type="radio" name="actionradio" id="inlineRadio072" value="yesreceived" tabindex="0" th:attr="action-id=${petition.getInternalID()}"checked ><span class="checkmark"></span>Yes</label>
                                                 <label for="inlineRadio073" class="radio-inline radiocontainer"><input type="radio" name="actionradio" id="inlineRadio073" value="noreceived" tabindex="0" th:attr="action-id=${petition.getInternalID()}" ><span class="checkmark"></span>No</label>
                                             </div>
-                                            <div id="reviveappformradios" style="display: none;" >
+                                            <div id="reviveappformradios" style="" >
                                                 <fieldset aria-label="file a response" id="responsefile" style="display: none;">
                                                     <p id="filenow">Do you want to file a response to the office action now to avoid delays and expedite the processing of your application?</p>
                                                     <div role="radiogroup" class="form-group form-group-md" aria-describedby="filenow">
@@ -216,7 +285,7 @@
                                                         <label for="inlineRadio075" class="radio-inline radiocontainer"><input type="radio" name="noactionradio" id="inlineRadio075" value="noreissue" tabindex="0" th:attr="action-id=${petition.getInternalID()}" ><span class="checkmark"></span>No</label>
                                                     </div>
                                                 </fieldset>
-                                                <div id="reviveappform" style="display: none;">
+                                                <div id="reviveappform" style="">
                                                     <!--1-->
                                                     <fieldset aria-label="yes, received office action. Select petition signature method.">
                                                         <div class="card-text noexpand">
@@ -237,13 +306,13 @@
                                                                     <section aria-label="sign">
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <p class="sr-only">Enclose the signature in forward slashes</p>
-                                                                            <label for="signature">Signature <a href="#" data-toggle="tooltip" title="" class="glyphicon glyphicon-info-sign test" data-placement="right" data-original-title="To electronically sign the application enter any combination of alpha numeric characters between two forward slash symbols (/); e.g., /jane smith/, /rdr/, or /127/)."></a></label>
-                                                                            <input type="text" class="form-control" placeholder="/Signature/" id="signature" th:value="${petition.getPetitionSignature()}" th:attr="action-id=${petition.getInternalID()}" >
+                                                                            <label for="signature">Signature</label>
+                                                                            <input type="text" class="form-control" placeholder="/Signature/" id="signature"  th:value="${petition.getPetitionSignature()}" th:attr="action-id=${petition.getInternalID()}" >
                                                                         </div>
 
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <label for="datesigned">Date signed: <span id="tz" class="sr-only"> </span></label>
-                                                                            <input type="text" rows="1" class="form-control  datesigned" id="datesigned" th:value="${petition.getPetitoinDateSignedDisplay()}" th:attr="action-id=${petition.getInternalID()}" > </input>
+                                                                            <input type="text" rows="1" class="form-control  datesigned" id="datesigned"  th:value="${petition.getPetitoinDateSignedDisplay()}" th:attr="action-id=${petition.getInternalID()}" > </input>
                                                                         </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <label for="signatoryname">Signatory&#8217;s name</label>
@@ -267,25 +336,31 @@
                                                 </div>
                                             </div>
 
-
                                         </th:block>
 
-                                        <th:block  th:if="${petition.recievedOfficeActionSet == true}">
+                                        <th:block  th:if="${petition.recievedOfficeAction == false}">
+                                            <div role="radiogroup" aria-describedby="action" class="form-group form-group-md">
+                                                <label for="inlineRadio072" class="radio-inline radiocontainer"><input type="radio" name="actionradio" id="inlineRadio072" value="yesreceived" tabindex="0" th:attr="action-id=${petition.getInternalID()}" ><span class="checkmark"></span>Yes</label>
+                                                <label for="inlineRadio073" class="radio-inline radiocontainer"><input type="radio" name="actionradio" id="inlineRadio073" value="noreceived" tabindex="0" th:attr="action-id=${petition.getInternalID()}" checked><span class="checkmark"></span>No</label>
+                                            </div>
 
-                                            <th:block  th:if="${petition.recievedOfficeAction == true}">
-                                                <div role="radiogroup" aria-describedby="action" class="form-group form-group-md">
-                                                    <label for="inlineRadio072" class="radio-inline radiocontainer"><input type="radio" name="actionradio" id="inlineRadio072" value="yesreceived" tabindex="0" th:attr="action-id=${petition.getInternalID()}"checked ><span class="checkmark"></span>Yes</label>
-                                                    <label for="inlineRadio073" class="radio-inline radiocontainer"><input type="radio" name="actionradio" id="inlineRadio073" value="noreceived" tabindex="0" th:attr="action-id=${petition.getInternalID()}" ><span class="checkmark"></span>No</label>
-                                                </div>
-                                                <div id="reviveappformradios" style="" >
-                                                    <fieldset aria-label="file a response" id="responsefile" style="display: none;">
+                                            <div id="reviveappformradios" style="" >
+
+
+                                                <th:block th:if="${petition.wantToFileResponseSet == false}">
+                                                    <fieldset aria-label="file a response" id="responsefile" style="">
                                                         <p id="filenow">Do you want to file a response to the office action now to avoid delays and expedite the processing of your application?</p>
                                                         <div role="radiogroup" class="form-group form-group-md" aria-describedby="filenow">
+
+
                                                             <label for="inlineRadio074" class="radio-inline radiocontainer"><input type="radio" name="noactionradio" id="inlineRadio074" value="yesfilenow" tabindex="0" th:attr="action-id=${petition.getInternalID()}" ><span class="checkmark"></span>Yes</label>
                                                             <label for="inlineRadio075" class="radio-inline radiocontainer"><input type="radio" name="noactionradio" id="inlineRadio075" value="noreissue" tabindex="0" th:attr="action-id=${petition.getInternalID()}" ><span class="checkmark"></span>No</label>
+
+
+
                                                         </div>
                                                     </fieldset>
-                                                    <div id="reviveappform" style="">
+                                                    <div id="reviveappform" style="display: none;">
                                                         <!--1-->
                                                         <fieldset aria-label="yes, received office action. Select petition signature method.">
                                                             <div class="card-text noexpand">
@@ -307,12 +382,12 @@
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <p class="sr-only">Enclose the signature in forward slashes</p>
                                                                                 <label for="signature">Signature</label>
-                                                                                <input type="text" class="form-control" placeholder="/Signature/" id="signature"  th:value="${petition.getPetitionSignature()}" th:attr="action-id=${petition.getInternalID()}" >
+                                                                                <input type="text" class="form-control" placeholder="/Signature/" id="signature" th:value="${petition.getPetitionSignature()}" th:attr="action-id=${petition.getInternalID()}" >
                                                                             </div>
 
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="datesigned">Date signed: <span id="tz" class="sr-only"> </span></label>
-                                                                                <input type="text" rows="1" class="form-control  datesigned" id="datesigned"  th:value="${petition.getPetitoinDateSignedDisplay()}" th:attr="action-id=${petition.getInternalID()}" > </input>
+                                                                                <input type="text" rows="1" class="form-control  datesigned" id="datesigned" th:value="${petition.getPetitoinDateSignedDisplay()}" th:attr="action-id=${petition.getInternalID()}" > </input>
                                                                             </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <label for="signatoryname">Signatory&#8217;s name</label>
@@ -334,33 +409,83 @@
                                                         <!--2-->
 
                                                     </div>
-                                                </div>
-
-                                            </th:block>
-
-                                            <th:block  th:if="${petition.recievedOfficeAction == false}">
-                                                <div role="radiogroup" aria-describedby="action" class="form-group form-group-md">
-                                                    <label for="inlineRadio072" class="radio-inline radiocontainer"><input type="radio" name="actionradio" id="inlineRadio072" value="yesreceived" tabindex="0" th:attr="action-id=${petition.getInternalID()}" ><span class="checkmark"></span>Yes</label>
-                                                    <label for="inlineRadio073" class="radio-inline radiocontainer"><input type="radio" name="actionradio" id="inlineRadio073" value="noreceived" tabindex="0" th:attr="action-id=${petition.getInternalID()}" checked><span class="checkmark"></span>No</label>
-                                                </div>
-
-                                                <div id="reviveappformradios" style="" >
 
 
-                                                    <th:block th:if="${petition.wantToFileResponseSet == false}">
+                                                </th:block>
+
+                                                <th:block th:if="${petition.wantToFileResponseSet == true}">
+                                                    <th:block th:if="${petition.wantToFileResponse == true}">
                                                         <fieldset aria-label="file a response" id="responsefile" style="">
                                                             <p id="filenow">Do you want to file a response to the office action now to avoid delays and expedite the processing of your application?</p>
                                                             <div role="radiogroup" class="form-group form-group-md" aria-describedby="filenow">
-
-
-                                                                <label for="inlineRadio074" class="radio-inline radiocontainer"><input type="radio" name="noactionradio" id="inlineRadio074" value="yesfilenow" tabindex="0" th:attr="action-id=${petition.getInternalID()}" ><span class="checkmark"></span>Yes</label>
+                                                                <label for="inlineRadio074" class="radio-inline radiocontainer"><input type="radio" name="noactionradio" id="inlineRadio074" value="yesfilenow" tabindex="0" th:attr="action-id=${petition.getInternalID()}" checked><span class="checkmark"></span>Yes</label>
                                                                 <label for="inlineRadio075" class="radio-inline radiocontainer"><input type="radio" name="noactionradio" id="inlineRadio075" value="noreissue" tabindex="0" th:attr="action-id=${petition.getInternalID()}" ><span class="checkmark"></span>No</label>
-
-
-
                                                             </div>
                                                         </fieldset>
-                                                        <div id="reviveappform" style="display: none;">
+                                                        <div id="reviveappform" style="">
+                                                            <!--1-->
+                                                            <fieldset aria-label="yes, received office action. Select petition signature method.">
+                                                                <div class="card-text noexpand">
+                                                                    <h2 class="card-title weight600">Petition&#8217;s Signature</h2>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="form-group form-group-md col-xs-12">
+                                                                        <label for="petitionsign" class="weight600">How are you signing the petition?</label>
+                                                                        <select class="form-control signmethod" id="petitionsign"  th:attr="action-id=${petition.getInternalID()}" >
+                                                                            <option value="Select">Select Signature Method</option>
+                                                                            <option value="direct">Sign directly</option>
+                                                                            <option value="handwritten" disabled>Print and upload handwritten signature</option>
+                                                                            <option value="send" disabled>Send to second party for signature</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-xs-12 form-group form-group-md direct" style="display: none;">
+                                                                        <div class="row hidethis">
+                                                                            <section aria-label="sign">
+                                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                                    <p class="sr-only">Enclose the signature in forward slashes</p>
+                                                                                    <label for="signature">Signature</label>
+                                                                                    <input type="text" class="form-control" placeholder="/Signature/" id="signature" th:value="${petition.getPetitionSignature()}" th:attr="action-id=${petition.getInternalID()}" >
+                                                                                </div>
+
+                                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                                    <label for="datesigned">Date signed: <span id="tz" class="sr-only"> </span></label>
+                                                                                    <input type="text" rows="1" class="form-control  datesigned" id="datesigned" th:value="${petition.getPetitoinDateSignedDisplay()}" th:attr="action-id=${petition.getInternalID()}" > </input>
+                                                                                </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
+                                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                                    <label for="signatoryname">Signatory&#8217;s name</label>
+                                                                                    <input type="text" class="form-control" id="signatoryname" th:value="${petition.getPetitionSignatoryName()}"   th:attr="action-id=${petition.getInternalID()}" >
+                                                                                </div>
+                                                                                <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
+                                                                                    <label for="signatoryphone">Signatory&#8217;s phone number</label>
+                                                                                    <input type="text" class="form-control" id="signatoryphone"   th:value="${petition.getPetitionSignatoryPhone()}"  th:attr="action-id=${petition.getInternalID()}" >
+                                                                                </div>
+                                                                                <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
+                                                                                    <label for="signatoryposition">Signatory&#8217;s position</label>
+                                                                                    <input type="text" class="form-control" id="signatoryposition"   th:value="${petition.getPetitionSinatoryPosition()}" th:attr="action-id=${petition.getInternalID()}" >
+                                                                                </div>
+                                                                            </section>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset><!--//1-->
+                                                            <!--2-->
+
+                                                        </div>
+
+
+
+
+                                                    </th:block>
+                                                    <th:block th:if="${petition.wantToFileResponse == false}">
+
+                                                        <fieldset aria-label="file a response" id="responsefile" style="">
+                                                            <p id="filenow">Do you want to file a response to the office action now to avoid delays and expedite the processing of your application?</p>
+                                                            <div role="radiogroup" class="form-group form-group-md" aria-describedby="filenow">
+                                                                <label for="inlineRadio074" class="radio-inline radiocontainer"><input type="radio" name="noactionradio" id="inlineRadio074" value="yesfilenow" tabindex="0" th:attr="action-id=${petition.getInternalID()}" ><span class="checkmark"></span>Yes</label>
+                                                                <label for="inlineRadio075" class="radio-inline radiocontainer"><input type="radio" name="noactionradio" id="inlineRadio075" value="noreissue" tabindex="0" th:attr="action-id=${petition.getInternalID()}" checked><span class="checkmark"></span>No</label>
+                                                            </div>
+                                                        </fieldset>
+                                                        <div id="reviveappform" style="">
                                                             <!--1-->
                                                             <fieldset aria-label="yes, received office action. Select petition signature method.">
                                                                 <div class="card-text noexpand">
@@ -413,164 +538,39 @@
 
                                                     </th:block>
 
-                                                    <th:block th:if="${petition.wantToFileResponseSet == true}">
-                                                        <th:block th:if="${petition.wantToFileResponse == true}">
-                                                            <fieldset aria-label="file a response" id="responsefile" style="">
-                                                                <p id="filenow">Do you want to file a response to the office action now to avoid delays and expedite the processing of your application?</p>
-                                                                <div role="radiogroup" class="form-group form-group-md" aria-describedby="filenow">
-                                                                    <label for="inlineRadio074" class="radio-inline radiocontainer"><input type="radio" name="noactionradio" id="inlineRadio074" value="yesfilenow" tabindex="0" th:attr="action-id=${petition.getInternalID()}" checked><span class="checkmark"></span>Yes</label>
-                                                                    <label for="inlineRadio075" class="radio-inline radiocontainer"><input type="radio" name="noactionradio" id="inlineRadio075" value="noreissue" tabindex="0" th:attr="action-id=${petition.getInternalID()}" ><span class="checkmark"></span>No</label>
-                                                                </div>
-                                                            </fieldset>
-                                                            <div id="reviveappform" style="">
-                                                                <!--1-->
-                                                                <fieldset aria-label="yes, received office action. Select petition signature method.">
-                                                                    <div class="card-text noexpand">
-                                                                        <h2 class="card-title weight600">Petition&#8217;s Signature</h2>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="form-group form-group-md col-xs-12">
-                                                                            <label for="petitionsign" class="weight600">How are you signing the petition?</label>
-                                                                            <select class="form-control signmethod" id="petitionsign"  th:attr="action-id=${petition.getInternalID()}" >
-                                                                                <option value="Select">Select Signature Method</option>
-                                                                                <option value="direct">Sign directly</option>
-                                                                                <option value="handwritten" disabled>Print and upload handwritten signature</option>
-                                                                                <option value="send" disabled>Send to second party for signature</option>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="col-xs-12 form-group form-group-md direct" style="display: none;">
-                                                                            <div class="row hidethis">
-                                                                                <section aria-label="sign">
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                        <p class="sr-only">Enclose the signature in forward slashes</p>
-                                                                                        <label for="signature">Signature</label>
-                                                                                        <input type="text" class="form-control" placeholder="/Signature/" id="signature" th:value="${petition.getPetitionSignature()}" th:attr="action-id=${petition.getInternalID()}" >
-                                                                                    </div>
 
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                        <label for="datesigned">Date signed: <span id="tz" class="sr-only"> </span></label>
-                                                                                        <input type="text" rows="1" class="form-control  datesigned" id="datesigned" th:value="${petition.getPetitoinDateSignedDisplay()}" th:attr="action-id=${petition.getInternalID()}" > </input>
-                                                                                    </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                        <label for="signatoryname">Signatory&#8217;s name</label>
-                                                                                        <input type="text" class="form-control" id="signatoryname" th:value="${petition.getPetitionSignatoryName()}"   th:attr="action-id=${petition.getInternalID()}" >
-                                                                                    </div>
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
-                                                                                        <label for="signatoryphone">Signatory&#8217;s phone number</label>
-                                                                                        <input type="text" class="form-control" id="signatoryphone"   th:value="${petition.getPetitionSignatoryPhone()}"  th:attr="action-id=${petition.getInternalID()}" >
-                                                                                    </div>
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                        <label for="signatoryposition">Signatory&#8217;s position</label>
-                                                                                        <input type="text" class="form-control" id="signatoryposition"   th:value="${petition.getPetitionSinatoryPosition()}" th:attr="action-id=${petition.getInternalID()}" >
-                                                                                    </div>
-                                                                                </section>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </fieldset><!--//1-->
-                                                                <!--2-->
 
-                                                            </div>
+                                                </th:block>
 
 
 
 
-                                                        </th:block>
-                                                        <th:block th:if="${petition.wantToFileResponse == false}">
-
-                                                            <fieldset aria-label="file a response" id="responsefile" style="">
-                                                                <p id="filenow">Do you want to file a response to the office action now to avoid delays and expedite the processing of your application?</p>
-                                                                <div role="radiogroup" class="form-group form-group-md" aria-describedby="filenow">
-                                                                    <label for="inlineRadio074" class="radio-inline radiocontainer"><input type="radio" name="noactionradio" id="inlineRadio074" value="yesfilenow" tabindex="0" th:attr="action-id=${petition.getInternalID()}" ><span class="checkmark"></span>Yes</label>
-                                                                    <label for="inlineRadio075" class="radio-inline radiocontainer"><input type="radio" name="noactionradio" id="inlineRadio075" value="noreissue" tabindex="0" th:attr="action-id=${petition.getInternalID()}" checked><span class="checkmark"></span>No</label>
-                                                                </div>
-                                                            </fieldset>
-                                                            <div id="reviveappform" style="">
-                                                                <!--1-->
-                                                                <fieldset aria-label="yes, received office action. Select petition signature method.">
-                                                                    <div class="card-text noexpand">
-                                                                        <h2 class="card-title weight600">Petition&#8217;s Signature</h2>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="form-group form-group-md col-xs-12">
-                                                                            <label for="petitionsign" class="weight600">How are you signing the petition?</label>
-                                                                            <select class="form-control signmethod" id="petitionsign"  th:attr="action-id=${petition.getInternalID()}" >
-                                                                                <option value="Select">Select Signature Method</option>
-                                                                                <option value="direct">Sign directly</option>
-                                                                                <option value="handwritten" disabled>Print and upload handwritten signature</option>
-                                                                                <option value="send" disabled>Send to second party for signature</option>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="col-xs-12 form-group form-group-md direct" style="display: none;">
-                                                                            <div class="row hidethis">
-                                                                                <section aria-label="sign">
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                        <p class="sr-only">Enclose the signature in forward slashes</p>
-                                                                                        <label for="signature">Signature</label>
-                                                                                        <input type="text" class="form-control" placeholder="/Signature/" id="signature" th:value="${petition.getPetitionSignature()}" th:attr="action-id=${petition.getInternalID()}" >
-                                                                                    </div>
-
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                        <label for="datesigned">Date signed: <span id="tz" class="sr-only"> </span></label>
-                                                                                        <input type="text" rows="1" class="form-control  datesigned" id="datesigned" th:value="${petition.getPetitoinDateSignedDisplay()}" th:attr="action-id=${petition.getInternalID()}" > </input>
-                                                                                    </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                        <label for="signatoryname">Signatory&#8217;s name</label>
-                                                                                        <input type="text" class="form-control" id="signatoryname" th:value="${petition.getPetitionSignatoryName()}"   th:attr="action-id=${petition.getInternalID()}" >
-                                                                                    </div>
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
-                                                                                        <label for="signatoryphone">Signatory&#8217;s phone number</label>
-                                                                                        <input type="text" class="form-control" id="signatoryphone"   th:value="${petition.getPetitionSignatoryPhone()}"  th:attr="action-id=${petition.getInternalID()}" >
-                                                                                    </div>
-                                                                                    <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                        <label for="signatoryposition">Signatory&#8217;s position</label>
-                                                                                        <input type="text" class="form-control" id="signatoryposition"   th:value="${petition.getPetitionSinatoryPosition()}" th:attr="action-id=${petition.getInternalID()}" >
-                                                                                    </div>
-                                                                                </section>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </fieldset><!--//1-->
-                                                                <!--2-->
-
-                                                            </div>
-
-
-                                                        </th:block>
-
-
-
-                                                    </th:block>
-
-
-
-
-                                                </div>
-
-                                            </th:block>
-
+                                            </div>
 
                                         </th:block>
 
 
-
-
-
-                                    </fieldset>
-
+                                    </th:block>
 
 
 
 
 
+                                </fieldset>
 
 
-                                    <!--//yes, received office action-->
-                                </div>
+
+
+
+
+
+
+                                <!--//yes, received office action-->
                             </div>
-                        </form>
-                    </div><!--END col-->
-                </div><!--END row-->
+                        </div>
+                    </form>
+                </div><!--END col-->
+            </div><!--END row-->
             </div>
         </div><!--END row-->
         <div class="inlinebuttons btn-group btn-group-justified" role="navigation" aria-label="view previous or next page" id="prevnxt">
