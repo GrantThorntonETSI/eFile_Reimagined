@@ -12,7 +12,7 @@ public class StorageProperties {
     //private String location = "/home/zhangl/images/";
 
     // load this value from property file
-   private String location = "C:\\images\\attorney";
+    private String location = "C:\\images\\attorney";
 
     //private String location = "C:\\Users\\Administrator\\Downloads\\eFile_Reimagined-master";
 
