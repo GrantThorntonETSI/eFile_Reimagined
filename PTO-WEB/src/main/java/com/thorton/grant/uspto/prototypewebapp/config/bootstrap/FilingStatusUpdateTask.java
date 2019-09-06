@@ -578,8 +578,8 @@ public class FilingStatusUpdateTask extends TimerTask {
 
 
 
-                            current.setFilingStatus("Abandoned - Failure to Respond or Late Response");
-                            petition.setOfficeActionCode("Abandoned - Failure to Respond or Late Response");
+                            current.setFilingStatus("Abandoned - No Statement of Use Filed");
+                            petition.setOfficeActionCode("Abandoned - No Statement of Use Filed");
                             petition.setType("noa");
 
                             petition.setActivePetition(true);
@@ -683,6 +683,7 @@ public class FilingStatusUpdateTask extends TimerTask {
                            currentGS.setMarkInUseSet(false);
                            currentGS.setExcusedNoneUse(false);
                            currentGS.setMarkInUseCC(false);
+                           currentGS.setMarkInUseAllGSinClass(false);
 
                        }
                     }
