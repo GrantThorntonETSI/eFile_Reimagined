@@ -3975,19 +3975,29 @@
         $('#courtd').click(function () {
             if(this.checked == true){
 
+
                 saveAdditionalInfo("ai-concurrent-type-court", "yes", appInternalID);
+                $('#hideshowconcurrentuses').show(500);
             }
             else {
+
+
                 saveAdditionalInfo("ai-concurrent-type-court", "no", appInternalID);
+                $('#hideshowconcurrentuses').hide(500);
             }
         });
 
         $('#ttabmade').click(function () {
             if(this.checked == true){
+
+
                 saveAdditionalInfo("ai-concurrent-type-prior", "yes", appInternalID);
+                $('#hideshowconcurrentuses').show(500);
             }
             else {
+
                 saveAdditionalInfo("ai-concurrent-type-prior", "no", appInternalID);
+                $('#hideshowconcurrentuses').hide(500);
             }
         });
 
@@ -3995,63 +4005,27 @@
         $('#conflict').click(function () {
             if(this.checked == true){
                 saveAdditionalInfo("ai-concurrent-type-written", "yes", appInternalID);
+                $('#hideshowconcurrentuses').show(500);
             }
             else {
                 saveAdditionalInfo("ai-concurrent-type-written", "no", appInternalID);
+                $('#hideshowconcurrentuses').hide(500);
             }
         });
         $('#earlieruse').click(function () {
             if(this.checked == true){
                 saveAdditionalInfo("ai-concurrent-type-earlier", "yes", appInternalID);
+                $('#hideshowconcurrentuses').show(500);
             }
             else {
                 saveAdditionalInfo("ai-concurrent-type-earlier", "no", appInternalID);
-            }
-        });
 
-        $('#courtd').click(function () {
-
-            if(this.checked == true){
-                $('#hideshowconcurrentuses').show(500);
-            }
-            else {
                 $('#hideshowconcurrentuses').hide(500);
             }
-
         });
 
-        $('#ttabdecision').click(function () {
 
-            if(this.checked == true){
-                $('#hideshowconcurrentuses').show(500);
-            }
-            else {
-                $('#hideshowconcurrentuses').hide(500);
-            }
 
-        });
-
-        $('#conflictowner').click(function () {
-
-            if(this.checked == true){
-                $('#hideshowconcurrentuses').show(500);
-            }
-            else {
-                $('#hideshowconcurrentuses').hide(500);
-            }
-
-        });
-
-        $('#firstcommerce').click(function () {
-
-            if(this.checked == true){
-                $('#hideshowconcurrentuses').show(500);
-            }
-            else {
-                $('#hideshowconcurrentuses').hide(500);
-            }
-
-        });
 
 
 
