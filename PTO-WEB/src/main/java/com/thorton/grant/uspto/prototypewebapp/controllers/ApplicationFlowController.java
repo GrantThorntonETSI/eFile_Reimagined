@@ -4599,7 +4599,14 @@ public class ApplicationFlowController {
              return "application/office_action/index";
          }
          else {
-             return "forward:/accounts/dashboard";
+
+             if(baseTrademarkApplication.findPetitionById(petitionID).isRecievedOfficeAction() == true){
+                 return "application/office_action/index";
+             }
+             else {
+                 return "forward:/accounts/dashboard";
+             }
+
          }
 
 
@@ -4696,11 +4703,20 @@ public class ApplicationFlowController {
 
 
 
+
+
         if(baseTrademarkApplication.findPetitionById(petitionID).isWantToFileResponse() == true ){
-            return "application/noa/index";
+            return "application/office_action/index";
         }
         else {
-            return "forward:/accounts/dashboard";
+
+            if(baseTrademarkApplication.findPetitionById(petitionID).isRecievedOfficeAction() == true){
+                return "application/office_action/index";
+            }
+            else {
+                return "forward:/accounts/dashboard";
+            }
+
         }
 
 
