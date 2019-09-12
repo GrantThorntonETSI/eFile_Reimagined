@@ -578,8 +578,8 @@ public class FilingStatusUpdateTask extends TimerTask {
 
 
 
-                            current.setFilingStatus("Abandoned - No Statement of Use Filed");
-                            petition.setOfficeActionCode("Abandoned - No Statement of Use Filed");
+                            current.setFilingStatus("Abandoned - Failure to File timely SOU or Extension Request");
+                            petition.setOfficeActionCode("Abandoned - Failure to File timely SOU or Extension Request");
                             petition.setType("noa");
 
                             petition.setActivePetition(true);
@@ -588,7 +588,7 @@ public class FilingStatusUpdateTask extends TimerTask {
                             current3.setActiveAction(false);
 
                             FilingDocumentEvent filingDocumentEvent = new FilingDocumentEvent();
-                            filingDocumentEvent.setEventDescription("Filing Abandoned");
+                            filingDocumentEvent.setEventDescription("Abandoned - Failure to File timely SOU or Extension Request");
 
                             filingDocumentEvent.setDocumentType("XML");
                             Date date = new Date();
@@ -652,8 +652,8 @@ public class FilingStatusUpdateTask extends TimerTask {
                     noa.addRequiredActions(requiredActions);
 
 
-                    current.setFilingStatus("Registration - expired");
-                    noa.setOfficeActionCode("Use Statement Renew");
+                    current.setFilingStatus("File Section 8 Declaration");
+                    noa.setOfficeActionCode("File Section 8 Declaration");
 
 
                     // create  an default office action object and attach it to filing
