@@ -161,12 +161,6 @@ public class BaseTrademarkApplication  {
 
 
 
-
-
-
-
-
-
     private String ownerType;
     private String ownerSubType;
     private String attorneyCollapseID;
@@ -458,6 +452,8 @@ public class BaseTrademarkApplication  {
     private boolean section15Declration;
 
     private boolean allActiveGSfiveYearsInUSe;
+
+    private String internalFilingStatus = "xxx";
 
 
 
@@ -2191,5 +2187,13 @@ public class BaseTrademarkApplication  {
 
     public void setSection15Declration(boolean section15Declration) {
         this.section15Declration = section15Declration;
+    }
+
+    public String getInternalFilingStatus() {
+        return internalFilingStatus;
+    }
+
+    public void setInternalFilingStatus(String internalFilingStatus) {
+        this.internalFilingStatus = internalFilingStatus;
     }
 }

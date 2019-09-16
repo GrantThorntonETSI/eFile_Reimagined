@@ -222,7 +222,11 @@
                                                                                                 <a th:href="${action.getOfficeActionLink()}">Respond to Notice Of Allowance</a>
                                                                                             </th:block>
 
-                                                                                            <th:block th:if="${action.getOfficeActionCode() != 'Issuance Of Allowance'}">
+                                                                                            <th:block th:if="${action.getOfficeActionCode() == 'Registered'}">
+                                                                                                <a th:href="${action.getOfficeActionLink()}">File Section 8 Declaration</a>
+                                                                                            </th:block>
+
+                                                                                            <th:block th:if="${action.getOfficeActionCode() == 'Non-Final Action Mailed'}">
                                                                                                 <a th:href="${action.getOfficeActionLink()}">Respond to Office Action</a>
                                                                                             </th:block>
                                                                                         </td>

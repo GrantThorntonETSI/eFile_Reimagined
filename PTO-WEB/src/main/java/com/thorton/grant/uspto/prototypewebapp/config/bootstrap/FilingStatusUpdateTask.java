@@ -503,6 +503,7 @@ public class FilingStatusUpdateTask extends TimerTask {
                           // create registration number for filing
                           // start this number at 9000000
                             current.setFilingStatus("Registered");
+                            current.setInternalFilingStatus("Registered");
                             counter++;
                             current.setRegistrationID(String.valueOf(counter));
 
@@ -613,16 +614,11 @@ public class FilingStatusUpdateTask extends TimerTask {
         BaseTradeMarkApplicationService baseTradeMarkApplicationService = serviceBeanFactory.getBaseTradeMarkApplicationService();
 
 
-
-
-
-
-
         for(Iterator<BaseTrademarkApplication> iter = baseTradeMarkApplicationService.findAll().iterator(); iter.hasNext(); ) {
 
             BaseTrademarkApplication current = iter.next();
 
-            if( current.getApplicationRegisteredDate() != null && current.getFilingStatus().equals("Registered")){
+            if( current.getApplicationRegisteredDate() != null && current.getInternalFilingStatus().equals("Registered")){
                 // check if allowance has expired ...use accepted date + issuance of allowance period
 
                 if((current.getApplicationRegistrationRenewDate().getTime() + current.getRecurringFilingExtensionInterval()) < new Date().getTime()){
@@ -630,7 +626,6 @@ public class FilingStatusUpdateTask extends TimerTask {
                     // set filing to abandoment
                     // create document record
                     // create petition to revive
-
                     // create notice of allowance
                     NoticeOfAllowance noa = new NoticeOfAllowance();
                     noa.setParentMarkImagePath(current.getTradeMark().getTrademarkImagePath());
@@ -652,8 +647,8 @@ public class FilingStatusUpdateTask extends TimerTask {
                     noa.addRequiredActions(requiredActions);
 
 
-                    current.setFilingStatus("File Section 8 Declaration");
-                    noa.setOfficeActionCode("File Section 8 Declaration");
+                    current.setInternalFilingStatus("File Section 8 Declaration");
+                    noa.setOfficeActionCode("Registered");
 
 
                     // create  an default office action object and attach it to filing
