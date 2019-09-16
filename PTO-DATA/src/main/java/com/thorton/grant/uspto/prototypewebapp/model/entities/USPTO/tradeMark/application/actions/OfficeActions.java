@@ -293,7 +293,7 @@ public class OfficeActions extends BaseEntity {
             return "/noa/response/" + getInternalID() + "/?trademarkID=" + getTrademarkApplication().getApplicationInternalID();
         }
         else {
-            if(getOfficeActionCode().equals("Use Statement Renew")){
+            if(getOfficeActionCode().equals("File Section 8 Declaration")){
                 return "/renew/response/" + getInternalID() + "/?trademarkID=" + getTrademarkApplication().getApplicationInternalID();
             }
             else {
