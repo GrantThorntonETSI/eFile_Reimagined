@@ -354,7 +354,7 @@ public class FilingStatusUpdateTask extends TimerTask {
 
                         for(Iterator<OfficeActions> iter4 = current.getOfficeActions().iterator(); iter4.hasNext(); ) {
                             OfficeActions current4 = iter4.next();
-                            if(current4.isActiveAction()){
+                            if(current4.isActiveAction() && current4.getOfficeActionCode().equals("global default action") == false){
                                 if(current4.isOfficeActionCompleted() == true){
                                     // skip examiner review period
                                     // filing is accepted

@@ -4715,7 +4715,7 @@ public class ApplicationFlowController {
         }
         else {
 
-            if(baseTrademarkApplication.findPetitionById(petitionID).isWantToFileResponse() == true){
+            if(baseTrademarkApplication.findPetitionById(petitionID).isWantToFileResponse() == true || baseTrademarkApplication.findPetitionById(petitionID).isReissueOfficeAction() == true){
                 if(baseTrademarkApplication.findPetitionById(petitionID).getOfficeActionCode().equals("Abandoned - Failure to File timely SOU or Extension Request")){
                     return "application/noa/index";
                 }
@@ -4724,6 +4724,7 @@ public class ApplicationFlowController {
                 }
             }
             else {
+
                 return "forward:/accounts/dashboard";
             }
 
