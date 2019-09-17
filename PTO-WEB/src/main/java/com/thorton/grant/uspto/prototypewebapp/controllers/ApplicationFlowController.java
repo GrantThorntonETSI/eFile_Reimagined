@@ -4703,11 +4703,9 @@ public class ApplicationFlowController {
 
 
 
+        if(baseTrademarkApplication.findPetitionById(petitionID).isRecievedOfficeAction() == true ){
 
-
-        if(baseTrademarkApplication.findPetitionById(petitionID).isWantToFileResponse() == true ){
-
-            if(baseTrademarkApplication.findPetitionById(petitionID).getOfficeActionCode().equals("Issuance Of Allowance")){
+            if(baseTrademarkApplication.findPetitionById(petitionID).getOfficeActionCode().equals("Abandoned - Failure to File timely SOU or Extension Request")){
                 return "application/noa/index";
             }
             else{
@@ -4717,8 +4715,8 @@ public class ApplicationFlowController {
         }
         else {
 
-            if(baseTrademarkApplication.findPetitionById(petitionID).isRecievedOfficeAction() == true){
-                if(baseTrademarkApplication.findPetitionById(petitionID).getOfficeActionCode().equals("Issuance Of Allowance")){
+            if(baseTrademarkApplication.findPetitionById(petitionID).isWantToFileResponse() == true){
+                if(baseTrademarkApplication.findPetitionById(petitionID).getOfficeActionCode().equals("Abandoned - Failure to File timely SOU or Extension Request")){
                     return "application/noa/index";
                 }
                 else{
