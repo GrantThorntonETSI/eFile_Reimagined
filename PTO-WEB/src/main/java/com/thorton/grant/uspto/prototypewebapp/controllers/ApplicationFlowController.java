@@ -4706,12 +4706,24 @@ public class ApplicationFlowController {
 
 
         if(baseTrademarkApplication.findPetitionById(petitionID).isWantToFileResponse() == true ){
-            return "application/office_action/index";
+
+            if(baseTrademarkApplication.findPetitionById(petitionID).getOfficeActionCode().equals("Issuance Of Allowance")){
+                return "application/noa/index";
+            }
+            else{
+                return "application/office_action/index";
+            }
+
         }
         else {
 
             if(baseTrademarkApplication.findPetitionById(petitionID).isRecievedOfficeAction() == true){
-                return "application/office_action/index";
+                if(baseTrademarkApplication.findPetitionById(petitionID).getOfficeActionCode().equals("Issuance Of Allowance")){
+                    return "application/noa/index";
+                }
+                else{
+                    return "application/office_action/index";
+                }
             }
             else {
                 return "forward:/accounts/dashboard";
