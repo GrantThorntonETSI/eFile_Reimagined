@@ -237,7 +237,7 @@
                                                                 <section aria-label="sign">
                                                                     <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                         <p class="sr-only">Enclose the signature in forward slashes</p>
-                                                                        <label for="signature">Signature <a href="#" data-toggle="tooltip" title="" class="glyphicon glyphicon-info-sign test" data-placement="right" data-original-title="To electronically sign the application enter any combination of alpha numeric characters between two forward slash symbols (/); e.g., /jane smith/, /rdr/, or /127/)."></a></label>
+                                                                        <label for="signature">Signature <span class="weight600">&#42;</span><a href="#" data-toggle="tooltip" title="" class="glyphicon glyphicon-info-sign test" data-placement="right" data-original-title="To electronically sign the application enter any combination of alpha numeric characters between two forward slash symbols (/); e.g., /jane smith/, /rdr/, or /127/)."></a></label>
                                                                         <input type="text" class="form-control" placeholder="/Signature/" id="signature" th:value="${petition.getPetitionSignature()}" th:attr="action-id=${petition.getInternalID()}" >
                                                                     </div>
 
@@ -246,7 +246,7 @@
                                                                         <input type="text" rows="1" class="form-control  datesigned" id="datesigned" th:value="${petition.getPetitoinDateSignedDisplay()}" th:attr="action-id=${petition.getInternalID()}" > </input>
                                                                     </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
                                                                     <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                        <label for="signatoryname">Signatory&#8217;s name</label>
+                                                                        <label for="signatoryname">Signatory&#8217;s name <span class="weight600">&#42;</span></label>
                                                                         <input type="text" class="form-control" id="signatoryname" th:value="${petition.getPetitionSignatoryName()}"   th:attr="action-id=${petition.getInternalID()}" >
                                                                     </div>
                                                                     <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
@@ -254,7 +254,7 @@
                                                                         <input type="text" class="form-control" id="signatoryphone"   th:value="${petition.getPetitionSignatoryPhone()}"  th:attr="action-id=${petition.getInternalID()}" >
                                                                     </div>
                                                                     <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                        <label for="signatoryposition">Signatory&#8217;s position</label>
+                                                                        <label for="signatoryposition">Signatory&#8217;s position <span class="weight600">&#42;</span></label>
                                                                         <input type="text" class="form-control" id="signatoryposition"   th:value="${petition.getPetitionSinatoryPosition()}" th:attr="action-id=${petition.getInternalID()}" >
                                                                     </div>
                                                                 </section>
@@ -306,7 +306,7 @@
                                                                     <section aria-label="sign">
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                             <p class="sr-only">Enclose the signature in forward slashes</p>
-                                                                            <label for="signature">Signature</label>
+                                                                            <label for="signature">Signature <span class="weight600">&#42;</span></label>
                                                                             <input type="text" class="form-control" placeholder="/Signature/" id="signature"  th:value="${petition.getPetitionSignature()}" th:attr="action-id=${petition.getInternalID()}" >
                                                                         </div>
 
@@ -315,7 +315,7 @@
                                                                             <input type="text" rows="1" class="form-control  datesigned" id="datesigned"  th:value="${petition.getPetitoinDateSignedDisplay()}" th:attr="action-id=${petition.getInternalID()}" > </input>
                                                                         </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                            <label for="signatoryname">Signatory&#8217;s name</label>
+                                                                            <label for="signatoryname">Signatory&#8217;s name <span class="weight600">&#42;</span></label>
                                                                             <input type="text" class="form-control" id="signatoryname" th:value="${petition.getPetitionSignatoryName()}"   th:attr="action-id=${petition.getInternalID()}" >
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
@@ -323,7 +323,7 @@
                                                                             <input type="text" class="form-control" id="signatoryphone"   th:value="${petition.getPetitionSignatoryPhone()}"  th:attr="action-id=${petition.getInternalID()}" >
                                                                         </div>
                                                                         <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                            <label for="signatoryposition">Signatory&#8217;s position</label>
+                                                                            <label for="signatoryposition">Signatory&#8217;s position <span class="weight600">&#42;</span></label>
                                                                             <input type="text" class="form-control" id="signatoryposition"   th:value="${petition.getPetitionSinatoryPosition()}" th:attr="action-id=${petition.getInternalID()}" >
                                                                         </div>
                                                                     </section>
@@ -381,7 +381,7 @@
                                                                         <section aria-label="sign">
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                 <p class="sr-only">Enclose the signature in forward slashes</p>
-                                                                                <label for="signature">Signature</label>
+                                                                                <label for="signature">Signature <span class="weight600">&#42;</span></label>
                                                                                 <input type="text" class="form-control" placeholder="/Signature/" id="signature" th:value="${petition.getPetitionSignature()}" th:attr="action-id=${petition.getInternalID()}" >
                                                                             </div>
 
@@ -390,7 +390,7 @@
                                                                                 <input type="text" rows="1" class="form-control  datesigned" id="datesigned" th:value="${petition.getPetitoinDateSignedDisplay()}" th:attr="action-id=${petition.getInternalID()}" > </input>
                                                                             </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                <label for="signatoryname">Signatory&#8217;s name</label>
+                                                                                <label for="signatoryname">Signatory&#8217;s name <span class="weight600">&#42;</span></label>
                                                                                 <input type="text" class="form-control" id="signatoryname" th:value="${petition.getPetitionSignatoryName()}"   th:attr="action-id=${petition.getInternalID()}" >
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
@@ -398,7 +398,7 @@
                                                                                 <input type="text" class="form-control" id="signatoryphone"   th:value="${petition.getPetitionSignatoryPhone()}"  th:attr="action-id=${petition.getInternalID()}" >
                                                                             </div>
                                                                             <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                <label for="signatoryposition">Signatory&#8217;s position</label>
+                                                                                <label for="signatoryposition">Signatory&#8217;s position <span class="weight600">&#42;</span></label>
                                                                                 <input type="text" class="form-control" id="signatoryposition"   th:value="${petition.getPetitionSinatoryPosition()}" th:attr="action-id=${petition.getInternalID()}" >
                                                                             </div>
                                                                         </section>
@@ -443,7 +443,7 @@
                                                                             <section aria-label="sign">
                                                                                 <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                     <p class="sr-only">Enclose the signature in forward slashes</p>
-                                                                                    <label for="signature">Signature</label>
+                                                                                    <label for="signature">Signature <span class="weight600">&#42;</span></label>
                                                                                     <input type="text" class="form-control" placeholder="/Signature/" id="signature" th:value="${petition.getPetitionSignature()}" th:attr="action-id=${petition.getInternalID()}" >
                                                                                 </div>
 
@@ -452,7 +452,7 @@
                                                                                     <input type="text" rows="1" class="form-control  datesigned" id="datesigned" th:value="${petition.getPetitoinDateSignedDisplay()}" th:attr="action-id=${petition.getInternalID()}" > </input>
                                                                                 </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
                                                                                 <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                    <label for="signatoryname">Signatory&#8217;s name</label>
+                                                                                    <label for="signatoryname">Signatory&#8217;s name <span class="weight600">&#42;</span></label>
                                                                                     <input type="text" class="form-control" id="signatoryname" th:value="${petition.getPetitionSignatoryName()}"   th:attr="action-id=${petition.getInternalID()}" >
                                                                                 </div>
                                                                                 <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
@@ -460,7 +460,7 @@
                                                                                     <input type="text" class="form-control" id="signatoryphone"   th:value="${petition.getPetitionSignatoryPhone()}"  th:attr="action-id=${petition.getInternalID()}" >
                                                                                 </div>
                                                                                 <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                    <label for="signatoryposition">Signatory&#8217;s position</label>
+                                                                                    <label for="signatoryposition">Signatory&#8217;s position <span class="weight600">&#42;</span></label>
                                                                                     <input type="text" class="form-control" id="signatoryposition"   th:value="${petition.getPetitionSinatoryPosition()}" th:attr="action-id=${petition.getInternalID()}" >
                                                                                 </div>
                                                                             </section>
@@ -506,7 +506,7 @@
                                                                             <section aria-label="sign">
                                                                                 <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
                                                                                     <p class="sr-only">Enclose the signature in forward slashes</p>
-                                                                                    <label for="signature">Signature</label>
+                                                                                    <label for="signature">Signature <span class="weight600">&#42;</span></label>
                                                                                     <input type="text" class="form-control" placeholder="/Signature/" id="signature" th:value="${petition.getPetitionSignature()}" th:attr="action-id=${petition.getInternalID()}" >
                                                                                 </div>
 
@@ -515,7 +515,7 @@
                                                                                     <input type="text" rows="1" class="form-control  datesigned" id="datesigned" th:value="${petition.getPetitoinDateSignedDisplay()}" th:attr="action-id=${petition.getInternalID()}" > </input>
                                                                                 </div><!--placeholder="20:36:14 May 30, 2019 E.T."-->
                                                                                 <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                    <label for="signatoryname">Signatory&#8217;s name</label>
+                                                                                    <label for="signatoryname">Signatory&#8217;s name <span class="weight600">&#42;</span></label>
                                                                                     <input type="text" class="form-control" id="signatoryname" th:value="${petition.getPetitionSignatoryName()}"   th:attr="action-id=${petition.getInternalID()}" >
                                                                                 </div>
                                                                                 <div class="form-group form-group-md col-xs-12 col-sm-9 col-lg-6">
@@ -523,7 +523,7 @@
                                                                                     <input type="text" class="form-control" id="signatoryphone"   th:value="${petition.getPetitionSignatoryPhone()}"  th:attr="action-id=${petition.getInternalID()}" >
                                                                                 </div>
                                                                                 <div class="form-group form-group-md col-xs-12 col-sm-12 col-lg-6">
-                                                                                    <label for="signatoryposition">Signatory&#8217;s position</label>
+                                                                                    <label for="signatoryposition">Signatory&#8217;s position <span class="weight600">&#42;</span></label>
                                                                                     <input type="text" class="form-control" id="signatoryposition"   th:value="${petition.getPetitionSinatoryPosition()}" th:attr="action-id=${petition.getInternalID()}" >
                                                                                 </div>
                                                                             </section>
