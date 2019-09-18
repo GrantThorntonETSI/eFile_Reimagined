@@ -183,7 +183,38 @@
     drift.SNIPPET_VERSION = '0.3.1';
     drift.load('b5xdchmzc38b');
 </script>
-
+    
+<script type="application/javascript" th:inline="javascript">
+    //generate unique IDs + matching labels + arialabels for Declaration of Incontestability, checkmarks
+        $( window ).on('load', function() {
+            var forthisdiv = $('div#incontestable').find('input.checkmark');
+            var generate = {};
+            $(function() {
+                var generating = function(){
+                    var checkboxList = $(forthisdiv);
+                    for (var i = 0; i <= checkboxList.length; i++) {
+                        $(checkboxList[i]).attr('id', 'checkboxone' + i);
+                    }
+                    var labelList = $(forthisdiv).next('label');
+                    for (var i = 0; i <= labelList.length; i++) {
+                        $(labelList[i]).attr('for', 'checkboxone' + i);
+                    }
+                    var labelidList = $(forthisdiv).next('label');
+                    for (var i = 0; i <= labelidList.length; i++) {
+                        $(labelidList[i]).attr('id', 'checkbox_' + i);
+                    }
+                    var checkboxarialabelList = $(forthisdiv);
+                    for (var i = 0; i <= checkboxarialabelList.length; i++) {
+                        $(checkboxarialabelList[i]).attr('aria-labelledby', 'checkbox_' + i);
+                    }
+                };
+                generate = generating;
+            });
+            $(generate);
+        });
+        //
+</script>
+    
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130047127-1"></script>
 <script>
