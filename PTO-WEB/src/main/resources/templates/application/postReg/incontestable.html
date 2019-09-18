@@ -6,7 +6,7 @@
     <title>Goods and Services Review</title>
 </head>
 <body>
-<div class="row content"  style="display: none;">
+<div class="row content" style="display: none;">
     <main class="col-xs-12 col-sm-8 col-md-8 col-lg-7" id="mainContent" tabindex="-1">
         <!--START Content Div-->
         <div class="row" id="incontestable"><!--postregsection8-->
@@ -211,12 +211,12 @@
 
 
                                                 <th:block th:if="${Good_Service.isActiveGS() == true}">
-                                                    <input class="form-check-input checkmark  gs-in-use-section15" type="checkbox" value="18gs" tabindex="0" aria-labelledby="class18barsoap"  th:attr="gs-id=${Good_Service.getInternalID()}">
+                                                    <input class="form-check-input checkmark gs-in-use-section15" type="checkbox" value="18gs" tabindex="0" aria-labelledby="class18barsoap"  th:attr="gs-id=${Good_Service.getInternalID()}">
                                                     <label class="form-check-label form-check form-check-left"  ><span class="radio notspecial" th:text="${Good_Service.getClassDescription()}">Bar Soap</span></label>
                                                 </th:block>
                                                 <th:block th:if="${Good_Service.isActiveGS() == false}">
 
-                                                    <input class="form-check-input checkmark  gs-in-use-section15" type="checkbox" value="18gs" tabindex="0" aria-labelledby="class18barsoap" disabled  th:attr="gs-id=${Good_Service.getInternalID()}">
+                                                    <input class="form-check-input checkmark gs-in-use-section15" type="checkbox" value="18gs" tabindex="0" aria-labelledby="class18barsoap" th:attr="gs-id=${Good_Service.getInternalID()}">
                                                     <label class="form-check-label form-check form-check-left"  ><span class="radio notspecial special strike" th:text="${Good_Service.getClassDescription()}">Bar Soap</span></label>
                                                 </th:block>
 
@@ -290,7 +290,7 @@
 
 
 
-<script>
+<script type="application/javascript" th:inline="javascript">
 
     var prevLinkURL = "../../../../renew/response/"+OfficeActionID+"/?trademarkID="+appInternalID
 
@@ -309,7 +309,6 @@
 
         $(document).on('change','#incontestable input.selectallclasses', function() {
             var input  = $('#incontestable input.selectallclasses').parent().parent().parent().children('fieldset').find('input.checkmark');
-            var input  = $('#incontestable input.selectallclasses').parent().parent().parent().children('fieldset').find('input.checkmark');
             if ($(this).is( ":checked" )) {
                 $(input).prop('checked', true);
                 $('input:disabled').prop('checked', false);
@@ -326,7 +325,6 @@
         });
 
         $(document).on('change','#incontestable input.selectallgs', function() {
-
             var ccID = $(this).attr("cc-id");
             var input  = $(this).parent().parent().find('input.checkmark');
             if ($(this).is( ":checked" )) {
@@ -353,23 +351,8 @@
              }
          });
 
-
         });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //
 
         //////////////////////////////////////////////////////////////////////
         // set mark image based on persisted values
