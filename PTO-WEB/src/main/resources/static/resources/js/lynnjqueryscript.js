@@ -1991,14 +1991,7 @@ $(document).ready(function(){
 		$('#requestnoa, div#expedite').css('display','block');
 		$('div#reviveappform, #requestnoa, div#expedite').show('fast','swing');
 	});
-	$('input#inlineRadio0106').change(function() {
-		$(clearreconsider);
-		$('div#reconsideration').show('fast','swing');
-	});
-	$('input#inlineRadio0107').change(function() {
-		$(clearreconsider);
-		$('div#reconsideration').hide('fast');
-	});
+
 	$('input#inlineRadio0104').change(function() {
 		$(clearreconsider);
 		$('div#fees input').prop({
