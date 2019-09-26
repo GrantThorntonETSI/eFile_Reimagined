@@ -540,6 +540,17 @@ $(document).ready(function(){
 //			$('#specdescriptfour').css( 'height', ((c.outerHeight() + 2) + 'px') );
 //		});
 	//END basis input label height match upload label
+    
+    //generate unique IDs + matching labels for filing basis foreign registration datepickers
+		var datepickerList = $('#basisabde div.holdsaforeign input.datepicker');
+		for (var i = 0; i <= datepickerList.length; i++) {
+			$(datepickerList[i]).attr('id', 'datepicker' + i);
+		}
+		var datepickerlabelList = $('#basisabde div.holdsaforeign input.datepicker').prev('label');
+		for (var i = 0; i <= datepickerlabelList.length; i++) {
+			$(datepickerlabelList[i]).attr('for', 'datepicker' + i);
+		}
+	//
 
 	//Placeholder as editable text
 	//$('textarea#ta2, textarea#ta5').val('This mark consists of');
